@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+
+<!--
+$Id: Mortar.xml,v 1.13 2005/10/25 09:54:48 anton Exp $
+-->
+
+<Prototypes>
+
+	<Prototype
+		Class			= "MortarShell"
+		Name			= "someMortarShell"			
+
+		ModelFile		= "shell01"
+		ExplosionType		= "GRENADE" 
+		Price			= "3000"		
+		FlyTime			= "100"
+
+		Size			= "0.5 0.5 1"
+	/>
+	<Prototype
+		Class			= "MortarShell"
+		Name			= "someMortarShell02"			
+
+		ModelFile		= "shell02"
+		ExplosionType		= "GRENADE" 
+		Price			= "3000"		
+		FlyTime			= "100"
+
+		Size			= "0.5 0.5 1"
+		BlastWavePrototype      = "smallBlastWave"
+
+	/>
+	<Prototype
+		Class			= "MortarShell"
+		Name			= "marsMortarShell"			
+
+		ModelFile		= "shell01"
+		ExplosionType		= "GRENADE" 
+		Price			= "3000"
+		FlyTime			= "100"
+
+		Size			= "0.5 0.5 1"
+		BlastWavePrototype      = "smallBlastWave"
+
+	/>
+	
+<!--
+	<Prototype
+		Class			= "Mortar"
+		Name			= "someMortar"		
+	
+		ModelFile		= "big_hammer01"
+		ResourceType		= "GIANT_GUN"
+		NodeScale		= "1 1 1"
+		Mass			= "1.0"
+
+		BulletPrototype		= "someMortarShell"	
+		BlastWavePrototype	= "someBlastWave"
+
+		ActionDist		= "100"		
+		InitialVelocity		= "10"
+
+		ExplosionType		= "BLAST"
+		FiringEffect		= "none"
+		FiringRate		= "10"
+		GroupingAngle		= "0.1"
+		FiringRange		= "200"
+		RecoilForce		= "0"
+
+		ChargeSize     		= "100"
+		RechargingTime		= "20"
+
+		Price			= "35000"
+
+		Durability		= "400"
+
+		TurningSpeed		= "100"
+	/>
+-->
+</Prototypes>

@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?><!-- edited with XML Spy v4.2 U (http://www.xmlspy.com) by Morgoth (Targem) -->
+<resource>
+	<string
+		id="ok"
+		value="Дальше" />
+
+	<string
+		id="cancel"
+		value="Отмена" />
+
+	<string
+		id="yes"
+		value="Да" />
+
+	<string
+		id="no"
+		value="Нет" />
+
+	<string
+		id="error"
+		value="Ошибка" />
+
+	<string
+		id="sure"
+		value="Вы уверены?" />
+
+	<string
+		id="main"
+		value="Главное меню" />
+
+	<string
+		id="file"
+		value="Файл..." />
+
+	<string
+		id="newdialog"
+		value="Создать диалог" />
+
+	<string
+		id="loaddlg"
+		value="Загрузить диалог" />
+
+	<string
+		id="savedlg"
+		value="Записать диалог" />
+
+	<string
+		id="loadscheme"
+		value="Загрузить схему" />
+
+	<string
+		id="test"
+		value="Тест..." />
+
+	<string
+		id="quit"
+		value="Выход" />
+
+	<string
+		id="bg"
+		value="Фон..." />
+
+	<string
+		id="bgload"
+		value="Загрузить фон" />
+
+	<string
+		id="bgyesno"
+		value="С фоном/Без фона" />
+
+	<string
+		id="dim"
+		value="Рабочая область" />
+
+	<string
+		id="dim640x480"
+		value="640 x 480" />
+
+	<string
+		id="dim800x600"
+		value="800 x 600" />
+
+	<string
+		id="dim1024x768"
+		value="1024 x 768" />
+
+	<string
+		id="newdlgname"
+		value="Введите имя диалога" />
+
+	<string
+		id="abouttoclose"
+		value="Вы уверены что хотите выйти?" />
+
+	<string
+		id="loadtexture"
+		value="Загрузить текстуру" />
+
+	<string
+		id="testenter"
+		value="Войти в тестовый режим" />
+
+	<string
+		id="testexit"
+		value="Выйти из тестового режима" />
+
+	<string
+		id="flagnodraw"
+		value="Запретить отрисовку окна" />
+
+	<string
+		id="flaginside"
+		value="Окно не может выйти за пределы родителя" />
+
+	<string
+		id="flagmovable"
+		value="Окно можно двигать" />
+
+	<string
+		id="flagresizable"
+		value="Можно изменять размер окна" />
+
+	<string
+		id="flagnoframe"
+		value="Отключить рисование рамки окна" />
+
+	<string
+		id="flagtransparent"
+		value="Окно передает события родителю" />
+
+	<string
+		id="flagnumeric"
+		value="Разрешить только цифры в эдитбоксе" />
+
+	<string
+		id="flagvisible"
+		value="Окно видимо" />
+
+	<string
+		id="flagcenterxy"
+		value="Текст центрируется по обоим осям" />
+
+	<string
+		id="flagcenterx"
+		value="Текст центрируется по оси X" />
+
+	<string
+		id="flagcentery"
+		value="Текст центрируется по оси Y" />
+
+	<string
+		id="flagcfocus"
+		value="При активации перехватытвет фокус ввода" />
+
+	<string
+		id="flagactivatable"
+		value="Окно можно активировать" />
+
+	<string
+		id="flagareflect"
+		value="Отражает активацию родителю" />
+
+	<string
+		id="flagdisabled"
+		value="Окно не принимает сообщения" />
+
+	<string
+		id="flagdefault"
+		value="Кнопка по умолчанию" />
+
+	<string
+		id="flagshadow"
+		value="Окно отбрасывает тень" />
+
+	<string
+		id="flagempty"
+		value="Использовать стиль по умолчанию" />
+
+	<string
+		id="flagusedefault"
+		value="Использовать стиль по умолчанию" />
+
+	<string
+		id="flagmkreflect"
+		value="Отражает события от М и К родителю" />
+
+	<string
+		id="flagid"
+		value="Не рисовать фон" />
+
+	<string
+		id="ctrlname"
+		value="Имя окна" />
+
+	<string
+		id="ctrlid"
+		value="Идентификатор окна" />
+
+	<string
+		id="ctrlcaption"
+		value="Заголовок окна" />
+
+	<string
+		id="ctrlapplysizes"
+		value="Применить размеры к окну" />
+
+	<string
+		id="ctrlwidth"
+		value="Ширина окна" />
+
+	<string
+		id="ctrlheight"
+		value="Высота окна" />
+
+	<string
+		id="ctrlapplyorigin"
+		value="Применить координаты к окну" />
+
+	<string
+		id="ctrlleft"
+		value="Левый угол" />
+
+	<string
+		id="ctrltop"
+		value="Верхний угол" />
+
+	<string
+		id="ctrlbg"
+		value="Загрузить текстуру бакграунда" />
+
+	<string
+		id="ctrltooltip"
+		value="Всплывающая подсказка" />
+
+	<string
+		id="gridshow"
+		value="Показать сетку" />
+
+	<string
+		id="gridsnap"
+		value="Привязка к сетке" />
+
+	<string
+		id="gridstep"
+		value="Шаг сетки" />
+
+	<string
+		id="activationorder"
+		value="Показать порядок активации" />
+
+	<string
+		id="btnisimaged"
+		value="Кнопка с рисунком или без" />
+
+	<string
+		id="btninsidetex"
+		value="Текстура для кнопки под мышью" />
+
+	<string
+		id="btndowntex"
+		value="Текстура для нажатой кнопки" />
+
+	<string
+		id="btnregtex"
+		value="Текстура для ненажатой кнопки" />
+
+	<string
+		id="btnisin"
+		value="Мышь на кнопке" />
+
+	<string
+		id="btnisdown"
+		value="Кнопка нажата" />
+
+	<string
+		id="framelist"
+		value="Список рамок" />
+
+	<string
+		id="linehorz"
+		value="Горизонтально" />
+
+	<string
+		id="linevert"
+		value="Вертикально" />
+
+	<string
+		id="drawBg"
+		value="Отрисовка фона" />
+
+	<string
+		id="drawCorners"
+		value="Отрисовка углов" />
+
+	<string
+		id="drawBars"
+		value="Отрисовка линий" />
+</resource>

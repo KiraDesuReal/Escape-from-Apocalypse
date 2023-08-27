@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<!-- $Id: prefabs.xml,v 1.2 2004/11/11 11:33:46 den Exp $  -->
+<PrefabFiles>
+	<Item file="data\models\effects.xml"/>
+
+<!-- ДЕРЕВНИ -->
+	<Item file="data\models\Prefabs\Village\vill_0.xml"/>
+	<Item file="data\models\Prefabs\Village\vill_1.xml"/>
+	<Item file="data\models\Prefabs\Village\vill_2.xml"/>
+
+<!-- БЕРЛОГИ -->
+	<Item file="data\models\Prefabs\Dungeons\dungeon_1.xml"/>
+	<Item file="data\models\Prefabs\Dungeons\dungeon_1_dead.xml"/>
+	<Item file="data\models\Prefabs\Dungeons\2.xml"/>
+
+<!-- ДЕКОРАЦИИ -->
+
+	<Item file="data\models\Prefabs\Nature\seed_1.xml"/>
+	<Item file="data\models\Prefabs\Nature\seed_2.xml"/>
+
+	<Item file="data\models\Prefabs\Nature\rock_1.xml"/>
+	<Item file="data\models\Prefabs\Nature\rock_2.xml"/>
+	<Item file="data\models\Prefabs\Nature\rock_3.xml"/>
+	<Item file="data\models\Prefabs\Nature\rock_4.xml"/>
+	<Item file="data\models\Prefabs\Nature\rock_5.xml"/>
+
+	<Item file="data\models\Prefabs\Nature\rock_side_1.xml"/>
+	<Item file="data\models\Prefabs\Nature\rock_side_2.xml"/>
+	<Item file="data\models\Prefabs\Nature\rock_side_3.xml"/>
+	<Item file="data\models\Prefabs\Nature\rock_side_4.xml"/>
+
+<!-- Стены -->
+	<Item file="data\models\Prefabs\Walls\walls_1.xml"/>
+	<Item file="data\models\Prefabs\Walls\quay_areas.xml"/>
+	<Item file="data\models\Prefabs\Walls\pref_factory.xml"/>
+</PrefabFiles>

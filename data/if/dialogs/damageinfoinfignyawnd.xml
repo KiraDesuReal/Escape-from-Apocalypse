@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<Prefabs>
+	<Node
+		name="DamageInfo"
+		class="Wnd"
+		org="728.000 280.000 31.000 197.000"
+		style="768"
+		order="-1"
+		id="0"
+		caption=""
+		tip=""
+		backimage="data\if\ico\FignyaVCentreWnd\Right_Panel_1_Back.dds"
+		paneName="defaultWnd"
+		scrollPaneName="Scroll1"
+		paneFlags="7"
+		wrap="2"
+		format="1"
+		font="0"
+		clientEdges="0.000 0.000 0.000 0.000"
+		wndColor="00000000"
+		textColor="ffffffff"
+		textColorDisabled="ff7f7f7f">
+		<Animations />
+
+		<Node
+			name="wndHealth"
+			class="ProgressBarWnd"
+			org="5.000 2.000 16.000 192.000"
+			style="768"
+			order="6"
+			id="0"
+			caption=""
+			tip=""
+			backimage="data\if\ico\FignyaVCentreWnd\Right_Panel_1_dead.dds"
+			paneName="defaultWnd"
+			scrollPaneName="Scroll1"
+			paneFlags="0"
+			wrap="2"
+			format="1"
+			font="0"
+			clientEdges="0.000 0.000 0.000 0.000"
+			wndColor="00000000"
+			textColor="ffffffff"
+			textColorDisabled="ff8f8f8f"
+			barColor="ff00ff00"
+			numOfSteps="16"
+			orientation="1"
+			barTexture=""
+			textStyle="0"
+			textureStyle="1">
+			<Animations />
+		</Node>
+
+		<Node
+			name="wndCabinDurability"
+			class="Wnd"
+			org="0.000 2.000 4.000 89.000"
+			style="768"
+			order="-1"
+			id="0"
+			caption=""
+			tip=""
+			backimage="data\if\ico\FignyaVCentreWnd\Right_Panel_1_A_Blue.dds"
+			paneName="defaultWnd"
+			scrollPaneName="Scroll1"
+			paneFlags="7"
+			wrap="2"
+			format="1"
+			font="0"
+			clientEdges="0.000 0.000 0.000 0.000"
+			wndColor="00000000"
+			textColor="ffffffff"
+			textColorDisabled="ff7f7f7f">
+			<Animations />
+		</Node>
+
+		<Node
+			name="wndBasketDurability"
+			class="Wnd"
+			org="0.000 94.000 4.000 89.000"
+			style="768"
+			order="-1"
+			id="0"
+			caption=""
+			tip=""
+			backimage="data\if\ico\FignyaVCentreWnd\Right_Panel_1_A_Blue.dds"
+			paneName="defaultWnd"
+			scrollPaneName="Scroll1"
+			paneFlags="7"
+			wrap="2"
+			format="1"
+			font="0"
+			clientEdges="0.000 0.000 0.000 0.000"
+			wndColor="00000000"
+			textColor="ffffffff"
+			textColorDisabled="ff7f7f7f">
+			<Animations />
+		</Node>
+
+
+	</Node>
+</Prefabs>

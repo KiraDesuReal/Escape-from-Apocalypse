@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<Prefabs>
+	<Node
+		name="dlgPalmBoard"
+		class="Wnd"
+		org="0.000 0.000 1024.000 768.000"
+		style="512"
+		order="-1"
+		id="0"
+		caption=""
+		tip=""
+		backimage="data\if\ico\PalmBoard\note_back.dds"
+		paneName="defaultWnd"
+		scrollPaneName="Scroll1"
+		paneFlags="7"
+		wrap="2"
+		format="1"
+		font="0"
+		clientEdges="0.000 0.000 0.000 0.000"
+		wndColor="00000000"
+		textColor="ffffffff">
+		<Node
+			name="boardbutton_quests"
+			org="770.000 150.000 160.000 40.000"
+			style="278016"
+			order="3"
+			id="100000"
+			caption="^Quests^"
+			tip=""
+			backimage=""
+			paneName="PaneBtnBrown"
+			scrollPaneName="Scroll1"
+			paneFlags="7"
+			wrap="2"
+			format="0"
+			font="1"
+			clientEdges="0.000 0.000 0.000 0.000"
+			wndColor="00000000"
+			textColor="ffffffff"
+			btnIsImaged="0"
+			class="ButtonWnd">
+			<Animations />
+		</Node>
+
+		<Node
+			name="boardbutton_journal"
+			org="770.000 270.000 160.000 40.000"
+			style="278016"
+			order="4"
+			id="100000"
+			caption="^Journal^"
+			tip=""
+			backimage=""
+			paneName="PaneBtnBrown"
+			scrollPaneName="Scroll1"
+			paneFlags="7"
+			wrap="2"
+			format="0"
+			font="1"
+			clientEdges="0.000 0.000 0.000 0.000"
+			wndColor="00000000"
+			textColor="ffffffff"
+			btnIsImaged="0"
+			class="ButtonWnd">
+			<Animations />
+		</Node>
+
+		<Node
+			name="boardbutton_map"
+			org="770.000 90.000 160.000 40.000"
+			style="278016"
+			order="6"
+			id="100000"
+			caption="^Map^"
+			tip=""
+			backimage=""
+			paneName="PaneBtnBrown"
+			scrollPaneName="Scroll1"
+			paneFlags="7"
+			wrap="2"
+			format="0"
+			font="1"
+			clientEdges="0.000 0.000 0.000 0.000"
+			wndColor="00000000"
+			textColor="ffffffff"
+			btnIsImaged="0"
+			class="ButtonWnd">
+			<Animations />
+		</Node>
+
+		<Node
+			name="boardbutton_character"
+			org="770.000 210.000 160.000 40.000"
+			style="278016"
+			order="5"
+			id="100000"
+			caption="^Character^"
+			tip=""
+			backimage=""
+			paneName="PaneBtnBrown"
+			scrollPaneName="Scroll1"
+			paneFlags="7"
+			wrap="2"
+			format="0"
+			font="1"
+			clientEdges="0.000 0.000 0.000 0.000"
+			wndColor="00000000"
+			textColor="ffffffff"
+			btnIsImaged="0"
+			class="ButtonWnd">
+			<Animations />
+		</Node>
+
+		<Node
+			name="btnExit"
+			org="830.000 550.000 140.000 40.000"
+			style="278016"
+			order="11"
+			id="1"
+			caption="^Exit^"
+			tip=""
+			backimage=""
+			paneName="PaneBtnBrown"
+			scrollPaneName="Scroll1"
+			paneFlags="7"
+			wrap="0"
+			format="0"
+			font="0"
+			clientEdges="0.000 0.000 0.000 0.000"
+			wndColor="00000000"
+			textColor="ffffffff"
+			btnIsImaged="0"
+			class="ButtonWnd">
+			<Animations />
+		</Node>
+
+		<Animations>
+			<AnimationOnShow
+				animationEnabled="1"
+				animationType="TO_BOTTOM"
+				animationSpeed="15.000"
+				animationAccel="0.200"
+				animationDelayTime="0" />
+
+			<AnimationOnHide
+				animationEnabled="1"
+				animationType="TO_BEYOND_TOP"
+				animationSpeed="15.000"
+				animationAccel="0.200"
+				animationDelayTime="0" />
+		</Animations>
+	</Node>
+</Prefabs>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<Prefabs>
+	<Node
+		name="fence_short2_pole"
+		class="SgNode">
+		<Node
+			name="Object4834"
+			class="SgGameUnitNode"
+			org="-1.067 0.000 0.281"
+			orgRel="0"
+			id="fence_short2"
+			ndmAction="0"
+			guPattern="0" />
+
+		<Node
+			name="Object4836"
+			class="SgGameUnitNode"
+			org="-31.879 0.000 0.525"
+			orgRel="0"
+			id="pole_factory"
+			ndmAction="0"
+			guPattern="0" />
+	</Node>
+</Prefabs>

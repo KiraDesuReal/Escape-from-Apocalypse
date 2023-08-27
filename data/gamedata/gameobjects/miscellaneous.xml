@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+
+<!--
+	$Id: Miscellaneous.xml,v 1.40 2005/11/28 07:43:57 anton Exp $
+-->
+
+<Prototypes>
+	<Prototype
+		Class			= "Player"
+		Name			= "player"
+		ModelFile		= "mask_hero"
+		SkinNum			= "0"
+		CfgNum			= "0"
+	/>
+
+	<Prototype
+		Class			= "RadioManager"
+		Name			= "radioManager" />
+
+	<Prototype
+		Class			= "Location"
+		Name			= "genericLocation"	
+		LookRadius		= "10.0" />
+
+	<Prototype
+		Class			= "Team"
+		Name			= "team"
+		DecisionMatrix	= "teammain.lua" 
+		RemoveWhenChildrenDead = "true" />
+
+	<Prototype
+		Class			= "Team"
+		Name			= "settlementTeam"
+		DecisionMatrix	= "teammain.lua" 
+		RemoveWhenChildrenDead = "false" />
+
+	<Prototype
+		Class			="Team"
+		Name			="guardTeam"
+		DecisionMatrix	="teammain.lua" 
+		RemoveWhenChildrenDead = "false" >
+		<Formation Prototype="wedgeFormation" />
+	</Prototype>
+		
+	<Prototype
+		Class					=	"CaravanTeam"
+		Name					=	"caravanTeam"
+		DecisionMatrix			=	"teammain.lua" >
+		<Formation Prototype		=	"wedgeFormation"/>
+	</Prototype>
+		
+		
+	<Prototype
+		Class			= "Trigger"
+		Name			= "trigger" />
+
+	<Prototype
+		Class			= "CinematicMover"
+		Name			= "cinematicMover" />
+		
+	<Prototype
+		Class			= "DynamicQuestDestroy"
+		Name			= "dynamicQuestDestroy" 
+		MinReward		= "350"
+		TargetSchwarzPart = "0.35"
+	/>
+
+	<Prototype
+		Class			= "DynamicQuestReach"
+		Name			= "dynamicQuestReach" 
+		MinReward		= "250"
+		PlayerSchwarzPart = "0.03"
+	/>
+
+	<Prototype
+		Class			= "DynamicQuestConvoy"
+		Name			= "dynamicQuestConvoy" 
+		MinReward		= "370"
+		PlayerSchwarzPart = "0.05"
+		CriticalDistFromPlayer	= "250"
+		CriticalTime			= "30"
+	/>
+
+	<Prototype
+		Class			= "DynamicQuestPeace"
+		Name			= "dynamicQuestPeace"
+		MinReward		= "0"
+		PlayerMoneyPart = "0.15"
+	/>
+
+	<Prototype
+		Class			= "DynamicQuestHunt"
+		Name			= "dynamicQuestHunt"
+		MinReward		= "110"
+		PlayerSchwarzPart = "0.017"
+		HuntSeasonLength = "180"
+	/>
+
+	<Prototype
+		Class			= "SgNodeObj"
+		Name			= "SgNodeObject" />
+
+
+	<Prototype
+		Class			= "LightObj"
+		Name			= "LightObject" 
+		ModelFile		= "LS_LIGHT_TEST"/>
+
+	<Prototype
+		Class			= "LightObj"
+		Name			= "LightObject2" 
+		ModelFile		= "LS_LIGHT_TEST2"/>
+
+	<Prototype
+		Class			= "LightObj"
+		Name			= "Light_Yellow" 
+		ModelFile		= "LS_LIGHT_YELLOW"/>
+
+	<Prototype
+		Class			= "LightObj"
+		Name			= "Light_Yellow_Lens" 
+		ModelFile		= "ET_LS_LIGHT_YELLOW_LENS"/>
+
+
+	<Prototype
+		Class			= "LightObj"
+		Name			= "Light_Red" 
+		ModelFile		= "LS_LIGHT_RED"/>
+
+	<Prototype
+		Class			= "LightObj"
+		Name			= "Projector_80" 
+		ModelFile		= "LS_LIGHT_RED"/>
+
+
+	<Prototype
+		Class="AffixGenerator"
+		Name="affixGeneratorForEnemiesGuns">
+		<!-- all affixes from each group, except the best affixes -->
+
+		<Affix AffixName = "useless_gun" />
+		<Affix AffixName = "rusty_gun" />
+		<Affix AffixName = "excellent_gun" />
+
+		<Affix AffixName = "slow_gun" />      
+		<Affix AffixName = "assault_gun" />
+
+		<Affix AffixName = "weak_gun" />
+		<Affix AffixName = "deadly_gun" />
+		
+		<Affix AffixName = "with_truncated_barrel_gun" />
+		<Affix AffixName = "with_enlarged_barrel_gun" />
+
+		<Affix AffixName = "without_sight_gun" />
+		<Affix AffixName = "with_laser_sight_gun" />
+
+		<Affix AffixName = "without_cooling_gun" />
+		<Affix AffixName = "with_water_cooling_gun" />
+		
+	</Prototype>
+		
+
+</Prototypes>	

@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<Prefabs>
+	<Node
+		name="fighter1infire"
+		class="SgNode">
+		<Node
+			name="00Object49"
+			class="SgNode"
+			org="-4.710 0.000 2.321"
+			orgRel="0">
+			<Node
+				name="00Object3"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SMOKE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="000Object2"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_FIRE"
+				psNumEmitterMesh="-1" />
+		</Node>
+
+		<Node
+			name="0000Object50"
+			class="SgNode"
+			org="4.139 0.000 -4.372"
+			orgRel="0">
+			<Node
+				name="00000Object3"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SMOKE1"
+				psNumEmitterMesh="-1" />
+		</Node>
+
+		<Node
+			name="000000Object51"
+			class="SgNode"
+			org="2.642 0.000 -3.490"
+			orgRel="0">
+			<Node
+				name="1Object3"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SMOKE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="11Object2"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_FIRE"
+				psNumEmitterMesh="-1" />
+		</Node>
+
+		<Node
+			name="111Object52"
+			class="SgNode"
+			org="1.373 0.000 3.767"
+			orgRel="0">
+			<Node
+				name="1111Object3"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SMOKE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="11111Object2"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_FIRE"
+				psNumEmitterMesh="-1" />
+		</Node>
+
+		<Node
+			name="111111Object53"
+			class="SgNode"
+			org="0.301 0.000 -2.844"
+			orgRel="0">
+			<Node
+				name="1111111Object3"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SMOKE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="11111111Object2"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_FIRE"
+				psNumEmitterMesh="-1" />
+		</Node>
+
+		<Node
+			name="111111111Object54"
+			class="SgNode"
+			org="-0.302 0.000 -0.931"
+			orgRel="0">
+			<Node
+				name="2Object3"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SMOKE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="22Object2"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_FIRE"
+				psNumEmitterMesh="-1" />
+		</Node>
+
+		<Node
+			name="222Object55"
+			class="SgNode"
+			org="-0.586 0.000 1.903"
+			orgRel="0">
+			<Node
+				name="2222Object3"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SMOKE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="22222Object2"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_FIRE"
+				psNumEmitterMesh="-1" />
+		</Node>
+
+		<Node
+			name="222222Object56"
+			class="SgNode"
+			org="0.123 0.000 0.582"
+			orgRel="0">
+			<Node
+				name="2222222Object3"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SMOKE1"
+				psNumEmitterMesh="-1" />
+		</Node>
+
+		<Node
+			name="3Object57"
+			class="SgNode"
+			org="-2.808 0.000 1.125"
+			orgRel="0">
+			<Node
+				name="33Object3"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SMOKE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="333Object2"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_FIRE"
+				psNumEmitterMesh="-1" />
+		</Node>
+
+		<Node
+			name="3333Object58"
+			class="SgNode"
+			org="1.022 0.000 3.756"
+			orgRel="0">
+			<Node
+				name="33333Object1"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="333333Object11"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="3333433Object111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="4Object1111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="44Object11111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="444Object111111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="4444Object1111111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="44444Object11111111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="444444Object111111111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="4444444Object2"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE2"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="44444444Object22"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE2"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="444444444Object222"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE2"
+				psNumEmitterMesh="-1" />
+		</Node>
+
+		<Node
+			name="4444444444Object59"
+			class="SgNode"
+			org="-1.348 0.000 1.537"
+			orgRel="0">
+			<Node
+				name="44444444444Object1"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="5Object11"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="55Object111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="555Object1111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="5555Object11111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="55555Object111111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="555555Object1111111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="5555555Object11111111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="55555555Object111111111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="555555555Object2"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE2"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="5555555555Object22"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE2"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="6Object222"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE2"
+				psNumEmitterMesh="-1" />
+		</Node>
+
+		<Node
+			name="66Object60"
+			class="SgNode"
+			org="0.142 0.000 -3.098"
+			orgRel="0">
+			<Node
+				name="666Object1"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="6666Object11"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="66666Object111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="666666Object1111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="6666666Object11111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="66666666Object111111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="666666666Object1111111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="7Object11111111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="77Object111111111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="777Object2"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE2"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="7777Object22"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE2"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="77777Object222"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE2"
+				psNumEmitterMesh="-1" />
+		</Node>
+
+		<Node
+			name="777777Object61"
+			class="SgNode"
+			org="-0.544 0.000 -0.484"
+			orgRel="0">
+			<Node
+				name="7777777Object1"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="77777777Object11"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="8Object111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="88Object1111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="888Object11111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="8888Object111111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="88888Object1111111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="888888Object11111111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="8888888Object111111111"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE1"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="88888888Object2"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE2"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="888888888Object22"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE2"
+				psNumEmitterMesh="-1" />
+
+			<Node
+				name="8888888888Object222"
+				class="SgParticlesNode"
+				id="PS_VEN_PART_SPARKLE2"
+				psNumEmitterMesh="-1" />
+		</Node>
+
+		<Node
+			name="9Object40"
+			class="SgAnimatedModelNode"
+			org="-0.746 0.000 -1.247"
+			orgRel="0"
+			rot="0.0083 -0.0028 0.3235 0.9462"
+			id="fighterCab01"
+			ndmAction="0"
+			skin="8">
+			psNumEmitterMesh="-1" />
+		</Node>
+
+		<Node
+			name="99999999Object41"
+			class="SgAnimatedModelNode"
+			org="-0.342 0.000 -1.896"
+			orgRel="0"
+			rot="-0.1241 -0.0827 0.3519 0.9241"
+			id="fighterChassis"
+			ndmAction="0"
+			skin="8" />
+
+		<Node
+			name="999999999Object44"
+			class="SgAnimatedModelNode"
+			org="2.695 0.000 -3.276"
+			orgRel="0"
+			rot="-0.1947 -0.3166 -0.0666 0.9260"
+			id="fighterSusp02r"
+			ndmAction="0"
+			skin="8" />
+
+		<Node
+			name="9999999999Object47"
+			class="SgAnimatedModelNode"
+			org="3.726 0.000 -4.093"
+			orgRel="0"
+			rot="0.0730 -0.1456 0.4422 0.8820"
+			id="fighterWheel02r"
+			ndmAction="0"
+			skin="8" />
+
+		<Node
+			name="99999999999Object42"
+			class="SgAnimatedModelNode"
+			org="0.771 0.000 3.642"
+			orgRel="0"
+			rot="-0.6251 0.1232 -0.6623 0.3943"
+			id="fighterSusp01l"
+			ndmAction="0"
+			skin="8" />
+
+		<Node
+			name="999999999999Object43"
+			class="SgAnimatedModelNode"
+			org="-2.596 0.000 1.114"
+			orgRel="0"
+			rot="-0.5648 -0.6917 -0.0074 0.4500"
+			id="fighterSusp01l"
+			ndmAction="0"
+			skin="8" />
+
+		<Node
+			name="99799999Object46"
+			class="SgAnimatedModelNode"
+			org="1.621 0.000 3.782"
+			orgRel="0"
+			id="fighterWheel01l"
+			ndmAction="0"
+			skin="8" />
+
+		<Node
+			name="997799999Object48"
+			class="SgAnimatedModelNode"
+			org="-4.574 0.000 2.203"
+			orgRel="0"
+			rot="0.7728 0.6062 0.1428 -0.1223"
+			id="fighterWheel01l"
+			ndmAction="0"
+			skin="8" />
+	</Node>
+</Prefabs>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<Prefabs>
+	<Node
+		name="walls_2"
+		class="SgNode">
+		<Node
+			name="Object148"
+			class="SgAnimatedModelNode"
+			org="0.388 0.051 -0.241"
+			orgRel="0"
+			scale="1.268 1.268 1.268"
+			id="heavy_smallwall1"
+			ndmAction="0" />
+
+		<Node
+			name="Object146"
+			class="SgAnimatedModelNode"
+			org="-0.388 3.401 0.241"
+			orgRel="0"
+			scale="2.972 2.972 2.972"
+			id="barbed_wire_high2"
+			ndmAction="0" />
+	</Node>
+</Prefabs>

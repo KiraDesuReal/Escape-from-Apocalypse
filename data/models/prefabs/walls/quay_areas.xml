@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<Prefabs>
+	<Node
+		name="BigCubes2l_pref"
+		class="SgNode">
+		<Node
+			name="Object1"
+			class="SgAnimatedModelNode"
+			org="-13.47 -7.710 0.000"
+			orgRel="0"
+			id="quay_big_cube"
+			ndmAction="0"/>
+		<Node
+			name="Object2"
+			class="SgAnimatedModelNode"
+			org="13.47 -7.710 0.000"
+			orgRel="0"
+			id="quay_big_cube"
+			ndmAction="0"/>
+	</Node>
+
+	<Node
+		name="BigCubes3l_pref"
+		class="SgNode">
+		<Node
+			name="Object1"
+			class="SgAnimatedModelNode"
+			org="0.000 -7.710 0.000"
+			orgRel="0"
+			id="quay_big_cube"
+			ndmAction="0"/>
+		<Node
+			name="Object2"
+			class="SgAnimatedModelNode"
+			org="26.94 -7.710 0.000"
+			orgRel="0"
+			id="quay_big_cube"
+			ndmAction="0"/>
+		<Node
+			name="Object3"
+			class="SgAnimatedModelNode"
+			org="-26.94 -7.710 0.000"
+			orgRel="0"
+			id="quay_big_cube"
+			ndmAction="0"/>
+	</Node>
+
+
+	<Node
+		name="BigCubes4l_pref"
+		class="SgNode">
+		<Node
+			name="Object1"
+			class="SgAnimatedModelNode"
+			org="-13.47 -7.710 0.000"
+			orgRel="0"
+			id="quay_big_cube"
+			ndmAction="0"/>
+		<Node
+			name="Object2"
+			class="SgAnimatedModelNode"
+			org="13.47 -7.710 0.000"
+			orgRel="0"
+			id="quay_big_cube"
+			ndmAction="0"/>
+		<Node
+			name="Object3"
+			class="SgAnimatedModelNode"
+			org="-40.41 -7.710 0.000"
+			orgRel="0"
+			id="quay_big_cube"
+			ndmAction="0"/>
+		<Node
+			name="Object4"
+			class="SgAnimatedModelNode"
+			org="40.41 -7.710 0.000"
+			orgRel="0"
+			id="quay_big_cube"
+			ndmAction="0"/>
+	</Node>
+
+	<Node
+		name="BigCubes4s_pref"
+		class="SgNode">
+		<Node
+			name="Object1"
+			class="SgAnimatedModelNode"
+			org="-13.47 -7.710 -13.5"
+			orgRel="0"
+			id="quay_big_cube"
+			ndmAction="0"/>
+		<Node
+			name="Object2"
+			class="SgAnimatedModelNode"
+			org="13.47 -7.710 -13.5"
+			orgRel="0"
+			id="quay_big_cube"
+			ndmAction="0"/>
+		<Node
+			name="Object3"
+			class="SgAnimatedModelNode"
+			org="-13.47 -7.710 13.5"
+			orgRel="0"
+			id="quay_big_cube"
+			ndmAction="0"/>
+		<Node
+			name="Object4"
+			class="SgAnimatedModelNode"
+			org="13.47 -7.710 13.5"
+			orgRel="0"
+			id="quay_big_cube"
+			ndmAction="0"/>
+	</Node>
+
+	<Node
+		name="QuayLine3_pref"
+		class="SgNode">
+		<Node
+			name="Object1"
+			class="SgAnimatedModelNode"
+			org="0.000 0.000 0.000"
+			orgRel="0"
+			id="quay_line"
+			ndmAction="0"/>
+		<Node
+			name="Object2"
+			class="SgAnimatedModelNode"
+			org="54.2 0.000 0.000"
+			orgRel="0"
+			id="quay_line"
+			ndmAction="0"/>
+		<Node
+			name="Object3"
+			class="SgAnimatedModelNode"
+			org="-54.2 0.000 0.000"
+			orgRel="0"        
+			id="quay_line"
+			ndmAction="0"/>
+	</Node>
+
+	<Node
+		name="berth_lev1_pref"
+		class="SgNode">
+		<Node
+			name="Object1"
+			class="SgAnimatedModelNode"
+			org="0.000 0.000 -8.820"
+			orgRel="0"
+			rot="0.0000 -1.0000 0.0000 0.0000"
+			id="quay_line"
+			ndmAction="0"/>
+		<Node
+			name="Object2"
+			class="SgAnimatedModelNode"
+			org="54.2 0.000 -8.820"
+			orgRel="0"
+			rot="0.0000 -1.0000 0.0000 0.0000"
+			id="quay_line"
+			ndmAction="0"/>
+		<Node
+			name="Object3"
+			class="SgAnimatedModelNode"
+			org="-54.2 0.000 -8.820"
+			orgRel="0"        
+			rot="0.0000 -1.0000 0.0000 0.0000"
+			id="quay_line"
+			ndmAction="0"/>
+		<Node
+			name="Object4"
+			class="SgAnimatedModelNode"
+			org="-10.47 -0.20 13.500"
+			orgRel="0"
+			id="quay_big_cube"
+			ndmAction="0"/>
+		<Node
+			name="Object5"
+			class="SgAnimatedModelNode"
+			org="16.47 -0.200 13.500"
+			orgRel="0"
+			id="quay_big_cube"
+			ndmAction="0"/>
+		<Node
+			name="Object6"
+			class="SgAnimatedModelNode"
+			org="-37.41 -0.200 13.500"
+			orgRel="0"
+			id="quay_big_cube"
+			ndmAction="0"/>
+		<Node
+			name="Object7"
+			class="SgAnimatedModelNode"
+			org="43.41 -0.200 13.500"
+			orgRel="0"
+			id="quay_big_cube"
+			ndmAction="0"/>
+		<Node
+			name="Object8"
+			class="SgAnimatedModelNode"
+			org="-64.35 -0.200 13.500"
+			orgRel="0"
+			id="quay_big_cube"
+			ndmAction="0"/>
+		<Node
+			name="Object9"
+			class="SgAnimatedModelNode"
+			org="70.35 -0.200 13.500"
+			orgRel="0"
+			id="quay_big_cube"
+			ndmAction="0"/>
+		<Node
+			name="Object10"
+			class="SgAnimatedModelNode"
+			org="-91.29 -0.200 13.500"
+			orgRel="0"
+			id="quay_big_cube"
+			ndmAction="0"/>
+	</Node>
+
+	<Node
+		name="berth_lev2_pref"
+		class="SgNode">
+		<Node
+			name="Object1"
+			class="SgAnimatedModelNode"
+			org="0.000 0.000 -8.820"
+			orgRel="0"
+			rot="0.0000 -1.0000 0.0000 0.0000"
+			id="quay_line"
+			ndmAction="0"/>
+		<Node
+			name="Object4"
+			class="SgAnimatedModelNode"
+			org="-10.47 -0.20 14.00"
+			orgRel="0"
+			id="quay_big_cube"
+			ndmAction="0"/>
+		<Node
+			name="Object5"
+			class="SgAnimatedModelNode"
+			org="16.47 -0.20 14.000"
+			orgRel="0"
+			id="quay_big_cube"
+			ndmAction="0"/>
+	</Node>
+
+
+</Prefabs>

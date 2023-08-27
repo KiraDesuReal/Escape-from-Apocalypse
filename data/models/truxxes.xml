@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes"?>
+
+<!-- $Id: truxxes.xml,v 1.2 2004/11/11 11:33:46 den Exp $  -->
+
+<machines>
+
+<!--arms-->
+   <arms name="tank01" type="BIG"/>
+   <arms name="storm01" type="BIG"/>
+   <arms name="cyclops01" type="BIG"/>
+   <arms name="flag01" type="BIG"/>
+   <arms name="hunter01" type="SIDE"/>
+   <arms name="hornet01" type="SML"/>
+   <arms name="vulcan01" type="SML"/>
+   <arms name="rapier01" type="SML"/>
+   <arms name="specter01" type="SML"/>
+   <arms name="rainmetal01" type="SML"/>
+
+<!--tank-->
+   <car name="tankChassis">
+
+      <wheels>
+         <wheel name="tankWheel01"/>
+         <wheel name="tankWheel01"/>
+         <wheel name="tankWheel01"/>
+      </wheels>
+
+   </car>
+   <wheel name="tankWheel01"/>
+
+<!--dozer-->
+   <car name="dozerChassis">
+      <cabins>
+         <cabin name="dozerCab01"/>
+      </cabins>
+
+      <wheels>
+         <wheel name="dozerWheel01"/>
+         <wheel name="dozerWheel01"/>
+      </wheels>
+      
+      <suspensions>
+         <suspension name="dozerSusp01"/>
+         <suspension name="dozerSusp02"/>
+      </suspensions>
+   </car>
+   <cabin name="dozerCab01" arms_slot="1/1/0/0"/>
+   <suspension name="dozerSusp01"/>
+   <suspension name="dozerSusp02"/>
+   <wheel name="dozerWheel01"/>
+
+<!--scout-->
+   <car name="scoutChassis">
+      <cabins>
+         <cabin name="scoutCab01"/>
+         <cabin name="scoutCab02"/>
+         <cabin name="scoutCab03"/>
+      </cabins>
+
+      <wheels>
+         <wheel name="scoutWheel01"/>
+         <wheel name="scoutWheel02"/>
+      </wheels>
+      
+      <suspensions>
+         <suspension name="scoutSusp01"/>
+         <suspension name="scoutSusp02"/>
+      </suspensions>
+   </car>
+   <cabin name="scoutCab01" arms_slot="1/0/0/0"/>
+   <cabin name="scoutCab02" arms_slot="1/0/0/0"/>
+   <cabin name="scoutCab03" arms_slot="1/0/0/0"/>
+   <suspension name="scoutSusp01"/>
+   <suspension name="scoutSusp02"/>
+   <wheel name="scoutWheel01"/>
+   <wheel name="scoutWheel02"/>
+
+<!--fighter-->
+   <car name="fighterChassis">
+      <cabins>
+         <cabin name="fighterCab01"/>
+         <cabin name="fighterCab02"/>
+      </cabins>
+
+      <wheels>
+         <wheel name="fighterWheel01"/>
+         <wheel name="fighterWheel02"/>
+      </wheels>
+      
+      <suspensions>
+         <suspension name="fighterSusp01"/>
+         <suspension name="fighterSusp02"/>
+      </suspensions>
+   </car>
+   <cabin name="fighterCab01" arms_slot="1/0/0/0"/>
+   <cabin name="fighterCab02" arms_slot="1/1/0/0"/>
+   <suspension name="fighterSusp01"/>
+   <suspension name="fighterSusp02"/>
+   <wheel name="fighterWheel01"/>
+   <wheel name="fighterWheel02"/>
+
+<!--molokovoz-->
+   <car name="molokovozChassis">
+      <cabins>
+         <cabin name="molokovozCab01"/>
+         <cabin name="molokovozCab02"/>
+         <cabin name="molokovozCab03"/>
+      </cabins>
+
+      <baskets>
+         <basket name="molokovozCargo01"/>
+         <basket name="molokovozCargo02"/>
+         <basket name="molokovozCargo03"/>
+      </baskets>
+
+      <wheels>
+         <wheel name="molokovozWheel01"/>
+         <wheel name="molokovozWheel01"/>
+      </wheels>
+      
+      <suspensions>
+         <suspension name="molokovozSusp01"/>
+         <suspension name="molokovozSusp02"/>
+      </suspensions>
+   </car>
+   <cabin name="molokovozCab01" arms_slot="0/0/0/0"/>
+   <cabin name="molokovozCab02" arms_slot="0/0/0/0"/>
+   <cabin name="molokovozCab03" arms_slot="1/0/0/0"/>
+   <basket name="molokovozCargo01" arms_slot="1/0/0/0"/>
+   <basket name="molokovozCargo02" arms_slot="1/0/0/0"/>
+   <basket name="molokovozCargo03" arms_slot="0/1/0/0"/>
+   <wheel name="molokovozWheel01"/>
+   <suspension name="molokovozSusp01"/>
+   <suspension name="molokovozSusp02"/>
+
+<!--belaz-->
+   <car name="belazChassis">
+      <cabins>
+         <cabin name="belazCab01"/>
+         <cabin name="belazCab02"/> 
+         <cabin name="belazCab03"/> 
+      </cabins>
+
+      <baskets>
+         <basket name="belazCargo01"/>
+         <basket name="belazCargo02"/>
+         <basket name="belazCargo03"/>
+      </baskets>
+
+      <wheels>
+         <wheel name="belazWheel01"/>
+         <wheel name="belazWheel01"/>
+      </wheels>
+
+      <suspensions>
+         <suspension name="belazSusp01"/>
+         <suspension name="belazSusp01"/>
+      </suspensions>
+   </car>
+   <cabin name="belazCab01" arms_slot="1/0/0/0"/>
+   <cabin name="belazCab02" arms_slot="1/0/0/0"/>
+   <cabin name="belazCab03" arms_slot="2/0/0/0"/>
+   <basket name="belazCargo01" arms_slot="1/0/0/0"/>
+   <basket name="belazCargo02" arms_slot="0/1/0/0"/>
+   <basket name="belazCargo03" arms_slot="0/1/2/0"/>
+   <wheel name="belazWheel01"/>
+   <suspension name="belazSusp01"/>
+
+</machines>

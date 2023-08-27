@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<Roads>
+    <Set name="r2_cliff" scale="1.000 1.000 1.000">
+        <Item model="data\models\cliffs\region2\copped_cliff_1.gam"/>
+        <Item model="data\models\cliffs\region2\copped_cliff_2.gam"/>
+        <Item model="data\models\cliffs\region2\copped_cliff_end.gam" type="1"/> <!-- T перекрестoк -->
+        <Item model="data\models\cliffs\region2\copped_cliff_end.gam" type="2"/> <!-- X перекрестoк -->
+        <Item model="data\models\cliffs\region2\copped_cliff_end.gam" type="3"/> <!-- конец -->
+    </Set>
+
+    <Set name="road_country" scale="1.000 1.000 1.000"  WheelTrace="data\fx\protectors\protector_ground.tga">
+        <Item model="data\models\roads\road_country\road_country.gam"/>
+        <Item model="data\models\roads\road_country\road_country_end.gam" type="1"/>
+        <Item model="data\models\roads\road_country\road_country_end.gam" type="2"/>
+        <Item model="data\models\roads\road_country\road_country_end.gam" type="3"/>
+    </Set>
+
+    <Set name="road_gravel" scale="1.000 1.000 1.000"  WheelTrace="data\fx\protectors\protector_ground.tga">
+        <Item model="data\models\roads\road_gravel\gravel.gam"/>
+        <Item model="data\models\roads\road_gravel\gravel_end.gam" type="1"/>
+        <Item model="data\models\roads\road_gravel\gravel_end.gam" type="2"/>
+        <Item model="data\models\roads\road_gravel\gravel_end.gam" type="3"/>
+    </Set>
+
+    <Set name="road_small_highway" scale="1.000 1.000 1.000" WheelTrace="data\fx\protectors\protector.tga">
+        <Item model="data\models\roads\road_small_highway\small_highway.gam"/>
+        <Item model="data\models\roads\road_small_highway\small_highway_end.gam" type="1"/>
+        <Item model="data\models\roads\road_small_highway\small_highway_end.gam" type="2"/>
+        <Item model="data\models\roads\road_small_highway\small_highway_end.gam" type="3"/>
+    </Set>
+
+    <Set name="road_highway" scale="1.000 1.000 1.000" WheelTrace="data\fx\protectors\protector.tga">
+        <Item model="data\models\roads\road_highway\highway.gam"/>
+        <Item model="data\models\roads\road_highway\highway_end.gam" type="1"/>
+        <Item model="data\models\roads\road_highway\highway_end.gam" type="2"/>
+        <Item model="data\models\roads\road_highway\highway_end.gam" type="3"/>
+    </Set>
+
+    <Set name="road_dark_highway" scale="1.000 1.000 1.000" WheelTrace="data\fx\protectors\protector.tga">
+        <Item model="data\models\roads\road_dark_highway\road_dark_highway_1.gam"/>
+        <Item model="data\models\roads\road_dark_highway\road_dark_highway_end_1.gam" type="1"/>
+        <Item model="data\models\roads\road_dark_highway\road_dark_highway_end_1.gam" type="2"/>
+        <Item model="data\models\roads\road_dark_highway\road_dark_highway_end_1.gam" type="3"/>
+    </Set>
+</Roads>

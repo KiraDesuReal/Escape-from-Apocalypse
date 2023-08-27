@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<Prefabs>
+	<Node
+		name="VehicleInfoPanel"
+		class="Wnd"
+		org="769.000 641.000 255.000 127.000"
+		style="768"
+		order="-1"
+		id="0"
+		caption=""
+		tip=""
+		backimage="data\if\ico\VehicleInfoPanel\Panel.dds"
+		paneName="wnd3"
+		scrollPaneName="Scroll1"
+		paneFlags="1"
+		wrap="2"
+		format="1"
+		font="0"
+		clientEdges="0.000 0.000 0.000 0.000"
+		wndColor="00000000"
+		textColor="ffffffff"
+		textColorDisabled="ff8f8f8f">
+
+		<Node
+			name="wndFuel"
+			class="ProgressBarWnd"
+			org="51.000 102.000 169.000 7.000"
+			style="768"
+			order="6"
+			id="0"
+			caption=""
+			tip=""
+			backimage=""
+			paneName="defaultWnd"
+			scrollPaneName="Scroll1"
+			paneFlags="0"
+			wrap="2"
+			format="1"
+			font="0"
+			clientEdges="0.000 0.000 0.000 0.000"
+			wndColor="00000000"
+			textColor="ffffffff"
+			textColorDisabled="ff8f8f8f"
+			barColor="ff00ff00"
+			numOfSteps="0"
+			orientation="2"
+			barTexture="data\if\ico\VehicleInfoPanel\Fuel.dds"
+			textStyle="0"
+			textureStyle="0">
+			<Animations />
+		</Node>
+
+		<Node
+			name="imgLowFuelIco"
+			class="ImageWnd"
+			org="228.878 98.709 14.000 14.000"
+			style="768"
+			order="2"
+			id="0"
+			caption=""
+			tip=""
+			backimage=""
+			paneName="defaultWnd"
+			scrollPaneName="Scroll1"
+			paneFlags="0"
+			wrap="2"
+			format="1"
+			font="0"
+			clientEdges="0.000 0.000 0.000 0.000"
+			wndColor="00000000"
+			textColor="ffffffff"
+			textColorDisabled="ff8f8f8f"
+			image="data\if\ico\DamageInfoWnd\fuel_i.dds">
+			<Animations />
+		</Node>
+
+
+		<Animations />
+	</Node>
+</Prefabs>

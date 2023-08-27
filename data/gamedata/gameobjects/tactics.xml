@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+
+<!--
+$Id: Tactics.xml,v 1.13 2005/06/24 13:54:54 anton Exp $
+-->
+
+<Prototypes>
+
+	<Prototype
+		Class 			= "VehicleRoleMeat"
+		Name                    = "MeatRole"
+	/>
+	
+	<Prototype
+		Class 			= "VehicleRoleSniper"
+		Name                    = "SniperRole"
+	/>
+
+	<Prototype
+		Class 			= "VehicleRoleOppressor"
+		Name                    = "OppressorRoleLeft"
+
+		OppressionShift		= "0 -10"
+	/>
+	
+	<Prototype
+		Class 			= "VehicleRoleOppressor"
+		Name                    = "OppressorRoleRight"
+
+		OppressionShift		= "0 10"
+	/>
+
+	<Prototype
+		Class 			= "VehicleRoleOppressor"
+		Name                    = "OppressorRoleTop"
+
+		OppressionShift		= "10 0"
+	/>
+
+	<Prototype
+		Class 			= "VehicleRoleOppressor"
+		Name                    = "OppressorRoleBottom"
+
+		OppressionShift		= "-10 0"
+	/>
+	
+	<Prototype
+		Class 			= "VehicleRoleBarrier"
+		Name                    = "BarrierRole"
+	/>
+
+	<Prototype
+		Class 			= "VehicleRoleCoward"
+		Name                    = "CowardRole"
+	/>
+
+	<Prototype
+		Class 			= "VehicleRoleCheater"
+		Name                    = "CheaterRole"
+	/>
+
+	<Prototype
+		Class 			= "VehicleRolePendulum"
+		Name                    = "PendulumRole1"
+
+		OppressionShift		= "10 5"
+		A			= "150"
+		B			= "50"
+	/>
+
+	<Prototype
+		Class			= "TeamTacticWithRoles"
+		Name			= "PendulumTeamTactic"
+
+		ResourceType		= "TEAMTACTIC"
+	>	
+	
+		<Role Prototype="PendulumRole1"/>
+	</Prototype>
+
+	<Prototype
+		Class			= "TeamTacticWithRoles"
+		Name			= "CowardTeamTactic"
+
+		ResourceType		= "TEAMTACTIC"
+	>	
+	
+		<Role Prototype="CowardRole"/>
+	</Prototype>
+
+	<Prototype
+		Class			= "TeamTacticWithRoles"
+		Name			= "TestTeamTactic"
+
+		ResourceType		= "TEAMTACTIC"
+	>	
+	
+		<Role Prototype="MeatRole"/>
+		<Role Prototype="OppressorRoleLeft"/>
+		<Role Prototype="OppressorRoleRight"/>
+		<Role Prototype="OppressorRoleTop"/>
+		<Role Prototype="OppressorRoleBottom"/>
+		<Role Prototype="SniperRole"/>
+	</Prototype>
+
+	<Prototype
+		Class			= "TeamTacticWithRoles"
+		Name			= "MeatTeamTactic"
+
+		ResourceType		= "TEAMTACTIC"
+	>	
+	
+		<Role Prototype="MeatRole"/>
+	</Prototype>
+
+	<Prototype
+		Class			= "TeamTacticWithRoles"
+		Name			= "MeatTeamTacticWithSniper"
+
+		ResourceType		= "TEAMTACTIC"
+	>	
+	
+		<Role Prototype="MeatRole"/>
+		<Role Prototype="MeatRole"/>
+		<Role Prototype="SniperRole"/>
+	</Prototype>
+
+	<Prototype
+		Class			= "TeamTacticWithRoles"
+		Name			= "BoxTactic"
+
+		ResourceType		= "TEAMTACTIC"
+	>	
+	
+		<Role Prototype="OppressorRoleLeft"/>
+		<Role Prototype="OppressorRoleRight"/>
+		<Role Prototype="OppressorRoleTop"/>
+		<Role Prototype="OppressorRoleBottom"/>
+	</Prototype>
+
+	<Prototype
+		Class			= "TeamTacticWithRoles"
+		Name			= "TeamTacticSniper"
+
+		ResourceType		= "TEAMTACTIC"
+	>	
+	
+		<Role Prototype="SniperRole"/>
+	</Prototype>
+
+	<Prototype
+		Class			= "TeamTacticWithRoles"
+		Name			= "TeamTacticBarrier"
+
+		ResourceType		= "TEAMTACTIC"
+	>	
+	
+		<Role Prototype="BarrierRole"/>
+	</Prototype>
+
+	<Prototype
+		Class			= "TeamTacticWithRoles"
+		Name			= "BoxTacticWithSniper"
+
+		ResourceType		= "TEAMTACTIC"
+	>	
+	
+		<Role Prototype="OppressorRoleLeft"/>
+		<Role Prototype="OppressorRoleRight"/>
+		<Role Prototype="OppressorRoleTop"/>
+		<Role Prototype="OppressorRoleBottom"/>
+		<Role Prototype="SniperRole"/>
+	</Prototype>
+
+	<Prototype
+		Class			= "TeamTacticWithRoles"
+		Name			= "TeamTacticCheaters"
+
+		ResourceType		= "TEAMTACTIC"
+	>	
+	
+		<Role Prototype="CheaterRole"/>
+	</Prototype>
+
+
+        <Prototype
+		Class			= "TeamTacticWithRoles"
+		Name			= "TeamTacticLisa"
+
+		ResourceType		= "TEAMTACTIC"
+	>	
+	
+		<Role Prototype="MeatRole"/>
+	</Prototype>
+
+        <Prototype
+		Class			= "NPCMotionController"
+		Name			= "someNPCMotionController"
+	/>
+	
+	<Prototype
+		Class			= "TeamTacticWithRoles"
+		Name			= "TeamTacticTerroristsR1M1"
+		ResourceType		= "TEAMTACTIC">	
+		<Role Prototype="MeatRole"/>
+		<Role Prototype="MeatRole"/>
+	</Prototype>
+</Prototypes>

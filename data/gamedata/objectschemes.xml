@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+
+<!--
+$Id: ObjectSchemes.xml,v 1.3 2004/11/01 07:57:24 den Exp $
+-->
+
+<ObjectSchemes>
+	<Scheme Prototype = "Belaz" mainPart = "CHASSIS" validParts="BELAZ_CHASSIS" >
+		<Part id = "CABIN" validParts="BELAZ_CABIN" lpName = "LP_CAB" >
+			<Part id="CABIN_SMALL_GUN" lpName = "LP_SML01" />
+			<Part id="CABIN_BIG_GUN" lpName = "LP_BIG01" />
+		</Part>
+
+		<Part id = "BASKET" validParts="BELAZ_BASKET" lpName = "LP_BSK" >
+		</Part>
+	</Scheme>
+
+	<Scheme Prototype = "Molokovoz" mainPart = "CHASSIS" >
+		<Part id = "CABIN" lpName = "LP_CAB" >
+			<Part id="CABIN_SMALL_GUN" lpName = "LP_SML01" />
+			<Part id="CABIN_BIG_GUN" lpName = "LP_BIG01" />
+		</Part>
+
+		<Part id = "BASKET" lpName = "LP_BSK" >
+		</Part>
+	</Scheme>
+
+</ObjectSchemes>

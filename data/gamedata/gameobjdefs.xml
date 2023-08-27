@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+$Id: GameObjDefs.xml,v 1.13 2005/11/09 07:26:52 anton Exp $
+-->
+
+<Definitions>
+	<Objects>
+		<Object Name="Vehicle">
+			<Attribute Name="Belong"	Type="Integer" />
+                        <Attribute Name="Name" 		Type="String" />
+			<Attribute Name="Money" 	Type="Integer" />
+			<Attribute Name="Skin" 		Type="Integer" />
+		</Object>
+
+		<Object Name="ArticulatedVehicle">
+		</Object>
+
+		<Object Name="VehiclePart">
+		</Object>
+
+		<Object Name="BulletLauncher">
+		</Object>
+
+		<Object Name="RocketLauncher">
+		</Object>
+
+		<Object Name="Chassis">
+		</Object>
+
+		<Object Name="Cabin">
+		</Object>
+
+		<Object Name="Basket">
+		</Object>
+
+		<Object Name="Trigger">
+		</Object>
+
+		<Object Name="DynamicQuest">
+		</Object>
+
+		<Object Name="Wheel">
+		</Object>
+
+		<Object Name="Bullet">
+		</Object>
+
+		<Object Name="Rocket">
+		</Object>
+
+		<Object Name="Town">
+			<Attribute Name="Belong" Type="Integer" />
+            <Attribute Name="Name" Type="String" />
+            <Attribute Name="MaxDefenders" Type="Integer" />
+            <Attribute Name="RelPointOfView" Type="Vector" />
+            <Attribute Name="RelPointOutside" Type="Vector" />
+		</Object>
+
+		<Object Name="Building">
+            <Attribute Name="Name" Type="String" />
+			<Attribute Name="ModelName" Type="String" />
+		</Object>
+
+		<Object Name="Workshop">
+            <Attribute Name="Name" Type="String" />
+		</Object>
+
+		<Object Name="Npc">
+			<Attribute Name="Name" Type="String" />
+			<Attribute Name="ModelName" Type="String" />
+			<Attribute Name="skin" Type="Integer" />
+			<Attribute Name="cfg" Type="Integer" />
+			<Attribute Name="helloReplyNames" Type="String" />
+		</Object>
+		
+		<Object Name="Lair">
+		    <Attribute Name="Name" Type="String" />
+			<Attribute Name="Belong" Type="Integer" />
+			<Attribute Name="MaxDefenders" Type="Integer" />
+			<Attribute Name="MaxAttackers" Type="Integer" />		
+		</Object>
+
+		<Object Name="Location">
+			<Attribute Name="Active" Type="Bool" />
+			<Attribute Name="Name" Type="String" />
+			<Attribute Name="radius" Type="Float" />
+			<Attribute Name="Belong" Type="Integer" />
+			<Attribute Name="LookingTimeOut" Type="Float" />
+			<Attribute Name="PassageAddress" Type="String" />
+			<Attribute Name="Pos" Type="CVector" />
+		</Object>
+
+		<Object Name="Chest">
+		</Object>
+
+		<Object Name="Team">
+			<Attribute Name="Name" Type="String" />
+		</Object>
+
+		<Object Name="BreakableObject">
+			<Attribute Name="Name" Type="String" />
+			<Attribute Name="Belong" Type="Integer" />
+		</Object>
+
+		<Object Name="DummyPhysicObject">
+		</Object>
+
+		<Object Name="Ware">
+		</Object>
+
+		<Object Name="Gadget">
+		</Object>
+
+		<Object Name="PhysicUnit">
+			<Attribute Name="Name" Type="String" />
+			<Attribute Name="Belong" Type="Integer" />
+			<Attribute Name="PathsNames" Type="String" />
+		</Object>
+
+		<Object Name="LightObj">
+			<Attribute Name="ModelFile" Type="String" />
+		</Object>
+
+
+		<Object Name="JointedObj">
+		</Object>
+
+		<Object Name="GeomObj">
+		</Object>
+
+		<Object Name="VehicleSplinter">
+		</Object>
+
+		<Object Name="Player">
+		</Object>
+
+		<Object Name="ObjPrefab">
+		</Object>
+			
+		<Object Name="Barricade">
+			<Attribute Name="Name" Type="String" />
+			<Attribute Name="Belong" Type="Integer" />
+			<Attribute Name="Pos" Type="CVector" />
+		</Object>			
+
+		<Object Name="InfectionZone">
+			<Attribute Name="Name" Type="String" />
+			<Attribute Name="Belong" Type="Integer" />
+			<Attribute Name="InfectionTeamPrototypeName" Type="String" />
+			<Attribute Name="DropoutTimeout" Type="Float" />
+		</Object>
+
+		<Object Name="StaticAutoGun">
+			<Attribute Name="Name" Type="String" />
+			<Attribute Name="Belong" Type="Integer" />
+			<Attribute Name="Pos" Type="CVector" />
+		</Object>			
+
+
+	</Objects>
+</Definitions>

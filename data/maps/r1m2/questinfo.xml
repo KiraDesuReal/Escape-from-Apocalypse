@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes"?>
+<QuestInfoResource>
+
+	<QuestInfo
+		questName="Vostok_Quest1"
+		briefDiz="Добраться до Восточного"
+		fullDiz="Добраться до города Восточного, там можно узнать где находится Мидрагд."
+		requestForTalk=""
+		smallImage=""
+		largeImage="">
+		<Coordinate value="1664.590 80.000 5261.314"/>
+	</QuestInfo>
+
+	<QuestInfo
+		questName="Fermers_Quest1"
+		briefDiz="Привезти артефакт"
+		fullDiz="Взять из деревни артефакт и привезти артефакт Фермеру."
+		requestForTalk="Я ищу Мидрагд..."
+		smallImage=""
+		largeImage="">
+		<Coordinate value="1664.590 80.000 5261.314"/>
+	</QuestInfo>
+
+	<QuestInfo
+		questName="TalkArtefacter_Quest"
+		briefDiz="Найти шахтера "
+		fullDiz="Найти шахтера в деревне и взять у него артефакт."
+		requestForTalk="Я за Артефактом..."
+		smallImage=""
+		largeImage="">
+		<Coordinate value="3543.931 75 5200.451"/>
+	</QuestInfo>
+
+	<QuestInfo
+		questName="BackFermers_Quest"
+		briefDiz="Вернуться в Восточный"
+		fullDiz="Вернуться в Восточный вместе с артефактом и отдать его Фермеру."
+		requestForTalk="Вот тебе Артефакт, говори где Мидрагд..."
+		smallImage=""
+		largeImage="">
+		<Coordinate
+			value="1664.590 80.000 5261.314"/>
+	</QuestInfo>
+
+	<QuestInfo
+		questName="Bandit1_Quest1"
+		briefDiz="Пострелять деревенских"
+		fullDiz="Надо припугнуть деревенских жителей, чтобы они не расслаблялись. Надо заехать в центрдеревни и пострелять."
+		requestForTalk="Фермер меня обманул, а мне нужен человек из Мидрагда..."
+		smallImage=""
+		largeImage="">
+		<Coordinate
+			value="3543.931 75 5200.451"/>
+	</QuestInfo>
+
+	<QuestInfo
+		questName="ReturnV_Quest1"
+		briefDiz="Вернуться в Восточный"
+		fullDiz="Вернуться в Восточный к Незнакомцу, который все знает про Мидрагд."
+		requestForTalk=""
+		smallImage=""
+		largeImage="">
+		<Coordinate
+			value="1664.590 80.000 5261.314"/>
+	</QuestInfo>
+
+	<QuestInfo
+		questName="Bandit1_Quest2"
+		briefDiz="Ехать в Мидрагд"
+		fullDiz="Путь в Мидрагд известен и человек тоже, не надо терять времени."
+		requestForTalk="Я все сделал, говори где Мидрагд?!"
+		smallImage=""
+		largeImage="">
+		<Coordinate
+			value="4317.598 0.000 806.368"/>
+	</QuestInfo>
+
+	<QuestInfo
+		questName="Bandit2_Quest1"
+		briefDiz="Сопроводить караван в Порто"
+		fullDiz="Путь в Мидрагд известен и человек тоже, не надо терять времени."
+		requestForTalk="Черт! Так это ты тот человек, которого я ищу?! Что ж ты меня гоняешь туда сюда!!!"
+		smallImage=""
+		largeImage="">
+		<Coordinate
+			value="6827.100 58.000 6487.672"/>
+	</QuestInfo>
+
+	<QuestInfo
+		questName="Bandit3_Quest1"
+		briefDiz="Вернуться обратно в Мидгард"
+		fullDiz="Вернуться обратно в Мидгард за кейсом."
+		requestForTalk="Я доставил караван из Мидгарда от Барыги"
+		smallImage=""
+		largeImage="">
+		<Coordinate
+			value="4317.598 0.000 806.368"/>
+	</QuestInfo>
+
+	<QuestInfo
+		questName="Bandit2_Quest3"
+		briefDiz="Забрать кейс"
+		fullDiz="Забрать кейс."
+		requestForTalk="Все, я все сделал..."
+		smallImage=""
+		largeImage="">
+		<Coordinate
+			value="4317.598 0.000 806.368"/>
+	</QuestInfo>
+
+	<QuestInfo
+		questName="ProtegeNukem_Quest1"
+		briefDiz="Найти подрывника в Мидгарде"
+		fullDiz="Найти подрывника в Мидгарде..."
+		requestForTalk="Ладно, а что конкретно ты знаешь?..."
+		smallImage=""
+		largeImage="">
+		<Coordinate
+			value="4317.598 0.000 806.368"/>
+	</QuestInfo>
+
+	<QuestInfo
+		questName="Nukem_Quest1"
+		briefDiz="Заминировать кейс"
+		fullDiz="Заминировать кейс."
+		requestForTalk="Потом, а сейчас я хочу, чтобы вы заминировали мой кейс..."
+		smallImage=""
+		largeImage="">
+		<Coordinate
+			value="4317.598 0.000 806.368"/>
+	</QuestInfo>
+
+	<QuestInfo
+		questName="ReturnG_Quest1"
+		briefDiz="Назад в Глухое"
+		fullDiz="Назад в Глухое."
+		requestForTalk=""
+		smallImage=""
+		largeImage="">
+		<Coordinate
+			value="143 0 5646"/>
+	</QuestInfo>
+
+</QuestInfoResource>

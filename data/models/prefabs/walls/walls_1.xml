@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<Prefabs>
+	<Node
+		name="HeavyBiWall2_pref"
+		class="SgNode">
+		<Node
+			name="Object1"
+			class="SgAnimatedModelNode"
+			org="-5.410 0.000 0.000"
+			orgRel="0"
+			id="heavy_bigwall1"
+			ndmAction="0"
+			cfg="15597675" />
+
+		<Node
+			name="Object2"
+			class="SgAnimatedModelNode"
+			org="5.410 0.000 0.000"
+			orgRel="0"
+			id="heavy_bigwall1"
+			ndmAction="0"
+			cfg="15597675" />
+	</Node>
+
+	<Node
+		name="HeavyBiWall4_pref"
+		class="SgNode">
+		<Node
+			name="Object1"
+			class="SgAnimatedModelNode"
+			org="-5.410 0.000 0.000"
+			orgRel="0"
+			id="heavy_bigwall1"
+			ndmAction="0"
+			cfg="15597675" />
+
+		<Node
+			name="Object2"
+			class="SgAnimatedModelNode"
+			org="5.41 0.000 0.000"
+			orgRel="0"
+			id="heavy_bigwall1"
+			ndmAction="0"
+			cfg="15597675" />
+		<Node
+			name="Object3"
+			class="SgAnimatedModelNode"
+			org="16.23 0.000 0.000"
+			orgRel="0"
+			id="heavy_bigwall1"
+			ndmAction="0"
+			cfg="15597675" />
+
+		<Node
+			name="Object4"
+			class="SgAnimatedModelNode"
+			org="-16.23 0.000 0.000"
+			orgRel="0"
+			id="heavy_bigwall1"
+			ndmAction="0"
+			cfg="15597675" />
+	</Node>
+
+</Prefabs>

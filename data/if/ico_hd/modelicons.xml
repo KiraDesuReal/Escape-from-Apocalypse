@@ -80,6 +80,18 @@
    <!-- <Item id="magic_thing2"		   file="data\if\ico\InventoryDlg\magicthing2.dds"    file1=""/> -->
    <!-- <Item id="explosion_stone"	   file="data\if\ico\InventoryDlg\exp_stone.dds"      file1=""/> -->
 
+   <Item id="doski" file="data\if\ico_hd\InventoryDlg\goods\doski.dds" file1="data\if\ico_hd\InventoryDlg\goods\doski.dds"/>
+   <Item id="details" file="data\if\ico_hd\InventoryDlg\goods\details.dds" file1="data\if\ico_hd\InventoryDlg\goods\details.dds"/>
+
+   <Item id="scrap_metal_use" file="data\if\ico_hd\InventoryDlg\goods\lom_use.dds" file1="data\if\ico_hd\InventoryDlg\goods\lom_use.dds"/>
+   <Item id="machinery_use" file="data\if\ico_hd\InventoryDlg\goods\rabochee_oborudovanie_use.dds" file1="data\if\ico_hd\InventoryDlg\goods\rabochee_oborudovanie_use.dds"/>
+   <Item id="electronics_use" file="data\if\ico_hd\InventoryDlg\goods\mikro_use.dds" file1="data\if\ico_hd\InventoryDlg\goods\mikro_use.dds"/>
+   <Item id="oil_use" file="data\if\ico_hd\InventoryDlg\goods\oil_use.dds" file1="data\if\ico_hd\InventoryDlg\goods\oil_use.dds"/>
+   <Item id="fuel_full_use" file="data\if\ico_hd\InventoryDlg\goods\kanistra_full_use.dds" file1="data\if\ico_hd\InventoryDlg\goods\kanistra_full_use.dds"/>
+   <Item id="fuel_nil_use" file="data\if\ico_hd\InventoryDlg\goods\kanistra_nil_use.dds" file1="data\if\ico_hd\InventoryDlg\goods\kanistra_nil_use.dds"/>
+
+   <Item id="item_key_gate_thetown" file="data\if\ico\InventoryDlg\Opacity1.dds" file1="data\if\ico\InventoryDlg\Opacity1.dds"/>
+
    <!-- Giant -->
    <Item id="dragon01"			   file="data\if\ico_hd\InventoryDlg\weapon\dragon.dds"		   file1="data\if\ico_hd\InventoryDlg\weapon\dragon_min.dds"/>
    <Item id="hammer01"			   file="data\if\ico_hd\InventoryDlg\weapon\hammer01.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\hammer01_min.dds"/>
@@ -362,5 +374,7 @@
 
    <Item id="Belong_1080"		file="data\if\ico\clans\death.dds" 			file1="data\if\ico\clans\death.dds"/>
    <Item id="Belong_1081"		file="data\if\ico\clans\militarists03.dds" 		file1="data\if\ico_hd\clans\militarists02.dds"/>
+   
+   <Item id="Belong_1082"		file="data\if\ico\clans\scavs02.dds" 		file1="data\if\ico_hd\clans\scavs02.dds"/>
 
 </icons>

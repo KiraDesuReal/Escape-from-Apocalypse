@@ -5,6 +5,25 @@
 	<group id="SOUND2D"	volume="255" />
 
 	<group id="SOUND3D" volume="100">
+
+		<group 
+			id		= "FUEL_PETROL" 
+			volume	= "255" 
+			minDist	= "25"
+		/>
+
+		<group 
+			id		= "FUEL_PETROL_PROCESS" 
+			volume	= "180" 
+			minDist	= "25"
+		/>
+
+		<group 
+			id		= "GATE_OPEN" 
+			volume	= "255" 
+			minDist	= "30"
+		/>
+		
 		<group 
 			id		= "GUNFIRE" 
 			volume	= "160" 

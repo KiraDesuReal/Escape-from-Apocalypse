@@ -452,7 +452,26 @@
 		time="68" />
 
 	<string
+		id="77773"
+		msgType="SCROLL"
+		image="data\if\ico\CinemaPanel\foreground_movie_shade_midle.dds"
+		upOverlay="data\if\ico\CinemaPanel\foreground_movie_shade_up.dds"
+		downOverlay="data\if\ico\CinemaPanel\foreground_movie_shade.dds"
+		time="1" />
+
+	<string
 		id="90000"
 		value="ExMachina||Вы хотите воспользоваться|интерактивной системой помощи игры?"
 		numButtons="2" />
+
+	<string
+		id="90001"
+		value="У вас имеется пустая канистра для топлива.|Желаете её заправить? Это будет стоить 5000 монет."
+		numButtons="2" />
+
+	<string
+		id="90002"
+		value="Вы желаете открыть ворота?"
+		numButtons="2" />
+
 </resource>

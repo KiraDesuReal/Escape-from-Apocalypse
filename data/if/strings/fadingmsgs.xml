@@ -167,4 +167,61 @@
 	<string
 		id="fm_items_remained_on_ground"
 		value="Не хватает места в кузове. Для вызова окна снаряжения нажмите %1m." />
+
+	<string
+		id="fm_player_exit_location"
+		value="Выход через %1d." />
+
+	<string
+		id="fm_player_exit_enters_location"
+		value="Оставайтесь в зоне выхода.|@ff6cff00%1p." />
+
+	<string
+		id="fm_player_exit_leaves_location"
+		value="Вы покинули зону выхода!" />
+
+	<string
+		id="fm_player_search_exit_zone"
+		value="@ff6cff00Найдите зону выхода:|@FFFFFFFF%1p" />
+
+	<string
+		id="fm_use_scrap_metal"
+		value="@ffffba00Использован: Крепкий металл. Прочность +%1d" />
+
+	<string
+		id="fm_use_machinery"
+		value="@ff00ff4eИспользовано: Рабочее оборудование. Прочность +%1d" />
+
+	<string
+		id="fm_use_oil"
+		value="@ff0042ffИспользована: Нефть. Топливо +%1d" />
+
+	<string
+		id="fm_use_electronics"
+		value="@ff00ff4eИспользована: Высоко-технологичная электроника. Прочность +%1d" />
+
+	<string
+		id="fm_use_fuel_full"
+		value="@ff0042ffИспользована: Канистра топлива. Топливо +%1d" />
+
+	<string
+		id="fm_fuel_petrol_start"
+		value="Заправка топлива началась!" />
+
+	<string
+		id="fm_fuel_petrol_end"
+		value="Заправка топлива завершена!" />
+
+	<string
+		id="fm_player_not_money"
+		value="У вас не достаточно денег!" />
+
+	<string
+		id="fm_petrol_notwork"
+		value="Данная заправка не функционирует!" />
+
+	<string
+		id="fm_item_to_quest_items"
+		value="Предмет: %1p, перенесен в квестовые." />
+		
 </resource>

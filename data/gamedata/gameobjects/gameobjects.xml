@@ -183,7 +183,15 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 			ModelFile	= "cargo"
 			Mass		= "15"
 			
-			IntersectionRadius	= "1.7" />
+			IntersectionRadius	= "0.5" />
+
+		<Prototype
+			Class		= "Chest"
+			Name		= "fuelChest"
+			ModelFile	= "kanistr"
+			Mass		= "15"
+			
+			IntersectionRadius	= "0.5" />
 
 		<Prototype
 			Class		= "Chest"

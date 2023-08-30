@@ -82,6 +82,154 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 		<Prototype
 			Class		= "Chassis"
+			Name		= "sml1Chassis_Scav"
+			ModelFile	= "sml1Chassis"
+			ResourceType= "SML1_CHASSIS"
+			NodeScale	= "1 1 1"
+			Mass		= "50.0" 			
+			MaxHealth	= "100" 
+			MaxFuel	= "100"
+			BrakingSound="ET_S_BRAKE01"
+			PneumoSound	="ET_S_PNEUMO_BRAKE01"
+			GearShiftSound="ET_S_GEAR_SHIFT01"
+			LoadPoints	= "LP_CAB01" >
+				<GroupsHealth
+					Main   = "10000"	
+				/>
+		</Prototype>
+
+		<Prototype
+			Class		= "Chassis"
+			Name		= "sml2Chassis_Scav"
+			ModelFile	= "sml2Chassis"
+			ResourceType= "SML2_CHASSIS"
+			NodeScale	= "1 1 1"
+			Mass		= "50.0" 			
+			MaxHealth	= "150" 
+			MaxFuel	= "100"
+			BrakingSound="ET_S_BRAKE01"
+			PneumoSound	="ET_S_PNEUMO_BRAKE01"
+			GearShiftSound="ET_S_GEAR_SHIFT01"
+			LoadPoints	= "LP_CAB01" >
+				<GroupsHealth
+					Main   = "10000"	
+				/>
+		</Prototype>
+
+		<Prototype
+			Class		= "Chassis"
+			Name		= "sml3Chassis_Scav"
+			ModelFile	= "sml3Chassis"
+			ResourceType= "SML3_CHASSIS"
+			NodeScale	= "1 1 1"
+			Mass		= "50.0" 			
+			MaxHealth	= "200" 
+			MaxFuel	= "100"
+			BrakingSound="ET_S_BRAKE01"
+			PneumoSound	="ET_S_PNEUMO_BRAKE01"
+			GearShiftSound="ET_S_GEAR_SHIFT01"
+			LoadPoints	= "LP_CAB01" >
+				<GroupsHealth
+					Main   = "10000"	
+				/>
+		</Prototype>
+
+		<Prototype
+			Class		= "Chassis"
+			Name		= "sml4Chassis_Scav"
+			ModelFile	= "sml4Chassis"
+			ResourceType= "SML4_CHASSIS"
+			NodeScale	= "1 1 1"
+			Mass		= "50.0" 			
+			MaxHealth	= "200" 
+			MaxFuel	= "100"
+			BrakingSound="ET_S_BRAKE01"
+			PneumoSound	="ET_S_PNEUMO_BRAKE01"
+			GearShiftSound="ET_S_GEAR_SHIFT01"
+			LoadPoints	= "LP_CAB01" >
+				<GroupsHealth
+					Main   = "10000"	
+				/>
+		</Prototype>
+
+		<Prototype
+			Class		= "Chassis"
+			Name		= "scoutChassis_Scav"
+			ModelFile	= "scoutChassis"
+			ResourceType	= "SCOUT_CHASSIS"
+			NodeScale	= "1 1 1"
+			Mass		= "40.0"
+			MaxHealth	= "400" 
+			MaxFuel	= "150" 
+			BrakingSound="ET_S_BRAKE01"
+			PneumoSound	="ET_S_PNEUMO_BRAKE01"
+			GearShiftSound="ET_S_GEAR_SHIFT01"
+			LoadPoints	= "LP_CAB01" >
+				<GroupsHealth
+					Main   = "10000"	
+				/>
+		</Prototype>
+
+		<Prototype
+			Class		= "Chassis"
+			Name		= "fighterChassis_Scav"
+			ModelFile	= "fighterChassis"
+			ResourceType	= "FIGHTER_CHASSIS"
+			NodeScale	= "1 1 1"
+			Mass		= "40.0"
+			MaxHealth	= "400" 
+			MaxFuel	= "450" 
+			BrakingSound="ET_S_BRAKE01"
+			PneumoSound	="ET_S_PNEUMO_BRAKE01"
+			GearShiftSound="ET_S_GEAR_SHIFT01"
+			LoadPoints	= "LP_CAB01" >
+				<GroupsHealth
+					Main   = "10000"	
+				/>
+		</Prototype>
+
+		<Prototype
+			Class		= "Chassis"
+			Name		= "hunterChassis_Scav"
+			ModelFile	= "hunterChassis"
+			ResourceType	= "HUNTER_CHASSIS"
+			NodeScale	= "1 1 1"
+			Mass		= "40.0"
+			MaxHealth	= "400" 
+			MaxFuel	= "450.0" 
+			BrakingSound="ET_S_BRAKE01"
+			PneumoSound	="ET_S_PNEUMO_BRAKE01"
+			GearShiftSound="ET_S_GEAR_SHIFT01"
+			LoadPoints	= "LP_CAB01" >
+				<GroupsHealth
+					Main   = "10000"	
+				/>
+		</Prototype>
+
+		<Prototype
+			Class		= "Chassis"
+			Name		= "bugChassis_PMC"
+			ModelFile	= "bugChassis"
+			ResourceType	= "BUG_CHASSIS"
+			NodeScale	= "1 1 1"
+
+			Price				= "10000"
+			RepairCoef			= "0.3"
+
+			Mass		= "50.0" 
+			MaxHealth	= "500" 
+			MaxFuel	= "100"
+			BrakingSound="ET_S_BRAKE01"
+			PneumoSound	="ET_S_PNEUMO_BRAKE01"
+			GearShiftSound="ET_S_GEAR_SHIFT01"
+			LoadPoints	= "LP_CAB01 LP_BSK01" >
+				<GroupsHealth
+					Main   = "10000"	
+				/>
+		</Prototype>
+
+		<Prototype
+			Class		= "Chassis"
 			Name		= "sml1Chassis"
 			ModelFile	= "sml1Chassis"
 			ResourceType= "SML1_CHASSIS"

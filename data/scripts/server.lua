@@ -501,23 +501,20 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 		 if vehicle then
 			vehicle:SetRandomSkin()
 		 	if IsWares==1 then
-				local mapNum = 0
-				local mapName = GET_GLOBAL_OBJECT( "CurrentLevel" ):GetLevelName()
-				if mapName == "r1m1" then mapNum = 0 end
-				if mapName == "r1m2" then mapNum = 1 end
-				if mapName == "r1m3" then mapNum = 1 end
-				if mapName == "r1m4" then mapNum = 2 end
-				if mapName == "r2m1" then mapNum = 3 end
-				if mapName == "r2m2" then mapNum = 4 end
-				if mapName == "r3m1" then mapNum = 5 end
-				if mapName == "r3m2" then mapNum = 6 end
-				if mapName == "r4m1" then mapNum = 7 end
-				if mapName == "r4m2" then mapNum = 8 end
 
-				local RandWarez = {"potato","firewood","scrap_metal","oil","fuel","machinery","bottle","tobacco","book","electronics"}
-    				local r = random(2) + mapNum
+				local RandWarez = {"potato","firewood","scrap_metal","doski","details","oil","fuel","machinery","bottle","tobacco","book","electronics"}
+				local r = getn(RandWarez)
+				
+				local ItemsUse = {"scrap_metal_use", "oil_use", "machinery_use", "fuel_nil_use", "fuel_full_use", "electronics_use"}
+				local r2 = getn(ItemsUse)
+				
+				for w1=1,random(1,3) do
+					vehicle:AddItemsToRepository(ItemsUse[random(r2)], 1)
+				end
 
-				vehicle:AddItemsToRepository(RandWarez[r], 1)
+				for w2=1,random(2) do
+					vehicle:AddItemsToRepository(RandWarez[exrandom(r)], 1)
+				end
 			end
 			
 			-- by Anton: это не нужно, т.к. вызываем SetGamePositionOnGround()

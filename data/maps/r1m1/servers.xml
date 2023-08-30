@@ -8,6 +8,11 @@
 		<Item
 			id="box"
 			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="birbs"
+			file="data\models\AnimModels.xml" />
+
 		<Item
 			id="cub"
 			file="data\models\AnimModels.xml" />
@@ -2247,6 +2252,18 @@
 	<ParticlesServer />
 
 	<SoundsServer>
+		<Item id="S_USE_ARM" />
+		<Item id="S_USE_LIFE" />
+		<Item id="S_USE_OIL" />
+
+		<Item id="S_FUEL_PETROL_START" />
+		<Item id="S_FUEL_PETROL_PROCESS" />
+		<Item id="S_FUEL_PETROL_END" />
+
+		<Item id="S_OPENING_GATE" />
+		<Item id="S_OPENING_GATE_END" />
+		<Item id="S_CLOSED_GATE" />
+
 		<Item id="S_CRASH_METAL01" />
 		<Item id="S_CRASH_METAL02" />
 		<Item id="S_CRASH_METAL03" />

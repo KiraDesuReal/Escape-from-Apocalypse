@@ -1,5 +1,66 @@
 <?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
 <sounds>
+
+<!-- Use Items -->
+
+	<model
+		id="S_USE_ARM"
+		file="data\sounds\other\use_items\arm.wav"
+		group="SOUND2D"
+		/>
+
+	<model
+		id="S_USE_LIFE"
+		file="data\sounds\other\use_items\life.wav"
+		group="SOUND2D"
+		/>
+
+	<model
+		id="S_USE_OIL"
+		file="data\sounds\other\use_items\oil.wav"
+		group="SOUND2D"
+		/>
+
+<!-- Petrolstation -->
+
+	<model
+		id="S_FUEL_PETROL_START"
+		file="data\sounds\other\petrolstation\fuel_petrol_start.wav"
+		group="FUEL_PETROL"
+		/>
+
+	<model
+		id="S_FUEL_PETROL_PROCESS"
+		file="data\sounds\other\petrolstation\fuel_petrol_process.wav"
+		group="FUEL_PETROL_PROCESS"
+		/>
+
+	<model
+		id="S_FUEL_PETROL_END"
+		file="data\sounds\other\petrolstation\fuel_petrol_end.wav"
+		group="FUEL_PETROL"
+		/>
+
+<!-- Open Gate -->
+
+	<model
+		id="S_OPENING_GATE"
+		file="data\sounds\other\gate\opening_gate.wav"
+		group="GATE_OPEN"
+		/>
+
+	<model
+		id="S_OPENING_GATE_END"
+		file="data\sounds\other\gate\opening_gate_end.wav"
+		group="GATE_OPEN"
+		/>
+
+	<model
+		id="S_CLOSED_GATE"
+		file="data\sounds\other\gate\closed_gate.wav"
+		group="GATE_OPEN"
+		/>
+		
 <!-- Crash --> 
 
 	<model
@@ -1277,7 +1338,7 @@
 	<model
 		id="S_STARTING02"
 		file="data\sounds\Driving\Starting\starting02.wav"
-		/>
+		group="SOUND2D" />
 
 	<model
 		id="S_STARTING03"

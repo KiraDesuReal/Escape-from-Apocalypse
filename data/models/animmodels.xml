@@ -16,6 +16,22 @@
 		trans="0" />
 
 	<model
+		id="birbs"
+		file="data\models\ammo\plasma01.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="STAND1">
+			<lp
+				id=""
+				effect_id="ET_PS_FOREST"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+	</model>
+
+	<model
 		id="cargo"
 		shadow="1"
 		shadowVolume="1"

@@ -3,10 +3,12 @@
 	<trigger Name="GlobalVar" active="1">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
+			SetVar("PosPlayer1",0)
+			SetVar("PosPlayer2",0)
+			SetVar("ExitTimer",6)
 		    trigger:Deactivate()
 		</script>
 	</trigger>
-
 
 	<trigger	Name="trKraiPlaceSecret"	active="0">
 		<event	timeout="0.1"			eventid="GE_TIME_PERIOD" />
@@ -22,95 +24,7 @@
 		</script>
 	</trigger>
 
-	<trigger Name="trFirstRolik" active="1">
-		<event timeout="0" eventid="GE_TIME_PERIOD" />
-		<script>
-			g_ObjCont:SetGameTime( 10, 0, 10, 9, 2234 )
-
-			SetRadarUpgrade(1)
-			TActivate("trKraiPlaceSecret");
-
-			Fly("start_game", CINEMATIC_NO_AIM, 0, 68, 1, 1 )
-			StartCinematic()
-			UpdateCinematic( 1 )
-
-			TActivate("trFirstRolikMusic")
-			TActivate("StartGame")
-
-			ShowFirstNarratorText()
-
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-	<trigger Name="trFirstRolikMusic" active="0">
-		<event timeout="0.25" eventid="GE_TIME_PERIOD" />
-		<script>
-			PlayCustomMusic("Bio07unloop")
-
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-	<trigger Name="StartGame" active="0">
-		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
-		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
-		<script>
-			SetWeather(0)
-
-			GameFiltersUse()
-			PlayCustomMusic("QuietDialogue01")
-
-			CreateNewDummyObject( "quest_medicine_box", "medicine_box", -1, -1, CVector(2607.000, 322.000, 1614.000), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0)
-
-			if not( IsQuestTaken("Buyer_Quest1")) and not( IsQuestComplete("Buyer_Quest1")) then
-				CreateNewDummyObject( "dweller_player", "hero1Dw", -1, -1, CVector(3343.495, 368.166, 3304.762), Quaternion(0.0000, -0.9610, 0.0000, -0.2760), 0)
-				CreateNewDummyObject( "dweller_father", "fatherDw", -1, -1, CVector(3342.860, 368.167, 3303.460), Quaternion(0.0000, 0.4320, 0.000, 0.9020), 2)
-
-				Fly("start_rolik1", CINEMATIC_NO_AIM, 0, 35, 0, 0 )
-				Fly("start_rolik11", CINEMATIC_NO_AIM, 0, 1.5, 0, 0 )
-				Fly("start_rolik5", CINEMATIC_NO_AIM, 0, 13, 0, 0 )
-				Fly("start_rolik6", CINEMATIC_NO_AIM, 0, 14, 0, 0 )
-				Fly("start_rolik2", CINEMATIC_NO_AIM, 0, 6, 0, 0 )
-				Fly("start_rolik3", CINEMATIC_NO_AIM, 0, 6, 0, 0 )
-				Fly("start_rolik8", CINEMATIC_NO_AIM, 0, 13, 0, 0 )
-				Fly("start_rolik4", CINEMATIC_NO_AIM, 0, 5, 0, 1 )
-				StartCinematic()
-				UpdateCinematic(1)
-
-				TActivate( "ROLIK15" )
-				TActivate( "ROLIK16" )
-				TActivate( "ROLIK12" )
-				TActivate( "ROLIK13" )
-				TActivate( "ROLIK18" )
-				TActivate( "ROLIK14" )
-				TActivate( "Finish00" )
-
-				getObj("fatherDw"):SetNodeAction(AT_RESERVED1) 
-				getObj("fatherDw"):SetNextForAnimation(AT_RESERVED1, AT_STAND1) 
-
-				AddCinematicMessage( 1, 2.5)
-				AddCinematicMessage( 2, 0.25 )
-				AddCinematicMessage( 3, 0.25  )
-
-   				TakeQuest( "Buyer_Quest1" )
-
-				AddQuestItem("quest_potato")
-
-				AddHistory( "r1_Firsy_History_00" )
-				AddFadingMsgId( "fm_history_got" )
-
-				TActivate("StartRolikGame")
-			end
-
-			trigger:Deactivate()    
-		</script>
-	</trigger>
-
-
-
-
-
+<!-- Создание/Уничножение Глухого -->
 	<trigger Name="CreateGloohoe" active="1">
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -129,26 +43,12 @@
 	<trigger Name="DestroyGloohoe" active="0">
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			local town = GetEntityByName ("TheGloohoe")
-			if town then
-				town:SetOpenGateToPlayer(false)
+			
+			for i=1,7 do
+				local hs = GetEntityByName ("hs0"..i)
+				if hs then hs:Remove() end
 			end
-
-			local hs = GetEntityByName ("hs01")
-			if hs then hs:Remove() end
-			local hs = GetEntityByName ("hs02")
-			if hs then hs:Remove() end
-			local hs = GetEntityByName ("hs03")
-			if hs then hs:Remove() end
-			local hs = GetEntityByName ("hs04")
-			if hs then hs:Remove() end
-			local hs = GetEntityByName ("hs05")	
-			if hs then hs:Remove() end
-			local hs = GetEntityByName ("hs06")
-			if hs then hs:Remove() end
-			local hs = GetEntityByName ("hs07")
-			if hs then hs:Remove() end
-
+		
 			CreateNewDummyObject( "ruins1", "hs01", -1, -1, CVector(3355.214,  368, 3322.013), Quaternion(0.0000, -0.9998, 0.0000, -0.0196) )
 			CreateNewDummyObject( "ruins2", "hs02", -1, -1, CVector(3396.989,  370, 3311.444), Quaternion(0.0000, -0.7880, 0.0000, 0.6157) )
 			CreateNewDummyObject( "ruins3", "hs03", -1, -1, CVector(3391.955,  368, 3280.512), Quaternion(0.0000, -0.5682, 0.0000, 0.8229) )
@@ -168,828 +68,1656 @@
 		</script>
 	</trigger>
 
-
-
-
-
-	<trigger Name="GAMER_FUN" active="1">
-		<event timeout="300" eventid="GE_TIME_PERIOD" />
+	<trigger Name="CreateGloohoeAtDestroy" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			local RandModel = {	"r1m1_bug01",
-							"r1m1_bug02",
-							"r1m1_bug03",
-							"r1m1_sml01",
-							"r1m1_sml02",
-							"r1m1_sml03",
-							"r1m1_sml04",
-							"r1m1_scout01",
-							"r1m1_scout02",
-							"r1m1_scout03"
-			}
 
-			local RandCoordStart = {	CVector(498,288,246),
-								CVector(2080,314,3718)
-			}
-
-			local RandBelong = {	1002,
-							1003
-			}
-
-			local r4 = random(2)
-			local r
-
-			if r4 == 1 then	r = 10
-			else	r = 3
+			for i=1,7 do
+				local hs = GetEntityByName ("hs0"..i)
+				if hs then hs:Remove() end
 			end
 
-			local r1 = random(r)
-			local r2 = random(2)
-			local nom = random(1000)
-
-			TeamCreateWithWarez("BrodiagaCar"..nom,RandBelong[r4], RandCoordStart[r2], {RandModel[r1]}, nil, 1)
-			
-			local RandWay = {		CVector(1318, 287, 2841),
-							CVector(1129, 289, 1375),
-							CVector(1907, 318, 2429),
-							CVector(2692, 329, 1279),
-							CVector(3072, 319, 920),
-							CVector(3042, 317, 417),
-							CVector(2339, 302, 571)
-			}
-
-			local r1 = random(2)
-			local r2 = random(7)
-			local r3 = random(7)
-			local r4 = random(7)
-			local r5 = random(7)
-
-			local tt = GetEntityByName("BrodiagaCar"..nom)
-			if tt then
-				tt:StackOpen()
-				tt:SetDestination( RandWay[r1] )
-				tt:SetDestination( RandWay[r2] )
-				tt:SetDestination( RandWay[r3] )
-				tt:SetDestination( RandWay[r4] )
-				tt:SetDestination( RandWay[r5] )
-				tt:StackLoop()
-				tt:StackClose()
+			for f=1,6 do
+				local fr = GetEntityByName ("FIRE0"..f)
+			if fr then fr:Remove() end
 			end
 
-		</script>
-	</trigger>
-
-
-
-
-
-	<trigger Name="REVOLUTIONTIME" active="0">
-		<event timeout="0" eventid="GE_TIME_PERIOD" />
-		<script>
-			TeamCreate("Punishers",1051,CVector(3168, 319, 1144),{"Revolutioner1","Revolutioner1"},CVector(2704,329,1293), 1)
-
-			local terr = TeamCreate("Terrorists",1013,CVector(2845,336,1319),{"Scout01","Scout02","Scout03"}, nil, 1)
-			terr:SetProperty ("TeamTacticPrototype", "TeamTacticTerroristsR1M1")
-			terr:_AdjustBehaviour ()
-
-			SetTolerance( 1051, 1013, RS_NEUTRAL )
-			SetTolerance( 1013, 1003, RS_NEUTRAL )
-
-			TActivate("REVOLUTIONTIMEEND")
-			TActivate("REVOLUTION_TOLERANCE")
+			TActivate("CreateGloohoe")
 
 			trigger:Deactivate()    
 		</script>
 	</trigger>
 
-	<trigger Name="REVOLUTION_TOLERANCE" active="0">
-        <event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Revolution_tolerance" />
-		<event eventid="GE_OBJECT_DIE" ObjName="Punishers" />
-        <script>
-            SetTolerance( 1051, 1013, RS_ENEMY )
-			SetTolerance( 1013, 1003, RS_ENEMY )
-
-            trigger:Deactivate()    
-        </script>
-    </trigger>
-
-	<trigger Name="REVOLUTIONTIMEEND" active="0">
-		<event eventid="GE_OBJECT_DIE" ObjName="Terrorists" />
+	<trigger Name="CreateWorld" active="1">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			if IsQuestTaken("d_PunishBandits_Quest") then
-				CompleteQuest( "d_PunishBandits_Quest" )
 
-				CinemaFiltersUse()
-
-				SaveAllToleranceStatus(RS_NEUTRAL)
-
-				local Plf = GetPlayerVehicle()
-				local PlfID = GetPlayerVehicleId()
-				local PlfCoor = Plf:GetPosition()
-				PlfCoor.y = PlfCoor.y + 25*0.74
-				PlfCoor.z = PlfCoor.z + 25*0.74
-
-				Plf:SetCustomControlEnabled( true )
-				Plf:SetCustomLinearVelocity( 0 )
-				Plf:SetThrottle( 0 )
-				Plf:SetCustomControlEnabled( false )
-
-				FlyAround(1, 0, 25, 6, PlfCoor, PlfID, 1, 1 )
-				StartCinematic()
-				AddCinematicMessage( 2222, 1 )
-
-				TActivate( "REVOLUTIONTIMEENDFade" )
-				TActivate( "REVOLUTIONTIMEEND_EndCinema" )
-
-				trigger:Deactivate() 
-			else
-				trigger:Deactivate() 
-			end
-		</script>
-	</trigger>
-
-	<trigger Name="REVOLUTIONTIMEENDFade" active="0">
-		<event eventid="GE_CINEMATIC_ENTER_FADE_IN" ObjName="Player1" />
-		<script>
-			local FVehicle = GetEntityByName("Punishers_vehicle_0")
-			if FVehicle then FVehicle:Remove() end
-			local FVehicle = GetEntityByName("Punishers_vehicle_1")
-			if FVehicle then FVehicle:Remove() end
-
-			trigger:Deactivate()    
-		</script>
-	</trigger>
-
-	<trigger Name="REVOLUTIONTIMEEND_EndCinema" active="0">
-		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
-		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
-		<script>
-			RestoreAllToleranceStatus()
-
-			trigger:Deactivate()    
-		</script>
-	</trigger>
-
-	<!-- Если игрок провалил квест с Революционером Эдом -->
-	<trigger Name="REVOLUTIONFAIL" active="0">
-		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
-		<script>
-			TDeactivate("REVOLUTIONTIMEEND")
-
-			for i = 0,1 do
-				local FVehicle = GetEntityByName("Punishers_vehicle_"..i)
-				if FVehicle then FVehicle:Remove() end
-			end
-
-			trigger:Deactivate() 
-		</script>
-	</trigger>
-
-
-	<trigger Name="LISA1" active="1">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="TheOilVillageQ" />
-		<script>
-			if  IsQuestTaken("d_Village1_Quest") and not(IsQuestComplete("d_Village1_Quest") or IsQuestFailed("d_Village1_Quest")) then
-				CompleteQuest( "d_Village1_Quest" )
-
-				TActivate( "RolikBegin_LISA1" )
-
-				trigger:Deactivate() 
-			end   
-		</script>
-	</trigger>
-
-	<trigger Name="LISA2" active="1">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="TheContraQ" />
-		<script>
-			if  IsQuestTaken( "d_Village2_Quest" ) and not(IsQuestComplete("d_Village2_Quest") or IsQuestFailed("d_Village2_Quest")) then
-				CompleteQuest( "d_Village2_Quest" )
-
-				TActivate( "RolikBegin_LISA2" )
-
-				trigger:Deactivate() 
-			end   
-		</script>
-	</trigger>
-
-	<trigger Name="LISA3" active="1">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="TheFreedomQ" />
-		<script>
-			if  IsQuestTaken( "d_Village3_Quest" ) and not(IsQuestComplete("d_Village3_Quest") or IsQuestFailed("d_Village3_Quest")) then
-				TActivate ("RolikBegin_Lisa3")
-
-				CompleteQuest( "d_Village3_Quest" )
-
-				AddHistory( "r1_Three_Villages_00" );
-				AddFadingMsgId( "fm_history_got" );
-
-				trigger:Deactivate() 
-			end   
-		</script>
-	</trigger>
-
-
-
-
-
-	<trigger Name="METALFELIX" active="0">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="FelixSouthLoc" />
-		<script>
-			if IsQuestComplete("Buyer_Quest1") and IsQuestComplete("d_Lisa_Quest") then
-				TActivate( "RolikBegin_Felix1")
-
-				trigger:Deactivate() 
-			end
-		</script>
-	</trigger>
-
-	<trigger Name="METALFELIXDIE1" active="0">
-		<event eventid="GE_VEHICLE_WITHOUT_HEALTH" ObjName="FelixBanditCars_vehicle_0" />
-		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="FelixSouthLoc2" />
-		<script>
-			CinemaFiltersUse()
-
-			SaveAllToleranceStatus(RS_NEUTRAL)
-
-			local Plf = GetPlayerVehicle()
-			local PlfID = GetPlayerVehicleId()
-			local PlfCoor = Plf:GetPosition()
-			PlfCoor.y = PlfCoor.y + 25*0.74
-			PlfCoor.z = PlfCoor.z + 25*0.74
-
-			Plf:SetCustomControlEnabled( true )
-			Plf:SetCustomLinearVelocity( 0 )
-			Plf:SetThrottle( 0 )
-			Plf:SetCustomControlEnabled( false )
-
-			FlyAround( 1, 0, 35, 10, PlfCoor, PlfID, 1, 1 )
-			StartCinematic()
-
-			AddCinematicMessage( 1134, 1 )
-
-			TActivate( "METALFELIXDIE1ENDROLIK" )
-
-			trigger:Deactivate() 
-		</script>
-	</trigger>
-
-	<trigger Name="METALFELIXDIE1ENDROLIK" active="0">
-		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
-		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
-		<script>
-			RestoreAllToleranceStatus()
-
-			local FVehicle = GetEntityByName("FelixBanditCars_vehicle_0")
-			if FVehicle then FVehicle:Remove() end
-
-			local FVehicle = GetEntityByName("FelixBanditCarsBand_vehicle_0")
-			if FVehicle then FVehicle:Remove() end
-
-			local FVehicle = GetEntityByName("FelixBanditCarsBand_vehicle_1")
-			if FVehicle then FVehicle:Remove() end
-
-			AddHistory( "r1_First_Felix_Meet_00" )
-			AddFadingMsgId( "fm_history_got" )
-
-			SetCameraBehindPlayerVehicle()
-
-			trigger:Deactivate() 
-		</script>
-	</trigger>
-
-
-
-
-	<trigger Name="RETURN_TO_FATHER" active="0">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="TheGloohoeQ" />
-		<script>
-			FailQuestIfTaken( "WorkGiver_Quest1" )
-			FailQuestIfTaken( "d_PunishBandits_Quest" )
-
-			if  not(IsQuestComplete("d_Lisa_Quest")) and IsQuestComplete("Buyer_Quest1") then
-				local town = GetEntityByName ("TheGloohoe")
-				if town then
-					town:SetRuined(true)
-				end
-
- 				FailQuestIfTaken('d_Village1_Quest');
-				FailQuestIfTaken('d_Village2_Quest');
-				FailQuestIfTaken('d_Village3_Quest');
-
-				TActivate("RolikBegin_Father")
-
-				TActivate("LISAREMOVE2")
-
-				CompleteQuest( "TalkWithFather_Quest" )
-				TakeQuest("FindBen_Quest")
-
-				AddHistory( "r1_After_Gloohoe_To_Ben_01" )
-				AddHistory( "r1_After_Letter_00" )
-				AddFadingMsgId( "fm_history_got" )
-
-				AddQuestItem("quest_start_father_letter")
-				AddQuestItem("quest_disk_1")
-
-				TActivate("ZASADA_5")
-
-				trigger:Deactivate() 
-			end 
-
-			if  IsQuestComplete("d_Lisa_Quest") and IsQuestComplete("Buyer_Quest1") then
-				local town = GetEntityByName ("TheGloohoe")
-				if town then
-					town:SetRuined(true)
-				end
-
-				TActivate("RolikBegin_FatherDeath")
-
-				CompleteQuest( "TalkWithFather_Quest" )
-				TakeQuest( "d_SinFather_Quest" )
-
-				AddHistory( "r1_After_Gloohoe_To_Felix_02" )
-				AddFadingMsgId( "fm_history_got" )
-
-				TActivate("ZASADA_5")
-
-				trigger:Deactivate() 
-			end 
-		</script>
-	</trigger>
-
-
-
-
-
-	<trigger Name="METALFELIX2" active="0">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="FelixBaseLoc" />
-		<script>
-			TActivate( "RolikBegin_Felix2" )
-
-			trigger:Deactivate() 
-		</script>
-	</trigger>
-
-	<trigger Name="METALFELIXDIE2" active="0">
-		<event eventid="GE_OBJECT_DIE" ObjName="FelixBanditCars2" />
-		<script>
-			TActivate( "RolikBegin_Felix3" )
-
-			CompleteQuest("d_AttackFelixBase_Quest")
-
-			trigger:Deactivate() 
-		</script>
-	</trigger>
-
-	<trigger Name="METALFELIXDIE3" active="0">
-		<event eventid="GE_VEHICLE_WITHOUT_HEALTH" ObjName="FelixBanditCars3_vehicle_0" />
-		<script>
-			local FVehicle = GetEntityByName("FelixBanditCars3_vehicle_0")
-			if FVehicle then FVehicle:Remove() end
-
-			TActivate( "RolikBegin_Felix4" )
-
-			CompleteQuest( "d_KillFelix_Quest" )
-
-			AddHistory( "r1_Kill_Felix_00" );
-			AddFadingMsgId( "fm_history_got" );
-
-			trigger:Deactivate() 
-		</script>
-	</trigger>
-
-
-
-
-
-	<trigger Name="HOSPITAL" active="1">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Hospital_Loc" />
-		<script>
-			AddFadingMsgByStrIdFormatted( "fm_player_add_thing", "quest_medicine_box")
-
-			local rrr = GetEntityByName ("medicine_box")
-			if rrr then rrr:Remove() end
-
-			CompleteQuestIfTaken( "r1m1_Hospital_Quest" )
+--Ворота южного
+
+		CreateNewDummyObject( "big_gate01", "gate_thetown", -1, -1, CVector(1235.100, 311.700, 2969.336), Quaternion(0.0000, 0.7210, 0.0000, 0.6930) )
+		CreateNewSgNodeObject( "big_gate01", "gate_thetown2", -1, -1, CVector(1262.195, 300, 2995.386), Quaternion(-0.004, 0.019, 0.000, 1.000), 1)
+		getObj("gate_thetown"):SetNodeAction(AT_STAND2)
+
+--Заправки
+
+		local pr1 = random(2)
+		local pr2 = random(2)
+		local pr3 = random(2)
+
+		if pr1 ==  2 then
+			TActivate("UseFuelNil_InPetrolStation01")
+			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK01", -1, -1, CVector(2575.530, 360.200, 2266.788), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
+		else
+			TActivate ("NotWork_PetrolStation01")
+		end
+
+		if pr2 ==  2 then
+			TActivate("UseFuelNil_InPetrolStation02")
+			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK02", -1, -1, CVector(1317.154, 300.550, 1748.705), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
+		else
+			TActivate ("NotWork_PetrolStation02")
+		end
+
+		if pr3 ==  2 then
+			TActivate("UseFuelNil_InPetrolStation03")
+			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK03", -1, -1, CVector(916.784, 320.600, 884.400), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
+		else
+			TActivate ("NotWork_PetrolStation03")
+		end
+
+		if pr1 == 1 and pr2 == 1 and pr3 == 1 then
+			local tr_prs_r = random(3)
 	
-			AddQuestItem("quest_medicine_box")
+			if tr_prs_r == 1 then
+				CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK01", -1, -1, CVector(2575.530, 360.200, 2266.788), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
+				TActivate("UseFuelNil_InPetrolStation01")
+				TDeactivate ("NotWork_PetrolStation01")
+			elseif tr_prs_r == 2 then
+				CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK02", -1, -1, CVector(1317.154, 300.550, 1748.705), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
+				TActivate("UseFuelNil_InPetrolStation02")
+				TDeactivate ("NotWork_PetrolStation02")
+			elseif tr_prs_r == 3 then	
+				CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK03", -1, -1, CVector(916.784, 320.600, 884.400), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
+				TActivate("UseFuelNil_InPetrolStation03")
+				TDeactivate ("NotWork_PetrolStation03")
+			end
+		end
+	
+--Звуки
+		CreateNewDummyObject( "birbs",	"weather_sound01", -1, -1, CVector(3606, 380, 3506), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound02", -1, -1, CVector(3460, 376, 3619), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound03", -1, -1, CVector(3193, 371, 3516), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound04", -1, -1, CVector(2989, 347, 3413), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound05", -1, -1, CVector(3217, 348, 3131), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound06", -1, -1, CVector(3338, 359, 2926), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound07", -1, -1, CVector(3260, 353, 2532), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound08", -1, -1, CVector(2990, 334, 2489), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound09", -1, -1, CVector(2745, 370, 2406), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound10", -1, -1, CVector(2190, 343, 2339), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound11", -1, -1, CVector(1991, 312, 2543), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound12", -1, -1, CVector(1729, 294, 2973), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound13", -1, -1, CVector(1719, 303, 3333), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound14", -1, -1, CVector(2213, 365, 3626), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound15", -1, -1, CVector(1112, 309, 3576), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound16", -1, -1, CVector(956, 303, 3365), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound17", -1, -1, CVector(817, 308, 2991), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound18", -1, -1, CVector(1385, 303, 2497), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound19", -1, -1, CVector(1141, 299, 2421), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound20", -1, -1, CVector(1301, 311, 2153), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound21", -1, -1, CVector(1496, 308, 1912), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound22", -1, -1, CVector(1693, 307, 2115), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound23", -1, -1, CVector(2023, 324, 1686), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound24", -1, -1, CVector(2620, 320, 1774), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound25", -1, -1, CVector(2668, 321, 1979), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound26", -1, -1, CVector(452, 310, 1667), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound27", -1, -1, CVector(962, 324, 1135), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound28", -1, -1, CVector(416, 287, 359), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound29", -1, -1, CVector(1538, 301, 1068), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound30", -1, -1, CVector(2290, 297, 502), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound31", -1, -1, CVector(2319, 310, 896), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound32", -1, -1, CVector(2151, 329, 1276), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound33", -1, -1, CVector(3072, 349, 1448), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound34", -1, -1, CVector(2633, 321, 755), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound35", -1, -1, CVector(2692, 320, 934), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound36", -1, -1, CVector(2975, 318, 1104), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound37", -1, -1, CVector(3356, 320, 1127), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound38", -1, -1, CVector(3408, 325, 667), Quaternion(0, 0, 0, 1), 1 )
+		CreateNewDummyObject( "birbs",	"weather_sound39", -1, -1, CVector(3216, 340, 338), Quaternion(0, 0, 0, 1), 1 )
 
+		trigger:Deactivate()    
+		</script>
+	</trigger>
+
+<!-- Спавн игрока -->
+	<trigger Name="SpawnPlayer" active="1">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			local posr1 = random(10)
+			local posrr1={
+				CVector(1111.746, 303.447, 3529.309),
+				CVector(855.773, 303.874, 3299.838),
+				CVector(1682.261, 298.439, 3438.135),
+				CVector(1123.300, 291.430, 3159.539),
+				CVector(2098.874, 293.180, 3247.128),
+				CVector(1752.767, 293.082, 2798.231),
+				CVector(2331.947, 337.677, 2469.048),
+				CVector(1625.450, 318.769, 2383.752),
+				CVector(3139.961, 356.520, 3144.354),
+				CVector(3010.206, 349.651, 3458.037)}
+
+			local posr2 = random(10)
+			local posrr2={
+				CVector(2615.098, 320.599, 2020.458),
+				CVector(2559.464, 323.902, 1605.784),
+				CVector(1598.964, 306.399, 1815.549),
+				CVector(474.234, 314.937, 1476.468),
+				CVector(837.313, 281.698, 631.074),
+				CVector(1803.762, 303.403, 489.376),
+				CVector(2393.522, 303.432, 976.278),
+				CVector(2634.281, 320.436, 907.682),
+				CVector(3487.845, 324.339, 748.105),
+				CVector(3225.707, 320.430, 1334.481)}
+
+			local spawns = random(2)
+
+			if spawns == 1 then
+				SetVar("PosPlayer1",posr1)
+				println(posr1)
+				SetVar("SpawnPlayer",1)
+				TActivate("Exits_RidzinBaseTroiskoe")
+				TActivate("SpawnsScavs2")
+				TakeQuest ("ExitLocation2")
+			else
+				SetVar("PosPlayer2",posr2)
+				println(posr2)
+				SetVar("SpawnPlayer",2)
+				TActivate("Exits_FaterTownGloohoe")
+				TActivate("SpawnsScavs1")
+				TakeQuest ("ExitLocation1")
+			end
+
+			local vehPlayer = GetPlayerVehicle()
+			if vehPlayer then
+				if spawns == 1 then
+					vehPlayer:SetGamePositionOnGround(posrr1[posr1])
+				else
+					vehPlayer:SetGamePositionOnGround(posrr2[posr2])
+				end
+			end
+
+			CreateNewBreakableObject("lamppost2", "fonar", 1002, CVector(3055.078, 349.812, 1446.906), Quaternion(0.0000, -0.7133, 0.0000, 0.7009),0)
+		
 			trigger:Deactivate() 
 		</script>
 	</trigger>
 
-
-
-
-
-	<trigger Name="BOTANIK" active="0">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BotanicHouse" />
+<!-- Активация выходов  Фатер Южный Глухое(Рандом) -->
+	<trigger Name="Exits_FaterTownGloohoe" active="0">
+		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-			CompleteQuestIfTaken( "r1m1_FindBotanik_Quest" )
 
-			trigger:Deactivate() 
+			TActivate ("RoadToFater")
+			TActivate ("ZaTheTown")
+
+			local ExitZaTheGhoohoeRandom = random (2)
+			if ExitZaTheGhoohoeRandom == 1 then
+				TActivate ("ZaTheGloohoe")
+				TActivate ("DestroyGloohoe")
+				SetVar("ExitToR4M1",1)
+			end
+
+
+			local ExitZaTheTroiskoeRandom = random (2)
+			if ExitZaTheTroiskoeRandom == 1 then
+				CreateNewSgNodeObject("ET_PS_LENS_D4", "LightZaTheTroiskoeExit1", -1, -1, CVector(3055.050, 356.400, 1447.950), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.3)
+				CreateNewSgNodeObject("ET_PS_LENS_D4", "LightZaTheTroiskoeExit2", -1, -1, CVector(3055.150, 356.400, 1445.900), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.3)
+				CreateNewSgNodeObject("ET_LS_LIGHT_TEST", "LightZaTheTroiskoeExit3", -1, -1, CVector(3056.365, 358.100, 1446.900), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.1)
+				TActivate ("FonarZaTheTroiskoeExit_Broken")
+				SetVar("ExitZaTheTroiskoe",1)
+			end
+
+			trigger:Deactivate()
 		</script>
 	</trigger>
 
-
-
-
-
-	<trigger Name="LISAACTIVE" active="0">
-		<event timeout="0" eventid="GE_TIME_PERIOD" />
+<!-- Активация выходов  Риджин База Троицкое(Рандом) -->
+	<trigger Name="Exits_RidzinBaseTroiskoe" active="0">
+		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-			SetTolerance( 1100, 1042, RS_ALLY )
-			SetTolerance( 1002, 1042, RS_ENEMY )
-			SetTolerance( 1013, 1042, RS_ENEMY )
 
-			local newControllerId = CreateNewObject {
-				prototypeName	= "someNPCMotionController",
-				objName		= "LisaCont"
+			local ExitRoadToRidzinCarRandom = random (2)
+			if ExitRoadToRidzinCarRandom == 1 then
+				TActivate ("RoadToRidzin")
+				SetVar("ExitRoadToRidzin",1)
+			end
+
+			TActivate ("BaseFelix")
+
+			local ExitZaTheTroiskoeRandom = random (2)
+			if ExitZaTheTroiskoeRandom == 1 then
+				TActivate ("ZaTheTroiskoe")
+				CreateNewSgNodeObject("ET_PS_LENS_D4", "LightZaTheTroiskoeExit1", -1, -1, CVector(3055.050, 356.400, 1447.950), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.3)
+				CreateNewSgNodeObject("ET_PS_LENS_D4", "LightZaTheTroiskoeExit2", -1, -1, CVector(3055.150, 356.400, 1445.900), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.3)
+				CreateNewSgNodeObject("ET_LS_LIGHT_TEST", "LightZaTheTroiskoeExit3", -1, -1, CVector(3056.365, 358.100, 1446.900), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.1)
+				TActivate ("FonarZaTheTroiskoeExit_Broken")
+				SetVar("ExitZaTheTroiskoe",1)
+			end
+
+
+			local ExitZaTheGhoohoeRandom = random (2)
+			if ExitZaTheGhoohoeRandom == 1 then
+				TActivate ("DestroyGloohoe")
+				SetVar("ExitToR4M1",1)
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="FonarZaTheTroiskoeExit_Broken" active="0">
+		<event eventid="GE_OBJECT_DIE" ObjName="fonar" />
+		<script>
+
+			for i=1,3 do
+				local light = GetEntityByName("LightZaTheTroiskoeExit"..i)
+				if light then light:Remove() end
+			end
+	
+			trigger:Deactivate()
+ 		</script>
+	</trigger>
+
+<!-- Зоны выхода -->
+	<trigger Name="RoadToFater" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ToR1M3_Exit" />
+		<script>
+			SetVar("ExitTimer",6)
+			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitRoadToFater")
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+		</script>
+	</trigger>
+
+	<trigger Name="ZaTheTown" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ZaTheTown_Exit" />
+		<script>
+			SetVar("ExitTimer",6)
+			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitZaTheTown")
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+		</script>
+	</trigger>
+
+	<trigger Name="ZaTheGloohoe" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ToR4M1_Exit" />
+		<script>
+			SetVar("ExitTimer",6)
+			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitZaTheGloohoe")
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+ 		</script>
+	</trigger>
+
+	<trigger Name="RoadToRidzin" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ToR1M2_Exit" />
+		<script>
+			SetVar("ExitTimer",6)
+			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitRoadToRidzin")
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+ 		</script>
+	</trigger>
+
+	<trigger Name="BaseFelix" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BaseFelix_Exit" />
+		<script>
+			SetVar("ExitTimer",6)
+			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitBaseFelix")
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+ 		</script>
+	</trigger>
+
+	<trigger Name="ZaTheTroiskoe" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ZaTheTroiskoe_Exit" />
+		<script>
+			SetVar("ExitTimer",6)
+			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitZaTheTroiskoe")
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+ 		</script>
+	</trigger>
+
+<!-- Игрок покидает зону выхода -->
+	<trigger Name="LeaveZoneExit" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ToR1M3_Exit" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ZaTheTown_Exit" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ToR4M1_Exit" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ToR1M2_Exit" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="BaseFelix_Exit" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ZaTheTroiskoe_Exit" />
+		<script>
+			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_leaves_location")
+			TDeactivate("ExitTimer")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Таймер выхода -->
+	<trigger Name="ExitTimer" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			local timer = GetVar("ExitTimer").AsInt - 1
+			SetVar("ExitTimer", timer)
+	
+			if timer == 0 then
+				TActivate("ExitToMap")
+				SetVar("ExitTimer",6)
+				trigger:Deactivate()
+			else
+				AddFadingMsgByStrIdFormatted("fm_player_exit_location", timer)
+			end
+
+		</script>
+	</trigger>
+
+<!-- Выход с локации -->
+	<trigger Name="ExitToMap" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Спавны диких -->
+	<trigger Name="SpawnScavsInLocation01" active="0">
+		<event 	timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>										
+
+			local enemylist = {"Sml1CarScav", "Sml2CarScav", "Sml3CarScav", "Sml4CarScav", "Scout1CarScav", "Scout2CarScav", "Scout3CarScav", "Fighter1CarScav", "Fighter2CarScav", "Hunter2CarScav"}
+			local scav = getn(enemylist)
+	
+			local smallgunlist = {"hornet01","specter01","storm01","pkt01","kord01"}
+			local smallgunr = getn(smallgunlist)
+
+			local biggunlist = {"vector01","vulcan01","rapier01"}
+			local biggunr = getn(biggunlist)
+
+			local belong_list = {1082,1083,1084}
+			local belong_rand = getn(belong_list)
+
+			local pos={
+				CVector(1564.401, 283.438, 2912.205),
+				CVector(1586.684, 283.435, 2985.581),
+				CVector(1687.731, 283.448, 2924.311),
+				CVector(1688.141, 283.455, 2841.496),
+				CVector(1548.015, 283.482, 2938.041),
+				CVector(1493.763, 283.514, 3017.073),
+				CVector(1520.352, 283.506, 2875.073),
+				CVector(1642.672, 283.471, 2946.938),
+				CVector(1679.043, 283.529, 2809.833),
+				CVector(1602.316, 283.474, 2905.048),
+				CVector(1488.665, 283.470, 2924.514)
 			}
+			local pos_rand = getn(pos)
 
-			local newController = GetEntityByID(newControllerId)
-			local FVehicle = GetEntityByName("CARLISA_vehicle_0")
-			if FVehicle then
-				newController:setVehicleUnderControl(FVehicle)
+			local rotarr={
+				Quaternion(-0.029, 0.679, -0.021, 0.734),
+				Quaternion(0.001, 0.626, 0.002, 0.780),
+				Quaternion(-0.001, 0.558, -0.001, 0.830),
+				Quaternion(-0.029, -0.025, 0.005, 0.999),
+				Quaternion(-0.001, -0.346, 0.001, 0.938),
+				Quaternion(-0.001, -0.724, -0.000, 0.690),
+				Quaternion(-0.025, -0.992, -0.005, 0.125),
+				Quaternion(0.002, -0.914, -0.001, 0.405),
+				Quaternion(-0.003, -1.000, -0.006, -0.015)}
+			local Z = getn(rotarr)
+
+			for j=1,4 do
+				TeamCreate("Scav"..j.."_loc1", belong_list[random(belong_rand)], pos[random(pos_rand)], {enemylist[random(scav)]}, nil, 1)
 			end
 
-			trigger:Deactivate() 
-		</script>
-	</trigger>
+			TActivate("ScavInLocation01_Die")
 
-	<trigger Name="LISAREMOVE" active="0">
-		<event timeout="0" eventid="GE_TIME_PERIOD" />
-		<script>
-			SetTolerance( 1100, 1042, RS_ALLY )
+			local i=1
+			while getObj("Scav"..i.."_loc1_vehicle_0")~=nil do
 
-			local FVehicle = GetEntityByName("CARLISA_vehicle_0")
-			if FVehicle then
-				FVehicle:SetExternalPathByName("lisarunout_path")
+				local sv = GetEntityByName ("Scav"..i.."_loc1_vehicle_0")
+				if sv then
+					sv:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
+					sv:SetRotation(rotarr[random(Z)])
+					local biggunspawn = random(100)
+					if scav >= 9 and biggunspawn >= 70 then
+						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+					end
+				end
+				i = i + 1
 			end
 
-			TActivate( "LISAREMOVE3" )
-
-			trigger:Deactivate() 
+			trigger:Deactivate()
 		</script>
 	</trigger>
 
-	<trigger Name="LISAREMOVE2" active="0">
-		<event timeout="0" eventid="GE_TIME_PERIOD" />
+	<trigger Name="ScavInLocation01_Die" active="0">
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav1_loc1" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav2_loc1" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav3_loc1" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav4_loc1" />
 		<script>
-			SetTolerance( 1100, 1042, RS_ALLY )
-
-			local FVehicle = GetEntityByName("CARLISA_vehicle_0")
-			if FVehicle then
-				FVehicle:Remove()
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			if 4>count then
+			return
 			end
 
-			local vehLisa = GetEntityByName("vehLisa_0")
-			if vehLisa then
-				vehLisa:Remove()
+			TActivate("SpawnScavsInLocation01_Restart")
+			
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SpawnScavsInLocation01_Restart" active="0">
+		<event 	timeout="150" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("SpawnScavsInLocation01")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SpawnScavsInLocation02" active="0">
+		<event 	timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>										
+
+			local enemylist = {"Sml1CarScav", "Sml2CarScav", "Sml3CarScav", "Sml4CarScav", "Scout1CarScav", "Scout2CarScav", "Scout3CarScav", "Fighter1CarScav", "Fighter2CarScav", "Hunter2CarScav"}
+			local scav = getn(enemylist)
+	
+			local smallgunlist = {"hornet01","specter01","storm01","pkt01","kord01"}
+			local smallgunr = getn(smallgunlist)
+
+			local biggunlist = {"vector01","vulcan01","rapier01"}
+			local biggunr = getn(biggunlist)
+
+			local belong_list = {1082,1083,1084}
+			local belong_rand = getn(belong_list)
+
+			local pos={
+				CVector(2263.013, 303.519, 3062.209),
+				CVector(2165.329, 309.395, 3035.917),
+				CVector(2323.100, 320.984, 2932.565),
+				CVector(2372.090, 320.599, 3051.211),
+				CVector(2239.084, 303.443, 3173.617),
+				CVector(2250.621, 322.002, 2838.286),
+				CVector(2371.595, 319.324, 2885.899),
+				CVector(2352.693, 320.054, 2989.255),
+				CVector(2284.689, 303.459, 3156.785),
+				CVector(2148.864, 312.817, 3008.083)
+			}
+			local pos_rand = getn(pos)
+
+			local rotarr={
+				Quaternion(-0.029, 0.679, -0.021, 0.734),
+				Quaternion(0.001, 0.626, 0.002, 0.780),
+				Quaternion(-0.001, 0.558, -0.001, 0.830),
+				Quaternion(-0.029, -0.025, 0.005, 0.999),
+				Quaternion(-0.001, -0.346, 0.001, 0.938),
+				Quaternion(-0.001, -0.724, -0.000, 0.690),
+				Quaternion(-0.025, -0.992, -0.005, 0.125),
+				Quaternion(0.002, -0.914, -0.001, 0.405),
+				Quaternion(-0.003, -1.000, -0.006, -0.015)}
+			local Z = getn(rotarr)
+
+			for j=1,5 do
+				TeamCreate("Scav"..j.."_loc2", belong_list[random(belong_rand)], pos[random(pos_rand)], {enemylist[random(scav)]}, nil, 1)
 			end
 
-			trigger:Deactivate() 
-		</script>
-	</trigger>
+			TActivate("ScavInLocation02_Die")
 
-	<trigger Name="LISAREMOVE3" active="0">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="loc_LisaRunOut" />
-		<script>
-			SetTolerance( 1100, 1042, RS_ALLY )
+			local i=1
+			while getObj("Scav"..i.."_loc2_vehicle_0")~=nil do
 
-			local FVehicle = GetEntityByName("CARLISA_vehicle_0")
-			if FVehicle then
-				FVehicle:Remove()
+				local sv = GetEntityByName ("Scav"..i.."_loc2_vehicle_0")
+				if sv then
+					sv:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
+					sv:SetRotation(rotarr[random(Z)])
+					local biggunspawn = random(100)
+					if scav >= 9 and biggunspawn >= 70 then
+						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+					end
+				end
+				i = i + 1
 			end
 
-			trigger:Deactivate() 
+			trigger:Deactivate()
 		</script>
 	</trigger>
 
-
-
-
-
-	<trigger Name="ZASADA_2" active="1">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="VeryBigFun1_Loc" />
+	<trigger Name="ScavInLocation02_Die" active="0">
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav1_loc2" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav2_loc2" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav3_loc2" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav4_loc2" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav5_loc2" />
 		<script>
-			local terr = TeamCreate("SecondB",1002,CVector(2099,339,2343),{"Sml101","Sml101"},CVector(2429,334,2354), 1)
-			terr:SetProperty ("TeamTacticPrototype", "TeamTacticTerroristsR1M1")
-			terr:_AdjustBehaviour ()
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			if 5>count then
+			return
+			end
 
-			trigger:Deactivate()    
+			TActivate("SpawnScavsInLocation02_Restart")
+			
+			trigger:Deactivate()
 		</script>
 	</trigger>
 
-	<trigger Name="ZASADA_3" active="1">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="VeryBigFun2_Loc" />
+	<trigger Name="SpawnScavsInLocation02_Restart" active="0">
+		<event 	timeout="150" eventid="GE_TIME_PERIOD" />
 		<script>
-			local terr = TeamCreate("ThirdB",1002,CVector(1136,289,2257),{"r1m1_scout03"},CVector(1260,287,2650), 1)
-			terr:SetProperty ("TeamTacticPrototype", "TeamTacticTerroristsR1M1")
-			terr:_AdjustBehaviour ()
-
-			trigger:Deactivate()    
+			TActivate("SpawnScavsInLocation02")
+			trigger:Deactivate()
 		</script>
 	</trigger>
 
-	<trigger Name="ZASADA_4" active="0">
-		<event timeout="0" eventid="GE_TIME_PERIOD" />
-		<script>
-			local terr = TeamCreate("FourthB",1005,CVector(2022.755, 315, 2426.375),{"Sml101","Sml201"}, nil, 1)
-			terr:SetProperty ("TeamTacticPrototype", "TeamTacticTerroristsR1M1")
-			terr:_AdjustBehaviour ()
+	<trigger Name="SpawnScavsInLocation03" active="0">
+		<event 	timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>										
 
-			trigger:Deactivate() 
+			local enemylist = {"Sml1CarScav", "Sml2CarScav", "Sml3CarScav", "Sml4CarScav", "Scout1CarScav", "Scout2CarScav", "Scout3CarScav", "Fighter1CarScav", "Fighter2CarScav", "Hunter2CarScav"}
+			local scav = getn(enemylist)
+	
+			local smallgunlist = {"hornet01","specter01","storm01","pkt01","kord01"}
+			local smallgunr = getn(smallgunlist)
+
+			local biggunlist = {"vector01","vulcan01","rapier01"}
+			local biggunr = getn(biggunlist)
+
+			local belong_list = {1082,1083,1084}
+			local belong_rand = getn(belong_list)
+
+			local pos={
+				CVector(1665.685, 303.437, 2049.838),
+				CVector(1581.001, 303.477, 2006.550),
+				CVector(1667.219, 303.454, 2142.783),
+				CVector(1670.849, 307.441, 1923.351),
+				CVector(1541.855, 307.388, 1866.618),
+				CVector(1545.604, 309.101, 2083.526),
+				CVector(1672.272, 305.451, 1978.626),
+				CVector(1635.304, 306.184, 1855.479),
+				CVector(1632.388, 307.477, 1931.234),
+				CVector(1566.056, 305.901, 1806.138),
+				CVector(1528.131, 307.570, 1878.879),
+				CVector(1544.251, 304.637, 2027.585),
+				CVector(1685.298, 303.492, 2266.394)
+			}
+			local pos_rand = getn(pos)
+
+			local rotarr={
+				Quaternion(-0.029, 0.679, -0.021, 0.734),
+				Quaternion(0.001, 0.626, 0.002, 0.780),
+				Quaternion(-0.001, 0.558, -0.001, 0.830),
+				Quaternion(-0.029, -0.025, 0.005, 0.999),
+				Quaternion(-0.001, -0.346, 0.001, 0.938),
+				Quaternion(-0.001, -0.724, -0.000, 0.690),
+				Quaternion(-0.025, -0.992, -0.005, 0.125),
+				Quaternion(0.002, -0.914, -0.001, 0.405),
+				Quaternion(-0.003, -1.000, -0.006, -0.015)}
+			local Z = getn(rotarr)
+
+			for j=1,6 do
+				TeamCreate("Scav"..j.."_loc3", belong_list[random(belong_rand)], pos[random(pos_rand)], {enemylist[random(scav)]}, nil, 1)
+			end
+
+			TActivate("ScavInLocation03_Die")
+
+			local i=1
+			while getObj("Scav"..i.."_loc3_vehicle_0")~=nil do
+
+				local sv = GetEntityByName ("Scav"..i.."_loc3_vehicle_0")
+				if sv then
+					sv:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
+					sv:SetRotation(rotarr[random(Z)])
+					local biggunspawn = random(100)
+					if scav >= 9 and biggunspawn >= 70 then
+						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+					end
+				end
+				i = i + 1
+			end
+
+			trigger:Deactivate()
 		</script>
 	</trigger>
 
-	<trigger Name="ZASADA_5" active="0">
-		<event timeout="0" eventid="GE_TIME_PERIOD" />
+	<trigger Name="ScavInLocation03_Die" active="0">
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav1_loc3" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav2_loc3" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav3_loc3" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav4_loc3" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav5_loc3" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav6_loc3" />
 		<script>
-			local terr = TeamCreate("FivthB", 1005, CVector(3116.254, 335.064, 2483.916), {"Sml201","Sml201"}, nil, 1)
-			terr:SetProperty ("TeamTacticPrototype", "TeamTacticTerroristsR1M1")
-			terr:_AdjustBehaviour ()
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			if 6>count then
+			return
+			end
 
-			trigger:Deactivate() 
+			TActivate("SpawnScavsInLocation03_Restart")
+			
+			trigger:Deactivate()
 		</script>
 	</trigger>
 
-
-
-
-
-	<trigger Name="triggerExitToMap12" active="1">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ToR1M2" />
+	<trigger Name="SpawnScavsInLocation03_Restart" active="0">
+		<event 	timeout="150" eventid="GE_TIME_PERIOD" />
 		<script>
-			local Plf = GetPlayerVehicle()
-			Plf:SetThrottle( 0 )
-			Plf:SetCustomLinearVelocity( 0 )
+			TActivate("SpawnScavsInLocation03")
+			trigger:Deactivate()
+		</script>
+	</trigger>
 
-			local PlfID = GetPlayerVehicleId()
-			local PlfCoor = Plf:GetPosition()
-			PlfCoor.y = PlfCoor.y + 25*0.74
-			PlfCoor.z = PlfCoor.z + 25*0.74
+	<trigger Name="SpawnScavsInLocation04" active="0">
+		<event 	timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>										
 
-			if IsQuestTaken("d_FindBenInEast_Quest") or IsQuestTaken("d_FindLisaInMidragd_Quest") then 
-				local b = SpawnMessageBox( "8801" )
-				if b == 1 then
-					PassToMap("r1m2", "FromR1M1", -1 )
+			local enemylist = {"Sml1CarScav", "Sml2CarScav", "Sml3CarScav", "Sml4CarScav", "Scout1CarScav", "Scout2CarScav", "Scout3CarScav", "Fighter1CarScav", "Fighter2CarScav", "Hunter2CarScav"}
+			local scav = getn(enemylist)
+	
+			local smallgunlist = {"hornet01","specter01","storm01","pkt01","kord01"}
+			local smallgunr = getn(smallgunlist)
 
-					local hs = GetEntityByName ("FIRE01")
-					if hs then hs:Remove() end
-					local hs = GetEntityByName ("FIRE02")
-					if hs then hs:Remove() end
-					local hs = GetEntityByName ("FIRE03")
-					if hs then hs:Remove() end
-					local hs = GetEntityByName ("FIRE04")
-					if hs then hs:Remove() end
-					local hs = GetEntityByName ("FIRE05")	
-					if hs then hs:Remove() end
-					local hs = GetEntityByName ("FIRE06")
-					if hs then hs:Remove() end
+			local biggunlist = {"vector01","vulcan01","rapier01"}
+			local biggunr = getn(biggunlist)
+
+			local belong_list = {1082,1083,1084}
+			local belong_rand = getn(belong_list)
+
+			local pos={
+				CVector(2702.370, 322.164, 1611.721),
+				CVector(2705.744, 322.169, 1688.076),
+				CVector(2658.612, 322.083, 1853.575),
+				CVector(2573.281, 320.514, 1938.365),
+				CVector(2739.020, 313.891, 1789.412),
+				CVector(2705.003, 322.220, 1614.865),
+				CVector(2758.050, 312.949, 1810.690),
+				CVector(2736.279, 320.550, 1929.733),
+				CVector(2674.795, 322.137, 1860.188),
+				CVector(2516.913, 320.610, 2000.786),
+				CVector(2530.969, 322.766, 1794.229)
+			}
+			local pos_rand = getn(pos)
+
+			local rotarr={
+				Quaternion(-0.029, 0.679, -0.021, 0.734),
+				Quaternion(0.001, 0.626, 0.002, 0.780),
+				Quaternion(-0.001, 0.558, -0.001, 0.830),
+				Quaternion(-0.029, -0.025, 0.005, 0.999),
+				Quaternion(-0.001, -0.346, 0.001, 0.938),
+				Quaternion(-0.001, -0.724, -0.000, 0.690),
+				Quaternion(-0.025, -0.992, -0.005, 0.125),
+				Quaternion(0.002, -0.914, -0.001, 0.405),
+				Quaternion(-0.003, -1.000, -0.006, -0.015)}
+			local Z = getn(rotarr)
+
+			for j=1,4 do
+				TeamCreate("Scav"..j.."_loc4", belong_list[random(belong_rand)], pos[random(pos_rand)], {enemylist[random(scav)]}, nil, 1)
+			end
+
+			TActivate("ScavInLocation04_Die")
+
+			local i=1
+			while getObj("Scav"..i.."_loc4_vehicle_0")~=nil do
+
+				local sv = GetEntityByName ("Scav"..i.."_loc4_vehicle_0")
+				if sv then
+					sv:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
+					sv:SetRotation(rotarr[random(Z)])
+					local biggunspawn = random(100)
+					if scav >= 9 and biggunspawn >= 70 then
+						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+					end
+				end
+				i = i + 1
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ScavInLocation04_Die" active="0">
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav1_loc4" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav2_loc4" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav3_loc4" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav4_loc4" />
+		<script>
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			if 4>count then
+			return
+			end
+
+			TActivate("SpawnScavsInLocation04_Restart")
+			
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SpawnScavsInLocation04_Restart" active="0">
+		<event 	timeout="150" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("SpawnScavsInLocation04")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SpawnScavsInLocation05" active="0">
+		<event 	timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>										
+
+			local enemylist = {"Sml1CarScav", "Sml2CarScav", "Sml3CarScav", "Sml4CarScav", "Scout1CarScav", "Scout2CarScav", "Scout3CarScav", "Fighter1CarScav", "Fighter2CarScav", "Hunter2CarScav"}
+			local scav = getn(enemylist)
+	
+			local smallgunlist = {"hornet01","specter01","storm01","pkt01","kord01"}
+			local smallgunr = getn(smallgunlist)
+
+			local biggunlist = {"vector01","vulcan01","rapier01"}
+			local biggunr = getn(biggunlist)
+
+			local belong_list = {1082,1083,1084}
+			local belong_rand = getn(belong_list)
+
+			local pos={
+				CVector(420.572, 303.920, 1880.381),
+				CVector(424.110, 306.695, 1811.331),
+				CVector(532.343, 309.037, 1932.745),
+				CVector(556.014, 308.793, 1839.104),
+				CVector(419.571, 311.368, 1752.282),
+				CVector(442.522, 303.481, 1903.166),
+				CVector(492.440, 304.556, 1837.240),
+				CVector(590.035, 308.558, 1703.699),
+				CVector(424.326, 311.632, 1651.122),
+				CVector(398.219, 311.386, 1705.645),
+				CVector(402.336, 303.822, 1896.136)
+			}
+			local pos_rand = getn(pos)
+
+			local rotarr={
+				Quaternion(-0.029, 0.679, -0.021, 0.734),
+				Quaternion(0.001, 0.626, 0.002, 0.780),
+				Quaternion(-0.001, 0.558, -0.001, 0.830),
+				Quaternion(-0.029, -0.025, 0.005, 0.999),
+				Quaternion(-0.001, -0.346, 0.001, 0.938),
+				Quaternion(-0.001, -0.724, -0.000, 0.690),
+				Quaternion(-0.025, -0.992, -0.005, 0.125),
+				Quaternion(0.002, -0.914, -0.001, 0.405),
+				Quaternion(-0.003, -1.000, -0.006, -0.015)}
+			local Z = getn(rotarr)
+
+			for j=1,6 do
+				TeamCreate("Scav"..j.."_loc5", belong_list[random(belong_rand)], pos[random(pos_rand)], {enemylist[random(scav)]}, nil, 1)
+			end
+
+			TActivate("ScavInLocation05_Die")
+
+			local i=1
+			while getObj("Scav"..i.."_loc5_vehicle_0")~=nil do
+
+				local sv = GetEntityByName ("Scav"..i.."_loc5_vehicle_0")
+				if sv then
+					sv:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
+					sv:SetRotation(rotarr[random(Z)])
+					local biggunspawn = random(100)
+					if scav >= 9 and biggunspawn >= 70 then
+						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+					end
+				end
+				i = i + 1
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ScavInLocation05_Die" active="0">
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav1_loc5" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav2_loc5" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav3_loc5" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav4_loc5" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav5_loc5" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav6_loc5" />
+		<script>
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			if 6>count then
+			return
+			end
+
+			TActivate("SpawnScavsInLocation05_Restart")
+			
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SpawnScavsInLocation05_Restart" active="0">
+		<event 	timeout="150" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("SpawnScavsInLocation05")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SpawnScavsInLocation06" active="0">
+		<event 	timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>										
+
+			local enemylist = {"Sml1CarScav", "Sml2CarScav", "Sml3CarScav", "Sml4CarScav", "Scout1CarScav", "Scout2CarScav", "Scout3CarScav", "Fighter1CarScav", "Fighter2CarScav", "Hunter2CarScav"}
+			local scav = getn(enemylist)
+	
+			local smallgunlist = {"hornet01","specter01","storm01","pkt01","kord01"}
+			local smallgunr = getn(smallgunlist)
+
+			local biggunlist = {"vector01","vulcan01","rapier01"}
+			local biggunr = getn(biggunlist)
+
+			local belong_list = {1082,1083,1084}
+			local belong_rand = getn(belong_list)
+
+			local pos={
+				CVector(1829.370, 303.434, 474.386),
+				CVector(1813.826, 302.424, 546.246), 
+				CVector(1901.981, 303.332, 444.155), 
+				CVector(1952.167, 296.927, 493.219),
+				CVector(1941.919, 296.727, 546.866),
+				CVector(2005.161, 296.727, 537.432), 
+				CVector(2073.147, 296.731, 493.436),
+				CVector(2038.101, 303.433, 403.550), 
+				CVector(1808.055, 298.325, 637.908),
+				CVector(2113.958, 296.943, 476.297),
+				CVector(2082.331, 296.853, 565.255),
+				CVector(2211.945, 296.852, 572.414),
+				CVector(2048.997, 297.206, 465.449),
+				CVector(1969.139, 296.415, 544.258),
+				CVector(1789.647, 302.499, 543.845),
+				CVector(1876.298, 306.565, 415.014),
+				CVector(1981.674, 304.564, 372.197),
+				CVector(1982.356, 297.297, 481.381),
+				CVector(1968.408, 296.720, 562.346),
+				CVector(2031.029, 297.024, 564.359),
+				CVector(2174.980, 296.570, 490.284)
+			}
+			local pos_rand = getn(pos)
+
+			local rotarr={
+				Quaternion(-0.029, 0.679, -0.021, 0.734),
+				Quaternion(0.001, 0.626, 0.002, 0.780),
+				Quaternion(-0.001, 0.558, -0.001, 0.830),
+				Quaternion(-0.029, -0.025, 0.005, 0.999),
+				Quaternion(-0.001, -0.346, 0.001, 0.938),
+				Quaternion(-0.001, -0.724, -0.000, 0.690),
+				Quaternion(-0.025, -0.992, -0.005, 0.125),
+				Quaternion(0.002, -0.914, -0.001, 0.405),
+				Quaternion(-0.003, -1.000, -0.006, -0.015)}
+			local Z = getn(rotarr)
+
+			for j=1,6 do
+				TeamCreate("Scav"..j.."_loc6", belong_list[random(belong_rand)], pos[random(pos_rand)], {enemylist[random(scav)]}, nil, 1)
+			end
+
+			TActivate("ScavInLocation06_Die")
+
+			local i=1
+			while getObj("Scav"..i.."_loc6_vehicle_0")~=nil do
+
+				local sv = GetEntityByName ("Scav"..i.."_loc6_vehicle_0")
+				if sv then
+					sv:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
+					sv:SetRotation(rotarr[random(Z)])
+					local biggunspawn = random(100)
+					if scav >= 9 and biggunspawn >= 70 then
+						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+					end
+				end
+				i = i + 1
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ScavInLocation06_Die" active="0">
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav1_loc6" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav2_loc6" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav3_loc6" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav4_loc6" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav5_loc6" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav6_loc6" />
+		<script>
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			if 6>count then
+			return
+			end
+
+			TActivate("SpawnScavsInLocation06_Restart")
+			
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SpawnScavsInLocation06_Restart" active="0">
+		<event 	timeout="150" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("SpawnScavsInLocation06")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SpawnScavsInLocation07" active="0">
+		<event 	timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>										
+
+			local enemylist = {"Sml1CarScav", "Sml2CarScav", "Sml3CarScav", "Sml4CarScav", "Scout1CarScav", "Scout2CarScav", "Scout3CarScav", "Fighter1CarScav", "Fighter2CarScav", "Hunter2CarScav"}
+			local scav = getn(enemylist)
+
+			local smallgunlist = {"hornet01","specter01","storm01","pkt01","kord01"}
+			local smallgunr = getn(smallgunlist)
+
+			local biggunlist = {"vector01","vulcan01","rapier01"}
+			local biggunr = getn(biggunlist)
+
+			local belong_list = {1082,1083,1084}
+			local belong_rand = getn(belong_list)
+
+			local pos={
+				CVector(2207.095, 303.386, 920.830),
+				CVector(2148.109, 309.500, 974.739),
+				CVector(2073.713, 309.315, 981.323),
+				CVector(2064.959, 302.426, 921.658),
+				CVector(2139.876, 302.436, 895.461),
+				CVector(2245.347, 298.226, 842.160),
+				CVector(2225.915, 303.195, 932.199),
+				CVector(2080.937, 301.558, 888.110),
+				CVector(2016.390, 301.505, 920.987),
+				CVector(2014.245, 301.599, 852.447),
+				CVector(2088.082, 302.596, 806.707),
+				CVector(2175.297, 303.288, 936.533),
+				CVector(2235.996, 301.455, 860.743),
+				CVector(2207.973, 298.188, 808.572),
+				CVector(2271.777, 303.377, 902.171),
+				CVector(2258.209, 302.185, 1014.408)
+			}
+			local pos_rand = getn(pos)
+
+			local rotarr={
+				Quaternion(-0.029, 0.679, -0.021, 0.734),
+				Quaternion(0.001, 0.626, 0.002, 0.780),
+				Quaternion(-0.001, 0.558, -0.001, 0.830),
+				Quaternion(-0.029, -0.025, 0.005, 0.999),
+				Quaternion(-0.001, -0.346, 0.001, 0.938),
+				Quaternion(-0.001, -0.724, -0.000, 0.690),
+				Quaternion(-0.025, -0.992, -0.005, 0.125),
+				Quaternion(0.002, -0.914, -0.001, 0.405),
+				Quaternion(-0.003, -1.000, -0.006, -0.015)}
+			local Z = getn(rotarr)
+
+			for j=1,7 do
+				TeamCreate("Scav"..j.."_loc7", belong_list[random(belong_rand)], pos[random(pos_rand)], {enemylist[random(scav)]}, nil, 1)
+			end
+
+			TActivate("ScavInLocation07_Die")
+
+			local i=1
+			while getObj("Scav"..i.."_loc7_vehicle_0")~=nil do
+
+				local sv = GetEntityByName ("Scav"..i.."_loc7_vehicle_0")
+				if sv then
+					sv:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
+					sv:SetRotation(rotarr[random(Z)])
+					local biggunspawn = random(100)
+					if scav >= 9 and biggunspawn >= 70 then
+						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+					end
+				end
+				i = i + 1
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ScavInLocation07_Die" active="0">
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav1_loc7" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav2_loc7" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav3_loc7" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav4_loc7" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav5_loc7" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav6_loc7" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav7_loc7" />
+		<script>
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			if 7>count then
+			return
+			end
+
+			TActivate("SpawnScavsInLocation07_Restart")
+			
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SpawnScavsInLocation07_Restart" active="0">
+		<event 	timeout="150" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("SpawnScavsInLocation07")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SpawnScavsInLocation08" active="0">
+		<event 	timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>										
+
+			local enemylist = {"Sml1CarScav", "Sml2CarScav", "Sml3CarScav", "Sml4CarScav", "Scout1CarScav", "Scout2CarScav", "Scout3CarScav", "Fighter1CarScav", "Fighter2CarScav", "Hunter2CarScav"}
+			local scav = getn(enemylist)
+
+			local smallgunlist = {"hornet01","specter01","storm01","pkt01","kord01"}
+			local smallgunr = getn(smallgunlist)
+
+			local biggunlist = {"vector01","vulcan01","rapier01"}
+			local biggunr = getn(biggunlist)
+
+			local belong_list = {1082,1083,1084}
+			local belong_rand = getn(belong_list)
+
+			local pos={
+				CVector(2972.051, 320.433, 1125.147),
+				CVector(3014.882, 316.343, 1099.257), 
+				CVector(2903.515, 315.586, 1061.878), 
+				CVector(3041.111, 316.206, 1075.490),
+				CVector(2973.327, 315.434, 917.303), 
+				CVector(2930.568, 315.490, 869.076), 
+				CVector(2884.293, 315.621, 993.989), 
+				CVector(3009.814, 316.172, 887.672),
+				CVector(2961.000, 316.373, 820.316),
+				CVector(2948.575, 317.522, 761.192),
+				CVector(2828.036, 317.664, 826.088),
+				CVector(2782.650, 322.225, 918.752),
+				CVector(2874.278, 315.809, 994.929),
+				CVector(2979.917, 315.747, 1055.852),
+				CVector(3013.404, 316.956, 917.937),
+				CVector(3122.531, 315.057, 905.625),
+				CVector(3127.443, 315.738, 1047.144),
+				CVector(2994.292, 320.676, 1175.139),
+				CVector(2845.061, 319.193, 1053.996)
+			}
+			local pos_rand = getn(pos)
+
+			local rotarr={
+				Quaternion(-0.029, 0.679, -0.021, 0.734),
+				Quaternion(0.001, 0.626, 0.002, 0.780),
+				Quaternion(-0.001, 0.558, -0.001, 0.830),
+				Quaternion(-0.029, -0.025, 0.005, 0.999),
+				Quaternion(-0.001, -0.346, 0.001, 0.938),
+				Quaternion(-0.001, -0.724, -0.000, 0.690),
+				Quaternion(-0.025, -0.992, -0.005, 0.125),
+				Quaternion(0.002, -0.914, -0.001, 0.405),
+				Quaternion(-0.003, -1.000, -0.006, -0.015)}
+			local Z = getn(rotarr)
+
+			for j=1,7 do
+				TeamCreate("Scav"..j.."_loc8", belong_list[random(belong_rand)], pos[random(pos_rand)], {enemylist[random(scav)]}, nil, 1)
+			end
+
+			TActivate("ScavInLocation08_Die")
+
+			local i=1
+			while getObj("Scav"..i.."_loc8_vehicle_0")~=nil do
+
+				local sv = GetEntityByName ("Scav"..i.."_loc8_vehicle_0")
+				if sv then
+					sv:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
+					sv:SetRotation(rotarr[random(Z)])
+					local biggunspawn = random(100)
+					if scav >= 9 and biggunspawn >= 70 then
+						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+					end
+				end
+				i = i + 1
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ScavInLocation08_Die" active="0">
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav1_loc8" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav2_loc8" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav3_loc8" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav4_loc8" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav5_loc8" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav6_loc8" />
+		<event eventid="GE_OBJECT_DIE" ObjName="Scav7_loc8" />
+		<script>
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			if 7>count then
+			return
+			end
+
+			TActivate("SpawnScavsInLocation08_Restart")
+			
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SpawnScavsInLocation08_Restart" active="0">
+		<event 	timeout="150" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("SpawnScavsInLocation08")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SpawnsScavs1" active="0">
+		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			
+			for i=1,2 do
+				local rs = random(2)
+				if rs == 1 then
+					TActivate ("SpawnScavsInLocation0"..i)
 				else
-					SaveAllToleranceStatus(RS_NEUTRAL)
+					TActivate ("SpawnScavsInLocation0"..i.."_Restart")
+				end
+			end
 
-					FlyAround(1, 0, 25, 2, PlfCoor, PlfID, 1, 1 )
-					StartCinematic()
-
-					TActivate ("RolikExitToMap12")
-					TActivate ("RolikENDExitToMap12")
+			local rs3 = random(2)
+			if rs3 == 1 then
+				if GetVar("PosPlayer2").AsInt==3 then
+					TActivate ("SpawnScavsInLocation03")
+				else
+					TActivate ("SpawnScavsInLocation03_Restart")
 				end
 			else
-				SaveAllToleranceStatus(RS_NEUTRAL)
-
-				FlyAround(1, 0, 25, 6, PlfCoor, PlfID, 1, 1 )
-				StartCinematic()
-
-				AddCinematicMessage( 8803, 0.5 )
-
-				TActivate ("RolikExitToMap12")
-				TActivate ("RolikENDExitToMap12")
+				TActivate ("SpawnScavsInLocation03_Restart")
 			end
- 		</script>
-	</trigger>
-	<trigger Name="RolikExitToMap12" active="0">
-		<event eventid="GE_CINEMATIC_ENTER_FADE_IN" ObjName="Player1" />
-		<script>
-			CinemaFiltersUse()
 
-			RotationPlayerByPoints(CVector(getPos("ToR1M2")), CVector(getPos("FromR1M2")))
-			GetPlayerVehicle():SetGamePositionOnGround(CVector(getPos("FromR1M2")))
-
-			trigger:Deactivate()    
-		</script>
-	</trigger>
-	<trigger Name="RolikENDExitToMap12" active="0">
-		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
-		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
-		<script>
-			GameFiltersUse()
-
-			RestoreAllToleranceStatus()
-
-			GetPlayerVehicle():SetGamePositionOnGround(CVector(getPos("FromR1M2")))
-
-			TDeactivate( "RolikExitToMap12" )
-
-			SetCameraBehindPlayerVehicle()
-
+			for t=4,8 do
+				TActivate ("SpawnScavsInLocation0"..t.."_Restart")
+			end
+	
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
-
-
-
-
-	<trigger Name="triggerExitToMap13" active="1">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ToR1M3" />
+	<trigger Name="SpawnsScavs2" active="0">
+		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-			local Plf = GetPlayerVehicle()
-			Plf:SetThrottle( 0 )
-			Plf:SetCustomLinearVelocity( 0 )
-
-			local PlfID = GetPlayerVehicleId()
-			local PlfCoor = Plf:GetPosition()
-			PlfCoor.y = PlfCoor.y + 25*0.74
-			PlfCoor.z = PlfCoor.z + 25*0.74
-
-			if IsQuestTaken("d_FindLisaOnSever_Quest") or IsQuestTaken("d_FindRealFatherRoom_Quest") then 
-				local b = SpawnMessageBox( "8801" )
-				if b == 1 then
-					PassToMap("r1m3", "FromR1M1", -1 )
-
-					local hs = GetEntityByName ("FIRE01")
-					if hs then hs:Remove() end
-					local hs = GetEntityByName ("FIRE02")
-					if hs then hs:Remove() end
-					local hs = GetEntityByName ("FIRE03")
-					if hs then hs:Remove() end
-					local hs = GetEntityByName ("FIRE04")
-					if hs then hs:Remove() end
-					local hs = GetEntityByName ("FIRE05")	
-					if hs then hs:Remove() end
-					local hs = GetEntityByName ("FIRE06")
-					if hs then hs:Remove() end
+			
+			local rs3 = random(2)
+			if rs3 == 1 then
+				if GetVar("PosPlayer1").AsInt==8 then
+					TActivate ("SpawnScavsInLocation03_Restart")
 				else
-					SaveAllToleranceStatus(RS_NEUTRAL)
-
-					FlyAround(1, 0, 25, 2, PlfCoor, PlfID, 1, 1 )
-					StartCinematic()
-
-					TActivate ("RolikExitToMap13")
-					TActivate ("RolikENDExitToMap13")
+					TActivate ("SpawnScavsInLocation03")
 				end
 			else
-				SaveAllToleranceStatus(RS_NEUTRAL)
-
-				FlyAround(1, 0, 25, 6, PlfCoor, PlfID, 1, 1 )
-				StartCinematic()
-				AddCinematicMessage( 8802, 0.5 )
-
-				TActivate ("RolikExitToMap13")
-				TActivate ("RolikENDExitToMap13")
+				TActivate ("SpawnScavsInLocation03_Restart")
 			end
- 		</script>
-	</trigger>
-	<trigger Name="RolikExitToMap13" active="0">
-		<event eventid="GE_CINEMATIC_ENTER_FADE_IN" ObjName="Player1" />
-		<script>
-			CinemaFiltersUse()
 
-			RotationPlayerByPoints(CVector(getPos("ToR1M3")), CVector(getPos("FromR1M3")))
-			GetPlayerVehicle():SetGamePositionOnGround(CVector(getPos("FromR1M3")))
-
-			trigger:Deactivate()    
-		</script>
-	</trigger>
-	<trigger Name="RolikENDExitToMap13" active="0">
-		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
-		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
-		<script>
-			GameFiltersUse()
-
-			RestoreAllToleranceStatus()
-
-			GetPlayerVehicle():SetGamePositionOnGround(CVector(getPos("FromR1M3")))
-
-			TDeactivate( "RolikExitToMap13" )
-
-			SetCameraBehindPlayerVehicle()
-
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-
-
-
-
-	<trigger Name="triggerExitToMap41" active="1">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ToR4M1" />
-		<script>
-			local Plf = GetPlayerVehicle()
-			Plf:SetThrottle( 0 )
-			Plf:SetCustomLinearVelocity( 0 )
-
-			local PlfID = GetPlayerVehicleId()
-			local PlfCoor = Plf:GetPosition()
-			PlfCoor.y = PlfCoor.y + 25*0.74
-			PlfCoor.z = PlfCoor.z + 25*0.74
-
-			if IsQuestTaken("r3m2_FindInfoAboutFather") or IsQuestTaken("r3m2_RevengeDestroyVillage") then 
-				local b = SpawnMessageBox( "8801" )
-				if b == 1 then
-					PassToMap("r4m1", "FromR1M1", -1 )
+			for i=4,8 do
+				local rs = random(2)
+				if rs == 1 then
+					TActivate ("SpawnScavsInLocation0"..i)
 				else
-					SaveAllToleranceStatus(RS_NEUTRAL)
-
-					FlyAround(1, 0, 25, 2, PlfCoor, PlfID, 1, 1 )
-					StartCinematic()
-
-					TActivate ("RolikExitToMap41")
-					TActivate ("RolikENDExitToMap41")
+					TActivate ("SpawnScavsInLocation0"..i.."_Restart")
 				end
-			else
-				SaveAllToleranceStatus(RS_NEUTRAL)
-
-				FlyAround(1, 0, 25, 6, PlfCoor, PlfID, 1, 1 )
-				StartCinematic()
-
-				AddCinematicMessage( 8803, 2 )
-
-				TActivate ("RolikExitToMap41")
-				TActivate ("RolikENDExitToMap41")
 			end
- 		</script>
-	</trigger>
-	<trigger Name="RolikExitToMap41" active="0">
-		<event eventid="GE_CINEMATIC_ENTER_FADE_IN" ObjName="Player1" />
-		<script>
-			CinemaFiltersUse()
 
-			RotationPlayerByPoints(CVector(getPos("ToR4M1")), CVector(getPos("FromR4M1")))
-			GetPlayerVehicle():SetGamePositionOnGround(CVector(getPos("FromR4M1")))
-
-			trigger:Deactivate()    
-		</script>
-	</trigger>
-	<trigger Name="RolikENDExitToMap41" active="0">
-		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
-		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
-		<script>
-			GameFiltersUse()
-
-			RestoreAllToleranceStatus()
-
-			GetPlayerVehicle():SetGamePositionOnGround(CVector(getPos("FromR4M1")))
-
-			TDeactivate( "RolikExitToMap41" )
-
-			SetCameraBehindPlayerVehicle()
+			TActivate ("SpawnScavsInLocation01_Restart")
+			TActivate ("SpawnScavsInLocation02_Restart")
 
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
-
-
-
-
-	<trigger Name="TRAKTOR_FUN" active="1">
-		<event timeout="0" eventid="GE_TIME_PERIOD" />
+<!-- Использование предметов -->
+	<trigger Name="ItemsUse" active="1">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
-			TeamCreateWithWarez("11Traktor1", 1008, CVector(979.867, 290.134, 2700.000), {"Traktor01"}, nil, 1)
 
-			local t = GetEntityByName("11Traktor1")
-			if t then
-				t:StackOpen()
-				t:SetDestination( CVector(987, 287, 2728) )
-				t:SetDestination( CVector(1001, 287, 2814) )
-				t:SetDestination( CVector(1086, 287, 2802) )
-				t:SetDestination( CVector(1077, 287, 2730) )
-				t:StackLoop()
-				t:StackClose()
+			local vehP = GetPlayerVehicle()
+			local PlfCoor = vehP:GetPosition()
+			local healthcar = GetPlayerHealth() 
+			local healthmax = GetPlayerMaxHealth()
+			local fuelcar = GetPlayerFuel()
+			local fuelmax = GetPlayerMaxFuel()
+
+			if HasPlayerAmountOfItems("scrap_metal_use", 1) and HasPlayerAmountOfItems("machinery_use", 1) then
+				if vehP then 
+					if (400 > healthcar) and (healthmax == 500) then
+						vehP:AddModifier( "hp", "+ 100" ) 
+						CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+						AddFadingMsgByStrIdFormatted("fm_use_machinery", 100)
+						RemoveItemsFromPlayerRepository("machinery_use", 1)
+					end
+				end
 			end
 
-			trigger:Deactivate()
+			if HasPlayerAmountOfItems("scrap_metal_use", 1) and HasPlayerAmountOfItems("machinery_use", 1) and HasPlayerAmountOfItems("electronics_use", 1) then
+				if vehP then 
+					if (300 > healthcar) and (healthmax == 500) then
+						vehP:AddModifier( "hp", "+ 200" ) 
+						CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+						AddFadingMsgByStrIdFormatted("fm_use_electronics", 200)
+						RemoveItemsFromPlayerRepository("electronics_use", 1)
+					end
+				end
+			end
+
+			if HasPlayerAmountOfItems("machinery_use", 1) and HasPlayerAmountOfItems("electronics_use", 1) then
+				if vehP then 
+					if (300 > healthcar) and (healthmax == 500) then
+						vehP:AddModifier( "hp", "+ 200" ) 
+						CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+						AddFadingMsgByStrIdFormatted("fm_use_electronics", 200)
+						RemoveItemsFromPlayerRepository("electronics_use", 1)
+					end
+				end
+			end
+			
+			if HasPlayerAmountOfItems("scrap_metal_use", 1) then
+				if vehP then 
+					if (460 > healthcar) and (healthmax == 500) then
+						vehP:AddModifier( "hp", "+ 40" ) 
+						CreateEffectTTLed( "ET_PS_USE_ARM", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+						AddFadingMsgByStrIdFormatted("fm_use_scrap_metal", 40)
+						RemoveItemsFromPlayerRepository("scrap_metal_use", 1)
+					end
+				end
+			end
+			
+			if HasPlayerAmountOfItems("machinery_use", 1) then
+				if vehP then 
+					if (400 > healthcar) and (healthmax == 500) then
+						vehP:AddModifier( "hp", "+ 100" ) 
+						CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+						AddFadingMsgByStrIdFormatted("fm_use_machinery", 100)
+						RemoveItemsFromPlayerRepository("machinery_use", 1)
+					end
+				end
+			end
+
+			if HasPlayerAmountOfItems("electronics_use", 1) then
+				if vehP then 
+					if (300 > healthcar) and (healthmax == 500) then
+						vehP:AddModifier( "hp", "+ 200" ) 
+						CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+						AddFadingMsgByStrIdFormatted("fm_use_electronics", 200)
+						RemoveItemsFromPlayerRepository("electronics_use", 1)
+					end
+				end
+			end
+
+			if HasPlayerAmountOfItems("oil_use", 1) and HasPlayerAmountOfItems("fuel_full_use", 1) then
+				if vehP then 
+					if (60 > fuelcar) and (fuelmax == 100) then
+						vehP:AddModifier( "fuel", "+ 40" ) 
+						CreateEffectTTLed( "ET_PS_USE_OIL", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+						AddFadingMsgByStrIdFormatted("fm_use_fuel_full", 40)
+						RemoveItemsFromPlayerRepository("fuel_full_use", 1)
+						AddItemsToPlayerRepository("fuel_nil_use", 1)
+					end
+				end
+			end
+
+			if HasPlayerAmountOfItems("oil_use", 1) then
+				if vehP then 
+					if (85 > fuelcar) and (fuelmax == 100) then
+						vehP:AddModifier( "fuel", "+ 15" ) 
+						CreateEffectTTLed( "ET_PS_USE_OIL", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+						AddFadingMsgByStrIdFormatted("fm_use_oil", 15)
+						RemoveItemsFromPlayerRepository("oil_use", 1)
+					end
+				end
+			end
+
+			if HasPlayerAmountOfItems("fuel_full_use", 1) then
+				if vehP then 
+					if (60 > fuelcar) and (fuelmax == 100) then
+						vehP:AddModifier( "fuel", "+ 40" ) 
+						CreateEffectTTLed( "ET_PS_USE_OIL", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+						AddFadingMsgByStrIdFormatted("fm_use_fuel_full", 40)
+						RemoveItemsFromPlayerRepository("fuel_full_use", 1)
+						AddItemsToPlayerRepository("fuel_nil_use", 1)
+					end
+				end
+			end
+
+			if HasPlayerAmountOfItems("item_key_gate_thetown", 1) and not(IsQuestItemPresent("quest_item_key_gate_thetown")) then
+				AddQuestItem("quest_item_key_gate_thetown")
+				AddFadingMsgByStrIdFormatted("fm_item_to_quest_items", "item_key_gate_thetown")
+				RemoveItemsFromPlayerRepository("item_key_gate_thetown", 1)
+			end
+
 		</script>
 	</trigger>
 
-
-
-
-
-	<trigger Name="tr_Tutotial_Start" active="0">
-		<event 	timeout="2" eventid="GE_TIME_PERIOD" />
+<!-- Заправки (Заправляем канистры) -->
+	<trigger Name="UseFuelNil_InPetrolStation01" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation01_loc" />
 		<script>
+
+			if HasPlayerAmountOfItems("fuel_nil_use", 1) then
+				local b = SpawnMessageBox( "90001" )
+				if b == 1 then
+					if GetPlayerMoney() >= 5000 then
+						AddPlayerMoney(- 5000)
+						CreateEffectTTLed( "ET_PS_FUEL_PETROL_START", CVector(2582, 348, 2269), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 800)
+						AddFadingMsgByStrIdFormatted("fm_fuel_petrol_start")
+						RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
+						TActivate("SoundPetrolProcess_InPertolStation01")
+						TActivate("FuelFull_InPetrolStation01")
+						GetPlayerVehicle():SetThrottle( 0 )
+						GetPlayerVehicle():SetCustomLinearVelocity( 0 )
+						trigger:Deactivate()
+					else
+						AddFadingMsgByStrIdFormatted("fm_player_not_money")
+					end
+				end
+			end
+
+		</script>
+	</trigger>
+
+	<trigger Name="SoundPetrolProcess_InPertolStation01" active="0">
+		<event timeout="0.4" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewSgNodeObject("ET_PS_FUEL_PETROL_PROCESS", "SFPP_01", -1, -1, CVector(2582, 348, 2269), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0)
+			local pl01 = GetEntityByName("LIGHTWORK01")
+			if pl01 then pl01:Remove() end
+			CreateNewSgNodeObject("ET_PS_LENS_D6", "PetrolLightProcess01", -1, -1, CVector(2575.530, 360.200, 2266.788), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
 			trigger:Deactivate() 
+		</script>
+	</trigger>
 
-			EnableAutoHelp( false )
+	<trigger Name="FuelFull_InPetrolStation01" active="0">
+		<event timeout="20" eventid="GE_TIME_PERIOD" />
+		<script>
 
-			local b = SpawnMessageBox( "90000" )
-			if b == 1 then
-				EnableAutoHelp( true )
-				ShowHelp( "HELP_ID_MAIN_GAME_INTERFACE" )
+			local Chest = CreateNewObject{prototypeName = "fuelChest", objName = "FuelBox"..random(10000)}	
+			local ChestId = GetEntityByID(Chest)
+			ChestId:SetPosition(CVector(2577.512, 348.200, 2267.212))
+
+			local fuel = CreateNewObject{prototypeName = "fuel_full_use", objName = "FuelItem"..random(10000), belong = 1100 }
+			local fuelId = GetEntityByID(fuel)
+
+			local ChestPos = ChestId:GetPosition()
+			ChestPos.y = ChestPos.y + 1
+			ChestId:SetPosition(ChestPos)
+
+			if ChestId and fuelId then
+				ChestId:AddChild(fuelId)
 			end
+
+			local sd01 = GetEntityByName("SFPP_01")
+			if sd01 then sd01:Remove() end
+
+			local pl01 = GetEntityByName("PetrolLightProcess01")
+			if pl01 then pl01:Remove() end
+
+			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK01", -1, -1, CVector(2575.530, 360.200, 2266.788), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
+			CreateEffectTTLed( "ET_PS_FUEL_PETROL_END", CVector(2582, 348, 2269), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+			AddFadingMsgByStrIdFormatted("fm_fuel_petrol_end")
+
+			TActivate ("UseFuelNil_InPetrolStation01")
+		
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="UseFuelNil_InPetrolStation02" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation02_loc" />
+		<script>
+
+			if HasPlayerAmountOfItems("fuel_nil_use", 1) then
+				local b = SpawnMessageBox( "90001" )
+				if b == 1 then
+					if GetPlayerMoney() >= 5000 then
+						AddPlayerMoney(- 5000)
+						CreateEffectTTLed( "ET_PS_FUEL_PETROL_START", CVector(1312.274, 288.949, 1757.526), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 800)
+						AddFadingMsgByStrIdFormatted("fm_fuel_petrol_start")
+						RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
+						TActivate("SoundPetrolProcess_InPertolStation02")
+						TActivate("FuelFull_InPetrolStation02")
+						GetPlayerVehicle():SetThrottle( 0 )
+						GetPlayerVehicle():SetCustomLinearVelocity( 0 )
+						trigger:Deactivate() 
+					else
+						AddFadingMsgByStrIdFormatted("fm_player_not_money")
+					end
+				end
+			end
+
+		</script>
+	</trigger>
+
+	<trigger Name="SoundPetrolProcess_InPertolStation02" active="0">
+		<event timeout="0.4" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewSgNodeObject("ET_PS_FUEL_PETROL_PROCESS", "SFPP_02", -1, -1, CVector(1312.274, 288.949, 1757.526), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0)
+			local pl01 = GetEntityByName("LIGHTWORK02")
+			if pl01 then pl01:Remove() end
+			CreateNewSgNodeObject("ET_PS_LENS_D6", "PetrolLightProcess02", -1, -1, CVector(1317.154, 300.550, 1748.705), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="FuelFull_InPetrolStation02" active="0">
+		<event timeout="20" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			local Chest = CreateNewObject{prototypeName = "fuelChest", objName = "FuelBox"..random(10000)}	
+			local ChestId = GetEntityByID(Chest)
+			ChestId:SetPosition(CVector(1316.551, 288.830, 1751.936))
+
+			local fuel = CreateNewObject{prototypeName = "fuel_full_use", objName = "FuelItem"..random(10000), belong = 1100 }
+			local fuelId = GetEntityByID(fuel)
+
+			local ChestPos = ChestId:GetPosition()
+			ChestPos.y = ChestPos.y + 1
+			ChestId:SetPosition(ChestPos)
+
+			if ChestId and fuelId then
+				ChestId:AddChild(fuelId)
+			end
+
+			local sd01 = GetEntityByName("SFPP_02")
+			if sd01 then sd01:Remove() end
+
+			local pl01 = GetEntityByName("PetrolLightProcess02")
+			if pl01 then pl01:Remove() end
+
+			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK02", -1, -1, CVector(1317.154, 300.550, 1748.705), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
+			CreateEffectTTLed( "ET_PS_FUEL_PETROL_END", CVector(1312.274, 288.949, 1757.526), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+			AddFadingMsgByStrIdFormatted("fm_fuel_petrol_end")
+
+			TActivate ("UseFuelNil_InPetrolStation02")
+		
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="UseFuelNil_InPetrolStation03" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation03_loc" />
+		<script>
+
+			if HasPlayerAmountOfItems("fuel_nil_use", 1) then
+				local b = SpawnMessageBox( "90001" )
+				if b == 1 then
+					if GetPlayerMoney() >= 5000 then
+						AddPlayerMoney(- 5000)
+						CreateEffectTTLed( "ET_PS_FUEL_PETROL_START", CVector(917.057, 309.294, 872.621), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 800)
+						AddFadingMsgByStrIdFormatted("fm_fuel_petrol_start")
+						RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
+						TActivate("SoundPetrolProcess_InPertolStation03")
+						TActivate("FuelFull_InPetrolStation03")
+						GetPlayerVehicle():SetThrottle( 0 )
+						GetPlayerVehicle():SetCustomLinearVelocity( 0 )
+						trigger:Deactivate() 
+					else
+						AddFadingMsgByStrIdFormatted("fm_player_not_money")
+					end
+				end
+			end
+
+		</script>
+	</trigger>
+
+	<trigger Name="SoundPetrolProcess_InPertolStation03" active="0">
+		<event timeout="0.4" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewSgNodeObject("ET_PS_FUEL_PETROL_PROCESS", "SFPP_03", -1, -1, CVector(917.057, 309.294, 872.621), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0)
+			local pl01 = GetEntityByName("LIGHTWORK03")
+			if pl01 then pl01:Remove() end
+			CreateNewSgNodeObject("ET_PS_LENS_D6", "PetrolLightProcess03", -1, -1, CVector(916.784, 320.600, 884.400), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="FuelFull_InPetrolStation03" active="0">
+		<event timeout="20" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			local Chest = CreateNewObject{prototypeName = "fuelChest", objName = "FuelBox"..random(10000)}	
+			local ChestId = GetEntityByID(Chest)
+			ChestId:SetPosition(CVector(916.922, 309.114, 882.417))
+
+			local fuel = CreateNewObject{prototypeName = "fuel_full_use", objName = "FuelItem"..random(10000), belong = 1100 }
+			local fuelId = GetEntityByID(fuel)
+
+			local ChestPos = ChestId:GetPosition()
+			ChestPos.y = ChestPos.y + 1
+			ChestId:SetPosition(ChestPos)
+
+			if ChestId and fuelId then
+				ChestId:AddChild(fuelId)
+			end
+
+			local sd01 = GetEntityByName("SFPP_03")
+			if sd01 then sd01:Remove() end
+
+			local pl01 = GetEntityByName("PetrolLightProcess03")
+			if pl01 then pl01:Remove() end
+
+			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK03", -1, -1, CVector(916.784, 320.600, 884.400), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
+			CreateEffectTTLed( "ET_PS_FUEL_PETROL_END", CVector(917.057, 309.294, 872.621), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+			AddFadingMsgByStrIdFormatted("fm_fuel_petrol_end")
+
+			TActivate ("UseFuelNil_InPetrolStation03")
+		
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="NotWork_PetrolStation01" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation01_loc" />
+		<script>
+			if HasPlayerAmountOfItems("fuel_nil_use", 1) then
+				AddFadingMsgByStrIdFormatted("fm_petrol_notwork")
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="NotWork_PetrolStation02" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation02_loc" />
+		<script>
+			if HasPlayerAmountOfItems("fuel_nil_use", 1) then
+				AddFadingMsgByStrIdFormatted("fm_petrol_notwork")
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="NotWork_PetrolStation03" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation03_loc" />
+		<script>
+			if HasPlayerAmountOfItems("fuel_nil_use", 1) then
+				AddFadingMsgByStrIdFormatted("fm_petrol_notwork")
+			end
+		</script>
+	</trigger>
+
+<!-- Открытие/Закрытие ворот Южного -->
+	<trigger Name="OpenGate_TheTown" active="1">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="OpenGateTheTown_loc" />
+		<script>
+			if IsQuestItemPresent("quest_item_key_gate_thetown") then
+				local b = SpawnMessageBox("90002")
+				if b == 1 then
+					getObj("gate_thetown"):SetNodeAction(AT_RESERVED4)
+					CreateEffectTTLed( "ET_PS_OPENING_GATE", CVector(1235.100, 311.700, 2969.336), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 900)
+					TActivate("OpenGate_TheTown_End")
+					trigger:Deactivate() 
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="OpenGate_TheTown_End" active="0">
+		<event timeout="0.9" eventid="GE_TIME_PERIOD" />
+		<script>
+			local g = GetEntityByName("gate_thetown")
+			if g then g:Remove() end
+
+		 	GetEntityByName("gate_thetown2"):SetPosition(CVector(1235.100, 311.700, 2969.336))
+			GetEntityByName("gate_thetown2"):SetRotation(Quaternion(0.0000, 0.7210, 0.0000, 0.6930))
+
+			CreateEffectTTLed( "ET_PS_OPENING_GATE_END", CVector(1235.100, 311.700, 2969.336), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1500)
+
+			TActivate("ClosedGate_TheTown")
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="ClosedGate_TheTown" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="InTheTown_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ClosedGateTheTown_loc" />
+		<script>
+			CreateNewDummyObject( "big_gate01", "gate_thetown", -1, -1, CVector(1262.195, 300, 2995.386), Quaternion(-0.004, 0.019, 0.000, 1.000))
+			getObj("gate_thetown"):SetNodeAction(AT_STAND1)
+			TActivate("ClosedGate_TheTown_Process")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ClosedGate_TheTown_Process" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ClosedGateTheTown_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="ClosedGateTheTown_loc" />
+		<script>											
+			local g = GetEntityByName("gate_thetown2")
+			if g then g:Remove() end
+
+			GetEntityByName("gate_thetown"):SetPosition(CVector(1235.100, 311.700, 2969.336))
+			GetEntityByName("gate_thetown"):SetRotation(Quaternion(0.0000, 0.7210, 0.0000, 0.6930))
+			getObj("gate_thetown"):SetNodeAction(AT_RESERVED3)
+
+			CreateEffectTTLed( "ET_PS_CLOSED_GATE", CVector(1235.100, 311.700, 2969.336), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 900)
+			TActivate("ClosedGate_TheTown_End")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ClosedGate_TheTown_End" active="0">
+		<event timeout="0.9" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateEffectTTLed( "ET_PS_OPENING_GATE_END", CVector(1235.100, 311.700, 2969.336), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1500)
+			CreateNewSgNodeObject( "big_gate01", "gate_thetown2", -1, -1, CVector(1262.195, 300, 2995.386), Quaternion(-0.004, 0.019, 0.000, 1.000), 1)
+			TActivate("OpenGate_TheTown")
+			trigger:Deactivate()
 		</script>
 	</trigger>
 

@@ -2,6 +2,42 @@
 <!-- $Id: effects.xml,v 1.6 2004/11/25 10:51:16 den Exp $  -->
 <Prefabs>
 
+	<Node name="ET_PS_USE_ARM" class="SgNode">
+		<Node name="Sound3" class="SgSoundSourceNode" id="S_USE_ARM" looped="0"/>
+	</Node>
+
+	<Node name="ET_PS_USE_LIFE" class="SgNode">
+		<Node name="Sound3" class="SgSoundSourceNode" id="S_USE_LIFE" looped="0"/>
+	</Node>
+
+	<Node name="ET_PS_USE_OIL" class="SgNode">
+		<Node name="Sound3" class="SgSoundSourceNode" id="S_USE_OIL" looped="0"/>
+	</Node>
+
+	<Node name="ET_PS_FUEL_PETROL_START" class="SgNode">
+		<Node name="noise" class="SgSoundSourceNode" id="S_FUEL_PETROL_START" looped="0" /> 
+	</Node>
+
+	<Node name="ET_PS_FUEL_PETROL_PROCESS" class="SgNode">
+		<Node name="noise" class="SgSoundSourceNode" id="S_FUEL_PETROL_PROCESS" looped="1" /> 
+	</Node>
+
+	<Node name="ET_PS_FUEL_PETROL_END" class="SgNode">
+		<Node name="noise" class="SgSoundSourceNode" id="S_FUEL_PETROL_END" looped="0" /> 
+	</Node>
+
+	<Node name="ET_PS_OPENING_GATE" class="SgNode">
+		<Node name="noise" class="SgSoundSourceNode" id="S_OPENING_GATE" looped="0" /> 
+	</Node>
+
+	<Node name="ET_PS_OPENING_GATE_END" class="SgNode">
+		<Node name="noise" class="SgSoundSourceNode" id="S_OPENING_GATE_END" looped="0" /> 
+	</Node>
+
+	<Node name="ET_PS_CLOSED_GATE" class="SgNode">
+		<Node name="noise" class="SgSoundSourceNode" id="S_CLOSED_GATE" looped="0" /> 
+	</Node>
+
 	<Node name="ET_PS_ROCKSFAKE1" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_SPECIAL01_FIRE_MAIN_1" psNumEmitterMesh="-1" />
 	</Node>
@@ -2963,6 +2999,8 @@
 		<Node name="ET_S_ENGINE_BEETLE_1_LOW"		class="SgSoundSourceNode" id="S_ENGINE_BEETLE_1_LOW" /> 
 		<Node name="ET_S_ENGINE_BEETLE_1_HIGH"		class="SgSoundSourceNode" id="S_ENGINE_BEETLE_1_HIGH" /> 
 
+		<Node name="ET_S_ENGINE_BUG_STARTING"		class="SgSoundSourceNode" id="S_STARTING02" /> 
+
 		<Node name="ET_S_ENGINE_BEETLE_2_LOW"		class="SgSoundSourceNode" id="S_ENGINE_BEETLE_2_LOW" /> 
 		<Node name="ET_S_ENGINE_BEETLE_2_HIGH"		class="SgSoundSourceNode" id="S_ENGINE_BEETLE_2_HIGH" /> 
 
@@ -3128,16 +3166,20 @@
 -->
 
 <!-- 	///////////////Ёфекты к роликам///////////////	 -->
-        <Node name="ET_PS_LENS_D5" class="SgNode">
+    <Node name="ET_PS_LENS_D5" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_D5" psNumEmitterMesh="-1" /> 
 	</Node>
 
-        <Node name="ET_PS_LENS_D1" class="SgNode">
+    <Node name="ET_PS_LENS_D1" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_D1" psNumEmitterMesh="-1" /> 
 	</Node>
 
-        <Node name="ET_PS_LENS_D4" class="SgNode">
+    <Node name="ET_PS_LENS_D4" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_D4" psNumEmitterMesh="-1" /> 
+	</Node>
+
+	<Node name="ET_PS_LENS_D6" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_D6" psNumEmitterMesh="-1" /> 
 	</Node>
 
         <Node name="ET_PS_BOSS2_MAIN" class="SgNode">

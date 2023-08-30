@@ -8,7 +8,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "potato"
-		Price	= "100"
+		Price	= "3000"
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= "potatoe"
@@ -17,7 +17,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "scrap_metal"
-		Price	= "250"
+		Price	= "7000"
 		Durability	= "100"
 		PriceDispersion      = "7"
 		ModelFile	= "lom"
@@ -26,7 +26,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "firewood"
-		Price	= "140"
+		Price	= "3000"
 		Durability	= "90"
 		PriceDispersion      = "10"
 		ModelFile	= "koroldrov"
@@ -35,7 +35,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "oil"
-		Price	= "550"
+		Price	= "8000"
 		Durability	= "70"
 		PriceDispersion      = "10"
 		ModelFile	= "back_exp"
@@ -53,7 +53,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "bottle"
-		Price	= "4250"
+		Price	= "10000"
 		Durability	= "10"
 		PriceDispersion      = "7"
 		ModelFile	= "bottles"
@@ -62,7 +62,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "fuel"
-		Price	= "1150"
+		Price	= "15000"
 		Durability	= "50"
 		PriceDispersion      = "7"
 		ModelFile	= "kanistr"
@@ -72,7 +72,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "machinery"
-		Price	= "2200"
+		Price	= "20000"
 		Durability	= "30"
 		PriceDispersion      = "5"
 		ModelFile	= "rabochee_oborudovanie"
@@ -81,7 +81,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "tobacco"
-		Price	= "8100"
+		Price	= "7000"
 		Durability	= "70"
 		PriceDispersion      = "5"
 		ModelFile	= "tobacco"
@@ -164,4 +164,87 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		PriceDispersion = "0"
 		ModelFile		= "factory_box"
 		ResourceType= "EXPLOSION_STONE" /> -->
+
+		<Prototype
+		Class		= "Ware"
+		Name		= "doski"
+		Price	= "7000"
+		Durability	= "90"
+		PriceDispersion      = "5"
+		ModelFile	= "doski"
+		ResourceType= "DOSKI" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "details"
+		Price	= "9000"
+		Durability	= "30"
+		PriceDispersion      = "5"
+		ModelFile	= "detail"
+		ResourceType= "DETAILS" />	
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "scrap_metal_use"
+		Price	= "10000"
+		Durability	= "100"
+		PriceDispersion      = "7"
+		ModelFile	= "lom"
+		ResourceType= "SCRAP_METAL_USE" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "machinery_use"
+		Price	= "20500"
+		Durability	= "30"
+		PriceDispersion      = "5"
+		ModelFile	= "rabochee_oborudovanie"
+		ResourceType= "MACHINERY_USE" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "electronics_use"
+		Price	= "35000"
+		Durability	= "20"
+		PriceDispersion      = "5"
+		ModelFile	= "mikro"
+		ResourceType= "ELECTRONICS_USE" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "oil_use"
+		Price	= "12500"
+		Durability	= "70"
+		PriceDispersion      = "10"
+		ModelFile	= "back_exp"
+		ResourceType= "OIL_USE" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "fuel_full_use"
+		Price	= "18700"
+		Durability	= "50"
+		PriceDispersion      = "7"
+		ModelFile	= "kanistr"
+		ResourceType= "FUEL_FULL_USE" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "fuel_nil_use"
+		Price	= "3700"
+		Durability	= "70"
+		PriceDispersion      = "7"
+		ModelFile	= "kanistr"
+		ResourceType= "FUEL_NIL_USE" />
+
+	
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_key_gate_thetown"
+		Price	= "10000"
+		Durability	= "100"
+		PriceDispersion      = "10"
+		ModelFile	= "quest_key_for_tunnel"
+		ResourceType= "ITEM_KEY" />
+		
 </Prototypes>

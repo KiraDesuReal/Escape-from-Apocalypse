@@ -91,8 +91,12 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 		<Type Name="RAW">
 			<Type Name="POTATO" />
 			<Type Name="SCRAP_METAL" />
+			<Type Name="SCRAP_METAL_USE" />
 			<Type Name="FIREWOOD" />
 			<Type Name="OIL" />
+			<Type Name="OIL_USE" />
+			<Type Name="DOSKI" />
+			<Type Name="DETAILS" />
 		</Type>
 
 		<Type Name="DIGGED">
@@ -102,8 +106,11 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 		
 		<Type Name="SIMPLE_PRODUCED">
 			<Type Name="FUEL" />
+			<Type Name="FUEL_FULL_USE" />
+			<Type Name="FUEL_NIL_USE" />
 <!--			<Type Name="FIBREBOARD" /> -->
 			<Type Name="MACHINERY" />
+			<Type Name="MACHINERY_USE" />
 		</Type>
 
 		<Type Name="PRODUCED">
@@ -111,9 +118,13 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 			<Type Name="BOOK" />
 <!--			<Type Name="OSTRICH_FEATHER" /> -->
 			<Type Name="ELECTRONICS" />
+			<Type Name="ELECTRONICS_USE" />
 		</Type>
 
-	
+	</Type>
+
+	<Type Name="KEYS" geomsize="2 2">
+		<Type Name="ITEM_KEY" />
 	</Type>
 
 	<Type Name="GADGET" geomsize="1 1" >
@@ -164,5 +175,7 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 		<Type Name="QUEST_MAGIC_THING2" />
 		<Type Name="QUEST_EXPLOSION_STONE" />
 		<Type Name="QUEST_REPROBOT" />
+		
+		<Type Name="QUEST_KEY" />
 	</Type>
 </ResourceTypes>

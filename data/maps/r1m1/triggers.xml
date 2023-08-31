@@ -98,6 +98,10 @@
 		CreateNewSgNodeObject( "big_gate01", "gate_thetown2", -1, -1, CVector(1262.195, 300, 2995.386), Quaternion(-0.004, 0.019, 0.000, 1.000), 1)
 		getObj("gate_thetown"):SetNodeAction(AT_STAND2)
 
+--Ворота R1M3
+
+		TActivate("ClosedGate_R1M3")
+
 --Заправки
 
 		local pr1 = random(2)
@@ -286,12 +290,7 @@
 		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 
-			local ExitRoadToRidzinCarRandom = random (2)
-			if ExitRoadToRidzinCarRandom == 1 then
-				TActivate ("RoadToRidzin")
-				SetVar("ExitRoadToRidzin",1)
-			end
-
+			TActivate ("RoadToRidzin")
 			TActivate ("BaseFelix")
 
 			local ExitZaTheTroiskoeRandom = random (2)
@@ -1223,7 +1222,7 @@
 	</trigger>
 
 	<trigger Name="SpawnsScavs1" active="0">
-		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
 			
 			for i=1,2 do
@@ -1255,15 +1254,15 @@
 	</trigger>
 
 	<trigger Name="SpawnsScavs2" active="0">
-		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
 			
 			local rs3 = random(2)
 			if rs3 == 1 then
 				if GetVar("PosPlayer1").AsInt==8 then
-					TActivate ("SpawnScavsInLocation03_Restart")
-				else
 					TActivate ("SpawnScavsInLocation03")
+				else
+					TActivate ("SpawnScavsInLocation03_Restart")
 				end
 			else
 				TActivate ("SpawnScavsInLocation03_Restart")
@@ -1402,6 +1401,12 @@
 				AddQuestItem("quest_item_key_gate_thetown")
 				AddFadingMsgByStrIdFormatted("fm_item_to_quest_items", "item_key_gate_thetown")
 				RemoveItemsFromPlayerRepository("item_key_gate_thetown", 1)
+			end
+
+			if HasPlayerAmountOfItems("item_key_gate_r1m3", 1) and not(IsQuestItemPresent("quest_item_key_gate_r1m3")) then
+				AddQuestItem("quest_item_key_gate_r1m3")
+				AddFadingMsgByStrIdFormatted("fm_item_to_quest_items", "item_key_gate_r1m3")
+				RemoveItemsFromPlayerRepository("item_key_gate_r1m3", 1)
 			end
 
 		</script>
@@ -1717,6 +1722,42 @@
 			CreateEffectTTLed( "ET_PS_OPENING_GATE_END", CVector(1235.100, 311.700, 2969.336), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1500)
 			CreateNewSgNodeObject( "big_gate01", "gate_thetown2", -1, -1, CVector(1262.195, 300, 2995.386), Quaternion(-0.004, 0.019, 0.000, 1.000), 1)
 			TActivate("OpenGate_TheTown")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Открытие/Закрытие ворот R1M3 -->
+	<trigger Name="OpenGate_R1M3" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="GateToR1M3_loc" />
+		<script>
+			if IsQuestItemPresent("quest_item_key_gate_r1m3") then
+				local b = SpawnMessageBox("90002")
+				if b == 1 then
+					getObj("gate_r1m3"):SetNodeAction(AT_RESERVED4)
+					CreateEffectTTLed( "ET_PS_OPENING_GATE", CVector(2075.552, 316, 3662.552), Quaternion(0, 0, 0, 1), 1400)
+					TActivate("OpenGate_R1M3_End")
+					trigger:Deactivate()
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="OpenGate_R1M3_End" active="0">
+		<event timeout="1.4" eventid="GE_TIME_PERIOD" />
+		<script>
+			local g = GetEntityByName("gate_r1m3")
+			if g then g:Remove() end
+
+			CreateEffectTTLed( "ET_PS_OPENING_GATE_END", CVector(2075.552, 316, 3662.552), Quaternion(0, 0, 0, 1), 1500)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ClosedGate_R1M3" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewDummyObject( "agro_gate", "gate_r1m3", -1, -1, CVector(2075.552, 316, 3662.552), Quaternion(0.0000, 0.0760, 0.0000, 0.9971) )
+			TActivate("OpenGate_R1M3")
 			trigger:Deactivate()
 		</script>
 	</trigger>

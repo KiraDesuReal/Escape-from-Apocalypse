@@ -22,7 +22,7 @@
 		Name="ToR1M3_Exit"
 		Belong="1100"
 		Prototype="genericLocation"
-		Pos="2088.490 325.704 3818.716"
+		Pos="2123.757 340.470 3869.133"
 		Radius="170.000" />
 
 	<Object
@@ -45,8 +45,8 @@
 		Name="ToR1M2_Exit"
 		Belong="1100"
 		Prototype="genericLocation"
-		Pos="505.037 293.615 257.063"
-		Radius="100.000"/>
+		Pos="510.582 292.110 279.607"
+		Radius="100.000" />
 
 	<Object
 		Flags="21"
@@ -105,6 +105,13 @@
 		Prototype="genericLocation"
 		Pos="1189.042 303.473 2961.393"
 		Radius="30.000" />
+
+	<Object
+		Name="GateToR1M3_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="2076.219 316.346 3663.744"
+		Radius="14.000" />
 
 <!--
 	<Object

@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
 <Servers>
 	<AnimatedModelsServer>
+
+		<Item
+			id="agro_gate"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="agro_post"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="fence_long2"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="fence_short2"
+			file="data\models\AnimModels.xml" />
+
 		<Item
 			id="cargo"
 			file="data\models\AnimModels.xml"/>

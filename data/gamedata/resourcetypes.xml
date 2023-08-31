@@ -87,8 +87,8 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 	
 	<Type Name="GOLD" geomsize="2 2" />
 	
-	<Type Name="GOODS" geomsize="2 2" >
-		<Type Name="RAW">
+	<Type Name="GOODS">
+		<Type Name="RAW" geomsize="2 2" >
 			<Type Name="POTATO" />
 			<Type Name="SCRAP_METAL" />
 			<Type Name="SCRAP_METAL_USE" />
@@ -99,12 +99,12 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 			<Type Name="DETAILS" />
 		</Type>
 
-		<Type Name="DIGGED">
+		<Type Name="DIGGED" geomsize="2 2" >
 <!--			<Type Name="GEAR" /> -->
 			<Type Name="BOTTLE" />
 		</Type>
 		
-		<Type Name="SIMPLE_PRODUCED">
+		<Type Name="SIMPLE_PRODUCED" geomsize="2 2" >
 			<Type Name="FUEL" />
 			<Type Name="FUEL_FULL_USE" />
 			<Type Name="FUEL_NIL_USE" />
@@ -113,7 +113,7 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 			<Type Name="MACHINERY_USE" />
 		</Type>
 
-		<Type Name="PRODUCED">
+		<Type Name="PRODUCED" geomsize="2 2" >
 			<Type Name="TOBACCO" />
 			<Type Name="BOOK" />
 <!--			<Type Name="OSTRICH_FEATHER" /> -->
@@ -121,10 +121,10 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 			<Type Name="ELECTRONICS_USE" />
 		</Type>
 
-	</Type>
+		<Type Name="KEYS" geomsize="2 2">
+			<Type Name="ITEM_KEY" />
+		</Type>
 
-	<Type Name="KEYS" geomsize="2 2">
-		<Type Name="ITEM_KEY" />
 	</Type>
 
 	<Type Name="GADGET" geomsize="1 1" >

@@ -15198,9 +15198,9 @@
 	<Node
 		name="Object7841"
 		class="SgAnimatedModelNode"
-		org="2074.099 -0.102 3665.476"
+		org="2086.880 -0.101 3726.727"
 		orgRel="1"
-		rot="0.0000 0.0328 0.0000 0.9994"
+		rot="0.0029 0.1951 -0.0011 0.9808"
 		id="exit"
 		ndmAction="0" />
 
@@ -16163,7 +16163,7 @@
 		rot="0.0000 0.0000 0.0000 0.0000"
 		orgRel="1"
 		scale="1.000 1.000 1.000"
-		id="heavy_dot_brocken4"
+		id="heavy_dot4"
 		ndmAction="0" />
 
 	<Node
@@ -16173,7 +16173,7 @@
 		rot="0.0000 0.0000 0.0000 0.0000"
 		orgRel="1"
 		scale="1.000 1.000 1.000"
-		id="heavy_dot_brocken4"
+		id="heavy_dot4"
 		ndmAction="0" />
 
 	<Node
@@ -16183,7 +16183,7 @@
 		rot="0.000 -0.263 0.000 0.965"
 		orgRel="1"
 		scale="1.000 1.000 1.000"
-		id="heavy_dot_brocken4"
+		id="heavy_dot4"
 		ndmAction="0" />
 
 	<Node
@@ -16193,7 +16193,7 @@
 		rot="0.000 -0.282 0.000 0.959"
 		orgRel="1"
 		scale="1.000 1.000 1.000"
-		id="heavy_dot_brocken4"
+		id="heavy_dot4"
 		ndmAction="0" />
 
 	<Node
@@ -16203,7 +16203,7 @@
 		rot="0.0000 0.0000 0.0000 0.0000"
 		orgRel="1"
 		scale="1.000 1.000 1.000"
-		id="heavy_dot_brocken4"
+		id="heavy_dot4"
 		ndmAction="0" />
 
 	<Node
@@ -16213,7 +16213,7 @@
 		rot="0.0000 0.0000 0.0000 0.0000"
 		orgRel="1"
 		scale="1.000 1.000 1.000"
-		id="heavy_dot_brocken4"
+		id="heavy_dot4"
 		ndmAction="0" />
 
 	<Node
@@ -16223,7 +16223,7 @@
 		rot="0.000 -0.063 0.000 0.998"
 		orgRel="1"
 		scale="1.000 1.000 1.000"
-		id="heavy_dot_brocken4"
+		id="heavy_dot4"
 		ndmAction="0" />
 
 	<Node
@@ -16296,4 +16296,54 @@
 		id="petrolstation"
 		ndmAction="0" />
 
+	<Node
+		name="Object76476726"
+		class="SgAnimatedModelNode"
+		org="2075.674 0.000 3662.548"
+		orgRel="1"
+		rot="0.0002 0.0760 -0.0000 0.9971"
+		scale="1.000 1.000 1.000"
+		id="agro_post"
+		ndmAction="0"
+		passable="0" />
+
+	<Node
+		name="Object76476814"
+		class="SgAnimatedModelNode"
+		org="2113.074 0.000 3657.530"
+		orgRel="1"
+		rot="0.0000 0.0698 0.0000 0.9976"
+		scale="0.800 0.800 0.800"
+		id="fence_short2"
+		ndmAction="0" />
+
+	<Node
+		name="Object76476816"
+		class="SgAnimatedModelNode"
+		org="2038.291 0.000 3668.202"
+		orgRel="1"
+		rot="0.0000 0.0698 0.0000 0.9976"
+		scale="0.800 0.800 0.800"
+		id="fence_short2"
+		ndmAction="0" />
+
+	<Node
+		name="Object76476823"
+		class="SgAnimatedModelNode"
+		org="2150.139 -0.400 3652.348"
+		orgRel="1"
+		rot="0.0000 0.0698 0.0000 0.9976"
+		scale="0.800 0.800 0.800"
+		id="fence_short2"
+		ndmAction="0" />
+
+	<Node
+		name="Object76476825"
+		class="SgAnimatedModelNode"
+		org="2168.302 -1.000 3649.855"
+		orgRel="1"
+		rot="-0.0335 0.7023 -0.0196 0.7108"
+		scale="1.122 1.122 1.122"
+		id="big_crag_4"
+		ndmAction="0" />
 </World>

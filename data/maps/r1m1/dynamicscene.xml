@@ -113,6 +113,342 @@
 		Pos="2076.219 316.346 3663.744"
 		Radius="14.000" />
 
+	<Object
+		Name="hospital_barricade1"
+		Belong="1082"
+		Prototype="hospital_barricade_wGw"
+		Pos="2542.044 323.369 1636.454"
+		Probability="1">
+
+		<Object
+			Name="hospital_barricade1_Child1"
+			Belong="1082"
+			Prototype="sack_dot2_specter"
+			Pos="2543.470 321.837 1688.187"
+			Rot="0.012 -0.682 -0.011 0.732">
+			<Parts />
+		</Object>
+
+		<Object
+			Name="hospital_barricade1_Child2"
+			Belong="1082"
+			Prototype="sack_dot2_specter"
+			Pos="2542.044 323.369 1636.454"
+			Rot="0.012 -0.682 -0.011 0.732">
+			<Parts />
+		</Object>
+
+		<Object
+			Flags="21"
+			Name="hospital_barricade1_Team"
+			Belong="1082"
+			Prototype="settlementTeam">
+			<AI
+				StateStack2Changed="0"
+				CommandProcessed="0"
+				CommandStackOpen="0"
+				CurCommand="0">
+				<Stack1Element_0
+					StateNum="0" />
+
+				<Stack2Element_0
+					StateNum="1">
+					<Param_0
+						GAIParam_Type="AIPARAM_VECTOR"
+						GAIParam_Value="0.000 0.000 0.000" />
+				</Stack2Element_0>
+			</AI>
+
+			<Formation
+				Name="hospital_barricade1_Team_Formation"
+				Belong="1082"
+				Prototype="caravanFormation"
+				DistBetweenVehicles="30.000"
+				Pos="0.000 0.000 0.000"
+				Direction="0.000 0.000 1.000"
+				LinearVelocity="100.000"
+				AngularVelocity="0.500"
+				NumPathPoint="-1" />
+		</Object>
+	</Object>
+
+	<Object
+		Name="basefelix_barricade1"
+		Belong="1082"
+		Prototype="basefelix_barricade1_wGw"
+		Pos="766.013 304.631 1432.912"
+		Probability="1">
+
+		<Object
+			Name="basefelix_barricade1_Child1"
+			Belong="1082"
+			Prototype="sack_dot1_specter"
+			Pos="766.013 304.631 1432.912"
+			Rot="0.019 0.924 0.046, 0.380">
+			<Parts />
+		</Object>
+
+		<Object
+			Flags="21"
+			Name="basefelix_barricade1_Team"
+			Belong="1082"
+			Prototype="settlementTeam">
+			<AI
+				StateStack2Changed="0"
+				CommandProcessed="0"
+				CommandStackOpen="0"
+				CurCommand="0">
+				<Stack1Element_0
+					StateNum="0" />
+
+				<Stack2Element_0
+					StateNum="1">
+					<Param_0
+						GAIParam_Type="AIPARAM_VECTOR"
+						GAIParam_Value="0.000 0.000 0.000" />
+				</Stack2Element_0>
+			</AI>
+
+			<Formation
+				Name="basefelix_barricade1_Team_Formation"
+				Belong="1082"
+				Prototype="caravanFormation"
+				DistBetweenVehicles="30.000"
+				Pos="0.000 0.000 0.000"
+				Direction="0.000 0.000 1.000"
+				LinearVelocity="100.000"
+				AngularVelocity="0.500"
+				NumPathPoint="-1" />
+		</Object>
+	</Object>
+
+	<Object
+		Name="basefelix_barricade2"
+		Belong="1082"
+		Prototype="basefelix_barricade2_wGw"
+		Pos="463.807 306.635 1809.146"
+		Probability="1">
+
+		<Object
+			Name="basefelix_barricade2_Child1"
+			Belong="1082"
+			Prototype="base_heavy_dot3_vector"
+			Pos="463.807 306.635 1809.146"
+			Rot="0.009 0.991 0.007 0.135">
+			<Parts />
+		</Object>
+
+		<Object
+			Name="basefelix_barricade2_Child2"
+			Belong="1082"
+			Prototype="base_heavy_dot3_vector"
+			Pos="474.723 305.970 1842.751"
+			Rot="0.0000 -0.1132 0.0000 0.9936">
+			<Parts />
+		</Object>
+
+		<Object
+			Flags="21"
+			Name="basefelix_barricade2_Team"
+			Belong="1082"
+			Prototype="settlementTeam">
+			<AI
+				StateStack2Changed="0"
+				CommandProcessed="0"
+				CommandStackOpen="0"
+				CurCommand="0">
+				<Stack1Element_0
+					StateNum="0" />
+
+				<Stack2Element_0
+					StateNum="1">
+					<Param_0
+						GAIParam_Type="AIPARAM_VECTOR"
+						GAIParam_Value="0.000 0.000 0.000" />
+				</Stack2Element_0>
+			</AI>
+
+			<Formation
+				Name="basefelix_barricade2_Team_Formation"
+				Belong="1082"
+				Prototype="caravanFormation"
+				DistBetweenVehicles="30.000"
+				Pos="0.000 0.000 0.000"
+				Direction="0.000 0.000 1.000"
+				LinearVelocity="100.000"
+				AngularVelocity="0.500"
+				NumPathPoint="-1" />
+		</Object>
+	</Object>
+
+	<Object
+		Name="basefelix_barricade3"
+		Belong="1082"
+		Prototype="basefelix_barricade3_wGw"
+		Pos="432.411 306.781 1851.131"
+		Probability="1">
+
+		<Object
+			Name="basefelix_barricade3_Child1"
+			Belong="1082"
+			Prototype="sack_dot2_hornet"
+			Pos="432.411 306.781 1851.131"
+			Rot="0.005 0.061 -0.024 0.998">
+			<Parts />
+		</Object>
+
+		<Object
+			Flags="21"
+			Name="basefelix_barricade3_Team"
+			Belong="1082"
+			Prototype="settlementTeam">
+			<AI
+				StateStack2Changed="0"
+				CommandProcessed="0"
+				CommandStackOpen="0"
+				CurCommand="0">
+				<Stack1Element_0
+					StateNum="0" />
+
+				<Stack2Element_0
+					StateNum="1">
+					<Param_0
+						GAIParam_Type="AIPARAM_VECTOR"
+						GAIParam_Value="0.000 0.000 0.000" />
+				</Stack2Element_0>
+			</AI>
+
+			<Formation
+				Name="basefelix_barricade3_Team_Formation"
+				Belong="1082"
+				Prototype="caravanFormation"
+				DistBetweenVehicles="30.000"
+				Pos="0.000 0.000 0.000"
+				Direction="0.000 0.000 1.000"
+				LinearVelocity="100.000"
+				AngularVelocity="0.500"
+				NumPathPoint="-1" />
+		</Object>
+	</Object>
+
+	<Object
+		Name="road_to_ridzin_dots"
+		Belong="1085"
+		Prototype="exit_dots_wGw"
+		Pos="502.543 285.474 369.480"
+		Probability="1">
+
+		<Object
+			Name="road_to_ridzin_dot1"
+			Belong="1085"
+			Prototype="exits_heavy_dot4_vulcan"
+			Pos="502.543 285.474 369.480"
+			Rot="-0.063 -0.097 -0.042 -0.992">
+			<Parts />
+		</Object>
+
+		<Object
+			Name="road_to_ridzin_dot2"
+			Belong="1085"
+			Prototype="exits_heavy_dot4_vulcan"
+			Pos="544.257 286.412 360.736"
+			Rot="-0.015 -0.108 0.018 -0.994">
+			<Parts />
+		</Object>
+
+		<Object
+			Flags="21"
+			Name="road_to_ridzin_dots_Team"
+			Belong="1085"
+			Prototype="settlementTeam">
+			<AI
+				StateStack2Changed="0"
+				CommandProcessed="0"
+				CommandStackOpen="0"
+				CurCommand="0">
+				<Stack1Element_0
+					StateNum="0" />
+
+				<Stack2Element_0
+					StateNum="1">
+					<Param_0
+						GAIParam_Type="AIPARAM_VECTOR"
+						GAIParam_Value="0.000 0.000 0.000" />
+				</Stack2Element_0>
+			</AI>
+
+			<Formation
+				Name="road_to_ridzin_dots_Team_Formation"
+				Belong="1085"
+				Prototype="caravanFormation"
+				DistBetweenVehicles="30.000"
+				Pos="0.000 0.000 0.000"
+				Direction="0.000 0.000 1.000"
+				LinearVelocity="100.000"
+				AngularVelocity="0.500"
+				NumPathPoint="-1" />
+		</Object>
+	</Object>
+
+	<Object
+		Name="road_to_fater_dots"
+		Belong="1085"
+		Prototype="exit_dots_wGw"
+		Pos="2086.652 315.640 3655.070"
+		Probability="1">
+
+		<Object
+			Name="road_to_fater_dot1"
+			Belong="1085"
+			Prototype="exits_heavy_dot4_vulcan"
+			Pos="2086.652 315.640 3655.070"
+			Rot="-0.008 0.992 -0.084 -0.094">
+			<Parts />
+		</Object>
+
+		<Object
+			Name="road_to_fater_dot2"
+			Belong="1085"
+			Prototype="exits_heavy_dot4_vulcan"
+			Pos="2063.394 316.443 3658.783"
+			Rot="0.024 0.998 -0.062 -0.018">
+			<Parts />
+		</Object>
+
+		<Object
+			Flags="21"
+			Name="road_to_fater_dots_Team"
+			Belong="1085"
+			Prototype="settlementTeam">
+			<AI
+				StateStack2Changed="0"
+				CommandProcessed="0"
+				CommandStackOpen="0"
+				CurCommand="0">
+				<Stack1Element_0
+					StateNum="0" />
+
+				<Stack2Element_0
+					StateNum="1">
+					<Param_0
+						GAIParam_Type="AIPARAM_VECTOR"
+						GAIParam_Value="0.000 0.000 0.000" />
+				</Stack2Element_0>
+			</AI>
+
+			<Formation
+				Name="road_to_fater_dots_Team_Formation"
+				Belong="1085"
+				Prototype="caravanFormation"
+				DistBetweenVehicles="30.000"
+				Pos="0.000 0.000 0.000"
+				Direction="0.000 0.000 1.000"
+				LinearVelocity="100.000"
+				AngularVelocity="0.500"
+				NumPathPoint="-1" />
+		</Object>
+	</Object>
+
 <!--
 	<Object
 		Name="r1m1_CaravanGlobalObject"

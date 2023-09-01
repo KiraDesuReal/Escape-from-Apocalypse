@@ -505,18 +505,24 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 				local RandWarez = {"potato","firewood","scrap_metal","doski","details","oil","fuel","machinery","bottle","tobacco","book","electronics"}
 				local r = getn(RandWarez)
 				
-				local ItemsUse = {"scrap_metal_use", "oil_use", "machinery_use", "fuel_nil_use", "fuel_full_use", "electronics_use"}
-				local r2 = getn(ItemsUse)
+				local ItemsLifeUse = {"scrap_metal_use", "machinery_use", "electronics_use"}
+				local r2 = getn(ItemsLifeUse)
+
+				local ItemsOilUse = {"oil_use", "fuel_nil_use", "fuel_full_use"}
+				local r3 = getn(ItemsOilUse)
 				
-				for w1=1,random(1,3) do
-					vehicle:AddItemsToRepository(ItemsUse[random(r2)], 1)
+				for life=1,random(1,2) do
+					vehicle:AddItemsToRepository(ItemsLifeUse[exrandom(r2)], 1)
 				end
 
-				for w2=1,random(2) do
+				vehicle:AddItemsToRepository(ItemsOilUse[exrandom(r3)], random(0,1))
+
+				for ware=1,random(2) do
 					vehicle:AddItemsToRepository(RandWarez[exrandom(r)], 1)
 				end
-			end
 			
+			end
+
 			-- by Anton: это не нужно, т.к. вызываем SetGamePositionOnGround()
 			-- CreatePos.y = g_ObjCont:GetHeight(CreatePos.x, CreatePos.z) + 1.3 * vehicle:GetSize().y
 				if Rotate then

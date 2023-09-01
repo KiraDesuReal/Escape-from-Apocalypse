@@ -263,6 +263,129 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 	</Folder>
 	
 	<Folder Name = "StaticAutoGuns">
+
+		<Prototype
+			Class			= "StaticAutoGun"
+			Name			= "sack_dot2_specter"
+
+			DestroyedModel	= "sack_dot_brocken2"
+
+			LookRadius		= "260"
+			MaxHealth		= "200"
+			IntersectionRadius	= "4">
+
+			<MainPartDescription id = "DOT" partResourceType = "STATIC_AUTO_GUN_DOT">
+				<PartDescription id 	= "CANNON"
+				partResourceType 	= "SMALL_GUN"
+				lpName 		= "LP_CANNON01" />
+			</MainPartDescription>
+
+			<Parts>
+				<Part id = "DOT"	Prototype = "sack_dot2" />
+				<Part id = "CANNON"	Prototype = "specter01" />
+			</Parts>
+		</Prototype>
+
+		<Prototype
+			Class				= "StaticAutoGun"
+			Name				= "sack_dot1_specter"
+			DestroyedModel		= "sack_dot_brocken1"
+			LookRadius			= "180"
+			MaxHealth			= "150"
+			IntersectionRadius	= "4">
+			<MainPartDescription id 	= "DOT" partResourceType = "STATIC_AUTO_GUN_DOT">
+				<PartDescription id 	= "CANNON"
+				partResourceType 		= "SMALL_GUN"
+				lpName 			= "LP_CANNON01" />
+			</MainPartDescription>
+			<Parts>
+				<Part id = "DOT"		Prototype = "sack_dot1" />
+				<Part id = "CANNON"	Prototype = "specter01" />
+			</Parts>
+		</Prototype>
+
+		<Prototype
+			Class			= "StaticAutoGun"
+			Name			= "sack_dot2_pkt"
+
+			DestroyedModel	= "sack_dot_brocken2"
+
+			LookRadius		= "300"
+			MaxHealth		= "200"
+			IntersectionRadius	= "4">
+
+			<MainPartDescription id = "DOT" partResourceType = "STATIC_AUTO_GUN_DOT">
+				<PartDescription id 	= "CANNON"
+				partResourceType 	= "SMALL_GUN"
+				lpName 		= "LP_CANNON01" />
+			</MainPartDescription>
+
+			<Parts>
+				<Part id = "DOT"	Prototype = "sack_dot2" />
+				<Part id = "CANNON"	Prototype = "pkt01" />
+			</Parts>
+		</Prototype>
+
+		<Prototype
+			Class			= "StaticAutoGun"
+			Name			= "base_heavy_dot3_vector"
+
+			LookRadius		= "300"
+			MaxHealth		= "500"
+			DestroyedModel		= "heavy_dot_brocken3"
+			IntersectionRadius	= "3.5">
+
+			<MainPartDescription id 	= "DOT" partResourceType = "STATIC_AUTO_GUN_DOT">
+				<PartDescription id 	= "CANNON"
+				partResourceType 	= "SMALL_GUN"
+				lpName 		= "LP_CANNON01" />
+			</MainPartDescription>
+
+			<Parts>
+				<Part id = "DOT"	Prototype = "heavy_dot3" />
+				<Part id = "CANNON"			Prototype = "vector01" />
+			</Parts>
+		</Prototype>
+
+		<Prototype
+			Class			= "StaticAutoGun"
+			Name			= "exits_heavy_dot4_vulcan"
+
+			LookRadius		= "250"
+			MaxHealth		= "5000"
+			DestroyedModel		= "heavy_dot_brocken4"
+			IntersectionRadius	= "3.5">
+
+			<MainPartDescription id 	= "DOT" partResourceType = "STATIC_AUTO_GUN_DOT">
+				<PartDescription id 	= "CANNON"
+				partResourceType 	= "SMALL_GUN"
+				lpName 		= "LP_CANNON01" />
+			</MainPartDescription>
+
+			<Parts>
+				<Part id = "DOT"	Prototype = "heavy_dot4" />
+				<Part id = "CANNON"			Prototype = "vulcan01" />
+			</Parts>
+		</Prototype>
+
+		<Prototype
+			Class			= "StaticAutoGun"
+			Name				= "sack_dot2_hornet"
+			DestroyedModel		= "sack_dot_brocken2"
+			LookRadius			= "250"
+			MaxHealth			= "200"
+			IntersectionRadius	= "4">
+			<MainPartDescription id 	= "DOT" partResourceType = "STATIC_AUTO_GUN_DOT">
+				<PartDescription id 	= "CANNON"
+				partResourceType 		= "SMALL_GUN"
+				lpName 			= "LP_CANNON01" />
+			</MainPartDescription>
+			<Parts>
+				<Part id = "DOT"		Prototype = "sack_dot2" />
+				<Part id = "CANNON"	Prototype = "hornet01" />
+			</Parts>
+		</Prototype>
+
 		<Prototype
 			Class			= "StaticAutoGun"
 			Name			= "staticAutoGun01"

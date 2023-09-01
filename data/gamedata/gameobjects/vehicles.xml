@@ -792,7 +792,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		ParentPrototype 	= "Sml1_Scav">
 		<Parts>
 			<Part id = "CABIN"		Prototype = "sml1Cab01" />
-			<Part id = "BASKET"		Prototype = "fakeCargo" />
+			<Part id = "BASKET"		Prototype = "bigfakeCargo" />
 		</Parts>
 	</Prototype>
 
@@ -802,7 +802,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		ParentPrototype 	= "Sml2_Scav">
 		<Parts>
 			<Part id = "CABIN"		Prototype = "sml2Cab01" />
-			<Part id = "BASKET"		Prototype = "fakeCargo" />
+			<Part id = "BASKET"		Prototype = "bigfakeCargo" />
 		</Parts>
 	</Prototype>
 
@@ -812,7 +812,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		ParentPrototype 	= "Sml3_Scav">
 		<Parts>
 			<Part id = "CABIN"		Prototype = "sml3Cab01" />
-			<Part id = "BASKET"		Prototype = "fakeCargo" />
+			<Part id = "BASKET"		Prototype = "bigfakeCargo" />
 		</Parts>
 	</Prototype>
 
@@ -822,7 +822,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		ParentPrototype 	= "Sml4_Scav">
 		<Parts>
 			<Part id = "CABIN"		Prototype = "sml4Cab01" />
-			<Part id = "BASKET"		Prototype = "fakeCargo" />
+			<Part id = "BASKET"		Prototype = "bigfakeCargo" />
 		</Parts>
 	</Prototype>
 
@@ -832,7 +832,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		ParentPrototype 	= "Scout_Scav">
 		<Parts>
 			<Part id = "CABIN"		Prototype = "scoutCab01" />
-			<Part id = "BASKET"		Prototype = "fakeCargo" />
+			<Part id = "BASKET"		Prototype = "bigfakeCargo" />
 		</Parts>
 	</Prototype>
 
@@ -842,7 +842,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		ParentPrototype 	= "Scout_Scav">
 		<Parts>
 			<Part id = "CABIN"		Prototype = "scoutCab02" />
-			<Part id = "BASKET"		Prototype = "fakeCargo" />
+			<Part id = "BASKET"		Prototype = "bigfakeCargo" />
 		</Parts>
 	</Prototype>
 
@@ -852,7 +852,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		ParentPrototype 	= "Scout_Scav">
 		<Parts>
 			<Part id = "CABIN"		Prototype = "scoutCab03" />
-			<Part id = "BASKET"		Prototype = "fakeCargo" />
+			<Part id = "BASKET"		Prototype = "bigfakeCargo" />
 		</Parts>
 	</Prototype>
 
@@ -862,7 +862,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		ParentPrototype 	= "Fighter_Scav">
 		<Parts>
 			<Part id = "CABIN"			Prototype = "fighterCab01" />
-			<Part id = "BASKET"		Prototype = "fakeCargo" />
+			<Part id = "BASKET"		Prototype = "bigfakeCargo" />
 		</Parts>
 	</Prototype>
 
@@ -872,7 +872,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		ParentPrototype 	= "Fighter_Scav">
 		<Parts>
 			<Part id = "CABIN"			Prototype = "fighterCab02" />
-			<Part id = "BASKET"		Prototype = "fakeCargo" />
+			<Part id = "BASKET"		Prototype = "bigfakeCargo" />
 		</Parts>
 	</Prototype>
 
@@ -882,7 +882,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		ParentPrototype 	= "Hunter_Scav">
 		<Parts>
 			<Part id = "CABIN"			Prototype = "hunterCab02" />
-			<Part id = "BASKET"		Prototype = "fakeCargo" />
+			<Part id = "BASKET"		Prototype = "bigfakeCargo" />
 		</Parts>
 	</Prototype>
 

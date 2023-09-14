@@ -97,6 +97,7 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 			<Type Name="OIL_USE" />
 			<Type Name="DOSKI" />
 			<Type Name="DETAILS" />
+			<Type Name="SHKATULKA" />
 		</Type>
 
 		<Type Name="DIGGED" geomsize="2 2" >
@@ -121,8 +122,54 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 			<Type Name="ELECTRONICS_USE" />
 		</Type>
 
+
+		<Type Name="SIZE_18X0" geomsize="18 0">
+			<Type Name="ITEM_OPACITY" />
+		</Type>
+
+
 		<Type Name="KEYS" geomsize="2 2">
 			<Type Name="ITEM_KEY" />
+		</Type>
+
+
+		<Type Name="SIZE_2X2" geomsize="2 2">
+			<Type Name="ITEM_SIZE_2X2" />
+		</Type>
+
+		<Type Name="SIZE_2X4" geomsize="2 4">
+			<Type Name="ITEM_SIZE_2X4" />
+		</Type>
+
+		<Type Name="SIZE_2X6" geomsize="2 6">
+			<Type Name="ITEM_SIZE_2X6" />
+		</Type>
+
+
+		<Type Name="SIZE_4X2" geomsize="4 2">
+			<Type Name="ITEM_SIZE_4X2" />
+		</Type>
+
+		<Type Name="SIZE_4X4" geomsize="4 4">
+			<Type Name="ITEM_SIZE_4X4" />
+		</Type>
+
+		<Type Name="SIZE_4X8" geomsize="4 8">
+			<Type Name="ITEM_SIZE_4X8" />
+		</Type>
+
+
+		<Type Name="SIZE_6X4" geomsize="6 4">
+			<Type Name="ITEM_SIZE_6X4" />
+		</Type>
+
+		<Type Name="SIZE_5X5" geomsize="5 5">
+			<Type Name="ITEM_SIZE_5X5" />
+		</Type>
+
+
+		<Type Name="SIZE_8X4" geomsize="8 4">
+			<Type Name="ITEM_SIZE_8X4" />
 		</Type>
 
 	</Type>

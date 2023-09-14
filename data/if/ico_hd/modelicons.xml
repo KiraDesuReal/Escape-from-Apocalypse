@@ -80,9 +80,12 @@
    <!-- <Item id="magic_thing2"		   file="data\if\ico\InventoryDlg\magicthing2.dds"    file1=""/> -->
    <!-- <Item id="explosion_stone"	   file="data\if\ico\InventoryDlg\exp_stone.dds"      file1=""/> -->
 
+   <!-- New-Old -->
    <Item id="doski" file="data\if\ico_hd\InventoryDlg\goods\doski.dds" file1="data\if\ico_hd\InventoryDlg\goods\doski.dds"/>
    <Item id="details" file="data\if\ico_hd\InventoryDlg\goods\details.dds" file1="data\if\ico_hd\InventoryDlg\goods\details.dds"/>
+   <Item id="shkatulka" file="data\if\ico_hd\InventoryDlg\goods\shkatylka.dds" file1="data\if\ico_hd\InventoryDlg\goods\shkatylka.dds"/>
 
+   <!-- Use -->
    <Item id="scrap_metal_use" file="data\if\ico_hd\InventoryDlg\goods\lom_use.dds" file1="data\if\ico_hd\InventoryDlg\goods\lom_use.dds"/>
    <Item id="machinery_use" file="data\if\ico_hd\InventoryDlg\goods\rabochee_oborudovanie_use.dds" file1="data\if\ico_hd\InventoryDlg\goods\rabochee_oborudovanie_use.dds"/>
    <Item id="electronics_use" file="data\if\ico_hd\InventoryDlg\goods\mikro_use.dds" file1="data\if\ico_hd\InventoryDlg\goods\mikro_use.dds"/>
@@ -90,8 +93,172 @@
    <Item id="fuel_full_use" file="data\if\ico_hd\InventoryDlg\goods\kanistra_full_use.dds" file1="data\if\ico_hd\InventoryDlg\goods\kanistra_full_use.dds"/>
    <Item id="fuel_nil_use" file="data\if\ico_hd\InventoryDlg\goods\kanistra_nil_use.dds" file1="data\if\ico_hd\InventoryDlg\goods\kanistra_nil_use.dds"/>
 
-   <Item id="item_key_gate_thetown" file="data\if\ico_hd\InventoryDlg\goods\keys\item_key_1.dds" file1="data\if\ico_hd\InventoryDlg\goods\keys\item_key_1.dds"/>
-   <Item id="item_key_gate_r1m3" file="data\if\ico_hd\InventoryDlg\goods\keys\item_key_1.dds" file1="data\if\ico_hd\InventoryDlg\goods\keys\item_key_1.dds"/>
+   <!-- Keys -->
+   <Item id="item_key_gate_thetown" file="data\if\ico_hd\InventoryDlg\goods\new\keys\item_key_1.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\keys\item_key_1.dds"/>
+   <Item id="item_key_gate_r1m3" file="data\if\ico_hd\InventoryDlg\goods\new\keys\item_key_1.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\keys\item_key_1.dds"/>
+
+   <!-- Building -->
+   <Item id="item_bolts" file="data\if\ico_hd\InventoryDlg\goods\new\building\item_bolts.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\building\item_bolts.dds"/>
+   <Item id="item_datchik" file="data\if\ico_hd\InventoryDlg\goods\new\building\item_datchik.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\building\item_datchik.dds"/>
+   <Item id="item_hose" file="data\if\ico_hd\InventoryDlg\goods\new\building\item_hose.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\building\item_hose.dds"/>
+   <Item id="item_insulation" file="data\if\ico_hd\InventoryDlg\goods\new\building\item_insulation.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\building\item_insulation.dds"/>
+   <Item id="item_kek" file="data\if\ico_hd\InventoryDlg\goods\new\building\item_kek.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\building\item_kek.dds"/>
+   <Item id="item_military_tube" file="data\if\ico_hd\InventoryDlg\goods\new\building\item_military_tube.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\building\item_military_tube.dds"/>
+   <Item id="item_nails" file="data\if\ico_hd\InventoryDlg\goods\new\building\item_nails.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\building\item_nails.dds"/>
+   <Item id="item_nuts" file="data\if\ico_hd\InventoryDlg\goods\new\building\item_nuts.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\building\item_nuts.dds"/>
+   <Item id="item_parts" file="data\if\ico_hd\InventoryDlg\goods\new\building\item_parts.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\building\item_parts.dds"/>
+   <Item id="item_pena" file="data\if\ico_hd\InventoryDlg\goods\new\building\item_pena.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\building\item_pena.dds"/>
+   <Item id="item_plex" file="data\if\ico_hd\InventoryDlg\goods\new\building\item_plex.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\building\item_plex.dds"/>
+   <Item id="item_poheram" file="data\if\ico_hd\InventoryDlg\goods\new\building\item_poheram.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\building\item_poheram.dds"/>
+   <Item id="item_scotch" file="data\if\ico_hd\InventoryDlg\goods\new\building\item_scotch.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\building\item_scotch.dds"/>
+   <Item id="item_screws" file="data\if\ico_hd\InventoryDlg\goods\new\building\item_screws.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\building\item_screws.dds"/>
+   <Item id="item_thermometer" file="data\if\ico_hd\InventoryDlg\goods\new\building\item_thermometr.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\building\item_thermometr.dds"/>
+   <Item id="item_tube" file="data\if\ico_hd\InventoryDlg\goods\new\building\item_tube.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\building\item_tube.dds"/>
+
+   <!-- Electronics -->
+   <Item id="item_bp" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_bp.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_bp.dds"/>
+   <Item id="item_cable" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_cable.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_cable.dds"/>
+   <Item id="item_converter" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_converter.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_converter.dds"/>
+   <Item id="item_cooler" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_cooler.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_cooler.dds"/>
+   <Item id="item_cpu" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_cpu.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_cpu.dds"/>
+   <Item id="item_drill" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_drill.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_drill.dds"/>
+   <Item id="item_dvd" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_dvd.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_dvd.dds"/>
+   <Item id="item_electronics_components" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_electronic_components.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_electronic_components.dds"/>
+   <Item id="item_energo_lump" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_energo_lump.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_energo_lump.dds"/>
+   <Item id="item_engine" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_engine.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_engine.dds"/>
+   <Item id="item_gazan" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_gazan.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_gazan.dds"/>
+   <Item id="item_geiger" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_geiger.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_geiger.dds"/>
+   <Item id="item_gpu" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_gpu.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_gpu.dds"/>
+   <Item id="item_hdd" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_hdd.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_hdd.dds"/>
+   <Item id="item_helix" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_helix.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_helix.dds"/>
+   <Item id="item_iridiym" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_iridiym.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_iridiym.dds"/>
+   <Item id="item_kondesators" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_kondesators.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_kondesators.dds"/>
+   <Item id="item_lcd" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_lcd.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_lcd.dds"/>
+   <Item id="item_lump" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_lump.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_lump.dds"/>
+   <Item id="item_magnet" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_magnet.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_magnet.dds"/>
+   <Item id="item_military_cable" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_military_cable.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_military_cable.dds"/>
+   <Item id="item_phone" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_phone.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_phone.dds"/>
+   <Item id="item_plate" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_plate.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_plate.dds"/>
+   <Item id="item_rele" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_rele.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_rele.dds"/>
+   <Item id="item_svech" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_svech.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_svech.dds"/>
+   <Item id="item_tetris" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_tetris.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_tetris.dds"/>
+   <Item id="item_tplug" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_tplug.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_tplug.dds"/>
+   <Item id="item_ultra_lump" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_ultra_lump.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_ultra_lump.dds"/>
+   <Item id="item_usb" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_usb.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_usb.dds"/>
+   <Item id="item_virtex" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_virtex.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_virtex.dds"/>
+   <Item id="item_vpx" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_vpx.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_vpx.dds"/>
+   <Item id="item_wires" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_wires.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_wires.dds"/>
+
+   <!-- Energy --> 
+   <Item id="item_accum" file="data\if\ico_hd\InventoryDlg\goods\new\energy\item_accum.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\energy\item_accum.dds"/>
+   <Item id="item_battery_aa" file="data\if\ico_hd\InventoryDlg\goods\new\energy\item_battery_aa.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\energy\item_battery_aa.dds"/>
+   <Item id="item_battery_d" file="data\if\ico_hd\InventoryDlg\goods\new\energy\item_battery_d.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\energy\item_battery_d.dds"/>
+   <Item id="item_car_battery" file="data\if\ico_hd\InventoryDlg\goods\new\energy\item_car_battery.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\energy\item_car_battery.dds"/>
+   <Item id="item_cyclon" file="data\if\ico_hd\InventoryDlg\goods\new\energy\item_cyclon.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\energy\item_cyclon.dds"/>
+   <Item id="item_green_battery" file="data\if\ico_hd\InventoryDlg\goods\new\energy\item_green_battery.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\energy\item_green_battery.dds"/>
+   <Item id="item_powerbank" file="data\if\ico_hd\InventoryDlg\goods\new\energy\item_powerbank.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\energy\item_powerbank.dds"/>
+   <Item id="item_tank_battery" file="data\if\ico_hd\InventoryDlg\goods\new\energy\item_tank_battery.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\energy\item_tank_battery.dds"/>
+
+   <!-- Flammable -->
+   <Item id="item_dry" file="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_dry.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_dry.dds"/>
+   <Item id="item_hunter_spich" file="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_hunter_spich.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_hunter_spich.dds"/>
+   <Item id="item_lighter" file="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_lighter.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_lighter.dds"/>
+   <Item id="item_prisadka" file="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_prisadka.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_prisadka.dds"/>
+   <Item id="item_propan" file="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_propan.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_propan.dds"/>
+   <Item id="item_spich" file="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_spich.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_spich.dds"/>
+   <Item id="item_survl" file="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_survl.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_survl.dds"/>
+   <Item id="item_termit" file="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_termit.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_termit.dds"/>
+   <Item id="item_trotile" file="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_trotile.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_trotile.dds"/>
+   <Item id="item_wd40_100" file="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_wd40_100.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_wd40_100.dds"/>
+   <Item id="item_wd40_400" file="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_wd40_400.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_wd40_400.dds"/>
+   <Item id="item_zibbo" file="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_zibbo.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\flammable\item_zibbo.dds"/>
+
+   <!-- Household -->
+   <Item id="item_alkani" file="data\if\ico_hd\InventoryDlg\goods\new\household\item_alkani.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\household\item_alkani.dds"/>
+   <Item id="item_hlor" file="data\if\ico_hd\InventoryDlg\goods\new\household\item_hlor.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\household\item_hlor.dds"/>
+   <Item id="item_paper" file="data\if\ico_hd\InventoryDlg\goods\new\household\item_paper.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\household\item_paper.dds"/>
+   <Item id="item_paste" file="data\if\ico_hd\InventoryDlg\goods\new\household\item_paste.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\household\item_paste.dds"/>
+   <Item id="item_salt" file="data\if\ico_hd\InventoryDlg\goods\new\household\item_salt.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\household\item_salt.dds"/>
+   <Item id="item_soap" file="data\if\ico_hd\InventoryDlg\goods\new\household\item_soap.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\household\item_soap.dds"/>
+   <Item id="item_soda" file="data\if\ico_hd\InventoryDlg\goods\new\household\item_soda.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\household\item_soda.dds"/>
+   <Item id="item_tb" file="data\if\ico_hd\InventoryDlg\goods\new\household\item_tb.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\household\item_tb.dds"/>
+   <Item id="item_toothpaste" file="data\if\ico_hd\InventoryDlg\goods\new\household\item_toothpaste.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\household\item_toothpaste.dds"/>
+
+   <!-- Info -->
+   <Item id="item_diary" file="data\if\ico_hd\InventoryDlg\goods\new\info\item_diary.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\info\item_diary.dds"/>
+   <Item id="item_diary_s" file="data\if\ico_hd\InventoryDlg\goods\new\info\item_diary_s.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\info\item_diary_s.dds"/>
+   <Item id="item_disk" file="data\if\ico_hd\InventoryDlg\goods\new\info\item_disk.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\info\item_disk.dds"/>
+   <Item id="item_disk_exmachina" file="data\if\ico_hd\InventoryDlg\goods\new\info\item_disk_exmachina.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\info\item_disk_exmachina.dds"/>
+   <Item id="item_flashdrive" file="data\if\ico_hd\InventoryDlg\goods\new\info\item_flashdrive.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\info\item_flashdrive.dds"/>
+   <Item id="item_manual" file="data\if\ico_hd\InventoryDlg\goods\new\info\item_manual.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\info\item_manual.dds"/>
+   <Item id="item_rozvidka" file="data\if\ico_hd\InventoryDlg\goods\new\info\item_rozvidka.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\info\item_rozvidka.dds"/>
+   <Item id="item_sas" file="data\if\ico_hd\InventoryDlg\goods\new\info\item_sas.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\info\item_sas.dds"/>
+   <Item id="item_ssd" file="data\if\ico_hd\InventoryDlg\goods\new\info\item_ssd.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\info\item_ssd.dds"/>
+   
+   <!-- Medical -->
+   <Item id="item_aquapeps" file="data\if\ico_hd\InventoryDlg\goods\new\medical\item_aquapeps.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\medical\item_aquapeps.dds"/>
+   <Item id="item_c6h8o6" file="data\if\ico_hd\InventoryDlg\goods\new\medical\item_c6h8o6.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\medical\item_c6h8o6.dds"/>
+   <Item id="item_h2o2" file="data\if\ico_hd\InventoryDlg\goods\new\medical\item_h2o2.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\medical\item_h2o2.dds"/>
+   <Item id="item_ledx" file="data\if\ico_hd\InventoryDlg\goods\new\medical\item_ledx.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\medical\item_ledx.dds"/>
+   <Item id="item_medical_tools" file="data\if\ico_hd\InventoryDlg\goods\new\medical\item_medical_tools.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\medical\item_medical_tools.dds"/>
+   <Item id="item_naci" file="data\if\ico_hd\InventoryDlg\goods\new\medical\item_naci.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\medical\item_naci.dds"/>
+   <Item id="item_oftalmaskop" file="data\if\ico_hd\InventoryDlg\goods\new\medical\item_oftalmaskop.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\medical\item_oftalmaskop.dds"/>
+   <Item id="item_suringe" file="data\if\ico_hd\InventoryDlg\goods\new\medical\item_suringe.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\medical\item_suringe.dds"/>
+
+   <!-- Other -->
+   <Item id="item_airfilter" file="data\if\ico_hd\InventoryDlg\goods\new\other\item_airfilter.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\other\item_airfilter.dds"/>
+   <Item id="item_ananaga" file="data\if\ico_hd\InventoryDlg\goods\new\other\item_ananaga.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\other\item_ananaga.dds"/>
+   <Item id="item_carsen" file="data\if\ico_hd\InventoryDlg\goods\new\other\item_carsen.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\other\item_carsen.dds"/>
+   <Item id="item_emre_kara" file="data\if\ico_hd\InventoryDlg\goods\new\other\item_emre_kara.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\other\item_emre_kara.dds"/>
+   <Item id="item_filter" file="data\if\ico_hd\InventoryDlg\goods\new\other\item_filter.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\other\item_filter.dds"/>
+   <Item id="item_fitanyashka" file="data\if\ico_hd\InventoryDlg\goods\new\other\item_fitanyashka.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\other\item_fitanyashka.dds"/>
+   <Item id="item_jeton_bear" file="data\if\ico_hd\InventoryDlg\goods\new\other\item_jeton_bear.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\other\item_jeton_bear.dds"/>
+   <Item id="item_jeton_usec" file="data\if\ico_hd\InventoryDlg\goods\new\other\item_jeton_usec.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\other\item_jeton_usec.dds"/>
+   <Item id="item_pants40grn" file="data\if\ico_hd\InventoryDlg\goods\new\other\item_pants40grn.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\other\item_pants40grn.dds"/>
+   <Item id="item_paracord" file="data\if\ico_hd\InventoryDlg\goods\new\other\item_paracord.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\other\item_paracord.dds"/>
+   <Item id="item_pavlikrpg" file="data\if\ico_hd\InventoryDlg\goods\new\other\item_pavlikrpg.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\other\item_pavlikrpg.dds"/>
+   <Item id="item_salo" file="data\if\ico_hd\InventoryDlg\goods\new\other\item_salo.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\other\item_salo.dds"/>
+   <Item id="item_vitalik" file="data\if\ico_hd\InventoryDlg\goods\new\other\item_vitalik.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\other\item_vitalik.dds"/>
+   <Item id="item_vodka" file="data\if\ico_hd\InventoryDlg\goods\new\other\item_vodka.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\other\item_vodka.dds"/>
+   <Item id="item_waterfilter" file="data\if\ico_hd\InventoryDlg\goods\new\other\item_waterfilter.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\other\item_waterfilter.dds"/>
+   <Item id="item_zapal" file="data\if\ico_hd\InventoryDlg\goods\new\other\item_zapal.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\other\item_zapal.dds"/>
+
+   <!-- Tools -->
+   <Item id="item_awl" file="data\if\ico_hd\InventoryDlg\goods\new\tools\item_awl.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\tools\item_awl.dds"/>
+   <Item id="item_buldex" file="data\if\ico_hd\InventoryDlg\goods\new\tools\item_buldex.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\tools\item_buldex.dds"/>
+   <Item id="item_fullmaster" file="data\if\ico_hd\InventoryDlg\goods\new\tools\item_fullmaster.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\tools\item_fullmaster.dds"/>
+   <Item id="item_handrill" file="data\if\ico_hd\InventoryDlg\goods\new\tools\item_handdrill.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\tools\item_handdrill.dds"/>
+   <Item id="item_leatherman" file="data\if\ico_hd\InventoryDlg\goods\new\tools\item_leatherman.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\tools\item_leatherman.dds"/>
+   <Item id="item_metalscissors" file="data\if\ico_hd\InventoryDlg\goods\new\tools\item_metalscissors.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\tools\item_metalscissors.dds"/>
+   <Item id="item_nippers" file="data\if\ico_hd\InventoryDlg\goods\new\tools\item_nippers.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\tools\item_nippers.dds"/>
+   <Item id="item_pipe_wrench" file="data\if\ico_hd\InventoryDlg\goods\new\tools\item_pipe_wrench.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\tools\item_pipe_wrench.dds"/>
+   <Item id="item_pliers" file="data\if\ico_hd\InventoryDlg\goods\new\tools\item_pliers.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\tools\item_pliers.dds"/>
+   <Item id="item_pliers_round" file="data\if\ico_hd\InventoryDlg\goods\new\tools\item_pliers_round.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\tools\item_pliers_round.dds"/>
+   <Item id="item_ratchet_wrench" file="data\if\ico_hd\InventoryDlg\goods\new\tools\item_ratchet_wrench.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\tools\item_ratchet_wrench.dds"/>
+   <Item id="item_roulet" file="data\if\ico_hd\InventoryDlg\goods\new\tools\item_roulet.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\tools\item_roulet.dds"/>
+   <Item id="item_screw" file="data\if\ico_hd\InventoryDlg\goods\new\tools\item_screw.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\tools\item_screw.dds"/>
+   <Item id="item_screw_flat" file="data\if\ico_hd\InventoryDlg\goods\new\tools\item_screw_flat.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\tools\item_screw_flat.dds"/>
+   <Item id="item_screw_flat_long" file="data\if\ico_hd\InventoryDlg\goods\new\tools\item_screw_flat_long.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\tools\item_screw_flat_long.dds"/>
+   <Item id="item_sewing_kit" file="data\if\ico_hd\InventoryDlg\goods\new\tools\item_sewing_kit.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\tools\item_sewing_kit.dds"/>
+   <Item id="item_toolset" file="data\if\ico_hd\InventoryDlg\goods\new\tools\item_toolset.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\tools\item_toolset.dds"/>
+   <Item id="item_wrench" file="data\if\ico_hd\InventoryDlg\goods\new\tools\item_wrench.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\tools\item_wrench.dds"/>
+  
+   <!-- Valuables -->
+   <Item id="item_bitcoin" file="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_bitcoin.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_bitcoin.dds"/>
+   <Item id="item_cat" file="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_cat.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_cat.dds"/>
+   <Item id="item_chain" file="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_chain.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_chain.dds"/>
+   <Item id="item_chain_gold" file="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_chain_gold.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_chain_gold.dds"/>
+   <Item id="item_chiken" file="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_chiken.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_chiken.dds"/>
+   <Item id="item_ex" file="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_ex.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_ex.dds"/>
+   <Item id="item_lion" file="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_lion.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_lion.dds"/>
+   <Item id="item_rolex" file="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_rolex.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_rolex.dds"/>
+   <Item id="item_skullring" file="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_skullring.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_skullring.dds"/>
+   <Item id="item_teapon" file="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_teapon.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_teapon.dds"/>
+   <Item id="item_woodclock" file="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_woodclock.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_woodclock.dds"/>
+
+   <!-- Opacity Item -->
+   <Item id="item_opacity" file="data\if\ico\InventoryDlg\Opacity1.dds" file1="data\if\ico\InventoryDlg\Opacity1.dds"/>
+
 
    <!-- Giant -->
    <Item id="dragon01"			   file="data\if\ico_hd\InventoryDlg\weapon\dragon.dds"		   file1="data\if\ico_hd\InventoryDlg\weapon\dragon_min.dds"/>

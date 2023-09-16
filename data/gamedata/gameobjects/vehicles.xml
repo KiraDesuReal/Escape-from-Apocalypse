@@ -750,8 +750,8 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		DecisionMatrix		= "vehiclemain.lua"
 
 		LookRadius			= "200.0"
-		IntersectionRadius	= "4.5"
-		TakingRadius		= "30.0"
+		IntersectionRadius	= "4.0"
+		TakingRadius		= "5.0"
 		DestroyEffectPiercing	= "ET_PS_VEH_EXP1_MED"
 		DestroyEffectBlast	= "ET_PS_VEH_EXP2_MED"
 		DestroyEffectEnergy	= "ET_PS_VEH_EXP3_MED"

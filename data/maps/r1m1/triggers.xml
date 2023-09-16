@@ -1762,4 +1762,18 @@
 		</script>
 	</trigger>
 
+<!-- Расстановка лута на карте -->
+
+	<trigger Name="CreateBarrelBox" active="1">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			for i=1,31 do
+				CreateBarrelLootBox("barrel"..i, CVector(getPos("barrelBox_"..i.."_loc")), "r1m1")
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 </triggers>

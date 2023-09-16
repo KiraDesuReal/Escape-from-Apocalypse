@@ -502,7 +502,14 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 			vehicle:SetRandomSkin()
 		 	if IsWares==1 then
 
-				local RandWarez = {"potato","firewood","scrap_metal","doski","details","oil","fuel","machinery","bottle","tobacco","book","electronics"}
+				local RandWarez = {"potato","firewood","scrap_metal","doski","details","oil","fuel","machinery","bottle","tobacco","book","electronics", 
+									"item_scotch", "item_nails", "item_nuts", "item_insulation", "item_screws", "item_bolts", "item_hose", "item_plex", "item_parts", "item_poheram", "item_tube",
+									"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_svech", "item_kondesators",
+									"item_battery_d", "item_battery_aa",
+									"item_spich", "item_hunter_spich", "item_lighter", "item_zibbo",
+									"item_soap", "item_paste", "item_tb", "item_toothpaste",
+									"item_zapal", "item_vodka", "item_filter",
+									"item_roulet", "item_wrench", "item_screw", "item_pliers", "item_screw_flat", "item_nippers"}
 				local r = getn(RandWarez)
 				
 				local ItemsLifeUse = {"scrap_metal_use", "machinery_use", "electronics_use"}
@@ -510,15 +517,21 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 
 				local ItemsOilUse = {"oil_use", "fuel_nil_use", "fuel_full_use"}
 				local r3 = getn(ItemsOilUse)
-				
-				for life=1,random(1,2) do
-					vehicle:AddItemsToRepository(ItemsLifeUse[exrandom(r2)], 1)
-				end
 
-				vehicle:AddItemsToRepository(ItemsOilUse[exrandom(r3)], random(0,1))
+				local rand = random(1000)
 
-				for ware=1,random(2) do
-					vehicle:AddItemsToRepository(RandWarez[exrandom(r)], 1)
+				if 5 >= rand then
+					vehicle:AddItemsToRepository("item_pavlikrpg", 1)
+				else
+					for life=1,random(2) do
+						vehicle:AddItemsToRepository(ItemsLifeUse[exrandom(r2)], 1)
+					end
+
+					vehicle:AddItemsToRepository(ItemsOilUse[exrandom(r3)], random(0,1))
+
+					for ware=1,random(2) do
+						vehicle:AddItemsToRepository(RandWarez[random(r)], 1)
+					end
 				end
 			
 			end
@@ -1341,6 +1354,87 @@ function RestoreAllToleranceStatus()
 		   SetTolerance(i+1000, j+1000, GL_ToleranceStatus[i][j])
     	end
     end
+end
+
+function CreateBarrelLootBox(name, pos, loc)
+
+	local use = {"scrap_metal_use", "oil_use", "machinery_use", "fuel_nil_use", "fuel_full_use", "electronics_use"}
+	local use_items = getn(use)
+
+	local building = {"item_scotch", "item_nails", "item_nuts", "item_insulation", "item_screws", "scrap_metal", "doski", "item_bolts", "item_hose", "details", "item_plex", "item_parts", "item_poheram", "item_tube", "item_kek", "machinery", "item_military_tube", "item_thermometer", "item_pena", "item_datchik"}
+	local building_items = getn(building)
+
+	local electronics = {"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_cpu", "item_svech", "item_kondesators", "item_magnet", "item_energo_lump", "item_electronics_components", "item_phone", "item_ultra_lump", "item_cooler", "item_gazan", "item_geiger", "item_plate", "item_cable", "item_helix", "item_hdd", "item_drill", "item_lcd", "item_military_cable", "electronics", "item_bp", "item_engine", "item_iridiym", "item_tetris", "item_vpx", "item_virtex", "item_converter", "item_gpu"}
+	local electronics_items = getn(electronics)
+
+	local energy = {"item_battery_d", "item_battery_aa", "item_accum", "item_powerbank", "item_green_battery", "item_car_battery", "item_cyclon", "item_tank_battery"}
+	local energy_items = getn(energy)
+
+	local flammable = {"item_spich", "item_hunter_spich", "item_lighter", "item_wd40_100", "item_zibbo", "oil", "item_survl", "item_wd40_400", "fuel", "item_trotile", "item_dry", "item_propan", "item_prisadka", "item_termit"}
+	local flammable_items = getn(flammable)
+
+	local household = {"item_soap", "item_paste", "item_salt", "item_tb", "item_toothpaste", "item_soda", "item_paper", "item_alkani", "item_hlor", "book"}
+	local household_items = getn(household)
+
+	local info = {"item_disk", "item_manual", "item_flashdrive", "item_diary_s", "item_diary", "item_ssd", "item_disk_exmachina", "item_sas", "item_rozvidka"}
+	local info_items = getn(info)
+
+	local medical = {"item_medical_tools", "item_naci", "item_h2o2", "item_suringe", "item_c6h8o6", "item_aquapeps", "item_oftalmaskop", "item_ledx"}
+	local medical_items = getn(medical)
+
+	local other = {"item_zapal", "tobacco", "bottle", "item_vodka", "item_filter", "item_emre_kara", "item_waterfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_airfilter", "item_ananaga"}
+	local other_items = getn(other)
+
+	local tools = {"item_roulet", "item_wrench", "item_screw", "item_pliers", "item_screw_flat", "item_nippers", "item_metalscissors", "item_pliers_round", "item_leatherman", "item_screw_flat_long", "item_toolset", "item_awl", "item_fullmaster", "item_sewing_kit", "item_handrill", "item_buldex", "item_ratchet_wrench", "item_pipe_wrench"}
+	local tools_items = getn(tools)
+
+	local valuables = {"item_chain", "shkatulka", "item_ex", "item_teapon", "item_cat", "item_rolex", "item_chain_gold", "item_woodclock", "item_chiken", "item_skullring", "item_lion", "item_bitcoin"}
+	local valuables_items = getn(valuables)
+
+	local gun = {"hornet01","specter01","pkt01","kord01","storm01","fagot01","maxim01","vector01","vulcan01","kpvt01","rapier01","flag01","rainmetal01","elephant01","odin01","omega01","bumblebee01","hammer01","hunterSideGun","mrakSideGun","big_swingfire01","cyclops01","octopus01","hailSideGun","hurricane01","rocketLauncher","zeusSideGun","marsSideGun"}
+	local gun_items = getn(gun)
+
+	local exlusive = {}
+
+	if loc == "r1m1" then
+		exlusive = {"potato", "firewood", "item_pants40grn", "item_salo"}
+	end
+
+	local exlusive_items = getn(exlusive)
+
+	CreateNewDummyObject("plastic_barrel", name, -1, -1, pos, Quaternion(0, 0, 0, 0),1)
+
+	local Barrel = GetEntityByName(name)
+	local BarrelPos = Barrel:GetPosition()
+	BarrelPos.y = BarrelPos.y - 1.850
+	Barrel:SetPosition(BarrelPos)
+
+	local Chest = CreateNewObject{prototypeName = "opacityChest", objName = name.."Chest"}	
+	local ChestId = GetEntityByID(Chest)
+	ChestId:SetPosition(pos)
+
+	local count = random(5)
+
+	for l=1,count do
+
+		local items = {}
+
+		if loc == nil then
+			items = {use[random(use_items)], building[exrandom(building_items)], electronics[exrandom(electronics_items)], energy[exrandom(energy_items)], flammable[exrandom(flammable_items)], household[exrandom(household_items)], info[exrandom(info_items)], medical[exrandom(medical_items)], other[exrandom(other_items)], tools[exrandom(tools_items)], valuables[exrandom(valuables_items)], gun[exrandom(gun_items)]}
+		else
+			items = {use[random(use_items)], building[exrandom(building_items)], electronics[exrandom(electronics_items)], energy[exrandom(energy_items)], flammable[exrandom(flammable_items)], household[exrandom(household_items)], info[exrandom(info_items)], medical[exrandom(medical_items)], other[exrandom(other_items)], tools[exrandom(tools_items)], valuables[exrandom(valuables_items)], gun[exrandom(gun_items)], exlusive[exrandom(exlusive_items)]}
+		end
+
+		local items_random = getn(items)
+		
+		local Item = CreateNewObject{prototypeName = items[random(items_random)], objName = "Item"..random(10000), belong = 1100}
+		local ItemId = GetEntityByID(Item)
+
+		if ChestId and ItemId then
+			ChestId:AddChild(ItemId)
+		end
+	end
+
 end
 
 

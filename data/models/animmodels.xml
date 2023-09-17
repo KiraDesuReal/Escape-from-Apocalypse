@@ -5543,6 +5543,21 @@
 	</model>
 
 	<model
+		id="fighterCab01_Dead"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\fighter\cab01.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
 		id="fighterCab01"
 		shadow="1"
 		shadowVolume="1"

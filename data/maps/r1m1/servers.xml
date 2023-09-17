@@ -1600,6 +1600,11 @@
 			file="data\models\AnimModels.xml"/>
 
 		<Item 	
+			id="fighterCab01_Dead" 
+			file="data\models\AnimModels.xml"   
+			params = "skins: 0 1 2 4 8;" />
+
+		<Item 	
 			id="fighterCab01" 
 			file="data\models\AnimModels.xml"   
 			params = "skins: 0 1 2 4 8;" />

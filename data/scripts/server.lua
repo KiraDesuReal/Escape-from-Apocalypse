@@ -1437,4 +1437,38 @@ function CreateBarrelLootBox(name, pos, loc)
 
 end
 
+function CreateLootBoxForDeadScav(name, pos)
+
+	local items = {"scrap_metal_use", "oil_use", "machinery_use", "fuel_nil_use", "fuel_full_use", "electronics_use",
+					"item_scotch", "item_nails", "item_nuts", "item_insulation", "item_screws", "scrap_metal", "doski", "item_bolts", "item_hose", "details", "item_plex", "item_parts", "item_poheram", "item_tube", "item_kek", "machinery",
+					"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_cpu", "item_svech", "item_kondesators", "item_magnet", "item_energo_lump", "item_electronics_components", "item_phone", "item_ultra_lump", "item_cooler", "item_gazan", "item_geiger", "item_plate", "item_cable", "item_helix", "electronics",
+					"item_battery_d", "item_battery_aa", "item_accum", "item_powerbank", "item_green_battery",
+					"item_spich", "item_hunter_spich", "item_lighter", "item_wd40_100", "item_zibbo", "oil", "item_survl", "item_wd40_400", "fuel",
+					"item_soap", "item_paste", "item_salt", "item_tb", "item_toothpaste", "item_soda", "item_paper", "item_alkani", "item_hlor", "book",
+					"item_disk", "item_flashdrive", "item_diary_s", "item_diary", "item_ssd", "item_disk_exmachina",
+					"item_medical_tools", "item_naci", "item_h2o2", "item_suringe", "item_c6h8o6", "item_aquapeps",
+					"item_zapal", "tobacco", "bottle", "item_vodka", "item_filter", "item_paracord", "item_ananaga",
+					"item_roulet", "item_wrench", "item_screw", "item_pliers", "item_screw_flat", "item_nippers", "item_metalscissors", "item_pliers_round", "item_leatherman", "item_screw_flat_long", "item_awl", "item_sewing_kit",
+					"item_chain", "shkatulka", "item_ex", "item_chain_gold",
+					"item_key_gate_thetown", "item_key_gate_r1m3"}	
+	local items_rand = getn(items)
+
+	local Chest = CreateNewObject{prototypeName = "someChest", objName = name.."Chest"}	
+	local ChestId = GetEntityByID(Chest)
+	ChestId:SetPosition(pos)
+
+	local count = random(3)
+
+	for l=1,count do
+
+		local Item = CreateNewObject{prototypeName = items[random(items_rand)], objName = "Item"..random(10000), belong = 1100}
+		local ItemId = GetEntityByID(Item)
+
+		if ChestId and ItemId then
+			ChestId:AddChild(ItemId)
+		end
+	end
+
+end
+
 

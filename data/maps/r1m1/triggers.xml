@@ -94,7 +94,7 @@
 
 --Ворота южного
 
-		CreateNewDummyObject( "big_gate01", "gate_thetown", -1, -1, CVector(1235.100, 311.700, 2969.336), Quaternion(0.0000, 0.7210, 0.0000, 0.6930) )
+		CreateNewDummyObject( "big_gate01", "gate_thetown", -1, -1, CVector(1235.100, 311.700, 2969.336), Quaternion(0.0000, 0.7210, 0.0000, 0.6930))
 		CreateNewSgNodeObject( "big_gate01", "gate_thetown2", -1, -1, CVector(1262.195, 300, 2995.386), Quaternion(-0.004, 0.019, 0.000, 1.000), 1)
 		getObj("gate_thetown"):SetNodeAction(AT_STAND2)
 
@@ -148,6 +148,7 @@
 		end
 	
 --Звуки
+
 		CreateNewDummyObject( "birbs",	"weather_sound01", -1, -1, CVector(3606, 380, 3506), Quaternion(0, 0, 0, 1), 1 )
 		CreateNewDummyObject( "birbs",	"weather_sound02", -1, -1, CVector(3460, 376, 3619), Quaternion(0, 0, 0, 1), 1 )
 		CreateNewDummyObject( "birbs",	"weather_sound03", -1, -1, CVector(3193, 371, 3516), Quaternion(0, 0, 0, 1), 1 )
@@ -1765,11 +1766,23 @@
 <!-- Расстановка лута на карте -->
 
 	<trigger Name="CreateBarrelBox" active="1">
-		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 
 			for i=1,31 do
 				CreateBarrelLootBox("barrel"..i, CVector(getPos("barrelBox_"..i.."_loc")), "r1m1")
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateBoxForDeadScav" active="1">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			for i=1,5 do
+				CreateLootBoxForDeadScav("DeadScav", CVector(getPos("DeadScav_"..i.."_loc")))
 			end
 
 			trigger:Deactivate()

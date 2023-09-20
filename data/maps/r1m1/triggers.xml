@@ -1782,7 +1782,119 @@
 		<script>
 
 			for i=1,5 do
-				CreateLootBoxForDeadScav("DeadScav", CVector(getPos("DeadScav_"..i.."_loc")))
+				CreateLootBoxForDeadScav("DeadScav"..i, CVector(getPos("DeadScav_"..i.."_loc")))
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateGunLootBox" active="1">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			for i=1,15 do
+				CreateGunBox("GunBox"..i, CVector(getPos("GunBox_"..i.."_loc")))
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateMedicalLootBox" active="1">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			for i=1,7 do
+				CreateMedBox("MedicalBox"..i, CVector(getPos("MedBox_"..i.."_loc")))
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateTehnoLootBox" active="1">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			for i=1,10 do
+				CreateTehnoBox("TehnoBox"..i, CVector(getPos("TehnoBox_"..i.."_loc")))
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateToolsLootBox" active="1">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			for i=1,9 do
+				CreateToolsBox("ToolsBox"..i, CVector(getPos("ToolsBox_"..i.."_loc")))
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateValuablesLootBox" active="1">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			for i=1,7 do
+				CreateValuableBox("ValuablesBox"..i, CVector(getPos("ValuableBox_"..i.."_loc")))
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateElectronicsLootBox" active="1">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			for i=1,5 do
+				CreateElectronicsBox("ElectronicsBox"..i, CVector(getPos("ElectronicsBox_"..i.."_loc")))
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateTheTownLootBox" active="1">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+		
+			local item = {"item_tube", "item_kek", "machinery", "item_military_tube", "item_thermometer", "item_pena", "item_datchik",
+							"item_dvd", "item_cpu", "item_kondesators", "item_electronics_components", "item_cooler", "item_gazan", "item_plate", "item_cable", "item_hdd", "item_drill", "item_lcd", "item_military_cable", "electronics", "item_bp", "item_engine", "item_iridiym", "item_tetris", "item_vpx", "item_gpu",
+							"item_green_battery", "item_car_battery", "item_cyclon", "item_tank_battery",
+							"item_ssd", "item_disk_exmachina", "item_sas", "item_rozvidka",
+							"item_rolex", "item_chain_gold", "item_woodclock", "item_chiken", "item_skullring",
+							"fagot01","maxim01","flag01","rainmetal01","elephant01","odin01","omega01"}
+			local item_random = getn(item)
+
+			for i=1,5 do
+				local Chest = CreateNewObject{prototypeName = "someChest", objName = "TheTown_"..i.."_Chest"}	
+				local ChestId = GetEntityByID(Chest)
+				ChestId:SetPosition(CVector(getPos("TheTownBox_"..i.."_loc")))
+				ChestId:SetSkin(2)
+
+				local ChestPos = ChestId:GetPosition()
+				ChestPos.y = ChestPos.y + 1
+				ChestId:SetPosition(ChestPos)
+
+				local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityItem"..random(10000), belong = 1100}
+				local OpacityItemId = GetEntityByID(OpacityItem)
+
+				if ChestId and OpacityItemId then
+					ChestId:AddChild(OpacityItemId)
+				end
+
+				local Item = CreateNewObject{prototypeName = item[random(item_random)], objName = "Item"..random(10000), belong = 1100}
+				local ItemId = GetEntityByID(Item)
+				if ChestId and ItemId then
+					ChestId:AddChild(ItemId)
+				end
 			end
 
 			trigger:Deactivate()

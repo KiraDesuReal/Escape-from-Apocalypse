@@ -1614,6 +1614,11 @@
 			file="data\models\AnimModels.xml"   
 			params = "skins: 0 1 2 4 8;" />
 
+		<Item 
+			id="fighterCab03" 
+			file="data\models\AnimModels.xml"   
+			params = "skins: 0 1 2 4 8;" />
+
 		<Item 	
 			id="fighterSusp01l" 
 			file="data\models\AnimModels.xml"/>
@@ -1651,6 +1656,10 @@
 			file="data\models\AnimModels.xml"/>
 
 		<Item 
+			id="hunterChassis" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
 			id="hunterCab01" 
 			file="data\models\AnimModels.xml"   
 			params = "skins: 0 1 2 4 8;" />
@@ -1659,6 +1668,11 @@
 			id="hunterCab02" 
 			file="data\models\AnimModels.xml"   
 			params = "skins: 0 1 2 4 8;" />
+
+		<Item 
+			id="hunterCab03" 
+			file="data\models\AnimModels.xml"   
+			params = "skins: 0 1 2 3 4 5 6 7 8;" />
 
 		<Item 
 			id="hunterSusp01" 

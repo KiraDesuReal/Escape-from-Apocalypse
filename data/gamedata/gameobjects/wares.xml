@@ -1541,6 +1541,15 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_4X4" />
 
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_vitaly"
+		Price	= "512000"
+		Durability	= "10"
+		PriceDispersion      = "10"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_3X3" />
+
 <!-- Opacity Item -->
 
 	<Prototype

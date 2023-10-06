@@ -146,6 +146,11 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 		</Type>
 
 
+		<Type Name="SIZE_3X3" geomsize="3 3">
+			<Type Name="ITEM_SIZE_3X3" />
+		</Type>
+
+
 		<Type Name="SIZE_4X2" geomsize="4 2">
 			<Type Name="ITEM_SIZE_4X2" />
 		</Type>

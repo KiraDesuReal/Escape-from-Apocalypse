@@ -466,11 +466,11 @@ function QuestStatus(name)
 	return Stat
 end
 
-function TeamCreate(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Rotate)
-	return CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Rotate)
+function TeamCreate(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Rotate, IsBoss)
+	return CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Rotate, IsBoss)
 end
 
-function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Rotate)
+function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Rotate, IsBoss)
 -- Создает команду машин из списка ListOfVehicle, с именем Name и белонгом Belong, в позиции CreatePos.
 -- Eсли надо кудато ехать, то надо указать WalkPos
 -- возвращает указатель на созданную команду(если все ок), либо 0 - если ошибка
@@ -533,7 +533,6 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 						vehicle:AddItemsToRepository(RandWarez[random(r)], 1)
 					end
 				end
-			
 			end
 
 			-- by Anton: это не нужно, т.к. вызываем SetGamePositionOnGround()
@@ -1759,5 +1758,129 @@ function CreateElectronicsBox(name, pos)
 
 	end
 
+end
+
+function ItemUse()
+
+	local vehP = GetPlayerVehicle()
+	local PlfCoor = vehP:GetPosition()
+	local healthcar = GetPlayerHealth() 
+	local healthmax = GetPlayerMaxHealth()
+	local fuelcar = GetPlayerFuel()
+	local fuelmax = GetPlayerMaxFuel()
+
+	if HasPlayerAmountOfItems("scrap_metal_use", 1) and HasPlayerAmountOfItems("machinery_use", 1) then
+		if vehP then 
+			if (400 > healthcar) and (healthmax == 500) then
+				vehP:AddModifier( "hp", "+ 100" ) 
+				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+				AddFadingMsgByStrIdFormatted("fm_use_machinery", 100)
+				RemoveItemsFromPlayerRepository("machinery_use", 1)
+			end
+		end
+	end
+
+	if HasPlayerAmountOfItems("scrap_metal_use", 1) and HasPlayerAmountOfItems("machinery_use", 1) and HasPlayerAmountOfItems("electronics_use", 1) then
+		if vehP then 
+			if (300 > healthcar) and (healthmax == 500) then
+				vehP:AddModifier( "hp", "+ 200" ) 
+				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+				AddFadingMsgByStrIdFormatted("fm_use_electronics", 200)
+				RemoveItemsFromPlayerRepository("electronics_use", 1)
+			end
+		end
+	end
+
+	if HasPlayerAmountOfItems("machinery_use", 1) and HasPlayerAmountOfItems("electronics_use", 1) then
+		if vehP then 
+			if (300 > healthcar) and (healthmax == 500) then
+				vehP:AddModifier( "hp", "+ 200" ) 
+				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+				AddFadingMsgByStrIdFormatted("fm_use_electronics", 200)
+				RemoveItemsFromPlayerRepository("electronics_use", 1)
+			end
+		end
+	end
+			
+	if HasPlayerAmountOfItems("scrap_metal_use", 1) then
+		if vehP then 
+			if (460 > healthcar) and (healthmax == 500) then
+				vehP:AddModifier( "hp", "+ 40" ) 
+				CreateEffectTTLed( "ET_PS_USE_ARM", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+				AddFadingMsgByStrIdFormatted("fm_use_scrap_metal", 40)
+				RemoveItemsFromPlayerRepository("scrap_metal_use", 1)
+			end
+		end
+	end
+			
+	if HasPlayerAmountOfItems("machinery_use", 1) then
+		if vehP then 
+			if (400 > healthcar) and (healthmax == 500) then
+				vehP:AddModifier( "hp", "+ 100" ) 
+				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+				AddFadingMsgByStrIdFormatted("fm_use_machinery", 100)
+				RemoveItemsFromPlayerRepository("machinery_use", 1)
+			end
+		end
+	end
+
+	if HasPlayerAmountOfItems("electronics_use", 1) then
+		if vehP then 
+			if (300 > healthcar) and (healthmax == 500) then
+				vehP:AddModifier( "hp", "+ 200" ) 
+				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+				AddFadingMsgByStrIdFormatted("fm_use_electronics", 200)
+				RemoveItemsFromPlayerRepository("electronics_use", 1)
+			end
+		end
+	end
+
+	if HasPlayerAmountOfItems("oil_use", 1) and HasPlayerAmountOfItems("fuel_full_use", 1) then
+		if vehP then 
+			if (60 > fuelcar) and (fuelmax == 100) then
+				vehP:AddModifier( "fuel", "+ 40" ) 
+				CreateEffectTTLed( "ET_PS_USE_OIL", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+				AddFadingMsgByStrIdFormatted("fm_use_fuel_full", 40)
+				RemoveItemsFromPlayerRepository("fuel_full_use", 1)
+				AddItemsToPlayerRepository("fuel_nil_use", 1)
+			end
+		end
+	end
+
+	if HasPlayerAmountOfItems("oil_use", 1) then
+		if vehP then 
+			if (85 > fuelcar) and (fuelmax == 100) then
+				vehP:AddModifier( "fuel", "+ 15" ) 
+				CreateEffectTTLed( "ET_PS_USE_OIL", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+				AddFadingMsgByStrIdFormatted("fm_use_oil", 15)
+				RemoveItemsFromPlayerRepository("oil_use", 1)
+			end
+		end
+	end
+
+	if HasPlayerAmountOfItems("fuel_full_use", 1) then
+		if vehP then 
+			if (60 > fuelcar) and (fuelmax == 100) then
+				vehP:AddModifier( "fuel", "+ 40" ) 
+				CreateEffectTTLed( "ET_PS_USE_OIL", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+				AddFadingMsgByStrIdFormatted("fm_use_fuel_full", 40)
+				RemoveItemsFromPlayerRepository("fuel_full_use", 1)
+				AddItemsToPlayerRepository("fuel_nil_use", 1)
+			end
+		end
+	end
+
+	if HasPlayerAmountOfItems("item_key_gate_thetown", 1) and not(IsQuestItemPresent("quest_item_key_gate_thetown")) then
+		AddQuestItem("quest_item_key_gate_thetown")
+		AddFadingMsgByStrIdFormatted("fm_item_to_quest_items", "item_key_gate_thetown")
+		RemoveItemsFromPlayerRepository("item_key_gate_thetown", 1)
+	end
+
+	if HasPlayerAmountOfItems("item_key_gate_r1m3", 1) and not(IsQuestItemPresent("quest_item_key_gate_r1m3")) then
+		AddQuestItem("quest_item_key_gate_r1m3")
+		AddFadingMsgByStrIdFormatted("fm_item_to_quest_items", "item_key_gate_r1m3")
+		RemoveItemsFromPlayerRepository("item_key_gate_r1m3", 1)
+	end
+	
 end
 

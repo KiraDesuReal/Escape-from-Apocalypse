@@ -10,20 +10,6 @@
 		</script>
 	</trigger>
 
-	<trigger	Name="trKraiPlaceSecret"	active="0">
-		<event	timeout="0.1"			eventid="GE_TIME_PERIOD" />
-		<script>
-			local gunlist = {"specter01","hornet01","storm01","vector01"}
-			local len = getn(gunlist)
-
-			for i=1,4 do
-				--println("step"..i.."succesful")
-				CreateBoxWithAffixGun(CVector(getPos("SecretPlace"..i.."_loc")), gunlist[exrandom(len)], random(0,2))
-			end
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
 <!-- Создание/Уничножение Глухого -->
 	<trigger Name="CreateGloohoe" active="1">
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
@@ -146,48 +132,10 @@
 				TDeactivate ("NotWork_PetrolStation03")
 			end
 		end
-	
---Звуки
 
-		CreateNewDummyObject( "birbs",	"weather_sound01", -1, -1, CVector(3606, 380, 3506), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound02", -1, -1, CVector(3460, 376, 3619), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound03", -1, -1, CVector(3193, 371, 3516), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound04", -1, -1, CVector(2989, 347, 3413), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound05", -1, -1, CVector(3217, 348, 3131), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound06", -1, -1, CVector(3338, 359, 2926), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound07", -1, -1, CVector(3260, 353, 2532), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound08", -1, -1, CVector(2990, 334, 2489), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound09", -1, -1, CVector(2745, 370, 2406), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound10", -1, -1, CVector(2190, 343, 2339), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound11", -1, -1, CVector(1991, 312, 2543), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound12", -1, -1, CVector(1729, 294, 2973), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound13", -1, -1, CVector(1719, 303, 3333), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound14", -1, -1, CVector(2213, 365, 3626), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound15", -1, -1, CVector(1112, 309, 3576), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound16", -1, -1, CVector(956, 303, 3365), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound17", -1, -1, CVector(817, 308, 2991), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound18", -1, -1, CVector(1385, 303, 2497), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound19", -1, -1, CVector(1141, 299, 2421), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound20", -1, -1, CVector(1301, 311, 2153), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound21", -1, -1, CVector(1496, 308, 1912), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound22", -1, -1, CVector(1693, 307, 2115), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound23", -1, -1, CVector(2023, 324, 1686), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound24", -1, -1, CVector(2620, 320, 1774), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound25", -1, -1, CVector(2668, 321, 1979), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound26", -1, -1, CVector(452, 310, 1667), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound27", -1, -1, CVector(962, 324, 1135), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound28", -1, -1, CVector(416, 287, 359), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound29", -1, -1, CVector(1538, 301, 1068), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound30", -1, -1, CVector(2290, 297, 502), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound31", -1, -1, CVector(2319, 310, 896), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound32", -1, -1, CVector(2151, 329, 1276), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound33", -1, -1, CVector(3072, 349, 1448), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound34", -1, -1, CVector(2633, 321, 755), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound35", -1, -1, CVector(2692, 320, 934), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound36", -1, -1, CVector(2975, 318, 1104), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound37", -1, -1, CVector(3356, 320, 1127), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound38", -1, -1, CVector(3408, 325, 667), Quaternion(0, 0, 0, 1), 1 )
-		CreateNewDummyObject( "birbs",	"weather_sound39", -1, -1, CVector(3216, 340, 338), Quaternion(0, 0, 0, 1), 1 )
+-- Фонарь 
+
+		CreateNewBreakableObject("lamppost2", "fonar", 1002, CVector(3055.078, 349.812, 1446.906), Quaternion(0.0000, -0.7133, 0.0000, 0.7009),0)
 
 		trigger:Deactivate()    
 		</script>
@@ -251,8 +199,6 @@
 				end
 			end
 
-			CreateNewBreakableObject("lamppost2", "fonar", 1002, CVector(3055.078, 349.812, 1446.906), Quaternion(0.0000, -0.7133, 0.0000, 0.7009),0)
-		
 			trigger:Deactivate() 
 		</script>
 	</trigger>
@@ -1289,127 +1235,7 @@
 	<trigger Name="ItemsUse" active="1">
 		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
-
-			local vehP = GetPlayerVehicle()
-			local PlfCoor = vehP:GetPosition()
-			local healthcar = GetPlayerHealth() 
-			local healthmax = GetPlayerMaxHealth()
-			local fuelcar = GetPlayerFuel()
-			local fuelmax = GetPlayerMaxFuel()
-
-			if HasPlayerAmountOfItems("scrap_metal_use", 1) and HasPlayerAmountOfItems("machinery_use", 1) then
-				if vehP then 
-					if (400 > healthcar) and (healthmax == 500) then
-						vehP:AddModifier( "hp", "+ 100" ) 
-						CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
-						AddFadingMsgByStrIdFormatted("fm_use_machinery", 100)
-						RemoveItemsFromPlayerRepository("machinery_use", 1)
-					end
-				end
-			end
-
-			if HasPlayerAmountOfItems("scrap_metal_use", 1) and HasPlayerAmountOfItems("machinery_use", 1) and HasPlayerAmountOfItems("electronics_use", 1) then
-				if vehP then 
-					if (300 > healthcar) and (healthmax == 500) then
-						vehP:AddModifier( "hp", "+ 200" ) 
-						CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
-						AddFadingMsgByStrIdFormatted("fm_use_electronics", 200)
-						RemoveItemsFromPlayerRepository("electronics_use", 1)
-					end
-				end
-			end
-
-			if HasPlayerAmountOfItems("machinery_use", 1) and HasPlayerAmountOfItems("electronics_use", 1) then
-				if vehP then 
-					if (300 > healthcar) and (healthmax == 500) then
-						vehP:AddModifier( "hp", "+ 200" ) 
-						CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
-						AddFadingMsgByStrIdFormatted("fm_use_electronics", 200)
-						RemoveItemsFromPlayerRepository("electronics_use", 1)
-					end
-				end
-			end
-			
-			if HasPlayerAmountOfItems("scrap_metal_use", 1) then
-				if vehP then 
-					if (460 > healthcar) and (healthmax == 500) then
-						vehP:AddModifier( "hp", "+ 40" ) 
-						CreateEffectTTLed( "ET_PS_USE_ARM", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
-						AddFadingMsgByStrIdFormatted("fm_use_scrap_metal", 40)
-						RemoveItemsFromPlayerRepository("scrap_metal_use", 1)
-					end
-				end
-			end
-			
-			if HasPlayerAmountOfItems("machinery_use", 1) then
-				if vehP then 
-					if (400 > healthcar) and (healthmax == 500) then
-						vehP:AddModifier( "hp", "+ 100" ) 
-						CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
-						AddFadingMsgByStrIdFormatted("fm_use_machinery", 100)
-						RemoveItemsFromPlayerRepository("machinery_use", 1)
-					end
-				end
-			end
-
-			if HasPlayerAmountOfItems("electronics_use", 1) then
-				if vehP then 
-					if (300 > healthcar) and (healthmax == 500) then
-						vehP:AddModifier( "hp", "+ 200" ) 
-						CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
-						AddFadingMsgByStrIdFormatted("fm_use_electronics", 200)
-						RemoveItemsFromPlayerRepository("electronics_use", 1)
-					end
-				end
-			end
-
-			if HasPlayerAmountOfItems("oil_use", 1) and HasPlayerAmountOfItems("fuel_full_use", 1) then
-				if vehP then 
-					if (60 > fuelcar) and (fuelmax == 100) then
-						vehP:AddModifier( "fuel", "+ 40" ) 
-						CreateEffectTTLed( "ET_PS_USE_OIL", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
-						AddFadingMsgByStrIdFormatted("fm_use_fuel_full", 40)
-						RemoveItemsFromPlayerRepository("fuel_full_use", 1)
-						AddItemsToPlayerRepository("fuel_nil_use", 1)
-					end
-				end
-			end
-
-			if HasPlayerAmountOfItems("oil_use", 1) then
-				if vehP then 
-					if (85 > fuelcar) and (fuelmax == 100) then
-						vehP:AddModifier( "fuel", "+ 15" ) 
-						CreateEffectTTLed( "ET_PS_USE_OIL", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
-						AddFadingMsgByStrIdFormatted("fm_use_oil", 15)
-						RemoveItemsFromPlayerRepository("oil_use", 1)
-					end
-				end
-			end
-
-			if HasPlayerAmountOfItems("fuel_full_use", 1) then
-				if vehP then 
-					if (60 > fuelcar) and (fuelmax == 100) then
-						vehP:AddModifier( "fuel", "+ 40" ) 
-						CreateEffectTTLed( "ET_PS_USE_OIL", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
-						AddFadingMsgByStrIdFormatted("fm_use_fuel_full", 40)
-						RemoveItemsFromPlayerRepository("fuel_full_use", 1)
-						AddItemsToPlayerRepository("fuel_nil_use", 1)
-					end
-				end
-			end
-
-			if HasPlayerAmountOfItems("item_key_gate_thetown", 1) and not(IsQuestItemPresent("quest_item_key_gate_thetown")) then
-				AddQuestItem("quest_item_key_gate_thetown")
-				AddFadingMsgByStrIdFormatted("fm_item_to_quest_items", "item_key_gate_thetown")
-				RemoveItemsFromPlayerRepository("item_key_gate_thetown", 1)
-			end
-
-			if HasPlayerAmountOfItems("item_key_gate_r1m3", 1) and not(IsQuestItemPresent("quest_item_key_gate_r1m3")) then
-				AddQuestItem("quest_item_key_gate_r1m3")
-				AddFadingMsgByStrIdFormatted("fm_item_to_quest_items", "item_key_gate_r1m3")
-				RemoveItemsFromPlayerRepository("item_key_gate_r1m3", 1)
-			end
-
+			ItemUse()
 		</script>
 	</trigger>
 
@@ -1900,5 +1726,134 @@
 			trigger:Deactivate()
 		</script>
 	</trigger>
+
+<!-- Создание босса -->
+
+	<trigger Name="CreateBossProbability" active="1">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local boss_random = random(100)
+			if (30 >= boss_random) then
+				TActivate("CreateBoss")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateBoss" active="0">
+		<event timeout="40" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			local j = 1
+
+			local pos1 = { CVector(1048.444, 291.216, 2856.784), CVector(1053.958, 289.904, 2889.971), CVector(1089.576, 289.500, 2866.932), CVector(1108.183, 289.971, 2894.911), CVector(1061.614, 289.562, 2874.343) }
+			local pos1r = getn(pos1)
+
+			local pos2 = { CVector(987.033, 290.867, 2856.380), CVector(988.679, 290.071, 2899.583), CVector(1006.347, 289.929, 2903.812), CVector(1022.768, 289.542, 2896.418), CVector(960.054, 289.541, 2905.151), CVector(968.219, 290.293, 2856.602) }
+			local pos2r = getn(pos2)
+
+			local pos3 = { CVector(924.463, 289.762, 2938.432), CVector(978.696, 290.451, 2942.749), CVector(973.528, 291.180, 2973.819), CVector(936.618, 291.422, 2988.434), CVector(993.306, 292.335, 3015.926), CVector(993.791, 290.103, 2971.648) }
+			local pos3r = getn(pos3)
+
+			local pos4 = { CVector(1039.404, 289.778, 3000.015), CVector(1100.536, 289.967, 2988.652), CVector(1089.018, 289.912, 2957.226), CVector(1049.317, 289.934, 2977.683) }
+			local pos4r = getn(pos4)
+
+			local pos_boss = { CVector(1028.826, 288.073, 2963.456), CVector(996.488, 290.013, 2966.686), CVector(1032.515, 289.933, 2908.291), CVector(996.396, 290.011, 2892.137), CVector(997.775, 289.970, 2944.487), CVector(1080.671, 288.940, 2923.871) }
+			local pos_boss_r = getn(pos_boss)
+
+			local rotarr={
+				Quaternion(-0.029, 0.679, -0.021, 0.734),
+				Quaternion(0.001, 0.626, 0.002, 0.780),
+				Quaternion(-0.001, 0.558, -0.001, 0.830),
+				Quaternion(-0.029, -0.025, 0.005, 0.999),
+				Quaternion(-0.001, -0.346, 0.001, 0.938),
+				Quaternion(-0.001, -0.724, -0.000, 0.690),
+				Quaternion(-0.025, -0.992, -0.005, 0.125),
+				Quaternion(0.002, -0.914, -0.001, 0.405),
+				Quaternion(-0.003, -1.000, -0.006, -0.015)}
+			local Z = getn(rotarr)
+
+			local pos = { pos1[random(pos1r)], pos2[random(pos2r)], pos3[random(pos3r)], pos4[random(pos4r)] }
+
+			local smallgunlist = {"specter01","pkt01","kord01","storm01"}
+			local smallgunr = getn(smallgunlist)
+			local biggunlist={"rapier01","vector01","vulcan01","kpvt01"}
+			local biggunr = getn(biggunlist)
+
+			local ItemsLifeUse = {"scrap_metal_use", "machinery_use", "electronics_use"}
+			local r2 = getn(ItemsLifeUse)
+
+			local ItemsOilUse = {"oil_use", "fuel_nil_use", "fuel_full_use"}
+			local r3 = getn(ItemsOilUse)
+
+			for i=1,4 do 
+				TeamCreate("EnemyBoss"..i, 1086, pos[i], {"Fighter2CarBoss"}, nil, 0)
+			end
+
+			TeamCreate("Boss", 1087, pos_boss[random(pos_boss_r)], {"Hunter2CarBoss"}, nil, 0)
+
+			while getObj("EnemyBoss"..j.."_vehicle_0")~=nil do
+				local en = GetEntityByName ("EnemyBoss"..j.."_vehicle_0")
+				if en then
+					en:SetRotation(rotarr[random(Z)])
+					en:SetSkin(1)
+					en:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
+					en:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+					for life=1,random(3) do
+						en:AddItemsToRepository(ItemsLifeUse[random(r2)], 1)
+					end
+					en:AddItemsToRepository(ItemsOilUse[exrandom(r3)], 1)
+				end
+				j = j + 1
+			end
+
+			local bit = random(100)
+			local mon = random(100)
+
+			local boss = GetEntityByName ("Boss_vehicle_0")
+			if boss then
+				boss:SetRotation(rotarr[random(Z)])
+				boss:SetSkin(7)
+				boss:SetNewPart("CABIN_BIG_GUN_1","vector01")
+				boss:SetNewPart("CABIN_BIG_GUN_2","bumblebee01")
+				boss:setGodMode(1)
+				if (30 >= mon) then
+					boss:AddItemsToRepository("item_vitaly", 1)
+				end
+				if (5 >= bit) then
+					boss:AddItemsToRepository("item_bitcoin", 1)
+				end
+			end
+
+			TActivate("BossEnemy_Die")
+
+			SetTolerance(1087, 1100, RS_NEUTRAL)
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="BossEnemy_Die" active="0">
+		<event eventid="GE_OBJECT_DIE" ObjName="EnemyBoss1" />
+		<event eventid="GE_OBJECT_DIE" ObjName="EnemyBoss2" />
+		<event eventid="GE_OBJECT_DIE" ObjName="EnemyBoss3" />
+		<event eventid="GE_OBJECT_DIE" ObjName="EnemyBoss4" />
+		<script>
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			if 4>count then
+			return
+			end
+
+			local boss = GetEntityByName ("Boss_vehicle_0")
+			if boss then
+				boss:setGodMode(0)
+			end
+
+			SetTolerance(1087, 1100, RS_ENEMY)
+			trigger:Deactivate()
+ 		</script>
+	</trigger>
+
 
 </triggers>

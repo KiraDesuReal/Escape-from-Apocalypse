@@ -3166,6 +3166,15 @@
 -->
 
 <!-- 	///////////////Ёфекты к роликам///////////////	 -->
+
+	<Node name="ET_PS_BLINK" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_BLINK" psNumEmitterMesh="-1" /> 
+	</Node>
+
+	<Node name="ET_PS_BLINK1" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_BLINK1" psNumEmitterMesh="-1" /> 
+	</Node>
+
     <Node name="ET_PS_LENS_D5" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_D5" psNumEmitterMesh="-1" /> 
 	</Node>

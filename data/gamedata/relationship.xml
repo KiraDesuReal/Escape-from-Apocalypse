@@ -258,5 +258,15 @@ $Id: Relationship.xml,v 1.19 2005/11/24 09:45:17 anton Exp $
 			forwhom="1085"
 			who="1100"
 			tolerance="ally" />
+
+		<set
+			forwhom="1086"
+			who="1082 1083 1084"
+			tolerance="ally" />
+
+		<set
+			forwhom="1087"
+			who="1082 1083 1084 1086"
+			tolerance="ally" />
 		
 </relationship>

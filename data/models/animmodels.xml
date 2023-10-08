@@ -53,6 +53,22 @@
 		file="data\models\objects\box\plastic_barrel_box.gam" />
 
 	<model
+		id="airbox"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\objects\box\airbox.gam">
+		<action
+			name="STAND1">
+			<lp
+				id="LP_LIGHT1"
+				effect_id="ET_PS_AIRBOX"
+				restartOnAnimationChange="1"
+				ImmediateRemove="1" />
+		</action>
+	</model>
+
+	<model
 		id="conteiner"
 		shadow="1"
 		shadowVolume="1"
@@ -13746,7 +13762,8 @@
 		file="data\models\monsters\boss03\basket_01.gam"
 		shadow="0"
 		windwavy="0"
-		trans="0" />
+		trans="0">
+	</model>
 
 	<model
 		id="boss03cab01"

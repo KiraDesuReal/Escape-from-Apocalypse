@@ -31,7 +31,79 @@
 			file="data\models\AnimModels.xml" />
 
 		<Item
+			id="airbox"
+			file="data\models\AnimModels.xml" />
+
+		<Item
 			id="birbs"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03chassis"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03propeller"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03cab01"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03cab02"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03cab03"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03cab03_2"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03cab04"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03wing_left"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03wing_right"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03machinegun_left"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03machinegun_leftgun"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03machinegun_right"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03machinegun_rightgun"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03rocketlauncher_left"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03rocketlauncher_leftgun"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03rocketlauncher_right"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03rocketlauncher_rightgun"
 			file="data\models\AnimModels.xml" />
 
 		<Item
@@ -2315,6 +2387,8 @@
 		<Item id="S_OPENING_GATE" />
 		<Item id="S_OPENING_GATE_END" />
 		<Item id="S_CLOSED_GATE" />
+		
+		<Item id="S_FADING_MSG" />
 
 		<Item id="S_CRASH_METAL01" />
 		<Item id="S_CRASH_METAL02" />

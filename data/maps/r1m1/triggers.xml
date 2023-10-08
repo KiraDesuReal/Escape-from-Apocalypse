@@ -176,14 +176,14 @@
 
 			if spawns == 1 then
 				SetVar("PosPlayer1",posr1)
-				println(posr1)
+				--println(posr1)
 				SetVar("SpawnPlayer",1)
 				TActivate("Exits_RidzinBaseTroiskoe")
 				TActivate("SpawnsScavs2")
 				TakeQuest ("ExitLocation2")
 			else
 				SetVar("PosPlayer2",posr2)
-				println(posr2)
+				--println(posr2)
 				SetVar("SpawnPlayer",2)
 				TActivate("Exits_FaterTownGloohoe")
 				TActivate("SpawnsScavs1")
@@ -280,6 +280,7 @@
 		<script>
 			SetVar("ExitTimer",6)
 			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitRoadToFater")
+			SoundFadingMsg()
 			TActivate ("LeaveZoneExit")
 			TActivate ("ExitTimer")
 		</script>
@@ -290,6 +291,7 @@
 		<script>
 			SetVar("ExitTimer",6)
 			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitZaTheTown")
+			SoundFadingMsg()
 			TActivate ("LeaveZoneExit")
 			TActivate ("ExitTimer")
 		</script>
@@ -300,6 +302,7 @@
 		<script>
 			SetVar("ExitTimer",6)
 			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitZaTheGloohoe")
+			SoundFadingMsg()
 			TActivate ("LeaveZoneExit")
 			TActivate ("ExitTimer")
  		</script>
@@ -310,6 +313,7 @@
 		<script>
 			SetVar("ExitTimer",6)
 			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitRoadToRidzin")
+			SoundFadingMsg()
 			TActivate ("LeaveZoneExit")
 			TActivate ("ExitTimer")
  		</script>
@@ -320,6 +324,7 @@
 		<script>
 			SetVar("ExitTimer",6)
 			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitBaseFelix")
+			SoundFadingMsg()
 			TActivate ("LeaveZoneExit")
 			TActivate ("ExitTimer")
  		</script>
@@ -330,6 +335,7 @@
 		<script>
 			SetVar("ExitTimer",6)
 			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitZaTheTroiskoe")
+			SoundFadingMsg()
 			TActivate ("LeaveZoneExit")
 			TActivate ("ExitTimer")
  		</script>
@@ -345,6 +351,7 @@
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ZaTheTroiskoe_Exit" />
 		<script>
 			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_leaves_location")
+			SoundFadingMsg()
 			TDeactivate("ExitTimer")
 			trigger:Deactivate()
 		</script>
@@ -1251,6 +1258,7 @@
 						AddPlayerMoney(- 5000)
 						CreateEffectTTLed( "ET_PS_FUEL_PETROL_START", CVector(2582, 348, 2269), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 800)
 						AddFadingMsgByStrIdFormatted("fm_fuel_petrol_start")
+						SoundFadingMsg()
 						RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
 						TActivate("SoundPetrolProcess_InPertolStation01")
 						TActivate("FuelFull_InPetrolStation01")
@@ -1259,6 +1267,7 @@
 						trigger:Deactivate()
 					else
 						AddFadingMsgByStrIdFormatted("fm_player_not_money")
+						SoundFadingMsg()
 					end
 				end
 			end
@@ -1305,6 +1314,7 @@
 			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK01", -1, -1, CVector(2575.530, 360.200, 2266.788), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
 			CreateEffectTTLed( "ET_PS_FUEL_PETROL_END", CVector(2582, 348, 2269), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
 			AddFadingMsgByStrIdFormatted("fm_fuel_petrol_end")
+			SoundFadingMsg()
 
 			TActivate ("UseFuelNil_InPetrolStation01")
 		
@@ -1323,6 +1333,7 @@
 						AddPlayerMoney(- 5000)
 						CreateEffectTTLed( "ET_PS_FUEL_PETROL_START", CVector(1312.274, 288.949, 1757.526), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 800)
 						AddFadingMsgByStrIdFormatted("fm_fuel_petrol_start")
+						SoundFadingMsg()
 						RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
 						TActivate("SoundPetrolProcess_InPertolStation02")
 						TActivate("FuelFull_InPetrolStation02")
@@ -1331,6 +1342,7 @@
 						trigger:Deactivate() 
 					else
 						AddFadingMsgByStrIdFormatted("fm_player_not_money")
+						SoundFadingMsg()
 					end
 				end
 			end
@@ -1377,6 +1389,7 @@
 			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK02", -1, -1, CVector(1317.154, 300.550, 1748.705), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
 			CreateEffectTTLed( "ET_PS_FUEL_PETROL_END", CVector(1312.274, 288.949, 1757.526), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
 			AddFadingMsgByStrIdFormatted("fm_fuel_petrol_end")
+			SoundFadingMsg()
 
 			TActivate ("UseFuelNil_InPetrolStation02")
 		
@@ -1395,6 +1408,7 @@
 						AddPlayerMoney(- 5000)
 						CreateEffectTTLed( "ET_PS_FUEL_PETROL_START", CVector(917.057, 309.294, 872.621), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 800)
 						AddFadingMsgByStrIdFormatted("fm_fuel_petrol_start")
+						SoundFadingMsg()
 						RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
 						TActivate("SoundPetrolProcess_InPertolStation03")
 						TActivate("FuelFull_InPetrolStation03")
@@ -1403,6 +1417,7 @@
 						trigger:Deactivate() 
 					else
 						AddFadingMsgByStrIdFormatted("fm_player_not_money")
+						SoundFadingMsg()
 					end
 				end
 			end
@@ -1449,6 +1464,7 @@
 			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK03", -1, -1, CVector(916.784, 320.600, 884.400), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
 			CreateEffectTTLed( "ET_PS_FUEL_PETROL_END", CVector(917.057, 309.294, 872.621), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
 			AddFadingMsgByStrIdFormatted("fm_fuel_petrol_end")
+			SoundFadingMsg()
 
 			TActivate ("UseFuelNil_InPetrolStation03")
 		
@@ -1461,6 +1477,7 @@
 		<script>
 			if HasPlayerAmountOfItems("fuel_nil_use", 1) then
 				AddFadingMsgByStrIdFormatted("fm_petrol_notwork")
+				SoundFadingMsg()
 			end
 		</script>
 	</trigger>
@@ -1470,6 +1487,7 @@
 		<script>
 			if HasPlayerAmountOfItems("fuel_nil_use", 1) then
 				AddFadingMsgByStrIdFormatted("fm_petrol_notwork")
+				SoundFadingMsg()
 			end
 		</script>
 	</trigger>
@@ -1479,6 +1497,7 @@
 		<script>
 			if HasPlayerAmountOfItems("fuel_nil_use", 1) then
 				AddFadingMsgByStrIdFormatted("fm_petrol_notwork")
+				SoundFadingMsg()
 			end
 		</script>
 	</trigger>
@@ -1855,5 +1874,243 @@
  		</script>
 	</trigger>
 
+<!-- јир дроп -->
+
+	<trigger Name="AirDropProbability" active="1">
+		<event timeout="200" eventid="GE_TIME_PERIOD" />
+		<script>
+			local air_rand = random(100)
+			if (10 >= air_rand) then
+				TActivate("SpawnOracle_AirDrop")
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>		
+
+	<trigger Name="SpawnOracle_AirDrop" active="0">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			AddImportantFadingMsgByStrIdFormatted("fm_airdrop_start")
+			SoundFadingMsg()
+
+			SetVar("Air",0)
+			SetVar("NoAir",0)
+			SetVar("AirPoints",0)
+	
+			local pos_r = random(4)
+			local pos 
+			local rotar
+			local fly_path
+
+			if pos_r == 1 then
+				pos = CVector(-331.418, 500, -293.473)
+				rotar = Quaternion(0.019, 0.421, -0.002, 0.907)
+				fly_path = "OracleAirMove1"
+				SetVar("AirPoints",5)
+			elseif pos_r == 2 then
+				pos = CVector(4231.279, 500, 4227.989)
+				rotar = Quaternion(-0.010, -0.901, -0.023, 0.434)
+				fly_path = "OracleAirMove2"
+				SetVar("AirPoints",6)
+			elseif pos_r == 3 then
+				pos = CVector(-120.684, 500, 4229.126)
+				rotar = Quaternion(-0.014, 0.929, 0.010, 0.370)
+				fly_path = "OracleAirMove3"
+				SetVar("AirPoints",6)
+			elseif pos_r == 4 then
+				pos = CVector(4250.660, 500, -131.040)
+				rotar = Quaternion(0.004, 0.416, 0.009, -0.909)
+				fly_path = "OracleAirMove4"
+				SetVar("AirPoints",8)
+			end
+
+			local OracleAir = GetEntityByName("Oracle_AirDrop")
+			local OraclePos = OracleAir:GetPosition()
+			if OracleAir then
+				OracleAir:SetRotation(rotar)
+				OracleAir:SetPosition(pos)
+			end
+
+			local moverId = CreateNewObject { prototypeName	= "cinematicMover", objName  = "MoverB" }
+			local mover = GetEntityByID( moverId ) 
+			if OracleAir then
+				mover:SetObjAndPath(OracleAir:GetId(), fly_path, 180)
+			end
+
+			for i=1,14 do
+				local point = CreateNewSgNodeObject("point", "air_point"..i, -1, -1, CVector(getPos("Air_"..i.."_loc")), Quaternion(0, 0, 0, 1), 1)
+				local pointPos = point:GetPosition()
+				pointPos.y = pointPos.y - pointPos.y + 500
+				point:SetPosition(pointPos)
+			end
+
+			CreateNewSgNodeObject("ET_PS_BOSS03_STAND1", "SH", -1, -1, OraclePos, Quaternion(0, 0, 0, 1), 0)
+	
+			TActivate("DistPoint")
+			TActivate("OracleSoundUpdate")
+			TActivate("OracleSoundRemove")
+		
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="OracleSoundUpdate" active="0">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local OracleAir = GetEntityByName("Oracle_AirDrop")
+			local OraclePos = OracleAir:GetPosition()
+
+			local s_hel = GetEntityByName("SH")
+			if s_hel then 
+				s_hel:SetPosition(OraclePos)
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="DistPoint" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetEntityByName("Oracle_AirDrop")
+			local l = GetVar("NoAir").AsInt
+			for i=1,14 do
+				local rand = random(3)
+				local run = GetEntityByName("air_point"..i)
+				local len
+				if run and run:IsAlive() then
+					len = Dist(pl, run)
+					if (20 > len) then
+						l = l + 1
+						SetVar("NoAir",l)
+						println(l)
+						if l == GetVar("AirPoints").AsInt and GetVar("Air").AsInt==0 then
+							TActivate("CreateBoxSgNode")
+							trigger:Deactivate() 
+						elseif rand == 1 and GetVar("Air").AsInt==0 then
+							TActivate("CreateBoxSgNode")
+							trigger:Deactivate() 
+						end
+					end
+				end 
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="CreateBoxSgNode" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			SetVar("Air",1)
+			SetVar("NoAir",0)
+			SetVar("AirPoints",0)
+
+			for i=1,14 do
+				GetEntityByName("air_point"..i):Remove()
+			end
+
+			local OracleAir = GetEntityByName("Oracle_AirDrop")
+			local OraclePos = OracleAir:GetPosition()
+			local OracleRot = OracleAir:GetRotation()
+
+			CreateNewSgNodeObject("airbox", "airB", -1, -1, OraclePos, OracleRot, 1)
+
+			local air_box = GetEntityByName("airB")
+			local air_box_pos = air_box:GetPosition()
+			air_box_pos.y = air_box_pos.y - 5
+			air_box:SetPosition(air_box_pos)
+
+			TActivate("BoxDownY")
+			TActivate("TimerForCreateAirDrop")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="BoxDownY" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			local air_box = GetEntityByName("airB")
+			local air_box_pos = air_box:GetPosition()
+			air_box_pos.y = air_box_pos.y - 0.1
+			air_box:SetPosition(air_box_pos)
+
+		</script>
+	</trigger>
+
+	<trigger Name="TimerForCreateAirDrop" active="0">
+		<event timeout="2" eventid="GE_TIME_PERIOD" />
+		<script>
+			TDeactivate("BoxDownY")
+			TActivate("AirDrop")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="AirDrop" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			local AirBoxSg = GetEntityByName("airB")
+			local AirBoxSgPos = AirBoxSg:GetPosition()
+			local AirBoxSgRot = AirBoxSg:GetRotation()
+
+			local Chest = CreateNewObject{prototypeName = "airChest", objName = "AirBox"}	
+			local ChestId = GetEntityByID(Chest)
+			ChestId:SetPosition(AirBoxSgPos)
+			ChestId:SetRotation(AirBoxSgRot)
+			
+			AirBoxSg:Remove()
+
+			local lootcount = random(10,20)
+
+			local items = {"scrap_metal_use", "oil_use", "machinery_use", "fuel_nil_use", "fuel_full_use", "electronics_use",
+							"item_scotch", "item_nails", "item_nuts", "item_insulation", "item_screws", "scrap_metal", "doski", "item_bolts", "item_hose", "details", "item_plex", "item_parts", "item_poheram", "item_tube", "item_kek", "machinery", "item_military_tube", "item_thermometer", "item_pena", "item_datchik",
+							"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_cpu", "item_svech", "item_kondesators", "item_magnet", "item_energo_lump", "item_electronics_components", "item_phone", "item_ultra_lump", "item_cooler", "item_gazan", "item_geiger", "item_plate", "item_cable", "item_helix", "item_hdd", "item_drill", "item_lcd", "item_military_cable", "electronics", "item_bp", "item_engine", "item_iridiym", "item_tetris", "item_vpx", "item_virtex", "item_converter", "item_gpu",
+							"item_battery_d", "item_battery_aa", "item_accum", "item_powerbank", "item_green_battery", "item_car_battery", "item_cyclon", "item_tank_battery",
+							"item_spich", "item_hunter_spich", "item_lighter", "item_wd40_100", "item_zibbo", "oil", "item_survl", "item_wd40_400", "fuel", "item_trotile", "item_dry", "item_propan", "item_prisadka", "item_termit",
+							"item_soap", "item_paste", "item_salt", "item_tb", "item_toothpaste", "item_soda", "item_paper", "item_alkani", "item_hlor", "book",
+							"item_disk", "item_manual", "item_flashdrive", "item_diary_s", "item_diary", "item_ssd", "item_disk_exmachina", "item_sas", "item_rozvidka",
+							"item_medical_tools", "item_naci", "item_h2o2", "item_suringe", "item_c6h8o6", "item_aquapeps", "item_oftalmaskop", "item_ledx",
+							"item_zapal", "tobacco", "bottle", "item_vodka", "item_filter", "item_emre_kara", "item_waterfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_airfilter", "item_ananaga",
+							"item_roulet", "item_wrench", "item_screw", "item_pliers", "item_screw_flat", "item_nippers", "item_metalscissors", "item_pliers_round", "item_leatherman", "item_screw_flat_long", "item_toolset", "item_awl", "item_fullmaster", "item_sewing_kit", "item_handrill", "item_buldex", "item_ratchet_wrench", "item_pipe_wrench",
+							"item_chain", "shkatulka", "item_ex", "item_teapon", "item_cat", "item_rolex", "item_chain_gold", "item_woodclock", "item_chiken", "item_skullring", "item_lion", "item_bitcoin","hornet01","specter01","pkt01","kord01","storm01","fagot01","maxim01","vector01","vulcan01","kpvt01","rapier01","flag01","rainmetal01","elephant01","odin01","omega01","bumblebee01","hammer01","hunterSideGun","mrakSideGun","big_swingfire01","cyclops01","octopus01","hailSideGun","hurricane01","rocketLauncher","zeusSideGun","marsSideGun",
+							"potato", "firewood", "item_pants40grn", "item_salo",
+							"item_key_gate_thetown", "item_key_gate_r1m3",
+							"minePusher", "minePusher_1", "engineOilPusher", "nailsPusher", "Smoke", "additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "add_damage_guns", "add_damage_energy", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "someTurboAccelerationPusher", "firing_range_guns", "firing_rate_guns", "firing_rate_energy", "firing_rate_guns", "grouping_angle_guns", "firing_rate_energy", "grouping_angle_guns", "cooling_system_guns", "cooling_system_guns", "cooling_system_energy", "cooling_system_energy", "cooling_system_explosion"}
+			local items_r = getn(items)
+			
+			for j=1,lootcount do
+				local loot1 = CreateNewObject{prototypeName = items[random(items_r)], objName = "AirItems"..random(10000), belong = 1100 }
+				local loot1Id = GetEntityByID(loot1)
+						
+				if ChestId and loot1Id then
+					ChestId:AddChild(loot1Id)
+				end
+			end
+
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="OracleSoundRemove" active="0">
+		<event timeout="90" eventid="GE_TIME_PERIOD" />
+		<script>
+			local s_hel = GetEntityByName("SH")
+			if s_hel then s_hel:Remove() end
+			TDeactivate("OracleSoundUpdate")
+			TActivate("OracleRemove")
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="OracleRemove" active="0">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			getObj("Oracle_AirDrop"):SetPosition(CVector(440, 251, 3825))
+			getObj("Oracle_AirDrop"):SetRotation(Quaternion(0, 0, 0, 1))
+			trigger:Deactivate() 
+		</script>
+	</trigger>
 
 </triggers>

@@ -1109,6 +1109,164 @@
 		</Object>
 	</Object>
 
+	<Object
+		Name="Oracle_AirDrop"
+		Belong="1100"
+		Prototype="boss03ForCinema"
+		Pos="440 251 3825"
+		Rot="0 0 0 1"
+		PathNameForFlyingWithWings="">
+
+		<Parts>
+			<CAB01
+				present="1"
+				Belong="1100"
+				Prototype="boss03cab01" />
+
+			<CAB02
+				present="1"
+				Belong="1100"
+				Prototype="boss03cab02" />
+
+			<CAB03
+				present="1"
+				Belong="1100"
+				Prototype="boss03cab03" />
+
+			<CAB03_2
+				present="1"
+				Belong="1100"
+				Prototype="boss03cab03_2" />
+
+			<CAB04
+				present="1"
+				Belong="1100"
+				Prototype="boss03cab04" />
+
+			<MAIN
+				present="1"
+				Belong="1100"
+				Prototype="boss03chassis" />
+
+			<PROPELLER
+				present="1"
+				Belong="1100"
+				Prototype="boss03propeller" />
+
+			<WING01
+				present="1"
+				Belong="1100"
+				Prototype="boss03wing_left" />
+
+			<WING02
+				present="1"
+				Belong="1100"
+				Prototype="boss03wing_right" />
+		</Parts>
+
+		<DronePlaces />
+
+		<ShootPlaces />
+	</Object>
+
+	<Object
+		Name="Air_1_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="1243.667 494.561 1266.459"
+		Radius="10.000" />
+
+	<Object
+		Name="Air_2_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="1756.135 496.985 1774.671"
+		Radius="10.000" />
+
+	<Object
+		Name="Air_3_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="1903.331 493.963 1918.723"
+		Radius="10.000" />
+		
+	<Object
+		Name="Air_4_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="2318.298 494.227 2337.743"
+		Radius="10.000" />
+
+	<Object
+		Name="Air_5_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="3242.097 493.319 3247.836"
+		Radius="10.000" />
+
+	<Object
+		Name="Air_6_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="745.217 495.466 772.697"
+		Radius="10.000" />
+
+	<Object
+		Name="Air_7_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="1289.719 491.823 2822.397"
+		Radius="10.000" />
+
+	<Object
+		Name="Air_8_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="1644.250 491.768 2466.371"
+		Radius="10.000" />
+
+	<Object
+		Name="Air_9_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="1859.996 485.604 2253.496"
+		Radius="10.000" />
+
+	<Object
+		Name="Air_10_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="2459.100 491.967 1656.625"
+		Radius="10.000" />
+
+	<Object
+		Name="Air_11_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="3052.065 491.893 1066.201"
+		Radius="10.000" />
+
+	<Object
+		Name="Air_12_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="3323.758 495.834 796.543"
+		Radius="10.000" />
+
+	<Object
+		Name="Air_13_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="2794.625 492.611 1322.174"
+		Radius="10.000" />
+
+	<Object
+		Name="Air_14_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="1100.977 491.996 3008.918"
+		Radius="10.000" />
+
 <!--
 	<Object
 		Name="r1m1_CaravanGlobalObject"

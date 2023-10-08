@@ -38,6 +38,14 @@
 		<Node name="noise" class="SgSoundSourceNode" id="S_CLOSED_GATE" looped="0" /> 
 	</Node>
 
+	<Node name="ET_PS_BOSS03_STAND1" class="SgNode">
+		<Node name="noise" class="SgSoundSourceNode" id="S_BOSS03_STAND1" looped="1" /> 
+	</Node>
+
+	<Node name="ET_PS_FADING_MSG" class="SgNode">
+		<Node name="noise" class="SgSoundSourceNode" id="S_FADING_MSG" looped="0" /> 
+	</Node>
+
 	<Node name="ET_PS_ROCKSFAKE1" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_SPECIAL01_FIRE_MAIN_1" psNumEmitterMesh="-1" />
 	</Node>
@@ -3173,6 +3181,12 @@
 
 	<Node name="ET_PS_BLINK1" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_BLINK1" psNumEmitterMesh="-1" /> 
+	</Node>
+
+	<Node name="ET_PS_AIRBOX" class="SgNode">
+		<Node name="Object1" class="SgPointLightSourceNode" id="LS_LIGHT_RED" psNumEmitterMesh="-1" />
+		<Node name="Object2" class="SgParticlesNode" id="PS_LENS_D1" psNumEmitterMesh="-1" /> 
+		<Node name="Object6" class="SgParticlesNode" id="PS_BOSS1_SMOKE" psNumEmitterMesh="-1" />
 	</Node>
 
     <Node name="ET_PS_LENS_D5" class="SgNode">

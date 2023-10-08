@@ -336,6 +336,11 @@ end
 
 
 -- »счезающие сообщени€------------------------------------------------------------------------
+function SoundFadingMsg()
+	local pl = GetPlayerVehicle()
+	local plPos = pl:GetPosition()
+	CreateEffectTTLed("ET_PS_FADING_MSG", plPos, Quaternion(0, 0, 0, 0), 600)
+end
 
 -- ƒобавить сообщение, параметр - текст сообщени€.
 -- Ќе рекомендуетс€ использовать в св€зи с проблемой локализации.

@@ -3,8 +3,6 @@
 	<trigger Name="GlobalVar" active="1">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-			SetVar("PosPlayer1",0)
-			SetVar("PosPlayer2",0)
 			SetVar("ExitTimer",6)
 		    trigger:Deactivate()
 		</script>
@@ -65,7 +63,7 @@
 
 			for f=1,6 do
 				local fr = GetEntityByName ("FIRE0"..f)
-			if fr then fr:Remove() end
+				if fr then fr:Remove() end
 			end
 
 			TActivate("CreateGloohoe")
@@ -141,10 +139,47 @@
 		</script>
 	</trigger>
 
+<!-- Узнаем конфигурацию машины игрока -->
+
+	<trigger Name="PlayerCarConfiguration" active="1">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			local chassis = GetPlayerVehicle():GetChassis():GetProperty("Prototype").AsString
+			local cabin = GetPlayerVehicle():GetCabin():GetProperty("Prototype").AsString
+			local basket = GetPlayerVehicle():GetBasket():GetProperty("Prototype").AsString
+
+			SetVar("PlayerCabin", cabin)
+			SetVar("PlayerBasket", basket)
+			SetVar("PlayerChassis", chassis)
+
+			if strsub(chassis, 1, 10) == "bugChassis" then
+				SetVar("PlayerCar", "Bug")
+			elseif strsub(chassis, 1, 16) == "molokovozChassis" then
+				SetVar("PlayerCar", "Molokovoz")
+			elseif strsub(chassis, 1, 11) == "uralChassis" then
+				SetVar("PlayerCar", "Ural")
+			elseif strsub(chassis, 1, 12) == "belazChassis" then
+				SetVar("PlayerCar", "Belaz")
+			elseif strsub(chassis, 1, 17) == "mirotvorecChassis" then
+				SetVar("PlayerCar", "Mirotvorec")
+			elseif strsub(chassis, 1, 14) == "cruiserChassis" then
+				SetVar("PlayerCar", "Cruiser")
+			end
+
+			println("Config_____"..GetVar("PlayerCar").AsString.."_____"..GetVar("PlayerCabin").AsString.."_____"..GetVar("PlayerBasket").AsString)
+
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
 <!-- Спавн игрока -->
 	<trigger Name="SpawnPlayer" active="1">
 		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
+
+			SetVar("PosPlayer1",0)
+			SetVar("PosPlayer2",0)
 
 			local posr1 = random(10)
 			local posrr1={
@@ -152,18 +187,18 @@
 				CVector(855.773, 303.874, 3299.838),
 				CVector(1682.261, 298.439, 3438.135),
 				CVector(1123.300, 291.430, 3159.539),
-				CVector(2098.874, 293.180, 3247.128),
+				CVector(2152.141, 315.074, 3580.439),
 				CVector(1752.767, 293.082, 2798.231),
 				CVector(2331.947, 337.677, 2469.048),
 				CVector(1625.450, 318.769, 2383.752),
 				CVector(3139.961, 356.520, 3144.354),
-				CVector(3010.206, 349.651, 3458.037)}
+				CVector(3075.630, 357.404, 3489.001)} 
 
 			local posr2 = random(10)
 			local posrr2={
 				CVector(2615.098, 320.599, 2020.458),
-				CVector(2559.464, 323.902, 1605.784),
-				CVector(1598.964, 306.399, 1815.549),
+				CVector(2970.576, 353.945, 1370.649), 
+				CVector(1564.693, 307.840, 1808.458), 
 				CVector(474.234, 314.937, 1476.468),
 				CVector(837.313, 281.698, 631.074),
 				CVector(1803.762, 303.403, 489.376),
@@ -171,6 +206,18 @@
 				CVector(2634.281, 320.436, 907.682),
 				CVector(3487.845, 324.339, 748.105),
 				CVector(3225.707, 320.430, 1334.481)}
+
+			local Z = random(9)		
+			local rotarr={
+				Quaternion(-0.029, 0.679, -0.021, 0.734),
+				Quaternion(0.001, 0.626, 0.002, 0.780),
+				Quaternion(-0.001, 0.558, -0.001, 0.830),
+				Quaternion(-0.029, -0.025, 0.005, 0.999),
+				Quaternion(-0.001, -0.346, 0.001, 0.938),
+				Quaternion(-0.001, -0.724, -0.000, 0.690),
+				Quaternion(-0.025, -0.992, -0.005, 0.125),
+				Quaternion(0.002, -0.914, -0.001, 0.405),
+				Quaternion(-0.003, -1.000, -0.006, -0.015)}
 
 			local spawns = random(2)
 
@@ -192,6 +239,7 @@
 
 			local vehPlayer = GetPlayerVehicle()
 			if vehPlayer then
+				vehPlayer:SetRotation(rotarr[Z])
 				if spawns == 1 then
 					vehPlayer:SetGamePositionOnGround(posrr1[posr1])
 				else
@@ -215,7 +263,7 @@
 			if ExitZaTheGhoohoeRandom == 1 then
 				TActivate ("ZaTheGloohoe")
 				TActivate ("DestroyGloohoe")
-				SetVar("ExitToR4M1",1)
+				SetVar("ExitGloohoe",1)
 			end
 
 
@@ -254,7 +302,7 @@
 			local ExitZaTheGhoohoeRandom = random (2)
 			if ExitZaTheGhoohoeRandom == 1 then
 				TActivate ("DestroyGloohoe")
-				SetVar("ExitToR4M1",1)
+				SetVar("ExitGloohoe",1)
 			end
 
 			trigger:Deactivate()
@@ -1242,7 +1290,12 @@
 	<trigger Name="ItemsUse" active="1">
 		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
-			ItemUse()
+			local pl = GetPlayerVehicle()
+			if pl and pl:IsAlive() then 
+				ItemUse() 
+			else 
+				trigger:Deactivate() 
+			end
 		</script>
 	</trigger>
 
@@ -1615,7 +1668,7 @@
 		<script>
 
 			for i=1,31 do
-				CreateBarrelLootBox("barrel"..i, CVector(getPos("barrelBox_"..i.."_loc")), "r1m1")
+				CreateBarrelLootBox("barrel"..i, CVector(getPos("barrelBox_"..i.."_loc")))
 			end
 
 			trigger:Deactivate()
@@ -2105,11 +2158,358 @@
 	</trigger>
 
 	<trigger Name="OracleRemove" active="0">
-		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<event timeout="60" eventid="GE_TIME_PERIOD" />
 		<script>
 			getObj("Oracle_AirDrop"):SetPosition(CVector(440, 251, 3825))
 			getObj("Oracle_AirDrop"):SetRotation(Quaternion(0, 0, 0, 1))
 			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+<!-- Создание ЧВК -->  
+
+	<trigger Name="CreatePMC" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			local number
+			local player_car = GetVar("PlayerCar").AsString
+
+			if player_car == "Bug" then number = 0
+			elseif player_car == "Molokovoz" then number = 1
+			elseif player_car == "Ural" then number = 2
+			elseif player_car == "Belaz" then number = 3
+			elseif player_car == "Mirotvorec" or player_car == "Cruiser" then number = 4
+			end
+
+			local modellist = {"Bug01PMC", "Molokovoz01PMC", "Ural01PMC", "Belaz01PMC", "Cruiser01PMC", "Mirotvorec01PMC"}
+			local model_rand = getn(modellist)
+			
+			local bug_cab = {"bugCab01", "bugCab02", "bugCab03"}
+			local bug_cab_r = getn(bug_cab)
+			local bug_cargo = {"bugCargo01_PMC", "bugCargo02_PMC", "bugCargo03_PMC"}
+			local bug_cargo_r = getn(bug_cargo)
+
+			local mol_cab = {"molokovozCab01", "molokovozCab02" ,"molokovozCab03"}
+			local mol_cab_r = getn(mol_cab)
+			local mol_cargo = {"molokovozCargo01_PMC", "molokovozCargo02_PMC", "molokovozCargo03_PMC"}
+			local mol_cargo_r = getn(mol_cargo)
+
+			local ural_cab = {"uralCab01", "uralCab02", "uralCab03", "uralCab04", "uralCab05"}
+			local ural_cab_r = getn(ural_cab)
+			local ural_cargo = {"uralCargo01_PMC", "uralCargo02_PMC", "uralCargo03_PMC", "uralCargo04_PMC", "uralCargo05_PMC"}
+			local ural_cargo_r = getn(ural_cargo)
+
+			local bel_cab = {"belazCab01", "belazCab02", "belazCab03", "belazCab04", "belazCab05"}
+			local bel_cab_r = getn(bel_cab)
+			local bel_cargo = {"belazCargo01_PMC", "belazCargo02_PMC", "belazCargo03_PMC", "belazCargo04_PMC", "belazCargo05_PMC"}
+			local bel_cargo_r = getn(bel_cargo)
+
+			local mir_cab = {"mirotvorecCab01", "mirotvorecCab02", "mirotvorecCab03", "mirotvorecCab04", "mirotvorecCab05"}
+			local mir_cab_r = getn(mir_cab)
+			local mir_cargo = {"mirotvorecCargo01_PMC", "mirotvorecCargo02_PMC", "mirotvorecCargo03_PMC", "mirotvorecCargo04_PMC", "mirotvorecCargo05_PMC"}
+			local mir_cargo_r = getn(mir_cargo)
+
+			local cru_cab = {"cruiserCab01", "cruiserCab02"}
+			local cru_cab_r = getn(cru_cab)
+			local cru_cargo = {"cruiserCargo01_PMC", "cruiserCargo02_PMC"}
+			local cru_cargo_r = getn(cru_cargo)
+
+			local belong = {1088,1089}
+			local belong_r = getn(belong)
+
+			local pl_pos1 = GetVar("PosPlayer1").AsInt
+			local pl_pos2 = GetVar("PosPlayer2").AsInt
+			local sp = GetVar("SpawnPlayer").AsInt
+
+			local pos1_pmc = {}
+			local pos1_count_pmc
+			local paths_pos1
+
+			local pos2_pmc = {}
+			local pos2_count_pmc
+			local paths_pos2
+		
+			if sp == 1 then
+				if pl_pos1 == 1 then
+					pos1_pmc = {CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
+				elseif pl_pos1 == 2 then
+					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
+				elseif pl_pos1 == 3 then
+					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
+				elseif pl_pos1 == 4 then
+					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
+				elseif pl_pos1 == 5 then
+					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
+				elseif pl_pos1 == 6 then
+					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
+				elseif pl_pos1 == 7 then
+					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
+				elseif pl_pos1 == 8 then
+					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
+				elseif pl_pos1 == 9 then
+					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3075.630, 357.404, 3489.001)}
+				elseif pl_pos1 == 10 then
+					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354)}
+				end
+
+				if pl_pos1 >= 1 then
+					pos1_count_pmc = random(4,7)
+				end
+
+				paths_pos1 = shuffled_range_take (pos1_count_pmc, 1, 9)
+
+				pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
+				pos2_count_pmc = random(4,8)
+
+				paths_pos2 = shuffled_range_take (pos2_count_pmc, 1, 10)
+			elseif sp == 2 then
+				if pl_pos2 == 1 then
+					pos2_pmc = {CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
+				elseif pl_pos2 == 2 then
+					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
+				elseif pl_pos2 == 3 then
+					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
+				elseif pl_pos2 == 4 then
+					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
+				elseif pl_pos2 == 5 then
+					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
+				elseif pl_pos2 == 6 then
+					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
+				elseif pl_pos2 == 7 then
+					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
+				elseif pl_pos2 == 8 then
+					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
+				elseif pl_pos2 == 9 then
+					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3225.707, 320.430, 1334.481)}
+				elseif pl_pos2 == 10 then
+					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105)}
+				end
+
+				if pl_pos2 >= 1 then
+					pos2_count_pmc = random(4,7)
+				end
+
+				paths_pos2 = shuffled_range_take (pos2_count_pmc, 1, 9)
+
+				pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
+				pos1_count_pmc = random(4,8)
+
+				paths_pos1 = shuffled_range_take (pos1_count_pmc, 1, 10)
+			end
+
+			local way={CVector(2332.802, 321.347, 2926.611),CVector(1199.101, 303.164, 2920.835),CVector(1887.768, 321.283, 1789.260),CVector(2264.032, 329.957, 1596.525),CVector(1976.132, 301.827, 788.499),CVector(3144.480, 317.268, 698.378)}
+			local way_r = getn(way)
+
+			for p1=1,pos1_count_pmc do
+				local model = modellist[random(2 + number)]
+				println(model)
+				local num = paths_pos1[p1]
+	
+				TeamCreate("PMC_"..p1.."_Spawn1", belong[random(belong_r)], pos1_pmc[num], {model}, nil, 1)
+				
+				local pmc = GetEntityByName ("PMC_"..p1.."_Spawn1_vehicle_0")
+				if pmc then
+					if model == "Bug01PMC" then
+						pmc:SetNewPart("CABIN",bug_cab[random(bug_cab_r)])
+						pmc:SetNewPart("BASKET",bug_cargo[random(bug_cargo_r)])
+					elseif model == "Molokovoz01PMC" then
+						pmc:SetNewPart("CABIN",mol_cab[random(mol_cab_r)])
+						pmc:SetNewPart("BASKET",mol_cargo[random(mol_cargo_r)])
+					elseif model == "Ural01PMC" then
+						pmc:SetNewPart("CABIN",ural_cab[random(ural_cab_r)])
+						pmc:SetNewPart("BASKET",ural_cargo[random(ural_cargo_r)])
+					elseif model == "Belaz01PMC" then
+						pmc:SetNewPart("CABIN",bel_cab[random(bel_cab_r)])
+						pmc:SetNewPart("BASKET",bel_cargo[random(bel_cargo_r)])
+					elseif model == "Mirotvorec01PMC" then
+						pmc:SetNewPart("CABIN",mir_cab[random(mir_cab_r)])
+						pmc:SetNewPart("BASKET",mir_cargo[random(mir_cargo_r)])
+					elseif model == "Cruiser01PMC" then
+						pmc:SetNewPart("CABIN",cru_cab[random(cru_cab_r)])
+						pmc:SetNewPart("BASKET",cru_cargo[random(cru_cargo_r)])
+					end
+					GiveGunsForVehicle(pmc, 1)
+				end
+
+				local pmc_way = GetEntityByName ("PMC_"..p1.."_Spawn1")
+				local rand_exit = random(3)
+				local rand_exit2 = random(2)
+				if pmc_way then
+					pmc_way:StackOpen()
+					pmc_way:SetDestination(way[random(way_r)])
+					if rand_exit == 1 then
+						if rand_exit2 == 1 then
+							pmc_way:SetDestination(CVector(getPos("RoadToRidzin_exitPMC_1_loc")))
+						else
+							pmc_way:SetDestination(CVector(getPos("BaseFelix_Exit")))
+						end
+					elseif rand_exit == 2 then
+						if GetVar("ExitZaTheTroiskoe").AsInt==1 then
+							pmc_way:SetDestination(CVector(getPos("ZaTheTroiskoe_Exit")))
+						else
+							if rand_exit2 == 1 then
+								pmc_way:SetDestination(CVector(getPos("RoadToRidzin_exitPMC_1_loc")))
+							else
+								pmc_way:SetDestination(CVector(getPos("BaseFelix_Exit")))
+							end
+						end
+					elseif rand_exit == 3 then
+						pmc_way:SetDestination(CVector(getPos("BaseFelix_Exit")))
+					end
+					--pmc_way:StackLoop()
+					pmc_way:StackClose()
+				end
+			end
+			
+			for p2=1,pos2_count_pmc do
+				local model = modellist[random(2 + number)]
+				local num = paths_pos2[p2]
+				println(model)
+	
+				TeamCreate("PMC_"..p2.."_Spawn2", belong[random(belong_r)], pos2_pmc[num], {model}, nil, 1)
+				
+				local pmc = GetEntityByName ("PMC_"..p2.."_Spawn2_vehicle_0")
+				if pmc then
+					if model == "Bug01PMC" then
+						pmc:SetNewPart("CABIN",bug_cab[random(bug_cab_r)])
+						pmc:SetNewPart("BASKET",bug_cargo[random(bug_cargo_r)])
+					elseif model == "Molokovoz01PMC" then
+						pmc:SetNewPart("CABIN",mol_cab[random(mol_cab_r)])
+						pmc:SetNewPart("BASKET",mol_cargo[random(mol_cargo_r)])
+					elseif model == "Ural01PMC" then
+						pmc:SetNewPart("CABIN",ural_cab[random(ural_cab_r)])
+						pmc:SetNewPart("BASKET",ural_cargo[random(ural_cargo_r)])
+					elseif model == "Belaz01PMC" then
+						pmc:SetNewPart("CABIN",bel_cab[random(bel_cab_r)])
+						pmc:SetNewPart("BASKET",bel_cargo[random(bel_cargo_r)])
+					elseif model == "Mirotvorec01PMC" then
+						pmc:SetNewPart("CABIN",mir_cab[random(mir_cab_r)])
+						pmc:SetNewPart("BASKET",mir_cargo[random(mir_cargo_r)])
+					elseif model == "Cruiser01PMC" then
+						pmc:SetNewPart("CABIN",cru_cab[random(cru_cab_r)])
+						pmc:SetNewPart("BASKET",cru_cargo[random(cru_cargo_r)])
+					end
+					GiveGunsForVehicle(pmc, 1)
+				end
+
+				local pmc_way2 = GetEntityByName ("PMC_"..p2.."_Spawn2")
+				local rand_exit2_1 = random(3)
+				local rand_exit2_2 = random(2)
+				if pmc_way2 then
+					pmc_way2:StackOpen()
+					pmc_way2:SetDestination(way[random(way_r)])
+					if rand_exit2_1 == 1 then
+						if rand_exit2_2 == 1 then
+							pmc_way2:SetDestination(CVector(getPos("RoadToFater_exitPMC_1_loc")))
+						else
+							pmc_way2:SetDestination(CVector(getPos("ZaTheTown_Exit")))
+						end
+					elseif rand_exit2_1 == 2 then
+						if GetVar("ExitGloohoe").AsInt==1 then
+							pmc_way2:SetDestination(CVector(getPos("Ocrains_exitPMC_1_loc")))
+						else
+							if rand_exit2_2 == 1 then
+								pmc_way2:SetDestination(CVector(getPos("RoadToFater_exitPMC_1_loc")))
+							else
+								pmc_way2:SetDestination(CVector(getPos("ZaTheTown_Exit")))
+							end
+						end
+					elseif rand_exit2_1 == 3 then
+						pmc_way2:SetDestination(CVector(getPos("ZaTheTown_Exit")))
+					end
+					--pmc_way2:StackLoop()
+					pmc_way2:StackClose()
+				end
+			end
+			
+			println("spawn1_"..pos1_count_pmc)
+			println("spawn2_"..pos2_count_pmc)
+
+			TActivate("PMC_To_Exits_loc")
+
+			TActivate("TpBirge_1")
+			TActivate("TpBirge_2")
+			TActivate("TDeaTpBirge")
+
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+<!-- Телепорт ЧВК через мост Глухого, когда отключена физика машин -->
+
+	<trigger Name="TpBirge_1" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="GloohoeBirge_1_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="GloohoeBirge_3_loc" />
+		<script>
+			local amount=trigger:GetTriggeredObjectAmount()
+			for i=0,amount - 1 do
+				local car = getObj(trigger:GetTriggeredObjectID(i))
+				if car then
+					car:SetGamePositionOnGround(CVector(3209.235, 340.830, 2611.232))
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="TpBirge_2" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="GloohoeBirge_2_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="GloohoeBirge_4_loc" />
+		<script>
+			local amount=trigger:GetTriggeredObjectAmount()
+			for i=0,amount - 1 do
+				local car = getObj(trigger:GetTriggeredObjectID(i))
+				if car then
+					car:SetGamePositionOnGround(CVector(3294.805, 341.428, 2869.093))
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="TDeaTpBirge" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="GloohoeBirge_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="GloohoeBirge_loc" />
+		<script>
+			TDeactivate("TpBirge_1")
+			TDeactivate("TpBirge_2")
+			TActivate("TActivTpBirge")
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="TActivTpBirge" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="GloohoeBirge_loc" />
+		<script>
+			TActivate("TpBirge_1")
+			TActivate("TpBirge_2")
+			TActivate("TDeaTpBirge")
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+<!-- Назначение путей для ЧВК -->
+
+	<trigger Name="PMC_To_Exits_loc" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ZaTheTown_exitPMC_1_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ZaTheTown_exitPMC_2_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="RoadToFater_exitPMC_1_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="RoadToFater_exitPMC_2_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Ocrains_exitPMC_1_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Ocrains_exitPMC_2_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BaseFelix_exitPMC_1_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BaseFelix_exitPMC_2_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ZaTheTroiskoe_exitPMC_1_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ZaTheTroiskoe_exitPMC_2_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="RoadToRidzin_exitPMC_1_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="RoadToRidzin_exitPMC_2_loc" />
+		<script>
+			local amount=trigger:GetTriggeredObjectAmount()
+			for i=0,amount - 1 do 
+				local car = getObj(trigger:GetTriggeredObjectID(i)) 
+				if car and car:IsAlive() then 
+					car:Remove() 
+				end 
+			end
 		</script>
 	</trigger>
 

@@ -2580,6 +2580,58 @@
 	</model>
 
 	<model
+		id="american_hornet01"
+		shadow="1"
+		windwavy="0"
+		file="data\models\guns\sml_hornet01.gam">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+	</model>
+
+	<model
+		id="american_hornet01gun"
+		shadow="1"
+		windwavy="0"
+		file="data\models\guns\sml_american_hornet01_gun.gam">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+
+		<action
+			name="MOVE1">
+			<lp
+				id="LP_FIRE01"
+				effect_id="ET_PS_HORNET_FIRE"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_GUN"
+				effect_id="ET_PS_SHELL_SML_MGUN_R"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="STAND1">
+			<lp
+				id="LP_FIRE01"
+				effect_id="ET_PS_MACHINEGUN_STAND"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+	</model>
+
+	<model
 		id="vulcan01"
 		shadow="1"
 		windwavy="0"

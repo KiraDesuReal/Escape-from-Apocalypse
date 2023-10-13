@@ -206,6 +206,58 @@ function giveguns ()
 			end
 end
 
+function GiveGunsForVehicle(vehicle, side_random)
+	local veh=vehicle
+	local belong = veh:GetBelong()
+	local hornet
+	if belong == 1089 then
+		hornet = "american_hornet01"
+	else
+		hornet = "hornet01"
+	end
+	local parts={"CABIN_","BASKET_","CHASSIS_"}
+	local slots={"SMALL_","BIG_","GIANT_","SIDE_"}
+	local guns={"GUN","GUN_0","GUN_1","GUN_2"}
+	local smallgun={hornet,"specter01","pkt01","kord01","maxim01","storm01","fagot01"}
+	local biggun={"rapier01","vector01","vulcan01","flag01","kpvt01","rainmetal01","elephant01","odin01","bumblebee01","omega01","hurricane01"}
+	local giantgun={"cyclops01","octopus01","rocketLauncher","big_swingfire01"}
+	local sidegun={"hailSideGun","marsSideGun","zeusSideGun","hunterSideGun"}
+	local side_rand = 1
+	if side_random == 1 then
+		side_rand = random(4)
+	end
+	local i,j,k=1,1,1
+	while parts[i] do
+		while slots[j] do
+			while guns[k] do
+				local gun=1
+				local slot=parts[i]..slots[j]..guns[k]
+				if j==1 then
+					gun=smallgun[random(7)]
+				elseif j==2 then
+					gun=biggun[random(11)]
+				elseif j==3 then
+					gun=giantgun[exrandom(4)]
+				elseif j==4 then
+					if side_rand == 1 then		
+						gun=sidegun[random(4)]
+					else
+						gun=""
+					end
+				end
+				if veh:CanPartBeAttached(slot) then
+					veh:SetNewPart(slot,gun)
+				end
+				k=k+1
+			end
+			k=1
+			j=j+1
+		end
+		j=1
+		i=i+1
+	end
+end
+
 function map ()
 	ShowMap()
 end

@@ -498,39 +498,85 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 						belong = Belong
 					}
 		 local vehicle = GetEntityByID(id)
+		 local belong = vehicle:GetBelong()
 		 if vehicle then
 			vehicle:SetRandomSkin()
-		 	if IsWares==1 then
+			
+			if belong == 1088 then
+				vehicle:AddItemsToRepository("item_jeton_bear", 1)
+			elseif belong == 1089 then
+				vehicle:AddItemsToRepository("item_jeton_usec", 1)
+			end
 
-				local RandWarez = {"potato","firewood","scrap_metal","doski","details","oil","fuel","machinery","bottle","tobacco","book","electronics", 
-									"item_scotch", "item_nails", "item_nuts", "item_insulation", "item_screws", "item_bolts", "item_hose", "item_plex", "item_parts", "item_poheram", "item_tube",
-									"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_svech", "item_kondesators",
-									"item_battery_d", "item_battery_aa",
-									"item_spich", "item_hunter_spich", "item_lighter", "item_zibbo",
-									"item_soap", "item_paste", "item_tb", "item_toothpaste",
-									"item_zapal", "item_vodka", "item_filter",
-									"item_roulet", "item_wrench", "item_screw", "item_pliers", "item_screw_flat", "item_nippers"}
-				local r = getn(RandWarez)
-				
-				local ItemsLifeUse = {"scrap_metal_use", "machinery_use", "electronics_use"}
+		 	if IsWares==1 then
+				local ItemsLifeUse = {"scrap_metal_use", "machinery_use", "electronics_use", "machinery_use", "scrap_metal_use"}
 				local r2 = getn(ItemsLifeUse)
 
 				local ItemsOilUse = {"oil_use", "fuel_nil_use", "fuel_full_use"}
 				local r3 = getn(ItemsOilUse)
 
-				local rand = random(1000)
+				local r_list = {exrandom, random}
+				local r_l = random(2)
 
+				local building = {"item_scotch", "item_nails", "item_nuts", "item_insulation", "item_screws", "scrap_metal", "doski", "item_bolts", "item_hose", "details", "item_plex", "item_parts", "item_poheram", "item_tube", "item_kek", "machinery", "item_military_tube", "item_thermometer", "item_pena", "item_datchik"}
+				local building_items = getn(building)
+				local electronics = {"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_cpu", "item_svech", "item_kondesators", "item_magnet", "item_energo_lump", "item_electronics_components", "item_phone", "item_ultra_lump", "item_cooler", "item_gazan", "item_geiger", "item_plate", "item_cable", "item_helix", "item_hdd", "item_drill", "item_lcd", "item_military_cable", "electronics", "item_bp", "item_engine", "item_iridiym", "item_tetris", "item_vpx", "item_virtex", "item_converter", "item_gpu"}
+				local electronics_items = getn(electronics)
+				local energy = {"item_battery_d", "item_battery_aa", "item_accum", "item_powerbank", "item_green_battery", "item_car_battery", "item_cyclon", "item_tank_battery"}
+				local energy_items = getn(energy)
+				local flammable = {"item_spich", "item_hunter_spich", "item_lighter", "item_wd40_100", "item_zibbo", "oil", "item_survl", "item_wd40_400", "fuel", "item_trotile", "item_dry", "item_propan", "item_prisadka", "item_termit"}
+				local flammable_items = getn(flammable)
+				local household = {"item_soap", "item_paste", "item_salt", "item_tb", "item_toothpaste", "item_soda", "item_paper", "item_alkani", "item_hlor", "book"}
+				local household_items = getn(household)
+				local info = {"item_disk", "item_manual", "item_flashdrive", "item_diary_s", "item_diary", "item_ssd", "item_disk_exmachina", "item_sas", "item_rozvidka"}
+				local info_items = getn(info)
+				local medical = {"item_medical_tools", "item_naci", "item_h2o2", "item_suringe", "item_c6h8o6", "item_aquapeps", "item_oftalmaskop", "item_ledx"}
+				local medical_items = getn(medical)
+				local other = {"item_zapal", "tobacco", "bottle", "item_vodka", "item_filter", "item_emre_kara", "item_waterfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_airfilter", "item_ananaga"}
+				local other_items = getn(other)
+				local tools = {"item_roulet", "item_wrench", "item_screw", "item_pliers", "item_screw_flat", "item_nippers", "item_metalscissors", "item_pliers_round", "item_leatherman", "item_screw_flat_long", "item_toolset", "item_awl", "item_fullmaster", "item_sewing_kit", "item_handrill", "item_buldex", "item_ratchet_wrench", "item_pipe_wrench"}
+				local tools_items = getn(tools)
+				local valuables = {"item_chain", "shkatulka", "item_ex", "item_teapon", "item_cat", "item_rolex", "item_chain_gold", "item_woodclock", "item_chiken", "item_skullring", "item_lion", "item_bitcoin"}
+				local valuables_items = getn(valuables)
+				local items = {building[r_list[r_l](building_items)], electronics[r_list[r_l](electronics_items)], energy[r_list[r_l](energy_items)], flammable[r_list[r_l](flammable_items)], household[r_list[r_l](household_items)], info[r_list[r_l](info_items)], medical[r_list[r_l](medical_items)], other[r_list[r_l](other_items)], tools[r_list[r_l](tools_items)], valuables[r_list[r_l](valuables_items)]}
+				local items_r = getn(items)
+
+				local RandWarez = {"potato","firewood","scrap_metal","doski","details","oil","fuel","machinery","bottle","tobacco","book","electronics", 
+								"item_scotch", "item_nails", "item_nuts", "item_insulation", "item_screws", "item_bolts", "item_hose", "item_plex", "item_parts", "item_poheram", "item_tube",
+								"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_svech", "item_kondesators",
+								"item_battery_d", "item_battery_aa",
+								"item_spich", "item_hunter_spich", "item_lighter", "item_zibbo",
+								"item_soap", "item_paste", "item_tb", "item_toothpaste",
+								"item_zapal", "item_vodka", "item_filter",
+								"item_roulet", "item_wrench", "item_screw", "item_pliers", "item_screw_flat", "item_nippers"}
+				local r = getn(RandWarez)
+				
+				local rand = random(1000)
 				if 5 >= rand then
 					vehicle:AddItemsToRepository("item_pavlikrpg", 1)
 				else
-					for life=1,random(2) do
-						vehicle:AddItemsToRepository(ItemsLifeUse[exrandom(r2)], 1)
-					end
+					if belong == 1088 or belong == 1089 then
+						for life=1,random(3) do
+							vehicle:AddItemsToRepository(ItemsLifeUse[random(r2)], 1)
+						end
 
-					vehicle:AddItemsToRepository(ItemsOilUse[exrandom(r3)], random(0,1))
+						for fuel=1,random(2) do
+							vehicle:AddItemsToRepository(ItemsOilUse[random(r3)], random(0,1))
+						end
+						
+						for ware=1,random(5) do
+							vehicle:AddItemsToRepository(items[random(items_r)], 1)
+						end
+					else
+						for life=1,random(2) do
+							vehicle:AddItemsToRepository(ItemsLifeUse[exrandom(r2)], 1)
+						end
 
-					for ware=1,random(2) do
-						vehicle:AddItemsToRepository(RandWarez[random(r)], 1)
+						vehicle:AddItemsToRepository(ItemsOilUse[exrandom(r3)], random(0,1))
+
+						for ware=1,random(3) do
+							vehicle:AddItemsToRepository(RandWarez[random(r)], 1)
+						end
 					end
 				end
 			end
@@ -543,7 +589,7 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 				end
 			vehicle:SetGamePositionOnGround(CreatePos)
 			
-			 team:AddChild(vehicle)
+			team:AddChild(vehicle)
 		 local vh_length=1.7 * vehicle:GetSize().z
 		 CreatePos.z=CreatePos.z+vh_length
 		 end
@@ -1355,7 +1401,7 @@ function RestoreAllToleranceStatus()
     end
 end
 
-function CreateBarrelLootBox(name, pos, loc)
+function CreateBarrelLootBox(name, pos)
 
 	local use = {"scrap_metal_use", "oil_use", "machinery_use", "fuel_nil_use", "fuel_full_use", "electronics_use"}
 	local use_items = getn(use)
@@ -1394,6 +1440,9 @@ function CreateBarrelLootBox(name, pos, loc)
 	local gun_items = getn(gun)
 
 	local exlusive = {}
+	local loc
+	local mapName = GET_GLOBAL_OBJECT( "CurrentLevel" ):GetLevelName()
+	if mapName == "r1m1" then loc = "r1m1" end
 
 	if loc == "r1m1" then
 		exlusive = {"potato", "firewood", "item_pants40grn", "item_salo"}
@@ -1882,5 +1931,29 @@ function ItemUse()
 		RemoveItemsFromPlayerRepository("item_key_gate_r1m3", 1)
 	end
 	
+end
+
+function shuffle (arr)
+	for i = 1, getn(arr) - 1 do
+		local j = math.random(i, getn(arr))
+		arr[i], arr[j] = arr[j], arr[i]
+	end
+end
+
+function shuffled_range_take (n, a, b)
+	local numbers = {}
+	for i = a, b do
+		numbers[i] = i
+	end
+
+	shuffle(numbers)
+
+	local cropped_numbers = {}
+
+	for i = 1, n do
+		cropped_numbers[i] = numbers[i]
+	end 
+
+	return cropped_numbers
 end
 

@@ -987,6 +987,23 @@
 	</Model>
 
 	<Model
+		Name="dead1_false"
+		ExitConditionsUnite="Or">
+		<Unit
+			VarName="Time"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<ExitConditions
+			VarName="Time"
+			LimitVal="0" />
+	</Model>
+
+	<Model
 		Name="dead2"
 		ExitConditionsUnite="Or">
 		<Unit
@@ -1052,6 +1069,71 @@
 	</Model>
 
 	<Model
+		Name="dead2_false"
+		ExitConditionsUnite="Or">
+		<Unit
+			VarName="Sepia"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="SepiaColorR"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="SepiaColorG"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="SepiaColorB"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="SepiaIntensity"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<ExitConditions
+			VarName="SepiaColorR"
+			LimitVal="0" />
+
+		<ExitConditions
+			VarName="SepiaColorG"
+			LimitVal="0" />
+
+		<ExitConditions
+			VarName="SepiaColorB"
+			LimitVal="0" />
+
+		<ExitConditions
+			VarName="SepiaIntensity"
+			LimitVal="0" />
+	</Model>
+
+	<Model
 		Name="dead2-1"
 		ExitConditionsUnite="And">
 		<Unit
@@ -1108,6 +1190,62 @@
 	</Model>
 
 	<Model
+		Name="dead2-1_false"
+		ExitConditionsUnite="And">
+		<Unit
+			VarName="SepiaColorR"
+			InitVal="0"
+			Param1="1"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="SepiaColorG"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="SepiaColorB"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="SepiaIntensity"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<ExitConditions
+			VarName="SepiaColorR"
+			LimitVal="0" />
+
+		<ExitConditions
+			VarName="SepiaColorG"
+			LimitVal="0" />
+
+		<ExitConditions
+			VarName="SepiaColorB"
+			LimitVal="0" />
+
+		<ExitConditions
+			VarName="SepiaIntensity"
+			LimitVal="0" />
+	</Model>
+
+	<Model
 		Name="dead2-2"
 		ExitConditionsUnite="Or">
 		<Unit
@@ -1122,6 +1260,23 @@
 		<ExitConditions
 			VarName="Time"
 			LimitVal="1.5" />
+	</Model>
+
+	<Model
+		Name="dead2-2_false"
+		ExitConditionsUnite="Or">
+		<Unit
+			VarName="Time"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<ExitConditions
+			VarName="Time"
+			LimitVal="0" />
 	</Model>
 
 	<Model
@@ -1160,6 +1315,41 @@
 	</Model>
 
 	<Model
+		Name="dead3_false"
+		ExitConditionsUnite="Or">
+		<Unit
+			VarName="Film"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="FilmFrameVis"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="FilmIntensity"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+		
+		<ExitConditions
+			VarName="FilmFrameVis"
+			LimitVal="0" />
+	</Model>
+
+	<Model
 		Name="dead4"
 		ExitConditionsUnite="Or">
 		<Unit
@@ -1174,6 +1364,23 @@
 		<ExitConditions
 			VarName="Time"
 			LimitVal="5" />
+	</Model>
+
+	<Model
+		Name="dead4_false"
+		ExitConditionsUnite="Or">
+		<Unit
+			VarName="Time"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<ExitConditions
+			VarName="Time"
+			LimitVal="0" />
 	</Model>
 
 	<Model
@@ -1203,6 +1410,32 @@
 	</Model>
 
 	<Model
+		Name="dead5_false"
+		ExitConditionsUnite="Or">
+		<Unit
+			VarName="FilmShift"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="Time"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<ExitConditions
+			VarName="Time"
+			LimitVal="0" />
+	</Model>
+
+	<Model
 		Name="dead6"
 		ExitConditionsUnite="Or">
 		<Unit
@@ -1226,6 +1459,32 @@
 		<ExitConditions
 			VarName="Time"
 			LimitVal="1" />
+	</Model>
+
+	<Model
+		Name="dead6_false"
+		ExitConditionsUnite="Or">
+		<Unit
+			VarName="FilmShift"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="Time"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+		
+		<ExitConditions
+			VarName="Time"
+			LimitVal="0" />
 	</Model>
 
 	<Model
@@ -1255,6 +1514,32 @@
 	</Model>
 
 	<Model
+		Name="dead7_false"
+		ExitConditionsUnite="Or">
+		<Unit
+			VarName="FilmShift"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="Time"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+		
+		<ExitConditions
+			VarName="Time"
+			LimitVal="0" />
+	</Model>
+
+	<Model
 		Name="dead8"
 		ExitConditionsUnite="Or">
 		<Unit
@@ -1281,6 +1566,32 @@
 	</Model>
 
 	<Model
+		Name="dead8_false"
+		ExitConditionsUnite="Or">
+		<Unit
+			VarName="FilmShift"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="Time"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<ExitConditions
+			VarName="Time"
+			LimitVal="0" />
+	</Model>
+
+	<Model
 		Name="dead9"
 		ExitConditionsUnite="Or">
 		<Unit
@@ -1304,6 +1615,32 @@
 		<ExitConditions
 			VarName="Time"
 			LimitVal="1.5" />
+	</Model>
+
+	<Model
+		Name="dead9_false"
+		ExitConditionsUnite="Or">
+		<Unit
+			VarName="FilmShift"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="Time"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<ExitConditions
+			VarName="Time"
+			LimitVal="0" />
 	</Model>
 
 	<Model
@@ -1348,6 +1685,64 @@
 		<Unit
 			VarName="MaskColorB"
 			InitVal="1"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="Sepia"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+	</Model>
+
+	<Model
+		Name="dead10_false"
+		ExitConditionsUnite="Or">
+		<Unit
+			VarName="Mask"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="MaskIntensity"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="MaskColorR"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="MaskColorG"
+			InitVal="0"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="MaskColorB"
+			InitVal="0"
 			Param1="0"
 			Param2="0"
 			Param3="0"
@@ -1845,6 +2240,46 @@
 
 		<Unit
 			Name="dead10" />
+	</Sequence>
+
+	<Sequence
+		Name="DeadOff"
+		Loop="false">
+		<Unit
+			Name="dead1_false" />
+
+		<Unit
+			Name="dead2_false" />
+
+		<Unit
+			Name="dead2-1_false" />
+
+		<Unit
+			Name="dead2-2_false" />
+
+		<Unit
+			Name="dead3_false" />
+
+		<Unit
+			Name="dead4_false" />
+
+		<Unit
+			Name="dead5_false" />
+
+		<Unit
+			Name="dead6_false" />
+
+		<Unit
+			Name="dead7_false" />
+
+		<Unit
+			Name="dead8_false" />
+
+		<Unit
+			Name="dead9_false" />
+
+		<Unit
+			Name="dead10_false" />
 	</Sequence>
 
 	<Sequence

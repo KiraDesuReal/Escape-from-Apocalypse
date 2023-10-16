@@ -5,6 +5,19 @@ $Id: BreakableObjects.xml,v 1.62 2005/11/28 07:43:57 anton Exp $
 -->
 
 <Prototypes>
+
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "FitaNyashka_Breakable"
+		EffectType			= "BRICK"
+		DestroyEffectType		= "CRASHSACK"
+		ModelFile			= "fitanyashka"
+		CriticalHitEnergy 		= "0"
+		Size				= "2.12 5.90 0.86"
+		Destroyable			= "0"
+		Mass				= "10"
+	    IntersectionRadius	        = "1.0"/>
+
 	<Prototype
 		Class				= "BreakableObject"
 		Name				= "Breakable_bridge_military_move"	

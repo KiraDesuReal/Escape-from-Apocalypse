@@ -1,9 +1,40 @@
 <?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
 <triggers>
 	<trigger Name="GlobalVar" active="1">
-		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			SetVar("ExitTimer",6)
+		
+			SetVar("CountRaids",0)
+
+			SetVar("PlayerCabin", "0")
+			SetVar("PlayerBasket", "0")
+
+			SetVar("Cabin_Small_Gun", 0)
+			SetVar("Cabin_Small_Gun_1", 0)
+			SetVar("Cabin_Big_Gun_1", 0) 
+			SetVar("Cabin_Big_Gun_2", 0)
+			SetVar("Cabin_Giant_Gun", 0)
+
+			SetVar("Basket_Small_Gun_0", 0) 
+			SetVar("Basket_Big_Gun_0", 0)
+			SetVar("Basket_Big_Gun_1", 0) 
+			SetVar("Basket_Giant_Gun", 0) 
+			SetVar("Basket_Giant_Gun_0", 0)
+			SetVar("Basket_Side_Gun_0", 0)
+
+			SetVar("PlayerCar", 0)
+
+			SetVar("PosPlayer1",0)
+			SetVar("PosPlayer2",0)
+			SetVar("SpawnPlayer",0)
+
+			SetVar("ExitGloohoe",0)
+			SetVar("ExitZaTheTroiskoe",0)
+
+			SetVar("Air",0)
+			SetVar("NoAir",0)
+			SetVar("AirPoints",0)
+
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -19,7 +50,6 @@
 			CreateNewDummyObject( "house3",	"hs05", -1, -1, CVector(3339.008, 368, 3288.451), Quaternion(0.0000, 0.6478, 0.0000, 0.7618),1 )
 			CreateNewDummyObject( "house2",	"hs06", -1, -1, CVector(3337.264, 368, 3311.947), Quaternion(0.0000, 0.0000, 0.0000, 1.0000),1 )
 			CreateNewDummyObject( "house3",	"hs07", -1, -1, CVector(3390.944, 371, 3329.290), Quaternion(0.0000, 0.928, 0.0000, -0.3726),1 )
-
 			trigger:Deactivate()    
 		</script>
 	</trigger>
@@ -77,16 +107,26 @@
 		<script>
 
 --Ворота южного
-
 		CreateNewDummyObject( "big_gate01", "gate_thetown", -1, -1, CVector(1235.100, 311.700, 2969.336), Quaternion(0.0000, 0.7210, 0.0000, 0.6930))
 		CreateNewSgNodeObject( "big_gate01", "gate_thetown2", -1, -1, CVector(1262.195, 300, 2995.386), Quaternion(-0.004, 0.019, 0.000, 1.000), 1)
 		getObj("gate_thetown"):SetNodeAction(AT_STAND2)
 
 --Ворота R1M3
-
 		TActivate("ClosedGate_R1M3")
 
 --Заправки
+		TActivate("PetrolStations")
+
+-- Фонарь 
+		CreateNewBreakableObject("lamppost2", "fonar", 1002, CVector(3055.078, 349.812, 1446.906), Quaternion(0.0000, -0.7133, 0.0000, 0.7009),0)
+
+		trigger:Deactivate()    
+		</script>
+	</trigger>
+
+	<trigger Name="PetrolStations" active="0">
+		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
 
 		local pr1 = random(2)
 		local pr2 = random(2)
@@ -131,27 +171,47 @@
 			end
 		end
 
--- Фонарь 
-
-		CreateNewBreakableObject("lamppost2", "fonar", 1002, CVector(3055.078, 349.812, 1446.906), Quaternion(0.0000, -0.7133, 0.0000, 0.7009),0)
-
 		trigger:Deactivate()    
 		</script>
 	</trigger>
 
 <!-- Узнаем конфигурацию машины игрока -->
-
 	<trigger Name="PlayerCarConfiguration" active="1">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 
 			local chassis = GetPlayerVehicle():GetChassis():GetProperty("Prototype").AsString
-			local cabin = GetPlayerVehicle():GetCabin():GetProperty("Prototype").AsString
-			local basket = GetPlayerVehicle():GetBasket():GetProperty("Prototype").AsString
+			local cabin = GetPlayerVehicle():GetCabin()
+			local basket = GetPlayerVehicle():GetBasket()
 
-			SetVar("PlayerCabin", cabin)
-			SetVar("PlayerBasket", basket)
-			SetVar("PlayerChassis", chassis)
+			if not(cabin == nil) then SetVar("PlayerCabin", cabin:GetProperty("Prototype")) else SetVar("PlayerCabin", "0") end
+			if not(basket == nil) then SetVar("PlayerBasket", basket:GetProperty("Prototype")) else SetVar("PlayerBasket", "0") end
+
+			local cab_small = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
+			local cab_small_1 = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN_1")
+			local cab_big_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
+			local cab_big_2 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_2")
+			local cab_giant = GetPlayerVehicle():GetPartByName("CABIN_GIANT_GUN")
+
+			local basket_small_0 = GetPlayerVehicle():GetPartByName("BASKET_SMALL_GUN_0")
+			local basket_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+			local basket_big_1 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_1")
+			local basket_giant = GetPlayerVehicle():GetPartByName("BASKET_GIANT_GUN")
+			local basket_giant_0 = GetPlayerVehicle():GetPartByName("BASKET_GIANT_GUN_0")
+			local basket_side_0 = GetPlayerVehicle():GetPartByName("BASKET_SIDE_GUN_0")
+
+			if not(cab_small == nil) then SetVar("Cabin_Small_Gun",cab_small:GetProperty("Prototype")) else SetVar("Cabin_Small_Gun", 0) end
+			if not(cab_small_1 == nil) then SetVar("Cabin_Small_Gun_1",cab_small_1:GetProperty("Prototype")) else SetVar("Cabin_Small_Gun_1", 0) end
+			if not(cab_big_1 == nil) then SetVar("Cabin_Big_Gun_1",cab_big_1:GetProperty("Prototype")) else SetVar("Cabin_Big_Gun_1", 0) end
+			if not(cab_big_2 == nil) then SetVar("Cabin_Big_Gun_2",cab_big_2:GetProperty("Prototype")) else SetVar("Cabin_Big_Gun_2", 0) end
+			if not(cab_giant == nil) then SetVar("Cabin_Giant_Gun",cab_giant:GetProperty("Prototype")) else SetVar("Cabin_Giant_Gun", 0) end
+
+			if not(basket_small_0 == nil) then SetVar("Basket_Small_Gun_0",basket_small_0:GetProperty("Prototype")) else SetVar("Basket_Small_Gun_0", 0) end
+			if not(basket_big_0 == nil) then SetVar("Basket_Big_Gun_0",basket_big_0:GetProperty("Prototype")) else SetVar("Basket_Big_Gun_0", 0) end
+			if not(basket_big_1 == nil) then SetVar("Basket_Big_Gun_1",basket_big_1:GetProperty("Prototype")) else SetVar("Basket_Big_Gun_1", 0) end
+			if not(basket_giant == nil) then SetVar("Basket_Giant_Gun",basket_giant:GetProperty("Prototype")) else SetVar("Basket_Giant_Gun", 0) end
+			if not(basket_giant_0 == nil) then SetVar("Basket_Giant_Gun_0",basket_giant_0:GetProperty("Prototype")) else SetVar("Basket_Giant_Gun_0", 0) end
+			if not(basket_side_0 == nil) then SetVar("Basket_Side_Gun_0",basket_side_0:GetProperty("Prototype")) else SetVar("Basket_Side_Gun_0", 0) end
 
 			if strsub(chassis, 1, 10) == "bugChassis" then
 				SetVar("PlayerCar", "Bug")
@@ -165,10 +225,25 @@
 				SetVar("PlayerCar", "Mirotvorec")
 			elseif strsub(chassis, 1, 14) == "cruiserChassis" then
 				SetVar("PlayerCar", "Cruiser")
+			else
+				SetVar("PlayerCar", chassis)
 			end
 
-			println("Config_____"..GetVar("PlayerCar").AsString.."_____"..GetVar("PlayerCabin").AsString.."_____"..GetVar("PlayerBasket").AsString)
+			println("Cabin_Small_Gun:"..GetVar("Cabin_Small_Gun").AsString)
+			println("Cabin_Small_Gun_1:"..GetVar("Cabin_Small_Gun_1").AsString)
+			println("Cabin_Big_Gun_1:"..GetVar("Cabin_Big_Gun_1").AsString)
+			println("Cabin_Big_Gun_2:"..GetVar("Cabin_Big_Gun_2").AsString)
+			println("Cabin_Giant_Gun:"..GetVar("Cabin_Giant_Gun").AsString)
 
+			println("Basket_Small_Gun_0:"..GetVar("Basket_Small_Gun_0").AsString)
+			println("Basket_Big_Gun_0:"..GetVar("Basket_Big_Gun_0").AsString)
+			println("Basket_Big_Gun_1:"..GetVar("Basket_Big_Gun_1").AsString)
+			println("Basket_Giant_Gun:"..GetVar("Basket_Giant_Gun").AsString)
+			println("Basket_Giant_Gun_0:"..GetVar("Basket_Giant_Gun_0").AsString)
+			println("Basket_Side_Gun_0:"..GetVar("Basket_Side_Gun_0").AsString)
+
+			println("Chassis:"..GetVar("PlayerCar").AsString.." Cabin:"..GetVar("PlayerCabin").AsString.." Basket:"..GetVar("PlayerBasket").AsString)
+			
 			trigger:Deactivate() 
 		</script>
 	</trigger>
@@ -223,14 +298,12 @@
 
 			if spawns == 1 then
 				SetVar("PosPlayer1",posr1)
-				--println(posr1)
 				SetVar("SpawnPlayer",1)
 				TActivate("Exits_RidzinBaseTroiskoe")
 				TActivate("SpawnsScavs2")
 				TakeQuest ("ExitLocation2")
 			else
 				SetVar("PosPlayer2",posr2)
-				--println(posr2)
 				SetVar("SpawnPlayer",2)
 				TActivate("Exits_FaterTownGloohoe")
 				TActivate("SpawnsScavs1")
@@ -240,12 +313,104 @@
 			local vehPlayer = GetPlayerVehicle()
 			if vehPlayer then
 				vehPlayer:SetRotation(rotarr[Z])
+				vehPlayer:setImmortalMode(1)
 				if spawns == 1 then
 					vehPlayer:SetGamePositionOnGround(posrr1[posr1])
 				else
 					vehPlayer:SetGamePositionOnGround(posrr2[posr2])
 				end
 			end
+
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+<!-- Таймер рейда -->
+	<trigger Name="TimerRaidStart" active="1">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			SetVar("TimeRaid",1200)
+			TActivate("TimerRaid")
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="TimerRaid" active="0">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			
+			local time = GetVar("TimeRaid").AsInt
+			
+			if time == 1200 then
+				AddImportantFadingMsgByStrIdFormatted("fm_time_min", 20)
+			elseif time == 900 then
+				TActivate("AirDropProbability")
+				AddImportantFadingMsgByStrIdFormatted("fm_time_min", 15)
+			elseif time == 600 then
+				TActivate("CreateScavs")
+				AddImportantFadingMsgByStrIdFormatted("fm_time_min", 10)
+			elseif time == 300 then
+				AddImportantFadingMsgByStrIdFormatted("fm_time_min_red", 5)
+			elseif time == 180 then
+				AddImportantFadingMsgByStrIdFormatted("fm_time_min_red", 3)
+			elseif time == 120 then
+				AddImportantFadingMsgByStrIdFormatted("fm_time_min_red", 2)
+			elseif time == 60 or time == 30 or time == 10 or 5 >= time and not(time == 0) then
+				AddImportantFadingMsgByStrIdFormatted("fm_time_sec", time)
+			end
+
+			if time > 0 then
+				time = time - 1
+				SetVar("TimeRaid",time)
+			else
+				TActivate("cutTimeRaid")
+				trigger:Deactivate() 
+			end
+		
+		</script>
+	</trigger>
+
+<!-- Всплывающее сообщение с информацией о рейде -->
+	<trigger Name="MessageRaid" active="0">
+		<event timeout="7" eventid="GE_TIME_PERIOD" />
+		<script>
+			
+			if COUNT_RAIDS then COUNT_RAIDS = GetVar("CountRaids").AsInt end
+
+			local l = GetVar("CountRaids").AsInt
+			l = l + 1
+			SetVar("CountRaids", l)
+			local count = GetVar("CountRaids").AsInt
+			
+			if COUNT_RAIDS then COUNT_RAIDS = count end
+
+			local time = g_ObjCont:GetGameTime().AsString
+			
+			local hour = tonumber(strsub(time, 1, 2))
+			local minute
+			local day
+
+			local nulH = ""
+			local nulM = ""
+
+			if 10 > hour then 
+				nulH = 0
+				minute = tonumber(strsub(time, 3, 4)) 
+				day = tonumber(strsub(time, 5, 7))
+			else
+				minute = tonumber(strsub(time, 4, 5)) 
+				day = tonumber(strsub(time, 6, 8))
+			end
+
+			if 10 > minute then nulM = 0 end
+
+			local TextTime = day.." "..nulH..hour..":"..nulM..minute
+
+			local user = os.getenv("USERNAME")
+
+			local Msg = "Рейд №"..count.."|День:"..TextTime.."|Оператор ЧВК "..user.."|Край"
+
+			AddFadingMsgByStrIdFormatted("fm_raid_info", Msg)
 
 			trigger:Deactivate() 
 		</script>
@@ -1291,9 +1456,11 @@
 		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local pl = GetPlayerVehicle()
-			if pl and pl:IsAlive() then 
+			local hp = GetPlayerHealth() 
+			if pl and hp >= 1 then 
 				ItemUse() 
 			else 
+				TActivate("FakePlayerDead")
 				trigger:Deactivate() 
 			end
 		</script>
@@ -1929,12 +2096,20 @@
 
 <!-- Аир дроп -->
 
-	<trigger Name="AirDropProbability" active="1">
-		<event timeout="200" eventid="GE_TIME_PERIOD" />
+	<trigger Name="AirDropProbability" active="0">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local air_rand = random(100)
-			if (10 >= air_rand) then
-				TActivate("SpawnOracle_AirDrop")
+			local time = GetVar("TimeRaid").AsInt
+
+			if time == 898 or time == 840 or time == 780 or time == 720 or time == 600 or time == 600 or time == 540 or time == 480 or time == 420 or time == 360 or time == 300 or time == 240 or time == 180 then
+				if (10 >= air_rand) then
+					TActivate("SpawnOracle_AirDrop")
+					trigger:Deactivate()
+				end
+			end
+
+			if 180 >= time and GetVar("Air").AsInt == 0 then
 				trigger:Deactivate()
 			end
 		</script>
@@ -2158,7 +2333,7 @@
 	</trigger>
 
 	<trigger Name="OracleRemove" active="0">
-		<event timeout="60" eventid="GE_TIME_PERIOD" />
+		<event timeout="100" eventid="GE_TIME_PERIOD" />
 		<script>
 			getObj("Oracle_AirDrop"):SetPosition(CVector(440, 251, 3825))
 			getObj("Oracle_AirDrop"):SetRotation(Quaternion(0, 0, 0, 1))
@@ -2513,4 +2688,77 @@
 		</script>
 	</trigger>
 
+<!-- Вторая фаза диких -->
+
+	<trigger Name="CreateScavs" active="0">
+		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>										
+
+			local enemylist = {"Sml1CarScav", "Sml2CarScav", "Sml3CarScav", "Sml4CarScav", "Scout1CarScav", "Scout2CarScav", "Scout3CarScav", "Fighter1CarScav", "Fighter2CarScav", "Hunter2CarScav"}
+			local scav = getn(enemylist)
+
+			local smallgunlist = {"hornet01","specter01","storm01","pkt01","kord01","maxim01","fagot01"}
+			local smallgunr = getn(smallgunlist)
+
+			local biggunlist = {"vector01","vulcan01","rapier01","bumblebee01","kpvt01"}
+			local biggunr = getn(biggunlist)
+
+			local pos={
+				CVector(1380.522, 292.149, 3278.965),
+				CVector(1562.275, 283.468, 2884.621),
+				CVector(2296.220, 303.468, 3089.571),
+				CVector(1023.805, 288.819, 2977.415),
+				CVector(1079.363, 305.273, 3364.456),
+				CVector(409.887, 330.421, 2539.721),
+				CVector(1570.590, 308.159, 1969.705),
+				CVector(2756.889, 350.438, 2345.701),
+
+				CVector(587.841, 308.913, 1737.395),
+				CVector(1820.009, 303.256, 497.770),
+				CVector(2073.361, 300.932, 771.122),
+				CVector(3158.532, 315.987, 490.416),
+				CVector(2624.907, 320.488, 1791.771),
+				CVector(3241.614, 314.720, 835.171)}
+
+			local scav_count = random(5,10)
+			local paths_pos = shuffled_range_take(scav_count, 1, 14)
+
+			for j=1,scav_count do
+				local num = paths_pos[j]
+				local model = enemylist[random(scav)]
+				println(model)
+				TeamCreate("Scav_"..j, 1082, pos[num], {model}, nil, 1)
+				local sv = GetEntityByName ("Scav_"..j.."_vehicle_0")
+				if sv then
+					sv:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
+					if model == "Fighter2CarScav" or model == "Hunter2CarScav" then
+						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+					end
+				end
+			end
+
+			local way = {"ScavWay_1_loc", "ScavWay_2_loc", "ScavWay_3_loc", "ScavWay_4_loc", "ScavWay_5_loc", "ScavWay_6_loc", "ScavWay_7_loc", "ScavWay_8_loc"}
+			local way_r = getn(way)
+
+			for i=1,scav_count do
+				local sv_way = GetEntityByName ("Scav_"..i)
+				if sv_way then
+					sv_way:StackOpen()
+					sv_way:SetDestination(getPos(way[random(way_r)]))
+					sv_way:SetDestination(getPos(way[random(way_r)]))
+					sv_way:SetDestination(getPos(way[random(way_r)]))
+					sv_way:SetDestination(getPos(way[random(way_r)]))
+					sv_way:SetDestination(getPos(way[random(way_r)]))
+					sv_way:SetDestination(getPos(way[random(way_r)]))
+					sv_way:SetDestination(getPos(way[random(way_r)]))
+					sv_way:SetDestination(getPos(way[random(way_r)]))
+					sv_way:StackLoop()
+					sv_way:StackClose()
+				end
+			end
+			
+			trigger:Deactivate()
+		</script>
+	</trigger>
+	
 </triggers>

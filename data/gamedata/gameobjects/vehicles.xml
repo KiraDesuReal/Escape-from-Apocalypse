@@ -888,6 +888,59 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class			= "Vehicle"
+		Name			= "Bug_Chassis"
+		ResourceType			= "VEHICLE"
+
+		DiffRatio		= "3.0"
+		MaxEngineRpm		= "6000"
+		LowGearShiftLimit	= "3000"
+		HighGearShiftLimit	= "3300"
+
+		SelfBrakingCoeff	= "0.006"
+
+		SteeringSpeed		= "0.8"
+
+		HornSound		= "ET_S_HORN01"
+
+		PressingForce		= "2.0"
+
+		CameraHeight            = "4.66"
+		CameraMaxDist		= "20"
+
+		DecisionMatrix		= "vehiclemain.lua"
+
+		LookRadius			= "200.0"
+		IntersectionRadius	= "4.0"
+		TakingRadius		= "5.0"
+		DestroyEffectPiercing	= "ET_PS_VEH_EXP1_MED"
+		DestroyEffectBlast	= "ET_PS_VEH_EXP2_MED"
+		DestroyEffectEnergy	= "ET_PS_VEH_EXP3_MED"
+		DestroyEffectWater	= "ET_PS_VEH_EXP2_MED"
+		MassSize		= "3 2 8"
+		MassTranslation		= "0 -0.5 0"
+
+		DriftCoeff		= "0.06"
+
+		Abstract 		= "true">
+
+		<MainPartDescription id = "CHASSIS" partResourceType = "BUG_CHASSIS">
+		</MainPartDescription>
+
+		<Parts>
+			<Part id = "CHASSIS"	Prototype = "bugChassis_Chassis" />
+		</Parts>
+
+		<Wheels>
+			<Wheel Prototype = "bugWheel01" steering = "correct" />
+			<Wheel Prototype = "bugWheel01" steering = "correct" />
+			<Wheel Prototype = "bugWheel02" />
+			<Wheel Prototype = "bugWheel02" />
+		</Wheels>
+
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
 		Name			= "Bug_PMC"
 		ResourceType			= "VEHICLE"
 
@@ -1384,6 +1437,14 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		<Parts>
 			<Part id = "CABIN"			Prototype = "hunterScavCab03" />
 			<Part id = "BASKET"		Prototype = "bigfakeCargo" />
+		</Parts>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
+		Name			= "BugChassis"
+		ParentPrototype 	= "Bug_Chassis">
+		<Parts>
 		</Parts>
 	</Prototype>
 

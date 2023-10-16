@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
 <triggers>
 
+<!-- Стартовое затемнение -->
     <trigger Name="StartFadeEffect" active="1">
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -11,11 +12,11 @@
 
 			EnableGodMode()
 
-			Fly("start_game", CINEMATIC_NO_AIM, 0, 0.1, 0, 1 )
+			Fly("start_game", CINEMATIC_NO_AIM, 0, 0.1, 0, 1)
 			StartCinematic()
 			UpdateCinematic( 1 )
 			
-			AddCinematicMessage( 77773, 0)
+			AddCinematicMessage(77773, 0)
 
 			TActivate("trSilenceMusic")
 			TActivate("StartFadeEffect_End")
@@ -41,10 +42,24 @@
 			DisableGodMode()
 			StopPlayingCustomMusic()
 
+			local player_car = GetVar("PlayerCar").AsString
+
 			local vehP = GetPlayerVehicle()
 			local PlfCoor = vehP:GetPosition()
 			if vehP then 
-				CreateEffectTTLed("ET_S_ENGINE_BUG_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 1538)
+				if player_car == "Bug" then
+					CreateEffectTTLed("ET_S_ENGINE_BUG_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 1538)
+				elseif player_car == "Molokovoz" then
+					CreateEffectTTLed("ET_S_ENGINE_MOLOKOVOZ_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 1142)
+				elseif player_car == "Ural" then
+					CreateEffectTTLed("ET_S_ENGINE_URAL_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 1272)
+				elseif player_car == "Belaz" then
+					CreateEffectTTLed("ET_S_ENGINE_BELAZ"..random(2).."_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 3200)
+				elseif player_car == "Mirotvorec" then
+					CreateEffectTTLed("ET_S_ENGINE_MIROTVOREC_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 923)
+				elseif player_car == "Cruiser" then
+					CreateEffectTTLed("ET_S_ENGINE_CRUISER_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 930)
+				end
 			end
 
 			if GetVar("SpawnPlayer").AsInt==1 then
@@ -53,10 +68,176 @@
 				AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits1LocationR1M1")
 			end
 
+			TActivate("MessageRaid")
+
 			SetCameraBehindPlayerVehicle()
             map()
 
 			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Время рейда закончилось -->
+	<trigger Name="cutTimeRaid" active="0">
+		<event 	timeout="0.01"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local Plf = GetPlayerVehicle()
+			local PlfID = GetPlayerVehicleId()
+			local PlfCoor = Plf:GetPosition()
+			PlfCoor.y = PlfCoor.y + 25*0.74
+			PlfCoor.z = PlfCoor.z + 25*0.74
+
+			SaveAllToleranceStatus(RS_NEUTRAL)
+			EnableGodMode()
+
+			Plf:SetCustomLinearVelocity(0)
+			Plf:SetThrottle(0)
+	
+			FlyAround(1, 0, 15, 7, PlfCoor, PlfID, 1, 1)
+			StartCinematic()
+			UpdateCinematic(1)
+
+			AddCinematicMessage(1,0)
+
+			TActivate("cutTimeRaid_End")
+	
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="cutTimeRaidFade" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			SaveAllToleranceStatus(RS_NEUTRAL)
+			EnableGodMode()
+
+			Fly("start_game", CINEMATIC_NO_AIM, 0, 0.5, 1, 1)
+			StartCinematic()
+		
+			AddCinematicMessage(77773, 0)
+
+			TActivate("cutTimeRaid_End")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="cutTimeRaid_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+
+			RestoreAllToleranceStatus()
+			DisableGodMode()
+
+			local pl = GetPlayerVehicle()
+			if pl then
+				pl:SetNewPart("BASKET", GetVar("PlayerBasket").AsString)
+			end
+
+			TDeactivate("ItemsUse")
+		
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Фейк смерть игрока -->
+	<trigger Name="FakePlayerDead" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("PlayerCarConfiguration")
+			TActivate("cutPlayerDead")
+			TDeactivate("TimerRaid")
+			TDeactivate("AirDropProbability")
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="cutPlayerDead" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			
+			local pl = GetPlayerVehicle()
+			local plProt = pl:GetProperty("Prototype").AsString
+			local plPos = pl:GetPosition()
+			local plPos2 = pl:GetPosition()
+			local plRot = pl:GetRotation()
+
+			plPos2.x = plPos2.x + 150
+			plPos2.z = plPos2.z + 150
+
+			GetPlayerVehicle():setGodMode(1)
+			GetPlayerVehicle():SetPosition(CVector(plPos2)) 
+			GetPlayerVehicle():SetThrottle(0)                       
+			GetPlayerVehicle():SetCustomLinearVelocity(0)
+
+			SaveAllToleranceStatus(RS_NEUTRAL)
+			
+			CreateVehicleEx(plProt,"fakePlayerCar",(plPos), 1100)
+
+			CreateNewDummyObject("point", "yashik", -1, 1100, plPos, Quaternion(0, 0, 0, 1), 0)
+			local obj = getObj("yashik")
+			local objid = obj:GetId()
+			local objPos = obj:GetPosition()
+
+			local fakePlayer = GetEntityByName("fakePlayerCar")
+			if fakePlayer then
+				fakePlayer:SetRotation(plRot)
+				fakePlayer:TakeOffAllGuns()
+				if not(GetVar("PlayerCabin").AsString == "0") and not(GetVar("PlayerBasket").AsString == "0") then
+					fakePlayer:SetNewPart("CABIN", GetVar("PlayerCabin").AsString)
+					fakePlayer:SetNewPart("BASKET", GetVar("PlayerBasket").AsString)
+				end
+				fakePlayer:SetSkin(-1)
+				fakePlayer:setGodMode(1)
+				CreateNewSgNodeObject("ET_PS_VEH_EXP2_MED", "exp01", -1, -1, plPos, Quaternion(0, 0, 0, 1), 1)
+				CreateNewSgNodeObject("ET_PS_VEH_EXP_CAB", "exp02", -1, -1, plPos, Quaternion(0, 0, 0, 1), 1)
+				fakePlayer:SetThrottle(0)                      
+				fakePlayer:SetCustomLinearVelocity(0) 
+				--fakePlayer:AddModifier("hp", "- 10000") 
+			end
+
+			objPos.y = objPos.y + 20
+			objPos.z = objPos.z + 15
+			FlyAround(5, 0.5, 15, 10, objPos, objid, 0, 1, "", 0)
+			StartCinematic()
+			UpdateCinematic(1)
+
+			RuleConsole("g_postEffect Dead")
+			TActivate("cutPlayerDead_End")
+
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="cutPlayerDead_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+
+			RestoreAllToleranceStatus()
+	
+			local obj = getObj("yashik")
+			if obj then obj:Remove() end
+
+			for i=1,2 do
+				local fx = getObj("exp0"..i)
+				if fx then fx:Remove() end
+			end
+			
+			local veh = getObj("fakePlayerCar")
+			if veh then veh:Remove() end
+			
+			AddPlayerVehicle("BugChassis")
+			GetPlayerVehicle():setGodMode(1)
+
+			RuleConsole("g_postEffect DeadOff")
+			UpdateWeather()
+
+			--PassToMap("r1m2", "", -1, true)
+			
+		    trigger:Deactivate()
 		</script>
 	</trigger>
 

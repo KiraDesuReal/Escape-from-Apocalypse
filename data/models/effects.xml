@@ -3004,10 +3004,16 @@
 
 <!-- //////////////////////////////////// Звуки двигателя //////////////////////////////////////// -->
 
+		<Node name="ET_S_ENGINE_BUG_STARTING"		class="SgSoundSourceNode" id="S_STARTING02" looped="0"/> 
+		<Node name="ET_S_ENGINE_MOLOKOVOZ_STARTING"		class="SgSoundSourceNode" id="S_STARTING01" looped="0"/> 
+		<Node name="ET_S_ENGINE_URAL_STARTING"		class="SgSoundSourceNode" id="S_STARTING04" looped="0"/> 
+		<Node name="ET_S_ENGINE_BELAZ1_STARTING"		class="SgSoundSourceNode" id="S_STARTING07" looped="0"/>
+		<Node name="ET_S_ENGINE_BELAZ2_STARTING"		class="SgSoundSourceNode" id="S_STARTING08" looped="0"/>
+		<Node name="ET_S_ENGINE_MIROTVOREC_STARTING"		class="SgSoundSourceNode" id="S_STARTING06" />  
+		<Node name="ET_S_ENGINE_CRUISER_STARTING"		class="SgSoundSourceNode" id="S_STARTING03" looped="0"/> 
+
 		<Node name="ET_S_ENGINE_BEETLE_1_LOW"		class="SgSoundSourceNode" id="S_ENGINE_BEETLE_1_LOW" /> 
 		<Node name="ET_S_ENGINE_BEETLE_1_HIGH"		class="SgSoundSourceNode" id="S_ENGINE_BEETLE_1_HIGH" /> 
-
-		<Node name="ET_S_ENGINE_BUG_STARTING"		class="SgSoundSourceNode" id="S_STARTING02" /> 
 
 		<Node name="ET_S_ENGINE_BEETLE_2_LOW"		class="SgSoundSourceNode" id="S_ENGINE_BEETLE_2_LOW" /> 
 		<Node name="ET_S_ENGINE_BEETLE_2_HIGH"		class="SgSoundSourceNode" id="S_ENGINE_BEETLE_2_HIGH" /> 

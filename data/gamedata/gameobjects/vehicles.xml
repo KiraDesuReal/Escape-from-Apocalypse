@@ -2780,6 +2780,34 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class			= "Vehicle"
+		Name			= "Ural01Test"
+		ParentPrototype 	= "Ural">
+		<Parts>
+			<Part id = "CABIN"			Prototype = "uralCab05" />
+			<Part id = "BASKET"			Prototype = "uralCargo03" />
+			<Part id = "CABIN_BIG_GUN_1"		Prototype = "rainmetal01" />
+			<Part id = "CABIN_BIG_GUN_2"		Prototype = "rainmetal01" />
+			<Part id = "BASKET_BIG_GUN_0"	Prototype = "rainmetal01" /> 
+			<Part id = "BASKET_GIANT_GUN"	Prototype = "octopus01" /> 
+		</Parts>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
+		Name			= "Ural02Test"
+		ParentPrototype 	= "Ural_PMC">
+		<Parts>
+			<Part id = "CABIN"			Prototype = "uralCab05" />
+			<Part id = "BASKET"			Prototype = "uralCargo03" />
+			<Part id = "CABIN_BIG_GUN_1"		Prototype = "rainmetal01" />
+			<Part id = "CABIN_BIG_GUN_2"		Prototype = "rainmetal01" />
+			<Part id = "BASKET_BIG_GUN_0"	Prototype = "rainmetal01" /> 
+			<Part id = "BASKET_GIANT_GUN"	Prototype = "octopus01" /> 
+		</Parts>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
 		Name			= "Ural00"
 		ParentPrototype 	= "Ural">
 		<Parts>
@@ -2804,6 +2832,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 			<Part id = "BASKET_BIG_GUN_0"	Prototype = "rapier01" /> 
 		</Parts>
 	</Prototype>
+
 	<Prototype
 		Class			= "Vehicle"
 		Name			= "Ural02"

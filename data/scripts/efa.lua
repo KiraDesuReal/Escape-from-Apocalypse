@@ -1,9 +1,17 @@
 -- Special for Escape from Apocalypce
 
+if EFA_VERSION == nil then
+	LOG("ESCAPE FROM APOCALYPCE V0.1 PRE ALPHA")
+
+	EFA_VERSION = "V0.1 PRE ALPHA"
+end
+
+-- Счетчик количества рейдов 
 if COUNT_RAIDS == nil then
 	COUNT_RAIDS = 0
 end
 
+-- Рандомизируем пушки ботам 
 function GiveGunsForVehicle(vehicle, side_random)
 	local veh=vehicle
 	local belong = veh:GetBelong()
@@ -56,6 +64,7 @@ function GiveGunsForVehicle(vehicle, side_random)
 	end
 end
 
+-- Использование предметов 
 function ItemUse()
 
 	local vehP = GetPlayerVehicle()
@@ -65,107 +74,145 @@ function ItemUse()
 	local fuelcar = GetPlayerFuel()
 	local fuelmax = GetPlayerMaxFuel()
 
-	if HasPlayerAmountOfItems("scrap_metal_use", 1) and HasPlayerAmountOfItems("machinery_use", 1) then
+	local scrap_metal_procent = 10
+	local machinery_procent = 25
+	local electronics_procent = 40
+
+	local oil_procent = 15
+	local fuel_procent = 30
+
+	local procent
+	local hp_pr
+
+
+	if HasPlayerAmountOfItems("scrap_metal_use", 1) and HasPlayerAmountOfItems("machinery_use", 1) and HasPlayerAmountOfItems("electronics_use", 1) then
+		procent = healthmax / 100 * electronics_procent
+		hp_pr = healthmax - procent
 		if vehP then 
-			if (400 > healthcar) and (healthmax == 500) then
-				vehP:AddModifier( "hp", "+ 100" ) 
-				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_machinery", 100)
+			if hp_pr >= healthcar then
+				vehP:AddModifier( "hp", "+ "..procent ) 
+				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
+				AddFadingMsgByStrIdFormatted("fm_use_electronics", procent)
+				RemoveItemsFromPlayerRepository("electronics_use", 1)
+			end
+		end
+	end
+
+
+	if HasPlayerAmountOfItems("machinery_use", 1) and HasPlayerAmountOfItems("electronics_use", 1) then
+		procent = healthmax / 100 * electronics_procent
+		hp_pr = healthmax - procent
+		if vehP then 
+			if hp_pr >= healthcar then
+				vehP:AddModifier( "hp", "+ "..procent ) 
+				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
+				AddFadingMsgByStrIdFormatted("fm_use_electronics", procent)
+				RemoveItemsFromPlayerRepository("electronics_use", 1)
+			end
+		end
+	end
+
+
+	if HasPlayerAmountOfItems("scrap_metal_use", 1) and HasPlayerAmountOfItems("machinery_use", 1) then
+		procent = healthmax / 100 * machinery_procent
+		hp_pr = healthmax - procent
+		if vehP then 
+			if hp_pr >= healthcar then
+				vehP:AddModifier( "hp", "+ "..procent ) 
+				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
+				AddFadingMsgByStrIdFormatted("fm_use_machinery", procent)
 				RemoveItemsFromPlayerRepository("machinery_use", 1)
 			end
 		end
 	end
 
-	if HasPlayerAmountOfItems("scrap_metal_use", 1) and HasPlayerAmountOfItems("machinery_use", 1) and HasPlayerAmountOfItems("electronics_use", 1) then
+
+	if HasPlayerAmountOfItems("electronics_use", 1) then
+		procent = healthmax / 100 * electronics_procent
+		hp_pr = healthmax - procent
 		if vehP then 
-			if (300 > healthcar) and (healthmax == 500) then
-				vehP:AddModifier( "hp", "+ 200" ) 
-				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_electronics", 200)
+			if hp_pr >= healthcar then
+				vehP:AddModifier( "hp", "+ "..procent ) 
+				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
+				AddFadingMsgByStrIdFormatted("fm_use_electronics", procent)
 				RemoveItemsFromPlayerRepository("electronics_use", 1)
 			end
 		end
 	end
 
-	if HasPlayerAmountOfItems("machinery_use", 1) and HasPlayerAmountOfItems("electronics_use", 1) then
+
+	if HasPlayerAmountOfItems("machinery_use", 1) then
+		procent = healthmax / 100 * machinery_procent
+		hp_pr = healthmax - procent
 		if vehP then 
-			if (300 > healthcar) and (healthmax == 500) then
-				vehP:AddModifier( "hp", "+ 200" ) 
-				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_electronics", 200)
-				RemoveItemsFromPlayerRepository("electronics_use", 1)
+			if hp_pr >= healthcar then
+				vehP:AddModifier( "hp", "+ "..procent ) 
+				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
+				AddFadingMsgByStrIdFormatted("fm_use_machinery", procent)
+				RemoveItemsFromPlayerRepository("machinery_use", 1)
 			end
 		end
 	end
-			
+
+	
 	if HasPlayerAmountOfItems("scrap_metal_use", 1) then
+		procent = healthmax / 100 * scrap_metal_procent
+		hp_pr = healthmax - procent
 		if vehP then 
-			if (460 > healthcar) and (healthmax == 500) then
-				vehP:AddModifier( "hp", "+ 40" ) 
-				CreateEffectTTLed( "ET_PS_USE_ARM", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_scrap_metal", 40)
+			if hp_pr >= healthcar then
+				vehP:AddModifier( "hp", "+ "..procent ) 
+				CreateEffectTTLed( "ET_PS_USE_ARM", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
+				AddFadingMsgByStrIdFormatted("fm_use_scrap_metal", procent)
 				RemoveItemsFromPlayerRepository("scrap_metal_use", 1)
 			end
 		end
 	end
-			
-	if HasPlayerAmountOfItems("machinery_use", 1) then
-		if vehP then 
-			if (400 > healthcar) and (healthmax == 500) then
-				vehP:AddModifier( "hp", "+ 100" ) 
-				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_machinery", 100)
-				RemoveItemsFromPlayerRepository("machinery_use", 1)
-			end
-		end
-	end
 
-	if HasPlayerAmountOfItems("electronics_use", 1) then
-		if vehP then 
-			if (300 > healthcar) and (healthmax == 500) then
-				vehP:AddModifier( "hp", "+ 200" ) 
-				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_electronics", 200)
-				RemoveItemsFromPlayerRepository("electronics_use", 1)
-			end
-		end
-	end
-
+	
 	if HasPlayerAmountOfItems("oil_use", 1) and HasPlayerAmountOfItems("fuel_full_use", 1) then
+		procent = fuelmax / 100 * fuel_procent
+		hp_pr = fuelmax - procent
 		if vehP then 
-			if (60 > fuelcar) and (fuelmax == 100) then
-				vehP:AddModifier( "fuel", "+ 40" ) 
-				CreateEffectTTLed( "ET_PS_USE_OIL", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_fuel_full", 40)
+			if hp_pr >= fuelcar then
+				vehP:AddModifier( "fuel", "+ "..procent ) 
+				CreateEffectTTLed( "ET_PS_USE_OIL", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
+				AddFadingMsgByStrIdFormatted("fm_use_fuel_full", procent)
 				RemoveItemsFromPlayerRepository("fuel_full_use", 1)
 				AddItemsToPlayerRepository("fuel_nil_use", 1)
 			end
 		end
 	end
 
-	if HasPlayerAmountOfItems("oil_use", 1) then
+
+	if HasPlayerAmountOfItems("fuel_full_use", 1) then
+		procent = fuelmax / 100 * fuel_procent
+		hp_pr = fuelmax - procent
 		if vehP then 
-			if (85 > fuelcar) and (fuelmax == 100) then
-				vehP:AddModifier( "fuel", "+ 15" ) 
-				CreateEffectTTLed( "ET_PS_USE_OIL", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_oil", 15)
+			if hp_pr >= fuelcar then
+				vehP:AddModifier( "fuel", "+ "..procent ) 
+				CreateEffectTTLed( "ET_PS_USE_OIL", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
+				AddFadingMsgByStrIdFormatted("fm_use_fuel_full", procent)
+				RemoveItemsFromPlayerRepository("fuel_full_use", 1)
+				AddItemsToPlayerRepository("fuel_nil_use", 1)
+			end
+		end
+	end
+
+
+	if HasPlayerAmountOfItems("oil_use", 1) then
+		procent = fuelmax / 100 * oil_procent
+		hp_pr = fuelmax - procent
+		if vehP then 
+			if hp_pr >= fuelcar then
+				vehP:AddModifier( "fuel", "+ "..procent ) 
+				CreateEffectTTLed( "ET_PS_USE_OIL", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
+				AddFadingMsgByStrIdFormatted("fm_use_oil", procent)
 				RemoveItemsFromPlayerRepository("oil_use", 1)
 			end
 		end
 	end
 
-	if HasPlayerAmountOfItems("fuel_full_use", 1) then
-		if vehP then 
-			if (60 > fuelcar) and (fuelmax == 100) then
-				vehP:AddModifier( "fuel", "+ 40" ) 
-				CreateEffectTTLed( "ET_PS_USE_OIL", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_fuel_full", 40)
-				RemoveItemsFromPlayerRepository("fuel_full_use", 1)
-				AddItemsToPlayerRepository("fuel_nil_use", 1)
-			end
-		end
-	end
-
+	
 	if HasPlayerAmountOfItems("item_key_gate_thetown", 1) and not(IsQuestItemPresent("quest_item_key_gate_thetown")) then
 		AddQuestItem("quest_item_key_gate_thetown")
 		AddFadingMsgByStrIdFormatted("fm_item_to_quest_items", "item_key_gate_thetown")
@@ -180,6 +227,7 @@ function ItemUse()
 	
 end
 
+-- Генерация лута в ящиках 
 function CreateBarrelLootBox(name, pos)
 
 	local use = {"scrap_metal_use", "oil_use", "machinery_use", "fuel_nil_use", "fuel_full_use", "electronics_use"}
@@ -188,7 +236,7 @@ function CreateBarrelLootBox(name, pos)
 	local building = {"item_scotch", "item_nails", "item_nuts", "item_insulation", "item_screws", "scrap_metal", "doski", "item_bolts", "item_hose", "details", "item_plex", "item_parts", "item_poheram", "item_tube", "item_kek", "machinery", "item_military_tube", "item_thermometer", "item_pena", "item_datchik"}
 	local building_items = getn(building)
 
-	local electronics = {"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_cpu", "item_svech", "item_kondesators", "item_magnet", "item_energo_lump", "item_electronics_components", "item_phone", "item_ultra_lump", "item_cooler", "item_gazan", "item_geiger", "item_plate", "item_cable", "item_helix", "item_hdd", "item_drill", "item_lcd", "item_military_cable", "electronics", "item_bp", "item_engine", "item_iridiym", "item_tetris", "item_vpx", "item_virtex", "item_converter", "item_gpu"}
+	local electronics = {"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_cpu", "item_svech", "item_ram", "item_kondesators", "item_magnet", "item_energo_lump", "item_electronics_components", "item_phone", "item_ultra_lump", "item_cooler", "item_gazan", "item_geiger", "item_plate", "item_cable", "item_helix", "item_hdd", "item_drill", "item_lcd", "item_military_cable", "electronics", "item_bp", "item_engine", "item_iridiym", "item_tetris", "item_vpx", "item_virtex", "item_converter", "item_gpu"}
 	local electronics_items = getn(electronics)
 
 	local energy = {"item_battery_d", "item_battery_aa", "item_accum", "item_powerbank", "item_green_battery", "item_car_battery", "item_cyclon", "item_tank_battery"}
@@ -268,7 +316,7 @@ function CreateLootBoxForDeadScav(name, pos)
 
 	local items = {"scrap_metal_use", "oil_use", "machinery_use", "fuel_nil_use", "fuel_full_use", "electronics_use",
 					"item_scotch", "item_nails", "item_nuts", "item_insulation", "item_screws", "scrap_metal", "doski", "item_bolts", "item_hose", "details", "item_plex", "item_parts", "item_poheram", "item_tube", "item_kek", "machinery",
-					"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_cpu", "item_svech", "item_kondesators", "item_magnet", "item_energo_lump", "item_electronics_components", "item_phone", "item_ultra_lump", "item_cooler", "item_gazan", "item_geiger", "item_plate", "item_cable", "item_helix", "electronics",
+					"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_cpu", "item_svech", "item_ram", "item_kondesators", "item_magnet", "item_energo_lump", "item_electronics_components", "item_phone", "item_ultra_lump", "item_cooler", "item_gazan", "item_geiger", "item_plate", "item_cable", "item_helix", "electronics",
 					"item_battery_d", "item_battery_aa", "item_accum", "item_powerbank", "item_green_battery",
 					"item_spich", "item_hunter_spich", "item_lighter", "item_wd40_100", "item_zibbo", "oil", "item_survl", "item_wd40_400", "fuel",
 					"item_soap", "item_paste", "item_salt", "item_tb", "item_toothpaste", "item_soda", "item_paper", "item_alkani", "item_hlor", "book",
@@ -303,7 +351,7 @@ function CreateGunBox(name, pos)
 	local gun = {"hornet01","specter01","pkt01","kord01","storm01","fagot01","maxim01","vector01","vulcan01","kpvt01","rapier01","flag01","rainmetal01","elephant01","odin01","omega01","bumblebee01","hammer01","hunterSideGun","mrakSideGun","big_swingfire01","cyclops01","octopus01","hailSideGun","hurricane01","rocketLauncher","zeusSideGun","marsSideGun"}
 	local gun_rand = getn(gun)
 
-	local gadgets = {"minePusher", "minePusher_1", "engineOilPusher", "nailsPusher", "Smoke", "additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "add_damage_guns", "add_damage_energy", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "someTurboAccelerationPusher", "firing_range_guns", "firing_rate_guns", "firing_rate_energy", "firing_rate_guns", "grouping_angle_guns", "firing_rate_energy", "grouping_angle_guns", "cooling_system_guns", "cooling_system_guns", "cooling_system_energy", "cooling_system_energy", "cooling_system_explosion"}
+	local gadgets = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "add_damage_guns", "add_damage_energy", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "someTurboAccelerationPusher", "firing_range_guns", "firing_rate_guns", "firing_rate_energy", "firing_rate_guns", "grouping_angle_guns", "firing_rate_energy", "grouping_angle_guns", "cooling_system_guns", "cooling_system_guns", "cooling_system_energy", "cooling_system_energy", "cooling_system_explosion"}
 	local gadgets_rand = getn(gadgets)
 
 	local Chest = CreateNewObject{prototypeName = "someChest", objName = name.."Chest"}	
@@ -552,7 +600,7 @@ end
 
 function CreateElectronicsBox(name, pos)
 
-	local electronics = {"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_cpu", "item_svech", "item_kondesators", "item_magnet", "item_energo_lump", "item_electronics_components", "item_phone", "item_ultra_lump", "item_cooler", "item_gazan", "item_geiger", "item_plate", "item_cable", "item_helix", "item_hdd", "item_drill", "item_lcd", "item_military_cable", "electronics", "item_bp", "item_engine", "item_iridiym", "item_tetris", "item_gpu"}
+	local electronics = {"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_cpu", "item_svech", "item_ram", "item_kondesators", "item_magnet", "item_energo_lump", "item_electronics_components", "item_phone", "item_ultra_lump", "item_cooler", "item_gazan", "item_geiger", "item_plate", "item_cable", "item_helix", "item_hdd", "item_drill", "item_lcd", "item_military_cable", "electronics", "item_bp", "item_engine", "item_iridiym", "item_tetris", "item_gpu"}
 	local electronics_items = getn(electronics)
 
 	local Chest = CreateNewObject{prototypeName = "someChest", objName = name.."Chest"}	

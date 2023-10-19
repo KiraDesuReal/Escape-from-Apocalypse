@@ -288,7 +288,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_4X2" />	
+		ResourceType= "ITEM_SIZE_3X2" />	
 
 	<Prototype
 		Class		= "Ware"
@@ -360,7 +360,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_2X6" />	
+		ResourceType= "ITEM_SIZE_2X4" />	
 
 	<Prototype
 		Class		= "Ware"
@@ -405,7 +405,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_2X4" />
+		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
 		Class		= "Ware"
@@ -425,7 +425,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_4X4" />
+		ResourceType= "ITEM_SIZE_3X3" />
 	
 	<Prototype
 		Class		= "Ware"
@@ -434,7 +434,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_4X2" />
+		ResourceType= "ITEM_SIZE_3X2" />
 
 	<Prototype
 		Class		= "Ware"
@@ -470,7 +470,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_4X4" />
+		ResourceType= "ITEM_SIZE_3X3" />
 
 	<Prototype
 		Class		= "Ware"
@@ -479,7 +479,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_4X2" />
+		ResourceType= "ITEM_SIZE_3X2" />
 
 	<Prototype
 		Class		= "Ware"
@@ -542,7 +542,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_4X2" />
+		ResourceType= "ITEM_SIZE_3X2" />
 
 	<Prototype
 		Class		= "Ware"
@@ -551,7 +551,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_2X2" />
+		ResourceType= "ITEM_SIZE_1X2" />
 
 	<Prototype
 		Class		= "Ware"
@@ -578,7 +578,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_4X2" />
+		ResourceType= "ITEM_SIZE_3X2" />
 
 	<Prototype
 		Class		= "Ware"
@@ -605,7 +605,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_4X2" />
+		ResourceType= "ITEM_SIZE_3X2" />
 
 	<Prototype
 		Class		= "Ware"
@@ -627,12 +627,21 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class		= "Ware"
+		Name		= "item_ram"
+		Price	= "8400"
+		Durability	= "100"
+		PriceDispersion      = "10"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
 		Name		= "item_rele"
 		Price	= "7500"
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_2X2" />
+		ResourceType= "ITEM_SIZE_1X2" />
 
 	<Prototype
 		Class		= "Ware"
@@ -641,7 +650,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_2X2" />
+		ResourceType= "ITEM_SIZE_1X2" />
 
 	<Prototype
 		Class		= "Ware"
@@ -724,7 +733,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_2X2" />
+		ResourceType= "ITEM_SIZE_2X1" />
 
 	<Prototype
 		Class		= "Ware"
@@ -733,7 +742,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_2X2" />
+		ResourceType= "ITEM_SIZE_2X1" />
 
 	<Prototype
 		Class		= "Ware"
@@ -742,7 +751,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_6X4" />
+		ResourceType= "ITEM_SIZE_5X4" />
 
 	<Prototype
 		Class		= "Ware"
@@ -751,7 +760,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_4X2" />
+		ResourceType= "ITEM_SIZE_3X2" />
 
 	<Prototype
 		Class		= "Ware"
@@ -760,7 +769,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_2X2" />
+		ResourceType= "ITEM_SIZE_2X1" />
 
 	<Prototype
 		Class		= "Ware"
@@ -807,7 +816,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_2X2" />
+		ResourceType= "ITEM_SIZE_1X2" />
 
 	<Prototype
 		Class		= "Ware"
@@ -816,7 +825,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_2X4" />
+		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
 		Class		= "Ware"
@@ -825,7 +834,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_4X4" />
+		ResourceType= "ITEM_SIZE_3X4" />
 
 	<Prototype
 		Class		= "Ware"
@@ -870,7 +879,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_2X2" />
+		ResourceType= "ITEM_SIZE_1X2" />
 
 	<Prototype
 		Class		= "Ware"
@@ -879,7 +888,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_2X4" />
+		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
 		Class		= "Ware"
@@ -899,7 +908,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_2X4" />
+		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
 		Class		= "Ware"
@@ -908,7 +917,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_4X2" />
+		ResourceType= "ITEM_SIZE_3X2" />
 
 	<Prototype
 		Class		= "Ware"
@@ -982,7 +991,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_2X4" />
+		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
 		Class		= "Ware"
@@ -1027,7 +1036,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_2X4" />
+		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
 		Class		= "Ware"
@@ -1036,7 +1045,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_4X2" />
+		ResourceType= "ITEM_SIZE_3X2" />
 
 	<Prototype
 		Class		= "Ware"
@@ -1152,15 +1161,6 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class		= "Ware"
-		Name		= "item_carsen"
-		Price	= "12500"
-		Durability	= "100"
-		PriceDispersion      = "10"
-		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_2X2" />
-
-	<Prototype
-		Class		= "Ware"
 		Name		= "item_emre_kara"
 		Price	= "30000"
 		Durability	= "100"
@@ -1175,7 +1175,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_4X2" />
+		ResourceType= "ITEM_SIZE_3X2" />
 
 	<Prototype
 		Class		= "Ware"
@@ -1247,7 +1247,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "10"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_4X8" />
+		ResourceType= "ITEM_SIZE_3X8" />
 
 	<Prototype
 		Class		= "Ware"
@@ -1303,7 +1303,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "10"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_4X4" />
+		ResourceType= "ITEM_SIZE_3X3" />
 	
 	<Prototype
 		Class		= "Ware"
@@ -1312,7 +1312,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "10"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_6X4" />
+		ResourceType= "ITEM_SIZE_5X3" />
 
 	<Prototype
 		Class		= "Ware"
@@ -1411,7 +1411,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "10"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_2X4" />
+		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
 		Class		= "Ware"
@@ -1429,7 +1429,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "10"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_4X4" />
+		ResourceType= "ITEM_SIZE_3X3" />
 
 	<Prototype
 		Class		= "Ware"
@@ -1458,7 +1458,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "10"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_2X6" />
+		ResourceType= "ITEM_SIZE_2X5" />
 
 	<Prototype
 		Class		= "Ware"
@@ -1503,7 +1503,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "10"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_6X4" />
+		ResourceType= "ITEM_SIZE_5X3" />
 
 	<Prototype
 		Class		= "Ware"
@@ -1530,7 +1530,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "10"
 		PriceDispersion      = "10"
 		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_2X4" />
+		ResourceType= "ITEM_SIZE_2X3" />
 		
 	<Prototype
 		Class		= "Ware"

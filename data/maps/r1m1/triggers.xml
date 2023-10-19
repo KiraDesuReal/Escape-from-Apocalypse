@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
 <triggers>
-	<trigger Name="GlobalVar" active="1">
+
+<!-- Назначение дефолтных значений переменных -->
+	<trigger Name="GlobalVar" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 		
-			SetVar("CountRaids",0)
-
 			SetVar("PlayerCabin", "0")
 			SetVar("PlayerBasket", "0")
 
@@ -35,7 +35,47 @@
 			SetVar("NoAir",0)
 			SetVar("AirPoints",0)
 
+			SetVar("CountPMC", 0)
+
 		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Активация триггеров при старте локации -->
+	<trigger Name="StartMap" active="1">
+		<event eventid="GE_GAME_START" ObjName="Player1" />
+		<script>
+
+			if COUNT_RAIDS then SetVar("CountRaids",COUNT_RAIDS) end 
+			
+			TActivate("GlobalVar")
+
+			TActivate("PetrolStations")
+
+			TActivate("PlayerCarConfiguration")
+			TActivate("SpawnPlayer")
+			TActivate("StartFadeEffect")
+			TActivate("FakePlayerDead_NameCar")
+
+			TActivate("ItemsUse")
+
+			TActivate("Gate_TheTown")
+			TActivate("ClosedGate_R1M3")
+
+			TActivate("CreateBarrelBox")
+			TActivate("CreateBoxForDeadScav")
+			TActivate("CreateGunLootBox")
+			TActivate("CreateMedicalLootBox")
+			TActivate("CreateTehnoLootBox")
+			TActivate("CreateToolsLootBox")
+			TActivate("CreateValuablesLootBox")
+			TActivate("CreateElectronicsLootBox")
+			TActivate("CreateTheTownLootBox")
+
+			TActivate("CreateBossProbability")
+
+			CreateNewBreakableObject("lamppost2", "fonar", 1002, CVector(3055.078, 349.812, 1446.906), Quaternion(0.0000, -0.7133, 0.0000, 0.7009),0)
+			
 		</script>
 	</trigger>
 
@@ -102,28 +142,21 @@
 		</script>
 	</trigger>
 
-	<trigger Name="CreateWorld" active="1">
+<!-- Создание ворот Южного -->
+	<trigger Name="Gate_TheTown" active="0">
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 
---Ворота южного
-		CreateNewDummyObject( "big_gate01", "gate_thetown", -1, -1, CVector(1235.100, 311.700, 2969.336), Quaternion(0.0000, 0.7210, 0.0000, 0.6930))
-		CreateNewSgNodeObject( "big_gate01", "gate_thetown2", -1, -1, CVector(1262.195, 300, 2995.386), Quaternion(-0.004, 0.019, 0.000, 1.000), 1)
-		getObj("gate_thetown"):SetNodeAction(AT_STAND2)
-
---Ворота R1M3
-		TActivate("ClosedGate_R1M3")
-
---Заправки
-		TActivate("PetrolStations")
-
--- Фонарь 
-		CreateNewBreakableObject("lamppost2", "fonar", 1002, CVector(3055.078, 349.812, 1446.906), Quaternion(0.0000, -0.7133, 0.0000, 0.7009),0)
+			CreateNewDummyObject( "big_gate01", "gate_thetown", -1, -1, CVector(1235.100, 311.700, 2969.336), Quaternion(0.0000, 0.7210, 0.0000, 0.6930))
+			CreateNewSgNodeObject( "big_gate01", "gate_thetown2", -1, -1, CVector(1262.195, 300, 2995.386), Quaternion(-0.004, 0.019, 0.000, 1.000), 1)
+			getObj("gate_thetown"):SetNodeAction(AT_STAND2)
+			TActivate("OpenGate_TheTown")
 
 		trigger:Deactivate()    
 		</script>
 	</trigger>
 
+<!-- Рандомизация работы заправок -->
 	<trigger Name="PetrolStations" active="0">
 		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -176,7 +209,7 @@
 	</trigger>
 
 <!-- Узнаем конфигурацию машины игрока -->
-	<trigger Name="PlayerCarConfiguration" active="1">
+	<trigger Name="PlayerCarConfiguration" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 
@@ -249,12 +282,9 @@
 	</trigger>
 
 <!-- Спавн игрока -->
-	<trigger Name="SpawnPlayer" active="1">
+	<trigger Name="SpawnPlayer" active="0">
 		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
-
-			SetVar("PosPlayer1",0)
-			SetVar("PosPlayer2",0)
 
 			local posr1 = random(10)
 			local posrr1={
@@ -326,10 +356,10 @@
 	</trigger>
 
 <!-- Таймер рейда -->
-	<trigger Name="TimerRaidStart" active="1">
+	<trigger Name="TimerRaidStart" active="0">
 		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
-			SetVar("TimeRaid",1200)
+			SetVar("TimeRaid",900)
 			TActivate("TimerRaid")
 			trigger:Deactivate() 
 		</script>
@@ -344,17 +374,17 @@
 			if time == 1200 then
 				AddImportantFadingMsgByStrIdFormatted("fm_time_min", 20)
 			elseif time == 900 then
-				TActivate("AirDropProbability")
 				AddImportantFadingMsgByStrIdFormatted("fm_time_min", 15)
 			elseif time == 600 then
+				TActivate("AirDropProbability")
 				TActivate("CreateScavs")
 				AddImportantFadingMsgByStrIdFormatted("fm_time_min", 10)
 			elseif time == 300 then
 				AddImportantFadingMsgByStrIdFormatted("fm_time_min_red", 5)
 			elseif time == 180 then
-				AddImportantFadingMsgByStrIdFormatted("fm_time_min_red", 3)
+				AddImportantFadingMsgByStrIdFormatted("fm_time_min2_red", 3)
 			elseif time == 120 then
-				AddImportantFadingMsgByStrIdFormatted("fm_time_min_red", 2)
+				AddImportantFadingMsgByStrIdFormatted("fm_time_min2_red", 2)
 			elseif time == 60 or time == 30 or time == 10 or 5 >= time and not(time == 0) then
 				AddImportantFadingMsgByStrIdFormatted("fm_time_sec", time)
 			end
@@ -589,11 +619,24 @@
 		</script>
 	</trigger>
 
-<!-- Выход с локации -->
-	<trigger Name="ExitToMap" active="0">
-		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+<!-- Показать выходы -->
+	<trigger Name="ShowExits" active="1">
+		<event eventid="GE_PLAYER_VEHICLE_HORN" ObjName="Player1" />
 		<script>
-			
+			if GetVar("SpawnPlayer").AsInt==1 then
+				AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits2LocationR1M1")
+			else
+				AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits1LocationR1M1")
+			end
+			TActivate("ShowExits_Activate")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ShowExits_Activate" active="0">
+		<event 	timeout="7" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("ShowExits")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1452,7 +1495,7 @@
 	</trigger>
 
 <!-- Использование предметов -->
-	<trigger Name="ItemsUse" active="1">
+	<trigger Name="ItemsUse" active="0">
 		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local pl = GetPlayerVehicle()
@@ -1460,7 +1503,6 @@
 			if pl and hp >= 1 then 
 				ItemUse() 
 			else 
-				TActivate("FakePlayerDead")
 				trigger:Deactivate() 
 			end
 		</script>
@@ -1692,6 +1734,7 @@
 		</script>
 	</trigger>
 
+<!-- Если заправка не работает -->
 	<trigger Name="NotWork_PetrolStation01" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation01_loc" />
 		<script>
@@ -1723,7 +1766,7 @@
 	</trigger>
 
 <!-- Открытие/Закрытие ворот Южного -->
-	<trigger Name="OpenGate_TheTown" active="1">
+	<trigger Name="OpenGate_TheTown" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="OpenGateTheTown_loc" />
 		<script>
 			if IsQuestItemPresent("quest_item_key_gate_thetown") then
@@ -1829,8 +1872,7 @@
 	</trigger>
 
 <!-- Расстановка лута на карте -->
-
-	<trigger Name="CreateBarrelBox" active="1">
+	<trigger Name="CreateBarrelBox" active="0">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 
@@ -1842,7 +1884,7 @@
 		</script>
 	</trigger>
 
-	<trigger Name="CreateBoxForDeadScav" active="1">
+	<trigger Name="CreateBoxForDeadScav" active="0">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 
@@ -1854,7 +1896,7 @@
 		</script>
 	</trigger>
 
-	<trigger Name="CreateGunLootBox" active="1">
+	<trigger Name="CreateGunLootBox" active="0">
 		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
 		<script>
 
@@ -1866,7 +1908,7 @@
 		</script>
 	</trigger>
 
-	<trigger Name="CreateMedicalLootBox" active="1">
+	<trigger Name="CreateMedicalLootBox" active="0">
 		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
 		<script>
 
@@ -1878,7 +1920,7 @@
 		</script>
 	</trigger>
 
-	<trigger Name="CreateTehnoLootBox" active="1">
+	<trigger Name="CreateTehnoLootBox" active="0">
 		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
 		<script>
 
@@ -1890,7 +1932,7 @@
 		</script>
 	</trigger>
 
-	<trigger Name="CreateToolsLootBox" active="1">
+	<trigger Name="CreateToolsLootBox" active="0">
 		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
 		<script>
 
@@ -1902,7 +1944,7 @@
 		</script>
 	</trigger>
 
-	<trigger Name="CreateValuablesLootBox" active="1">
+	<trigger Name="CreateValuablesLootBox" active="0">
 		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
 		<script>
 
@@ -1914,7 +1956,7 @@
 		</script>
 	</trigger>
 
-	<trigger Name="CreateElectronicsLootBox" active="1">
+	<trigger Name="CreateElectronicsLootBox" active="0">
 		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
 		<script>
 
@@ -1926,12 +1968,12 @@
 		</script>
 	</trigger>
 
-	<trigger Name="CreateTheTownLootBox" active="1">
+	<trigger Name="CreateTheTownLootBox" active="0">
 		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
 		<script>
 		
 			local item = {"item_tube", "item_kek", "machinery", "item_military_tube", "item_thermometer", "item_pena", "item_datchik",
-							"item_dvd", "item_cpu", "item_kondesators", "item_electronics_components", "item_cooler", "item_gazan", "item_plate", "item_cable", "item_hdd", "item_drill", "item_lcd", "item_military_cable", "electronics", "item_bp", "item_engine", "item_iridiym", "item_tetris", "item_vpx", "item_gpu",
+							"item_dvd", "item_cpu", "item_ram", "item_kondesators", "item_electronics_components", "item_cooler", "item_gazan", "item_plate", "item_cable", "item_hdd", "item_drill", "item_lcd", "item_military_cable", "electronics", "item_bp", "item_engine", "item_iridiym", "item_tetris", "item_vpx", "item_gpu",
 							"item_green_battery", "item_car_battery", "item_cyclon", "item_tank_battery",
 							"item_ssd", "item_disk_exmachina", "item_sas", "item_rozvidka",
 							"item_rolex", "item_chain_gold", "item_woodclock", "item_chiken", "item_skullring",
@@ -1967,8 +2009,7 @@
 	</trigger>
 
 <!-- Создание босса -->
-
-	<trigger Name="CreateBossProbability" active="1">
+	<trigger Name="CreateBossProbability" active="0">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local boss_random = random(100)
@@ -2095,7 +2136,6 @@
 	</trigger>
 
 <!-- Аир дроп -->
-
 	<trigger Name="AirDropProbability" active="0">
 		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -2288,13 +2328,13 @@
 			ChestId:SetPosition(AirBoxSgPos)
 			ChestId:SetRotation(AirBoxSgRot)
 			
-			AirBoxSg:Remove()
+			if AirBoxSg then AirBoxSg:Remove() end
 
 			local lootcount = random(10,20)
 
 			local items = {"scrap_metal_use", "oil_use", "machinery_use", "fuel_nil_use", "fuel_full_use", "electronics_use",
 							"item_scotch", "item_nails", "item_nuts", "item_insulation", "item_screws", "scrap_metal", "doski", "item_bolts", "item_hose", "details", "item_plex", "item_parts", "item_poheram", "item_tube", "item_kek", "machinery", "item_military_tube", "item_thermometer", "item_pena", "item_datchik",
-							"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_cpu", "item_svech", "item_kondesators", "item_magnet", "item_energo_lump", "item_electronics_components", "item_phone", "item_ultra_lump", "item_cooler", "item_gazan", "item_geiger", "item_plate", "item_cable", "item_helix", "item_hdd", "item_drill", "item_lcd", "item_military_cable", "electronics", "item_bp", "item_engine", "item_iridiym", "item_tetris", "item_vpx", "item_virtex", "item_converter", "item_gpu",
+							"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_cpu", "item_svech", "item_ram", "item_kondesators", "item_magnet", "item_energo_lump", "item_electronics_components", "item_phone", "item_ultra_lump", "item_cooler", "item_gazan", "item_geiger", "item_plate", "item_cable", "item_helix", "item_hdd", "item_drill", "item_lcd", "item_military_cable", "electronics", "item_bp", "item_engine", "item_iridiym", "item_tetris", "item_vpx", "item_virtex", "item_converter", "item_gpu",
 							"item_battery_d", "item_battery_aa", "item_accum", "item_powerbank", "item_green_battery", "item_car_battery", "item_cyclon", "item_tank_battery",
 							"item_spich", "item_hunter_spich", "item_lighter", "item_wd40_100", "item_zibbo", "oil", "item_survl", "item_wd40_400", "fuel", "item_trotile", "item_dry", "item_propan", "item_prisadka", "item_termit",
 							"item_soap", "item_paste", "item_salt", "item_tb", "item_toothpaste", "item_soda", "item_paper", "item_alkani", "item_hlor", "book",
@@ -2326,6 +2366,7 @@
 		<script>
 			local s_hel = GetEntityByName("SH")
 			if s_hel then s_hel:Remove() end
+
 			TDeactivate("OracleSoundUpdate")
 			TActivate("OracleRemove")
 			trigger:Deactivate() 
@@ -2342,7 +2383,6 @@
 	</trigger>
 
 <!-- Создание ЧВК -->  
-
 	<trigger Name="CreatePMC" active="0">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -2478,7 +2518,6 @@
 
 			for p1=1,pos1_count_pmc do
 				local model = modellist[random(2 + number)]
-				println(model)
 				local num = paths_pos1[p1]
 	
 				TeamCreate("PMC_"..p1.."_Spawn1", belong[random(belong_r)], pos1_pmc[num], {model}, nil, 1)
@@ -2532,7 +2571,7 @@
 					elseif rand_exit == 3 then
 						pmc_way:SetDestination(CVector(getPos("BaseFelix_Exit")))
 					end
-					--pmc_way:StackLoop()
+					pmc_way:StackLoop()
 					pmc_way:StackClose()
 				end
 			end
@@ -2540,8 +2579,7 @@
 			for p2=1,pos2_count_pmc do
 				local model = modellist[random(2 + number)]
 				local num = paths_pos2[p2]
-				println(model)
-	
+			
 				TeamCreate("PMC_"..p2.."_Spawn2", belong[random(belong_r)], pos2_pmc[num], {model}, nil, 1)
 				
 				local pmc = GetEntityByName ("PMC_"..p2.."_Spawn2_vehicle_0")
@@ -2593,13 +2631,13 @@
 					elseif rand_exit2_1 == 3 then
 						pmc_way2:SetDestination(CVector(getPos("ZaTheTown_Exit")))
 					end
-					--pmc_way2:StackLoop()
+					pmc_way2:StackLoop()
 					pmc_way2:StackClose()
 				end
 			end
 			
-			println("spawn1_"..pos1_count_pmc)
-			println("spawn2_"..pos2_count_pmc)
+			println("PMCspawn1_"..pos1_count_pmc)
+			println("PMCspawn2_"..pos2_count_pmc)
 
 			TActivate("PMC_To_Exits_loc")
 
@@ -2607,12 +2645,23 @@
 			TActivate("TpBirge_2")
 			TActivate("TDeaTpBirge")
 
+			local tr = getObj("PMC_Die")
+			if tr then
+				for i=1,pos1_count_pmc do
+					tr:AddEvent("GE_OBJECT_DIE", "PMC_"..i.."_Spawn1_vehicle_0")
+				end
+				for j=1,pos2_count_pmc do
+					tr:AddEvent("GE_OBJECT_DIE", "PMC_"..j.."_Spawn2_vehicle_0")
+				end
+				SetVar("CountPMC", pos1_count_pmc+pos2_count_pmc)
+				TActivate("PMC_Die")
+			end
+
 			trigger:Deactivate() 
 		</script>
 	</trigger>
 
 <!-- Телепорт ЧВК через мост Глухого, когда отключена физика машин -->
-
 	<trigger Name="TpBirge_1" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="GloohoeBirge_1_loc" />
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="GloohoeBirge_3_loc" />
@@ -2663,7 +2712,6 @@
 	</trigger>
 
 <!-- Назначение путей для ЧВК -->
-
 	<trigger Name="PMC_To_Exits_loc" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ZaTheTown_exitPMC_1_loc" />
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ZaTheTown_exitPMC_2_loc" />
@@ -2688,8 +2736,25 @@
 		</script>
 	</trigger>
 
-<!-- Вторая фаза диких -->
+<!-- Если все ЧВК на карте убиты -->
+	<trigger Name="PMC_Die" active="0">
+		<script>
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			if GetVar("CountPMC").AsInt > count then
+				return
+			end
+			TDeactivate("TpBirge_1")
+			TDeactivate("TpBirge_2")
+			TDeactivate("TDeaTpBirge")
+			TDeactivate("TActivTpBirge")
+			TDeactivate("PMC_To_Exits_loc")
+			println("PMC_DIE")
+			trigger:Deactivate() 
+		</script>
+	</trigger>
 
+<!-- Вторая фаза диких -->
 	<trigger Name="CreateScavs" active="0">
 		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>										
@@ -2757,6 +2822,220 @@
 				end
 			end
 			
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Выход с локации/Очистка карты для следующего запуска -->
+	<trigger Name="ExitToMap" active="0">
+		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			--фонарь
+			local f = GetEntityByName("fonar")
+			if f then f:Remove() end
+
+			--ворота Южного
+			local g = GetEntityByName("gate_thetown")
+			if g then g:Remove() end
+			local g2 = GetEntityByName("gate_thetown2")
+			if g2 then g2:Remove() end
+			TDeactivate("OpenGate_TheTown")
+
+			--заправки
+			for i=1,3 do
+				local light = GetEntityByName("LIGHTWORK0"..i)
+				if light then light:Remove() end
+				TDeactivate("UseFuelNil_InPetrolStation0"..i)
+				TDeactivate ("NotWork_PetrolStation0"..i)
+			end
+
+			TDeactivate("TimerRaid")
+
+			--выходы
+			if GetVar("SpawnPlayer").AsInt==1 then
+				TDeactivate ("RoadToRidzin")
+				TDeactivate ("BaseFelix")
+			else
+				TDeactivate ("RoadToFater")
+				TDeactivate ("ZaTheTown")
+			end
+			
+			if GetVar("ExitZaTheTroiskoe").AsInt==1 then
+				TDeactivate ("ZaTheTroiskoe")
+				TDeactivate ("FonarZaTheTroiskoeExit_Broken")
+				for l=1,3 do
+					local light = GetEntityByName("LightZaTheTroiskoeExit"..l)
+					if light then light:Remove() end
+				end
+			end
+
+			if GetVar("ExitGloohoe").AsInt==1 then
+				TDeactivate ("ZaTheGloohoe")
+				TActivate("CreateGloohoeAtDestroy")
+			end
+
+			--удаление диких на локациях
+			for s1=1,4 do
+				local sv1 = GetEntityByName("Scav"..s1.."_loc1_vehicle_0")
+				if sv1 then sv1:Remove() end
+			end
+
+			for s2=1,5 do
+				local sv2 = GetEntityByName("Scav"..s2.."_loc2_vehicle_0")
+				if sv2 then sv2:Remove() end
+			end
+
+			for s3=1,6 do
+				local sv3 = GetEntityByName("Scav"..s3.."_loc3_vehicle_0")
+				if sv3 then sv3:Remove() end
+			end
+
+			for s4=1,4 do
+				local sv4 = GetEntityByName("Scav"..s4.."_loc4_vehicle_0")
+				if sv4 then sv4:Remove() end
+			end
+
+			for s5=1,6 do
+				local sv5 = GetEntityByName("Scav"..s5.."_loc5_vehicle_0")
+				if sv5 then sv5:Remove() end
+			end
+
+			for s6=1,6 do
+				local sv6 = GetEntityByName("Scav"..s6.."_loc6_vehicle_0")
+				if sv6 then sv6:Remove() end
+			end
+
+			for s7=1,7 do
+				local sv7 = GetEntityByName("Scav"..s7.."_loc7_vehicle_0")
+				if sv7 then sv7:Remove() end
+			end
+
+			for s8=1,7 do
+				local sv8 = GetEntityByName("Scav"..s8.."_loc8_vehicle_0")
+				if sv8 then sv8:Remove() end
+			end
+			
+			for loc=1,8 do
+				TDeactivate("SpawnScavsInLocation0"..loc)
+				TDeactivate("ScavInLocation0"..loc.."_Die")
+				TDeactivate("SpawnScavsInLocation0"..loc.."_Restart")
+			end
+
+			TDeactivate("ItemsUse")
+
+			--ворота r1m3
+			local g_r1m3 = GetEntityByName("gate_r1m3")
+			if g_r1m3 then g_r1m3:Remove() end
+			TDeactivate("OpenGate_R1M3")
+
+			--удаление ящиков с лутом
+			for b=1,31 do
+				local barrel = GetEntityByName("barrel"..b)
+				if barrel then barrel:Remove() end
+				local barrelChest = GetEntityByName("barrel"..b.."Chest")
+				if barrelChest then barrelChest:Remove() end
+			end
+
+			for ds=1,5 do
+				local DSChest = GetEntityByName("DeadScav"..ds.."Chest")
+				if DSChest then DSChest:Remove() end
+			end
+
+			for gun=1,15 do
+				local gunChest = GetEntityByName("GunBox"..gun.."Chest")
+				if gunChest then gunChest:Remove() end
+			end
+
+			for med=1,7 do
+				local medChest = GetEntityByName("MedicalBox"..med.."Chest")
+				if medChest then medChest:Remove() end
+			end
+
+			for tehno=1,10 do
+				local tehnoChest = GetEntityByName("TehnoBox"..tehno.."Chest")
+				if tehnoChest then tehnoChest:Remove() end
+			end
+
+			for tools=1,9 do
+				local toolsChest = GetEntityByName("ToolsBox"..tools.."Chest")
+				if toolsChest then toolsChest:Remove() end
+			end
+
+			for val=1,7 do
+				local valChest = GetEntityByName("ValuablesBox"..val.."Chest")
+				if valChest then valChest:Remove() end
+			end
+
+			for el=1,5 do
+				local elChest = GetEntityByName("ElectronicsBox"..el.."Chest")
+				if elChest then elChest:Remove() end
+			end
+
+			for town=1,5 do
+				local townChest = GetEntityByName("TheTown_"..town.."_Chest")
+				if townChest then townChest:Remove() end
+			end
+
+			--удаление босса
+			for boss1=1,4 do
+				local enBoss = GetEntityByName("EnemyBoss"..boss1.."_vehicle_0")
+				if enBoss then enBoss:Remove() end
+			end
+
+			local Boss = GetEntityByName("Boss_vehicle_0")
+			if Boss then Boss:Remove() end
+
+			TDeactivate("CreateBoss")
+			TDeactivate("BossEnemy_Die")
+
+			--аир дроп
+			TDeactivate("AirDropProbability")
+			TDeactivate("SpawnOracle_AirDrop")
+			TDeactivate("DistPoint")
+			TDeactivate("BoxDownY")
+			TDeactivate("TimerForCreateAirDrop")
+			TDeactivate("OracleSoundUpdate")
+			TDeactivate("OracleSoundRemove")
+			TDeactivate("OracleRemove")
+
+			for point=1,14 do
+				local airpoint = GetEntityByName("air_point"..point)
+				if airpoint then airpoint:Remove() end
+			end
+
+			local AirBoxSg = GetEntityByName("airB")
+			if AirBoxSg then AirBoxSg:Remove() end
+
+			local airbox = GetEntityByName("AirBox")
+			if airbox then airbox:Remove() end
+
+			local s_hel = GetEntityByName("SH")
+			if s_hel then s_hel:Remove() end
+
+			--удаление ЧВК
+			for pmc=1,8 do
+				local pmc1 = GetEntityByName("PMC_"..pmc.."_Spawn1_vehicle_0")
+				if pmc1 then pmc1:Remove() end
+				local pmc2 = GetEntityByName("PMC_"..pmc.."_Spawn2_vehicle_0")
+				if pmc2 then pmc2:Remove() end
+			end
+
+			TDeactivate("TpBirge_1")
+			TDeactivate("TpBirge_2")
+			TDeactivate("TDeaTpBirge")
+			TDeactivate("TActivTpBirge")
+			TDeactivate("PMC_To_Exits_loc")
+			TDeactivate("PMC_Die")
+
+			--удаление диких
+			for s_count=1,10 do
+				local scavs = GetEntityByName("Scav_"..s_count.."_vehicle_0")
+				if scavs then scavs:Remove() end
+			end
+
+			println("MAP CLEAR")
+
 			trigger:Deactivate()
 		</script>
 	</trigger>

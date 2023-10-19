@@ -2,7 +2,7 @@
 <triggers>
 
 <!-- Стартовое затемнение -->
-    <trigger Name="StartFadeEffect" active="1">
+    <trigger Name="StartFadeEffect" active="0">
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 
@@ -69,9 +69,10 @@
 			end
 
 			TActivate("MessageRaid")
+			TActivate("TimerRaidStart")
+			--TActivate("CreatePMC")
 
 			SetCameraBehindPlayerVehicle()
-            map()
 
 			trigger:Deactivate()
 		</script>
@@ -93,12 +94,13 @@
 			Plf:SetCustomLinearVelocity(0)
 			Plf:SetThrottle(0)
 	
-			FlyAround(1, 0, 15, 7, PlfCoor, PlfID, 1, 1)
+			FlyAround(1, 0, 15, 7, PlfCoor, PlfID, 1, 0)
 			StartCinematic()
 			UpdateCinematic(1)
 
 			AddCinematicMessage(1,0)
 
+			TActivate("PlayerCarConfiguration")
 			TActivate("cutTimeRaid_End")
 	
 			trigger:Deactivate()
@@ -112,7 +114,7 @@
 			SaveAllToleranceStatus(RS_NEUTRAL)
 			EnableGodMode()
 
-			Fly("start_game", CINEMATIC_NO_AIM, 0, 0.5, 1, 1)
+			Fly("start_game", CINEMATIC_NO_AIM, 0, 0.5, 1, 0)
 			StartCinematic()
 		
 			AddCinematicMessage(77773, 0)
@@ -132,19 +134,47 @@
 			DisableGodMode()
 
 			local pl = GetPlayerVehicle()
-			if pl then
-				pl:SetNewPart("BASKET", GetVar("PlayerBasket").AsString)
-			end
+			local plProt = pl:GetProperty("Prototype").AsString
+			AddPlayerNewVehicle(plProt)
 
-			TDeactivate("ItemsUse")
+			TActivate("UpdateCabinBasket")
+			TActivate("ExitFadeEffect")
 		
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
+	<trigger Name="UpdateCabinBasket" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			if pl then
+				pl:TakeOffAllGuns()
+				pl:SetNewPart("CABIN",GetVar("PlayerCabin").AsString)
+				pl:SetNewPart("BASKET",GetVar("PlayerBasket").AsString)
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 <!-- Фейк смерть игрока -->
-	<trigger Name="FakePlayerDead" active="0">
+	<trigger Name="FakePlayerDead_NameCar" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local vehPlayer = GetPlayerVehicle()
+			if vehPlayer then
+				vehPlayer:SetNameFromScript("PlayerCarForDead")
+			end
+			local tr = getObj("FakePlayerDead")
+			if tr then
+				tr:AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "PlayerCarForDead")
+				TActivate("FakePlayerDead")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="FakePlayerDead" active="0">
 		<script>
 			TActivate("PlayerCarConfiguration")
 			TActivate("cutPlayerDead")
@@ -200,7 +230,7 @@
 
 			objPos.y = objPos.y + 20
 			objPos.z = objPos.z + 15
-			FlyAround(5, 0.5, 15, 10, objPos, objid, 0, 1, "", 0)
+			FlyAround(5, 0.5, 15, 10, objPos, objid, 0, 0, "", 0)
 			StartCinematic()
 			UpdateCinematic(1)
 
@@ -229,15 +259,48 @@
 			local veh = getObj("fakePlayerCar")
 			if veh then veh:Remove() end
 			
-			AddPlayerVehicle("BugChassis")
+			AddPlayerNewVehicle("BugChassis")
 			GetPlayerVehicle():setGodMode(1)
 
 			RuleConsole("g_postEffect DeadOff")
 			UpdateWeather()
 
-			--PassToMap("r1m2", "", -1, true)
-			
+			TActivate("ExitFadeEffect")
+
 		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Затемнение при выходе -->
+	<trigger Name="ExitFadeEffect" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			SaveAllToleranceStatus(RS_NEUTRAL)
+			EnableGodMode()
+
+			Fly("start_game", CINEMATIC_NO_AIM, 0, 1, 0, 0)
+			StartCinematic()
+	
+			AddCinematicMessage(77773, 0)
+
+			TActivate("ExitFadeEffect_End")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ExitFadeEffect_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+
+			RestoreAllToleranceStatus()
+			DisableGodMode()
+
+			TActivate("ExitToMap")
+		
+			trigger:Deactivate()
 		</script>
 	</trigger>
 

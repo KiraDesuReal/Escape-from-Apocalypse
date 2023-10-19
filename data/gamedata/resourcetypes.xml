@@ -131,14 +131,35 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 		<Type Name="KEYS" geomsize="2 2">
 			<Type Name="ITEM_KEY" />
 		</Type>
+		
 
+		<Type Name="SIZE_1X1" geomsize="1 1">
+			<Type Name="ITEM_SIZE_1X1" />
+		</Type>
+
+		<Type Name="SIZE_1X2" geomsize="1 2">
+			<Type Name="ITEM_SIZE_1X2" />
+		</Type>
+
+
+		<Type Name="SIZE_2X1" geomsize="2 1">
+			<Type Name="ITEM_SIZE_2X1" />
+		</Type>
 
 		<Type Name="SIZE_2X2" geomsize="2 2">
 			<Type Name="ITEM_SIZE_2X2" />
 		</Type>
 
+		<Type Name="SIZE_2X3" geomsize="2 3">
+			<Type Name="ITEM_SIZE_2X3" />
+		</Type>
+
 		<Type Name="SIZE_2X4" geomsize="2 4">
 			<Type Name="ITEM_SIZE_2X4" />
+		</Type>
+
+		<Type Name="SIZE_2X5" geomsize="2 5">
+			<Type Name="ITEM_SIZE_2X5" />
 		</Type>
 
 		<Type Name="SIZE_2X6" geomsize="2 6">
@@ -146,11 +167,23 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 		</Type>
 
 
+		<Type Name="SIZE_3X2" geomsize="3 2">
+			<Type Name="ITEM_SIZE_3X2" />
+		</Type>
+
 		<Type Name="SIZE_3X3" geomsize="3 3">
 			<Type Name="ITEM_SIZE_3X3" />
 		</Type>
 
+		<Type Name="SIZE_3X4" geomsize="3 4">
+			<Type Name="ITEM_SIZE_3X4" />
+		</Type>
 
+		<Type Name="SIZE_3X8" geomsize="3 8">
+			<Type Name="ITEM_SIZE_3X8" />
+		</Type>
+
+	
 		<Type Name="SIZE_4X2" geomsize="4 2">
 			<Type Name="ITEM_SIZE_4X2" />
 		</Type>
@@ -159,13 +192,13 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 			<Type Name="ITEM_SIZE_4X4" />
 		</Type>
 
-		<Type Name="SIZE_4X8" geomsize="4 8">
-			<Type Name="ITEM_SIZE_4X8" />
+		
+		<Type Name="SIZE_5X3" geomsize="5 3">
+			<Type Name="ITEM_SIZE_5X3" />
 		</Type>
 
-
-		<Type Name="SIZE_6X4" geomsize="6 4">
-			<Type Name="ITEM_SIZE_6X4" />
+		<Type Name="SIZE_5X4" geomsize="5 4">
+			<Type Name="ITEM_SIZE_5X4" />
 		</Type>
 
 		<Type Name="SIZE_5X5" geomsize="5 5">

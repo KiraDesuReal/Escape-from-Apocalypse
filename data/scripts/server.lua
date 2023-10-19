@@ -507,12 +507,6 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 			vehicle:SetRandomSkin()
 		 	if IsWares==1 then
 
-				if belong == 1088 then
-					vehicle:AddItemsToRepository("item_jeton_bear", 1)
-				elseif belong == 1089 then
-					vehicle:AddItemsToRepository("item_jeton_usec", 1)
-				end
-
 				local ItemsLifeUse = {"scrap_metal_use", "machinery_use", "electronics_use", "machinery_use", "scrap_metal_use"}
 				local r2 = getn(ItemsLifeUse)
 
@@ -524,7 +518,7 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 
 				local building = {"item_scotch", "item_nails", "item_nuts", "item_insulation", "item_screws", "scrap_metal", "doski", "item_bolts", "item_hose", "details", "item_plex", "item_parts", "item_poheram", "item_tube", "item_kek", "machinery", "item_military_tube", "item_thermometer", "item_pena", "item_datchik"}
 				local building_items = getn(building)
-				local electronics = {"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_cpu", "item_svech", "item_kondesators", "item_magnet", "item_energo_lump", "item_electronics_components", "item_phone", "item_ultra_lump", "item_cooler", "item_gazan", "item_geiger", "item_plate", "item_cable", "item_helix", "item_hdd", "item_drill", "item_lcd", "item_military_cable", "electronics", "item_bp", "item_engine", "item_iridiym", "item_tetris", "item_vpx", "item_virtex", "item_converter", "item_gpu"}
+				local electronics = {"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_cpu", "item_svech", "item_ram", "item_kondesators", "item_magnet", "item_energo_lump", "item_electronics_components", "item_phone", "item_ultra_lump", "item_cooler", "item_gazan", "item_geiger", "item_plate", "item_cable", "item_helix", "item_hdd", "item_drill", "item_lcd", "item_military_cable", "electronics", "item_bp", "item_engine", "item_iridiym", "item_tetris", "item_vpx", "item_virtex", "item_converter", "item_gpu"}
 				local electronics_items = getn(electronics)
 				local energy = {"item_battery_d", "item_battery_aa", "item_accum", "item_powerbank", "item_green_battery", "item_car_battery", "item_cyclon", "item_tank_battery"}
 				local energy_items = getn(energy)
@@ -547,7 +541,7 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 
 				local RandWarez = {"potato","firewood","scrap_metal","doski","details","oil","fuel","machinery","bottle","tobacco","book","electronics", 
 								"item_scotch", "item_nails", "item_nuts", "item_insulation", "item_screws", "item_bolts", "item_hose", "item_plex", "item_parts", "item_poheram", "item_tube",
-								"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_svech", "item_kondesators",
+								"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_svech", "item_ram", "item_kondesators",
 								"item_battery_d", "item_battery_aa",
 								"item_spich", "item_hunter_spich", "item_lighter", "item_zibbo",
 								"item_soap", "item_paste", "item_tb", "item_toothpaste",
@@ -558,7 +552,16 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 				local rand = random(1000)
 				if 5 >= rand then
 					vehicle:AddItemsToRepository("item_pavlikrpg", 1)
+					println("CHLEN!!!!!!!!!!!!!!")
 				else
+					if belong == 1088 then
+						vehicle:AddItemsToRepository("item_jeton_bear", 1)
+						println("BEAR")
+					elseif belong == 1089 then
+						vehicle:AddItemsToRepository("item_jeton_usec", 1)
+						println("USEC")
+					end
+					
 					if belong == 1088 or belong == 1089 or belong == 1082 then
 						for life=1,random(3) do
 							vehicle:AddItemsToRepository(ItemsLifeUse[random(r2)], 1)

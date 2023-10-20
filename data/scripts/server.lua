@@ -536,30 +536,21 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 				local tools_items = getn(tools)
 				local valuables = {"item_chain", "shkatulka", "item_ex", "item_teapon", "item_cat", "item_rolex", "item_chain_gold", "item_woodclock", "item_chiken", "item_skullring", "item_lion", "item_bitcoin"}
 				local valuables_items = getn(valuables)
+
 				local items = {building[r_list[r_l](building_items)], electronics[r_list[r_l](electronics_items)], energy[r_list[r_l](energy_items)], flammable[r_list[r_l](flammable_items)], household[r_list[r_l](household_items)], info[r_list[r_l](info_items)], medical[r_list[r_l](medical_items)], other[r_list[r_l](other_items)], tools[r_list[r_l](tools_items)], valuables[r_list[r_l](valuables_items)]}
 				local items_r = getn(items)
 
-				local RandWarez = {"potato","firewood","scrap_metal","doski","details","oil","fuel","machinery","bottle","tobacco","book","electronics", 
-								"item_scotch", "item_nails", "item_nuts", "item_insulation", "item_screws", "item_bolts", "item_hose", "item_plex", "item_parts", "item_poheram", "item_tube",
-								"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_svech", "item_ram", "item_kondesators",
-								"item_battery_d", "item_battery_aa",
-								"item_spich", "item_hunter_spich", "item_lighter", "item_zibbo",
-								"item_soap", "item_paste", "item_tb", "item_toothpaste",
-								"item_zapal", "item_vodka", "item_filter",
-								"item_roulet", "item_wrench", "item_screw", "item_pliers", "item_screw_flat", "item_nippers"}
-				local r = getn(RandWarez)
-				
+				local wares = {building[exrandom(building_items)], electronics[exrandom(electronics_items)], energy[exrandom(energy_items)], flammable[exrandom(flammable_items)], household[exrandom(household_items)], info[exrandom(info_items)], medical[exrandom(medical_items)], other[exrandom(other_items)], tools[exrandom(tools_items)], valuables[exrandom(valuables_items)]}
+				local wares_r = getn(wares)
+
 				local rand = random(1000)
 				if 5 >= rand then
 					vehicle:AddItemsToRepository("item_pavlikrpg", 1)
-					println("CHLEN!!!!!!!!!!!!!!")
 				else
 					if belong == 1088 then
 						vehicle:AddItemsToRepository("item_jeton_bear", 1)
-						println("BEAR")
 					elseif belong == 1089 then
 						vehicle:AddItemsToRepository("item_jeton_usec", 1)
-						println("USEC")
 					end
 					
 					if belong == 1088 or belong == 1089 or belong == 1082 then
@@ -582,7 +573,7 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 						vehicle:AddItemsToRepository(ItemsOilUse[exrandom(r3)], random(0,1))
 
 						for ware=1,random(3) do
-							vehicle:AddItemsToRepository(RandWarez[random(r)], 1)
+							vehicle:AddItemsToRepository(wares[random(wares_r)], 1)
 						end
 					end
 				end

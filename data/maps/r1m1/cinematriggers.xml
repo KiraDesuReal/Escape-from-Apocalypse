@@ -72,6 +72,8 @@
 			TActivate("TimerRaidStart")
 			--TActivate("CreatePMC")
 
+			--AllowSave(false)
+
 			SetCameraBehindPlayerVehicle()
 
 			trigger:Deactivate()
@@ -94,7 +96,7 @@
 			Plf:SetCustomLinearVelocity(0)
 			Plf:SetThrottle(0)
 	
-			FlyAround(1, 0, 15, 7, PlfCoor, PlfID, 1, 0)
+			FlyAround(1, 0, 15, 7, PlfCoor, PlfID, 1, 1)
 			StartCinematic()
 			UpdateCinematic(1)
 
@@ -230,7 +232,7 @@
 
 			objPos.y = objPos.y + 20
 			objPos.z = objPos.z + 15
-			FlyAround(5, 0.5, 15, 10, objPos, objid, 0, 0, "", 0)
+			FlyAround(5, 0.5, 15, 10, objPos, objid, 0, 1, "", 0)
 			StartCinematic()
 			UpdateCinematic(1)
 

@@ -342,12 +342,10 @@
 				SetVar("PosPlayer1",posr1)
 				SetVar("SpawnPlayer",1)
 				TActivate("Exits_RidzinBaseTroiskoe")
-				TakeQuest ("ExitLocation2")
 			else
 				SetVar("PosPlayer2",posr2)
 				SetVar("SpawnPlayer",2)
 				TActivate("Exits_FaterTownGloohoe")
-				TakeQuest ("ExitLocation1")
 			end
 		
 			local vehPlayer = GetPlayerVehicle()
@@ -371,7 +369,7 @@
 	<trigger Name="TimerRaidStart" active="0">
 		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
-			SetVar("TimeRaid",900)
+			SetVar("TimeRaid",720)
 			TActivate("TimerRaid")
 			trigger:Deactivate() 
 		</script>
@@ -387,10 +385,13 @@
 				AddImportantFadingMsgByStrIdFormatted("fm_time_min", 20)
 			elseif time == 900 then
 				AddImportantFadingMsgByStrIdFormatted("fm_time_min", 15)
+			elseif time == 720 then
+				AddImportantFadingMsgByStrIdFormatted("fm_time_min", 12)
 			elseif time == 600 then
 				TActivate("AirDropProbability")
-				TActivate("CreateScavs")
 				AddImportantFadingMsgByStrIdFormatted("fm_time_min", 10)
+			elseif time == 360 then
+				TActivate("CreateScavs")
 			elseif time == 300 then
 				AddImportantFadingMsgByStrIdFormatted("fm_time_min_red", 5)
 			elseif time == 180 then
@@ -553,13 +554,24 @@
 	</trigger>
 
 	<trigger Name="ZaTheGloohoe" active="0">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ToR4M1_Exit" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ToR5M1_Exit" />
 		<script>
 			SetVar("ExitTimer",6)
 			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitZaTheGloohoe")
 			SoundFadingMsg()
 			TActivate ("LeaveZoneExit")
 			TActivate ("ExitTimer")
+ 		</script>
+	</trigger>
+
+	<trigger Name="ToR4M1" active="1">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ToR4M1_Exit" />
+		<script>
+			local b = SpawnMessageBox("90003")
+			if b == 1 then
+				if R4M1_exit then R4M1_exit = 1 end
+				TActivate("cutExitR4M1")
+			end
  		</script>
 	</trigger>
 
@@ -600,7 +612,7 @@
 	<trigger Name="LeaveZoneExit" active="0">
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ToR1M3_Exit" />
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ZaTheTown_Exit" />
-		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ToR4M1_Exit" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ToR5M1_Exit" />
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ToR1M2_Exit" />
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="BaseFelix_Exit" />
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ZaTheTroiskoe_Exit" />
@@ -622,6 +634,7 @@
 	
 			if timer == 0 then
 				TActivate("ExitToMap")
+				TDeactivate("LeaveZoneExit")
 				SetVar("ExitTimer",6)
 				trigger:Deactivate()
 			else
@@ -733,6 +746,11 @@
 			return
 			end
 
+			local tr = getObj("ScavInLocation01_Die")
+			for s1=1,GetVar("CountScav_1_loc").AsInt do
+				if tr then tr:DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc1_vehicle_0") end
+			end
+
 			SetVar("CountScav_1_loc", 0)
 			TActivate("SpawnScavsInLocation01_Restart")
 			TDeactivate("SpawnScavsInLocation01_Leaves")
@@ -769,12 +787,13 @@
 		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
 			TDeactivate("ScavInLocation01_Die")
-			
+
+			local tr = getObj("ScavInLocation01_Die")
+
 			for s1=1,GetVar("CountScav_1_loc").AsInt do
 				local sv1 = GetEntityByName("Scav"..s1.."_loc1_vehicle_0")
 				if sv1 then sv1:Remove() end
-				
-				local tr = getObj("ScavInLocation01_Die")
+
 				if tr then tr:DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc1_vehicle_0") end
 			end
 
@@ -861,6 +880,11 @@
 			return
 			end
 
+			local tr = getObj("ScavInLocation02_Die")
+			for s1=1,GetVar("CountScav_2_loc").AsInt do
+				if tr then tr:DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc2_vehicle_0") end
+			end
+
 			SetVar("CountScav_2_loc", 0)
 			TActivate("SpawnScavsInLocation02_Restart")
 			TDeactivate("SpawnScavsInLocation02_Leaves")
@@ -898,11 +922,12 @@
 		<script>
 			TDeactivate("ScavInLocation02_Die")
 
+			local tr = getObj("ScavInLocation02_Die")
+
 			for s1=1,GetVar("CountScav_2_loc").AsInt do
 				local sv1 = GetEntityByName("Scav"..s1.."_loc2_vehicle_0")
 				if sv1 then sv1:Remove() end
 
-				local tr = getObj("ScavInLocation02_Die")
 				if tr then tr:DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc2_vehicle_0") end
 			end
 
@@ -992,6 +1017,11 @@
 			return
 			end
 
+			local tr = getObj("ScavInLocation03_Die")
+			for s1=1,GetVar("CountScav_3_loc").AsInt do
+				if tr then tr:DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc3_vehicle_0") end
+			end
+
 			SetVar("CountScav_3_loc", 0)
 			TActivate("SpawnScavsInLocation03_Restart")
 			TDeactivate("SpawnScavsInLocation03_Leaves")
@@ -1029,11 +1059,12 @@
 		<script>
 			TDeactivate("ScavInLocation03_Die")
 
+			local tr = getObj("ScavInLocation03_Die")
+
 			for s1=1,GetVar("CountScav_3_loc").AsInt do
 				local sv1 = GetEntityByName("Scav"..s1.."_loc3_vehicle_0")
 				if sv1 then sv1:Remove() end
 
-				local tr = getObj("ScavInLocation03_Die")
 				if tr then tr:DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc3_vehicle_0") end
 			end
 
@@ -1119,6 +1150,11 @@
 			return
 			end
 
+			local tr = getObj("ScavInLocation04_Die")
+			for s1=1,GetVar("CountScav_4_loc").AsInt do
+				if tr then tr:DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc4_vehicle_0") end
+			end
+
 			SetVar("CountScav_4_loc", 0)
 			TActivate("SpawnScavsInLocation04_Restart")
 			TDeactivate("SpawnScavsInLocation04_Leaves")
@@ -1155,12 +1191,13 @@
 		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
 			TDeactivate("ScavInLocation04_Die")
+
+			local tr = getObj("ScavInLocation04_Die")
 			
 			for s1=1,GetVar("CountScav_4_loc").AsInt do
 				local sv1 = GetEntityByName("Scav"..s1.."_loc4_vehicle_0")
 				if sv1 then sv1:Remove() end
 
-				local tr = getObj("ScavInLocation04_Die")
 				if tr then tr:DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc4_vehicle_0") end
 			end
 
@@ -1199,7 +1236,7 @@
 
 			local path = {CVector(453.605, 303.648, 1922.423), CVector(515.726, 303.965, 1842.498), CVector(511.420, 303.647, 1766.025), CVector(547.475, 309.252, 1893.809), CVector(443.120, 304.213, 1888.784), CVector(456.088, 307.184, 1968.080), CVector(602.015, 308.198, 1728.408), CVector(414.523, 311.682, 1666.536)}
 
-			local count_scav = random(3,6)
+			local count_scav = random(4,5)
 
 			for j=1,count_scav do
 				local model = enemylist[random(scav)]
@@ -1248,6 +1285,11 @@
 			return
 			end
 
+			local tr = getObj("ScavInLocation05_Die")
+			for s1=1,GetVar("CountScav_5_loc").AsInt do
+				if tr then tr:DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc5_vehicle_0") end
+			end
+
 			SetVar("CountScav_5_loc", 0)
 			TActivate("SpawnScavsInLocation05_Restart")
 			TDeactivate("SpawnScavsInLocation05_Leaves")
@@ -1284,12 +1326,13 @@
 		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
 			TDeactivate("ScavInLocation05_Die")
+
+			local tr = getObj("ScavInLocation05_Die")
 	
 			for s1=1,GetVar("CountScav_5_loc").AsInt do
 				local sv1 = GetEntityByName("Scav"..s1.."_loc5_vehicle_0")
 				if sv1 then sv1:Remove() end
 
-				local tr = getObj("ScavInLocation05_Die")
 				if tr then tr:DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc5_vehicle_0") end
 			end
 
@@ -1338,7 +1381,7 @@
 
 			local path = {CVector(1780.501, 302.568, 556.062), CVector(1796.444, 302.470, 602.812), CVector(1871.440, 297.234, 610.530), CVector(1941.116, 296.966, 503.908), CVector(1962.834, 303.572, 428.635), CVector(2057.774, 303.498, 415.973), CVector(2115.615, 301.251, 438.287), CVector(2186.515, 296.741, 492.212), CVector(2139.554, 296.793, 546.466), CVector(2091.694, 296.867, 558.750), CVector(1966.422, 296.782, 552.349)}
 
-			local count_scav = random(4,7)
+			local count_scav = random(4,6)
 
 			for j=1,count_scav do
 				local model = enemylist[random(scav)]
@@ -1387,6 +1430,11 @@
 			return
 			end
 
+			local tr = getObj("ScavInLocation06_Die")
+			for s1=1,GetVar("CountScav_6_loc").AsInt do
+				if tr then tr:DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc6_vehicle_0") end
+			end
+
 			SetVar("CountScav_6_loc", 0)
 			TActivate("SpawnScavsInLocation06_Restart")
 			TDeactivate("SpawnScavsInLocation06_Leaves")
@@ -1424,11 +1472,12 @@
 		<script>
 			TDeactivate("ScavInLocation06_Die")
 
+			local tr = getObj("ScavInLocation06_Die")
+
 			for s1=1,GetVar("CountScav_6_loc").AsInt do
 				local sv1 = GetEntityByName("Scav"..s1.."_loc6_vehicle_0")
 				if sv1 then sv1:Remove() end
 
-				local tr = getObj("ScavInLocation06_Die")
 				if tr then tr:DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc6_vehicle_0") end
 			end
 
@@ -1520,6 +1569,11 @@
 			return
 			end
 
+			local tr = getObj("ScavInLocation07_Die")
+			for s1=1,GetVar("CountScav_7_loc").AsInt do
+				if tr then tr:DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc7_vehicle_0") end
+			end
+
 			SetVar("CountScav_7_loc", 0)
 			TActivate("SpawnScavsInLocation07_Restart")
 			TDeactivate("SpawnScavsInLocation07_Leaves")
@@ -1557,11 +1611,12 @@
 		<script>
 			TDeactivate("ScavInLocation07_Die")
 
+			local tr = getObj("ScavInLocation07_Die")
+
 			for s1=1,GetVar("CountScav_7_loc").AsInt do
 				local sv1 = GetEntityByName("Scav"..s1.."_loc7_vehicle_0")
 				if sv1 then sv1:Remove() end
 
-				local tr = getObj("ScavInLocation07_Die")
 				if tr then tr:DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc7_vehicle_0") end
 			end
 
@@ -1608,7 +1663,7 @@
 
 			local path = {CVector(3013.713, 315.633, 1020.278), CVector(2928.279, 315.541, 1042.287), CVector(2905.023, 316.267, 933.945), CVector(3002.050, 318.170, 839.534), CVector(2853.905, 319.588, 899.682), CVector(2788.217, 320.473, 928.003), CVector(2746.130, 317.908, 854.060), CVector(2895.664, 315.417, 1034.458)}
 
-			local count_scav = random(4,7)
+			local count_scav = random(4,6)
 
 			for j=1,count_scav do
 				local model = enemylist[random(scav)]
@@ -1657,6 +1712,11 @@
 			return
 			end
 
+			local tr = getObj("ScavInLocation08_Die")
+			for s1=1,GetVar("CountScav_8_loc").AsInt do
+				if tr then tr:DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc8_vehicle_0") end
+			end
+
 			SetVar("CountScav_8_loc", 0)
 			TActivate("SpawnScavsInLocation08_Restart")
 			TDeactivate("SpawnScavsInLocation08_Leaves")
@@ -1693,12 +1753,13 @@
 		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
 			TDeactivate("ScavInLocation08_Die")
+
+			local tr = getObj("ScavInLocation08_Die")
 	
 			for s1=1,GetVar("CountScav_8_loc").AsInt do
 				local sv1 = GetEntityByName("Scav"..s1.."_loc8_vehicle_0")
 				if sv1 then sv1:Remove() end
 
-				local tr = getObj("ScavInLocation08_Die")
 				if tr then tr:DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc8_vehicle_0") end
 			end
 
@@ -2371,7 +2432,7 @@
 			local air_rand = random(100)
 			local time = GetVar("TimeRaid").AsInt
 
-			if time == 898 or time == 840 or time == 780 or time == 720 or time == 600 or time == 600 or time == 540 or time == 480 or time == 420 or time == 360 or time == 300 or time == 240 or time == 180 then
+			if time == 898 or time == 840 or time == 780 or time == 720 or time == 600 or time == 540 or time == 480 or time == 420 or time == 360 or time == 300 or time == 240 or time == 180 then
 				if (10 >= air_rand) then
 					TActivate("SpawnOracle_AirDrop")
 					trigger:Deactivate()
@@ -2565,10 +2626,10 @@
 							"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_cpu", "item_svech", "item_ram", "item_kondesators", "item_magnet", "item_energo_lump", "item_electronics_components", "item_phone", "item_ultra_lump", "item_cooler", "item_gazan", "item_geiger", "item_plate", "item_cable", "item_helix", "item_hdd", "item_drill", "item_lcd", "item_military_cable", "electronics", "item_bp", "item_engine", "item_iridiym", "item_tetris", "item_vpx", "item_virtex", "item_converter", "item_gpu",
 							"item_battery_d", "item_battery_aa", "item_accum", "item_powerbank", "item_green_battery", "item_car_battery", "item_cyclon", "item_tank_battery",
 							"item_spich", "item_hunter_spich", "item_lighter", "item_wd40_100", "item_zibbo", "oil", "item_survl", "item_wd40_400", "fuel", "item_trotile", "item_dry", "item_propan", "item_prisadka", "item_termit",
-							"item_soap", "item_paste", "item_salt", "item_tb", "item_toothpaste", "item_soda", "item_paper", "item_alkani", "item_hlor", "book",
+							"item_soap", "item_salt", "item_tb", "item_toothpaste", "item_soda", "item_paper", "item_alkani", "item_hlor", "book",
 							"item_disk", "item_manual", "item_flashdrive", "item_diary_s", "item_diary", "item_ssd", "item_disk_exmachina", "item_sas", "item_rozvidka",
 							"item_medical_tools", "item_naci", "item_h2o2", "item_suringe", "item_c6h8o6", "item_aquapeps", "item_oftalmaskop", "item_ledx",
-							"item_zapal", "tobacco", "bottle", "item_vodka", "item_filter", "item_emre_kara", "item_waterfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_airfilter", "item_ananaga",
+							"item_zapal", "tobacco", "bottle", "item_vodka", "item_monolit", "item_filter", "item_emre_kara", "item_waterfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_airfilter", "item_ananaga",
 							"item_roulet", "item_wrench", "item_screw", "item_pliers", "item_screw_flat", "item_nippers", "item_metalscissors", "item_pliers_round", "item_leatherman", "item_screw_flat_long", "item_toolset", "item_awl", "item_fullmaster", "item_sewing_kit", "item_handrill", "item_buldex", "item_ratchet_wrench", "item_pipe_wrench",
 							"item_chain", "shkatulka", "item_ex", "item_teapon", "item_cat", "item_rolex", "item_chain_gold", "item_woodclock", "item_chiken", "item_skullring", "item_lion", "item_bitcoin","hornet01","specter01","pkt01","kord01","storm01","fagot01","maxim01","vector01","vulcan01","kpvt01","rapier01","flag01","rainmetal01","elephant01","odin01","omega01","bumblebee01","hammer01","hunterSideGun","mrakSideGun","big_swingfire01","cyclops01","octopus01","hailSideGun","hurricane01","rocketLauncher","zeusSideGun","marsSideGun",
 							"potato", "firewood", "item_pants40grn", "item_salo",
@@ -2672,7 +2733,7 @@
 			local pos2_pmc = {}
 			local pos2_count_pmc
 			local paths_pos2
-		
+
 			if sp == 1 then
 				if pl_pos1 == 1 then
 					pos1_pmc = {CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
@@ -2697,15 +2758,16 @@
 				end
 
 				if pl_pos1 >= 1 then
-					pos1_count_pmc = random(3,6)
+					pos1_count_pmc = random(3,5)
 				end
 
 				paths_pos1 = shuffled_range_take (pos1_count_pmc, 1, 9)
 
 				pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
-				pos2_count_pmc = random(3,7)
+				pos2_count_pmc = random(3,6)
 
 				paths_pos2 = shuffled_range_take (pos2_count_pmc, 1, 10)
+	
 			elseif sp == 2 then
 				if pl_pos2 == 1 then
 					pos2_pmc = {CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
@@ -2730,13 +2792,13 @@
 				end
 
 				if pl_pos2 >= 1 then
-					pos2_count_pmc = random(3,6)
+					pos2_count_pmc = random(3,5)
 				end
 
 				paths_pos2 = shuffled_range_take (pos2_count_pmc, 1, 9)
 
 				pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
-				pos1_count_pmc = random(3,7)
+				pos1_count_pmc = random(3,6)
 
 				paths_pos1 = shuffled_range_take (pos1_count_pmc, 1, 10)
 			end
@@ -2747,9 +2809,9 @@
 			for p1=1,pos1_count_pmc do
 				local model = modellist[random(2 + number)]
 				local num = paths_pos1[p1]
-	
+
 				TeamCreate("PMC_"..p1.."_Spawn1", belong[random(belong_r)], pos1_pmc[num], {model}, nil, 1)
-				
+
 				local pmc = GetEntityByName ("PMC_"..p1.."_Spawn1_vehicle_0")
 				if pmc then
 					if model == "Bug01PMC" then
@@ -2848,7 +2910,7 @@
 						end
 					elseif rand_exit2_1 == 2 then
 						if GetVar("ExitGloohoe").AsInt==1 then
-							pmc_way2:SetDestination(CVector(getPos("Ocrains_exitPMC_1_loc")))
+							pmc_way2:SetDestination(CVector(getPos("ToR1M5_exitPMC_1_loc")))
 						else
 							if rand_exit2_2 == 1 then
 								pmc_way2:SetDestination(CVector(getPos("RoadToFater_exitPMC_1_loc")))
@@ -2946,8 +3008,8 @@
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ZaTheTown_exitPMC_2_loc" />
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="RoadToFater_exitPMC_1_loc" />
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="RoadToFater_exitPMC_2_loc" />
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Ocrains_exitPMC_1_loc" />
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Ocrains_exitPMC_2_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ToR1M5_exitPMC_1_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ToR1M5_exitPMC_2_loc" />
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BaseFelix_exitPMC_1_loc" />
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BaseFelix_exitPMC_2_loc" />
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ZaTheTroiskoe_exitPMC_1_loc" />
@@ -3332,5 +3394,5 @@
 			trigger:Deactivate()
 		</script>
 	</trigger>
-
+	
 </triggers>

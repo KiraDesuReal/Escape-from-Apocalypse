@@ -1849,12 +1849,12 @@
 	<Item
 		id="ExitBaseFelix"
 		locForm="0"
-		value="ВЫХОД02 - Военная база" />
+		value="ВЫХОД02 - Ущелье базы диких" />
 
 	<Item
 		id="ExitZaTheTroiskoe"
 		locForm="0"
-		value="ВЫХОД03 - За Троицким" />
+		value="ВЫХОД03 - Тропа за Троицким" />
 
 	<Item
 		id="Exits1LocationR1M1"
@@ -1864,7 +1864,7 @@
 	<Item
 		id="Exits2LocationR1M1"
 		locForm="0"
-		value="ВЫХОД01 - Дорога в Риджин|ВЫХОД02 - Военная база|ВЫХОД03 - За Троицким ??:??:??" />
+		value="ВЫХОД01 - Дорога в Риджин|ВЫХОД02 - Ущелье базы диких|ВЫХОД03 - Тропа за Троицким ??:??:??" />
 
 	<Item
 		id="Sml1CarScav"
@@ -2399,11 +2399,6 @@
 		value="Бумага" />
 
 	<Item
-		id="item_paste"
-		locForm="0"
-		value="Зубная паста" />
-
-	<Item
 		id="item_salt"
 		locForm="0"
 		value="Соль" />
@@ -2426,7 +2421,7 @@
 	<Item
 		id="item_toothpaste"
 		locForm="0"
-		value="Зубная паста «Toothpaste»" />
+		value="Зубная паста" />
 
 
 	<Item
@@ -2590,6 +2585,11 @@
 		id="item_zapal"
 		locForm="0"
 		value="Запал «УЗРГМ» для гранат" />
+
+	<Item
+		id="item_monolit"
+		locForm="0"
+		value="Визитная карта MONOLIT" />
 
 
 	<Item

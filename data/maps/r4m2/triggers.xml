@@ -195,4 +195,93 @@
 	</trigger>
 
 
+	<trigger Name="IfPlayerInR4M1FromR1M1" active="1">
+		<event eventid="GE_GAME_START" ObjName="Player1" />
+		<script>
+			
+			if R4M1_exit == 1 then
+				TActivate("PlayerKill")
+				if R4M1_exit then R4M1_exit = 0 end
+			end
+
+		</script>
+	</trigger>
+
+	<trigger Name="PlayerKill" active="0">
+		<event	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			AllowSave(false)
+			
+			local pl = GetPlayerVehicle()
+			if pl then
+				pl:SetGamePositionOnGround(CVector(949.405, 289.693, 1194.491))
+				pl:SetRotation(Quaternion(0.029, 0.902, -0.023, 0.429))
+				pl:setImmortalMode(1)
+			end
+
+			local modellist = {"Belaz01", "Mirotvorec01", "Cruiser01"}
+		
+			local bel_cab = {"belazCab01", "belazCab02", "belazCab03", "belazCab04", "belazCab05"}
+			local bel_cab_r = getn(bel_cab)
+			local bel_cargo = {"belazCargo01_PMC", "belazCargo02_PMC", "belazCargo03_PMC", "belazCargo04_PMC", "belazCargo05_PMC"}
+			local bel_cargo_r = getn(bel_cargo)
+
+			local mir_cab = {"mirotvorecCab01", "mirotvorecCab02", "mirotvorecCab03", "mirotvorecCab04", "mirotvorecCab05"}
+			local mir_cab_r = getn(mir_cab)
+			local mir_cargo = {"mirotvorecCargo01_PMC", "mirotvorecCargo02_PMC", "mirotvorecCargo03_PMC", "mirotvorecCargo04_PMC", "mirotvorecCargo05_PMC"}
+			local mir_cargo_r = getn(mir_cargo)
+
+			local cru_cab = {"cruiserCab01", "cruiserCab02"}
+			local cru_cab_r = getn(cru_cab)
+			local cru_cargo = {"cruiserCargo01_PMC", "cruiserCargo02_PMC"}
+			local cru_cargo_r = getn(cru_cargo)
+
+			local pos = {CVector(979.256, 290.247, 1158.127), CVector(951.691, 291.675, 1152.152), CVector(999.474, 288.067, 1179.747), CVector(938.366, 292.331, 1247.355), CVector(915.065, 291.998, 1230.214), CVector(898.316, 291.980, 1209.805)}
+			local rot = {Quaternion(-0.000, 0.423, 0.003, -0.906), Quaternion(-0.007, 0.098, 0.016, -0.995), Quaternion(-0.023, 0.475, 0.030, -0.879), Quaternion(-0.003, 0.999, 0.050, 0.013), Quaternion(-0.039, 0.947, 0.024, 0.318), Quaternion(0.018, 0.902, 0.013, 0.431)}
+			
+			for i=1,6 do
+				local model = modellist[random(3)]
+				TeamCreate("Enemy"..i, 1062, pos[i], {model}, nil, 0, rot[i])
+
+				local b = GetEntityByName("Enemy"..i.."_vehicle_0")
+				if b then
+					if model == "Belaz01" then
+						b:SetNewPart("CABIN",bel_cab[random(bel_cab_r)])
+						b:SetNewPart("BASKET",bel_cargo[random(bel_cargo_r)])
+					elseif model == "Mirotvorec01" then
+						b:SetNewPart("CABIN",mir_cab[random(mir_cab_r)])
+						b:SetNewPart("BASKET",mir_cargo[random(mir_cargo_r)])
+					elseif model == "Cruiser01" then
+						b:SetNewPart("CABIN",cru_cab[random(cru_cab_r)])
+						b:SetNewPart("BASKET",cru_cargo[random(cru_cargo_r)])
+					end
+					GiveGunsForVehicle(b, 0)
+				end
+			end
+
+			RuleConsole("g_postEffect cinematic04")
+
+			TActivate("PlayerDead")
+
+			SetCameraBehindPlayerVehicle()
+
+			trigger:Deactivate()
+		</script>	
+	</trigger>
+
+	<trigger Name="PlayerDead" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local vehPlayer = GetPlayerHealth()
+			if 1 > vehPlayer then
+				SpawnMessageBox("8903")
+				RuleConsole("g_postEffect cinematicEnd")
+				exit()
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
+
+
 </triggers>

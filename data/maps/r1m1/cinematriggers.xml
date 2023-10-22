@@ -102,7 +102,6 @@
 
 			AddCinematicMessage(1,0)
 
-			TActivate("PlayerCarConfiguration")
 			TActivate("cutTimeRaid_End")
 	
 			trigger:Deactivate()
@@ -151,9 +150,21 @@
 		<script>
 			local pl = GetPlayerVehicle()
 			if pl then
-				pl:TakeOffAllGuns()
 				pl:SetNewPart("CABIN",GetVar("PlayerCabin").AsString)
 				pl:SetNewPart("BASKET",GetVar("PlayerBasket").AsString)
+
+				if not(GetVar("Cabin_Small_Gun").AsInt == 0) then pl:SetNewPart("CABIN_SMALL_GUN",GetVar("Cabin_Small_Gun").AsString) end
+				if not(GetVar("Cabin_Small_Gun_1").AsInt == 0) then pl:SetNewPart("CABIN_SMALL_GUN_1",GetVar("Cabin_Small_Gun_1").AsString) end
+				if not(GetVar("Cabin_Big_Gun_1").AsInt == 0) then pl:SetNewPart("CABIN_BIG_GUN_1",GetVar("Cabin_Big_Gun_1").AsString) end
+				if not(GetVar("Cabin_Big_Gun_2").AsInt == 0) then pl:SetNewPart("CABIN_BIG_GUN_2",GetVar("Cabin_Big_Gun_2").AsString) end
+				if not(GetVar("Cabin_Giant_Gun").AsInt == 0) then pl:SetNewPart("CABIN_GIANT_GUN",GetVar("Cabin_Giant_Gun").AsString) end
+					
+				if not(GetVar("Basket_Small_Gun_0").AsInt == 0) then pl:SetNewPart("BASKET_SMALL_GUN_0",GetVar("Basket_Small_Gun_0").AsString) end
+				if not(GetVar("Basket_Big_Gun_0").AsInt == 0) then pl:SetNewPart("BASKET_BIG_GUN_0",GetVar("Basket_Big_Gun_0").AsString) end
+				if not(GetVar("Basket_Big_Gun_1").AsInt == 0) then pl:SetNewPart("BASKET_BIG_GUN_1",GetVar("Basket_Big_Gun_1").AsString) end
+				if not(GetVar("Basket_Giant_Gun").AsInt == 0) then pl:SetNewPart("BASKET_GIANT_GUN",GetVar("Basket_Giant_Gun").AsString) end
+				if not(GetVar("Basket_Giant_Gun_0").AsInt == 0) then pl:SetNewPart("BASKET_GIANT_GUN_0",GetVar("Basket_Giant_Gun_0").AsString) end
+				if not(GetVar("Basket_Side_Gun_0").AsInt == 0) then pl:SetNewPart("BASKET_SIDE_GUN_0",GetVar("Basket_Side_Gun_0").AsString) end
 			end
 			trigger:Deactivate()
 		</script>
@@ -302,6 +313,55 @@
 
 			TActivate("ExitToMap")
 		
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Разворот у r4m1 -->
+	<trigger Name="cutExitR4M1" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			SaveAllToleranceStatus(RS_NEUTRAL)
+
+			local Plf = GetPlayerVehicle()
+			Plf:SetThrottle(0)
+			Plf:SetCustomLinearVelocity(0)
+			Plf:SetGamePositionOnGround(CVector(3727.149, 343.862, 2805.792))
+			Plf:SetRotation(Quaternion(-0.010, -0.111, 0.000, 0.994))
+			Plf:SetExternalPathByName("player_exitR4M1")
+
+			local PlfID = GetPlayerVehicleId()
+			local PlfCoor = Plf:GetPosition()
+			PlfCoor.y = PlfCoor.y + 25*0.74
+			PlfCoor.z = PlfCoor.z + 25*0.74
+
+			FlyAround(1, 0, 25, 6, PlfCoor, PlfID, 1, 1)
+			StartCinematic()
+			UpdateCinematic(1)
+
+			TActivate("cutExitR4M1_End")
+			
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="cutExitR4M1_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+
+			RestoreAllToleranceStatus()
+
+			local Plf = GetPlayerVehicle()
+			if Plf then
+				Plf:PlaceToEndOfPath("player_exitR4M1")
+				Plf:SetGamePositionOnGround(CVector(3719.013, 343.507, 2849.400))
+				Plf:SetRotation(Quaternion(-0.011, -0.054, 0.001, 0.998))
+			end
+
+			SetCameraBehindPlayerVehicle()
+
 			trigger:Deactivate()
 		</script>
 	</trigger>

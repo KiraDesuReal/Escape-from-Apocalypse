@@ -524,13 +524,13 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 				local energy_items = getn(energy)
 				local flammable = {"item_spich", "item_hunter_spich", "item_lighter", "item_wd40_100", "item_zibbo", "oil", "item_survl", "item_wd40_400", "fuel", "item_trotile", "item_dry", "item_propan", "item_prisadka", "item_termit"}
 				local flammable_items = getn(flammable)
-				local household = {"item_soap", "item_paste", "item_salt", "item_tb", "item_toothpaste", "item_soda", "item_paper", "item_alkani", "item_hlor", "book"}
+				local household = {"item_soap", "item_salt", "item_tb", "item_toothpaste", "item_soda", "item_paper", "item_alkani", "item_hlor", "book"}
 				local household_items = getn(household)
 				local info = {"item_disk", "item_manual", "item_flashdrive", "item_diary_s", "item_diary", "item_ssd", "item_disk_exmachina", "item_sas", "item_rozvidka"}
 				local info_items = getn(info)
 				local medical = {"item_medical_tools", "item_naci", "item_h2o2", "item_suringe", "item_c6h8o6", "item_aquapeps", "item_oftalmaskop", "item_ledx"}
 				local medical_items = getn(medical)
-				local other = {"item_zapal", "tobacco", "bottle", "item_vodka", "item_filter", "item_emre_kara", "item_waterfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_airfilter", "item_ananaga"}
+				local other = {"item_zapal", "tobacco", "bottle", "item_vodka", "item_monolit", "item_filter", "item_emre_kara", "item_waterfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_airfilter", "item_ananaga"}
 				local other_items = getn(other)
 				local tools = {"item_roulet", "item_wrench", "item_screw", "item_pliers", "item_screw_flat", "item_nippers", "item_metalscissors", "item_pliers_round", "item_leatherman", "item_screw_flat_long", "item_toolset", "item_awl", "item_fullmaster", "item_sewing_kit", "item_handrill", "item_buldex", "item_ratchet_wrench", "item_pipe_wrench"}
 				local tools_items = getn(tools)
@@ -559,10 +559,10 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 						end
 
 						for fuel=1,random(2) do
-							vehicle:AddItemsToRepository(ItemsOilUse[random(r3)], random(0,1))
+							vehicle:AddItemsToRepository(ItemsOilUse[random(r3)], 1)
 						end
 						
-						for ware=1,random(5) do
+						for ware=1,random(7) do
 							vehicle:AddItemsToRepository(items[random(items_r)], 1)
 						end
 					else

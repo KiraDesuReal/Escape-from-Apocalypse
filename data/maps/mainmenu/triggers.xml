@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
-
 <triggers>
 
-<trigger	Name="GlobalVar"	active="1">
-		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
+	<trigger Name="GlobalVar" active="1">
+		<event	timeout="0"	eventid="GE_TIME_PERIOD" />
 		<script>
-		--println("startvar")
 			SetVar("Fade", 1)
+			SetVar("Track", 0)
+			SetVar("LastTrack", 0)
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
 	<trigger Name="Trigger_start" active="1">
 		<event eventid="GE_GAME_START" ObjName="Player1" />
-		<!--
-		<event timeout="0.001" eventid="GE_TIME_PERIOD" />
-		-->
 		<script>
 
 			PlayCustomMusic("mainmenu")
+			SetVar("Track", 179)
+			TActivate("MusicTimer")
 
-			RuleConsole("cinematic_spring_coeff 1.7")
-
-			local coordarr = {}
-			coordarr["FighterMenu"]={
+			local coordarr = {
 					CVector(936.669, 242.476, 397.737),
 					CVector(1231.490, 247.083, 451.674),
 					CVector(1651.560, 245.386, 622.529),
@@ -32,8 +28,8 @@
 					CVector(1239.933, 261.625, 1828.776),
 					CVector(453.285, 261.846, 1609.741),
 					CVector(334.209, 262.108, 1261.142),
-					CVector(137.696, 233.980, 498.779)
-			}
+					CVector(137.696, 233.980, 498.779)}
+			
 			local rotarr={
 					Quaternion(-0.029, 0.679, -0.021, 0.734),
 					Quaternion(0.001, 0.626, 0.002, 0.780),
@@ -43,92 +39,149 @@
 					Quaternion(-0.001, -0.724, -0.000, 0.690),
 					Quaternion(-0.025, -0.992, -0.005, 0.125),
 					Quaternion(0.002, -0.914, -0.001, 0.405),
-					Quaternion(-0.003, -1.000, -0.006, -0.015)
-			}
+					Quaternion(-0.003, -1.000, -0.006, -0.015)}
 
-			coordarr["UralMenu"]={
-					CVector(934.995, 243.401, 399.269),
-					CVector(1229.356, 247.968, 448.376),
-					CVector(1652.526, 246.286, 624.013),
-					CVector(1831.289, 229.909, 1175.246),
-					CVector(1672.490, 233.226, 1498.684),
-					CVector(1240.177, 262.520, 1830.202),
-					CVector(445.266, 263.010, 1613.986),
-					CVector(331.924, 262.998, 1261.104),
-					CVector(134.566, 234.861, 501.139)
-			}
-
-			coordarr["MolokovozMenu"]={
-					CVector(932.637, 242.279, 398.596),
-					CVector(1226.367, 246.911, 445.883),
-					CVector(1649.106, 245.220, 621.788),
-					CVector(1828.886, 228.819, 1175.382),
-					CVector(1672.762, 232.177, 1498.803),
-					CVector(1238.874, 261.461, 1829.241),
-					CVector(458.641, 261.457, 1607.415),
-					CVector(336.592, 261.952, 1260.137),
-					CVector(135.953, 233.784, 503.427),
-			}
-
-			coordarr["BelazMenu"]={
-
-					CVector(930.582, 243.343, 395.796),
-					CVector(1230.130, 248.249, 447.793),
-					CVector(1649.584, 246.542, 622.337),
-					CVector(1829.943, 230.062, 1171.667),
-					CVector(1674.690, 233.508, 1495.701),
-					CVector(1239.005, 262.791, 1829.742),
-					CVector(451.484, 263.107, 1614.059),
-					CVector(336.836, 263.304, 1260.847),
-					CVector(136.855, 235.127, 498.931),
-			}
-
-			local nummod = 2
-			local listmodel = {"UralMenu", "FighterMenu", "MolokovozMenu"}
-			local model = listmodel[nummod]
+			local listmodel = {"Scout01", "Fighter01", "Hunter02", "Bug01", "Molokovoz01", "Ural01", "Belaz01", "Mirotvorec01", "Cruiser01"}
+			local model = listmodel[random(8)]
 			local Z = random(9)
---			local Z = 1
-			local Sk = random(5)
-			local startloc = "Zone0"..Z.."_loc"
-			--println(listmodel[nummod])
 
-			local veh = CreateVehicleEx(model,"PlayerCar",coordarr[listmodel[nummod]][Z])
+			local scout_cab = {"scoutCab01", "scoutCab02", "scoutCab02"}
+			local scout_cab_r = getn(scout_cab)
+
+			local fight_cab = {"fighterCab01", "fighterCab02"}
+			local fight_cab_r = getn(fight_cab)
+
+			local bug_cab = {"bugCab01", "bugCab02", "bugCab03"}
+			local bug_cab_r = getn(bug_cab)
+			local bug_cargo = {"bugCargo01", "bugCargo02", "bugCargo03"}
+			local bug_cargo_r = getn(bug_cargo)
+
+			local mol_cab = {"molokovozCab01", "molokovozCab02" ,"molokovozCab03"}
+			local mol_cab_r = getn(mol_cab)
+			local mol_cargo = {"molokovozCargo01", "molokovozCargo02", "molokovozCargo03"}
+			local mol_cargo_r = getn(mol_cargo)
+
+			local ural_cab = {"uralCab01", "uralCab02", "uralCab03", "uralCab04", "uralCab05"}
+			local ural_cab_r = getn(ural_cab)
+			local ural_cargo = {"uralCargo01", "uralCargo02", "uralCargo03", "uralCargo04", "uralCargo05"}
+			local ural_cargo_r = getn(ural_cargo)
+
+			local bel_cab = {"belazCab01", "belazCab02", "belazCab03", "belazCab04", "belazCab05"}
+			local bel_cab_r = getn(bel_cab)
+			local bel_cargo = {"belazCargo01", "belazCargo02", "belazCargo03", "belazCargo04", "belazCargo05"}
+			local bel_cargo_r = getn(bel_cargo)
+
+			local mir_cab = {"mirotvorecCab01", "mirotvorecCab02", "mirotvorecCab03", "mirotvorecCab04", "mirotvorecCab05"}
+			local mir_cab_r = getn(mir_cab)
+			local mir_cargo = {"mirotvorecCargo01", "mirotvorecCargo02", "mirotvorecCargo03", "mirotvorecCargo04", "mirotvorecCargo05"}
+			local mir_cargo_r = getn(mir_cargo)
+
+			local cru_cab = {"cruiserCab01", "cruiserCab02"}
+			local cru_cab_r = getn(cru_cab)
+			local cru_cargo = {"cruiserCargo01", "cruiserCargo02"}
+			local cru_cargo_r = getn(cru_cargo)
+
+			local startloc = "Zone0"..Z.."_loc"
+
+			local veh = CreateVehicleEx(model,"PlayerCar",coordarr[Z])
 
 			if veh then
-				veh:SetGamePositionOnGround(coordarr[listmodel[nummod]][Z])
+				veh:SetGamePositionOnGround(coordarr[Z])
 				veh:SetRotation(rotarr[Z])
 				g_Player:AddChild(veh)
 			end
 
 			local vehPlayer = GetPlayerVehicle()
 			if vehPlayer then
-				--println("AddChild(playerVehicle)")
 				vehPlayer:SetCustomControlEnabled( true )
 				vehPlayer:SetCustomControlEnabled( false )
 				vehPlayer:setImmortalMode(1)
-				vehPlayer:SetSkin(Sk)
+				if model == "Scout01" then
+					vehPlayer:SetNewPart("CABIN",scout_cab[random(scout_cab_r)])
+				elseif model == "Fighter01" then
+					vehPlayer:SetNewPart("CABIN",fight_cab[random(fight_cab_r)])
+				elseif model == "Bug01" then
+					vehPlayer:SetNewPart("CABIN",bug_cab[random(bug_cab_r)])
+					vehPlayer:SetNewPart("BASKET",bug_cargo[random(bug_cargo_r)])
+				elseif model == "Molokovoz01" then
+					vehPlayer:SetNewPart("CABIN",mol_cab[random(mol_cab_r)])
+					vehPlayer:SetNewPart("BASKET",mol_cargo[random(mol_cargo_r)])
+				elseif model == "Ural01" then
+					vehPlayer:SetNewPart("CABIN",ural_cab[random(ural_cab_r)])
+					vehPlayer:SetNewPart("BASKET",ural_cargo[random(ural_cargo_r)])
+				elseif model == "Belaz01" then
+					vehPlayer:SetNewPart("CABIN",bel_cab[random(bel_cab_r)])
+					vehPlayer:SetNewPart("BASKET",bel_cargo[random(bel_cargo_r)])
+				elseif model == "Mirotvorec01" then
+					vehPlayer:SetNewPart("CABIN",mir_cab[random(mir_cab_r)])
+					vehPlayer:SetNewPart("BASKET",mir_cargo[random(mir_cargo_r)])
+				elseif model == "Cruiser01" then
+					vehPlayer:SetNewPart("CABIN",cru_cab[random(cru_cab_r)])
+					vehPlayer:SetNewPart("BASKET",cru_cargo[random(cru_cargo_r)])
+				end
+				vehPlayer:SetRandomSkin()
+				vehPlayer:SetMaxSpeed(5)
+				GiveGunsForVehicle(vehPlayer, 1)
 			end
+
 			CreateNewDummyObject( "cargo", "CamTochka", -1, -1, CVector(358.551, 264.511, 1423.320), Quaternion(0, 0, 0, 0), 0)
 			CreateNewDummyObject( "cargo", "CamTochkaCentr", -1, -1, CVector(955.502, 280.000, 1151.172), Quaternion(0, 0, 0, 0), 0)
 
-			-- trigger:Deactivate() 
+			TActivate("Speed")
+
 		</script>
 	</trigger>
 
 	<trigger Name="Trigger_zone01" active="1">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Zone01_loc" />
 		<script>
-			local nummod = random(3)
-			local listmodel = {"UralMenu", "FighterMenu", "MolokovozMenu"}
-			local model = listmodel[nummod]
-			local Sk = random(5)
 			local Fade = GetVar("Fade").AsInt
 			SetVar("Fade", 0)
+			
+			local listmodel = {"Scout01", "Fighter01", "Hunter02", "Bug01", "Molokovoz01", "Ural01", "Belaz01", "Mirotvorec01", "Cruiser01"}
+			local listmodel_r = getn(listmodel)
+			local model = listmodel[random(listmodel_r)]
+
+			local scout_cab = {"scoutCab01", "scoutCab02", "scoutCab02"}
+			local scout_cab_r = getn(scout_cab)
+
+			local fight_cab = {"fighterCab01", "fighterCab02"}
+			local fight_cab_r = getn(fight_cab)
+
+			local bug_cab = {"bugCab01", "bugCab02", "bugCab03"}
+			local bug_cab_r = getn(bug_cab)
+			local bug_cargo = {"bugCargo01", "bugCargo02", "bugCargo03"}
+			local bug_cargo_r = getn(bug_cargo)
+
+			local mol_cab = {"molokovozCab01", "molokovozCab02" ,"molokovozCab03"}
+			local mol_cab_r = getn(mol_cab)
+			local mol_cargo = {"molokovozCargo01", "molokovozCargo02", "molokovozCargo03"}
+			local mol_cargo_r = getn(mol_cargo)
+
+			local ural_cab = {"uralCab01", "uralCab02", "uralCab03", "uralCab04", "uralCab05"}
+			local ural_cab_r = getn(ural_cab)
+			local ural_cargo = {"uralCargo01", "uralCargo02", "uralCargo03", "uralCargo04", "uralCargo05"}
+			local ural_cargo_r = getn(ural_cargo)
+
+			local bel_cab = {"belazCab01", "belazCab02", "belazCab03", "belazCab04", "belazCab05"}
+			local bel_cab_r = getn(bel_cab)
+			local bel_cargo = {"belazCargo01", "belazCargo02", "belazCargo03", "belazCargo04", "belazCargo05"}
+			local bel_cargo_r = getn(bel_cargo)
+
+			local mir_cab = {"mirotvorecCab01", "mirotvorecCab02", "mirotvorecCab03", "mirotvorecCab04", "mirotvorecCab05"}
+			local mir_cab_r = getn(mir_cab)
+			local mir_cargo = {"mirotvorecCargo01", "mirotvorecCargo02", "mirotvorecCargo03", "mirotvorecCargo04", "mirotvorecCargo05"}
+			local mir_cargo_r = getn(mir_cargo)
+
+			local cru_cab = {"cruiserCab01", "cruiserCab02"}
+			local cru_cab_r = getn(cru_cab)
+			local cru_cargo = {"cruiserCargo01", "cruiserCargo02"}
+			local cru_cargo_r = getn(cru_cargo)
+
 			AddPlayerNewVehicle(model)
 
 			local vehPlayer = GetPlayerVehicle()
 			if vehPlayer then
-				--println("Zone01")
 				vehPlayer:SetCustomControlEnabled( true )
 				vehPlayer:SetRotation(Quaternion(-0.029, 0.679, -0.021, 0.734))
 				vehPlayer:SetExternalPathByName("Zone01_path")
@@ -136,14 +189,45 @@
 				vehPlayer:SetCustomLinearVelocity( 5 )
 				vehPlayer:SetCustomControlEnabled( false )
 				vehPlayer:setImmortalMode(1)
+				if model == "Scout01" then
+					vehPlayer:SetNewPart("CABIN",scout_cab[random(scout_cab_r)])
+				elseif model == "Fighter01" then
+					vehPlayer:SetNewPart("CABIN",fight_cab[random(fight_cab_r)])
+				elseif model == "Bug01" then
+					vehPlayer:SetNewPart("CABIN",bug_cab[random(bug_cab_r)])
+					vehPlayer:SetNewPart("BASKET",bug_cargo[random(bug_cargo_r)])
+				elseif model == "Molokovoz01" then
+					vehPlayer:SetNewPart("CABIN",mol_cab[random(mol_cab_r)])
+					vehPlayer:SetNewPart("BASKET",mol_cargo[random(mol_cargo_r)])
+				elseif model == "Ural01" then
+					vehPlayer:SetNewPart("CABIN",ural_cab[random(ural_cab_r)])
+					vehPlayer:SetNewPart("BASKET",ural_cargo[random(ural_cargo_r)])
+				elseif model == "Belaz01" then
+					vehPlayer:SetNewPart("CABIN",bel_cab[random(bel_cab_r)])
+					vehPlayer:SetNewPart("BASKET",bel_cargo[random(bel_cargo_r)])
+				elseif model == "Mirotvorec01" then
+					vehPlayer:SetNewPart("CABIN",mir_cab[random(mir_cab_r)])
+					vehPlayer:SetNewPart("BASKET",mir_cargo[random(mir_cargo_r)])
+				elseif model == "Cruiser01" then
+					vehPlayer:SetNewPart("CABIN",cru_cab[random(cru_cab_r)])
+					vehPlayer:SetNewPart("BASKET",cru_cargo[random(cru_cargo_r)])
+				end
+				vehPlayer:SetRandomSkin()
+				vehPlayer:AddModifier("maxfuel", "+ 1000")
+				vehPlayer:AddModifier("fuel", "+ 1000")
+				vehPlayer:SetMaxSpeed(5)
+				GiveGunsForVehicle(vehPlayer, 1)
 			end
-			Fly("cam_Zone01", CINEMATIC_NO_AIM, 0, 20, Fade, 0, false, true, nil )
+
+			Fly("cam_Zone01", CINEMATIC_NO_AIM, 0, 30, Fade, 0, false, true, nil )
 			StartCinematic()
 			
 			if Fade == 1 then
 				UpdateCinematic( 1 )
 			end
-			
+
+			TActivate("Speed")
+
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -156,7 +240,6 @@
 			SetVar("Fade", 0)
 
 			if vehPlayer then
-				--println("Zone02")
 				vehPlayer:SetCustomControlEnabled( true )
 				vehPlayer:SetExternalPathByName("Zone02_path")
 				vehPlayer:SetCustomControlEnabled( false )
@@ -182,7 +265,6 @@
 			SetVar("Fade", 0)
 
 			if vehPlayer then
-				--println("Zone03")
 				vehPlayer:SetCustomControlEnabled( true )
 				vehPlayer:SetExternalPathByName("Zone03_path")
 				vehPlayer:SetCustomControlEnabled( false )
@@ -190,7 +272,6 @@
 			end
 
 			local idn01 = GetPlayerVehicleId()
-
 
 			FlyLinked("cam_Zone0", idn01, 30, Fade, 0, nil, false, true, true, nil )
 			StartCinematic()
@@ -210,7 +291,6 @@
 			SetVar("Fade", 0)
 
 			if vehPlayer then
-				--println("Zone04")
 				vehPlayer:SetCustomControlEnabled( true )
 				vehPlayer:SetExternalPathByName("Zone04_path")
 				vehPlayer:SetCustomControlEnabled( false )
@@ -238,7 +318,6 @@
 			SetVar("Fade", 0)
 
 			if vehPlayer then
-				--println("Zone05")
 				vehPlayer:SetCustomControlEnabled( true )
 				vehPlayer:SetExternalPathByName("Zone05_path")
 				vehPlayer:SetCustomControlEnabled( false )
@@ -264,7 +343,6 @@
 			SetVar("Fade", 0)
 
 			if vehPlayer then
-				--println("Zone06")
 				vehPlayer:SetCustomControlEnabled( true )
 				vehPlayer:SetExternalPathByName("Zone06_path")
 				vehPlayer:SetCustomControlEnabled( false )
@@ -272,7 +350,6 @@
 			end
 
 			local idn01 = GetPlayerVehicleId()
---			FlyLinked("cam_Zone06", idn01, 35, 1, 0, idn01, nil, nil, true, true )
 			FlyLinked("cam_Zone06", idn01, 30, Fade, 0, nil, false, true, true, nil )
 			StartCinematic()
 
@@ -292,7 +369,6 @@
 			SetVar("Fade", 0)
 
 			if vehPlayer then
-				--println("Zone07")
 				vehPlayer:SetCustomControlEnabled( true )
 				vehPlayer:SetExternalPathByName("Zone07_path")
 				vehPlayer:SetCustomControlEnabled( false )
@@ -309,7 +385,6 @@
 				UpdateCinematic( 1 )
 			end
 
-
 		</script>
 	</trigger>
 
@@ -320,11 +395,9 @@
 			RuleConsole("cinematic_spring_coeff 1.7")
 			local vehPlayer = GetPlayerVehicle()
 			local Fade = GetVar("Fade").AsInt
-			--println(Fade)
 			SetVar("Fade", 0)
-
+	
 			if vehPlayer then
-				--println("Zone08")
 				vehPlayer:SetCustomControlEnabled( true )
 				vehPlayer:SetExternalPathByName("Zone08_path")
 				vehPlayer:SetCustomControlEnabled( false )
@@ -333,10 +406,7 @@
 
 			local idn01 = GetPlayerVehicleId()
 			if CToch then CToch:Remove() end
---			FlyLinked("cam_Zone08", idn01, 35, 0, 0, idn01, nil, nil, true, true )
---			if Fade == 1 then
-				FlyLinked("cam_Zone0", idn01, 30, Fade, 0, nil, false, true, true, nil )
---			end
+			FlyLinked("cam_Zone0", idn01, 30, Fade, 0, nil, false, true, true, nil )
 			StartCinematic()
 
 			if Fade == 1 then
@@ -351,11 +421,9 @@
 		<script>
 			local vehPlayer = GetPlayerVehicle()
 			local Fade = GetVar("Fade").AsInt
-			--println(Fade)
 			SetVar("Fade", 0)
 
 			if vehPlayer then
-				--println("Zone09")
 				vehPlayer:SetCustomControlEnabled( true )
 				vehPlayer:SetExternalPathByName("Zone09_path")
 				vehPlayer:SetCustomControlEnabled( false )
@@ -363,14 +431,77 @@
 			end
 
 			local idn01 = GetPlayerVehicleId()
---			FlyLinked("cam_Zone09", idn01, 38, 0, 0, idn01, false, nil, true, nil )
+
 			if Fade == 1 then
 				FlyLinked("cam_Zone0", idn01, 30, Fade, 0, nil, false, true, true, nil )
 				StartCinematic()
 				UpdateCinematic( 1 )
 			end
+
 			TActivate("Trigger_zone01")
 		</script>
 	</trigger>
+	
+	<trigger Name="Music" active="0">
+		<event	timeout="0"	eventid="GE_TIME_PERIOD" />
+		<script>
+	
+			local list = {"music01", "music02", "music03", "music04", "music05", "music06", "music07", "music08", "music09", "music10", "music11", "music12"}
+			local music = list[random(12)]
+
+			if music == GetVar("LastTrack").AsString then
+				return
+			end
+
+			SetVar("LastTrack", music)
+
+			if music == "music01" then SetVar("Track", 257) end
+			if music == "music02" then SetVar("Track", 358) end
+			if music == "music03" then SetVar("Track", 232) end
+			if music == "music04" then SetVar("Track", 244) end
+			if music == "music05" then SetVar("Track", 228) end
+			if music == "music06" then SetVar("Track", 218) end
+			if music == "music07" then SetVar("Track", 329) end
+			if music == "music08" then SetVar("Track", 177) end
+			if music == "music09" then SetVar("Track", 203) end
+			if music == "music10" then SetVar("Track", 236) end
+			if music == "music11" then SetVar("Track", 230) end
+			if music == "music12" then SetVar("Track", 262) end
+
+			PlayCustomMusic(music)
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="MusicTimer" active="0">
+		<event	timeout="1"		eventid="GE_TIME_PERIOD" />
+		<script>
+			
+			local time = GetVar("Track").AsInt
+
+			if GetVar("Track").AsInt > 0 then
+				time = time - 1
+				SetVar("Track", time)
+			else
+				TActivate("Music")
+			end
+
+		</script>
+	</trigger>
+
+	<trigger Name="Speed" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+		
+			local vehPlayer = GetPlayerVehicle()
+			if vehPlayer then
+				vehPlayer:SetMaxSpeed(16)
+			end
+
+			trigger:Deactivate()    
+		</script>
+	</trigger>
+
 
 </triggers>

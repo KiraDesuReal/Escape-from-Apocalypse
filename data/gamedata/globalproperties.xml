@@ -110,24 +110,9 @@
 
 	<DifficultyLevels>
 		<Level
-			Name="EasyLevel"
-			EnemyWeaponCoeff="0.5"
-			EnemyShootingDelay="1.0"/>
-
-		<Level
-			Name="MediumLevel"
-			EnemyWeaponCoeff="1.0"
-			EnemyShootingDelay="0.75"/>
-
-		<Level
 			Name="HardLevel"
-			EnemyWeaponCoeff="1.5"
+			EnemyWeaponCoeff="1.25"
 			EnemyShootingDelay="0.5"/>
-
-		<Level
-			Name="ImpossibleLevel"
-			EnemyWeaponCoeff="3.0"
-			EnemyShootingDelay="0.0"/>
 	</DifficultyLevels>
 
 	<Price

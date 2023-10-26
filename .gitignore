@@ -24,7 +24,6 @@ zoo/
 копия (2) showcars/
 logs_commod/
 mods/
-mainmenu/
 r1m2/
 r1m3/
 r1m4/
@@ -88,6 +87,7 @@ video.xml
 *.ssl
 # add filels
 !data/music/silence.ogg
+!data/music/mainmenu/*.ogg
 !data/if/ico_hd/InventoryDlg/goods/lom_use.dds
 !data/if/ico_hd/InventoryDlg/goods/rabochee_oborudovanie_use.dds
 !data/if/ico_hd/InventoryDlg/goods/mikro_use.dds
@@ -162,3 +162,16 @@ data/if/ico_hd/inventorydlg/goods/new/building/item_nuts2.dds
 !data/if/ico_hd/inventorydlg/weapon/a_hornet_min.dds
 !data/models/guns/sml_american_hornet01.dds
 !data/models/guns/sml_american_hornet01_gun.gam
+!data/if/ico_hd/mainmenu/*.dds
+data/if/ico_hd/mainmenu/logo_testing2.dds
+data/if/ico_hd/mainmenu/logo2.dds
+data/if/ico_hd/mainmenu/logo3.dds
+data/if/ico_hd/mainmenu/mainmenu_down.dds
+data/if/ico_hd/mainmenu/menu_bkg.dds
+data/if/ico_hd/mainmenu/noise.dds
+data/if/ico_hd/mainmenu/up_light.dds
+!data/if/ico_hd/splashwnd/*.dds
+data/if/ico_hd/splashwnd/loading_bar.dds
+data/if/ico_hd/splashwnd/loading_down.dds
+data/if/ico_hd/splashwnd/loading_up.dds
+!data/if/ico_hd/splashes/druids.dds

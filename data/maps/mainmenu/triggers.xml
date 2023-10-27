@@ -86,7 +86,6 @@
 			local veh = CreateVehicleEx(model,"PlayerCar",coordarr[Z])
 
 			if veh then
-				veh:SetGamePositionOnGround(coordarr[Z])
 				veh:SetRotation(rotarr[Z])
 				g_Player:AddChild(veh)
 			end
@@ -94,7 +93,6 @@
 			local vehPlayer = GetPlayerVehicle()
 			if vehPlayer then
 				vehPlayer:SetCustomControlEnabled( true )
-				vehPlayer:SetCustomControlEnabled( false )
 				vehPlayer:setImmortalMode(1)
 				if model == "Scout01" then
 					vehPlayer:SetNewPart("CABIN",scout_cab[random(scout_cab_r)])
@@ -122,6 +120,7 @@
 				vehPlayer:SetRandomSkin()
 				vehPlayer:SetMaxSpeed(5)
 				GiveGunsForVehicle(vehPlayer, 1)
+				vehPlayer:SetCustomControlEnabled( false )
 			end
 
 			CreateNewDummyObject( "cargo", "CamTochka", -1, -1, CVector(358.551, 264.511, 1423.320), Quaternion(0, 0, 0, 0), 0)
@@ -491,15 +490,15 @@
 	</trigger>
 
 	<trigger Name="Speed" active="0">
-		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<event	timeout="1"		eventid="GE_TIME_PERIOD" />
 		<script>
-		
-			local vehPlayer = GetPlayerVehicle()
-			if vehPlayer then
-				vehPlayer:SetMaxSpeed(16)
+			
+			local pl = GetPlayerVehicle()
+			if pl then
+				pl:SetMaxSpeed(16)
 			end
 
-			trigger:Deactivate()    
+			trigger:Deactivate()
 		</script>
 	</trigger>
 

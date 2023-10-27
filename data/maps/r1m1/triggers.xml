@@ -2398,6 +2398,8 @@
 			TActivate("BossEnemy_Die")
 
 			SetTolerance(1087, 1100, RS_NEUTRAL)
+			SetTolerance(1087, 1088, RS_NEUTRAL)
+			SetTolerance(1087, 1089, RS_NEUTRAL)
 
 			trigger:Deactivate()
 		</script>
@@ -2421,6 +2423,8 @@
 			end
 
 			SetTolerance(1087, 1100, RS_ENEMY)
+			SetTolerance(1087, 1088, RS_ENEMY)
+			SetTolerance(1087, 1089, RS_ENEMY)
 			trigger:Deactivate()
  		</script>
 	</trigger>
@@ -2634,7 +2638,7 @@
 							"item_chain", "shkatulka", "item_ex", "item_teapon", "item_cat", "item_rolex", "item_chain_gold", "item_woodclock", "item_chiken", "item_skullring", "item_lion", "item_bitcoin","hornet01","specter01","pkt01","kord01","storm01","fagot01","maxim01","vector01","vulcan01","kpvt01","rapier01","flag01","rainmetal01","elephant01","odin01","omega01","bumblebee01","hammer01","hunterSideGun","mrakSideGun","big_swingfire01","cyclops01","octopus01","hailSideGun","hurricane01","rocketLauncher","zeusSideGun","marsSideGun",
 							"potato", "firewood", "item_pants40grn", "item_salo",
 							"item_key_gate_thetown", "item_key_gate_r1m3",
-							"minePusher", "minePusher_1", "engineOilPusher", "nailsPusher", "Smoke", "additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "add_damage_guns", "add_damage_energy", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "someTurboAccelerationPusher", "firing_range_guns", "firing_rate_guns", "firing_rate_energy", "firing_rate_guns", "grouping_angle_guns", "firing_rate_energy", "grouping_angle_guns", "cooling_system_guns", "cooling_system_guns", "cooling_system_energy", "cooling_system_energy", "cooling_system_explosion"}
+							"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "add_damage_guns", "add_damage_energy", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "someTurboAccelerationPusher", "firing_range_guns", "firing_rate_guns", "firing_rate_energy", "firing_rate_guns", "grouping_angle_guns", "firing_rate_energy", "grouping_angle_guns", "cooling_system_guns", "cooling_system_guns", "cooling_system_energy", "cooling_system_energy", "cooling_system_explosion"}
 			local items_r = getn(items)
 			
 			for j=1,lootcount do
@@ -3388,7 +3392,11 @@
 					tr2:DelEventObj("GE_OBJECT_DIE", "Scav_"..s_d)
 				end
 			end
-			
+
+			TDeactivate("FakePlayerDead")
+			local tr3 = getObj("FakePlayerDead_NameCar")
+			if tr3 then tr3:DelEventObj("GE_VEHICLE_WITHOUT_HEALTH", "PlayerCarForDead") end
+
 			println("MAP CLEAR")
 
 			trigger:Deactivate()

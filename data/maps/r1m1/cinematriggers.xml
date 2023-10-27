@@ -6,8 +6,6 @@
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 
-            SetWeather(0)
-
 			SaveAllToleranceStatus(RS_NEUTRAL)
 
 			EnableGodMode()
@@ -70,7 +68,7 @@
 
 			TActivate("MessageRaid")
 			TActivate("TimerRaidStart")
-			--TActivate("CreatePMC")
+			TActivate("CreatePMC")
 
 			--AllowSave(false)
 

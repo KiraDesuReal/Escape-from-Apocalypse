@@ -2,6 +2,12 @@
 <MusicBlocks>
 
 	<Block 
+		name	="block_silence"
+		driving	="silence"
+		alarm	="silence"
+		battle	="silence" />
+
+	<Block 
 		name	="block0"
 		driving	="block0_driving"
 		alarm	="block0_alarm"

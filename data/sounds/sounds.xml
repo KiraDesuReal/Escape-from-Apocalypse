@@ -68,6 +68,54 @@
 		file="data\sounds\other\interface\fading_msg.wav"
 		group="SOUND2D"
 		/>
+
+<!-- Building -->
+
+	<model
+		id="S_BUILDING"
+		file="data\sounds\other\interface\building.wav"
+		group="SOUND2D"
+		/>
+
+<!-- Generator -->
+
+	<model
+		id="S_GENERATOR_MOTOR_STAND"
+		file="data\sounds\other\generator\windgenerator_stand1.wav"
+		group="GENERATOR"
+	/>
+
+	<model
+		id="S_GENERATOR_MOTOR"
+		file="data\sounds\other\generator\windgenerator_move1.wav"
+		group="GENERATOR"
+	/>
+
+	<model
+		id="S_GENERATOR"
+		file="data\sounds\other\generator\generator.wav"
+		group="GENERATOR"
+	/>
+
+	<model
+		id="S_GENERATOR_ORACLE"
+		file="data\sounds\other\generator\generator_oracle.wav"
+		group="GENERATOR"
+	/>
+
+<!-- Chest Scavs -->
+
+	<model
+		id="S_CHEST_SCAVS_START"
+		file="data\sounds\other\chest_scavs\chest_scavs_start.ogg"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_CHEST_SCAVS_END"
+		file="data\sounds\other\chest_scavs\chest_scavs_end.ogg"
+		group="SOUND2D"
+	/>
 		
 <!-- Crash --> 
 

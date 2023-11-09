@@ -851,7 +851,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 		LookRadius			= "200.0"
 		IntersectionRadius	= "4.0"
-		TakingRadius		= "5.0"
+		TakingRadius		= "7.0"
 		DestroyEffectPiercing	= "ET_PS_VEH_EXP1_MED"
 		DestroyEffectBlast	= "ET_PS_VEH_EXP2_MED"
 		DestroyEffectEnergy	= "ET_PS_VEH_EXP3_MED"
@@ -1456,6 +1456,17 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 			<Part id = "CABIN"			Prototype = "bugCab01" />
 			<Part id = "BASKET"			Prototype = "bugCargo01" />
 			<Part id = "CABIN_SMALL_GUN"		Prototype = "hornet01" />
+		</Parts>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
+		Name			= "Bug01ForStart"
+		ParentPrototype 	= "Bug_PL">
+		<Parts>
+			<Part id = "CABIN"			Prototype = "bugCab02" />
+			<Part id = "BASKET"			Prototype = "bugCargo02" />
+			<Part id = "CABIN_SMALL_GUN"		Prototype = "pkt01" />
 		</Parts>
 	</Prototype>
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<resource>
+    
+	<string
+		id="90001"
+		value="У вас имеется пустая канистра для топлива.|Желаете её заправить? Это будет стоить 18500 монет."
+		numButtons="2" />
+
+	<string
+		id="90002"
+		value="Вы желаете проехать через туннель?"
+		numButtons="2" />
+
+	<string
+		id="77773"
+		msgType="SCROLL"
+		image="data\if\ico\CinemaPanel\foreground_movie_shade_midle.dds"
+		upOverlay="data\if\ico\CinemaPanel\foreground_movie_shade_up.dds"
+		downOverlay="data\if\ico\CinemaPanel\foreground_movie_shade.dds"
+		time="1" />
+</resource>

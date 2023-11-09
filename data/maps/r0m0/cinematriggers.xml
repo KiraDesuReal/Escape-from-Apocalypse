@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<triggers>
+    <!-- Стартовое затемнение -->
+    <trigger Name="StartFadeEffect" active="1">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+            g_ObjCont:SetGameTime( 10, 0, 21, 5, 2023 )
+			SetRadarUpgrade(1)
+            SetWeather(0)
+
+			Fly("start_game", CINEMATIC_NO_AIM, 0, 0.1, 0, 1)
+			StartCinematic()
+			UpdateCinematic(1)
+			
+			AddCinematicMessage(77773, 0)
+
+			TActivate("StartFadeEffect_End")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="StartFadeEffect_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+			SetCameraBehindPlayerVehicle()
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+</triggers>

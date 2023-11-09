@@ -32,6 +32,22 @@
 	</model>
 
 	<model
+		id="lake"
+		file="data\models\ammo\plasma01.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="STAND1">
+			<lp
+				id="sound"
+				effect_id="ET_PS_LAKE"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+	</model>
+
+	<model
 		id="cargo"
 		shadow="1"
 		shadowVolume="1"
@@ -67,6 +83,37 @@
 				ImmediateRemove="1" />
 		</action>
 	</model>
+
+	<model
+		id="generator_motor"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\buildings\region0\motor.gam">
+		<action
+			name="STAND1">
+			<lp
+				id="sound"
+				effect_id="ET_S_GENERATOR_MOTOR_STAND"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+		<action
+			name="MOVE1">
+			<lp
+				id="sound"
+				effect_id="ET_S_GENERATOR_MOTOR"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+	</model>
+
+	<model
+		id="generator"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\buildings\region0\generator\generator.gam" />
 
 	<model
 		id="conteiner"
@@ -2766,7 +2813,6 @@
 				restartOnAnimationChange="0"
 				ImmediateRemove="0" />
 		</action>
-
 	</model>
 
 	<model
@@ -14124,16 +14170,7 @@
 		shadow="1"
 		windwavy="0"
 		trans="0">
-		<action
-			name="STAND1">
-			<lp
-				id=""
-				effect_id="ET_PS_S_VILLAGE01"
-				restartOnAnimationChange="0"
-				ImmediateRemove="0" />
-		</action>
 	</model>
-
 
 	<model
 		id="bridge_span1"
@@ -16812,13 +16849,6 @@
 		trans="0" />
 
 	<model
-		id="big_brock_wall"
-		file="data\models\buildings\region3\factory\big_brock_wall.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
 		id="factory_stone"
 		file="data\models\buildings\region3\factory\factory_stone.gam"
 		shadow="1"
@@ -17565,6 +17595,14 @@
 	<model
 		id="oracle_house"
 		file="data\models\buildings\region3\oracle_house.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0"
+		composite="0" />
+
+	<model
+		id="oracle_house_r0m0"
+		file="data\models\buildings\region0\oracle_house_r0m0.gam"
 		shadow="1"
 		windwavy="0"
 		trans="0"

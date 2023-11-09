@@ -25,6 +25,12 @@
 		/>
 
 		<group 
+			id		= "GENERATOR" 
+			volume	= "255" 
+			minDist	= "50"
+		/>
+
+		<group 
 			id		= "GUNFIRE" 
 			volume	= "160" 
 			minDist	= "30"
@@ -129,8 +135,8 @@
 		/>
 		<group
 			id		= "LAKE"
-			volume	= "100" 
-			minDist	= "50"
+			volume	= "130" 
+			minDist	= "150"
 		/>
 
 		<group

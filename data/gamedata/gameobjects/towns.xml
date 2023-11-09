@@ -2981,6 +2981,22 @@ $Id: Towns.xml,v 1.74 2005/11/29 06:27:45 anton Exp $
 			Vehicles 	= ""
 			/>
 
+		<Prototype
+			Class		= "Town"
+			Name		= "PetrolStationTown_2"
+			
+			NodeScale	= "1 1 1" 
+
+			GateModelFile 	= ""
+			MusicName		= "silence"
+
+			IsIntersecting		= "true"
+			LookRadius			= "200"
+			IntersectionRadius	= "25" 
+
+			Vehicles 	= ""
+			/>
+
 
 
 	</Folder>

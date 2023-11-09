@@ -12,6 +12,18 @@
 		musicBlocks="block_menu" />
 
 	<LevelInfo
+		name="r0m0"
+		file="data\maps\r0m0.ssl"
+		fullName="Убежище"
+		diz0=""
+		diz1=""
+		north="0 0 1"
+		image0="data\if\map\dungeon.dds"
+		image1="data\if\ico\GlobalMap\gmap_ico_2.dds"
+		splashes="data\if\ico_hd\Splashes\r0m0.dds"
+		musicBlocks="block_silence" />
+
+	<LevelInfo
 		name="r1m1"
 		file="data\maps\r1m1.ssl"
 		fullName="Край"

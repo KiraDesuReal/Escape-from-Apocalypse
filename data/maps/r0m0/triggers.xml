@@ -1,0 +1,1322 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<triggers>
+
+	<trigger Name="GlobalVar" active="1">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			SetVar("PetrolStationBuild_fuel_nil_use", 0)
+			SetVar("PetrolStationBuild_fuel_full_use", 0)
+			SetVar("PetrolStationBuild_item_bolts", 0)
+			SetVar("PetrolStationBuild_item_nuts", 0)
+			SetVar("PetrolStationBuild_item_thermometer", 0)
+			SetVar("PetrolStationBuild_item_parts", 0)
+			SetVar("PetrolStationBuild_item_lump", 0)
+			SetVar("PetrolStationBuild_item_fullmaster", 0)
+			SetVar("PetrolStationBuild_Builden", 0)
+
+			SetVar("Inventory_lvl_2_item_drill", 0)
+			SetVar("Inventory_lvl_2_item_screws", 0)
+			SetVar("Inventory_lvl_2_item_nails", 0)
+			SetVar("Inventory_lvl_2_item_screw", 0)
+			SetVar("Inventory_lvl_2_item_roulet", 0)
+			SetVar("Inventory_lvl_2_item_pena", 0)
+			SetVar("Inventory_lvl_2_Builden", 0)
+
+			SetVar("ChestScavs_electronics", 0)
+			SetVar("ChestScavs_machinery", 0)
+			SetVar("ChestScavs_books", 0)
+			SetVar("ChestScavs_bottles", 0)
+			SetVar("ChestScavs_details", 0)
+			SetVar("ChestScavs_item_ananaga", 0)
+			SetVar("ChestScavs_item_rolex", 0)
+			SetVar("ChestScavs_item_chain_gold", 0)
+			SetVar("ChestScavs_item_skullring", 0)
+			SetVar("ChestScavs_item_fitanyashka", 0)
+			SetVar("ChestScavs_Builden", 0)
+			SetVar("ChestScavs_Search", 0)
+			SetVar("ChestScavs_Timer", 0)
+			SetVar("Scav_Move", 0)
+
+			SetVar("Tunel_item_vitalik", 0)
+			SetVar("Tunel_item_handrill", 0)
+			SetVar("Tunel_item_metalscissors", 0)
+			SetVar("Tunel_item_toolset", 0)
+			SetVar("Tunel_item_hose", 0)
+			SetVar("Tunel_item_kek", 0)
+			SetVar("Tunel_item_electronics_components", 0)
+			SetVar("Tunel_item_wires", 0)
+			SetVar("Tunel_item_nippers", 0)
+			SetVar("Tunel_item_pliers_round", 0)
+			SetVar("Tunel_Builden", 0)
+
+			SetVar("Generator_lvl", 0)
+			SetVar("Generator_time_work", 0)
+			SetVar("Generator_on", 0)
+			SetVar("Generator_dlg", 0)
+
+			SetVar("Generator_lvl_1_item_svech", 0)
+			SetVar("Generator_lvl_1_item_engine", 0)
+			SetVar("Generator_lvl_1_doski", 0)
+			SetVar("Generator_lvl_1_fuel", 0)
+			SetVar("Generator_lvl_1_oil", 0)
+			SetVar("Generator_lvl_1_money", 0)
+			SetVar("Generator_lvl_2_item_rele", 0)
+			SetVar("Generator_lvl_2_item_wires", 0)
+			SetVar("Generator_lvl_2_item_buldex", 0)
+			SetVar("Generator_lvl_3_item_bp", 0)
+			SetVar("Generator_lvl_3_item_parts", 0)
+			SetVar("Generator_lvl_3_item_military_cable", 0)
+			SetVar("Generator_lvl_3_item_plate", 0)
+			SetVar("Generator_lvl_3_item_converter", 0)
+			SetVar("Generator_lvl_3_item_lcd", 0)
+
+			SetVar("Lampposts_item_energo_lump", 0)
+			SetVar("Lampposts_item_wires", 0)
+			SetVar("Lampposts_item_kondesators", 0)
+			SetVar("Lampposts_money", 0)
+			SetVar("Lampposts_Builden", 0)
+
+			SetVar("CountRands", 0)
+
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Старт/перезаход на локацию -->
+	<trigger Name="StartMap" active="1">
+		<event eventid="GE_GAME_START" ObjName="Player1" />
+		<script>
+			if CHESTSCAVS_TIMER_GLOBAL then SetVar("ChestScavs_Timer", CHESTSCAVS_TIMER_GLOBAL) end
+			if GetVar("ChestScavs_Search").AsInt > 0 and GetVar("ChestScavs_Timer").AsInt == 0 then
+				TActivate("ChestScavs_CreateLoot")
+			end 
+
+			if GENERATOR_TIMER_GLOBAL then SetVar("Generator_time_work", GENERATOR_TIMER_GLOBAL) end
+			if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
+				if GetVar("Generator_on").AsInt == 1 and GetVar("Generator_time_work").AsInt > 0 then
+					TActivate("Generator_timer")
+					TActivate("IfGenerator_On")
+				else
+					TActivate("Generator_Stop")
+				end
+			end
+
+			if COUNT_RAIDS then SetVar("CountRands", COUNT_RAIDS) end
+			
+			local pl = GetPlayerVehicle()
+			if pl then
+				pl:SetGamePositionOnGround(CVector(893.077, 255.493, 987.899))
+				pl:SetRotation(Quaternion(-0.009, -0.005, -0.000, 1.000))
+				pl:setGodMode(1)
+			end
+
+			SetCameraBehindPlayerVehicle()
+		</script>
+	</trigger>
+
+<!-- Создание ворот -->
+	<trigger Name="CreateGate" active="1">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewDummyObject("agro_gate", "gate_1", -1, -1, CVector(868.318, 255, 1094.083), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("agro_gate", "gate_2", -1, -1, CVector(868.318, 255, 885.281), Quaternion(0, 1, 0, 0))
+			TActivate("OpenGate_1")
+			TActivate("OpenGate_2")
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Открытие/закрытие ворот 1 -->
+	<trigger Name="OpenGate_1" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Gate_1_1_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Gate_1_2_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Gate_1_3_loc" />
+		<script>
+			getObj("gate_1"):SetNodeAction(AT_RESERVED4)
+			CreateEffectTTLed( "ET_PS_OPENING_GATE", CVector(868.318, 255, 1094.083), Quaternion(0, 0, 0, 1), 1400)
+			TActivate("OpennedGate_1")
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="OpennedGate_1" active="0">
+		<event timeout="1.4" eventid="GE_TIME_PERIOD" />
+		<script>
+			local g = GetEntityByName("gate_1")
+			if g then g:SetPosition(CVector(899, 245, 1097)) end
+
+			CreateEffectTTLed( "ET_PS_OPENING_GATE_END", CVector(868.318, 255, 1094.083), Quaternion(0, 0, 0, 1), 1500)
+			TActivate("CloseGate_1")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CloseGate_1" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Gate_1_1_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Gate_1_2_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Gate_1_3_loc" />
+		<script>
+			local g = GetEntityByName("gate_1")
+			if g then 
+				g:SetPosition(CVector(868.318, 255, 1094.083)) 
+				g:SetNodeAction(AT_RESERVED3)
+			end
+			CreateEffectTTLed( "ET_PS_CLOSED_GATE", CVector(868.318, 255, 1094.083), Quaternion(0, 0, 0, 1), 1400)
+			TActivate("ClosedGate_1")
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ClosedGate_1" active="0">
+		<event timeout="1.4" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateEffectTTLed( "ET_PS_OPENING_GATE_END", CVector(868.318, 255, 1094.083), Quaternion(0, 0, 0, 1), 1500)
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Открытие/закрытие ворот 2 -->
+	<trigger Name="OpenGate_2" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Gate_2_1_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Gate_2_2_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Gate_2_3_loc" />
+		<script>
+			getObj("gate_2"):SetNodeAction(AT_RESERVED4)
+			CreateEffectTTLed( "ET_PS_OPENING_GATE", CVector(868.318, 255, 885.281), Quaternion(0, 0, 0, 1), 1400)
+			TActivate("OpennedGate_2")
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="OpennedGate_2" active="0">
+		<event timeout="1.4" eventid="GE_TIME_PERIOD" />
+		<script>
+			local g = GetEntityByName("gate_2")
+			if g then g:SetPosition(CVector(839, 245, 878)) end
+
+			CreateEffectTTLed( "ET_PS_OPENING_GATE_END", CVector(868.318, 255, 885.281), Quaternion(0, 0, 0, 1), 1500)
+			TActivate("CloseGate_2")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CloseGate_2" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Gate_2_1_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Gate_2_2_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Gate_2_3_loc" />
+		<script>
+			local g = GetEntityByName("gate_2")
+			if g then 
+				g:SetPosition(CVector(868.318, 255, 885.281)) 
+				g:SetNodeAction(AT_RESERVED3)
+			end
+			CreateEffectTTLed( "ET_PS_CLOSED_GATE", CVector(868.318, 255, 885.281), Quaternion(0, 0, 0, 1), 1400)
+			TActivate("ClosedGate_2")
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ClosedGate_2" active="0">
+		<event timeout="1.4" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateEffectTTLed( "ET_PS_OPENING_GATE_END", CVector(868.318, 255, 885.281), Quaternion(0, 0, 0, 1), 1500)
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+	
+<!-- Создание разрушенной заправки -->
+	<trigger Name="CreatePetrolStation_Broken" active="1">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewDummyObject("light_dots_brocken2", "ps_broken_1", -1, -1, CVector(919.240, 255, 1062.167), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("ruins3", "ps_broken_2", -1, -1, CVector(918.965, 255, 1052.739), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("light_dots_brocken2", "ps_broken_3", -1, -1, CVector(920.557, 255, 1015.550), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("ruins4", "ps_broken_4", -1, -1, CVector(921.418, 255, 1026.600), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("ruins6", "ps_broken_5", -1, -1, CVector(904.399, 255, 1014.341), Quaternion(-0.2340, 0.6754, -0.2205, 0.6637))
+			CreateNewDummyObject("waste2", "ps_broken_6", -1, -1, CVector(914.539, 255, 1015.899), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("waste3", "ps_broken_7", -1, -1, CVector(896.741, 255, 1014.595), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("lamppost3", "ps_broken_8", -1, -1, CVector(913.270, 255, 1020.167), Quaternion(-0.5282, 0.1231, -0.0270, 0.8397))
+			CreateNewDummyObject("kanistr", "ps_broken_9", -1, -1, CVector(915.667, 255.893, 1030.964), Quaternion(0.0373, -0.4233, -0.0881, 0.9009))
+			CreateNewDummyObject("petrolstation", "ps_broken_10", -1, -1, CVector(911.771, 255, 1040.334), Quaternion(-0.0374, 0.6984, 0.0366, 0.7138))
+
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "ps_broken_11", -1, -1, CVector(906.613, 254.846, 1025.954), Quaternion(0, 0, 0, 0), 0.1)
+			CreateNewDummyObject("factory_box", "ps_broken_12", -1, -1, CVector(909.802, 255, 1022.392), Quaternion(0.0000, -0.2714, 0.0000, 0.9625))
+			CreateNewDummyObject("factory_box", "ps_broken_13", -1, -1, CVector(909.648, 255, 1029.650), Quaternion(0.0000, -0.9719, 0.0000, 0.2356))
+
+			local town = GetEntityByName ("PetrolStationTown1")
+			if town then town:SetRuined(true) end
+			TActivate("PetrolStation_BuildInfo")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="PetrolStation_BuildInfo" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="PetrolStation_Build_loc" />
+		<script>
+			if not(GetVar("PetrolStationBuild_fuel_nil_use").AsInt == 2) or not(GetVar("PetrolStationBuild_fuel_full_use").AsInt == 4) or not(GetVar("PetrolStationBuild_item_bolts").AsInt == 2) or not(GetVar("PetrolStationBuild_item_nuts").AsInt == 2) or not(GetVar("PetrolStationBuild_item_thermometer").AsInt == 1) or not(GetVar("PetrolStationBuild_item_parts").AsInt == 3) or not(GetVar("PetrolStationBuild_item_lump").AsInt == 2) or not(GetVar("PetrolStationBuild_item_fullmaster").AsInt == 1) then
+				local item_1, item_2, item_3, item_4, item_5, item_6, item_7, item_8 = "", "", "", "", "", "", "", ""
+			
+				if GetVar("PetrolStationBuild_fuel_nil_use").AsInt ~= 2 then item_1 = "Пустая канистра - "..(2 - GetVar("PetrolStationBuild_fuel_nil_use").AsInt).."|" end
+				if GetVar("PetrolStationBuild_fuel_full_use").AsInt ~= 4 then item_2 = "Канистра топлива - "..(4 - GetVar("PetrolStationBuild_fuel_full_use").AsInt).."|" end
+				if GetVar("PetrolStationBuild_item_bolts").AsInt ~= 2 then item_3 = "Болты - "..(2 - GetVar("PetrolStationBuild_item_bolts").AsInt).."|" end
+				if GetVar("PetrolStationBuild_item_nuts").AsInt ~= 2 then item_4 = "Гайки - "..(2 - GetVar("PetrolStationBuild_item_nuts").AsInt).."|" end
+				if GetVar("PetrolStationBuild_item_thermometer").AsInt ~= 1 then item_5 = "Термометр - 1|" end
+				if GetVar("PetrolStationBuild_item_parts").AsInt ~= 3 then item_6 = "Металлические запчасти - "..(3 - GetVar("PetrolStationBuild_item_parts").AsInt).."|" end
+				if GetVar("PetrolStationBuild_item_lump").AsInt ~= 2 then item_7 = "Лампа накаливания - "..(2 - GetVar("PetrolStationBuild_item_lump").AsInt).."|" end
+				if GetVar("PetrolStationBuild_item_fullmaster").AsInt ~= 1 then item_8 = "Набор напильников «FullMaster» - 1" end
+
+				local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7..""..item_8
+
+				AddFadingMsgByStrIdFormatted("fm_items_to_build", msg)
+			end
+		</script>
+	</trigger>
+
+<!-- Создание построенной заправки -->
+	<trigger Name="CreatePetrolStation" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i=1,13 do 
+				local ps = GetEntityByName("ps_broken_"..i)
+				if ps then ps:Remove() end
+			end
+
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(919, 255, 1021), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(903, 255, 1016), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(918, 255, 1057), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(907, 255, 1025), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_S_BUILDING", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1800)
+
+			CreateNewDummyObject("transformator2", "ps_1", -1, -1, CVector(916.621, 255, 1060.253), Quaternion(0.0009, -1.0000, 0.0000, 0.0000))
+			CreateNewDummyObject("transformator1", "ps_2", -1, -1, CVector(916.807, 255, 1052.056), Quaternion(0.0000, 0.9999, -0.0022, 0.0131))
+			CreateNewDummyObject("transformator2", "ps_3", -1, -1, CVector(897.391, 255, 1016.854), Quaternion(-0.0014, 0.7208, -0.0016, -0.6931))
+			CreateNewDummyObject("petrolhouse3", "ps_4", -1, -1, CVector(921.690, 255, 1015.835), Quaternion(0.0000, -0.0109, 0.0000, 0.9999))
+			CreateNewDummyObject("petrolhouse1", "ps_5", -1, -1, CVector(920.868, 255, 1025.625), Quaternion(0.0000, 0.6962, 0.0000, 0.7178))
+			CreateNewDummyObject("petrolhouse1", "ps_6", -1, -1, CVector(908.745, 255, 1015.647), Quaternion(0.0000, -1.0000, 0.0000, -0.0087))
+			CreateNewDummyObject("petrolstation", "ps_7", -1, -1, CVector(911.771, 255, 1040.334), Quaternion(0.0000, 0.6962, 0.0000, 0.7178))
+			CreateNewDummyObject("lamppost3", "ps_8", -1, -1, CVector(913.649, 255, 1021.364), Quaternion(0, 0, 0, 0))
+			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK01", -1, -1, CVector(913.161, 267.300, 1033.075), Quaternion(0, 0, 0, 1), 0.6)
+			CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "ps_10", -1, -1, CVector(911.771, 255, 1040.334), Quaternion(0, 0, 0, 1))
+
+			TActivate("UseFuelNil_InPetrolStation01")
+
+			local town = GetEntityByName ("PetrolStationTown1")
+			if town then town:SetRuined(false) end
+
+			SetVar("PetrolStationBuild_Builden", 1)
+			TDeactivate("PetrolStation_BuildInfo")
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Заправляем канистры -->
+	<trigger Name="UseFuelNil_InPetrolStation01" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation_loc" />
+		<script>
+			if HasPlayerAmountOfItems("fuel_nil_use", 1) then
+				local b = SpawnMessageBox( "90001" )
+				if b == 1 then
+					if GetPlayerMoney() >= 18500 then
+						AddPlayerMoney(- 18500)
+						CreateEffectTTLed( "ET_PS_FUEL_PETROL_START", CVector(906.852, 255, 1040.380), Quaternion(0, 0, 0, 1), 800)
+						AddFadingMsgByStrIdFormatted("fm_fuel_petrol_start")
+						SoundFadingMsg()
+						RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
+						TActivate("SoundPetrolProcess_InPertolStation01")
+						TActivate("FuelFull_InPetrolStation01")
+						GetPlayerVehicle():SetThrottle( 0 )
+						GetPlayerVehicle():SetCustomLinearVelocity( 0 )
+						local town = GetEntityByName ("PetrolStationTown1")
+						if town then town:SetOpenGateToPlayer(false) end
+						trigger:Deactivate()
+					else
+						AddFadingMsgByStrIdFormatted("fm_player_not_money")
+						SoundFadingMsg()
+					end
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="SoundPetrolProcess_InPertolStation01" active="0">
+		<event timeout="0.4" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewSgNodeObject("ET_PS_FUEL_PETROL_PROCESS", "SFPP_01", -1, -1, CVector(906.852, 255, 1040.380), Quaternion(0, 0, 0, 1), 0)
+			local pl01 = GetEntityByName("LIGHTWORK01")
+			if pl01 then pl01:Remove() end
+			CreateNewSgNodeObject("ET_PS_LENS_D6", "PetrolLightProcess01", -1, -1, CVector(913.161, 267.300, 1033.075), Quaternion(0, 0, 0, 1), 0.6)
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="FuelFull_InPetrolStation01" active="0">
+		<event timeout="20" eventid="GE_TIME_PERIOD" />
+		<script>
+			local Chest = CreateNewObject{prototypeName = "fuelChest", objName = "FuelBox"..random(10000)}	
+			local ChestId = GetEntityByID(Chest)
+			ChestId:SetPosition(CVector(912.560, 256, 1036.056))
+
+			local fuel = CreateNewObject{prototypeName = "fuel_full_use", objName = "FuelItem"..random(10000), belong = 1100 }
+			local fuelId = GetEntityByID(fuel)
+
+			local ChestPos = ChestId:GetPosition()
+			ChestPos.y = ChestPos.y + 1
+			ChestId:SetPosition(ChestPos)
+
+			if ChestId and fuelId then
+				ChestId:AddChild(fuelId)
+			end
+
+			local sd01 = GetEntityByName("SFPP_01")
+			if sd01 then sd01:Remove() end
+
+			local pl01 = GetEntityByName("PetrolLightProcess01")
+			if pl01 then pl01:Remove() end
+
+			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK01", -1, -1, CVector(913.161, 267.300, 1033.075), Quaternion(0, 0, 0, 1), 0.6)
+			CreateEffectTTLed( "ET_PS_FUEL_PETROL_END", CVector(906.852, 255, 1040.380), Quaternion(0, 0, 0, 1), 1000)
+			AddFadingMsgByStrIdFormatted("fm_fuel_petrol_end")
+			SoundFadingMsg()
+
+			local town = GetEntityByName ("PetrolStationTown1")
+			if town then town:SetOpenGateToPlayer(true) end
+
+			TActivate ("UseFuelNil_InPetrolStation01")
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+<!-- Инвентарь игрока 1 лвл -->
+	<trigger Name="CreateInventory_lvl_1" active="1">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewDummyObject("conteiner", "cont_1_lvl_1", -1, -1, CVector(904.558, 256.342, 986.595), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("conteiner", "cont_2_lvl_1", -1, -1, CVector(904.558, 256.342, 989.367), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("conteiner", "cont_3_lvl_1", -1, -1, CVector(904.558, 259.006, 988.140), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("cargo", "cont_4_lvl_1", -1, -1, CVector(901.777, 258.173, 986.036), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("cargo", "cont_5_lvl_1", -1, -1, CVector(904.434, 258.173, 986.036), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("cargo", "cont_6_lvl_1", -1, -1, CVector(907.212, 258.173, 986.036), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("cargo", "cont_7_lvl_1", -1, -1, CVector(901.712, 258.173, 990.186), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("cargo", "cont_8_lvl_1", -1, -1, CVector(904.369, 258.173, 990.186), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("cargo", "cont_9_lvl_1", -1, -1, CVector(907.147, 258.173, 990.186), Quaternion(0, 0, 0, 0))
+
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "cont_1_build_lvl_2", -1, -1, CVector(927.950, 254.691, 988.440), Quaternion(0, 0, 0, 0), 0.1)
+			CreateNewDummyObject("conteiner", "cont_2_build_lvl_2", -1, -1, CVector(919.387, 256.310, 990.120), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("conteiner", "cont_3_build_lvl_2", -1, -1, CVector(919.581, 257.954, 993.320), Quaternion(0.1741, 0.6853, 0.1741, 0.6853))
+			CreateNewDummyObject("metal_plate1", "cont_4_build_lvl_2", -1, -1, CVector(918.269, 257.231, 987.745), Quaternion(-0.4208, -0.0040, -0.0038, 0.9071))
+
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "chestScavs_point", -1, -1, CVector(945.013, 254.586, 982.992), Quaternion(0, 0, 0, 0), 0.1)
+
+			local Chest = CreateNewObject{prototypeName = "opacityChest", objName = "PlayerInventory_Lvl_1"}	
+			local ChestId = GetEntityByID(Chest)
+			ChestId:SetPosition(CVector(903.080, 255, 988.017))
+
+			local start_items = {"item_opacity", "hornet01", "specter01", "specter01", "specter01", "pkt01", "vector01", "vulcan01", "scrap_metal_use", "scrap_metal_use", "scrap_metal_use", "scrap_metal_use", "scrap_metal_use", "machinery_use", "machinery_use", "machinery_use", "oil_use", "oil_use", "oil_use", "oil_use", "fuel_nil_use", "fuel_nil_use"}
+			local items = getn(start_items)
+
+			for i=1,items do
+				local Item = CreateNewObject{prototypeName = start_items[i], objName = "StartItem"..random(10000), belong = 1100}
+				local ItemId = GetEntityByID(Item)
+				if ChestId and ItemId then
+					ChestId:AddChild(ItemId)
+				end
+			end	
+
+			TActivate("Inventory_lvl_2_BuildInfo")
+			TActivate("ChestScavs_BuildInfo")
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Inventory_lvl_2_BuildInfo" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Inventory_Build_lvl_2_loc" />
+		<script>
+			if not(GetVar("Inventory_lvl_2_item_drill").AsInt == 1) or not(GetVar("Inventory_lvl_2_item_screws").AsInt == 4) or not(GetVar("Inventory_lvl_2_item_nails").AsInt == 2) or not(GetVar("Inventory_lvl_2_item_screw").AsInt == 1) or not(GetVar("Inventory_lvl_2_item_roulet").AsInt == 1) or not(GetVar("Inventory_lvl_2_item_pena").AsInt == 2) then
+				local item_1, item_2, item_3, item_4, item_5, item_6 = "", "", "", "", "", ""
+			
+				if GetVar("Inventory_lvl_2_item_drill").AsInt ~= 1 then item_1 = "Дрель - 1|" end
+				if GetVar("Inventory_lvl_2_item_screws").AsInt ~= 4 then item_2 = "Саморезы - "..(4 - GetVar("Inventory_lvl_2_item_screws").AsInt).."|" end
+				if GetVar("Inventory_lvl_2_item_nails").AsInt ~= 2 then item_3 = "Гвозди - "..(2 - GetVar("Inventory_lvl_2_item_nails").AsInt).."|" end
+				if GetVar("Inventory_lvl_2_item_screw").AsInt ~= 1 then item_4 = "Отвертка - 1|" end
+				if GetVar("Inventory_lvl_2_item_roulet").AsInt ~= 1 then item_5 = "Рулетка - 1|" end
+				if GetVar("Inventory_lvl_2_item_pena").AsInt ~= 2 then item_6 = "Монтажная пена - "..(2 - GetVar("Inventory_lvl_2_item_pena").AsInt).."|" end
+
+				local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6
+
+				AddFadingMsgByStrIdFormatted("fm_items_to_build", msg)
+			end
+		</script>
+	</trigger>
+
+<!-- Инвентарь игрока 2 лвл -->
+	<trigger Name="CreateInventory_lvl_2" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i=1,4 do 
+				local cont = GetEntityByName("cont_"..i.."_build_lvl_2")
+				if cont then cont:Remove() end
+			end
+
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(920, 255, 989), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_S_BUILDING", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1800)
+
+			CreateNewDummyObject("conteiner", "cont_1_lvl_2", -1, -1, CVector(919.893, 256.310, 985.711), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("conteiner", "cont_2_lvl_2", -1, -1, CVector(919.893, 256.310, 988.527), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("conteiner", "cont_3_lvl_2", -1, -1, CVector(919.893, 256.310, 991.383), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("conteiner", "cont_4_lvl_2", -1, -1, CVector(921.150, 258.963, 988.286), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("conteiner", "cont_5_lvl_2", -1, -1, CVector(918.500, 258.963, 988.286), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("cargo", "cont_6_lvl_2", -1, -1, CVector(923.139, 258.173, 985.820), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("cargo", "cont_7_lvl_2", -1, -1, CVector(923.139, 258.173, 988.566), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("cargo", "cont_8_lvl_2", -1, -1, CVector(923.139, 258.173, 991.369), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("cargo", "cont_9_lvl_2", -1, -1, CVector(916.561, 258.173, 985.803), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("cargo", "cont_10_lvl_2", -1, -1, CVector(916.561, 258.173, 988.549), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("cargo", "cont_11_lvl_2", -1, -1, CVector(916.561, 258.173, 991.352), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+
+			local Chest = CreateNewObject{prototypeName = "opacityChest", objName = "PlayerInventory_Lvl_2"}	
+			local ChestId = GetEntityByID(Chest)
+			ChestId:SetPosition(CVector(919, 255, 987))
+
+			local Item = CreateNewObject{prototypeName = "item_opacity", objName = "ItemOpacity_PlayerInventory_Lvl_2", belong = 1100}
+			local ItemId = GetEntityByID(Item)
+			if ChestId and ItemId then
+				ChestId:AddChild(ItemId)
+			end
+			
+			SetVar("Inventory_lvl_2_Builden", 1)
+			TDeactivate("Inventory_lvl_2_BuildInfo")
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ChestScavs_BuildInfo" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ChestScavs_Build_loc" />
+		<script>
+			if not(GetVar("ChestScavs_electronics").AsInt == 2) or not(GetVar("ChestScavs_machinery").AsInt == 1) or not(GetVar("ChestScavs_books").AsInt == 1) or not(GetVar("ChestScavs_bottles").AsInt == 1) or not(GetVar("ChestScavs_details").AsInt == 1) or not(GetVar("ChestScavs_item_ananaga").AsInt == 3) or not(GetVar("ChestScavs_item_rolex").AsInt == 3) or not(GetVar("ChestScavs_item_chain_gold").AsInt == 6) or not(GetVar("ChestScavs_item_skullring").AsInt == 4) or not(GetVar("ChestScavs_item_fitanyashka").AsInt == 1) then
+				local item_1, item_2, item_3, item_4, item_5, item_6, item_7, item_8, item_9, item_10 = "", "", "", "", "", "", "", "", "", ""
+			
+				if GetVar("ChestScavs_electronics").AsInt ~= 2 then item_1 = "Электроника - "..(2 - GetVar("ChestScavs_electronics").AsInt).."|" end
+				if GetVar("ChestScavs_machinery").AsInt ~= 1 then item_2 = "Рабочее оборудование - 1|" end
+				if GetVar("ChestScavs_books").AsInt ~= 1 then item_3 = "Книги - 1|" end
+				if GetVar("ChestScavs_bottles").AsInt ~= 1 then item_4 = "Бутылки - 1|" end
+				if GetVar("ChestScavs_details").AsInt ~= 1 then item_5 = "Детали - 1" end
+				if GetVar("ChestScavs_item_ananaga").AsInt ~= 3 then item_6 = "Ананага - "..(3 - GetVar("ChestScavs_item_ananaga").AsInt).."|" end
+				if GetVar("ChestScavs_item_rolex").AsInt ~= 3 then item_7 = "Золотые часы - "..(3 - GetVar("ChestScavs_item_rolex").AsInt).."|" end
+				if GetVar("ChestScavs_item_chain_gold").AsInt ~= 6 then item_8 = "Золотая цепочка - "..(6 - GetVar("ChestScavs_item_chain_gold").AsInt).."|" end
+				if GetVar("ChestScavs_item_skullring").AsInt ~= 4 then item_9 = "Золотое кольцо с черепом - "..(4 - GetVar("ChestScavs_item_skullring").AsInt).."|" end
+				if GetVar("ChestScavs_item_fitanyashka").AsInt ~= 1 then item_10 = "Дакимакура FitaNyashka - 1" end
+
+				local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7..""..item_8..""..item_9..""..item_10
+
+				AddFadingMsgByStrIdFormatted("fm_items_to_build", msg)
+			end
+		</script>
+	</trigger>
+
+<!-- Создание ящика диких -->
+	<trigger Name="CreateChestScavs" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local p = GetEntityByName("chestScavs_point")
+			if p then p:Remove() end
+			
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(952, 255, 983), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_S_BUILDING", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1800)
+
+			CreateNewDummyObject("conteiner", "chestScavs_1", -1, -1, CVector(953.069, 258.984, 983.179), Quaternion(0.0000, 0.7071, 0.0000, 0.7072))
+			CreateNewDummyObject("conteiner", "chestScavs_2", -1, -1, CVector(950.305, 256.313, 983.094), Quaternion(0.0000, 0.7071, 0.0000, 0.7072))
+			CreateNewDummyObject("conteiner", "chestScavs_3", -1, -1, CVector(953.068, 256.313, 983.179), Quaternion(0.0000, 0.7071, 0.0000, 0.7072))
+			CreateNewDummyObject("mikro", "chestScavs_4", -1, -1, CVector(950.613, 257.643, 979.958), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("rabochee_oborudovanie", "chestScavs_5", -1, -1, CVector(951.093, 257.803, 981.900), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("mikro", "chestScavs_6", -1, -1, CVector(949.831, 257.723, 981.059), Quaternion(0.0247, 0.7067, 0.0247, 0.7067))
+			CreateNewDummyObject("books", "chestScavs_7", -1, -1, CVector(950.852, 258.207, 984.052), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("bottles", "chestScavs_8", -1, -1, CVector(950.304, 258.293, 986.024), Quaternion(0, 0, 0, 0))
+			CreateNewSgNodeObject("detail", "chestScavs_9", -1, -1, CVector(949.501, 257.863, 984.121), Quaternion(0.0129, 0.0119, 0.7131, 0.7008), 0.2)
+
+			SetVar("ChestScavs_Builden", 1)
+			TDeactivate("ChestScavs_BuildInfo")
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ChestScavs_Start" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("ChestScavs_Search").AsInt == 1 then SetVar("ChestScavs_Timer", 900) end
+			if GetVar("ChestScavs_Search").AsInt == 2 then SetVar("ChestScavs_Timer", 1800) end
+			if GetVar("ChestScavs_Search").AsInt == 3 then SetVar("ChestScavs_Timer", 2700) end
+			if GetVar("ChestScavs_Search").AsInt == 4 then SetVar("ChestScavs_Timer", 1500) end
+			if GetVar("ChestScavs_Search").AsInt == 5 then SetVar("ChestScavs_Timer", 3000) end
+			if GetVar("ChestScavs_Search").AsInt == 6 then SetVar("ChestScavs_Timer", 3600) end
+
+			TActivate("ChestScavs_Timer")
+
+			AddFadingMsgByStrIdFormatted("fm_chest_scavs_start")
+			SoundFadingMsg()
+			CreateEffectInsertedInRemove("ET_S_CHEST_SCAVS_START", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+			TActivate("ChestScavs_Time")
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ChestScavs_Timer" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			local t = GetVar("ChestScavs_Timer").AsInt - 1
+			SetVar("ChestScavs_Timer", t) 
+			if 0 >= t then
+				SetVar("ChestScavs_Timer", 0) 
+				TActivate("CreateScavMove")
+				TDeactivate("ChestScavs_Time")
+			else
+				TActivate("cst")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="cst" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("ChestScavs_Timer")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ChestScavs_Time" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ChestScavs_Build_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="ChestScavs_Build_loc" />
+		<script>
+			local t = GetVar("ChestScavs_Timer").AsInt 
+			tm = t / 60
+
+			local m
+
+			if t > 0 then
+				if 6000 > t then
+					m = tonumber(strsub(tm, 1, 2))
+				elseif 600 > t then
+					m = tonumber(strsub(tm, 1, 1))
+				else
+					m = tonumber(strsub(tm, 1, 3))
+				end 
+				
+				if t > 60 then
+					AddFadingMsgByStrIdFormatted("fm_chest_scavs_timer_m", m)
+				else
+					AddFadingMsgByStrIdFormatted("fm_chest_scavs_timer_s", t)
+				end
+			end 
+		</script>
+	</trigger>
+
+	<trigger Name="CreateScavMove" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local pos = {CVector(1879, 255, 1370), CVector(200, 255, 388)}
+			local rot = {Quaternion(-0.014, -0.506, 0.003, 0.862), Quaternion(-0.009, 0.703, 0.005, 0.711)}
+			local r = random(2)
+			SetVar("Scav_Move", r)
+
+			local list = {"Sml1CarScav", "Sml2CarScav", "Sml3CarScav", "Sml4CarScav", "Scout1CarScav", "Scout2CarScav", "Scout3CarScav"}
+			local scav = getn(list)
+
+			CreateVehicleEx(list[random(scav)], "ScavMoveToChest", pos[r], 1090)
+
+			local veh = GetEntityByName("ScavMoveToChest")
+			if veh then
+				GiveGunsForVehicle(veh, 1)
+				veh:SetExternalPathByName("veh_paths_to_gate_"..r)
+				veh:SetMaxSpeed(40)
+				veh:SetRandomSkin()
+			end
+
+			TActivate("ScavMoveReached")
+			TActivate("ChestScavs_CreateLoot")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ScavMoveReached" active="0">
+		<event eventid="GE_TARGET_REACHED" ObjName="ScavMoveToChest"/>
+		<script>
+			trigger:IncCount()
+			local count = trigger:GetCount()
+
+			local veh = GetEntityByName("ScavMoveToChest")
+			if veh then
+				if GetVar("Scav_Move").AsInt == 1 then
+					if count == 1 then
+						veh:SetExternalPathByName("veh_paths_to_inventory_1")
+						veh:SetMaxSpeed(20)
+					elseif count == 2 then
+						veh:SetExternalPathByName("veh_paths_to_gate_2_from_inventory")
+						veh:SetMaxSpeed(10)
+					elseif count == 3 then
+						veh:SetExternalPathByName("veh_paths_to_end_1")
+						veh:SetMaxSpeed(40)
+					end
+				elseif GetVar("Scav_Move").AsInt == 2 then
+					if count == 1 then
+						veh:SetExternalPathByName("veh_paths_to_inventory_2")
+						veh:SetMaxSpeed(20)
+					elseif count == 2 then
+						veh:SetExternalPathByName("veh_paths_to_gate_1_from_inventory")
+						veh:SetMaxSpeed(10)
+					elseif count == 3 then
+						veh:SetExternalPathByName("veh_paths_to_end_2")
+						veh:SetMaxSpeed(40)
+					end
+				end
+				if count > 3 then 
+					SetVar("Scav_Move", 0)
+					veh:Remove()
+					trigger:Deactivate()
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="ChestScavs_CreateLoot" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ChestScavs_loc" />
+		<script>
+			local lootlist
+			local loot_count
+
+			if GetVar("ChestScavs_Search").AsInt == 0 then SetVar("ChestScavs_Search", 1) end
+			
+			if GetVar("ChestScavs_Search").AsInt == 1 then
+				lootlist = {"potato", "wirewood", 
+							"fuel_nil_use", 
+							"item_insulation", "item_nails", "item_nuts", "item_scotch", 
+							"item_tplug", "item_usb", "item_wires",
+							"item_battery_aa", 
+							"item_hunter_spich", "item_lighter", "item_spich", "item_wd40_100", 
+							"item_salt", "item_soap", "item_tb", 
+							"item_medical_tools", 
+							"item_zapal", 
+							"hornet01", "american_hornet01", 
+							"cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_explosion", "firing_range_guns", "additional_fuel_tank", "additional_torque", "additional_stability"}
+				loot_count = random(3)
+			elseif GetVar("ChestScavs_Search").AsInt == 2 then
+				lootlist = {"scrap_metal", "oil", "bottle", "fuel", "machinery", "book", "tobacco", "doski", "details", "shkatulka",
+							"scrap_metal_use", "machinery_use", "oil_use", "fuel_full_use",
+							"item_key_gate_thetown",
+							"item_bolts", "item_hose", "item_kek", "item_parts", "item_poheram", "item_tube", "item_plex",
+							"item_cable", "item_cooler", "item_cpu", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_hdd", "item_helix", "item_phone", "item_plate", "item_svech", "item_ultra_lump",
+							"item_accum", "item_powerbank",
+							"item_survl", "item_wd40_400",
+							"item_alkani", "item_hlor", "item_paper",
+							"item_disk", "item_flashdrive", "item_manual", 
+							"item_aquapeps", "item_c6h8o6", "item_suringe",
+							"item_vodka", "item_monolit",
+							"item_awl", "item_leatherman", "item_metalscissors", "item_nippers", "item_pliers_round", "item_screw_flat_long", "item_toolset",
+							"item_chain",
+							"specter01", "pkt01", "kord01", "storm01", "vector01", "vulcan01", "bumblebee01", "someTurboAccelerationPusher",
+							"cooling_system_guns", "cooling_system_energy", "add_damage_guns", "add_damage_energy", "cooling_system_guns2", "firing_rate_guns2", "additional_durability", "additional_fuel_tank2"}
+				loot_count = random(2,4)
+			elseif GetVar("ChestScavs_Search").AsInt == 3 then
+				lootlist = {"electronics", "electronics_use", 
+							"item_key_gate_r1m3",
+							"item_datchik", "item_military_tube", "item_pena", "item_thermometer",
+							"item_bp", "item_drill", "item_engine", "item_iridiym", "item_lcd", "item_military_cable", "item_tetris",
+							"item_car_battery", "item_cyclon", "item_green_battery",
+							"item_dry", "item_prisadka", "item_propan", "item_termit", "item_trotile", 
+							"item_diary", "item_diary_s", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_sas", "item_ssd",
+							"item_oftalmaskop", "item_aquapeps",
+							"item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit",
+							"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_pipe_wrench", "item_ratchet_wrench", "item_sewing_kit", 
+							"item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_woodclock",
+							"someTurboAccelerationPusher", "maxim01", "fagot01", "flag01", "rainmetal01", "elephant01", "omega01", "cyclops01", "octopus01", "marsSideGun", "hunterSideGun", "hammer01",
+							"anti_missile_system", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
+				loot_count = random(3,5)
+			elseif GetVar("ChestScavs_Search").AsInt == 4 then
+				lootlist = {"scrap_metal", "oil", "bottle", "fuel", "tobacco", "doski", "details",
+							"scrap_metal_use", "oil_use",
+							"item_key_gate_thetown",
+							"item_bolts", "item_hose", "item_kek", "item_parts", "item_poheram", "item_tube", "item_plex",
+							"item_cable", "item_cooler", "item_cpu", "item_dvd", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_kondesators", "item_magnet", "item_ram", "item_rele", "item_helix", "item_phone", "item_plate", "item_svech", "item_ultra_lump",
+							"item_accum",
+							"item_survl", "item_wd40_400", "item_zibbo",
+							"item_alkani", "item_hlor", "item_paper", "item_soda", "item_toothpaste",
+							"item_h2o2", "item_naci", "item_suringe",
+							"item_vodka", "item_monolit",
+							"item_metalscissors", "item_nippers", "item_pliers", "item_screw_flat",
+							"item_chain",
+							"specter01", "pkt01", "storm01", "vector01", "vulcan01", "bumblebee01",
+							"cooling_system_guns", "cooling_system_energy", "add_damage_guns", "add_damage_energy", "additional_durability"}
+				loot_count = random(2,4)
+			elseif GetVar("ChestScavs_Search").AsInt == 5 or GetVar("ChestScavs_Search").AsInt == 6 then
+				lootlist = {"item_key_gate_r1m3",
+							"item_datchik", "item_pena", "item_thermometer",
+							"item_converter", "item_engine", "item_iridiym", "item_tetris", "item_virtex", "item_vpx",
+							"item_cyclon", "item_car_battery",
+							"item_prisadka", "item_termit", 
+							"item_disk_exmachina", "item_rozvidka", "item_sas", "item_ssd", "item_ananaga",
+							"item_oftalmaskop", 
+							"item_airfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter",
+							"item_buldex", "item_handrill", "item_pipe_wrench", "item_ratchet_wrench", 
+							"item_cat", "item_chain_gold", "item_chiken", "item_lion", "item_rolex", "item_skullring", "item_woodclock", 
+							"fagot01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "cyclops01", "octopus01", "marsSideGun", "hunterSideGun", "hammer01", "hailSideGun", "zeusSideGun",
+							"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
+				if GetVar("ChestScavs_Search").AsInt == 5 then loot_count = random(3,6) end 
+				if GetVar("ChestScavs_Search").AsInt == 6 then loot_count = random(4,6) end 
+			end
+	
+			local loot = getn(lootlist)
+
+			local Chest = CreateNewObject{prototypeName = "opacityChest", objName = "ChestScavsForLoot"}	
+			local ChestId = GetEntityByID(Chest)
+			ChestId:SetPosition(CVector(950, 255, 982))
+
+			for i=1,loot_count do
+				local Item = CreateNewObject{prototypeName = lootlist[random(loot)], objName = "ChestScavsItem"..random(10000), belong = 1100}
+				local ItemId = GetEntityByID(Item)
+				if ChestId and ItemId then
+					ChestId:AddChild(ItemId)
+				end
+			end 
+
+			AddFadingMsgByStrIdFormatted("fm_chest_scavs_loot")
+			SoundFadingMsg()
+			CreateEffectInsertedInRemove("ET_S_CHEST_SCAVS_END", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+			TActivate("RemoveLootOrNot")
+			TDeactivate("ChestScavs_Timer")
+			TDeactivate("cst")
+			TDeactivate("ChestScavs_Time")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="RemoveLootOrNot" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ChestScavs_Build_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="ChestScavs_Build_loc" />
+		<script>
+			local l = GetEntityByName("ChestScavsForLoot")
+			if not(l) then
+				SetVar("ChestScavs_Search", 0)
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
+
+<!-- Тунель -->
+	<trigger Name="CreateZavalTunel_1" active="1">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewDummyObject("big_crag_6", "tun_zaval_1", -1, -1, CVector(820.647, 253.415, 1056.661), Quaternion(0.0018, -0.6772, -0.0013, 0.7358))
+			CreateNewDummyObject("big_stone1", "tun_zaval_2", -1, -1, CVector(824.516, 255, 1048.920), Quaternion(0.0000, 0.4656, 0.0000, 0.8850))
+			CreateNewDummyObject("boulder_stone1", "tun_zaval_3", -1, -1, CVector(827.759, 255, 1059.563), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("big_crag_12", "tun_zaval_4", -1, -1, CVector(799.706, 261.391, 1052.242), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("r2_crag_copped_8", "tun_zaval_5", -1, -1, CVector(810.797, 256.010, 1052.835), Quaternion(0.0000, -0.6756, 0.0000, 0.7373))
+			CreateNewDummyObject("r2_crag_copped_8", "tun_zaval_6", -1, -1, CVector(812.783, 255, 1059.407), Quaternion(-0.0020, 0.0698, -0.0085, 0.9975))
+			CreateNewDummyObject("big_stone2", "tun_zaval_7", -1, -1, CVector(818.173, 256.995, 1047.592), Quaternion(0, 0, 0, 0))
+			TActivate("Tunel_BuildInfo")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateZavalTunel_2" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i=1,7 do
+				local s = GetEntityByName("tun_zaval_"..i)
+				if s then s:Remove() end
+			end
+
+			CreateEffectTTLed( "ET_PS_BRIDGE_EXP_MAIN", CVector(814, 256, 1053), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_PS_VEH_EXP2_MED", CVector(814, 256, 1053), Quaternion(0, 0, 0, 1), 6000)
+
+			CreateNewDummyObject("sml_stone3", "tun_stone_1", -1, -1, CVector(817.248, 256.689, 1059.013), Quaternion(0.0000, -0.2122, 0.0000, 0.9772))
+			CreateNewDummyObject("big_stone5", "tun_stone_2", -1, -1, CVector(814.797, 256.485, 1049.719), Quaternion(0.0000, 0.4027, 0.0000, 0.9153))
+			CreateNewDummyObject("big_stone2", "tun_stone_3", -1, -1, CVector(806.348, 256.890, 1059.297), Quaternion(0.0281, -0.6507, -0.0241, 0.7585))
+			CreateNewDummyObject("metal_plate3", "tun_stone_4", -1, -1, CVector(799.657, 257.704, 1055.945), Quaternion(-0.0132, -0.7021, -0.0043, 0.7119))
+			CreateNewDummyObject("r2_crag_copped_7", "tun_stone_5", -1, -1, CVector(780.398, 253.335, 1055.853), Quaternion(0.0000, 0.0175, 0.0000, 0.9998))
+			CreateNewDummyObject("boulder_stone1", "tun_stone_6", -1, -1, CVector(803.465, 257.102, 1048.430), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("big_stone2", "tun_stone_7", -1, -1, CVector(799.237, 257.973, 1050.459), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("boulder_stone2", "tun_stone_8", -1, -1, CVector(797.746, 257.481, 1059.265), Quaternion(-0.0850, 0.0000, 0.0000, 0.9964))
+			CreateNewDummyObject("boulder_stone2", "tun_stone_9", -1, -1, CVector(808.775, 256.744, 1049.625), Quaternion(0.0000, -0.2567, 0.0000, 0.9665))
+			CreateNewDummyObject("boulder_stone4", "tun_stone_10", -1, -1, CVector(810.512, 256.861, 1056.990), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("sml_stone3", "tun_stone_11", -1, -1, CVector(809.551, 256.930, 1060.032), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("boulder_stone2", "tun_stone_12", -1, -1, CVector(813.500, 256.750, 1060.253), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("boulder_stone1", "tun_stone_13", -1, -1, CVector(814.457, 256.599, 1054.568), Quaternion(0.0000, 0.2250, 0.0000, 0.9744))
+			SetVar("Tunel_Builden", 1)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="RemoveZavalTunel_2" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i=1,13 do
+				local s = GetEntityByName("tun_stone_"..i)
+				if s then s:Remove() end
+			end
+
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(807, 256, 1054), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(778, 256, 1054), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_PS_VEH_EXP2_MED", CVector(810, 256, 1054), Quaternion(0, 0, 0, 1), 6000)
+			SetVar("Tunel_Builden", 2)
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Tunel_BuildInfo" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Tunel_Build_loc" />
+		<script>
+			if not(GetVar("Tunel_item_vitalik").AsInt == 1) or not(GetVar("Tunel_item_handrill").AsInt == 1) or not(GetVar("Tunel_item_metalscissors").AsInt == 1) or not(GetVar("Tunel_item_toolset").AsInt == 2) or not(GetVar("Tunel_item_hose").AsInt == 2) or not(GetVar("Tunel_item_kek").AsInt == 1) or not(GetVar("Tunel_item_electronics_components").AsInt == 3) or not(GetVar("Tunel_item_wires").AsInt == 2) or not(GetVar("Tunel_item_nippers").AsInt == 1) or not(GetVar("Tunel_item_pliers_round").AsInt == 1) then
+				local item_1, item_2, item_3, item_4, item_5, item_6, item_7 = "", "", "", "", "", "", ""
+
+				if GetVar("Tunel_Builden").AsInt == 0 then
+					if GetVar("Tunel_item_vitalik").AsInt ~= 1 then item_1 = "Кувалда «Vitalik» - 1|" end
+				elseif GetVar("Tunel_Builden").AsInt == 1 then
+					if GetVar("Tunel_item_handrill").AsInt ~= 1 then item_1 = "Ручная дрель - 1|" end
+					if GetVar("Tunel_item_metalscissors").AsInt~= 1 then item_2 = "Ножницы для резки металла - 1|" end
+					if GetVar("Tunel_item_toolset").AsInt ~= 1 then item_3 = "Набор инструментов - 1|" end
+				elseif GetVar("Tunel_Builden").AsInt == 2 then
+					if GetVar("Tunel_item_hose").AsInt ~= 2 then item_1 = "Гофрированный шланг - "..(2 - GetVar("Tunel_item_hose").AsInt).."|" end
+					if GetVar("Tunel_item_kek").AsInt ~= 1 then item_2 = "Лента «KEK» - 1|" end
+					if GetVar("Tunel_item_toolset").AsInt ~= 2 then item_3 = "Набор инструментов - 1|" end
+					if GetVar("Tunel_item_electronics_components").AsInt ~= 3 then item_4 = "Компоненты электроники - "..(3 - GetVar("Tunel_item_electronics_components").AsInt).."|" end
+					if GetVar("Tunel_item_wires").AsInt ~= 2 then item_5 = "Провода - "..(2 - GetVar("Tunel_item_wires").AsInt).."|" end
+					if GetVar("Tunel_item_nippers").AsInt ~= 1 then item_6 = "Кусачки - 1|" end
+					if GetVar("Tunel_item_pliers_round").AsInt ~= 1 then item_7 = "Круглогубцы - 1" end
+				end
+
+				local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7
+
+				AddFadingMsgByStrIdFormatted("fm_items_to_build", msg)
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="CreateGateTunel" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(805, 256, 1054), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_S_BUILDING", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1800)
+
+			CreateNewDummyObject("factorytunnelgate", "tunel_gate", -1, -1, CVector(815.136, 259.615, 1054.424), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+		    getObj("tunel_gate"):SetNodeAction(AT_STAND2)
+			SetVar("Tunel_Builden", 3)
+			TDeactivate("Tunel_BuildInfo")
+			TActivate("ToTunel")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ToTunel" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Tunel_loc" />
+		<script>
+			local b = SpawnMessageBox("90002")
+			if b == 1 then
+			end
+		</script>
+	</trigger>
+
+<!-- Генератор -->
+	<trigger Name="CreateGeneratorPoint" active="1">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "generator_point", -1, -1, CVector(824.307, 253.500, 999.765), Quaternion(0, 0, 0, 0), 0.15)
+			CreateNewDummyObject("ore_mine_tower", "mine_tower", -1, -1, CVector(776.134, 255, 1005.534), Quaternion(0.0000, -0.0112, 0.0037, 0.9999))
+			TActivate("Generator_BuildInfo")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Generator_BuildInfo" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Generator_Build_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Generator_Build_lvl_2_loc" />
+		<script>
+			local item_1, item_2, item_3, item_4, item_5, item_6, item_7, item_8, item_9 = "", "", "", "", "", "", "", "", ""
+			local t = trigger:GetCallObjName()
+
+			if GetVar("Generator_lvl").AsInt == 0 and t == "Generator_Build_loc" or GetVar("Generator_lvl").AsInt == 1 and t == "Generator_Build_loc" or GetVar("Generator_lvl").AsInt == 2 and t == "Generator_Build_lvl_2_loc" then
+				if GetVar("Generator_lvl").AsInt == 0 then
+					if GetVar("Generator_lvl_1_item_svech").AsInt ~= 1 then item_1 = "Свеча зажигания - 1|" end
+					if GetVar("Generator_lvl_1_item_engine").AsInt ~= 1 then item_2 = "Двигатель - 1|" end
+					if GetVar("Generator_lvl_1_doski").AsInt ~= 2 then item_3 = "Доски - "..(2 - GetVar("Generator_lvl_1_doski").AsInt).."|" end
+					if GetVar("Generator_lvl_1_fuel").AsInt ~= 2 then item_4 = "Горючее - "..(2 - GetVar("Generator_lvl_1_fuel").AsInt).."|" end
+					if GetVar("Generator_lvl_1_oil").AsInt ~= 4 then item_5 = "Нефть - "..(4 - GetVar("Generator_lvl_1_oil").AsInt).."|" end
+				elseif GetVar("Generator_lvl").AsInt == 1 then
+					if GetVar("Generator_lvl_1_item_svech").AsInt ~= 5 then item_1 = "Свеча зажигания - "..(5 - GetVar("Generator_lvl_1_item_svech").AsInt).."|" end
+					if GetVar("Generator_lvl_1_item_engine").AsInt ~= 2 then item_2 = "Двигатель - 1|" end
+					if GetVar("Generator_lvl_2_item_rele").AsInt ~= 4 then item_3 = "Реле - "..(4 - GetVar("Generator_lvl_2_item_rele").AsInt).."|" end
+					if GetVar("Generator_lvl_2_item_wires").AsInt ~= 10 then item_4 = "Провода - "..(10 - GetVar("Generator_lvl_2_item_wires").AsInt).."|" end
+					if GetVar("Generator_lvl_2_item_buldex").AsInt ~= 1 then item_5 = "Кабелерез «Bulbex» - 1" end
+				elseif GetVar("Generator_lvl").AsInt == 2 and t == "Generator_Build_lvl_2_loc" then
+					if GetVar("Generator_lvl_3_item_bp").AsInt ~= 4 then item_1 = "Блок питания - "..(4 - GetVar("Generator_lvl_3_item_bp").AsInt).."|" end
+					if GetVar("Generator_lvl_1_item_engine").AsInt ~= 5 then item_2 = "Двигатель - "..(5 - GetVar("Generator_lvl_1_item_engine").AsInt).."|" end
+					if GetVar("Generator_lvl_2_item_rele").AsInt ~= 10 then item_3 = "Реле - "..(10 - GetVar("Generator_lvl_2_item_rele").AsInt).."|" end
+					if GetVar("Generator_lvl_1_item_svech").AsInt ~= 15 then item_4 = "Свеча зажигания - "..(15 - GetVar("Generator_lvl_1_item_svech").AsInt).."|" end
+					if GetVar("Generator_lvl_3_item_parts").AsInt ~= 6 then item_5 = "Металлические запчасти - "..(6 - GetVar("Generator_lvl_3_item_parts").AsInt).."|" end
+					if GetVar("Generator_lvl_3_item_military_cable").AsInt ~= 4 then item_6 = "Военный кабель - "..(4 - GetVar("Generator_lvl_3_item_military_cable").AsInt).."|" end
+					if GetVar("Generator_lvl_3_item_plate").AsInt ~= 3 then item_7 = "Плата - "..(3 - GetVar("Generator_lvl_3_item_plate").AsInt).."|" end
+					if GetVar("Generator_lvl_3_item_converter").AsInt ~= 1 then item_8 = "Передовой преобразователь тока - 1|" end
+					if GetVar("Generator_lvl_3_item_lcd").AsInt ~= 3 then item_9 = "LCD дисплей - "..(3 - GetVar("Generator_lvl_3_item_lcd").AsInt).."|" end
+				end
+
+				local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7..""..item_8..""..item_9
+
+				if not(GetVar("Generator_lvl_1_item_svech").AsInt == 15) or not(GetVar("Generator_lvl_1_item_engine").AsInt == 5) or not(GetVar("Generator_lvl_1_doski").AsInt == 2) or not(GetVar("Generator_lvl_1_fuel").AsInt == 2) or not(GetVar("Generator_lvl_1_oil").AsInt == 4) or not(GetVar("Generator_lvl_1_money").AsInt == 2) or not(GetVar("Generator_lvl_2_item_rele").AsInt == 10) or not(GetVar("Generator_lvl_2_item_wires").AsInt == 10) or not(GetVar("Generator_lvl_2_item_buldex").AsInt == 1) or not(GetVar("Generator_lvl_3_item_bp").AsInt == 4) or not(GetVar("Generator_lvl_3_item_parts").AsInt == 6) or not(GetVar("Generator_lvl_3_item_military_cable").AsInt == 4) or not(GetVar("Generator_lvl_3_item_plate").AsInt == 3) or not(GetVar("Generator_lvl_3_item_converter").AsInt == 1) or not(GetVar("Generator_lvl_3_item_lcd").AsInt == 3) then
+					AddFadingMsgByStrIdFormatted("fm_items_to_build", msg)
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="GeneratorTimeWork" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Generator_Build_loc" />
+		<script>
+			AddFadingMsgByStrIdFormatted("fm_generator_time_work", GetVar("Generator_time_work").AsInt)
+		</script>
+	</trigger>
+
+	<trigger Name="GeneratorTimeWork_2" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Generator_Build_lvl_2_loc" />
+		<script>
+			AddFadingMsgByStrIdFormatted("fm_generator_time_work", GetVar("Generator_time_work").AsInt)
+		</script>
+	</trigger>
+
+	<trigger Name="CreateGenerator_lvl_1" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local p = GetEntityByName("generator_point")
+			if p then p:Remove() end
+
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(808, 255, 999), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(806, 255, 1002), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_S_BUILDING", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1800)
+
+			CreateNewDummyObject("r2_substation_barrel", "gen_1_lvl_1", -1, -1, CVector(807.966, 253.215, 1005.037), Quaternion(0.0000, 0.7025, 0.0000, 0.7117))
+		    CreateNewDummyObject("generator_motor", "gen_2_lvl_1", -1, -1, CVector(810.740, 255, 999.550), Quaternion(0, 0, 0, 0))
+			SetVar("Generator_lvl", 1)
+			TDeactivate("Generator_BuildInfo")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateGenerator_lvl_2" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i=1,2 do
+				local g = GetEntityByName("gen_"..i.."_lvl_1")
+				if g then g:Remove() end
+			end
+
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(810, 255, 993), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_S_BUILDING", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1800)
+
+		    CreateNewDummyObject("generator", "gen_1_lvl_2", -1, -1, CVector(810, 255, 993), Quaternion(0, 0, 0, 0))
+		
+			if not(GetVar("Generator_time_work").AsInt == 0) then
+				SetVar("Generator_time_work", 7200)
+			end
+
+			SetVar("Generator_lvl", 2)
+			TDeactivate("Generator_BuildInfo")
+			TDeactivate("GeneratorTimeWork")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateGenerator_lvl_3" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local g = GetEntityByName("gen_1_lvl_2")
+			if g then g:Remove() end
+			local m = GetEntityByName("mine_tower")
+			if m then m:Remove() end
+
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(790, 255, 1003), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(776, 255, 1005), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(800, 255, 1005), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_S_BUILDING", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1800)
+
+		    CreateNewDummyObject("oracle_house_r0m0", "gen_1_lvl_3", -1, -1, CVector(790.884, 254.846, 1003.685), Quaternion(0.0000, 0.6899, 0.0000, 0.7239))
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN1", "gen_2_lvl_3", -1, -1, CVector(791.670, 268.329, 1000.515), Quaternion(0, 0, 0, 0), 0.5)
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN4", "gen_3_lvl_3", -1, -1, CVector(792.096, 256.066, 1000.610), Quaternion(0, 0, 0, 0), 0.6)
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "gen_4_lvl_3", -1, -1, CVector(791.051, 290.533, 1000.847), Quaternion(0, 0, 1, 0), 0.6)
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN7", "gen_5_lvl_3", -1, -1, CVector(790.739, 295.762, 1000.731), Quaternion(0, 0, 0, 0), 0.9)
+			CreateNewSgNodeObject("ET_PS_LENS_S3", "gen_6_lvl_3", -1, -1, CVector(791.451, 317.733, 1001.101), Quaternion(0, 0, 0, 0), 3)
+			CreateNewSgNodeObject("ET_PS_HLIGHT", "gen_7_lvl_3", -1, -1, CVector(791.049, 317.323, 1001.464), Quaternion(0, 0, 0, 0), 16.2)
+			CreateNewSgNodeObject("ET_S_GENERATOR_ORACLE", "gen_8_lvl_3", -1, -1, CVector(792, 270, 1000), Quaternion(0, 0, 0, 0))
+
+			if GetVar("Lampposts_Builden").AsInt == 1 then
+				local lp = GetEntityByName("lp_5")
+				if lp then lp:SetPosition(CVector(819.755, 255, 1017.091)) end
+			end
+
+			if not(GetVar("Generator_time_work").AsInt == 0) then
+				SetVar("Generator_time_work", 7200)
+			end
+
+			SetVar("Generator_lvl", 3)
+			SetVar("Generator_on", 1)
+			TActivate("IfGenerator_On")
+			TDeactivate("Generator_BuildInfo")
+			TDeactivate("GeneratorTimeWork_2")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Generator_Stop" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("Generator_lvl").AsInt == 1 then
+				getObj("gen_2_lvl_1"):SetNodeAction(AT_STAND1)
+				TDeactivate("GeneratorTimeWork")
+			elseif GetVar("Generator_lvl").AsInt == 2 then
+				local g = GetEntityByName("generator_sound")
+				if g then g:Remove() end
+				TDeactivate("GeneratorTimeWork_2")
+			end
+			TActivate("IfGenerator_Off")
+			TDeactivate("Generator_timer")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Generator_Start" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("Generator_lvl").AsInt == 1 then
+				getObj("gen_2_lvl_1"):SetNodeAction(AT_MOVE1)
+				TActivate("GeneratorTimeWork")
+			elseif GetVar("Generator_lvl").AsInt == 2 then
+				CreateNewSgNodeObject("ET_S_GENERATOR", "generator_sound", -1, -1, CVector(810, 255, 993), Quaternion(0, 0, 0, 0))
+				TActivate("GeneratorTimeWork_2")
+			end
+			TActivate("IfGenerator_On")
+			TActivate("Generator_timer")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Generator_timer" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			local t = GetVar("Generator_time_work").AsInt
+
+			if GetVar("Generator_lvl").AsInt == 1 then
+				t = t - 4
+			elseif GetVar("Generator_lvl").AsInt == 2 then
+				t = t - 1
+			end
+
+			SetVar("Generator_time_work", t)
+			println("GeneratorTime: "..t)
+
+			if 1 > GetVar("Generator_time_work").AsInt then
+				SetVar("Generator_time_work", 0)
+				SetVar("Generator_on", 0)
+				TActivate("Generator_Stop")
+			else
+				TActivate("gt")
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="gt" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("Generator_timer")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="IfGenerator_On" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local time = g_ObjCont:GetGameTime().AsString
+			local hour = tonumber(strsub(time, 1, 2))
+
+			if GetVar("PetrolStationBuild_Builden").AsInt == 1 then
+				if 6 > hour then
+					local ps = GetEntityByName("ps_9")
+					if not(ps) then
+						CreateNewSgNodeObject("LS_LIGHT_TEST", "ps_9", -1, -1, CVector(913.649, 257, 1021.364), Quaternion(0, 0, 0, 0), 0.3)
+					end
+				end
+			end
+
+			if GetVar("Lampposts_Builden").AsInt == 1 then
+				if 6 > hour then
+					for i=1,12 do
+						local l = GetEntityByName("lp_"..i)
+						local lPos = l:GetPosition()
+						lPos.y = lPos.y + 1
+						local lp = GetEntityByName("lp_light_"..i)
+						if not(lp) then
+							CreateNewSgNodeObject("LS_LIGHT_TEST", "lp_light_"..i, -1, -1, lPos, Quaternion(0, 0, 0, 0))
+						end
+					end 
+				end	
+			end
+
+			TActivate("Lampposts1_light")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="IfGenerator_Off" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PetrolStationBuild_Builden").AsInt == 1 then
+				local ps_9 = GetEntityByName("ps_9")
+				if ps_9 then ps_9:Remove() end
+			end
+
+			if GetVar("Lampposts_Builden").AsInt == 1 then
+				for i=1,12 do
+					local lpl = GetEntityByName("lp_light_"..i)
+					if lpl then lpl:Remove() end
+				end 	
+			end
+
+			for l=1,92 do
+				local lp = GetEntityByName("lp_1_light_"..l)
+				if lp then lp:Remove() end
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Фонари -->
+	<trigger Name="CreateLamppost_Broken" active="1">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewDummyObject("lamppost3", "lp_1_broken", -1, -1, CVector(888.981, 254.846, 1077.950), Quaternion(-0.0900, -0.8150, -0.4093, 0.4001))
+			CreateNewSgNodeObject("ET_PS_LAMPPOST3", "lp_2_broken", -1, -1, CVector(892.600, 260.439, 1083.207), Quaternion(0.3289, -0.0446, -0.1593, 0.9298))
+			TActivate("Lampposts_BuildInfo")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Lampposts_BuildInfo" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Lampposts_Build_loc" />
+		<script>
+			if not(GetVar("Lampposts_item_energo_lump").AsInt == 12) or not(GetVar("Lampposts_item_wires").AsInt == 12) or not(GetVar("Lampposts_item_kondesators").AsInt == 6) then
+				local item_1, item_2, item_3 = "", "", ""
+		
+				if GetVar("Lampposts_item_energo_lump").AsInt ~= 12 then item_1 = "Энергосберегающая лампа - "..(12 - GetVar("Lampposts_item_energo_lump").AsInt).."|" end
+				if GetVar("Lampposts_item_wires").AsInt ~= 12 then item_2 = "Провода - "..(12 - GetVar("Lampposts_item_wires").AsInt).."|" end
+				if GetVar("Lampposts_item_kondesators").AsInt ~= 6 then item_3 = "Конденсаторы - "..(6 - GetVar("Lampposts_item_kondesators").AsInt).."|" end
+			
+				local msg = item_1..""..item_2..""..item_3
+
+				AddFadingMsgByStrIdFormatted("fm_items_to_build", msg)
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="CreateLampposts" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			for l=1,2 do
+				local lp = GetEntityByName("lp_"..l.."_broken")
+				if lp then lp:Remove() end
+			end
+
+			CreateNewDummyObject("lamppost3", "lp_1", -1, -1, CVector(851.026, 255, 911.183), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("lamppost3", "lp_2", -1, -1, CVector(819.755, 255, 948.091), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("lamppost3", "lp_3", -1, -1, CVector(819.755, 255, 985.016), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("lamppost3", "lp_4", -1, -1, CVector(851.026, 255, 1000.687), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			if not(GetVar("Generator_lvl").AsInt == 3) then
+				CreateNewDummyObject("lamppost3", "lp_5", -1, -1, CVector(788.453, 255, 1015.411), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			else
+				CreateNewDummyObject("lamppost3", "lp_5", -1, -1, CVector(819.755, 255, 1017.091), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			end
+			CreateNewDummyObject("lamppost3", "lp_6", -1, -1, CVector(835.719, 255, 1044.850), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("lamppost3", "lp_7", -1, -1, CVector(835.719, 255, 1064.065), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("lamppost3", "lp_8", -1, -1, CVector(851.026, 255, 1078.285), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("lamppost3", "lp_9", -1, -1, CVector(888.206, 255, 1078.285), Quaternion(0.0000, -0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("lamppost3", "lp_10", -1, -1, CVector(888.206, 255, 1000.687), Quaternion(0.0000, -0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("lamppost3", "lp_11", -1, -1, CVector(951.144, 255, 974.805), Quaternion(0.0000, -0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("lamppost3", "lp_12", -1, -1, CVector(888.206, 255, 900.668), Quaternion(0.0000, -0.7071, 0.0000, 0.7071))
+		
+			for i=1,12 do
+				local l = GetEntityByName("lp_"..i)
+				local lPos = l:GetPosition()
+				lPos.y = lPos.y + 8.2
+				CreateEffectInsertedInRemove("ET_PS_SMOKE_BUILDING", l:GetPosition(), Quaternion(0, 0, 0, 1), true)
+				CreateEffectInsertedInRemove("ET_PS_LAMPPOST3_BUILD", lPos, Quaternion(0, 0, 0, 1), true)
+			end 
+
+			SetVar("Lampposts_Builden", 1)
+			TDeactivate("Lampposts_BuildInfo")
+
+			CreateEffectTTLed( "ET_S_BUILDING", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1800)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Lampposts1_light" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local time = g_ObjCont:GetGameTime().AsString
+			local hour = tonumber(strsub(time, 1, 2))
+
+			for i=1,92 do
+				if 6 > hour then
+					local l = GetEntityByName("lp_1_light_"..i)
+					if not(l) then
+						CreateNewSgNodeObject("LS_LIGHT_TEST2", "lp_1_light_"..i, -1, -1, CVector(getPos("lamppost1_light_"..i.."_loc")), Quaternion(0, 0, 0, 0))
+						local lp = GetEntityByName("lp_1_light_"..i)
+						local lpPos = lp:GetPosition()
+						lpPos.y = lpPos.y + 1
+						if lp then lp:SetPosition(CVector(lpPos)) end
+					end
+				else
+					local lp = GetEntityByName("lp_1_light_"..i)
+					if lp then lp:Remove() end
+				end 
+			end 
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Телепорт -->
+	<trigger Name="Teleport" active="1">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="tp_1_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="tp_2_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="tp_3_loc" />
+		<script>
+			local pl = GetPlayerVehicle()
+			if pl then
+				pl:SetGamePositionOnGround(CVector(893.077, 255.493, 987.899))
+				pl:SetRotation(Quaternion(-0.009, -0.005, -0.000, 1.000))
+				pl:SetThrottle(0)
+				pl:SetCustomLinearVelocity(0)
+				CreateEffectInsertedInRemove("ET_PS_DRONE", pl:GetPosition(), Quaternion(0, 0, 0, 1), true)
+			end
+
+			SetCameraBehindPlayerVehicle()
+		</script>
+	</trigger>
+
+<!-- При выезде из городов -->
+	<trigger Name="LeaveTown" active="1">
+		<event	eventid="GE_LEAVE_TOWN"	ObjName="PetrolStationTown1" />
+		<script>
+			UpdateWeather(0)
+
+			local time = g_ObjCont:GetGameTime().AsString
+			local hour = tonumber(strsub(time, 1, 2))
+
+			if GetVar("Generator_on").AsInt == 1 then
+				TActivate("IfGenerator_On")
+			end
+
+			if hour >= 6 then
+				TActivate("IfGenerator_Off")
+			end
+		</script>
+	</trigger>
+
+</triggers>

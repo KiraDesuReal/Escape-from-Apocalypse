@@ -15,6 +15,16 @@ if COUNT_RAIDS == nil then
 	COUNT_RAIDS = 0
 end
 
+-- Таймер ящика диких
+if CHESTSCAVS_TIMER_GLOBAL == nil then
+	CHESTSCAVS_TIMER_GLOBAL = 0
+end
+
+-- Таймер генератора
+if GENERATOR_TIMER_GLOBAL == nil then
+	GENERATOR_TIMER_GLOBAL = 0
+end
+
 -- Рандомизируем пушки ботам 
 function GiveGunsForVehicle(vehicle, side_random)
 	local veh=vehicle

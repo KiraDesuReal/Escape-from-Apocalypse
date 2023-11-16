@@ -8,36 +8,36 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "potato"
-		Price	= "3000"
+		Price	= "2000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= "potatoe"
 		ResourceType= "POTATO" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "scrap_metal"
-		Price	= "7000"
+		Price	= "5000"
 		Durability	= "100"
-		PriceDispersion      = "7"
+		PriceDispersion      = "5"
 		ModelFile	= "lom"
 		ResourceType= "SCRAP_METAL" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "firewood"
-		Price	= "3500"
+		Price	= "2250"
 		Durability	= "90"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= "koroldrov"
 		ResourceType= "FIREWOOD" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "oil"
-		Price	= "8000"
+		Price	= "5500"
 		Durability	= "70"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= "back_exp"
 		ResourceType= "OIL" />
 
@@ -46,25 +46,25 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Name		= "gear"
 		Price	= "100"
 		Durability	= "60"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= "detail"
 		ResourceType= "GEAR" />   -->
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "bottle"
-		Price	= "10000"
+		Price	= "7000"
 		Durability	= "10"
-		PriceDispersion      = "7"
+		PriceDispersion      = "5"
 		ModelFile	= "bottles"
 		ResourceType= "BOTTLE" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "fuel"
-		Price	= "15000"
+		Price	= "9000"
 		Durability	= "50"
-		PriceDispersion      = "7"
+		PriceDispersion      = "5"
 		ModelFile	= "kanistr"
 		ResourceType= "FUEL" />
 
@@ -72,7 +72,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "machinery"
-		Price	= "20000"
+		Price	= "12000"
 		Durability	= "30"
 		PriceDispersion      = "5"
 		ModelFile	= "rabochee_oborudovanie"
@@ -81,7 +81,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "tobacco"
-		Price	= "7000"
+		Price	= "4000"
 		Durability	= "70"
 		PriceDispersion      = "5"
 		ModelFile	= "tobacco"
@@ -90,7 +90,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "book"
-		Price	= "15500"
+		Price	= "10000"
 		Durability	= "90"
 		PriceDispersion      = "5"
 		ModelFile	= "books"
@@ -107,7 +107,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "electronics"
-		Price	= "30000"
+		Price	= "15000"
 		Durability	= "20"
 		PriceDispersion      = "5"
 		ModelFile	= "mikro"
@@ -170,7 +170,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "doski"
-		Price	= "7000"
+		Price	= "3500"
 		Durability	= "90"
 		PriceDispersion      = "5"
 		ModelFile	= "doski"
@@ -179,7 +179,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "details"
-		Price	= "9000"
+		Price	= "6000"
 		Durability	= "30"
 		PriceDispersion      = "5"
 		ModelFile	= "detail"
@@ -188,7 +188,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "shkatulka"
-		Price	= "20000"
+		Price	= "12000"
 		Durability	= "20"
 		PriceDispersion      = "5"
 		ModelFile	= "shkatulka_a"
@@ -199,16 +199,16 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "scrap_metal_use"
-		Price	= "10000"
+		Price	= "5000"
 		Durability	= "100"
-		PriceDispersion      = "7"
+		PriceDispersion      = "5"
 		ModelFile	= "lom"
 		ResourceType= "SCRAP_METAL_USE" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "machinery_use"
-		Price	= "20500"
+		Price	= "12500"
 		Durability	= "30"
 		PriceDispersion      = "5"
 		ModelFile	= "rabochee_oborudovanie"
@@ -217,7 +217,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "electronics_use"
-		Price	= "35000"
+		Price	= "18000"
 		Durability	= "20"
 		PriceDispersion      = "5"
 		ModelFile	= "mikro"
@@ -226,27 +226,27 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "oil_use"
-		Price	= "12500"
+		Price	= "7500"
 		Durability	= "70"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= "back_exp"
 		ResourceType= "OIL_USE" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "fuel_full_use"
-		Price	= "18700"
+		Price	= "11400"
 		Durability	= "50"
-		PriceDispersion      = "7"
+		PriceDispersion      = "5"
 		ModelFile	= "kanistr"
 		ResourceType= "FUEL_FULL_USE" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "fuel_nil_use"
-		Price	= "3700"
+		Price	= "1200"
 		Durability	= "70"
-		PriceDispersion      = "7"
+		PriceDispersion      = "5"
 		ModelFile	= "kanistr"
 		ResourceType= "FUEL_NIL_USE" />
 
@@ -255,18 +255,18 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_key_gate_thetown"
-		Price	= "10000"
+		Price	= "14000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= "quest_key_for_tunnel"
 		ResourceType= "ITEM_KEY" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_key_gate_r1m3"
-		Price	= "40000"
+		Price	= "6000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= "quest_key_for_tunnel"
 		ResourceType= "ITEM_KEY" />
 
@@ -275,144 +275,144 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_bolts"
-		Price	= "7000"
+		Price	= "4500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />	
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_datchik"
-		Price	= "38500"
+		Price	= "23000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_3X2" />	
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_hose"
-		Price	= "7600"
+		Price	= "4500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_4X2" />	
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_insulation"
-		Price	= "5500"
+		Price	= "3000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />	
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_kek"
-		Price	= "15000"
+		Price	= "9000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />	
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_military_tube"
-		Price	= "21000"
+		Price	= "13500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />	
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_nails"
-		Price	= "4000"
+		Price	= "2600"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />	
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_nuts"
-		Price	= "5500"
+		Price	= "3200"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />	
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_parts"
-		Price	= "12000"
+		Price	= "7500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />	
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_pena"
-		Price	= "30000"
+		Price	= "18000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X4" />	
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_plex"
-		Price	= "10000"
+		Price	= "6500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_poheram"
-		Price	= "12000"
+		Price	= "7300"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_scotch"
-		Price	= "3500"
+		Price	= "2100"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_screws"
-		Price	= "6500"
+		Price	= "3800"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_thermometer"
-		Price	= "28000"
+		Price	= "17000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_tube"
-		Price	= "12000"
+		Price	= "7500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
@@ -421,297 +421,297 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_bp"
-		Price	= "30000"
+		Price	= "18500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_3X3" />
 	
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_cable"
-		Price	= "15000"
+		Price	= "9000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_3X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_converter"
-		Price	= "250000"
+		Price	= "150000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_4X4" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_cooler"
-		Price	= "13000"
+		Price	= "8000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_cpu"
-		Price	= "8000"
+		Price	= "5000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_drill"
-		Price	= "24000"
+		Price	= "14800"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_3X3" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_dvd"
-		Price	= "6000"
+		Price	= "4500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_3X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_electronics_components"
-		Price	= "11000"
+		Price	= "6500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 	
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_energo_lump"
-		Price	= "10500"
+		Price	= "6100"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_engine"
-		Price	= "60000"
+		Price	= "36000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_4X4" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_gazan"
-		Price	= "13500"
+		Price	= "8000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X4" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_geiger"
-		Price	= "14000"
+		Price	= "8500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X4" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_gpu"
-		Price	= "500000"
+		Price	= "300000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_4X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_hdd"
-		Price	= "20000"
+		Price	= "12000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_3X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_helix"
-		Price	= "15000"
+		Price	= "9000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_1X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_iridiym"
-		Price	= "60000"
+		Price	= "37000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_kondesators"
-		Price	= "9000"
+		Price	= "5500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_lcd"
-		Price	= "24000"
+		Price	= "15000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_3X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_lump"
-		Price	= "6000"
+		Price	= "4000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_magnet"
-		Price	= "9000"
+		Price	= "5500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_military_cable"
-		Price	= "26000"
+		Price	= "16000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_3X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_phone"
-		Price	= "11000"
+		Price	= "6500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_plate"
-		Price	= "14000"
+		Price	= "8500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_ram"
-		Price	= "8400"
+		Price	= "5000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_rele"
-		Price	= "7500"
+		Price	= "4500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_1X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_svech"
-		Price	= "8000"
+		Price	= "4850"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_1X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_tetris"
-		Price	= "75000"
+		Price	= "45000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X4" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_tplug"
-		Price	= "5500"
+		Price	= "3200"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_ultra_lump"
-		Price	= "12000"
+		Price	= "7250"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 	
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_usb"
-		Price	= "3500"
+		Price	= "2300"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_virtex"
-		Price	= "180000"
+		Price	= "110000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_vpx"
-		Price	= "145000"
+		Price	= "87500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_wires"
-		Price	= "5000"
+		Price	= "3000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
@@ -720,72 +720,72 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_accum"
-		Price	= "10000"
+		Price	= "6000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_battery_aa"
-		Price	= "3500"
+		Price	= "2500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X1" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_battery_d"
-		Price	= "2500"
+		Price	= "1500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X1" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_car_battery"
-		Price	= "46000"
+		Price	= "28000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_5X4" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_cyclon"
-		Price	= "53500"
+		Price	= "32000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_3X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_green_battery"
-		Price	= "31000"
+		Price	= "19000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X1" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_powerbank"
-		Price	= "16000"
+		Price	= "9800"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_tank_battery"
-		Price	= "1000000"
+		Price	= "600000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_8X4" />
 
@@ -794,108 +794,108 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_dry"
-		Price	= "27000"
+		Price	= "16500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_hunter_spich"
-		Price	= "4200"
+		Price	= "3000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />	
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_lighter"
-		Price	= "4500"
+		Price	= "3250"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_1X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_prisadka"
-		Price	= "45000"
+		Price	= "27500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_propan"
-		Price	= "30000"
+		Price	= "18200"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_3X4" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_spich"
-		Price	= "3500"
+		Price	= "2500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_survl"
-		Price	= "10000"
+		Price	= "6500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_termit"
-		Price	= "70000"
+		Price	= "42000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_trotile"
-		Price	= "22000"
+		Price	= "14000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_wd40_100"
-		Price	= "5000"
+		Price	= "3000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_1X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_wd40_400"
-		Price	= "12000"
+		Price	= "7000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_zibbo"
-		Price	= "6000"
+		Price	= "4000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
@@ -904,72 +904,72 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_alkani"
-		Price	= "14000"
+		Price	= "8500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_hlor"
-		Price	= "15000"
+		Price	= "9000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_3X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_paper"
-		Price	= "7500"
+		Price	= "5000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_4X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_salt"
-		Price	= "5000"
+		Price	= "3500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_soap"
-		Price	= "3000"
+		Price	= "2500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_soda"
-		Price	= "6500"
+		Price	= "4500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_tb"
-		Price	= "5500"
+		Price	= "3700"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_toothpaste"
-		Price	= "6000"
+		Price	= "4000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
@@ -978,81 +978,81 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_diary"
-		Price	= "28000"
+		Price	= "17000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_diary_s"
-		Price	= "23000"
+		Price	= "14000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_disk"
-		Price	= "15500"
+		Price	= "9250"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= "disk"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_disk_exmachina"
-		Price	= "45000"
+		Price	= "27000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= "disk_exmachina"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_flashdrive"
-		Price	= "20000"
+		Price	= "12000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_manual"
-		Price	= "15555"
+		Price	= "9255"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_rozvidka"
-		Price	= "250000"
+		Price	= "150000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_3X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_sas"
-		Price	= "45500"
+		Price	= "27250"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_ssd"
-		Price	= "39000"
+		Price	= "23500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
@@ -1061,72 +1061,72 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_aquapeps"
-		Price	= "18900"
+		Price	= "11300"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_c6h8o6"
-		Price	= "16000"
+		Price	= "10000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_h2o2"
-		Price	= "7500"
+		Price	= "5500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_ledx"
-		Price	= "1000000"
+		Price	= "600000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_medical_tools"
-		Price	= "5000"
+		Price	= "3600"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_naci"
-		Price	= "6500"
+		Price	= "4700"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_oftalmaskop"
-		Price	= "90000"
+		Price	= "54000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_suringe"
-		Price	= "13000"
+		Price	= "8000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
@@ -1135,81 +1135,81 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_airfilter"
-		Price	= "130000"
+		Price	= "80000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_5X5" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_ananaga"
-		Price	= "260000"
+		Price	= "160000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X4" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_emre_kara"
-		Price	= "30000"
+		Price	= "18000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_4X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_filter"
-		Price	= "25000"
+		Price	= "15000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_3X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_fitanyashka"
-		Price	= "60000"
+		Price	= "38500"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= "fitanyashka"
 		ResourceType= "ITEM_SIZE_2X6" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_jeton_bear"
-		Price	= "1000"
+		Price	= "600"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_jeton_usec"
-		Price	= "1000"
+		Price	= "600"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_pants40grn"
-		Price	= "40"
+		Price	= "24"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "0"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X4" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_paracord"
-		Price	= "65000"
+		Price	= "39000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_4X2" />
 
@@ -1225,54 +1225,54 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_salo"
-		Price	= "4500"
+		Price	= "3500"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_vitalik"
-		Price	= "95000"
+		Price	= "57000"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_3X8" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_vodka"
-		Price	= "15000"
+		Price	= "9000"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X4" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_waterfilter"
-		Price	= "32000"
+		Price	= "19500"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X4" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_zapal"
-		Price	= "5000"
+		Price	= "3800"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_monolit"
-		Price	= "15000"
+		Price	= "9000"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= "monolit"
 		ResourceType= "ITEM_SIZE_2X2" />
 
@@ -1281,162 +1281,162 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_awl"
-		Price	= "20000"
+		Price	= "12000"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_buldex"
-		Price	= "66000"
+		Price	= "40000"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X4" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_fullmaster"
-		Price	= "22000"
+		Price	= "14000"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_3X3" />
 	
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_handrill"
-		Price	= "35000"
+		Price	= "21000"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_5X3" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_leatherman"
-		Price	= "18000"
+		Price	= "11000"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 	
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_metalscissors"
-		Price	= "13000"
+		Price	= "8000"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X4" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_nippers"
-		Price	= "10000"
+		Price	= "6500"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_pipe_wrench"
-		Price	= "83000"
+		Price	= "50000"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X4" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_pliers"
-		Price	= "8000"
+		Price	= "3400"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_pliers_round"
-		Price	= "16000"
+		Price	= "10000"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_ratchet_wrench"
-		Price	= "78000"
+		Price	= "47000"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X4" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_roulet"
-		Price	= "3000"
+		Price	= "2000"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_screw"
-		Price	= "4000"
+		Price	= "3000"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_screw_flat"
-		Price	= "8000"
+		Price	= "5000"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_screw_flat_long"
-		Price	= "18000"
+		Price	= "11000"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_sewing_kit"
-		Price	= "24000"
+		Price	= "14600"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_toolset"
-		Price	= "19000"
+		Price	= "11500"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_3X3" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_wrench"
-		Price	= "3000"
+		Price	= "2000"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
@@ -1445,108 +1445,108 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_bitcoin"
-		Price	= "357000"
+		Price	= "215000"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_cat"
-		Price	= "40000"
+		Price	= "24400"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X5" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_chain"
-		Price	= "10000"
+		Price	= "6500"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_chain_gold"
-		Price	= "45000"
+		Price	= "27500"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_chiken"
-		Price	= "57000"
+		Price	= "34400"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_4X4" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_ex"
-		Price	= "27000"
+		Price	= "16500"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_lion"
-		Price	= "150000"
+		Price	= "90000"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_5X3" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_rolex"
-		Price	= "44000"
+		Price	= "26500"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_skullring"
-		Price	= "80000"
+		Price	= "49000"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_teapon"
-		Price	= "30000"
+		Price	= "18000"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X3" />
 		
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_woodclock"
-		Price	= "52500"
+		Price	= "31500"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_4X4" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_vitaly"
-		Price	= "512000"
+		Price	= "308500"
 		Durability	= "10"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_3X3" />
 
@@ -1557,7 +1557,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Name		= "item_opacity"
 		Price	= "0"
 		Durability	= "0"
-		PriceDispersion      = "0"
+		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_OPACITY" />
 		

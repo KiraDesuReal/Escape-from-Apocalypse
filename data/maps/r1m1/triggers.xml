@@ -58,8 +58,13 @@
 		<event eventid="GE_GAME_START" ObjName="Player1" />
 		<script>
 
+			SetVar("ChestScavs_Timer", 0)
+			SetVar("Generator_time_work", 0)
+
 			if COUNT_RAIDS then SetVar("CountRaids",COUNT_RAIDS) end 
-			
+			if CHESTSCAVS_TIMER_GLOBAL > 0 then SetVar("ChestScavs_Timer",CHESTSCAVS_TIMER_GLOBAL) end
+			if GENERATOR_TIMER_GLOBAL > 0 then SetVar("Generator_time_work",GENERATOR_TIMER_GLOBAL) end
+
 			TActivate("GlobalVar")
 
 			TActivate("PetrolStations")
@@ -122,6 +127,7 @@
 			CreateNewDummyObject( "ruins2", "hs05", -1, -1, CVector(3339.008, 368, 3288.451), Quaternion(0.0000, 0.6478, 0.0000, 0.7618) )
 			CreateNewDummyObject( "ruins3", "hs06", -1, -1, CVector(3337.264, 368, 3311.947), Quaternion(0.0000, 0.0000, 0.0000, 1.0000) )
 			CreateNewDummyObject( "ruins3", "hs07", -1, -1, CVector(3390.944, 371, 3329.290), Quaternion(0.0000, 0.928, 0.0000, -0.3726) )
+			CreateNewDummyObject( "concrete_tube1", "hs08", -1, -1, CVector(2865.730, 347.620, 3620.322), Quaternion(0.0035, -0.7446, 0.0027, 0.6675) )
 
 			CreateNewSgNodeObject("ET_PS_HOUSE_MED_FIRE", "FIRE01", -1, -1, CVector(3336, 360, 3305), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
 			CreateNewSgNodeObject("ET_PS_HOUSE_MED_FIRE", "FIRE02", -1, -1, CVector(3309, 360, 3233), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
@@ -138,7 +144,7 @@
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 
-			for i=1,7 do
+			for i=1,8 do
 				local hs = GetEntityByName ("hs0"..i)
 				if hs then hs:Remove() end
 			end
@@ -180,6 +186,7 @@
 		if pr1 ==  2 then
 			TActivate("UseFuelNil_InPetrolStation01")
 			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK01", -1, -1, CVector(2575.530, 360.200, 2266.788), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
+			CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "ps_1_sound", -1, -1, CVector(2582.988, 348, 2267.327), Quaternion(0, 0, 0, 1))
 		else
 			TActivate ("NotWork_PetrolStation01")
 		end
@@ -187,6 +194,7 @@
 		if pr2 ==  2 then
 			TActivate("UseFuelNil_InPetrolStation02")
 			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK02", -1, -1, CVector(1317.154, 300.550, 1748.705), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
+			CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "ps_2_sound", -1, -1, CVector(1318.114, 288, 1756.060), Quaternion(0, 0, 0, 1))
 		else
 			TActivate ("NotWork_PetrolStation02")
 		end
@@ -194,6 +202,7 @@
 		if pr3 ==  2 then
 			TActivate("UseFuelNil_InPetrolStation03")
 			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK03", -1, -1, CVector(916.784, 320.600, 884.400), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
+			CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "ps_3_sound", -1, -1, CVector(912.397, 308, 878.329), Quaternion(0, 0, 0, 1))
 		else
 			TActivate ("NotWork_PetrolStation03")
 		end
@@ -203,14 +212,17 @@
 	
 			if tr_prs_r == 1 then
 				CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK01", -1, -1, CVector(2575.530, 360.200, 2266.788), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
+				CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "ps_1_sound", -1, -1, CVector(2582.988, 348, 2267.327), Quaternion(0, 0, 0, 1))
 				TActivate("UseFuelNil_InPetrolStation01")
 				TDeactivate ("NotWork_PetrolStation01")
 			elseif tr_prs_r == 2 then
 				CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK02", -1, -1, CVector(1317.154, 300.550, 1748.705), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
+				CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "ps_2_sound", -1, -1, CVector(1318.114, 288, 1756.060), Quaternion(0, 0, 0, 1))
 				TActivate("UseFuelNil_InPetrolStation02")
 				TDeactivate ("NotWork_PetrolStation02")
 			elseif tr_prs_r == 3 then	
 				CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK03", -1, -1, CVector(916.784, 320.600, 884.400), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
+				CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "ps_3_sound", -1, -1, CVector(912.397, 308, 878.329), Quaternion(0, 0, 0, 1))
 				TActivate("UseFuelNil_InPetrolStation03")
 				TDeactivate ("NotWork_PetrolStation03")
 			end
@@ -357,6 +369,8 @@
 				else
 					vehPlayer:SetGamePositionOnGround(posrr2[posr2])
 				end
+				vehPlayer:SetThrottle(0)
+				vehPlayer:SetCustomLinearVelocity(0)
 			end
 
 			TActivate("SpawnsScavs")
@@ -380,7 +394,7 @@
 		<script>
 			
 			local time = GetVar("TimeRaid").AsInt
-			
+
 			if time == 1200 then
 				AddImportantFadingMsgByStrIdFormatted("fm_time_min", 20)
 			elseif time == 900 then
@@ -402,6 +416,18 @@
 				AddImportantFadingMsgByStrIdFormatted("fm_time_sec", time)
 			end
 
+			local cst = GetVar("ChestScavs_Timer").AsInt
+			if cst > 0 then
+				cst = cst - 1
+				SetVar("ChestScavs_Timer",cst)
+			end
+
+			local gt = GetVar("Generator_time_work").AsInt
+			if gt > 0 then
+				gt = gt - 1
+				SetVar("Generator_time_work",gt)
+			end
+
 			if time > 0 then
 				time = time - 1
 				SetVar("TimeRaid",time)
@@ -409,7 +435,7 @@
 				TActivate("cutTimeRaid")
 				trigger:Deactivate() 
 			end
-		
+
 		</script>
 	</trigger>
 
@@ -417,16 +443,12 @@
 	<trigger Name="MessageRaid" active="0">
 		<event timeout="7" eventid="GE_TIME_PERIOD" />
 		<script>
-			
-			if COUNT_RAIDS then COUNT_RAIDS = GetVar("CountRaids").AsInt end
-
+		
 			local l = GetVar("CountRaids").AsInt
 			l = l + 1
 			SetVar("CountRaids", l)
 			local count = GetVar("CountRaids").AsInt
 			
-			if COUNT_RAIDS then COUNT_RAIDS = count end
-
 			local time = g_ObjCont:GetGameTime().AsString
 			
 			local hour = tonumber(strsub(time, 1, 2))
@@ -451,7 +473,7 @@
 
 			local user = os.getenv("USERNAME")
 
-			local Msg = "Рейд №"..count.."|День:"..TextTime.."|Оператор ЧВК "..user.."|Край"
+			local Msg = "Рейд №"..count.."|День: "..TextTime.."|Оператор ЧВК "..user.."|Край"
 
 			AddFadingMsgByStrIdFormatted("fm_raid_info", Msg)
 
@@ -470,8 +492,9 @@
 			local ExitZaTheGhoohoeRandom = random (2)
 			if ExitZaTheGhoohoeRandom == 1 then
 				TActivate ("ZaTheGloohoe")
-				TActivate ("DestroyGloohoe")
 				SetVar("ExitGloohoe",1)
+			else
+				TActivate ("DestroyGloohoe")
 			end
 
 
@@ -509,8 +532,9 @@
 
 			local ExitZaTheGhoohoeRandom = random (2)
 			if ExitZaTheGhoohoeRandom == 1 then
-				TActivate ("DestroyGloohoe")
 				SetVar("ExitGloohoe",1)
+			else
+				TActivate ("DestroyGloohoe")
 			end
 
 			trigger:Deactivate()
@@ -636,6 +660,7 @@
 				TActivate("ExitToMap")
 				TDeactivate("LeaveZoneExit")
 				SetVar("ExitTimer",6)
+				PassToMap("r0m0", "FromLocation")
 				trigger:Deactivate()
 			else
 				AddFadingMsgByStrIdFormatted("fm_player_exit_location", timer)
@@ -3184,6 +3209,8 @@
 				if light then light:Remove() end
 				TDeactivate("UseFuelNil_InPetrolStation0"..i)
 				TDeactivate ("NotWork_PetrolStation0"..i)
+				local ps_s = GetEntityByName("ps_"..i.."_sound")
+				if ps_s then ps_s:Remove() end
 			end
 
 			TDeactivate("TimerRaid")
@@ -3208,6 +3235,7 @@
 
 			if GetVar("ExitGloohoe").AsInt==1 then
 				TDeactivate ("ZaTheGloohoe")
+			else
 				TActivate("CreateGloohoeAtDestroy")
 			end
 
@@ -3396,6 +3424,11 @@
 			TDeactivate("FakePlayerDead")
 			local tr3 = getObj("FakePlayerDead_NameCar")
 			if tr3 then tr3:DelEventObj("GE_VEHICLE_WITHOUT_HEALTH", "PlayerCarForDead") end
+
+			--глобал переменные
+			if COUNT_RAIDS then COUNT_RAIDS = GetVar("CountRaids").AsInt end
+			if CHESTSCAVS_TIMER_GLOBAL then CHESTSCAVS_TIMER_GLOBAL = GetVar("ChestScavs_Timer").AsInt end
+			if GENERATOR_TIMER_GLOBAL then GENERATOR_TIMER_GLOBAL = GetVar("Generator_time_work").AsInt end
 
 			println("MAP CLEAR")
 

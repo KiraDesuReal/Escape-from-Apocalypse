@@ -431,6 +431,21 @@
 		value="Бокс" />
 
 	<Item
+		id="molokovozCargo01_5x8"
+		locForm="0"
+		value="Тент" />
+
+	<Item
+		id="molokovozCargo02_6x9"
+		locForm="0"
+		value="Генератор" />
+
+	<Item
+		id="molokovozCargo03_6x8"
+		locForm="0"
+		value="Бокс" />
+
+	<Item
 		id="belazCab01"
 		locForm="0"
 		value="Зод" />
@@ -480,6 +495,32 @@
 		locForm="0"
 		value="Цилиндр" />
 
+	
+	<Item
+		id="belazCargo01_7x12"
+		locForm="0"
+		value="Хост" />
+
+	<Item
+		id="belazCargo02_9x12"
+		locForm="0"
+		value="Конструктор" />
+
+	<Item
+		id="belazCargo03_12x12"
+		locForm="0"
+		value="Колосс" />
+
+	<Item
+		id="belazCargo04_8x12"
+		locForm="0"
+		value="Гром" />
+
+	<Item
+		id="belazCargo05_10x10"
+		locForm="0"
+		value="Цилиндр" />
+
 	<Item
 		id="bugCab01"
 		locForm="0"
@@ -507,6 +548,21 @@
 
 	<Item
 		id="bugCargo03"
+		locForm="0"
+		value="Борг" />
+
+	<Item
+		id="bugCargo01_4x5"
+		locForm="0"
+		value="Газ" />
+
+	<Item
+		id="bugCargo02_4x6"
+		locForm="0"
+		value="Каскад" />
+
+	<Item
+		id="bugCargo03_5x7"
 		locForm="0"
 		value="Борг" />
 
@@ -561,6 +617,31 @@
 		value="Тигр" />
 
 	<Item
+		id="uralCargo01_6x10"
+		locForm="0"
+		value="Холод" />
+
+	<Item
+		id="uralCargo02_9x10"
+		locForm="0"
+		value="Фрахт" />
+
+	<Item
+		id="uralCargo03_10x10"
+		locForm="0"
+		value="Крейсер" />
+
+	<Item
+		id="uralCargo04_8x9"
+		locForm="0"
+		value="Панцирь" />
+
+	<Item
+		id="uralCargo05_7x9"
+		locForm="0"
+		value="Тигр" />
+
+	<Item
 		id="BelazForSale"
 		locForm="0"
 		value="Белаз" />
@@ -579,6 +660,11 @@
 		id="MolokovozForSale"
 		locForm="0"
 		value="Молоковоз" />
+
+	<Item
+		id="CruiserForSale"
+		locForm="0"
+		value="Крейсер" />
 
 	<Item
 		id="MolokovozCargo04"
@@ -632,6 +718,31 @@
 
 	<Item
 		id="mirotvorecCargo05"
+		locForm="0"
+		value="Экскалибур" />
+
+	<Item
+		id="mirotvorecCargo01_8x10"
+		locForm="0"
+		value="Клык" />
+
+	<Item
+		id="mirotvorecCargo02_10x9"
+		locForm="0"
+		value="Центурион" />
+
+	<Item
+		id="mirotvorecCargo03_12x12"
+		locForm="0"
+		value="Майа" />
+
+	<Item
+		id="mirotvorecCargo04_9x9"
+		locForm="0"
+		value="Масамунэ" />
+
+	<Item
+		id="mirotvorecCargo05_12x12"
 		locForm="0"
 		value="Экскалибур" />
 
@@ -1767,6 +1878,16 @@
 		value="Кузов" />
 
 	<Item
+		id="fakeCargoForSale"
+		locForm="0"
+		value="Кузов" />
+
+	<Item
+		id="fakeCab"
+		locForm="0"
+		value="Кабина" />
+
+	<Item
 		id="cruiserCab01"
 		locForm="1"
 		value="Кабина Крейсера" />
@@ -1783,6 +1904,16 @@
 
 	<Item
 		id="cruiserCargo02"
+		locForm="0"
+		value="Кузов Крейсера" />
+
+	<Item
+		id="cruiserCargo01_11x10"
+		locForm="0"
+		value="Кузов Крейсера" />
+
+	<Item
+		id="cruiserCargo02_13x10"
 		locForm="0"
 		value="Кузов Крейсера" />
 	
@@ -1944,7 +2075,7 @@
 	<Item
 		id="BugChassis"
 		locForm="0"
-		value="Вэн" />
+		value="Платформа" />
 
 	<Item
 		id="Molokovoz01PMC"

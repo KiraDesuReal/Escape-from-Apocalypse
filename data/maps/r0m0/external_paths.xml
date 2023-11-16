@@ -3,7 +3,7 @@
 	<Path
 		Name="veh_paths_to_end_1">
 		<Point
-			coord="866.248 872.120" />
+			coord="866.963 870.620" />
 
 		<Point
 			coord="861.436 816.973" />
@@ -72,7 +72,7 @@
 	<Path
 		Name="veh_paths_to_end_2">
 		<Point
-			coord="870.554 1110.290" />
+			coord="870.059 1111.898" />
 
 		<Point
 			coord="875.706 1156.962" />
@@ -129,7 +129,7 @@
 	<Path
 		Name="veh_paths_to_garage_1">
 		<Point
-			coord="865.825 1083.917" />
+			coord="867.204 1082.740" />
 
 		<Point
 			coord="863.149 1045.750" />
@@ -138,34 +138,55 @@
 			coord="863.510 994.116" />
 
 		<Point
-			coord="862.252 972.743" />
+			coord="863.185 972.443" />
 
 		<Point
-			coord="826.653 971.956" />
+			coord="856.892 960.954" />
+	</Path>
+
+	<Path
+		Name="veh_paths_to_garage_1_1">
+		<Point
+			coord="851.604 959.965" />
 
 		<Point
-			coord="800.646 971.820" />
+			coord="836.862 966.138" />
+
+		<Point
+			coord="814.169 971.500" />
+
+		<Point
+			coord="801.418 971.988" />
 	</Path>
 
 	<Path
 		Name="veh_paths_to_garage_2">
 		<Point
-			coord="871.938 895.282" />
+			coord="870.522 897.902" />
 
 		<Point
 			coord="873.489 924.891" />
 
 		<Point
-			coord="874.516 959.413" />
+			coord="873.778 962.701" />
+	</Path>
+
+	<Path
+		Name="veh_paths_to_garage_2_2">
+		<Point
+			coord="863.823 962.261" />
 
 		<Point
-			coord="843.501 959.219" />
+			coord="846.587 967.939" />
 
 		<Point
-			coord="821.603 959.375" />
+			coord="825.517 963.201" />
 
 		<Point
-			coord="799.285 959.241" />
+			coord="814.105 960.181" />
+
+		<Point
+			coord="800.913 959.752" />
 	</Path>
 
 	<Path
@@ -234,16 +255,16 @@
 			coord="860.611 1130.134" />
 
 		<Point
-			coord="865.548 1105.265" />
+			coord="866.876 1105.197" />
 	</Path>
 
 	<Path
 		Name="veh_paths_to_gate_1_from_garage_2">
 		<Point
-			coord="821.611 958.946" />
+			coord="814.358 960.365" />
 
 		<Point
-			coord="851.824 958.700" />
+			coord="827.539 959.675" />
 
 		<Point
 			coord="873.787 959.365" />
@@ -252,13 +273,13 @@
 			coord="873.338 1006.795" />
 
 		<Point
-			coord="871.376 1085.142" />
+			coord="870.578 1082.379" />
 	</Path>
 
 	<Path
 		Name="veh_paths_to_gate_1_from_gate_2">
 		<Point
-			coord="871.915 893.088" />
+			coord="870.604 898.736" />
 
 		<Point
 			coord="873.994 959.118" />
@@ -267,25 +288,37 @@
 			coord="872.948 1049.800" />
 
 		<Point
-			coord="871.689 1084.779" />
+			coord="871.421 1079.357" />
 	</Path>
 
 	<Path
 		Name="veh_paths_to_gate_1_from_inventory">
 		<Point
-			coord="937.573 983.921" />
+			coord="937.730 984.193" />
 
 		<Point
-			coord="892.541 980.903" />
+			coord="928.042 978.126" />
 
 		<Point
-			coord="875.784 980.703" />
+			coord="908.673 978.911" />
 
 		<Point
-			coord="875.324 1039.749" />
+			coord="886.891 979.034" />
 
 		<Point
-			coord="871.364 1085.397" />
+			coord="873.613 979.527" />
+	</Path>
+
+	<Path
+		Name="veh_paths_to_gate_1_from_inventory_1_1">
+		<Point
+			coord="875.825 994.765" />
+
+		<Point
+			coord="875.354 1038.981" />
+
+		<Point
+			coord="870.935 1084.069" />
 	</Path>
 
 	<Path
@@ -342,25 +375,31 @@
 			coord="875.742 852.453" />
 
 		<Point
-			coord="871.061 875.864" />
+			coord="869.813 873.221" />
 	</Path>
 
 	<Path
 		Name="veh_paths_to_gate_2_from_garage_1">
 		<Point
-			coord="818.656 971.964" />
+			coord="814.314 971.562" />
 
 		<Point
-			coord="865.524 971.800" />
+			coord="826.847 971.593" />
 
 		<Point
-			coord="866.237 897.305" />
+			coord="862.365 971.029" />
+
+		<Point
+			coord="863.262 913.956" />
+
+		<Point
+			coord="867.072 897.731" />
 	</Path>
 
 	<Path
 		Name="veh_paths_to_gate_2_from_gate_1">
 		<Point
-			coord="865.807 1081.621" />
+			coord="867.636 1080.975" />
 
 		<Point
 			coord="862.605 1005.909" />
@@ -369,46 +408,61 @@
 			coord="862.302 931.590" />
 
 		<Point
-			coord="865.763 894.219" />
+			coord="866.454 897.907" />
 	</Path>
 
 	<Path
 		Name="veh_paths_to_gate_2_from_inventory">
 		<Point
-			coord="938.291 983.902" />
+			coord="937.943 984.488" />
 
 		<Point
-			coord="892.484 981.961" />
+			coord="924.117 978.526" />
 
 		<Point
-			coord="863.760 980.158" />
+			coord="900.095 978.786" />
 
 		<Point
-			coord="864.039 928.439" />
+			coord="865.280 979.235" />
+	</Path>
+
+	<Path
+		Name="veh_paths_to_gate_2_from_inventory_2_2">
+		<Point
+			coord="864.904 963.049" />
 
 		<Point
-			coord="866.458 894.725" />
+			coord="865.378 916.588" />
+
+		<Point
+			coord="866.125 895.311" />
 	</Path>
 
 	<Path
 		Name="veh_paths_to_inventory_1">
 		<Point
-			coord="864.568 1083.275" />
+			coord="866.052 1082.955" />
 
 		<Point
-			coord="865.018 1036.567" />
+			coord="863.746 1047.205" />
 
 		<Point
-			coord="865.091 978.985" />
+			coord="862.876 1002.500" />
 
 		<Point
-			coord="892.343 979.251" />
+			coord="862.395 979.558" />
 
 		<Point
-			coord="932.251 981.024" />
+			coord="887.262 979.225" />
 
 		<Point
-			coord="944.256 982.977" />
+			coord="911.482 979.353" />
+
+		<Point
+			coord="928.835 979.711" />
+
+		<Point
+			coord="944.809 983.030" />
 	</Path>
 
 	<Path

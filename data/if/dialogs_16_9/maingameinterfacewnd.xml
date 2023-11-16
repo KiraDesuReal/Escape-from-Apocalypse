@@ -20,6 +20,7 @@
 		format="1"
 		font="0"
 		clientEdges="0.000 0.000 0.000 0.000">
+<!--
 		<Node
 			name="wndLeftStripe"
 			class="Wnd"
@@ -36,8 +37,8 @@
 			format="1"
 			font="0"
 			clientEdges="0.000 0.000 0.000 0.000">
+		</Node>
 
-				</Node>
 		<Node
 			name="wndRightStripe"
 			class="Wnd"
@@ -54,8 +55,8 @@
 			format="1"
 			font="0"
 			clientEdges="0.000 0.000 0.000 0.000">
-
-				</Node>
+		</Node>
+-->
 		<Node
 			name="wndNearbyChestsIco"
 			class="ImageWnd"
@@ -73,8 +74,8 @@
 			format="1"
 			font="0"
 			clientEdges="0.000 0.000 0.000 0.000">
+		</Node>
 
-				</Node>
 		<Node
 			name="wndNearbyTownIco"
 			class="ImageWnd"
@@ -92,7 +93,6 @@
 			format="1"
 			font="0"
 			clientEdges="0.000 0.000 0.000 0.000">
-
-				</Node>
+		</Node>
 	</Node>
 </Prefabs>

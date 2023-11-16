@@ -896,6 +896,68 @@
 		scriptCondition="GetVar('Lampposts_item_energo_lump').AsInt == 12 and GetVar('Lampposts_item_wires').AsInt == 12 and GetVar('Lampposts_item_kondesators').AsInt == 6 and GetVar('Lampposts_money').AsInt == 1"
 		scriptResult="GetCurNpc():SetSpokenCount(1); TActivate('CreateLampposts'); EndConversation()" />
 
+<!--Root/r0m0/Выход с карты-->
+	<Reply
+		name="Dlg_npc_0013108"
+		text="Выберите место дислокации."
+		role="NPC"
+		scriptCondition="GetPlayerHealth() >= 1 and GetVar('PetrolStation_Refill_Process').AsInt == 0"
+		nextReplies="Dlg_pl_0013109 Dlg_pl_0013117" />
+
+	<Reply
+		name="Dlg_pl_0013109"
+		text="Край"
+		role="PLAYER"
+		scriptResult="SetVar('ToMap', 'r1m1'); TActivate('PassingToMap'); TActivate('ExitMap'); EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_0013110"
+		text="Риджин"
+		role="PLAYER"
+		scriptResult="SetVar('ToMap', 'r1m2'); TActivate('PassingToMap'); TActivate('ExitMap'); EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_0013111"
+		text="Фатерлянд"
+		role="PLAYER"
+		scriptResult="SetVar('ToMap', 'r1m3'); TActivate('PassingToMap'); TActivate('ExitMap'); EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_0013112"
+		text="Хель"
+		role="PLAYER"
+		scriptResult="SetVar('ToMap', 'r1m4'); TActivate('PassingToMap'); TActivate('ExitMap'); EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_0013113"
+		text="Либриум"
+		role="PLAYER"
+		scriptResult="SetVar('ToMap', 'r2m1'); TActivate('PassingToMap'); TActivate('ExitMap'); EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_0013114"
+		text="Аржан"
+		role="PLAYER"
+		scriptResult="SetVar('ToMap', 'r2m2'); TActivate('PassingToMap'); TActivate('ExitMap'); EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_0013115"
+		text="Роща друидов"
+		role="PLAYER"
+		scriptResult="SetVar('ToMap', 'r3m1'); TActivate('PassingToMap'); TActivate('ExitMap'); EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_0013116"
+		text="Игнотт"
+		role="PLAYER"
+		scriptResult="SetVar('ToMap', 'r3m2'); TActivate('PassingToMap'); TActivate('ExitMap'); EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_0013117"
+		text="Выход"
+		role="PLAYER"
+		scriptResult="EndConversation()" />
+
 <!--Root/r4m2/Сюжетные--><!--Root/r4m2/Сюжетные/Битва у базы-->
 	<Reply
 		name="r4m2_MilitaryBase_Man1_1_N01"

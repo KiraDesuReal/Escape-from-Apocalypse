@@ -20,59 +20,75 @@
 
 	<Object
 		Name="Gate_1_1_loc"
-		Belong="1088"
+		Belong="1091"
 		Prototype="genericLocation"
 		Pos="868.903 255.000 1096.787"
-		Radius="21.000" />
+		Radius="30.000" />
 	
 	<Object
 		Name="Gate_1_2_loc"
-		Belong="1089"
+		Belong="1092"
 		Prototype="genericLocation"
 		Pos="868.903 255.000 1096.787"
-		Radius="21.000" />
+		Radius="30.000" />
 	
 	<Object
 		Name="Gate_1_3_loc"
 		Belong="1090"
 		Prototype="genericLocation"
 		Pos="868.903 255.000 1096.787"
-		Radius="21.000" />
+		Radius="30.000" />
 
 	<Object
-		Name="Gate_1_pl_loc"
+		Name="Gate_1_player_loc"
 		Belong="1100"
 		Prototype="genericLocation"
 		Pos="868.903 255.000 1096.787"
-		Radius="17.000" />
+		Radius="17.000">
+		<Object
+			Name="ExitLocation_1_NPC"
+			Belong="1100"
+			Prototype="NPC"
+			ModelName=""
+			helloReplyNames="Dlg_npc_0013108"
+			SpokenCount="0" />
+	</Object>
 
 	<Object
 		Name="Gate_2_1_loc"
-		Belong="1088"
+		Belong="1091"
 		Prototype="genericLocation"
 		Pos="868.610 255.000 882.935"
-		Radius="21.000" />
+		Radius="30.000" />
 
 	<Object
 		Name="Gate_2_2_loc"
-		Belong="1089"
+		Belong="1092"
 		Prototype="genericLocation"
 		Pos="868.610 255.000 882.935"
-		Radius="21.000" />
+		Radius="30.000" />
 
 	<Object
 		Name="Gate_2_3_loc"
 		Belong="1090"
 		Prototype="genericLocation"
 		Pos="868.610 255.000 882.935"
-		Radius="21.000" />
+		Radius="30.000" />
 
 	<Object
-		Name="Gate_2_pl_loc"
+		Name="Gate_2_player_loc"
 		Belong="1100"
 		Prototype="genericLocation"
 		Pos="868.610 255.000 882.935"
-		Radius="17.000" />
+		Radius="17.000">
+		<Object
+			Name="ExitLocation_2_NPC"
+			Belong="1100"
+			Prototype="NPC"
+			ModelName=""
+			helloReplyNames="Dlg_npc_0013108"
+			SpokenCount="0" />
+	</Object>
 
 	<Object
 		Name="PetrolStation_loc"
@@ -128,11 +144,32 @@
 	</Object>
 
 	<Object
-		Name="Tunel_loc"
+		Flags="21"
+		Name="ToTunel"
+		Belong="1100"
+		Prototype="genericLocationTunnel"
+		Pos="645.000 255.000 1054.000"
+		Radius="11.000"
+		LookingTimeOut="100.000"
+		PassageAddress="r0m1 FromTunel"
+		PassageActive="0" />
+
+	<Object
+		Flags="21"
+		Name="FromTunel"
+		Belong="1100"
+		Prototype="genericLocationTunnel"
+		Pos="821.000 255.000 1054.351"
+		Radius="11.000"
+		LookingTimeOut="10.000"
+		ExitLocation="ToTunel" />
+
+	<Object
+		Name="FromLocation"
 		Belong="1100"
 		Prototype="genericLocation"
-		Pos="821.000 255.000 1054.351"
-		Radius="11.000" />
+		Pos="893.077 255.493 987.899"
+		Radius="10.000" />
 
 	<Object
 		Name="Inventory_Build_lvl_2_loc"
@@ -233,13 +270,6 @@
 	</Object>
 
 	<Object
-		Name="Town_loc"
-		Belong="1100"
-		Prototype="genericLocation"
-		Pos="865.939 255.000 990.480"
-		Radius="78.000" />
-
-	<Object
 		Name="tp_1_loc"
 		Belong="1100"
 		Prototype="genericLocation"
@@ -259,6 +289,458 @@
 		Prototype="genericLocation"
 		Pos="868.739 255.000 874.960"
 		Radius="8.000" />
+
+	<Object
+		Name="Town_r0m0"
+		Belong="1100"
+		Prototype="Town_r0m0"
+		Pos="0 0 0"
+		Rot="0.000 1.000 0.000 0.000"
+		PointOfViewInInterface="785 200 847"
+		CaravansDest="">
+		<Object
+			Name="Town_r0m0_Shop"
+			Belong="1100"
+			Prototype="shop">
+			<GunsAndGadgets>
+<!--
+				<Item
+					PosX="0"
+					PosY="0"
+					Flags="16"
+					Prototype="cooling_system_guns" />
+
+				<Item
+					PosX="1"
+					PosY="0"
+					Flags="16"
+					Prototype="firing_rate_guns" />
+
+				<Item
+					PosX="2"
+					PosY="0"
+					Flags="16"
+					Prototype="grouping_angle_guns" />
+
+				<Item
+					PosX="3"
+					PosY="0"
+					Flags="16"
+					Prototype="add_damage_guns" />
+
+				<Item
+					PosX="4"
+					PosY="0"
+					Flags="16"
+					Prototype="firing_range_guns" />
+
+				<Item
+					PosX="5"
+					PosY="0"
+					Flags="16"
+					Prototype="additional_fuel_tank" />
+
+				<Item
+					PosX="6"
+					PosY="0"
+					Flags="16"
+					Prototype="additional_torque" />
+
+				<Item
+					PosX="7"
+					PosY="0"
+					Flags="16"
+					Prototype="additional_durability" />
+
+				<Item
+					PosX="8"
+					PosY="0"
+					Flags="16"
+					Prototype="additional_stability" />
+-->
+			</GunsAndGadgets>
+		</Object>
+
+		<Object
+			Flags="21"
+			Name="Town_r0m0_enter"
+			Belong="1100"
+			Prototype="genericLocation"
+			Pos="858.564 255.000 985.160"
+			Radius="50.000" />
+
+		<Object
+			Name="Town_r0m0_Bar"
+			Belong="1100"
+			Prototype="bar">
+			<Object
+				Name="Traider_1_NPC"
+				Belong="1100"
+				Prototype="NPC"
+				ModelName="r1_man"
+				cfg="4"
+				helloReplyNames=""
+				SpokenCount="0" />
+
+		</Object>
+
+		<Object
+			Name="Town_r0m0_Workshop"
+			Belong="1100"
+			Prototype="workshop">
+			<CabinsAndBaskets>
+<!--
+				<Item
+					PosX="0"
+					PosY="0"
+					Flags="16"
+					Prototype="bugCargo01_4x5" />
+
+				<Item
+					PosX="5"
+					PosY="0"
+					Flags="16"
+					Prototype="bugCargo02_4x6" />
+
+				<Item
+					PosX="0"
+					PosY="5"
+					Flags="16"
+					Prototype="bugCargo03_5x7" />
+
+				<Item
+					PosX="5"
+					PosY="5"
+					Flags="16"
+					Prototype="bugCab01" />
+
+				<Item
+					PosX="0"
+					PosY="10"
+					Flags="16"
+					Prototype="bugCab02" />
+
+				<Item
+					PosX="5"
+					PosY="10"
+					Flags="16"
+					Prototype="bugCab03" />
+
+				<Item
+					PosX="0"
+					PosY="15"
+					Flags="16"
+					Prototype="molokovozCargo01_5x8" />
+
+				<Item
+					PosX="5"
+					PosY="15"
+					Flags="16"
+					Prototype="molokovozCargo02_6x9" />
+
+				<Item
+					PosX="0"
+					PosY="20"
+					Flags="16"
+					Prototype="molokovozCargo03_6x8" />
+
+				<Item
+					PosX="5"
+					PosY="20"
+					Flags="16"
+					Prototype="molokovozCab01" />
+
+				<Item
+					PosX="0"
+					PosY="25"
+					Flags="16"
+					Prototype="molokovozCab02" />
+
+				<Item
+					PosX="5"
+					PosY="25"
+					Flags="16"
+					Prototype="molokovozCab03" />
+
+				<Item
+					PosX="0"
+					PosY="30"
+					Flags="16"
+					Prototype="uralCargo01_6x10" />
+
+				<Item
+					PosX="5"
+					PosY="30"
+					Flags="16"
+					Prototype="uralCargo02_9x10" />
+
+				<Item
+					PosX="0"
+					PosY="35"
+					Flags="16"
+					Prototype="uralCargo03_10x10" />
+
+				<Item
+					PosX="5"
+					PosY="35"
+					Flags="16"
+					Prototype="uralCargo04_8x9" />
+
+				<Item
+					PosX="0"
+					PosY="40"
+					Flags="16"
+					Prototype="uralCargo05_7x9" />
+
+				<Item
+					PosX="5"
+					PosY="40"
+					Flags="16"
+					Prototype="uralCab01" />
+
+				<Item
+					PosX="0"
+					PosY="45"
+					Flags="16"
+					Prototype="uralCab02" />
+
+				<Item
+					PosX="5"
+					PosY="45"
+					Flags="16"
+					Prototype="uralCab03" />
+
+				<Item
+					PosX="0"
+					PosY="50"
+					Flags="16"
+					Prototype="uralCab04" />
+
+				<Item
+					PosX="5"
+					PosY="50"
+					Flags="16"
+					Prototype="uralCab05" />
+
+				<Item
+					PosX="0"
+					PosY="55"
+					Flags="16"
+					Prototype="belazCargo01_7x12" />
+
+				<Item
+					PosX="5"
+					PosY="55"
+					Flags="16"
+					Prototype="belazCargo02_9x12" />
+
+				<Item
+					PosX="0"
+					PosY="60"
+					Flags="16"
+					Prototype="belazCargo03_12x12" />
+
+				<Item
+					PosX="5"
+					PosY="60"
+					Flags="16"
+					Prototype="belazCargo04_8x12" />
+
+				<Item
+					PosX="0"
+					PosY="65"
+					Flags="16"
+					Prototype="belazCargo05_10x10" />
+
+				<Item
+					PosX="5"
+					PosY="65"
+					Flags="16"
+					Prototype="belazCab01" />
+
+				<Item
+					PosX="0"
+					PosY="70"
+					Flags="16"
+					Prototype="belazCab02" />
+
+				<Item
+					PosX="5"
+					PosY="70"
+					Flags="16"
+					Prototype="belazCab02" />
+
+				<Item
+					PosX="0"
+					PosY="75"
+					Flags="16"
+					Prototype="belazCab03" />
+
+				<Item
+					PosX="5"
+					PosY="75"
+					Flags="16"
+					Prototype="belazCab04" />
+
+				<Item
+					PosX="0"
+					PosY="80"
+					Flags="16"
+					Prototype="belazCab05" />
+
+				<Item
+					PosX="5"
+					PosY="80"
+					Flags="16"
+					Prototype="mirotvorecCargo01_8x10" />
+
+				<Item
+					PosX="0"
+					PosY="85"
+					Flags="16"
+					Prototype="mirotvorecCargo02_10x9" />
+
+				<Item
+					PosX="5"
+					PosY="85"
+					Flags="16"
+					Prototype="mirotvorecCargo03_12x12" />
+
+				<Item
+					PosX="0"
+					PosY="90"
+					Flags="16"
+					Prototype="mirotvorecCargo04_9x9" />
+
+				<Item
+					PosX="5"
+					PosY="90"
+					Flags="16"
+					Prototype="mirotvorecCargo05_12x12" />
+
+				<Item
+					PosX="0"
+					PosY="95"
+					Flags="16"
+					Prototype="mirotvorecCab01" />
+
+				<Item
+					PosX="5"
+					PosY="95"
+					Flags="16"
+					Prototype="mirotvorecCab02" />
+
+				<Item
+					PosX="0"
+					PosY="100"
+					Flags="16"
+					Prototype="mirotvorecCab03" />
+
+				<Item
+					PosX="5"
+					PosY="100"
+					Flags="16"
+					Prototype="mirotvorecCab04" />
+
+				<Item
+					PosX="0"
+					PosY="105"
+					Flags="16"
+					Prototype="mirotvorecCab05" />
+
+				<Item
+					PosX="5"
+					PosY="105"
+					Flags="16"
+					Prototype="cruiserCargo01_11x10" />
+
+				<Item
+					PosX="0"
+					PosY="110"
+					Flags="16"
+					Prototype="cruiserCargo02_13x10" />
+
+				<Item
+					PosX="5"
+					PosY="110"
+					Flags="16"
+					Prototype="cruiserCab01" />
+
+				<Item
+					PosX="0"
+					PosY="115"
+					Flags="16"
+					Prototype="cruiserCab02" />
+-->
+			</CabinsAndBaskets>
+
+			<Vehicles>
+<!--
+				<Item
+					PosX="0"
+					PosY="0"
+					Flags="16"
+					Prototype="BugForSale"
+					Pos="0.000 111.522 0.000">
+					<Parts />
+
+					<Repository />
+				</Item>
+
+				<Item
+					PosX="1"
+					PosY="0"
+					Flags="16"
+					Prototype="MolokovozForSale"
+					Pos="0.000 111.656 0.000">
+
+					<Repository />
+				</Item>
+
+				<Item
+					PosX="2"
+					PosY="0"
+					Flags="16"
+					Prototype="UralForSale"
+					Pos="0.000 111.656 0.000">
+
+					<Repository />
+				</Item>
+
+				<Item
+					PosX="3"
+					PosY="0"
+					Flags="16"
+					Prototype="BelazForSale"
+					Pos="0.000 111.656 0.000">
+
+					<Repository />
+				</Item>
+
+				<Item
+					PosX="4"
+					PosY="0"
+					Flags="16"
+					Prototype="MirotvorecForSale"
+					Pos="0.000 111.656 0.000">
+
+					<Repository />
+				</Item>
+
+				<Item
+					PosX="5"
+					PosY="0"
+					Flags="16"
+					Prototype="CruiserForSale"
+					Pos="0.000 111.656 0.000">
+
+					<Repository />
+				</Item>
+-->
+
+			</Vehicles>
+		</Object>
+	</Object>
 
 	<Object
 		Name="lamppost1_light_1_loc"
@@ -920,7 +1402,7 @@
 			Prototype="genericLocation"
 			Pos="906.852 255.000 1040.380"
 			Rot="0.0000 0.6962 0.0000 0.7178"
-			Radius="5.000" />
+			Radius="3.000" />
 
 		<Object
 			Name="PetrolStationTown1_Workshop"

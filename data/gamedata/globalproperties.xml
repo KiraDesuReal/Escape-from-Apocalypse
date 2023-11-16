@@ -23,7 +23,7 @@
 		TimeBetweenBursts="500"/>
 
 	<DynamicQuest
-		ProbabilityToGenerateDynamicQuestInTown="0.8"/>
+		ProbabilityToGenerateDynamicQuestInTown="0"/>
 
 	<CommonPaths
 		Relationship="data/gamedata/Relationship.xml"
@@ -48,7 +48,7 @@
 
 	<Vehicles
 		VehiclesDropChests="true"
-		MaxSpeedWithNoFuel="10"/>
+		MaxSpeedWithNoFuel="0"/>
 
 	<SmartCursor
 		InfoAreaRadius="70"
@@ -96,8 +96,8 @@
 		ColorFriend="ff87e400"
 		ColorEnemy="ffff3300"
 		ColorTargetCaptured="ffff8700"
-		TargetInfoContourWidth="0.007"
-		TargetCapturedContourWidth="0.007"/>
+		TargetInfoContourWidth="0"
+		TargetCapturedContourWidth="0"/>
 
 	<PlayerPassmap
 		PlayerPassMapUnpassableMu="0.3"
@@ -111,7 +111,7 @@
 	<DifficultyLevels>
 		<Level
 			Name="HardLevel"
-			EnemyWeaponCoeff="1.25"
+			EnemyWeaponCoeff="1.5"
 			EnemyShootingDelay="0.5"/>
 	</DifficultyLevels>
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
 <triggers>
 
+<!-- Назначение дефолтных значений переменных -->
 	<trigger Name="GlobalVar" active="1">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -14,6 +15,9 @@
 			SetVar("PetrolStationBuild_item_lump", 0)
 			SetVar("PetrolStationBuild_item_fullmaster", 0)
 			SetVar("PetrolStationBuild_Builden", 0)
+			SetVar("PetrolStation_FuelTime", 0)
+			SetVar("PetrolStation_Refill", 0)
+			SetVar("PetrolStation_Refill_Process", 0)
 
 			SetVar("Inventory_lvl_2_item_drill", 0)
 			SetVar("Inventory_lvl_2_item_screws", 0)
@@ -37,6 +41,7 @@
 			SetVar("ChestScavs_Search", 0)
 			SetVar("ChestScavs_Timer", 0)
 			SetVar("Scav_Move", 0)
+			SetVar("ChestScavs_Loot", 0)
 
 			SetVar("Tunel_item_vitalik", 0)
 			SetVar("Tunel_item_handrill", 0)
@@ -77,7 +82,13 @@
 			SetVar("Lampposts_money", 0)
 			SetVar("Lampposts_Builden", 0)
 
-			SetVar("CountRands", 0)
+			SetVar("CountRaids", 0)
+
+			SetVar("VehMove", 0)
+			SetVar("VehPath", 0)
+
+			SetVar("OpenGate_1", 0)
+			SetVar("OpenGate_2", 0)
 
 		    trigger:Deactivate()
 		</script>
@@ -87,31 +98,138 @@
 	<trigger Name="StartMap" active="1">
 		<event eventid="GE_GAME_START" ObjName="Player1" />
 		<script>
-			if CHESTSCAVS_TIMER_GLOBAL then SetVar("ChestScavs_Timer", CHESTSCAVS_TIMER_GLOBAL) end
-			if GetVar("ChestScavs_Search").AsInt > 0 and GetVar("ChestScavs_Timer").AsInt == 0 then
-				TActivate("ChestScavs_CreateLoot")
-			end 
 
+		--ящик диких
+			if CHESTSCAVS_TIMER_GLOBAL then SetVar("ChestScavs_Timer", CHESTSCAVS_TIMER_GLOBAL) end
+
+			if GetVar("ChestScavs_Builden").AsInt == 1 then
+				if GetVar("ChestScavs_Search").AsInt > 0 and GetVar("ChestScavs_Timer").AsInt == 0 then
+					if GetVar("ChestScavs_Loot").AsInt == 0 then
+						TActivate("ChestScavs_CreateLoot")
+					end
+				elseif GetVar("ChestScavs_Search").AsInt > 0 and GetVar("ChestScavs_Timer").AsInt > 0 then
+					TActivate("ChestScavs_Timer")
+					TActivate("ChestScavs_Time")
+				end 
+			end
+
+		--генератор
 			if GENERATOR_TIMER_GLOBAL then SetVar("Generator_time_work", GENERATOR_TIMER_GLOBAL) end
+
 			if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
 				if GetVar("Generator_on").AsInt == 1 and GetVar("Generator_time_work").AsInt > 0 then
 					TActivate("Generator_timer")
 					TActivate("IfGenerator_On")
 				else
+					SetVar("Generator_on", 0)
 					TActivate("Generator_Stop")
 				end
 			end
 
-			if COUNT_RAIDS then SetVar("CountRands", COUNT_RAIDS) end
+			if COUNT_RAIDS then SetVar("CountRaids", COUNT_RAIDS) end
 			
 			local pl = GetPlayerVehicle()
 			if pl then
 				pl:SetGamePositionOnGround(CVector(893.077, 255.493, 987.899))
 				pl:SetRotation(Quaternion(-0.009, -0.005, -0.000, 1.000))
+				pl:setImmortalMode(1)
 				pl:setGodMode(1)
 			end
 
+			TActivate("trCreateVehicleMove")
+		
+			AllowSave(true)
+
+			SetVar("ToMap", "0")
+
+			TActivate("VehiclesForSale")
+
 			SetCameraBehindPlayerVehicle()
+		</script>
+	</trigger>
+
+<!-- Машины в продажу -->
+	<trigger Name="VehiclesForSale" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local Workshop = GetEntityByName("Town_r0m0_Workshop")
+			local Vehicles = Workshop:GetRepositoryByTypename("Vehicles")
+			local CabAndBasket = Workshop:GetRepositoryByTypename("CabinsAndBaskets")
+
+			local Shop = GetEntityByName("Town_r0m0_Shop")
+			local GunAndGadget = Shop:GetRepositoryByTypename("GunsAndGadgets")
+	
+			if Workshop and Vehicles then
+				Vehicles:AddItems("BugForSale", 1)
+				Vehicles:AddItems("MolokovozForSale", 1)
+				Vehicles:AddItems("UralForSale", 1)
+				Vehicles:AddItems("BelazForSale", 1)
+				Vehicles:AddItems("MirotvorecForSale", 1)
+				Vehicles:AddItems("CruiserForSale", 1)
+			end
+
+			if Workshop and CabAndBasket then
+				CabAndBasket:AddItems("bugCab01", 1)
+				CabAndBasket:AddItems("bugCab02", 1)
+				CabAndBasket:AddItems("bugCab03", 1)
+				CabAndBasket:AddItems("bugCargo01_4x5", 1)
+				CabAndBasket:AddItems("bugCargo02_4x6", 1)
+				CabAndBasket:AddItems("bugCargo03_5x7", 1)
+				CabAndBasket:AddItems("molokovozCab01", 1)
+				CabAndBasket:AddItems("molokovozCab02", 1)
+				CabAndBasket:AddItems("molokovozCab03", 1)
+				CabAndBasket:AddItems("molokovozCargo01_5x8", 1)
+				CabAndBasket:AddItems("molokovozCargo02_6x9", 1)
+				CabAndBasket:AddItems("molokovozCargo03_6x8", 1)
+				CabAndBasket:AddItems("uralCab01", 1)
+				CabAndBasket:AddItems("uralCab02", 1)
+				CabAndBasket:AddItems("uralCab03", 1)
+				CabAndBasket:AddItems("uralCab04", 1)
+				CabAndBasket:AddItems("uralCab05", 1)
+				CabAndBasket:AddItems("uralCargo01_6x10", 1)
+				CabAndBasket:AddItems("uralCargo02_9x10", 1)
+				CabAndBasket:AddItems("uralCargo03_10x10", 1)
+				CabAndBasket:AddItems("uralCargo04_8x9", 1)
+				CabAndBasket:AddItems("uralCargo05_7x9", 1)
+				CabAndBasket:AddItems("belazCab01", 1)
+				CabAndBasket:AddItems("belazCab02", 1)
+				CabAndBasket:AddItems("belazCab03", 1)
+				CabAndBasket:AddItems("belazCab04", 1)
+				CabAndBasket:AddItems("belazCab05", 1)
+				CabAndBasket:AddItems("belazCargo01_7x12", 1)
+				CabAndBasket:AddItems("belazCargo02_9x12", 1)
+				CabAndBasket:AddItems("belazCargo03_12x12", 1)
+				CabAndBasket:AddItems("belazCargo04_8x12", 1)
+				CabAndBasket:AddItems("belazCargo05_10x10", 1)
+				CabAndBasket:AddItems("mirotvorecCab01", 1)
+				CabAndBasket:AddItems("mirotvorecCab02", 1)
+				CabAndBasket:AddItems("mirotvorecCab03", 1)
+				CabAndBasket:AddItems("mirotvorecCab04", 1)
+				CabAndBasket:AddItems("mirotvorecCab05", 1)
+				CabAndBasket:AddItems("mirotvorecCargo01_8x10", 1)
+				CabAndBasket:AddItems("mirotvorecCargo02_10x9", 1)
+				CabAndBasket:AddItems("mirotvorecCargo03_12x12", 1)
+				CabAndBasket:AddItems("mirotvorecCargo04_9x9", 1)
+				CabAndBasket:AddItems("mirotvorecCargo05_12x12", 1)
+				CabAndBasket:AddItems("cruiserCab01", 1)
+				CabAndBasket:AddItems("cruiserCab02", 1)
+				CabAndBasket:AddItems("cruiserCargo01_11x10", 1)
+				CabAndBasket:AddItems("cruiserCargo02_13x10", 1)
+			end
+
+			if Shop and GunAndGadget then
+				GunAndGadget:AddItems("cooling_system_guns", 1)
+				GunAndGadget:AddItems("firing_rate_guns", 1)
+				GunAndGadget:AddItems("grouping_angle_guns", 1)
+				GunAndGadget:AddItems("add_damage_guns", 1)
+				GunAndGadget:AddItems("firing_range_guns", 1)
+				GunAndGadget:AddItems("additional_fuel_tank", 1)
+				GunAndGadget:AddItems("additional_torque", 1)
+				GunAndGadget:AddItems("additional_durability", 1)
+				GunAndGadget:AddItems("additional_stability", 1)
+			end
+
+		    trigger:Deactivate()
 		</script>
 	</trigger>
 
@@ -133,9 +251,22 @@
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Gate_1_2_loc" />
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Gate_1_3_loc" />
 		<script>
-			getObj("gate_1"):SetNodeAction(AT_RESERVED4)
-			CreateEffectTTLed( "ET_PS_OPENING_GATE", CVector(868.318, 255, 1094.083), Quaternion(0, 0, 0, 1), 1400)
-			TActivate("OpennedGate_1")
+			local amount=trigger:GetTriggeredObjectAmount()
+			for i=0,amount - 1 do 
+				local car = getObj(trigger:GetTriggeredObjectID(i))
+				if car then 
+					car:SetThrottle(0)
+					car:SetCustomLinearVelocity(0)
+				end 
+			end
+
+			if GetVar("OpenGate_1").AsInt == 0 then
+				getObj("gate_1"):SetNodeAction(AT_RESERVED4)
+				CreateEffectTTLed( "ET_PS_OPENING_GATE", CVector(868.318, 255, 1094.083), Quaternion(0, 0, 0, 1), 1400)
+				TActivate("OpennedGate_1")
+				SetVar("OpenGate_1", 1)
+			end
+
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -158,12 +289,16 @@
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Gate_1_3_loc" />
 		<script>
 			local g = GetEntityByName("gate_1")
-			if g then 
-				g:SetPosition(CVector(868.318, 255, 1094.083)) 
-				g:SetNodeAction(AT_RESERVED3)
+			if GetVar("OpenGate_1").AsInt == 1 then
+				if g then 
+					g:SetPosition(CVector(868.318, 255, 1094.083)) 
+					g:SetNodeAction(AT_RESERVED3)
+				end
+				CreateEffectTTLed( "ET_PS_CLOSED_GATE", CVector(868.318, 255, 1094.083), Quaternion(0, 0, 0, 1), 1400)
+				TActivate("ClosedGate_1")
+				SetVar("OpenGate_1", 0)
+				TActivate("OpenGate_1")
 			end
-			CreateEffectTTLed( "ET_PS_CLOSED_GATE", CVector(868.318, 255, 1094.083), Quaternion(0, 0, 0, 1), 1400)
-			TActivate("ClosedGate_1")
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -182,9 +317,22 @@
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Gate_2_2_loc" />
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Gate_2_3_loc" />
 		<script>
-			getObj("gate_2"):SetNodeAction(AT_RESERVED4)
-			CreateEffectTTLed( "ET_PS_OPENING_GATE", CVector(868.318, 255, 885.281), Quaternion(0, 0, 0, 1), 1400)
-			TActivate("OpennedGate_2")
+			local amount=trigger:GetTriggeredObjectAmount()
+			for i=0,amount - 1 do 
+				local car = getObj(trigger:GetTriggeredObjectID(i))
+				if car then 
+					car:SetThrottle(0)
+					car:SetCustomLinearVelocity(0)
+				end 
+			end
+
+			if GetVar("OpenGate_2").AsInt == 0 then
+				getObj("gate_2"):SetNodeAction(AT_RESERVED4)
+				CreateEffectTTLed( "ET_PS_OPENING_GATE", CVector(868.318, 255, 885.281), Quaternion(0, 0, 0, 1), 1400)
+				TActivate("OpennedGate_2")
+				SetVar("OpenGate_2", 1)
+			end
+
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -207,12 +355,16 @@
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Gate_2_3_loc" />
 		<script>
 			local g = GetEntityByName("gate_2")
-			if g then 
-				g:SetPosition(CVector(868.318, 255, 885.281)) 
-				g:SetNodeAction(AT_RESERVED3)
+			if GetVar("OpenGate_2").AsInt == 1 then
+				if g then 
+					g:SetPosition(CVector(868.318, 255, 885.281)) 
+					g:SetNodeAction(AT_RESERVED3)
+				end
+				CreateEffectTTLed( "ET_PS_CLOSED_GATE", CVector(868.318, 255, 885.281), Quaternion(0, 0, 0, 1), 1400)
+				TActivate("ClosedGate_2")
+				SetVar("OpenGate_2", 0)
+				TActivate("OpenGate_2")
 			end
-			CreateEffectTTLed( "ET_PS_CLOSED_GATE", CVector(868.318, 255, 885.281), Quaternion(0, 0, 0, 1), 1400)
-			TActivate("ClosedGate_2")
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -224,7 +376,7 @@
 		    trigger:Deactivate()
 		</script>
 	</trigger>
-	
+
 <!-- Создание разрушенной заправки -->
 	<trigger Name="CreatePetrolStation_Broken" active="1">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
@@ -296,13 +448,15 @@
 			CreateNewDummyObject("petrolhouse1", "ps_6", -1, -1, CVector(908.745, 255, 1015.647), Quaternion(0.0000, -1.0000, 0.0000, -0.0087))
 			CreateNewDummyObject("petrolstation", "ps_7", -1, -1, CVector(911.771, 255, 1040.334), Quaternion(0.0000, 0.6962, 0.0000, 0.7178))
 			CreateNewDummyObject("lamppost3", "ps_8", -1, -1, CVector(913.649, 255, 1021.364), Quaternion(0, 0, 0, 0))
-			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK01", -1, -1, CVector(913.161, 267.300, 1033.075), Quaternion(0, 0, 0, 1), 0.6)
 			CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "ps_10", -1, -1, CVector(911.771, 255, 1040.334), Quaternion(0, 0, 0, 1))
-
-			TActivate("UseFuelNil_InPetrolStation01")
 
 			local town = GetEntityByName ("PetrolStationTown1")
 			if town then town:SetRuined(false) end
+
+			if GetVar("Generator_on").AsInt == 1 then
+				CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK01", -1, -1, CVector(913.161, 267.300, 1033.075), Quaternion(0, 0, 0, 1), 0.6)
+				TActivate("UseFuelNil_InPetrolStation01")
+			end
 
 			SetVar("PetrolStationBuild_Builden", 1)
 			TDeactivate("PetrolStation_BuildInfo")
@@ -324,11 +478,15 @@
 						SoundFadingMsg()
 						RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
 						TActivate("SoundPetrolProcess_InPertolStation01")
-						TActivate("FuelFull_InPetrolStation01")
 						GetPlayerVehicle():SetThrottle( 0 )
 						GetPlayerVehicle():SetCustomLinearVelocity( 0 )
 						local town = GetEntityByName ("PetrolStationTown1")
 						if town then town:SetOpenGateToPlayer(false) end
+						local town1 = GetEntityByName ("Town_r0m0")
+						if town1 then town1:SetOpenGateToPlayer(false) end
+						SetVar("PetrolStation_Refill", 1)
+						SetVar("PetrolStation_Refill_Process", 1)
+						SetVar("PetrolStation_FuelTime", 20)
 						trigger:Deactivate()
 					else
 						AddFadingMsgByStrIdFormatted("fm_player_not_money")
@@ -346,12 +504,36 @@
 			local pl01 = GetEntityByName("LIGHTWORK01")
 			if pl01 then pl01:Remove() end
 			CreateNewSgNodeObject("ET_PS_LENS_D6", "PetrolLightProcess01", -1, -1, CVector(913.161, 267.300, 1033.075), Quaternion(0, 0, 0, 1), 0.6)
+			TActivate("FuelFull_Timer")
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="FuelFull_Timer" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			local t = GetVar("PetrolStation_FuelTime").AsInt - 1
+			SetVar("PetrolStation_FuelTime", t)
+
+			if t == 0 then
+				TActivate("FuelFull_InPetrolStation01")
+			else
+				TActivate("fft")
+			end
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="fft" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("FuelFull_Timer")
 			trigger:Deactivate() 
 		</script>
 	</trigger>
 
 	<trigger Name="FuelFull_InPetrolStation01" active="0">
-		<event timeout="20" eventid="GE_TIME_PERIOD" />
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local Chest = CreateNewObject{prototypeName = "fuelChest", objName = "FuelBox"..random(10000)}	
 			local ChestId = GetEntityByID(Chest)
@@ -382,7 +564,14 @@
 			local town = GetEntityByName ("PetrolStationTown1")
 			if town then town:SetOpenGateToPlayer(true) end
 
-			TActivate ("UseFuelNil_InPetrolStation01")
+			local town1 = GetEntityByName ("Town_r0m0")
+			if town1 then town1:SetOpenGateToPlayer(true) end
+
+			TActivate("UseFuelNil_InPetrolStation01")
+			TDeactivate("FuelFull_Timer")
+			TDeactivate("fft")
+			SetVar("PetrolStation_Refill", 0)
+			SetVar("PetrolStation_Refill_Process", 0)
 			trigger:Deactivate() 
 		</script>
 	</trigger>
@@ -553,8 +742,16 @@
 
 			AddFadingMsgByStrIdFormatted("fm_chest_scavs_start")
 			SoundFadingMsg()
-			CreateEffectInsertedInRemove("ET_S_CHEST_SCAVS_START", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+			TActivate("ChestScavs_StartSound")
 			TActivate("ChestScavs_Time")
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ChestScavs_StartSound" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateEffectInsertedInRemove("ET_S_CHEST_SCAVS_START", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -585,7 +782,6 @@
 
 	<trigger Name="ChestScavs_Time" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ChestScavs_Build_loc" />
-		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="ChestScavs_Build_loc" />
 		<script>
 			local t = GetVar("ChestScavs_Timer").AsInt 
 			tm = t / 60
@@ -618,7 +814,7 @@
 			local r = random(2)
 			SetVar("Scav_Move", r)
 
-			local list = {"Sml1CarScav", "Sml2CarScav", "Sml3CarScav", "Sml4CarScav", "Scout1CarScav", "Scout2CarScav", "Scout3CarScav"}
+			local list = {"Sml1CarScav", "Sml2CarScav", "Sml3CarScav", "Sml4CarScav", "Scout1CarScav", "Scout2CarScav", "Scout3CarScav", "Fighter2CarScav", "Hunter2CarScav"}
 			local scav = getn(list)
 
 			CreateVehicleEx(list[random(scav)], "ScavMoveToChest", pos[r], 1090)
@@ -626,13 +822,21 @@
 			local veh = GetEntityByName("ScavMoveToChest")
 			if veh then
 				GiveGunsForVehicle(veh, 1)
+				veh:SetRotation(rot[r])
 				veh:SetExternalPathByName("veh_paths_to_gate_"..r)
-				veh:SetMaxSpeed(40)
+				veh:SetCruisingSpeed(30)
 				veh:SetRandomSkin()
+				veh:setGodMode(1)
 			end
 
+			AddFadingMsgByStrIdFormatted("fm_chest_scavs_scav_move")
+			SoundFadingMsg()
+
 			TActivate("ScavMoveReached")
-			TActivate("ChestScavs_CreateLoot")
+			TActivate("ChestScavs_EntersLoc")
+			TDeactivate("ChestScavs_Timer")
+			TDeactivate("cst")
+			TDeactivate("ChestScavs_Time")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -645,30 +849,28 @@
 
 			local veh = GetEntityByName("ScavMoveToChest")
 			if veh then
-				if GetVar("Scav_Move").AsInt == 1 then
-					if count == 1 then
-						veh:SetExternalPathByName("veh_paths_to_inventory_1")
-						veh:SetMaxSpeed(20)
-					elseif count == 2 then
+				if count == 1 then
+					veh:SetExternalPathByName("veh_paths_to_inventory_"..GetVar("Scav_Move").AsInt)
+					veh:SetCruisingSpeed(22)
+				elseif count == 2 then
+					if GetVar("Scav_Move").AsInt == 1 then
 						veh:SetExternalPathByName("veh_paths_to_gate_2_from_inventory")
-						veh:SetMaxSpeed(10)
-					elseif count == 3 then
-						veh:SetExternalPathByName("veh_paths_to_end_1")
-						veh:SetMaxSpeed(40)
-					end
-				elseif GetVar("Scav_Move").AsInt == 2 then
-					if count == 1 then
-						veh:SetExternalPathByName("veh_paths_to_inventory_2")
-						veh:SetMaxSpeed(20)
-					elseif count == 2 then
+					else
 						veh:SetExternalPathByName("veh_paths_to_gate_1_from_inventory")
-						veh:SetMaxSpeed(10)
-					elseif count == 3 then
-						veh:SetExternalPathByName("veh_paths_to_end_2")
-						veh:SetMaxSpeed(40)
 					end
-				end
-				if count > 3 then 
+					veh:SetCruisingSpeed(3)
+					TActivate("ScavMoveSpeed")
+				elseif count == 3 then
+					if GetVar("Scav_Move").AsInt == 1 then
+						veh:SetExternalPathByName("veh_paths_to_gate_2_from_inventory_1")
+					else
+						veh:SetExternalPathByName("veh_paths_to_gate_1_from_inventory_1")
+					end
+					veh:SetCruisingSpeed(22)
+				elseif count == 4 then
+					veh:SetExternalPathByName("veh_paths_to_end_"..GetVar("Scav_Move").AsInt)
+					veh:SetCruisingSpeed(30)
+				elseif count == 5 then 
 					SetVar("Scav_Move", 0)
 					veh:Remove()
 					trigger:Deactivate()
@@ -677,8 +879,25 @@
 		</script>
 	</trigger>
 
-	<trigger Name="ChestScavs_CreateLoot" active="0">
+	<trigger Name="ScavMoveSpeed" active="0">
+		<event timeout="3" eventid="GE_TIME_PERIOD" />
+		<script>
+			local sv = GetEntityByName("ScavMoveToChest")
+			if sv then sv:SetCruisingSpeed(10) end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ChestScavs_EntersLoc" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ChestScavs_loc" />
+		<script>
+			TActivate("ChestScavs_CreateLoot")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ChestScavs_CreateLoot" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local lootlist
 			local loot_count
@@ -777,6 +996,8 @@
 				end
 			end 
 
+			SetVar("ChestScavs_Loot", 1)
+
 			AddFadingMsgByStrIdFormatted("fm_chest_scavs_loot")
 			SoundFadingMsg()
 			CreateEffectInsertedInRemove("ET_S_CHEST_SCAVS_END", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
@@ -795,12 +1016,13 @@
 			local l = GetEntityByName("ChestScavsForLoot")
 			if not(l) then
 				SetVar("ChestScavs_Search", 0)
+				SetVar("ChestScavs_Loot", 0)
 				trigger:Deactivate()
 			end
 		</script>
 	</trigger>
 
-<!-- Тунель -->
+<!-- Туннель -->
 	<trigger Name="CreateZavalTunel_1" active="1">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -900,16 +1122,26 @@
 		    getObj("tunel_gate"):SetNodeAction(AT_STAND2)
 			SetVar("Tunel_Builden", 3)
 			TDeactivate("Tunel_BuildInfo")
-			TActivate("ToTunel")
+			TActivate("Tunel")
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
-	<trigger Name="ToTunel" active="0">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Tunel_loc" />
+	<trigger Name="Tunel" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="FromTunel" />
 		<script>
-			local b = SpawnMessageBox("90002")
-			if b == 1 then
+			local maxhp = GetPlayerMaxHealth()
+			local hp = GetPlayerHealth() 
+
+			if GetVar('PetrolStation_Refill_Process').AsInt == 0 then
+				if hp == maxhp then
+					local b = SpawnMessageBox("90002")
+					if b == 1 then
+						TActivate("ExitMap")
+					end
+				else
+					SpawnMessageBox("90003")
+				end
 			end
 		</script>
 	</trigger>
@@ -1075,6 +1307,7 @@
 			end
 			TActivate("IfGenerator_Off")
 			TDeactivate("Generator_timer")
+			TDeactivate("gt")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1113,6 +1346,8 @@
 				SetVar("Generator_time_work", 0)
 				SetVar("Generator_on", 0)
 				TActivate("Generator_Stop")
+				AddFadingMsgByStrIdFormatted("fm_generator_fuel_nil")
+				SoundFadingMsg()
 			else
 				TActivate("gt")
 			end
@@ -1142,6 +1377,26 @@
 						CreateNewSgNodeObject("LS_LIGHT_TEST", "ps_9", -1, -1, CVector(913.649, 257, 1021.364), Quaternion(0, 0, 0, 0), 0.3)
 					end
 				end
+				
+				if GetVar("PetrolStation_Refill").AsInt == 1 then
+					if getObj("FuelFull_Timer"):IsActivated() == 0 then
+						TActivate("SoundPetrolProcess_InPertolStation01")
+
+						local town = GetEntityByName ("PetrolStationTown1")
+						if town then town:SetOpenGateToPlayer(false) end
+
+						local town1 = GetEntityByName ("Town_r0m0")
+						if town1 then town1:SetOpenGateToPlayer(false) end
+
+						SetVar("PetrolStation_Refill_Process", 1)
+					end
+				else
+					local lw = GetEntityByName("LIGHTWORK01")
+					if not(lw) then
+						CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK01", -1, -1, CVector(913.161, 267.300, 1033.075), Quaternion(0, 0, 0, 1), 0.6)
+						TActivate("UseFuelNil_InPetrolStation01")
+					end
+				end
 			end
 
 			if GetVar("Lampposts_Builden").AsInt == 1 then
@@ -1169,6 +1424,32 @@
 			if GetVar("PetrolStationBuild_Builden").AsInt == 1 then
 				local ps_9 = GetEntityByName("ps_9")
 				if ps_9 then ps_9:Remove() end
+				
+				if GetVar("PetrolStation_Refill").AsInt == 1 then
+					local ps_s = GetEntityByName("SFPP_01") 
+					if ps_s then ps_s:Remove() end
+
+					local ps_l = GetEntityByName("PetrolLightProcess01") 
+					if ps_l then ps_l:Remove() end
+
+					local town = GetEntityByName ("PetrolStationTown1")
+					if town then town:SetOpenGateToPlayer(true) end
+
+					local town1 = GetEntityByName ("Town_r0m0")
+					if town1 then town1:SetOpenGateToPlayer(true) end
+
+					CreateEffectTTLed( "ET_PS_FUEL_PETROL_END", CVector(906.852, 255, 1040.380), Quaternion(0, 0, 0, 1), 1000)
+
+					SetVar("PetrolStation_Refill_Process", 0)
+
+					TDeactivate("FuelFull_Timer")
+					TDeactivate("fft")
+				else
+					local lw = GetEntityByName("LIGHTWORK01")
+					if lw then lw:Remove() end
+
+					TDeactivate("UseFuelNil_InPetrolStation01")
+				end
 			end
 
 			if GetVar("Lampposts_Builden").AsInt == 1 then
@@ -1182,7 +1463,7 @@
 				local lp = GetEntityByName("lp_1_light_"..l)
 				if lp then lp:Remove() end
 			end
-
+			
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1299,13 +1580,14 @@
 			SetCameraBehindPlayerVehicle()
 		</script>
 	</trigger>
-
+	
 <!-- При выезде из городов -->
 	<trigger Name="LeaveTown" active="1">
 		<event	eventid="GE_LEAVE_TOWN"	ObjName="PetrolStationTown1" />
+		<event	eventid="GE_LEAVE_TOWN"	ObjName="Town_r0m0" />
 		<script>
 			UpdateWeather(0)
-
+		
 			local time = g_ObjCont:GetGameTime().AsString
 			local hour = tonumber(strsub(time, 1, 2))
 
@@ -1314,8 +1596,276 @@
 			end
 
 			if hour >= 6 then
-				TActivate("IfGenerator_Off")
+				if GetVar("PetrolStationBuild_Builden").AsInt == 1 then
+					local ps_9 = GetEntityByName("ps_9")
+					if ps_9 then ps_9:Remove() end
+				end
+
+				if GetVar("Lampposts_Builden").AsInt == 1 then
+					for i=1,12 do
+						local lpl = GetEntityByName("lp_light_"..i)
+						if lpl then lpl:Remove() end
+					end 	
+				end
+
+				for l=1,92 do
+					local lp = GetEntityByName("lp_1_light_"..l)
+					if lp then lp:Remove() end
+				end
 			end
+
+			local pl = GetPlayerVehicle()
+			if pl then pl:setGodMode(1) end
+
+		</script>
+	</trigger>
+
+<!-- Создание машинки двигающийся по пути -->
+	<trigger Name="trCreateVehicleMove" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			getObj("CreateVehicleMove"):AddEvent("GE_TIME_PERIOD",tostring(random(1,2)))
+			TActivate("CreateVehicleMove")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateVehicleMove" active="0">
+		<script>
+			
+			if GetVar("VehPath").AsInt > 0 then
+			return
+			end
+
+			local modellist = {"Bug01PMC", "Molokovoz01PMC", "Ural01PMC", "Belaz01PMC", "Cruiser01PMC", "Mirotvorec01PMC"}
+			local model = modellist[random(getn(modellist))]
+
+			local cab
+			local cargo
+
+			if model == "Bug01PMC" then
+				cab = {"bugCab01", "bugCab02", "bugCab03"}
+				cargo = {"bugCargo01", "bugCargo02", "bugCargo03"}
+			elseif model == "Molokovoz01PMC" then
+				cab = {"molokovozCab01", "molokovozCab02" ,"molokovozCab03"}
+				cargo = {"molokovozCargo01", "molokovozCargo02", "molokovozCargo03"}
+			elseif model == "Ural01PMC" then
+				cab = {"uralCab01", "uralCab02", "uralCab03", "uralCab04", "uralCab05"}
+				cargo = {"uralCargo01", "uralCargo02", "uralCargo03", "uralCargo04", "uralCargo05"}
+			elseif model == "Belaz01PMC" then
+				cab = {"belazCab01", "belazCab02", "belazCab03", "belazCab04", "belazCab05"}
+				cargo = {"belazCargo01", "belazCargo02", "belazCargo03", "belazCargo04", "belazCargo05"}
+			elseif model == "Cruiser01PMC" then
+				cab = {"cruiserCab01", "cruiserCab02"}
+				cargo = {"cruiserCargo01", "cruiserCargo02"}
+			elseif model == "Mirotvorec01PMC" then
+				cab = {"mirotvorecCab01", "mirotvorecCab02", "mirotvorecCab03", "mirotvorecCab04", "mirotvorecCab05"}
+				cargo = {"mirotvorecCargo01", "mirotvorecCargo02", "mirotvorecCargo03", "mirotvorecCargo04", "mirotvorecCargo05"}
+			end
+
+			local pos = {CVector(1948.147, 255.986, 1333.427), CVector(134.418, 255.857, 387.032)}
+			local rot = {Quaternion(-0.010, -0.515, -0.006, 0.857), Quaternion(-0.009, 0.695, 0.005, 0.719)}
+			local r = random(2)
+
+			CreateVehicleEx(model, "VehicleMove", pos[r], random(1091,1092))
+	
+			local veh = GetEntityByName("VehicleMove")
+			if veh then
+				veh:SetRotation(rot[r])
+				veh:SetNewPart("CABIN",cab[random(getn(cab))])
+				veh:SetNewPart("BASKET",cargo[random(getn(cargo))])
+				veh:SetCruisingSpeed(30)
+				veh:SetExternalPathByName("veh_paths_to_gate_"..r)
+				veh:SetRandomSkin()
+				veh:setGodMode(1)
+				GiveGunsForVehicle(veh, 1)
+			end
+
+			SetVar("VehMove", r)
+			SetVar("VehPath", random(2))
+
+			TActivate("VehMoveReached")
+
+			getObj("CreateVehicleMove"):DelEvent("GE_TIME_PERIOD")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="VehMoveReached" active="0">
+		<event eventid="GE_TARGET_REACHED" ObjName="VehicleMove"/>
+		<script>
+			trigger:IncCount()
+			local count = trigger:GetCount()
+	
+			local veh = GetEntityByName("VehicleMove")
+			if veh then
+				if GetVar("VehPath").AsInt == 1 then
+					if count == 1 then
+						veh:SetCruisingSpeed(22)
+						veh:SetExternalPathByName("veh_paths_to_garage_"..GetVar("VehMove").AsInt)
+					elseif count == 2 then
+						veh:SetCruisingSpeed(10)
+						veh:SetExternalPathByName("veh_paths_to_garage_"..GetVar("VehMove").AsInt.."_"..GetVar("VehMove").AsInt)
+					elseif count == 3 then
+						getObj("VehInGarage"):AddEvent("GE_TIME_PERIOD",tostring(random(5,10)))
+						TActivate("VehInGarage")
+					elseif count == 4 then
+						veh:SetCruisingSpeed(30)
+						veh:SetExternalPathByName("veh_paths_to_end_"..GetVar("VehMove").AsInt)
+					elseif count == 5 then
+						veh:Remove()
+						SetVar("VehMove", 0)
+						SetVar("VehPath", 0)
+						TActivate("trCreateVehicleMove")
+						trigger:Deactivate()
+					end
+				else
+					if count == 1 then
+						veh:SetCruisingSpeed(22)
+						if GetVar("VehMove").AsInt == 1 then
+							veh:SetExternalPathByName("veh_paths_to_gate_2_from_gate_1")
+						else
+							veh:SetExternalPathByName("veh_paths_to_gate_1_from_gate_2")
+						end
+					elseif count == 2 then
+						veh:SetCruisingSpeed(30)
+						veh:SetExternalPathByName("veh_paths_to_end_"..GetVar("VehMove").AsInt)
+					elseif count == 3 then
+						veh:Remove()
+						SetVar("VehMove", 0)
+						SetVar("VehPath", 0)
+						TActivate("trCreateVehicleMove")
+						trigger:Deactivate()
+					end
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="VehInGarage" active="0">
+		<script>
+			local veh = GetEntityByName("VehicleMove")
+			if veh then
+				veh:SetCruisingSpeed(10)
+				if GetVar("VehMove").AsInt == 1 then
+					veh:SetExternalPathByName("veh_paths_to_gate_2_from_garage_1")
+				else
+					veh:SetExternalPathByName("veh_paths_to_gate_1_from_garage_2")
+				end
+				TActivate("VehSpeed")
+			end
+			getObj("VehInGarage"):DelEvent("GE_TIME_PERIOD")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+	
+	<trigger Name="VehSpeed" active="0">
+		<event timeout="5" eventid="GE_TIME_PERIOD" />
+		<script>
+			local veh = GetEntityByName("VehicleMove")
+			if veh then
+				veh:SetCruisingSpeed(22)
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Переход на локацию -->
+	<trigger Name="PassingToMap" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local vehPlayer = GetPlayerVehicle()
+			if vehPlayer then
+				vehPlayer:SetThrottle(0)
+				vehPlayer:SetCustomLinearVelocity(0)
+			end
+
+			local map = GetVar("ToMap").AsString
+
+			PassToMap(map, "FromR0M0")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Выход/очистка карты -->
+	<trigger Name="ExitMap" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+		
+		--пересоздание ворот
+			for i=1,2 do
+				local g = GetEntityByName("gate_"..i)
+				if g then g:Remove() end
+				TDeactivate("OpenGate_"..i)
+				TDeactivate("OpennedGate_"..i)
+				TDeactivate("CloseGate_"..i)
+				TDeactivate("ClosedGate_"..i)
+				SetVar("OpenGate_"..i, 0)
+			end
+
+			TActivate("CreateGate")
+
+		--ящик диких
+			if GetVar("ChestScavs_Builden").AsInt == 1 then
+				if GetVar("Scav_Move").AsInt > 0 then
+					local sv = GetEntityByName("ScavMoveToChest")
+					if sv then sv:Remove() end
+
+					SetVar("Scav_Move", 0)
+					TDeactivate("ScavMoveReached")
+					TDeactivate("ChestScavs_EntersLoc")
+					TDeactivate("ScavMoveSpeed")
+				end
+
+				if GetVar("ChestScavs_Search").AsInt > 0 and GetVar("ChestScavs_Timer").AsInt > 0 then
+					TDeactivate("ChestScavs_Timer")
+					TDeactivate("cst")
+					TDeactivate("ChestScavs_Time")
+				end 
+
+				if CHESTSCAVS_TIMER_GLOBAL then CHESTSCAVS_TIMER_GLOBAL = GetVar("ChestScavs_Timer").AsInt end
+			end
+
+		--генератор
+			if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
+				if GetVar("Generator_on").AsInt == 1 and GetVar("Generator_time_work").AsInt > 0 then
+					TDeactivate("Generator_timer")
+					TDeactivate("gt")
+				end
+				
+				if GENERATOR_TIMER_GLOBAL then GENERATOR_TIMER_GLOBAL = GetVar("Generator_time_work").AsInt end
+			end
+
+		--удаление VehicleMove
+			TDeactivate("CreateVehicleMove")
+			if GetVar("VehPath").AsInt > 0 then
+				local veh = GetEntityByName("VehicleMove")
+				if veh then veh:Remove() end
+
+				SetVar("VehMove", 0)
+				SetVar("VehPath", 0)
+
+				TDeactivate("VehMoveReached")
+				getObj("CreateVehicleMove"):DelEvent("GE_TIME_PERIOD")
+				TDeactivate("VehInGarage")
+				getObj("VehInGarage"):DelEvent("GE_TIME_PERIOD")
+				TDeactivate("VehSpeed")
+			end
+
+			if COUNT_RAIDS then COUNT_RAIDS = GetVar("CountRaids").AsInt end
+
+			println("MAP CLEAR")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Message" active="1">
+		<event timeout="3" eventid="GE_TIME_PERIOD" />
+		<script>
+			SpawnMessageBox("90004")
+			trigger:Deactivate()
 		</script>
 	</trigger>
 

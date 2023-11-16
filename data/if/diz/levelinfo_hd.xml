@@ -7,7 +7,7 @@
 		diz0=""
 		diz1=""
 		image0="data\if\map\r1m4.dds"
-		image1="data\if\ico\GlobalMap\gmap_ico_2.dds"
+		image1="data\if\ico_hd\GlobalMap\gmap_ico_2.dds"
 		splashes="data\if\ico_hd\Splashes\Loading_Screen_1.dds"
 		musicBlocks="block_menu" />
 
@@ -19,9 +19,9 @@
 		diz1=""
 		north="0 0 1"
 		image0="data\if\map\dungeon.dds"
-		image1="data\if\ico\GlobalMap\gmap_ico_2.dds"
+		image1="data\if\ico_hd\GlobalMap\gmap_ico_2.dds"
 		splashes="data\if\ico_hd\Splashes\r0m0.dds"
-		musicBlocks="block_silence" />
+		musicBlocks="block_music01 block_music02 block_music03 block_music04 block_music05 block_music06 block_music07 block_music08 block_music09 block_music10 block_music11 block_music12" />
 
 	<LevelInfo
 		name="r1m1"
@@ -31,7 +31,7 @@
 		diz1=""
 		north="0 0 1"
 		image0="data\if\map\r1m1.dds"
-		image1="data\if\ico\GlobalMap\r1m1.dds"
+		image1="data\if\ico_hd\GlobalMap\r1m1.dds"
 		splashes="data\if\ico_hd\Splashes\Loading_Screen_4.dds"
 		musicBlocks="block0 block1" />
 
@@ -42,7 +42,7 @@
 		diz0=""
 		diz1=""
 		image0="data\if\map\r1m2.dds"
-		image1="data\if\ico\GlobalMap\r1m2.dds"
+		image1="data\if\ico_hd\GlobalMap\r1m2.dds"
 		splashes="data\if\ico_hd\Splashes\Loading_Screen_1.dds"
 		musicBlocks="block0 block1" />
 
@@ -54,7 +54,7 @@
 		diz1=""
 		north="0 0 1"
 		image0="data\if\map\r1m3.dds"
-		image1="data\if\ico\GlobalMap\r1m3.dds"
+		image1="data\if\ico_hd\GlobalMap\r1m3.dds"
 		splashes="data\if\ico_hd\Splashes\zavod.dds"
 		musicBlocks="block0 block1" />
 
@@ -66,7 +66,7 @@
 		diz1=""
 		north="0 0 1"
 		image0="data\if\map\r1m4.dds"
-		image1="data\if\ico\GlobalMap\r1m4.dds"
+		image1="data\if\ico_hd\GlobalMap\r1m4.dds"
 		splashes="data\if\ico_hd\Splashes\plane.dds"
 		musicBlocks="r1_4 block1" />
 
@@ -78,7 +78,7 @@
 		diz1=""
 		north="0 0 1"
 		image0="data\if\map\r2m1.dds"
-		image1="data\if\ico\GlobalMap\r2m1.dds"
+		image1="data\if\ico_hd\GlobalMap\r2m1.dds"
 		splashes="data\if\ico_hd\Splashes\paris.dds"
 		musicBlocks="r2_1 r2_2" />
 
@@ -90,7 +90,7 @@
 		diz1=""
 		north="0 0 1"
 		image0="data\if\map\r2m2.dds"
-		image1="data\if\ico\GlobalMap\r2m2.dds"
+		image1="data\if\ico_hd\GlobalMap\r2m2.dds"
 		splashes="data\if\ico_hd\Splashes\ogon.dds"
 		musicBlocks="r2_1 r2_2" />
 
@@ -102,7 +102,7 @@
 		diz1=""
 		north="0 0 1"
 		image0="data\if\map\r3m1.dds"
-		image1="data\if\ico\GlobalMap\r3m1.dds"
+		image1="data\if\ico_hd\GlobalMap\r3m1.dds"
 		splashes="data\if\ico_hd\Splashes\druids.dds"
 		musicBlocks="r3_1 r3_2" />
 
@@ -114,7 +114,7 @@
 		diz1=""
 		north="0 0 1"
 		image0="data\if\map\r3m2.dds"
-		image1="data\if\ico\GlobalMap\r3m2.dds"
+		image1="data\if\ico_hd\GlobalMap\r3m2.dds"
 		splashes="data\if\ico_hd\Splashes\arack.dds"
 		musicBlocks="r3_1 r3_2" />
 
@@ -126,7 +126,7 @@
 		diz1=""
 		north="0 0 1"
 		image0="data\if\map\r4m1.dds"
-		image1="data\if\ico\GlobalMap\r4m1.dds"
+		image1="data\if\ico_hd\GlobalMap\r4m1.dds"
 		splashes="data\if\ico_hd\Splashes\gonki.dds"
 		musicBlocks="r4_1 r4_2" />
 
@@ -138,7 +138,7 @@
 		diz1=""
 		north="0 0 1"
 		image0="data\if\map\r4m2.dds"
-		image1="data\if\ico\GlobalMap\r4m2.dds"
+		image1="data\if\ico_hd\GlobalMap\r4m2.dds"
 		splashes="data\if\ico_hd\Splashes\chel.dds"
 		musicBlocks="r4_1 r4_2" />
 </LevelInfoResource>

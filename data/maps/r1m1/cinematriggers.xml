@@ -70,7 +70,7 @@
 			TActivate("TimerRaidStart")
 			TActivate("CreatePMC")
 
-			--AllowSave(false)
+			AllowSave(false)
 
 			SetCameraBehindPlayerVehicle()
 
@@ -290,12 +290,13 @@
 			SaveAllToleranceStatus(RS_NEUTRAL)
 			EnableGodMode()
 
-			Fly("start_game", CINEMATIC_NO_AIM, 0, 1, 0, 0)
+			Fly("start_game", CINEMATIC_NO_AIM, 0, 0.1, 0, 1)
 			StartCinematic()
 	
 			AddCinematicMessage(77773, 0)
 
 			TActivate("ExitFadeEffect_End")
+			TActivate("ExitToMap")
 
 			trigger:Deactivate()
 		</script>
@@ -309,7 +310,7 @@
 			RestoreAllToleranceStatus()
 			DisableGodMode()
 
-			TActivate("ExitToMap")
+			PassToMap("r0m0", "FromLocation", -1, true)
 		
 			trigger:Deactivate()
 		</script>

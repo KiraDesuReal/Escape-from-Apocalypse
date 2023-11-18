@@ -2,13 +2,14 @@
 <Music>
 
 	<model
-		id="mainmenu"
-		file="data\music\mainmenu_remaster.ogg"
-		/>
-
-	<model
 		id="silence"
 		file="data\music\silence.ogg"
+	/>
+
+<!-- MainMenu -->
+	<model
+		id="mainmenu"
+		file="data\music\mainmenu_remaster.ogg"
 		/>
 
 	<model
@@ -70,7 +71,18 @@
 		id="music12"
 		file="data\music\mainmenu\music12.ogg"
 		/>
-		
+
+<!-- Dungeons -->	
+	<model
+		id="dungeon01"
+		file="data\music\dungeons\dungeon01.ogg"
+	/>
+
+	<model
+		id="dungeon02"
+		file="data\music\dungeons\dungeon02.ogg"
+	/>
+
 		
 	<!-- Towns -->
 	<model

@@ -24,6 +24,30 @@
 			minDist	= "30"
 		/>
 
+		<group
+			id		= "EXPLOSIONS_GATE"
+			volume	= "100" 
+			minDist	= "100"
+		/>
+
+		<group
+			id		= "CREATE_KEY"
+			volume	= "255" 
+			minDist	= "70"
+		/>
+
+		<group
+			id		= "AMBIENT_DUNGEON"
+			volume	= "255" 
+			minDist	= "5500"
+		/>
+
+		<group
+			id		= "AMBIENT_DUNGEON_KEY"
+			volume	= "255" 
+			minDist	= "20"
+		/>
+
 		<group 
 			id		= "GENERATOR" 
 			volume	= "255" 

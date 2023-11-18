@@ -91,6 +91,71 @@
 		<Node name="Sound3" class="SgSoundSourceNode" id="S_CHEST_SCAVS_END" looped="0" />
 	</Node>
 
+	<Node name="ET_PS_EXPLOSION_GATE_DUNGEON" class="SgNode">
+		<Node name="11" class="SgParticlesNode" id="PS_VEN_EXP1_MED_MAIN2" psNumEmitterMesh="-1" />
+		<Node name="12" class="SgParticlesNode" id="PS_VEN_EXP1_MED_DUST" psNumEmitterMesh="-1" />
+		<Node name="14" class="SgParticlesNode" id="PS_VEN_EXP1_MED_SMOKE2" psNumEmitterMesh="-1" />
+		<Node name="144" class="SgParticlesNode" id="PS_VEN_EXP1_MED_SMOKE2" psNumEmitterMesh="-1" />
+		<Node name="23" class="SgParticlesNode" id="PS_VEN_EXP1_MED_SMOKE3" psNumEmitterMesh="-1" />
+		<Node name="1444" class="SgParticlesNode" id="PS_VEN_EXP1_MED_SMOKE2" psNumEmitterMesh="-1" />
+		<Node name="13" class="SgParticlesNode" id="PS_VEN_EXP1_MED_SMOKE" psNumEmitterMesh="-1" />
+		<Node name="Explosion1"	 class="SgSoundSourceNode" id="S_EXPLOSION_GATE" looped="0" /> 
+		<Node name="100" class="SgParticlesNode" id="PS_VEN_EXP1_MED_MAIN3" psNumEmitterMesh="-1" />
+	</Node>
+
+	<Node name="ET_PS_DRONE_EX_D" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_DRONE_EX_MAIN" psNumEmitterMesh="-1" />
+		<Node name="Object2" class="SgParticlesNode" id="PS_DRONE_EX_MAIN1" psNumEmitterMesh="-1" /> 
+	</Node>
+
+	<Node name="ET_S_DUNGEON_CREATE_KEY" class="SgNode">
+		<Node name="1"	 class="SgSoundSourceNode" id="S_DUNGEON_CREATE_KEY" looped="0" /> 
+	</Node>
+
+	<Node name="ET_S_DUNGEON_AMBIENT_1" class="SgNode">
+		<Node name="1"	 class="SgSoundSourceNode" id="S_DUNGEON_AMBIENT_1" looped="1" /> 
+	</Node>
+
+	<Node name="ET_S_DUNGEON_AMBIENT_KEY" class="SgNode">
+		<Node name="1"	 class="SgSoundSourceNode" id="S_DUNGEON_AMBIENT_KEY" looped="1" /> 
+	</Node>
+
+	<Node name="ET_S_POST_CHALLENGE_ROTATE" class="SgNode">
+		<Node name="1"	 class="SgSoundSourceNode" id="S_POST_CHALLENGE_ROTATE" looped="1" /> 
+	</Node>
+
+	<Node name="ET_S_POST_CHALLENGE" class="SgNode">
+		<Node name="1"	 class="SgSoundSourceNode" id="S_POST_CHALLENGE" looped="1" /> 
+	</Node>
+
+	<Node name="ET_S_DUNGEON_START" class="SgNode">
+		<Node name="1"	 class="SgSoundSourceNode" id="S_DUNGEON_START" looped="0" /> 
+	</Node>
+
+	<Node name="ET_S_DUNGEON_COMPLETE_CHALLENGE" class="SgNode">
+		<Node name="1"	 class="SgSoundSourceNode" id="S_DUNGEON_COMPLETE_CHALLENGE" looped="0" /> 
+	</Node>
+
+	<Node name="ET_S_DUNGEON_FAIL_CHALLENGE" class="SgNode">
+		<Node name="1"	 class="SgSoundSourceNode" id="S_DUNGEON_FAIL_CHALLENGE" looped="0" /> 
+	</Node>
+
+	<Node name="ET_S_DUNGEON_OPEN_GATE" class="SgNode">
+		<Node name="1"	 class="SgSoundSourceNode" id="S_DUNGEON_OPEN_GATE" looped="0" /> 
+	</Node>
+
+	<Node name="ET_S_DUNGEON_OPEN_GATE_END" class="SgNode">
+		<Node name="1"	 class="SgSoundSourceNode" id="S_DUNGEON_OPEN_GATE_END" looped="0" /> 
+	</Node>
+
+	<Node name="ET_S_DUNGEON_ENTERS" class="SgNode">
+		<Node name="1"	 class="SgSoundSourceNode" id="S_DUNGEON_ENTERS" looped="0" /> 
+	</Node>
+
+	<Node name="ET_S_PICK_ITEM" class="SgNode">
+		<Node name="1"	 class="SgSoundSourceNode" id="S_PICK_ITEM" looped="0" /> 
+	</Node>
+
 	<Node name="ET_PS_ROCKSFAKE1" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_SPECIAL01_FIRE_MAIN_1" psNumEmitterMesh="-1" />
 	</Node>

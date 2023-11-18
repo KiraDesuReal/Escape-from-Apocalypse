@@ -130,8 +130,13 @@
 			
 			local pl = GetPlayerVehicle()
 			if pl then
-				pl:SetGamePositionOnGround(CVector(893.077, 255.493, 987.899))
-				pl:SetRotation(Quaternion(-0.009, -0.005, -0.000, 1.000))
+				if not(R0M1_exit == 1) then
+					pl:SetGamePositionOnGround(CVector(893.077, 255.493, 987.899))
+					pl:SetRotation(Quaternion(-0.009, -0.005, -0.000, 1.000))
+					R0M1_exit = 0
+				else
+					R0M1_exit = 0
+				end
 				pl:setImmortalMode(1)
 				pl:setGodMode(1)
 			end
@@ -143,6 +148,19 @@
 			SetVar("ToMap", "0")
 
 			TActivate("VehiclesForSale")
+
+			if GetVar("Tunel_Builden").AsInt == 3 then
+				local g = GetEntityByName("tunel_gate")
+				if g then g:SetNodeAction(AT_STAND2) end
+
+				for i=1,2 do
+					local s = GetEntityByName("sound_gate"..i)
+					if s then s:Remove() end
+				end
+
+				local fx = GetEntityByName("fx")
+				if fx then fx:Remove() end
+			end
 
 			SetCameraBehindPlayerVehicle()
 		</script>
@@ -156,7 +174,7 @@
 			local Vehicles = Workshop:GetRepositoryByTypename("Vehicles")
 			local CabAndBasket = Workshop:GetRepositoryByTypename("CabinsAndBaskets")
 
-			local Shop = GetEntityByName("Town_r0m0_Shop")
+			local Shop = GetEntityByName("Town_r0m0_Shop"):GetRepositoryByTypename("GunsAndGadgets")
 			local GunAndGadget = Shop:GetRepositoryByTypename("GunsAndGadgets")
 	
 			if Workshop and Vehicles then
@@ -454,8 +472,7 @@
 			if town then town:SetRuined(false) end
 
 			if GetVar("Generator_on").AsInt == 1 then
-				CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK01", -1, -1, CVector(913.161, 267.300, 1033.075), Quaternion(0, 0, 0, 1), 0.6)
-				TActivate("UseFuelNil_InPetrolStation01")
+				TActivate("IfGenerator_On")
 			end
 
 			SetVar("PetrolStationBuild_Builden", 1)
@@ -1134,10 +1151,16 @@
 			local hp = GetPlayerHealth() 
 
 			if GetVar('PetrolStation_Refill_Process').AsInt == 0 then
+				local Plf = GetPlayerVehicle()
+				if Plf then
+					Plf:SetThrottle(0)
+					Plf:SetCustomLinearVelocity(0)
+				end
 				if hp == maxhp then
 					local b = SpawnMessageBox("90002")
 					if b == 1 then
 						TActivate("ExitMap")
+						TActivate("cutEntersToTunnel")
 					end
 				else
 					SpawnMessageBox("90003")
@@ -1527,7 +1550,11 @@
 				lPos.y = lPos.y + 8.2
 				CreateEffectInsertedInRemove("ET_PS_SMOKE_BUILDING", l:GetPosition(), Quaternion(0, 0, 0, 1), true)
 				CreateEffectInsertedInRemove("ET_PS_LAMPPOST3_BUILD", lPos, Quaternion(0, 0, 0, 1), true)
-			end 
+			end
+			
+			if GetVar("Generator_on").AsInt == 1 then
+				TActivate("IfGenerator_On")
+			end
 
 			SetVar("Lampposts_Builden", 1)
 			TDeactivate("Lampposts_BuildInfo")
@@ -1624,7 +1651,7 @@
 	<trigger Name="trCreateVehicleMove" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			getObj("CreateVehicleMove"):AddEvent("GE_TIME_PERIOD",tostring(random(1,2)))
+			getObj("CreateVehicleMove"):AddEvent("GE_TIME_PERIOD",tostring(random(40,120)))
 			TActivate("CreateVehicleMove")
 			trigger:Deactivate()
 		</script>

@@ -116,7 +116,81 @@
 		file="data\sounds\other\chest_scavs\chest_scavs_end.ogg"
 		group="SOUND2D"
 	/>
-		
+
+<!-- Dungeon --> 
+
+	<model
+		id="S_DUNGEON_AMBIENT_1"
+		file="data\sounds\other\dungeon\dungeon_ambient_1.wav"
+		group="AMBIENT_DUNGEON"
+	/>
+
+	<model
+		id="S_DUNGEON_AMBIENT_KEY"
+		file="data\sounds\other\dungeon\dungeon_ambient_key.wav"
+		group="AMBIENT_DUNGEON_KEY"
+	/>
+
+	<model
+		id="S_DUNGEON_CREATE_KEY"
+		file="data\sounds\other\dungeon\dungeon_key.wav"
+		group="CREATE_KEY"
+	/>
+
+	<model
+		id="S_POST_CHALLENGE_ROTATE"
+		file="data\sounds\other\dungeon\post_challenge_rotate.wav"
+		group="AMBIENT_DUNGEON_KEY"
+	/>
+
+	<model
+		id="S_POST_CHALLENGE"
+		file="data\sounds\other\dungeon\post_challenge1.wav"
+		group="AMBIENT_DUNGEON_KEY"
+	/>
+
+	<model
+		id="S_DUNGEON_START"
+		file="data\sounds\other\dungeon\dungeon_start.wav"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_DUNGEON_COMPLETE_CHALLENGE"
+		file="data\sounds\other\dungeon\dungeon_complete_challenge.wav"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_DUNGEON_FAIL_CHALLENGE"
+		file="data\sounds\other\dungeon\dungeon_fail_challenge.wav"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_DUNGEON_OPEN_GATE"
+		file="data\sounds\other\dungeon\dungeon_door_open.wav"
+		group="GATE_OPEN"
+	/>
+
+	<model
+		id="S_DUNGEON_OPEN_GATE_END"
+		file="data\sounds\other\dungeon\dungeon_door_open_end.wav"
+		group="GATE_OPEN"
+	/>
+	
+	<model
+		id="S_DUNGEON_ENTERS"
+		file="data\sounds\other\dungeon\dungeon_enters.wav"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_PICK_ITEM"
+		file="data\sounds\other\interface\pick_item.wav"
+		group="SOUND2D"
+	/>
+
 <!-- Crash --> 
 
 	<model
@@ -1244,6 +1318,11 @@
 
 <!-- Explosions --> 
 
+	<model
+		id="S_EXPLOSION_GATE"
+		file="data\sounds\Explosion\explosion06.wav"
+		group="EXPLOSIONS_GATE"
+	/>
 
 	<model
 		id="S_EXPLOSION01"
@@ -1876,21 +1955,21 @@
 <!-- 2d -->
 
 		<model
-        		id="S_RECHARGE_WEAPON"
-        		file="data\sounds\effects\Shells\gun_reload.wav"
-        		group="SOUND3D"
+        	id="S_RECHARGE_WEAPON"
+        	file="data\sounds\effects\Shells\gun_reload.wav"
+        	group="SOUND2D"
 		/>                    
 
 		<model
-		id="S_CAR_BURNING_SMALL"
+			id="S_CAR_BURNING_SMALL"
 			file="data\sounds\other\burnrng\car_burning_small.wav"
-                  group="BURNING_SMALL"
-            />
+            group="BURNING_SMALL"
+        />
 
 		<model
 			id="S_CAR_BURNING"
 			file="data\sounds\other\burnrng\car_burning01.wav"
-             group="BURNING_SMALL"
+         	group="BURNING_SMALL"
             />
 
 <!-- 		cinematic sound				 -->

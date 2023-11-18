@@ -24,6 +24,17 @@
 		musicBlocks="block_music01 block_music02 block_music03 block_music04 block_music05 block_music06 block_music07 block_music08 block_music09 block_music10 block_music11 block_music12" />
 
 	<LevelInfo
+		name="r0m1"
+		file="data\maps\r0m1.ssl"
+		fullName="Подземелье"
+		diz0=""
+		diz1=""
+		image0="data\if\map\dungeon.dds"
+		image1="data\if\ico_hd\GlobalMap\gmap_ico_2.dds"
+		splashes="data\if\ico_hd\Splashes\dungeon.dds"
+		musicBlocks="block_silence" />
+
+	<LevelInfo
 		name="r1m1"
 		file="data\maps\r1m1.ssl"
 		fullName="Край"

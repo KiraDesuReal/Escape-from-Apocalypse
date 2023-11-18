@@ -28,4 +28,89 @@
 		</script>
 	</trigger>
 
+<!-- ¬ход в туннель -->
+	<trigger Name="cutEntersToTunnel" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			SaveAllToleranceStatus(RS_NEUTRAL)
+
+			Fly("tunel_cam01", CINEMATIC_NO_AIM, 0, 6, 1, 1)
+			StartCinematic()
+
+			TActivate("TunelOpenGate")
+			TActivate("cutEntersToTunnel_End")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="TunelOpenGate" active="0">
+		<event 	timeout="2" eventid="GE_TIME_PERIOD" />
+		<script>
+			local g = GetEntityByName("tunel_gate")
+			if g then g:SetNodeAction(AT_RESERVED4) end
+			CreateNewSgNodeObject("ET_S_DUNGEON_OPEN_GATE", "sound_gate1", -1, -1, CVector(815, 259, 1054), Quaternion(0, 0, 0, 0), 0)
+			TActivate("TunelOpenGate_SoundEnd")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="TunelOpenGate_SoundEnd" active="0">
+		<event 	timeout="1.2" eventid="GE_TIME_PERIOD" />
+		<script>
+			local s = GetEntityByName("sound_gate1")
+			if s then s:Remove() end
+			CreateNewSgNodeObject("ET_S_DUNGEON_OPEN_GATE_END", "sound_gate2", -1, -1, CVector(815, 259, 1054), Quaternion(0, 0, 0, 0), 0)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="cutEntersToTunnel_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+			local g = GetEntityByName("tunel_gate")
+			if g then g:SetNodeAction(AT_STAND2) end
+
+			for i=1,2 do
+				local s = GetEntityByName("sound_gate"..i)
+				if s then s:Remove() end
+			end
+
+			TDeactivate("TunelOpenGate")
+			TDeactivate("TunelOpenGate_SoundEnd")
+
+			TActivate("cutEntersToTunnel_Fade")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="cutEntersToTunnel_Fade" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			Fly("tunel_cam01", CINEMATIC_NO_AIM, 0, 0.1, 0, 1)
+			StartCinematic()
+
+			AddCinematicMessage(77773, 0)
+			
+			CreateNewSgNodeObject("ET_S_DUNGEON_ENTERS", "fx", -1, -1, GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 0), 0)
+	
+			TActivate("cutEntersToTunnel_FadeEnd")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="cutEntersToTunnel_FadeEnd" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+			RestoreAllToleranceStatus()
+
+			local fx = GetEntityByName("fx")
+			if fx then fx:Remove() end
+
+			PassToMap("r0m1", "FromR0M0", -1, 1)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 </triggers>

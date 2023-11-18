@@ -174,7 +174,7 @@
 			local Vehicles = Workshop:GetRepositoryByTypename("Vehicles")
 			local CabAndBasket = Workshop:GetRepositoryByTypename("CabinsAndBaskets")
 
-			local Shop = GetEntityByName("Town_r0m0_Shop"):GetRepositoryByTypename("GunsAndGadgets")
+			local Shop = GetEntityByName("Town_r0m0_Shop")
 			local GunAndGadget = Shop:GetRepositoryByTypename("GunsAndGadgets")
 	
 			if Workshop and Vehicles then
@@ -1888,10 +1888,21 @@
 		</script>
 	</trigger>
 
+	<trigger Name="CloseTown" active="1">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local town1 = GetEntityByName ("Town_r0m0")
+			if town1 then town1:SetOpenGateToPlayer(false) end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 	<trigger Name="Message" active="1">
 		<event timeout="3" eventid="GE_TIME_PERIOD" />
 		<script>
 			SpawnMessageBox("90004")
+			local town1 = GetEntityByName ("Town_r0m0")
+			if town1 then town1:SetOpenGateToPlayer(true) end
 			trigger:Deactivate()
 		</script>
 	</trigger>

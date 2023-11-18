@@ -603,8 +603,7 @@
 		<script>
 			local randLoot = random(3)
 			local l = GetVar("Score").AsInt
-			println("rand1_"..randLoot)
-
+	
 			local itemList = {"scrap_metal_use"}
 			if 550 > l then 
 				itemList = {"scrap_metal_use"}
@@ -662,7 +661,7 @@
 		<script>
 			local randLoot = random(3)
 			local l = GetVar("Score").AsInt
-			println("rand2_"..randLoot)
+
 			local itemList = {"scrap_metal_use"}
 			if 550 > l then 
 				itemList = {"scrap_metal_use"}
@@ -721,7 +720,7 @@
 		<script>
 			local randLoot = random(3)
 			local l = GetVar("Score").AsInt
-			println("rand3_"..randLoot)
+
 			local itemList = {"scrap_metal_use"}
 			if 550 > l then 
 				itemList = {"scrap_metal_use"}
@@ -780,7 +779,7 @@
 		<script>
 			local randLoot = random(3)
 			local l = GetVar("Score").AsInt
-			println("rand4_"..randLoot)
+
 			local itemList = {"scrap_metal_use"}
 			if 550 > l then 
 				itemList = {"scrap_metal_use"}

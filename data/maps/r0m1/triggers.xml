@@ -26,6 +26,11 @@
 			SetVar("PlayerInSpawnLoc", 0)
 			SetVar("Music", 0)
 			SetVar("StartChallenge", 0)
+			SetVar("Use_AmmoChestArtilleryGun", 0)
+			SetVar("Use_AmmoChestHeavyGun", 0)
+			SetVar("Use_AmmoChestMachineGun", 0)
+			SetVar("Use_AmmoChestRocketGun", 0)
+			SetVar("Use_AmmoChestShotGun", 0)
 
 			for i=1,4 do
 				SetVar("loot_"..i, 0)
@@ -340,6 +345,12 @@
 			SetVar("PlayerInSpawnLoc", 0)
 			SetVar("ChallengeComplete", 0)
 			SetVar("StartChallenge", 1)
+
+			SetVar("Use_AmmoChestArtilleryGun", 0)
+			SetVar("Use_AmmoChestHeavyGun", 0)
+			SetVar("Use_AmmoChestMachineGun", 0)
+			SetVar("Use_AmmoChestRocketGun", 0)
+			SetVar("Use_AmmoChestShotGun", 0)
 
 			for i=1,4 do
 				SetVar("loot_"..i, 0)
@@ -1020,7 +1031,7 @@
 	<trigger Name="UseItems" active="0">
 		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
-			ItemUse()
+			ItemUse(1)
 		</script>
 	</trigger>
 
@@ -1251,6 +1262,12 @@
 				if not(cabin == nil) then Plf:SetNewPart("CABIN", cabin:GetProperty("Prototype").AsString) end
 				if not(basket == nil) then Plf:SetNewPart("BASKET", basket:GetProperty("Prototype").AsString) end
 			end
+
+			if GetVar("Use_AmmoChestArtilleryGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_artillerygun", GetVar("Use_AmmoChestArtilleryGun").AsInt) end
+			if GetVar("Use_AmmoChestHeavyGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_heavygun", GetVar("Use_AmmoChestHeavyGun").AsInt) end
+			if GetVar("Use_AmmoChestMachineGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_machinegun", GetVar("Use_AmmoChestMachineGun").AsInt) end
+			if GetVar("Use_AmmoChestRocketGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_rocketgun", GetVar("Use_AmmoChestRocketGun").AsInt) end
+			if GetVar("Use_AmmoChestShotGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_shotgun", GetVar("Use_AmmoChestShotGun").AsInt) end
 
 			SetVar("PlayerDie", 0)
 

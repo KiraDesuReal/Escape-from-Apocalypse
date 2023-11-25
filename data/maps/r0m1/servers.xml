@@ -254,6 +254,11 @@
 			id="monolit" 
 			file="data\models\AnimModels.xml"/>
 
+		<Item 
+			id="kaktus" 
+			file="data\models\AnimModels.xml"/>
+
+
 <!-- gadgets -->
 		<Item
 			id="gadget_01"
@@ -3949,6 +3954,14 @@
 		<Item id="S_DUNGEON_COMPLETE_CHALLENGE" />
 		<Item id="S_DUNGEON_FAIL_CHALLENGE" />
 		<Item id="S_PICK_ITEM" />
+		<Item id="S_USE_ARM" />
+		<Item id="S_USE_LIFE" />
+
+		<Item id="S_USE_RELOAD_ARTILLERYGUN" />
+		<Item id="S_USE_RELOAD_HEAVYGUN" />
+		<Item id="S_USE_RELOAD_MACHINEGUN" />
+		<Item id="S_USE_RELOAD_ROCKETGUN" />
+		<Item id="S_USE_RELOAD_SHOTGUN" />
 		
 		<Item id="S_CRASH_METAL01" />
 		<Item id="S_CRASH_METAL02" />

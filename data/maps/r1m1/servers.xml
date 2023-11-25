@@ -1089,6 +1089,11 @@
 		<Item 
 			id="monolit" 
 			file="data\models\AnimModels.xml"/>
+		
+		<Item 
+			id="kaktus" 
+			file="data\models\AnimModels.xml"/>
+
 
 <!-- gadgets -->
 		<Item 
@@ -2397,6 +2402,12 @@
 		<Item id="S_CLOSED_GATE" />
 		
 		<Item id="S_FADING_MSG" />
+
+		<Item id="S_USE_RELOAD_ARTILLERYGUN" />
+		<Item id="S_USE_RELOAD_HEAVYGUN" />
+		<Item id="S_USE_RELOAD_MACHINEGUN" />
+		<Item id="S_USE_RELOAD_ROCKETGUN" />
+		<Item id="S_USE_RELOAD_SHOTGUN" />
 
 		<Item id="S_CRASH_METAL01" />
 		<Item id="S_CRASH_METAL02" />

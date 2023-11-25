@@ -270,6 +270,98 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		ModelFile	= "quest_key_for_tunnel"
 		ResourceType= "ITEM_KEY" />
 
+<!-- Ammo -->
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_chest_artillerygun"
+		Price	= "26600"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_4X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_chest_artillerygunForSale"
+		Price	= "38"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_4X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_chest_heavygun"
+		Price	= "16250"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_chest_heavygunForSale"
+		Price	= "27"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_chest_machinegun"
+		Price	= "8900"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_chest_machinegunForSale"
+		Price	= "14"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_chest_rocketgun"
+		Price	= "24000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_4X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_chest_rocketgunForSale"
+		Price	= "33"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_4X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_chest_shotgun"
+		Price	= "5650"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_chest_shotgunForSale"
+		Price	= "10"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
 <!-- Building Items -->
 
 	<Prototype
@@ -1156,7 +1248,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "18000"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "dragon01gun"
 		ResourceType= "ITEM_SIZE_4X2" />
 
 	<Prototype
@@ -1275,6 +1367,24 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		PriceDispersion      = "5"
 		ModelFile	= "monolit"
 		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_kaktus"
+		Price	= "11500"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= "kaktus"
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_keqing"
+		Price	= "20110"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
 
 <!-- Tools Items -->
 

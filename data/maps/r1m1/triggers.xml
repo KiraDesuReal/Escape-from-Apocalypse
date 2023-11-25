@@ -120,14 +120,14 @@
 				if hs then hs:Remove() end
 			end
 		
-			CreateNewDummyObject( "ruins1", "hs01", -1, -1, CVector(3355.214,  368, 3322.013), Quaternion(0.0000, -0.9998, 0.0000, -0.0196) )
-			CreateNewDummyObject( "ruins2", "hs02", -1, -1, CVector(3396.989,  370, 3311.444), Quaternion(0.0000, -0.7880, 0.0000, 0.6157) )
-			CreateNewDummyObject( "ruins3", "hs03", -1, -1, CVector(3391.955,  368, 3280.512), Quaternion(0.0000, -0.5682, 0.0000, 0.8229) )
-			CreateNewDummyObject( "ruins1", "hs04", -1, -1, CVector(3333.442, 368, 3299.207), Quaternion(0.0000, 0.6820, 0.0000, 0.7314) )
-			CreateNewDummyObject( "ruins2", "hs05", -1, -1, CVector(3339.008, 368, 3288.451), Quaternion(0.0000, 0.6478, 0.0000, 0.7618) )
-			CreateNewDummyObject( "ruins3", "hs06", -1, -1, CVector(3337.264, 368, 3311.947), Quaternion(0.0000, 0.0000, 0.0000, 1.0000) )
-			CreateNewDummyObject( "ruins3", "hs07", -1, -1, CVector(3390.944, 371, 3329.290), Quaternion(0.0000, 0.928, 0.0000, -0.3726) )
-			CreateNewDummyObject( "concrete_tube1", "hs08", -1, -1, CVector(2865.730, 347.620, 3620.322), Quaternion(0.0035, -0.7446, 0.0027, 0.6675) )
+			CreateNewDummyObject( "ruins1", "hs001", -1, -1, CVector(3355.214,  368, 3322.013), Quaternion(0.0000, -0.9998, 0.0000, -0.0196) )
+			CreateNewDummyObject( "ruins2", "hs002", -1, -1, CVector(3396.989,  370, 3311.444), Quaternion(0.0000, -0.7880, 0.0000, 0.6157) )
+			CreateNewDummyObject( "ruins3", "hs003", -1, -1, CVector(3391.955,  368, 3280.512), Quaternion(0.0000, -0.5682, 0.0000, 0.8229) )
+			CreateNewDummyObject( "ruins1", "hs004", -1, -1, CVector(3333.442, 368, 3299.207), Quaternion(0.0000, 0.6820, 0.0000, 0.7314) )
+			CreateNewDummyObject( "ruins2", "hs005", -1, -1, CVector(3339.008, 368, 3288.451), Quaternion(0.0000, 0.6478, 0.0000, 0.7618) )
+			CreateNewDummyObject( "ruins3", "hs006", -1, -1, CVector(3337.264, 368, 3311.947), Quaternion(0.0000, 0.0000, 0.0000, 1.0000) )
+			CreateNewDummyObject( "ruins3", "hs007", -1, -1, CVector(3390.944, 371, 3329.290), Quaternion(0.0000, 0.928, 0.0000, -0.3726) )
+			CreateNewDummyObject( "concrete_tube1", "hs008", -1, -1, CVector(2865.730, 347.620, 3620.322), Quaternion(0.0035, -0.7446, 0.0027, 0.6675) )
 
 			CreateNewSgNodeObject("ET_PS_HOUSE_MED_FIRE", "FIRE01", -1, -1, CVector(3336, 360, 3305), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
 			CreateNewSgNodeObject("ET_PS_HOUSE_MED_FIRE", "FIRE02", -1, -1, CVector(3309, 360, 3233), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
@@ -145,7 +145,7 @@
 		<script>
 
 			for i=1,8 do
-				local hs = GetEntityByName ("hs0"..i)
+				local hs = GetEntityByName ("hs00"..i)
 				if hs then hs:Remove() end
 			end
 
@@ -2286,7 +2286,8 @@
 							"item_green_battery", "item_car_battery", "item_cyclon", "item_tank_battery",
 							"item_ssd", "item_disk_exmachina", "item_sas", "item_rozvidka",
 							"item_rolex", "item_chain_gold", "item_woodclock", "item_chiken", "item_skullring",
-							"fagot01","maxim01","flag01","rainmetal01","elephant01","odin01","omega01"}
+							"fagot01","maxim01","flag01","rainmetal01","elephant01","odin01","omega01",
+							"ammo_chest_machinegun", "ammo_chest_heavygun", "ammo_chest_artillerygun"}
 			local item_random = getn(item)
 
 			for i=1,5 do
@@ -2319,18 +2320,26 @@
 
 <!-- Создание босса -->
 	<trigger Name="CreateBossProbability" active="0">
-		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<event timeout="40" eventid="GE_TIME_PERIOD" />
 		<script>
 			local boss_random = random(100)
 			if (30 >= boss_random) then
-				TActivate("CreateBoss")
+				TActivate("CreateBossEntersLoc")
 			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
+	<trigger Name="CreateBossEntersLoc" active="0">
+	<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="SpawnBoss_loc" />
+		<script>
+			TActivate("CreateBoss")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 	<trigger Name="CreateBoss" active="0">
-		<event timeout="40" eventid="GE_TIME_PERIOD" />
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
 
 			local pos1 = { CVector(1043.248, 290.074, 2868.649), CVector(1053.958, 289.904, 2889.971), CVector(1089.576, 289.500, 2866.932), CVector(1114.446, 290.298, 2895.275), CVector(1061.614, 289.562, 2874.343) }
@@ -2658,9 +2667,11 @@
 							"item_soap", "item_salt", "item_tb", "item_toothpaste", "item_soda", "item_paper", "item_alkani", "item_hlor", "book",
 							"item_disk", "item_manual", "item_flashdrive", "item_diary_s", "item_diary", "item_ssd", "item_disk_exmachina", "item_sas", "item_rozvidka",
 							"item_medical_tools", "item_naci", "item_h2o2", "item_suringe", "item_c6h8o6", "item_aquapeps", "item_oftalmaskop", "item_ledx",
-							"item_zapal", "tobacco", "bottle", "item_vodka", "item_monolit", "item_filter", "item_emre_kara", "item_waterfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_airfilter", "item_ananaga",
+							"item_zapal", "tobacco", "bottle", "item_vodka", "item_monolit", "item_kaktus", "item_filter", "item_emre_kara", "item_keqing", "item_waterfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_airfilter", "item_ananaga",
 							"item_roulet", "item_wrench", "item_screw", "item_pliers", "item_screw_flat", "item_nippers", "item_metalscissors", "item_pliers_round", "item_leatherman", "item_screw_flat_long", "item_toolset", "item_awl", "item_fullmaster", "item_sewing_kit", "item_handrill", "item_buldex", "item_ratchet_wrench", "item_pipe_wrench",
-							"item_chain", "shkatulka", "item_ex", "item_teapon", "item_cat", "item_rolex", "item_chain_gold", "item_woodclock", "item_chiken", "item_skullring", "item_lion", "item_bitcoin","hornet01","specter01","pkt01","kord01","storm01","fagot01","maxim01","vector01","vulcan01","kpvt01","rapier01","flag01","rainmetal01","elephant01","odin01","omega01","bumblebee01","hammer01","hunterSideGun","mrakSideGun","big_swingfire01","cyclops01","octopus01","hailSideGun","hurricane01","rocketLauncher","zeusSideGun","marsSideGun",
+							"item_chain", "shkatulka", "item_ex", "item_teapon", "item_cat", "item_rolex", "item_chain_gold", "item_woodclock", "item_chiken", "item_skullring", "item_lion", "item_bitcoin",
+							"hornet01","specter01","pkt01","kord01","storm01","fagot01","maxim01","vector01","vulcan01","kpvt01","rapier01","flag01","rainmetal01","elephant01","odin01","omega01","bumblebee01","hammer01","hunterSideGun","mrakSideGun","big_swingfire01","cyclops01","octopus01","hailSideGun","hurricane01","rocketLauncher","zeusSideGun","marsSideGun",
+							"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun",
 							"potato", "firewood", "item_pants40grn", "item_salo",
 							"item_key_gate_thetown", "item_key_gate_r1m3",
 							"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "add_damage_guns", "add_damage_energy", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "someTurboAccelerationPusher", "firing_range_guns", "firing_rate_guns", "firing_rate_energy", "firing_rate_guns", "grouping_angle_guns", "firing_rate_energy", "grouping_angle_guns", "cooling_system_guns", "cooling_system_guns", "cooling_system_energy", "cooling_system_energy", "cooling_system_explosion"}

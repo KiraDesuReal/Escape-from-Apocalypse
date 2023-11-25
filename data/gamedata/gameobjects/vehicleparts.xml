@@ -3083,7 +3083,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 				<Slot
 					Name		= "BASKET_SMALL_GUN_0"
-					Pos		= "9 1"
+					Pos		= "10 1"
 				/>
 
 			</RepositoryDescription>
@@ -3117,7 +3117,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 				<Slot
 					Name		= "BASKET_SMALL_GUN_0"
-					Pos		= "9 1"
+					Pos		= "10 1"
 				/>
 				<Slot
 					Name		= "BASKET_SPECIAL_WEAPON"
@@ -3157,7 +3157,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 				<Slot
 					Name		= "BASKET_BIG_GUN_0"
-					Pos		= "9 1"
+					Pos		= "10 1"
 				/>
 
 			</RepositoryDescription>
@@ -3481,7 +3481,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 		<Prototype
 			Class				= "Basket"
-			Name				= "uralCargo01_6x10"
+			Name				= "uralCargo01_6x9"
 			ModelFile			= "uralCargo01"
 			ResourceType			= "URAL_BASKET"
 			Durability			= "60"
@@ -3495,11 +3495,11 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Mass				= "30.0"
 			LoadPoints			= "LP_BIG01" >
 			<RepositoryDescription
-				RepositorySize		= "6 10">
+				RepositorySize		= "6 9">
 
 				<Slot
 					Name		= "BASKET_BIG_GUN_0"
-					Pos		= "2 2"
+					Pos		= "10 1"
 				/>
 
 			</RepositoryDescription>
@@ -3514,7 +3514,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 		<Prototype
 			Class				= "Basket"
-			Name				= "uralCargo02_9x10"
+			Name				= "uralCargo02_7x9"
 			ModelFile			= "uralCargo02"
 			ResourceType			= "URAL_BASKET"
 			Durability			= "100"
@@ -3528,16 +3528,16 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Mass				= "55.0"
 			LoadPoints			= "LP_SIDE01L LP_SIDE01R NO_LP" >
 			<RepositoryDescription
-				RepositorySize		= "9 10">
+				RepositorySize		= "7 9">
 
 				<Slot
 					Name		= "BASKET_SIDE_GUN_0"
-					Pos		= "1 2"
+					Pos		= "-1 2"
 				/>
 
 				<Slot
 					Name		= "BASKET_SPECIAL_WEAPON"
-					Pos		= "10 10"
+					Pos		= "11 10"
 				/>
 			</RepositoryDescription>
 			<GroupsHealth
@@ -3553,7 +3553,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 		<Prototype
 			Class				= "Basket"
-			Name				= "uralCargo03_10x10"
+			Name				= "uralCargo03_9x10"
 			ModelFile			= "uralCargo03"
 			ResourceType		= "URAL_BASKET"
 			Durability			= "85"
@@ -3568,7 +3568,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			LoadPoints			= "LP_BIG01 LP_GIANT01 NO_LP" >
 
 			<RepositoryDescription
-				RepositorySize		= "10 10">
+				RepositorySize		= "9 10">
 
 				<Slot
 					Name		= "BASKET_BIG_GUN_0"
@@ -3576,12 +3576,12 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 				/>
 				<Slot
 					Name		= "BASKET_GIANT_GUN"
-					Pos		= "4 0"
+					Pos		= "11 3"
 				/>
 
 				<Slot
 					Name		= "BASKET_SPECIAL_WEAPON"
-					Pos		= "11 0"
+					Pos		= "11 1"
 				/>
 			</RepositoryDescription>
 			<GroupsHealth
@@ -3596,24 +3596,24 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 		<Prototype
 			Class				= "Basket"
-			Name				= "uralCargo04_8x9"
+			Name				= "uralCargo04_7x10"
 			ModelFile			= "uralCargo04"
 			ResourceType			= "URAL_BASKET"
 			Durability			= "95"
 			DurCoeffsForDamageTypes		= "8 8 -25"
 			NodeScale			= "1 1 1"
 			CanBeUsedInAutogenerating  =  "0"
-			Price				= "33000"
+			Price				= "38000"
 			RepairCoef			= "0.3"
 
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CARGO"
 			Mass				= "50.0"
 			LoadPoints			= "LP_BIG01" >
 			<RepositoryDescription
-				RepositorySize		= "8 9">
+				RepositorySize		= "7 10">
 				<Slot
 					Name		= "BASKET_BIG_GUN_0"
-					Pos		= "10 0"
+					Pos		= "11 1"
 				/>
 			
 			</RepositoryDescription>
@@ -3631,7 +3631,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 		<Prototype
 			Class				= "Basket"
-			Name				= "uralCargo05_7x9"
+			Name				= "uralCargo05_8x9"
 			ModelFile			= "uralCargo05"
 			ResourceType			= "URAL_BASKET"
 			Durability			= "115"
@@ -3640,20 +3640,20 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			CanBeUsedInAutogenerating  =  "0"
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CARGO"
 
-			Price				= "38000"
+			Price				= "42000"
 			RepairCoef			= "0.3"
 
 			Mass				= "60.0"
 			LoadPoints			= "LP_BIG01 LP_SIDE01L LP_SIDE01R" >
 			<RepositoryDescription
-				RepositorySize		= "7 9">
+				RepositorySize		= "8 9">
 				<Slot
 					Name		= "BASKET_BIG_GUN_0"
-					Pos		= "10 0"
+					Pos		= "11 1"
 				/>
 				<Slot
 					Name		= "BASKET_SIDE_GUN_0"
-					Pos		= "10 5"
+					Pos		= "11 8"
 				/>
 			</RepositoryDescription>
 			<GroupsHealth
@@ -3886,7 +3886,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 		<Prototype
 			Class				= "Basket"
-			Name				= "belazCargo01_7x12"
+			Name				= "belazCargo01_6x12"
 			ModelFile				= "belazCargo01"
 			ResourceType			= "BELAZ_BASKET"
 			Durability			= "120"
@@ -3901,7 +3901,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			LoadPoints			= "LP_BIG01" >
 
 			<RepositoryDescription
-				RepositorySize		= "7 12">
+				RepositorySize		= "6 12">
 
 				<Slot
 					Name		= "BASKET_BIG_GUN_0"
@@ -3925,7 +3925,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 		<Prototype
 			Class				= "Basket"
-			Name				= "belazCargo02_9x12"
+			Name				= "belazCargo02_8x11"
 			ModelFile			= "belazCargo02"
 			ResourceType			= "BELAZ_BASKET"
 			NodeScale			= "1 1 1"
@@ -3940,17 +3940,17 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			LoadPoints			= "LP_BIG01 NO_LP" >
 
 			<RepositoryDescription
-				RepositorySize		= "9 12">
+				RepositorySize		= "8 11">
 
 
 				<Slot
 					Name		= "BASKET_BIG_GUN_0"
-					Pos		= "0 1"
+					Pos		= "-1 1"
 				/>
 
 				<Slot
 					Name		= "BASKET_SPECIAL_WEAPON"
-					Pos		= "10 10"
+					Pos		= "11 10"
 				/>
 				
 			</RepositoryDescription>
@@ -3970,7 +3970,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 		<Prototype
 			Class				= "Basket"
-			Name				= "belazCargo03_12x12"
+			Name				= "belazCargo03_11x12"
 			ModelFile				= "belazCargo03"
 			ResourceType			= "BELAZ_BASKET"
 			NodeScale			= "1 1 1"
@@ -3985,18 +3985,18 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			LoadPoints			= "LP_BIG01 LP_BIG02 NO_LP" >
 
 			<RepositoryDescription
-				RepositorySize		= "12 12">
+				RepositorySize		= "11 12">
 				<Slot
 					Name		= "BASKET_BIG_GUN_0"
-					Pos		= "0 5"
+					Pos		= "-2 5"
 				/>
 				<Slot
 					Name		= "BASKET_BIG_GUN_1"
-					Pos		= "10 5"
+					Pos		= "13 5"
 				/>
 				<Slot
 					Name		= "BASKET_SPECIAL_WEAPON"
-					Pos		= "10 10"
+					Pos		= "13 10"
 				/>
 			</RepositoryDescription>
 			<GroupsHealth
@@ -4013,7 +4013,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 		<Prototype
 			Class				= "Basket"
-			Name				= "belazCargo04_8x12"
+			Name				= "belazCargo04_6x10"
 			ModelFile				= "belazCargo04"
 			ResourceType			= "BELAZ_BASKET"
 			NodeScale			= "1 1 1"
@@ -4023,21 +4023,21 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			DurCoeffsForDamageTypes		= "13 10 8"
 
-			Price				= "130000"
+			Price				= "110000"
 			RepairCoef			= "0.4"
 
 			LoadPoints			= "LP_GIANT01 LP_GIANT02" >
 
 			<RepositoryDescription
-				RepositorySize		= "8 12">
+				RepositorySize		= "6 10">
 				<Slot
 					Name		= "BASKET_GIANT_GUN"
-					Pos		= "2 1"
+					Pos		= "10 1"
 				/>
 				
 				<Slot
 					Name		= "BASKET_GIANT_GUN_0"
-					Pos		= "2 7"
+					Pos		= "10 7"
 				/>
 			</RepositoryDescription>
 			<GroupsHealth
@@ -4054,7 +4054,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 		<Prototype
 			Class				= "Basket"
-			Name				= "belazCargo05_10x10"
+			Name				= "belazCargo05_9x10"
 			ModelFile				= "belazCargo05"
 			ResourceType			= "BELAZ_BASKET"
 			NodeScale			= "1 1 1"
@@ -4069,14 +4069,14 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			LoadPoints			= "LP_BIG01 LP_SIDE01L LP_SIDE01R" >
 
 			<RepositoryDescription
-				RepositorySize		= "10 10">
+				RepositorySize		= "9 10">
 				<Slot
 					Name		= "BASKET_BIG_GUN_0"
-					Pos		= "5 0"
+					Pos		= "12 8"
 				/>
 				<Slot
 					Name		= "BASKET_SIDE_GUN_0"
-					Pos		= "1 9"
+					Pos		= "-2 9"
 				/>
 			</RepositoryDescription>
 			<GroupsHealth
@@ -4293,7 +4293,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 		<Prototype
 			Class				= "Basket"
-			Name				= "mirotvorecCargo01_8x10"
+			Name				= "mirotvorecCargo01_7x9"
 			ModelFile			= "mirotvorecCargo01"
 			ResourceType		= "MIROTVOTEC_BASKET"
 			NodeScale			= "1 1 1"
@@ -4308,10 +4308,10 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			LoadPoints			= "LP_BIG01" >
 
 			<RepositoryDescription
-				RepositorySize		= "8 10">
+				RepositorySize		= "7 9">
 				<Slot
 					Name		= "BASKET_BIG_GUN_0"
-					Pos		= "7 1"
+					Pos		= "11 1"
 				/>
 			</RepositoryDescription> 
 			<GroupsHealth
@@ -4327,7 +4327,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 		<Prototype
 			Class				= "Basket"
-			Name				= "mirotvorecCargo02_10x9"
+			Name				= "mirotvorecCargo02_7x10"
 			ModelFile			= "mirotvorecCargo02"
 			ResourceType		= "MIROTVOTEC_BASKET"
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CARGO"
@@ -4343,14 +4343,14 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			LoadPoints			= "LP_GIANT01 NO_LP" >
 
 			<RepositoryDescription
-				RepositorySize		= "10 9">
+				RepositorySize		= "7 10">
 				<Slot
 					Name		= "BASKET_GIANT_GUN"
-					Pos		= "7 0"
+					Pos		= "11 1"
 				/>
 				<Slot
 					Name		= "BASKET_SPECIAL_WEAPON"
-					Pos		= "10 9"
+					Pos		= "11 9"
 				/>
 			</RepositoryDescription> 
 			<GroupsHealth
@@ -4365,7 +4365,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 		<Prototype
 			Class				= "Basket"
-			Name				= "mirotvorecCargo03_12x12"
+			Name				= "mirotvorecCargo03_8x10"
 			ModelFile			= "mirotvorecCargo03"
 			ResourceType		= "MIROTVOTEC_BASKET"
 			NodeScale			= "1 1 1"
@@ -4380,18 +4380,18 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			LoadPoints			= "LP_BIG01 LP_GIANT01 NO_LP" >
 
 			<RepositoryDescription
-				RepositorySize		= "12 12">
+				RepositorySize		= "8 10">
 				<Slot
 					Name		= "BASKET_GIANT_GUN"
-					Pos		= "5 0"
+					Pos		= "11 1"
 				/>
 				<Slot
 					Name		= "BASKET_BIG_GUN_0"
-					Pos		= "5 8"
+					Pos		= "11 8"
 				/>
 				<Slot
 					Name		= "BASKET_SPECIAL_WEAPON"
-					Pos		= "9 10"
+					Pos		= "-1 10"
 				/>
 			</RepositoryDescription>
 			<GroupsHealth
@@ -4407,7 +4407,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 		<Prototype
 			Class				= "Basket"
-			Name				= "mirotvorecCargo04_9x9"
+			Name				= "mirotvorecCargo04_7x10"
 			ModelFile			= "mirotvorecCargo04"
 			ResourceType		= "MIROTVOTEC_BASKET"
 			NodeScale			= "1 1 1"
@@ -4423,14 +4423,14 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			LoadPoints			= "LP_BIG01 LP_SIDE01L LP_SIDE01R" >
 
 			<RepositoryDescription
-				RepositorySize		= "9 9">
+				RepositorySize		= "7 10">
 				<Slot
 					Name		= "BASKET_BIG_GUN_0"
-					Pos		= "9 1"
+					Pos		= "11 1"
 				/>
 				<Slot
 					Name		= "BASKET_SIDE_GUN_0"
-					Pos		= "2 8"
+					Pos		= "-1 1"
 				/>
 			</RepositoryDescription> 
 			<GroupsHealth
@@ -4446,7 +4446,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 		<Prototype
 			Class				= "Basket"
-			Name				= "mirotvorecCargo05_12x12"
+			Name				= "mirotvorecCargo05_9x11"
 			ModelFile			= "mirotvorecCargo05"
 			ResourceType		= "MIROTVOTEC_BASKET"
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CARGO"
@@ -4461,18 +4461,18 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			LoadPoints			= "LP_BIG01 LP_GIANT01 LP_SIDE01L LP_SIDE01R" >
 
 			<RepositoryDescription
-				RepositorySize		= "12 12">
+				RepositorySize		= "9 11">
 				<Slot
 					Name		= "BASKET_BIG_GUN_0"
-					Pos		= "10 8"
+					Pos		= "12 8"
 				/>
 				<Slot
 					Name		= "BASKET_SIDE_GUN_0"
-					Pos		= "1 9"
+					Pos		= "-2 1"
 				/>
 				<Slot
 					Name		= "BASKET_GIANT_GUN"
-					Pos		= "5 0"
+					Pos		= "12 1"
 				/>
 			</RepositoryDescription> 
 			<GroupsHealth
@@ -4561,7 +4561,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 		<Prototype
 			Class				= "Basket"
-			Name				= "cruiserCargo01_11x10"
+			Name				= "cruiserCargo01_8x11"
 			ModelFile			= "cruiserCargo01"
 			ResourceType			= "CRUISER_BASKET"
 			Durability			= "140"
@@ -4576,10 +4576,10 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Mass				= "15.0"
 			LoadPoints			= "LP_GIANT01" >
 			<RepositoryDescription
-				RepositorySize		= "11 10">
+				RepositorySize		= "8 11">
 				<Slot
 					Name		= "BASKET_GIANT_GUN"
-					Pos		= "5 6"
+					Pos		= "11 7"
 				/>
 			</RepositoryDescription>
 			<GroupsHealth
@@ -4593,7 +4593,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 		<Prototype
 			Class				= "Basket"
-			Name				= "cruiserCargo02_13x10"
+			Name				= "cruiserCargo02_8x12"
 			ModelFile			= "cruiserCargo02"
 			ResourceType			= "CRUISER_BASKET"
 			Durability			= "160"
@@ -4608,14 +4608,14 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Mass				= "20.0"
 			LoadPoints			= "LP_BIG01 LP_SIDE01L LP_SIDE01R" >
 			<RepositoryDescription
-				RepositorySize		= "13 10">
+				RepositorySize		= "8 12">
 				<Slot
 					Name		= "BASKET_BIG_GUN_0"
-					Pos		= "5 2"
+					Pos		= "11 5"
 				/>
 				<Slot
 					Name		= "BASKET_SIDE_GUN_0"
-					Pos		= "5 6"
+					Pos		= "-2 5"
 				/>
 			</RepositoryDescription>
 			<GroupsHealth

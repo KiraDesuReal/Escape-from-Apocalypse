@@ -3067,6 +3067,11 @@ $Id: Towns.xml,v 1.74 2005/11/29 06:27:45 anton Exp $
 			CabinsAndBasketsAffixesCount	= "2"
 
 			Vehicles 	= "">
+
+			<ResourceCoeff Coeff="1.1" Dispersion="0.75" Resource="GUN" />
+			<ResourceCoeff Coeff="1.0" Dispersion="10.0" Resource="GADGET" />
+		    <ResourceCoeff Coeff="1.0" Dispersion="20.0" Resource="CABIN" />
+			<ResourceCoeff Coeff="1.0" Dispersion="20.0" Resource="BASKET" />
 		</Prototype>
 
 	</Folder>

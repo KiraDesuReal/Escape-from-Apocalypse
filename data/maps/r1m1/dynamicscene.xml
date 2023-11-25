@@ -1409,7 +1409,7 @@
 		Belong="1100"
 		Prototype="genericLocation"
 		Pos="1600.002 283.000 2872.481"
-		Radius="550.000" />
+		Radius="600.000" />
 
 	<Object
 		Name="SpawnScavs_2_loc"
@@ -1423,21 +1423,21 @@
 		Belong="1100"
 		Prototype="genericLocation"
 		Pos="1765.095 330.760 2101.688"
-		Radius="550.000" />
+		Radius="600.000" />
 
 	<Object
 		Name="SpawnScavs_4_loc"
 		Belong="1100"
 		Prototype="genericLocation"
 		Pos="2580.246 321.140 1836.844"
-		Radius="400.000" />
+		Radius="450.000" />
 
 	<Object
 		Name="SpawnScavs_5_loc"
 		Belong="1100"
 		Prototype="genericLocation"
 		Pos="494.477 303.831 1813.425"
-		Radius="600.000" />
+		Radius="700.000" />
 
 	<Object
 		Name="SpawnScavs_6_7_loc"
@@ -1452,6 +1452,13 @@
 		Prototype="genericLocation"
 		Pos="2970.929 315.216 855.516"
 		Radius="600.000" />
+
+	<Object
+		Name="SpawnBoss_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="1190.837 295.568 2870.274"
+		Radius="500.000" />
 
 	<Object
 		Name="dub10"

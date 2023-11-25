@@ -513,6 +513,9 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 				local ItemsOilUse = {"oil_use", "fuel_nil_use", "fuel_full_use"}
 				local r3 = getn(ItemsOilUse)
 
+				local ammo = {"ammo_chest_shotgun", "ammo_chest_machinegun", "ammo_chest_heavygun", "ammo_chest_rocketgun", "ammo_chest_artillerygun"}
+				local ammo_items = getn(ammo)
+
 				local r_list = {exrandom, random}
 				local r_l = random(2)
 
@@ -530,7 +533,7 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 				local info_items = getn(info)
 				local medical = {"item_medical_tools", "item_naci", "item_h2o2", "item_suringe", "item_c6h8o6", "item_aquapeps", "item_oftalmaskop", "item_ledx"}
 				local medical_items = getn(medical)
-				local other = {"item_zapal", "tobacco", "bottle", "item_vodka", "item_monolit", "item_filter", "item_emre_kara", "item_waterfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_airfilter", "item_ananaga"}
+				local other = {"item_zapal", "tobacco", "bottle", "item_vodka", "item_monolit", "item_kaktus", "item_filter", "item_emre_kara", "item_keqing", "item_waterfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_airfilter", "item_ananaga"}
 				local other_items = getn(other)
 				local tools = {"item_roulet", "item_wrench", "item_screw", "item_pliers", "item_screw_flat", "item_nippers", "item_metalscissors", "item_pliers_round", "item_leatherman", "item_screw_flat_long", "item_toolset", "item_awl", "item_fullmaster", "item_sewing_kit", "item_handrill", "item_buldex", "item_ratchet_wrench", "item_pipe_wrench"}
 				local tools_items = getn(tools)
@@ -554,25 +557,25 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 					end
 					
 					if belong == 1088 or belong == 1089 or belong == 1082 then
-						for life=1,random(3) do
-							vehicle:AddItemsToRepository(ItemsLifeUse[random(r2)], 1)
+						for life=1,random(2) do
+							vehicle:AddItemsToRepository(ItemsLifeUse[random(r2)], random(0,1))
 						end
 
-						for fuel=1,random(2) do
-							vehicle:AddItemsToRepository(ItemsOilUse[random(r3)], 1)
+						vehicle:AddItemsToRepository(ItemsOilUse[random(r3)], random(0,1))
+
+						for a=1,random(2) do
+							vehicle:AddItemsToRepository(ammo[exrandom(ammo_items)], random(0,1))
 						end
-						
-						for ware=1,random(7) do
+				
+						for ware=1,random(6) do
 							vehicle:AddItemsToRepository(items[random(items_r)], 1)
 						end
 					else
-						for life=1,random(2) do
-							vehicle:AddItemsToRepository(ItemsLifeUse[exrandom(r2)], 1)
-						end
-
+						vehicle:AddItemsToRepository(ItemsLifeUse[exrandom(r2)], random(0,1))
 						vehicle:AddItemsToRepository(ItemsOilUse[exrandom(r3)], random(0,1))
+						vehicle:AddItemsToRepository(ammo[exrandom(ammo_items)], random(0,1))
 
-						for ware=1,random(3) do
+						for ware=1,random(2) do
 							vehicle:AddItemsToRepository(wares[random(wares_r)], 1)
 						end
 					end
@@ -795,7 +798,7 @@ function GetItemsAmount(name)
 	   while pl:HasAmountOfItemsInRepository( name,i+1 ) == 1 do
 	   		i = i + 1
 	   end
-	   println( "Get result = "..tostring(i) )
+	   --println( "Get result = "..tostring(i) )
 	   return i
 	end
 	return nil

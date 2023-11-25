@@ -270,6 +270,10 @@
 			id="monolit" 
 			file="data\models\AnimModels.xml"/>
 
+		<Item 
+			id="kaktus" 
+			file="data\models\AnimModels.xml"/>
+
 <!-- gadgets -->
 		<Item
 			id="gadget_01"
@@ -3017,6 +3021,14 @@
 			file="data\models\AnimModels.xml" />
 
 		<Item
+			id="factory_rr_angar1_r0m0"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="factory_rr_angar2_r0m0"
+			file="data\models\AnimModels.xml" />
+
+		<Item
 			id="garage"
 			file="data\models\AnimModels.xml" />
 
@@ -4058,7 +4070,7 @@
 		<Item id="S_DUNGEON_OPEN_GATE" />
 		<Item id="S_DUNGEON_OPEN_GATE_END" />
 		<Item id="S_DUNGEON_ENTERS" />
-		
+
 		<Item id="S_CRASH_METAL01" />
 		<Item id="S_CRASH_METAL02" />
 		<Item id="S_CRASH_METAL03" />

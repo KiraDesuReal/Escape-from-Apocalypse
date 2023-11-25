@@ -15,16 +15,18 @@ $Id: GiantGuns.xml,v 1.28 2005/11/28 07:43:57 anton Exp $
 		
 		Decal				= "DC_GUN"
 
-		BulletPrototype		= "raybullet"
+		BulletPrototype		= "raybullet_cyclops01"
 		ExplosionType		= "CANNON"
 		FiringEffect		= "none"
 		Damage		= "260"
 		FiringRate		= "20"
 		GroupingAngle		= "1.0"
 		FiringRange		= "1600"
-		RecoilForce		= "700"
+		RecoilForce		= "2000"
                 FiringType		= "Cannon"
-		Price		= "30000"
+		Price		= "15500"
+		ShellsPoolSize="28"
+		WithShellsPoolLimit	= "true"
        		DamageType	= "BLAST"
 		ChargeSize     = "1"
 		RechargingTime = "3"
@@ -67,19 +69,21 @@ $Id: GiantGuns.xml,v 1.28 2005/11/28 07:43:57 anton Exp $
 		
 		Decal			= "DC_GUN"
 
-		BulletPrototype		= "raybullet"
+		BulletPrototype		= "raybullet_octopus01"
 		ExplosionType		= "AUTOCANNON"
 		FiringEffect		= "none"
 		Damage			= "25"
 		FiringRate		= "300"
 		GroupingAngle		= "2.2"
 		FiringRange		= "900"
-		RecoilForce		= "400"
+		RecoilForce		= "1000"
+		ShellsPoolSize  = "360"
+		WithShellsPoolLimit	= "true"
 		
 		ChargeSize     		= "120"
 		RechargingTime 		= "6"
                 FiringType		= "MachineGun"
-		Price		= "42000"
+		Price		= "21840"
 
 		Durability		= "150" />
 

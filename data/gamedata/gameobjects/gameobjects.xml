@@ -223,7 +223,78 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 	<Folder Name = "Bullets">
 		<Prototype
 			Class		= "Bullet"
-                        Name            = "raybullet" />
+            Name            = "raybullet" />
+
+		<Prototype
+			Class		= "Bullet"
+            Name        = "raybullet_hornet01"
+			Price       = "6"/>
+
+		<Prototype
+			Class		= "Bullet"
+            Name        = "raybullet_ametican_hornet01"
+			Price       = "6"/>
+
+		<Prototype
+			Class		= "Bullet"
+            Name        = "raybullet_specter01"
+			Price       = "14"/>
+
+		<Prototype
+			Class		= "Bullet"
+            Name        = "raybullet_pkt01"
+			Price       = "15"/>
+
+		<Prototype
+			Class		= "Bullet"
+            Name        = "raybullet_kord01"
+			Price       = "32"/>
+
+		<Prototype
+			Class		= "Bullet"
+            Name        = "raybullet_storm01"
+			Price       = "108"/>
+
+		<Prototype
+			Class		= "Bullet"
+            Name        = "raybullet_rapier01"
+			Price       = "265"/>
+
+		<Prototype
+			Class		= "Bullet"
+            Name        = "raybullet_vector01"
+			Price       = "12"/>
+
+		<Prototype
+			Class		= "Bullet"
+            Name        = "raybullet_vulcan01"
+			Price       = "7"/>
+
+		<Prototype
+			Class		= "Bullet"
+            Name        = "raybullet_flag01"
+			Price       = "950"/>
+
+		<Prototype
+			Class		= "Bullet"
+            Name        = "raybullet_kpvt01"
+			Price       = "14"/>
+
+		<Prototype
+			Class		= "Bullet"
+            Name        = "raybullet_rainmetal01"
+			Price       = "80"/>
+
+		<Prototype
+			Class		= "Bullet"
+            Name        = "raybullet_cyclops01"
+			Price       = "500"/>
+
+		<Prototype
+			Class		= "Bullet"
+            Name        = "raybullet_octopus01"
+			Price       = "42"/>
+
 	</Folder>
 
 	<Folder Name = "Dots">
@@ -298,7 +369,7 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 
 			<Parts>
 				<Part id = "DOT"	Prototype = "sack_dot2" />
-				<Part id = "CANNON"	Prototype = "specter01" />
+				<Part id = "CANNON"	Prototype = "specter01_unlimited" />
 			</Parts>
 		</Prototype>
 
@@ -316,7 +387,7 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 			</MainPartDescription>
 			<Parts>
 				<Part id = "DOT"		Prototype = "sack_dot1" />
-				<Part id = "CANNON"	Prototype = "specter01" />
+				<Part id = "CANNON"	Prototype = "specter01_unlimited" />
 			</Parts>
 		</Prototype>
 
@@ -338,7 +409,7 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 
 			<Parts>
 				<Part id = "DOT"	Prototype = "sack_dot2" />
-				<Part id = "CANNON"	Prototype = "pkt01" />
+				<Part id = "CANNON"	Prototype = "pkt01_unlimited" />
 			</Parts>
 		</Prototype>
 
@@ -359,7 +430,7 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 
 			<Parts>
 				<Part id = "DOT"	Prototype = "heavy_dot3" />
-				<Part id = "CANNON"			Prototype = "vector01" />
+				<Part id = "CANNON"			Prototype = "vector01_unlimited" />
 			</Parts>
 		</Prototype>
 
@@ -380,7 +451,7 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 
 			<Parts>
 				<Part id = "DOT"	Prototype = "heavy_dot4" />
-				<Part id = "CANNON"			Prototype = "vulcan01" />
+				<Part id = "CANNON"			Prototype = "vulcan01_unlimited" />
 			</Parts>
 		</Prototype>
 
@@ -398,7 +469,7 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 			</MainPartDescription>
 			<Parts>
 				<Part id = "DOT"		Prototype = "sack_dot2" />
-				<Part id = "CANNON"	Prototype = "hornet01" />
+				<Part id = "CANNON"	Prototype = "hornet01_unlimited" />
 			</Parts>
 		</Prototype>
 

@@ -225,13 +225,31 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
                 Mass                            = "0.1"
                 BlastWavePrototype      = "someBlastWave"
                 />
+
+        <Prototype
+                Class                   = "Rocket"
+                Name                    = "rocket_sml01_hunter01"
+                ModelFile               = "rocket_sml01"
+                ExplosionType           = "BLAST" 
+
+		Price			= "3475"
+
+                Velocity                        = "200"
+                Acceleration            = "100"
+                FlyTime                         = "5.0"
+                MinTurningRadius                = "20"
+                Size                    = "0.5 0.5 2"
+                Mass                            = "0.1"
+                BlastWavePrototype      = "someBlastWave"
+                />
+
         <Prototype
                 Class                   = "Rocket"
                 Name                    = "hail_rocket"
                 ModelFile               = "rocket_sml01"
                 ExplosionType           = "BLAST" 
 
-		Price			= "10000"
+		Price			= "5000"
 
                 Velocity                        = "200"
                 Acceleration            = "100"
@@ -248,7 +266,7 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
                 ModelFile               = "rockets_big01"
                 ExplosionType           = "BLAST" 
 
-		Price			= "1280"
+		Price			= "1400"
                 Velocity                        = "200"
                 Acceleration            = "100"
                 FlyTime                         = "5.0"
@@ -263,7 +281,7 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
                 ModelFile               = "rockets_big01"
                 ExplosionType           = "BLAST" 
 
-		Price			= "200"
+		Price			= "800"
                 Velocity                        = "200"
                 Acceleration            = "100"
                 FlyTime                         = "5.0"
@@ -278,7 +296,7 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
                 ModelFile               = "rockets_big01"
                 ExplosionType           = "BLAST" 
 
-		Price			= "2200"
+		Price			= "2100"
                 Velocity                        = "200"
                 Acceleration            = "100"
                 FlyTime                         = "5.0"
@@ -294,7 +312,7 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
                 ModelFile               = "rocket_sml01"
                 ExplosionType           = "BLAST" 
 
-		Price			= "210"
+		Price			= "625"
 
                 Velocity                        = "200"
                 Acceleration            = "100"
@@ -334,7 +352,7 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
                 WithShellsPoolLimit     = "true"
 
                 CanBeUsedInAutogenerating  =  "0"
-                Price           = "9870" 
+                Price           = "20980" 
 
                 Durability                      = "300"/>
 
@@ -380,12 +398,14 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
                 GroupingAngle           = "1"
                 FiringRange             = "200"
                 RecoilForce             = "150"
+                ShellsPoolSize="16"
 		ChargeSize     = "8"
                 RechargingTime = "12"
                 MaxCharges = "3"
+                WithShellsPoolLimit     = "true"
 
                 CanBeUsedInAutogenerating  =  "0"
-                Price           = "82000" 
+                Price           = "38400" 
 
                 Durability                      = "400" />
 
@@ -406,6 +426,8 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
 		GroupingAngle		= "1"
 		FiringRange		= "200"
 		RecoilForce		= "150"
+                ShellsPoolSize="20"
+                WithShellsPoolLimit	= "true"
 		ChargeSize     = "10"
 		RechargingTime = "10"
 		MaxCharges = "4"
@@ -438,11 +460,11 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
 		ChargeSize     = "6"
 		RechargingTime = "12"
 
-		ShellsPoolSize          = "12"
+		ShellsPoolSize          = "18"
 		WithShellsPoolLimit     = "true"
                 
                 CanBeUsedInAutogenerating  =  "0"
-		Price           = "9400" 
+		Price           = "25200" 
         />
 
 	<Prototype
@@ -561,7 +583,7 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
                 Decal                           = "DC_ROKET"
 
      		ApplyAffixes	= "false"
-                Price           = "35200"
+                Price           = "49800"
                 ResourceType            = "SIDE_GUN">   
 
                 <Part id = "BASKET_SIDE_GUN_L"  Prototype = "mrak01L" /> 

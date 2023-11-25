@@ -14,6 +14,26 @@
 		<Node name="Sound3" class="SgSoundSourceNode" id="S_USE_OIL" looped="0"/>
 	</Node>
 
+	<Node name="ET_S_USE_RELOAD_ARTILLERYGUN" class="SgNode">
+		<Node name="Sound3" class="SgSoundSourceNode" id="S_USE_RELOAD_ARTILLERYGUN" looped="0"/>
+	</Node>
+
+	<Node name="ET_S_USE_RELOAD_HEAVYGUN" class="SgNode">
+		<Node name="Sound3" class="SgSoundSourceNode" id="S_USE_RELOAD_HEAVYGUN" looped="0"/>
+	</Node>
+
+	<Node name="ET_S_USE_RELOAD_MACHINEGUN" class="SgNode">
+		<Node name="Sound3" class="SgSoundSourceNode" id="S_USE_RELOAD_MACHINEGUN" looped="0"/>
+	</Node>
+
+	<Node name="ET_S_USE_RELOAD_ROCKETGUN" class="SgNode">
+		<Node name="Sound3" class="SgSoundSourceNode" id="S_USE_RELOAD_ROCKETGUN" looped="0"/>
+	</Node>
+
+	<Node name="ET_S_USE_RELOAD_SHOTGUN" class="SgNode">
+		<Node name="Sound3" class="SgSoundSourceNode" id="S_USE_RELOAD_SHOTGUN" looped="0"/>
+	</Node>
+
 	<Node name="ET_PS_FUEL_PETROL_START" class="SgNode">
 		<Node name="noise" class="SgSoundSourceNode" id="S_FUEL_PETROL_START" looped="0" /> 
 	</Node>

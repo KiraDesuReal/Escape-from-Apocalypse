@@ -107,11 +107,16 @@
 	<Weapon
 		MaxGroupingAngle="5"
 		TimeOutForReAimGuns="0.3"/>
-
+		
 	<DifficultyLevels>
 		<Level
 			Name="HardLevel"
-			EnemyWeaponCoeff="1.5"
+			EnemyWeaponCoeff="1.35"
+			EnemyShootingDelay="0.6"/>
+
+		<Level
+			Name="HardLevelPlus"
+			EnemyWeaponCoeff="1.65"
 			EnemyShootingDelay="0.5"/>
 	</DifficultyLevels>
 

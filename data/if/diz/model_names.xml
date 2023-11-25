@@ -497,27 +497,27 @@
 
 	
 	<Item
-		id="belazCargo01_7x12"
+		id="belazCargo01_6x12"
 		locForm="0"
 		value="Хост" />
 
 	<Item
-		id="belazCargo02_9x12"
+		id="belazCargo02_8x11"
 		locForm="0"
 		value="Конструктор" />
 
 	<Item
-		id="belazCargo03_12x12"
+		id="belazCargo03_11x12"
 		locForm="0"
 		value="Колосс" />
 
 	<Item
-		id="belazCargo04_8x12"
+		id="belazCargo04_6x10"
 		locForm="0"
 		value="Гром" />
 
 	<Item
-		id="belazCargo05_10x10"
+		id="belazCargo05_9x10"
 		locForm="0"
 		value="Цилиндр" />
 
@@ -617,27 +617,27 @@
 		value="Тигр" />
 
 	<Item
-		id="uralCargo01_6x10"
+		id="uralCargo01_6x9"
 		locForm="0"
 		value="Холод" />
 
 	<Item
-		id="uralCargo02_9x10"
+		id="uralCargo02_7x9"
 		locForm="0"
 		value="Фрахт" />
 
 	<Item
-		id="uralCargo03_10x10"
+		id="uralCargo03_9x10"
 		locForm="0"
 		value="Крейсер" />
 
 	<Item
-		id="uralCargo04_8x9"
+		id="uralCargo04_7x10"
 		locForm="0"
 		value="Панцирь" />
 
 	<Item
-		id="uralCargo05_7x9"
+		id="uralCargo05_8x9"
 		locForm="0"
 		value="Тигр" />
 
@@ -722,27 +722,27 @@
 		value="Экскалибур" />
 
 	<Item
-		id="mirotvorecCargo01_8x10"
+		id="mirotvorecCargo01_7x9"
 		locForm="0"
 		value="Клык" />
 
 	<Item
-		id="mirotvorecCargo02_10x9"
+		id="mirotvorecCargo02_7x10"
 		locForm="0"
 		value="Центурион" />
 
 	<Item
-		id="mirotvorecCargo03_12x12"
+		id="mirotvorecCargo03_8x10"
 		locForm="0"
 		value="Майа" />
 
 	<Item
-		id="mirotvorecCargo04_9x9"
+		id="mirotvorecCargo04_7x10"
 		locForm="0"
 		value="Масамунэ" />
 
 	<Item
-		id="mirotvorecCargo05_12x12"
+		id="mirotvorecCargo05_9x11"
 		locForm="0"
 		value="Экскалибур" />
 
@@ -1890,12 +1890,12 @@
 	<Item
 		id="cruiserCab01"
 		locForm="1"
-		value="Кабина Крейсера" />
+		value="Кабина Крейсера (Уровень I)" />
 
 	<Item
 		id="cruiserCab02"
 		locForm="1"
-		value="Кабина Крейсера" />
+		value="Кабина Крейсера (Уровень II)" />
 
 	<Item
 		id="cruiserCargo01"
@@ -1908,14 +1908,14 @@
 		value="Кузов Крейсера" />
 
 	<Item
-		id="cruiserCargo01_11x10"
+		id="cruiserCargo01_8x11"
 		locForm="0"
-		value="Кузов Крейсера" />
+		value="Кузов Крейсера 8x11" />
 
 	<Item
-		id="cruiserCargo02_13x10"
+		id="cruiserCargo02_8x12"
 		locForm="0"
-		value="Кузов Крейсера" />
+		value="Кузов Крейсера 8x12" />
 	
 	<Item
 		id="Smoke"
@@ -2168,6 +2168,57 @@
 		id="quest_item_key_gate_r1m3"
 		locForm="0"
 		value="Ключ от Дороги на Фатерлянд" />
+
+	
+	<Item
+		id="ammo_chest_artillerygun"
+		locForm="0"
+		value="Ящик боеприпасов для Артиллерии." />
+
+	<Item
+		id="ammo_chest_artillerygunForSale"
+		locForm="0"
+		value="Ящик боеприпасов для Артиллерии." />
+
+	<Item
+		id="ammo_chest_heavygun"
+		locForm="0"
+		value="Ящик патронов для Пушки." />
+
+	<Item
+		id="ammo_chest_heavygunForSale"
+		locForm="0"
+		value="Ящик патронов для Пушки." />
+
+	<Item
+		id="ammo_chest_machinegun"
+		locForm="0"
+		value="Ящик патронов для Пулемёта." />
+
+	<Item
+		id="ammo_chest_machinegunForSale"
+		locForm="0"
+		value="Ящик патронов для Пулемёта." />
+
+	<Item
+		id="ammo_chest_rocketgun"
+		locForm="0"
+		value="Ящик боеприпасов для Ракетной установки." />
+
+	<Item
+		id="ammo_chest_rocketgunForSale"
+		locForm="0"
+		value="Ящик боеприпасов для Ракетной установки." />
+
+	<Item
+		id="ammo_chest_shotgun"
+		locForm="0"
+		value="Ящик дроби для Дробовика." />
+
+	<Item
+		id="ammo_chest_shotgunForSale"
+		locForm="0"
+		value="Ящик дроби для Дробовика." />
 
 
 	<Item
@@ -2726,6 +2777,16 @@
 		id="item_monolit"
 		locForm="0"
 		value="Визитная карта MONOLIT" />
+
+	<Item
+		id="item_kaktus"
+		locForm="0"
+		value="Кактус" />
+
+	<Item
+		id="item_keqing"
+		locForm="0"
+		value="Статуэтка Кэ Цин" />
 
 
 	<Item

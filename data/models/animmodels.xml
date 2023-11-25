@@ -561,6 +561,13 @@
 		windwavy="0"
 		file="data\models\Goods\other\monolit.gam" />
 
+	<model
+		id="kaktus"
+		shadow="0"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\other\kaktus.gam" />
+
 <!-- masks -->
 	<model
 		id="mask_hero"
@@ -16826,6 +16833,20 @@
 	<model
 		id="factory_rr_angar2"
 		file="data\models\buildings\region3\factory\factory_rr_angar2.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0" />
+
+	<model
+		id="factory_rr_angar1_r0m0"
+		file="data\models\buildings\region0\factory_rr_angar1_r0m0.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0" />
+
+	<model
+		id="factory_rr_angar2_r0m0"
+		file="data\models\buildings\region0\factory_rr_angar2_r0m0.gam"
 		shadow="1"
 		windwavy="0"
 		trans="0" />

@@ -270,6 +270,21 @@
 	</Object>
 
 	<Object
+		Name="Garage_Build_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="888.526 255.000 958.182"
+		Radius="2.500">
+		<Object
+			Name="Garage_NPC"
+			Belong="1100"
+			Prototype="NPC"
+			ModelName=""
+			helloReplyNames="Dlg_npc_0013118"
+			SpokenCount="0" />
+	</Object>
+
+	<Object
 		Name="tp_1_loc"
 		Belong="1100"
 		Prototype="genericLocation"

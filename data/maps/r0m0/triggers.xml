@@ -18,6 +18,7 @@
 			SetVar("PetrolStation_FuelTime", 0)
 			SetVar("PetrolStation_Refill", 0)
 			SetVar("PetrolStation_Refill_Process", 0)
+			SetVar("RegenPlayerFuel_Timer", 0)
 
 			SetVar("Inventory_lvl_2_item_drill", 0)
 			SetVar("Inventory_lvl_2_item_screws", 0)
@@ -82,6 +83,21 @@
 			SetVar("Lampposts_money", 0)
 			SetVar("Lampposts_Builden", 0)
 
+			SetVar("Garage_item_bolts", 0)
+			SetVar("Garage_item_nuts", 0)
+			SetVar("Garage_item_pena", 0)
+			SetVar("Garage_item_insulation", 0)
+			SetVar("Garage_item_lump", 0)
+			SetVar("Garage_item_cable", 0)
+			SetVar("Garage_item_tplug", 0)
+			SetVar("Garage_item_roulet", 0)
+			SetVar("Garage_item_pipe_wrench", 0)
+			SetVar("Garage_item_tb", 0)
+			SetVar("Garage_item_fitanyashka", 0)
+			SetVar("Garage_item_kaktus", 0)
+			SetVar("Garage_Builden", 0)
+			SetVar("RegenPlayerHP_Timer", 0)
+
 			SetVar("CountRaids", 0)
 
 			SetVar("VehMove", 0)
@@ -138,7 +154,6 @@
 					R0M1_exit = 0
 				end
 				pl:setImmortalMode(1)
-				pl:setGodMode(1)
 			end
 
 			TActivate("trCreateVehicleMove")
@@ -148,7 +163,8 @@
 			SetVar("ToMap", "0")
 
 			TActivate("VehiclesForSale")
-
+		
+		--туннель
 			if GetVar("Tunel_Builden").AsInt == 3 then
 				local g = GetEntityByName("tunel_gate")
 				if g then g:SetNodeAction(AT_STAND2) end
@@ -160,6 +176,16 @@
 
 				local fx = GetEntityByName("fx")
 				if fx then fx:Remove() end
+			end
+		
+		--гараж
+			if GetVar("Garage_Builden").AsInt == 1 then
+				TActivate("PlayerHP")
+			end
+		
+		--заправка
+			if GetVar("PetrolStationBuild_Builden").AsInt == 1 then
+				TActivate("PlayerFuel")
 			end
 
 			SetCameraBehindPlayerVehicle()
@@ -173,7 +199,7 @@
 			local Workshop = GetEntityByName("Town_r0m0_Workshop")
 			local Vehicles = Workshop:GetRepositoryByTypename("Vehicles")
 			local CabAndBasket = Workshop:GetRepositoryByTypename("CabinsAndBaskets")
-
+			
 			local Shop = GetEntityByName("Town_r0m0_Shop")
 			local GunAndGadget = Shop:GetRepositoryByTypename("GunsAndGadgets")
 	
@@ -204,35 +230,35 @@
 				CabAndBasket:AddItems("uralCab03", 1)
 				CabAndBasket:AddItems("uralCab04", 1)
 				CabAndBasket:AddItems("uralCab05", 1)
-				CabAndBasket:AddItems("uralCargo01_6x10", 1)
-				CabAndBasket:AddItems("uralCargo02_9x10", 1)
-				CabAndBasket:AddItems("uralCargo03_10x10", 1)
-				CabAndBasket:AddItems("uralCargo04_8x9", 1)
-				CabAndBasket:AddItems("uralCargo05_7x9", 1)
+				CabAndBasket:AddItems("uralCargo01_6x9", 1)
+				CabAndBasket:AddItems("uralCargo02_7x9", 1)
+				CabAndBasket:AddItems("uralCargo03_9x10", 1)
+				CabAndBasket:AddItems("uralCargo04_7x10", 1)
+				CabAndBasket:AddItems("uralCargo05_8x9", 1)
 				CabAndBasket:AddItems("belazCab01", 1)
 				CabAndBasket:AddItems("belazCab02", 1)
 				CabAndBasket:AddItems("belazCab03", 1)
 				CabAndBasket:AddItems("belazCab04", 1)
 				CabAndBasket:AddItems("belazCab05", 1)
-				CabAndBasket:AddItems("belazCargo01_7x12", 1)
-				CabAndBasket:AddItems("belazCargo02_9x12", 1)
-				CabAndBasket:AddItems("belazCargo03_12x12", 1)
-				CabAndBasket:AddItems("belazCargo04_8x12", 1)
-				CabAndBasket:AddItems("belazCargo05_10x10", 1)
+				CabAndBasket:AddItems("belazCargo01_6x12", 1)
+				CabAndBasket:AddItems("belazCargo02_8x11", 1)
+				CabAndBasket:AddItems("belazCargo03_11x12", 1)
+				CabAndBasket:AddItems("belazCargo04_6x10", 1)
+				CabAndBasket:AddItems("belazCargo05_9x10", 1)
 				CabAndBasket:AddItems("mirotvorecCab01", 1)
 				CabAndBasket:AddItems("mirotvorecCab02", 1)
 				CabAndBasket:AddItems("mirotvorecCab03", 1)
 				CabAndBasket:AddItems("mirotvorecCab04", 1)
 				CabAndBasket:AddItems("mirotvorecCab05", 1)
-				CabAndBasket:AddItems("mirotvorecCargo01_8x10", 1)
-				CabAndBasket:AddItems("mirotvorecCargo02_10x9", 1)
-				CabAndBasket:AddItems("mirotvorecCargo03_12x12", 1)
-				CabAndBasket:AddItems("mirotvorecCargo04_9x9", 1)
-				CabAndBasket:AddItems("mirotvorecCargo05_12x12", 1)
+				CabAndBasket:AddItems("mirotvorecCargo01_7x9", 1)
+				CabAndBasket:AddItems("mirotvorecCargo02_7x10", 1)
+				CabAndBasket:AddItems("mirotvorecCargo03_8x10", 1)
+				CabAndBasket:AddItems("mirotvorecCargo04_7x10", 1)
+				CabAndBasket:AddItems("mirotvorecCargo05_9x11", 1)
 				CabAndBasket:AddItems("cruiserCab01", 1)
 				CabAndBasket:AddItems("cruiserCab02", 1)
-				CabAndBasket:AddItems("cruiserCargo01_11x10", 1)
-				CabAndBasket:AddItems("cruiserCargo02_13x10", 1)
+				CabAndBasket:AddItems("cruiserCargo01_8x11", 1)
+				CabAndBasket:AddItems("cruiserCargo02_8x12", 1)
 			end
 
 			if Shop and GunAndGadget then
@@ -245,6 +271,7 @@
 				GunAndGadget:AddItems("additional_torque", 1)
 				GunAndGadget:AddItems("additional_durability", 1)
 				GunAndGadget:AddItems("additional_stability", 1)
+				GunAndGadget:AddItems("ammo_chest_machinegunForSale", 3)
 			end
 
 		    trigger:Deactivate()
@@ -424,17 +451,17 @@
 	<trigger Name="PetrolStation_BuildInfo" active="0">
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="PetrolStation_Build_loc" />
 		<script>
-			if not(GetVar("PetrolStationBuild_fuel_nil_use").AsInt == 2) or not(GetVar("PetrolStationBuild_fuel_full_use").AsInt == 4) or not(GetVar("PetrolStationBuild_item_bolts").AsInt == 2) or not(GetVar("PetrolStationBuild_item_nuts").AsInt == 2) or not(GetVar("PetrolStationBuild_item_thermometer").AsInt == 1) or not(GetVar("PetrolStationBuild_item_parts").AsInt == 3) or not(GetVar("PetrolStationBuild_item_lump").AsInt == 2) or not(GetVar("PetrolStationBuild_item_fullmaster").AsInt == 1) then
+			if not(GetVar("PetrolStationBuild_fuel_nil_use").AsInt == 2) or not(GetVar("PetrolStationBuild_fuel_full_use").AsInt == 2) or not(GetVar("PetrolStationBuild_item_bolts").AsInt == 2) or not(GetVar("PetrolStationBuild_item_nuts").AsInt == 2) or not(GetVar("PetrolStationBuild_item_thermometer").AsInt == 1) or not(GetVar("PetrolStationBuild_item_parts").AsInt == 3) or not(GetVar("PetrolStationBuild_item_lump").AsInt == 2) or not(GetVar("PetrolStationBuild_item_fullmaster").AsInt == 1) then
 				local item_1, item_2, item_3, item_4, item_5, item_6, item_7, item_8 = "", "", "", "", "", "", "", ""
 			
-				if GetVar("PetrolStationBuild_fuel_nil_use").AsInt ~= 2 then item_1 = "Пустая канистра - "..(2 - GetVar("PetrolStationBuild_fuel_nil_use").AsInt).."|" end
-				if GetVar("PetrolStationBuild_fuel_full_use").AsInt ~= 4 then item_2 = "Канистра топлива - "..(4 - GetVar("PetrolStationBuild_fuel_full_use").AsInt).."|" end
-				if GetVar("PetrolStationBuild_item_bolts").AsInt ~= 2 then item_3 = "Болты - "..(2 - GetVar("PetrolStationBuild_item_bolts").AsInt).."|" end
-				if GetVar("PetrolStationBuild_item_nuts").AsInt ~= 2 then item_4 = "Гайки - "..(2 - GetVar("PetrolStationBuild_item_nuts").AsInt).."|" end
-				if GetVar("PetrolStationBuild_item_thermometer").AsInt ~= 1 then item_5 = "Термометр - 1|" end
-				if GetVar("PetrolStationBuild_item_parts").AsInt ~= 3 then item_6 = "Металлические запчасти - "..(3 - GetVar("PetrolStationBuild_item_parts").AsInt).."|" end
-				if GetVar("PetrolStationBuild_item_lump").AsInt ~= 2 then item_7 = "Лампа накаливания - "..(2 - GetVar("PetrolStationBuild_item_lump").AsInt).."|" end
-				if GetVar("PetrolStationBuild_item_fullmaster").AsInt ~= 1 then item_8 = "Набор напильников «FullMaster» - 1" end
+				if GetVar("PetrolStationBuild_fuel_nil_use").AsInt ~= 2 then item_1 = "Пустая канистра - x"..(2 - GetVar("PetrolStationBuild_fuel_nil_use").AsInt).."|" end
+				if GetVar("PetrolStationBuild_fuel_full_use").AsInt ~= 2 then item_2 = "Канистра топлива - x"..(2 - GetVar("PetrolStationBuild_fuel_full_use").AsInt).."|" end
+				if GetVar("PetrolStationBuild_item_bolts").AsInt ~= 2 then item_3 = "Болты - x"..(2 - GetVar("PetrolStationBuild_item_bolts").AsInt).."|" end
+				if GetVar("PetrolStationBuild_item_nuts").AsInt ~= 2 then item_4 = "Гайки - x"..(2 - GetVar("PetrolStationBuild_item_nuts").AsInt).."|" end
+				if GetVar("PetrolStationBuild_item_thermometer").AsInt ~= 1 then item_5 = "Термометр - x1|" end
+				if GetVar("PetrolStationBuild_item_parts").AsInt ~= 3 then item_6 = "Металлические запчасти - x"..(3 - GetVar("PetrolStationBuild_item_parts").AsInt).."|" end
+				if GetVar("PetrolStationBuild_item_lump").AsInt ~= 2 then item_7 = "Лампа накаливания - x"..(2 - GetVar("PetrolStationBuild_item_lump").AsInt).."|" end
+				if GetVar("PetrolStationBuild_item_fullmaster").AsInt ~= 1 then item_8 = "Набор напильников «FullMaster» - x1" end
 
 				local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7..""..item_8
 
@@ -477,10 +504,48 @@
 
 			SetVar("PetrolStationBuild_Builden", 1)
 			TDeactivate("PetrolStation_BuildInfo")
+			TActivate("PlayerFuel")
 		    trigger:Deactivate()
 		</script>
 	</trigger>
 
+	<trigger Name="PlayerFuel" active="0">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local fuel = GetPlayerFuel() 
+			local maxfuel = GetPlayerMaxFuel()
+			if not(fuel == maxfuel) then
+				TActivate("RegenetationPlayerFuel_Timer")
+				SetVar("RegenPlayerFuel_Timer", 15)
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="RegenetationPlayerFuel_Timer" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			local t = GetVar("RegenPlayerFuel_Timer").AsInt - 1
+			SetVar("RegenPlayerFuel_Timer", t)
+			if 1 > GetVar("RegenPlayerFuel_Timer").AsInt then
+				GetPlayerVehicle():AddModifier("fuel", "+ 1")
+				SetVar("RegenPlayerFuel_Timer", 0)
+				TActivate("PlayerFuel")
+			else
+				TActivate("rpft")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="rpft" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("RegenetationPlayerFuel_Timer")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+	
 <!-- Заправляем канистры -->
 	<trigger Name="UseFuelNil_InPetrolStation01" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation_loc" />
@@ -618,7 +683,7 @@
 			local ChestId = GetEntityByID(Chest)
 			ChestId:SetPosition(CVector(903.080, 255, 988.017))
 
-			local start_items = {"item_opacity", "hornet01", "specter01", "specter01", "specter01", "pkt01", "vector01", "vulcan01", "scrap_metal_use", "scrap_metal_use", "scrap_metal_use", "scrap_metal_use", "scrap_metal_use", "machinery_use", "machinery_use", "machinery_use", "oil_use", "oil_use", "oil_use", "oil_use", "fuel_nil_use", "fuel_nil_use"}
+			local start_items = {"item_opacity", "hornet01", "specter01", "specter01", "specter01", "pkt01", "vector01", "vulcan01", "scrap_metal_use", "scrap_metal_use", "scrap_metal_use", "scrap_metal_use", "scrap_metal_use", "machinery_use", "machinery_use", "machinery_use", "oil_use", "oil_use", "oil_use", "oil_use", "fuel_nil_use", "fuel_nil_use", "ammo_chest_machinegun", "ammo_chest_machinegun"}
 			local items = getn(start_items)
 
 			for i=1,items do
@@ -638,15 +703,15 @@
 	<trigger Name="Inventory_lvl_2_BuildInfo" active="0">
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Inventory_Build_lvl_2_loc" />
 		<script>
-			if not(GetVar("Inventory_lvl_2_item_drill").AsInt == 1) or not(GetVar("Inventory_lvl_2_item_screws").AsInt == 4) or not(GetVar("Inventory_lvl_2_item_nails").AsInt == 2) or not(GetVar("Inventory_lvl_2_item_screw").AsInt == 1) or not(GetVar("Inventory_lvl_2_item_roulet").AsInt == 1) or not(GetVar("Inventory_lvl_2_item_pena").AsInt == 2) then
+			if not(GetVar("Inventory_lvl_2_item_drill").AsInt == 1) or not(GetVar("Inventory_lvl_2_item_screws").AsInt == 4) or not(GetVar("Inventory_lvl_2_item_nails").AsInt == 2) or not(GetVar("Inventory_lvl_2_item_screw").AsInt == 1) or not(GetVar("Inventory_lvl_2_item_roulet").AsInt == 1) or not(GetVar("Inventory_lvl_2_item_pena").AsInt == 1) then
 				local item_1, item_2, item_3, item_4, item_5, item_6 = "", "", "", "", "", ""
 			
-				if GetVar("Inventory_lvl_2_item_drill").AsInt ~= 1 then item_1 = "Дрель - 1|" end
-				if GetVar("Inventory_lvl_2_item_screws").AsInt ~= 4 then item_2 = "Саморезы - "..(4 - GetVar("Inventory_lvl_2_item_screws").AsInt).."|" end
-				if GetVar("Inventory_lvl_2_item_nails").AsInt ~= 2 then item_3 = "Гвозди - "..(2 - GetVar("Inventory_lvl_2_item_nails").AsInt).."|" end
-				if GetVar("Inventory_lvl_2_item_screw").AsInt ~= 1 then item_4 = "Отвертка - 1|" end
-				if GetVar("Inventory_lvl_2_item_roulet").AsInt ~= 1 then item_5 = "Рулетка - 1|" end
-				if GetVar("Inventory_lvl_2_item_pena").AsInt ~= 2 then item_6 = "Монтажная пена - "..(2 - GetVar("Inventory_lvl_2_item_pena").AsInt).."|" end
+				if GetVar("Inventory_lvl_2_item_drill").AsInt ~= 1 then item_1 = "Дрель - x1|" end
+				if GetVar("Inventory_lvl_2_item_screws").AsInt ~= 4 then item_2 = "Саморезы - x"..(4 - GetVar("Inventory_lvl_2_item_screws").AsInt).."|" end
+				if GetVar("Inventory_lvl_2_item_nails").AsInt ~= 2 then item_3 = "Гвозди - x"..(2 - GetVar("Inventory_lvl_2_item_nails").AsInt).."|" end
+				if GetVar("Inventory_lvl_2_item_screw").AsInt ~= 1 then item_4 = "Отвертка - x1|" end
+				if GetVar("Inventory_lvl_2_item_roulet").AsInt ~= 1 then item_5 = "Рулетка - x1|" end
+				if GetVar("Inventory_lvl_2_item_pena").AsInt ~= 1 then item_6 = "Монтажная пена - x1" end
 
 				local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6
 
@@ -701,16 +766,16 @@
 			if not(GetVar("ChestScavs_electronics").AsInt == 2) or not(GetVar("ChestScavs_machinery").AsInt == 1) or not(GetVar("ChestScavs_books").AsInt == 1) or not(GetVar("ChestScavs_bottles").AsInt == 1) or not(GetVar("ChestScavs_details").AsInt == 1) or not(GetVar("ChestScavs_item_ananaga").AsInt == 3) or not(GetVar("ChestScavs_item_rolex").AsInt == 3) or not(GetVar("ChestScavs_item_chain_gold").AsInt == 6) or not(GetVar("ChestScavs_item_skullring").AsInt == 4) or not(GetVar("ChestScavs_item_fitanyashka").AsInt == 1) then
 				local item_1, item_2, item_3, item_4, item_5, item_6, item_7, item_8, item_9, item_10 = "", "", "", "", "", "", "", "", "", ""
 			
-				if GetVar("ChestScavs_electronics").AsInt ~= 2 then item_1 = "Электроника - "..(2 - GetVar("ChestScavs_electronics").AsInt).."|" end
-				if GetVar("ChestScavs_machinery").AsInt ~= 1 then item_2 = "Рабочее оборудование - 1|" end
-				if GetVar("ChestScavs_books").AsInt ~= 1 then item_3 = "Книги - 1|" end
-				if GetVar("ChestScavs_bottles").AsInt ~= 1 then item_4 = "Бутылки - 1|" end
-				if GetVar("ChestScavs_details").AsInt ~= 1 then item_5 = "Детали - 1" end
-				if GetVar("ChestScavs_item_ananaga").AsInt ~= 3 then item_6 = "Ананага - "..(3 - GetVar("ChestScavs_item_ananaga").AsInt).."|" end
-				if GetVar("ChestScavs_item_rolex").AsInt ~= 3 then item_7 = "Золотые часы - "..(3 - GetVar("ChestScavs_item_rolex").AsInt).."|" end
-				if GetVar("ChestScavs_item_chain_gold").AsInt ~= 6 then item_8 = "Золотая цепочка - "..(6 - GetVar("ChestScavs_item_chain_gold").AsInt).."|" end
-				if GetVar("ChestScavs_item_skullring").AsInt ~= 4 then item_9 = "Золотое кольцо с черепом - "..(4 - GetVar("ChestScavs_item_skullring").AsInt).."|" end
-				if GetVar("ChestScavs_item_fitanyashka").AsInt ~= 1 then item_10 = "Дакимакура FitaNyashka - 1" end
+				if GetVar("ChestScavs_electronics").AsInt ~= 2 then item_1 = "Электроника - x"..(2 - GetVar("ChestScavs_electronics").AsInt).."|" end
+				if GetVar("ChestScavs_machinery").AsInt ~= 1 then item_2 = "Рабочее оборудование - x1|" end
+				if GetVar("ChestScavs_books").AsInt ~= 1 then item_3 = "Книги - x1|" end
+				if GetVar("ChestScavs_bottles").AsInt ~= 1 then item_4 = "Бутылки - x1|" end
+				if GetVar("ChestScavs_details").AsInt ~= 1 then item_5 = "Детали - x1|" end
+				if GetVar("ChestScavs_item_ananaga").AsInt ~= 3 then item_6 = "Ананага - x"..(3 - GetVar("ChestScavs_item_ananaga").AsInt).."|" end
+				if GetVar("ChestScavs_item_rolex").AsInt ~= 3 then item_7 = "Золотые часы - x"..(3 - GetVar("ChestScavs_item_rolex").AsInt).."|" end
+				if GetVar("ChestScavs_item_chain_gold").AsInt ~= 6 then item_8 = "Золотая цепочка - x"..(6 - GetVar("ChestScavs_item_chain_gold").AsInt).."|" end
+				if GetVar("ChestScavs_item_skullring").AsInt ~= 4 then item_9 = "Золотое кольцо с черепом - x"..(4 - GetVar("ChestScavs_item_skullring").AsInt).."|" end
+				if GetVar("ChestScavs_item_fitanyashka").AsInt ~= 1 then item_10 = "Дакимакура FitaNyashka - x1" end
 
 				local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7..""..item_8..""..item_9..""..item_10
 
@@ -774,9 +839,9 @@
 	</trigger>
 
 	<trigger Name="ChestScavs_Timer" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
-			local t = GetVar("ChestScavs_Timer").AsInt - 1
+			local t = GetVar("ChestScavs_Timer").AsInt - 2
 			SetVar("ChestScavs_Timer", t) 
 			if 0 >= t then
 				SetVar("ChestScavs_Timer", 0) 
@@ -790,7 +855,7 @@
 	</trigger>
 
 	<trigger Name="cst" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
 			TActivate("ChestScavs_Timer")
 			trigger:Deactivate()
@@ -945,10 +1010,11 @@
 							"item_alkani", "item_hlor", "item_paper",
 							"item_disk", "item_flashdrive", "item_manual", 
 							"item_aquapeps", "item_c6h8o6", "item_suringe",
-							"item_vodka", "item_monolit",
+							"item_vodka", "item_monolit", "item_kaktus",
 							"item_awl", "item_leatherman", "item_metalscissors", "item_nippers", "item_pliers_round", "item_screw_flat_long", "item_toolset",
 							"item_chain",
 							"specter01", "pkt01", "kord01", "storm01", "vector01", "vulcan01", "bumblebee01", "someTurboAccelerationPusher",
+							"ammo_chest_machinegun", "ammo_chest_shotgun",
 							"cooling_system_guns", "cooling_system_energy", "add_damage_guns", "add_damage_energy", "cooling_system_guns2", "firing_rate_guns2", "additional_durability", "additional_fuel_tank2"}
 				loot_count = random(2,4)
 			elseif GetVar("ChestScavs_Search").AsInt == 3 then
@@ -960,10 +1026,11 @@
 							"item_dry", "item_prisadka", "item_propan", "item_termit", "item_trotile", 
 							"item_diary", "item_diary_s", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_sas", "item_ssd",
 							"item_oftalmaskop", "item_aquapeps",
-							"item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit",
+							"item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing",
 							"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_pipe_wrench", "item_ratchet_wrench", "item_sewing_kit", 
 							"item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_woodclock",
 							"someTurboAccelerationPusher", "maxim01", "fagot01", "flag01", "rainmetal01", "elephant01", "omega01", "cyclops01", "octopus01", "marsSideGun", "hunterSideGun", "hammer01",
+							"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun",
 							"anti_missile_system", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 				loot_count = random(3,5)
 			elseif GetVar("ChestScavs_Search").AsInt == 4 then
@@ -980,6 +1047,7 @@
 							"item_metalscissors", "item_nippers", "item_pliers", "item_screw_flat",
 							"item_chain",
 							"specter01", "pkt01", "storm01", "vector01", "vulcan01", "bumblebee01",
+							"ammo_chest_machinegun", "ammo_chest_shotgun",
 							"cooling_system_guns", "cooling_system_energy", "add_damage_guns", "add_damage_energy", "additional_durability"}
 				loot_count = random(2,4)
 			elseif GetVar("ChestScavs_Search").AsInt == 5 or GetVar("ChestScavs_Search").AsInt == 6 then
@@ -1107,19 +1175,19 @@
 				local item_1, item_2, item_3, item_4, item_5, item_6, item_7 = "", "", "", "", "", "", ""
 
 				if GetVar("Tunel_Builden").AsInt == 0 then
-					if GetVar("Tunel_item_vitalik").AsInt ~= 1 then item_1 = "Кувалда «Vitalik» - 1|" end
+					if GetVar("Tunel_item_vitalik").AsInt ~= 1 then item_1 = "Кувалда «Vitalik» - x1|" end
 				elseif GetVar("Tunel_Builden").AsInt == 1 then
-					if GetVar("Tunel_item_handrill").AsInt ~= 1 then item_1 = "Ручная дрель - 1|" end
-					if GetVar("Tunel_item_metalscissors").AsInt~= 1 then item_2 = "Ножницы для резки металла - 1|" end
-					if GetVar("Tunel_item_toolset").AsInt ~= 1 then item_3 = "Набор инструментов - 1|" end
+					if GetVar("Tunel_item_handrill").AsInt ~= 1 then item_1 = "Ручная дрель - x1|" end
+					if GetVar("Tunel_item_metalscissors").AsInt~= 1 then item_2 = "Ножницы для резки металла - x1|" end
+					if GetVar("Tunel_item_toolset").AsInt ~= 1 then item_3 = "Набор инструментов - x1|" end
 				elseif GetVar("Tunel_Builden").AsInt == 2 then
-					if GetVar("Tunel_item_hose").AsInt ~= 2 then item_1 = "Гофрированный шланг - "..(2 - GetVar("Tunel_item_hose").AsInt).."|" end
-					if GetVar("Tunel_item_kek").AsInt ~= 1 then item_2 = "Лента «KEK» - 1|" end
-					if GetVar("Tunel_item_toolset").AsInt ~= 2 then item_3 = "Набор инструментов - 1|" end
-					if GetVar("Tunel_item_electronics_components").AsInt ~= 3 then item_4 = "Компоненты электроники - "..(3 - GetVar("Tunel_item_electronics_components").AsInt).."|" end
-					if GetVar("Tunel_item_wires").AsInt ~= 2 then item_5 = "Провода - "..(2 - GetVar("Tunel_item_wires").AsInt).."|" end
-					if GetVar("Tunel_item_nippers").AsInt ~= 1 then item_6 = "Кусачки - 1|" end
-					if GetVar("Tunel_item_pliers_round").AsInt ~= 1 then item_7 = "Круглогубцы - 1" end
+					if GetVar("Tunel_item_hose").AsInt ~= 2 then item_1 = "Гофрированный шланг - x"..(2 - GetVar("Tunel_item_hose").AsInt).."|" end
+					if GetVar("Tunel_item_kek").AsInt ~= 1 then item_2 = "Лента «KEK» - x1|" end
+					if GetVar("Tunel_item_toolset").AsInt ~= 2 then item_3 = "Набор инструментов - x1|" end
+					if GetVar("Tunel_item_electronics_components").AsInt ~= 3 then item_4 = "Компоненты электроники - x"..(3 - GetVar("Tunel_item_electronics_components").AsInt).."|" end
+					if GetVar("Tunel_item_wires").AsInt ~= 2 then item_5 = "Провода - x"..(2 - GetVar("Tunel_item_wires").AsInt).."|" end
+					if GetVar("Tunel_item_nippers").AsInt ~= 1 then item_6 = "Кусачки - x1|" end
+					if GetVar("Tunel_item_pliers_round").AsInt ~= 1 then item_7 = "Круглогубцы - x1" end
 				end
 
 				local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7
@@ -1189,27 +1257,27 @@
 
 			if GetVar("Generator_lvl").AsInt == 0 and t == "Generator_Build_loc" or GetVar("Generator_lvl").AsInt == 1 and t == "Generator_Build_loc" or GetVar("Generator_lvl").AsInt == 2 and t == "Generator_Build_lvl_2_loc" then
 				if GetVar("Generator_lvl").AsInt == 0 then
-					if GetVar("Generator_lvl_1_item_svech").AsInt ~= 1 then item_1 = "Свеча зажигания - 1|" end
-					if GetVar("Generator_lvl_1_item_engine").AsInt ~= 1 then item_2 = "Двигатель - 1|" end
-					if GetVar("Generator_lvl_1_doski").AsInt ~= 2 then item_3 = "Доски - "..(2 - GetVar("Generator_lvl_1_doski").AsInt).."|" end
-					if GetVar("Generator_lvl_1_fuel").AsInt ~= 2 then item_4 = "Горючее - "..(2 - GetVar("Generator_lvl_1_fuel").AsInt).."|" end
-					if GetVar("Generator_lvl_1_oil").AsInt ~= 4 then item_5 = "Нефть - "..(4 - GetVar("Generator_lvl_1_oil").AsInt).."|" end
+					if GetVar("Generator_lvl_1_item_svech").AsInt ~= 1 then item_1 = "Свеча зажигания - x1|" end
+					if GetVar("Generator_lvl_1_item_engine").AsInt ~= 1 then item_2 = "Двигатель - x1|" end
+					if GetVar("Generator_lvl_1_doski").AsInt ~= 2 then item_3 = "Доски - x"..(2 - GetVar("Generator_lvl_1_doski").AsInt).."|" end
+					if GetVar("Generator_lvl_1_fuel").AsInt ~= 2 then item_4 = "Горючее - x"..(2 - GetVar("Generator_lvl_1_fuel").AsInt).."|" end
+					if GetVar("Generator_lvl_1_oil").AsInt ~= 4 then item_5 = "Нефть - x"..(4 - GetVar("Generator_lvl_1_oil").AsInt).."|" end
 				elseif GetVar("Generator_lvl").AsInt == 1 then
-					if GetVar("Generator_lvl_1_item_svech").AsInt ~= 5 then item_1 = "Свеча зажигания - "..(5 - GetVar("Generator_lvl_1_item_svech").AsInt).."|" end
-					if GetVar("Generator_lvl_1_item_engine").AsInt ~= 2 then item_2 = "Двигатель - 1|" end
-					if GetVar("Generator_lvl_2_item_rele").AsInt ~= 4 then item_3 = "Реле - "..(4 - GetVar("Generator_lvl_2_item_rele").AsInt).."|" end
-					if GetVar("Generator_lvl_2_item_wires").AsInt ~= 10 then item_4 = "Провода - "..(10 - GetVar("Generator_lvl_2_item_wires").AsInt).."|" end
-					if GetVar("Generator_lvl_2_item_buldex").AsInt ~= 1 then item_5 = "Кабелерез «Bulbex» - 1" end
+					if GetVar("Generator_lvl_1_item_svech").AsInt ~= 5 then item_1 = "Свеча зажигания - x"..(5 - GetVar("Generator_lvl_1_item_svech").AsInt).."|" end
+					if GetVar("Generator_lvl_1_item_engine").AsInt ~= 2 then item_2 = "Двигатель - x1|" end
+					if GetVar("Generator_lvl_2_item_rele").AsInt ~= 4 then item_3 = "Реле - x"..(4 - GetVar("Generator_lvl_2_item_rele").AsInt).."|" end
+					if GetVar("Generator_lvl_2_item_wires").AsInt ~= 10 then item_4 = "Провода - x"..(10 - GetVar("Generator_lvl_2_item_wires").AsInt).."|" end
+					if GetVar("Generator_lvl_2_item_buldex").AsInt ~= 1 then item_5 = "Кабелерез «Bulbex» - x1" end
 				elseif GetVar("Generator_lvl").AsInt == 2 and t == "Generator_Build_lvl_2_loc" then
-					if GetVar("Generator_lvl_3_item_bp").AsInt ~= 4 then item_1 = "Блок питания - "..(4 - GetVar("Generator_lvl_3_item_bp").AsInt).."|" end
-					if GetVar("Generator_lvl_1_item_engine").AsInt ~= 5 then item_2 = "Двигатель - "..(5 - GetVar("Generator_lvl_1_item_engine").AsInt).."|" end
-					if GetVar("Generator_lvl_2_item_rele").AsInt ~= 10 then item_3 = "Реле - "..(10 - GetVar("Generator_lvl_2_item_rele").AsInt).."|" end
-					if GetVar("Generator_lvl_1_item_svech").AsInt ~= 15 then item_4 = "Свеча зажигания - "..(15 - GetVar("Generator_lvl_1_item_svech").AsInt).."|" end
-					if GetVar("Generator_lvl_3_item_parts").AsInt ~= 6 then item_5 = "Металлические запчасти - "..(6 - GetVar("Generator_lvl_3_item_parts").AsInt).."|" end
-					if GetVar("Generator_lvl_3_item_military_cable").AsInt ~= 4 then item_6 = "Военный кабель - "..(4 - GetVar("Generator_lvl_3_item_military_cable").AsInt).."|" end
-					if GetVar("Generator_lvl_3_item_plate").AsInt ~= 3 then item_7 = "Плата - "..(3 - GetVar("Generator_lvl_3_item_plate").AsInt).."|" end
-					if GetVar("Generator_lvl_3_item_converter").AsInt ~= 1 then item_8 = "Передовой преобразователь тока - 1|" end
-					if GetVar("Generator_lvl_3_item_lcd").AsInt ~= 3 then item_9 = "LCD дисплей - "..(3 - GetVar("Generator_lvl_3_item_lcd").AsInt).."|" end
+					if GetVar("Generator_lvl_3_item_bp").AsInt ~= 4 then item_1 = "Блок питания - x"..(4 - GetVar("Generator_lvl_3_item_bp").AsInt).."|" end
+					if GetVar("Generator_lvl_1_item_engine").AsInt ~= 5 then item_2 = "Двигатель - x"..(5 - GetVar("Generator_lvl_1_item_engine").AsInt).."|" end
+					if GetVar("Generator_lvl_2_item_rele").AsInt ~= 10 then item_3 = "Реле - x"..(10 - GetVar("Generator_lvl_2_item_rele").AsInt).."|" end
+					if GetVar("Generator_lvl_1_item_svech").AsInt ~= 15 then item_4 = "Свеча зажигания - x"..(15 - GetVar("Generator_lvl_1_item_svech").AsInt).."|" end
+					if GetVar("Generator_lvl_3_item_parts").AsInt ~= 6 then item_5 = "Металлические запчасти - x"..(6 - GetVar("Generator_lvl_3_item_parts").AsInt).."|" end
+					if GetVar("Generator_lvl_3_item_military_cable").AsInt ~= 4 then item_6 = "Военный кабель - x"..(4 - GetVar("Generator_lvl_3_item_military_cable").AsInt).."|" end
+					if GetVar("Generator_lvl_3_item_plate").AsInt ~= 3 then item_7 = "Плата - x"..(3 - GetVar("Generator_lvl_3_item_plate").AsInt).."|" end
+					if GetVar("Generator_lvl_3_item_converter").AsInt ~= 1 then item_8 = "Передовой преобразователь тока - x1|" end
+					if GetVar("Generator_lvl_3_item_lcd").AsInt ~= 3 then item_9 = "LCD дисплей - x"..(3 - GetVar("Generator_lvl_3_item_lcd").AsInt).."|" end
 				end
 
 				local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7..""..item_8..""..item_9
@@ -1352,14 +1420,14 @@
 	</trigger>
 
 	<trigger Name="Generator_timer" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local t = GetVar("Generator_time_work").AsInt
 
 			if GetVar("Generator_lvl").AsInt == 1 then
-				t = t - 4
+				t = t - 8
 			elseif GetVar("Generator_lvl").AsInt == 2 then
-				t = t - 1
+				t = t - 2
 			end
 
 			SetVar("Generator_time_work", t)
@@ -1380,7 +1448,7 @@
 	</trigger>
 
 	<trigger Name="gt" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
 			TActivate("Generator_timer")
 			trigger:Deactivate()
@@ -1436,6 +1504,26 @@
 				end	
 			end
 
+			if GetVar("Garage_Builden").AsInt == 1 then
+				if 6 > hour then
+					for l=1,6 do
+						local gr_light = GetEntityByName("gr_light_"..l)
+						local gr_light_pos = {CVector(934.758, 268.680, 961.475), CVector(934.758, 268.680, 953.251), CVector(914.288, 268.680, 953.251), CVector(897.743, 268.680, 961.475), CVector(914.288, 268.680, 961.475), CVector(897.743, 268.680, 953.251)}
+						if not(gr_light) then
+							CreateNewSgNodeObject("ET_PS_LENS_D4", "gr_light_"..l, -1, -1, gr_light_pos[l], Quaternion(0, 0, 0, 0))
+							CreateNewSgNodeObject("LS_LIGHT_TEST", "gr_ls_light_"..l, -1, -1, gr_light_pos[l], Quaternion(0, 0, 0, 0))
+						end 
+					end
+					for gr_lamm=1,2 do
+						local gr_lammp_light = GetEntityByName("gr_lammp_light_"..gr_lamm)
+						local gr_lammp_lightPos = {CVector(948.292, 256, 961.262), CVector(948.292, 256, 952.984)}
+						if not(gr_lammp_light) then
+							CreateNewSgNodeObject("LS_LIGHT_TEST", "gr_lammp_light_"..gr_lamm, -1, -1, gr_lammp_lightPos[gr_lamm], Quaternion(0, 0, 0, 0))
+						end
+					end
+				end
+			end
+
 			TActivate("Lampposts1_light")
 			trigger:Deactivate()
 		</script>
@@ -1482,6 +1570,20 @@
 				end 	
 			end
 
+			if GetVar("Garage_Builden").AsInt == 1 then
+				for l=1,6 do
+					local gr_light = GetEntityByName("gr_light_"..l)
+					if gr_light then gr_light:Remove() end
+					local gr_ls_light = GetEntityByName("gr_ls_light_"..l)
+					if gr_ls_light then gr_ls_light:Remove() end
+				end
+
+				for gr_lm=1,2 do
+					local gr_lammp_light = GetEntityByName("gr_lammp_light_"..gr_lm)
+					if gr_lammp_light then gr_lammp_light:Remove() end
+				end
+			end
+
 			for l=1,92 do
 				local lp = GetEntityByName("lp_1_light_"..l)
 				if lp then lp:Remove() end
@@ -1508,9 +1610,9 @@
 			if not(GetVar("Lampposts_item_energo_lump").AsInt == 12) or not(GetVar("Lampposts_item_wires").AsInt == 12) or not(GetVar("Lampposts_item_kondesators").AsInt == 6) then
 				local item_1, item_2, item_3 = "", "", ""
 		
-				if GetVar("Lampposts_item_energo_lump").AsInt ~= 12 then item_1 = "Энергосберегающая лампа - "..(12 - GetVar("Lampposts_item_energo_lump").AsInt).."|" end
-				if GetVar("Lampposts_item_wires").AsInt ~= 12 then item_2 = "Провода - "..(12 - GetVar("Lampposts_item_wires").AsInt).."|" end
-				if GetVar("Lampposts_item_kondesators").AsInt ~= 6 then item_3 = "Конденсаторы - "..(6 - GetVar("Lampposts_item_kondesators").AsInt).."|" end
+				if GetVar("Lampposts_item_energo_lump").AsInt ~= 12 then item_1 = "Энергосберегающая лампа - x"..(12 - GetVar("Lampposts_item_energo_lump").AsInt).."|" end
+				if GetVar("Lampposts_item_wires").AsInt ~= 12 then item_2 = "Провода - x"..(12 - GetVar("Lampposts_item_wires").AsInt).."|" end
+				if GetVar("Lampposts_item_kondesators").AsInt ~= 6 then item_3 = "Конденсаторы - x"..(6 - GetVar("Lampposts_item_kondesators").AsInt).."|" end
 			
 				local msg = item_1..""..item_2..""..item_3
 
@@ -1589,6 +1691,175 @@
 		</script>
 	</trigger>
 
+<!-- Гараж -->
+	<trigger Name="CreateGarage_Broken" active="1">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewDummyObject("factory_rr_angar2_r0m0", "gr_broken_1", -1, -1, CVector(911.607, 255, 958.745), Quaternion(0, 1, 0, 0))
+			CreateNewDummyObject("fence_short2", "gr_broken_2", -1, -1, CVector(923.659, 256.228, 948.998), Quaternion(-0.7683, -0.0042, 0.0001, 0.6401))
+			CreateNewDummyObject("metal_plate1", "gr_broken_3", -1, -1, CVector(895.097, 255.983, 941.222), Quaternion(-0.0665, 0.6769, -0.0556, 0.7309))
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "gr_broken_4", -1, -1, CVector(888.756, 254.350, 958.401), Quaternion(0, 0, 0, 1), 0.15)
+			CreateNewDummyObject("factory_conteiner", "gr_broken_5", -1, -1, CVector(947.497, 255.950, 939.726), Quaternion(-0.0915, 0.0000, 0.0000, 0.9958))
+			CreateNewDummyObject("factory_conteiner", "gr_broken_6", -1, -1, CVector(947.493, 255.076, 930.498), Quaternion(-0.0000, -0.0065, 0.0005, 1.0000))
+			CreateNewDummyObject("waste1", "gr_broken_7", -1, -1, CVector(950.164, 255, 962.743), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("concrete_ruins1", "gr_broken_8", -1, -1, CVector(947.501, 255, 955.322), Quaternion(0.0000, 0.7163, 0.0000, 0.6978))
+			CreateNewDummyObject("brokvehicle1", "gr_broken_9", -1, -1, CVector(942.718, 255, 963.291), Quaternion(0.0000, -0.7193, 0.0000, 0.6947))
+			CreateNewDummyObject("rusty_car_1", "gr_broken_10", -1, -1, CVector(947.649, 255.380, 958.507), Quaternion(0.0000, -0.1067, 0.0000, 0.9943))
+			CreateNewDummyObject("rusty_car_2", "gr_broken_11", -1, -1, CVector(944.279, 255.480, 957.169), Quaternion(-0.0958, -0.0109, -0.0010, 0.9953))
+			CreateNewDummyObject("rusty_car_5", "gr_broken_12", -1, -1, CVector(940.664, 255, 955.703), Quaternion(0.0000, -0.7040, 0.0000, 0.7102))
+			CreateNewDummyObject("barrel2", "gr_broken_13", -1, -1, CVector(941.695, 255, 952.821), Quaternion(0.0000, 0.6001, 0.0000, 0.7999))
+			CreateNewDummyObject("barrel2", "gr_broken_14", -1, -1, CVector(942.326, 255.312, 953.894), Quaternion(0.0698, 0.0749, 0.6784, 0.7275))
+			CreateNewDummyObject("brokvehicle2", "gr_broken_15", -1, -1, CVector(926.941, 255.535, 949.262), Quaternion(0.0000, -0.7148, 0.0000, -0.6994))
+			CreateNewDummyObject("agro_tech3", "gr_broken_16", -1, -1, CVector(932.444, 255.491, 968.211), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("ruins5", "gr_broken_17", -1, -1, CVector(920.627, 255.212, 955.255), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("elast_wall_2", "gr_broken_18", -1, -1, CVector(933.271, 255.510, 959.037), Quaternion(0.0000, -0.7209, 0.0000, 0.6931))
+			CreateNewDummyObject("iron_wall", "gr_broken_19", -1, -1, CVector(948.660, 255, 967.068), Quaternion(0.0000, 0.1672, 0.0000, 0.9859))
+			CreateNewDummyObject("iron_wall_2", "gr_broken_20", -1, -1, CVector(922.566, 255, 968.821), Quaternion(0, 0, 0, 0))
+			TActivate("Garage_BuildInfo")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Garage_BuildInfo" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Garage_Build_loc" />
+		<script>
+			if not(GetVar('Garage_item_bolts').AsInt == 3) or not(GetVar('Garage_item_nuts').AsInt == 3) or not(GetVar('Garage_item_pena').AsInt == 2) or not(GetVar('Garage_item_insulation').AsInt == 1) or not(GetVar('Garage_item_lump').AsInt == 6) or not(GetVar('Garage_item_cable').AsInt == 2) or not(GetVar('Garage_item_tplug').AsInt == 2) or not(GetVar('Garage_item_roulet').AsInt == 1) or not(GetVar('Garage_item_pipe_wrench').AsInt == 1) or not(GetVar('Garage_item_tb').AsInt == 2) or not(GetVar('Garage_item_fitanyashka').AsInt == 1) or not(GetVar('Garage_item_kaktus').AsInt == 3) then
+				local item_1, item_2, item_3, item_4, item_5, item_6, item_7, item_8, item_9, item_10, item_11, item_12 = "", "", "", "", "", "", "", "", "", "", "", ""
+			
+				if GetVar("Garage_item_bolts").AsInt ~= 3 then item_1 = "Болты - x"..(3 - GetVar("Garage_item_bolts").AsInt).."|" end
+				if GetVar("Garage_item_nuts").AsInt ~= 3 then item_2 = "Гайки - x"..(3 - GetVar("Garage_item_nuts").AsInt).."|" end
+				if GetVar("Garage_item_pena").AsInt ~= 2 then item_3 = "Монтажная пена - x"..(2 - GetVar("Garage_item_pena").AsInt).."|" end
+				if GetVar("Garage_item_insulation").AsInt ~= 1 then item_4 = "Изолента - x1|" end
+				if GetVar("Garage_item_lump").AsInt ~= 6 then item_5 = "Лампа накаливания - x"..(6 - GetVar("Garage_item_lump").AsInt).."|" end
+				if GetVar("Garage_item_cable").AsInt ~= 2 then item_6 = "Силовой кабель - x"..(2 - GetVar("Garage_item_cable").AsInt).."|" end
+				if GetVar("Garage_item_tplug").AsInt ~= 2 then item_7 = "Тройник - x"..(2 - GetVar("Garage_item_tplug").AsInt).."|" end
+				if GetVar("Garage_item_roulet").AsInt ~= 1 then item_8 = "Рулетка - x1|" end
+				if GetVar("Garage_item_pipe_wrench").AsInt ~= 1 then item_9 = "Шарнирный ключ «КШС» - x1|" end
+				if GetVar("Garage_item_tb").AsInt ~= 2 then item_10 = "Туалетная бумага - x"..(2 - GetVar("Garage_item_tb").AsInt).."|" end
+				if GetVar("Garage_item_fitanyashka").AsInt ~= 1 then item_11 = "Дакимакура FitaNyashka - x1|" end
+				if GetVar("Garage_item_kaktus").AsInt ~= 3 then item_12 = "Кактус - x"..(3 - GetVar("Garage_item_kaktus").AsInt).."|" end
+
+				local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7..""..item_8..""..item_9..""..item_10..""..item_11..""..item_12
+
+				AddFadingMsgByStrIdFormatted("fm_items_to_build", msg)
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="CreateGarage" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i=1,20 do
+				local gr = GetEntityByName("gr_broken_"..i)
+				if gr then gr:Remove() end
+			end
+
+			TDeactivate("Garage_BuildInfo")
+
+			CreateNewDummyObject("lamppost3", "gr_1", -1, -1, CVector(948.292, 255, 961.262), Quaternion(0.0000, -0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("lamppost3", "gr_2", -1, -1, CVector(948.292, 255, 952.984), Quaternion(0.0000, -0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("factory_rr_angar1_r0m0", "gr_3", -1, -1, CVector(911.607, 255.145, 957.745), Quaternion(0, 1, 0, 0))
+			CreateNewDummyObject("factory_conteiner", "gr_4", -1, -1, CVector(948.991, 256.249, 940.670), Quaternion(-0.0015, 0.7056, -0.0015, 0.7086))
+			CreateNewDummyObject("factory_conteiner", "gr_5", -1, -1, CVector(940.183, 256.249, 940.670), Quaternion(-0.0015, 0.7056, -0.0015, 0.7086))
+			CreateNewDummyObject("agro_tech1", "gr_6", -1, -1, CVector(931.736, 255.613, 966.370), Quaternion(0, 1, 0, 0))
+			CreateNewDummyObject("agro_tech2", "gr_7", -1, -1, CVector(950.519, 255.278, 949.424), Quaternion(0.0062, -0.7044, -0.0524, 0.7079))
+			CreateNewDummyObject("elast_1", "gr_8", -1, -1, CVector(926.470, 255.477, 957.596), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("elast_2", "gr_9", -1, -1, CVector(924.862, 255.471, 957.651), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("elast_wall_1", "gr_10", -1, -1, CVector(921.230, 255.756, 947.285), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("detail", "gr_11", -1, -1, CVector(938.753, 256.225, 957.633), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("doski", "gr_12", -1, -1, CVector(926.655, 256.460, 948.351), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("doski", "gr_13", -1, -1, CVector(932.862, 256.460, 948.351), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("doski", "gr_14", -1, -1, CVector(938.896, 256.460, 948.351), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("kanistr", "gr_15", -1, -1, CVector(925.619, 259.509, 947.295), Quaternion(-0.0509, 0.7053, -0.0509, 0.7053))
+			CreateNewDummyObject("kanistr", "gr_16", -1, -1, CVector(926.048, 256.391, 967.693), Quaternion(0.0401, 0.7060, 0.0462, 0.7056))
+			CreateNewDummyObject("kanistr", "gr_17", -1, -1, CVector(924.402, 255.783, 966.580), Quaternion(0.4961, 0.5025, 0.4930, 0.5083))
+			CreateNewDummyObject("kanistr", "gr_18", -1, -1, CVector(926.048, 256.391, 967.112), Quaternion(0.0401, 0.7063, 0.0401, 0.7056))
+			CreateNewDummyObject("koroldrov", "gr_19", -1, -1, CVector(944.913, 255.287, 948.622), Quaternion(0.0000, -0.7086, 0.0000, 0.7056))
+			CreateNewDummyObject("koroldrov", "gr_20", -1, -1, CVector(950.154, 255.331, 966.477), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("koroldrov", "gr_21", -1, -1, CVector(943.955, 255.331, 966.477), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("bottles", "gr_22", -1, -1, CVector(923.099, 262.814, 947.762), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("bottles", "gr_23", -1, -1, CVector(925.438, 262.814, 947.762), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("bottles", "gr_23", -1, -1, CVector(923.099, 262.814, 949.319), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("rabochee_oborudovanie", "gr_24", -1, -1, CVector(917.634, 255.625, 948.450), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("rabochee_oborudovanie", "gr_25", -1, -1, CVector(915.285, 255.625, 948.284), Quaternion(-0.0117, 0.9187, 0.0003, 0.3948))
+			CreateNewDummyObject("elast_2", "gr_26", -1, -1, CVector(922.335, 255.471, 958.324), Quaternion(0.0000, -0.3807, 0.0000, 0.9247))
+			CreateNewDummyObject("elast_1", "gr_27", -1, -1, CVector(920.610, 255.477, 957.473), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("hornet01gun", "gr_28", -1, -1, CVector(922.093, 256.012, 968.063), Quaternion(-0.6626, 0.0000, 0.0000, 0.7490))
+			CreateNewDummyObject("hornet01gun", "gr_29", -1, -1, CVector(921.034, 256.012, 968.111), Quaternion(-0.6626, 0.0000, 0.0000, 0.7490))
+			CreateNewDummyObject("bugCargo01", "gr_30", -1, -1, CVector(933.679, 263.265, 948.659), Quaternion(-0.0429, -0.7103, -0.0402, 0.7014))
+			CreateNewDummyObject("belazWheel01R", "gr_31", -1, -1, CVector(946.391, 266.165, 967.431), Quaternion(0.0000, 0.7178, 0.0000, 0.6962), 8)
+			CreateNewDummyObject("belazWheel01L", "gr_32", -1, -1, CVector(952.654, 263.655, 962.309), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("belazWheel01R", "gr_33", -1, -1, CVector(946.426, 266.165, 965.777), Quaternion(0.0000, 0.7178, 0.0000, 0.6962), 8)
+			CreateNewDummyObject("belazWheel01L", "gr_34", -1, -1, CVector(951.284, 263.655, 962.337), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("gadget_06", "gr_35", -1, -1, CVector(924.295, 256.471, 966.118), Quaternion(0.0000, -0.2546, 0.0000, 0.9670))
+			CreateNewDummyObject("gadget_09", "gr_36", -1, -1, CVector(919.606, 256.048, 966.804), Quaternion(-0.7070, -0.7070, 0.0123, 0.0123))
+			CreateNewDummyObject("gadget_10", "gr_37", -1, -1, CVector(917.502, 256.111, 967.448), Quaternion(0, 1, 0, 0))
+			CreateNewDummyObject("back_exp", "gr_38", -1, -1, CVector(908.812, 257.089, 947.781), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("back_exp", "gr_39", -1, -1, CVector(906.047, 257.089, 947.888), Quaternion(0.0000, -0.8757, 0.0000, -0.4829))
+			CreateNewDummyObject("barrel2", "gr_40", -1, -1, CVector(951.002, 255.471, 957.118), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("barrel2", "gr_41", -1, -1, CVector(950.363, 255.471, 958.267), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("barrel2", "gr_42", -1, -1, CVector(949.862, 255.471, 957.362), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("barrel2", "gr_43", -1, -1, CVector(949.050, 255.471, 958.095), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("barrel2", "gr_44", -1, -1, CVector(948.886, 255.471, 956.931), Quaternion(0, 0, 0, 0))
+			CreateNewSgNodeObject("fitanyashka", "gr_45", -1, -1, CVector(952.633, 262.050, 957.662), Quaternion(-0.0160, -0.7084, -0.0186, 0.7049), 0.75)
+			CreateNewDummyObject("kaktus", "gr_46", -1, -1, CVector(947.157, 262.170, 947.8151), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("kaktus", "gr_47", -1, -1, CVector(945.718, 262.170, 948.995), Quaternion(0.0000, -0.2058, 0.0000, 0.9786))
+			CreateNewDummyObject("kaktus", "gr_48", -1, -1, CVector(944.220, 262.170, 947.769), Quaternion(0.0000, 0.8179, 0.0000, 0.5754))
+			SetVar("Garage_Builden", 1)
+			
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(945, 255, 957), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(919, 255, 957), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(900, 255, 957), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(892, 255, 957), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(940, 255, 938), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_S_BUILDING", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1800)
+
+			if GetVar("Generator_on").AsInt == 1 then
+				TActivate("IfGenerator_On")
+			end
+
+			TActivate("PlayerHP")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="PlayerHP" active="0">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local hp = GetPlayerHealth() 
+			local maxhp = GetPlayerMaxHealth()
+			if not(hp == maxhp) then
+				TActivate("RegenetationPlayerHP_Timer")
+				SetVar("RegenPlayerHP_Timer", 5)
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="RegenetationPlayerHP_Timer" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			local t = GetVar("RegenPlayerHP_Timer").AsInt - 1
+			SetVar("RegenPlayerHP_Timer", t)
+			if 1 > GetVar("RegenPlayerHP_Timer").AsInt then
+				GetPlayerVehicle():AddModifier("hp", "+ 1")
+				SetVar("RegenPlayerHP_Timer", 0)
+				TActivate("PlayerHP")
+			else
+				TActivate("rphpt")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="rphpt" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("RegenetationPlayerHP_Timer")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 <!-- Телепорт -->
 	<trigger Name="Teleport" active="1">
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="tp_1_loc" />
@@ -1639,10 +1910,51 @@
 					local lp = GetEntityByName("lp_1_light_"..l)
 					if lp then lp:Remove() end
 				end
+
+				if GetVar("Garage_Builden").AsInt == 1 then
+					for k=1,6 do
+						local gr_light = GetEntityByName("gr_light_"..k)
+						if gr_light then gr_light:Remove() end
+						local gr_ls_light = GetEntityByName("gr_ls_light_"..l)
+						if gr_ls_light then gr_ls_light:Remove() end
+					end
+
+					for gr_lm=1,2 do
+						local gr_lammp_light = GetEntityByName("gr_lammp_light_"..gr_lm)
+						if gr_lammp_light then gr_lammp_light:Remove() end
+					end
+				end
 			end
 
-			local pl = GetPlayerVehicle()
-			if pl then pl:setGodMode(1) end
+			local artillerygun = GetItemsAmount("ammo_chest_artillerygunForSale")
+			if HasPlayerAmountOfItems("ammo_chest_artillerygunForSale", artillerygun) and artillerygun > 0 then
+				RemoveItemsFromPlayerRepository("ammo_chest_artillerygunForSale", artillerygun)
+				AddItemsToPlayerRepository("ammo_chest_artillerygun", artillerygun)
+			end
+
+			local heavygun = GetItemsAmount("ammo_chest_heavygunForSale")
+			if HasPlayerAmountOfItems("ammo_chest_heavygunForSale", heavygun) and heavygun > 0 then
+				RemoveItemsFromPlayerRepository("ammo_chest_heavygunForSale", heavygun)
+				AddItemsToPlayerRepository("ammo_chest_heavygun", heavygun)
+			end
+
+			local machinegun = GetItemsAmount("ammo_chest_machinegunForSale")
+			if HasPlayerAmountOfItems("ammo_chest_machinegunForSale", machinegun) and machinegun > 0 then
+				RemoveItemsFromPlayerRepository("ammo_chest_machinegunForSale", machinegun)
+				AddItemsToPlayerRepository("ammo_chest_machinegun", machinegun)
+			end
+
+			local rocketgun = GetItemsAmount("ammo_chest_rocketgunForSale")
+			if HasPlayerAmountOfItems("ammo_chest_rocketgunForSale", rocketgun) and rocketgun > 0 then
+				RemoveItemsFromPlayerRepository("ammo_chest_rocketgunForSale", rocketgun)
+				AddItemsToPlayerRepository("ammo_chest_rocketgun", rocketgun)
+			end
+
+			local shotgun = GetItemsAmount("ammo_chest_shotgunForSale")
+			if HasPlayerAmountOfItems("ammo_chest_shotgunForSale", shotgun) and shotgun > 0 then
+				RemoveItemsFromPlayerRepository("ammo_chest_shotgunForSale", shotgun)
+				AddItemsToPlayerRepository("ammo_chest_shotgun", shotgun)
+			end
 
 		</script>
 	</trigger>
@@ -1882,6 +2194,20 @@
 
 			if COUNT_RAIDS then COUNT_RAIDS = GetVar("CountRaids").AsInt end
 
+		--гараж
+			if GetVar("Garage_Builden").AsInt == 1 then
+				TDeactivate("RegenetationPlayerHP_Timer")
+				TDeactivate("rphpt")
+				TDeactivate("PlayerHP")
+			end
+
+		--заправка
+			if GetVar("PetrolStationBuild_Builden").AsInt == 1 then
+				TDeactivate("RegenetationPlayerFuel_Timer")
+				TDeactivate("rpft")
+				TDeactivate("PlayerFuel")
+			end
+
 			println("MAP CLEAR")
 
 			trigger:Deactivate()
@@ -1906,5 +2232,5 @@
 			trigger:Deactivate()
 		</script>
 	</trigger>
-
+	
 </triggers>

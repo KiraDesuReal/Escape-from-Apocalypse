@@ -1156,7 +1156,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 		SteeringSpeed		= "0.9"
 
-		HornSound		= "ET_S_HORN01"
+		HornSound		= "ET_S_HORN04"
 
 		DecisionMatrix		= "vehiclemain.lua"
 
@@ -1254,6 +1254,279 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		</Wheels>
 
 	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
+		Name			= "Molokovoz_Chassis"
+		ResourceType			= "VEHICLE"
+
+		DiffRatio		= "6.0"
+		MaxEngineRpm		= "6000"
+		LowGearShiftLimit	= "3000"
+		HighGearShiftLimit	= "5000"
+
+		SteeringSpeed		= "0.8"
+
+		PressingForce		= "1.3"
+
+		CameraHeight            = "5"
+		CameraMaxDist		= "20"
+
+		DecisionMatrix		= "vehiclemain.lua"
+
+		LookRadius		= "250.0"
+		IntersectionRadius	= "4.0"
+		TakingRadius		= "5.0"
+
+                DriftCoeff		= "0.07"
+
+		MassSize		= "3.5 2.5 9"
+		MassTranslation		= "0 -1.4 0"
+		DestroyEffectPiercing	= "ET_PS_VEH_EXP1_MED"
+		DestroyEffectBlast	= "ET_PS_VEH_EXP2_MED"
+		DestroyEffectEnergy	= "ET_PS_VEH_EXP3_MED"
+		DestroyEffectWater	= "ET_PS_VEH_EXP2_MED"
+
+		Abstract 		= "true"	>
+
+		<MainPartDescription id = "CHASSIS" partResourceType = "MOLOKOVOZ_CHASSIS">
+			<PartDescription id = "CABIN" partResourceType = "MOLOKOVOZ_CABIN" >
+			</PartDescription>
+			<PartDescription id = "BASKET" partResourceType="MOLOKOVOZ_BASKET"> 
+			</PartDescription>
+		</MainPartDescription>
+
+		<Parts>
+			<Part id = "CHASSIS"			Prototype = "molokovozChassis_Chassis" />
+		</Parts>
+
+		<Wheels>
+			<Wheel Prototype = "molokovozWheel_f_l" steering = "correct" />
+			<Wheel Prototype = "molokovozWheel_f_r" steering = "correct" />
+			<Wheel Prototype = "molokovozWheel_r_l" />
+			<Wheel Prototype = "molokovozWheel_r_r" />
+		</Wheels>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
+		Name			= "Ural_Chassis"
+		ResourceType			= "VEHICLE"
+
+		PressingForce		= "2.0"
+
+		DiffRatio		= "4.0"
+		MaxEngineRpm		= "8000"
+		LowGearShiftLimit	= "3000"
+		HighGearShiftLimit	= "5500"
+
+		SteeringSpeed		= "0.6"
+
+		BlastWave		= "bigBlastWave"
+		
+		CameraHeight            = "5.25"
+		CameraMaxDist		= "25"
+
+		DecisionMatrix		= "vehiclemain.lua"
+
+		LookRadius		= "250.0"
+		IntersectionRadius	= "7.0"
+		TakingRadius		= "5.0"
+
+		DriftCoeff		= "0.08"
+
+		MassSize		= "5 3 12"
+		MassTranslation		= "0 -2.3 0"
+		DestroyEffectPiercing	= "ET_PS_VEH_EXP1_MED"
+		DestroyEffectBlast	= "ET_PS_VEH_EXP2_MED"
+		DestroyEffectEnergy	= "ET_PS_VEH_EXP3_MED"
+		DestroyEffectWater	= "ET_PS_VEH_EXP2_MED"
+
+		Abstract 		= "true"	>
+
+		<MainPartDescription id = "CHASSIS" partResourceType = "URAL_CHASSIS">
+			<PartDescription id = "CABIN" partResourceType = "URAL_CABIN" >
+			</PartDescription>
+			<PartDescription id = "BASKET" partResourceType="URAL_BASKET" >
+			</PartDescription>
+		</MainPartDescription>
+
+		<Parts>
+			<Part id = "CHASSIS"		Prototype = "uralChassis_Chassis" />
+		</Parts>
+
+		<Wheels>
+			<Wheel Prototype = "uralWheel01l" steering = "correct" />
+			<Wheel Prototype = "uralWheel01r" steering = "correct" />
+			<Wheel Prototype = "uralWheel02l" />
+			<Wheel Prototype = "uralWheel02r" />
+			<Wheel Prototype = "uralWheel02l" />
+			<Wheel Prototype = "uralWheel02r" />
+		</Wheels>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
+		Name			= "Belaz_Chassis"
+		ResourceType			= "VEHICLE"
+
+		PressingForce		= "2.0"
+
+		BlastWave		= "bigBlastWave"
+		
+		DiffRatio		= "13.0"
+		MaxEngineRpm		= "10000"
+		LowGearShiftLimit	= "2500"
+		HighGearShiftLimit	= "6500"
+		DestroyEffectPiercing	= "ET_PS_VEH_EXP1_MED"
+		DestroyEffectBlast	= "ET_PS_VEH_EXP2_MED"
+		DestroyEffectEnergy	= "ET_PS_VEH_EXP3_MED"
+		DestroyEffectWater	= "ET_PS_VEH_EXP2_MED"
+
+		SteeringSpeed		= "0.4"
+
+		CameraHeight            = "6.45"
+		CameraMaxDist		= "26"
+
+		DecisionMatrix		= "vehiclemain.lua"
+
+		LookRadius		= "250.0"
+		IntersectionRadius	= "9.0"
+		TakingRadius		= "5.0"
+
+		DriftCoeff		= "0.04"
+
+		MassSize		= "4 4.5 12"
+		MassTranslation		= "0 -1.9 0.5"
+
+		Abstract 		= "true" >
+
+		<MainPartDescription id = "CHASSIS" partResourceType = "BELAZ_CHASSIS">
+			<PartDescription id = "CABIN" partResourceType = "BELAZ_CABIN" >
+			</PartDescription>
+			<PartDescription id = "BASKET" partResourceType="BELAZ_BASKET" >
+			</PartDescription>
+		</MainPartDescription>
+
+		<Parts>
+			<Part id = "CHASSIS"		Prototype = "belazChassis_Chassis" />
+		</Parts>
+
+		<Wheels>
+			<Wheel Prototype = "belazWheel01L" steering = "correct" />
+			<Wheel Prototype = "belazWheel01R" steering = "correct" />
+			<Wheel Prototype = "belazWheel02L" />
+			<Wheel Prototype = "belazWheel02R" />
+		</Wheels>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
+		Name			= "Mirotvorec_Chassis"
+		ResourceType			= "VEHICLE"
+
+		BlastWave		= "bigBlastWave"
+		
+		PressingForce		= "2.0"
+
+		DiffRatio		= "3.0"
+		MaxEngineRpm		= "10000"
+		LowGearShiftLimit	= "5000"
+		HighGearShiftLimit	= "8500"
+
+		CameraHeight            = "5.9"
+		CameraMaxDist		= "25"
+
+		SteeringSpeed		= "0.6"
+
+		DecisionMatrix		= "vehiclemain.lua"
+
+		LookRadius			= "250.0"
+		IntersectionRadius	= "9.0"
+		TakingRadius		= "5.0"
+
+		DriftCoeff		= "0.01"
+
+		MassSize		= "5 2.5 12"
+		MassTranslation		= "0 -1.9 0"
+		DestroyEffectPiercing	= "ET_PS_VEH_EXP1_MED"
+		DestroyEffectBlast	= "ET_PS_VEH_EXP2_MED"
+		DestroyEffectEnergy	= "ET_PS_VEH_EXP3_MED"
+		DestroyEffectWater	= "ET_PS_VEH_EXP2_MED"
+
+		Abstract 		= "true" >
+
+		<MainPartDescription id = "CHASSIS" partResourceType = "MIROTVOREC_CHASSIS">
+			<PartDescription id = "CABIN" partResourceType = "MIROTVOREC_CABIN" >
+			</PartDescription>
+			<PartDescription id = "BASKET" partResourceType="MIROTVOTEC_BASKET" >
+			</PartDescription>
+		</MainPartDescription>
+
+		<Parts>
+			<Part id = "CHASSIS"		Prototype = "mirotvorecChassis_Chassis" />
+		</Parts>
+
+		<Wheels>
+			<Wheel Prototype = "mirotvorecWheel01" steering = "correct" />
+			<Wheel Prototype = "mirotvorecWheel01" steering = "correct" />
+			<Wheel Prototype = "mirotvorecWheel01" />
+			<Wheel Prototype = "mirotvorecWheel01" />
+			<Wheel Prototype = "mirotvorecWheel01" steering = "correct" />
+			<Wheel Prototype = "mirotvorecWheel01" steering = "correct" />
+		</Wheels>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
+		Name			= "Cruiser_Chassis"
+		ResourceType			= "VEHICLE"
+
+		DiffRatio		= "4.0"
+		MaxEngineRpm		= "5000"
+		LowGearShiftLimit	= "1000"
+		HighGearShiftLimit	= "2000"
+
+		SteeringSpeed		= "0.9"
+
+		DecisionMatrix		= "vehiclemain.lua"
+
+		LookRadius		= "250.0"
+		IntersectionRadius	= "5.5"
+		TakingRadius		= "5.0"
+
+		MassSize		= "10 1 5"
+		MassTranslation		= "0 -1.6 0"
+		DestroyEffectPiercing	= "ET_PS_VEH_EXP1_MED"
+		DestroyEffectBlast	= "ET_PS_VEH_EXP2_MED"
+		DestroyEffectEnergy	= "ET_PS_VEH_EXP3_MED"
+		DestroyEffectWater	= "ET_PS_VEH_EXP2_MED"
+
+		Abstract 		= "true"	>
+
+		<MainPartDescription id = "CHASSIS" partResourceType = "CRUISER_CHASSIS">
+			<PartDescription id = "CABIN" partResourceType = "CRUISER_CABIN" >
+			</PartDescription>
+			<PartDescription id = "BASKET" partResourceType="CRUISER_BASKET" >
+			</PartDescription>
+		</MainPartDescription>
+		
+		<Parts>
+			<Part id = "CHASSIS"			Prototype = "cruiserChassis_Chassis" />
+		</Parts>
+
+		<Wheels>
+			<Wheel Prototype = "cruiserWheel01l" steering = "correct" />
+			<Wheel Prototype = "cruiserWheel01r" steering = "correct" />
+			<Wheel Prototype = "cruiserWheel01l" steering = "correct" />
+			<Wheel Prototype = "cruiserWheel01r" steering = "correct" />
+			<Wheel Prototype = "cruiserWheel01l" />
+			<Wheel Prototype = "cruiserWheel01r" />
+			<Wheel Prototype = "cruiserWheel01l" />
+			<Wheel Prototype = "cruiserWheel01r" />
+		</Wheels>
+	</Prototype>
+
 
 	<Prototype
 		Class			= "Vehicle"
@@ -1809,11 +2082,31 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class			= "Vehicle"
+		Name			= "MolokovozChassis"
+		ParentPrototype 	= "Molokovoz_Chassis">
+		<Parts>
+			<Part id = "CABIN"		Prototype = "fakeCab" />
+			<Part id = "BASKET"		Prototype = "fakeCargoForSale" />
+		</Parts>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
 		Name			= "Ural01PMC"
 		ParentPrototype 	= "Ural_PMC">
 		<Parts>
 			<Part id = "CABIN"			Prototype = "uralCab01" />
 			<Part id = "BASKET"			Prototype = "uralCargo01_PMC" />
+		</Parts>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
+		Name			= "UralChassis"
+		ParentPrototype 	= "Ural_Chassis">
+		<Parts>
+			<Part id = "CABIN"		Prototype = "fakeCab" />
+			<Part id = "BASKET"		Prototype = "fakeCargoForSale" />
 		</Parts>
 	</Prototype>
 
@@ -1829,6 +2122,16 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class			= "Vehicle"
+		Name			= "BelazChassis"
+		ParentPrototype 	= "Belaz_Chassis">
+		<Parts>
+			<Part id = "CABIN"		Prototype = "fakeCab" />
+			<Part id = "BASKET"		Prototype = "fakeCargoForSale" />
+		</Parts>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
 		Name			= "Mirotvorec01PMC"
 		ParentPrototype 	= "Mirotvorec_PMC">
 		<Parts>
@@ -1839,11 +2142,31 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class			= "Vehicle"
+		Name			= "MirotvorecChassis"
+		ParentPrototype 	= "Mirotvorec_Chassis">
+		<Parts>
+			<Part id = "CABIN"		Prototype = "fakeCab" />
+			<Part id = "BASKET"		Prototype = "fakeCargoForSale" />
+		</Parts>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
 		Name			= "Cruiser01PMC"
 		ParentPrototype 	= "Cruiser_PMC">
 		<Parts>
 			<Part id = "CABIN"			Prototype = "cruiserCab01" />
 			<Part id = "BASKET"			Prototype = "cruiserCargo01_PMC" />
+		</Parts>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
+		Name			= "CruiserChassis"
+		ParentPrototype 	= "Cruiser_Chassis">
+		<Parts>
+			<Part id = "CABIN"		Prototype = "fakeCab" />
+			<Part id = "BASKET"		Prototype = "fakeCargoForSale" />
 		</Parts>
 	</Prototype>
 

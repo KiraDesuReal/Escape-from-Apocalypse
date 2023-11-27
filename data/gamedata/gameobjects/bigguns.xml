@@ -96,7 +96,8 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 
 		Price			= "5140"
                 FiringType		= "MachineGun"
-		Durability			= "50"/>
+		Durability			= "50"
+		VisibleInEncyclopedia	= "false" />
 
 	<Prototype
 		Class			= "BulletLauncher"
@@ -152,7 +153,8 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 
 		Price			= "7650"
                 FiringType		= "MachineGun"
-		Durability		= "30"/>
+		Durability		= "30"
+		VisibleInEncyclopedia	= "false" />
 
 	<Prototype
 		Class			= "BulletLauncher"

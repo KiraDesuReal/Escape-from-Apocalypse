@@ -513,9 +513,6 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 				local ItemsOilUse = {"oil_use", "fuel_nil_use", "fuel_full_use"}
 				local r3 = getn(ItemsOilUse)
 
-				local ammo = {"ammo_chest_shotgun", "ammo_chest_machinegun", "ammo_chest_heavygun", "ammo_chest_rocketgun", "ammo_chest_artillerygun"}
-				local ammo_items = getn(ammo)
-
 				local r_list = {exrandom, random}
 				local r_l = random(2)
 
@@ -563,18 +560,13 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 
 						vehicle:AddItemsToRepository(ItemsOilUse[random(r3)], random(0,1))
 
-						for a=1,random(2) do
-							vehicle:AddItemsToRepository(ammo[exrandom(ammo_items)], random(0,1))
-						end
-				
 						for ware=1,random(6) do
 							vehicle:AddItemsToRepository(items[random(items_r)], 1)
 						end
 					else
 						vehicle:AddItemsToRepository(ItemsLifeUse[exrandom(r2)], random(0,1))
 						vehicle:AddItemsToRepository(ItemsOilUse[exrandom(r3)], random(0,1))
-						vehicle:AddItemsToRepository(ammo[exrandom(ammo_items)], random(0,1))
-
+		
 						for ware=1,random(2) do
 							vehicle:AddItemsToRepository(wares[random(wares_r)], 1)
 						end

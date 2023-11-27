@@ -309,70 +309,15 @@
 		Name="Town_r0m0"
 		Belong="1100"
 		Prototype="Town_r0m0"
-		Pos="0 0 0"
+		Pos="0 0 -10"
 		Rot="0.000 1.000 0.000 0.000"
-		PointOfViewInInterface="785 200 847"
+		PointOfViewInInterface="785 340 847"
 		CaravansDest="">
 		<Object
 			Name="Town_r0m0_Shop"
 			Belong="1100"
 			Prototype="shop">
 			<GunsAndGadgets>
-<!--
-				<Item
-					PosX="0"
-					PosY="0"
-					Flags="16"
-					Prototype="cooling_system_guns" />
-
-				<Item
-					PosX="1"
-					PosY="0"
-					Flags="16"
-					Prototype="firing_rate_guns" />
-
-				<Item
-					PosX="2"
-					PosY="0"
-					Flags="16"
-					Prototype="grouping_angle_guns" />
-
-				<Item
-					PosX="3"
-					PosY="0"
-					Flags="16"
-					Prototype="add_damage_guns" />
-
-				<Item
-					PosX="4"
-					PosY="0"
-					Flags="16"
-					Prototype="firing_range_guns" />
-
-				<Item
-					PosX="5"
-					PosY="0"
-					Flags="16"
-					Prototype="additional_fuel_tank" />
-
-				<Item
-					PosX="6"
-					PosY="0"
-					Flags="16"
-					Prototype="additional_torque" />
-
-				<Item
-					PosX="7"
-					PosY="0"
-					Flags="16"
-					Prototype="additional_durability" />
-
-				<Item
-					PosX="8"
-					PosY="0"
-					Flags="16"
-					Prototype="additional_stability" />
--->
 			</GunsAndGadgets>
 		</Object>
 
@@ -404,355 +349,9 @@
 			Belong="1100"
 			Prototype="workshop">
 			<CabinsAndBaskets>
-<!--
-				<Item
-					PosX="0"
-					PosY="0"
-					Flags="16"
-					Prototype="bugCargo01_4x5" />
-
-				<Item
-					PosX="5"
-					PosY="0"
-					Flags="16"
-					Prototype="bugCargo02_4x6" />
-
-				<Item
-					PosX="0"
-					PosY="5"
-					Flags="16"
-					Prototype="bugCargo03_5x7" />
-
-				<Item
-					PosX="5"
-					PosY="5"
-					Flags="16"
-					Prototype="bugCab01" />
-
-				<Item
-					PosX="0"
-					PosY="10"
-					Flags="16"
-					Prototype="bugCab02" />
-
-				<Item
-					PosX="5"
-					PosY="10"
-					Flags="16"
-					Prototype="bugCab03" />
-
-				<Item
-					PosX="0"
-					PosY="15"
-					Flags="16"
-					Prototype="molokovozCargo01_5x8" />
-
-				<Item
-					PosX="5"
-					PosY="15"
-					Flags="16"
-					Prototype="molokovozCargo02_6x9" />
-
-				<Item
-					PosX="0"
-					PosY="20"
-					Flags="16"
-					Prototype="molokovozCargo03_6x8" />
-
-				<Item
-					PosX="5"
-					PosY="20"
-					Flags="16"
-					Prototype="molokovozCab01" />
-
-				<Item
-					PosX="0"
-					PosY="25"
-					Flags="16"
-					Prototype="molokovozCab02" />
-
-				<Item
-					PosX="5"
-					PosY="25"
-					Flags="16"
-					Prototype="molokovozCab03" />
-
-				<Item
-					PosX="0"
-					PosY="30"
-					Flags="16"
-					Prototype="uralCargo01_6x10" />
-
-				<Item
-					PosX="5"
-					PosY="30"
-					Flags="16"
-					Prototype="uralCargo02_9x10" />
-
-				<Item
-					PosX="0"
-					PosY="35"
-					Flags="16"
-					Prototype="uralCargo03_10x10" />
-
-				<Item
-					PosX="5"
-					PosY="35"
-					Flags="16"
-					Prototype="uralCargo04_8x9" />
-
-				<Item
-					PosX="0"
-					PosY="40"
-					Flags="16"
-					Prototype="uralCargo05_7x9" />
-
-				<Item
-					PosX="5"
-					PosY="40"
-					Flags="16"
-					Prototype="uralCab01" />
-
-				<Item
-					PosX="0"
-					PosY="45"
-					Flags="16"
-					Prototype="uralCab02" />
-
-				<Item
-					PosX="5"
-					PosY="45"
-					Flags="16"
-					Prototype="uralCab03" />
-
-				<Item
-					PosX="0"
-					PosY="50"
-					Flags="16"
-					Prototype="uralCab04" />
-
-				<Item
-					PosX="5"
-					PosY="50"
-					Flags="16"
-					Prototype="uralCab05" />
-
-				<Item
-					PosX="0"
-					PosY="55"
-					Flags="16"
-					Prototype="belazCargo01_7x12" />
-
-				<Item
-					PosX="5"
-					PosY="55"
-					Flags="16"
-					Prototype="belazCargo02_9x12" />
-
-				<Item
-					PosX="0"
-					PosY="60"
-					Flags="16"
-					Prototype="belazCargo03_12x12" />
-
-				<Item
-					PosX="5"
-					PosY="60"
-					Flags="16"
-					Prototype="belazCargo04_8x12" />
-
-				<Item
-					PosX="0"
-					PosY="65"
-					Flags="16"
-					Prototype="belazCargo05_10x10" />
-
-				<Item
-					PosX="5"
-					PosY="65"
-					Flags="16"
-					Prototype="belazCab01" />
-
-				<Item
-					PosX="0"
-					PosY="70"
-					Flags="16"
-					Prototype="belazCab02" />
-
-				<Item
-					PosX="5"
-					PosY="70"
-					Flags="16"
-					Prototype="belazCab02" />
-
-				<Item
-					PosX="0"
-					PosY="75"
-					Flags="16"
-					Prototype="belazCab03" />
-
-				<Item
-					PosX="5"
-					PosY="75"
-					Flags="16"
-					Prototype="belazCab04" />
-
-				<Item
-					PosX="0"
-					PosY="80"
-					Flags="16"
-					Prototype="belazCab05" />
-
-				<Item
-					PosX="5"
-					PosY="80"
-					Flags="16"
-					Prototype="mirotvorecCargo01_8x10" />
-
-				<Item
-					PosX="0"
-					PosY="85"
-					Flags="16"
-					Prototype="mirotvorecCargo02_10x9" />
-
-				<Item
-					PosX="5"
-					PosY="85"
-					Flags="16"
-					Prototype="mirotvorecCargo03_12x12" />
-
-				<Item
-					PosX="0"
-					PosY="90"
-					Flags="16"
-					Prototype="mirotvorecCargo04_9x9" />
-
-				<Item
-					PosX="5"
-					PosY="90"
-					Flags="16"
-					Prototype="mirotvorecCargo05_12x12" />
-
-				<Item
-					PosX="0"
-					PosY="95"
-					Flags="16"
-					Prototype="mirotvorecCab01" />
-
-				<Item
-					PosX="5"
-					PosY="95"
-					Flags="16"
-					Prototype="mirotvorecCab02" />
-
-				<Item
-					PosX="0"
-					PosY="100"
-					Flags="16"
-					Prototype="mirotvorecCab03" />
-
-				<Item
-					PosX="5"
-					PosY="100"
-					Flags="16"
-					Prototype="mirotvorecCab04" />
-
-				<Item
-					PosX="0"
-					PosY="105"
-					Flags="16"
-					Prototype="mirotvorecCab05" />
-
-				<Item
-					PosX="5"
-					PosY="105"
-					Flags="16"
-					Prototype="cruiserCargo01_11x10" />
-
-				<Item
-					PosX="0"
-					PosY="110"
-					Flags="16"
-					Prototype="cruiserCargo02_13x10" />
-
-				<Item
-					PosX="5"
-					PosY="110"
-					Flags="16"
-					Prototype="cruiserCab01" />
-
-				<Item
-					PosX="0"
-					PosY="115"
-					Flags="16"
-					Prototype="cruiserCab02" />
--->
 			</CabinsAndBaskets>
 
 			<Vehicles>
-<!--
-				<Item
-					PosX="0"
-					PosY="0"
-					Flags="16"
-					Prototype="BugForSale"
-					Pos="0.000 111.522 0.000">
-					<Parts />
-
-					<Repository />
-				</Item>
-
-				<Item
-					PosX="1"
-					PosY="0"
-					Flags="16"
-					Prototype="MolokovozForSale"
-					Pos="0.000 111.656 0.000">
-
-					<Repository />
-				</Item>
-
-				<Item
-					PosX="2"
-					PosY="0"
-					Flags="16"
-					Prototype="UralForSale"
-					Pos="0.000 111.656 0.000">
-
-					<Repository />
-				</Item>
-
-				<Item
-					PosX="3"
-					PosY="0"
-					Flags="16"
-					Prototype="BelazForSale"
-					Pos="0.000 111.656 0.000">
-
-					<Repository />
-				</Item>
-
-				<Item
-					PosX="4"
-					PosY="0"
-					Flags="16"
-					Prototype="MirotvorecForSale"
-					Pos="0.000 111.656 0.000">
-
-					<Repository />
-				</Item>
-
-				<Item
-					PosX="5"
-					PosY="0"
-					Flags="16"
-					Prototype="CruiserForSale"
-					Pos="0.000 111.656 0.000">
-
-					<Repository />
-				</Item>
--->
-
 			</Vehicles>
 		</Object>
 	</Object>
@@ -1614,7 +1213,7 @@
 		Name="Breakable_Listvenoe111"
 		Belong="1001"
 		Prototype="Breakable_Listvenoe1"
-		Pos="1339.668 254.999 1560.015" />
+		Pos="1343.057 255.000 1552.485" />
 
 	<Object
 		Name="Breakable_Sosna212"
@@ -1962,7 +1561,7 @@
 		Name="Breakable_Elka169"
 		Belong="1001"
 		Prototype="Breakable_Elka1"
-		Pos="1396.020 255.000 1552.286" />
+		Pos="1391.577 255.000 1548.823" />
 
 	<Object
 		Name="Breakable_Elka170"
@@ -1998,7 +1597,7 @@
 		Name="Breakable_Elka175"
 		Belong="1001"
 		Prototype="Breakable_Elka1"
-		Pos="1365.814 255.000 1560.095" />
+		Pos="1365.501 255.000 1556.764" />
 
 	<Object
 		Name="Breakable_Elka176"
@@ -2022,25 +1621,25 @@
 		Name="Breakable_Elka179"
 		Belong="1001"
 		Prototype="Breakable_Elka1"
-		Pos="1405.881 255.000 1569.189" />
+		Pos="1408.909 255.000 1564.085" />
 
 	<Object
 		Name="Breakable_Elka180"
 		Belong="1001"
 		Prototype="Breakable_Elka1"
-		Pos="1391.109 255.000 1567.235" />
+		Pos="1395.436 255.000 1560.602" />
 
 	<Object
 		Name="Breakable_Elka181"
 		Belong="1001"
 		Prototype="Breakable_Elka1"
-		Pos="1357.824 255.000 1563.947" />
+		Pos="1350.342 255.000 1522.063" />
 
 	<Object
 		Name="Breakable_Elka182"
 		Belong="1001"
 		Prototype="Breakable_Elka1"
-		Pos="1330.461 254.989 1560.252" />
+		Pos="1333.076 255.000 1556.894" />
 
 	<Object
 		Name="Breakable_Elka183"
@@ -2064,13 +1663,13 @@
 		Name="Breakable_Elka186"
 		Belong="1001"
 		Prototype="Breakable_Elka1"
-		Pos="1313.737 255.000 1553.546" />
+		Pos="1336.572 255.000 1541.854" />
 
 	<Object
 		Name="Breakable_Elka187"
 		Belong="1001"
 		Prototype="Breakable_Elka1"
-		Pos="1286.959 255.000 1543.303" />
+		Pos="1288.413 255.000 1538.901" />
 
 	<Object
 		Name="Breakable_Elka188"
@@ -2088,13 +1687,13 @@
 		Name="Breakable_Elka190"
 		Belong="1001"
 		Prototype="Breakable_Elka1"
-		Pos="1265.142 255.000 1543.491" />
+		Pos="1262.261 255.000 1533.047" />
 
 	<Object
 		Name="Breakable_Elka191"
 		Belong="1001"
 		Prototype="Breakable_Elka1"
-		Pos="1302.118 255.000 1554.034" />
+		Pos="1302.115 255.000 1545.653" />
 
 	<Object
 		Name="Breakable_Elka192"
@@ -2124,7 +1723,7 @@
 		Name="Breakable_Listvenoe396"
 		Belong="1001"
 		Prototype="Breakable_Listvenoe3"
-		Pos="1548.946 289.653 1645.605" />
+		Pos="1548.946 287.689 1645.605" />
 
 	<Object
 		Name="Breakable_Listvenoe397"
@@ -2136,14 +1735,14 @@
 		Name="Breakable_Listvenoe398"
 		Belong="1001"
 		Prototype="Breakable_Listvenoe3"
-		Pos="1244.038 255.000 1535.106" />
+		Pos="1242.037 255.000 1528.015" />
 
 	<Object
 		Name="Breakable_dub1_r2100"
 		Belong="1001"
 		Prototype="Breakable_dub1_r2"
-		Pos="1532.853 289.461 1626.343" />
-
+		Pos="1532.853 288.902 1626.343" />
+		
 	<Object
 		Name="Breakable_Sosna2101"
 		Belong="1001"
@@ -3012,7 +2611,7 @@
 		Name="Breakable_Sosna1246"
 		Belong="1001"
 		Prototype="Breakable_Sosna1"
-		Pos="1148.533 255.024 1523.435" />
+		Pos="1148.533 254.958 1523.435" />
 
 	<Object
 		Name="Breakable_Sosna1247"
@@ -3036,7 +2635,8 @@
 		Name="Breakable_Listvenoe3250"
 		Belong="1001"
 		Prototype="Breakable_Listvenoe3"
-		Pos="1156.106 255.008 1530.379" />
+		Pos="1159.874 255.008 1526.823"
+		Rot="0.000 -0.379 0.000 0.925" />
 
 	<Object
 		Name="Breakable_Dub2251"
@@ -3066,7 +2666,7 @@
 		Name="Breakable_Elka1255"
 		Belong="1001"
 		Prototype="Breakable_Elka1"
-		Pos="1115.370 255.318 1517.161" />
+		Pos="1117.043 255.108 1514.015" />
 
 	<Object
 		Name="Breakable_Elka1256"
@@ -9030,7 +8630,7 @@
 		Name="Breakable_Dub31322"
 		Belong="1001"
 		Prototype="Breakable_Dub3"
-		Pos="983.299 255.000 1016.840" />
+		Pos="985.985 255.000 1016.782" />
 
 	<Object
 		Name="Breakable_Listvenoe11324"
@@ -9048,7 +8648,7 @@
 		Name="Breakable_Listvenoe21326"
 		Belong="1001"
 		Prototype="Breakable_Listvenoe2"
-		Pos="965.501 255.000 1046.826" />
+		Pos="968.368 255.000 1047.136" />
 
 	<Object
 		Name="Breakable_Dub11328"

@@ -169,28 +169,14 @@
 	</trigger>
 
 <!-- Фейк смерть игрока -->
-	<trigger Name="FakePlayerDead_NameCar" active="0">
-		<event timeout="0" eventid="GE_TIME_PERIOD" />
-		<script>
-			local vehPlayer = GetPlayerVehicle()
-			if vehPlayer then
-				vehPlayer:SetNameFromScript("PlayerCarForDead")
-			end
-			local tr = getObj("FakePlayerDead")
-			if tr then
-				tr:AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "PlayerCarForDead")
-				TActivate("FakePlayerDead")
-			end
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
 	<trigger Name="FakePlayerDead" active="0">
+		<event eventid="GE_VEHICLE_WITHOUT_HEALTH" ObjName="PlayerCarForDead" />
 		<script>
 			TActivate("PlayerCarConfiguration")
 			TActivate("cutPlayerDead")
 			TDeactivate("TimerRaid")
 			TDeactivate("AirDropProbability")
+			TDeactivate("IfChargeCar")
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -236,7 +222,6 @@
 				CreateNewSgNodeObject("ET_PS_VEH_EXP_CAB", "exp02", -1, -1, plPos, Quaternion(0, 0, 0, 1), 1)
 				fakePlayer:SetThrottle(0)                      
 				fakePlayer:SetCustomLinearVelocity(0) 
-				--fakePlayer:AddModifier("hp", "- 10000") 
 			end
 
 			objPos.y = objPos.y + 20
@@ -270,7 +255,20 @@
 			local veh = getObj("fakePlayerCar")
 			if veh then veh:Remove() end
 			
-			AddPlayerNewVehicle("BugChassis")
+			if GetVar("PlayerCar").AsString == "Bug" then
+				AddPlayerNewVehicle("BugChassis")
+			elseif GetVar("PlayerCar").AsString == "Molokovoz" then
+				AddPlayerNewVehicle("MolokovozChassis")
+			elseif GetVar("PlayerCar").AsString == "Ural" then
+				AddPlayerNewVehicle("UralChassis")
+			elseif GetVar("PlayerCar").AsString == "Belaz" then
+				AddPlayerNewVehicle("BelazChassis")
+			elseif GetVar("PlayerCar").AsString == "Mirotvorec" then
+				AddPlayerNewVehicle("MirotvorecChassis")
+			elseif GetVar("PlayerCar").AsString == "Cruiser" then
+				AddPlayerNewVehicle("CruiserChassis")
+			end
+
 			GetPlayerVehicle():setGodMode(1)
 
 			RuleConsole("g_postEffect DeadOff")

@@ -24,6 +24,7 @@
 		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
 		<script>
 			SetCameraBehindPlayerVehicle()
+			map()
 			trigger:Deactivate()
 		</script>
 	</trigger>

@@ -70,9 +70,9 @@
 			TActivate("PetrolStations")
 
 			TActivate("PlayerCarConfiguration")
+			TActivate("IfChangeCar")
 			TActivate("SpawnPlayer")
 			TActivate("StartFadeEffect")
-			TActivate("FakePlayerDead_NameCar")
 
 			TActivate("ItemsUse")
 
@@ -233,6 +233,19 @@
 	</trigger>
 
 <!-- Узнаем конфигурацию машины игрока -->
+	<trigger Name="IfChargeCar" active="1">
+	<event eventid="GE_PLAYER_VEHICLE_CHANGED" ObjName="Player1" />
+		<script>
+			local vehPlayer = GetPlayerVehicle()
+			if vehPlayer then
+				vehPlayer:setImmortalMode(1)
+				vehPlayer:SetNameFromScript("PlayerCarForDead")
+			end
+			TActivate("FakePlayerDead")
+			TActivate("PlayerCarConfiguration")
+		</script>
+	</trigger>
+
 	<trigger Name="PlayerCarConfiguration" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -369,11 +382,13 @@
 				else
 					vehPlayer:SetGamePositionOnGround(posrr2[posr2])
 				end
+				vehPlayer:SetNameFromScript("PlayerCarForDead")
 				vehPlayer:SetThrottle(0)
 				vehPlayer:SetCustomLinearVelocity(0)
 			end
 
 			TActivate("SpawnsScavs")
+			TActivate("FakePlayerDead")
 
 			trigger:Deactivate() 
 		</script>
@@ -735,6 +750,7 @@
 					if model == "Fighter2CarScav" or model == "Hunter2CarScav" and biggunspawn >= 70 then
 						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
 					end
+					AddAmmoItemsForGuns(sv, random(0,1))
 				end
 	
 				local sv_p = GetEntityByName ("Scav"..j.."_loc1")
@@ -869,6 +885,7 @@
 					if model == "Fighter2CarScav" or model == "Hunter2CarScav" and biggunspawn >= 70 then
 						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
 					end
+					AddAmmoItemsForGuns(sv, random(0,1))
 				end
 
 				local sv_p = GetEntityByName ("Scav"..j.."_loc2")
@@ -1006,6 +1023,7 @@
 					if model == "Fighter2CarScav" or model == "Hunter2CarScav" and biggunspawn >= 70 then
 						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
 					end
+					AddAmmoItemsForGuns(sv, random(0,1))
 				end
 
 				local sv_p = GetEntityByName ("Scav"..j.."_loc3")
@@ -1139,6 +1157,7 @@
 					if model == "Fighter2CarScav" or model == "Hunter2CarScav" and biggunspawn >= 70 then
 						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
 					end
+					AddAmmoItemsForGuns(sv, random(0,1))
 				end
 
 				local sv_p = GetEntityByName ("Scav"..j.."_loc4")
@@ -1274,6 +1293,7 @@
 					if model == "Fighter2CarScav" or model == "Hunter2CarScav" and biggunspawn >= 70 then
 						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
 					end
+					AddAmmoItemsForGuns(sv, random(0,1))
 				end
 
 				local sv_p = GetEntityByName ("Scav"..j.."_loc5")
@@ -1419,6 +1439,7 @@
 					if model == "Fighter2CarScav" or model == "Hunter2CarScav" and biggunspawn >= 70 then
 						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
 					end
+					AddAmmoItemsForGuns(sv, random(0,1))
 				end
 
 				local sv_p = GetEntityByName ("Scav"..j.."_loc6")
@@ -1558,6 +1579,7 @@
 					if model == "Fighter2CarScav" or model == "Hunter2CarScav" and biggunspawn >= 70 then
 						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
 					end
+					AddAmmoItemsForGuns(sv, random(0,1))
 				end
 
 				local sv_p = GetEntityByName ("Scav"..j.."_loc7")
@@ -1701,6 +1723,7 @@
 					if model == "Fighter2CarScav" or model == "Hunter2CarScav" and biggunspawn >= 70 then
 						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
 					end
+					AddAmmoItemsForGuns(sv, random(0,1))
 				end
 
 				local sv_p = GetEntityByName ("Scav"..j.."_loc8")
@@ -2396,6 +2419,7 @@
 						en:AddItemsToRepository(ItemsLifeUse[random(r2)], 1)
 					end
 					en:AddItemsToRepository(ItemsOilUse[exrandom(r3)], 1)
+					AddAmmoItemsForGuns(en)
 				end
 
 				local en_p = GetEntityByName ("EnemyBoss"..i)
@@ -2421,6 +2445,9 @@
 				boss:SetNewPart("CABIN_BIG_GUN_1","vector01")
 				boss:SetNewPart("CABIN_BIG_GUN_2","bumblebee01")
 				boss:setGodMode(1)
+				boss:AddItemsToRepository(ItemsLifeUse[random(r2)], 1)
+				boss:AddItemsToRepository(ItemsOilUse[exrandom(r3)], 1)
+				AddAmmoItemsForGuns(boss)
 				if (30 >= mon) then
 					boss:AddItemsToRepository("item_vitaly", 1)
 				end
@@ -2874,6 +2901,7 @@
 						pmc:SetNewPart("BASKET",cru_cargo[random(cru_cargo_r)])
 					end
 					GiveGunsForVehicle(pmc, 1)
+					AddAmmoItemsForGuns(pmc)
 				end
 
 				local pmc_way = GetEntityByName ("PMC_"..p1.."_Spawn1")
@@ -2934,6 +2962,7 @@
 						pmc:SetNewPart("BASKET",cru_cargo[random(cru_cargo_r)])
 					end
 					GiveGunsForVehicle(pmc, 1)
+					AddAmmoItemsForGuns(pmc)
 				end
 
 				local pmc_way2 = GetEntityByName ("PMC_"..p2.."_Spawn2")
@@ -3133,6 +3162,7 @@
 					if model == "Fighter2CarScav" or model == "Hunter2CarScav" then
 						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
 					end
+					AddAmmoItemsForGuns(sv, random(0,1))
 				end
 
 				local sv_way = GetEntityByName ("Scav_"..j)
@@ -3433,13 +3463,13 @@
 			end
 
 			TDeactivate("FakePlayerDead")
-			local tr3 = getObj("FakePlayerDead_NameCar")
-			if tr3 then tr3:DelEventObj("GE_VEHICLE_WITHOUT_HEALTH", "PlayerCarForDead") end
-
+		
 			--глобал переменные
 			if COUNT_RAIDS then COUNT_RAIDS = GetVar("CountRaids").AsInt end
 			if CHESTSCAVS_TIMER_GLOBAL then CHESTSCAVS_TIMER_GLOBAL = GetVar("ChestScavs_Timer").AsInt end
 			if GENERATOR_TIMER_GLOBAL then GENERATOR_TIMER_GLOBAL = GetVar("Generator_time_work").AsInt end
+
+			TDeactivate("IfChargeCar")
 
 			println("MAP CLEAR")
 

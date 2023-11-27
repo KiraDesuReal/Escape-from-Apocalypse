@@ -2035,7 +2035,7 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
-	
+			
 			local veh = GetEntityByName("VehicleMove")
 			if veh then
 				if GetVar("VehPath").AsInt == 1 then
@@ -2043,7 +2043,7 @@
 						veh:SetCruisingSpeed(22)
 						veh:SetExternalPathByName("veh_paths_to_garage_"..GetVar("VehMove").AsInt)
 					elseif count == 2 then
-						veh:SetCruisingSpeed(10)
+						veh:SetCruisingSpeed(12)
 						veh:SetExternalPathByName("veh_paths_to_garage_"..GetVar("VehMove").AsInt.."_"..GetVar("VehMove").AsInt)
 					elseif count == 3 then
 						getObj("VehInGarage"):AddEvent("GE_TIME_PERIOD",tostring(random(5,10)))
@@ -2232,5 +2232,4 @@
 			trigger:Deactivate()
 		</script>
 	</trigger>
-	
 </triggers>

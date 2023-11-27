@@ -256,8 +256,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			MaxFuel	= "0"
 			BrakingSound="ET_S_BRAKE01"
 			PneumoSound	="ET_S_PNEUMO_BRAKE01"
-			GearShiftSound="ET_S_GEAR_SHIFT01"
-			LoadPoints	= "LP_CAB01 LP_BSK01" >
+			GearShiftSound="ET_S_GEAR_SHIFT01" >
 				<GroupsHealth
 					Main   = "10000"	
 				/>
@@ -287,6 +286,26 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 		<Prototype
 			Class		= "Chassis"
+			Name		= "molokovozChassis_Chassis"
+			ModelFile	= "molokovozChassis"
+			ResourceType	= "MOLOKOVOZ_CHASSIS"
+			NodeScale	= "1 1 1"
+
+			Price				= "1"
+	
+			Mass		= "60.0" 
+			MaxHealth	= "100" 
+			MaxFuel	= "0"			
+			BrakingSound="ET_S_BRAKE01"
+			PneumoSound	="ET_S_PNEUMO_BRAKE01"
+			GearShiftSound="ET_S_GEAR_SHIFT01">
+				<GroupsHealth
+					Main   = "10000"	
+				/>
+		</Prototype>
+
+		<Prototype
+			Class		= "Chassis"
 			Name		= "molokovozChassis_PMC"
 			ModelFile	= "molokovozChassis"
 			ResourceType	= "MOLOKOVOZ_CHASSIS"
@@ -302,6 +321,26 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			PneumoSound	="ET_S_PNEUMO_BRAKE01"
 			GearShiftSound="ET_S_GEAR_SHIFT01"
 			LoadPoints	= "LP_CAB01 LP_BSK01" >
+				<GroupsHealth
+					Main   = "10000"	
+				/>
+		</Prototype>
+
+		<Prototype
+			Class		= "Chassis"
+			Name		= "uralChassis_Chassis"
+			ModelFile	= "uralChassis"
+			ResourceType	= "URAL_CHASSIS"
+			NodeScale	= "1 1 1"
+
+			Price				= "1"
+		
+			Mass		= "80.0"			
+			MaxHealth	= "100" 
+			MaxFuel	= "0"
+			BrakingSound="ET_S_BRAKE01"
+			PneumoSound	="ET_S_PNEUMO_BRAKE01"
+			GearShiftSound="ET_S_GEAR_SHIFT01" >
 				<GroupsHealth
 					Main   = "10000"	
 				/>
@@ -331,6 +370,26 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 		<Prototype
 			Class		= "Chassis"
+			Name		= "belazChassis_Chassis"
+			ModelFile	= "belazChassis"
+			ResourceType	= "BELAZ_CHASSIS"
+			NodeScale	= "1 1 1"
+
+			Price				= "1"
+
+			Mass		= "130.0" 			
+			MaxHealth	= "100" 
+			MaxFuel	= "0"
+			BrakingSound="ET_S_BRAKE01"
+			PneumoSound	="ET_S_PNEUMO_BRAKE01"
+			GearShiftSound="ET_S_GEAR_SHIFT01" >
+				<GroupsHealth
+					Main   = "10000"	
+				/>
+		</Prototype>
+
+		<Prototype
+			Class		= "Chassis"
 			Name		= "belazChassis_PMC"
 			ModelFile	= "belazChassis"
 			ResourceType	= "BELAZ_CHASSIS"
@@ -353,6 +412,26 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 		<Prototype
 			Class		= "Chassis"
+			Name		= "mirotvorecChassis_Chassis"
+			ModelFile	= "mirotvorecChassis"
+			ResourceType	= "MIROTVOREC_CHASSIS"
+			NodeScale	= "1 1 1"
+
+			Price				= "1"
+
+			Mass		= "120.0"
+			MaxHealth	= "100" 
+			MaxFuel	= "0"
+			BrakingSound="ET_S_BRAKE01"
+			PneumoSound	="ET_S_PNEUMO_BRAKE01"
+			GearShiftSound="ET_S_GEAR_SHIFT01" >
+				<GroupsHealth
+					Main   = "10000"	
+				/>
+		</Prototype>
+
+		<Prototype
+			Class		= "Chassis"
 			Name		= "mirotvorecChassis_PMC"
 			ModelFile	= "mirotvorecChassis"
 			ResourceType	= "MIROTVOREC_CHASSIS"
@@ -367,6 +446,26 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			PneumoSound	="ET_S_PNEUMO_BRAKE01"
 			GearShiftSound="ET_S_GEAR_SHIFT01"
 			LoadPoints	= "LP_CAB01 LP_BSK01" >
+				<GroupsHealth
+					Main   = "10000"	
+				/>
+		</Prototype>
+
+		<Prototype
+			Class		= "Chassis"
+			Name		= "cruiserChassis_Chassis"
+			ModelFile	= "cruiserChassis"
+			ResourceType	= "CRUISER_CHASSIS"
+			NodeScale	= "1 1 1"
+
+			Price				= "1"
+
+			Mass		= "40.0"
+			MaxHealth	= "100" 
+			MaxFuel	= "0" 
+			BrakingSound="ET_S_BRAKE01"
+			PneumoSound	="ET_S_PNEUMO_BRAKE01"
+			GearShiftSound="ET_S_GEAR_SHIFT01" >
 				<GroupsHealth
 					Main   = "10000"	
 				/>

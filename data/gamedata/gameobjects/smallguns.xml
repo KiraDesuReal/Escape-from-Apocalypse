@@ -278,7 +278,8 @@ $Id: SmallGuns.xml,v 1.58 2005/11/28 07:43:57 anton Exp $
 		ChargeSize     = "70"
 		RechargingTime = "2"
 
-		Durability			= "20" />
+		Durability			= "20"
+		VisibleInEncyclopedia	= "false" />
 
 	<Prototype
 		Class			= "BulletLauncher"
@@ -370,7 +371,8 @@ $Id: SmallGuns.xml,v 1.58 2005/11/28 07:43:57 anton Exp $
 		ChargeSize     = "70"
 		RechargingTime = "2.5"
 
-		Durability			= "20" />
+		Durability			= "20"
+		VisibleInEncyclopedia	= "false" />
 
 	<Prototype
 		Class			= "BulletLauncher"
@@ -432,7 +434,8 @@ $Id: SmallGuns.xml,v 1.58 2005/11/28 07:43:57 anton Exp $
 		ChargeSize     = "80"
 		RechargingTime = "3"
 
-		Durability		= "25"/>
+		Durability		= "25"
+		VisibleInEncyclopedia	= "false" />
 
 	<Prototype
 		Class			= "BulletLauncher"

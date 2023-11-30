@@ -101,6 +101,7 @@
 			AddCinematicMessage(1,0)
 
 			TActivate("cutTimeRaid_End")
+			TDeactivate("IfChargeCar")
 	
 			trigger:Deactivate()
 		</script>
@@ -134,6 +135,8 @@
 
 			local pl = GetPlayerVehicle()
 			local plProt = pl:GetProperty("Prototype").AsString
+			local skin = pl:GetSkin()
+			SetVar("PlayerSkin", skin)
 			AddPlayerNewVehicle(plProt)
 
 			TActivate("UpdateCabinBasket")
@@ -150,19 +153,8 @@
 			if pl then
 				pl:SetNewPart("CABIN",GetVar("PlayerCabin").AsString)
 				pl:SetNewPart("BASKET",GetVar("PlayerBasket").AsString)
-
-				if not(GetVar("Cabin_Small_Gun").AsInt == 0) then pl:SetNewPart("CABIN_SMALL_GUN",GetVar("Cabin_Small_Gun").AsString) end
-				if not(GetVar("Cabin_Small_Gun_1").AsInt == 0) then pl:SetNewPart("CABIN_SMALL_GUN_1",GetVar("Cabin_Small_Gun_1").AsString) end
-				if not(GetVar("Cabin_Big_Gun_1").AsInt == 0) then pl:SetNewPart("CABIN_BIG_GUN_1",GetVar("Cabin_Big_Gun_1").AsString) end
-				if not(GetVar("Cabin_Big_Gun_2").AsInt == 0) then pl:SetNewPart("CABIN_BIG_GUN_2",GetVar("Cabin_Big_Gun_2").AsString) end
-				if not(GetVar("Cabin_Giant_Gun").AsInt == 0) then pl:SetNewPart("CABIN_GIANT_GUN",GetVar("Cabin_Giant_Gun").AsString) end
-					
-				if not(GetVar("Basket_Small_Gun_0").AsInt == 0) then pl:SetNewPart("BASKET_SMALL_GUN_0",GetVar("Basket_Small_Gun_0").AsString) end
-				if not(GetVar("Basket_Big_Gun_0").AsInt == 0) then pl:SetNewPart("BASKET_BIG_GUN_0",GetVar("Basket_Big_Gun_0").AsString) end
-				if not(GetVar("Basket_Big_Gun_1").AsInt == 0) then pl:SetNewPart("BASKET_BIG_GUN_1",GetVar("Basket_Big_Gun_1").AsString) end
-				if not(GetVar("Basket_Giant_Gun").AsInt == 0) then pl:SetNewPart("BASKET_GIANT_GUN",GetVar("Basket_Giant_Gun").AsString) end
-				if not(GetVar("Basket_Giant_Gun_0").AsInt == 0) then pl:SetNewPart("BASKET_GIANT_GUN_0",GetVar("Basket_Giant_Gun_0").AsString) end
-				if not(GetVar("Basket_Side_Gun_0").AsInt == 0) then pl:SetNewPart("BASKET_SIDE_GUN_0",GetVar("Basket_Side_Gun_0").AsString) end
+				pl:SetSkin(GetVar("PlayerSkin").AsInt)
+				pl:TakeOffAllGuns()
 			end
 			trigger:Deactivate()
 		</script>

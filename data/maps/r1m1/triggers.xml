@@ -8,6 +8,7 @@
 		
 			SetVar("PlayerCabin", "0")
 			SetVar("PlayerBasket", "0")
+			SetVar("PlayerSkin", 0)
 
 			SetVar("Cabin_Small_Gun", 0)
 			SetVar("Cabin_Small_Gun_1", 0)
@@ -48,6 +49,8 @@
 			SetVar("CountPMC_Spawn2", 0)
 
 			SetVar("CountScavs", 0)
+
+			SetVar("PetrolStation_Refill_Process", 0)
 
 		    trigger:Deactivate()
 		</script>
@@ -253,7 +256,7 @@
 			local chassis = GetPlayerVehicle():GetChassis():GetProperty("Prototype").AsString
 			local cabin = GetPlayerVehicle():GetCabin()
 			local basket = GetPlayerVehicle():GetBasket()
-
+	
 			if not(cabin == nil) then SetVar("PlayerCabin", cabin:GetProperty("Prototype")) else SetVar("PlayerCabin", "0") end
 			if not(basket == nil) then SetVar("PlayerBasket", basket:GetProperty("Prototype")) else SetVar("PlayerBasket", "0") end
 
@@ -573,33 +576,39 @@
 	<trigger Name="RoadToFater" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ToR1M3_Exit" />
 		<script>
-			SetVar("ExitTimer",6)
-			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitRoadToFater")
-			SoundFadingMsg()
-			TActivate ("LeaveZoneExit")
-			TActivate ("ExitTimer")
+			if GetVar("PetrolStation_Refill_Process").AsInt == 0 then
+				SetVar("ExitTimer",6)
+				AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitRoadToFater")
+				SoundFadingMsg()
+				TActivate ("LeaveZoneExit")
+				TActivate ("ExitTimer")
+			end
 		</script>
 	</trigger>
 
 	<trigger Name="ZaTheTown" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ZaTheTown_Exit" />
 		<script>
-			SetVar("ExitTimer",6)
-			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitZaTheTown")
-			SoundFadingMsg()
-			TActivate ("LeaveZoneExit")
-			TActivate ("ExitTimer")
+			if GetVar("PetrolStation_Refill_Process").AsInt == 0 then
+				SetVar("ExitTimer",6)
+				AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitZaTheTown")
+				SoundFadingMsg()
+				TActivate ("LeaveZoneExit")
+				TActivate ("ExitTimer")
+			end
 		</script>
 	</trigger>
 
 	<trigger Name="ZaTheGloohoe" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ToR5M1_Exit" />
 		<script>
-			SetVar("ExitTimer",6)
-			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitZaTheGloohoe")
-			SoundFadingMsg()
-			TActivate ("LeaveZoneExit")
-			TActivate ("ExitTimer")
+			if GetVar("PetrolStation_Refill_Process").AsInt == 0 then
+				SetVar("ExitTimer",6)
+				AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitZaTheGloohoe")
+				SoundFadingMsg()
+				TActivate ("LeaveZoneExit")
+				TActivate ("ExitTimer")
+			end
  		</script>
 	</trigger>
 
@@ -617,33 +626,39 @@
 	<trigger Name="RoadToRidzin" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ToR1M2_Exit" />
 		<script>
-			SetVar("ExitTimer",6)
-			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitRoadToRidzin")
-			SoundFadingMsg()
-			TActivate ("LeaveZoneExit")
-			TActivate ("ExitTimer")
+			if GetVar("PetrolStation_Refill_Process").AsInt == 0 then
+				SetVar("ExitTimer",6)
+				AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitRoadToRidzin")
+				SoundFadingMsg()
+				TActivate ("LeaveZoneExit")
+				TActivate ("ExitTimer")
+			end
  		</script>
 	</trigger>
 
 	<trigger Name="BaseFelix" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BaseFelix_Exit" />
 		<script>
-			SetVar("ExitTimer",6)
-			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitBaseFelix")
-			SoundFadingMsg()
-			TActivate ("LeaveZoneExit")
-			TActivate ("ExitTimer")
+			if GetVar("PetrolStation_Refill_Process").AsInt == 0 then
+				SetVar("ExitTimer",6)
+				AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitBaseFelix")
+				SoundFadingMsg()
+				TActivate ("LeaveZoneExit")
+				TActivate ("ExitTimer")
+			end
  		</script>
 	</trigger>
 
 	<trigger Name="ZaTheTroiskoe" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ZaTheTroiskoe_Exit" />
 		<script>
-			SetVar("ExitTimer",6)
-			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitZaTheTroiskoe")
-			SoundFadingMsg()
-			TActivate ("LeaveZoneExit")
-			TActivate ("ExitTimer")
+			if GetVar("PetrolStation_Refill_Process").AsInt == 0 then
+				SetVar("ExitTimer",6)
+				AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitZaTheTroiskoe")
+				SoundFadingMsg()
+				TActivate ("LeaveZoneExit")
+				TActivate ("ExitTimer")
+			end
  		</script>
 	</trigger>
 
@@ -1844,8 +1859,8 @@
 	<trigger Name="UseFuelNil_InPetrolStation01" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation01_loc" />
 		<script>
-
-			if HasPlayerAmountOfItems("fuel_nil_use", 1) then
+			local box = GetEntityByName("FuelBox_1")
+			if HasPlayerAmountOfItems("fuel_nil_use", 1) and not(box) then
 				local b = SpawnMessageBox( "90001" )
 				if b == 1 then
 					if GetPlayerMoney() >= 5000 then
@@ -1858,6 +1873,7 @@
 						TActivate("FuelFull_InPetrolStation01")
 						GetPlayerVehicle():SetThrottle( 0 )
 						GetPlayerVehicle():SetCustomLinearVelocity( 0 )
+						SetVar("PetrolStation_Refill_Process", 1)
 						trigger:Deactivate()
 					else
 						AddFadingMsgByStrIdFormatted("fm_player_not_money")
@@ -1865,7 +1881,6 @@
 					end
 				end
 			end
-
 		</script>
 	</trigger>
 
@@ -1884,7 +1899,7 @@
 		<event timeout="20" eventid="GE_TIME_PERIOD" />
 		<script>
 
-			local Chest = CreateNewObject{prototypeName = "fuelChest", objName = "FuelBox"..random(10000)}	
+			local Chest = CreateNewObject{prototypeName = "fuelChest", objName = "FuelBox_1"}	
 			local ChestId = GetEntityByID(Chest)
 			ChestId:SetPosition(CVector(2577.512, 348.200, 2267.212))
 
@@ -1911,6 +1926,8 @@
 			SoundFadingMsg()
 
 			TActivate ("UseFuelNil_InPetrolStation01")
+
+			SetVar("PetrolStation_Refill_Process", 0)
 		
 			trigger:Deactivate() 
 		</script>
@@ -1919,8 +1936,8 @@
 	<trigger Name="UseFuelNil_InPetrolStation02" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation02_loc" />
 		<script>
-
-			if HasPlayerAmountOfItems("fuel_nil_use", 1) then
+			local box = GetEntityByName("FuelBox_2")
+			if HasPlayerAmountOfItems("fuel_nil_use", 1) and not(box) then
 				local b = SpawnMessageBox( "90001" )
 				if b == 1 then
 					if GetPlayerMoney() >= 5000 then
@@ -1933,6 +1950,7 @@
 						TActivate("FuelFull_InPetrolStation02")
 						GetPlayerVehicle():SetThrottle( 0 )
 						GetPlayerVehicle():SetCustomLinearVelocity( 0 )
+						SetVar("PetrolStation_Refill_Process", 1)
 						trigger:Deactivate() 
 					else
 						AddFadingMsgByStrIdFormatted("fm_player_not_money")
@@ -1940,7 +1958,6 @@
 					end
 				end
 			end
-
 		</script>
 	</trigger>
 
@@ -1959,7 +1976,7 @@
 		<event timeout="20" eventid="GE_TIME_PERIOD" />
 		<script>
 
-			local Chest = CreateNewObject{prototypeName = "fuelChest", objName = "FuelBox"..random(10000)}	
+			local Chest = CreateNewObject{prototypeName = "fuelChest", objName = "FuelBox_2"}	
 			local ChestId = GetEntityByID(Chest)
 			ChestId:SetPosition(CVector(1316.551, 288.830, 1751.936))
 
@@ -1986,6 +2003,8 @@
 			SoundFadingMsg()
 
 			TActivate ("UseFuelNil_InPetrolStation02")
+
+			SetVar("PetrolStation_Refill_Process", 0)
 		
 			trigger:Deactivate() 
 		</script>
@@ -1994,8 +2013,8 @@
 	<trigger Name="UseFuelNil_InPetrolStation03" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation03_loc" />
 		<script>
-
-			if HasPlayerAmountOfItems("fuel_nil_use", 1) then
+			local box = GetEntityByName("FuelBox_3")
+			if HasPlayerAmountOfItems("fuel_nil_use", 1) and not(box) then
 				local b = SpawnMessageBox( "90001" )
 				if b == 1 then
 					if GetPlayerMoney() >= 5000 then
@@ -2008,6 +2027,7 @@
 						TActivate("FuelFull_InPetrolStation03")
 						GetPlayerVehicle():SetThrottle( 0 )
 						GetPlayerVehicle():SetCustomLinearVelocity( 0 )
+						SetVar("PetrolStation_Refill_Process", 1)
 						trigger:Deactivate() 
 					else
 						AddFadingMsgByStrIdFormatted("fm_player_not_money")
@@ -2034,7 +2054,7 @@
 		<event timeout="20" eventid="GE_TIME_PERIOD" />
 		<script>
 
-			local Chest = CreateNewObject{prototypeName = "fuelChest", objName = "FuelBox"..random(10000)}	
+			local Chest = CreateNewObject{prototypeName = "fuelChest", objName = "FuelBox_3"}	
 			local ChestId = GetEntityByID(Chest)
 			ChestId:SetPosition(CVector(916.922, 309.114, 882.417))
 
@@ -2061,6 +2081,8 @@
 			SoundFadingMsg()
 
 			TActivate ("UseFuelNil_InPetrolStation03")
+
+			SetVar("PetrolStation_Refill_Process", 0)
 		
 			trigger:Deactivate() 
 		</script>
@@ -2107,6 +2129,19 @@
 					getObj("gate_thetown"):SetNodeAction(AT_RESERVED4)
 					CreateEffectTTLed( "ET_PS_OPENING_GATE", CVector(1235.100, 311.700, 2969.336), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 900)
 					TActivate("OpenGate_TheTown_End")
+
+					if GetVar("item_key_gate_thetown_used").AsInt > 0 then 
+						SetVar("item_key_gate_thetown_used", GetVar("item_key_gate_thetown_used").AsInt - 1) 
+						if GetVar("item_key_gate_thetown_used").AsInt > 0 then 
+							AddFadingMsgByStrIdFormatted("fm_used_key", GetVar("item_key_gate_thetown_used").AsInt)
+							SoundFadingMsg()
+						end
+					end
+					if GetVar("item_key_gate_thetown_used").AsInt == 0 then
+						RemoveQuestItem("quest_item_key_gate_thetown")
+						AddFadingMsgByStrIdFormatted("fm_remove_quest_item", "quest_item_key_gate_thetown")
+						SoundFadingMsg()
+					end
 					trigger:Deactivate() 
 				end
 			end
@@ -2177,6 +2212,19 @@
 					getObj("gate_r1m3"):SetNodeAction(AT_RESERVED4)
 					CreateEffectTTLed( "ET_PS_OPENING_GATE", CVector(2075.552, 316, 3662.552), Quaternion(0, 0, 0, 1), 1400)
 					TActivate("OpenGate_R1M3_End")
+
+					if GetVar("quest_item_key_gate_r1m3_used").AsInt > 0 then 
+						SetVar("quest_item_key_gate_r1m3_used", GetVar("quest_item_key_gate_r1m3_used").AsInt - 1) 
+						if GetVar("quest_item_key_gate_r1m3_used").AsInt > 0 then 
+							AddFadingMsgByStrIdFormatted("fm_used_key", GetVar("quest_item_key_gate_r1m3_used").AsInt)
+							SoundFadingMsg()
+						end
+					end
+					if GetVar("quest_item_key_gate_r1m3_used").AsInt == 0 then
+						RemoveQuestItem("quest_item_key_gate_r1m3")
+						AddFadingMsgByStrIdFormatted("fm_remove_quest_item", "quest_item_key_gate_r1m3")
+						SoundFadingMsg()
+					end
 					trigger:Deactivate()
 				end
 			end
@@ -3250,8 +3298,16 @@
 				if light then light:Remove() end
 				TDeactivate("UseFuelNil_InPetrolStation0"..i)
 				TDeactivate ("NotWork_PetrolStation0"..i)
+				TDeactivate("FuelFull_InPetrolStation0"..i)
+				TDeactivate("SoundPetrolProcess_InPertolStation0"..i)
+				local ps_s_work = GetEntityByName("SFPP_0"..i)
+				if ps_s_work then ps_s_work:Remove() end
+				local light_work = GetEntityByName("PetrolLightProcess0"..i)
+				if light_work then light_work:Remove() end
 				local ps_s = GetEntityByName("ps_"..i.."_sound")
 				if ps_s then ps_s:Remove() end
+				local fuelbox = GetEntityByName("FuelBox_"..i)
+				if fuelbox then fuelbox:Remove() end
 			end
 
 			TDeactivate("TimerRaid")

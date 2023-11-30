@@ -118,7 +118,12 @@ end
 
 -- Использование предметов 
 function ItemUse(ammo_used)
+	HealItems()
+	AddKeysQuestItem()
+	UseAmmoItems(ammo_used)
+end
 
+function HealItems()
 	local vehP = GetPlayerVehicle()
 	local PlfCoor = vehP:GetPosition()
 	local healthcar = GetPlayerHealth() 
@@ -136,7 +141,6 @@ function ItemUse(ammo_used)
 	local procent
 	local hp_pr
 
-
 	if HasPlayerAmountOfItems("scrap_metal_use", 1) and HasPlayerAmountOfItems("machinery_use", 1) and HasPlayerAmountOfItems("electronics_use", 1) then
 		procent = healthmax / 100 * electronics_procent
 		hp_pr = healthmax - procent
@@ -149,7 +153,6 @@ function ItemUse(ammo_used)
 			end
 		end
 	end
-
 
 	if HasPlayerAmountOfItems("machinery_use", 1) and HasPlayerAmountOfItems("electronics_use", 1) then
 		procent = healthmax / 100 * electronics_procent
@@ -164,7 +167,6 @@ function ItemUse(ammo_used)
 		end
 	end
 
-
 	if HasPlayerAmountOfItems("scrap_metal_use", 1) and HasPlayerAmountOfItems("machinery_use", 1) then
 		procent = healthmax / 100 * machinery_procent
 		hp_pr = healthmax - procent
@@ -177,7 +179,6 @@ function ItemUse(ammo_used)
 			end
 		end
 	end
-
 
 	if HasPlayerAmountOfItems("electronics_use", 1) then
 		procent = healthmax / 100 * electronics_procent
@@ -192,7 +193,6 @@ function ItemUse(ammo_used)
 		end
 	end
 
-
 	if HasPlayerAmountOfItems("machinery_use", 1) then
 		procent = healthmax / 100 * machinery_procent
 		hp_pr = healthmax - procent
@@ -206,7 +206,6 @@ function ItemUse(ammo_used)
 		end
 	end
 
-	
 	if HasPlayerAmountOfItems("scrap_metal_use", 1) then
 		procent = healthmax / 100 * scrap_metal_procent
 		hp_pr = healthmax - procent
@@ -220,7 +219,6 @@ function ItemUse(ammo_used)
 		end
 	end
 
-	
 	if HasPlayerAmountOfItems("oil_use", 1) and HasPlayerAmountOfItems("fuel_full_use", 1) then
 		procent = fuelmax / 100 * fuel_procent
 		hp_pr = fuelmax - procent
@@ -234,7 +232,6 @@ function ItemUse(ammo_used)
 			end
 		end
 	end
-
 
 	if HasPlayerAmountOfItems("fuel_full_use", 1) then
 		procent = fuelmax / 100 * fuel_procent
@@ -250,7 +247,6 @@ function ItemUse(ammo_used)
 		end
 	end
 
-
 	if HasPlayerAmountOfItems("oil_use", 1) then
 		procent = fuelmax / 100 * oil_procent
 		hp_pr = fuelmax - procent
@@ -263,466 +259,167 @@ function ItemUse(ammo_used)
 			end
 		end
 	end
+end
 
-	
+function AddKeysQuestItem()
 	if HasPlayerAmountOfItems("item_key_gate_thetown", 1) and not(IsQuestItemPresent("quest_item_key_gate_thetown")) then
 		AddQuestItem("quest_item_key_gate_thetown")
 		AddFadingMsgByStrIdFormatted("fm_item_to_quest_items", "item_key_gate_thetown")
 		RemoveItemsFromPlayerRepository("item_key_gate_thetown", 1)
+		SetVar("item_key_gate_thetown_used", 10)
+		SoundFadingMsg()
 	end
 
 	if HasPlayerAmountOfItems("item_key_gate_r1m3", 1) and not(IsQuestItemPresent("quest_item_key_gate_r1m3")) then
 		AddQuestItem("quest_item_key_gate_r1m3")
 		AddFadingMsgByStrIdFormatted("fm_item_to_quest_items", "item_key_gate_r1m3")
 		RemoveItemsFromPlayerRepository("item_key_gate_r1m3", 1)
+		SetVar("quest_item_key_gate_r1m3_used", 15)
+		SoundFadingMsg()
+	end
+end
+
+function UseAmmoItems(ammo_used)
+	if ammo_used == nil then ammo_used = 0 end
+
+	local small_slot = {"CABIN_SMALL_GUN", "CABIN_SMALL_GUN_1", "BASKET_SMALL_GUN_0"}
+	for sml=1,3 do
+		local small_gun = GetPlayerVehicle():GetPartByName(small_slot[sml])
+		if small_gun then 
+			local prot = small_gun:GetProperty("Prototype").AsString
+			local poolshells = small_gun:GetShellsInPool()
+			local currentshells = small_gun:GetShellsInCurrentCharge()
+			if poolshells == 0 and currentshells == 0 then
+				if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) then
+					if prot == "hornet01" or prot == "american_hornet01" or prot == "specter01" or prot == "pkt01" or prot == "kord01"  then
+						if prot == "hornet01" then small_gun:SetShellsInPool(280) end
+						if prot == "american_hornet01" then small_gun:SetShellsInPool(350) end
+						if prot == "specter01" then small_gun:SetShellsInPool(280) end
+						if prot == "pkt01" then small_gun:SetShellsInPool(400) end
+						if prot == "kord01" then small_gun:SetShellsInPool(220) end
+						RemoveItemsFromPlayerRepository("ammo_chest_machinegun", 1)
+						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
+						CreateEffectTTLed("ET_S_USE_RELOAD_MACHINEGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1750)
+						if ammo_used == 1 then SetVar("Use_AmmoChestMachineGun", GetVar("Use_AmmoChestMachineGun").AsInt+1) end
+					end
+				end
+				if HasPlayerAmountOfItems("ammo_chest_shotgun", 1) then
+					if prot == "storm01" then
+						if prot == "storm01" then small_gun:SetShellsInPool(25) end
+						RemoveItemsFromPlayerRepository("ammo_chest_shotgun", 1)
+						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
+						CreateEffectTTLed("ET_S_USE_RELOAD_SHOTGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
+						if ammo_used == 1 then SetVar("Use_AmmoChestShotGun", GetVar("Use_AmmoChestShotGun").AsInt+1) end
+					end
+				end
+			end
+		end
 	end
 
+	local big_slot = {"CABIN_BIG_GUN_1", "CABIN_BIG_GUN_2", "BASKET_BIG_GUN_0", "BASKET_BIG_GUN_1"}
+	for big=1,4 do
+		local big_gun = GetPlayerVehicle():GetPartByName(big_slot[big])
+		if big_gun then 
+			local prot = big_gun:GetProperty("Prototype").AsString
+			local poolshells = big_gun:GetShellsInPool()
+			local currentshells = big_gun:GetShellsInCurrentCharge()
+			if poolshells == 0 and currentshells == 0 then
+				if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) then
+					if prot == "rapier01" or prot == "rainmetal01" then
+						if prot == "rapier01" then big_gun:SetShellsInPool(44) end
+						if prot == "rainmetal01" then big_gun:SetShellsInPool(240) end
+						RemoveItemsFromPlayerRepository("ammo_chest_heavygun", 1)
+						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
+						CreateEffectTTLed("ET_S_USE_RELOAD_HEAVYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 2500)
+						if ammo_used == 1 then SetVar("Use_AmmoChestHeavyGun", GetVar("Use_AmmoChestHeavyGun").AsInt+1) end
+					end
+				end
+				if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) then
+					if prot == "vector01" or prot == "vulcan01" or prot == "kpvt01" then
+						if prot == "vector01" then big_gun:SetShellsInPool(270) end
+						if prot == "vulcan01" then big_gun:SetShellsInPool(840) end
+						if prot == "kpvt01" then big_gun:SetShellsInPool(650) end
+						RemoveItemsFromPlayerRepository("ammo_chest_machinegun", 1)
+						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
+						CreateEffectTTLed("ET_S_USE_RELOAD_MACHINEGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1750)
+						if ammo_used == 1 then SetVar("Use_AmmoChestMachineGun", GetVar("Use_AmmoChestMachineGun").AsInt+1) end
+					end
+				end
+				if HasPlayerAmountOfItems("ammo_chest_shotgun", 1) then
+					if prot == "flag01" then
+						if prot == "flag01" then big_gun:SetShellsInPool(21) end
+						RemoveItemsFromPlayerRepository("ammo_chest_shotgun", 1)
+						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
+						CreateEffectTTLed("ET_S_USE_RELOAD_SHOTGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
+						if ammo_used == 1 then SetVar("Use_AmmoChestShotGun", GetVar("Use_AmmoChestShotGun").AsInt+1) end
+					end
+				end
+				if HasPlayerAmountOfItems("ammo_chest_artillerygun", 1) then
+					if prot == "bumblebee01" or prot == "omega01" then
+						if prot == "bumblebee01" then big_gun:SetShellsInPool(42) end
+						if prot == "omega01" then big_gun:SetShellsInPool(36) end
+						RemoveItemsFromPlayerRepository("ammo_chest_artillerygun", 1)
+						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
+						CreateEffectTTLed("ET_S_USE_RELOAD_ARTILLERYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1055)
+						if ammo_used == 1 then SetVar("Use_AmmoChestArtilleryGun", GetVar("Use_AmmoChestArtilleryGun").AsInt+1) end
+					end
+				end
+				if HasPlayerAmountOfItems("ammo_chest_rocketgun", 1) then
+					if prot == "hurricane01" then
+						if prot == "hurricane01" then big_gun:SetShellsInPool(18) end
+						RemoveItemsFromPlayerRepository("ammo_chest_rocketgun", 1)
+						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
+						CreateEffectTTLed("ET_S_USE_RELOAD_ROCKETGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 732)
+						if ammo_used == 1 then SetVar("Use_AmmoChestRocketGun", GetVar("Use_AmmoChestRocketGun").AsInt+1) end
+					end
+				end
+			end
+		end
+	end
 
-	local cab_small = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
-	local cab_small_1 = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN_1")
-	local cab_big_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
-	local cab_big_2 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_2")
-	local cab_giant = GetPlayerVehicle():GetPartByName("CABIN_GIANT_GUN")
-	
-	local basket_small_0 = GetPlayerVehicle():GetPartByName("BASKET_SMALL_GUN_0")
-	local basket_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
-	local basket_big_1 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_1")
-	local basket_giant = GetPlayerVehicle():GetPartByName("BASKET_GIANT_GUN")
-	local basket_giant_0 = GetPlayerVehicle():GetPartByName("BASKET_GIANT_GUN_0")
+	local giant_slot = {"CABIN_GIANT_GUN", "BASKET_GIANT_GUN", "BASKET_GIANT_GUN_0"}
+	for gnt=1,3 do
+		local giant_gun = GetPlayerVehicle():GetPartByName(giant_slot[gnt])
+		if giant_gun then 
+			local prot = giant_gun:GetProperty("Prototype").AsString
+			local poolshells = giant_gun:GetShellsInPool()
+			local currentshells = giant_gun:GetShellsInCurrentCharge()
+			if poolshells == 0 and currentshells == 0 then
+				if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) then
+					if prot == "cyclops01" then
+						if prot == "cyclops01" then giant_gun:SetShellsInPool(28) end
+						RemoveItemsFromPlayerRepository("ammo_chest_heavygun", 1)
+						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
+						CreateEffectTTLed("ET_S_USE_RELOAD_HEAVYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 2500)
+						if ammo_used == 1 then SetVar("Use_AmmoChestHeavyGun", GetVar("Use_AmmoChestHeavyGun").AsInt+1) end
+					end
+				end
+				if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) then
+					if prot == "octopus01" then
+						if prot == "octopus01" then giant_gun:SetShellsInPool(360) end
+						RemoveItemsFromPlayerRepository("ammo_chest_machinegun", 1)
+						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
+						CreateEffectTTLed("ET_S_USE_RELOAD_MACHINEGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1750)
+						if ammo_used == 1 then SetVar("Use_AmmoChestMachineGun", GetVar("Use_AmmoChestMachineGun").AsInt+1) end
+					end
+				end
+				if HasPlayerAmountOfItems("ammo_chest_rocketgun", 1) then
+					if prot == "rocketLauncher" or prot == "big_swingfire01" then
+						if prot == "rocketLauncher" then giant_gun:SetShellsInPool(16) end
+						if prot == "big_swingfire01" then giant_gun:SetShellsInPool(18) end
+						RemoveItemsFromPlayerRepository("ammo_chest_rocketgun", 1)
+						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
+						CreateEffectTTLed("ET_S_USE_RELOAD_ROCKETGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 732)
+						if ammo_used == 1 then SetVar("Use_AmmoChestRocketGun", GetVar("Use_AmmoChestRocketGun").AsInt+1) end
+					end
+				end
+			end
+		end
+	end
+
 	local basket_side_0 = GetPlayerVehicle():GetPartByName("BASKET_SIDE_GUN_0")
 	local basket_side_l = GetPlayerVehicle():GetPartByName("BASKET_SIDE_GUN_L")
 	local basket_side_r = GetPlayerVehicle():GetPartByName("BASKET_SIDE_GUN_R")
-
-	if ammo_used == nil then ammo_used = 0 end
-
-	if cab_small then 
-		local prot = cab_small:GetProperty("Prototype").AsString
-		local poolshells = cab_small:GetShellsInPool()
-		local currentshells = cab_small:GetShellsInCurrentCharge()
-		if poolshells == 0 and currentshells == 0 then
-			if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) then
-				if prot == "hornet01" or prot == "american_hornet01" or prot == "specter01" or prot == "pkt01" or prot == "kord01"  then
-					if prot == "hornet01" then cab_small:SetShellsInPool(280) end
-					if prot == "american_hornet01" then cab_small:SetShellsInPool(350) end
-					if prot == "specter01" then cab_small:SetShellsInPool(280) end
-					if prot == "pkt01" then cab_small:SetShellsInPool(400) end
-					if prot == "kord01" then cab_small:SetShellsInPool(220) end
-					RemoveItemsFromPlayerRepository("ammo_chest_machinegun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_MACHINEGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1750)
-					if ammo_used == 1 then SetVar("Use_AmmoChestMachineGun", GetVar("Use_AmmoChestMachineGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_shotgun", 1) then
-				if prot == "storm01" then
-					if prot == "storm01" then cab_small:SetShellsInPool(25) end
-					RemoveItemsFromPlayerRepository("ammo_chest_shotgun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_SHOTGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
-					if ammo_used == 1 then SetVar("Use_AmmoChestShotGun", GetVar("Use_AmmoChestShotGun").AsInt+1) end
-				end
-			end
-		end
-	end
-
-	if cab_small_1 then 
-		local prot = cab_small_1:GetProperty("Prototype").AsString
-		local poolshells = cab_small_1:GetShellsInPool()
-		local currentshells = cab_small_1:GetShellsInCurrentCharge()
-		if poolshells == 0 and currentshells == 0 then
-			if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) then
-				if prot == "hornet01" or prot == "american_hornet01" or prot == "specter01" or prot == "pkt01" or prot == "kord01" then
-					if prot == "hornet01" then cab_small_1:SetShellsInPool(280) end
-					if prot == "american_hornet01" then cab_small_1:SetShellsInPool(350) end
-					if prot == "specter01" then cab_small_1:SetShellsInPool(280) end
-					if prot == "pkt01" then cab_small_1:SetShellsInPool(400) end
-					if prot == "kord01" then cab_small_1:SetShellsInPool(220) end
-					RemoveItemsFromPlayerRepository("ammo_chest_machinegun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_MACHINEGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1750)
-					if ammo_used == 1 then SetVar("Use_AmmoChestMachineGun", GetVar("Use_AmmoChestMachineGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_shotgun", 1) then
-				if prot == "storm01" then
-					if prot == "storm01" then cab_small_1:SetShellsInPool(25) end
-					RemoveItemsFromPlayerRepository("ammo_chest_shotgun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_SHOTGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
-					if ammo_used == 1 then SetVar("Use_AmmoChestShotGun", GetVar("Use_AmmoChestShotGun").AsInt+1) end
-				end
-			end
-		end
-	end
-
-	if basket_small_0 then 
-		local prot = basket_small_0:GetProperty("Prototype").AsString
-		local poolshells = basket_small_0:GetShellsInPool()
-		local currentshells = basket_small_0:GetShellsInCurrentCharge()
-		if poolshells == 0 and currentshells == 0 then
-			if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) then
-				if prot == "hornet01" or prot == "american_hornet01" or prot == "specter01" or prot == "pkt01" or prot == "kord01" then
-					if prot == "hornet01" then basket_small_0:SetShellsInPool(280) end
-					if prot == "american_hornet01" then basket_small_0:SetShellsInPool(350) end
-					if prot == "specter01" then basket_small_0:SetShellsInPool(280) end
-					if prot == "pkt01" then basket_small_0:SetShellsInPool(400) end
-					if prot == "kord01" then basket_small_0:SetShellsInPool(220) end
-					RemoveItemsFromPlayerRepository("ammo_chest_machinegun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_MACHINEGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1750)
-					if ammo_used == 1 then SetVar("Use_AmmoChestMachineGun", GetVar("Use_AmmoChestMachineGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_shotgun", 1) then
-				if prot == "storm01" then
-					if prot == "storm01" then basket_small_0:SetShellsInPool(25) end
-					RemoveItemsFromPlayerRepository("ammo_chest_shotgun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_SHOTGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
-					if ammo_used == 1 then SetVar("Use_AmmoChestShotGun", GetVar("Use_AmmoChestShotGun").AsInt+1) end
-				end
-			end
-		end
-	end
-
-
-	if cab_big_1 then 
-		local prot = cab_big_1:GetProperty("Prototype").AsString
-		local poolshells = cab_big_1:GetShellsInPool()
-		local currentshells = cab_big_1:GetShellsInCurrentCharge()
-		if poolshells == 0 and currentshells == 0 then
-			if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) then
-				if prot == "rapier01" or prot == "rainmetal01" then
-					if prot == "rapier01" then cab_big_1:SetShellsInPool(44) end
-					if prot == "rainmetal01" then cab_big_1:SetShellsInPool(240) end
-					RemoveItemsFromPlayerRepository("ammo_chest_heavygun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_HEAVYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 2500)
-					if ammo_used == 1 then SetVar("Use_AmmoChestHeavyGun", GetVar("Use_AmmoChestHeavyGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) then
-				if prot == "vector01" or prot == "vulcan01" or prot == "kpvt01" then
-					if prot == "vector01" then cab_big_1:SetShellsInPool(270) end
-					if prot == "vulcan01" then cab_big_1:SetShellsInPool(840) end
-					if prot == "kpvt01" then cab_big_1:SetShellsInPool(650) end
-					RemoveItemsFromPlayerRepository("ammo_chest_machinegun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_MACHINEGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1750)
-					if ammo_used == 1 then SetVar("Use_AmmoChestMachineGun", GetVar("Use_AmmoChestMachineGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_shotgun", 1) then
-				if prot == "flag01" then
-					if prot == "flag01" then cab_big_1:SetShellsInPool(21) end
-					RemoveItemsFromPlayerRepository("ammo_chest_shotgun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_SHOTGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
-					if ammo_used == 1 then SetVar("Use_AmmoChestShotGun", GetVar("Use_AmmoChestShotGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_artillerygun", 1) then
-				if prot == "bumblebee01" or prot == "omega01" then
-					if prot == "bumblebee01" then cab_big_1:SetShellsInPool(42) end
-					if prot == "omega01" then cab_big_1:SetShellsInPool(36) end
-					RemoveItemsFromPlayerRepository("ammo_chest_artillerygun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_ARTILLERYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1055)
-					if ammo_used == 1 then SetVar("Use_AmmoChestArtilleryGun", GetVar("Use_AmmoChestArtilleryGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_rocketgun", 1) then
-				if prot == "hurricane01" then
-					if prot == "hurricane01" then cab_big_1:SetShellsInPool(18) end
-					RemoveItemsFromPlayerRepository("ammo_chest_rocketgun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_ROCKETGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 732)
-					if ammo_used == 1 then SetVar("Use_AmmoChestRocketGun", GetVar("Use_AmmoChestRocketGun").AsInt+1) end
-				end
-			end
-		end
-	end
-
-	if cab_big_2 then 
-		local prot = cab_big_2:GetProperty("Prototype").AsString
-		local poolshells = cab_big_2:GetShellsInPool()
-		local currentshells = cab_big_2:GetShellsInCurrentCharge()
-		if poolshells == 0 and currentshells == 0 then
-			if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) then
-				if prot == "rapier01" or prot == "rainmetal01" then
-					if prot == "rapier01" then cab_big_2:SetShellsInPool(44) end
-					if prot == "rainmetal01" then cab_big_2:SetShellsInPool(240) end
-					RemoveItemsFromPlayerRepository("ammo_chest_heavygun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_HEAVYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 2500)
-					if ammo_used == 1 then SetVar("Use_AmmoChestHeavyGun", GetVar("Use_AmmoChestHeavyGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) then
-				if prot == "vector01" or prot == "vulcan01" or prot == "kpvt01" then
-					if prot == "vector01" then cab_big_2:SetShellsInPool(270) end
-					if prot == "vulcan01" then cab_big_2:SetShellsInPool(840) end
-					if prot == "kpvt01" then cab_big_2:SetShellsInPool(650) end
-					RemoveItemsFromPlayerRepository("ammo_chest_machinegun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_MACHINEGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1750)
-					if ammo_used == 1 then SetVar("Use_AmmoChestMachineGun", GetVar("Use_AmmoChestMachineGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_shotgun", 1) then
-				if prot == "flag01" then
-					if prot == "flag01" then cab_big_2:SetShellsInPool(21) end
-					RemoveItemsFromPlayerRepository("ammo_chest_shotgun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_SHOTGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
-					if ammo_used == 1 then SetVar("Use_AmmoChestShotGun", GetVar("Use_AmmoChestShotGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_artillerygun", 1) then
-				if prot == "bumblebee01" or prot == "omega01" then
-					if prot == "bumblebee01" then cab_big_2:SetShellsInPool(42) end
-					if prot == "omega01" then cab_big_2:SetShellsInPool(36) end
-					RemoveItemsFromPlayerRepository("ammo_chest_artillerygun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_ARTILLERYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1055)
-					if ammo_used == 1 then SetVar("Use_AmmoChestArtilleryGun", GetVar("Use_AmmoChestArtilleryGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_rocketgun", 1) then
-				if prot == "hurricane01" then
-					if prot == "hurricane01" then cab_big_2:SetShellsInPool(18) end
-					RemoveItemsFromPlayerRepository("ammo_chest_rocketgun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_ROCKETGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 732)
-					if ammo_used == 1 then SetVar("Use_AmmoChestRocketGun", GetVar("Use_AmmoChestRocketGun").AsInt+1) end
-				end
-			end
-		end
-	end
-
-	if basket_big_0 then 
-		local prot = basket_big_0:GetProperty("Prototype").AsString
-		local poolshells = basket_big_0:GetShellsInPool()
-		local currentshells = basket_big_0:GetShellsInCurrentCharge()
-		if poolshells == 0 and currentshells == 0 then
-			if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) then
-				if prot == "rapier01" or prot == "rainmetal01" then
-					if prot == "rapier01" then basket_big_0:SetShellsInPool(44) end
-					if prot == "rainmetal01" then basket_big_0:SetShellsInPool(240) end
-					RemoveItemsFromPlayerRepository("ammo_chest_heavygun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_HEAVYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 2500)
-					if ammo_used == 1 then SetVar("Use_AmmoChestHeavyGun", GetVar("Use_AmmoChestHeavyGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) then
-				if prot == "vector01" or prot == "vulcan01" or prot == "kpvt01" then
-					if prot == "vector01" then basket_big_0:SetShellsInPool(270) end
-					if prot == "vulcan01" then basket_big_0:SetShellsInPool(840) end
-					if prot == "kpvt01" then basket_big_0:SetShellsInPool(650) end
-					RemoveItemsFromPlayerRepository("ammo_chest_machinegun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_MACHINEGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1750)
-					if ammo_used == 1 then SetVar("Use_AmmoChestMachineGun", GetVar("Use_AmmoChestMachineGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_shotgun", 1) then
-				if prot == "flag01" then
-					if prot == "flag01" then basket_big_0:SetShellsInPool(21) end
-					RemoveItemsFromPlayerRepository("ammo_chest_shotgun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_SHOTGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
-					if ammo_used == 1 then SetVar("Use_AmmoChestShotGun", GetVar("Use_AmmoChestShotGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_artillerygun", 1) then
-				if prot == "bumblebee01" or prot == "omega01" then
-					if prot == "bumblebee01" then basket_big_0:SetShellsInPool(42) end
-					if prot == "omega01" then basket_big_0:SetShellsInPool(36) end
-					RemoveItemsFromPlayerRepository("ammo_chest_artillerygun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_ARTILLERYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1055)
-					if ammo_used == 1 then SetVar("Use_AmmoChestArtilleryGun", GetVar("Use_AmmoChestArtilleryGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_rocketgun", 1) then
-				if prot == "hurricane01" then
-					if prot == "hurricane01" then basket_big_0:SetShellsInPool(18) end
-					RemoveItemsFromPlayerRepository("ammo_chest_rocketgun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_ROCKETGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 732)
-					if ammo_used == 1 then SetVar("Use_AmmoChestRocketGun", GetVar("Use_AmmoChestRocketGun").AsInt+1) end
-				end
-			end
-		end
-	end
-
-	if basket_big_1 then 
-		local prot = basket_big_1:GetProperty("Prototype").AsString
-		local poolshells = basket_big_1:GetShellsInPool()
-		local currentshells = basket_big_1:GetShellsInCurrentCharge()
-		if poolshells == 0 and currentshells == 0 then
-			if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) then
-				if prot == "rapier01" or prot == "rainmetal01" then
-					if prot == "rapier01" then basket_big_1:SetShellsInPool(44) end
-					if prot == "rainmetal01" then basket_big_1:SetShellsInPool(240) end
-					RemoveItemsFromPlayerRepository("ammo_chest_heavygun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_HEAVYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 2500)
-					if ammo_used == 1 then SetVar("Use_AmmoChestHeavyGun", GetVar("Use_AmmoChestHeavyGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) then
-				if prot == "vector01" or prot == "vulcan01" or prot == "kpvt01" then
-					if prot == "vector01" then basket_big_1:SetShellsInPool(270) end
-					if prot == "vulcan01" then basket_big_1:SetShellsInPool(840) end
-					if prot == "kpvt01" then basket_big_1:SetShellsInPool(650) end
-					RemoveItemsFromPlayerRepository("ammo_chest_machinegun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_MACHINEGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1750)
-					if ammo_used == 1 then SetVar("Use_AmmoChestMachineGun", GetVar("Use_AmmoChestMachineGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_shotgun", 1) then
-				if prot == "flag01" then
-					if prot == "flag01" then basket_big_1:SetShellsInPool(21) end
-					RemoveItemsFromPlayerRepository("ammo_chest_shotgun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_SHOTGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
-					if ammo_used == 1 then SetVar("Use_AmmoChestShotGun", GetVar("Use_AmmoChestShotGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_artillerygun", 1) then
-				if prot == "bumblebee01" or prot == "omega01" then
-					if prot == "bumblebee01" then basket_big_1:SetShellsInPool(42) end
-					if prot == "omega01" then basket_big_1:SetShellsInPool(36) end
-					RemoveItemsFromPlayerRepository("ammo_chest_artillerygun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_ARTILLERYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1055)
-					if ammo_used == 1 then SetVar("Use_AmmoChestArtilleryGun", GetVar("Use_AmmoChestArtilleryGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_rocketgun", 1) then
-				if prot == "hurricane01" then
-					if prot == "hurricane01" then basket_big_1:SetShellsInPool(18) end
-					RemoveItemsFromPlayerRepository("ammo_chest_rocketgun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_ROCKETGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 732)
-					if ammo_used == 1 then SetVar("Use_AmmoChestRocketGun", GetVar("Use_AmmoChestRocketGun").AsInt+1) end
-				end
-			end
-		end
-	end
-
-
-	if cab_giant then 
-		local prot = cab_giant:GetProperty("Prototype").AsString
-		local poolshells = cab_giant:GetShellsInPool()
-		local currentshells = cab_giant:GetShellsInCurrentCharge()
-		if poolshells == 0 and currentshells == 0 then
-			if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) then
-				if prot == "cyclops01" then
-					if prot == "cyclops01" then cab_giant:SetShellsInPool(28) end
-					RemoveItemsFromPlayerRepository("ammo_chest_heavygun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_HEAVYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 2500)
-					if ammo_used == 1 then SetVar("Use_AmmoChestHeavyGun", GetVar("Use_AmmoChestHeavyGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) then
-				if prot == "octopus01" then
-					if prot == "octopus01" then cab_giant:SetShellsInPool(360) end
-					RemoveItemsFromPlayerRepository("ammo_chest_machinegun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_MACHINEGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1750)
-					if ammo_used == 1 then SetVar("Use_AmmoChestMachineGun", GetVar("Use_AmmoChestMachineGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_rocketgun", 1) then
-				if prot == "rocketLauncher" or prot == "big_swingfire01" then
-					if prot == "rocketLauncher" then cab_giant:SetShellsInPool(16) end
-					if prot == "big_swingfire01" then cab_giant:SetShellsInPool(18) end
-					RemoveItemsFromPlayerRepository("ammo_chest_rocketgun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_ROCKETGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 732)
-					if ammo_used == 1 then SetVar("Use_AmmoChestRocketGun", GetVar("Use_AmmoChestRocketGun").AsInt+1) end
-				end
-			end
-		end
-	end
-
-	if basket_giant then 
-		local prot = basket_giant:GetProperty("Prototype").AsString
-		local poolshells = basket_giant:GetShellsInPool()
-		local currentshells = basket_giant:GetShellsInCurrentCharge()
-		if poolshells == 0 and currentshells == 0 then
-			if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) then
-				if prot == "cyclops01" then
-					if prot == "cyclops01" then basket_giant:SetShellsInPool(28) end
-					RemoveItemsFromPlayerRepository("ammo_chest_heavygun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_HEAVYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 2500)
-					if ammo_used == 1 then SetVar("Use_AmmoChestHeavyGun", GetVar("Use_AmmoChestHeavyGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) then
-				if prot == "octopus01" then
-					if prot == "octopus01" then basket_giant:SetShellsInPool(360) end
-					RemoveItemsFromPlayerRepository("ammo_chest_machinegun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_MACHINEGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1750)
-					if ammo_used == 1 then SetVar("Use_AmmoChestMachineGun", GetVar("Use_AmmoChestMachineGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_rocketgun", 1) then
-				if prot == "rocketLauncher" or prot == "big_swingfire01" then
-					if prot == "rocketLauncher" then basket_giant:SetShellsInPool(16) end
-					if prot == "big_swingfire01" then basket_giant:SetShellsInPool(18) end
-					RemoveItemsFromPlayerRepository("ammo_chest_rocketgun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_ROCKETGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 732)
-					if ammo_used == 1 then SetVar("Use_AmmoChestRocketGun", GetVar("Use_AmmoChestRocketGun").AsInt+1) end
-				end
-			end
-		end
-	end
-
-	if basket_giant_0 then 
-		local prot = basket_giant_0:GetProperty("Prototype").AsString
-		local poolshells = basket_giant_0:GetShellsInPool()
-		local currentshells = basket_giant_0:GetShellsInCurrentCharge()
-		if poolshells == 0 and currentshells == 0 then
-			if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) then
-				if prot == "cyclops01" then
-					if prot == "cyclops01" then basket_giant_0:SetShellsInPool(28) end
-					RemoveItemsFromPlayerRepository("ammo_chest_heavygun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_HEAVYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 2500)
-					if ammo_used == 1 then SetVar("Use_AmmoChestHeavyGun", GetVar("Use_AmmoChestHeavyGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) then
-				if prot == "octopus01" then
-					if prot == "octopus01" then basket_giant_0:SetShellsInPool(360) end
-					RemoveItemsFromPlayerRepository("ammo_chest_machinegun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_MACHINEGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1750)
-					if ammo_used == 1 then SetVar("Use_AmmoChestMachineGun", GetVar("Use_AmmoChestMachineGun").AsInt+1) end
-				end
-			end
-			if HasPlayerAmountOfItems("ammo_chest_rocketgun", 1) then
-				if prot == "rocketLauncher" or prot == "big_swingfire01" then
-					if prot == "rocketLauncher" then basket_giant_0:SetShellsInPool(16) end
-					if prot == "big_swingfire01" then basket_giant_0:SetShellsInPool(18) end
-					RemoveItemsFromPlayerRepository("ammo_chest_rocketgun", 1)
-					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-					CreateEffectTTLed("ET_S_USE_RELOAD_ROCKETGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 732)
-					if ammo_used == 1 then SetVar("Use_AmmoChestRocketGun", GetVar("Use_AmmoChestRocketGun").AsInt+1) end
-				end
-			end
-		end
-	end
-
 	if basket_side_0 then 
 		local prot = basket_side_0:GetProperty("Prototype").AsString
 		local poolshells_l = basket_side_l:GetShellsInPool()
@@ -758,173 +455,71 @@ end
 function AddAmmoItemsForGuns(veh, count)
 	local vehicle = veh
 
-	local cab_small
-	local cab_small_1
-	local cab_big_1 
-	local cab_big_2
-	local cab_giant
-	
-	local basket_small_0
-	local basket_big_0 
-	local basket_big_1 
-	local basket_giant
-	local basket_giant_0
-	local basket_side_0
+	local small_gun
+	local big_gun
+	local giant_gun
+	local side_gun
 
 	if count == nil then count = 1 end
 
 	if vehicle then
-		if vehicle:GetPartByName("CABIN_SMALL_GUN") then
-			cab_small = vehicle:GetPartByName("CABIN_SMALL_GUN"):GetProperty("Prototype").AsString
-			if cab_small == "hornet01" or cab_small == "american_hornet01" or cab_small == "specter01" or cab_small == "pkt01" or cab_small == "kord01" then
-				vehicle:AddItemsToRepository("ammo_chest_machinegun", count)
-			end
-			if cab_small == "storm01" then
-				vehicle:AddItemsToRepository("ammo_chest_shotgun", count)
-			end
-		end
-
-		if vehicle:GetPartByName("CABIN_SMALL_GUN_1") then
-			cab_small_1 = vehicle:GetPartByName("CABIN_SMALL_GUN_1"):GetProperty("Prototype").AsString
-			if cab_small_1 == "hornet01" or cab_small_1 == "american_hornet01" or cab_small_1 == "specter01" or cab_small_1 == "pkt01" or cab_small_1 == "kord01" then
-				vehicle:AddItemsToRepository("ammo_chest_machinegun", count)
-			end
-			if cab_small_1 == "storm01" then
-				vehicle:AddItemsToRepository("ammo_chest_shotgun", count)
+		local small_slot = {"CABIN_SMALL_GUN", "CABIN_SMALL_GUN_1", "BASKET_SMALL_GUN_0"}
+		for sml=1,3 do
+			if vehicle:GetPartByName(small_slot[sml]) then
+				small_gun = vehicle:GetPartByName(small_slot[sml]):GetProperty("Prototype").AsString
+				if small_gun == "hornet01" or small_gun == "american_hornet01" or small_gun == "specter01" or small_gun == "pkt01" or small_gun == "kord01" then
+					vehicle:AddItemsToRepository("ammo_chest_machinegun", count)
+				end
+				if small_gun == "storm01" then
+					vehicle:AddItemsToRepository("ammo_chest_shotgun", count)
+				end
 			end
 		end
 
-		if vehicle:GetPartByName("CABIN_BIG_GUN_1") then
-			cab_big_1 = vehicle:GetPartByName("CABIN_BIG_GUN_1"):GetProperty("Prototype").AsString
-			if cab_big_1 == "rapier01" or cab_big_1 == "rainmetal01" then
-				vehicle:AddItemsToRepository("ammo_chest_heavygun", count)
-			end
-			if cab_big_1 == "vector01" or cab_big_1 == "vulcan01" or cab_big_1 == "kpvt01" then
-				vehicle:AddItemsToRepository("ammo_chest_machinegun", count)
-			end
-			if cab_big_1 == "flag01" then
-				vehicle:AddItemsToRepository("ammo_chest_shotgun", count)
-			end
-			if cab_big_1 == "bumblebee01" or cab_big_1 == "omega01" then
-				vehicle:AddItemsToRepository("ammo_chest_artillerygun", count)
-			end
-			if cab_big_1 == "hurricane01" then
-				vehicle:AddItemsToRepository("ammo_chest_rocketgun", count)
-			end
-		end
-
-		if vehicle:GetPartByName("CABIN_BIG_GUN_2") then
-			cab_big_2 = vehicle:GetPartByName("CABIN_BIG_GUN_2"):GetProperty("Prototype").AsString
-			if cab_big_2 == "rapier01" or cab_big_2 == "rainmetal01" then
-				vehicle:AddItemsToRepository("ammo_chest_heavygun", count)
-			end
-			if cab_big_2 == "vector01" or cab_big_2 == "vulcan01" or cab_big_2 == "kpvt01" then
-				vehicle:AddItemsToRepository("ammo_chest_machinegun", count)
-			end
-			if cab_big_2 == "flag01" then
-				vehicle:AddItemsToRepository("ammo_chest_shotgun", count)
-			end
-			if cab_big_2 == "bumblebee01" or cab_big_2 == "omega01" then
-				vehicle:AddItemsToRepository("ammo_chest_artillerygun", count)
-			end
-			if cab_big_2 == "hurricane01" then
-				vehicle:AddItemsToRepository("ammo_chest_rocketgun", count)
+		local big_slot = {"CABIN_BIG_GUN_1", "CABIN_BIG_GUN_2", "BASKET_BIG_GUN_0", "BASKET_BIG_GUN_1"}
+		for big=1,4 do
+			if vehicle:GetPartByName(big_slot[big]) then
+				big_gun = vehicle:GetPartByName(big_slot[big]):GetProperty("Prototype").AsString
+				if big_gun == "rapier01" or big_gun == "rainmetal01" then
+					vehicle:AddItemsToRepository("ammo_chest_heavygun", count)
+				end
+				if big_gun == "vector01" or big_gun == "vulcan01" or big_gun == "kpvt01" then
+					vehicle:AddItemsToRepository("ammo_chest_machinegun", count)
+				end
+				if big_gun == "flag01" then
+					vehicle:AddItemsToRepository("ammo_chest_shotgun", count)
+				end
+				if big_gun == "bumblebee01" or big_gun == "omega01" then
+					vehicle:AddItemsToRepository("ammo_chest_artillerygun", count)
+				end
+				if big_gun == "hurricane01" then
+					vehicle:AddItemsToRepository("ammo_chest_rocketgun", count)
+				end
 			end
 		end
 
-		if vehicle:GetPartByName("CABIN_GIANT_GUN") then
-			cab_giant = vehicle:GetPartByName("CABIN_GIANT_GUN"):GetProperty("Prototype").AsString
-			if cab_giant == "cyclops01" then
-				vehicle:AddItemsToRepository("ammo_chest_heavygun", count)
-			end
-			if cab_giant == "octopus01" then
-				vehicle:AddItemsToRepository("ammo_chest_machinegun", count)
-			end
-			if cab_giant == "rocketLauncher" or cab_giant == "big_swingfire01" then
-				vehicle:AddItemsToRepository("ammo_chest_rocketgun", count)
-			end
-		end
-
-		if vehicle:GetPartByName("BASKET_SMALL_GUN_0") then
-			basket_small_0 = vehicle:GetPartByName("BASKET_SMALL_GUN_0"):GetProperty("Prototype").AsString
-			if basket_small_0 == "hornet01" or basket_small_0 == "american_hornet01" or basket_small_0 == "specter01" or basket_small_0 == "pkt01" or basket_small_0 == "kord01" then
-				vehicle:AddItemsToRepository("ammo_chest_machinegun", count)
-			end
-			if basket_small_0 == "storm01" then
-				vehicle:AddItemsToRepository("ammo_chest_shotgun", count)
-			end
-		end
-
-		if vehicle:GetPartByName("BASKET_BIG_GUN_0") then
-			basket_big_0 = vehicle:GetPartByName("BASKET_BIG_GUN_0"):GetProperty("Prototype").AsString
-			if basket_big_0 == "rapier01" or basket_big_0 == "rainmetal01" then
-				vehicle:AddItemsToRepository("ammo_chest_heavygun", count)
-			end
-			if basket_big_0 == "vector01" or basket_big_0 == "vulcan01" or basket_big_0 == "kpvt01" then
-				vehicle:AddItemsToRepository("ammo_chest_machinegun", count)
-			end
-			if basket_big_0 == "flag01" then
-				vehicle:AddItemsToRepository("ammo_chest_shotgun", count)
-			end
-			if basket_big_0 == "bumblebee01" or basket_big_0 == "omega01" then
-				vehicle:AddItemsToRepository("ammo_chest_artillerygun", count)
-			end
-			if basket_big_0 == "hurricane01" then
-				vehicle:AddItemsToRepository("ammo_chest_rocketgun", count)
-			end
-		end
-
-		if vehicle:GetPartByName("BASKET_BIG_GUN_1") then
-			basket_big_1 = vehicle:GetPartByName("BASKET_BIG_GUN_1"):GetProperty("Prototype").AsString
-			if basket_big_1 == "rapier01" or basket_big_1 == "rainmetal01" then
-				vehicle:AddItemsToRepository("ammo_chest_heavygun", count)
-			end
-			if basket_big_1 == "vector01" or basket_big_1 == "vulcan01" or basket_big_1 == "kpvt01" then
-				vehicle:AddItemsToRepository("ammo_chest_machinegun", count)
-			end
-			if basket_big_1 == "flag01" then
-				vehicle:AddItemsToRepository("ammo_chest_shotgun", count)
-			end
-			if basket_big_1 == "bumblebee01" or basket_big_1 == "omega01" then
-				vehicle:AddItemsToRepository("ammo_chest_artillerygun", count)
-			end
-			if basket_big_1 == "hurricane01" then
-				vehicle:AddItemsToRepository("ammo_chest_rocketgun", count)
-			end
-		end
-
-		if vehicle:GetPartByName("BASKET_GIANT_GUN") then
-			basket_giant = vehicle:GetPartByName("BASKET_GIANT_GUN"):GetProperty("Prototype").AsString
-			if basket_giant == "cyclops01" then
-				vehicle:AddItemsToRepository("ammo_chest_heavygun", count)
-			end
-			if basket_giant == "octopus01" then
-				vehicle:AddItemsToRepository("ammo_chest_machinegun", count)
-			end
-			if basket_giant == "rocketLauncher" or basket_giant == "big_swingfire01" then
-				vehicle:AddItemsToRepository("ammo_chest_rocketgun", count)
-			end
-		end
-
-		if vehicle:GetPartByName("BASKET_GIANT_GUN_0") then
-			basket_giant_0 = vehicle:GetPartByName("BASKET_GIANT_GUN_0"):GetProperty("Prototype").AsString
-			if basket_giant_0 == "cyclops01" then
-				vehicle:AddItemsToRepository("ammo_chest_heavygun", count)
-			end
-			if basket_giant_0 == "octopus01" then
-				vehicle:AddItemsToRepository("ammo_chest_machinegun", count)
-			end
-			if basket_giant_0 == "rocketLauncher" or basket_giant_0 == "big_swingfire01" then
-				vehicle:AddItemsToRepository("ammo_chest_rocketgun", count)
+		local giant_slot = {"CABIN_GIANT_GUN", "BASKET_GIANT_GUN", "BASKET_GIANT_GUN_0"}
+		for gnt=1,3 do
+			if vehicle:GetPartByName(giant_slot[gnt]) then
+				giant_gun = vehicle:GetPartByName(giant_slot[gnt]):GetProperty("Prototype").AsString
+				if giant_gun == "cyclops01" then
+					vehicle:AddItemsToRepository("ammo_chest_heavygun", count)
+				end
+				if giant_gun == "octopus01" then
+					vehicle:AddItemsToRepository("ammo_chest_machinegun", count)
+				end
+				if giant_gun == "rocketLauncher" or giant_gun == "big_swingfire01" then
+					vehicle:AddItemsToRepository("ammo_chest_rocketgun", count)
+				end
 			end
 		end
 
 		if vehicle:GetPartByName("BASKET_SIDE_GUN_0") then
-			basket_side_0 = vehicle:GetPartByName("BASKET_SIDE_GUN_0"):GetProperty("Prototype").AsString
-			if basket_side_0 == "hailSideGun" or basket_side_0 == "hunterSideGun" or basket_side_0 == "mrakSideGun" then
+			side_gun = vehicle:GetPartByName("BASKET_SIDE_GUN_0"):GetProperty("Prototype").AsString
+			if side_gun == "hailSideGun" or side_gun == "hunterSideGun" or side_gun == "mrakSideGun" then
 				vehicle:AddItemsToRepository("ammo_chest_rocketgun", count)
 			end
-			if basket_side_0 == "marsSideGun" then
+			if side_gun == "marsSideGun" then
 				vehicle:AddItemsToRepository("ammo_chest_arillerygun", count)
 			end
 		end

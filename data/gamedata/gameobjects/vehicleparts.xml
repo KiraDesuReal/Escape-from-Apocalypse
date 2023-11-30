@@ -4673,12 +4673,16 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0.2"
 
 			Mass				= "15.0"
-			LoadPoints			= "LP_GIANT01" >
+			LoadPoints			= "LP_GIANT01 NO_LP" >
 			<RepositoryDescription
 				RepositorySize		= "8 11">
 				<Slot
 					Name		= "BASKET_GIANT_GUN"
 					Pos		= "11 7"
+				/>
+				<Slot
+					Name		= "BASKET_SPECIAL_WEAPON"
+					Pos		= "-1 10"
 				/>
 			</RepositoryDescription>
 			<GroupsHealth
@@ -4705,7 +4709,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0.2"
 
 			Mass				= "20.0"
-			LoadPoints			= "LP_BIG01 LP_SIDE01L LP_SIDE01R" >
+			LoadPoints			= "LP_BIG01 LP_SIDE01L LP_SIDE01R NO_LP" >
 			<RepositoryDescription
 				RepositorySize		= "8 12">
 				<Slot
@@ -4715,6 +4719,10 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 				<Slot
 					Name		= "BASKET_SIDE_GUN_0"
 					Pos		= "-2 5"
+				/>
+				<Slot
+					Name		= "BASKET_SPECIAL_WEAPON"
+					Pos		= "-1 11"
 				/>
 			</RepositoryDescription>
 			<GroupsHealth

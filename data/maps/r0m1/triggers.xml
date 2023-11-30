@@ -31,6 +31,7 @@
 			SetVar("Use_AmmoChestMachineGun", 0)
 			SetVar("Use_AmmoChestRocketGun", 0)
 			SetVar("Use_AmmoChestShotGun", 0)
+			SetVar("PlayerSkin", 0)
 
 			for i=1,4 do
 				SetVar("loot_"..i, 0)
@@ -249,6 +250,7 @@
 			CreateNewSgNodeObject("ET_S_POST_CHALLENGE_ROTATE", "SdPostRot", -1, -1, CVector(739.957, 254, 984.051), Quaternion(0, 0, 0, 1), 0)
 
 			TActivate("SwordUp")
+			TActivate("DeaSword_Y")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -260,8 +262,6 @@
 			local swCoor = sw:GetPosition()
 			swCoor.y = swCoor.y + 0.015
 			sw:SetPosition(swCoor)
-
-			TActivate("DeaSword_Y")
 		</script>
 	</trigger>
 
@@ -272,8 +272,6 @@
 			local swCoor = sw:GetPosition()
 			swCoor.y = swCoor.y - 0.015
 			sw:SetPosition(swCoor)
-
-			TActivate("DeaSword_Y")
 		</script>
 	</trigger>
 
@@ -308,6 +306,7 @@
 			CreateNewSgNodeObject("ET_S_DUNGEON_AMBIENT_KEY", "SdKey", -1, -1, CVector(739.957, 254, 984.051), Quaternion(0, 0, 0, 1), 0)
 			
 			TActivate("SwordDown")
+			TActivate("DeaSword_Y")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -363,6 +362,7 @@
 			AddImportantFadingMsgByStrIdFormatted("fm_start_challenge")
 
 			local Plf = GetPlayerVehicle()
+			local skin = Plf:GetSkin()
 			local PlfCoor = Plf:GetPosition()
 			if Plf then
 				Plf:setGodMode(0)
@@ -370,6 +370,8 @@
 				CreateEffectInsertedInRemove("ET_S_DUNGEON_START", PlfCoor, Quaternion(0, 0, 0, 1), true)
 				Plf:SetNameFromScript("PlayerCarForDead")
 			end
+
+			SetVar("PlayerSkin", skin)
 			
 			TActivate("ChallengeFaze")
 			TActivate("TimerStart")
@@ -521,7 +523,7 @@
 			local sidegun = {""}
 
 			if l > 2000 then
-				sidegun={"marsSideGun","zeusSideGun","hunterSideGun"}
+				sidegun={"marsSideGun","hunterSideGun","mrakSideGun"}
 				giantgun={"cyclops01","octopus01","rocketLauncher","big_swingfire01"}
 			elseif l > 1500 then
 				giantgun={"cyclops01","octopus01","rocketLauncher","big_swingfire01"}
@@ -551,13 +553,11 @@
 				if Enemy then 
 					Enemy:setImmortalMode(1)
 					CreateEffectInsertedInRemove("ET_PS_DRONE_EX_D", EnCoor, Quaternion(0, 0, 0, 1), true)
-
 					if l >= 2200 then
 						EnemyHP = EnemyHP + hp
 						Enemy:AddModifier("maxhp", "= "..EnemyHP)
 						Enemy:AddModifier("hp", "= "..EnemyHP)
 					end
-
 					if Prot == "Scout1CarScav" then
 						Enemy:SetNewPart("CABIN",scout_cab[random(3)])
 					elseif Prot == "Fighter1CarScav" then
@@ -1031,7 +1031,13 @@
 	<trigger Name="UseItems" active="0">
 		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
-			ItemUse(1)
+			local pl = GetPlayerVehicle()
+			local hp = GetPlayerHealth() 
+			if pl and hp >= 1 then 
+				ItemUse(1) 
+			else 
+				trigger:Deactivate() 
+			end
 		</script>
 	</trigger>
 
@@ -1220,6 +1226,7 @@
 			TActivate("DeActivateKey")
 			TDeactivate("LeavesRestartChallenge")
 			TDeactivate("EntersRestartChallenge")
+			GetPlayerVehicle():AddModifier( "hp", "+ 10000" ) 
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1261,6 +1268,7 @@
 				end
 				if not(cabin == nil) then Plf:SetNewPart("CABIN", cabin:GetProperty("Prototype").AsString) end
 				if not(basket == nil) then Plf:SetNewPart("BASKET", basket:GetProperty("Prototype").AsString) end
+				Plf:SetSkin(GetVar("PlayerSkin").AsInt)
 			end
 
 			if GetVar("Use_AmmoChestArtilleryGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_artillerygun", GetVar("Use_AmmoChestArtilleryGun").AsInt) end

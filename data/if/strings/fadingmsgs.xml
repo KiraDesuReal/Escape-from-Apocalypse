@@ -30,15 +30,31 @@
 
 	<string
 		id="fm_fail_quest"
-		value="Вы провалили задание." />
+		value="Квест %1p провален!" />
 
 	<string
 		id="fm_complete_quest"
-		value="Вы выполнили задание." />
+		value="Квест %1p выполнен!" />
 
 	<string
 		id="fm_take_quest"
-		value="Вы получили новое задание." />
+		value="Квест %1p взят!" />
+
+	<string
+		id="fm_to_finish_quest"
+		value="Квест %1p доступен к завершению!" />
+
+	<string
+		id="fm_complete_subtask"
+		value="Подзадача квеста %1p выполнена!" />
+
+	<string
+		id="fm_progress_quest_scavs_kills"
+		value="Прогресс по квесту %1p.|Диких убито: %2d" />
+
+	<string
+		id="fm_progress_quest_pmc_kills"
+		value="Прогресс по квесту %1p.|ЧВК убито: %2d" />
 
 	<string
 		id="fm_cant_move"
@@ -367,4 +383,20 @@
 	<string
 		id="fm_use_ammo_chest"
 		value="@ffffba00Пополнен боезапас для %1p." />
+
+	<string
+		id="fm_marker_target"
+		value="Маркировка цели..." />
+
+	<string
+		id="fm_target_defence_timer"
+		value="Защищайте цель %1d." />
+
+	<string
+		id="fm_marker_install"
+		value="Маркер установлен!" />
+
+	<string
+		id="fm_marker_leaves_zone"
+		value="Вы покинули зону маркировки!" />
 </resource>

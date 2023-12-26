@@ -66,6 +66,10 @@
 		<Node name="noise" class="SgSoundSourceNode" id="S_FADING_MSG" looped="0" /> 
 	</Node>
 
+	<Node name="ET_S_BUY" class="SgNode">
+		<Node name="noise" class="SgSoundSourceNode" id="S_BUY" looped="0" /> 
+	</Node>
+
 	<Node name="ET_PS_SMOKE_BUILDING" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_BRIDGE_EXP_SMOKE2" psNumEmitterMesh="-1" />
 		<Node name="Object2" class="SgParticlesNode" id="PS_VEN_EXP_SMOKE" psNumEmitterMesh="-1" />
@@ -174,6 +178,30 @@
 
 	<Node name="ET_S_PICK_ITEM" class="SgNode">
 		<Node name="1"	 class="SgSoundSourceNode" id="S_PICK_ITEM" looped="0" /> 
+	</Node>
+
+	<Node name="ET_S_QUEST_COMPLETE" class="SgNode">
+		<Node name="1"	 class="SgSoundSourceNode" id="S_QUEST_COMPLETE" looped="0" /> 
+	</Node>
+
+	<Node name="ET_S_QUEST_FAIL" class="SgNode">
+		<Node name="1"	 class="SgSoundSourceNode" id="S_QUEST_FAIL" looped="0" /> 
+	</Node>
+
+	<Node name="ET_S_QUEST_FINISHED" class="SgNode">
+		<Node name="1"	 class="SgSoundSourceNode" id="S_QUEST_FINISHED" looped="0" /> 
+	</Node>
+
+	<Node name="ET_S_QUEST_TAKEN" class="SgNode">
+		<Node name="1"	 class="SgSoundSourceNode" id="S_QUEST_TAKEN" looped="0" /> 
+	</Node>
+
+	<Node name="ET_S_SUBTASK_COMPLETE" class="SgNode">
+		<Node name="1"	 class="SgSoundSourceNode" id="S_SUBTASK_COMPLETE" looped="0" /> 
+	</Node>
+
+	<Node name="ET_S_ITEM_MUSIC01" class="SgNode">
+		<Node name="1"	 class="SgSoundSourceNode" id="S_ITEM_MUSIC01" looped="1" /> 
 	</Node>
 
 	<Node name="ET_PS_ROCKSFAKE1" class="SgNode">
@@ -1467,6 +1495,9 @@
 		<Node name="Sound3" class="SgSoundSourceNode" id="S_CAR_BURNING_SMALL" looped="1"/>
 		<Node name="15" class="SgParticlesNode" id="PS_WHEEL_FIRE_MED_SMOKE1" psNumEmitterMesh="-1" />
 	</Node>
+	<Node name="ET_PS_WHEEL_FIRE_MED_SMOKE1" class="SgNode">
+		<Node name="15" class="SgParticlesNode" id="PS_WHEEL_FIRE_MED_SMOKE1" psNumEmitterMesh="-1" />
+	</Node>
 	<Node name="ET_PS_VEH_EXP_WHEEL1_MED" class="SgNode">
 		<Node name="15" class="SgParticlesNode" id="PS_WHEEL_FIRE_MED1_SMOKE1" psNumEmitterMesh="-1" />
 		<Node name="Sound3" class="SgSoundSourceNode" id="S_CAR_BURNING" looped="1"/>
@@ -1476,6 +1507,9 @@
 		<Node name="Object3" class="SgParticlesNode" id="PS_WHEEL_FIRE_BIG_MAIN2" psNumEmitterMesh="-1" />
 		<Node name="15" class="SgParticlesNode" id="PS_WHEEL_FIRE_BIG_SMOKE1" psNumEmitterMesh="-1" />
 		<Node name="Sound3" class="SgSoundSourceNode" id="S_CAR_BURNING" looped="1"/>
+	</Node>
+	<Node name="ET_PS_WHEEL_FIRE_BIG_SMOKE1" class="SgNode">
+		<Node name="15" class="SgParticlesNode" id="PS_WHEEL_FIRE_BIG_SMOKE1" psNumEmitterMesh="-1" />
 	</Node>
 	<Node name="ET_PS_VEH_EXP_WHEEL1_BIG" class="SgNode">
 		<Node name="15" class="SgParticlesNode" id="PS_WHEEL_FIRE_BIG1_SMOKE1" psNumEmitterMesh="-1" />

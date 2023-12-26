@@ -134,6 +134,9 @@ data/if/ico_hd/inventorydlg/goods/new/building/item_nuts2.dds
 !data/if/ico_hd/inventorydlg/goods/new/tools/*.dds
 !data/if/ico_hd/inventorydlg/goods/new/valuables/*.dds
 !data/if/ico_hd/inventorydlg/goods/new/ammo/*.dds
+!data/if/ico_hd/inventorydlg/goods/new/quest_items/*.dds
+!data/if/ico_hd/inventorydlg/goods/new/special/*.dds
+data/if/ico_hd/inventorydlg/goods/new/special/item_ms20001.dds
 !data/models/goods/info/*.dds
 !data/models/goods/info/*.gam
 !data/models/goods/other/*.dds
@@ -164,6 +167,7 @@ data/if/ico_hd/inventorydlg/goods/new/building/item_nuts2.dds
 !data/models/buildings/region0/generator/*.dds
 !data/sounds/other/interface/fading_msg.wav
 !data/sounds/other/interface/building.wav
+!data/sounds/other/interface/buy.ogg
 !data/sounds/other/generator/*.wav
 !data/sounds/other/chest_scavs/*.ogg
 !data/if/ico_hd/inventorydlg/weapon/a_hornet.dds
@@ -214,6 +218,8 @@ data/if/ico_hd/splashwnd/loading_up.dds
 !data/if/ico/talkwithnpcdlg/lampposts_dlg.dds
 !data/if/ico/talkwithnpcdlg/global_map_dlg.dds
 !data/if/ico/talkwithnpcdlg/garage_dlg.dds
+!data/if/ico/talkwithnpcdlg/traider_1_dlg.dds
+!data/if/ico/talkwithnpcdlg/mehanic_dlg.dds
 !data/if/ico/inventorydlg/cruizer/*.dds
 !data/if/ico/globalmap/gmap_line.dds
 !data/if/ico_hd/globalmap/*.dds
@@ -272,7 +278,9 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/models/buildings/domain/post_challenge/*.dds
 !data/sounds/other/dungeon/*.wav
 !data/sounds/other/use_items/*.wav
+!data/sounds/other/quest/*.ogg
 !data/music/dungeons/*.ogg
+!data/music/item_music/*.ogg
 !data/if/ico_hd/inventorydlg/weapon/bumblebee_min.dds
 !data/if/ico_hd/inventorydlg/weapon/dragon_min.dds
 !data/if/ico_hd/inventorydlg/weapon/hammer01_min.dds
@@ -313,4 +321,11 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/if/ico_hd/inventorydlg/belaz/*.dds
 !data/if/ico_hd/inventorydlg/mirotvorec/*.dds
 !data/if/ico_hd/inventorydlg/cruizer/*.dds
+!data/models/questitems/map_location.gam
+!data/models/questitems/map_r1m1.dds
+!data/if/ico_hd/optionswnd/panel.dds
+!data/if/ico_hd/towndlg/city_mainscreen.dds
+!data/models/masks/region0/*.gam
+!data/models/masks/region0/*.dds
+
 

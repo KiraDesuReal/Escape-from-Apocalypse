@@ -110,6 +110,19 @@
 		</script>
 	</trigger>
 
+	<trigger Name="QuestGlobalVar" active="1">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			SetVar("q_testing_mission_hornet", 0)
+			SetVar("q_fuel1_item_fuel", 0)
+			SetVar("q_fuel2_item_fuel", 0)
+			SetVar("q_fuel2_can_be_given", 0)
+			SetVar("q_rebuild_item_svech", 0)
+			SetVar("q_test_drive1_can_be_given", 0)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 <!-- Старт/перезаход на локацию -->
 	<trigger Name="StartMap" active="1">
 		<event eventid="GE_GAME_START" ObjName="Player1" />
@@ -188,10 +201,18 @@
 				TActivate("PlayerFuel")
 			end
 
+			if IsQuestComplete('q_fuel1') and not(GetVar("q_fuel2_can_be_given").AsInt == 2) then 
+				SetVar("q_fuel2_can_be_given", GetVar("q_fuel2_can_be_given").AsInt+1)
+			end
+
+			if IsQuestComplete('q_rebuild') and not(GetVar("q_test_drive1_can_be_given").AsInt == 2) then 
+				SetVar("q_test_drive1_can_be_given", GetVar("q_test_drive1_can_be_given").AsInt+1)
+			end
+
 			SetCameraBehindPlayerVehicle()
 		</script>
 	</trigger>
-
+	
 <!-- Машины в продажу -->
 	<trigger Name="VehiclesForSale" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
@@ -205,11 +226,11 @@
 	
 			if Workshop and Vehicles then
 				Vehicles:AddItems("BugForSale", 1)
-				Vehicles:AddItems("MolokovozForSale", 1)
-				Vehicles:AddItems("UralForSale", 1)
-				Vehicles:AddItems("BelazForSale", 1)
-				Vehicles:AddItems("MirotvorecForSale", 1)
-				Vehicles:AddItems("CruiserForSale", 1)
+				if IsQuestComplete('q_test_drive1') then Vehicles:AddItems("MolokovozForSale", 1) end
+				if IsQuestComplete('q_test_drive5') then Vehicles:AddItems("UralForSale", 1) end
+				--Vehicles:AddItems("BelazForSale", 1)
+				--Vehicles:AddItems("MirotvorecForSale", 1)
+				--Vehicles:AddItems("CruiserForSale", 1)
 			end
 
 			if Workshop and CabAndBasket then
@@ -272,6 +293,16 @@
 				GunAndGadget:AddItems("additional_durability", 1)
 				GunAndGadget:AddItems("additional_stability", 1)
 				GunAndGadget:AddItems("ammo_chest_machinegunForSale", 1)
+				if IsQuestComplete('q_clearing_r1m1') then GunAndGadget:AddItems("ammo_chest_machinegunForSale", 1) end
+				if IsQuestComplete('q_kill_scavs') then GunAndGadget:AddItems("pkt01", 1) end
+				if IsQuestComplete('q_fuel2') then GunAndGadget:AddItems("kord01", 1) end
+				if IsQuestComplete('q_base_scavs') then GunAndGadget:AddItems("pkt01", 1) end
+				if IsQuestComplete('q_test_drive2') then GunAndGadget:AddItems("kpvt01", 1) end
+				if IsQuestComplete('q_test_drive3') then GunAndGadget:AddItems("ammo_chest_shotgunForSale", 1) end
+				if IsQuestComplete('q_test_drive4') then GunAndGadget:AddItems("ammo_chest_heavygunForSale", 1) end
+				if IsQuestComplete('q_test_drive4') then GunAndGadget:AddItems("rapier01", 1) end
+				if IsQuestComplete('q_test_drive6') then GunAndGadget:AddItems("ammo_chest_machinegunForSale", 1) end
+				if IsQuestComplete('q_test_drive6') then GunAndGadget:AddItems("kpvt01", 1) end
 			end
 
 		    trigger:Deactivate()
@@ -1805,6 +1836,7 @@
 			CreateNewDummyObject("kaktus", "gr_46", -1, -1, CVector(947.157, 262.170, 947.8151), Quaternion(0, 0, 0, 0))
 			CreateNewDummyObject("kaktus", "gr_47", -1, -1, CVector(945.718, 262.170, 948.995), Quaternion(0.0000, -0.2058, 0.0000, 0.9786))
 			CreateNewDummyObject("kaktus", "gr_48", -1, -1, CVector(944.220, 262.170, 947.769), Quaternion(0.0000, 0.8179, 0.0000, 0.5754))
+			CreateNewSgNodeObject("ET_S_ITEM_MUSIC01", "gr_49", -1, -1, CVector(952.633, 262.050, 957.662), Quaternion(0, 0, 0, 0))
 			SetVar("Garage_Builden", 1)
 			
 			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(945, 255, 957), Quaternion(0, 0, 0, 1), 6000)
@@ -1956,6 +1988,8 @@
 				AddItemsToPlayerRepository("ammo_chest_shotgun", shotgun)
 			end
 
+			SetCameraBehindPlayerVehicle()
+
 		</script>
 	</trigger>
 
@@ -2035,7 +2069,6 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
-			
 			local veh = GetEntityByName("VehicleMove")
 			if veh then
 				if GetVar("VehPath").AsInt == 1 then
@@ -2052,6 +2085,7 @@
 						veh:SetCruisingSpeed(30)
 						veh:SetExternalPathByName("veh_paths_to_end_"..GetVar("VehMove").AsInt)
 					elseif count == 5 then
+						veh:PlaceToEndOfPath()
 						veh:Remove()
 						SetVar("VehMove", 0)
 						SetVar("VehPath", 0)
@@ -2070,6 +2104,7 @@
 						veh:SetCruisingSpeed(30)
 						veh:SetExternalPathByName("veh_paths_to_end_"..GetVar("VehMove").AsInt)
 					elseif count == 3 then
+						veh:PlaceToEndOfPath()
 						veh:Remove()
 						SetVar("VehMove", 0)
 						SetVar("VehPath", 0)
@@ -2179,13 +2214,16 @@
 		--удаление VehicleMove
 			TDeactivate("CreateVehicleMove")
 			if GetVar("VehPath").AsInt > 0 then
+				TDeactivate("VehMoveReached")
 				local veh = GetEntityByName("VehicleMove")
-				if veh then veh:Remove() end
+				if veh then 
+					veh:PlaceToEndOfPath()
+					veh:Remove() 
+				end
 
 				SetVar("VehMove", 0)
 				SetVar("VehPath", 0)
 
-				TDeactivate("VehMoveReached")
 				getObj("CreateVehicleMove"):DelEvent("GE_TIME_PERIOD")
 				TDeactivate("VehInGarage")
 				getObj("VehInGarage"):DelEvent("GE_TIME_PERIOD")
@@ -2232,4 +2270,311 @@
 			trigger:Deactivate()
 		</script>
 	</trigger>
+
+	<trigger Name="SoundQuestTaken" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			if getObj("SoundQuestComplete"):IsActivated() == 0 and getObj("SoundQuestFail"):IsActivated() == 0 and getObj("SoundQuestFihished"):IsActivated() == 0 and getObj("SoundSubtaskComplete"):IsActivated() == 0 then
+				CreateEffectInsertedInRemove("ET_S_QUEST_TAKEN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SoundQuestComplete" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SoundQuestFail" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateEffectInsertedInRemove("ET_S_QUEST_FAIL", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SoundQuestFihished" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateEffectInsertedInRemove("ET_S_QUEST_FINISHED", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SoundSubtaskComplete" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			if getObj("SoundQuestComplete"):IsActivated() == 0 or getObj("SoundQuestFail"):IsActivated() == 0 or getObj("SoundQuestFihished"):IsActivated() == 0 then
+				CreateEffectInsertedInRemove("ET_S_SUBTASK_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SoundBuy" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateEffectInsertedInRemove("ET_S_BUY", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="QuestsActivate" active="1">
+		<event	eventid="GE_LEAVE_TOWN"	ObjName="PetrolStationTown1" />
+		<event	eventid="GE_LEAVE_TOWN"	ObjName="Town_r0m0" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="tp_1_loc" />
+		<script>
+			if IsQuestTaken("q_test_drive1") and not(IsQuestComplete("q_test_drive1_11")) then
+				TActivate("q_test_drive1_config")
+			end
+
+			if IsQuestTaken("q_test_drive2") and not(IsQuestComplete("q_test_drive2_1")) then
+				TActivate("q_test_drive2_config")
+			end
+
+			if IsQuestTaken("q_test_drive3") and not(IsQuestComplete("q_test_drive3_1")) then
+				TActivate("q_test_drive3_config")
+			end
+
+			if IsQuestTaken("q_test_drive4") and not(IsQuestComplete("q_test_drive4_1")) then
+				TActivate("q_test_drive4_config")
+			end
+
+			if IsQuestTaken("q_test_drive5") and not(IsQuestComplete("q_test_drive5_1")) then
+				TActivate("q_test_drive5_config")
+			end
+
+			if IsQuestTaken("q_test_drive6") and not(IsQuestComplete("q_test_drive6_1")) then
+				TActivate("q_test_drive6_config")
+			end
+		</script>
+	</trigger>
+
+-- Огонь на поражение
+
+	<trigger Name="q_kill_scavs_Revard" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local item = {"pkt01", "kord01", "ammo_chest_machinegun"}
+			local r = random(2)
+			if r == 1 then
+				AddItemsToPlayerRepository(item[random(getn(item))])
+			else
+				AddPlayerMoney(random(15000,25000))
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Тест драйв - Часть 1
+	
+	<trigger Name="q_test_drive1_config" active="0">
+	<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+	<script>
+		local prot = GetPlayerVehicle():GetProperty("Prototype").AsString
+		local cabin = GetPlayerVehicle():GetCabin()
+		local basket = GetPlayerVehicle():GetBasket()
+		local cab_small = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
+
+		if prot == "BugForSale" then
+			if cabin and basket then
+				local cab = cabin:GetProperty("Prototype").AsString
+				local bas = basket:GetProperty("Prototype").AsString
+				if cab == "bugCab01" and bas == "bugCargo03_5x7" then
+					if cab_small then
+						local csl = cab_small:GetProperty("Prototype").AsString
+						if csl == "pkt01" then
+							CompleteSubtask("q_test_drive1_11")
+						end
+					end
+				end
+			end
+		end
+		trigger:Deactivate()
+	</script>
+	</trigger>
+
+	<trigger Name="q_test_drive1_Revard" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local item = {"ammo_chest_machinegun", "machinery_use", "scrap_metal_use"}
+			AddItemsToPlayerRepository(item[random(getn(item))], random(1,2))
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Тест драйв - Часть 2
+
+	<trigger Name="q_test_drive2_config" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local prot = GetPlayerVehicle():GetProperty("Prototype").AsString
+			local cabin = GetPlayerVehicle():GetCabin()
+			local basket = GetPlayerVehicle():GetBasket()
+			local cab_small = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
+			local bas_small_0 = GetPlayerVehicle():GetPartByName("BASKET_SMALL_GUN_0")
+
+			local l = 0
+			if prot == "MolokovozForSale" then 
+				l = l + 1
+				if cabin and basket then 
+					cabin = cabin:GetProperty("Prototype").AsString 
+					basket = basket:GetProperty("Prototype").AsString 
+					if cabin == "molokovozCab03" then l = l + 1 end
+					if basket == "molokovozCargo01_5x8" then l = l + 1 end
+				end
+				if cab_small and bas_small_0 then
+					cab_small = cab_small:GetProperty("Prototype").AsString 
+					bas_small_0 = bas_small_0:GetProperty("Prototype").AsString 
+					if cab_small == "specter01" or cab_small == "pkt01" then l = l + 1 end
+					if bas_small_0 == "specter01" or bas_small_0 == "pkt01" then l = l + 1 end
+				end
+			end
+			
+			if l == 5 then CompleteSubtask("q_test_drive2_1") end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Тест драйв - Часть 3
+
+	<trigger Name="q_test_drive3_config" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local prot = GetPlayerVehicle():GetProperty("Prototype").AsString
+			local cabin = GetPlayerVehicle():GetCabin()
+			local basket = GetPlayerVehicle():GetBasket()
+			local cab_small = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
+
+			local l = 0
+			if prot == "BugForSale" then 
+				l = l + 1
+				if cabin and basket then 
+					cabin = cabin:GetProperty("Prototype").AsString 
+					basket = basket:GetProperty("Prototype").AsString 
+					if cabin == "bugCab01" then l = l + 1 end
+					if basket == "bugCargo01_4x5" then l = l + 1 end
+				end
+				if cab_small then
+					cab_small = cab_small:GetProperty("Prototype").AsString 
+					if cab_small == "hornet01" or cab_small == "american_hornet01" then l = l + 1 end
+				end
+			end
+			
+			if l == 4 then CompleteSubtask("q_test_drive3_1") end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Тест драйв - Часть 4
+
+	<trigger Name="q_test_drive4_config" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local prot = GetPlayerVehicle():GetProperty("Prototype").AsString
+			local cabin = GetPlayerVehicle():GetCabin()
+			local basket = GetPlayerVehicle():GetBasket()
+			local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+
+			local l = 0
+			if prot == "MolokovozForSale" then 
+				l = l + 1
+				if cabin and basket then 
+					cabin = cabin:GetProperty("Prototype").AsString 
+					basket = basket:GetProperty("Prototype").AsString 
+					if cabin == "molokovozCab01" then l = l + 1 end
+					if basket == "molokovozCargo03_6x8" then l = l + 1 end
+				end
+				if bas_big_0 then
+					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
+					if bas_big_0 == "kpvt01" then l = l + 1 end
+				end
+			end
+			
+			if l == 4 then CompleteSubtask("q_test_drive4_1") end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Тест драйв - Часть 5
+
+	<trigger Name="q_test_drive5_config" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local prot = GetPlayerVehicle():GetProperty("Prototype").AsString
+			local cabin = GetPlayerVehicle():GetCabin()
+			local basket = GetPlayerVehicle():GetBasket()
+			local cab_small = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
+			local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+
+			local l = 0
+			if prot == "MolokovozForSale" then 
+				l = l + 1
+				if cabin and basket then 
+					cabin = cabin:GetProperty("Prototype").AsString 
+					basket = basket:GetProperty("Prototype").AsString 
+					if cabin == "molokovozCab03" then l = l + 1 end
+					if basket == "molokovozCargo03_6x8" then l = l + 1 end
+				end
+				if bas_big_0 and cab_small then
+					cab_small = cab_small:GetProperty("Prototype").AsString 
+					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
+					if cab_small == "storm01" then l = l + 1 end
+					if bas_big_0 == "rapier01" then l = l + 1 end
+				end
+			end
+			
+			if l == 5 then CompleteSubtask("q_test_drive5_1") end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_test_drive5_Revard" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i=1,random(3) do
+				local item = {"ammo_chest_machinegun", "ammo_chest_heavygun", "machinery_use", "electronics_use"}
+				AddItemsToPlayerRepository(item[random(getn(item))], 1)
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Тест драйв - Часть 6
+
+	<trigger Name="q_test_drive6_config" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local prot = GetPlayerVehicle():GetProperty("Prototype").AsString
+			local cabin = GetPlayerVehicle():GetCabin()
+			local basket = GetPlayerVehicle():GetBasket()
+			local cab_big_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
+			local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+
+			local l = 0
+			if prot == "UralForSale" then 
+				l = l + 1
+				if cabin and basket then 
+					cabin = cabin:GetProperty("Prototype").AsString 
+					basket = basket:GetProperty("Prototype").AsString 
+					if cabin == "uralCab02" then l = l + 1 end
+					if basket == "uralCargo01_6x9" then l = l + 1 end
+				end
+				if bas_big_0 and cab_big_1 then
+					cab_big_1 = cab_big_1:GetProperty("Prototype").AsString 
+					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
+					if cab_big_1 == "vulcan01" then l = l + 1 end
+					if bas_big_0 == "vulcan01" then l = l + 1 end
+				end
+			end
+
+			if l == 5 then CompleteSubtask("q_test_drive6_1") end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 </triggers>

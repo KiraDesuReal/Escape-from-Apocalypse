@@ -55,6 +55,12 @@
 		/>
 
 		<group 
+			id		= "ITEM_MUSIC" 
+			volume	= "30" 
+			minDist	= "5"
+		/>
+
+		<group 
 			id		= "GUNFIRE" 
 			volume	= "160" 
 			minDist	= "30"
@@ -132,7 +138,7 @@
 		/>
 		<group
 			id		= "WATER"
-			volume	= "100" 
+			volume	= "75" 
 			minDist	= "50"
 		/>
 		<group
@@ -159,8 +165,8 @@
 		/>
 		<group
 			id		= "LAKE"
-			volume	= "130" 
-			minDist	= "150"
+			volume	= "75" 
+			minDist	= "50"
 		/>
 
 		<group

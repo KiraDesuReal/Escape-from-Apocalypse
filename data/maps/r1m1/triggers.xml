@@ -32,15 +32,10 @@
 			SetVar("ExitGloohoe",0)
 			SetVar("ExitZaTheTroiskoe",0)
 
-			SetVar("CountScav_1_loc", 0)
-			SetVar("CountScav_2_loc", 0)
-			SetVar("CountScav_3_loc", 0)
-			SetVar("CountScav_4_loc", 0)
-			SetVar("CountScav_5_loc", 0)
-			SetVar("CountScav_6_loc", 0)
-			SetVar("CountScav_7_loc", 0)
-			SetVar("CountScav_8_loc", 0)
-
+			for csl=1,8 do
+				SetVar("CountScav_"..csl.."_loc", 0)
+			end
+	
 			SetVar("Air",0)
 			SetVar("NoAir",0)
 			SetVar("AirPoints",0)
@@ -51,6 +46,37 @@
 			SetVar("CountScavs", 0)
 
 			SetVar("PetrolStation_Refill_Process", 0)
+
+			SetVar("PlayerKillScavs", 0)
+			SetVar("PlayerKillPMC", 0)
+
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="QuestGlobalVar" active="1">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			SetVar("q_testing_mission_DieScavs", 0)
+
+			SetVar("Map", 0)
+
+			SetVar("q_clearing_r1m1_EnemyInLoc", 0)
+			for q_clr=1,5 do
+				SetVar("q_clearing_r1m1_DieScavs_loc_"..q_clr, 0)
+			end
+
+			SetVar("q_kill_scavs_Die", 0)
+
+			SetVar("q_test_drive1_killscavs", 0)
+			for q_td=2,6 do
+				SetVar("q_test_drive"..q_td.."_killscavs", 0)
+				SetVar("q_test_drive"..q_td.."_killPMC", 0)
+			end
+			for q_td_rc=4,5 do
+				SetVar("q_test_drive"..q_td_rc.."_raidcount", 0)
+			end
 
 		    trigger:Deactivate()
 		</script>
@@ -94,7 +120,14 @@
 
 			TActivate("CreateBossProbability")
 
-			CreateNewBreakableObject("lamppost2", "fonar", 1002, CVector(3055.078, 349.812, 1446.906), Quaternion(0.0000, -0.7133, 0.0000, 0.7009),0)
+			TActivate("QuestsActivate")
+
+			CreateNewBreakableObject("lamppost2", "fonar", 1002, CVector(3055.078, 349.812, 1446.906), Quaternion(0.0000, -0.7133, 0.0000, 0.7009), 0)
+
+			if IsQuestItemPresent("quest_item_map_r1m1") and GetVar("Map").AsInt == 0 then
+				map()
+				SetVar("Map", 1)
+			end
 			
 		</script>
 	</trigger>
@@ -691,6 +724,7 @@
 				TDeactivate("LeaveZoneExit")
 				SetVar("ExitTimer",6)
 				PassToMap("r0m0", "FromLocation")
+				TActivate("IfExitForQuest")
 				trigger:Deactivate()
 			else
 				AddFadingMsgByStrIdFormatted("fm_player_exit_location", timer)
@@ -798,6 +832,7 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
+			TActivate("KillsScavs")
 			if GetVar("CountScav_1_loc").AsInt > count then
 			return
 			end
@@ -933,6 +968,7 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
+			TActivate("KillsScavs")
 			if GetVar("CountScav_2_loc").AsInt > count then
 			return
 			end
@@ -1071,6 +1107,7 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
+			TActivate("KillsScavs")
 			if GetVar("CountScav_3_loc").AsInt > count then
 			return
 			end
@@ -1205,6 +1242,7 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
+			TActivate("KillsScavs")
 			if GetVar("CountScav_4_loc").AsInt > count then
 			return
 			end
@@ -1341,6 +1379,7 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
+			TActivate("KillsScavs")
 			if GetVar("CountScav_5_loc").AsInt > count then
 			return
 			end
@@ -1487,6 +1526,7 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
+			TActivate("KillsScavs")
 			if GetVar("CountScav_6_loc").AsInt > count then
 			return
 			end
@@ -1627,6 +1667,7 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
+			TActivate("KillsScavs")
 			if GetVar("CountScav_7_loc").AsInt > count then
 			return
 			end
@@ -1771,6 +1812,7 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
+			TActivate("KillsScavs")
 			if GetVar("CountScav_8_loc").AsInt > count then
 			return
 			end
@@ -1928,6 +1970,8 @@
 			TActivate ("UseFuelNil_InPetrolStation01")
 
 			SetVar("PetrolStation_Refill_Process", 0)
+
+			if IsQuestTaken('q_fuel2') and not(IsQuestComplete('q_fuel2_1')) then CompleteSubtask("q_fuel2_1") end
 		
 			trigger:Deactivate() 
 		</script>
@@ -2006,6 +2050,8 @@
 
 			SetVar("PetrolStation_Refill_Process", 0)
 		
+			if IsQuestTaken('q_fuel2') and not(IsQuestComplete('q_fuel2_2')) then CompleteSubtask("q_fuel2_2") end
+
 			trigger:Deactivate() 
 		</script>
 	</trigger>
@@ -2083,6 +2129,8 @@
 			TActivate ("UseFuelNil_InPetrolStation03")
 
 			SetVar("PetrolStation_Refill_Process", 0)
+
+			if IsQuestTaken('q_fuel2') and not(IsQuestComplete('q_fuel2_3')) then CompleteSubtask("q_fuel2_3") end
 		
 			trigger:Deactivate() 
 		</script>
@@ -2371,14 +2419,14 @@
 				ChestPos.y = ChestPos.y + 1
 				ChestId:SetPosition(ChestPos)
 
-				local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityItem"..random(10000), belong = 1100}
+				local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityTheTownItem"..random(10000), belong = 1100}
 				local OpacityItemId = GetEntityByID(OpacityItem)
 
 				if ChestId and OpacityItemId then
 					ChestId:AddChild(OpacityItemId)
 				end
 
-				local Item = CreateNewObject{prototypeName = item[random(item_random)], objName = "Item"..random(10000), belong = 1100}
+				local Item = CreateNewObject{prototypeName = item[random(item_random)], objName = "TheTownItem"..random(10000), belong = 1100}
 				local ItemId = GetEntityByID(Item)
 				if ChestId and ItemId then
 					ChestId:AddChild(ItemId)
@@ -3150,6 +3198,7 @@
 			trigger:IncCount()
 			local count = trigger:GetCount()
 			local pmc = GetVar("CountPMC_Spawn1").AsInt + GetVar("CountPMC_Spawn2").AsInt
+			TActivate("KillsPMC")
 			if pmc > count then
 				return
 			end
@@ -3261,6 +3310,7 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
+			TActivate("KillsScavs")
 			if GetVar("CountScavs").AsInt > count then
 				return
 			end
@@ -3337,39 +3387,11 @@
 			end
 
 			--удаление диких на локациях
-			if not (GetVar("CountScav_1_loc").AsInt == 0) then
-				TActivate("ScavInLocation01_Remove")
-			end
-
-			if not (GetVar("CountScav_2_loc").AsInt == 0) then
-				TActivate("ScavInLocation02_Remove")
-			end
-
-			if not (GetVar("CountScav_3_loc").AsInt == 0) then
-				TActivate("ScavInLocation03_Remove")
-			end
-
-			if not (GetVar("CountScav_4_loc").AsInt == 0) then
-				TActivate("ScavInLocation04_Remove")
-			end
-
-			if not (GetVar("CountScav_5_loc").AsInt == 0) then
-				TActivate("ScavInLocation05_Remove")
-			end
-
-			if not (GetVar("CountScav_6_loc").AsInt == 0) then
-				TActivate("ScavInLocation06_Remove")
-			end
-
-			if not (GetVar("CountScav_7_loc").AsInt == 0) then
-				TActivate("ScavInLocation07_Remove")
-			end
-
-			if not (GetVar("CountScav_8_loc").AsInt == 0) then
-				TActivate("ScavInLocation08_Remove")
-			end
-			
 			for loc=1,8 do
+				if not(GetVar("CountScav_"..loc.."_loc").AsInt == 0) then
+					TActivate("ScavInLocation0"..loc.."_Remove")
+				end
+
 				TDeactivate("SpawnScavsInLocation0"..loc)
 				TDeactivate("ScavInLocation0"..loc.."_Die")
 				TDeactivate("SpawnScavsInLocation0"..loc.."_Restart")
@@ -3527,10 +3549,735 @@
 
 			TDeactivate("IfChargeCar")
 
+			--квесты
+			if IsQuestTaken("q_search_data") and not(IsQuestComplete("q_search_data")) then
+				TActivate("q_search_data_RemoveDestrBug")
+				TDeactivate("q_search_data_Enters_1")
+				TDeactivate("q_search_data_Enters_2")
+			end
+
+			if IsQuestTaken("q_explore_r1m1") and not(IsQuestComplete("q_explore_r1m1")) then
+				TDeactivate("q_explore_r1m1_Enters")
+			end
+
+			if IsQuestTaken("q_clearing_r1m1") and not(IsQuestComplete("q_clearing_r1m1")) then
+				TDeactivate("q_clearing_r1m1_InLoc")
+			end
+
+			if IsQuestTaken("q_base_scavs") and not(IsQuestComplete("q_base_scavs")) then
+				TDeactivate("q_base_scavs_EntersBase")
+				TDeactivate("q_base_scavs_LeavesBase")
+				TDeactivate("q_base_scavs_TimerStart")
+				TDeactivate("q_base_scavs_Timer")
+			end
+
 			println("MAP CLEAR")
 
 			trigger:Deactivate()
 		</script>
 	</trigger>
+
+<!--
+**************************************************************************************************
+** КВЕСТЫ
+**************************************************************************************************
+-->
+
+	<trigger Name="KillsScavs" active="0">
+	<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
+			println("Scavs kill: "..GetVar("PlayerKillScavs").AsInt)
+
+			if IsQuestTaken("q_testing_mission") and not(IsQuestComplete("q_testing_mission_1")) then
+				TActivate("q_testing_mission_KillScavs")
+			end
+
+			if IsQuestTaken("q_clearing_r1m1") and not(IsQuestComplete("q_clearing_r1m1")) then
+				TActivate("q_clearing_r1m1_KillScavs")
+			end
+
+			if IsQuestTaken("q_kill_scavs") and not(IsQuestComplete("q_kill_scavs_1")) then
+				TActivate("q_kill_scavs_Kill")
+			end
+
+			if IsQuestTaken("q_test_drive1") and not(IsQuestComplete("q_test_drive1_1")) then
+				TActivate("q_test_drive1_killscavs")
+			end
+
+			if IsQuestTaken("q_test_drive2") and not(IsQuestComplete("q_test_drive2_2")) then
+				TActivate("q_test_drive2_killscavs")
+			end
+
+			if IsQuestTaken("q_test_drive3") and not(IsQuestComplete("q_test_drive3_2")) then
+				TActivate("q_test_drive3_killscavs")
+			end
+
+			if IsQuestTaken("q_test_drive4") and not(IsQuestComplete("q_test_drive4_3")) then
+				TActivate("q_test_drive4_killscavs")
+			end
+
+			if IsQuestTaken("q_test_drive5") and not(IsQuestComplete("q_test_drive5_3")) then
+				TActivate("q_test_drive5_killscavs")
+			end
+
+			if IsQuestTaken("q_test_drive6") and not(IsQuestComplete("q_test_drive6_2")) then
+				TActivate("q_test_drive6_killscavs")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="KillsPMC" active="0">
+	<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			SetVar("PlayerKillPMC", GetVar("PlayerKillPMC").AsInt+1)
+			println("PMC kill: "..GetVar("PlayerKillPMC").AsInt)
+
+			if IsQuestTaken("q_test_drive2") and not(IsQuestComplete("q_test_drive2_3")) then
+				TActivate("q_test_drive2_killPMC")
+			end
+
+			if IsQuestTaken("q_test_drive3") and not(IsQuestComplete("q_test_drive3_3")) then
+				TActivate("q_test_drive3_killPMC")
+			end
+
+			if IsQuestTaken("q_test_drive4") and not(IsQuestComplete("q_test_drive4_4")) then
+				TActivate("q_test_drive4_killPMC")
+			end
+
+			if IsQuestTaken("q_test_drive5") and not(IsQuestComplete("q_test_drive5_4")) then
+				TActivate("q_test_drive5_killPMC")
+			end
+
+			if IsQuestTaken("q_test_drive6") and not(IsQuestComplete("q_test_drive6_3")) then
+				TActivate("q_test_drive6_killPMC")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="QuestsActivate" active="0">
+	<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if IsQuestTaken("q_search_data") and not(IsQuestComplete("q_search_data")) then
+				TActivate("q_search_data_CreateDestrBug")
+			end
+
+			if IsQuestTaken("q_explore_r1m1") and not(IsQuestComplete("q_explore_r1m1")) then
+				TActivate("q_explore_r1m1_Enters")
+			end
+
+			if IsQuestTaken("q_clearing_r1m1") and not(IsQuestComplete("q_clearing_r1m1")) then
+				TActivate("q_clearing_r1m1_InLoc")
+			end
+
+			if IsQuestTaken("q_base_scavs") and not(IsQuestComplete("q_base_scavs")) then
+				TActivate("q_base_scavs_EntersBase")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="IfExitForQuest" active="0">
+	<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if IsQuestTaken("q_search_data_3") and not(IsQuestComplete("q_search_data_3")) then
+				CompleteSubtask("q_search_data_3")
+			end
+
+			if IsQuestTaken("q_base_scavs_2") and not(IsQuestComplete("q_base_scavs_2")) then
+				CompleteSubtask("q_base_scavs_2")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="IfPlayerDieForQuest" active="0">
+	<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if IsQuestTaken("q_search_data_2") and not(IsQuestComplete("q_search_data_2")) then
+				TDeactivate("q_search_data_Enters_1")
+				TDeactivate("q_search_data_Enters_2")
+				TDeactivate("q_search_data_Enters_2_Timer")
+			end
+
+			if IsQuestTaken("q_base_scavs_1") and not(IsQuestComplete("q_base_scavs_1")) then
+				TDeactivate("q_base_scavs_EntersBase")
+				TDeactivate("q_base_scavs_LeavesBase")
+				TDeactivate("q_base_scavs_TimerStart")
+				TDeactivate("q_base_scavs_Timer")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="IfRaidCountForQuest" active="0">
+	<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if IsQuestTaken("q_test_drive4") and not(IsQuestComplete("q_test_drive4_2")) then
+				TActivate("q_test_drive4_countraid")
+			end
+
+			if IsQuestTaken("q_test_drive5") and not(IsQuestComplete("q_test_drive5_2")) then
+				TActivate("q_test_drive5_countraid")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Дебютная миссия
+
+	<trigger Name="q_testing_mission_KillScavs" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if not(GetVar("q_testing_mission_DieScavs").AsInt == 10) then
+				SetVar("q_testing_mission_DieScavs", GetVar("q_testing_mission_DieScavs").AsInt+1)
+				if GetVar("q_testing_mission_DieScavs").AsInt >= 10 then
+					CompleteSubtask("q_testing_mission_1")
+				else
+					AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_testing_mission", GetVar("q_testing_mission_DieScavs").AsInt)
+					SoundFadingMsg()
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Поисковая миссия
+
+	<trigger Name="q_search_data_CreateDestrBug" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewDummyObject("bugChassis", "destr_bug_1", -1, -1, CVector(2886.035, 287.405, 1908.789), Quaternion(-0.0329, -0.9542, -0.0806, 0.2863), 8)
+			CreateNewDummyObject("bugCab03", "destr_bug_2", -1, -1, CVector(2885.340, 289.098, 1907.710), Quaternion(-0.0160, -0.9580, -0.0587, 0.2802), 16)
+			CreateNewDummyObject("bugCargo03", "destr_bug_3", -1, -1, CVector(2888.762, 288.899, 1910.161), Quaternion(-0.6680, -0.6851, 0.2058, 0.2051), 16)
+			CreateNewDummyObject("bugWheel01", "destr_bug_4", -1, -1, CVector(2885.794, 287.933, 1906.645), Quaternion(0.0593, -0.9456, -0.0020, 0.3199), 16)
+			CreateNewDummyObject("bugWheel01", "destr_bug_5", -1, -1, CVector(2884.045, 287.933, 1907.784), Quaternion(-0.0261, 0.2893, -0.1325, 0.9477), 16)
+			CreateNewDummyObject("bugWheel02", "destr_bug_6", -1, -1, CVector(2886.662, 287.810, 1911.435), Quaternion(-0.2316, 0.2162, -0.7025, 0.6372), 16)
+			CreateNewDummyObject("pkt01gun", "destr_bug_7", -1, -1, CVector(2885.572, 290.733, 1908.093), Quaternion(0.0618, -0.9421, 0.1952, 0.2656), 8)
+			CreateNewDummyObject("pkt01", "destr_bug_8", -1, -1, CVector(2885.764, 290.300, 1908.444), Quaternion(0.0218, 0.2843, -0.0586, 0.9567), 8)
+			CreateNewSgNodeObject("ET_PS_BOSS1_SMOKE", "destr_bug_9", -1, -1, CVector(2885.275, 287.547, 1907.911), Quaternion(0, 0, 0, 1), 0)
+			CreateNewSgNodeObject("ET_PS_WHEEL_FIRE_MED_SMOKE1", "destr_bug_10", -1, -1, CVector(2886.755, 287.547, 1911.4001), Quaternion(0, 0, 0, 1), 0)
+			CreateNewSgNodeObject("ET_PS_WHEEL_FIRE_BIG_SMOKE1", "destr_bug_11", -1, -1, CVector(2888.928,287.547, 1910.030), Quaternion(0, 0, 0, 1), 0)
+			TActivate("q_search_data_Enters_1")
+			TActivate("q_search_data_Enters_2")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_search_data_RemoveDestrBug" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i=1,11 do
+				local b = GetEntityByName("destr_bug_"..i)
+				if b then b:Remove() end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_search_data_Enters_1" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="q_search_data_1_loc" />
+		<script>
+			if not(IsQuestComplete("q_search_data_1")) then
+				CompleteSubtask("q_search_data_1")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_search_data_Enters_2" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="q_search_data_2_loc" />
+		<script>
+			TActivate("q_search_data_Enters_2_Timer")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_search_data_Enters_2_Timer" active="0">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			if pl then
+				if HasPlayerAmountOfItems("item_quest_search_data", 0) then
+					AddItemsToPlayerRepository("item_quest_search_data", 1)
+					AddFadingMsgByStrIdFormatted("fm_player_add_thing", "item_quest_search_data")
+					SoundFadingMsg()
+					if IsQuestTaken("q_search_data_2") and not(IsQuestComplete("q_search_data_2")) then
+						CompleteSubtask("q_search_data_2")
+					else
+						AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_search_data")
+						CreateEffectInsertedInRemove("ET_S_SUBTASK_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Разведка местности
+
+	<trigger Name="q_explore_r1m1_Enters" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="q_explore_r1m1_1_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="q_explore_r1m1_2_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="q_explore_r1m1_3_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="q_explore_r1m1_4_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="q_explore_r1m1_5_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="q_explore_r1m1_6_loc" />
+		<script>
+			local loc = trigger:GetCallObjName()
+			local locnum = tonumber(strsub(loc,16,16))
+
+			if loc == "q_explore_r1m1_"..locnum.."_loc" then 
+				if IsQuestTaken("q_explore_r1m1") and not(IsQuestComplete("q_explore_r1m1_"..locnum)) then CompleteSubtask("q_explore_r1m1_"..locnum) end 
+			end
 	
+			if IsQuestTaken("q_explore_r1m1_7") and not(IsQuestComplete("q_explore_r1m1_7")) then
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
+
+-- Зачистка местности
+
+	<trigger Name="q_clearing_r1m1_InLoc" active="0">
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="q_clearing_r1m1_1_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="q_clearing_r1m1_2_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="q_clearing_r1m1_3_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="q_clearing_r1m1_4_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="q_clearing_r1m1_5_loc" />
+		<script>
+			local loc = trigger:GetCallObjName()
+			local locnum = tonumber(strsub(loc,17,17))
+
+			if loc == "q_clearing_r1m1_"..locnum.."_loc" then
+				SetVar("q_clearing_r1m1_EnemyInLoc", locnum)
+			end
+			println(GetVar("q_clearing_r1m1_EnemyInLoc").AsInt)
+		</script>
+	</trigger>
+
+	<trigger Name="q_clearing_r1m1_KillScavs" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local kills = {10, 15, 15, 25, 20}
+			for i=1,5 do
+				if GetVar("q_clearing_r1m1_EnemyInLoc").AsInt == i then
+					if not(GetVar("q_clearing_r1m1_DieScavs_loc_"..i).AsInt == kills[i]) then
+						SetVar("q_clearing_r1m1_DieScavs_loc_"..i, GetVar("q_clearing_r1m1_DieScavs_loc_"..i).AsInt+1)
+						if GetVar("q_clearing_r1m1_DieScavs_loc_"..i).AsInt >= kills[i] then
+							CompleteSubtask("q_clearing_r1m1_"..i)
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_clearing_r1m1", GetVar("q_clearing_r1m1_DieScavs_loc_"..i).AsInt)
+							SoundFadingMsg()
+						end
+						SetVar("q_clearing_r1m1_EnemyInLoc", 0)
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Огонь на поражение
+
+	<trigger Name="q_kill_scavs_Kill" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if not(GetVar("q_kill_scavs_Die").AsInt == 30) then
+				SetVar("q_kill_scavs_Die", GetVar("q_kill_scavs_Die").AsInt+1)
+				if GetVar("q_kill_scavs_Die").AsInt >= 30 then
+					CompleteSubtask("q_kill_scavs_1")
+				else
+					AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_kill_scavs", GetVar("q_kill_scavs_Die").AsInt)
+					SoundFadingMsg()
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Это наша территория
+
+	<trigger Name="q_base_scavs_EntersBase" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BaseScavs_loc" />
+		<script>
+			if HasPlayerAmountOfItems("item_ms2000", 1) then
+				AddImportantFadingMsgByStrIdFormatted("fm_marker_target")
+				SoundFadingMsg()
+				TActivate("q_base_scavs_TimerStart")
+				TActivate("q_base_scavs_LeavesBase")
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="q_base_scavs_LeavesBase" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="BaseScavs_loc" />
+		<script>
+			TDeactivate("q_base_scavs_TimerStart")
+			AddImportantFadingMsgByStrIdFormatted("fm_marker_leaves_zone")
+			SoundFadingMsg()
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_base_scavs_TimerStart" active="0">
+		<event timeout="1.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			SetVar("DefenceTargetTimer", 10)
+			TActivate("q_base_scavs_Timer")
+			TDeactivate("q_base_scavs_LeavesBase")
+			RemoveItemsFromPlayerRepository("item_ms2000", 1)
+			AddImportantFadingMsgByStrIdFormatted("fm_marker_install")
+			SoundFadingMsg()
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_base_scavs_Timer" active="0">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local t = GetVar("DefenceTargetTimer").AsInt-1
+			SetVar("DefenceTargetTimer", t)
+		
+			if 0 >= t then
+				if IsQuestTaken("q_base_scavs") and not(IsQuestComplete("q_base_scavs_1")) then 
+					CompleteSubtask("q_base_scavs_1") 
+				end
+				trigger:Deactivate()
+			else
+				AddFadingMsgByStrIdFormatted("fm_target_defence_timer", t)
+			end
+		</script>
+	</trigger>
+
+-- Тест драйв - Часть 1
+	
+	<trigger Name="q_test_drive1_killscavs" active="0">
+	<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Bug" and GetVar("PlayerCabin").AsString == "bugCab01" and GetVar("PlayerBasket").AsString == "bugCargo03_5x7" then
+				local cab_small = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
+				if cab_small then cab_small = cab_small:GetProperty("Prototype").AsString end
+				if cab_small == "pkt01" then
+					if not(GetVar("q_test_drive1_killscavs").AsInt == 15) then
+						SetVar("q_test_drive1_killscavs", GetVar("q_test_drive1_killscavs").AsInt+1)
+						if GetVar("q_test_drive1_killscavs").AsInt >= 15 then
+							CompleteSubtask("q_test_drive1_1")
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_test_drive1", GetVar("q_test_drive1_killscavs").AsInt)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Тест драйв - Часть 2
+	
+	<trigger Name="q_test_drive2_killscavs" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Molokovoz" and GetVar("PlayerCabin").AsString == "molokovozCab03" and GetVar("PlayerBasket").AsString == "molokovozCargo01_5x8" then
+				local cab_small = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
+				local bas_small_0 = GetPlayerVehicle():GetPartByName("BASKET_SMALL_GUN_0")
+				if cab_small and bas_small_0 then 
+					cab_small = cab_small:GetProperty("Prototype").AsString 
+					bas_small_0 = bas_small_0:GetProperty("Prototype").AsString 
+				end
+
+				if cab_small == "specter01" and bas_small_0 == "pkt01" or cab_small == "pkt01" and bas_small_0 == "specter01" then
+					if not(GetVar("q_test_drive2_killscavs").AsInt == 20) then
+						SetVar("q_test_drive2_killscavs", GetVar("q_test_drive2_killscavs").AsInt+1)
+						if GetVar("q_test_drive2_killscavs").AsInt >= 20 then
+							CompleteSubtask("q_test_drive2_2")
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_test_drive2", GetVar("q_test_drive2_killscavs").AsInt)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_test_drive2_killPMC" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Molokovoz" and GetVar("PlayerCabin").AsString == "molokovozCab03" and GetVar("PlayerBasket").AsString == "molokovozCargo01_5x8" then
+				local cab_small = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
+				local bas_small_0 = GetPlayerVehicle():GetPartByName("BASKET_SMALL_GUN_0")
+				if cab_small and bas_small_0 then 
+					cab_small = cab_small:GetProperty("Prototype").AsString 
+					bas_small_0 = bas_small_0:GetProperty("Prototype").AsString 
+				end
+
+				if cab_small == "specter01" and bas_small_0 == "pkt01" or cab_small == "pkt01" and bas_small_0 == "specter01" then
+					if not(GetVar("q_test_drive2_killPMC").AsInt == 10) then
+						SetVar("q_test_drive2_killPMC", GetVar("q_test_drive2_killPMC").AsInt+1)
+						if GetVar("q_test_drive2_killPMC").AsInt >= 10 then
+							CompleteSubtask("q_test_drive2_3")
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_test_drive2", GetVar("q_test_drive2_killPMC").AsInt)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Тест драйв - Часть 3
+	
+	<trigger Name="q_test_drive3_killscavs" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Bug" and GetVar("PlayerCabin").AsString == "bugCab01" and GetVar("PlayerBasket").AsString == "bugCargo01_4x5" then
+				local cab_small = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
+				if cab_small then cab_small = cab_small:GetProperty("Prototype").AsString end
+
+				if cab_small == "hornet01" or cab_small == "american_hornet01" then
+					if not(GetVar("q_test_drive3_killscavs").AsInt == 5) then
+						SetVar("q_test_drive3_killscavs", GetVar("q_test_drive3_killscavs").AsInt+1)
+						if GetVar("q_test_drive3_killscavs").AsInt >= 5 then
+							CompleteSubtask("q_test_drive3_2")
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_test_drive3", GetVar("q_test_drive3_killscavs").AsInt)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_test_drive3_killPMC" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Bug" and GetVar("PlayerCabin").AsString == "bugCab01" and GetVar("PlayerBasket").AsString == "bugCargo01_4x5" then
+				local cab_small = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
+				if cab_small then cab_small = cab_small:GetProperty("Prototype").AsString end
+
+				if cab_small == "hornet01" or cab_small == "american_hornet01" then
+					if not(GetVar("q_test_drive3_killPMC").AsInt == 5) then
+						SetVar("q_test_drive3_killPMC", GetVar("q_test_drive3_killPMC").AsInt+1)
+						if GetVar("q_test_drive3_killPMC").AsInt >= 5 then
+							CompleteSubtask("q_test_drive3_3")
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_test_drive3", GetVar("q_test_drive3_killPMC").AsInt)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Тест драйв - Часть 4
+	
+	<trigger Name="q_test_drive4_killscavs" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Molokovoz" and GetVar("PlayerCabin").AsString == "molokovozCab01" and GetVar("PlayerBasket").AsString == "molokovozCargo03_6x8" then
+				local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+				if bas_big_0 then bas_big_0 = bas_big_0:GetProperty("Prototype").AsString end
+
+				if bas_big_0 == "kpvt01" then
+					if not(GetVar("q_test_drive4_killscavs").AsInt == 30) then
+						SetVar("q_test_drive4_killscavs", GetVar("q_test_drive4_killscavs").AsInt+1)
+						if GetVar("q_test_drive4_killscavs").AsInt >= 30 then
+							CompleteSubtask("q_test_drive4_3")
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_test_drive4", GetVar("q_test_drive4_killscavs").AsInt)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+	
+	<trigger Name="q_test_drive4_killPMC" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Molokovoz" and GetVar("PlayerCabin").AsString == "molokovozCab01" and GetVar("PlayerBasket").AsString == "molokovozCargo03_6x8" then
+				local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+				if bas_big_0 then bas_big_0 = bas_big_0:GetProperty("Prototype").AsString end
+
+				if bas_big_0 == "kpvt01" then
+					if not(GetVar("q_test_drive4_killPMC").AsInt == 15) then
+						SetVar("q_test_drive4_killPMC", GetVar("q_test_drive4_killPMC").AsInt+1)
+						if GetVar("q_test_drive4_killPMC").AsInt >= 15 then
+							CompleteSubtask("q_test_drive4_4")
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_test_drive4", GetVar("q_test_drive4_killPMC").AsInt)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_test_drive4_countraid" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Molokovoz" and GetVar("PlayerCabin").AsString == "molokovozCab01" and GetVar("PlayerBasket").AsString == "molokovozCargo03_6x8" then
+				local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+				if bas_big_0 then bas_big_0 = bas_big_0:GetProperty("Prototype").AsString end
+
+				if bas_big_0 == "kpvt01" then
+					if not(GetVar("q_test_drive4_raidcount").AsInt == 3) then
+						SetVar("q_test_drive4_raidcount", GetVar("q_test_drive4_raidcount").AsInt+1)
+						if GetVar("q_test_drive4_raidcount").AsInt == 3 then CompleteSubtask("q_test_drive4_2") end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Тест драйв - Часть 5
+	
+	<trigger Name="q_test_drive5_killscavs" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Molokovoz" and GetVar("PlayerCabin").AsString == "molokovozCab03" and GetVar("PlayerBasket").AsString == "molokovozCargo03_6x8" then
+				local cab_small = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
+				local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+				if bas_big_0 and cab_small then 
+					cab_small = cab_small:GetProperty("Prototype").AsString 
+					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
+				end
+
+				if cab_small == "storm01" and bas_big_0 == "rapier01" then
+					if not(GetVar("q_test_drive5_killscavs").AsInt == 30) then
+						SetVar("q_test_drive5_killscavs", GetVar("q_test_drive5_killscavs").AsInt+1)
+						if GetVar("q_test_drive5_killscavs").AsInt >= 30 then
+							CompleteSubtask("q_test_drive5_3")
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_test_drive5", GetVar("q_test_drive5_killscavs").AsInt)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_test_drive5_killPMC" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Molokovoz" and GetVar("PlayerCabin").AsString == "molokovozCab03" and GetVar("PlayerBasket").AsString == "molokovozCargo03_6x8" then
+				local cab_small = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
+				local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+				if bas_big_0 and cab_small then 
+					cab_small = cab_small:GetProperty("Prototype").AsString 
+					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
+				end
+
+				if cab_small == "storm01" and bas_big_0 == "rapier01" then
+					if not(GetVar("q_test_drive5_killPMC").AsInt == 20) then
+						SetVar("q_test_drive5_killPMC", GetVar("q_test_drive5_killPMC").AsInt+1)
+						if GetVar("q_test_drive5_killPMC").AsInt >= 20 then
+							CompleteSubtask("q_test_drive5_4")
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_test_drive5", GetVar("q_test_drive5_killPMC").AsInt)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_test_drive5_countraid" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Molokovoz" and GetVar("PlayerCabin").AsString == "molokovozCab03" and GetVar("PlayerBasket").AsString == "molokovozCargo03_6x8" then
+				local cab_small = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
+				local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+				if bas_big_0 and cab_small then 
+					cab_small = cab_small:GetProperty("Prototype").AsString 
+					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
+				end
+
+				if cab_small == "storm01" and bas_big_0 == "rapier01" then
+					if not(GetVar("q_test_drive5_raidcount").AsInt == 3) then
+						SetVar("q_test_drive5_raidcount", GetVar("q_test_drive5_raidcount").AsInt+1)
+						if GetVar("q_test_drive5_raidcount").AsInt == 3 then CompleteSubtask("q_test_drive5_2") end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Тест драйв - Часть 6
+	
+	<trigger Name="q_test_drive6_killscavs" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Ural" and GetVar("PlayerCabin").AsString == "uralCab02" and GetVar("PlayerBasket").AsString == "uralCargo01_6x9" then
+				local cab_big_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
+				local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+				if bas_big_0 and cab_big_1 then 
+					cab_big_1 = cab_big_1:GetProperty("Prototype").AsString 
+					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
+				end
+
+				if cab_big_1 == "vulcan01" and bas_big_0 == "vulcan01" then
+					if not(GetVar("q_test_drive6_killscavs").AsInt == 40) then
+						SetVar("q_test_drive6_killscavs", GetVar("q_test_drive6_killscavs").AsInt+1)
+						if GetVar("q_test_drive6_killscavs").AsInt >= 40 then
+							CompleteSubtask("q_test_drive6_2")
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_test_drive6", GetVar("q_test_drive6_killscavs").AsInt)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_test_drive6_killPMC" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Ural" and GetVar("PlayerCabin").AsString == "uralCab02" and GetVar("PlayerBasket").AsString == "uralCargo01_6x9" then
+				local cab_big_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
+				local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+				if bas_big_0 and cab_big_1 then 
+					cab_big_1 = cab_big_1:GetProperty("Prototype").AsString 
+					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
+				end
+
+				if cab_big_1 == "vulcan01" and bas_big_0 == "vulcan01" then
+					if not(GetVar("q_test_drive6_killPMC").AsInt == 15) then
+						SetVar("q_test_drive6_killPMC", GetVar("q_test_drive6_killPMC").AsInt+1)
+						if GetVar("q_test_drive6_killPMC").AsInt >= 15 then
+							CompleteSubtask("q_test_drive6_3")
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_test_drive6", GetVar("q_test_drive6_killPMC").AsInt)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 </triggers>

@@ -665,8 +665,13 @@
 		trans="0"
 		composite="0" />
 
-
-
+	<model
+		id="manmenu_mask"
+		file="data\models\Masks\Region0\manmenu.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0"
+		composite="0" />
 
 <!-- nature -->
 	<model
@@ -19426,10 +19431,17 @@
 		</action>
 	</model>
 
-
 	<model
 		id="quest_key_for_tunnel"
 		file="data\models\questitems\key.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0"
+		composite="0" />
+
+	<model
+		id="map_location"
+		file="data\models\questitems\map_location.gam"
 		shadow="1"
 		windwavy="0"
 		trans="0"

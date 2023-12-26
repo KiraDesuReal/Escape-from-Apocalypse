@@ -2343,6 +2343,10 @@
 			id="quest_key_for_tunnel" 
 			file="data\models\AnimModels.xml"/>
 
+		<Item 
+			id="map_location" 
+			file="data\models\AnimModels.xml"/>
+
 		<Item
 			id="heavy_dot_brocken1"
 			file="data\models\AnimModels.xml" />
@@ -2408,6 +2412,12 @@
 		<Item id="S_USE_RELOAD_MACHINEGUN" />
 		<Item id="S_USE_RELOAD_ROCKETGUN" />
 		<Item id="S_USE_RELOAD_SHOTGUN" />
+
+		<Item id="S_QUEST_COMPLETE" />
+		<Item id="S_QUEST_FAIL" />
+		<Item id="S_QUEST_FINISHED" />
+		<Item id="S_QUEST_TAKEN" />
+		<Item id="S_SUBTASK_COMPLETE" />
 
 		<Item id="S_CRASH_METAL01" />
 		<Item id="S_CRASH_METAL02" />

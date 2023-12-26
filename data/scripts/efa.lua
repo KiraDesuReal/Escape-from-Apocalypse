@@ -520,7 +520,7 @@ function AddAmmoItemsForGuns(veh, count)
 				vehicle:AddItemsToRepository("ammo_chest_rocketgun", count)
 			end
 			if side_gun == "marsSideGun" then
-				vehicle:AddItemsToRepository("ammo_chest_arillerygun", count)
+				vehicle:AddItemsToRepository("ammo_chest_artillery", count)
 			end
 		end
 	end
@@ -604,7 +604,7 @@ function CreateBarrelLootBox(name, pos)
 
 		local items_random = getn(items)
 		
-		local Item = CreateNewObject{prototypeName = items[random(items_random)], objName = "Item"..random(10000), belong = 1100}
+		local Item = CreateNewObject{prototypeName = items[random(items_random)], objName = "BarrelItem"..random(10000), belong = 1100}
 		local ItemId = GetEntityByID(Item)
 
 		if ChestId and ItemId then
@@ -665,7 +665,7 @@ function CreateGunBox(name, pos)
 	ChestPos.y = ChestPos.y + 1
 	ChestId:SetPosition(ChestPos)
 
-	local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityItem"..random(10000), belong = 1100}
+	local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityGunItem"..random(10000), belong = 1100}
 	local OpacityItemId = GetEntityByID(OpacityItem)
 
 	if ChestId and OpacityItemId then
@@ -748,7 +748,7 @@ function CreateMedBox(name, pos)
 	ChestPos.y = ChestPos.y + 1
 	ChestId:SetPosition(ChestPos)
 
-	local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityItem"..random(10000), belong = 1100}
+	local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityMedItem"..random(10000), belong = 1100}
 	local OpacityItemId = GetEntityByID(OpacityItem)
 
 	if ChestId and OpacityItemId then
@@ -761,7 +761,7 @@ function CreateMedBox(name, pos)
 	if notloot > 10 then
 		
 		for l=1,count do
-			local Item = CreateNewObject{prototypeName = medical[exrandom(medical_items)], objName = "Item"..random(10000), belong = 1100}
+			local Item = CreateNewObject{prototypeName = medical[exrandom(medical_items)], objName = "MedItem"..random(10000), belong = 1100}
 			local ItemId = GetEntityByID(Item)
 			if ChestId and ItemId then
 				ChestId:AddChild(ItemId)
@@ -804,7 +804,7 @@ function CreateTehnoBox(name, pos)
 	ChestPos.y = ChestPos.y + 1
 	ChestId:SetPosition(ChestPos)
 
-	local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityItem"..random(10000), belong = 1100}
+	local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityTehnoItem"..random(10000), belong = 1100}
 	local OpacityItemId = GetEntityByID(OpacityItem)
 
 	if ChestId and OpacityItemId then
@@ -818,7 +818,7 @@ function CreateTehnoBox(name, pos)
 	if notloot > 10 then
 
 		if useItem == 2 then
-			local UseItem = CreateNewObject{prototypeName = use[exrandom(use_items)], objName = "UseItem"..random(10000), belong = 1100}
+			local UseItem = CreateNewObject{prototypeName = use[exrandom(use_items)], objName = "TehnoUseItem"..random(10000), belong = 1100}
 			local UseItemId = GetEntityByID(UseItem)
 			if ChestId and UseItemId then
 				ChestId:AddChild(UseItemId)
@@ -829,7 +829,7 @@ function CreateTehnoBox(name, pos)
 			local items = {building[random(building_items)], energy[exrandom(energy_items)], flammable[random(flammable_items)], household[random(household_items)], other[exrandom(other_items)], tools[random(tools_items)]}
 			local items_random = getn(items)
 
-			local Item = CreateNewObject{prototypeName = items[random(items_random)], objName = "Item"..random(10000), belong = 1100}
+			local Item = CreateNewObject{prototypeName = items[random(items_random)], objName = "TehnoItem"..random(10000), belong = 1100}
 			local ItemId = GetEntityByID(Item)
 			if ChestId and ItemId then
 				ChestId:AddChild(ItemId)
@@ -866,7 +866,7 @@ function CreateToolsBox(name, pos)
 	ChestPos.y = ChestPos.y + 1
 	ChestId:SetPosition(ChestPos)
 
-	local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityItem"..random(10000), belong = 1100}
+	local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityToolsItem"..random(10000), belong = 1100}
 	local OpacityItemId = GetEntityByID(OpacityItem)
 
 	if ChestId and OpacityItemId then
@@ -882,7 +882,7 @@ function CreateToolsBox(name, pos)
 			local items = {building[random(building_items)], energy[exrandom(energy_items)], flammable[random(flammable_items)], other[exrandom(other_items)], tools[random(tools_items)]}
 			local items_random = getn(items)
 
-			local Item = CreateNewObject{prototypeName = items[random(items_random)], objName = "Item"..random(10000), belong = 1100}
+			local Item = CreateNewObject{prototypeName = items[random(items_random)], objName = "ToolsItem"..random(10000), belong = 1100}
 			local ItemId = GetEntityByID(Item)
 			if ChestId and ItemId then
 				ChestId:AddChild(ItemId)
@@ -909,14 +909,14 @@ function CreateValuableBox(name, pos)
 	ChestPos.y = ChestPos.y + 1
 	ChestId:SetPosition(ChestPos)
 
-	local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityItem"..random(10000), belong = 1100}
+	local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityValuableItem"..random(10000), belong = 1100}
 	local OpacityItemId = GetEntityByID(OpacityItem)
 
 	if ChestId and OpacityItemId then
 		ChestId:AddChild(OpacityItemId)
 	end
 
-	local Item = CreateNewObject{prototypeName = item[random(item_rand)], objName = "Item"..random(10000), belong = 1100}
+	local Item = CreateNewObject{prototypeName = item[random(item_rand)], objName = "ValuableItem"..random(10000), belong = 1100}
 	local ItemId = GetEntityByID(Item)
 
 	if ChestId and ItemId then
@@ -939,7 +939,7 @@ function CreateElectronicsBox(name, pos)
 	ChestPos.y = ChestPos.y + 1
 	ChestId:SetPosition(ChestPos)
 
-	local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityItem"..random(10000), belong = 1100}
+	local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityElectronicsItem"..random(10000), belong = 1100}
 	local OpacityItemId = GetEntityByID(OpacityItem)
 
 	if ChestId and OpacityItemId then
@@ -952,7 +952,7 @@ function CreateElectronicsBox(name, pos)
 	if notloot > 10 then
 		
 		for l=1,count do
-			local Item = CreateNewObject{prototypeName = electronics[exrandom(electronics_items)], objName = "Item"..random(10000), belong = 1100}
+			local Item = CreateNewObject{prototypeName = electronics[exrandom(electronics_items)], objName = "ElectronicsItem"..random(10000), belong = 1100}
 			local ItemId = GetEntityByID(Item)
 			if ChestId and ItemId then
 				ChestId:AddChild(ItemId)

@@ -1660,6 +1660,29 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_3X3" />
 
+<!-- Quest Items -->
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_quest_search_data"
+		Price	= "1"
+		Durability	= "1"
+		PriceDispersion      = "0"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+<!-- Special Items -->
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_ms2000"
+		Price	= "4500"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+
 <!-- Opacity Item -->
 
 	<Prototype

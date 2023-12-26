@@ -201,6 +201,10 @@
 			id="r4_man"
 			file="data\models\AnimModels.xml" />
 
+		<Item
+			id="manmenu_mask"
+			file="data\models\AnimModels.xml" />
+
 <!-- goods -->
 		<Item
 			id="back_exp"
@@ -4020,6 +4024,10 @@
 			id="quest_key_for_tunnel"
 			file="data\models\AnimModels.xml" />
 
+		<Item 
+			id="map_location" 
+			file="data\models\AnimModels.xml"/>
+
 		<Item
 			id="loadpoint"
 			file="data\models\AnimModels.xml" />
@@ -4056,6 +4064,7 @@
 		<Item id="S_CLOSED_GATE" />
 		
 		<Item id="S_FADING_MSG" />
+		<Item id="S_BUY" />
 
 		<Item id="S_BUILDING" />
 
@@ -4070,6 +4079,14 @@
 		<Item id="S_DUNGEON_OPEN_GATE" />
 		<Item id="S_DUNGEON_OPEN_GATE_END" />
 		<Item id="S_DUNGEON_ENTERS" />
+
+		<Item id="S_QUEST_COMPLETE" />
+		<Item id="S_QUEST_FAIL" />
+		<Item id="S_QUEST_FINISHED" />
+		<Item id="S_QUEST_TAKEN" />
+		<Item id="S_SUBTASK_COMPLETE" />
+
+		<Item id="S_ITEM_MUSIC01" />
 
 		<Item id="S_CRASH_METAL01" />
 		<Item id="S_CRASH_METAL02" />

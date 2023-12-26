@@ -99,6 +99,12 @@
 		group="SOUND2D"
 		/>
 
+	<model
+		id="S_BUY"
+		file="data\sounds\other\interface\buy.ogg"
+		group="SOUND2D"
+		/>
+
 <!-- Building -->
 
 	<model
@@ -219,6 +225,46 @@
 		id="S_PICK_ITEM"
 		file="data\sounds\other\interface\pick_item.wav"
 		group="SOUND2D"
+	/>
+
+<!-- Quest --> 
+
+	<model
+		id="S_QUEST_COMPLETE"
+		file="data\sounds\other\quest\quest_complete.ogg"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_QUEST_FAIL"
+		file="data\sounds\other\quest\quest_fail.ogg"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_QUEST_FINISHED"
+		file="data\sounds\other\quest\quest_finished.ogg"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_QUEST_TAKEN"
+		file="data\sounds\other\quest\quest_taken.ogg"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_SUBTASK_COMPLETE"
+		file="data\sounds\other\quest\subtask_complete.ogg"
+		group="SOUND2D"
+	/>
+
+<!-- Item Music --> 
+
+	<model
+		id="S_ITEM_MUSIC01"
+		file="data\music\item_music\item_music01.ogg"
+		group="ITEM_MUSIC"
 	/>
 
 <!-- Crash --> 

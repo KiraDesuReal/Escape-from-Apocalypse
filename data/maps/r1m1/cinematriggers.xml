@@ -69,6 +69,7 @@
 			TActivate("MessageRaid")
 			TActivate("TimerRaidStart")
 			TActivate("CreatePMC")
+			TActivate("IfRaidCountForQuest")
 
 			AllowSave(false)
 
@@ -102,6 +103,7 @@
 
 			TActivate("cutTimeRaid_End")
 			TDeactivate("IfChargeCar")
+			TActivate("IfPlayerDieForQuest")
 	
 			trigger:Deactivate()
 		</script>
@@ -169,6 +171,7 @@
 			TDeactivate("TimerRaid")
 			TDeactivate("AirDropProbability")
 			TDeactivate("IfChargeCar")
+			TActivate("IfPlayerDieForQuest")
 		    trigger:Deactivate()
 		</script>
 	</trigger>

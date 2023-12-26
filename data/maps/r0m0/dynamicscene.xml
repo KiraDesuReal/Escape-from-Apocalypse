@@ -339,9 +339,18 @@
 				Prototype="NPC"
 				ModelName="r1_man"
 				cfg="4"
-				helloReplyNames=""
+				helloReplyNames="Dlg_npc_q_testing_mission_1 Dlg_npc_q_testing_mission_5 Dlg_npc_prapor_1"
 				SpokenCount="0" />
 
+			<Object
+				Name="Mechanic_NPC"
+				Belong="1100"
+				Prototype="NPC"
+				ModelName="manmenu_mask"
+				skin="1"
+				cfg="148"
+				helloReplyNames="Dlg_npc_q_rebuild_1 Dlg_npc_q_rebuild_9 Dlg_npc_mechanic_1"
+				SpokenCount="0" />
 		</Object>
 
 		<Object

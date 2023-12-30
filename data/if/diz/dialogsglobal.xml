@@ -840,14 +840,14 @@
 		name="Dlg_npc_0013100"
 		text="Освещение убежища с помощью фонарей.||Для постройки требуется:|Генератор уровня I|Энергосберегающая лампа - x12|Провода - x12|Конденсаторы - x6|Деньги - 50.000 монет"
 		role="NPC"
-		scriptCondition="GetVar('Generator_lvl').AsInt == 0 and GetVar('Lampposts_Builden', 0) and GetCurNpc():GetSpokenCount() == 0"
+		scriptCondition="GetVar('Generator_lvl').AsInt == 0 and GetVar('Lampposts_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0"
 		nextReplies="Dlg_pl_0013106" />
 
 	<Reply
 		name="Dlg_npc_0013101"
 		text="Освещение убежища с помощью фонарей.||Для постройки требуется:|Генератор уровня I|Энергосберегающая лампа - x12|Провода - x12|Конденсаторы - x6|Деньги - 50.000 монет"
 		role="NPC"
-		scriptCondition="GetVar('Generator_lvl').AsInt >= 1 and GetVar('Lampposts_Builden', 0) and GetCurNpc():GetSpokenCount() == 0"
+		scriptCondition="GetVar('Generator_lvl').AsInt >= 1 and GetVar('Lampposts_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0"
 		nextReplies="Dlg_pl_0013102 Dlg_pl_0013103 Dlg_pl_0013104 Dlg_pl_0013105 Dlg_pl_0013106 Dlg_pl_0013107" />
 
 	<Reply
@@ -901,7 +901,7 @@
 		name="Dlg_npc_0013118"
 		text="Гараж - неотъемлемое место в жизни каждого махиниста, где из простых болтов и гаек создаются чудовищные бронемашины.||Для постройки требуется:|Болты - x3|Гайки - x3|Монтажная пена - x2|Изолента - x1|Лампа накаливания - x6|Силовой кабель - x2|Тройник - x2|Рулетка - x1|Шарнирный ключ «КШС» - x1|Туалетная бумага - x2|Дакимакура FitaNyashka - x1|Кактус - x3|Деньги - 350.000 монет|@FF0000AA|Бонусы при постройке:|- Регенерация HP - 1ед/5сек"
 		role="NPC"
-		scriptCondition="GetVar('Garage_Builden', 0) and GetCurNpc():GetSpokenCount() == 0"
+		scriptCondition="GetVar('Garage_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0"
 		nextReplies="Dlg_npc_0013119 Dlg_npc_0013120 Dlg_npc_0013121 Dlg_npc_0013122 Dlg_npc_0013123 Dlg_npc_0013124 Dlg_npc_0013125 Dlg_npc_0013126 Dlg_npc_0013127 Dlg_npc_0013128 Dlg_npc_0013129 Dlg_npc_0013130 Dlg_npc_0013131 Dlg_npc_0013132 Dlg_npc_0013133" />
 
 	<Reply

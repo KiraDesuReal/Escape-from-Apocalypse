@@ -261,15 +261,6 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		ModelFile	= "quest_key_for_tunnel"
 		ResourceType= "ITEM_KEY" />
 
-	<Prototype
-		Class		= "Ware"
-		Name		= "item_key_gate_r1m3"
-		Price	= "6000"
-		Durability	= "100"
-		PriceDispersion      = "5"
-		ModelFile	= "quest_key_for_tunnel"
-		ResourceType= "ITEM_KEY" />
-
 <!-- Ammo -->
 
 	<Prototype

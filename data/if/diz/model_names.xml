@@ -1957,20 +1957,15 @@
 		locForm="0"
 		value="Гладиатор" />
 
-		<Item
+	<Item
 		id="ExitRoadToFater"
 		locForm="0"
-		value="ВЫХОД01 - Дорога на Фатерлянд" />
-
-	<Item
-		id="ExitZaTheTown"
-		locForm="0"
-		value="ВЫХОД02 - Горы за Южным" />
+		value="ВЫХОД02 - Дорога на Фатерлянд" />
 
 	<Item
 		id="ExitZaTheGloohoe"
 		locForm="0"
-		value="ВЫХОД03 - Окраины" />
+		value="ВЫХОД01 - Окраины" />
 
 	<Item
 		id="ExitRoadToRidzin"
@@ -1990,7 +1985,7 @@
 	<Item
 		id="Exits1LocationR1M1"
 		locForm="0"
-		value="ВЫХОД01 - Дорога на Фатерлянд|ВЫХОД02 - Горы за Южным|ВЫХОД03 - Окраины ??:??:??" />
+		value="ВЫХОД01 - Окраины|ВЫХОД02 - Дорога на Фатерлянд ??:??:??" />
 
 	<Item
 		id="Exits2LocationR1M1"
@@ -2183,16 +2178,6 @@
 		id="quest_item_key_gate_thetown"
 		locForm="0"
 		value="Ключ от ворот Южного" />
-
-	<Item
-		id="item_key_gate_r1m3"
-		locForm="0"
-		value="Ключ от Дороги на Фатерлянд" />
-
-	<Item
-		id="quest_item_key_gate_r1m3"
-		locForm="0"
-		value="Ключ от Дороги на Фатерлянд" />
 
 	
 	<Item

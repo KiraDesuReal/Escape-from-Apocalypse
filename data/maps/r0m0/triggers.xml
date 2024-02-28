@@ -106,6 +106,8 @@
 			SetVar("OpenGate_1", 0)
 			SetVar("OpenGate_2", 0)
 
+			SetVar("DialogSelectMap", 0)
+
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -144,9 +146,13 @@
 
 		--генератор
 			if GENERATOR_TIMER_GLOBAL then SetVar("Generator_time_work", GENERATOR_TIMER_GLOBAL) end
+			if GENERATOR_ON_GLOBAL then SetVar("Generator_on", GENERATOR_ON_GLOBAL) end
 
 			if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
 				if GetVar("Generator_on").AsInt == 1 and GetVar("Generator_time_work").AsInt > 0 then
+					if GetVar("Generator_lvl").AsInt == 1 then
+						getObj("gen_2_lvl_1"):SetNodeAction(AT_MOVE1)
+					end
 					TActivate("Generator_timer")
 					TActivate("IfGenerator_On")
 				else
@@ -308,7 +314,7 @@
 		    trigger:Deactivate()
 		</script>
 	</trigger>
-
+	
 <!-- Создание ворот -->
 	<trigger Name="CreateGate" active="1">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
@@ -320,11 +326,14 @@
 		    trigger:Deactivate()
 		</script>
 	</trigger>
-
+	
 <!-- Открытие/закрытие ворот 1 -->
 	<trigger Name="OpenGate_1" active="0">
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Gate_1_1_loc" />
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Gate_1_1_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Gate_1_2_loc" />
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Gate_1_2_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Gate_1_3_loc" />
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Gate_1_3_loc" />
 		<script>
 			local amount=trigger:GetTriggeredObjectAmount()
@@ -386,11 +395,14 @@
 		    trigger:Deactivate()
 		</script>
 	</trigger>
-
+	
 <!-- Открытие/закрытие ворот 2 -->
 	<trigger Name="OpenGate_2" active="0">
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Gate_2_1_loc" />
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Gate_2_1_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Gate_2_2_loc" />
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Gate_2_2_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Gate_2_3_loc" />
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Gate_2_3_loc" />
 		<script>
 			local amount=trigger:GetTriggeredObjectAmount()
@@ -897,7 +909,7 @@
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ChestScavs_Build_loc" />
 		<script>
 			local t = GetVar("ChestScavs_Timer").AsInt 
-			tm = t / 60
+			local tm = t / 60
 
 			local m
 
@@ -975,9 +987,9 @@
 					TActivate("ScavMoveSpeed")
 				elseif count == 3 then
 					if GetVar("Scav_Move").AsInt == 1 then
-						veh:SetExternalPathByName("veh_paths_to_gate_2_from_inventory_1")
+						veh:SetExternalPathByName("veh_paths_to_gate_2_from_inventory_2_2")
 					else
-						veh:SetExternalPathByName("veh_paths_to_gate_1_from_inventory_1")
+						veh:SetExternalPathByName("veh_paths_to_gate_1_from_inventory_1_1")
 					end
 					veh:SetCruisingSpeed(22)
 				elseif count == 4 then
@@ -993,10 +1005,10 @@
 	</trigger>
 
 	<trigger Name="ScavMoveSpeed" active="0">
-		<event timeout="3" eventid="GE_TIME_PERIOD" />
+		<event timeout="5" eventid="GE_TIME_PERIOD" />
 		<script>
 			local sv = GetEntityByName("ScavMoveToChest")
-			if sv then sv:SetCruisingSpeed(10) end
+			if sv then sv:SetCruisingSpeed(7) end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1050,7 +1062,6 @@
 				loot_count = random(2,4)
 			elseif GetVar("ChestScavs_Search").AsInt == 3 then
 				lootlist = {"electronics", "electronics_use", 
-							"item_key_gate_r1m3",
 							"item_datchik", "item_military_tube", "item_pena", "item_thermometer",
 							"item_bp", "item_drill", "item_engine", "item_iridiym", "item_lcd", "item_military_cable", "item_tetris",
 							"item_car_battery", "item_cyclon", "item_green_battery",
@@ -1082,8 +1093,7 @@
 							"cooling_system_guns", "cooling_system_energy", "add_damage_guns", "add_damage_energy", "additional_durability"}
 				loot_count = random(2,4)
 			elseif GetVar("ChestScavs_Search").AsInt == 5 or GetVar("ChestScavs_Search").AsInt == 6 then
-				lootlist = {"item_key_gate_r1m3",
-							"item_datchik", "item_pena", "item_thermometer",
+				lootlist = {"item_datchik", "item_pena", "item_thermometer",
 							"item_converter", "item_engine", "item_iridiym", "item_tetris", "item_virtex", "item_vpx",
 							"item_cyclon", "item_car_battery",
 							"item_prisadka", "item_termit", 
@@ -1363,7 +1373,7 @@
 			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(810, 255, 993), Quaternion(0, 0, 0, 1), 6000)
 			CreateEffectTTLed( "ET_S_BUILDING", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1800)
 
-		    CreateNewDummyObject("generator", "gen_1_lvl_2", -1, -1, CVector(810, 255, 993), Quaternion(0, 0, 0, 0))
+		    CreateNewDummyObject("generator", "gen_1_lvl_2", -1, -1, CVector(810, 255, 993), Quaternion(0, 1, 0, 1))
 		
 			if not(GetVar("Generator_time_work").AsInt == 0) then
 				SetVar("Generator_time_work", 7200)
@@ -1615,8 +1625,8 @@
 				end
 			end
 
-			for l=1,92 do
-				local lp = GetEntityByName("lp_1_light_"..l)
+			for llp=1,92 do
+				local lp = GetEntityByName("lp_1_light_"..llp)
 				if lp then lp:Remove() end
 			end
 			
@@ -1810,7 +1820,6 @@
 			CreateNewDummyObject("koroldrov", "gr_21", -1, -1, CVector(943.955, 255.331, 966.477), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
 			CreateNewDummyObject("bottles", "gr_22", -1, -1, CVector(923.099, 262.814, 947.762), Quaternion(0, 0, 0, 0))
 			CreateNewDummyObject("bottles", "gr_23", -1, -1, CVector(925.438, 262.814, 947.762), Quaternion(0, 0, 0, 0))
-			CreateNewDummyObject("bottles", "gr_23", -1, -1, CVector(923.099, 262.814, 949.319), Quaternion(0, 0, 0, 0))
 			CreateNewDummyObject("rabochee_oborudovanie", "gr_24", -1, -1, CVector(917.634, 255.625, 948.450), Quaternion(0, 0, 0, 0))
 			CreateNewDummyObject("rabochee_oborudovanie", "gr_25", -1, -1, CVector(915.285, 255.625, 948.284), Quaternion(-0.0117, 0.9187, 0.0003, 0.3948))
 			CreateNewDummyObject("elast_2", "gr_26", -1, -1, CVector(922.335, 255.471, 958.324), Quaternion(0.0000, -0.3807, 0.0000, 0.9247))
@@ -1836,7 +1845,8 @@
 			CreateNewDummyObject("kaktus", "gr_46", -1, -1, CVector(947.157, 262.170, 947.8151), Quaternion(0, 0, 0, 0))
 			CreateNewDummyObject("kaktus", "gr_47", -1, -1, CVector(945.718, 262.170, 948.995), Quaternion(0.0000, -0.2058, 0.0000, 0.9786))
 			CreateNewDummyObject("kaktus", "gr_48", -1, -1, CVector(944.220, 262.170, 947.769), Quaternion(0.0000, 0.8179, 0.0000, 0.5754))
-			CreateNewSgNodeObject("ET_S_ITEM_MUSIC01", "gr_49", -1, -1, CVector(952.633, 262.050, 957.662), Quaternion(0, 0, 0, 0))
+			CreateNewSgNodeObject("ET_S_ITEM_MUSIC01", "gr_49", -1, -1, CVector(946.222, 265.006, 957.790), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("bottles", "gr_50", -1, -1, CVector(923.099, 262.814, 949.319), Quaternion(0, 0, 0, 0))
 			SetVar("Garage_Builden", 1)
 			
 			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(945, 255, 957), Quaternion(0, 0, 0, 1), 6000)
@@ -1947,7 +1957,7 @@
 					for k=1,6 do
 						local gr_light = GetEntityByName("gr_light_"..k)
 						if gr_light then gr_light:Remove() end
-						local gr_ls_light = GetEntityByName("gr_ls_light_"..l)
+						local gr_ls_light = GetEntityByName("gr_ls_light_"..k)
 						if gr_ls_light then gr_ls_light:Remove() end
 					end
 
@@ -1988,6 +1998,11 @@
 				AddItemsToPlayerRepository("ammo_chest_shotgun", shotgun)
 			end
 
+			if IsQuestComplete('q_kill_scavs') and IsQuestComplete('q_fuel2') and IsQuestComplete('q_base_scavs') and IsQuestComplete('q_test_drive6') then
+				println("AllQuestsCompleted")
+				TActivate("OpenGate1ForCredits")
+			end
+
 			SetCameraBehindPlayerVehicle()
 
 		</script>
@@ -2006,10 +2021,6 @@
 	<trigger Name="CreateVehicleMove" active="0">
 		<script>
 			
-			if GetVar("VehPath").AsInt > 0 then
-			return
-			end
-
 			local modellist = {"Bug01PMC", "Molokovoz01PMC", "Ural01PMC", "Belaz01PMC", "Cruiser01PMC", "Mirotvorec01PMC"}
 			local model = modellist[random(getn(modellist))]
 
@@ -2048,10 +2059,10 @@
 				veh:SetNewPart("CABIN",cab[random(getn(cab))])
 				veh:SetNewPart("BASKET",cargo[random(getn(cargo))])
 				veh:SetCruisingSpeed(30)
-				veh:SetExternalPathByName("veh_paths_to_gate_"..r)
 				veh:SetRandomSkin()
 				veh:setGodMode(1)
 				GiveGunsForVehicle(veh, 1)
+				veh:SetExternalPathByName("veh_paths_to_gate_"..r)
 			end
 
 			SetVar("VehMove", r)
@@ -2162,6 +2173,68 @@
 		</script>
 	</trigger>
 
+<!-- Игрок едет в зону, чтобы запустилась катсцена с титрами -->
+	<trigger Name="OpenGate1ForCredits" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			getObj("gate_1"):SetNodeAction(AT_RESERVED4)
+			CreateEffectTTLed( "ET_PS_OPENING_GATE", CVector(868.318, 255, 1094.083), Quaternion(0, 0, 0, 1), 1400)
+			TActivate("OpennedGate1ForCredits")
+
+			TDeactivate("OpenGate_1")
+			TDeactivate("OpennnedGate_1")
+			TDeactivate("CloseGate_1")
+			TDeactivate("ClosedGate_1")
+
+			TDeactivate("Teleport")
+
+			TActivate("StartcutCredits_EntersLoc")
+
+			SetVar("DialogSelectMap", 1)
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="OpennedGate1ForCredits" active="0">
+		<event timeout="1.4" eventid="GE_TIME_PERIOD" />
+		<script>
+			local g = GetEntityByName("gate_1")
+			if g then g:SetPosition(CVector(48, 255, 773)) end
+
+			CreateEffectTTLed( "ET_PS_OPENING_GATE_END", CVector(868.318, 255, 1094.083), Quaternion(0, 0, 0, 1), 1500)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="StartcutCredits_EntersLoc" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="cutCredits_loc" />
+		<script>
+			TActivate("cutCredits")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CloseGate1ForCredits" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			local g = GetEntityByName("gate_1")
+			if g then 
+				g:SetPosition(CVector(868.318, 255, 1094.083)) 
+				g:SetNodeAction(AT_STAND1)
+			end
+
+			TActivate("OpenGate_1")
+			TActivate("Teleport")
+			TDeactivate("StartcutCredits_EntersLoc")
+			SetVar("DialogSelectMap", 0)
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 <!-- Выход/очистка карты -->
 	<trigger Name="ExitMap" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
@@ -2209,6 +2282,8 @@
 				end
 				
 				if GENERATOR_TIMER_GLOBAL then GENERATOR_TIMER_GLOBAL = GetVar("Generator_time_work").AsInt end
+				if GENERATOR_LVL_GLOBAL then GENERATOR_LVL_GLOBAL = GetVar("Generator_lvl").AsInt end
+				if GENERATOR_ON_GLOBAL then GENERATOR_ON_GLOBAL = GetVar("Generator_on").AsInt end
 			end
 
 		--удаление VehicleMove

@@ -16,7 +16,7 @@
 		<script>
 
 			PlayCustomMusic("mainmenu")
-			SetVar("Track", 177)
+			SetVar("Track", 175)
 			TActivate("MusicTimer")
 
 			RuleConsole("cinematic_spring_coeff 1.7")

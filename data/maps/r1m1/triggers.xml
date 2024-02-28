@@ -29,7 +29,7 @@
 			SetVar("PosPlayer2",0)
 			SetVar("SpawnPlayer",0)
 
-			SetVar("ExitGloohoe",0)
+			SetVar("ExitRoadToFater",0)
 			SetVar("ExitZaTheTroiskoe",0)
 
 			for csl=1,8 do
@@ -89,10 +89,14 @@
 
 			SetVar("ChestScavs_Timer", 0)
 			SetVar("Generator_time_work", 0)
+			SetVar("Generator_lvl", 0)
+			SetVar("Generator_on", 0)
 
 			if COUNT_RAIDS then SetVar("CountRaids",COUNT_RAIDS) end 
 			if CHESTSCAVS_TIMER_GLOBAL > 0 then SetVar("ChestScavs_Timer",CHESTSCAVS_TIMER_GLOBAL) end
 			if GENERATOR_TIMER_GLOBAL > 0 then SetVar("Generator_time_work",GENERATOR_TIMER_GLOBAL) end
+			if GENERATOR_LVL_GLOBAL then SetVar("Generator_lvl", GENERATOR_LVL_GLOBAL) end
+			if GENERATOR_ON_GLOBAL then SetVar("Generator_on", GENERATOR_ON_GLOBAL) end
 
 			TActivate("GlobalVar")
 
@@ -106,7 +110,6 @@
 			TActivate("ItemsUse")
 
 			TActivate("Gate_TheTown")
-			TActivate("ClosedGate_R1M3")
 
 			TActivate("CreateBarrelBox")
 			TActivate("CreateBoxForDeadScav")
@@ -129,70 +132,6 @@
 				SetVar("Map", 1)
 			end
 			
-		</script>
-	</trigger>
-
-<!-- Создание/Уничножение Глухого -->
-	<trigger Name="CreateGloohoe" active="1">
-		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
-		<script>
-			CreateNewDummyObject( "workshop2",	"hs01", -1, -1, CVector(3355.214,  368, 3322.013), Quaternion(0.0000, -0.9998, 0.0000, -0.0196),1 )
-			CreateNewDummyObject( "house1",	"hs02", -1, -1, CVector(3396.989,  370, 3311.444), Quaternion(0.0000, -0.7880, 0.0000, 0.6157),1 )
-			CreateNewDummyObject( "house2",	"hs03", -1, -1, CVector(3391.955,  368, 3280.512), Quaternion(0.0000, -0.5682, 0.0000, 0.8229),1 )
-			CreateNewDummyObject( "townhall",	"hs04", -1, -1, CVector(3333.442, 368, 3299.207), Quaternion(0.0000, 0.6820, 0.0000, 0.7314),1 )
-			CreateNewDummyObject( "house3",	"hs05", -1, -1, CVector(3339.008, 368, 3288.451), Quaternion(0.0000, 0.6478, 0.0000, 0.7618),1 )
-			CreateNewDummyObject( "house2",	"hs06", -1, -1, CVector(3337.264, 368, 3311.947), Quaternion(0.0000, 0.0000, 0.0000, 1.0000),1 )
-			CreateNewDummyObject( "house3",	"hs07", -1, -1, CVector(3390.944, 371, 3329.290), Quaternion(0.0000, 0.928, 0.0000, -0.3726),1 )
-			trigger:Deactivate()    
-		</script>
-	</trigger>
-
-	<trigger Name="DestroyGloohoe" active="0">
-		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
-		<script>
-			
-			for i=1,7 do
-				local hs = GetEntityByName ("hs0"..i)
-				if hs then hs:Remove() end
-			end
-		
-			CreateNewDummyObject( "ruins1", "hs001", -1, -1, CVector(3355.214,  368, 3322.013), Quaternion(0.0000, -0.9998, 0.0000, -0.0196) )
-			CreateNewDummyObject( "ruins2", "hs002", -1, -1, CVector(3396.989,  370, 3311.444), Quaternion(0.0000, -0.7880, 0.0000, 0.6157) )
-			CreateNewDummyObject( "ruins3", "hs003", -1, -1, CVector(3391.955,  368, 3280.512), Quaternion(0.0000, -0.5682, 0.0000, 0.8229) )
-			CreateNewDummyObject( "ruins1", "hs004", -1, -1, CVector(3333.442, 368, 3299.207), Quaternion(0.0000, 0.6820, 0.0000, 0.7314) )
-			CreateNewDummyObject( "ruins2", "hs005", -1, -1, CVector(3339.008, 368, 3288.451), Quaternion(0.0000, 0.6478, 0.0000, 0.7618) )
-			CreateNewDummyObject( "ruins3", "hs006", -1, -1, CVector(3337.264, 368, 3311.947), Quaternion(0.0000, 0.0000, 0.0000, 1.0000) )
-			CreateNewDummyObject( "ruins3", "hs007", -1, -1, CVector(3390.944, 371, 3329.290), Quaternion(0.0000, 0.928, 0.0000, -0.3726) )
-			CreateNewDummyObject( "concrete_tube1", "hs008", -1, -1, CVector(2865.730, 347.620, 3620.322), Quaternion(0.0035, -0.7446, 0.0027, 0.6675) )
-
-			CreateNewSgNodeObject("ET_PS_HOUSE_MED_FIRE", "FIRE01", -1, -1, CVector(3336, 360, 3305), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
-			CreateNewSgNodeObject("ET_PS_HOUSE_MED_FIRE", "FIRE02", -1, -1, CVector(3309, 360, 3233), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
-			CreateNewSgNodeObject("ET_PS_HOUSE_MED_FIRE", "FIRE03", -1, -1, CVector(3321, 360, 3363), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
-			CreateNewSgNodeObject("ET_PS_HOUSE_MED_FIRE", "FIRE04", -1, -1, CVector(3393, 360, 3278), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
-			CreateNewSgNodeObject("ET_PS_HOUSE_MED_FIRE", "FIRE05", -1, -1, CVector(3337, 360, 3235), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
-			CreateNewSgNodeObject("ET_PS_HOUSE_MED_FIRE", "FIRE06", -1, -1, CVector(3338, 360, 3290), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
-
-			trigger:Deactivate()    
-		</script>
-	</trigger>
-
-	<trigger Name="CreateGloohoeAtDestroy" active="0">
-		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
-		<script>
-
-			for i=1,8 do
-				local hs = GetEntityByName ("hs00"..i)
-				if hs then hs:Remove() end
-			end
-
-			for f=1,6 do
-				local fr = GetEntityByName ("FIRE0"..f)
-				if fr then fr:Remove() end
-			end
-
-			TActivate("CreateGloohoe")
-
-			trigger:Deactivate()    
 		</script>
 	</trigger>
 
@@ -473,10 +412,21 @@
 				SetVar("ChestScavs_Timer",cst)
 			end
 
-			local gt = GetVar("Generator_time_work").AsInt
-			if gt > 0 then
-				gt = gt - 1
-				SetVar("Generator_time_work",gt)
+			if GetVar("Generator_on").AsInt == 1 then
+				if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
+					local gt = GetVar("Generator_time_work").AsInt
+					if 1 > gt then
+						SetVar("Generator_time_work", 0)
+						SetVar("Generator_on", 0)
+					else
+						if GetVar("Generator_lvl").AsInt == 1 then
+							gt = gt - 4
+						elseif  GetVar("Generator_lvl").AsInt == 2 then
+							gt = gt - 2
+						end
+						SetVar("Generator_time_work",gt)
+					end
+				end
 			end
 
 			if time > 0 then
@@ -537,17 +487,15 @@
 		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 
-			TActivate ("RoadToFater")
-			TActivate ("ZaTheTown")
-
-			local ExitZaTheGhoohoeRandom = random (2)
-			if ExitZaTheGhoohoeRandom == 1 then
-				TActivate ("ZaTheGloohoe")
-				SetVar("ExitGloohoe",1)
-			else
-				TActivate ("DestroyGloohoe")
+			local RoadToFaterRandom = random  (2)
+			if RoadToFaterRandom == 1 then
+				TActivate ("RoadToFater")
+				SetVar("ExitRoadToFater",1)
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE", "SmokeRoadToFater1", -1, -1, CVector(2085.447, 312.800, 3646.448), Quaternion(0, 0, 0, 0), 2)
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE", "SmokeRoadToFater2", -1, -1, CVector(2064.941, 330.600, 3664.033), Quaternion(0, 0, 0, 0), 2)
 			end
 
+			TActivate ("ZaTheGloohoe")
 
 			local ExitZaTheTroiskoeRandom = random (2)
 			if ExitZaTheTroiskoeRandom == 1 then
@@ -580,14 +528,13 @@
 				SetVar("ExitZaTheTroiskoe",1)
 			end
 
-
-			local ExitZaTheGhoohoeRandom = random (2)
-			if ExitZaTheGhoohoeRandom == 1 then
-				SetVar("ExitGloohoe",1)
-			else
-				TActivate ("DestroyGloohoe")
+			local RoadToFaterRandom = random  (2)
+			if RoadToFaterRandom == 1 then
+				SetVar("ExitRoadToFater",1)
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE", "SmokeRoadToFater1", -1, -1, CVector(2085.447, 312.800, 3646.448), Quaternion(0, 0, 0, 0), 2)
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE", "SmokeRoadToFater2", -1, -1, CVector(2064.941, 330.600, 3664.033), Quaternion(0, 0, 0, 0), 2)
 			end
-
+		
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -612,19 +559,6 @@
 			if GetVar("PetrolStation_Refill_Process").AsInt == 0 then
 				SetVar("ExitTimer",6)
 				AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitRoadToFater")
-				SoundFadingMsg()
-				TActivate ("LeaveZoneExit")
-				TActivate ("ExitTimer")
-			end
-		</script>
-	</trigger>
-
-	<trigger Name="ZaTheTown" active="0">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ZaTheTown_Exit" />
-		<script>
-			if GetVar("PetrolStation_Refill_Process").AsInt == 0 then
-				SetVar("ExitTimer",6)
-				AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitZaTheTown")
 				SoundFadingMsg()
 				TActivate ("LeaveZoneExit")
 				TActivate ("ExitTimer")
@@ -698,7 +632,6 @@
 <!-- Игрок покидает зону выхода -->
 	<trigger Name="LeaveZoneExit" active="0">
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ToR1M3_Exit" />
-		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ZaTheTown_Exit" />
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ToR5M1_Exit" />
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ToR1M2_Exit" />
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="BaseFelix_Exit" />
@@ -2250,55 +2183,6 @@
 		</script>
 	</trigger>
 
-<!-- Открытие/Закрытие ворот R1M3 -->
-	<trigger Name="OpenGate_R1M3" active="0">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="GateToR1M3_loc" />
-		<script>
-			if IsQuestItemPresent("quest_item_key_gate_r1m3") then
-				local b = SpawnMessageBox("90002")
-				if b == 1 then
-					getObj("gate_r1m3"):SetNodeAction(AT_RESERVED4)
-					CreateEffectTTLed( "ET_PS_OPENING_GATE", CVector(2075.552, 316, 3662.552), Quaternion(0, 0, 0, 1), 1400)
-					TActivate("OpenGate_R1M3_End")
-
-					if GetVar("quest_item_key_gate_r1m3_used").AsInt > 0 then 
-						SetVar("quest_item_key_gate_r1m3_used", GetVar("quest_item_key_gate_r1m3_used").AsInt - 1) 
-						if GetVar("quest_item_key_gate_r1m3_used").AsInt > 0 then 
-							AddFadingMsgByStrIdFormatted("fm_used_key", GetVar("quest_item_key_gate_r1m3_used").AsInt)
-							SoundFadingMsg()
-						end
-					end
-					if GetVar("quest_item_key_gate_r1m3_used").AsInt == 0 then
-						RemoveQuestItem("quest_item_key_gate_r1m3")
-						AddFadingMsgByStrIdFormatted("fm_remove_quest_item", "quest_item_key_gate_r1m3")
-						SoundFadingMsg()
-					end
-					trigger:Deactivate()
-				end
-			end
-		</script>
-	</trigger>
-
-	<trigger Name="OpenGate_R1M3_End" active="0">
-		<event timeout="1.4" eventid="GE_TIME_PERIOD" />
-		<script>
-			local g = GetEntityByName("gate_r1m3")
-			if g then g:Remove() end
-
-			CreateEffectTTLed( "ET_PS_OPENING_GATE_END", CVector(2075.552, 316, 3662.552), Quaternion(0, 0, 0, 1), 1500)
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-	<trigger Name="ClosedGate_R1M3" active="0">
-		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
-		<script>
-			CreateNewDummyObject( "agro_gate", "gate_r1m3", -1, -1, CVector(2075.552, 316, 3662.552), Quaternion(0.0000, 0.0760, 0.0000, 0.9971) )
-			TActivate("OpenGate_R1M3")
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
 <!-- Расстановка лута на карте -->
 	<trigger Name="CreateBarrelBox" active="0">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
@@ -2796,7 +2680,7 @@
 							"hornet01","specter01","pkt01","kord01","storm01","fagot01","maxim01","vector01","vulcan01","kpvt01","rapier01","flag01","rainmetal01","elephant01","odin01","omega01","bumblebee01","hammer01","hunterSideGun","mrakSideGun","big_swingfire01","cyclops01","octopus01","hailSideGun","hurricane01","rocketLauncher","zeusSideGun","marsSideGun",
 							"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun",
 							"potato", "firewood", "item_pants40grn", "item_salo",
-							"item_key_gate_thetown", "item_key_gate_r1m3",
+							"item_key_gate_thetown",
 							"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "add_damage_guns", "add_damage_energy", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "someTurboAccelerationPusher", "firing_range_guns", "firing_rate_guns", "firing_rate_energy", "firing_rate_guns", "grouping_angle_guns", "firing_rate_energy", "grouping_angle_guns", "cooling_system_guns", "cooling_system_guns", "cooling_system_energy", "cooling_system_energy", "cooling_system_explosion"}
 			local items_r = getn(items)
 			
@@ -3062,29 +2946,18 @@
 				end
 
 				local pmc_way2 = GetEntityByName ("PMC_"..p2.."_Spawn2")
-				local rand_exit2_1 = random(3)
 				local rand_exit2_2 = random(2)
 				if pmc_way2 then
 					pmc_way2:StackOpen()
 					pmc_way2:SetDestination(way[random(way_r)])
-					if rand_exit2_1 == 1 then
-						if rand_exit2_2 == 1 then
+					if GetVar("ExitRoadToFater").AsInt==1 then
+						if rand_exit2_2 == 1 then 
 							pmc_way2:SetDestination(CVector(getPos("RoadToFater_exitPMC_1_loc")))
 						else
-							pmc_way2:SetDestination(CVector(getPos("ZaTheTown_Exit")))
-						end
-					elseif rand_exit2_1 == 2 then
-						if GetVar("ExitGloohoe").AsInt==1 then
 							pmc_way2:SetDestination(CVector(getPos("ToR1M5_exitPMC_1_loc")))
-						else
-							if rand_exit2_2 == 1 then
-								pmc_way2:SetDestination(CVector(getPos("RoadToFater_exitPMC_1_loc")))
-							else
-								pmc_way2:SetDestination(CVector(getPos("ZaTheTown_Exit")))
-							end
 						end
-					elseif rand_exit2_1 == 3 then
-						pmc_way2:SetDestination(CVector(getPos("ZaTheTown_Exit")))
+					else
+						pmc_way2:SetDestination(CVector(getPos("ToR1M5_exitPMC_1_loc")))
 					end
 					pmc_way2:StackLoop()
 					pmc_way2:StackClose()
@@ -3169,8 +3042,6 @@
 
 <!-- Назначение путей для ЧВК -->
 	<trigger Name="PMC_To_Exits_loc" active="0">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ZaTheTown_exitPMC_1_loc" />
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ZaTheTown_exitPMC_2_loc" />
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="RoadToFater_exitPMC_1_loc" />
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="RoadToFater_exitPMC_2_loc" />
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ToR1M5_exitPMC_1_loc" />
@@ -3367,10 +3238,9 @@
 				TDeactivate ("RoadToRidzin")
 				TDeactivate ("BaseFelix")
 			else
-				TDeactivate ("RoadToFater")
-				TDeactivate ("ZaTheTown")
+				TDeactivate ("ZaTheGloohoe")
 			end
-			
+
 			if GetVar("ExitZaTheTroiskoe").AsInt==1 then
 				TDeactivate ("ZaTheTroiskoe")
 				TDeactivate ("FonarZaTheTroiskoeExit_Broken")
@@ -3380,10 +3250,12 @@
 				end
 			end
 
-			if GetVar("ExitGloohoe").AsInt==1 then
-				TDeactivate ("ZaTheGloohoe")
-			else
-				TActivate("CreateGloohoeAtDestroy")
+			if GetVar("ExitRoadToFater").AsInt==1 then
+				TDeactivate ("RoadToFater")
+				for green_smoke=1,2 do
+					local gs = GetEntityByName("SmokeRoadToFater"..green_smoke)
+					if gs then gs:Remove() end
+				end
 			end
 
 			--удаление диких на локациях
@@ -3399,11 +3271,6 @@
 			end
 
 			TDeactivate("ItemsUse")
-
-			--ворота r1m3
-			local g_r1m3 = GetEntityByName("gate_r1m3")
-			if g_r1m3 then g_r1m3:Remove() end
-			TDeactivate("OpenGate_R1M3")
 
 			--удаление ящиков с лутом
 			for b=1,31 do
@@ -3546,6 +3413,7 @@
 			if COUNT_RAIDS then COUNT_RAIDS = GetVar("CountRaids").AsInt end
 			if CHESTSCAVS_TIMER_GLOBAL then CHESTSCAVS_TIMER_GLOBAL = GetVar("ChestScavs_Timer").AsInt end
 			if GENERATOR_TIMER_GLOBAL then GENERATOR_TIMER_GLOBAL = GetVar("Generator_time_work").AsInt end
+			if GENERATOR_ON_GLOBAL then GENERATOR_ON_GLOBAL = GetVar("Generator_on").AsInt end
 
 			TDeactivate("IfChargeCar")
 

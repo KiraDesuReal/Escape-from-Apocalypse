@@ -29,6 +29,17 @@ if GENERATOR_TIMER_GLOBAL == nil then
 	GENERATOR_TIMER_GLOBAL = 0
 end
 
+-- Лвл генератора
+if GENERATOR_LVL_GLOBAL == nil then
+	GENERATOR_LVL_GLOBAL = 0
+end
+
+-- Включен/выключен генератор
+if GENERATOR_ON_GLOBAL == nil then
+	GENERATOR_ON_GLOBAL = 0
+end
+
+
 -- Рандомизируем пушки ботам 
 function GiveGunsForVehicle(vehicle, side_random)
 	local veh=vehicle
@@ -267,14 +278,6 @@ function AddKeysQuestItem()
 		AddFadingMsgByStrIdFormatted("fm_item_to_quest_items", "item_key_gate_thetown")
 		RemoveItemsFromPlayerRepository("item_key_gate_thetown", 1)
 		SetVar("item_key_gate_thetown_used", 10)
-		SoundFadingMsg()
-	end
-
-	if HasPlayerAmountOfItems("item_key_gate_r1m3", 1) and not(IsQuestItemPresent("quest_item_key_gate_r1m3")) then
-		AddQuestItem("quest_item_key_gate_r1m3")
-		AddFadingMsgByStrIdFormatted("fm_item_to_quest_items", "item_key_gate_r1m3")
-		RemoveItemsFromPlayerRepository("item_key_gate_r1m3", 1)
-		SetVar("quest_item_key_gate_r1m3_used", 15)
 		SoundFadingMsg()
 	end
 end
@@ -627,7 +630,7 @@ function CreateLootBoxForDeadScav(name, pos)
 					"item_zapal", "tobacco", "bottle", "item_vodka", "item_monolit", "item_filter", "item_paracord", "item_ananaga",
 					"item_roulet", "item_wrench", "item_screw", "item_pliers", "item_screw_flat", "item_nippers", "item_metalscissors", "item_pliers_round", "item_leatherman", "item_screw_flat_long", "item_awl", "item_sewing_kit",
 					"item_chain", "shkatulka", "item_ex", "item_chain_gold",
-					"item_key_gate_thetown", "item_key_gate_r1m3"}	
+					"item_key_gate_thetown"}	
 	local items_rand = getn(items)
 
 	local Chest = CreateNewObject{prototypeName = "someChest", objName = name.."Chest"}	
@@ -897,7 +900,7 @@ function CreateValuableBox(name, pos)
 
 	local item = {"item_disk", "item_manual", "item_flashdrive", "item_diary_s", "item_diary", "item_ssd", "item_disk_exmachina", "item_sas", "item_rozvidka",
 					"item_chain", "shkatulka", "item_ex", "item_teapon", "item_cat", "item_rolex", "item_chain_gold", "item_woodclock", "item_chiken", "item_skullring", "item_lion", "item_bitcoin",
-					"item_key_gate_thetown", "item_key_gate_r1m3"}
+					"item_key_gate_thetown"}
 	local item_rand = getn(item)
 
 	local Chest = CreateNewObject{prototypeName = "someChest", objName = name.."Chest"}	

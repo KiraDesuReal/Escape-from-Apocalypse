@@ -114,4 +114,129 @@
 		</script>
 	</trigger>
 
+<!-- Титры -->
+	<trigger Name="cutCredits" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			SaveAllToleranceStatus(RS_NEUTRAL)
+
+			SetWeather(0)
+			SetGameTime(20,0)
+
+			PlayCustomMusic("Credits01")
+
+			CreateHuman("Human_player_slow", 1100, CVector(1045.535, 255.641, 1525.996), "HumanPlayer")
+			
+			local hum = GetEntityByName("HumanPlayer")
+			local humID = hum:GetId()
+
+			Fly("credits_cam01", CINEMATIC_NO_AIM, 0, 21.9, 1, 0)
+			FlyLinked("credits_cam_keqing01", humID, 40.57, 0, 0, nil)
+			FlyLinked("credits_cam_player01_1", humID, 0.64, 0, 0, nil)
+			FlyLinked("credits_cam_player01_2", humID, 0.57, 0, 0, nil)
+			FlyLinked("credits_cam_player01_3", humID, 0.58, 0, 0, nil)
+			FlyLinked("credits_cam_player02", humID, 29.94, 0, 0, nil)
+			FlyLinked("credits_cam_player02_1", humID, 0.74, 0, 0, nil)
+			FlyLinked("credits_cam_player02_2", humID, 0.6, 0, 0, nil) 
+			FlyLinked("credits_cam_keqing02_3", humID, 1.25, 0, 0, nil)
+			FlyLinked("credits_cam_keqing02_4", humID, 1.6, 0, 0, nil)
+			FlyLinked("credits_cam_player02", humID, 5.1, 0, 0, nil)
+			Fly("credits_cam03", CINEMATIC_NO_AIM, 0, 4.45, 0, 0)
+			Fly("start_game", CINEMATIC_NO_AIM, 0, 2, 0, 1)
+			StartCinematic()
+
+			AddCinematicMessage(1, 0)
+
+			TActivate("cutCreditsFadeIn")
+			TActivate("cutCreditsCamPlayer01")
+			TActivate("cutCreditsCamPlayer02")
+			TActivate("cutCreditsCamPlayer02_")
+			TActivate("cutCreditsCam_start_game")
+			TActivate("cutCreditsEnd")
+
+			local vehPlayer = GetPlayerVehicle()
+			if vehPlayer then
+				vehPlayer:SetThrottle(0)
+				vehPlayer:SetCustomLinearVelocity(0)
+			end
+
+			local hum = GetEntityByName("HumanPlayer")
+			if hum then
+				hum:SetWalkPathByName("player_cut_path")
+			end
+			
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="cutCreditsFadeIn" active="0">
+		<event eventid="GE_CINEMATIC_ENTER_FADE_IN" ObjName="Player1" />
+		<script>
+			local vehPlayer = GetPlayerVehicle()
+			if vehPlayer then
+				vehPlayer:SetGamePositionOnGround(CVector(893.077, 255.493, 987.899))
+				vehPlayer:SetRotation(Quaternion(-0.009, -0.005, -0.000, 1.000))
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="cutCreditsCamPlayer01" active="0">
+		<event flypath="credits_cam_keqing01" eventid="GE_START_CINEMATIC_FLY" ObjName="Player1" />
+		<script>
+			AddCinematicMessage(2, 0)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="cutCreditsCamPlayer02" active="0">
+		<event flypath="credits_cam_player02" eventid="GE_START_CINEMATIC_FLY" ObjName="Player1" />
+		<script>
+			AddCinematicMessage(3, 0)
+			TActivate("cutCreditsCamPlayer02_")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="cutCreditsCamPlayer02_" active="0">
+		<event flypath="credits_cam_player02" eventid="GE_START_CINEMATIC_FLY" ObjName="Player1" />
+		<script>
+			AddCinematicMessage(4, 0)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="cutCreditsCam_start_game" active="0">
+		<event flypath="start_game" eventid="GE_START_CINEMATIC_FLY" ObjName="Player1" />
+		<script>
+			AddCinematicMessage(77773, 0)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="cutCreditsEnd" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+			RestoreAllToleranceStatus()
+
+			StopPlayingCustomMusic()
+
+			local hum = GetEntityByName("HumanPlayer")
+			if hum then hum:Remove() end
+
+			TDeactivate("cutCreditsFadeIn")
+			TDeactivate("cutCreditsCamPlayer01")
+			TDeactivate("cutCreditsCamPlayer02")
+			TDeactivate("cutCreditsCamPlayer02_")
+			TDeactivate("cutCreditsCam_start_game")
+			
+			TActivate("CloseGate1ForCredits")
+
+			SetCameraBehindPlayerVehicle()
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 </triggers>

@@ -203,6 +203,8 @@
 			local objid = obj:GetId()
 			local objPos = obj:GetPosition()
 
+			CreateEffectInsertedInRemove("ET_S_DEATH", plPos, Quaternion(0, 0, 0, 1), true)
+
 			local fakePlayer = GetEntityByName("fakePlayerCar")
 			if fakePlayer then
 				fakePlayer:SetRotation(plRot)

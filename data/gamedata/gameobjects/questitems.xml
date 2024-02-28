@@ -155,12 +155,6 @@ $Id: QuestItems.xml,v 1.11 2005/10/18 06:12:48 anton Exp $
 
 	<Prototype
 		Class		= "QuestItem"
-		Name		= "quest_item_key_gate_r1m3"
-		ModelFile	= "quest_key_for_tunnel"
-		ResourceType	= "QUEST_KEY" />
-
-	<Prototype
-		Class		= "QuestItem"
 		Name		= "quest_item_map_r1m1"
 		ModelFile	= "map_location"
 		ResourceType	= "QUEST_ITEMS" />

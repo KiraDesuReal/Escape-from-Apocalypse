@@ -61,6 +61,12 @@
 		/>
 
 		<group 
+			id		= "COLOR_FIER" 
+			volume	= "255" 
+			minDist	= "10"
+		/>
+
+		<group 
 			id		= "GUNFIRE" 
 			volume	= "160" 
 			minDist	= "30"
@@ -165,8 +171,8 @@
 		/>
 		<group
 			id		= "LAKE"
-			volume	= "75" 
-			minDist	= "50"
+			volume	= "200" 
+			minDist	= "80"
 		/>
 
 		<group

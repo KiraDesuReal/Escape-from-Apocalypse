@@ -1027,7 +1027,7 @@
 		name="Dlg_npc_0013108"
 		text="Выберите место дислокации."
 		role="NPC"
-		scriptCondition="GetPlayerHealth() >= 1 and GetVar('PetrolStation_Refill_Process').AsInt == 0"
+		scriptCondition="GetPlayerHealth() >= 1 and GetVar('PetrolStation_Refill_Process').AsInt == 0 and GetVar('DialogSelectMap').AsInt == 0"
 		nextReplies="Dlg_pl_0013109 Dlg_pl_0013117" />
 
 	<Reply

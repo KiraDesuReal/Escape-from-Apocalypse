@@ -11,6 +11,14 @@
 			file="data\models\AnimModels.xml" />
 
 		<Item
+			id="barded_wire"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="barded_wire_long"
+			file="data\models\AnimModels.xml" />
+
+		<Item
 			id="fence_long2"
 			file="data\models\AnimModels.xml" />
 
@@ -2347,6 +2355,10 @@
 			id="map_location" 
 			file="data\models\AnimModels.xml"/>
 
+		<Item 
+			id="road_sign_region1" 
+			file="data\models\AnimModels.xml"/>
+
 		<Item
 			id="heavy_dot_brocken1"
 			file="data\models\AnimModels.xml" />
@@ -2406,6 +2418,7 @@
 		<Item id="S_CLOSED_GATE" />
 		
 		<Item id="S_FADING_MSG" />
+		<Item id="S_DEATH" />
 
 		<Item id="S_USE_RELOAD_ARTILLERYGUN" />
 		<Item id="S_USE_RELOAD_HEAVYGUN" />
@@ -2418,6 +2431,8 @@
 		<Item id="S_QUEST_FINISHED" />
 		<Item id="S_QUEST_TAKEN" />
 		<Item id="S_SUBTASK_COMPLETE" />
+
+		<Item id="S_COLOR_FIER" />
 
 		<Item id="S_CRASH_METAL01" />
 		<Item id="S_CRASH_METAL02" />

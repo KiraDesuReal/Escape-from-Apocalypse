@@ -534,7 +534,7 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 				local other_items = getn(other)
 				local tools = {"item_roulet", "item_wrench", "item_screw", "item_pliers", "item_screw_flat", "item_nippers", "item_metalscissors", "item_pliers_round", "item_leatherman", "item_screw_flat_long", "item_toolset", "item_awl", "item_fullmaster", "item_sewing_kit", "item_handrill", "item_buldex", "item_ratchet_wrench", "item_pipe_wrench"}
 				local tools_items = getn(tools)
-				local valuables = {"item_chain", "shkatulka", "item_ex", "item_teapon", "item_cat", "item_rolex", "item_chain_gold", "item_key_gate_thetown", "item_key_gate_r1m3", "item_woodclock", "item_chiken", "item_skullring", "item_lion", "item_bitcoin"}
+				local valuables = {"item_chain", "shkatulka", "item_ex", "item_teapon", "item_cat", "item_rolex", "item_chain_gold", "item_key_gate_thetown", "item_woodclock", "item_chiken", "item_skullring", "item_lion", "item_bitcoin"}
 				local valuables_items = getn(valuables)
 		
 				local items = {building[r_list[r_l](building_items)], electronics[r_list[r_l](electronics_items)], energy[r_list[r_l](energy_items)], flammable[r_list[r_l](flammable_items)], household[r_list[r_l](household_items)], info[r_list[r_l](info_items)], medical[r_list[r_l](medical_items)], other[r_list[r_l](other_items)], tools[r_list[r_l](tools_items)], valuables[r_list[r_l](valuables_items)]}

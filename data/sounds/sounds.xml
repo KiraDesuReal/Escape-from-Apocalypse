@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
 <sounds>
-
 <!-- Use Items -->
 
 	<model
@@ -102,6 +101,12 @@
 	<model
 		id="S_BUY"
 		file="data\sounds\other\interface\buy.ogg"
+		group="SOUND2D"
+		/>
+
+	<model
+		id="S_DEATH"
+		file="data\sounds\other\interface\death.wav"
 		group="SOUND2D"
 		/>
 
@@ -265,6 +270,14 @@
 		id="S_ITEM_MUSIC01"
 		file="data\music\item_music\item_music01.ogg"
 		group="ITEM_MUSIC"
+	/>
+
+<!-- Color Fier --> 
+
+	<model
+		id="S_COLOR_FIER"
+		file="data\sounds\other\color_fier\color_fier.wav"
+		group="COLOR_FIER"
 	/>
 
 <!-- Crash --> 

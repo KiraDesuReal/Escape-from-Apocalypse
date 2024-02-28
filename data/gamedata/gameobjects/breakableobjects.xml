@@ -450,6 +450,48 @@ $Id: BreakableObjects.xml,v 1.62 2005/11/28 07:43:57 anton Exp $
 
 	<Prototype
 		Class				= "BreakableObject"
+		Name				= "Breakable_Dub1_Snow"
+		EffectType			= "WOOD"
+		DestroyEffectType		= "CRASHTREE"	
+		ModelFile			= "dub1_snow"
+		CriticalHitEnergy 		= "5000"
+		Size				= "1 24.5 1"
+		Destroyable			= "0"
+		Mass				= "300"
+           BreakEffect			= "ET_PS_BREAKTREE"
+        IntersectionRadius	= "1.4"
+		/>
+
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_Dub2_Snow"
+		EffectType			= "WOOD"
+		DestroyEffectType		= "CRASHTREE"	
+		ModelFile			= "dub2_snow"
+		CriticalHitEnergy 		= "5000"
+		Size				= "1 34.3 1"
+		Destroyable			= "0"
+		Mass				= "300"
+           BreakEffect			= "ET_PS_BREAKTREE"
+        IntersectionRadius	= "1.4"
+		/>
+
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_Dub3_Snow"
+		EffectType			= "WOOD"
+		DestroyEffectType		= "CRASHTREE"	
+		ModelFile			= "dub3_snow"
+		CriticalHitEnergy 		= "5000"
+		Size				= "1 28.7 1"
+		Destroyable			= "0"
+		Mass				= "300"
+           BreakEffect			= "ET_PS_BREAKTREE"
+        IntersectionRadius	= "1.4"
+		/>
+
+	<Prototype
+		Class				= "BreakableObject"
 		Name				= "Breakable_Elka1"
 		EffectType			= "WOOD"
 		DestroyEffectType		= "CRASHTREE"	
@@ -482,6 +524,48 @@ $Id: BreakableObjects.xml,v 1.62 2005/11/28 07:43:57 anton Exp $
 		EffectType			= "WOOD"
 		DestroyEffectType		= "CRASHTREE"	
 		ModelFile			= "elka3"
+		CriticalHitEnergy 		= "5000"
+		Size				= "2 24.5 2"
+		Destroyable			= "0"
+		Mass				= "300"
+           BreakEffect			= "ET_PS_BREAKTREE"
+        IntersectionRadius	= "3.3"
+		/>
+
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_Elka1_Snow"
+		EffectType			= "WOOD"
+		DestroyEffectType		= "CRASHTREE"	
+		ModelFile			= "elka1_snow"
+		CriticalHitEnergy 		= "5000"
+		Size				= ".5 27.4 .5"
+		Destroyable			= "0"
+		Mass				= "300"
+           BreakEffect			= "ET_PS_BREAKTREE"
+        IntersectionRadius	= "0.7"
+		/>
+
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_Elka2_Snow"
+		EffectType			= "WOOD"
+		DestroyEffectType		= "CRASHTREE"	
+		ModelFile			= "elka2_snow"
+		CriticalHitEnergy 		= "5000"
+		Size				= "1 35.8 2.5"
+		Destroyable			= "0"
+		Mass				= "300"
+           BreakEffect			= "ET_PS_BREAKTREE"
+        IntersectionRadius	= "2.1"
+		/>
+
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_Elka3_Snow"
+		EffectType			= "WOOD"
+		DestroyEffectType		= "CRASHTREE"	
+		ModelFile			= "elka3_snow"
 		CriticalHitEnergy 		= "5000"
 		Size				= "2 24.5 2"
 		Destroyable			= "0"
@@ -534,6 +618,48 @@ $Id: BreakableObjects.xml,v 1.62 2005/11/28 07:43:57 anton Exp $
 
 	<Prototype
 		Class				= "BreakableObject"
+		Name				= "Breakable_Listvenoe1_Snow"
+		EffectType			= "WOOD"
+		DestroyEffectType		= "CRASHTREE"	
+		ModelFile			= "listvenoe1_snow"
+		CriticalHitEnergy 		= "8000"
+		Size				= "1 17.9 1"
+		Destroyable			= "0"
+		Mass				= "300"
+           BreakEffect			= "ET_PS_BREAKTREE"
+        IntersectionRadius	= "1.0"
+		/>
+
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_Listvenoe2_Snow"
+		EffectType			= "WOOD"
+		DestroyEffectType		= "CRASHTREE"	
+		ModelFile			= "listvenoe2_snow"
+		CriticalHitEnergy 		= "8000"
+		Size				= "1 22.1 1"
+		Destroyable			= "0"
+		Mass				= "300"
+           BreakEffect			= "ET_PS_BREAKTREE"
+        IntersectionRadius	= "2.4"
+		/>
+
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_Listvenoe3_Snow"
+		EffectType			= "WOOD"
+		DestroyEffectType		= "CRASHTREE"	
+		ModelFile			= "listvenoe3_snow"
+		CriticalHitEnergy 		= "8000"
+		Size				= "2 18 1"
+		Destroyable			= "0"
+		Mass				= "300"
+           BreakEffect			= "ET_PS_BREAKTREE"
+        IntersectionRadius	= "3.0"
+		/>
+
+	<Prototype
+		Class				= "BreakableObject"
 		Name				= "Breakable_Sosna1"
 		EffectType			= "WOOD"
 		DestroyEffectType		= "CRASHTREE"	
@@ -566,6 +692,48 @@ $Id: BreakableObjects.xml,v 1.62 2005/11/28 07:43:57 anton Exp $
 		EffectType			= "WOOD"
 		DestroyEffectType		= "CRASHTREE"	
 		ModelFile			= "sosna3"
+		CriticalHitEnergy 		= "8000"
+		Size				= ".5 22.7 .5"
+		Destroyable			= "0"
+		Mass				= "300"
+           BreakEffect			= "ET_PS_BREAKTREE"
+        IntersectionRadius	= "1.0"
+		/>
+
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_Sosna1_Snow"
+		EffectType			= "WOOD"
+		DestroyEffectType		= "CRASHTREE"	
+		ModelFile			= "sosna1_snow"
+		CriticalHitEnergy		= "8000"
+		Size				= ".5 22.5 .5"
+		Destroyable			= "0"
+		Mass				= "300"
+           BreakEffect			= "ET_PS_BREAKTREE"
+        IntersectionRadius	= "1.0"
+		/>
+
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_Sosna2_Snow"
+		EffectType			= "WOOD"
+		DestroyEffectType		= "CRASHTREE"	
+		ModelFile			= "sosna2_snow"
+		CriticalHitEnergy 		= "8000"
+		Size				= ".5 16.5 .5"
+		Destroyable			= "0"
+		Mass				= "300"
+           BreakEffect			= "ET_PS_BREAKTREE"
+        IntersectionRadius	= "1.0"
+		/>
+
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_Sosna3_Snow"
+		EffectType			= "WOOD"
+		DestroyEffectType		= "CRASHTREE"	
+		ModelFile			= "sosna3_snow"
 		CriticalHitEnergy 		= "8000"
 		Size				= ".5 22.7 .5"
 		Destroyable			= "0"
@@ -635,6 +803,16 @@ $Id: BreakableObjects.xml,v 1.62 2005/11/28 07:43:57 anton Exp $
 		Class				= "PhysicUnit"
 		Name				= "Human_player_slow"
 		ModelFile			= "dweller_player"
+		Mass				= "30.0"
+		WalkSpeed			= "1.0"
+		TurnSpeed			= "500"
+		MaxStandTime		= "5.0"
+		/>
+
+	<Prototype
+		Class				= "PhysicUnit"
+		Name				= "Human_keqing"
+		ModelFile			= "keqing"
 		Mass				= "30.0"
 		WalkSpeed			= "1.0"
 		TurnSpeed			= "500"

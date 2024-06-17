@@ -16918,10 +16918,10 @@
 	<Node
 		name="Object76476865"
 		class="SgAnimatedModelNode"
-		org="183.799 0.000 2282.072"
+		org="185.974 0.000 2289.064"
 		orgRel="1"
 		rot="0.0000 0.9863 0.0000 0.1650"
-		scale="1.414 1.414 1.414"
+		scale="1.214 1.214 1.214"
 		id="big_crag_6"
 		ndmAction="0" />
 
@@ -16953,10 +16953,10 @@
 	<Node
 		name="Object76476870"
 		class="SgAnimatedModelNode"
-		org="241.589 0.000 2278.442"
+		org="243.809 0.000 2274.285"
 		orgRel="1"
 		rot="0.0000 0.8910 0.0000 0.4540"
-		scale="0.957 0.957 0.957"
+		scale="0.757 0.757 0.757"
 		id="r1_Dub_Kust2"
 		ndmAction="0" />
 
@@ -16973,9 +16973,9 @@
 	<Node
 		name="Object76476872"
 		class="SgAnimatedModelNode"
-		org="184.075 0.000 2269.330"
+		org="191.124 0.000 2264.374"
 		orgRel="1"
-		rot="0.0000 0.6361 0.0000 0.7716"
+		rot="0.0000 0.7475 0.0000 0.6642"
 		scale="0.939 0.939 0.939"
 		id="r1_Dub_Kust1"
 		ndmAction="0" />
@@ -17314,16 +17314,6 @@
 		skin="1" />
 
 	<Node
-		name="Object76478288_thetown_a"
-		class="SgAnimatedModelNode"
-		org="1262.254 0.000 2767.991"
-		orgRel="1"
-		rot="0.0000 0.1456 0.0000 0.9893"
-		id="road_sign_region1"
-		ndmAction="0"
-		skin="2" />
-
-	<Node
 		name="Object76478288_thetown2"
 		class="SgAnimatedModelNode"
 		org="1321.118 0.000 2804.507"
@@ -17334,24 +17324,24 @@
 		skin="1" />
 
 	<Node
-		name="Object76478288_thetown2_a"
+		name="Object76476883_thetown_a"
 		class="SgAnimatedModelNode"
-		org="1367.936 0.000 2883.167"
+		org="1321.118 0.000 2804.507"
 		orgRel="1"
-		rot="0.0000 0.9739 0.0000 -0.2271"
+		rot="0.0000 0.1908 0.0000 0.9816"
 		id="road_sign_region1"
 		ndmAction="0"
 		skin="2" />
 
 	<Node
-		name="Object76478290_thesouth"
+		name="Object76476884_thetown2_a"
 		class="SgAnimatedModelNode"
-		org="1220.347 0.000 2953.674"
+		org="1300.784 0.000 2857.250"
 		orgRel="1"
-		rot="0.0000 -0.7178 0.0000 0.6962"
+		rot="0.0000 -0.9768 0.0000 0.2143"
 		id="road_sign_region1"
 		ndmAction="0"
-		skin="0" />
+		skin="2" />
 
 	<Node
 		name="Object76478291_gloohoe"
@@ -17730,4 +17720,70 @@
 		scale="1.000 1.000 1.000"
 		id="house3"
 		ndmAction="0" />
+
+	<Node
+		name="Object76476869"
+		class="SgAnimatedModelNode"
+		org="211.566 -0.341 2278.739"
+		orgRel="1"
+		rot="0.0000 -0.0153 -0.0000 0.9999"
+		id="agro_post"
+		ndmAction="0"
+		passable="0" />
+
+	<Node
+		name="Object76476873"
+		class="SgAnimatedModelNode"
+		org="211.566 -0.341 2278.739"
+		orgRel="1"
+		rot="0.0000 -0.0153 0.0000 0.9999"
+		id="agro_gate"
+		ndmAction="0"
+		passable="0" />
+
+	<Node
+		name="Object76476874"
+		class="SgAnimatedModelNode"
+		org="166.938 -15.332 2278.028"
+		orgRel="1"
+		rot="0.0000 -0.0153 0.0000 0.9999"
+		id="fence_short2"
+		ndmAction="0" />
+
+	<Node
+		name="Object764768751"
+		class="SgAnimatedModelNode"
+		org="255.585 -17.651 2280.694"
+		orgRel="1"
+		rot="0.0000 -0.0153 0.0000 0.9999"
+		id="fence_short2"
+		ndmAction="0" />
+
+	<Node
+		name="Object764768801"
+		class="SgAnimatedModelNode"
+		org="178.266 0.000 2273.363"
+		orgRel="1"
+		scale="0.400 0.400 0.400"
+		id="listvenoe1"
+		ndmAction="0" />
+
+	<Node
+		name="Object764768811"
+		class="SgAnimatedModelNode"
+		org="180.576 0.000 2263.380"
+		orgRel="1"
+		id="big_stone2"
+		ndmAction="0" />
+
+	<Node
+		name="Object764772044"
+		class="SgAnimatedModelNode"
+		org="2075.657 8.010 3659.907"
+		orgRel="1"
+		rot="-0.0006 -0.9964 -0.0323 0.0786"
+		scale="2.600 2.600 2.600"
+		id="road_sign_zone"
+		ndmAction="0"
+		skin="1" />
 </World>

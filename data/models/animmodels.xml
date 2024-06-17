@@ -62,11 +62,27 @@
 		file="data\models\objects\box\plastic_barrel_box.gam" />
 
 	<model
-		id="airbox"
+		id="airbox1"
 		shadow="1"
 		shadowVolume="1"
 		windwavy="0"
 		file="data\models\objects\box\airbox.gam">
+		<action
+			name="STAND1">
+			<lp
+				id="LP_LIGHT1"
+				effect_id="ET_PS_AIRBOX"
+				restartOnAnimationChange="1"
+				ImmediateRemove="1" />
+		</action>
+	</model>
+
+	<model
+		id="airbox2"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\objects\box\airbox2.gam">
 		<action
 			name="STAND1">
 			<lp
@@ -19772,6 +19788,14 @@
 	<model
 		id="quest_key_for_tunnel"
 		file="data\models\questitems\key.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0"
+		composite="0" />
+
+	<model
+		id="quest_box_videocard"
+		file="data\models\objects\box\box_videocard.gam"
 		shadow="1"
 		windwavy="0"
 		trans="0"

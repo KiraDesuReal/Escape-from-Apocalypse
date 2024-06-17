@@ -31,6 +31,7 @@
 
 			SetVar("ExitRoadToFater",0)
 			SetVar("ExitZaTheTroiskoe",0)
+			SetVar("ExitBaseFelixOpen",0)
 
 			for csl=1,8 do
 				SetVar("CountScav_"..csl.."_loc", 0)
@@ -39,6 +40,7 @@
 			SetVar("Air",0)
 			SetVar("NoAir",0)
 			SetVar("AirPoints",0)
+			SetVar("AirType", 0)
 
 			SetVar("CountPMC_Spawn1", 0)
 			SetVar("CountPMC_Spawn2", 0)
@@ -87,14 +89,25 @@
 		<event eventid="GE_GAME_START" ObjName="Player1" />
 		<script>
 
-			SetVar("ChestScavs_Timer", 0)
-			SetVar("Generator_time_work", 0)
+			SetVar("ChestScavs_time_hour", 0)
+			SetVar("ChestScavs_time_minute", 0)
+			SetVar("ChestScavs_time_second", 0)
+			SetVar("ChestScavs_Search", 0)
+
+			SetVar("Generator_time_work_hour", 0)
+			SetVar("Generator_time_work_minute", 0)
+			SetVar("Generator_time_work_second", 0)
 			SetVar("Generator_lvl", 0)
 			SetVar("Generator_on", 0)
 
-			if COUNT_RAIDS then SetVar("CountRaids",COUNT_RAIDS) end 
-			if CHESTSCAVS_TIMER_GLOBAL > 0 then SetVar("ChestScavs_Timer",CHESTSCAVS_TIMER_GLOBAL) end
-			if GENERATOR_TIMER_GLOBAL > 0 then SetVar("Generator_time_work",GENERATOR_TIMER_GLOBAL) end
+			if COUNT_RAIDS then SetVar("CountRaids", COUNT_RAIDS) end 
+			if CHESTSCAVS_TIMER_HOUR_GLOBAL > 0 then SetVar("ChestScavs_time_hour", CHESTSCAVS_TIMER_HOUR_GLOBAL) end
+			if CHESTSCAVS_TIMER_MINUTE_GLOBAL > 0 then SetVar("ChestScavs_time_minute", CHESTSCAVS_TIMER_MINUTE_GLOBAL) end
+			if CHESTSCAVS_TIMER_SECOND_GLOBAL > 0 then SetVar("ChestScavs_time_second", CHESTSCAVS_TIMER_SECOND_GLOBAL) end
+			if CHESTSCAVS_SEARCH_GLOBAL > 0 then SetVar("ChestScavs_Search", CHESTSCAVS_SEARCH_GLOBAL) end
+			if GENERATOR_TIMER_HOUR_GLOBAL > 0 then SetVar("Generator_time_work_hour", GENERATOR_TIMER_HOUR_GLOBAL) end
+			if GENERATOR_TIMER_MINUTE_GLOBAL > 0 then SetVar("Generator_time_work_minute", GENERATOR_TIMER_MINUTE_GLOBAL) end
+			if GENERATOR_TIMER_SECOND_GLOBAL > 0 then SetVar("Generator_time_work_second", GENERATOR_TIMER_SECOND_GLOBAL) end
 			if GENERATOR_LVL_GLOBAL then SetVar("Generator_lvl", GENERATOR_LVL_GLOBAL) end
 			if GENERATOR_ON_GLOBAL then SetVar("Generator_on", GENERATOR_ON_GLOBAL) end
 
@@ -120,6 +133,7 @@
 			TActivate("CreateValuablesLootBox")
 			TActivate("CreateElectronicsLootBox")
 			TActivate("CreateTheTownLootBox")
+			TActivate("AddKeyGateBaseFelixInChests")
 
 			TActivate("CreateBossProbability")
 
@@ -373,7 +387,9 @@
 	<trigger Name="TimerRaidStart" active="0">
 		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
-			SetVar("TimeRaid",720)
+			SetVar("TimeRaidMinute",13)
+			SetVar("TimeRaidSecond",59)
+			SetVar("TimeRaidMsg", 0)
 			TActivate("TimerRaid")
 			trigger:Deactivate() 
 		</script>
@@ -383,60 +399,107 @@
 		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
 			
-			local time = GetVar("TimeRaid").AsInt
+			local min = GetVar("TimeRaidMinute").AsInt
+			local sec = GetVar("TimeRaidSecond").AsInt
 
-			if time == 1200 then
-				AddImportantFadingMsgByStrIdFormatted("fm_time_min", 20)
-			elseif time == 900 then
-				AddImportantFadingMsgByStrIdFormatted("fm_time_min", 15)
-			elseif time == 720 then
-				AddImportantFadingMsgByStrIdFormatted("fm_time_min", 12)
-			elseif time == 600 then
+			local nulM = ""
+			local nulS = ""
+
+			if 10 > min then nulM = 0 end
+			if 10 > sec then nulS = 0 end
+
+			local Msg = nulM..min..":"..nulS..sec
+
+			SetVar("TimeRaidMsg", Msg)
+		
+			if min == 13 and sec == 59 then
+				AddImportantFadingMsgByStrIdFormatted("fm_time_raid", Msg)
+			elseif min == 10 and sec == 1 then
 				TActivate("AirDropProbability")
-				AddImportantFadingMsgByStrIdFormatted("fm_time_min", 10)
-			elseif time == 360 then
+			elseif min == 9 and sec == 59 then
+				AddImportantFadingMsgByStrIdFormatted("fm_time_raid", Msg)
+			elseif min == 5 and sec == 59 then
 				TActivate("CreateScavs")
-			elseif time == 300 then
-				AddImportantFadingMsgByStrIdFormatted("fm_time_min_red", 5)
-			elseif time == 180 then
-				AddImportantFadingMsgByStrIdFormatted("fm_time_min2_red", 3)
-			elseif time == 120 then
-				AddImportantFadingMsgByStrIdFormatted("fm_time_min2_red", 2)
-			elseif time == 60 or time == 30 or time == 10 or 5 >= time and not(time == 0) then
-				AddImportantFadingMsgByStrIdFormatted("fm_time_sec", time)
+			elseif min == 4 and sec == 59 or min == 2 and sec == 59 or min == 1 and sec == 59 then
+				AddImportantFadingMsgByStrIdFormatted("fm_time_raid_red", Msg)
+			elseif min == 0 and sec == 59 or min == 0 and sec == 30 or min == 0 and sec == 10  or min == 0 and 5 >= sec and not(sec == 0) then
+				AddImportantFadingMsgByStrIdFormatted("fm_time_raid_red", Msg)
 			end
 
-			local cst = GetVar("ChestScavs_Timer").AsInt
-			if cst > 0 then
-				cst = cst - 1
-				SetVar("ChestScavs_Timer",cst)
-			end
+			if GetVar("ChestScavs_time_hour").AsInt > 0 or GetVar("ChestScavs_time_minute").AsInt > 0 or GetVar("ChestScavs_time_second").AsInt > 0 then
+				if GetVar("ChestScavs_Search").AsInt > 0 then
+					local hourC = GetVar("ChestScavs_time_hour").AsInt
+					local minC = GetVar("ChestScavs_time_minute").AsInt
+					local secC = GetVar("ChestScavs_time_second").AsInt
 
-			if GetVar("Generator_on").AsInt == 1 then
-				if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
-					local gt = GetVar("Generator_time_work").AsInt
-					if 1 > gt then
-						SetVar("Generator_time_work", 0)
-						SetVar("Generator_on", 0)
-					else
-						if GetVar("Generator_lvl").AsInt == 1 then
-							gt = gt - 4
-						elseif  GetVar("Generator_lvl").AsInt == 2 then
-							gt = gt - 2
+					if not(0 > hourC) and not(0 > minC) then
+						secC = secC - 1
+						SetVar("ChestScavs_time_second", secC)
+						if 0 > secC then
+							SetVar("ChestScavs_time_second", 59)
+							minC = minC - 1
+							SetVar("ChestScavs_time_minute", minC)
 						end
-						SetVar("Generator_time_work",gt)
+						if 0 > minC then
+							SetVar("ChestScavs_time_minute", 59)
+							hourC = hourC - 1
+							SetVar("ChestScavs_time_hour", hourC)
+						end
+					end
+
+					if 0 > hourC and 0 > minC and 0 > secC then
+						SetVar("ChestScavs_time_hour", 0)
+						SetVar("ChestScavs_time_minute", 0)
+						SetVar("ChestScavs_time_second", 0)
 					end
 				end
 			end
 
-			if time > 0 then
-				time = time - 1
-				SetVar("TimeRaid",time)
-			else
+			if GetVar("Generator_on").AsInt == 1 then
+				if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
+					local hourG = GetVar("Generator_time_work_hour").AsInt
+					local minG = GetVar("Generator_time_work_minute").AsInt
+					local secG = GetVar("Generator_time_work_second").AsInt
+					
+					if not(0 > hourG) and not(0 > minG) then
+						secG = secG - 1
+						SetVar("Generator_time_work_second", secG)
+						if 0 > secG then
+							SetVar("Generator_time_work_second", 59)
+							minG = minG - 1
+							SetVar("Generator_time_work_minute", minG)
+						end
+						if 0 > minG then
+							SetVar("Generator_time_work_minute", 59)
+							hourG = hourG - 1
+							SetVar("Generator_time_work_hour", hourG)
+						end
+					end
+
+					if 0 > hourG and 0 > minG and 0 > secG then
+						SetVar("Generator_time_work_second", 0)
+						SetVar("Generator_time_work_minute", 0)
+						SetVar("Generator_time_work_hour", 0)
+						SetVar("Generator_on", 0)
+					end
+				end
+			end
+
+			if not(0 > min) then
+				sec = sec - 1
+				SetVar("TimeRaidSecond",sec)
+				if 0 > sec then 
+					SetVar("TimeRaidSecond",59)
+					min = min - 1
+					SetVar("TimeRaidMinute",min)
+				end
+			end
+
+			if 0 > min and 0 >= sec then
 				TActivate("cutTimeRaid")
 				trigger:Deactivate() 
 			end
-
+			
 		</script>
 	</trigger>
 
@@ -482,7 +545,7 @@
 		</script>
 	</trigger>
 
-<!-- Активация выходов  Фатер Южный Глухое(Рандом) -->
+<!-- Активация выходов  Фатер(Рандом) База Глухое -->
 	<trigger Name="Exits_FaterTownGloohoe" active="0">
 		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -496,6 +559,7 @@
 			end
 
 			TActivate ("ZaTheGloohoe")
+			TActivate ("BaseFelix")
 
 			local ExitZaTheTroiskoeRandom = random (2)
 			if ExitZaTheTroiskoeRandom == 1 then
@@ -606,13 +670,31 @@
 	<trigger Name="BaseFelix" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BaseFelix_Exit" />
 		<script>
-			if GetVar("PetrolStation_Refill_Process").AsInt == 0 then
-				SetVar("ExitTimer",6)
-				AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitBaseFelix")
-				SoundFadingMsg()
-				TActivate ("LeaveZoneExit")
-				TActivate ("ExitTimer")
+			if HasPlayerAmountOfItems("item_key_gate_basefelix", 1) and GetVar("ExitBaseFelixOpen").AsInt == 0 then
+				local b = SpawnMessageBox("90002")
+				if b == 1 then
+					if GetVar("PetrolStation_Refill_Process").AsInt == 0 then
+						RemoveItemsFromPlayerRepository("item_key_gate_basefelix", 1)
+						AddFadingMsgByStrIdFormatted("fm_item_to_npc", "item_key_gate_basefelix")
+						SetVar("ExitBaseFelixOpen", 1)
+						TActivate("BaseFelixExtract")
+					end
+				end
+			elseif GetVar("ExitBaseFelixOpen").AsInt == 1 then
+				TActivate("BaseFelixExtract")
 			end
+ 		</script>
+	</trigger>
+
+	<trigger Name="BaseFelixExtract" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			SetVar("ExitTimer",6)
+			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitBaseFelix")
+			SoundFadingMsg()
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+			trigger:Deactivate()
  		</script>
 	</trigger>
 
@@ -670,11 +752,21 @@
 	<trigger Name="ShowExits" active="1">
 		<event eventid="GE_PLAYER_VEHICLE_HORN" ObjName="Player1" />
 		<script>
-			if GetVar("SpawnPlayer").AsInt==1 then
+
+			if 5 > GetVar("TimeRaidMinute").AsInt and not(0 > GetVar("TimeRaidMinute").AsInt) then
+				AddImportantFadingMsgByStrIdFormatted("fm_time_raid_red", GetVar("TimeRaidMsg").AsString)
+			elseif 0 >= GetVar("TimeRaidMinute").AsInt and GetVar("TimeRaidSecond").AsInt == 59 then
+				AddImportantFadingMsgByStrIdFormatted("fm_time_raid_red", GetVar("TimeRaidMsg").AsString)
+			else
+				AddImportantFadingMsgByStrIdFormatted("fm_time_raid", GetVar("TimeRaidMsg").AsString)
+			end
+
+			if GetVar("SpawnPlayer").AsInt == 1 then
 				AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits2LocationR1M1")
 			else
 				AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits1LocationR1M1")
 			end
+
 			TActivate("ShowExits_Activate")
 			trigger:Deactivate()
 		</script>
@@ -719,7 +811,7 @@
 
 			local path = {CVector(1624.129, 283.657, 2807.563), CVector(1721.746, 286.512, 2847.206), CVector(1688.202, 283.547, 2879.869), CVector(1645.460, 283.595, 2955.260), CVector(1582.189, 284.303, 3024.591), CVector(1490.085, 283.625, 3008.741), CVector(1429.187, 286.236, 2970.178), CVector(1434.928, 287.164, 2881.619), CVector(1501.409, 283.559, 2899.368), CVector(1589.801, 283.591, 2936.334), CVector(1627.208, 283.528, 2902.810), CVector(1575.561, 284.098, 2798.970)}
 			
-			local count_scav = random(2,4)
+			local count_scav = random(1,2)
 
 			for j=1,count_scav do
 				local model = enemylist[random(scav)]
@@ -855,7 +947,7 @@
 
 			local path = {CVector(2275.193, 304.085, 3055.022), CVector(2279.176, 303.750, 3179.677), CVector(2327.265, 316.909, 3014.011), CVector(2354.767, 320.404, 2957.019), CVector(2296.965, 320.995, 2878.725), CVector(2263.522, 324.053, 2812.150), CVector(2304.156, 322.725, 2749.460), CVector(2374.134, 321.688, 2773.182), CVector(2157.323, 331.988, 2828.024), CVector(2159.778, 311.620, 3022.796)}
 
-			local count_scav = random(3,5)
+			local count_scav = random(2,4)
 
 			for j=1,count_scav do
 				local model = enemylist[random(scav)]
@@ -994,7 +1086,7 @@
 
 			local path = {CVector(1669.522, 303.936, 2246.068), CVector(1610.599, 307.127, 2245.423), CVector(1579.475, 309.320, 2157.021), CVector(1551.033, 307.068, 2070.690), CVector(1541.842, 304.654, 1997.757), CVector(1612.396, 303.630, 2010.833), CVector(1678.682, 304.701, 1990.303), CVector(1624.556, 307.653, 1899.555), CVector(1559.774, 307.472, 1792.312)}
 
-			local count_scav = random(3,5)
+			local count_scav = random(2,4)
 
 			for j=1,count_scav do
 				local model = enemylist[random(scav)]
@@ -1129,7 +1221,7 @@
 
 			local path = {CVector(2672.253, 322.302, 2015.169), CVector(2612.331, 320.786, 2054.457), CVector(2577.770, 320.765, 2022.757), CVector(2589.958, 320.663, 1958.336), CVector(2689.345, 320.804, 1876.304), CVector(2662.642, 320.594, 1781.011), CVector(2602.172, 320.621, 1793.862), CVector(2749.990, 312.899, 1804.018), CVector(2576.072, 322.745, 1662.243), CVector(2664.245, 322.290, 1686.177), CVector(2700.591, 322.415, 1602.208)}
 
-			local count_scav = random(3,5)
+			local count_scav = random(2,4)
 
 			for j=1,count_scav do
 				local model = enemylist[random(scav)]
@@ -1266,7 +1358,7 @@
 
 			local path = {CVector(453.605, 303.648, 1922.423), CVector(515.726, 303.965, 1842.498), CVector(511.420, 303.647, 1766.025), CVector(547.475, 309.252, 1893.809), CVector(443.120, 304.213, 1888.784), CVector(456.088, 307.184, 1968.080), CVector(602.015, 308.198, 1728.408), CVector(414.523, 311.682, 1666.536)}
 
-			local count_scav = random(4,5)
+			local count_scav = random(3,5)
 
 			for j=1,count_scav do
 				local model = enemylist[random(scav)]
@@ -1413,7 +1505,7 @@
 
 			local path = {CVector(1780.501, 302.568, 556.062), CVector(1796.444, 302.470, 602.812), CVector(1871.440, 297.234, 610.530), CVector(1941.116, 296.966, 503.908), CVector(1962.834, 303.572, 428.635), CVector(2057.774, 303.498, 415.973), CVector(2115.615, 301.251, 438.287), CVector(2186.515, 296.741, 492.212), CVector(2139.554, 296.793, 546.466), CVector(2091.694, 296.867, 558.750), CVector(1966.422, 296.782, 552.349)}
 
-			local count_scav = random(4,6)
+			local count_scav = random(1,4)
 
 			for j=1,count_scav do
 				local model = enemylist[random(scav)]
@@ -1554,7 +1646,7 @@
 
 			local path = {CVector(1971.739, 302.472, 951.001), CVector(2050.920, 301.738, 905.167), CVector(2113.665, 302.513, 899.520), CVector(2157.544, 302.700, 936.778), CVector(2209.236, 303.580, 907.247), CVector(2247.232, 302.144, 958.265), CVector(2302.053, 304.369, 973.852), CVector(2337.177, 303.666, 828.817), CVector(2118.364, 302.579, 860.890)}
 
-			local count_scav = random (4,6)
+			local count_scav = random (1,3)
 
 			for j=1,count_scav do
 				local model = enemylist[random(scav)]
@@ -1699,7 +1791,7 @@
 
 			local path = {CVector(3013.713, 315.633, 1020.278), CVector(2928.279, 315.541, 1042.287), CVector(2905.023, 316.267, 933.945), CVector(3002.050, 318.170, 839.534), CVector(2853.905, 319.588, 899.682), CVector(2788.217, 320.473, 928.003), CVector(2746.130, 317.908, 854.060), CVector(2895.664, 315.417, 1034.458)}
 
-			local count_scav = random(4,6)
+			local count_scav = random(2,4)
 
 			for j=1,count_scav do
 				local model = enemylist[random(scav)]
@@ -2187,11 +2279,9 @@
 	<trigger Name="CreateBarrelBox" active="0">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-
 			for i=1,31 do
 				CreateBarrelLootBox("barrel"..i, CVector(getPos("barrelBox_"..i.."_loc")))
 			end
-
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -2199,102 +2289,282 @@
 	<trigger Name="CreateBoxForDeadScav" active="0">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-
+			local items = {"potato", "scrap_metal", "firewood", "oil", "bottle", "doski", "details",
+						"scrap_metal_use", "oil_use", "fuel_nil_use",
+						"item_key_gate_thetown",
+						"ammo_chest_machinegun", "ammo_chest_shotgun",
+						"item_bolts", "item_hose", "item_insulation", "item_nails", "item_nuts", "item_parts", "item_plex", "item_poheram", "item_scotch", "item_screws",
+						"item_cooler", "item_cpu", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_kondesators", "item_lump", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tplug", "item_usb", "item_wires",
+						"item_battery_aa", "item_battery_d",
+						"item_hunter_spich", "item_lighter", "item_spich", "item_zibbo",
+						"item_salt", "item_soap", "item_tb", "item_toothpaste",
+						"item_pants40grn", "item_salo", "item_vodka",
+						"hornet01", "specter01", "pkt01", "kord01", "storm01", "vector01", "vulcan01"}	
+			
 			for i=1,5 do
-				CreateLootBoxForDeadScav("DeadScav"..i, CVector(getPos("DeadScav_"..i.."_loc")))
-			end
+				local Chest = CreateNewObject{prototypeName = "mainChest", objName = "DeadScav"..i.."Chest"}	
+				local ChestId = GetEntityByID(Chest)
+				ChestId:SetPosition(CVector(getPos("DeadScav_"..i.."_loc")))
 
+				local count = random(4)
+
+				for l=1,count do
+					local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "ScavItem_"..l, belong = 1100}
+					local ItemId = GetEntityByID(Item)
+					if ChestId and ItemId then
+						ChestId:AddChild(ItemId)
+					end
+				end
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
 	<trigger Name="CreateGunLootBox" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-
 			for i=1,15 do
 				CreateGunBox("GunBox"..i, CVector(getPos("GunBox_"..i.."_loc")))
 			end
-
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
 	<trigger Name="CreateMedicalLootBox" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-
+			local items = {"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_medical_tools", "item_naci", "item_suringe",
+							"scrap_metal_use", "machinery_use",
+							"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_tb", "item_toothpaste"}
+			
 			for i=1,7 do
-				CreateMedBox("MedicalBox"..i, CVector(getPos("MedBox_"..i.."_loc")))
+				local Chest = CreateNewObject{prototypeName = "mainChest", objName = "MedicalBox"..i.."Chest"}	
+				local ChestId = GetEntityByID(Chest)
+				ChestId:SetPosition(CVector(getPos("MedBox_"..i.."_loc")))
+				ChestId:SetSkin(4)
+			
+				local ChestPos = ChestId:GetPosition()
+				ChestPos.y = ChestPos.y + 1
+				ChestId:SetPosition(ChestPos)
+			
+				local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityMedItem_"..i, belong = 1100}
+				local OpacityItemId = GetEntityByID(OpacityItem)
+			
+				if ChestId and OpacityItemId then
+					ChestId:AddChild(OpacityItemId)
+				end
+			
+				local notloot = random(100)
+				local count = random(2)
+			
+				if notloot > 10 then
+					for l=1,count do
+						local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "MedItem_"..l, belong = 1100}
+						local ItemId = GetEntityByID(Item)
+						if ChestId and ItemId then
+							ChestId:AddChild(ItemId)
+						end
+					end
+				end
 			end
-
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
 	<trigger Name="CreateTehnoLootBox" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-
+			local use = {"scrap_metal_use", "oil_use", "fuel_nil_use", "machinery_use", "fuel_full_use", "electronics_use"}
+			local items = {"item_bolts", "item_hose", "item_datchik", "item_insulation", "item_kek", "item_nails", "item_nuts", "item_parts", "item_pena", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_thermometer", "item_tube",
+							"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_green_battery", "item_powerbank",
+							"item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo",
+							"scrap_metal", "oil", "bottle", "fuel", "machinery", "tobacco", "doski", "details",
+							"item_filter", "item_paracord", "item_waterfilter", "item_zapal",
+							"item_awl", "item_leatherman", "item_metalscissors", "item_nippers", "item_pliers", "item_pliers_round", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_wrench",
+							"item_cable", "item_drill", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_helix", "item_lump", "item_magnet", "item_rele", "item_svech", "item_tplug", "item_ultra_lump", "item_usb", "item_wires"}
+			
 			for i=1,10 do
-				CreateTehnoBox("TehnoBox"..i, CVector(getPos("TehnoBox_"..i.."_loc")))
+				local Chest = CreateNewObject{prototypeName = "mainChest", objName = "TehnoBox"..i.."Chest"}	
+				local ChestId = GetEntityByID(Chest)
+				ChestId:SetPosition(CVector(getPos("TehnoBox_"..i.."_loc")))
+				ChestId:SetSkin(5)
+			
+				local ChestPos = ChestId:GetPosition()
+				ChestPos.y = ChestPos.y + 1
+				ChestId:SetPosition(ChestPos)
+			
+				local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityTehnoItem_"..i, belong = 1100}
+				local OpacityItemId = GetEntityByID(OpacityItem)
+			
+				if ChestId and OpacityItemId then
+					ChestId:AddChild(OpacityItemId)
+				end
+			
+				local notloot = random(100)
+				local count = random(4)
+				local useItem = random(2)
+			
+				if notloot > 10 then
+					if useItem == 1 then
+						local UseItem = CreateNewObject{prototypeName = use[exrandom(getn(use))], objName = "TehnoUseItem_1", belong = 1100}
+						local UseItemId = GetEntityByID(UseItem)
+						if ChestId and UseItemId then
+							ChestId:AddChild(UseItemId)
+						end
+					end
+					
+					for l=1,count do
+						local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "TehnoItem_"..l, belong = 1100}
+						local ItemId = GetEntityByID(Item)
+						if ChestId and ItemId then
+							ChestId:AddChild(ItemId)
+						end
+					end
+				end
 			end
-
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
 	<trigger Name="CreateToolsLootBox" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-
+			local items = {"item_bolts", "item_hose", "item_insulation", "item_kek", "item_nails", "item_nuts", "item_parts", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_tube",
+							"scrap_metal", "oil", "bottle", "fuel", "machinery", "doski", "details",
+							"item_dry", "item_hunter_spich", "item_lighter", "item_spich", "item_survl", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo",
+							"item_filter", "item_vitalik", "item_waterfilter", "item_zapal",
+							"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench"}
+			
 			for i=1,9 do
-				CreateToolsBox("ToolsBox"..i, CVector(getPos("ToolsBox_"..i.."_loc")))
+				local Chest = CreateNewObject{prototypeName = "mainChest", objName = "ToolsBox"..i.."Chest"}	
+				local ChestId = GetEntityByID(Chest)
+				ChestId:SetPosition(CVector(getPos("ToolsBox_"..i.."_loc")))
+				ChestId:SetSkin(6)
+			
+				local ChestPos = ChestId:GetPosition()
+				ChestPos.y = ChestPos.y + 1
+				ChestId:SetPosition(ChestPos)
+			
+				local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityToolsItem_"..i, belong = 1100}
+				local OpacityItemId = GetEntityByID(OpacityItem)
+			
+				if ChestId and OpacityItemId then
+					ChestId:AddChild(OpacityItemId)
+				end
+			
+				local notloot = random(100)
+				local count = random(3)
+			
+				if notloot > 10 then
+					for l=1,count do
+						local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "ToolsItem_"..l, belong = 1100}
+						local ItemId = GetEntityByID(Item)
+						if ChestId and ItemId then
+							ChestId:AddChild(ItemId)
+						end
+					end
+				end		
 			end
-
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
 	<trigger Name="CreateValuablesLootBox" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
+			local items = {"book", "shkatulka", "item_key_gate_thetown", "item_key_gate_basefelix", "item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_emre_kara", "item_fitanyashka", "item_monolit", "item_kaktus", "item_keqing", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_carsen"}
 
 			for i=1,7 do
-				CreateValuableBox("ValuablesBox"..i, CVector(getPos("ValuableBox_"..i.."_loc")))
-			end
+				local Chest = CreateNewObject{prototypeName = "mainChest", objName = "ValuablesBox"..i.."Chest"}	
+				local ChestId = GetEntityByID(Chest)
+				ChestId:SetPosition(CVector(getPos("ValuableBox_"..i.."_loc")))
+				ChestId:SetSkin(7)
 
+				local ChestPos = ChestId:GetPosition()
+				ChestPos.y = ChestPos.y + 1
+				ChestId:SetPosition(ChestPos)
+
+				local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityValuableItem_"..i, belong = 1100}
+				local OpacityItemId = GetEntityByID(OpacityItem)
+
+				if ChestId and OpacityItemId then
+					ChestId:AddChild(OpacityItemId)
+				end
+
+				local notloot = random(100)
+				local count = random(1)
+				
+				if notloot > 10 then
+					for l=1,count do
+						local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "ValuableItem_"..l, belong = 1100}
+						local ItemId = GetEntityByID(Item)
+
+						if ChestId and ItemId then
+							ChestId:AddChild(ItemId)
+						end
+					end
+				end
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
 	<trigger Name="CreateElectronicsLootBox" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
+			local items = {"item_bp", "item_cable", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_hdd", "item_helix", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tplug", "item_ultra_lump", "item_usb", "item_wires",
+							"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank"}
 
 			for i=1,5 do
-				CreateElectronicsBox("ElectronicsBox"..i, CVector(getPos("ElectronicsBox_"..i.."_loc")))
+				local Chest = CreateNewObject{prototypeName = "mainChest", objName = "ElectronicsBox"..i.."Chest"}	
+				local ChestId = GetEntityByID(Chest)
+				ChestId:SetPosition(CVector(getPos("ElectronicsBox_"..i.."_loc")))
+				ChestId:SetSkin(1)
+			
+				local ChestPos = ChestId:GetPosition()
+				ChestPos.y = ChestPos.y + 1
+				ChestId:SetPosition(ChestPos)
+			
+				local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityElectronicsItem_"..i, belong = 1100}
+				local OpacityItemId = GetEntityByID(OpacityItem)
+			
+				if ChestId and OpacityItemId then
+					ChestId:AddChild(OpacityItemId)
+				end
+			
+				local notloot = random(100)
+				local count = random(3)
+			
+				if notloot > 10 then
+					for l=1,count do
+						local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "ElectronicsItem_"..l, belong = 1100}
+						local ItemId = GetEntityByID(Item)
+						if ChestId and ItemId then
+							ChestId:AddChild(ItemId)
+						end
+					end
+				end	
 			end
-
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
 	<trigger Name="CreateTheTownLootBox" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-		
-			local item = {"item_tube", "item_kek", "machinery", "item_military_tube", "item_thermometer", "item_pena", "item_datchik",
-							"item_dvd", "item_cpu", "item_ram", "item_kondesators", "item_electronics_components", "item_cooler", "item_gazan", "item_plate", "item_cable", "item_hdd", "item_drill", "item_lcd", "item_military_cable", "electronics", "item_bp", "item_engine", "item_iridiym", "item_tetris", "item_vpx", "item_gpu",
-							"item_green_battery", "item_car_battery", "item_cyclon", "item_tank_battery",
-							"item_ssd", "item_disk_exmachina", "item_sas", "item_rozvidka",
-							"item_rolex", "item_chain_gold", "item_woodclock", "item_chiken", "item_skullring",
-							"fagot01","maxim01","flag01","rainmetal01","elephant01","odin01","omega01",
-							"ammo_chest_machinegun", "ammo_chest_heavygun", "ammo_chest_artillerygun"}
-			local item_random = getn(item)
+			local items = {"machinery", "book", "electronics", "shkatulka", 
+							"ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_chest_artillerygun",
+							"item_datchik", "item_kek", "item_military_tube", "item_pena", "item_thermometer", "item_tube",
+							"item_bp", "item_drill", "item_engine", "item_hdd", "item_lcd", "item_military_cable", "item_tetris",
+							"item_car_battery", "item_cyclon", "item_green_battery",
+							"item_dry", "item_prisadka", "item_propan", "item_termit",
+							"item_disk", "item_disk_exmachina", "item_flashdrive", "item_sas", "item_ssd",
+							"item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen",
+							"item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon",
+							"fagot01", "maxim01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "big_swingfire01", "cyclops01", "octopus01", "rocketLauncher", "someTurboAccelerationPusher"}
 
 			for i=1,5 do
-				local Chest = CreateNewObject{prototypeName = "someChest", objName = "TheTown_"..i.."_Chest"}	
+				local Chest = CreateNewObject{prototypeName = "mainChest", objName = "TheTown_"..i.."_Chest"}	
 				local ChestId = GetEntityByID(Chest)
 				ChestId:SetPosition(CVector(getPos("TheTownBox_"..i.."_loc")))
 				ChestId:SetSkin(2)
@@ -2303,20 +2573,35 @@
 				ChestPos.y = ChestPos.y + 1
 				ChestId:SetPosition(ChestPos)
 
-				local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityTheTownItem"..random(10000), belong = 1100}
+				local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityTheTownItem_"..i, belong = 1100}
 				local OpacityItemId = GetEntityByID(OpacityItem)
 
 				if ChestId and OpacityItemId then
 					ChestId:AddChild(OpacityItemId)
 				end
 
-				local Item = CreateNewObject{prototypeName = item[random(item_random)], objName = "TheTownItem"..random(10000), belong = 1100}
+				local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "TheTownItem_"..i, belong = 1100}
 				local ItemId = GetEntityByID(Item)
 				if ChestId and ItemId then
 					ChestId:AddChild(ItemId)
 				end
 			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
 
+	<trigger Name="AddKeyGateBaseFelixInChests" active="0">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local ChestRandom = {"DeadScav2Chest", "GunBox"..random(4,6).."Chest", "GunBox12Chest", "TehnoBox5Chest", "ElectronicsBox2Chest"}
+			local Chest = GetEntityByName(ChestRandom[random(getn(ChestRandom))])
+	
+			local Item = CreateNewObject{prototypeName = "item_key_gate_basefelix", objName = "KeyGateBaseFelixItem_1", belong = 1100}
+			local ItemId = GetEntityByID(Item)
+
+			if Chest and ItemId then
+				Chest:AddChild(ItemId)
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -2415,8 +2700,9 @@
 
 			TeamCreate("Boss", 1087, pos_boss[random(pos_boss_r)], {"Hunter2CarBoss"}, nil, 0)
 
-			local bit = random(100)
-			local mon = random(100)
+			local loot = {20,5,35}
+			local items = {"item_vitaly", "item_bitcoin", "item_key_gate_thetown"}
+			local count = 0
 
 			local boss = GetEntityByName ("Boss_vehicle_0")
 			if boss then
@@ -2428,11 +2714,13 @@
 				boss:AddItemsToRepository(ItemsLifeUse[random(r2)], 1)
 				boss:AddItemsToRepository(ItemsOilUse[exrandom(r3)], 1)
 				AddAmmoItemsForGuns(boss)
-				if (30 >= mon) then
-					boss:AddItemsToRepository("item_vitaly", 1)
-				end
-				if (5 >= bit) then
-					boss:AddItemsToRepository("item_bitcoin", 1)
+				for i=1,3 do
+					if loot[i] >= random(100) then
+						if count == 0 then
+							boss:AddItemsToRepository(items[i], 1)
+							count = 1
+						end
+					end
 				end
 			end
 
@@ -2475,16 +2763,18 @@
 		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local air_rand = random(100)
-			local time = GetVar("TimeRaid").AsInt
+			
+			local min = GetVar("TimeRaidMinute").AsInt
+			local sec = GetVar("TimeRaidSecond").AsInt
 
-			if time == 898 or time == 840 or time == 780 or time == 720 or time == 600 or time == 540 or time == 480 or time == 420 or time == 360 or time == 300 or time == 240 or time == 180 then
+			if 9 >= min and sec == 59 and not(2 >= min) then
 				if (10 >= air_rand) then
 					TActivate("SpawnOracle_AirDrop")
 					trigger:Deactivate()
 				end
 			end
 
-			if 180 >= time and GetVar("Air").AsInt == 0 then
+			if 2 >= min and GetVar("Air").AsInt == 0 then
 				trigger:Deactivate()
 			end
 		</script>
@@ -2605,6 +2895,7 @@
 			SetVar("Air",1)
 			SetVar("NoAir",0)
 			SetVar("AirPoints",0)
+			SetVar("AirType",random(1,2))
 
 			for i=1,14 do
 				GetEntityByName("air_point"..i):Remove()
@@ -2614,13 +2905,13 @@
 			local OraclePos = OracleAir:GetPosition()
 			local OracleRot = OracleAir:GetRotation()
 
-			CreateNewSgNodeObject("airbox", "airB", -1, -1, OraclePos, OracleRot, 1)
+			CreateNewSgNodeObject("airbox"..GetVar("AirType").AsInt, "airB", -1, -1, OraclePos, OracleRot, 1)
 
 			local air_box = GetEntityByName("airB")
 			local air_box_pos = air_box:GetPosition()
 			air_box_pos.y = air_box_pos.y - 5
 			air_box:SetPosition(air_box_pos)
-
+	
 			TActivate("BoxDownY")
 			TActivate("TimerForCreateAirDrop")
 
@@ -2652,47 +2943,65 @@
 	<trigger Name="AirDrop" active="0">
 		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
-
 			local AirBoxSg = GetEntityByName("airB")
-			local AirBoxSgPos = AirBoxSg:GetPosition()
-			local AirBoxSgRot = AirBoxSg:GetRotation()
-
-			local Chest = CreateNewObject{prototypeName = "airChest", objName = "AirBox"}	
+			local Chest = CreateNewObject{prototypeName = "airChest"..GetVar("AirType").AsInt, objName = "AirBox"}	
 			local ChestId = GetEntityByID(Chest)
-			ChestId:SetPosition(AirBoxSgPos)
-			ChestId:SetRotation(AirBoxSgRot)
+			if AirBoxSg then
+				ChestId:SetPosition(AirBoxSg:GetPosition())
+				ChestId:SetRotation(AirBoxSg:GetRotation())
+				AirBoxSg:Remove()
+			end
+
+			local lootcount
+			local items = {}
+			local life = {}
+			local fuel = {}
 			
-			if AirBoxSg then AirBoxSg:Remove() end
-
-			local lootcount = random(10,20)
-
-			local items = {"scrap_metal_use", "oil_use", "machinery_use", "fuel_nil_use", "fuel_full_use", "electronics_use",
-							"item_scotch", "item_nails", "item_nuts", "item_insulation", "item_screws", "scrap_metal", "doski", "item_bolts", "item_hose", "details", "item_plex", "item_parts", "item_poheram", "item_tube", "item_kek", "machinery", "item_military_tube", "item_thermometer", "item_pena", "item_datchik",
-							"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_cpu", "item_svech", "item_ram", "item_kondesators", "item_magnet", "item_energo_lump", "item_electronics_components", "item_phone", "item_ultra_lump", "item_cooler", "item_gazan", "item_geiger", "item_plate", "item_cable", "item_helix", "item_hdd", "item_drill", "item_lcd", "item_military_cable", "electronics", "item_bp", "item_engine", "item_iridiym", "item_tetris", "item_vpx", "item_virtex", "item_converter", "item_gpu",
-							"item_battery_d", "item_battery_aa", "item_accum", "item_powerbank", "item_green_battery", "item_car_battery", "item_cyclon", "item_tank_battery",
-							"item_spich", "item_hunter_spich", "item_lighter", "item_wd40_100", "item_zibbo", "oil", "item_survl", "item_wd40_400", "fuel", "item_trotile", "item_dry", "item_propan", "item_prisadka", "item_termit",
-							"item_soap", "item_salt", "item_tb", "item_toothpaste", "item_soda", "item_paper", "item_alkani", "item_hlor", "book",
-							"item_disk", "item_manual", "item_flashdrive", "item_diary_s", "item_diary", "item_ssd", "item_disk_exmachina", "item_sas", "item_rozvidka",
-							"item_medical_tools", "item_naci", "item_h2o2", "item_suringe", "item_c6h8o6", "item_aquapeps", "item_oftalmaskop", "item_ledx",
-							"item_zapal", "tobacco", "bottle", "item_vodka", "item_monolit", "item_kaktus", "item_filter", "item_emre_kara", "item_keqing", "item_waterfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_airfilter", "item_ananaga",
-							"item_roulet", "item_wrench", "item_screw", "item_pliers", "item_screw_flat", "item_nippers", "item_metalscissors", "item_pliers_round", "item_leatherman", "item_screw_flat_long", "item_toolset", "item_awl", "item_fullmaster", "item_sewing_kit", "item_handrill", "item_buldex", "item_ratchet_wrench", "item_pipe_wrench",
-							"item_chain", "shkatulka", "item_ex", "item_teapon", "item_cat", "item_rolex", "item_chain_gold", "item_woodclock", "item_chiken", "item_skullring", "item_lion", "item_bitcoin",
-							"hornet01","specter01","pkt01","kord01","storm01","fagot01","maxim01","vector01","vulcan01","kpvt01","rapier01","flag01","rainmetal01","elephant01","odin01","omega01","bumblebee01","hammer01","hunterSideGun","mrakSideGun","big_swingfire01","cyclops01","octopus01","hailSideGun","hurricane01","rocketLauncher","zeusSideGun","marsSideGun",
-							"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun",
-							"potato", "firewood", "item_pants40grn", "item_salo",
-							"item_key_gate_thetown",
-							"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "add_damage_guns", "add_damage_energy", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "someTurboAccelerationPusher", "firing_range_guns", "firing_rate_guns", "firing_rate_energy", "firing_rate_guns", "grouping_angle_guns", "firing_rate_energy", "grouping_angle_guns", "cooling_system_guns", "cooling_system_guns", "cooling_system_energy", "cooling_system_energy", "cooling_system_explosion"}
-			local items_r = getn(items)
+			if GetVar("AirType").AsInt == 1 then
+				lootcount = random(5,8)
+				items = {"scrap_metal", "oil", "bottle", "fuel", "machinery", "book", "electronics",
+						"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use",
+						"item_datchik", "item_hose", "item_kek", "item_military_tube", "item_pena", "item_thermometer", "item_tube",
+						"item_bp", "item_drill", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_hdd", "item_iridiym", "item_lcd", "item_military_cable", "item_tetris",
+						"item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank",
+						"item_dry", "item_prisadka", "item_propan",
+						"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_sas", "item_ssd",
+						"item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_vodka", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen",
+						"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_sewing_kit", "item_toolset", 
+						"item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_teapon"}
+			else
+				lootcount = random(3,6)
+				items = {"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun",
+						"hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun", "someTurboAccelerationPusher",
+						"cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns", "cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "additional_fuel_tank2", "additional_torque2", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
+				life = {"scrap_metal_use", "machinery_use", "electronics_use"}
+				fuel = {"oil_use", "fuel_full_use"}
+			end
 			
 			for j=1,lootcount do
-				local loot1 = CreateNewObject{prototypeName = items[random(items_r)], objName = "AirItems"..random(10000), belong = 1100 }
+				local loot1 = CreateNewObject{prototypeName = items[random(getn(items))], objName = "AirItems_"..j, belong = 1100}
 				local loot1Id = GetEntityByID(loot1)
 						
 				if ChestId and loot1Id then
 					ChestId:AddChild(loot1Id)
 				end
-			end
 
+				if GetVar("AirType").AsInt == 2 then
+					local life1 = CreateNewObject{prototypeName = life[random(getn(life))], objName = "AirItemsLife_"..j, belong = 1100}
+					local life1Id = GetEntityByID(life1)
+						
+					if ChestId and life1Id then
+						ChestId:AddChild(life1Id)
+					end
+
+					local fuel1 = CreateNewObject{prototypeName = fuel[random(getn(fuel))], objName = "AirItemsFuel_"..j, belong = 1100}
+					local fuel1Id = GetEntityByID(fuel1)
+						
+					if ChestId and fuel1Id then
+						ChestId:AddChild(fuel1Id)
+					end
+				end
+			end
 			trigger:Deactivate() 
 		</script>
 	</trigger>
@@ -2714,6 +3023,7 @@
 		<script>
 			getObj("Oracle_AirDrop"):SetPosition(CVector(440, 251, 3825))
 			getObj("Oracle_AirDrop"):SetRotation(Quaternion(0, 0, 0, 1))
+			SetVar("AirType", 0)
 			trigger:Deactivate() 
 		</script>
 	</trigger>
@@ -2805,13 +3115,13 @@
 				end
 
 				if pl_pos1 >= 1 then
-					pos1_count_pmc = random(3,5)
+					pos1_count_pmc = random(2,3)
 				end
 
 				paths_pos1 = shuffled_range_take (pos1_count_pmc, 1, 9)
 
 				pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
-				pos2_count_pmc = random(3,6)
+				pos2_count_pmc = random(2,4)
 
 				paths_pos2 = shuffled_range_take (pos2_count_pmc, 1, 10)
 	
@@ -2839,13 +3149,13 @@
 				end
 
 				if pl_pos2 >= 1 then
-					pos2_count_pmc = random(3,5)
+					pos2_count_pmc = random(2,3)
 				end
 
 				paths_pos2 = shuffled_range_take (pos2_count_pmc, 1, 9)
 
 				pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
-				pos1_count_pmc = random(3,6)
+				pos1_count_pmc = random(2,4)
 
 				paths_pos1 = shuffled_range_take (pos1_count_pmc, 1, 10)
 			end
@@ -3114,7 +3424,7 @@
 				CVector(2624.907, 320.488, 1791.771),
 				CVector(3241.614, 314.720, 835.171)}
 
-			local scav_count = random(5,8)
+			local scav_count = random(3,6)
 			local paths_pos = shuffled_range_take(scav_count, 1, 14)
 			
 			local path = {CVector(1223.477, 295.339, 2869.511), CVector(2070.956, 341.750, 2849.030), CVector(513.808, 303.971, 1821.339), CVector(1974.261, 301.978, 809.417), CVector(3138.543, 316.540, 662.453), CVector(3182.412, 320.890, 1239.882), CVector(2997.474, 315.629, 999.674), CVector(2604.547, 322.758, 1662.702), CVector(957.419, 289.513, 2904.316)}
@@ -3122,8 +3432,7 @@
 			for j=1,scav_count do
 				local num = paths_pos[j]
 				local model = enemylist[random(scav)]
-				println(model)
-				TeamCreate("Scav_"..j, 1082, pos[num], {model}, nil, 1)
+				TeamCreate("Scav_"..j, 1083, pos[num], {model}, nil, 1)
 				local sv = GetEntityByName ("Scav_"..j.."_vehicle_0")
 				if sv then
 					sv:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
@@ -3162,7 +3471,6 @@
 
 	<trigger Name="Scavs_Reached" active="0">
 		<script>
-
 			local path = {CVector(1223.477, 295.339, 2869.511), CVector(2070.956, 341.750, 2849.030), CVector(513.808, 303.971, 1821.339), CVector(1974.261, 301.978, 809.417), CVector(3138.543, 316.540, 662.453), CVector(3182.412, 320.890, 1239.882), CVector(2997.474, 315.629, 999.674), CVector(2604.547, 322.758, 1662.702), CVector(957.419, 289.513, 2904.316)}
 			
 			local amount=trigger:GetTriggeredObjectAmount()
@@ -3172,8 +3480,6 @@
 					car_Scav:SetDestination(path[random(9)])
 				end
 			end
-
-			println("Scav_Reach")
 		</script>
 	</trigger>
 
@@ -3236,10 +3542,11 @@
 			--выходы
 			if GetVar("SpawnPlayer").AsInt==1 then
 				TDeactivate ("RoadToRidzin")
-				TDeactivate ("BaseFelix")
 			else
 				TDeactivate ("ZaTheGloohoe")
 			end
+
+			TDeactivate ("BaseFelix")
 
 			if GetVar("ExitZaTheTroiskoe").AsInt==1 then
 				TDeactivate ("ZaTheTroiskoe")
@@ -3411,8 +3718,13 @@
 		
 			--глобал переменные
 			if COUNT_RAIDS then COUNT_RAIDS = GetVar("CountRaids").AsInt end
-			if CHESTSCAVS_TIMER_GLOBAL then CHESTSCAVS_TIMER_GLOBAL = GetVar("ChestScavs_Timer").AsInt end
-			if GENERATOR_TIMER_GLOBAL then GENERATOR_TIMER_GLOBAL = GetVar("Generator_time_work").AsInt end
+			if CHESTSCAVS_TIMER_HOUR_GLOBAL then CHESTSCAVS_TIMER_HOUR_GLOBAL = GetVar("ChestScavs_time_hour").AsInt end
+			if CHESTSCAVS_TIMER_MINUTE_GLOBAL then CHESTSCAVS_TIMER_MINUTE_GLOBAL = GetVar("ChestScavs_time_minute").AsInt end
+			if CHESTSCAVS_TIMER_SECOND_GLOBAL then CHESTSCAVS_TIMER_SECOND_GLOBAL = GetVar("ChestScavs_time_second").AsInt end
+			if CHESTSCAVS_SEARCH_GLOBAL then CHESTSCAVS_SEARCH_GLOBAL = GetVar("ChestScavs_Search").AsInt end
+			if GENERATOR_TIMER_HOUR_GLOBAL then GENERATOR_TIMER_HOUR_GLOBAL = GetVar("Generator_time_work_hour").AsInt end
+			if GENERATOR_TIMER_MINUTE_GLOBAL then GENERATOR_TIMER_MINUTE_GLOBAL = GetVar("Generator_time_work_minute").AsInt end
+			if GENERATOR_TIMER_SECOND_GLOBAL then GENERATOR_TIMER_SECOND_GLOBAL = GetVar("Generator_time_work_second").AsInt end
 			if GENERATOR_ON_GLOBAL then GENERATOR_ON_GLOBAL = GetVar("Generator_on").AsInt end
 
 			TDeactivate("IfChargeCar")
@@ -3437,6 +3749,12 @@
 				TDeactivate("q_base_scavs_LeavesBase")
 				TDeactivate("q_base_scavs_TimerStart")
 				TDeactivate("q_base_scavs_Timer")
+			end
+
+			if IsQuestTaken("q_bitok3") and not(IsQuestComplete("q_bitok3")) then
+				local chestboxvideocard = GetEntityByName("BoxVideocard")
+				if chestboxvideocard then chestboxvideocard:Remove() end
+				TDeactivate("q_bitok3_1")
 			end
 
 			println("MAP CLEAR")
@@ -3543,6 +3861,10 @@
 			if IsQuestTaken("q_base_scavs") and not(IsQuestComplete("q_base_scavs")) then
 				TActivate("q_base_scavs_EntersBase")
 			end
+
+			if IsQuestTaken("q_bitok3") and not(IsQuestComplete("q_bitok3")) then
+				TActivate("q_bitok3_SpawnBoxVideocard")
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -3550,12 +3872,16 @@
 	<trigger Name="IfExitForQuest" active="0">
 	<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			if IsQuestTaken("q_search_data_3") and not(IsQuestComplete("q_search_data_3")) then
+			if IsQuestTaken("q_search_data_3") and not(IsQuestComplete("q_search_data_3")) and HasPlayerAmountOfItems("item_quest_search_data", 1) then
 				CompleteSubtask("q_search_data_3")
 			end
 
 			if IsQuestTaken("q_base_scavs_2") and not(IsQuestComplete("q_base_scavs_2")) then
 				CompleteSubtask("q_base_scavs_2")
+			end
+
+			if IsQuestTaken("q_bitok3_22") and not(IsQuestComplete("q_bitok3_22")) and HasPlayerAmountOfItems("item_quest_box_videocard", 1) then
+				CompleteSubtask("q_bitok3_22")
 			end
 			trigger:Deactivate()
 		</script>
@@ -3599,12 +3925,14 @@
 	<trigger Name="q_testing_mission_KillScavs" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			if not(GetVar("q_testing_mission_DieScavs").AsInt == 10) then
+			if not(GetVar("q_testing_mission_DieScavs").AsInt == 5) then
 				SetVar("q_testing_mission_DieScavs", GetVar("q_testing_mission_DieScavs").AsInt+1)
-				if GetVar("q_testing_mission_DieScavs").AsInt >= 10 then
+				if GetVar("q_testing_mission_DieScavs").AsInt >= 5 then
 					CompleteSubtask("q_testing_mission_1")
+					AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills_complete", "q_testing_mission", GetVar("q_testing_mission_DieScavs").AsInt, 5)
+					SoundFadingMsg()
 				else
-					AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_testing_mission", GetVar("q_testing_mission_DieScavs").AsInt)
+					AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_testing_mission", GetVar("q_testing_mission_DieScavs").AsInt, 5)
 					SoundFadingMsg()
 				end
 			end
@@ -3659,7 +3987,6 @@
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="q_search_data_2_loc" />
 		<script>
 			TActivate("q_search_data_Enters_2_Timer")
-			trigger:Deactivate()
 		</script>
 	</trigger>
 
@@ -3668,7 +3995,7 @@
 		<script>
 			local pl = GetPlayerVehicle()
 			if pl then
-				if HasPlayerAmountOfItems("item_quest_search_data", 0) then
+				if not(HasPlayerAmountOfItems("item_quest_search_data", 1)) then
 					AddItemsToPlayerRepository("item_quest_search_data", 1)
 					AddFadingMsgByStrIdFormatted("fm_player_add_thing", "item_quest_search_data")
 					SoundFadingMsg()
@@ -3678,6 +4005,7 @@
 						AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_search_data")
 						CreateEffectInsertedInRemove("ET_S_SUBTASK_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
 					end
+					TDeactivate("q_search_data_Enters_2")
 				end
 			end
 			trigger:Deactivate()
@@ -3710,34 +4038,36 @@
 -- Зачистка местности
 
 	<trigger Name="q_clearing_r1m1_InLoc" active="0">
-		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="q_clearing_r1m1_1_loc" />
-		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="q_clearing_r1m1_2_loc" />
-		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="q_clearing_r1m1_3_loc" />
-		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="q_clearing_r1m1_4_loc" />
-		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="q_clearing_r1m1_5_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="q_clearing_r1m1_1_loc_0" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="q_clearing_r1m1_2_loc_0" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="q_clearing_r1m1_3_loc_0" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="q_clearing_r1m1_4_loc_0" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="q_clearing_r1m1_5_loc_0" />
 		<script>
 			local loc = trigger:GetCallObjName()
 			local locnum = tonumber(strsub(loc,17,17))
 
-			if loc == "q_clearing_r1m1_"..locnum.."_loc" then
+			if loc == "q_clearing_r1m1_"..locnum.."_loc_0" then
 				SetVar("q_clearing_r1m1_EnemyInLoc", locnum)
 			end
-			println(GetVar("q_clearing_r1m1_EnemyInLoc").AsInt)
+		
 		</script>
 	</trigger>
 
 	<trigger Name="q_clearing_r1m1_KillScavs" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			local kills = {10, 15, 15, 25, 20}
+			local kills = {5, 5, 5, 5, 5}
 			for i=1,5 do
 				if GetVar("q_clearing_r1m1_EnemyInLoc").AsInt == i then
 					if not(GetVar("q_clearing_r1m1_DieScavs_loc_"..i).AsInt == kills[i]) then
 						SetVar("q_clearing_r1m1_DieScavs_loc_"..i, GetVar("q_clearing_r1m1_DieScavs_loc_"..i).AsInt+1)
 						if GetVar("q_clearing_r1m1_DieScavs_loc_"..i).AsInt >= kills[i] then
 							CompleteSubtask("q_clearing_r1m1_"..i)
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills_complete", "q_clearing_r1m1", GetVar("q_clearing_r1m1_DieScavs_loc_"..i).AsInt, kills[i])
+							SoundFadingMsg()
 						else
-							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_clearing_r1m1", GetVar("q_clearing_r1m1_DieScavs_loc_"..i).AsInt)
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_clearing_r1m1", GetVar("q_clearing_r1m1_DieScavs_loc_"..i).AsInt, kills[i])
 							SoundFadingMsg()
 						end
 						SetVar("q_clearing_r1m1_EnemyInLoc", 0)
@@ -3753,12 +4083,14 @@
 	<trigger Name="q_kill_scavs_Kill" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			if not(GetVar("q_kill_scavs_Die").AsInt == 30) then
+			if not(GetVar("q_kill_scavs_Die").AsInt == 15) then
 				SetVar("q_kill_scavs_Die", GetVar("q_kill_scavs_Die").AsInt+1)
-				if GetVar("q_kill_scavs_Die").AsInt >= 30 then
+				if GetVar("q_kill_scavs_Die").AsInt >= 15 then
 					CompleteSubtask("q_kill_scavs_1")
+					AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills_complete", "q_kill_scavs", GetVar("q_kill_scavs_Die").AsInt, 15)
+					SoundFadingMsg()
 				else
-					AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_kill_scavs", GetVar("q_kill_scavs_Die").AsInt)
+					AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_kill_scavs", GetVar("q_kill_scavs_Die").AsInt, 15)
 					SoundFadingMsg()
 				end
 			end
@@ -3833,8 +4165,10 @@
 						SetVar("q_test_drive1_killscavs", GetVar("q_test_drive1_killscavs").AsInt+1)
 						if GetVar("q_test_drive1_killscavs").AsInt >= 15 then
 							CompleteSubtask("q_test_drive1_1")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills_complete", "q_test_drive1", GetVar("q_test_drive1_killscavs").AsInt, 15)
+							SoundFadingMsg()
 						else
-							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_test_drive1", GetVar("q_test_drive1_killscavs").AsInt)
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_test_drive1", GetVar("q_test_drive1_killscavs").AsInt, 15)
 							SoundFadingMsg()
 						end
 					end
@@ -3862,8 +4196,10 @@
 						SetVar("q_test_drive2_killscavs", GetVar("q_test_drive2_killscavs").AsInt+1)
 						if GetVar("q_test_drive2_killscavs").AsInt >= 20 then
 							CompleteSubtask("q_test_drive2_2")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills_complete", "q_test_drive2", GetVar("q_test_drive2_killscavs").AsInt, 20)
+							SoundFadingMsg()
 						else
-							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_test_drive2", GetVar("q_test_drive2_killscavs").AsInt)
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_test_drive2", GetVar("q_test_drive2_killscavs").AsInt, 20)
 							SoundFadingMsg()
 						end
 					end
@@ -3889,8 +4225,10 @@
 						SetVar("q_test_drive2_killPMC", GetVar("q_test_drive2_killPMC").AsInt+1)
 						if GetVar("q_test_drive2_killPMC").AsInt >= 10 then
 							CompleteSubtask("q_test_drive2_3")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills_complete", "q_test_drive2", GetVar("q_test_drive2_killPMC").AsInt, 10)
+							SoundFadingMsg()
 						else
-							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_test_drive2", GetVar("q_test_drive2_killPMC").AsInt)
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_test_drive2", GetVar("q_test_drive2_killPMC").AsInt, 10)
 							SoundFadingMsg()
 						end
 					end
@@ -3914,8 +4252,10 @@
 						SetVar("q_test_drive3_killscavs", GetVar("q_test_drive3_killscavs").AsInt+1)
 						if GetVar("q_test_drive3_killscavs").AsInt >= 5 then
 							CompleteSubtask("q_test_drive3_2")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills_complete", "q_test_drive3", GetVar("q_test_drive3_killscavs").AsInt, 5)
+							SoundFadingMsg()
 						else
-							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_test_drive3", GetVar("q_test_drive3_killscavs").AsInt)
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_test_drive3", GetVar("q_test_drive3_killscavs").AsInt, 5)
 							SoundFadingMsg()
 						end
 					end
@@ -3937,8 +4277,10 @@
 						SetVar("q_test_drive3_killPMC", GetVar("q_test_drive3_killPMC").AsInt+1)
 						if GetVar("q_test_drive3_killPMC").AsInt >= 5 then
 							CompleteSubtask("q_test_drive3_3")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills_complete", "q_test_drive3", GetVar("q_test_drive3_killPMC").AsInt, 5)
+							SoundFadingMsg()
 						else
-							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_test_drive3", GetVar("q_test_drive3_killPMC").AsInt)
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_test_drive3", GetVar("q_test_drive3_killPMC").AsInt, 5)
 							SoundFadingMsg()
 						end
 					end
@@ -3962,8 +4304,10 @@
 						SetVar("q_test_drive4_killscavs", GetVar("q_test_drive4_killscavs").AsInt+1)
 						if GetVar("q_test_drive4_killscavs").AsInt >= 30 then
 							CompleteSubtask("q_test_drive4_3")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills_complete", "q_test_drive4", GetVar("q_test_drive4_killscavs").AsInt, 30)
+							SoundFadingMsg()
 						else
-							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_test_drive4", GetVar("q_test_drive4_killscavs").AsInt)
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_test_drive4", GetVar("q_test_drive4_killscavs").AsInt, 30)
 							SoundFadingMsg()
 						end
 					end
@@ -3985,8 +4329,10 @@
 						SetVar("q_test_drive4_killPMC", GetVar("q_test_drive4_killPMC").AsInt+1)
 						if GetVar("q_test_drive4_killPMC").AsInt >= 15 then
 							CompleteSubtask("q_test_drive4_4")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills_complete", "q_test_drive4", GetVar("q_test_drive4_killPMC").AsInt, 15)
+							SoundFadingMsg()
 						else
-							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_test_drive4", GetVar("q_test_drive4_killPMC").AsInt)
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_test_drive4", GetVar("q_test_drive4_killPMC").AsInt, 15)
 							SoundFadingMsg()
 						end
 					end
@@ -4006,7 +4352,13 @@
 				if bas_big_0 == "kpvt01" then
 					if not(GetVar("q_test_drive4_raidcount").AsInt == 3) then
 						SetVar("q_test_drive4_raidcount", GetVar("q_test_drive4_raidcount").AsInt+1)
-						if GetVar("q_test_drive4_raidcount").AsInt == 3 then CompleteSubtask("q_test_drive4_2") end
+						AddFadingMsgByStrIdFormatted("fm_progress_quest_raidcount", "q_test_drive4", GetVar("q_test_drive4_raidcount").AsInt, 3)
+						SoundFadingMsg()
+						if GetVar("q_test_drive4_raidcount").AsInt == 3 then 
+							CompleteSubtask("q_test_drive4_2")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_raidcount_complete", "q_test_drive4", GetVar("q_test_drive4_raidcount").AsInt, 3)
+							SoundFadingMsg() 
+						end
 					end
 				end
 			end
@@ -4032,8 +4384,10 @@
 						SetVar("q_test_drive5_killscavs", GetVar("q_test_drive5_killscavs").AsInt+1)
 						if GetVar("q_test_drive5_killscavs").AsInt >= 30 then
 							CompleteSubtask("q_test_drive5_3")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills_complete", "q_test_drive5", GetVar("q_test_drive5_killscavs").AsInt, 30)
+							SoundFadingMsg()
 						else
-							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_test_drive5", GetVar("q_test_drive5_killscavs").AsInt)
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_test_drive5", GetVar("q_test_drive5_killscavs").AsInt, 30)
 							SoundFadingMsg()
 						end
 					end
@@ -4059,8 +4413,10 @@
 						SetVar("q_test_drive5_killPMC", GetVar("q_test_drive5_killPMC").AsInt+1)
 						if GetVar("q_test_drive5_killPMC").AsInt >= 20 then
 							CompleteSubtask("q_test_drive5_4")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills_complete", "q_test_drive5", GetVar("q_test_drive5_killPMC").AsInt, 20)
+							SoundFadingMsg()
 						else
-							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_test_drive5", GetVar("q_test_drive5_killPMC").AsInt)
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_test_drive5", GetVar("q_test_drive5_killPMC").AsInt, 20)
 							SoundFadingMsg()
 						end
 					end
@@ -4084,7 +4440,13 @@
 				if cab_small == "storm01" and bas_big_0 == "rapier01" then
 					if not(GetVar("q_test_drive5_raidcount").AsInt == 3) then
 						SetVar("q_test_drive5_raidcount", GetVar("q_test_drive5_raidcount").AsInt+1)
-						if GetVar("q_test_drive5_raidcount").AsInt == 3 then CompleteSubtask("q_test_drive5_2") end
+						AddFadingMsgByStrIdFormatted("fm_progress_quest_raidcount", "q_test_drive5", GetVar("q_test_drive5_raidcount").AsInt, 3)
+						SoundFadingMsg()
+						if GetVar("q_test_drive5_raidcount").AsInt == 3 then 
+							CompleteSubtask("q_test_drive5_2") 
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_raidcount_complete", "q_test_drive5", GetVar("q_test_drive5_raidcount").AsInt, 3)
+							SoundFadingMsg()
+						end
 					end
 				end
 			end
@@ -4106,12 +4468,14 @@
 				end
 
 				if cab_big_1 == "vulcan01" and bas_big_0 == "vulcan01" then
-					if not(GetVar("q_test_drive6_killscavs").AsInt == 40) then
+					if not(GetVar("q_test_drive6_killscavs").AsInt == 30) then
 						SetVar("q_test_drive6_killscavs", GetVar("q_test_drive6_killscavs").AsInt+1)
-						if GetVar("q_test_drive6_killscavs").AsInt >= 40 then
+						if GetVar("q_test_drive6_killscavs").AsInt >= 30 then
 							CompleteSubtask("q_test_drive6_2")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills_complete", "q_test_drive6", GetVar("q_test_drive6_killscavs").AsInt, 30)
+							SoundFadingMsg()
 						else
-							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_test_drive6", GetVar("q_test_drive6_killscavs").AsInt)
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_test_drive6", GetVar("q_test_drive6_killscavs").AsInt, 30)
 							SoundFadingMsg()
 						end
 					end
@@ -4137,8 +4501,10 @@
 						SetVar("q_test_drive6_killPMC", GetVar("q_test_drive6_killPMC").AsInt+1)
 						if GetVar("q_test_drive6_killPMC").AsInt >= 15 then
 							CompleteSubtask("q_test_drive6_3")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills_complete", "q_test_drive6", GetVar("q_test_drive6_killPMC").AsInt, 15)
+							SoundFadingMsg()
 						else
-							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_test_drive6", GetVar("q_test_drive6_killPMC").AsInt)
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_test_drive6", GetVar("q_test_drive6_killPMC").AsInt, 15)
 							SoundFadingMsg()
 						end
 					end
@@ -4148,4 +4514,39 @@
 		</script>
 	</trigger>
 
+-- Биток - Часть 3
+	
+	<trigger Name="q_bitok3_SpawnBoxVideocard" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local Chest = CreateNewObject{prototypeName = "boxvideocardChest", objName = "BoxVideocard"}	
+			local ChestId = GetEntityByID(Chest)
+			ChestId:SetPosition(CVector(getPos("SpawnBoxVideocard_"..random(1,3).."_loc")))
+
+			local ChestPos = ChestId:GetPosition()
+			ChestPos.y = ChestPos.y + 1
+			ChestId:SetPosition(ChestPos)
+
+			local Item = CreateNewObject{prototypeName = "item_quest_box_videocard", objName = "ItemQuestBoxVideocard", belong = 1100}
+			local ItemId = GetEntityByID(Item)
+			if ChestId and ItemId then
+				ChestId:AddChild(ItemId)
+			end
+			TActivate("q_bitok3_1")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_bitok3_1" active="0">
+		<event eventid="GE_OBJECT_DIE" ObjName="BoxVideocard" />
+		<script>
+			if IsQuestTaken("q_bitok3_1") and not(IsQuestComplete("q_bitok3_1")) then
+				CompleteSubtask("q_bitok3_1")
+			else
+				AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_bitok3")
+				CreateEffectInsertedInRemove("ET_S_SUBTASK_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
 </triggers>

@@ -11,7 +11,7 @@
 		MaxSize="13 12"/>
 
 	<GroundRepository
-		Size="18 300"/>
+		Size="18 30"/>
 
 	<Mult
 		GameTimeMult="60"
@@ -85,8 +85,8 @@
 
 	<Articles
 		DefaultRegenerationTime="60"
-		ProbabilityToDropArticlesFromDeadVehicles="0.80"
-		ProbabilityToDropGunsFromDeadVehicles="0.65"/>
+		ProbabilityToDropArticlesFromDeadVehicles="1"
+		ProbabilityToDropGunsFromDeadVehicles="1"/>
 
 	<InfectionZones
 		ZoneRespawnTimeOutIncreaseCoeff="1.0"

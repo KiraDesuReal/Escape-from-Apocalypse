@@ -96,7 +96,7 @@
 		CheckAll="0"
 		ConditionToGive="all complete"
 		PrecedingQuests="q_clearing_r1m1"
-		OnComplete='AddPlayerMoney(30000); AddItemsToPlayerRepository("kord01", 1); AddItemsToPlayerRepository("ammo_chest_machinegun", 1); AddItemsToPlayerRepository("machinery_use", 2)'>
+		OnComplete='AddPlayerMoney(40000); AddItemsToPlayerRepository("kord01", 1); AddItemsToPlayerRepository("ammo_chest_machinegun", 1); AddItemsToPlayerRepository("machinery_use", 2); GetEntityByName("Town_r0m0_Workshop"):GetRepositoryByTypename("CabinsAndBaskets"):AddItems("bugCab03", 1)'>
 		<quest
 			Name="q_fuel1_1"
 			Automatic="1"
@@ -114,7 +114,7 @@
 		CheckAll="0"
 		ConditionToGive="all complete"
 		PrecedingQuests="q_fuel1"
-		OnComplete='AddPlayerMoney(30000); GetEntityByName("Town_r0m0_Shop"):GetRepositoryByTypename("GunsAndGadgets"):AddItems("kord01", 1); AddItemsToPlayerRepository("scrap_metal_use", 2); AddItemsToPlayerRepository("machinery_use", 2)'
+		OnComplete='AddPlayerMoney(40000); GetEntityByName("Town_r0m0_Shop"):GetRepositoryByTypename("GunsAndGadgets"):AddItems("kord01", 1); AddItemsToPlayerRepository("scrap_metal_use", 2); AddItemsToPlayerRepository("machinery_use", 2)'
 		OnTake='AddItemsToPlayerRepository("fuel_nil_use", 3); AddFadingMsgByStrIdFormatted("fm_player_add_thing", "fuel_nil_use")'>
 		<quest
 			Name="q_fuel2_1"
@@ -159,7 +159,8 @@
 			CheckAll="0"
 			ConditionToGive="all complete"
 			PrecedingQuests="q_fuel2_1 q_fuel2_2 q_fuel2_3 q_fuel2_4"
-			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_fuel2")' />
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_fuel2")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
 	</quest>
 <!--Root/r0m0/Ремонт-->
 	<quest
@@ -169,7 +170,7 @@
 		CheckAll="0"
 		ConditionToGive="all complete"
 		PrecedingQuests="q_clearing_r1m1"
-		OnComplete='AddPlayerMoney(50000); AddItemsToPlayerRepository("kord01", 1);  AddItemsToPlayerRepository("ammo_chest_machinegun", 1)'>
+		OnComplete='AddPlayerMoney(50000); AddItemsToPlayerRepository("kord01", 1);  AddItemsToPlayerRepository("ammo_chest_machinegun", 1); GetEntityByName("Town_r0m0_Workshop"):GetRepositoryByTypename("Vehicles"):AddItems("MolokovozForSale", 1); GetEntityByName("Town_r0m0_Workshop"):GetRepositoryByTypename("CabinsAndBaskets"):AddItems("molokovozCab02", 1)'>
 		<quest
 			Name="q_rebuild_1"
 			Automatic="1"
@@ -195,7 +196,8 @@
 			CheckAll="0"
 			ConditionToGive="all complete"
 			PrecedingQuests="q_rebuild_1 q_rebuild_2"
-			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_rebuild")' />
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_rebuild")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
 	</quest>
 <!--Root/r0m0/Тест драйв Часть 1-->
 	<quest
@@ -205,7 +207,7 @@
 		CheckAll="0"
 		ConditionToGive="all complete"
 		PrecedingQuests="q_rebuild"
-		OnComplete='AddPlayerMoney(50000); TActivate("q_test_drive1_Revard"); GetEntityByName("Town_r0m0_Workshop"):GetRepositoryByTypename("Vehicles"):AddItems("MolokovozForSale", 1)'>
+		OnComplete='AddPlayerMoney(50000); TActivate("q_test_drive1_Revard"); GetEntityByName("Town_r0m0_Workshop"):GetRepositoryByTypename("CabinsAndBaskets"):AddItems("molokovozCab03", 1)'>
 		<quest
 			Name="q_test_drive1_11"
 			Automatic="1"
@@ -231,7 +233,8 @@
 			CheckAll="0"
 			ConditionToGive="all complete"
 			PrecedingQuests="q_test_drive1_1"
-			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive1")' />
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive1")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
 	</quest>
 <!--Root/r0m0/Тест драйв Часть 2-->
 	<quest
@@ -241,7 +244,7 @@
 		CheckAll="0"
 		ConditionToGive="all complete"
 		PrecedingQuests="q_test_drive1"
-		OnComplete='AddPlayerMoney(60000); AddItemsToPlayerRepository("machinery_use", 2); GetEntityByName("Town_r0m0_Shop"):GetRepositoryByTypename("GunsAndGadgets"):AddItems("kpvt01", 1)'>
+		OnComplete='AddPlayerMoney(60000); AddItemsToPlayerRepository("machinery_use", 2); GetEntityByName("Town_r0m0_Shop"):GetRepositoryByTypename("GunsAndGadgets"):AddItems("kpvt01", 1); GetEntityByName("Town_r0m0_Workshop"):GetRepositoryByTypename("CabinsAndBaskets"):AddItems("molokovozCargo02_6x9", 1)'>
 		<quest
 			Name="q_test_drive2_1"
 			Automatic="1"
@@ -276,7 +279,8 @@
 			CheckAll="0"
 			ConditionToGive="all complete"
 			PrecedingQuests="q_test_drive2_2 q_test_drive2_3"
-			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive1")' />
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive1")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
 	</quest>
 <!--Root/r0m0/Тест драйв Часть 3-->
 	<quest
@@ -286,7 +290,7 @@
 		CheckAll="0"
 		ConditionToGive="all complete"
 		PrecedingQuests="q_test_drive2"
-		OnComplete='AddPlayerMoney(60000); AddItemsToPlayerRepository("electronics_use", 3); GetEntityByName("Town_r0m0_Shop"):GetRepositoryByTypename("GunsAndGadgets"):AddItems("ammo_chest_shotgunForSale", 1)'>
+		OnComplete='AddPlayerMoney(60000); AddItemsToPlayerRepository("electronics_use", 3); GetEntityByName("Town_r0m0_Shop"):GetRepositoryByTypename("GunsAndGadgets"):AddItems("ammo_chest_shotgunForSale", 1); GetEntityByName("Town_r0m0_Workshop"):GetRepositoryByTypename("CabinsAndBaskets"):AddItems("molokovozCargo03_6x8", 1)'>
 		<quest
 			Name="q_test_drive3_1"
 			Automatic="1"
@@ -321,7 +325,8 @@
 			CheckAll="0"
 			ConditionToGive="all complete"
 			PrecedingQuests="q_test_drive3_2 q_test_drive3_3"
-			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive3")' />
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive3")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
 	</quest>
 <!--Root/r0m0/Тест драйв Часть 4-->
 	<quest
@@ -375,7 +380,8 @@
 			CheckAll="0"
 			ConditionToGive="all complete"
 			PrecedingQuests="q_test_drive4_1 q_test_drive4_2 q_test_drive4_3 q_test_drive4_4"
-			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive4")' />
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive4")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
 	</quest>
 <!--Root/r0m0/Тест драйв Часть 5-->
 	<quest
@@ -385,7 +391,7 @@
 		CheckAll="0"
 		ConditionToGive="all complete"
 		PrecedingQuests="q_test_drive4"
-		OnComplete='AddPlayerMoney(50000); GetEntityByName("Town_r0m0_Workshop"):GetRepositoryByTypename("Vehicles"):AddItems("UralForSale", 1); TActivate("q_test_drive5_Revard")'>
+		OnComplete='AddPlayerMoney(50000); GetEntityByName("Town_r0m0_Workshop"):GetRepositoryByTypename("Vehicles"):AddItems("UralForSale", 1); TActivate("q_test_drive5_Revard"); GetEntityByName("Town_r0m0_Workshop"):GetRepositoryByTypename("CabinsAndBaskets"):AddItems("uralCab02", 1)'>
 		<quest
 			Name="q_test_drive5_1"
 			Automatic="1"
@@ -429,7 +435,8 @@
 			CheckAll="0"
 			ConditionToGive="all complete"
 			PrecedingQuests="q_test_drive5_2 q_test_drive5_3 q_test_drive5_4"
-			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive5")' />
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive5")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
 	</quest>
 <!--Root/r0m0/Тест драйв Часть 6-->
 	<quest
@@ -474,7 +481,117 @@
 			CheckAll="0"
 			ConditionToGive="all complete"
 			PrecedingQuests="q_test_drive6_2 q_test_drive6_3"
-			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive6")' />
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive6")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+	</quest>
+<!--Root/r0m0/Биток Часть 1-->
+	<quest
+		Name="q_bitok1"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_test_drive1"
+		OnComplete='AddPlayerMoney(35000); AddItemsToPlayerRepository("electronics_use", 2); AddItemsToPlayerRepository("kpvt01", 1)'>
+		<quest
+			Name="q_bitok1_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_bitok1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_bitok1")' />
+
+		<quest
+			Name="q_bitok1_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_bitok1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_bitok1")' />
+
+		<quest
+			Name="q_bitok1_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_bitok1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_bitok1")' />
+	</quest>
+<!--Root/r0m0/Биток Часть 2-->
+	<quest
+		Name="q_bitok2"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_bitok1"
+		OnComplete='AddPlayerMoney(40000); GetEntityByName("Town_r0m0_Shop"):GetRepositoryByTypename("GunsAndGadgets"):AddItems("cooling_system_guns2", 1);'>
+		<quest
+			Name="q_bitok2_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_bitok2"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_bitok2")' />
+
+		<quest
+			Name="q_bitok2_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_bitok2"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_bitok2")' />
+
+		<quest
+			Name="q_bitok2_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_bitok2"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_bitok2")' />
+	</quest>
+<!--Root/r0m0/Биток Часть 3-->
+	<quest
+		Name="q_bitok3"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_bitok2"
+		OnComplete='AddItemsToPlayerRepository("item_bitcoin", 1)'>
+		<quest
+			Name="q_bitok3_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_bitok3"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_bitok3")' />
+
+		<quest
+			Name="q_bitok3_22"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_bitok3_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_bitok3")' />
+
+		<quest
+			Name="q_bitok3_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_bitok3_22"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_bitok3")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
 	</quest>
 <!--Root/r4m2/Сюжетные-->
 	<quest
@@ -2944,7 +3061,8 @@
 			CheckAll="0"
 			ConditionToGive="all complete"
 			PrecedingQuests="q_testing_mission_1 q_testing_mission_2"
-			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_testing_mission"); AddPlayerMoney(20000); AddItemsToPlayerRepository("specter01", 1); AddItemsToPlayerRepository("ammo_chest_machinegun", 1) ' />
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_testing_mission"); AddPlayerMoney(20000); AddItemsToPlayerRepository("specter01", 1); AddItemsToPlayerRepository("ammo_chest_machinegun", 1) '
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
 	</quest>
 <!--Root/r1m1/Сюжетные/Поисковая миссия-->
 	<quest
@@ -2989,7 +3107,8 @@
 			CheckAll="0"
 			ConditionToGive="all complete"
 			PrecedingQuests="q_search_data_3"
-			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_search_data")' />
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_search_data")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
 	</quest>
 <!--Root/r1m1/Сюжетные/Разведка местности-->
 	<quest
@@ -2999,7 +3118,7 @@
 		CheckAll="0"
 		ConditionToGive="all complete"
 		PrecedingQuests="q_search_data"
-		OnComplete='AddPlayerMoney(20000); AddItemsToPlayerRepository("pkt01", 1); AddItemsToPlayerRepository("ammo_chest_machinegun", 1)'>
+		OnComplete='AddPlayerMoney(35000); AddItemsToPlayerRepository("pkt01", 1); AddItemsToPlayerRepository("ammo_chest_machinegun", 1); GetEntityByName("Town_r0m0_Workshop"):GetRepositoryByTypename("CabinsAndBaskets"):AddItems("bugCab02", 1)'>
 		<quest
 			Name="q_explore_r1m1_1"
 			Automatic="1"
@@ -3061,7 +3180,8 @@
 			CheckAll="0"
 			ConditionToGive="all complete"
 			PrecedingQuests="q_explore_r1m1_1 q_explore_r1m1_2 q_explore_r1m1_3 q_explore_r1m1_4 q_explore_r1m1_5 q_explore_r1m1_6"
-			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_explore_r1m1")' />
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_explore_r1m1")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
 	</quest>
 <!--Root/r1m1/Сюжетные/Зачистка местности-->
 	<quest
@@ -3071,7 +3191,7 @@
 		CheckAll="0"
 		ConditionToGive="all complete"
 		PrecedingQuests="q_explore_r1m1"
-		OnComplete='AddPlayerMoney(35000); AddItemsToPlayerRepository("kord01", 1); AddItemsToPlayerRepository("ammo_chest_machinegun", 1); AddQuestItem("quest_item_map_r1m1"); GetEntityByName("Town_r0m0_Shop"):GetRepositoryByTypename("GunsAndGadgets"):AddItems("ammo_chest_machinegunForSale", 1)'>
+		OnComplete='AddPlayerMoney(40000); AddItemsToPlayerRepository("kord01");  AddQuestItem("quest_item_map_r1m1"); GetEntityByName("Town_r0m0_Shop"):GetRepositoryByTypename("GunsAndGadgets"):AddItems("ammo_chest_machinegunForSale", 1); GetEntityByName("Town_r0m0_Workshop"):GetRepositoryByTypename("CabinsAndBaskets"):AddItems("bugCargo03_5x7", 1)'>
 		<quest
 			Name="q_clearing_r1m1_1"
 			Automatic="1"
@@ -3124,7 +3244,8 @@
 			CheckAll="0"
 			ConditionToGive="all complete"
 			PrecedingQuests="q_clearing_r1m1_1 q_clearing_r1m1_2 q_clearing_r1m1_3 q_clearing_r1m1_4 q_clearing_r1m1_5"
-			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_clearing_r1m1")' />
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_clearing_r1m1")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
 	</quest>
 <!--Root/r1m1/Сюжетные/Огонь на поражение-->
 	<quest
@@ -3151,7 +3272,8 @@
 			CheckAll="0"
 			ConditionToGive="all complete"
 			PrecedingQuests="q_kill_scavs_1"
-			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_kill_scavs")' />
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_kill_scavs")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
 	</quest>
 <!--Root/r1m1/Сюжетные/Это наша территория-->
 	<quest
@@ -3161,7 +3283,7 @@
 		CheckAll="0"
 		ConditionToGive="all complete"
 		PrecedingQuests="q_clearing_r1m1"
-		OnComplete='AddPlayerMoney(35000); GetEntityByName("Town_r0m0_Shop"):GetRepositoryByTypename("GunsAndGadgets"):AddItems("pkt01", 1)'
+		OnComplete='AddPlayerMoney(35000); GetEntityByName("Town_r0m0_Shop"):GetRepositoryByTypename("GunsAndGadgets"):AddItems("pkt01", 1); GetEntityByName("Town_r0m0_Shop"):GetRepositoryByTypename("GunsAndGadgets"):AddItems("kord01", 1)'
 		OnTake='AddItemsToPlayerRepository("item_ms2000", 1); AddFadingMsgByStrIdFormatted("fm_player_add_thing", "item_ms2000")'>
 		<quest
 			Name="q_base_scavs_1"
@@ -3188,7 +3310,8 @@
 			CheckAll="0"
 			ConditionToGive="all complete"
 			PrecedingQuests="q_base_scavs_2"
-			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_base_scavs")' />
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_base_scavs")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
 	</quest>
 
 	<MutuallyExclusives>

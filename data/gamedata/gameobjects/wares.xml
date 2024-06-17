@@ -261,6 +261,15 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		ModelFile	= "quest_key_for_tunnel"
 		ResourceType= "ITEM_KEY" />
 
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_key_gate_basefelix"
+		Price	= "6000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "quest_key_for_tunnel"
+		ResourceType= "ITEM_KEY" />
+
 <!-- Ammo -->
 
 	<Prototype
@@ -367,7 +376,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_datchik"
-		Price	= "23000"
+		Price	= "20000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -439,7 +448,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_pena"
-		Price	= "18000"
+		Price	= "14000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -457,7 +466,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_poheram"
-		Price	= "7300"
+		Price	= "6300"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -484,7 +493,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_thermometer"
-		Price	= "17000"
+		Price	= "16000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -504,7 +513,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_bp"
-		Price	= "18500"
+		Price	= "17500"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -522,7 +531,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_converter"
-		Price	= "150000"
+		Price	= "100000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -549,7 +558,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_drill"
-		Price	= "14800"
+		Price	= "12800"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -585,7 +594,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_engine"
-		Price	= "36000"
+		Price	= "31000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -612,7 +621,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_gpu"
-		Price	= "300000"
+		Price	= "200000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -738,7 +747,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_tetris"
-		Price	= "45000"
+		Price	= "42000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -774,7 +783,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_virtex"
-		Price	= "110000"
+		Price	= "80000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -783,7 +792,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_vpx"
-		Price	= "87500"
+		Price	= "67500"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -839,7 +848,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_cyclon"
-		Price	= "32000"
+		Price	= "22000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -848,7 +857,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_green_battery"
-		Price	= "19000"
+		Price	= "15000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -866,7 +875,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_tank_battery"
-		Price	= "600000"
+		Price	= "400000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -904,7 +913,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_prisadka"
-		Price	= "27500"
+		Price	= "25500"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -940,7 +949,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_termit"
-		Price	= "42000"
+		Price	= "32000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -949,7 +958,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_trotile"
-		Price	= "14000"
+		Price	= "11000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -1061,7 +1070,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_diary"
-		Price	= "17000"
+		Price	= "16000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -1070,7 +1079,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_diary_s"
-		Price	= "14000"
+		Price	= "12000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -1088,7 +1097,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_disk_exmachina"
-		Price	= "27000"
+		Price	= "23250"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= "disk_exmachina"
@@ -1115,7 +1124,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_rozvidka"
-		Price	= "150000"
+		Price	= "120000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -1124,7 +1133,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_sas"
-		Price	= "27250"
+		Price	= "25250"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -1171,7 +1180,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_ledx"
-		Price	= "600000"
+		Price	= "450000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -1218,7 +1227,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_airfilter"
-		Price	= "80000"
+		Price	= "70000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -1227,7 +1236,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_ananaga"
-		Price	= "160000"
+		Price	= "100000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -1254,7 +1263,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_fitanyashka"
-		Price	= "38500"
+		Price	= "33500"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= "fitanyashka"
@@ -1263,7 +1272,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_jeton_bear"
-		Price	= "600"
+		Price	= "5000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -1272,7 +1281,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_jeton_usec"
-		Price	= "600"
+		Price	= "5000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -1290,7 +1299,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_paracord"
-		Price	= "39000"
+		Price	= "34000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -1317,7 +1326,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_vitalik"
-		Price	= "57000"
+		Price	= "56000"
 		Durability	= "10"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -1374,8 +1383,17 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "20110"
 		Durability	= "10"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "keqing"
 		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_carsen"
+		Price	= "8700"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
 
 <!-- Tools Items -->
 
@@ -1391,7 +1409,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_buldex"
-		Price	= "40000"
+		Price	= "25000"
 		Durability	= "10"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -1400,7 +1418,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_fullmaster"
-		Price	= "14000"
+		Price	= "12000"
 		Durability	= "10"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -1409,7 +1427,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_handrill"
-		Price	= "21000"
+		Price	= "18000"
 		Durability	= "10"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -1445,7 +1463,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_pipe_wrench"
-		Price	= "50000"
+		Price	= "30000"
 		Durability	= "10"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -1472,7 +1490,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_ratchet_wrench"
-		Price	= "47000"
+		Price	= "37000"
 		Durability	= "10"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -1645,7 +1663,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_vitaly"
-		Price	= "308500"
+		Price	= "108500"
 		Durability	= "10"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -1660,6 +1678,15 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "1"
 		PriceDispersion      = "0"
 		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_quest_box_videocard"
+		Price	= "1"
+		Durability	= "1"
+		PriceDispersion      = "0"
+		ModelFile	= "quest_box_videocard"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 <!-- Special Items -->

@@ -78,7 +78,7 @@
 	<Item
 		id="grouping_angle_guns2"
 		locForm="0"
-		value="Оптический прицел с просветленной оптикой и антибликовой защитой." />
+		value="Оптический прицел с просветленной оптикой и антибликовой защитой" />
 
 	<Item
 		id="add_damage_guns2"
@@ -113,7 +113,7 @@
 	<Item
 		id="firing_rate_guns_and_add_damage_guns"
 		locForm="0"
-		value="Электромеханический комплекс &quot;Сфено&quot;  " />
+		value="Электромеханический комплекс &quot;Сфено&quot;" />
 
 	<Item
 		id="firing_rate_energy_and_add_damage_energy"
@@ -123,7 +123,7 @@
 	<Item
 		id="firing_rate_explosion_and_add_damage_explosion"
 		locForm="0"
-		value="Электромеханический комплекс &quot;Огненный шторм&quot;." />
+		value="Электромеханический комплекс &quot;Огненный шторм&quot;" />
 
 	<Item
 		id="add_damage_guns_and_grouping_angle_guns"
@@ -183,7 +183,7 @@
 	<Item
 		id="add_stability_and_speed"
 		locForm="0"
-		value="Система &quot;Sagitta&quot;  " />
+		value="Система &quot;Sagitta&quot;" />
 
 	<Item
 		id="add_torque_and_stability"
@@ -1960,12 +1960,12 @@
 	<Item
 		id="ExitRoadToFater"
 		locForm="0"
-		value="ВЫХОД02 - Дорога на Фатерлянд" />
+		value="ВЫХОД03 - Дорога на Фатерлянд" />
 
 	<Item
 		id="ExitZaTheGloohoe"
 		locForm="0"
-		value="ВЫХОД01 - Окраины" />
+		value="ВЫХОД01 - Дорога в Лес" />
 
 	<Item
 		id="ExitRoadToRidzin"
@@ -1985,7 +1985,7 @@
 	<Item
 		id="Exits1LocationR1M1"
 		locForm="0"
-		value="ВЫХОД01 - Окраины|ВЫХОД02 - Дорога на Фатерлянд ??:??:??" />
+		value="ВЫХОД01 - Дорога в Лес|ВЫХОД02 - Ущелье базы диких|ВЫХОД03 - Дорога на Фатерлянд ??:??:??" />
 
 	<Item
 		id="Exits2LocationR1M1"
@@ -2156,7 +2156,7 @@
 	<Item
 		id="oil_use"
 		locForm="0"
-		value="Нефть" />
+		value="Бочка с топливом" />
 
 	<Item
 		id="fuel_full_use"
@@ -2179,56 +2179,61 @@
 		locForm="0"
 		value="Ключ от ворот Южного" />
 
+	<Item
+		id="item_key_gate_basefelix"
+		locForm="0"
+		value="Ключ от ворот в ущелье" />
+
 	
 	<Item
 		id="ammo_chest_artillerygun"
 		locForm="0"
-		value="Ящик боеприпасов для Артиллерии." />
+		value="Ящик боеприпасов для Артиллерии" />
 
 	<Item
 		id="ammo_chest_artillerygunForSale"
 		locForm="0"
-		value="Ящик боеприпасов для Артиллерии." />
+		value="Ящик боеприпасов для Артиллерии" />
 
 	<Item
 		id="ammo_chest_heavygun"
 		locForm="0"
-		value="Ящик патронов для Пушки." />
+		value="Ящик патронов для Пушки" />
 
 	<Item
 		id="ammo_chest_heavygunForSale"
 		locForm="0"
-		value="Ящик патронов для Пушки." />
+		value="Ящик патронов для Пушки" />
 
 	<Item
 		id="ammo_chest_machinegun"
 		locForm="0"
-		value="Ящик патронов для Пулемёта." />
+		value="Ящик патронов для Пулемёта" />
 
 	<Item
 		id="ammo_chest_machinegunForSale"
 		locForm="0"
-		value="Ящик патронов для Пулемёта." />
+		value="Ящик патронов для Пулемёта" />
 
 	<Item
 		id="ammo_chest_rocketgun"
 		locForm="0"
-		value="Ящик боеприпасов для Ракетной установки." />
+		value="Ящик боеприпасов для Ракетной установки" />
 
 	<Item
 		id="ammo_chest_rocketgunForSale"
 		locForm="0"
-		value="Ящик боеприпасов для Ракетной установки." />
+		value="Ящик боеприпасов для Ракетной установки" />
 
 	<Item
 		id="ammo_chest_shotgun"
 		locForm="0"
-		value="Ящик дроби для Дробовика." />
+		value="Ящик дроби для Дробовика" />
 
 	<Item
 		id="ammo_chest_shotgunForSale"
 		locForm="0"
-		value="Ящик дроби для Дробовика." />
+		value="Ящик дроби для Дробовика" />
 
 
 	<Item
@@ -2797,6 +2802,11 @@
 		id="item_keqing"
 		locForm="0"
 		value="Статуэтка Кэ Цин" />
+	
+	<Item
+		id="item_carsen"
+		locForm="0"
+		value="Брелок Mr. Carsen" />
 
 
 	<Item
@@ -2918,7 +2928,7 @@
 	<Item
 		id="item_ex"
 		locForm="0"
-		value="Монета «EX»" />
+		value="Монета EX" />
 
 	<Item
 		id="item_lion"
@@ -2960,6 +2970,11 @@
 		id="quest_item_map_r1m1"
 		locForm="0"
 		value="Карта Края" />
+
+	<Item
+		id="item_quest_box_videocard"
+		locForm="0"
+		value="Груз с видеокартами" />
 
 
 	<Item
@@ -3048,5 +3063,20 @@
 		id="q_test_drive6"
 		locForm="0"
 		value="Тест драйв - Часть 6" />
+
+	<Item
+		id="q_bitok1"
+		locForm="0"
+		value="Биток - Часть 1" />
+
+	<Item
+		id="q_bitok2"
+		locForm="0"
+		value="Биток - Часть 2" />
+
+	<Item
+		id="q_bitok3"
+		locForm="0"
+		value="Биток - Часть 3" />
 
 </ModelNames>

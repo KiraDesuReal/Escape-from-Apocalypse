@@ -235,6 +235,8 @@
 
 			SetCameraBehindPlayerVehicle()
 
+			SetVar("WatchCredits", 1)
+
 			trigger:Deactivate()
 		</script>
 	</trigger>

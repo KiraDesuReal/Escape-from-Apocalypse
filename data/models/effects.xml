@@ -184,6 +184,10 @@
 		<Node name="1"	 class="SgSoundSourceNode" id="S_PICK_ITEM" looped="0" /> 
 	</Node>
 
+	<Node name="ET_S_DUNGEON_NEW_FAZE" class="SgNode">
+		<Node name="1"	 class="SgSoundSourceNode" id="S_DUNGEON_NEW_FAZE" looped="0" /> 
+	</Node>
+
 	<Node name="ET_S_QUEST_COMPLETE" class="SgNode">
 		<Node name="1"	 class="SgSoundSourceNode" id="S_QUEST_COMPLETE" looped="0" /> 
 	</Node>

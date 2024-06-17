@@ -182,7 +182,17 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 			Name		= "someChest"
 			ModelFile	= "cargo"
 			Mass		= "15"
-			
+
+			LifeTime	= "180"
+
+			IntersectionRadius	= "1.7" />
+
+		<Prototype
+			Class		= "Chest"
+			Name		= "mainChest"
+			ModelFile	= "cargo"
+			Mass		= "15"
+
 			IntersectionRadius	= "1.7" />
 
 		<Prototype
@@ -203,8 +213,24 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 
 		<Prototype
 			Class		= "Chest"
-			Name		= "airChest"
-			ModelFile	= "airbox"
+			Name		= "boxvideocardChest"
+			ModelFile	= "quest_box_videocard"
+			Mass		= "15"
+			
+			IntersectionRadius	= "1.7" />
+
+		<Prototype
+			Class		= "Chest"
+			Name		= "airChest1"
+			ModelFile	= "airbox1"
+			Mass		= "1000"
+			
+			IntersectionRadius	= "1.7" />
+
+		<Prototype
+			Class		= "Chest"
+			Name		= "airChest2"
+			ModelFile	= "airbox2"
 			Mass		= "1000"
 			
 			IntersectionRadius	= "1.7" />

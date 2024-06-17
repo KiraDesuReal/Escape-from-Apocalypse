@@ -32,6 +32,16 @@
 			SetVar("Use_AmmoChestRocketGun", 0)
 			SetVar("Use_AmmoChestShotGun", 0)
 			SetVar("PlayerSkin", 0)
+			SetVar("Generator_time_work_hour", 0)
+			SetVar("Generator_time_work_minute", 0)
+			SetVar("Generator_time_work_second", 0)
+			SetVar("Generator_lvl", 0)
+			SetVar("Generator_on", 0)
+			SetVar("ChestScavs_time_hour", 0)
+			SetVar("ChestScavs_time_minute", 0)
+			SetVar("ChestScavs_time_second", 0)
+			SetVar("ChestScavs_Search", 0)
+			SetVar("ChestScavs_timer", 0)
 
 			for i=1,4 do
 				SetVar("loot_"..i, 0)
@@ -62,6 +72,31 @@
 			AllowSave(false)
 
 			SetCameraBehindPlayerVehicle()
+
+			if GENERATOR_TIMER_HOUR_GLOBAL > 0 then SetVar("Generator_time_work_hour", GENERATOR_TIMER_HOUR_GLOBAL) end
+			if GENERATOR_TIMER_MINUTE_GLOBAL > 0 then SetVar("Generator_time_work_minute", GENERATOR_TIMER_MINUTE_GLOBAL) end
+			if GENERATOR_TIMER_SECOND_GLOBAL > 0 then SetVar("Generator_time_work_second", GENERATOR_TIMER_SECOND_GLOBAL) end
+			if GENERATOR_LVL_GLOBAL then SetVar("Generator_lvl", GENERATOR_LVL_GLOBAL) end
+			if GENERATOR_ON_GLOBAL then SetVar("Generator_on", GENERATOR_ON_GLOBAL) end
+			if CHESTSCAVS_TIMER_HOUR_GLOBAL > 0 then SetVar("ChestScavs_time_hour", CHESTSCAVS_TIMER_HOUR_GLOBAL) end
+			if CHESTSCAVS_TIMER_MINUTE_GLOBAL > 0 then SetVar("ChestScavs_time_minute", CHESTSCAVS_TIMER_MINUTE_GLOBAL) end
+			if CHESTSCAVS_TIMER_SECOND_GLOBAL > 0 then SetVar("ChestScavs_time_second", CHESTSCAVS_TIMER_SECOND_GLOBAL) end
+			if CHESTSCAVS_SEARCH_GLOBAL > 0 then SetVar("ChestScavs_Search", CHESTSCAVS_SEARCH_GLOBAL) end
+
+			if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
+				if GetVar("Generator_time_work_second").AsInt > 0 or GetVar("Generator_time_work_minute").AsInt > 0 or GetVar("Generator_time_work_hour").AsInt > 0 then
+					if GetVar("Generator_on").AsInt == 1 then
+						if getObj("TimerGlobal"):IsActivated() == 0 then TActivate("TimerGlobal") end
+					end
+				end
+			end
+
+			if GetVar("ChestScavs_Search").AsInt > 0 then
+				if GetVar("ChestScavs_time_hour").AsInt > 0 or GetVar("ChestScavs_time_minute").AsInt > 0 or GetVar("ChestScavs_time_second").AsInt > 0 then
+					if getObj("TimerGlobal"):IsActivated() == 0 then TActivate("TimerGlobal") end
+					SetVar("ChestScavs_timer", 1)
+				end
+			end 
 		</script>
 	</trigger>
 
@@ -82,13 +117,7 @@
 			if GetVar("StartChallenge").AsInt == 0 then
 				local b = SpawnMessageBox("2")
 				if b == 1 then
-					local vehPlayer = GetPlayerVehicle()
-					if vehPlayer then
-						vehPlayer:SetCustomControlEnabled( true )
-						vehPlayer:SetCustomLinearVelocity( 0 )
-						vehPlayer:SetThrottle( 0 )
-						vehPlayer:SetCustomControlEnabled( false )
-					end
+					TActivate("ExitMap")
 					R0M1_exit = 1
 					PassToMap("r0m0", "FromTunel", -1)
 				end
@@ -612,7 +641,7 @@
 	<trigger Name="trEnemy_0_Without_Health" active="0">
 		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
-			local randLoot = random(3)
+			local randLoot = random(2)
 			local l = GetVar("Score").AsInt
 	
 			local itemList = {"scrap_metal_use"}
@@ -670,7 +699,7 @@
 	<trigger Name="trEnemy_1_Without_Health" active="0">
 		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
-			local randLoot = random(3)
+			local randLoot = random(2)
 			local l = GetVar("Score").AsInt
 
 			local itemList = {"scrap_metal_use"}
@@ -729,7 +758,7 @@
 	<trigger Name="trEnemy_2_Without_Health" active="0">
 		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
-			local randLoot = random(3)
+			local randLoot = random(2)
 			local l = GetVar("Score").AsInt
 
 			local itemList = {"scrap_metal_use"}
@@ -788,7 +817,7 @@
 	<trigger Name="trEnemy_3_Without_Health" active="0">
 		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
-			local randLoot = random(3)
+			local randLoot = random(2)
 			local l = GetVar("Score").AsInt
 
 			local itemList = {"scrap_metal_use"}
@@ -1061,6 +1090,7 @@
 		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
 			TActivate("ChallengeFaze")
+			CreateEffectInsertedInRemove("ET_S_DUNGEON_NEW_FAZE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1227,6 +1257,7 @@
 			TDeactivate("LeavesRestartChallenge")
 			TDeactivate("EntersRestartChallenge")
 			GetPlayerVehicle():AddModifier( "hp", "+ 10000" ) 
+			GetPlayerVehicle():AddModifier( "fuel", "+ 10000" ) 
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1253,10 +1284,9 @@
 			AddFadingMsgByStrIdFormatted("fm_challenge_your_score", l)
 
 			StopPlayingCustomMusic()
-
+			
 			local Plf = GetPlayerVehicle()
 			local cabin = Plf:GetCabin()
-			local basket = Plf:GetBasket()
 			local PlfCoor = Plf:GetPosition()
 			if Plf then
 				Plf:setGodMode(1)
@@ -1267,9 +1297,12 @@
 					CreateEffectInsertedInRemove("ET_S_DUNGEON_COMPLETE_CHALLENGE", PlfCoor, Quaternion(0, 0, 0, 1), true)
 				end
 				if not(cabin == nil) then Plf:SetNewPart("CABIN", cabin:GetProperty("Prototype").AsString) end
-				if not(basket == nil) then Plf:SetNewPart("BASKET", basket:GetProperty("Prototype").AsString) end
 				Plf:SetSkin(GetVar("PlayerSkin").AsInt)
 			end
+
+			RemoveItemsFromPlayerRepository("scrap_metal_use", GetItemsAmount("scrap_metal_use"))
+			RemoveItemsFromPlayerRepository("machinery_use", GetItemsAmount("machinery_use"))
+			RemoveItemsFromPlayerRepository("electronics_use", GetItemsAmount("electronics_use"))
 
 			if GetVar("Use_AmmoChestArtilleryGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_artillerygun", GetVar("Use_AmmoChestArtilleryGun").AsInt) end
 			if GetVar("Use_AmmoChestHeavyGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_heavygun", GetVar("Use_AmmoChestHeavyGun").AsInt) end
@@ -1314,6 +1347,7 @@
 		<script>
 
 			GetPlayerVehicle():AddModifier( "hp", "+ 10000" ) 
+			GetPlayerVehicle():AddModifier( "fuel", "+ 10000" ) 
 
 			SetVar("PlayerDie",1)
 			TDeactivate("TimerStart")
@@ -1322,6 +1356,106 @@
 			TActivate("RemoveEnemys")
 			TActivate("DeActivateKey")
 
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Глобальный таймер -->
+	<trigger Name="TimerGlobal" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>	
+			local hourG = GetVar("Generator_time_work_hour").AsInt
+			local minG = GetVar("Generator_time_work_minute").AsInt
+			local secG = GetVar("Generator_time_work_second").AsInt
+
+			if GetVar("Generator_on").AsInt == 1 then
+				if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
+
+					if not(0 > hourG) and not(0 > minG) then
+						secG = secG - 1
+						SetVar("Generator_time_work_second", secG)
+						if 0 > secG then
+							SetVar("Generator_time_work_second", 59)
+							minG = minG - 1
+							SetVar("Generator_time_work_minute", minG)
+						end
+						if 0 > minG then
+							SetVar("Generator_time_work_minute", 59)
+							hourG = hourG - 1
+							SetVar("Generator_time_work_hour", hourG)
+						end
+					end
+
+					if 0 > hourG and 0 > minG and 0 > secG then
+						SetVar("Generator_time_work_second", 0)
+						SetVar("Generator_time_work_minute", 0)
+						SetVar("Generator_time_work_hour", 0)
+						SetVar("Generator_on", 0)
+					end
+				end
+			end
+
+			local hourC = GetVar("ChestScavs_time_hour").AsInt
+			local minC = GetVar("ChestScavs_time_minute").AsInt
+			local secC = GetVar("ChestScavs_time_second").AsInt
+
+			if GetVar("ChestScavs_timer").AsInt == 1 then
+				if GetVar("ChestScavs_Search").AsInt > 0 then
+				
+					if not(0 > hourC) and not(0 > minC) then
+						secC = secC - 1
+						SetVar("ChestScavs_time_second", secC)
+						if 0 > secC then
+							SetVar("ChestScavs_time_second", 59)
+							minC = minC - 1
+							SetVar("ChestScavs_time_minute", minC)
+						end
+						if 0 > minC then
+							SetVar("ChestScavs_time_minute", 59)
+							hourC = hourC - 1
+							SetVar("ChestScavs_time_hour", hourC)
+						end
+					end
+
+					if 0 > hourC and 0 > minC and 0 > secC then
+						SetVar("ChestScavs_time_hour", 0)
+						SetVar("ChestScavs_time_minute", 0)
+						SetVar("ChestScavs_time_second", 0)
+						SetVar("ChestScavs_timer", 0)
+					end
+				end
+			end
+
+			if GetVar("Generator_on").AsInt == 0 and GetVar("ChestScavs_timer").AsInt == 0 then
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
+
+<!-- Выход с карты -->
+	<trigger Name="ExitMap" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local vehPlayer = GetPlayerVehicle()
+			if vehPlayer then
+				vehPlayer:SetCustomControlEnabled( true )
+				vehPlayer:SetCustomLinearVelocity( 0 )
+				vehPlayer:SetThrottle( 0 )
+				vehPlayer:SetCustomControlEnabled( false )
+			end
+
+			if GENERATOR_TIMER_HOUR_GLOBAL then GENERATOR_TIMER_HOUR_GLOBAL = GetVar("Generator_time_work_hour").AsInt end
+			if GENERATOR_TIMER_MINUTE_GLOBAL then GENERATOR_TIMER_MINUTE_GLOBAL = GetVar("Generator_time_work_minute").AsInt end
+			if GENERATOR_TIMER_SECOND_GLOBAL then GENERATOR_TIMER_SECOND_GLOBAL = GetVar("Generator_time_work_second").AsInt end
+			if GENERATOR_ON_GLOBAL then GENERATOR_ON_GLOBAL = GetVar("Generator_on").AsInt end
+
+			if CHESTSCAVS_TIMER_HOUR_GLOBAL then CHESTSCAVS_TIMER_HOUR_GLOBAL = GetVar("ChestScavs_time_hour").AsInt end
+			if CHESTSCAVS_TIMER_MINUTE_GLOBAL then CHESTSCAVS_TIMER_MINUTE_GLOBAL = GetVar("ChestScavs_time_minute").AsInt end
+			if CHESTSCAVS_TIMER_SECOND_GLOBAL then CHESTSCAVS_TIMER_SECOND_GLOBAL = GetVar("ChestScavs_time_second").AsInt end
+			if CHESTSCAVS_SEARCH_GLOBAL then CHESTSCAVS_SEARCH_GLOBAL = GetVar("ChestScavs_Search").AsInt end
+
+			TDeactivate("TimerGlobal")
+			
 			trigger:Deactivate()
 		</script>
 	</trigger>

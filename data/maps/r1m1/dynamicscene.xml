@@ -52,8 +52,8 @@
 		Name="BaseFelix_Exit"
 		Belong="1100"
 		Prototype="genericLocation"
-		Pos="225.849 330.216 2242.372"
-		Radius="30.000" />
+		Pos="211.202 334.426 2279.100"
+		Radius="25.000" />
 
 	<Object
 		Flags="21"
@@ -96,16 +96,16 @@
 		Name="BaseFelix_exitPMC_1_loc"
 		Belong="1088"
 		Prototype="genericLocation"
-		Pos="225.849 330.216 2242.372"
-		Radius="30.000" />
+		Pos="211.202 334.426 2279.100"
+		Radius="25.000" />
 
 	<Object
 		Flags="21"
 		Name="BaseFelix_exitPMC_2_loc"
 		Belong="1089"
 		Prototype="genericLocation"
-		Pos="225.849 330.216 2242.372"
-		Radius="30.000" />
+		Pos="211.202 334.426 2279.100"
+		Radius="25.000" />
 
 	<Object
 		Flags="21"
@@ -845,6 +845,27 @@
 		Radius="10.000" />
 
 	<Object
+		Name="SpawnBoxVideocard_1_loc"
+		Belong="1001"
+		Prototype="genericLocation"
+		Pos="1242.945 308.610 2984.175"
+		Radius="10.000" />
+
+	<Object
+		Name="SpawnBoxVideocard_2_loc"
+		Belong="1001"
+		Prototype="genericLocation"
+		Pos="1284.935 308.000 2979.837"
+		Radius="10.000" />
+
+	<Object
+		Name="SpawnBoxVideocard_3_loc"
+		Belong="1001"
+		Prototype="genericLocation"
+		Pos="1291.773 308.000 2961.796"
+		Radius="10.000" />
+
+	<Object
 		Name="hospital_barricade1"
 		Belong="1082"
 		Prototype="hospital_barricade_wGw"
@@ -1486,36 +1507,36 @@
 		Radius="150.000" />
 
 	<Object
-		Name="q_clearing_r1m1_1_loc"
-		Belong="1083"
+		Name="q_clearing_r1m1_1_loc_0"
+		Belong="1100"
 		Prototype="genericLocation"
 		Pos="1190.837 295.568 2870.274"
 		Radius="500.000" />
 
 	<Object
-		Name="q_clearing_r1m1_2_loc"
-		Belong="1083"
+		Name="q_clearing_r1m1_2_loc_0"
+		Belong="1100"
 		Prototype="genericLocation"
 		Pos="2580.246 321.140 1836.844"
 		Radius="300.000" />
 
 	<Object
-		Name="q_clearing_r1m1_3_loc"
-		Belong="1083"
+		Name="q_clearing_r1m1_3_loc_0"
+		Belong="1100"
 		Prototype="genericLocation"
 		Pos="494.477 303.831 1813.425"
 		Radius="350.000" />
 
 	<Object
-		Name="q_clearing_r1m1_4_loc"
-		Belong="1083"
+		Name="q_clearing_r1m1_4_loc_0"
+		Belong="1100"
 		Prototype="genericLocation"
 		Pos="2002.334 298.743 704.902"
 		Radius="400.000" />
 
 	<Object
-		Name="q_clearing_r1m1_5_loc"
-		Belong="1083"
+		Name="q_clearing_r1m1_5_loc_0"
+		Belong="1100"
 		Prototype="genericLocation"
 		Pos="2970.929 315.216 855.516"
 		Radius="500.000" />
@@ -36260,5 +36281,18 @@
 		Prototype="Breakable_Elka3"
 		Pos="2900.602 352.210 3476.504"
 		Rot="0.001 0.393 0.002 0.920" />
+
+	<Object
+		Name="Breakable_Elka143715"
+		Belong="1001"
+		Prototype="Breakable_Elka1"
+		Pos="183.734 332.216 2270.729"
+		Rot="-0.014 0.354 -0.005 0.935" />
+
+	<Object
+		Name="Breakable_Sosna14376"
+		Belong="1001"
+		Prototype="Breakable_Sosna1"
+		Pos="235.586 334.492 2270.641" />
 
 </DynamicScene>

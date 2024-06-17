@@ -40,7 +40,10 @@
 			SetVar("ChestScavs_item_fitanyashka", 0)
 			SetVar("ChestScavs_Builden", 0)
 			SetVar("ChestScavs_Search", 0)
-			SetVar("ChestScavs_Timer", 0)
+			SetVar("ChestScavs_time_hour", 0)
+			SetVar("ChestScavs_time_minute", 0)
+			SetVar("ChestScavs_time_second", 0)
+			SetVar("ChestScavs_time_msg", "0")
 			SetVar("Scav_Move", 0)
 			SetVar("ChestScavs_Loot", 0)
 
@@ -57,7 +60,10 @@
 			SetVar("Tunel_Builden", 0)
 
 			SetVar("Generator_lvl", 0)
-			SetVar("Generator_time_work", 0)
+			SetVar("Generator_time_work_hour", 0)
+			SetVar("Generator_time_work_minute", 0)
+			SetVar("Generator_time_work_second", 0)
+			SetVar("Generator_time_work_msg", "0")
 			SetVar("Generator_on", 0)
 			SetVar("Generator_dlg", 0)
 
@@ -67,6 +73,7 @@
 			SetVar("Generator_lvl_1_fuel", 0)
 			SetVar("Generator_lvl_1_oil", 0)
 			SetVar("Generator_lvl_1_money", 0)
+			SetVar("Generator_lvl_2_item_fuel_full", 0)
 			SetVar("Generator_lvl_2_item_rele", 0)
 			SetVar("Generator_lvl_2_item_wires", 0)
 			SetVar("Generator_lvl_2_item_buldex", 0)
@@ -100,13 +107,15 @@
 
 			SetVar("CountRaids", 0)
 
-			SetVar("VehMove", 0)
-			SetVar("VehPath", 0)
-
 			SetVar("OpenGate_1", 0)
 			SetVar("OpenGate_2", 0)
 
 			SetVar("DialogSelectMap", 0)
+
+			SetVar("WatchCredits", 0)
+
+			SetVar("EFA_Version", "0")
+			SetVar("EFA_Build", "0")
 
 		    trigger:Deactivate()
 		</script>
@@ -121,6 +130,14 @@
 			SetVar("q_fuel2_can_be_given", 0)
 			SetVar("q_rebuild_item_svech", 0)
 			SetVar("q_test_drive1_can_be_given", 0)
+			SetVar("q_bitok1_item_cable", 0)
+			SetVar("q_bitok1_item_tplug", 0)
+			SetVar("q_bitok1_item_bp", 0)
+			SetVar("q_bitok2_can_be_given", 0)
+			SetVar("q_bitok2_item_cpu", 0)
+			SetVar("q_bitok2_item_cooler", 0)
+			SetVar("q_bitok2_item_plate", 0)
+			SetVar("q_bitok3_can_be_given", 0)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -131,33 +148,43 @@
 		<script>
 
 		--ящик диких
-			if CHESTSCAVS_TIMER_GLOBAL then SetVar("ChestScavs_Timer", CHESTSCAVS_TIMER_GLOBAL) end
+			if CHESTSCAVS_TIMER_HOUR_GLOBAL then SetVar("ChestScavs_time_hour", CHESTSCAVS_TIMER_HOUR_GLOBAL) end
+			if CHESTSCAVS_TIMER_MINUTE_GLOBAL then SetVar("ChestScavs_time_minute", CHESTSCAVS_TIMER_MINUTE_GLOBAL) end
+			if CHESTSCAVS_TIMER_SECOND_GLOBAL then SetVar("ChestScavs_time_second", CHESTSCAVS_TIMER_SECOND_GLOBAL) end
+			if CHESTSCAVS_SEARCH_GLOBAL then SetVar("ChestScavs_Search", CHESTSCAVS_SEARCH_GLOBAL) end
 
 			if GetVar("ChestScavs_Builden").AsInt == 1 then
-				if GetVar("ChestScavs_Search").AsInt > 0 and GetVar("ChestScavs_Timer").AsInt == 0 then
+				if GetVar("ChestScavs_Search").AsInt > 0 and GetVar("ChestScavs_time_hour").AsInt == 0 and GetVar("ChestScavs_time_minute").AsInt == 0 and GetVar("ChestScavs_time_second").AsInt == 0 then
 					if GetVar("ChestScavs_Loot").AsInt == 0 then
 						TActivate("ChestScavs_CreateLoot")
 					end
-				elseif GetVar("ChestScavs_Search").AsInt > 0 and GetVar("ChestScavs_Timer").AsInt > 0 then
-					TActivate("ChestScavs_Timer")
-					TActivate("ChestScavs_Time")
+				elseif GetVar("ChestScavs_Search").AsInt > 0 then
+					if GetVar("ChestScavs_time_hour").AsInt > 0 or GetVar("ChestScavs_time_minute").AsInt > 0 or GetVar("ChestScavs_time_second").AsInt > 0 then
+						TActivate("ChestScavs_Timer")
+						TActivate("ChestScavsTimeMsgActivate")
+					end
 				end 
 			end
 
 		--генератор
-			if GENERATOR_TIMER_GLOBAL then SetVar("Generator_time_work", GENERATOR_TIMER_GLOBAL) end
+			if GENERATOR_TIMER_HOUR_GLOBAL then SetVar("Generator_time_work_hour", GENERATOR_TIMER_HOUR_GLOBAL) end
+			if GENERATOR_TIMER_MINUTE_GLOBAL then SetVar("Generator_time_work_minute", GENERATOR_TIMER_MINUTE_GLOBAL) end
+			if GENERATOR_TIMER_SECOND_GLOBAL then SetVar("Generator_time_work_second", GENERATOR_TIMER_SECOND_GLOBAL) end
 			if GENERATOR_ON_GLOBAL then SetVar("Generator_on", GENERATOR_ON_GLOBAL) end
 
 			if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
-				if GetVar("Generator_on").AsInt == 1 and GetVar("Generator_time_work").AsInt > 0 then
-					if GetVar("Generator_lvl").AsInt == 1 then
-						getObj("gen_2_lvl_1"):SetNodeAction(AT_MOVE1)
+				if GetVar("Generator_time_work_second").AsInt > 0 or GetVar("Generator_time_work_minute").AsInt > 0 or GetVar("Generator_time_work_hour").AsInt > 0 then
+					if GetVar("Generator_on").AsInt == 1 then
+						if GetVar("Generator_lvl").AsInt == 1 then
+							getObj("gen_2_lvl_1"):SetNodeAction(AT_MOVE1)
+						end
+						TActivate("Generator_timer")
+						TActivate("IfGenerator_On")
 					end
-					TActivate("Generator_timer")
-					TActivate("IfGenerator_On")
 				else
 					SetVar("Generator_on", 0)
 					TActivate("Generator_Stop")
+					SetVar("Generator_time_work_msg", "0")
 				end
 			end
 
@@ -207,18 +234,18 @@
 				TActivate("PlayerFuel")
 			end
 
-			if IsQuestComplete('q_fuel1') and not(GetVar("q_fuel2_can_be_given").AsInt == 2) then 
-				SetVar("q_fuel2_can_be_given", GetVar("q_fuel2_can_be_given").AsInt+1)
-			end
+			TActivate("QuestCanBeGiven")
 
-			if IsQuestComplete('q_rebuild') and not(GetVar("q_test_drive1_can_be_given").AsInt == 2) then 
-				SetVar("q_test_drive1_can_be_given", GetVar("q_test_drive1_can_be_given").AsInt+1)
-			end
+		--версия
+			if EFA_VERSION then SetVar("EFA_Version", EFA_VERSION) end
+			if EFA_BUILD then SetVar("EFA_Build", EFA_BUILD) end
 
+			TActivate("CheckLoadSaveTimer")
+		
 			SetCameraBehindPlayerVehicle()
 		</script>
 	</trigger>
-	
+
 <!-- Машины в продажу -->
 	<trigger Name="VehiclesForSale" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
@@ -232,60 +259,32 @@
 	
 			if Workshop and Vehicles then
 				Vehicles:AddItems("BugForSale", 1)
-				if IsQuestComplete('q_test_drive1') then Vehicles:AddItems("MolokovozForSale", 1) end
-				if IsQuestComplete('q_test_drive5') then Vehicles:AddItems("UralForSale", 1) end
-				--Vehicles:AddItems("BelazForSale", 1)
-				--Vehicles:AddItems("MirotvorecForSale", 1)
-				--Vehicles:AddItems("CruiserForSale", 1)
+				if IsQuestComplete("q_rebuild") then Vehicles:AddItems("MolokovozForSale", 1) end
+				if IsQuestComplete("q_test_drive5") then Vehicles:AddItems("UralForSale", 1) end
 			end
 
 			if Workshop and CabAndBasket then
 				CabAndBasket:AddItems("bugCab01", 1)
-				CabAndBasket:AddItems("bugCab02", 1)
-				CabAndBasket:AddItems("bugCab03", 1)
+				if IsQuestComplete("q_explore_r1m1") then CabAndBasket:AddItems("bugCab02", 1) end
+				if IsQuestComplete("q_fuel1") then CabAndBasket:AddItems("bugCab03", 1) end
 				CabAndBasket:AddItems("bugCargo01_4x5", 1)
 				CabAndBasket:AddItems("bugCargo02_4x6", 1)
-				CabAndBasket:AddItems("bugCargo03_5x7", 1)
+				if IsQuestComplete("q_clearing_r1m1") then CabAndBasket:AddItems("bugCargo03_5x7", 1) end
 				CabAndBasket:AddItems("molokovozCab01", 1)
-				CabAndBasket:AddItems("molokovozCab02", 1)
-				CabAndBasket:AddItems("molokovozCab03", 1)
+				if IsQuestComplete("q_rebuild") then CabAndBasket:AddItems("molokovozCab02", 1) end
+				if IsQuestComplete("q_test_drive1") then CabAndBasket:AddItems("molokovozCab03", 1) end
 				CabAndBasket:AddItems("molokovozCargo01_5x8", 1)
-				CabAndBasket:AddItems("molokovozCargo02_6x9", 1)
-				CabAndBasket:AddItems("molokovozCargo03_6x8", 1)
+				if IsQuestComplete("q_test_drive2") then CabAndBasket:AddItems("molokovozCargo02_6x9", 1) end
+				if IsQuestComplete("q_test_drive3") then CabAndBasket:AddItems("molokovozCargo03_6x8", 1) end
 				CabAndBasket:AddItems("uralCab01", 1)
-				CabAndBasket:AddItems("uralCab02", 1)
-				CabAndBasket:AddItems("uralCab03", 1)
-				CabAndBasket:AddItems("uralCab04", 1)
-				CabAndBasket:AddItems("uralCab05", 1)
+				if IsQuestComplete("q_test_drive5") then CabAndBasket:AddItems("uralCab02", 1) end
 				CabAndBasket:AddItems("uralCargo01_6x9", 1)
-				CabAndBasket:AddItems("uralCargo02_7x9", 1)
-				CabAndBasket:AddItems("uralCargo03_9x10", 1)
-				CabAndBasket:AddItems("uralCargo04_7x10", 1)
-				CabAndBasket:AddItems("uralCargo05_8x9", 1)
 				CabAndBasket:AddItems("belazCab01", 1)
-				CabAndBasket:AddItems("belazCab02", 1)
-				CabAndBasket:AddItems("belazCab03", 1)
-				CabAndBasket:AddItems("belazCab04", 1)
-				CabAndBasket:AddItems("belazCab05", 1)
 				CabAndBasket:AddItems("belazCargo01_6x12", 1)
-				CabAndBasket:AddItems("belazCargo02_8x11", 1)
-				CabAndBasket:AddItems("belazCargo03_11x12", 1)
-				CabAndBasket:AddItems("belazCargo04_6x10", 1)
-				CabAndBasket:AddItems("belazCargo05_9x10", 1)
 				CabAndBasket:AddItems("mirotvorecCab01", 1)
-				CabAndBasket:AddItems("mirotvorecCab02", 1)
-				CabAndBasket:AddItems("mirotvorecCab03", 1)
-				CabAndBasket:AddItems("mirotvorecCab04", 1)
-				CabAndBasket:AddItems("mirotvorecCab05", 1)
 				CabAndBasket:AddItems("mirotvorecCargo01_7x9", 1)
-				CabAndBasket:AddItems("mirotvorecCargo02_7x10", 1)
-				CabAndBasket:AddItems("mirotvorecCargo03_8x10", 1)
-				CabAndBasket:AddItems("mirotvorecCargo04_7x10", 1)
-				CabAndBasket:AddItems("mirotvorecCargo05_9x11", 1)
 				CabAndBasket:AddItems("cruiserCab01", 1)
-				CabAndBasket:AddItems("cruiserCab02", 1)
 				CabAndBasket:AddItems("cruiserCargo01_8x11", 1)
-				CabAndBasket:AddItems("cruiserCargo02_8x12", 1)
 			end
 
 			if Shop and GunAndGadget then
@@ -299,16 +298,19 @@
 				GunAndGadget:AddItems("additional_durability", 1)
 				GunAndGadget:AddItems("additional_stability", 1)
 				GunAndGadget:AddItems("ammo_chest_machinegunForSale", 1)
-				if IsQuestComplete('q_clearing_r1m1') then GunAndGadget:AddItems("ammo_chest_machinegunForSale", 1) end
-				if IsQuestComplete('q_kill_scavs') then GunAndGadget:AddItems("pkt01", 1) end
-				if IsQuestComplete('q_fuel2') then GunAndGadget:AddItems("kord01", 1) end
-				if IsQuestComplete('q_base_scavs') then GunAndGadget:AddItems("pkt01", 1) end
-				if IsQuestComplete('q_test_drive2') then GunAndGadget:AddItems("kpvt01", 1) end
-				if IsQuestComplete('q_test_drive3') then GunAndGadget:AddItems("ammo_chest_shotgunForSale", 1) end
-				if IsQuestComplete('q_test_drive4') then GunAndGadget:AddItems("ammo_chest_heavygunForSale", 1) end
-				if IsQuestComplete('q_test_drive4') then GunAndGadget:AddItems("rapier01", 1) end
-				if IsQuestComplete('q_test_drive6') then GunAndGadget:AddItems("ammo_chest_machinegunForSale", 1) end
-				if IsQuestComplete('q_test_drive6') then GunAndGadget:AddItems("kpvt01", 1) end
+				GunAndGadget:AddItems("ammo_chest_shotgunForSale", 1)
+				GunAndGadget:AddItems("hornet01", random(0,2))
+				if IsQuestComplete("q_clearing_r1m1") then GunAndGadget:AddItems("ammo_chest_machinegunForSale", 1) end
+				if IsQuestComplete("q_kill_scavs") then GunAndGadget:AddItems("pkt01", 1) end
+				if IsQuestComplete("q_fuel2") then GunAndGadget:AddItems("kord01", 1) end
+				if IsQuestComplete("q_base_scavs") then GunAndGadget:AddItems("pkt01", 1) GunAndGadget:AddItems("kord01", 1) end
+				if IsQuestComplete("q_test_drive2") then GunAndGadget:AddItems("kpvt01", 1) end
+				if IsQuestComplete("q_test_drive3") then GunAndGadget:AddItems("ammo_chest_shotgunForSale", 1) end
+				if IsQuestComplete("q_test_drive4") then GunAndGadget:AddItems("ammo_chest_heavygunForSale", 1) end
+				if IsQuestComplete("q_test_drive4") then GunAndGadget:AddItems("rapier01", 1) end
+				if IsQuestComplete("q_test_drive6") then GunAndGadget:AddItems("ammo_chest_machinegunForSale", 1) end
+				if IsQuestComplete("q_test_drive6") then GunAndGadget:AddItems("kpvt01", 1) end
+				if IsQuestComplete("q_bitok2") then GunAndGadget:AddItems("cooling_system_guns2", 1) end
 			end
 
 		    trigger:Deactivate()
@@ -494,19 +496,17 @@
 	<trigger Name="PetrolStation_BuildInfo" active="0">
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="PetrolStation_Build_loc" />
 		<script>
-			if not(GetVar("PetrolStationBuild_fuel_nil_use").AsInt == 2) or not(GetVar("PetrolStationBuild_fuel_full_use").AsInt == 2) or not(GetVar("PetrolStationBuild_item_bolts").AsInt == 2) or not(GetVar("PetrolStationBuild_item_nuts").AsInt == 2) or not(GetVar("PetrolStationBuild_item_thermometer").AsInt == 1) or not(GetVar("PetrolStationBuild_item_parts").AsInt == 3) or not(GetVar("PetrolStationBuild_item_lump").AsInt == 2) or not(GetVar("PetrolStationBuild_item_fullmaster").AsInt == 1) then
-				local item_1, item_2, item_3, item_4, item_5, item_6, item_7, item_8 = "", "", "", "", "", "", "", ""
+			if not(GetVar("PetrolStationBuild_fuel_full_use").AsInt == 2) or not(GetVar("PetrolStationBuild_item_bolts").AsInt == 2) or not(GetVar("PetrolStationBuild_item_nuts").AsInt == 2) or not(GetVar("PetrolStationBuild_item_parts").AsInt == 1) or not(GetVar("PetrolStationBuild_item_lump").AsInt == 2) or not(GetVar("PetrolStationBuild_item_fullmaster").AsInt == 1) then
+				local item_1, item_2, item_3, item_4, item_6, item_6 = "", "", "", "", "", ""
 			
-				if GetVar("PetrolStationBuild_fuel_nil_use").AsInt ~= 2 then item_1 = "Пустая канистра - x"..(2 - GetVar("PetrolStationBuild_fuel_nil_use").AsInt).."|" end
-				if GetVar("PetrolStationBuild_fuel_full_use").AsInt ~= 2 then item_2 = "Канистра топлива - x"..(2 - GetVar("PetrolStationBuild_fuel_full_use").AsInt).."|" end
-				if GetVar("PetrolStationBuild_item_bolts").AsInt ~= 2 then item_3 = "Болты - x"..(2 - GetVar("PetrolStationBuild_item_bolts").AsInt).."|" end
-				if GetVar("PetrolStationBuild_item_nuts").AsInt ~= 2 then item_4 = "Гайки - x"..(2 - GetVar("PetrolStationBuild_item_nuts").AsInt).."|" end
-				if GetVar("PetrolStationBuild_item_thermometer").AsInt ~= 1 then item_5 = "Термометр - x1|" end
-				if GetVar("PetrolStationBuild_item_parts").AsInt ~= 3 then item_6 = "Металлические запчасти - x"..(3 - GetVar("PetrolStationBuild_item_parts").AsInt).."|" end
-				if GetVar("PetrolStationBuild_item_lump").AsInt ~= 2 then item_7 = "Лампа накаливания - x"..(2 - GetVar("PetrolStationBuild_item_lump").AsInt).."|" end
-				if GetVar("PetrolStationBuild_item_fullmaster").AsInt ~= 1 then item_8 = "Набор напильников «FullMaster» - x1" end
+				if GetVar("PetrolStationBuild_fuel_full_use").AsInt ~= 2 then item_1 = "Горючее - x"..(2 - GetVar("PetrolStationBuild_fuel_full_use").AsInt).."|" end
+				if GetVar("PetrolStationBuild_item_bolts").AsInt ~= 2 then item_2 = "Болты - x"..(2 - GetVar("PetrolStationBuild_item_bolts").AsInt).."|" end
+				if GetVar("PetrolStationBuild_item_nuts").AsInt ~= 2 then item_3 = "Гайки - x"..(2 - GetVar("PetrolStationBuild_item_nuts").AsInt).."|" end
+				if GetVar("PetrolStationBuild_item_parts").AsInt ~= 1 then item_4 = "Металлические запчасти - x1|" end
+				if GetVar("PetrolStationBuild_item_lump").AsInt ~= 2 then item_5 = "Лампа накаливания - x"..(2 - GetVar("PetrolStationBuild_item_lump").AsInt).."|" end
+				if GetVar("PetrolStationBuild_item_fullmaster").AsInt ~= 1 then item_6 = "Набор напильников «FullMaster» - x1" end
 
-				local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7..""..item_8
+				local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6
 
 				AddFadingMsgByStrIdFormatted("fm_items_to_build", msg)
 			end
@@ -726,7 +726,7 @@
 			local ChestId = GetEntityByID(Chest)
 			ChestId:SetPosition(CVector(903.080, 255, 988.017))
 
-			local start_items = {"item_opacity", "hornet01", "specter01", "specter01", "specter01", "pkt01", "vector01", "vulcan01", "scrap_metal_use", "scrap_metal_use", "scrap_metal_use", "scrap_metal_use", "scrap_metal_use", "machinery_use", "machinery_use", "machinery_use", "oil_use", "oil_use", "oil_use", "oil_use", "fuel_nil_use", "fuel_nil_use", "ammo_chest_machinegun", "ammo_chest_machinegun"}
+			local start_items = {"item_opacity", "hornet01", "specter01", "specter01", "specter01", "pkt01", "vector01", "vulcan01", "scrap_metal_use", "scrap_metal_use", "scrap_metal_use", "scrap_metal_use", "scrap_metal_use", "machinery_use", "machinery_use", "machinery_use", "oil_use", "fuel_nil_use", "fuel_nil_use", "ammo_chest_machinegun", "ammo_chest_machinegun", "ammo_chest_shotgun"}
 			local items = getn(start_items)
 
 			for i=1,items do
@@ -746,11 +746,11 @@
 	<trigger Name="Inventory_lvl_2_BuildInfo" active="0">
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Inventory_Build_lvl_2_loc" />
 		<script>
-			if not(GetVar("Inventory_lvl_2_item_drill").AsInt == 1) or not(GetVar("Inventory_lvl_2_item_screws").AsInt == 4) or not(GetVar("Inventory_lvl_2_item_nails").AsInt == 2) or not(GetVar("Inventory_lvl_2_item_screw").AsInt == 1) or not(GetVar("Inventory_lvl_2_item_roulet").AsInt == 1) or not(GetVar("Inventory_lvl_2_item_pena").AsInt == 1) then
+			if not(GetVar("Inventory_lvl_2_item_drill").AsInt == 1) or not(GetVar("Inventory_lvl_2_item_screws").AsInt == 2) or not(GetVar("Inventory_lvl_2_item_nails").AsInt == 2) or not(GetVar("Inventory_lvl_2_item_screw").AsInt == 1) or not(GetVar("Inventory_lvl_2_item_roulet").AsInt == 1) or not(GetVar("Inventory_lvl_2_item_pena").AsInt == 1) then
 				local item_1, item_2, item_3, item_4, item_5, item_6 = "", "", "", "", "", ""
 			
 				if GetVar("Inventory_lvl_2_item_drill").AsInt ~= 1 then item_1 = "Дрель - x1|" end
-				if GetVar("Inventory_lvl_2_item_screws").AsInt ~= 4 then item_2 = "Саморезы - x"..(4 - GetVar("Inventory_lvl_2_item_screws").AsInt).."|" end
+				if GetVar("Inventory_lvl_2_item_screws").AsInt ~= 2 then item_2 = "Саморезы - x"..(2 - GetVar("Inventory_lvl_2_item_screws").AsInt).."|" end
 				if GetVar("Inventory_lvl_2_item_nails").AsInt ~= 2 then item_3 = "Гвозди - x"..(2 - GetVar("Inventory_lvl_2_item_nails").AsInt).."|" end
 				if GetVar("Inventory_lvl_2_item_screw").AsInt ~= 1 then item_4 = "Отвертка - x1|" end
 				if GetVar("Inventory_lvl_2_item_roulet").AsInt ~= 1 then item_5 = "Рулетка - x1|" end
@@ -806,21 +806,20 @@
 	<trigger Name="ChestScavs_BuildInfo" active="0">
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ChestScavs_Build_loc" />
 		<script>
-			if not(GetVar("ChestScavs_electronics").AsInt == 2) or not(GetVar("ChestScavs_machinery").AsInt == 1) or not(GetVar("ChestScavs_books").AsInt == 1) or not(GetVar("ChestScavs_bottles").AsInt == 1) or not(GetVar("ChestScavs_details").AsInt == 1) or not(GetVar("ChestScavs_item_ananaga").AsInt == 3) or not(GetVar("ChestScavs_item_rolex").AsInt == 3) or not(GetVar("ChestScavs_item_chain_gold").AsInt == 6) or not(GetVar("ChestScavs_item_skullring").AsInt == 4) or not(GetVar("ChestScavs_item_fitanyashka").AsInt == 1) then
-				local item_1, item_2, item_3, item_4, item_5, item_6, item_7, item_8, item_9, item_10 = "", "", "", "", "", "", "", "", "", ""
-			
+			if not(GetVar("ChestScavs_electronics").AsInt == 2) or not(GetVar("ChestScavs_machinery").AsInt == 1) or not(GetVar("ChestScavs_books").AsInt == 1) or not(GetVar("ChestScavs_bottles").AsInt == 1) or not(GetVar("ChestScavs_details").AsInt == 1) or not(GetVar("ChestScavs_item_ananaga").AsInt == 1) or not(GetVar("ChestScavs_item_rolex").AsInt == 1) or not(GetVar("ChestScavs_item_chain_gold").AsInt == 3) or not(GetVar("ChestScavs_item_skullring").AsInt == 2) then
+				local item_1, item_2, item_3, item_4, item_5, item_6, item_7, item_8, item_9 = "", "", "", "", "", "", "", "", ""
+		
 				if GetVar("ChestScavs_electronics").AsInt ~= 2 then item_1 = "Электроника - x"..(2 - GetVar("ChestScavs_electronics").AsInt).."|" end
 				if GetVar("ChestScavs_machinery").AsInt ~= 1 then item_2 = "Рабочее оборудование - x1|" end
 				if GetVar("ChestScavs_books").AsInt ~= 1 then item_3 = "Книги - x1|" end
 				if GetVar("ChestScavs_bottles").AsInt ~= 1 then item_4 = "Бутылки - x1|" end
 				if GetVar("ChestScavs_details").AsInt ~= 1 then item_5 = "Детали - x1|" end
-				if GetVar("ChestScavs_item_ananaga").AsInt ~= 3 then item_6 = "Ананага - x"..(3 - GetVar("ChestScavs_item_ananaga").AsInt).."|" end
-				if GetVar("ChestScavs_item_rolex").AsInt ~= 3 then item_7 = "Золотые часы - x"..(3 - GetVar("ChestScavs_item_rolex").AsInt).."|" end
-				if GetVar("ChestScavs_item_chain_gold").AsInt ~= 6 then item_8 = "Золотая цепочка - x"..(6 - GetVar("ChestScavs_item_chain_gold").AsInt).."|" end
-				if GetVar("ChestScavs_item_skullring").AsInt ~= 4 then item_9 = "Золотое кольцо с черепом - x"..(4 - GetVar("ChestScavs_item_skullring").AsInt).."|" end
-				if GetVar("ChestScavs_item_fitanyashka").AsInt ~= 1 then item_10 = "Дакимакура FitaNyashka - x1" end
-
-				local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7..""..item_8..""..item_9..""..item_10
+				if GetVar("ChestScavs_item_ananaga").AsInt ~= 1 then item_6 = "Ананага - x1|" end
+				if GetVar("ChestScavs_item_rolex").AsInt ~= 1 then item_7 = "Золотые часы - x1|" end
+				if GetVar("ChestScavs_item_chain_gold").AsInt ~= 3 then item_8 = "Золотая цепочка - x"..(3 - GetVar("ChestScavs_item_chain_gold").AsInt).."|" end
+				if GetVar("ChestScavs_item_skullring").AsInt ~= 2 then item_9 = "Золотое кольцо с черепом - x"..(2 - GetVar("ChestScavs_item_skullring").AsInt) end
+	
+				local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7..""..item_8..""..item_9
 
 				AddFadingMsgByStrIdFormatted("fm_items_to_build", msg)
 			end
@@ -856,19 +855,19 @@
 	<trigger Name="ChestScavs_Start" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			if GetVar("ChestScavs_Search").AsInt == 1 then SetVar("ChestScavs_Timer", 900) end
-			if GetVar("ChestScavs_Search").AsInt == 2 then SetVar("ChestScavs_Timer", 1800) end
-			if GetVar("ChestScavs_Search").AsInt == 3 then SetVar("ChestScavs_Timer", 2700) end
-			if GetVar("ChestScavs_Search").AsInt == 4 then SetVar("ChestScavs_Timer", 1500) end
-			if GetVar("ChestScavs_Search").AsInt == 5 then SetVar("ChestScavs_Timer", 3000) end
-			if GetVar("ChestScavs_Search").AsInt == 6 then SetVar("ChestScavs_Timer", 3600) end
+			if GetVar("ChestScavs_Search").AsInt == 1 then SetVar("ChestScavs_time_hour", 0) SetVar("ChestScavs_time_minute", 15) SetVar("ChestScavs_time_second", 0) end
+			if GetVar("ChestScavs_Search").AsInt == 2 then SetVar("ChestScavs_time_hour", 0) SetVar("ChestScavs_time_minute", 30) SetVar("ChestScavs_time_second", 0) end
+			if GetVar("ChestScavs_Search").AsInt == 3 then SetVar("ChestScavs_time_hour", 0) SetVar("ChestScavs_time_minute", 45) SetVar("ChestScavs_time_second", 0) end
+			if GetVar("ChestScavs_Search").AsInt == 4 then SetVar("ChestScavs_time_hour", 0) SetVar("ChestScavs_time_minute", 25) SetVar("ChestScavs_time_second", 0) end
+			if GetVar("ChestScavs_Search").AsInt == 5 then SetVar("ChestScavs_time_hour", 0) SetVar("ChestScavs_time_minute", 50) SetVar("ChestScavs_time_second", 0) end
+			if GetVar("ChestScavs_Search").AsInt == 6 then SetVar("ChestScavs_time_hour", 1) SetVar("ChestScavs_time_minute", 0) SetVar("ChestScavs_time_second", 0) end
 
 			TActivate("ChestScavs_Timer")
 
 			AddFadingMsgByStrIdFormatted("fm_chest_scavs_start")
 			SoundFadingMsg()
 			TActivate("ChestScavs_StartSound")
-			TActivate("ChestScavs_Time")
+			TActivate("ChestScavsTimeMsgActivate")
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -882,12 +881,41 @@
 	</trigger>
 
 	<trigger Name="ChestScavs_Timer" active="0">
-		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
 		<script>
-			local t = GetVar("ChestScavs_Timer").AsInt - 2
-			SetVar("ChestScavs_Timer", t) 
-			if 0 >= t then
-				SetVar("ChestScavs_Timer", 0) 
+			local hour = GetVar("ChestScavs_time_hour").AsInt
+			local min = GetVar("ChestScavs_time_minute").AsInt
+			local sec = GetVar("ChestScavs_time_second").AsInt
+			
+			local nulH, nulM, nulS = "", "", ""
+
+			if 10 > hour then nulH = 0 end
+			if 10 > min then nulM = 0 end
+			if 10 > sec then nulS = 0 end
+
+			local Msg = nulH..hour..":"..nulM..min..":"..nulS..sec
+			SetVar("ChestScavs_time_msg", Msg)
+
+			if not(0 > hour) and not(0 > min) then
+				sec = sec - 1
+				SetVar("ChestScavs_time_second", sec)
+				if 0 > sec then
+					SetVar("ChestScavs_time_second", 59)
+					min = min - 1
+					SetVar("ChestScavs_time_minute", min)
+				end
+				if 0 > min then
+					SetVar("ChestScavs_time_minute", 59)
+					hour = hour - 1
+					SetVar("ChestScavs_time_hour", hour)
+				end
+			end
+
+			if 0 > hour and 0 > min and 0 > sec then
+				SetVar("ChestScavs_time_hour", 0)
+				SetVar("ChestScavs_time_minute", 0)
+				SetVar("ChestScavs_time_second", 0)
+				SetVar("ChestScavs_time_msg", "0")
 				TActivate("CreateScavMove")
 				TDeactivate("ChestScavs_Time")
 			else
@@ -898,36 +926,27 @@
 	</trigger>
 
 	<trigger Name="cst" active="0">
-		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
 		<script>
 			TActivate("ChestScavs_Timer")
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
-	<trigger Name="ChestScavs_Time" active="0">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ChestScavs_Build_loc" />
+	<trigger Name="ChestScavsTimeMsgActivate" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
 		<script>
-			local t = GetVar("ChestScavs_Timer").AsInt 
-			local tm = t / 60
+			TActivate("ChestScavs_Time")
+			trigger:Deactivate()
+		</script>
+	</trigger>
 
-			local m
-
-			if t > 0 then
-				if 6000 > t then
-					m = tonumber(strsub(tm, 1, 2))
-				elseif 600 > t then
-					m = tonumber(strsub(tm, 1, 1))
-				else
-					m = tonumber(strsub(tm, 1, 3))
-				end 
-				
-				if t > 60 then
-					AddFadingMsgByStrIdFormatted("fm_chest_scavs_timer_m", m)
-				else
-					AddFadingMsgByStrIdFormatted("fm_chest_scavs_timer_s", t)
-				end
-			end 
+	<trigger Name="ChestScavs_Time" active="0">
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="ChestScavs_Build_loc" />
+		<script>
+			if not(GetVar("ChestScavs_time_msg").AsString == "0") then
+				AddFadingMsgByStrIdFormatted("fm_chest_scavs_timer", GetVar("ChestScavs_time_msg").AsString)
+			end
 		</script>
 	</trigger>
 
@@ -940,16 +959,16 @@
 			SetVar("Scav_Move", r)
 
 			local list = {"Sml1CarScav", "Sml2CarScav", "Sml3CarScav", "Sml4CarScav", "Scout1CarScav", "Scout2CarScav", "Scout3CarScav", "Fighter2CarScav", "Hunter2CarScav"}
-			local scav = getn(list)
+			local model = list[random(getn(list))]
 
-			CreateVehicleEx(list[random(scav)], "ScavMoveToChest", pos[r], 1090)
+			CreateVehicleEx(model, "ScavMoveToChest", pos[r], 1090)
 
 			local veh = GetEntityByName("ScavMoveToChest")
 			if veh then
 				GiveGunsForVehicle(veh, 1)
-				veh:SetRotation(rot[r])
 				veh:SetExternalPathByName("veh_paths_to_gate_"..r)
 				veh:SetCruisingSpeed(30)
+				veh:SetRotation(rot[r])
 				veh:SetRandomSkin()
 				veh:setGodMode(1)
 			end
@@ -971,6 +990,7 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
+			println(count)
 
 			local veh = GetEntityByName("ScavMoveToChest")
 			if veh then
@@ -978,6 +998,9 @@
 					veh:SetExternalPathByName("veh_paths_to_inventory_"..GetVar("Scav_Move").AsInt)
 					veh:SetCruisingSpeed(22)
 				elseif count == 2 then
+						veh:SetExternalPathByName("veh_paths_to_inventory")
+						veh:SetCruisingSpeed(8)
+				elseif count == 3 then
 					if GetVar("Scav_Move").AsInt == 1 then
 						veh:SetExternalPathByName("veh_paths_to_gate_2_from_inventory")
 					else
@@ -985,17 +1008,17 @@
 					end
 					veh:SetCruisingSpeed(3)
 					TActivate("ScavMoveSpeed")
-				elseif count == 3 then
+				elseif count == 4 then
 					if GetVar("Scav_Move").AsInt == 1 then
 						veh:SetExternalPathByName("veh_paths_to_gate_2_from_inventory_2_2")
 					else
 						veh:SetExternalPathByName("veh_paths_to_gate_1_from_inventory_1_1")
 					end
 					veh:SetCruisingSpeed(22)
-				elseif count == 4 then
+				elseif count == 5 then
 					veh:SetExternalPathByName("veh_paths_to_end_"..GetVar("Scav_Move").AsInt)
 					veh:SetCruisingSpeed(30)
-				elseif count == 5 then 
+				elseif count == 6 then 
 					SetVar("Scav_Move", 0)
 					veh:Remove()
 					trigger:Deactivate()
@@ -1005,10 +1028,10 @@
 	</trigger>
 
 	<trigger Name="ScavMoveSpeed" active="0">
-		<event timeout="5" eventid="GE_TIME_PERIOD" />
+		<event timeout="15" eventid="GE_TIME_PERIOD" />
 		<script>
 			local sv = GetEntityByName("ScavMoveToChest")
-			if sv then sv:SetCruisingSpeed(7) end
+			if sv then sv:SetCruisingSpeed(8) end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1053,7 +1076,7 @@
 							"item_alkani", "item_hlor", "item_paper",
 							"item_disk", "item_flashdrive", "item_manual", 
 							"item_aquapeps", "item_c6h8o6", "item_suringe",
-							"item_vodka", "item_monolit", "item_kaktus",
+							"item_vodka", "item_monolit", "item_kaktus", "item_carsen",
 							"item_awl", "item_leatherman", "item_metalscissors", "item_nippers", "item_pliers_round", "item_screw_flat_long", "item_toolset",
 							"item_chain",
 							"specter01", "pkt01", "kord01", "storm01", "vector01", "vulcan01", "bumblebee01", "someTurboAccelerationPusher",
@@ -1068,12 +1091,12 @@
 							"item_dry", "item_prisadka", "item_propan", "item_termit", "item_trotile", 
 							"item_diary", "item_diary_s", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_sas", "item_ssd",
 							"item_oftalmaskop", "item_aquapeps",
-							"item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing",
+							"item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen",
 							"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_pipe_wrench", "item_ratchet_wrench", "item_sewing_kit", 
 							"item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_woodclock",
 							"someTurboAccelerationPusher", "maxim01", "fagot01", "flag01", "rainmetal01", "elephant01", "omega01", "cyclops01", "octopus01", "marsSideGun", "hunterSideGun", "hammer01",
 							"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun",
-							"anti_missile_system", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
+							"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 				loot_count = random(3,5)
 			elseif GetVar("ChestScavs_Search").AsInt == 4 then
 				lootlist = {"scrap_metal", "oil", "bottle", "fuel", "tobacco", "doski", "details",
@@ -1085,7 +1108,7 @@
 							"item_survl", "item_wd40_400", "item_zibbo",
 							"item_alkani", "item_hlor", "item_paper", "item_soda", "item_toothpaste",
 							"item_h2o2", "item_naci", "item_suringe",
-							"item_vodka", "item_monolit",
+							"item_vodka", "item_monolit", "item_carsen",
 							"item_metalscissors", "item_nippers", "item_pliers", "item_screw_flat",
 							"item_chain",
 							"specter01", "pkt01", "storm01", "vector01", "vulcan01", "bumblebee01",
@@ -1212,7 +1235,7 @@
 	<trigger Name="Tunel_BuildInfo" active="0">
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Tunel_Build_loc" />
 		<script>
-			if not(GetVar("Tunel_item_vitalik").AsInt == 1) or not(GetVar("Tunel_item_handrill").AsInt == 1) or not(GetVar("Tunel_item_metalscissors").AsInt == 1) or not(GetVar("Tunel_item_toolset").AsInt == 2) or not(GetVar("Tunel_item_hose").AsInt == 2) or not(GetVar("Tunel_item_kek").AsInt == 1) or not(GetVar("Tunel_item_electronics_components").AsInt == 3) or not(GetVar("Tunel_item_wires").AsInt == 2) or not(GetVar("Tunel_item_nippers").AsInt == 1) or not(GetVar("Tunel_item_pliers_round").AsInt == 1) then
+			if not(GetVar("Tunel_item_vitalik").AsInt == 1) or not(GetVar("Tunel_item_handrill").AsInt == 1) or not(GetVar("Tunel_item_metalscissors").AsInt == 1) or not(GetVar("Tunel_item_hose").AsInt == 1) or not(GetVar("Tunel_item_kek").AsInt == 1) or not(GetVar("Tunel_item_toolset").AsInt == 1) or not(GetVar("Tunel_item_electronics_components").AsInt == 2) or not(GetVar("Tunel_item_wires").AsInt == 1) or not(GetVar("Tunel_item_nippers").AsInt == 1) or not(GetVar("Tunel_item_pliers_round").AsInt == 1) then
 				local item_1, item_2, item_3, item_4, item_5, item_6, item_7 = "", "", "", "", "", "", ""
 
 				if GetVar("Tunel_Builden").AsInt == 0 then
@@ -1220,13 +1243,12 @@
 				elseif GetVar("Tunel_Builden").AsInt == 1 then
 					if GetVar("Tunel_item_handrill").AsInt ~= 1 then item_1 = "Ручная дрель - x1|" end
 					if GetVar("Tunel_item_metalscissors").AsInt~= 1 then item_2 = "Ножницы для резки металла - x1|" end
-					if GetVar("Tunel_item_toolset").AsInt ~= 1 then item_3 = "Набор инструментов - x1|" end
 				elseif GetVar("Tunel_Builden").AsInt == 2 then
-					if GetVar("Tunel_item_hose").AsInt ~= 2 then item_1 = "Гофрированный шланг - x"..(2 - GetVar("Tunel_item_hose").AsInt).."|" end
+					if GetVar("Tunel_item_hose").AsInt ~= 1 then item_1 = "Гофрированный шланг - x1|" end
 					if GetVar("Tunel_item_kek").AsInt ~= 1 then item_2 = "Лента «KEK» - x1|" end
-					if GetVar("Tunel_item_toolset").AsInt ~= 2 then item_3 = "Набор инструментов - x1|" end
-					if GetVar("Tunel_item_electronics_components").AsInt ~= 3 then item_4 = "Компоненты электроники - x"..(3 - GetVar("Tunel_item_electronics_components").AsInt).."|" end
-					if GetVar("Tunel_item_wires").AsInt ~= 2 then item_5 = "Провода - x"..(2 - GetVar("Tunel_item_wires").AsInt).."|" end
+					if GetVar("Tunel_item_toolset").AsInt ~= 1 then item_3 = "Набор инструментов - x1|" end
+					if GetVar("Tunel_item_electronics_components").AsInt ~= 2 then item_4 = "Компоненты электроники - x"..(2 - GetVar("Tunel_item_electronics_components").AsInt).."|" end
+					if GetVar("Tunel_item_wires").AsInt ~= 1 then item_5 = "Провода - x1|" end
 					if GetVar("Tunel_item_nippers").AsInt ~= 1 then item_6 = "Кусачки - x1|" end
 					if GetVar("Tunel_item_pliers_round").AsInt ~= 1 then item_7 = "Круглогубцы - x1" end
 				end
@@ -1259,20 +1281,20 @@
 			local maxhp = GetPlayerMaxHealth()
 			local hp = GetPlayerHealth() 
 
-			if GetVar('PetrolStation_Refill_Process').AsInt == 0 then
+			if GetVar("PetrolStation_Refill_Process").AsInt == 0 then
 				local Plf = GetPlayerVehicle()
 				if Plf then
 					Plf:SetThrottle(0)
 					Plf:SetCustomLinearVelocity(0)
 				end
-				if hp == maxhp then
+				if maxhp > hp then
+					SpawnMessageBox("90003")
+				else
 					local b = SpawnMessageBox("90002")
 					if b == 1 then
 						TActivate("ExitMap")
 						TActivate("cutEntersToTunnel")
 					end
-				else
-					SpawnMessageBox("90003")
 				end
 			end
 		</script>
@@ -1293,37 +1315,36 @@
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Generator_Build_loc" />
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Generator_Build_lvl_2_loc" />
 		<script>
-			local item_1, item_2, item_3, item_4, item_5, item_6, item_7, item_8, item_9 = "", "", "", "", "", "", "", "", ""
+			local item_0, item_1, item_2, item_3, item_4, item_5, item_6 = "", "", "", "", "", "", ""
 			local t = trigger:GetCallObjName()
 
 			if GetVar("Generator_lvl").AsInt == 0 and t == "Generator_Build_loc" or GetVar("Generator_lvl").AsInt == 1 and t == "Generator_Build_loc" or GetVar("Generator_lvl").AsInt == 2 and t == "Generator_Build_lvl_2_loc" then
 				if GetVar("Generator_lvl").AsInt == 0 then
 					if GetVar("Generator_lvl_1_item_svech").AsInt ~= 1 then item_1 = "Свеча зажигания - x1|" end
 					if GetVar("Generator_lvl_1_item_engine").AsInt ~= 1 then item_2 = "Двигатель - x1|" end
-					if GetVar("Generator_lvl_1_doski").AsInt ~= 2 then item_3 = "Доски - x"..(2 - GetVar("Generator_lvl_1_doski").AsInt).."|" end
-					if GetVar("Generator_lvl_1_fuel").AsInt ~= 2 then item_4 = "Горючее - x"..(2 - GetVar("Generator_lvl_1_fuel").AsInt).."|" end
-					if GetVar("Generator_lvl_1_oil").AsInt ~= 4 then item_5 = "Нефть - x"..(4 - GetVar("Generator_lvl_1_oil").AsInt).."|" end
+					if GetVar("Generator_lvl_1_doski").AsInt ~= 1 then item_3 = "Доски - x1|" end
+					if GetVar("Generator_lvl_1_oil").AsInt ~= 2 then item_4 = "Нефть - x"..(2 - GetVar("Generator_lvl_1_oil").AsInt) end
 				elseif GetVar("Generator_lvl").AsInt == 1 then
-					if GetVar("Generator_lvl_1_item_svech").AsInt ~= 5 then item_1 = "Свеча зажигания - x"..(5 - GetVar("Generator_lvl_1_item_svech").AsInt).."|" end
+					if GetVar("Generator_time_work_second").AsInt == 0 and GetVar("Generator_time_work_minute").AsInt == 0 and GetVar("Generator_time_work_hour").AsInt == 0 then
+						if GetVar("Generator_lvl_2_item_fuel_full").AsInt ~= 1 then item_0 = "Канистра топлива - x1|" end
+					end
+					if GetVar("Generator_lvl_1_item_svech").AsInt ~= 3 then item_1 = "Свеча зажигания - x"..(3 - GetVar("Generator_lvl_1_item_svech").AsInt).."|" end
 					if GetVar("Generator_lvl_1_item_engine").AsInt ~= 2 then item_2 = "Двигатель - x1|" end
-					if GetVar("Generator_lvl_2_item_rele").AsInt ~= 4 then item_3 = "Реле - x"..(4 - GetVar("Generator_lvl_2_item_rele").AsInt).."|" end
-					if GetVar("Generator_lvl_2_item_wires").AsInt ~= 10 then item_4 = "Провода - x"..(10 - GetVar("Generator_lvl_2_item_wires").AsInt).."|" end
+					if GetVar("Generator_lvl_2_item_rele").AsInt ~= 2 then item_3 = "Реле - x"..(2 - GetVar("Generator_lvl_2_item_rele").AsInt).."|" end
+					if GetVar("Generator_lvl_2_item_wires").AsInt ~= 4 then item_4 = "Провода - x"..(4 - GetVar("Generator_lvl_2_item_wires").AsInt).."|" end
 					if GetVar("Generator_lvl_2_item_buldex").AsInt ~= 1 then item_5 = "Кабелерез «Bulbex» - x1" end
 				elseif GetVar("Generator_lvl").AsInt == 2 and t == "Generator_Build_lvl_2_loc" then
-					if GetVar("Generator_lvl_3_item_bp").AsInt ~= 4 then item_1 = "Блок питания - x"..(4 - GetVar("Generator_lvl_3_item_bp").AsInt).."|" end
-					if GetVar("Generator_lvl_1_item_engine").AsInt ~= 5 then item_2 = "Двигатель - x"..(5 - GetVar("Generator_lvl_1_item_engine").AsInt).."|" end
-					if GetVar("Generator_lvl_2_item_rele").AsInt ~= 10 then item_3 = "Реле - x"..(10 - GetVar("Generator_lvl_2_item_rele").AsInt).."|" end
-					if GetVar("Generator_lvl_1_item_svech").AsInt ~= 15 then item_4 = "Свеча зажигания - x"..(15 - GetVar("Generator_lvl_1_item_svech").AsInt).."|" end
-					if GetVar("Generator_lvl_3_item_parts").AsInt ~= 6 then item_5 = "Металлические запчасти - x"..(6 - GetVar("Generator_lvl_3_item_parts").AsInt).."|" end
-					if GetVar("Generator_lvl_3_item_military_cable").AsInt ~= 4 then item_6 = "Военный кабель - x"..(4 - GetVar("Generator_lvl_3_item_military_cable").AsInt).."|" end
-					if GetVar("Generator_lvl_3_item_plate").AsInt ~= 3 then item_7 = "Плата - x"..(3 - GetVar("Generator_lvl_3_item_plate").AsInt).."|" end
-					if GetVar("Generator_lvl_3_item_converter").AsInt ~= 1 then item_8 = "Передовой преобразователь тока - x1|" end
-					if GetVar("Generator_lvl_3_item_lcd").AsInt ~= 3 then item_9 = "LCD дисплей - x"..(3 - GetVar("Generator_lvl_3_item_lcd").AsInt).."|" end
+					if GetVar("Generator_lvl_3_item_bp").AsInt ~= 2 then item_1 = "Блок питания - x"..(2 - GetVar("Generator_lvl_3_item_bp").AsInt).."|" end
+					if GetVar("Generator_lvl_2_item_rele").AsInt ~= 4 then item_2 = "Реле - x"..(4 - GetVar("Generator_lvl_2_item_rele").AsInt).."|" end
+					if GetVar("Generator_lvl_3_item_parts").AsInt ~= 3 then item_3 = "Металлические запчасти - x"..(3 - GetVar("Generator_lvl_3_item_parts").AsInt).."|" end
+					if GetVar("Generator_lvl_3_item_military_cable").AsInt ~= 1 then item_4 = "Военный кабель - x1|" end
+					if GetVar("Generator_lvl_3_item_plate").AsInt ~= 1 then item_5 = "Плата - x1|" end
+					if GetVar("Generator_lvl_3_item_converter").AsInt ~= 1 then item_6 = "Передовой преобразователь тока - x1" end
 				end
 
-				local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7..""..item_8..""..item_9
+				local msg = item_0..""..item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6
 
-				if not(GetVar("Generator_lvl_1_item_svech").AsInt == 15) or not(GetVar("Generator_lvl_1_item_engine").AsInt == 5) or not(GetVar("Generator_lvl_1_doski").AsInt == 2) or not(GetVar("Generator_lvl_1_fuel").AsInt == 2) or not(GetVar("Generator_lvl_1_oil").AsInt == 4) or not(GetVar("Generator_lvl_1_money").AsInt == 2) or not(GetVar("Generator_lvl_2_item_rele").AsInt == 10) or not(GetVar("Generator_lvl_2_item_wires").AsInt == 10) or not(GetVar("Generator_lvl_2_item_buldex").AsInt == 1) or not(GetVar("Generator_lvl_3_item_bp").AsInt == 4) or not(GetVar("Generator_lvl_3_item_parts").AsInt == 6) or not(GetVar("Generator_lvl_3_item_military_cable").AsInt == 4) or not(GetVar("Generator_lvl_3_item_plate").AsInt == 3) or not(GetVar("Generator_lvl_3_item_converter").AsInt == 1) or not(GetVar("Generator_lvl_3_item_lcd").AsInt == 3) then
+				if not(GetVar("Generator_lvl_1_item_svech").AsInt == 4) or not(GetVar("Generator_lvl_1_item_engine").AsInt == 2) or not(GetVar("Generator_lvl_1_doski").AsInt == 1) or not(GetVar("Generator_lvl_1_oil").AsInt == 2) or not(GetVar("Generator_lvl_1_money").AsInt == 2) or not(GetVar("Generator_lvl_2_item_rele").AsInt == 4) or not(GetVar("Generator_lvl_2_item_wires").AsInt == 4) or not(GetVar("Generator_lvl_2_item_buldex").AsInt == 1) or not(GetVar("Generator_lvl_3_item_bp").AsInt == 2) or not(GetVar("Generator_lvl_3_item_parts").AsInt == 3) or not(GetVar("Generator_lvl_3_item_military_cable").AsInt == 1) or not(GetVar("Generator_lvl_3_item_plate").AsInt == 1) or not(GetVar("Generator_lvl_3_item_converter").AsInt == 1) then
 					AddFadingMsgByStrIdFormatted("fm_items_to_build", msg)
 				end
 			end
@@ -1331,16 +1352,24 @@
 	</trigger>
 
 	<trigger Name="GeneratorTimeWork" active="0">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Generator_Build_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Generator_Build_loc" />
 		<script>
-			AddFadingMsgByStrIdFormatted("fm_generator_time_work", GetVar("Generator_time_work").AsInt)
+			if GetVar("Generator_on").AsInt == 1 then
+				if not(GetVar("Generator_time_work_msg").AsString == "0") then
+					AddFadingMsgByStrIdFormatted("fm_generator_time_work", GetVar("Generator_time_work_msg").AsString)
+				end
+			end
 		</script>
 	</trigger>
 
 	<trigger Name="GeneratorTimeWork_2" active="0">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Generator_Build_lvl_2_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Generator_Build_lvl_2_loc" />
 		<script>
-			AddFadingMsgByStrIdFormatted("fm_generator_time_work", GetVar("Generator_time_work").AsInt)
+			if GetVar("Generator_on").AsInt == 1 then
+				if not(GetVar("Generator_time_work_msg").AsString == "0") then
+					AddFadingMsgByStrIdFormatted("fm_generator_time_work", GetVar("Generator_time_work_msg").AsString)
+				end
+			end
 		</script>
 	</trigger>
 
@@ -1374,11 +1403,13 @@
 			CreateEffectTTLed( "ET_S_BUILDING", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1800)
 
 		    CreateNewDummyObject("generator", "gen_1_lvl_2", -1, -1, CVector(810, 255, 993), Quaternion(0, 1, 0, 1))
-		
-			if not(GetVar("Generator_time_work").AsInt == 0) then
-				SetVar("Generator_time_work", 7200)
-			end
 
+			if GetVar("Generator_time_work_second").AsInt > 0 or GetVar("Generator_time_work_minute").AsInt > 0 or GetVar("Generator_time_work_hour").AsInt > 0 then
+				SetVar("Generator_time_work_second", 0)
+				SetVar("Generator_time_work_minute", 0)
+				SetVar("Generator_time_work_hour", 2)
+			end
+		
 			SetVar("Generator_lvl", 2)
 			TDeactivate("Generator_BuildInfo")
 			TDeactivate("GeneratorTimeWork")
@@ -1413,9 +1444,9 @@
 				if lp then lp:SetPosition(CVector(819.755, 255, 1017.091)) end
 			end
 
-			if not(GetVar("Generator_time_work").AsInt == 0) then
-				SetVar("Generator_time_work", 7200)
-			end
+			SetVar("Generator_time_work_second", 1)
+			SetVar("Generator_time_work_minute", 1)
+			SetVar("Generator_time_work_hour", 1)
 
 			SetVar("Generator_lvl", 3)
 			SetVar("Generator_on", 1)
@@ -1449,10 +1480,10 @@
 		<script>
 			if GetVar("Generator_lvl").AsInt == 1 then
 				getObj("gen_2_lvl_1"):SetNodeAction(AT_MOVE1)
-				TActivate("GeneratorTimeWork")
+				TActivate("GeneratorTimeMsgActivate")
 			elseif GetVar("Generator_lvl").AsInt == 2 then
 				CreateNewSgNodeObject("ET_S_GENERATOR", "generator_sound", -1, -1, CVector(810, 255, 993), Quaternion(0, 0, 0, 0))
-				TActivate("GeneratorTimeWork_2")
+				TActivate("GeneratorTimeMsgActivate")
 			end
 			TActivate("IfGenerator_On")
 			TActivate("Generator_timer")
@@ -1460,22 +1491,54 @@
 		</script>
 	</trigger>
 
-	<trigger Name="Generator_timer" active="0">
-		<event timeout="1" eventid="GE_TIME_PERIOD" />
+	<trigger Name="GeneratorTimeMsgActivate" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
 		<script>
-			local t = GetVar("Generator_time_work").AsInt
-
 			if GetVar("Generator_lvl").AsInt == 1 then
-				t = t - 8
+				TActivate("GeneratorTimeWork")
 			elseif GetVar("Generator_lvl").AsInt == 2 then
-				t = t - 2
+				TActivate("GeneratorTimeWork_2")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Generator_timer" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			local hour = GetVar("Generator_time_work_hour").AsInt
+			local min = GetVar("Generator_time_work_minute").AsInt
+			local sec = GetVar("Generator_time_work_second").AsInt
+			
+			local nulH, nulM, nulS = "", "", ""
+
+			if 10 > hour then nulH = 0 end
+			if 10 > min then nulM = 0 end
+			if 10 > sec then nulS = 0 end
+
+			local Msg = nulH..hour..":"..nulM..min..":"..nulS..sec
+			SetVar("Generator_time_work_msg", Msg)
+
+			if not(0 > hour) and not(0 > min) then
+				sec = sec - 1
+				SetVar("Generator_time_work_second", sec)
+				if 0 > sec then
+					SetVar("Generator_time_work_second", 59)
+					min = min - 1
+					SetVar("Generator_time_work_minute", min)
+				end
+				if 0 > min then
+					SetVar("Generator_time_work_minute", 59)
+					hour = hour - 1
+					SetVar("Generator_time_work_hour", hour)
+				end
 			end
 
-			SetVar("Generator_time_work", t)
-			println("GeneratorTime: "..t)
-
-			if 1 > GetVar("Generator_time_work").AsInt then
-				SetVar("Generator_time_work", 0)
+			if 0 > hour and 0 > min and 0 > sec then
+				SetVar("Generator_time_work_second", 0)
+				SetVar("Generator_time_work_minute", 0)
+				SetVar("Generator_time_work_hour", 0)
+				SetVar("Generator_time_work_msg", "0")
 				SetVar("Generator_on", 0)
 				TActivate("Generator_Stop")
 				AddFadingMsgByStrIdFormatted("fm_generator_fuel_nil")
@@ -1489,7 +1552,7 @@
 	</trigger>
 
 	<trigger Name="gt" active="0">
-		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
 		<script>
 			TActivate("Generator_timer")
 			trigger:Deactivate()
@@ -1648,14 +1711,13 @@
 	<trigger Name="Lampposts_BuildInfo" active="0">
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Lampposts_Build_loc" />
 		<script>
-			if not(GetVar("Lampposts_item_energo_lump").AsInt == 12) or not(GetVar("Lampposts_item_wires").AsInt == 12) or not(GetVar("Lampposts_item_kondesators").AsInt == 6) then
-				local item_1, item_2, item_3 = "", "", ""
+			if not(GetVar("Lampposts_item_energo_lump").AsInt == 12) or not(GetVar("Lampposts_item_wires").AsInt == 6) then
+				local item_1, item_2 = "", ""
 		
 				if GetVar("Lampposts_item_energo_lump").AsInt ~= 12 then item_1 = "Энергосберегающая лампа - x"..(12 - GetVar("Lampposts_item_energo_lump").AsInt).."|" end
-				if GetVar("Lampposts_item_wires").AsInt ~= 12 then item_2 = "Провода - x"..(12 - GetVar("Lampposts_item_wires").AsInt).."|" end
-				if GetVar("Lampposts_item_kondesators").AsInt ~= 6 then item_3 = "Конденсаторы - x"..(6 - GetVar("Lampposts_item_kondesators").AsInt).."|" end
-			
-				local msg = item_1..""..item_2..""..item_3
+				if GetVar("Lampposts_item_wires").AsInt ~= 6 then item_2 = "Провода - x"..(6 - GetVar("Lampposts_item_wires").AsInt) end
+
+				local msg = item_1..""..item_2
 
 				AddFadingMsgByStrIdFormatted("fm_items_to_build", msg)
 			end
@@ -1764,21 +1826,21 @@
 	<trigger Name="Garage_BuildInfo" active="0">
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Garage_Build_loc" />
 		<script>
-			if not(GetVar('Garage_item_bolts').AsInt == 3) or not(GetVar('Garage_item_nuts').AsInt == 3) or not(GetVar('Garage_item_pena').AsInt == 2) or not(GetVar('Garage_item_insulation').AsInt == 1) or not(GetVar('Garage_item_lump').AsInt == 6) or not(GetVar('Garage_item_cable').AsInt == 2) or not(GetVar('Garage_item_tplug').AsInt == 2) or not(GetVar('Garage_item_roulet').AsInt == 1) or not(GetVar('Garage_item_pipe_wrench').AsInt == 1) or not(GetVar('Garage_item_tb').AsInt == 2) or not(GetVar('Garage_item_fitanyashka').AsInt == 1) or not(GetVar('Garage_item_kaktus').AsInt == 3) then
+			if not(GetVar("Garage_item_bolts").AsInt == 1) or not(GetVar("Garage_item_nuts").AsInt == 1) or not(GetVar("Garage_item_pena").AsInt == 1) or not(GetVar("Garage_item_insulation").AsInt == 1) or not(GetVar("Garage_item_lump").AsInt == 6) or not(GetVar("Garage_item_cable").AsInt == 1) or not(GetVar("Garage_item_tplug").AsInt == 2) or not(GetVar("Garage_item_roulet").AsInt == 1) or not(GetVar("Garage_item_pipe_wrench").AsInt == 1) or not(GetVar("Garage_item_tb").AsInt == 2) or not(GetVar("Garage_item_fitanyashka").AsInt == 1) or not(GetVar("Garage_item_kaktus").AsInt == 3) then
 				local item_1, item_2, item_3, item_4, item_5, item_6, item_7, item_8, item_9, item_10, item_11, item_12 = "", "", "", "", "", "", "", "", "", "", "", ""
 			
-				if GetVar("Garage_item_bolts").AsInt ~= 3 then item_1 = "Болты - x"..(3 - GetVar("Garage_item_bolts").AsInt).."|" end
-				if GetVar("Garage_item_nuts").AsInt ~= 3 then item_2 = "Гайки - x"..(3 - GetVar("Garage_item_nuts").AsInt).."|" end
-				if GetVar("Garage_item_pena").AsInt ~= 2 then item_3 = "Монтажная пена - x"..(2 - GetVar("Garage_item_pena").AsInt).."|" end
+				if GetVar("Garage_item_bolts").AsInt ~= 1 then item_1 = "Болты - x1|" end
+				if GetVar("Garage_item_nuts").AsInt ~= 1 then item_2 = "Гайки - x1|" end
+				if GetVar("Garage_item_pena").AsInt ~= 1 then item_3 = "Монтажная пена - x1|" end
 				if GetVar("Garage_item_insulation").AsInt ~= 1 then item_4 = "Изолента - x1|" end
 				if GetVar("Garage_item_lump").AsInt ~= 6 then item_5 = "Лампа накаливания - x"..(6 - GetVar("Garage_item_lump").AsInt).."|" end
-				if GetVar("Garage_item_cable").AsInt ~= 2 then item_6 = "Силовой кабель - x"..(2 - GetVar("Garage_item_cable").AsInt).."|" end
+				if GetVar("Garage_item_cable").AsInt ~= 1 then item_6 = "Силовой кабель - x1|" end
 				if GetVar("Garage_item_tplug").AsInt ~= 2 then item_7 = "Тройник - x"..(2 - GetVar("Garage_item_tplug").AsInt).."|" end
 				if GetVar("Garage_item_roulet").AsInt ~= 1 then item_8 = "Рулетка - x1|" end
 				if GetVar("Garage_item_pipe_wrench").AsInt ~= 1 then item_9 = "Шарнирный ключ «КШС» - x1|" end
 				if GetVar("Garage_item_tb").AsInt ~= 2 then item_10 = "Туалетная бумага - x"..(2 - GetVar("Garage_item_tb").AsInt).."|" end
 				if GetVar("Garage_item_fitanyashka").AsInt ~= 1 then item_11 = "Дакимакура FitaNyashka - x1|" end
-				if GetVar("Garage_item_kaktus").AsInt ~= 3 then item_12 = "Кактус - x"..(3 - GetVar("Garage_item_kaktus").AsInt).."|" end
+				if GetVar("Garage_item_kaktus").AsInt ~= 3 then item_12 = "Кактус - x"..(3 - GetVar("Garage_item_kaktus").AsInt) end
 
 				local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7..""..item_8..""..item_9..""..item_10..""..item_11..""..item_12
 
@@ -1998,9 +2060,13 @@
 				AddItemsToPlayerRepository("ammo_chest_shotgun", shotgun)
 			end
 
-			if IsQuestComplete('q_kill_scavs') and IsQuestComplete('q_fuel2') and IsQuestComplete('q_base_scavs') and IsQuestComplete('q_test_drive6') then
-				println("AllQuestsCompleted")
-				TActivate("OpenGate1ForCredits")
+			if GetVar("WatchCredits").AsInt == 0 then
+				if IsQuestComplete("q_kill_scavs") and IsQuestComplete("q_fuel2") and IsQuestComplete("q_base_scavs") and IsQuestComplete("q_test_drive6") then
+					if GetVar("DialogSelectMap").AsInt == 0 then
+						println("AllQuestsCompleted")
+						TActivate("OpenGate1ForCredits")
+					end
+				end
 			end
 
 			SetCameraBehindPlayerVehicle()
@@ -2023,7 +2089,7 @@
 			
 			local modellist = {"Bug01PMC", "Molokovoz01PMC", "Ural01PMC", "Belaz01PMC", "Cruiser01PMC", "Mirotvorec01PMC"}
 			local model = modellist[random(getn(modellist))]
-
+	
 			local cab
 			local cargo
 
@@ -2050,114 +2116,63 @@
 			local pos = {CVector(1948.147, 255.986, 1333.427), CVector(134.418, 255.857, 387.032)}
 			local rot = {Quaternion(-0.010, -0.515, -0.006, 0.857), Quaternion(-0.009, 0.695, 0.005, 0.719)}
 			local r = random(2)
+			local belong = random(1091,1092)
 
-			CreateVehicleEx(model, "VehicleMove", pos[r], random(1091,1092))
-	
-			local veh = GetEntityByName("VehicleMove")
+			TeamCreate("VehicleMove", belong, pos[r], {model}, nil, 0, rot[r])
+
+			local veh = GetEntityByName("VehicleMove_vehicle_0")
 			if veh then
-				veh:SetRotation(rot[r])
 				veh:SetNewPart("CABIN",cab[random(getn(cab))])
 				veh:SetNewPart("BASKET",cargo[random(getn(cargo))])
 				veh:SetCruisingSpeed(30)
 				veh:SetRandomSkin()
 				veh:setGodMode(1)
 				GiveGunsForVehicle(veh, 1)
-				veh:SetExternalPathByName("veh_paths_to_gate_"..r)
 			end
 
-			SetVar("VehMove", r)
-			SetVar("VehPath", random(2))
+			local vehPath = GetEntityByName ("VehicleMove")
+			if vehPath then
+				vehPath:StackOpen()
+				if r == 1 then
+					vehPath:SetDestination(CVector(868.396, 257.632, 1120.734))
+					vehPath:SetDestination(CVector(867.900, 257.692, 910.184))
+					vehPath:SetDestination(CVector(74.292, 257.713, 392.653))
+				else
+					vehPath:SetDestination(CVector(868.646, 257.418, 867.737))
+					vehPath:SetDestination(CVector(869.309, 257.687, 1073.623))
+					vehPath:SetDestination(CVector(1970.307, 257.748, 1314.416))
+				end
+				vehPath:StackClose()
+			end
 
-			TActivate("VehMoveReached")
+			local RemoveVehtr = getObj("RemoveVeh")
+			if RemoveVehtr then
+				if r == 1 then
+					RemoveVehtr:AddEvent("GE_OBJECT_ENTERS_LOCATION", "RemoveVehMove_"..belong.."_loc_1")
+				else
+					RemoveVehtr:AddEvent("GE_OBJECT_ENTERS_LOCATION", "RemoveVehMove_"..belong.."_loc_2")
+				end
+				TActivate("RemoveVeh")
+			end
 
 			getObj("CreateVehicleMove"):DelEvent("GE_TIME_PERIOD")
 			trigger:Deactivate()
 		</script>
 	</trigger>
-
-	<trigger Name="VehMoveReached" active="0">
-		<event eventid="GE_TARGET_REACHED" ObjName="VehicleMove"/>
-		<script>
-			trigger:IncCount()
-			local count = trigger:GetCount()
-			local veh = GetEntityByName("VehicleMove")
-			if veh then
-				if GetVar("VehPath").AsInt == 1 then
-					if count == 1 then
-						veh:SetCruisingSpeed(22)
-						veh:SetExternalPathByName("veh_paths_to_garage_"..GetVar("VehMove").AsInt)
-					elseif count == 2 then
-						veh:SetCruisingSpeed(12)
-						veh:SetExternalPathByName("veh_paths_to_garage_"..GetVar("VehMove").AsInt.."_"..GetVar("VehMove").AsInt)
-					elseif count == 3 then
-						getObj("VehInGarage"):AddEvent("GE_TIME_PERIOD",tostring(random(5,10)))
-						TActivate("VehInGarage")
-					elseif count == 4 then
-						veh:SetCruisingSpeed(30)
-						veh:SetExternalPathByName("veh_paths_to_end_"..GetVar("VehMove").AsInt)
-					elseif count == 5 then
-						veh:PlaceToEndOfPath()
-						veh:Remove()
-						SetVar("VehMove", 0)
-						SetVar("VehPath", 0)
-						TActivate("trCreateVehicleMove")
-						trigger:Deactivate()
-					end
-				else
-					if count == 1 then
-						veh:SetCruisingSpeed(22)
-						if GetVar("VehMove").AsInt == 1 then
-							veh:SetExternalPathByName("veh_paths_to_gate_2_from_gate_1")
-						else
-							veh:SetExternalPathByName("veh_paths_to_gate_1_from_gate_2")
-						end
-					elseif count == 2 then
-						veh:SetCruisingSpeed(30)
-						veh:SetExternalPathByName("veh_paths_to_end_"..GetVar("VehMove").AsInt)
-					elseif count == 3 then
-						veh:PlaceToEndOfPath()
-						veh:Remove()
-						SetVar("VehMove", 0)
-						SetVar("VehPath", 0)
-						TActivate("trCreateVehicleMove")
-						trigger:Deactivate()
-					end
-				end
-			end
-		</script>
-	</trigger>
-
-	<trigger Name="VehInGarage" active="0">
-		<script>
-			local veh = GetEntityByName("VehicleMove")
-			if veh then
-				veh:SetCruisingSpeed(10)
-				if GetVar("VehMove").AsInt == 1 then
-					veh:SetExternalPathByName("veh_paths_to_gate_2_from_garage_1")
-				else
-					veh:SetExternalPathByName("veh_paths_to_gate_1_from_garage_2")
-				end
-				TActivate("VehSpeed")
-			end
-			getObj("VehInGarage"):DelEvent("GE_TIME_PERIOD")
-			trigger:Deactivate()
-		</script>
-	</trigger>
 	
-	<trigger Name="VehSpeed" active="0">
-		<event timeout="5" eventid="GE_TIME_PERIOD" />
+	<trigger Name="RemoveVeh" active="0">
 		<script>
-			local veh = GetEntityByName("VehicleMove")
-			if veh then
-				veh:SetCruisingSpeed(22)
-			end
+			local veh = GetEntityByName("VehicleMove_vehicle_0")
+			if veh then veh:Remove() end
+			getObj("RemoveVeh"):DelEvent("GE_OBJECT_ENTERS_LOCATION")
+			TActivate("trCreateVehicleMove")
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
 <!-- Переход на локацию -->
 	<trigger Name="PassingToMap" active="0">
-		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<event timeout="0.05" eventid="GE_TIME_PERIOD" />
 		<script>
 			local vehPlayer = GetPlayerVehicle()
 			if vehPlayer then
@@ -2168,6 +2183,25 @@
 			local map = GetVar("ToMap").AsString
 
 			PassToMap(map, "FromR0M0")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="In12Hour" active="0">
+		<event timeout="0.05" eventid="GE_TIME_PERIOD" />
+		<script>
+			local time = g_ObjCont:GetGameTime().AsString
+			local hour = tonumber(strsub(time, 1, 2))
+
+			for i=1,12 do
+				hour = hour + 1
+				if hour > 24 then hour = 0 end
+			end
+
+			SetGameTime(hour,0)
+			
+			TActivate("PassingToMap")
 
 			trigger:Deactivate()
 		</script>
@@ -2235,6 +2269,30 @@
 		</script>
 	</trigger>
 
+<!-- Таймер отслеживающий загрузку сейвов -->
+	<trigger Name="CheckLoadSaveTimer" active="0">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			if SAVE_ID then SAVE_ID = GetVar("SaveId").AsInt end
+			if not(GetVar("EFA_Version").AsString == EFA_VERSION) or not(GetVar("EFA_Build").AsString == EFA_BUILD) then
+				local b = SpawnMessageBox("90005")
+				if b == 1 then ShowDeathMenu() end
+				LOG("EFA VERSION: "..EFA_VERSION.." | BUILD: "..EFA_BUILD.." | SAVE VERSION: "..GetVar("EFA_Version").AsString.." | BUILD: "..GetVar("EFA_Build").AsString)
+			else
+				TActivate("clst")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="clst" active="0">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("CheckLoadSaveTimer")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 <!-- Выход/очистка карты -->
 	<trigger Name="ExitMap" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
@@ -2264,46 +2322,46 @@
 					TDeactivate("ChestScavs_EntersLoc")
 					TDeactivate("ScavMoveSpeed")
 				end
-
-				if GetVar("ChestScavs_Search").AsInt > 0 and GetVar("ChestScavs_Timer").AsInt > 0 then
-					TDeactivate("ChestScavs_Timer")
-					TDeactivate("cst")
-					TDeactivate("ChestScavs_Time")
+	
+				if GetVar("ChestScavs_Search").AsInt > 0 then
+					if GetVar("ChestScavs_time_hour").AsInt > 0 or GetVar("ChestScavs_time_minute").AsInt > 0 or GetVar("ChestScavs_time_second").AsInt > 0 then
+						TDeactivate("ChestScavs_Timer")
+						TDeactivate("cst")
+						TDeactivate("ChestScavs_Time")
+						TDeactivate("ChestScavsTimeMsgActivate")
+					end
 				end 
 
-				if CHESTSCAVS_TIMER_GLOBAL then CHESTSCAVS_TIMER_GLOBAL = GetVar("ChestScavs_Timer").AsInt end
+				if CHESTSCAVS_TIMER_HOUR_GLOBAL then CHESTSCAVS_TIMER_HOUR_GLOBAL = GetVar("ChestScavs_time_hour").AsInt end
+				if CHESTSCAVS_TIMER_MINUTE_GLOBAL then CHESTSCAVS_TIMER_MINUTE_GLOBAL = GetVar("ChestScavs_time_minute").AsInt end
+				if CHESTSCAVS_TIMER_SECOND_GLOBAL then CHESTSCAVS_TIMER_SECOND_GLOBAL = GetVar("ChestScavs_time_second").AsInt end
+				if CHESTSCAVS_SEARCH_GLOBAL then CHESTSCAVS_SEARCH_GLOBAL = GetVar("ChestScavs_Search").AsInt end
 			end
 
 		--генератор
 			if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
-				if GetVar("Generator_on").AsInt == 1 and GetVar("Generator_time_work").AsInt > 0 then
-					TDeactivate("Generator_timer")
-					TDeactivate("gt")
+				if GetVar("Generator_time_work_second").AsInt > 0 or GetVar("Generator_time_work_minute").AsInt > 0 or GetVar("Generator_time_work_hour").AsInt > 0 then
+					if GetVar("Generator_on").AsInt == 1 then
+						TDeactivate("Generator_timer")
+						TDeactivate("gt")
+					end
 				end
 				
-				if GENERATOR_TIMER_GLOBAL then GENERATOR_TIMER_GLOBAL = GetVar("Generator_time_work").AsInt end
+				if GENERATOR_TIMER_HOUR_GLOBAL then GENERATOR_TIMER_HOUR_GLOBAL = GetVar("Generator_time_work_hour").AsInt end
+				if GENERATOR_TIMER_MINUTE_GLOBAL then GENERATOR_TIMER_MINUTE_GLOBAL = GetVar("Generator_time_work_minute").AsInt end
+				if GENERATOR_TIMER_SECOND_GLOBAL then GENERATOR_TIMER_SECOND_GLOBAL = GetVar("Generator_time_work_second").AsInt end
 				if GENERATOR_LVL_GLOBAL then GENERATOR_LVL_GLOBAL = GetVar("Generator_lvl").AsInt end
 				if GENERATOR_ON_GLOBAL then GENERATOR_ON_GLOBAL = GetVar("Generator_on").AsInt end
 			end
 
 		--удаление VehicleMove
+			TDeactivate("trCreateVehicleMove")
 			TDeactivate("CreateVehicleMove")
-			if GetVar("VehPath").AsInt > 0 then
-				TDeactivate("VehMoveReached")
-				local veh = GetEntityByName("VehicleMove")
-				if veh then 
-					veh:PlaceToEndOfPath()
-					veh:Remove() 
-				end
-
-				SetVar("VehMove", 0)
-				SetVar("VehPath", 0)
-
-				getObj("CreateVehicleMove"):DelEvent("GE_TIME_PERIOD")
-				TDeactivate("VehInGarage")
-				getObj("VehInGarage"):DelEvent("GE_TIME_PERIOD")
-				TDeactivate("VehSpeed")
-			end
+			local veh = GetEntityByName("VehicleMove_vehicle_0")
+			if veh then veh:Remove() end
+			getObj("CreateVehicleMove"):DelEvent("GE_TIME_PERIOD")
+			getObj("RemoveVeh"):DelEvent("GE_OBJECT_ENTERS_LOCATION")
+			TDeactivate("RemoveVeh")
 
 			if COUNT_RAIDS then COUNT_RAIDS = GetVar("CountRaids").AsInt end
 
@@ -2321,17 +2379,11 @@
 				TDeactivate("PlayerFuel")
 			end
 
+			TDeactivate("CheckLoadSaveTimer")
+			TDeactivate("clst")
+
 			println("MAP CLEAR")
 
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-	<trigger Name="CloseTown" active="1">
-		<event timeout="0" eventid="GE_TIME_PERIOD" />
-		<script>
-			local town1 = GetEntityByName ("Town_r0m0")
-			if town1 then town1:SetOpenGateToPlayer(false) end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -2339,12 +2391,22 @@
 	<trigger Name="Message" active="1">
 		<event timeout="3" eventid="GE_TIME_PERIOD" />
 		<script>
-			SpawnMessageBox("90004")
-			local town1 = GetEntityByName ("Town_r0m0")
-			if town1 then town1:SetOpenGateToPlayer(true) end
+			local b = SpawnMessageBox("90004")
+			if b == 1 then
+				local town1 = GetEntityByName("Town_r0m0_enter")
+				if town1 then town1:SetPosition(CVector(858.564, 255.000, 985.160)) end
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
+
+<!--
+**************************************************************************************************
+** КВЕСТЫ
+**************************************************************************************************
+-->
+
+--Звуки
 
 	<trigger Name="SoundQuestTaken" active="0">
 		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
@@ -2398,6 +2460,8 @@
 		</script>
 	</trigger>
 
+--Активация квестов
+
 	<trigger Name="QuestsActivate" active="1">
 		<event	eventid="GE_LEAVE_TOWN"	ObjName="PetrolStationTown1" />
 		<event	eventid="GE_LEAVE_TOWN"	ObjName="Town_r0m0" />
@@ -2426,6 +2490,28 @@
 			if IsQuestTaken("q_test_drive6") and not(IsQuestComplete("q_test_drive6_1")) then
 				TActivate("q_test_drive6_config")
 			end
+		</script>
+	</trigger>
+
+	<trigger Name="QuestCanBeGiven" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if IsQuestComplete("q_fuel1") and not(GetVar("q_fuel2_can_be_given").AsInt == 1) then 
+				SetVar("q_fuel2_can_be_given", GetVar("q_fuel2_can_be_given").AsInt+1)
+			end
+
+			if IsQuestComplete("q_rebuild") and not(GetVar("q_test_drive1_can_be_given").AsInt == 1) then 
+				SetVar("q_test_drive1_can_be_given", GetVar("q_test_drive1_can_be_given").AsInt+1)
+			end
+
+			if IsQuestComplete("q_bitok1") and not(GetVar("q_bitok2_can_be_given").AsInt == 1) then 
+				SetVar("q_bitok2_can_be_given", GetVar("q_bitok2_can_be_given").AsInt+1)
+			end
+
+			if IsQuestComplete("q_bitok2") and not(GetVar("q_bitok3_can_be_given").AsInt == 1) then 
+				SetVar("q_bitok3_can_be_given", GetVar("q_bitok3_can_be_given").AsInt+1)
+			end
+		    trigger:Deactivate()
 		</script>
 	</trigger>
 
@@ -2651,5 +2737,4 @@
 			trigger:Deactivate()
 		</script>
 	</trigger>
-
 </triggers>

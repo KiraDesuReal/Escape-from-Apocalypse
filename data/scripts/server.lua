@@ -508,40 +508,38 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 		 	if IsWares==1 then
 
 				local ItemsLifeUse = {"scrap_metal_use", "machinery_use", "electronics_use", "machinery_use", "scrap_metal_use"}
-				local r2 = getn(ItemsLifeUse)
-
 				local ItemsOilUse = {"oil_use", "fuel_nil_use", "fuel_full_use"}
-				local r3 = getn(ItemsOilUse)
 
-				local r_list = {exrandom, random}
-				local r_l = random(2)
+				local items1 = {"scrap_metal", "oil", "bottle", "fuel", "machinery", "tobacco", "book", "electronics", "doski", "details", "shkatulka",
+								"item_bolts", "item_hose", "item_insulation", "item_kek", "item_nails", "item_nuts", "item_parts", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_tube",
+								"item_cable", "item_cooler", "item_cpu", "item_dvd", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_hdd", "item_helix", "item_kondesators", "item_lump", "item_magnet", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tplug", "item_ultra_lump", "item_usb", "item_wires",
+								"item_accum", "item_battery_aa", "item_battery_d", "item_powerbank",
+								"item_hunter_spich", "item_lighter", "item_spich", "item_survl", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo",
+								"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_tb", "item_toothpaste",
+								"item_disk", "item_flashdrive", "item_manual", 
+								"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_medical_tools", "item_naci", "item_suringe",
+								"item_vodka", "item_zapal", "item_carsen",
+								"item_metalscissors", "item_nippers", "item_pliers", "item_pliers_round", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_wrench"}
+				
+				local items2 = {"item_monolit", "item_leatherman", "item_toolset", "item_kaktus", "item_fullmaster", "item_awl", "item_military_tube", "someTurboAccelerationPusher","item_diary_s", "item_bp", "item_lcd", "item_drill", "item_filter", "item_sewing_kit", "item_pena", "item_green_battery", "item_diary", "item_dry", "item_military_cable", "item_ex", "item_thermometer", "item_propan", "item_handrill", "item_teapon", "item_emre_kara", "item_waterfilter", "item_keqing", "item_datchik", "item_ssd", "item_key_gate_thetown", "item_key_gate_basefelix", "item_disk_exmachina", "item_cyclon", "item_buldex", "item_cat", "item_prisadka", "item_sas", "item_rolex", "item_chain_gold", "item_car_battery", "item_pipe_wrench", "item_engine", "item_fitanyashka", "item_paracord", "item_chiken", "item_termit", "item_ratchet_wrench", "item_skullring", "item_oftalmaskop", "item_vitalik", "item_iridiym", "item_tetris", "item_vpx", "item_virtex", "item_airfilter", "item_ananaga", "item_lion", "item_converter", "item_rozvidka", "item_gpu", "item_bitcoin", "item_ledx", "item_tank_battery"}
+				
+				local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
+				local gadget2 = {"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "additional_fuel_tank2", "additional_torque2", "additional_durability2"}
+				local gadget3 = {"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
+				local gadget_rand = {gadget1[random(getn(gadget1))], gadget2[random(getn(gadget2))], gadget3[random(getn(gadget3))]}
 
-				local building = {"item_scotch", "item_nails", "item_nuts", "item_insulation", "item_screws", "scrap_metal", "doski", "item_bolts", "item_hose", "details", "item_plex", "item_parts", "item_poheram", "item_tube", "item_kek", "machinery", "item_military_tube", "item_thermometer", "item_pena", "item_datchik"}
-				local building_items = getn(building)
-				local electronics = {"item_usb", "item_wires", "item_tplug", "item_dvd", "item_lump", "item_rele", "item_cpu", "item_svech", "item_ram", "item_kondesators", "item_magnet", "item_energo_lump", "item_electronics_components", "item_phone", "item_ultra_lump", "item_cooler", "item_gazan", "item_geiger", "item_plate", "item_cable", "item_helix", "item_hdd", "item_drill", "item_lcd", "item_military_cable", "electronics", "item_bp", "item_engine", "item_iridiym", "item_tetris", "item_vpx", "item_virtex", "item_converter", "item_gpu"}
-				local electronics_items = getn(electronics)
-				local energy = {"item_battery_d", "item_battery_aa", "item_accum", "item_powerbank", "item_green_battery", "item_car_battery", "item_cyclon", "item_tank_battery"}
-				local energy_items = getn(energy)
-				local flammable = {"item_spich", "item_hunter_spich", "item_lighter", "item_wd40_100", "item_zibbo", "oil", "item_survl", "item_wd40_400", "fuel", "item_trotile", "item_dry", "item_propan", "item_prisadka", "item_termit"}
-				local flammable_items = getn(flammable)
-				local household = {"item_soap", "item_salt", "item_tb", "item_toothpaste", "item_soda", "item_paper", "item_alkani", "item_hlor", "book"}
-				local household_items = getn(household)
-				local info = {"item_disk", "item_manual", "item_flashdrive", "item_diary_s", "item_diary", "item_ssd", "item_disk_exmachina", "item_sas", "item_rozvidka"}
-				local info_items = getn(info)
-				local medical = {"item_medical_tools", "item_naci", "item_h2o2", "item_suringe", "item_c6h8o6", "item_aquapeps", "item_oftalmaskop", "item_ledx"}
-				local medical_items = getn(medical)
-				local other = {"item_zapal", "tobacco", "bottle", "item_vodka", "item_monolit", "item_kaktus", "item_filter", "item_emre_kara", "item_keqing", "item_waterfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_airfilter", "item_ananaga"}
-				local other_items = getn(other)
-				local tools = {"item_roulet", "item_wrench", "item_screw", "item_pliers", "item_screw_flat", "item_nippers", "item_metalscissors", "item_pliers_round", "item_leatherman", "item_screw_flat_long", "item_toolset", "item_awl", "item_fullmaster", "item_sewing_kit", "item_handrill", "item_buldex", "item_ratchet_wrench", "item_pipe_wrench"}
-				local tools_items = getn(tools)
-				local valuables = {"item_chain", "shkatulka", "item_ex", "item_teapon", "item_cat", "item_rolex", "item_chain_gold", "item_key_gate_thetown", "item_woodclock", "item_chiken", "item_skullring", "item_lion", "item_bitcoin"}
-				local valuables_items = getn(valuables)
-		
-				local items = {building[r_list[r_l](building_items)], electronics[r_list[r_l](electronics_items)], energy[r_list[r_l](energy_items)], flammable[r_list[r_l](flammable_items)], household[r_list[r_l](household_items)], info[r_list[r_l](info_items)], medical[r_list[r_l](medical_items)], other[r_list[r_l](other_items)], tools[r_list[r_l](tools_items)], valuables[r_list[r_l](valuables_items)]}
-				local items_r = getn(items)
+				local exlusive = {}
+				local loc
+				local mapName = GET_GLOBAL_OBJECT( "CurrentLevel" ):GetLevelName()
+				if mapName == "r1m1" then loc = "r1m1" end
 
-				local wares = {building[exrandom(building_items)], electronics[exrandom(electronics_items)], energy[exrandom(energy_items)], flammable[exrandom(flammable_items)], household[exrandom(household_items)], info[exrandom(info_items)], medical[exrandom(medical_items)], other[exrandom(other_items)], tools[exrandom(tools_items)], valuables[exrandom(valuables_items)]}
-				local wares_r = getn(wares)
+				if loc == "r1m1" then
+					exlusive = {"potato", "firewood", "item_pants40grn", "item_salo"}
+					local items_array1 = getn(items1)
+					for i=1,getn(exlusive) do
+						items1[items_array1 + i] = exlusive[i]
+					end
+				end
 
 				local rand = random(1000)
 				if 5 >= rand then
@@ -555,20 +553,26 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 					
 					if belong == 1088 or belong == 1089 or belong == 1082 then
 						for life=1,random(2) do
-							vehicle:AddItemsToRepository(ItemsLifeUse[random(r2)], random(0,1))
+							vehicle:AddItemsToRepository(ItemsLifeUse[random(getn(ItemsLifeUse))], random(0,1))
 						end
 
-						vehicle:AddItemsToRepository(ItemsOilUse[random(r3)], random(0,1))
+						vehicle:AddItemsToRepository(ItemsOilUse[random(getn(ItemsOilUse))], random(0,1))
 
-						for ware=1,random(6) do
-							vehicle:AddItemsToRepository(items[random(items_r)], 1)
+						for ware1=1,random(4) do
+							vehicle:AddItemsToRepository(items1[random(getn(items1))], 1)
 						end
+
+						for ware2=1,random(2) do
+							vehicle:AddItemsToRepository(items2[exrandom(getn(items2))], random(0,1))
+						end
+
+						vehicle:AddItemsToRepository(gadget_rand[exrandom(getn(gadget_rand))], random(0,1))
 					else
-						vehicle:AddItemsToRepository(ItemsLifeUse[exrandom(r2)], random(0,1))
-						vehicle:AddItemsToRepository(ItemsOilUse[exrandom(r3)], random(0,1))
+						vehicle:AddItemsToRepository(ItemsLifeUse[exrandom(getn(ItemsLifeUse))], random(0,1))
+						vehicle:AddItemsToRepository(ItemsOilUse[exrandom(getn(ItemsOilUse))], random(0,1))
 		
 						for ware=1,random(2) do
-							vehicle:AddItemsToRepository(wares[random(wares_r)], 1)
+							vehicle:AddItemsToRepository(items1[random(getn(items1))], 1)
 						end
 					end
 				end

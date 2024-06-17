@@ -50,11 +50,27 @@
 
 	<string
 		id="fm_progress_quest_scavs_kills"
-		value="Прогресс по квесту %1p.|Диких убито: %2d" />
+		value="Прогресс по квесту %1p:|Диких убито: %2d/%3d" />
+
+	<string
+		id="fm_progress_quest_scavs_kills_complete"
+		value="@ff59db12Прогресс по квесту %1p:|Диких убито: %2d/%3d" />
 
 	<string
 		id="fm_progress_quest_pmc_kills"
-		value="Прогресс по квесту %1p.|ЧВК убито: %2d" />
+		value="Прогресс по квесту %1p:|ЧВК убито: %2d/%3d" />
+
+	<string
+		id="fm_progress_quest_pmc_kills_complete"
+		value="@ff59db12Прогресс по квесту %1p:|ЧВК убито: %2d/%3d" />
+
+	<string
+		id="fm_progress_quest_raidcount"
+		value="Прогресс по квесту %1p:|Проведено рейдов: %2d/%3d" />
+
+	<string
+		id="fm_progress_quest_raidcount_complete"
+		value="@ff59db12Прогресс по квесту %1p:|Проведено рейдов: %2d/%3d" />
 
 	<string
 		id="fm_cant_move"
@@ -170,7 +186,7 @@
 
 	<string
 		id="fm_player_add_thing"
-		value="Вы получили предмет %1p!" />
+		value="Вы получили предмет: %1p!" />
 
 	<string
 		id="fm_cheat_is_not_allowed"
@@ -186,11 +202,11 @@
 
 	<string
 		id="fm_player_exit_location"
-		value="Выход через %1d." />
+		value="Выход через: %1d" />
 
 	<string
 		id="fm_player_exit_enters_location"
-		value="Оставайтесь в зоне выхода.|@ff6cff00%1p." />
+		value="Оставайтесь в зоне выхода|@ff6cff00%1p" />
 
 	<string
 		id="fm_player_exit_leaves_location"
@@ -202,23 +218,23 @@
 
 	<string
 		id="fm_use_scrap_metal"
-		value="@ffffba00Использован: Крепкий металл. Прочность +%1d" />
+		value="@ffffba00Использован: Крепкий металл|Прочность +%1d (%2d)" />
 
 	<string
 		id="fm_use_machinery"
-		value="@ff00ff4eИспользовано: Рабочее оборудование. Прочность +%1d" />
+		value="@ff00ff4eИспользовано: Рабочее оборудование|Прочность +%1d (%2d)" />
 
 	<string
 		id="fm_use_oil"
-		value="@ff0042ffИспользована: Нефть. Топливо +%1d" />
+		value="@ff0042ffИспользована: Бочка с нефтью|Топливо +%1d (%2d)" />
 
 	<string
 		id="fm_use_electronics"
-		value="@ff00ff4eИспользована: Высокотехнологичная электроника. Прочность +%1d" />
+		value="@ff00ff4eИспользована: Высокотехнологичная электроника|Прочность +%1d (%2d)" />
 
 	<string
 		id="fm_use_fuel_full"
-		value="@ff0042ffИспользована: Канистра топлива. Топливо +%1d" />
+		value="@ff0042ffИспользована: Канистра топлива|Топливо +%1d (%2d)" />
 
 	<string
 		id="fm_fuel_petrol_start"
@@ -253,40 +269,16 @@
 		value="Воздушное пространство загружено.|Ожидайте прибытия!" />
 
 	<string
-		id="fm_raid_count"
-		value="Рейд №%1d" />
-
-	<string
-		id="fm_raid_time"
-		value="День:%1p" />
-
-	<string
-		id="fm_raid_player"
-		value="Оператор ЧВК %1p" />
-
-	<string
-		id="fm_raid_r1m1"
-		value="Край" />
-
-	<string
 		id="fm_raid_info"
 		value="%1p" />
 
 	<string
-		id="fm_time_min"
-		value="Осталось %1d минут!" />
+		id="fm_time_raid"
+		value="Осталось %1p" />
 
 	<string
-		id="fm_time_min_red"
-		value="@ffc82323Осталось %1d минут!" />
-
-	<string
-		id="fm_time_min2_red"
-		value="@ffc82323Осталось %1d минуты!" />
-
-	<string
-		id="fm_time_sec"
-		value="@ffc82323Осталось %1d секунд!" />
+		id="fm_time_raid_red"
+		value="@ffc82323Осталось %1p" />
 
 	<string
 		id="fm_item_to_npc"
@@ -310,7 +302,7 @@
 
 	<string
 		id="fm_generator_time_work"
-		value="Время работы генератора: %1d секунд." />
+		value="Время работы генератора: %1p" />
 
 	<string
 		id="fm_generator_fuel_nil"
@@ -329,12 +321,8 @@
 		value="Дикие принесли добычу!" />
 
 	<string
-		id="fm_chest_scavs_timer_m"
-		value="Осталось: %1d минут." />
-
-	<string
-		id="fm_chest_scavs_timer_s"
-		value="Осталось: %1d секунд." />
+		id="fm_chest_scavs_timer"
+		value="Осталось: %1p" />
 
 	<string
 		id="fm_start_challenge"
@@ -342,7 +330,7 @@
 
 	<string
 		id="fm_challenge_score"
-		value="@ffffc600Счёт %1d @ff72ff00+%2d" />
+		value="@ffffc600Счёт: %1d @ff72ff00+%2d" />
 
 	<string
 		id="fm_dungeon_timer"
@@ -382,7 +370,7 @@
 
 	<string
 		id="fm_use_ammo_chest"
-		value="@ffffba00Пополнен боезапас для %1p." />
+		value="@ffffba00Пополнен боезапас для: %1p" />
 
 	<string
 		id="fm_marker_target"
@@ -390,7 +378,7 @@
 
 	<string
 		id="fm_target_defence_timer"
-		value="Защищайте цель %1d." />
+		value="Защищайте цель: %1d" />
 
 	<string
 		id="fm_marker_install"
@@ -399,4 +387,8 @@
 	<string
 		id="fm_marker_leaves_zone"
 		value="Вы покинули зону маркировки!" />
+
+	<string
+		id="fm_get_special_community_item"
+		value="@ffffc000Вы получили свой уникальный предмет!" />
 </resource>

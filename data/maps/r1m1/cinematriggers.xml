@@ -81,7 +81,7 @@
 
 <!-- Время рейда закончилось -->
 	<trigger Name="cutTimeRaid" active="0">
-		<event 	timeout="0.01"		eventid="GE_TIME_PERIOD" />
+		<event 	timeout="1"		eventid="GE_TIME_PERIOD" />
 		<script>
 			local Plf = GetPlayerVehicle()
 			local PlfID = GetPlayerVehicleId()
@@ -198,14 +198,11 @@
 			
 			CreateVehicleEx(plProt,"fakePlayerCar",(plPos), 1100)
 
-			CreateNewDummyObject("point", "yashik", -1, 1100, plPos, Quaternion(0, 0, 0, 1), 0)
-			local obj = getObj("yashik")
-			local objid = obj:GetId()
-			local objPos = obj:GetPosition()
-
 			CreateEffectInsertedInRemove("ET_S_DEATH", plPos, Quaternion(0, 0, 0, 1), true)
 
 			local fakePlayer = GetEntityByName("fakePlayerCar")
+			local objid = fakePlayer:GetId()
+			local objPos = fakePlayer:GetPosition()
 			if fakePlayer then
 				fakePlayer:SetRotation(plRot)
 				fakePlayer:TakeOffAllGuns()

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<Weather>
+	<WeatherItem
+		name="r5m1_clear">
+		<ColorType
+			name="sunrise"
+			LightmapTexture="summer/lightmap_sunrisetime_r5m1.dds"
+			CloudsTexture="skyclear2.dds" />
+
+		<ColorType
+			name="day"
+			LightmapTexture="LoadMe.txt"
+			CloudsTexture="LoadMe.txt" />
+
+		<ColorType
+			name="sunset"
+			LightmapTexture="LoadMe.txt"
+			CloudsTexture="LoadMe.txt" />
+
+		<ColorType
+			name="night"
+			LightmapTexture="LoadMe.txt"
+			CloudsTexture="LoadMe.txt" />
+	</WeatherItem>
+</Weather>

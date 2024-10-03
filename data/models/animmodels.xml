@@ -208,6 +208,13 @@
 		trans="0" />
 
 	<model
+		id="big_gate_red"
+		file="data\models\buildings\region5\big_gate\big_gate_red.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0" />
+
+	<model
 		id="bus_stop"
 		file="data\models\buildings\region5\bus_stop\bus_stop.gam"
 		shadow="1"
@@ -320,6 +327,13 @@
 		trans="0" />
 
 	<model
+		id="inscriptions"
+		file="data\models\buildings\region5\inscriptions\inscriptions.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0" />
+
+	<model
 		id="metall_fence"
 		file="data\models\buildings\region5\metall_fence\metall_fence.gam"
 		shadow="1"
@@ -402,6 +416,22 @@
 		shadow="1"
 		windwavy="0"
 		trans="0" />
+
+	<model
+		id="dub_kust1_r2_snow"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\dub_kust1_r2snow.gam" />
+
+	<model
+		id="dub_kust2_r2_snow"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\dub_kust2_r2snow.gam" />
 
 	<model
 		id="dub1_snow"
@@ -1376,6 +1406,14 @@
 		windwavy="0"
 		useImpostors = "1"
 		file="data\models\nature\region1\trees\listvenoe1.gam" />
+
+	<model
+		id="listvenoe1_r5"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors = "1"
+		file="data\models\nature\region1\trees\listvenoe1_r5.gam" />
 
 	<model
 		id="listvenoe2"
@@ -16780,6 +16818,14 @@
 	<model
 		id="lamppost1"
 		file="data\models\buildings\region1\lamppost1.gam"
+		shadowVolume="1"
+		shadow="1"
+		windwavy="0"
+		trans="0" />
+
+	<model
+		id="lamppost1_r5"
+		file="data\models\buildings\region1\lamppost1_r5.gam"
 		shadowVolume="1"
 		shadow="1"
 		windwavy="0"

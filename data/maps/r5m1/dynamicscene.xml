@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<DynamicScene
+	LastId="33">
+	<TargetNamesForDestroy
+		Names="" />
+
+	<Object
+		Name="Player1"
+		Belong="1100"
+		Prototype="player">
+		<Object
+			Name="MyCar"
+			Belong="1100"
+			Prototype="Bug01"
+			Pos="7108.162 255.000 526.777"
+			Rot="-0.005 -0.702 0.005 0.712">
+			<Parts />
+
+			<Repository />
+		</Object>
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492071"
+			PostTiePos="6399.364 267.811 506.657"
+			LpName="LP_PART01" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492072"
+			PostTiePos="6491.427 268.900 507.687"
+			LpName="LP_PART01" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492071"
+			PostTiePos="6399.364 266.145 506.657"
+			LpName="LP_PART02" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492072"
+			PostTiePos="6491.427 267.233 507.687"
+			LpName="LP_PART02" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492072"
+			PostTiePos="6491.427 268.900 507.687"
+			LpName="LP_PART01" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492023"
+			PostTiePos="6577.670 268.632 507.984"
+			LpName="LP_PART01" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492072"
+			PostTiePos="6491.427 267.233 507.687"
+			LpName="LP_PART02" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492023"
+			PostTiePos="6577.670 266.966 507.984"
+			LpName="LP_PART02" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492023"
+			PostTiePos="6577.670 268.632 507.984"
+			LpName="LP_PART01" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492024"
+			PostTiePos="6646.321 269.247 506.970"
+			LpName="LP_PART01" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492023"
+			PostTiePos="6577.670 266.966 507.984"
+			LpName="LP_PART02" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492024"
+			PostTiePos="6646.321 267.580 506.970"
+			LpName="LP_PART02" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492024"
+			PostTiePos="6646.321 269.247 506.970"
+			LpName="LP_PART01" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322491974"
+			PostTiePos="6713.839 270.117 507.847"
+			LpName="LP_PART01" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492024"
+			PostTiePos="6646.321 267.580 506.970"
+			LpName="LP_PART02" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322491974"
+			PostTiePos="6713.839 268.451 507.847"
+			LpName="LP_PART02" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322491974"
+			PostTiePos="6713.839 270.117 507.847"
+			LpName="LP_PART01" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322491973"
+			PostTiePos="6776.417 270.098 507.225"
+			LpName="LP_PART01" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322491974"
+			PostTiePos="6713.839 268.451 507.847"
+			LpName="LP_PART02" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322491973"
+			PostTiePos="6776.417 268.431 507.225"
+			LpName="LP_PART02" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322491973"
+			PostTiePos="6776.417 270.098 507.225"
+			LpName="LP_PART01" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322491930"
+			PostTiePos="6848.585 270.019 507.664"
+			LpName="LP_PART01" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322491973"
+			PostTiePos="6776.417 268.431 507.225"
+			LpName="LP_PART02" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322491930"
+			PostTiePos="6848.585 268.353 507.664"
+			LpName="LP_PART02" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322491930"
+			PostTiePos="6848.585 270.019 507.664"
+			LpName="LP_PART01" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322491929"
+			PostTiePos="6941.269 269.165 506.002"
+			LpName="LP_PART01" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322491930"
+			PostTiePos="6848.585 268.353 507.664"
+			LpName="LP_PART02" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322491929"
+			PostTiePos="6941.269 267.499 506.002"
+			LpName="LP_PART02" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322491929"
+			PostTiePos="6941.269 269.165 506.002"
+			LpName="LP_PART01" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322491927"
+			PostTiePos="7018.486 269.227 504.901"
+			LpName="LP_PART01" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322491929"
+			PostTiePos="6941.269 267.499 506.002"
+			LpName="LP_PART02" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322491927"
+			PostTiePos="7018.486 267.560 504.901"
+			LpName="LP_PART02" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492657"
+			PostTiePos="6313.100 269.235 507.123"
+			LpName="LP_PART01" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492071"
+			PostTiePos="6399.364 267.811 506.657"
+			LpName="LP_PART01" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492657"
+			PostTiePos="6313.100 267.568 507.123"
+			LpName="LP_PART02" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492071"
+			PostTiePos="6399.364 266.145 506.657"
+			LpName="LP_PART02" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492793"
+			PostTiePos="6080.586 268.680 507.123"
+			LpName="LP_PART01" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492794"
+			PostTiePos="6200.662 268.730 507.123"
+			LpName="LP_PART01" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492793"
+			PostTiePos="6080.586 267.014 507.123"
+			LpName="LP_PART02" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492794"
+			PostTiePos="6200.662 267.064 507.123"
+			LpName="LP_PART02" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492794"
+			PostTiePos="6200.662 268.730 507.123"
+			LpName="LP_PART01" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492657"
+			PostTiePos="6313.100 269.235 507.123"
+			LpName="LP_PART01" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492794"
+			PostTiePos="6200.662 267.064 507.123"
+			LpName="LP_PART02" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492657"
+			PostTiePos="6313.100 267.568 507.123"
+			LpName="LP_PART02" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492805"
+			PostTiePos="5945.324 269.279 507.123"
+			LpName="LP_PART01" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492793"
+			PostTiePos="6080.586 268.680 507.123"
+			LpName="LP_PART01" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492805"
+			PostTiePos="5945.324 267.613 507.123"
+			LpName="LP_PART02" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492793"
+			PostTiePos="6080.586 267.014 507.123"
+			LpName="LP_PART02" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322493046"
+			PostTiePos="5795.828 269.407 507.123"
+			LpName="LP_PART01" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492805"
+			PostTiePos="5945.324 269.279 507.123"
+			LpName="LP_PART01" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322493046"
+			PostTiePos="5795.828 267.740 507.123"
+			LpName="LP_PART02" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322492805"
+			PostTiePos="5945.324 267.613 507.123"
+			LpName="LP_PART02" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322493145"
+			PostTiePos="5649.067 268.508 492.588"
+			LpName="LP_PART01" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322493046"
+			PostTiePos="5795.828 269.407 507.123"
+			LpName="LP_PART01" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322493145"
+			PostTiePos="5649.067 266.841 492.588"
+			LpName="LP_PART02" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322493046"
+			PostTiePos="5795.828 267.740 507.123"
+			LpName="LP_PART02" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322493368"
+			PostTiePos="5564.715 269.678 471.601"
+			LpName="LP_PART01" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322493145"
+			PostTiePos="5649.067 268.508 492.588"
+			LpName="LP_PART01" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322493368"
+			PostTiePos="5564.715 268.012 471.601"
+			LpName="LP_PART02" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322493145"
+			PostTiePos="5649.067 266.841 492.588"
+			LpName="LP_PART02" />
+	</Object>
+
+	<Object
+		Belong="1100"
+		Prototype="someRecollection" />
+</DynamicScene>

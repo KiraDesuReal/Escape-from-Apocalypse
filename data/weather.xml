@@ -3269,5 +3269,90 @@
 			windChangeVelTime="100000.000"
 			windChangeDirTime="100000.000" />
 	</WeatherItem>
+
+	<WeatherItem
+		class="WeatherClear"
+		name="r5m1_clear"
+		skyDomeFactor="0.960"
+		waterSpeed="0.520"
+		waterWaveHBig="0.000"
+		waterWaveHSmall="0.000"
+		waterWaveSizeBig="0.500"
+		waterWaveSizeSmall="1.000"
+		waterCourseAngle="0.000"
+		waterSpecularM="200.000"
+		waterSpecularS="0.005">
+		<Sky
+			sunriseColor="140.250 137.700 150.450"
+			dayColor="255.000 255.000 255.000"
+			sunsetColor="128.000 128.000 128.000"
+			nightColor="64.000 64.000 64.000" />
+
+		<Fog
+			sunriseColor="221.850 214.200 193.800"
+			dayColor="255.000 255.000 255.000"
+			sunsetColor="128.000 128.000 128.000"
+			nightColor="64.000 64.000 64.000" />
+
+		<Ambient
+			sunriseColor="130.050 122.400 130.050"
+			dayColor="255.000 255.000 255.000"
+			sunsetColor="128.000 128.000 128.000"
+			nightColor="64.000 64.000 64.000" />
+
+		<Diffuse
+			sunriseColor="193.800 183.600 188.700"
+			dayColor="255.000 255.000 255.000"
+			sunsetColor="128.000 128.000 128.000"
+			nightColor="64.000 64.000 64.000" />
+
+		<Sun
+			sunriseColor="130.050 128.000 128.000"
+			dayColor="255.000 255.000 255.000"
+			sunsetColor="128.000 128.000 128.000"
+			nightColor="64.000 64.000 64.000" />
+
+		<Plant
+			sunriseColor="153.000 181.050 178.500"
+			dayColor="255.000 255.000 255.000"
+			sunsetColor="128.000 128.000 128.000"
+			nightColor="64.000 64.000 64.000" />
+
+		<Specular
+			sunriseColor="150.450 153.000 153.000"
+			dayColor="255.000 255.000 255.000"
+			sunsetColor="128.000 128.000 128.000"
+			nightColor="64.000 64.000 64.000" />
+
+		<PostEffect
+			sunrise="wSunrise_r5m1"
+			day="wDay_r1m1"
+			sunset="wDay_r1m1"
+			night="wDay_r1m1" />
+
+		<ShadowVisibility
+			sunrise="1"
+			day="1"
+			sunset="1"
+			night="1" />
+
+		<ShadowTransparency
+			sunrise="17.000"
+			day="0.500"
+			sunset="0.500"
+			night="0.500" />
+
+		<cloudsSpeed
+			sunrise="0.063"
+			day="0.100"
+			sunset="0.100"
+			night="0.100" />
+
+		<WindInfo
+			windMaxVel="0.000"
+			windMinVel="0.000"
+			windChangeVelTime="100000.000"
+			windChangeDirTime="100000.000" />
+	</WeatherItem>
 		
 </Weather>

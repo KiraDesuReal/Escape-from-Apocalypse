@@ -551,7 +551,7 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 						vehicle:AddItemsToRepository("item_jeton_usec", 1)
 					end
 					
-					if belong == 1088 or belong == 1089 or belong == 1082 then
+					if belong == 1088 or belong == 1089 then
 						for life=1,random(2) do
 							vehicle:AddItemsToRepository(ItemsLifeUse[random(getn(ItemsLifeUse))], random(0,1))
 						end

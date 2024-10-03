@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<triggers>
+<!-- ’гв ваЁЈЈҐа  -->
+	<trigger Name="GlobalVar" active="1">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+</triggers>

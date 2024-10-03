@@ -815,7 +815,7 @@
 
 			for j=1,count_scav do
 				local model = enemylist[random(scav)]
-				TeamCreate("Scav"..j.."_loc1", 1083, pos[random(pos_rand)], {model}, nil, 1)
+				TeamCreate("Scav"..j.."_loc1", 1082, pos[random(pos_rand)], {model}, nil, 1)
 
 				local sv = GetEntityByName ("Scav"..j.."_loc1_vehicle_0")
 				if sv then
@@ -951,7 +951,7 @@
 
 			for j=1,count_scav do
 				local model = enemylist[random(scav)]
-				TeamCreate("Scav"..j.."_loc2", 1083, pos[random(pos_rand)], {model}, nil, 1)
+				TeamCreate("Scav"..j.."_loc2", 1082, pos[random(pos_rand)], {model}, nil, 1)
 				
 				local sv = GetEntityByName ("Scav"..j.."_loc2_vehicle_0")
 				if sv then
@@ -1090,7 +1090,7 @@
 
 			for j=1,count_scav do
 				local model = enemylist[random(scav)]
-				TeamCreate("Scav"..j.."_loc3", 1083, pos[random(pos_rand)], {model}, nil, 1)
+				TeamCreate("Scav"..j.."_loc3", 1082, pos[random(pos_rand)], {model}, nil, 1)
 
 				local sv = GetEntityByName ("Scav"..j.."_loc3_vehicle_0")
 				if sv then
@@ -1225,7 +1225,7 @@
 
 			for j=1,count_scav do
 				local model = enemylist[random(scav)]
-				TeamCreate("Scav"..j.."_loc4", 1083, pos[random(pos_rand)], {model}, nil, 1)
+				TeamCreate("Scav"..j.."_loc4", 1082, pos[random(pos_rand)], {model}, nil, 1)
 
 				local sv = GetEntityByName ("Scav"..j.."_loc4_vehicle_0")
 				if sv then
@@ -1362,7 +1362,7 @@
 
 			for j=1,count_scav do
 				local model = enemylist[random(scav)]
-				TeamCreate("Scav"..j.."_loc5", 1083, pos[random(pos_rand)], {model}, nil, 1)
+				TeamCreate("Scav"..j.."_loc5", 1082, pos[random(pos_rand)], {model}, nil, 1)
 
 				local sv = GetEntityByName ("Scav"..j.."_loc5_vehicle_0")
 				if sv then
@@ -1509,7 +1509,7 @@
 
 			for j=1,count_scav do
 				local model = enemylist[random(scav)]
-				TeamCreate("Scav"..j.."_loc6", 1083, pos[random(pos_rand)], {model}, nil, 1)
+				TeamCreate("Scav"..j.."_loc6", 1082, pos[random(pos_rand)], {model}, nil, 1)
 
 				local sv = GetEntityByName ("Scav"..j.."_loc6_vehicle_0")
 				if sv then
@@ -1650,7 +1650,7 @@
 
 			for j=1,count_scav do
 				local model = enemylist[random(scav)]
-				TeamCreate("Scav"..j.."_loc7", 1083, pos[random(pos_rand)], {model}, nil, 1)
+				TeamCreate("Scav"..j.."_loc7", 1082, pos[random(pos_rand)], {model}, nil, 1)
 
 				local sv = GetEntityByName ("Scav"..j.."_loc7_vehicle_0")
 				if sv then
@@ -1795,7 +1795,7 @@
 
 			for j=1,count_scav do
 				local model = enemylist[random(scav)]
-				TeamCreate("Scav"..j.."_loc8", 1083, pos[random(pos_rand)], {model}, nil, 1)
+				TeamCreate("Scav"..j.."_loc8", 1082, pos[random(pos_rand)], {model}, nil, 1)
 
 				local sv = GetEntityByName ("Scav"..j.."_loc8_vehicle_0")
 				if sv then
@@ -3432,7 +3432,7 @@
 			for j=1,scav_count do
 				local num = paths_pos[j]
 				local model = enemylist[random(scav)]
-				TeamCreate("Scav_"..j, 1083, pos[num], {model}, nil, 1)
+				TeamCreate("Scav_"..j, 1082, pos[num], {model}, nil, 1)
 				local sv = GetEntityByName ("Scav_"..j.."_vehicle_0")
 				if sv then
 					sv:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])

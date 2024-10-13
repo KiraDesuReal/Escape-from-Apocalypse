@@ -3273,15 +3273,15 @@
 	<WeatherItem
 		class="WeatherClear"
 		name="r5m1_clear"
-		skyDomeFactor="0.960"
-		waterSpeed="0.520"
-		waterWaveHBig="0.000"
-		waterWaveHSmall="0.000"
-		waterWaveSizeBig="0.500"
-		waterWaveSizeSmall="1.000"
+		skyDomeFactor="0.800"
+		waterSpeed="0.070"
+		waterWaveHBig="1.810"
+		waterWaveHSmall="1.280"
+		waterWaveSizeBig="0.420"
+		waterWaveSizeSmall="1.470"
 		waterCourseAngle="0.000"
 		waterSpecularM="200.000"
-		waterSpecularS="0.005">
+		waterSpecularS="0.007">
 		<Sky
 			sunriseColor="140.250 137.700 150.450"
 			dayColor="255.000 255.000 255.000"
@@ -3337,7 +3337,7 @@
 			night="1" />
 
 		<ShadowTransparency
-			sunrise="17.000"
+			sunrise="48.000"
 			day="0.500"
 			sunset="0.500"
 			night="0.500" />

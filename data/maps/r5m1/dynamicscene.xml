@@ -624,7 +624,7 @@
 		<Post
 			ServerObjName=""
 			NodesNameHierarchy="Object322494529"
-			PostTiePos="5715.344 258.267 689.369"
+			PostTiePos="5715.344 258.092 689.369"
 			LpName="LP_PART01" />
 	</Object>
 
@@ -640,7 +640,7 @@
 		<Post
 			ServerObjName=""
 			NodesNameHierarchy="Object322494529"
-			PostTiePos="5717.884 258.267 689.369"
+			PostTiePos="5717.884 258.092 689.369"
 			LpName="LP_PART02" />
 	</Object>
 
@@ -650,13 +650,13 @@
 		<Post
 			ServerObjName=""
 			NodesNameHierarchy="Object322494529"
-			PostTiePos="5715.344 258.267 689.369"
+			PostTiePos="5715.344 258.092 689.369"
 			LpName="LP_PART01" />
 
 		<Post
 			ServerObjName=""
 			NodesNameHierarchy="Object322494534"
-			PostTiePos="5713.752 251.489 831.115"
+			PostTiePos="5713.752 248.666 831.115"
 			LpName="LP_PART01" />
 	</Object>
 
@@ -666,13 +666,13 @@
 		<Post
 			ServerObjName=""
 			NodesNameHierarchy="Object322494529"
-			PostTiePos="5717.884 258.267 689.369"
+			PostTiePos="5717.884 258.092 689.369"
 			LpName="LP_PART02" />
 
 		<Post
 			ServerObjName=""
 			NodesNameHierarchy="Object322494534"
-			PostTiePos="5716.292 251.489 831.115"
+			PostTiePos="5716.292 248.666 831.115"
 			LpName="LP_PART02" />
 	</Object>
 
@@ -682,13 +682,13 @@
 		<Post
 			ServerObjName=""
 			NodesNameHierarchy="Object322494534"
-			PostTiePos="5713.752 251.489 831.115"
+			PostTiePos="5713.752 248.666 831.115"
 			LpName="LP_PART01" />
 
 		<Post
 			ServerObjName=""
 			NodesNameHierarchy="Object322494547"
-			PostTiePos="5714.353 249.609 961.570"
+			PostTiePos="5714.353 248.914 961.570"
 			LpName="LP_PART01" />
 	</Object>
 
@@ -698,13 +698,13 @@
 		<Post
 			ServerObjName=""
 			NodesNameHierarchy="Object322494534"
-			PostTiePos="5716.292 251.489 831.115"
+			PostTiePos="5716.292 248.666 831.115"
 			LpName="LP_PART02" />
 
 		<Post
 			ServerObjName=""
 			NodesNameHierarchy="Object322494547"
-			PostTiePos="5716.893 249.609 961.570"
+			PostTiePos="5716.893 248.914 961.570"
 			LpName="LP_PART02" />
 	</Object>
 
@@ -714,7 +714,7 @@
 		<Post
 			ServerObjName=""
 			NodesNameHierarchy="Object322494547"
-			PostTiePos="5714.353 249.609 961.570"
+			PostTiePos="5714.353 248.914 961.570"
 			LpName="LP_PART01" />
 
 		<Post
@@ -730,7 +730,7 @@
 		<Post
 			ServerObjName=""
 			NodesNameHierarchy="Object322494547"
-			PostTiePos="5716.893 249.609 961.570"
+			PostTiePos="5716.893 248.914 961.570"
 			LpName="LP_PART02" />
 
 		<Post
@@ -768,7 +768,7 @@
 		<Post
 			ServerObjName=""
 			NodesNameHierarchy="Object322495238"
-			PostTiePos="5924.779 253.590 1032.998"
+			PostTiePos="5888.076 250.761 1023.397"
 			LpName="LP_PART02" />
 	</Object>
 
@@ -778,7 +778,7 @@
 		<Post
 			ServerObjName=""
 			NodesNameHierarchy="Object322495238"
-			PostTiePos="5924.779 253.590 1032.998"
+			PostTiePos="5888.076 250.761 1023.397"
 			LpName="LP_PART02" />
 
 		<Post
@@ -800,7 +800,7 @@
 		<Post
 			ServerObjName=""
 			NodesNameHierarchy="Object322495238"
-			PostTiePos="5924.779 253.590 1032.998"
+			PostTiePos="5888.076 250.761 1023.397"
 			LpName="LP_PART02" />
 	</Object>
 
@@ -816,7 +816,7 @@
 		<Post
 			ServerObjName=""
 			NodesNameHierarchy="Object322495282"
-			PostTiePos="5889.093 240.215 1034.486"
+			PostTiePos="5881.011 240.574 1042.423"
 			LpName="LP_PART01" />
 	</Object>
 
@@ -880,7 +880,7 @@
 		<Post
 			ServerObjName=""
 			NodesNameHierarchy="Object322495498"
-			PostTiePos="5712.398 249.337 1175.594"
+			PostTiePos="5712.398 243.449 1175.594"
 			LpName="LP_PART01" />
 	</Object>
 
@@ -896,7 +896,23 @@
 		<Post
 			ServerObjName=""
 			NodesNameHierarchy="Object322495498"
-			PostTiePos="5714.933 249.337 1175.428"
+			PostTiePos="5714.933 243.449 1175.428"
+			LpName="LP_PART02" />
+	</Object>
+
+	<Object
+		Belong="-1"
+		Prototype="Cable">
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322495238"
+			PostTiePos="5888.076 250.761 1023.397"
+			LpName="LP_PART02" />
+
+		<Post
+			ServerObjName=""
+			NodesNameHierarchy="Object322495283"
+			PostTiePos="5901.005 290.674 1002.995"
 			LpName="LP_PART02" />
 	</Object>
 

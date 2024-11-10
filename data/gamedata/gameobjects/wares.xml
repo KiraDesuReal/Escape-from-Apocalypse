@@ -362,6 +362,25 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_ballon_lasergun"
+		Price	= "14850"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_ballon_plasmagun"
+		Price	= "20550"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+
 <!-- Building Items -->
 
 	<Prototype
@@ -991,6 +1010,15 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_gunpowder"
+		Price	= "14400"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
 <!-- Household Items -->
 
 	<Prototype
@@ -1394,6 +1422,15 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_metallodetector"
+		Price	= "22460"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
 
 <!-- Tools Items -->
 

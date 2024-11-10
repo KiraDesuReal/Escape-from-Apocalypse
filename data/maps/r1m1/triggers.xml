@@ -2377,7 +2377,7 @@
 			local use = {"scrap_metal_use", "oil_use", "fuel_nil_use", "machinery_use", "fuel_full_use", "electronics_use"}
 			local items = {"item_bolts", "item_hose", "item_datchik", "item_insulation", "item_kek", "item_nails", "item_nuts", "item_parts", "item_pena", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_thermometer", "item_tube",
 							"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_green_battery", "item_powerbank",
-							"item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo",
+							"item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder",
 							"scrap_metal", "oil", "bottle", "fuel", "machinery", "tobacco", "doski", "details",
 							"item_filter", "item_paracord", "item_waterfilter", "item_zapal",
 							"item_awl", "item_leatherman", "item_metalscissors", "item_nippers", "item_pliers", "item_pliers_round", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_wrench",
@@ -2431,7 +2431,7 @@
 		<script>
 			local items = {"item_bolts", "item_hose", "item_insulation", "item_kek", "item_nails", "item_nuts", "item_parts", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_tube",
 							"scrap_metal", "oil", "bottle", "fuel", "machinery", "doski", "details",
-							"item_dry", "item_hunter_spich", "item_lighter", "item_spich", "item_survl", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo",
+							"item_dry", "item_hunter_spich", "item_lighter", "item_spich", "item_survl", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder",
 							"item_filter", "item_vitalik", "item_waterfilter", "item_zapal",
 							"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench"}
 			
@@ -2472,7 +2472,7 @@
 	<trigger Name="CreateValuablesLootBox" active="0">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-			local items = {"book", "shkatulka", "item_key_gate_thetown", "item_key_gate_basefelix", "item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_emre_kara", "item_fitanyashka", "item_monolit", "item_kaktus", "item_keqing", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_carsen"}
+			local items = {"book", "shkatulka", "item_key_gate_thetown", "item_key_gate_basefelix", "item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_emre_kara", "item_fitanyashka", "item_monolit", "item_kaktus", "item_keqing", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_carsen", "item_metallodetector"}
 
 			for i=1,7 do
 				local Chest = CreateNewObject{prototypeName = "mainChest", objName = "ValuablesBox"..i.."Chest"}	
@@ -2553,13 +2553,13 @@
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local items = {"machinery", "book", "electronics", "shkatulka", 
-							"ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_chest_artillerygun",
+							"ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_chest_artillerygun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun",
 							"item_datchik", "item_kek", "item_military_tube", "item_pena", "item_thermometer", "item_tube",
 							"item_bp", "item_drill", "item_engine", "item_hdd", "item_lcd", "item_military_cable", "item_tetris",
 							"item_car_battery", "item_cyclon", "item_green_battery",
 							"item_dry", "item_prisadka", "item_propan", "item_termit",
 							"item_disk", "item_disk_exmachina", "item_flashdrive", "item_sas", "item_ssd",
-							"item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen",
+							"item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector",
 							"item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon",
 							"fagot01", "maxim01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "big_swingfire01", "cyclops01", "octopus01", "rocketLauncher", "someTurboAccelerationPusher"}
 

@@ -292,6 +292,20 @@
 		trans="0" />
 
 	<model
+		id="farm"
+		file="data\models\buildings\region5\farm\farm.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0" />
+
+	<model
+		id="garage_1"
+		file="data\models\buildings\region5\garage\garage.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0" />
+
+	<model
 		id="house_1"
 		file="data\models\buildings\region5\house_1\house_1.gam"
 		shadow="1"
@@ -334,6 +348,13 @@
 		trans="0" />
 
 	<model
+		id="metall_barrel"
+		file="data\models\buildings\region5\metall_barrel\metall_barrel.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0" />
+
+	<model
 		id="metall_fence"
 		file="data\models\buildings\region5\metall_fence\metall_fence.gam"
 		shadow="1"
@@ -357,6 +378,20 @@
 	<model
 		id="stump"
 		file="data\models\buildings\region5\stump\stump.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0" />
+
+	<model
+		id="tent"
+		file="data\models\buildings\region5\tent\tent.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0" />
+
+	<model
+		id="tentplate"
+		file="data\models\buildings\region5\tent\tentplate.gam"
 		shadow="1"
 		windwavy="0"
 		trans="0" />
@@ -413,6 +448,13 @@
 	<model
 		id="wood_fence_linker"
 		file="data\models\buildings\region5\wood_fence\wood_fence_linker.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0" />
+
+	<model
+		id="wooden_fence"
+		file="data\models\buildings\region5\wood_fence\wooden_fence.gam"
 		shadow="1"
 		windwavy="0"
 		trans="0" />

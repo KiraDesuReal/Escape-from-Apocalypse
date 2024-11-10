@@ -1072,7 +1072,7 @@
 							"item_bolts", "item_hose", "item_kek", "item_parts", "item_poheram", "item_tube", "item_plex",
 							"item_cable", "item_cooler", "item_cpu", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_hdd", "item_helix", "item_phone", "item_plate", "item_svech", "item_ultra_lump",
 							"item_accum", "item_powerbank",
-							"item_survl", "item_wd40_400",
+							"item_survl", "item_wd40_400", "item_gunpowder",
 							"item_alkani", "item_hlor", "item_paper",
 							"item_disk", "item_flashdrive", "item_manual", 
 							"item_aquapeps", "item_c6h8o6", "item_suringe",
@@ -1088,14 +1088,14 @@
 							"item_datchik", "item_military_tube", "item_pena", "item_thermometer",
 							"item_bp", "item_drill", "item_engine", "item_iridiym", "item_lcd", "item_military_cable", "item_tetris",
 							"item_car_battery", "item_cyclon", "item_green_battery",
-							"item_dry", "item_prisadka", "item_propan", "item_termit", "item_trotile", 
+							"item_dry", "item_prisadka", "item_propan", "item_termit", "item_trotile", "item_gunpowder",
 							"item_diary", "item_diary_s", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_sas", "item_ssd",
 							"item_oftalmaskop", "item_aquapeps",
-							"item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen",
+							"item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector",
 							"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_pipe_wrench", "item_ratchet_wrench", "item_sewing_kit", 
 							"item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_woodclock",
 							"someTurboAccelerationPusher", "maxim01", "fagot01", "flag01", "rainmetal01", "elephant01", "omega01", "cyclops01", "octopus01", "marsSideGun", "hunterSideGun", "hammer01",
-							"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun",
+							"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", 
 							"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 				loot_count = random(3,5)
 			elseif GetVar("ChestScavs_Search").AsInt == 4 then
@@ -1105,7 +1105,7 @@
 							"item_bolts", "item_hose", "item_kek", "item_parts", "item_poheram", "item_tube", "item_plex",
 							"item_cable", "item_cooler", "item_cpu", "item_dvd", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_kondesators", "item_magnet", "item_ram", "item_rele", "item_helix", "item_phone", "item_plate", "item_svech", "item_ultra_lump",
 							"item_accum",
-							"item_survl", "item_wd40_400", "item_zibbo",
+							"item_survl", "item_wd40_400", "item_zibbo", "item_gunpowder",
 							"item_alkani", "item_hlor", "item_paper", "item_soda", "item_toothpaste",
 							"item_h2o2", "item_naci", "item_suringe",
 							"item_vodka", "item_monolit", "item_carsen",
@@ -1119,13 +1119,13 @@
 				lootlist = {"item_datchik", "item_pena", "item_thermometer",
 							"item_converter", "item_engine", "item_iridiym", "item_tetris", "item_virtex", "item_vpx",
 							"item_cyclon", "item_car_battery",
-							"item_prisadka", "item_termit", 
+							"item_prisadka", "item_termit", "item_gunpowder",
 							"item_disk_exmachina", "item_rozvidka", "item_sas", "item_ssd", "item_ananaga",
 							"item_oftalmaskop", 
-							"item_airfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter",
+							"item_airfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_metallodetector",
 							"item_buldex", "item_handrill", "item_pipe_wrench", "item_ratchet_wrench", 
 							"item_cat", "item_chain_gold", "item_chiken", "item_lion", "item_rolex", "item_skullring", "item_woodclock", 
-							"fagot01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "cyclops01", "octopus01", "marsSideGun", "hunterSideGun", "hammer01", "hailSideGun", "zeusSideGun",
+							"fagot01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "cyclops01", "octopus01", "marsSideGun", "hunterSideGun", "hammer01", "hailSideGun", "zeusSideGun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun",
 							"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 				if GetVar("ChestScavs_Search").AsInt == 5 then loot_count = random(3,6) end 
 				if GetVar("ChestScavs_Search").AsInt == 6 then loot_count = random(4,6) end 

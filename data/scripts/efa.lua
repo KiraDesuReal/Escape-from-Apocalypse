@@ -338,6 +338,24 @@ function UseAmmoItems(ammo_used)
 						if ammo_used == 1 then SetVar("Use_AmmoChestShotGun", GetVar("Use_AmmoChestShotGun").AsInt+1) end
 					end
 				end
+				if HasPlayerAmountOfItems("ammo_ballon_lasergun", 1) then
+					if prot == "maxim01" then
+						if prot == "maxim01" then small_gun:SetShellsInPool(70) end
+						RemoveItemsFromPlayerRepository("ammo_ballon_lasergun", 1)
+						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
+						--CreateEffectTTLed("", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
+						if ammo_used == 1 then SetVar("Use_AmmoBallonLaserGun", GetVar("Use_AmmoBallonLaserGun").AsInt+1) end
+					end
+				end
+				if HasPlayerAmountOfItems("ammo_ballon_plasmagun", 1) then
+					if prot == "fagot01" then
+						if prot == "fagot01" then small_gun:SetShellsInPool(14) end
+						RemoveItemsFromPlayerRepository("ammo_ballon_plasmagun", 1)
+						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
+						--CreateEffectTTLed("", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
+						if ammo_used == 1 then SetVar("Use_AmmoBallonPlasmaGun", GetVar("Use_AmmoBallonPlasmaGun").AsInt+1) end
+					end
+				end
 			end
 		end
 	end
@@ -399,6 +417,24 @@ function UseAmmoItems(ammo_used)
 						if ammo_used == 1 then SetVar("Use_AmmoChestRocketGun", GetVar("Use_AmmoChestRocketGun").AsInt+1) end
 					end
 				end
+				if HasPlayerAmountOfItems("ammo_ballon_lasergun", 1) then
+					if prot == "odin01" then
+						if prot == "odin01" then big_gun:SetShellsInPool(60) end
+						RemoveItemsFromPlayerRepository("ammo_ballon_lasergun", 1)
+						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
+						--CreateEffectTTLed("", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
+						if ammo_used == 1 then SetVar("Use_AmmoBallonLaserGun", GetVar("Use_AmmoBallonLaserGun").AsInt+1) end
+					end
+				end
+				if HasPlayerAmountOfItems("ammo_ballon_plasmagun", 1) then
+					if prot == "elephant01" then
+						if prot == "elephant01" then big_gun:SetShellsInPool(18) end
+						RemoveItemsFromPlayerRepository("ammo_ballon_plasmagun", 1)
+						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
+						--CreateEffectTTLed("", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
+						if ammo_used == 1 then SetVar("Use_AmmoBallonPlasmaGun", GetVar("Use_AmmoBallonPlasmaGun").AsInt+1) end
+					end
+				end
 			end
 		end
 	end
@@ -437,6 +473,15 @@ function UseAmmoItems(ammo_used)
 						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
 						CreateEffectTTLed("ET_S_USE_RELOAD_ROCKETGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 732)
 						if ammo_used == 1 then SetVar("Use_AmmoChestRocketGun", GetVar("Use_AmmoChestRocketGun").AsInt+1) end
+					end
+				end
+				if HasPlayerAmountOfItems("ammo_ballon_plasmagun", 1) then
+					if prot == "hammer01" then
+						if prot == "hammer01" then giant_gun:SetShellsInPool(14) end
+						RemoveItemsFromPlayerRepository("ammo_ballon_plasmagun", 1)
+						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
+						--CreateEffectTTLed("", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
+						if ammo_used == 1 then SetVar("Use_AmmoBallonPlasmaGun", GetVar("Use_AmmoBallonPlasmaGun").AsInt+1) end
 					end
 				end
 			end
@@ -499,6 +544,16 @@ function AddAmmoItemsForGuns(veh, count)
 				if small_gun == "storm01" then
 					vehicle:AddItemsToRepository("ammo_chest_shotgun", count)
 				end
+				if small_gun == "maxim01" then
+					if random(2) == 1 then
+						vehicle:AddItemsToRepository("ammo_ballon_lasergun", count)
+					end
+				end
+				if small_gun == "fagot01" then
+					if random(2) == 1 then
+						vehicle:AddItemsToRepository("ammo_ballon_plasmagun", count)
+					end
+				end
 			end
 		end
 
@@ -521,6 +576,16 @@ function AddAmmoItemsForGuns(veh, count)
 				if big_gun == "hurricane01" then
 					vehicle:AddItemsToRepository("ammo_chest_rocketgun", count)
 				end
+				if big_gun == "odin01" then
+					if random(2) == 1 then
+						vehicle:AddItemsToRepository("ammo_ballon_lasergun", count)
+					end
+				end
+				if big_gun == "elephant01" then
+					if random(2) == 1 then
+						vehicle:AddItemsToRepository("ammo_ballon_plasmagun", count)
+					end
+				end
 			end
 		end
 
@@ -536,6 +601,11 @@ function AddAmmoItemsForGuns(veh, count)
 				end
 				if giant_gun == "rocketLauncher" or giant_gun == "big_swingfire01" then
 					vehicle:AddItemsToRepository("ammo_chest_rocketgun", count)
+				end
+				if giant_gun == "hammer01" then
+					if random(2) == 1 then
+						vehicle:AddItemsToRepository("ammo_ballon_plasmagun", count)
+					end
 				end
 			end
 		end
@@ -562,7 +632,7 @@ function CreateBarrelLootBox(name, pos)
 	local use2 = {"fuel_full_use", "machinery_use", "electronics_use", "item_key_gate_basefelix", "item_key_gate_thetown"}
 
 	local ammo1 = {"ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_shotgun"}
-	local ammo2 = {"ammo_chest_heavygun", "ammo_chest_rocketgun", "ammo_chest_artillerygun"}
+	local ammo2 = {"ammo_chest_heavygun", "ammo_chest_rocketgun", "ammo_chest_artillerygun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun"}
 
 	local building1 = {"item_bolts", "item_hose", "item_insulation", "item_nails", "item_nuts", "item_parts", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_tube"}
 	local building2 = {"item_kek", "item_military_tube", "item_pena", "item_thermometer", "item_datchik"}
@@ -573,8 +643,8 @@ function CreateBarrelLootBox(name, pos)
 	local energy1 = {"item_accum", "item_battery_aa", "item_battery_d", "item_powerbank"}
 	local energy2 = {"item_powerbank", "item_green_battery", "item_cyclon", "item_car_battery", "item_tank_battery"}
 
-	local flammable1 = {"item_hunter_spich", "item_lighter", "item_spich", "item_survl", "item_wd40_100", "item_wd40_400", "item_zibbo"}
-	local flammable2 = {"item_trotile", "item_dry", "item_propan", "item_prisadka", "item_termit"}
+	local flammable1 = {"item_hunter_spich", "item_lighter", "item_spich", "item_survl", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder"}
+	local flammable2 = {"item_trotile", "item_dry", "item_gunpowder", "item_propan", "item_prisadka", "item_termit"}
 
 	local household1 = {"item_paper", "item_salt", "item_soap", "item_tb", "item_toothpaste"}
 	local household2 = {"item_soap", "item_salt", "item_alkani", "item_hlor"}
@@ -589,7 +659,7 @@ function CreateBarrelLootBox(name, pos)
 	local tools1 = {"item_metalscissors", "item_nippers", "item_pliers", "item_pliers_round", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_wrench"}
 	local tools2 = {"item_screw_flat_long", "item_leatherman", "item_toolset", "item_fullmaster", "item_awl", "item_sewing_kit", "item_handrill", "item_buldex", "item_pipe_wrench", "item_ratchet_wrench", "item_vitalik"}
 	
-	local valuables1 = {"item_chain", "item_carsen", "item_monolit", "book", "item_kaktus", "shkatulka", "item_ex", "item_teapon", "item_emre_kara", "item_keqing", "item_cat", "item_rolex", "item_chain_gold", "item_fitanyashka", "item_chiken", "item_skullring", "item_vitalik", "item_lion", "item_bitcoin"}
+	local valuables1 = {"item_chain", "item_carsen", "item_monolit", "book", "item_kaktus", "shkatulka", "item_ex", "item_teapon", "item_emre_kara", "item_keqing", "item_metallodetector", "item_cat", "item_rolex", "item_chain_gold", "item_fitanyashka", "item_chiken", "item_skullring", "item_vitalik", "item_lion", "item_bitcoin"}
 
 	local gun1 = {"hornet01", "specter01", "pkt01", "storm01", "vector01", "vulcan01", "kpvt01", "rapier01", "bumblebee01"} 
 	local gun2 = {"pkt01", "kord01", "maxim01", "fagot01", "someTurboAccelerationPusher", "omega01", "elephant01", "flag01", "odin01", "rainmetal01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun"}
@@ -713,6 +783,14 @@ function CreateGunBox(name, pos)
 					ammo_item = "ammo_chest_artillerygun"
 				elseif gun_item == "hurricane01" or gun_item == "rocketLauncher" or gun_item == "big_swingfire01" or gun_item == "mrakSideGun" or gun_item == "hailSideGun" or gun_item == "hunterSideGun" then
 					ammo_item = "ammo_chest_rocketgun"
+				elseif gun_item == "maxim01" or gun_item == "odin01" then
+					if random(2) == 1 then
+						ammo_item = "ammo_ballon_lasergun"
+					end
+				elseif gun_item == "fagot01" or gun_item == "elephant01" or gun_item == "hammer01" then
+					if random(2) == 1 then
+						ammo_item = "ammo_ballon_plasmagun"
+					end
 				end
 				if not(ammo_item == 0) then
 					local Ammo = CreateNewObject{prototypeName = ammo_item, objName = "AmmoItem_1", belong = 1100}
@@ -765,15 +843,15 @@ function AllItems()
 					"doski", "details", "shkatulka",
 					"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use", "fuel_nil_use",
 					"item_key_gate_thetown", "item_key_gate_basefelix",
-					"ammo_chest_artillerygun", "ammo_chest_artillerygunForSale", "ammo_chest_heavygun", "ammo_chest_heavygunForSale", "ammo_chest_machinegun", "ammo_chest_machinegunForSale", "ammo_chest_rocketgun", "ammo_chest_rocketgunForSale", "ammo_chest_shotgun", "ammo_chest_shotgunForSale",
+					"ammo_chest_artillerygun", "ammo_chest_artillerygunForSale", "ammo_chest_heavygun", "ammo_chest_heavygunForSale", "ammo_chest_machinegun", "ammo_chest_machinegunForSale", "ammo_chest_rocketgun", "ammo_chest_rocketgunForSale", "ammo_chest_shotgun", "ammo_chest_shotgunForSale", "ammo_ballon_lasergun", "ammo_ballon_plasmagun",
 					"item_bolts", "item_datchik", "item_hose", "item_insulation", "item_kek", "item_military_tube", "item_nails", "item_nuts", "item_parts", "item_pena", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_thermometer", "item_tube",
 					"item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires",
 					"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery",
-					"item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo",
+					"item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder",
 					"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 					"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 					"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe",
-					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_jeton_bear", "item_jeton_usec", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_salo", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen",
+					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_jeton_bear", "item_jeton_usec", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_salo", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector",
 					"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
 					"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_vitaly",
 					"item_quest_search_data",

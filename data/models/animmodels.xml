@@ -3486,7 +3486,6 @@
 		</action>
 	</model>
 
-
 	<model
 		id="workshop2"
 		shadow="1"
@@ -3503,6 +3502,21 @@
 		</action>
 	</model>
 
+	<model
+		id="workshop1_r0m0"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\buildings\region1\workshop1.gam">
+	</model>
+
+	<model
+		id="workshop2_r0m0"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\buildings\region1\workshop2.gam">
+	</model>
 
 	<model
 		id="fishman1"
@@ -3741,6 +3755,33 @@
 				id="LP_PROJECTOR"
 				effect_id="ET_PS_PROJECTOR_TANK"
 				restartOnAnimationChange="0" />
+		</action>
+	</model>
+
+	<model
+		id="tankChassisFake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\tank\shassis01.gam">
+		<action
+			name="DEATH1"
+			skin="8">
+			<lp
+				id="w"
+				effect_id="ET_PS_VEH_EXP_SHASSIS_BIG"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="DEATH2"
+			skin="8">
+			<lp
+				id="w"
+				effect_id="ET_PS_VEH_EXP_SHASSIS1_BIG"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
 		</action>
 	</model>
 
@@ -5951,6 +5992,51 @@
 	</model>
 
 	<model
+		id="scoutCab01Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\scout\cab01.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="scoutCab02Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\scout\cab02.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="scoutCab03Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\scout\cab03.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
 		id="fighterChassis"
 		shadow="1"
 		windwavy="0"
@@ -6153,6 +6239,29 @@
 		<action
 			name="DEATH2"
 			skin="8" />
+	</model>
+
+	<model
+		id="fighterCab02Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\fighter\cab02.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="fighterCab03Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\fighter\cab03\cab03.gam">
 	</model>
 
 	<model
@@ -7171,6 +7280,51 @@
 				effect_id="ET_PS_PROJECTOR_HUNTER_CAB02"
 				restartOnAnimationChange="0" />
 		</action>
+	</model>
+
+	<model
+		id="hunterCab01Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\hunter\cab01.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="hunterCab02Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\hunter\cab02.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="hunterCab03Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\hunter\cab03\cab03.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
 	</model>
 	
 <!-- Mirotvorec -->
@@ -8635,6 +8789,81 @@
 	</model>
 
 	<model
+		id="mirotvorecCab01Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\mirotvorec\cab01.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="mirotvorecCab02Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\mirotvorec\cabT1.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="mirotvorecCab03Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\mirotvorec\cabT2.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="mirotvorecCab04Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\mirotvorec\cabV1.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="mirotvorecCab05Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\mirotvorec\cabV2.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
 		id="mirotvorecCargo01"
 		file="data\models\vehicles\mirotvorec\cargo01.gam"
 		shadow="1"
@@ -8868,6 +9097,23 @@
 				restartOnAnimationChange="0" />
 		</action>
 	</model>
+
+	<model
+		id="mirotvorecCargo03Fake"
+		file="data\models\vehicles\mirotvorec\cargoT2.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
 <!-- Cruiser -->
 	<model
 		id="cruiserChassis"
@@ -10374,6 +10620,54 @@
 	</model>
 
 	<model
+		id="bugCab01Fake"
+		file="data\models\vehicles\bug\cab01.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="16" />
+
+		<action
+			name="DEATH2"
+			skin="16" />
+	</model>
+
+	<model
+		id="bugCab02Fake"
+		file="data\models\vehicles\bug\cab02.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="16" />
+
+		<action
+			name="DEATH2"
+			skin="16" />
+	</model>
+
+	<model
+		id="bugCab03Fake"
+		file="data\models\vehicles\bug\cab03.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="16" />
+
+		<action
+			name="DEATH2"
+			skin="16" />
+	</model>
+
+	<model
 		id="bugCargo01"
 		file="data\models\vehicles\bug\cargo01.gam"
 		shadow="1"
@@ -10480,6 +10774,22 @@
 				effect_id="ET_PS_GLOW"
 				restartOnAnimationChange="0" />
 		</action>
+	</model>
+
+	<model
+		id="bugCargo02Fake"
+		file="data\models\vehicles\bug\cargo02.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="16" />
+
+		<action
+			name="DEATH2"
+			skin="16" />
 	</model>
 
 	<model
@@ -11563,6 +11873,86 @@
 	</model>
 
 	<model
+		id="uralCab01Fake"
+		file="data\models\vehicles\ural\cab01.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="uralCab02Fake"
+		file="data\models\vehicles\ural\cabT1.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="uralCab03Fake"
+		file="data\models\vehicles\ural\cabT2.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="uralCab04Fake"
+		file="data\models\vehicles\ural\cabV1.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="uralCab05Fake"
+		file="data\models\vehicles\ural\cabV2.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
 		id="uralCargo01"
 		file="data\models\vehicles\ural\cargo01.gam"
 		shadow="1"
@@ -12406,6 +12796,51 @@
 	</model>
 
 	<model
+		id="molokovozCab01Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\molokovoz\cab01.gam">
+		<action
+			name="DEATH1"
+			skin="16" />
+
+		<action
+			name="DEATH2"
+			skin="16" />
+	</model>
+
+	<model
+		id="molokovozCab02Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\molokovoz\cab02.gam">
+		<action
+			name="DEATH1"
+			skin="16" />
+
+		<action
+			name="DEATH2"
+			skin="16" />
+	</model>
+
+	<model
+		id="molokovozCab03Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\molokovoz\cab03.gam">
+		<action
+			name="DEATH1"
+			skin="16" />
+
+		<action
+			name="DEATH2"
+			skin="16" />
+	</model>
+
+	<model
 		id="molokovozCargo01"
 		shadow="1"
 		shadowVolume="1"
@@ -12594,6 +13029,21 @@
 				effect_id="ET_PS_GLOW_QUAD"
 				restartOnAnimationChange="0" />
 		</action>
+	</model>
+
+	<model
+		id="molokovozCargo01Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\molokovoz\cargo01.gam">
+		<action
+			name="DEATH1"
+			skin="16" />
+
+		<action
+			name="DEATH2"
+			skin="16" />
 	</model>
 
 	<model
@@ -13104,6 +13554,21 @@
 				effect_id="ET_PS_PROJECTOR_BELAZ_CAB04"
 				restartOnAnimationChange="0" />
 		</action>
+	</model>
+
+	<model
+		id="belazCab04Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\belaz\cabV1.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
 	</model>
 
 	<model
@@ -13795,6 +14260,81 @@
 				effect_id="ET_PS_GLOW"
 				restartOnAnimationChange="0" />
 		</action>
+	</model>
+
+	<model
+		id="belazCargo01Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\belaz\cargo01.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="belazCargo02Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\belaz\cargoT1.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="belazCargo03Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\belaz\cargoT2.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="belazCargo04Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\belaz\cargoV1.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="belazCargo05Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\belaz\cargoV2.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
 	</model>
 
 	<model

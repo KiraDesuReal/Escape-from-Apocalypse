@@ -70,6 +70,7 @@
 			TActivate("TimerRaidStart")
 			TActivate("CreatePMC")
 			TActivate("IfRaidCountForQuest")
+			TActivate("ShowExits_Start")
 
 			AllowSave(false)
 

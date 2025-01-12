@@ -512,7 +512,11 @@
 			file="data\models\AnimModels.xml" />
 
 		<Item
-			id="workshop1"
+			id="workshop1_r0m0"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="workshop2_r0m0"
 			file="data\models\AnimModels.xml" />
 
 		<Item
@@ -2232,6 +2236,10 @@
 		<Item id="S_SUBTASK_COMPLETE" />
 
 		<Item id="S_ITEM_MUSIC01" />
+
+		<Item id="S_GARAGE_CRAFTING_START" />
+		<Item id="S_GARAGE_CRAFTING_END" />
+		<Item id="S_GARAGE_CRAFTING_STOP" />
 
 		<Item id="S_CRASH_METAL01" />
 		<Item id="S_CRASH_METAL02" />

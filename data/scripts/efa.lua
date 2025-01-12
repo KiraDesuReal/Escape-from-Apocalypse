@@ -61,6 +61,27 @@ if GENERATOR_ON_GLOBAL == nil then
 	GENERATOR_ON_GLOBAL = 0
 end
 
+-- Гараж
+if GARAGE_CRAFTING_TIME_HOUR_GLOBAL == nil then
+	GARAGE_CRAFTING_TIME_HOUR_GLOBAL = 0
+end
+
+if GARAGE_CRAFTING_TIME_MINUTE_GLOBAL == nil then
+	GARAGE_CRAFTING_TIME_MINUTE_GLOBAL = 0
+end
+
+if GARAGE_CRAFTING_TIME_SECOND_GLOBAL == nil then
+	GARAGE_CRAFTING_TIME_SECOND_GLOBAL = 0
+end
+
+if GARAGE_CRAFT_GLOBAL == nil then
+	GARAGE_CRAFT_GLOBAL = 0
+end
+
+if GARAGE_CRAFT_PAUSE_GLOBAL == nil then
+	GARAGE_CRAFT_PAUSE_GLOBAL = 0
+end
+
 -- Рандомизируем пушки ботам 
 function GiveGunsForVehicle(vehicle, side_random)
 	local veh=vehicle
@@ -343,7 +364,7 @@ function UseAmmoItems(ammo_used)
 						if prot == "maxim01" then small_gun:SetShellsInPool(70) end
 						RemoveItemsFromPlayerRepository("ammo_ballon_lasergun", 1)
 						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-						--CreateEffectTTLed("", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
+						CreateEffectTTLed("ET_S_USE_RELOAD_BALLON", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1920)
 						if ammo_used == 1 then SetVar("Use_AmmoBallonLaserGun", GetVar("Use_AmmoBallonLaserGun").AsInt+1) end
 					end
 				end
@@ -352,7 +373,7 @@ function UseAmmoItems(ammo_used)
 						if prot == "fagot01" then small_gun:SetShellsInPool(14) end
 						RemoveItemsFromPlayerRepository("ammo_ballon_plasmagun", 1)
 						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-						--CreateEffectTTLed("", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
+						CreateEffectTTLed("ET_S_USE_RELOAD_BALLON", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1920)
 						if ammo_used == 1 then SetVar("Use_AmmoBallonPlasmaGun", GetVar("Use_AmmoBallonPlasmaGun").AsInt+1) end
 					end
 				end
@@ -422,7 +443,7 @@ function UseAmmoItems(ammo_used)
 						if prot == "odin01" then big_gun:SetShellsInPool(60) end
 						RemoveItemsFromPlayerRepository("ammo_ballon_lasergun", 1)
 						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-						--CreateEffectTTLed("", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
+						CreateEffectTTLed("ET_S_USE_RELOAD_BALLON", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1920)
 						if ammo_used == 1 then SetVar("Use_AmmoBallonLaserGun", GetVar("Use_AmmoBallonLaserGun").AsInt+1) end
 					end
 				end
@@ -431,7 +452,7 @@ function UseAmmoItems(ammo_used)
 						if prot == "elephant01" then big_gun:SetShellsInPool(18) end
 						RemoveItemsFromPlayerRepository("ammo_ballon_plasmagun", 1)
 						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-						--CreateEffectTTLed("", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
+						CreateEffectTTLed("ET_S_USE_RELOAD_BALLON", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1920)
 						if ammo_used == 1 then SetVar("Use_AmmoBallonPlasmaGun", GetVar("Use_AmmoBallonPlasmaGun").AsInt+1) end
 					end
 				end
@@ -480,7 +501,7 @@ function UseAmmoItems(ammo_used)
 						if prot == "hammer01" then giant_gun:SetShellsInPool(14) end
 						RemoveItemsFromPlayerRepository("ammo_ballon_plasmagun", 1)
 						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
-						--CreateEffectTTLed("", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
+						CreateEffectTTLed("ET_S_USE_RELOAD_BALLON", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1920)
 						if ammo_used == 1 then SetVar("Use_AmmoBallonPlasmaGun", GetVar("Use_AmmoBallonPlasmaGun").AsInt+1) end
 					end
 				end
@@ -930,6 +951,11 @@ function AddPlayerRandomConfigurationVehicle()
 		veh:SetRandomSkin()
 		giveguns()
 	end
+end
+
+-- Сокращенная функция вывода сообщения в консоль
+function c(msg)
+	println(msg)
 end
 
 

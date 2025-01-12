@@ -44,8 +44,8 @@
 		Name="ToR1M2_Exit"
 		Belong="1100"
 		Prototype="genericLocation"
-		Pos="510.582 292.110 279.607"
-		Radius="100.000" />
+		Pos="524.272 286.408 362.313"
+		Radius="15.000" />
 
 	<Object
 		Flags="21"
@@ -127,15 +127,15 @@
 		Name="RoadToRidzin_exitPMC_1_loc"
 		Belong="1088"
 		Prototype="genericLocation"
-		Pos="334.447 296.830 108.715"
-		Radius="30.000" />
+		Pos="524.017 286.694 359.796"
+		Radius="20.000" />
 
 	<Object
 		Name="RoadToRidzin_exitPMC_2_loc"
 		Belong="1089"
 		Prototype="genericLocation"
-		Pos="334.447 296.830 108.715"
-		Radius="30.000" />
+		Pos="524.017 286.694 359.796"
+		Radius="20.000" />
 
 	<Object
 		Name="FromR0M0"
@@ -1087,15 +1087,15 @@
 		Name="road_to_ridzin_dots"
 		Belong="1085"
 		Prototype="exit_dots_wGw"
-		Pos="502.543 285.474 369.480"
+		Pos="537.075 286.644 367.045"
 		Probability="1">
 
 		<Object
 			Name="road_to_ridzin_dot1"
 			Belong="1085"
 			Prototype="exits_heavy_dot4_vulcan"
-			Pos="502.543 285.474 369.480"
-			Rot="-0.063 -0.097 -0.042 -0.992">
+			Pos="537.075 286.644 367.045"
+			Rot="0.000 0.1310 0.000 1.000">
 			<Parts />
 		</Object>
 
@@ -1103,8 +1103,8 @@
 			Name="road_to_ridzin_dot2"
 			Belong="1085"
 			Prototype="exits_heavy_dot4_vulcan"
-			Pos="544.257 286.412 360.736"
-			Rot="-0.015 -0.108 0.018 -0.994">
+			Pos="514.837 286.142 372.602"
+			Rot="0.000 0.1310 0.000 1.000">
 			<Parts />
 		</Object>
 
@@ -36294,5 +36294,17 @@
 		Belong="1001"
 		Prototype="Breakable_Sosna1"
 		Pos="235.586 334.492 2270.641" />
+
+	<Object
+		Name="Breakable_Listvenoe14375"
+		Belong="1001"
+		Prototype="Breakable_Listvenoe1"
+		Pos="443.469 285.295 340.205" />
+
+	<Object
+		Name="Breakable_Listvenoe24376"
+		Belong="1001"
+		Prototype="Breakable_Listvenoe2"
+		Pos="468.188 283.950 355.604" />
 
 </DynamicScene>

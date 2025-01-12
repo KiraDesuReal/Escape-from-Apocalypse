@@ -12,9 +12,6 @@
 -- ----------------------------------------------------------------------------
 anticheat = 0
 
--- efa
-EXECUTE_SCRIPT "data\\scripts\\efa.lua"
-
 -- include cheats.lua
 EXECUTE_SCRIPT "data\\scripts\\cheats.lua"
 
@@ -30,6 +27,9 @@ EXECUTE_SCRIPT "data\\scripts\\dialoghelpers.lua"
 
 -- include queststates.lua
 EXECUTE_SCRIPT "data\\scripts\\queststates.lua"
+
+-- efa
+EXECUTE_SCRIPT "data\\scripts\\efa.lua"
 
 -- global object repository
 g_ObjCont = GET_GLOBAL_OBJECT "g_ObjContainer"

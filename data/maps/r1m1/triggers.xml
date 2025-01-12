@@ -100,16 +100,30 @@
 			SetVar("Generator_lvl", 0)
 			SetVar("Generator_on", 0)
 
+			SetVar("GarageCrafting_time_hour", 0)
+			SetVar("GarageCrafting_time_minute", 0)
+			SetVar("GarageCrafting_time_second", 0)
+			SetVar("GarageCraft", 0)
+			SetVar("GarageCraftPause", 0)
+
 			if COUNT_RAIDS then SetVar("CountRaids", COUNT_RAIDS) end 
+
 			if CHESTSCAVS_TIMER_HOUR_GLOBAL > 0 then SetVar("ChestScavs_time_hour", CHESTSCAVS_TIMER_HOUR_GLOBAL) end
 			if CHESTSCAVS_TIMER_MINUTE_GLOBAL > 0 then SetVar("ChestScavs_time_minute", CHESTSCAVS_TIMER_MINUTE_GLOBAL) end
 			if CHESTSCAVS_TIMER_SECOND_GLOBAL > 0 then SetVar("ChestScavs_time_second", CHESTSCAVS_TIMER_SECOND_GLOBAL) end
 			if CHESTSCAVS_SEARCH_GLOBAL > 0 then SetVar("ChestScavs_Search", CHESTSCAVS_SEARCH_GLOBAL) end
+
 			if GENERATOR_TIMER_HOUR_GLOBAL > 0 then SetVar("Generator_time_work_hour", GENERATOR_TIMER_HOUR_GLOBAL) end
 			if GENERATOR_TIMER_MINUTE_GLOBAL > 0 then SetVar("Generator_time_work_minute", GENERATOR_TIMER_MINUTE_GLOBAL) end
 			if GENERATOR_TIMER_SECOND_GLOBAL > 0 then SetVar("Generator_time_work_second", GENERATOR_TIMER_SECOND_GLOBAL) end
 			if GENERATOR_LVL_GLOBAL then SetVar("Generator_lvl", GENERATOR_LVL_GLOBAL) end
 			if GENERATOR_ON_GLOBAL then SetVar("Generator_on", GENERATOR_ON_GLOBAL) end
+
+			if GARAGE_CRAFTING_TIME_HOUR_GLOBAL > 0 then SetVar("GarageCrafting_time_hour", GARAGE_CRAFTING_TIME_HOUR_GLOBAL) end
+			if GARAGE_CRAFTING_TIME_MINUTE_GLOBAL > 0 then SetVar("GarageCrafting_time_minute", GARAGE_CRAFTING_TIME_MINUTE_GLOBAL) end
+			if GARAGE_CRAFTING_TIME_SECOND_GLOBAL > 0 then SetVar("GarageCrafting_time_second", GARAGE_CRAFTING_TIME_SECOND_GLOBAL) end
+			if GARAGE_CRAFT_GLOBAL > 0 then SetVar("GarageCraft", GARAGE_CRAFT_GLOBAL) end
+			if GARAGE_CRAFT_PAUSE_GLOBAL then SetVar("GarageCraftPause", GARAGE_CRAFT_PAUSE_GLOBAL) end
 
 			TActivate("GlobalVar")
 
@@ -428,60 +442,17 @@
 
 			if GetVar("ChestScavs_time_hour").AsInt > 0 or GetVar("ChestScavs_time_minute").AsInt > 0 or GetVar("ChestScavs_time_second").AsInt > 0 then
 				if GetVar("ChestScavs_Search").AsInt > 0 then
-					local hourC = GetVar("ChestScavs_time_hour").AsInt
-					local minC = GetVar("ChestScavs_time_minute").AsInt
-					local secC = GetVar("ChestScavs_time_second").AsInt
-
-					if not(0 > hourC) and not(0 > minC) then
-						secC = secC - 1
-						SetVar("ChestScavs_time_second", secC)
-						if 0 > secC then
-							SetVar("ChestScavs_time_second", 59)
-							minC = minC - 1
-							SetVar("ChestScavs_time_minute", minC)
-						end
-						if 0 > minC then
-							SetVar("ChestScavs_time_minute", 59)
-							hourC = hourC - 1
-							SetVar("ChestScavs_time_hour", hourC)
-						end
-					end
-
-					if 0 > hourC and 0 > minC and 0 > secC then
-						SetVar("ChestScavs_time_hour", 0)
-						SetVar("ChestScavs_time_minute", 0)
-						SetVar("ChestScavs_time_second", 0)
-					end
+					TActivate("ChestScav_Timer")
 				end
 			end
 
 			if GetVar("Generator_on").AsInt == 1 then
 				if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
-					local hourG = GetVar("Generator_time_work_hour").AsInt
-					local minG = GetVar("Generator_time_work_minute").AsInt
-					local secG = GetVar("Generator_time_work_second").AsInt
-					
-					if not(0 > hourG) and not(0 > minG) then
-						secG = secG - 1
-						SetVar("Generator_time_work_second", secG)
-						if 0 > secG then
-							SetVar("Generator_time_work_second", 59)
-							minG = minG - 1
-							SetVar("Generator_time_work_minute", minG)
-						end
-						if 0 > minG then
-							SetVar("Generator_time_work_minute", 59)
-							hourG = hourG - 1
-							SetVar("Generator_time_work_hour", hourG)
-						end
-					end
+					TActivate("Generator_Timer")
+				end
 
-					if 0 > hourG and 0 > minG and 0 > secG then
-						SetVar("Generator_time_work_second", 0)
-						SetVar("Generator_time_work_minute", 0)
-						SetVar("Generator_time_work_hour", 0)
-						SetVar("Generator_on", 0)
-					end
+				if GetVar("GarageCrafting_time_hour").AsInt > 0 or GetVar("GarageCrafting_time_minute").AsInt > 0 or GetVar("GarageCrafting_time_second").AsInt > 0 then
+					TActivate("GarageCrafting_Timer")
 				end
 			end
 
@@ -500,6 +471,108 @@
 				trigger:Deactivate() 
 			end
 			
+		</script>
+	</trigger>
+
+<!-- Таймеры в убежище -->
+	<trigger Name="ChestScav_Timer" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local hourC = GetVar("ChestScavs_time_hour").AsInt
+			local minC = GetVar("ChestScavs_time_minute").AsInt
+			local secC = GetVar("ChestScavs_time_second").AsInt
+
+			if not(0 > hourC) and not(0 > minC) then
+				secC = secC - 1
+				SetVar("ChestScavs_time_second", secC)
+				if 0 > secC then
+					SetVar("ChestScavs_time_second", 59)
+					minC = minC - 1
+					SetVar("ChestScavs_time_minute", minC)
+				end
+				if 0 > minC then
+					SetVar("ChestScavs_time_minute", 59)
+					hourC = hourC - 1
+					SetVar("ChestScavs_time_hour", hourC)
+				end
+			end
+
+			if 0 > hourC and 0 > minC and 0 > secC then
+				SetVar("ChestScavs_time_hour", 0)
+				SetVar("ChestScavs_time_minute", 0)
+				SetVar("ChestScavs_time_second", 0)
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Generator_Timer" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local hourG = GetVar("Generator_time_work_hour").AsInt
+			local minG = GetVar("Generator_time_work_minute").AsInt
+			local secG = GetVar("Generator_time_work_second").AsInt
+			
+			if not(0 > hourG) and not(0 > minG) then
+				secG = secG - 1
+				SetVar("Generator_time_work_second", secG)
+				if 0 > secG then
+					SetVar("Generator_time_work_second", 59)
+					minG = minG - 1
+					SetVar("Generator_time_work_minute", minG)
+				end
+				if 0 > minG then
+					SetVar("Generator_time_work_minute", 59)
+					hourG = hourG - 1
+					SetVar("Generator_time_work_hour", hourG)
+				end
+			end
+
+			if 0 > hourG and 0 > minG and 0 > secG then
+				SetVar("Generator_time_work_second", 0)
+				SetVar("Generator_time_work_minute", 0)
+				SetVar("Generator_time_work_hour", 0)
+				SetVar("Generator_on", 0)
+				if GetVar("GarageCrafting_time_hour").AsInt > 0 or GetVar("GarageCrafting_time_minute").AsInt > 0 or GetVar("GarageCrafting_time_second").AsInt > 0 then
+					SetVar("GarageCraftPause", 1)
+				end
+			end
+			--println("Genetator: "..hourG.." "..minG.." "..secG)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="GarageCrafting_Timer" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local hourGC = GetVar("GarageCrafting_time_hour").AsInt
+			local minGC = GetVar("GarageCrafting_time_minute").AsInt
+			local secGC = GetVar("GarageCrafting_time_second").AsInt
+
+			if not(0 > hourGC) and not(0 > minGC) then
+				secGC = secGC - 1
+				SetVar("GarageCrafting_time_second", secGC)
+				if 0 > secGC then
+					SetVar("GarageCrafting_time_second", 59)
+					minGC = minGC - 1
+					SetVar("GarageCrafting_time_minute", minGC)
+				end
+				if 0 > minGC then
+					SetVar("GarageCrafting_time_minute", 59)
+					hourGC = hourGC - 1
+					SetVar("GarageCrafting_time_hour", hourGC)
+				end
+			end
+
+			if 0 > hourGC and 0 > minGC and 0 > secGC then
+				SetVar("GarageCrafting_time_second", 0)
+				SetVar("GarageCrafting_time_minute", 0)
+				SetVar("GarageCrafting_time_hour", 0)
+				SetVar("GarageCraftPause", 0)
+				SetVar("GarageCraft", 2)
+			end
+			--println("Craft: "..hourGC.." "..minGC.." "..secGC)
+			trigger:Deactivate()
 		</script>
 	</trigger>
 
@@ -680,7 +753,12 @@
 						TActivate("BaseFelixExtract")
 					end
 				end
-			elseif GetVar("ExitBaseFelixOpen").AsInt == 1 then
+			else
+				AddFadingMsgByStrIdFormatted("fm_not_key")
+				SoundFadingMsg()
+			end
+
+			if GetVar("ExitBaseFelixOpen").AsInt == 1 then
 				TActivate("BaseFelixExtract")
 			end
  		</script>
@@ -749,7 +827,15 @@
 	</trigger>
 
 <!-- Показать выходы -->
-	<trigger Name="ShowExits" active="1">
+	<trigger Name="ShowExits_Start" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("ShowExits")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ShowExits" active="0">
 		<event eventid="GE_PLAYER_VEHICLE_HORN" ObjName="Player1" />
 		<script>
 
@@ -3718,16 +3804,27 @@
 		
 			--глобал переменные
 			if COUNT_RAIDS then COUNT_RAIDS = GetVar("CountRaids").AsInt end
+
 			if CHESTSCAVS_TIMER_HOUR_GLOBAL then CHESTSCAVS_TIMER_HOUR_GLOBAL = GetVar("ChestScavs_time_hour").AsInt end
 			if CHESTSCAVS_TIMER_MINUTE_GLOBAL then CHESTSCAVS_TIMER_MINUTE_GLOBAL = GetVar("ChestScavs_time_minute").AsInt end
 			if CHESTSCAVS_TIMER_SECOND_GLOBAL then CHESTSCAVS_TIMER_SECOND_GLOBAL = GetVar("ChestScavs_time_second").AsInt end
 			if CHESTSCAVS_SEARCH_GLOBAL then CHESTSCAVS_SEARCH_GLOBAL = GetVar("ChestScavs_Search").AsInt end
+
 			if GENERATOR_TIMER_HOUR_GLOBAL then GENERATOR_TIMER_HOUR_GLOBAL = GetVar("Generator_time_work_hour").AsInt end
 			if GENERATOR_TIMER_MINUTE_GLOBAL then GENERATOR_TIMER_MINUTE_GLOBAL = GetVar("Generator_time_work_minute").AsInt end
 			if GENERATOR_TIMER_SECOND_GLOBAL then GENERATOR_TIMER_SECOND_GLOBAL = GetVar("Generator_time_work_second").AsInt end
 			if GENERATOR_ON_GLOBAL then GENERATOR_ON_GLOBAL = GetVar("Generator_on").AsInt end
 
+			if GARAGE_CRAFTING_TIME_HOUR_GLOBAL then GARAGE_CRAFTING_TIME_HOUR_GLOBAL = GetVar("GarageCrafting_time_hour").AsInt end
+			if GARAGE_CRAFTING_TIME_MINUTE_GLOBAL then GARAGE_CRAFTING_TIME_MINUTE_GLOBAL = GetVar("GarageCrafting_time_minute").AsInt end
+			if GARAGE_CRAFTING_TIME_SECOND_GLOBAL then GARAGE_CRAFTING_TIME_SECOND_GLOBAL = GetVar("GarageCrafting_time_second").AsInt end
+			if GARAGE_CRAFT_GLOBAL then GARAGE_CRAFT_GLOBAL = GetVar("GarageCraft").AsInt end
+			if GARAGE_CRAFT_PAUSE_GLOBAL then GARAGE_CRAFT_PAUSE_GLOBAL = GetVar("GarageCraftPause").AsInt end
+
 			TDeactivate("IfChargeCar")
+			
+			TDeactivate("ShowExits")
+			TDeactivate("ShowExits_Activate")
 
 			--квесты
 			if IsQuestTaken("q_search_data") and not(IsQuestComplete("q_search_data")) then
@@ -3893,7 +3990,6 @@
 			if IsQuestTaken("q_search_data_2") and not(IsQuestComplete("q_search_data_2")) then
 				TDeactivate("q_search_data_Enters_1")
 				TDeactivate("q_search_data_Enters_2")
-				TDeactivate("q_search_data_Enters_2_Timer")
 			end
 
 			if IsQuestTaken("q_base_scavs_1") and not(IsQuestComplete("q_base_scavs_1")) then
@@ -3946,7 +4042,7 @@
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 			CreateNewDummyObject("bugChassis", "destr_bug_1", -1, -1, CVector(2886.035, 287.405, 1908.789), Quaternion(-0.0329, -0.9542, -0.0806, 0.2863), 8)
-			CreateNewDummyObject("bugCab03", "destr_bug_2", -1, -1, CVector(2885.340, 289.098, 1907.710), Quaternion(-0.0160, -0.9580, -0.0587, 0.2802), 16)
+			CreateNewDummyObject("bugCab03Fake", "destr_bug_2", -1, -1, CVector(2885.340, 289.098, 1907.710), Quaternion(-0.0160, -0.9580, -0.0587, 0.2802), 16)
 			CreateNewDummyObject("bugCargo03", "destr_bug_3", -1, -1, CVector(2888.762, 288.899, 1910.161), Quaternion(-0.6680, -0.6851, 0.2058, 0.2051), 16)
 			CreateNewDummyObject("bugWheel01", "destr_bug_4", -1, -1, CVector(2885.794, 287.933, 1906.645), Quaternion(0.0593, -0.9456, -0.0020, 0.3199), 16)
 			CreateNewDummyObject("bugWheel01", "destr_bug_5", -1, -1, CVector(2884.045, 287.933, 1907.784), Quaternion(-0.0261, 0.2893, -0.1325, 0.9477), 16)
@@ -3956,6 +4052,20 @@
 			CreateNewSgNodeObject("ET_PS_BOSS1_SMOKE", "destr_bug_9", -1, -1, CVector(2885.275, 287.547, 1907.911), Quaternion(0, 0, 0, 1), 0)
 			CreateNewSgNodeObject("ET_PS_WHEEL_FIRE_MED_SMOKE1", "destr_bug_10", -1, -1, CVector(2886.755, 287.547, 1911.4001), Quaternion(0, 0, 0, 1), 0)
 			CreateNewSgNodeObject("ET_PS_WHEEL_FIRE_BIG_SMOKE1", "destr_bug_11", -1, -1, CVector(2888.928,287.547, 1910.030), Quaternion(0, 0, 0, 1), 0)
+	
+			local anim = GetEntityByName("destr_bug_2")
+			if anim then anim:SetNodeAction(AT_DEATH1) end
+
+			local Chest = CreateNewObject{prototypeName = "opacityChest", objName = "destr_bug_12"}	
+			local ChestId = GetEntityByID(Chest)
+			ChestId:SetPosition(CVector(2888, 288, 1910))
+			
+			local Item = CreateNewObject{prototypeName = "item_quest_search_data", objName = "ItemDataQuest", belong = 1100}
+			local ItemId = GetEntityByID(Item)
+			if ChestId and ItemId then
+				ChestId:AddChild(ItemId)
+			end
+
 			TActivate("q_search_data_Enters_1")
 			TActivate("q_search_data_Enters_2")
 			trigger:Deactivate()
@@ -3965,7 +4075,7 @@
 	<trigger Name="q_search_data_RemoveDestrBug" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			for i=1,11 do
+			for i=1,12 do
 				local b = GetEntityByName("destr_bug_"..i)
 				if b then b:Remove() end
 			end
@@ -3985,30 +4095,22 @@
 
 	<trigger Name="q_search_data_Enters_2" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="q_search_data_2_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="q_search_data_2_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="q_search_data_2_loc" />
 		<script>
-			TActivate("q_search_data_Enters_2_Timer")
-		</script>
-	</trigger>
-
-	<trigger Name="q_search_data_Enters_2_Timer" active="0">
-		<event timeout="1" eventid="GE_TIME_PERIOD" />
-		<script>
+			local chest = GetEntityByName("destr_bug_12")
 			local pl = GetPlayerVehicle()
 			if pl then
-				if not(HasPlayerAmountOfItems("item_quest_search_data", 1)) then
-					AddItemsToPlayerRepository("item_quest_search_data", 1)
-					AddFadingMsgByStrIdFormatted("fm_player_add_thing", "item_quest_search_data")
-					SoundFadingMsg()
+				if HasPlayerAmountOfItems("item_quest_search_data", 1) or not(chest) then
 					if IsQuestTaken("q_search_data_2") and not(IsQuestComplete("q_search_data_2")) then
 						CompleteSubtask("q_search_data_2")
 					else
 						AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_search_data")
-						CreateEffectInsertedInRemove("ET_S_SUBTASK_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+						CreateEffectInsertedInRemove("ET_S_SUBTASK_COMPLETE", pl:GetPosition(), Quaternion(0, 0, 0, 1), true)
 					end
-					TDeactivate("q_search_data_Enters_2")
+					trigger:Deactivate()
 				end
 			end
-			trigger:Deactivate()
 		</script>
 	</trigger>
 

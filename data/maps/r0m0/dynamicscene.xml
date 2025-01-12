@@ -175,8 +175,8 @@
 		Name="Inventory_Build_lvl_2_loc"
 		Belong="1100"
 		Prototype="genericLocation"
-		Pos="927.303 255.000 988.905"
-		Radius="0.100">
+		Pos="940.773 255.000 979.820"
+		Radius="1.000">
 		<Object
 			Name="Inventory_lvl_2_Build_NPC"
 			Belong="1100"
@@ -190,7 +190,7 @@
 		Name="ChestScavs_Build_loc"
 		Belong="1100"
 		Prototype="genericLocation"
-		Pos="944.529 255.000 982.703"
+		Pos="908.979 255.000 911.225"
 		Radius="1.500">
 		<Object
 			Name="ChestScavs_NPC"
@@ -205,8 +205,15 @@
 		Name="ChestScavs_loc"
 		Belong="1090"
 		Prototype="genericLocation"
-		Pos="944.529 255.000 982.703"
-		Radius="3.000"/>
+		Pos="909.108 255.000 911.218"
+		Radius="3.000" />
+
+	<Object
+		Name="ChestScavs_Timer_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="909.108 255.000 911.218"
+		Radius="10.000" />
 
 	<Object
 		Name="Generator_Build_loc"
@@ -232,6 +239,13 @@
 	</Object>
 
 	<Object
+		Name="Generator_lvl_1_Timer_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="824.275 255.000 999.826"
+		Radius="10.000"/>
+
+	<Object
 		Name="Generator_Build_lvl_2_loc"
 		Belong="1100"
 		Prototype="genericLocation"
@@ -253,6 +267,13 @@
 			helloReplyNames="Dlg_npc_001386"
 			SpokenCount="0" />
 	</Object>
+
+	<Object
+		Name="Generator_lvl_2_Timer_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="816.534 255.000 992.896"
+		Radius="9.000"/>
 
 	<Object
 		Name="Lampposts_Build_loc"
@@ -280,10 +301,17 @@
 			Belong="1100"
 			Prototype="NPC"
 			ModelName=""
-			helloReplyNames="Dlg_npc_0013117 Dlg_npc_0013118"
+			helloReplyNames="Dlg_npc_0013117 Dlg_npc_0013118 Dlg_npc_0013200"
 			SpokenCount="0" />
 	</Object>
 
+	<Object
+		Name="Garage_Crafting_Timer_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="888.526 255.000 958.182"
+		Radius="10.000"/>
+	
 	<Object
 		Name="tp_1_loc"
 		Belong="1100"
@@ -1017,6 +1045,13 @@
 		Radius="50.000" />
 
 	<Object
+		Name="RemoveVehMove_1090_loc_1"
+		Belong="1090"
+		Prototype="genericLocation"
+		Pos="73.008 255.000 388.259"
+		Radius="10.000" />
+
+	<Object
 		Name="RemoveVehMove_1091_loc_1"
 		Belong="1091"
 		Prototype="genericLocation"
@@ -1028,6 +1063,13 @@
 		Belong="1092"
 		Prototype="genericLocation"
 		Pos="73.008 255.000 388.259"
+		Radius="10.000" />
+
+	<Object
+		Name="RemoveVehMove_1090_loc_2"
+		Belong="1090"
+		Prototype="genericLocation"
+		Pos="1973.817 255.025 1314.784"
 		Radius="10.000" />
 
 	<Object

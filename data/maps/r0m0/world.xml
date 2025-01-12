@@ -144,14 +144,6 @@
 		passable="0" />
 
 	<Node
-		name="Object314376639"
-		class="SgAnimatedModelNode"
-		org="892.586 0.000 894.123"
-		orgRel="1"
-		id="bar1"
-		ndmAction="0" />
-
-	<Node
 		name="Object314376641"
 		class="SgAnimatedModelNode"
 		org="905.770 0.000 892.420"
@@ -162,38 +154,28 @@
 	<Node
 		name="Object314376642"
 		class="SgAnimatedModelNode"
-		org="916.810 0.000 895.776"
+		org="916.208 0.000 895.467"
 		orgRel="1"
-		rot="0.0000 -0.4481 0.0000 0.8940"
+		rot="0.0000 -0.3420 0.0000 0.9397"
 		id="house3"
-		ndmAction="0"
-		skin="1" />
-
-	<Node
-		name="Object314376643"
-		class="SgAnimatedModelNode"
-		org="918.492 0.000 909.541"
-		orgRel="1"
-		rot="-0.0032 -0.6964 -0.0061 0.7177"
-		id="townhall"
 		ndmAction="0"
 		skin="1" />
 
 	<Node
 		name="Object314376644"
 		class="SgAnimatedModelNode"
-		org="895.452 0.000 925.851"
+		org="895.301 0.000 928.201"
 		orgRel="1"
 		rot="-0.0001 -0.7223 -0.0131 0.6915"
-		id="workshop1"
+		id="workshop1_r0m0"
 		ndmAction="0" />
 
 	<Node
 		name="Object314376652"
 		class="SgAnimatedModelNode"
-		org="910.152 0.000 924.660"
+		org="910.245 0.000 927.073"
 		orgRel="1"
-		rot="0.0000 -0.9729 0.0000 0.2313"
+		rot="-0.0202 -0.9998 0.0082 -0.0044"
 		id="bar1"
 		ndmAction="0"
 		skin="1" />
@@ -326,7 +308,7 @@
 		org="817.504 0.000 910.489"
 		orgRel="1"
 		rot="0.0000 0.4147 0.0000 0.9100"
-		id="workshop2"
+		id="workshop2_r0m0"
 		ndmAction="0"
 		skin="1" />
 
@@ -1401,7 +1383,7 @@
 		org="567.380 0.000 951.769"
 		orgRel="1"
 		rot="0.0000 0.8860 0.0000 0.4637"
-		id="workshop1"
+		id="workshop1_r0m0"
 		ndmAction="0"
 		skin="1" />
 
@@ -4306,5 +4288,50 @@
 		orgRel="1"
 		rot="0 0 0 0"
 		id="lake"
+		ndmAction="0" />
+
+	<Node
+		name="Object314377633"
+		class="SgAnimatedModelNode"
+		org="919.296 0.000 987.587"
+		orgRel="1"
+		rot="0.0000 -0.7133 0.0000 0.7009"
+		id="factory_conteiner"
+		ndmAction="0" />
+
+	<Node
+		name="Object314377634"
+		class="SgAnimatedModelNode"
+		org="919.559 2.787 991.323"
+		orgRel="1"
+		rot="0.3926 0.0097 0.0073 0.9196"
+		id="factory_conteiner"
+		ndmAction="0" />
+
+	<Node
+		name="Object314377636"
+		class="SgAnimatedModelNode"
+		org="922.409 4.121 987.294"
+		orgRel="1"
+		rot="0.0000 -0.2546 0.0000 0.9670"
+		id="factory_box"
+		ndmAction="0" />
+
+	<Node
+		name="Object314377637"
+		class="SgAnimatedModelNode"
+		org="918.114 4.104 986.803"
+		orgRel="1"
+		rot="0.0000 0.1024 0.0000 0.9947"
+		id="factory_box"
+		ndmAction="0" />
+
+	<Node
+		name="Object314377904"
+		class="SgAnimatedModelNode"
+		org="923.648 0.000 926.594"
+		orgRel="1"
+		rot="0.0000 -0.9833 0.0000 0.1822"
+		id="house3"
 		ndmAction="0" />
 </World>

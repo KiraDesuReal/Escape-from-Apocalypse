@@ -50,6 +50,12 @@
 		group="SOUND2D"
 		/>
 
+	<model
+		id="S_USE_RELOAD_BALLON"
+		file="data\sounds\other\use_items\reload_ballon.wav"
+		group="SOUND2D"
+		/>
+
 <!-- Petrolstation -->
 
 	<model
@@ -143,6 +149,27 @@
 		file="data\sounds\other\generator\generator_oracle.wav"
 		group="GENERATOR"
 	/>
+
+<!-- Garage -->
+
+	<model
+		id="S_GARAGE_CRAFTING_START"
+		file="data\sounds\other\garage\garage_crafting_start.wav"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_GARAGE_CRAFTING_END"
+		file="data\sounds\other\garage\garage_crafting_end.wav"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_GARAGE_CRAFTING_STOP"
+		file="data\sounds\other\garage\garage_crafting_stop.wav"
+		group="SOUND2D"
+	/>
+
 
 <!-- Chest Scavs -->
 

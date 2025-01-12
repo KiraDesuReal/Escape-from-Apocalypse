@@ -34,6 +34,10 @@
 		<Node name="Sound3" class="SgSoundSourceNode" id="S_USE_RELOAD_SHOTGUN" looped="0"/>
 	</Node>
 
+	<Node name="ET_S_USE_RELOAD_BALLON" class="SgNode">
+		<Node name="Sound3" class="SgSoundSourceNode" id="S_USE_RELOAD_BALLON" looped="0"/>
+	</Node>
+
 	<Node name="ET_PS_FUEL_PETROL_START" class="SgNode">
 		<Node name="noise" class="SgSoundSourceNode" id="S_FUEL_PETROL_START" looped="0" /> 
 	</Node>
@@ -98,6 +102,18 @@
 
 	<Node name="ET_S_GENERATOR_ORACLE" class="SgNode">
 		<Node name="Sound3" class="SgSoundSourceNode" id="S_GENERATOR_ORACLE" looped="1" />
+	</Node>
+
+	<Node name="ET_S_GARAGE_CRAFTING_START" class="SgNode">
+		<Node name="Sound3" class="SgSoundSourceNode" id="S_GARAGE_CRAFTING_START" looped="0" />
+	</Node>
+
+	<Node name="ET_S_GARAGE_CRAFTING_END" class="SgNode">
+		<Node name="Sound3" class="SgSoundSourceNode" id="S_GARAGE_CRAFTING_END" looped="0" />
+	</Node>
+
+	<Node name="ET_S_GARAGE_CRAFTING_STOP" class="SgNode">
+		<Node name="Sound3" class="SgSoundSourceNode" id="S_GARAGE_CRAFTING_STOP" looped="0" />
 	</Node>
 
 	<Node name="ET_PS_LAMPPOST3_BUILD" class="SgNode">

@@ -34,16 +34,25 @@
 			SetVar("Use_AmmoBallonLaserGun", 0)
 			SetVar("Use_AmmoBallonPlasmaGun", 0)
 			SetVar("PlayerSkin", 0)
+
 			SetVar("Generator_time_work_hour", 0)
 			SetVar("Generator_time_work_minute", 0)
 			SetVar("Generator_time_work_second", 0)
 			SetVar("Generator_lvl", 0)
 			SetVar("Generator_on", 0)
+
 			SetVar("ChestScavs_time_hour", 0)
 			SetVar("ChestScavs_time_minute", 0)
 			SetVar("ChestScavs_time_second", 0)
 			SetVar("ChestScavs_Search", 0)
 			SetVar("ChestScavs_timer", 0)
+
+			SetVar("GarageCrafting_time_hour", 0)
+			SetVar("GarageCrafting_time_minute", 0)
+			SetVar("GarageCrafting_time_second", 0)
+			SetVar("GarageCraft", 0)
+			SetVar("GarageCraftPause", 0)
+			SetVar("GarageCraft_timer", 0)
 
 			for i=1,4 do
 				SetVar("loot_"..i, 0)
@@ -80,15 +89,26 @@
 			if GENERATOR_TIMER_SECOND_GLOBAL > 0 then SetVar("Generator_time_work_second", GENERATOR_TIMER_SECOND_GLOBAL) end
 			if GENERATOR_LVL_GLOBAL then SetVar("Generator_lvl", GENERATOR_LVL_GLOBAL) end
 			if GENERATOR_ON_GLOBAL then SetVar("Generator_on", GENERATOR_ON_GLOBAL) end
+
 			if CHESTSCAVS_TIMER_HOUR_GLOBAL > 0 then SetVar("ChestScavs_time_hour", CHESTSCAVS_TIMER_HOUR_GLOBAL) end
 			if CHESTSCAVS_TIMER_MINUTE_GLOBAL > 0 then SetVar("ChestScavs_time_minute", CHESTSCAVS_TIMER_MINUTE_GLOBAL) end
 			if CHESTSCAVS_TIMER_SECOND_GLOBAL > 0 then SetVar("ChestScavs_time_second", CHESTSCAVS_TIMER_SECOND_GLOBAL) end
 			if CHESTSCAVS_SEARCH_GLOBAL > 0 then SetVar("ChestScavs_Search", CHESTSCAVS_SEARCH_GLOBAL) end
 
+			if GARAGE_CRAFTING_TIME_HOUR_GLOBAL > 0 then SetVar("GarageCrafting_time_hour", GARAGE_CRAFTING_TIME_HOUR_GLOBAL) end
+			if GARAGE_CRAFTING_TIME_MINUTE_GLOBAL > 0 then SetVar("GarageCrafting_time_minute", GARAGE_CRAFTING_TIME_MINUTE_GLOBAL) end
+			if GARAGE_CRAFTING_TIME_SECOND_GLOBAL > 0 then SetVar("GarageCrafting_time_second", GARAGE_CRAFTING_TIME_SECOND_GLOBAL) end
+			if GARAGE_CRAFT_GLOBAL > 0 then SetVar("GarageCraft", GARAGE_CRAFT_GLOBAL) end
+			if GARAGE_CRAFT_PAUSE_GLOBAL then SetVar("GarageCraftPause", GARAGE_CRAFT_PAUSE_GLOBAL) end
+
 			if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
 				if GetVar("Generator_time_work_second").AsInt > 0 or GetVar("Generator_time_work_minute").AsInt > 0 or GetVar("Generator_time_work_hour").AsInt > 0 then
 					if GetVar("Generator_on").AsInt == 1 then
 						if getObj("TimerGlobal"):IsActivated() == 0 then TActivate("TimerGlobal") end
+
+						if GetVar("GarageCrafting_time_hour").AsInt > 0 or GetVar("GarageCrafting_time_minute").AsInt > 0 or GetVar("GarageCrafting_time_second").AsInt > 0 then
+							SetVar("GarageCraft_timer", 1)
+						end
 					end
 				end
 			end
@@ -106,6 +126,14 @@
 		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
 			SpawnMessageBox("3")
+			TActivate("PlayMusic")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="PlayMusic" active="0">
+		<event 	timeout="1.25" eventid="GE_TIME_PERIOD" />
+		<script>
 			PlayCustomMusic("dungeon01")
 			trigger:Deactivate()
 		</script>
@@ -1291,6 +1319,7 @@
 			
 			local Plf = GetPlayerVehicle()
 			local cabin = Plf:GetCabin()
+			local basket = Plf:GetBasket()
 			local PlfCoor = Plf:GetPosition()
 			if Plf then
 				Plf:setGodMode(1)
@@ -1301,6 +1330,7 @@
 					CreateEffectInsertedInRemove("ET_S_DUNGEON_COMPLETE_CHALLENGE", PlfCoor, Quaternion(0, 0, 0, 1), true)
 				end
 				if not(cabin == nil) then Plf:SetNewPart("CABIN", cabin:GetProperty("Prototype").AsString) end
+				if not(basket == nil) then basket:SetProperty("durability", basket:GetPropertyById("20").AsString) end
 				Plf:SetSkin(GetVar("PlayerSkin").AsInt)
 			end
 
@@ -1349,7 +1379,7 @@
 
 <!-- Отслеживание HP игрока -->
 	<trigger Name="IfPlayerWithoutHP" active="0">
-	<event eventid="GE_VEHICLE_WITHOUT_HEALTH" ObjName="PlayerCarForDead" />
+		<event eventid="GE_VEHICLE_WITHOUT_HEALTH" ObjName="PlayerCarForDead" />
 		<script>
 
 			GetPlayerVehicle():AddModifier( "hp", "+ 10000" ) 
@@ -1370,13 +1400,35 @@
 	<trigger Name="TimerGlobal" active="0">
 		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>	
-			local hourG = GetVar("Generator_time_work_hour").AsInt
-			local minG = GetVar("Generator_time_work_minute").AsInt
-			local secG = GetVar("Generator_time_work_second").AsInt
-
 			if GetVar("Generator_on").AsInt == 1 then
 				if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
+					TActivate("GeneratorTimer")
+				end
+			end
 
+			if GetVar("ChestScavs_timer").AsInt == 1 then
+				TActivate("ChestScavTimer")
+			end
+
+			if GetVar("GarageCraft_timer").AsInt == 1 and GetVar("Generator_on").AsInt == 1 and GetVar("GarageCraftPause").AsInt == 0 then
+				TActivate("GarageGraftingTimer")
+			end
+			
+			if GetVar("Generator_on").AsInt == 0 and GetVar("ChestScavs_timer").AsInt == 0 and GetVar("GarageCraft_timer").AsInt == 0 then
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="GeneratorTimer" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("Generator_on").AsInt == 1 then
+				local hourG = GetVar("Generator_time_work_hour").AsInt
+				local minG = GetVar("Generator_time_work_minute").AsInt
+				local secG = GetVar("Generator_time_work_second").AsInt
+
+				if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
 					if not(0 > hourG) and not(0 > minG) then
 						secG = secG - 1
 						SetVar("Generator_time_work_second", secG)
@@ -1397,17 +1449,26 @@
 						SetVar("Generator_time_work_minute", 0)
 						SetVar("Generator_time_work_hour", 0)
 						SetVar("Generator_on", 0)
+						SetVar("GarageCraft_timer", 0)
+						if GetVar("GarageCrafting_time_hour").AsInt > 0 or GetVar("GarageCrafting_time_minute").AsInt > 0 or GetVar("GarageCrafting_time_second").AsInt > 0 then
+							SetVar("GarageCraftPause", 1)
+						end
 					end
 				end
 			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
 
-			local hourC = GetVar("ChestScavs_time_hour").AsInt
-			local minC = GetVar("ChestScavs_time_minute").AsInt
-			local secC = GetVar("ChestScavs_time_second").AsInt
-
+	<trigger Name="ChestScavTimer" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
 			if GetVar("ChestScavs_timer").AsInt == 1 then
+				local hourC = GetVar("ChestScavs_time_hour").AsInt
+				local minC = GetVar("ChestScavs_time_minute").AsInt
+				local secC = GetVar("ChestScavs_time_second").AsInt
+
 				if GetVar("ChestScavs_Search").AsInt > 0 then
-				
 					if not(0 > hourC) and not(0 > minC) then
 						secC = secC - 1
 						SetVar("ChestScavs_time_second", secC)
@@ -1431,10 +1492,43 @@
 					end
 				end
 			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
 
-			if GetVar("Generator_on").AsInt == 0 and GetVar("ChestScavs_timer").AsInt == 0 then
-				trigger:Deactivate()
+	<trigger Name="GarageGraftingTimer" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("GarageCraft_timer").AsInt == 1 and GetVar("Generator_on").AsInt == 1 and GetVar("GarageCraftPause").AsInt == 0 then
+				local hourGC = GetVar("GarageCrafting_time_hour").AsInt
+				local minGC = GetVar("GarageCrafting_time_minute").AsInt
+				local secGC = GetVar("GarageCrafting_time_second").AsInt
+
+				if not(0 > hourGC) and not(0 > minGC) then
+					secGC = secGC - 1
+					SetVar("GarageCrafting_time_second", secGC)
+					if 0 > secGC then
+						SetVar("GarageCrafting_time_second", 59)
+						minGC = minGC - 1
+						SetVar("GarageCrafting_time_minute", minGC)
+					end
+					if 0 > minGC then
+						SetVar("GarageCrafting_time_minute", 59)
+						hourGC = hourGC - 1
+						SetVar("GarageCrafting_time_hour", hourGC)
+					end
+				end
+
+				if 0 > hourGC and 0 > minGC and 0 > secGC then
+					SetVar("GarageCrafting_time_second", 0)
+					SetVar("GarageCrafting_time_minute", 0)
+					SetVar("GarageCrafting_time_hour", 0)
+					SetVar("GarageCraftPause", 0)
+					SetVar("GarageCraft", 2)
+					SetVar("GarageCraft_timer", 0)
+				end
 			end
+			trigger:Deactivate()
 		</script>
 	</trigger>
 
@@ -1460,7 +1554,14 @@
 			if CHESTSCAVS_TIMER_SECOND_GLOBAL then CHESTSCAVS_TIMER_SECOND_GLOBAL = GetVar("ChestScavs_time_second").AsInt end
 			if CHESTSCAVS_SEARCH_GLOBAL then CHESTSCAVS_SEARCH_GLOBAL = GetVar("ChestScavs_Search").AsInt end
 
+			if GARAGE_CRAFTING_TIME_HOUR_GLOBAL then GARAGE_CRAFTING_TIME_HOUR_GLOBAL = GetVar("GarageCrafting_time_hour").AsInt end
+			if GARAGE_CRAFTING_TIME_MINUTE_GLOBAL then GARAGE_CRAFTING_TIME_MINUTE_GLOBAL = GetVar("GarageCrafting_time_minute").AsInt end
+			if GARAGE_CRAFTING_TIME_SECOND_GLOBAL then GARAGE_CRAFTING_TIME_SECOND_GLOBAL = GetVar("GarageCrafting_time_second").AsInt end
+			if GARAGE_CRAFT_GLOBAL then GARAGE_CRAFT_GLOBAL = GetVar("GarageCraft").AsInt end
+			if GARAGE_CRAFT_PAUSE_GLOBAL then GARAGE_CRAFT_PAUSE_GLOBAL = GetVar("GarageCraftPause").AsInt end
+
 			TDeactivate("TimerGlobal")
+			TDeactivate("PlayMusic")
 			
 			trigger:Deactivate()
 		</script>

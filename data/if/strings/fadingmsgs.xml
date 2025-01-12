@@ -154,7 +154,7 @@
 
 	<string
 		id="fm_item_pickup"
-		value="Вы подняли предмет: %1s." />
+		value="Вы подняли предмет: %1s" />
 
 	<string
 		id="fm_sunrise"
@@ -186,7 +186,11 @@
 
 	<string
 		id="fm_player_add_thing"
-		value="Вы получили предмет: %1p!" />
+		value="Вы получили предмет: %1p" />
+
+	<string
+		id="fm_player_add_thing_count"
+		value="Вы получили предмет: %1p - x%2d" />
 
 	<string
 		id="fm_cheat_is_not_allowed"
@@ -391,4 +395,36 @@
 	<string
 		id="fm_get_special_community_item"
 		value="@ffffc000Вы получили свой уникальный предмет!" />
+
+	<string
+		id="fm_not_key"
+		value="У вас нет необходимого ключа!" />
+
+	<string
+		id="fm_player_take_item"
+		value="Вы забрали предмет: %1p" />
+
+	<string
+		id="fm_garage_crafting_start"
+		value="Сборка предмета %1p началась!" />
+
+	<string
+		id="fm_garage_crafting_stop"
+		value="Сборка предмета %1p была прервана!" />
+
+	<string
+		id="fm_garage_crafting_done"
+		value="@ffffc000В гараже изготовлен предмет: %1p!" />
+
+	<string
+		id="fm_garage_crafting_stopped"
+		value="@ff9d0a0a[Нет электричества]|@ffffffffСборка предмета %1p приостановлена!" />
+
+	<string
+		id="fm_garage_crafting_restart"
+		value="@ff7ac716[Электричество подано]|@ffffffffСборка предмета %1p возобновлена!" />
+
+	<string
+		id="fm_garage_crafting_timer_pause"
+		value="@ff9d0a0a[Сборка приостановлена]|@ffffffffОсталось: %1p" />
 </resource>

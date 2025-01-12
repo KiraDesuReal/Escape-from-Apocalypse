@@ -105,6 +105,56 @@
 			SetVar("Garage_Builden", 0)
 			SetVar("RegenPlayerHP_Timer", 0)
 
+			SetVar("GarageCrafting_time_hour", 0)
+			SetVar("GarageCrafting_time_minute", 0)
+			SetVar("GarageCrafting_time_second", 0)
+			SetVar("GarageCrafting_time_msg", "0")
+			SetVar("GarageCraft", 0)
+			SetVar("GarageCraftPause", 0)
+			SetVar("GarageCraftingName", "0")
+
+			SetVar("GarageCraft_Pkt_details", 0)
+			SetVar("GarageCraft_Pkt_item_screw", 0)
+			SetVar("GarageCraft_Pkt_item_pliers", 0)
+
+			SetVar("GarageCraft_Kord_pkt01", 0)
+			SetVar("GarageCraft_Kord_details", 0)
+			SetVar("GarageCraft_Kord_item_leatherman", 0)
+
+			SetVar("GarageCraft_Plate_item_gazan", 0)
+			SetVar("GarageCraft_Plate_item_screw", 0)
+			SetVar("GarageCraft_Plate_item_dvd", 0)
+			SetVar("GarageCraft_Plate_item_screw_flat", 0)
+			SetVar("GarageCraft_Plate_Build_1", 0)
+			SetVar("GarageCraft_Plate_Build_2", 0)
+			
+			SetVar("GarageCraft_Kondesators_item_bp", 0)
+			SetVar("GarageCraft_Kondesators_item_screw", 0)
+
+			SetVar("GarageCraft_Details_gun", "0")
+			SetVar("GarageCraft_Details_count", 0)
+			SetVar("GarageCraft_Details_item_leatherman", 0)
+
+			SetVar("GarageCraft_Metall_gun", "0")
+			SetVar("GarageCraft_Metall_count", 0)
+			SetVar("GarageCraft_Metal_item_metalscissors", 0)
+
+			SetVar("GarageCraft_MetallUse_scrap_metal_count", 0)
+			SetVar("GarageCraft_MachineryUse_machinery_count", 0)
+			SetVar("GarageCraft_ElectronicsUse_electronics_count", 0)
+			SetVar("GarageCraft_OilUse_oil_count", 0)
+			SetVar("GarageCraft_FuelFullUse_fuel_count", 0)
+
+			SetVar("GarageCraft_Wires_item_cable", 0)
+
+			SetVar("GarageCraft_Gunpowder_ammo_chest_machinegun", 0)
+			SetVar("GarageCraft_Gunpowder_item_pliers", 0)
+			SetVar("GarageCraft_Gunpowder_item_gunpowder", 0)
+			SetVar("GarageCraft_Gunpowder_item_spich", 0)
+			SetVar("GarageCraft_Gunpowder_build", 0)
+
+			SetVar("GarageCraft_AmmoChestMachineGun_gunpowder", 0)
+			
 			SetVar("CountRaids", 0)
 
 			SetVar("OpenGate_1", 0)
@@ -170,8 +220,17 @@
 			if GENERATOR_TIMER_HOUR_GLOBAL then SetVar("Generator_time_work_hour", GENERATOR_TIMER_HOUR_GLOBAL) end
 			if GENERATOR_TIMER_MINUTE_GLOBAL then SetVar("Generator_time_work_minute", GENERATOR_TIMER_MINUTE_GLOBAL) end
 			if GENERATOR_TIMER_SECOND_GLOBAL then SetVar("Generator_time_work_second", GENERATOR_TIMER_SECOND_GLOBAL) end
-			if GENERATOR_ON_GLOBAL then SetVar("Generator_on", GENERATOR_ON_GLOBAL) end
 
+			if GetVar("Generator_on").AsInt == 1 then
+				if GENERATOR_ON_GLOBAL then 
+					SetVar("Generator_on", GENERATOR_ON_GLOBAL) 
+					if GetVar("Generator_on").AsInt == 0 then
+						AddFadingMsgByStrIdFormatted("fm_generator_fuel_nil")
+						SoundFadingMsg()
+					end
+				end
+			end
+			
 			if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
 				if GetVar("Generator_time_work_second").AsInt > 0 or GetVar("Generator_time_work_minute").AsInt > 0 or GetVar("Generator_time_work_hour").AsInt > 0 then
 					if GetVar("Generator_on").AsInt == 1 then
@@ -180,6 +239,7 @@
 						end
 						TActivate("Generator_timer")
 						TActivate("IfGenerator_On")
+						TActivate("GeneratorTimeMsgActivate")
 					end
 				else
 					SetVar("Generator_on", 0)
@@ -225,8 +285,29 @@
 			end
 		
 		--гараж
+			if GARAGE_CRAFTING_TIME_HOUR_GLOBAL then SetVar("GarageCrafting_time_hour", GARAGE_CRAFTING_TIME_HOUR_GLOBAL) end
+			if GARAGE_CRAFTING_TIME_MINUTE_GLOBAL then SetVar("GarageCrafting_time_minute", GARAGE_CRAFTING_TIME_MINUTE_GLOBAL) end
+			if GARAGE_CRAFTING_TIME_SECOND_GLOBAL then SetVar("GarageCrafting_time_second", GARAGE_CRAFTING_TIME_SECOND_GLOBAL) end
+			if GARAGE_CRAFT_GLOBAL then SetVar("GarageCraft", GARAGE_CRAFT_GLOBAL) end
+			if GARAGE_CRAFT_PAUSE_GLOBAL then SetVar("GarageCraftPause", GARAGE_CRAFT_PAUSE_GLOBAL) end
+
 			if GetVar("Garage_Builden").AsInt == 1 then
 				TActivate("PlayerHP")
+				
+				if GetVar("GarageCrafting_time_hour").AsInt > 0 or GetVar("GarageCrafting_time_minute").AsInt > 0 or GetVar("GarageCrafting_time_second").AsInt > 0 then
+					if GetVar("Generator_time_work_second").AsInt > 0 or GetVar("Generator_time_work_minute").AsInt > 0 or GetVar("Generator_time_work_hour").AsInt > 0 then
+						if GetVar("Generator_on").AsInt == 1 and GetVar("GarageCraftPause").AsInt == 0 then
+							TActivate("GarageCrafting_timer")
+							TActivate("GarageLamppost")
+							CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "GarageCraftingProcessSoundFX", -1, -1, CVector(938, 263, 957), Quaternion(0, 0, 0, 0))
+						end
+					end
+					TActivate("GarageCraftingTimeMsgActivate")
+				else
+					if GetVar("GarageCraft").AsInt == 2 then
+						TActivate("IfCraftingDone")
+					end
+				end
 			end
 		
 		--заправка
@@ -715,12 +796,21 @@
 			CreateNewDummyObject("cargo", "cont_8_lvl_1", -1, -1, CVector(904.369, 258.173, 990.186), Quaternion(0, 0, 0, 0))
 			CreateNewDummyObject("cargo", "cont_9_lvl_1", -1, -1, CVector(907.147, 258.173, 990.186), Quaternion(0, 0, 0, 0))
 
-			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "cont_1_build_lvl_2", -1, -1, CVector(927.950, 254.691, 988.440), Quaternion(0, 0, 0, 0), 0.1)
-			CreateNewDummyObject("conteiner", "cont_2_build_lvl_2", -1, -1, CVector(919.387, 256.310, 990.120), Quaternion(0, 0, 0, 0))
-			CreateNewDummyObject("conteiner", "cont_3_build_lvl_2", -1, -1, CVector(919.581, 257.954, 993.320), Quaternion(0.1741, 0.6853, 0.1741, 0.6853))
-			CreateNewDummyObject("metal_plate1", "cont_4_build_lvl_2", -1, -1, CVector(918.269, 257.231, 987.745), Quaternion(-0.4208, -0.0040, -0.0038, 0.9071))
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "cont_1_build_lvl_2", -1, -1, CVector(941.150, 254.691, 979.860), Quaternion(0, 0, 0, 0), 0.1)
+			CreateNewDummyObject("conteiner", "cont_2_build_lvl_2", -1, -1, CVector(948.677, 256.310, 979.316), Quaternion(0.000, 0.713, 0.000, 0.701))
+			CreateNewDummyObject("conteiner", "cont_3_build_lvl_2", -1, -1, CVector(951.873, 257.954, 979.066), Quaternion(0.246, 0.969, -0.002, -0.008))
+			CreateNewDummyObject("metal_plate1", "cont_4_build_lvl_2", -1, -1, CVector(946.321, 257.231, 980.476), Quaternion(-0.298, 0.644, 0.297, 0.639))
 
-			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "chestScavs_point", -1, -1, CVector(945.013, 254.586, 982.992), Quaternion(0, 0, 0, 0), 0.1)
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "chestScavs_build_1", -1, -1, CVector(909.041, 254.586, 911.441), Quaternion(0, 0, 0, 0), 0.1)
+			CreateNewDummyObject("conteiner", "chestScavs_build_2", -1, -1, CVector(917.839, 256.382, 911.268), Quaternion(0.0000, 0.7040, 0.0000, 0.7102))
+			CreateNewDummyObject("conteiner", "chestScavs_build_3", -1, -1, CVector(920.504, 256.382, 911.290), Quaternion(0.5033, 0.4967, -0.4989, 0.501))
+			CreateNewDummyObject("bottles", "chestScavs_build_4", -1, -1, CVector(917.498, 255.626, 906.585), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("rabochee_oborudovanie", "chestScavs_build_5", -1, -1, CVector(916.136, 255.647, 909.127), Quaternion(0.0035, -0.0062, 0.5094, 0.8605))
+			CreateNewDummyObject("back_exp", "chestScavs_build_6", -1, -1, CVector(917.708, 256.091, 916.679), Quaternion(-0.0870, -0.0975, 0.7170, 0.6847))
+			CreateNewDummyObject("cargo", "chestScavs_build_7", -1, -1, CVector(917.702, 258.187, 908.161), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("cargo", "chestScavs_build_8", -1, -1, CVector(917.712, 258.197, 914.550), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("cargo", "chestScavs_build_9", -1, -1, CVector(920.402, 258.253, 914.565), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("cargo", "chestScavs_build_10", -1, -1, CVector(920.406, 258.248, 908.174), Quaternion(0, 0, 0, 0))
 
 			local Chest = CreateNewObject{prototypeName = "opacityChest", objName = "PlayerInventory_Lvl_1"}	
 			local ChestId = GetEntityByID(Chest)
@@ -772,24 +862,24 @@
 				if cont then cont:Remove() end
 			end
 
-			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(920, 255, 989), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(950, 255, 979), Quaternion(0, 0, 0, 1), 6000)
 			CreateEffectTTLed( "ET_S_BUILDING", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1800)
 
-			CreateNewDummyObject("conteiner", "cont_1_lvl_2", -1, -1, CVector(919.893, 256.310, 985.711), Quaternion(0, 0, 0, 0))
-			CreateNewDummyObject("conteiner", "cont_2_lvl_2", -1, -1, CVector(919.893, 256.310, 988.527), Quaternion(0, 0, 0, 0))
-			CreateNewDummyObject("conteiner", "cont_3_lvl_2", -1, -1, CVector(919.893, 256.310, 991.383), Quaternion(0, 0, 0, 0))
-			CreateNewDummyObject("conteiner", "cont_4_lvl_2", -1, -1, CVector(921.150, 258.963, 988.286), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
-			CreateNewDummyObject("conteiner", "cont_5_lvl_2", -1, -1, CVector(918.500, 258.963, 988.286), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
-			CreateNewDummyObject("cargo", "cont_6_lvl_2", -1, -1, CVector(923.139, 258.173, 985.820), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
-			CreateNewDummyObject("cargo", "cont_7_lvl_2", -1, -1, CVector(923.139, 258.173, 988.566), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
-			CreateNewDummyObject("cargo", "cont_8_lvl_2", -1, -1, CVector(923.139, 258.173, 991.369), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
-			CreateNewDummyObject("cargo", "cont_9_lvl_2", -1, -1, CVector(916.561, 258.173, 985.803), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
-			CreateNewDummyObject("cargo", "cont_10_lvl_2", -1, -1, CVector(916.561, 258.173, 988.549), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
-			CreateNewDummyObject("cargo", "cont_11_lvl_2", -1, -1, CVector(916.561, 258.173, 991.352), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("conteiner", "cont_1_lvl_2", -1, -1, CVector(946.622, 256.310, 979.473), Quaternion(0.000, 0.707, 0.000, 0.707))
+			CreateNewDummyObject("conteiner", "cont_2_lvl_2", -1, -1, CVector(949.439, 256.310, 979.473), Quaternion(0.000, 0.707, 0.000, 0.707))
+			CreateNewDummyObject("conteiner", "cont_3_lvl_2", -1, -1, CVector(952.294, 256.310, 979.473), Quaternion(0.000, 0.707, 0.000, 0.707))
+			CreateNewDummyObject("conteiner", "cont_4_lvl_2", -1, -1, CVector(949.196, 258.963, 978.215), Quaternion(0.000, 1.000, 0.000, -0.000))
+			CreateNewDummyObject("conteiner", "cont_5_lvl_2", -1, -1, CVector(949.197, 258.963, 980.866), Quaternion(0.000, 1.000, 0.000, -0.000))
+			CreateNewDummyObject("cargo", "cont_6_lvl_2", -1, -1, CVector(946.731, 258.173, 976.227), Quaternion(0.000, 1.000, 0.000, -0.000))
+			CreateNewDummyObject("cargo", "cont_7_lvl_2", -1, -1, CVector(949.477, 258.173, 976.226), Quaternion(0.000, 1.000, 0.000, -0.000))
+			CreateNewDummyObject("cargo", "cont_8_lvl_2", -1, -1, CVector(952.280, 258.173, 976.227), Quaternion(0.000, 1.000, 0.000, -0.000))
+			CreateNewDummyObject("cargo", "cont_9_lvl_2", -1, -1, CVector(946.714, 258.173, 982.804), Quaternion(0.000, 1.000, 0.000, -0.000))
+			CreateNewDummyObject("cargo", "cont_10_lvl_2", -1, -1, CVector(949.460, 258.173, 982.804), Quaternion(0.000, 1.000, 0.000, -0.000))
+			CreateNewDummyObject("cargo", "cont_11_lvl_2", -1, -1, CVector(952.263, 258.173, 982.805), Quaternion(0.000, 1.000, 0.000, -0.000))
 
 			local Chest = CreateNewObject{prototypeName = "opacityChest", objName = "PlayerInventory_Lvl_2"}	
 			local ChestId = GetEntityByID(Chest)
-			ChestId:SetPosition(CVector(919, 255, 987))
+			ChestId:SetPosition(CVector(947, 255, 979))
 
 			local Item = CreateNewObject{prototypeName = "item_opacity", objName = "ItemOpacity_PlayerInventory_Lvl_2", belong = 1100}
 			local ItemId = GetEntityByID(Item)
@@ -830,21 +920,23 @@
 	<trigger Name="CreateChestScavs" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			local p = GetEntityByName("chestScavs_point")
-			if p then p:Remove() end
+			for i=1,10 do
+				local p = GetEntityByName("chestScavs_build_"..i)
+				if p then p:Remove() end
+			end
 			
-			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(952, 255, 983), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(918, 255, 910), Quaternion(0, 0, 0, 1), 6000)
 			CreateEffectTTLed( "ET_S_BUILDING", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1800)
 
-			CreateNewDummyObject("conteiner", "chestScavs_1", -1, -1, CVector(953.069, 258.984, 983.179), Quaternion(0.0000, 0.7071, 0.0000, 0.7072))
-			CreateNewDummyObject("conteiner", "chestScavs_2", -1, -1, CVector(950.305, 256.313, 983.094), Quaternion(0.0000, 0.7071, 0.0000, 0.7072))
-			CreateNewDummyObject("conteiner", "chestScavs_3", -1, -1, CVector(953.068, 256.313, 983.179), Quaternion(0.0000, 0.7071, 0.0000, 0.7072))
-			CreateNewDummyObject("mikro", "chestScavs_4", -1, -1, CVector(950.613, 257.643, 979.958), Quaternion(0, 0, 0, 0))
-			CreateNewDummyObject("rabochee_oborudovanie", "chestScavs_5", -1, -1, CVector(951.093, 257.803, 981.900), Quaternion(0, 0, 0, 0))
-			CreateNewDummyObject("mikro", "chestScavs_6", -1, -1, CVector(949.831, 257.723, 981.059), Quaternion(0.0247, 0.7067, 0.0247, 0.7067))
-			CreateNewDummyObject("books", "chestScavs_7", -1, -1, CVector(950.852, 258.207, 984.052), Quaternion(0, 0, 0, 0))
-			CreateNewDummyObject("bottles", "chestScavs_8", -1, -1, CVector(950.304, 258.293, 986.024), Quaternion(0, 0, 0, 0))
-			CreateNewSgNodeObject("detail", "chestScavs_9", -1, -1, CVector(949.501, 257.863, 984.121), Quaternion(0.0129, 0.0119, 0.7131, 0.7008), 0.2)
+			CreateNewDummyObject("conteiner", "chestScavs_1", -1, -1, CVector(917.896, 258.984, 911.105), Quaternion(0.000, 0.707, 0.000, 0.707))
+			CreateNewDummyObject("conteiner", "chestScavs_2", -1, -1, CVector(915.132, 256.313, 911.020), Quaternion(0.000, 0.707, 0.000, 0.707))
+			CreateNewDummyObject("conteiner", "chestScavs_3", -1, -1, CVector(917.895, 256.313, 911.105), Quaternion(0.000, 0.707, 0.000, 0.707))
+			CreateNewDummyObject("mikro", "chestScavs_4", -1, -1, CVector(915.440, 257.643, 907.884), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("rabochee_oborudovanie", "chestScavs_5", -1, -1, CVector(915.920, 257.803, 909.826), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("mikro", "chestScavs_6", -1, -1, CVector(914.658, 257.723, 908.985), Quaternion(0.025, 0.707, 0.025, 0.707))
+			CreateNewDummyObject("books", "chestScavs_7", -1, -1, CVector(915.679, 258.207, 911.978), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("bottles", "chestScavs_8", -1, -1, CVector(915.131, 258.293, 913.950), Quaternion(0, 0, 0, 0))
+			CreateNewSgNodeObject("detail", "chestScavs_9", -1, -1, CVector(914.328, 257.863, 912.047), Quaternion(0.013, 0.012, 0.713, 0.701), 0.2)
 
 			SetVar("ChestScavs_Builden", 1)
 			TDeactivate("ChestScavs_BuildInfo")
@@ -942,7 +1034,7 @@
 	</trigger>
 
 	<trigger Name="ChestScavs_Time" active="0">
-		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="ChestScavs_Build_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="ChestScavs_Timer_loc" />
 		<script>
 			if not(GetVar("ChestScavs_time_msg").AsString == "0") then
 				AddFadingMsgByStrIdFormatted("fm_chest_scavs_timer", GetVar("ChestScavs_time_msg").AsString)
@@ -956,27 +1048,49 @@
 			local pos = {CVector(1879, 255, 1370), CVector(200, 255, 388)}
 			local rot = {Quaternion(-0.014, -0.506, 0.003, 0.862), Quaternion(-0.009, 0.703, 0.005, 0.711)}
 			local r = random(2)
-			SetVar("Scav_Move", r)
+			SetVar("Scav_Move", 1)
 
 			local list = {"Sml1CarScav", "Sml2CarScav", "Sml3CarScav", "Sml4CarScav", "Scout1CarScav", "Scout2CarScav", "Scout3CarScav", "Fighter2CarScav", "Hunter2CarScav"}
 			local model = list[random(getn(list))]
 
-			CreateVehicleEx(model, "ScavMoveToChest", pos[r], 1090)
+			TeamCreate("ScavMoveToChest", 1090, pos[r], {model}, nil, 0, rot[r])
 
-			local veh = GetEntityByName("ScavMoveToChest")
+			local veh = GetEntityByName("ScavMoveToChest_vehicle_0")
 			if veh then
 				GiveGunsForVehicle(veh, 1)
-				veh:SetExternalPathByName("veh_paths_to_gate_"..r)
-				veh:SetCruisingSpeed(30)
-				veh:SetRotation(rot[r])
+				veh:SetCruisingSpeed(20)
 				veh:SetRandomSkin()
 				veh:setGodMode(1)
+			end
+
+			local vehPath = GetEntityByName ("ScavMoveToChest")
+			if vehPath then
+				vehPath:StackOpen()
+				if r == 1 then
+					vehPath:SetDestination(CVector(868.396, 257.632, 1120.734))
+					vehPath:SetDestination(CVector(869.885, 255.829, 911.609))
+					vehPath:SetDestination(CVector(907.927, 255.445, 911.054))
+					vehPath:SetDestination(CVector(867.900, 257.692, 910.184))
+					vehPath:SetDestination(CVector(74.292, 257.713, 392.653))
+				else
+					vehPath:SetDestination(CVector(868.646, 257.418, 867.737))
+					vehPath:SetDestination(CVector(869.885, 255.829, 911.609))
+					vehPath:SetDestination(CVector(907.927, 255.445, 911.054))
+					vehPath:SetDestination(CVector(869.309, 257.687, 1073.623))
+					vehPath:SetDestination(CVector(1970.307, 257.748, 1314.416))
+				end
+				vehPath:StackClose()
+			end
+
+			local RemoveVehtr = getObj("RemoveScavMoveToChest")
+			if RemoveVehtr then
+				RemoveVehtr:AddEvent("GE_OBJECT_ENTERS_LOCATION", "RemoveVehMove_1090_loc_"..r)
+				TActivate("RemoveScavMoveToChest")
 			end
 
 			AddFadingMsgByStrIdFormatted("fm_chest_scavs_scav_move")
 			SoundFadingMsg()
 
-			TActivate("ScavMoveReached")
 			TActivate("ChestScavs_EntersLoc")
 			TDeactivate("ChestScavs_Timer")
 			TDeactivate("cst")
@@ -985,53 +1099,12 @@
 		</script>
 	</trigger>
 
-	<trigger Name="ScavMoveReached" active="0">
-		<event eventid="GE_TARGET_REACHED" ObjName="ScavMoveToChest"/>
+	<trigger Name="RemoveScavMoveToChest" active="0">
 		<script>
-			trigger:IncCount()
-			local count = trigger:GetCount()
-			println(count)
-
-			local veh = GetEntityByName("ScavMoveToChest")
-			if veh then
-				if count == 1 then
-					veh:SetExternalPathByName("veh_paths_to_inventory_"..GetVar("Scav_Move").AsInt)
-					veh:SetCruisingSpeed(22)
-				elseif count == 2 then
-						veh:SetExternalPathByName("veh_paths_to_inventory")
-						veh:SetCruisingSpeed(8)
-				elseif count == 3 then
-					if GetVar("Scav_Move").AsInt == 1 then
-						veh:SetExternalPathByName("veh_paths_to_gate_2_from_inventory")
-					else
-						veh:SetExternalPathByName("veh_paths_to_gate_1_from_inventory")
-					end
-					veh:SetCruisingSpeed(3)
-					TActivate("ScavMoveSpeed")
-				elseif count == 4 then
-					if GetVar("Scav_Move").AsInt == 1 then
-						veh:SetExternalPathByName("veh_paths_to_gate_2_from_inventory_2_2")
-					else
-						veh:SetExternalPathByName("veh_paths_to_gate_1_from_inventory_1_1")
-					end
-					veh:SetCruisingSpeed(22)
-				elseif count == 5 then
-					veh:SetExternalPathByName("veh_paths_to_end_"..GetVar("Scav_Move").AsInt)
-					veh:SetCruisingSpeed(30)
-				elseif count == 6 then 
-					SetVar("Scav_Move", 0)
-					veh:Remove()
-					trigger:Deactivate()
-				end
-			end
-		</script>
-	</trigger>
-
-	<trigger Name="ScavMoveSpeed" active="0">
-		<event timeout="15" eventid="GE_TIME_PERIOD" />
-		<script>
-			local sv = GetEntityByName("ScavMoveToChest")
-			if sv then sv:SetCruisingSpeed(8) end
+			local veh = GetEntityByName("ScavMoveToChest_vehicle_0")
+			if veh then veh:Remove() end
+			getObj("RemoveScavMoveToChest"):DelEvent("GE_OBJECT_ENTERS_LOCATION")
+			SetVar("Scav_Move", 0)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1135,7 +1208,7 @@
 
 			local Chest = CreateNewObject{prototypeName = "opacityChest", objName = "ChestScavsForLoot"}	
 			local ChestId = GetEntityByID(Chest)
-			ChestId:SetPosition(CVector(950, 255, 982))
+			ChestId:SetPosition(CVector(916, 255, 911))
 
 			for i=1,loot_count do
 				local Item = CreateNewObject{prototypeName = lootlist[random(loot)], objName = "ChestScavsItem"..random(10000), belong = 1100}
@@ -1352,7 +1425,7 @@
 	</trigger>
 
 	<trigger Name="GeneratorTimeWork" active="0">
-		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Generator_Build_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Generator_lvl_1_Timer_loc" />
 		<script>
 			if GetVar("Generator_on").AsInt == 1 then
 				if not(GetVar("Generator_time_work_msg").AsString == "0") then
@@ -1363,7 +1436,7 @@
 	</trigger>
 
 	<trigger Name="GeneratorTimeWork_2" active="0">
-		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Generator_Build_lvl_2_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Generator_lvl_2_Timer_loc" />
 		<script>
 			if GetVar("Generator_on").AsInt == 1 then
 				if not(GetVar("Generator_time_work_msg").AsString == "0") then
@@ -1609,23 +1682,18 @@
 			end
 
 			if GetVar("Garage_Builden").AsInt == 1 then
-				if 6 > hour then
-					for l=1,6 do
-						local gr_light = GetEntityByName("gr_light_"..l)
-						local gr_light_pos = {CVector(934.758, 268.680, 961.475), CVector(934.758, 268.680, 953.251), CVector(914.288, 268.680, 953.251), CVector(897.743, 268.680, 961.475), CVector(914.288, 268.680, 961.475), CVector(897.743, 268.680, 953.251)}
-						if not(gr_light) then
-							CreateNewSgNodeObject("ET_PS_LENS_D4", "gr_light_"..l, -1, -1, gr_light_pos[l], Quaternion(0, 0, 0, 0))
-							CreateNewSgNodeObject("LS_LIGHT_TEST", "gr_ls_light_"..l, -1, -1, gr_light_pos[l], Quaternion(0, 0, 0, 0))
-						end 
-					end
-					for gr_lamm=1,2 do
-						local gr_lammp_light = GetEntityByName("gr_lammp_light_"..gr_lamm)
-						local gr_lammp_lightPos = {CVector(948.292, 256, 961.262), CVector(948.292, 256, 952.984)}
-						if not(gr_lammp_light) then
-							CreateNewSgNodeObject("LS_LIGHT_TEST", "gr_lammp_light_"..gr_lamm, -1, -1, gr_lammp_lightPos[gr_lamm], Quaternion(0, 0, 0, 0))
-						end
+				if GetVar("GarageCrafting_time_hour").AsInt > 0 or GetVar("GarageCrafting_time_minute").AsInt > 0 or GetVar("GarageCrafting_time_second").AsInt > 0 then
+					if GetVar("GarageCraftPause").AsInt == 1 then
+						TActivate("GarageCrafting_timer")
+						AddFadingMsgByStrIdFormatted("fm_garage_crafting_restart", GetVar("GarageCraftingName").AsString)
+						SoundFadingMsg()
+						CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "GarageCraftingProcessSoundFX", -1, -1, CVector(938, 263, 957), Quaternion(0, 0, 0, 0))
+						SetVar("GarageCraftPause", 0)
+						TActivate("GarageLamppost")
 					end
 				end
+
+				if 6 > hour then TActivate("GarageLamppost") end
 			end
 
 			TActivate("Lampposts1_light")
@@ -1675,16 +1743,16 @@
 			end
 
 			if GetVar("Garage_Builden").AsInt == 1 then
-				for l=1,6 do
-					local gr_light = GetEntityByName("gr_light_"..l)
-					if gr_light then gr_light:Remove() end
-					local gr_ls_light = GetEntityByName("gr_ls_light_"..l)
-					if gr_ls_light then gr_ls_light:Remove() end
-				end
+				TActivate("GarageRemoveLamppost")
 
-				for gr_lm=1,2 do
-					local gr_lammp_light = GetEntityByName("gr_lammp_light_"..gr_lm)
-					if gr_lammp_light then gr_lammp_light:Remove() end
+				if GetVar("GarageCrafting_time_hour").AsInt > 0 or GetVar("GarageCrafting_time_minute").AsInt > 0 or GetVar("GarageCrafting_time_second").AsInt > 0 then
+					TDeactivate("GarageCrafting_timer")
+					TDeactivate("gct")
+					AddFadingMsgByStrIdFormatted("fm_garage_crafting_stopped", GetVar("GarageCraftingName").AsString)
+					SoundFadingMsg()
+					local sound = GetEntityByName("GarageCraftingProcessSoundFX")
+					if sound then sound:Remove() end
+					SetVar("GarageCraftPause", 1)
 				end
 			end
 
@@ -1927,6 +1995,46 @@
 		</script>
 	</trigger>
 
+	<trigger Name="GarageLamppost" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			for l=1,6 do
+				local gr_light = GetEntityByName("gr_light_"..l)
+				local gr_light_pos = {CVector(934.758, 268.680, 961.475), CVector(934.758, 268.680, 953.251), CVector(914.288, 268.680, 953.251), CVector(897.743, 268.680, 961.475), CVector(914.288, 268.680, 961.475), CVector(897.743, 268.680, 953.251)}
+				if not(gr_light) then
+					CreateNewSgNodeObject("ET_PS_LENS_D4", "gr_light_"..l, -1, -1, gr_light_pos[l], Quaternion(0, 0, 0, 0))
+					CreateNewSgNodeObject("LS_LIGHT_TEST", "gr_ls_light_"..l, -1, -1, gr_light_pos[l], Quaternion(0, 0, 0, 0))
+				end 
+			end
+			for gr_lamm=1,2 do
+				local gr_lammp_light = GetEntityByName("gr_lammp_light_"..gr_lamm)
+				local gr_lammp_lightPos = {CVector(948.292, 256, 961.262), CVector(948.292, 256, 952.984)}
+				if not(gr_lammp_light) then
+					CreateNewSgNodeObject("LS_LIGHT_TEST", "gr_lammp_light_"..gr_lamm, -1, -1, gr_lammp_lightPos[gr_lamm], Quaternion(0, 0, 0, 0))
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="GarageRemoveLamppost" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			for l=1,6 do
+				local gr_light = GetEntityByName("gr_light_"..l)
+				if gr_light then gr_light:Remove() end
+				local gr_ls_light = GetEntityByName("gr_ls_light_"..l)
+				if gr_ls_light then gr_ls_light:Remove() end
+			end
+
+			for gr_lm=1,2 do
+				local gr_lammp_light = GetEntityByName("gr_lammp_light_"..gr_lm)
+				if gr_lammp_light then gr_lammp_light:Remove() end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 	<trigger Name="PlayerHP" active="0">
 		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -1960,6 +2068,159 @@
 		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
 		<script>
 			TActivate("RegenetationPlayerHP_Timer")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="GarageCraftingStart" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			SetVar("GarageCraft", 1)
+
+			TActivate("GarageCrafting_timer")
+			TActivate("GarageCraftingTimeMsgActivate")
+
+			AddFadingMsgByStrIdFormatted("fm_garage_crafting_start", GetVar("GarageCraftingName").AsString)
+			SoundFadingMsg()
+			CreateEffectTTLed("ET_S_GARAGE_CRAFTING_START", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 2100)
+			CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "GarageCraftingProcessSoundFX", -1, -1, CVector(938, 263, 957), Quaternion(0, 0, 0, 0))
+			TActivate("GarageLamppost")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="GarageCrafting_timer" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			local hour = GetVar("GarageCrafting_time_hour").AsInt
+			local min = GetVar("GarageCrafting_time_minute").AsInt
+			local sec = GetVar("GarageCrafting_time_second").AsInt
+			
+			local nulH, nulM, nulS = "", "", ""
+
+			if 10 > hour then nulH = 0 end
+			if 10 > min then nulM = 0 end
+			if 10 > sec then nulS = 0 end
+
+			local Msg = nulH..hour..":"..nulM..min..":"..nulS..sec
+			SetVar("GarageCrafting_time_msg", Msg)
+
+			if not(0 > hour) and not(0 > min) then
+				sec = sec - 1
+				SetVar("GarageCrafting_time_second", sec)
+				if 0 > sec then
+					SetVar("GarageCrafting_time_second", 59)
+					min = min - 1
+					SetVar("GarageCrafting_time_minute", min)
+				end
+				if 0 > min then
+					SetVar("GarageCrafting_time_minute", 59)
+					hour = hour - 1
+					SetVar("GarageCrafting_time_hour", hour)
+				end
+			end
+
+			if 0 > hour and 0 > min and 0 > sec then
+				TActivate("IfCraftingDone")
+			else
+				TActivate("gct")
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="gct" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("GarageCrafting_timer")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="GarageCraftingTimeMsgActivate" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("GarageCraftingTimeMsg")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="GarageCraftingTimeMsg" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Garage_Crafting_Timer_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Garage_Crafting_Timer_loc" />
+		<script>
+			local event = trigger:GetCallEvent()
+
+			if not(GetVar("GarageCrafting_time_msg").AsString == "0") then
+				if GetVar("GarageCraftPause").AsInt == 0 and event == "GE_OBJECT_IN_LOCATION" then
+					AddFadingMsgByStrIdFormatted("fm_chest_scavs_timer", GetVar("GarageCrafting_time_msg").AsString)
+				end
+
+				if GetVar("GarageCraftPause").AsInt == 1 and event == "GE_OBJECT_ENTERS_LOCATION" then
+					AddFadingMsgByStrIdFormatted("fm_garage_crafting_timer_pause", GetVar("GarageCrafting_time_msg").AsString)
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="IfCraftingTimeStop" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local time = g_ObjCont:GetGameTime().AsString
+			local hour = tonumber(strsub(time, 1, 2))
+
+			AddFadingMsgByStrIdFormatted("fm_garage_crafting_stop", GetVar("GarageCraftingName").AsString)
+			SoundFadingMsg()
+			CreateEffectTTLed("ET_S_GARAGE_CRAFTING_STOP", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 700)
+
+			SetVar("GarageCrafting_time_second", 0)
+			SetVar("GarageCrafting_time_minute", 0)
+			SetVar("GarageCrafting_time_hour", 0)
+			SetVar("GarageCrafting_time_msg", "0")
+			SetVar("GarageCraft", 0)
+			SetVar("GarageCraftPause", 0)
+			SetVar("GarageCraftingName", "0")
+
+			TDeactivate("GarageCrafting_timer")
+			TDeactivate("gct")
+			TDeactivate("GarageCraftingTimeMsgActivate")
+			TDeactivate("GarageCraftingTimeMsg")
+
+			if hour >= 6 then TActivate("GarageRemoveLamppost") end
+
+			local sound = GetEntityByName("GarageCraftingProcessSoundFX")
+			if sound then sound:Remove() end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="IfCraftingDone" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local time = g_ObjCont:GetGameTime().AsString
+			local hour = tonumber(strsub(time, 1, 2))
+
+			SetVar("GarageCrafting_time_second", 0)
+			SetVar("GarageCrafting_time_minute", 0)
+			SetVar("GarageCrafting_time_hour", 0)
+			SetVar("GarageCrafting_time_msg", "0")
+			SetVar("GarageCraftPause", 0)
+			SetVar("GarageCraft", 3)
+
+			TDeactivate("GarageCraftingTimeMsgActivate")
+			TDeactivate("GarageCraftingTimeMsg")
+
+			if hour >= 6 then TActivate("GarageRemoveLamppost") end
+
+			AddFadingMsgByStrIdFormatted("fm_garage_crafting_done", GetVar("GarageCraftingName").AsString)
+			SoundFadingMsg()
+			CreateEffectTTLed("ET_S_GARAGE_CRAFTING_END", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1000)
+
+			local sound = GetEntityByName("GarageCraftingProcessSoundFX")
+			if sound then sound:Remove() end
+
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -2016,16 +2277,8 @@
 				end
 
 				if GetVar("Garage_Builden").AsInt == 1 then
-					for k=1,6 do
-						local gr_light = GetEntityByName("gr_light_"..k)
-						if gr_light then gr_light:Remove() end
-						local gr_ls_light = GetEntityByName("gr_ls_light_"..k)
-						if gr_ls_light then gr_ls_light:Remove() end
-					end
-
-					for gr_lm=1,2 do
-						local gr_lammp_light = GetEntityByName("gr_lammp_light_"..gr_lm)
-						if gr_lammp_light then gr_lammp_light:Remove() end
+					if not(GetVar("GarageCraft").AsInt == 1) then
+						TActivate("GarageRemoveLamppost")
 					end
 				end
 			end
@@ -2147,11 +2400,7 @@
 
 			local RemoveVehtr = getObj("RemoveVeh")
 			if RemoveVehtr then
-				if r == 1 then
-					RemoveVehtr:AddEvent("GE_OBJECT_ENTERS_LOCATION", "RemoveVehMove_"..belong.."_loc_1")
-				else
-					RemoveVehtr:AddEvent("GE_OBJECT_ENTERS_LOCATION", "RemoveVehMove_"..belong.."_loc_2")
-				end
+				RemoveVehtr:AddEvent("GE_OBJECT_ENTERS_LOCATION", "RemoveVehMove_"..belong.."_loc_"..r)
 				TActivate("RemoveVeh")
 			end
 
@@ -2314,13 +2563,12 @@
 		--€щик диких
 			if GetVar("ChestScavs_Builden").AsInt == 1 then
 				if GetVar("Scav_Move").AsInt > 0 then
-					local sv = GetEntityByName("ScavMoveToChest")
+					local sv = GetEntityByName("ScavMoveToChest_vehicle_0")
 					if sv then sv:Remove() end
 
 					SetVar("Scav_Move", 0)
-					TDeactivate("ScavMoveReached")
+					TDeactivate("RemoveScavMoveToChest")
 					TDeactivate("ChestScavs_EntersLoc")
-					TDeactivate("ScavMoveSpeed")
 				end
 	
 				if GetVar("ChestScavs_Search").AsInt > 0 then
@@ -2344,6 +2592,12 @@
 					if GetVar("Generator_on").AsInt == 1 then
 						TDeactivate("Generator_timer")
 						TDeactivate("gt")
+						TDeactivate("GeneratorTimeMsgActivate")
+						if GetVar("Generator_lvl").AsInt == 1 then
+							TDeactivate("GeneratorTimeWork")
+						elseif GetVar("Generator_lvl").AsInt == 2 then
+							TDeactivate("GeneratorTimeWork_2")
+						end
 					end
 				end
 				
@@ -2370,6 +2624,24 @@
 				TDeactivate("RegenetationPlayerHP_Timer")
 				TDeactivate("rphpt")
 				TDeactivate("PlayerHP")
+
+				if GetVar("GarageCrafting_time_hour").AsInt > 0 or GetVar("GarageCrafting_time_minute").AsInt > 0 or GetVar("GarageCrafting_time_second").AsInt > 0 then
+					TDeactivate("GarageCrafting_timer")
+					TDeactivate("gct")
+					if GetVar("GarageCraftPause").AsInt == 0 then
+						TDeactivate("GarageCraftingTimeMsgActivate")
+						TDeactivate("GarageCraftingTimeMsg")
+					end
+
+					local sound = GetEntityByName("GarageCraftingProcessSoundFX")
+					if sound then sound:Remove() end
+				end
+
+				if GARAGE_CRAFTING_TIME_HOUR_GLOBAL then GARAGE_CRAFTING_TIME_HOUR_GLOBAL = GetVar("GarageCrafting_time_hour").AsInt end
+				if GARAGE_CRAFTING_TIME_MINUTE_GLOBAL then GARAGE_CRAFTING_TIME_MINUTE_GLOBAL = GetVar("GarageCrafting_time_minute").AsInt end
+				if GARAGE_CRAFTING_TIME_SECOND_GLOBAL then GARAGE_CRAFTING_TIME_SECOND_GLOBAL = GetVar("GarageCrafting_time_second").AsInt end
+				if GARAGE_CRAFT_GLOBAL then GARAGE_CRAFT_GLOBAL = GetVar("GarageCraft").AsInt end
+				if GARAGE_CRAFT_PAUSE_GLOBAL then GARAGE_CRAFT_PAUSE_GLOBAL = GetVar("GarageCraftPause").AsInt end
 			end
 
 		--заправка
@@ -2396,6 +2668,26 @@
 				local town1 = GetEntityByName("Town_r0m0_enter")
 				if town1 then town1:SetPosition(CVector(858.564, 255.000, 985.160)) end
 			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="tr" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("CreateGarage")
+			TActivate("CreateGenerator_lvl_1")
+			SetVar("Generator_time_work_minute", 30)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="tr1" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			SetVar("GarageCrafting_time_hour", 0)
+			SetVar("GarageCrafting_time_minute", 0)
+			SetVar("GarageCrafting_time_second", 3)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -2512,6 +2804,17 @@
 				SetVar("q_bitok3_can_be_given", GetVar("q_bitok3_can_be_given").AsInt+1)
 			end
 		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- ѕоискова€ мисси€
+		
+	<trigger Name="q_search_data_RemoveQuestItem" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local item = GetEntityByName("ItemDataQuest")
+			if item then item:Remove() end	
+			trigger:Deactivate()
 		</script>
 	</trigger>
 

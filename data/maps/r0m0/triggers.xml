@@ -154,6 +154,64 @@
 			SetVar("GarageCraft_Gunpowder_build", 0)
 
 			SetVar("GarageCraft_AmmoChestMachineGun_gunpowder", 0)
+
+			SetVar("GarageCraft_Tplug_item_cable", 0)
+			SetVar("GarageCraft_Tplug_item_nails", 0)
+
+			SetVar("GarageCraft_Manget_item_hdd", 0)
+			SetVar("GarageCraft_Manget_item_screw", 0)
+
+			SetVar("GarageCraft_PliersRound_item_pliers", 0)
+			SetVar("GarageCraft_PliersRound_item_fullmaster", 0)
+
+			SetVar("GarageCraft_Cable_item_tplug", 0)
+			SetVar("GarageCraft_Cable_item_wires", 0)
+			SetVar("GarageCraft_Cable_item_insulation", 0)
+
+			SetVar("GarageCraft_Gazan_item_battery_aa", 0)
+			SetVar("GarageCraft_Gazan_item_geiger", 0)
+			SetVar("GarageCraft_Gazan_item_magnet", 0)
+			SetVar("GarageCraft_Gazan_item_wires", 0)
+			SetVar("GarageCraft_Gazan_item_pliers", 0)
+
+			SetVar("GarageCraft_Geiger_item_gazan", 0)
+			SetVar("GarageCraft_Geiger_item_wires", 0)
+			SetVar("GarageCraft_Geiger_item_kondesators", 0)
+			SetVar("GarageCraft_Geiger_item_toolset", 0)
+
+			SetVar("GarageCraft_CarBattery_item_tank_battery", 0)
+			SetVar("GarageCraft_CarBattery_item_pipe_wrench", 0)
+
+			SetVar("GarageCraft_Accum_item_powerbank", 0)
+			SetVar("GarageCraft_Accum_item_screw_flat", 0)
+
+			SetVar("GarageCraft_GreenBattery_item_usb", 0)
+			SetVar("GarageCraft_GreenBattery_item_accum", 0)
+			SetVar("GarageCraft_GreenBattery_item_powerbank", 0)
+			SetVar("GarageCraft_GreenBattery_item_pliers_round", 0)
+
+			SetVar("GarageCraft_Engine_item_drill", 0)
+			SetVar("GarageCraft_Engine_item_insulation", 0)
+			SetVar("GarageCraft_Engine_item_screw_flat", 0)
+			SetVar("GarageCraft_Engine_item_screw", 0)
+
+			SetVar("GarageCraft_Svech_item_nuts", 0)
+			SetVar("GarageCraft_Svech_item_bolts", 0)
+			SetVar("GarageCraft_Svech_item_survl", 0)
+			SetVar("GarageCraft_Svech_item_pliers", 0)
+
+			SetVar("GarageCraft_Buldex_item_toolset", 0)
+			SetVar("GarageCraft_Buldex_item_parts", 0)
+			SetVar("GarageCraft_Buldex_item_wd40_100", 0)
+			SetVar("GarageCraft_Buldex_item_screw_flat_long", 0)
+			SetVar("GarageCraft_Buldex_item_nippers", 0)
+			SetVar("GarageCraft_Buldex_item_pliers", 0)
+
+			SetVar("GarageCraft_Toolset_item_pliers", 0)
+			SetVar("GarageCraft_Toolset_item_screw", 0)
+			SetVar("GarageCraft_Toolset_item_wrench", 0)
+			SetVar("GarageCraft_Toolset_item_insulation", 0)
+			SetVar("GarageCraft_Toolset_item_roulet", 0)
 			
 			SetVar("CountRaids", 0)
 
@@ -387,10 +445,8 @@
 				if IsQuestComplete("q_base_scavs") then GunAndGadget:AddItems("pkt01", 1) GunAndGadget:AddItems("kord01", 1) end
 				if IsQuestComplete("q_test_drive2") then GunAndGadget:AddItems("kpvt01", 1) end
 				if IsQuestComplete("q_test_drive3") then GunAndGadget:AddItems("ammo_chest_shotgunForSale", 1) end
-				if IsQuestComplete("q_test_drive4") then GunAndGadget:AddItems("ammo_chest_heavygunForSale", 1) end
-				if IsQuestComplete("q_test_drive4") then GunAndGadget:AddItems("rapier01", 1) end
-				if IsQuestComplete("q_test_drive6") then GunAndGadget:AddItems("ammo_chest_machinegunForSale", 1) end
-				if IsQuestComplete("q_test_drive6") then GunAndGadget:AddItems("kpvt01", 1) end
+				if IsQuestComplete("q_test_drive4") then GunAndGadget:AddItems("ammo_chest_heavygunForSale", 1) GunAndGadget:AddItems("rapier01", 1) end
+				if IsQuestComplete("q_test_drive6") then GunAndGadget:AddItems("ammo_chest_machinegunForSale", 1) GunAndGadget:AddItems("kpvt01", 1) end
 				if IsQuestComplete("q_bitok2") then GunAndGadget:AddItems("cooling_system_guns2", 1) end
 			end
 

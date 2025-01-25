@@ -320,6 +320,50 @@
 			SetVar("GarageCraft_UltraLump_item_leatherman", 0)
 
 			SetVar("GarageCraft_Keqing_item_fitanyashka", 0)
+
+			SetVar("GarageCraft_GadgetSfeno_details", 0)
+			SetVar("GarageCraft_GadgetSfeno_machinery", 0)
+			SetVar("GarageCraft_GadgetSfeno_machinery_use", 0)
+			SetVar("GarageCraft_GadgetSfeno_item_toolset", 0)
+
+			SetVar("GarageCraft_GadgetKvazar_details", 0)
+			SetVar("GarageCraft_GadgetKvazar_item_green_battery", 0)
+			SetVar("GarageCraft_GadgetKvazar_item_powerbank", 0)
+			SetVar("GarageCraft_GadgetKvazar_item_toolset", 0)
+
+			SetVar("GarageCraft_GadgetFireEye_details", 0)
+			SetVar("GarageCraft_GadgetFireEye_electronics", "0")
+			SetVar("GarageCraft_GadgetFireEye_item_toolset", 0)
+
+			SetVar("GarageCraft_GadgetDoom4_details", 0)
+			SetVar("GarageCraft_GadgetDoom4_item_green_battery", 0)
+			SetVar("GarageCraft_GadgetDoom4_item_toolset", 0)
+
+			SetVar("GarageCraft_GadgetDurability2_scrap_metal", 0)
+			SetVar("GarageCraft_GadgetDurability2_scrap_metal_use", 0)
+			SetVar("GarageCraft_GadgetDurability2_item_parts", 0)
+			SetVar("GarageCraft_GadgetDurability2_item_toolset", 0)
+
+			SetVar("GarageCraft_GadgetSpeedAndTorque_details", 0)
+			SetVar("GarageCraft_GadgetSpeedAndTorque_item_thermometer", 0)
+			SetVar("GarageCraft_GadgetSpeedAndTorque_item_tube", 0)
+			SetVar("GarageCraft_GadgetSpeedAndTorque_item_toolset", 0)
+
+			SetVar("GarageCraft_GadgetSagitta_details", 0)
+			SetVar("GarageCraft_GadgetSagitta_machinery", 0)
+			SetVar("GarageCraft_GadgetSagitta_machinery_use", 0)
+			SetVar("GarageCraft_GadgetSagitta_item_thermometer", 0)
+			SetVar("GarageCraft_GadgetSagitta_item_toolset", 0)
+
+			SetVar("GarageCraft_GadgetAlbatros_details", 0)
+			SetVar("GarageCraft_GadgetAlbatros_electronics", "0")
+			SetVar("GarageCraft_GadgetAlbatros_item_datchik", 0)
+			SetVar("GarageCraft_GadgetAlbatros_item_insulation", 0)
+			SetVar("GarageCraft_GadgetAlbatros_item_toolset", 0)
+
+			SetVar("GarageCraft_GadgetSato_fuel", "0")
+			SetVar("GarageCraft_GadgetSato_electronics", "0")
+			SetVar("GarageCraft_GadgetSato_item_toolset", 0)
 			
 			SetVar("CountRaids", 0)
 
@@ -2058,21 +2102,21 @@
 	<trigger Name="Garage_BuildInfo" active="0">
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Garage_Build_loc" />
 		<script>
-			if not(GetVar("Garage_item_bolts").AsInt == 1) or not(GetVar("Garage_item_nuts").AsInt == 1) or not(GetVar("Garage_item_pena").AsInt == 1) or not(GetVar("Garage_item_insulation").AsInt == 1) or not(GetVar("Garage_item_lump").AsInt == 6) or not(GetVar("Garage_item_cable").AsInt == 1) or not(GetVar("Garage_item_tplug").AsInt == 2) or not(GetVar("Garage_item_roulet").AsInt == 1) or not(GetVar("Garage_item_pipe_wrench").AsInt == 1) or not(GetVar("Garage_item_tb").AsInt == 2) or not(GetVar("Garage_item_fitanyashka").AsInt == 1) or not(GetVar("Garage_item_kaktus").AsInt == 3) then
+			if not(GetVar("Garage_item_bolts").AsInt == 1) or not(GetVar("Garage_item_nuts").AsInt == 1) or not(GetVar("Garage_item_pena").AsInt == 1) or not(GetVar("Garage_item_insulation").AsInt == 1) or not(GetVar("Garage_item_lump").AsInt == 3) or not(GetVar("Garage_item_cable").AsInt == 1) or not(GetVar("Garage_item_tplug").AsInt == 1) or not(GetVar("Garage_item_roulet").AsInt == 1) or not(GetVar("Garage_item_pipe_wrench").AsInt == 1) or not(GetVar("Garage_item_tb").AsInt == 1) or not(GetVar("Garage_item_fitanyashka").AsInt == 1) or not(GetVar("Garage_item_kaktus").AsInt == 1) then
 				local item_1, item_2, item_3, item_4, item_5, item_6, item_7, item_8, item_9, item_10, item_11, item_12 = "", "", "", "", "", "", "", "", "", "", "", ""
 			
 				if GetVar("Garage_item_bolts").AsInt ~= 1 then item_1 = "Болты - x1|" end
 				if GetVar("Garage_item_nuts").AsInt ~= 1 then item_2 = "Гайки - x1|" end
 				if GetVar("Garage_item_pena").AsInt ~= 1 then item_3 = "Монтажная пена - x1|" end
 				if GetVar("Garage_item_insulation").AsInt ~= 1 then item_4 = "Изолента - x1|" end
-				if GetVar("Garage_item_lump").AsInt ~= 6 then item_5 = "Лампа накаливания - x"..(6 - GetVar("Garage_item_lump").AsInt).."|" end
+				if GetVar("Garage_item_lump").AsInt ~= 3 then item_5 = "Лампа накаливания - x"..(3 - GetVar("Garage_item_lump").AsInt).."|" end
 				if GetVar("Garage_item_cable").AsInt ~= 1 then item_6 = "Силовой кабель - x1|" end
-				if GetVar("Garage_item_tplug").AsInt ~= 2 then item_7 = "Тройник - x"..(2 - GetVar("Garage_item_tplug").AsInt).."|" end
+				if GetVar("Garage_item_tplug").AsInt ~= 1 then item_7 = "Тройник - x1|" end
 				if GetVar("Garage_item_roulet").AsInt ~= 1 then item_8 = "Рулетка - x1|" end
 				if GetVar("Garage_item_pipe_wrench").AsInt ~= 1 then item_9 = "Шарнирный ключ «КШС» - x1|" end
-				if GetVar("Garage_item_tb").AsInt ~= 2 then item_10 = "Туалетная бумага - x"..(2 - GetVar("Garage_item_tb").AsInt).."|" end
+				if GetVar("Garage_item_tb").AsInt ~= 1 then item_10 = "Туалетная бумага - x1|" end
 				if GetVar("Garage_item_fitanyashka").AsInt ~= 1 then item_11 = "Дакимакура FitaNyashka - x1|" end
-				if GetVar("Garage_item_kaktus").AsInt ~= 3 then item_12 = "Кактус - x"..(3 - GetVar("Garage_item_kaktus").AsInt) end
+				if GetVar("Garage_item_kaktus").AsInt ~= 1 then item_12 = "Кактус - x1" end
 
 				local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7..""..item_8..""..item_9..""..item_10..""..item_11..""..item_12
 

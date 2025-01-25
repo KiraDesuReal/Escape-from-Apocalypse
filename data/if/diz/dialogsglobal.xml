@@ -872,14 +872,14 @@
 <!--Root/r0m0/Гараж постройка-->
 	<Reply
 		name="Dlg_npc_0013117"
-		text="Гараж - неотъемлемое место в жизни каждого махиниста, где из простых болтов и гаек создаются чудовищные бронемашины.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Генератор уровня @FF1D1D1DI|Болты - @FF1D1D1Dx1|Гайки - @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1|Изолента - @FF1D1D1Dx1|Лампа накаливания - @FF1D1D1Dx6|Силовой кабель - @FF1D1D1Dx1|Тройник - @FF1D1D1Dx2|Рулетка - @FF1D1D1Dx1|Шарнирный ключ «КШС» - @FF1D1D1Dx1|Туалетная бумага - @FF1D1D1Dx2|Дакимакура FitaNyashka - @FF1D1D1Dx1|Кактус - @FF1D1D1Dx3|Деньги: @FF1D1D1D500.000 монет|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Возможность создавать предметы|- Регенерация HP: @FF1D1D1D1ед/5сек"
+		text="Гараж - неотъемлемое место в жизни каждого махиниста, где из простых болтов и гаек создаются чудовищные бронемашины.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Генератор уровня @FF1D1D1DI|Болты - @FF1D1D1Dx1|Гайки - @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1|Изолента - @FF1D1D1Dx1|Лампа накаливания - @FF1D1D1Dx3|Силовой кабель - @FF1D1D1Dx1|Тройник - @FF1D1D1Dx1|Рулетка - @FF1D1D1Dx1|Шарнирный ключ «КШС» - @FF1D1D1Dx1|Туалетная бумага - @FF1D1D1Dx1|Дакимакура FitaNyashka - @FF1D1D1Dx1|Кактус - @FF1D1D1Dx1|Деньги: @FF1D1D1D500.000 монет|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Возможность создавать предметы|- Регенерация HP: @FF1D1D1D1ед/5сек"
 		role="NPC"
 		scriptCondition="GetVar('Generator_lvl').AsInt == 0 and GetVar('Garage_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0"
 		nextReplies="Dlg_npc_0013132" />
 
 	<Reply
 		name="Dlg_npc_0013118"
-		text="Гараж - неотъемлемое место в жизни каждого махиниста, где из простых болтов и гаек создаются чудовищные бронемашины.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Генератор уровня @FF1D1D1DI|Болты - @FF1D1D1Dx1|Гайки - @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1|Изолента - @FF1D1D1Dx1|Лампа накаливания - @FF1D1D1Dx6|Силовой кабель - @FF1D1D1Dx1|Тройник - @FF1D1D1Dx2|Рулетка - @FF1D1D1Dx1|Шарнирный ключ «КШС» - @FF1D1D1Dx1|Туалетная бумага - @FF1D1D1Dx2|Дакимакура FitaNyashka - @FF1D1D1Dx1|Кактус - @FF1D1D1Dx3|Деньги: @FF1D1D1D500.000 монет|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Возможность создавать предметы|- Регенерация HP: @FF1D1D1D1ед/5сек"
+		text="Гараж - неотъемлемое место в жизни каждого махиниста, где из простых болтов и гаек создаются чудовищные бронемашины.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Генератор уровня @FF1D1D1DI|Болты - @FF1D1D1Dx1|Гайки - @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1|Изолента - @FF1D1D1Dx1|Лампа накаливания - @FF1D1D1Dx3|Силовой кабель - @FF1D1D1Dx1|Тройник - @FF1D1D1Dx1|Рулетка - @FF1D1D1Dx1|Шарнирный ключ «КШС» - @FF1D1D1Dx1|Туалетная бумага - @FF1D1D1Dx1|Дакимакура FitaNyashka - @FF1D1D1Dx1|Кактус - @FF1D1D1Dx1|Деньги: @FF1D1D1D500.000 монет|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Возможность создавать предметы|- Регенерация HP: @FF1D1D1D1ед/5сек"
 		role="NPC"
 		scriptCondition="GetVar('Generator_lvl').AsInt >= 0 and GetVar('Garage_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0"
 		nextReplies="Dlg_npc_0013119 Dlg_npc_0013120 Dlg_npc_0013121 Dlg_npc_0013122 Dlg_npc_0013123 Dlg_npc_0013124 Dlg_npc_0013125 Dlg_npc_0013126 Dlg_npc_0013127 Dlg_npc_0013128 Dlg_npc_0013129 Dlg_npc_00131230 Dlg_npc_0013131 Dlg_npc_0013132 Dlg_npc_0013133" />
@@ -920,7 +920,7 @@
 		name="Dlg_npc_0013123"
 		text="Передать Лампу накаливания - x1"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('item_lump', 1) and not(GetVar('Garage_item_lump').AsInt==6)"
+		scriptCondition="HasPlayerAmountOfItems('item_lump', 1) and not(GetVar('Garage_item_lump').AsInt==3)"
 		scriptResult="RemoveItemsFromPlayerRepository('item_lump', 1); SetVar('Garage_item_lump', GetVar('Garage_item_lump').AsInt+1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_lump')"
 		nextReplies="Dlg_npc_0013118" />
 
@@ -936,8 +936,8 @@
 		name="Dlg_npc_0013125"
 		text="Передать Тройник - x1"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('item_tplug', 1) and not(GetVar('Garage_item_tplug').AsInt==2)"
-		scriptResult="RemoveItemsFromPlayerRepository('item_tplug', 1); SetVar('Garage_item_tplug', GetVar('Garage_item_tplug').AsInt+1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_tplug')"
+		scriptCondition="HasPlayerAmountOfItems('item_tplug', 1) and not(GetVar('Garage_item_tplug').AsInt==1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_tplug', 1); SetVar('Garage_item_tplug', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_tplug')"
 		nextReplies="Dlg_npc_0013118" />
 
 	<Reply
@@ -960,8 +960,8 @@
 		name="Dlg_npc_0013128"
 		text="Передать Туалетная бумага - x1"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('item_tb', 1) and not(GetVar('Garage_item_tb').AsInt==2)"
-		scriptResult="RemoveItemsFromPlayerRepository('item_tb', 1); SetVar('Garage_item_tb', GetVar('Garage_item_tb').AsInt+1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_tb')"
+		scriptCondition="HasPlayerAmountOfItems('item_tb', 1) and not(GetVar('Garage_item_tb').AsInt==1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_tb', 1); SetVar('Garage_item_tb', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_tb')"
 		nextReplies="Dlg_npc_0013118" />
 
 	<Reply
@@ -976,8 +976,8 @@
 		name="Dlg_npc_00131230"
 		text="Передать Кактус - x1"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('item_kaktus', 1) and not(GetVar('Garage_item_kaktus').AsInt==3)"
-		scriptResult="RemoveItemsFromPlayerRepository('item_kaktus', 1); SetVar('Garage_item_kaktus', GetVar('Garage_item_kaktus').AsInt+1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_kaktus')"
+		scriptCondition="HasPlayerAmountOfItems('item_kaktus', 1) and not(GetVar('Garage_item_kaktus').AsInt==1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_kaktus', 1); SetVar('Garage_item_kaktus', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_kaktus')"
 		nextReplies="Dlg_npc_0013118" />
 
 	<Reply
@@ -992,14 +992,14 @@
 		name="Dlg_npc_0013132"
 		text="Выход."
 		role="PLAYER"
-		scriptCondition="not(GetVar('Garage_item_bolts').AsInt == 1) or not(GetVar('Garage_item_nuts').AsInt == 1) or not(GetVar('Garage_item_pena').AsInt == 1) or not(GetVar('Garage_item_insulation').AsInt == 1) or not(GetVar('Garage_item_lump').AsInt == 6) or not(GetVar('Garage_item_cable').AsInt == 1) or not(GetVar('Garage_item_tplug').AsInt == 2) or not(GetVar('Garage_item_roulet').AsInt == 1) or not(GetVar('Garage_item_pipe_wrench').AsInt == 1) or not(GetVar('Garage_item_tb').AsInt == 2) or not(GetVar('Garage_item_fitanyashka').AsInt == 1) or not(GetVar('Garage_item_kaktus').AsInt == 3) or not(GetVar('Garage_money').AsInt == 1)"
+		scriptCondition="not(GetVar('Garage_item_bolts').AsInt == 1) or not(GetVar('Garage_item_nuts').AsInt == 1) or not(GetVar('Garage_item_pena').AsInt == 1) or not(GetVar('Garage_item_insulation').AsInt == 1) or not(GetVar('Garage_item_lump').AsInt == 3) or not(GetVar('Garage_item_cable').AsInt == 1) or not(GetVar('Garage_item_tplug').AsInt == 1) or not(GetVar('Garage_item_roulet').AsInt == 1) or not(GetVar('Garage_item_pipe_wrench').AsInt == 1) or not(GetVar('Garage_item_tb').AsInt == 1) or not(GetVar('Garage_item_fitanyashka').AsInt == 1) or not(GetVar('Garage_item_kaktus').AsInt == 1) or not(GetVar('Garage_money').AsInt == 1)"
 		scriptResult="EndConversation()" />
 
 	<Reply
 		name="Dlg_npc_0013133"
 		text="Построить."
 		role="PLAYER"
-		scriptCondition="GetVar('Garage_item_bolts').AsInt == 1 and GetVar('Garage_item_nuts').AsInt == 1 and GetVar('Garage_item_pena').AsInt == 1 and GetVar('Garage_item_insulation').AsInt == 1 and GetVar('Garage_item_lump').AsInt == 6 and GetVar('Garage_item_cable').AsInt == 1 and GetVar('Garage_item_tplug').AsInt == 2 and GetVar('Garage_item_roulet').AsInt == 1 and GetVar('Garage_item_pipe_wrench').AsInt == 1 and GetVar('Garage_item_tb').AsInt == 2 and GetVar('Garage_item_fitanyashka').AsInt == 1 and GetVar('Garage_item_kaktus').AsInt == 3 and GetVar('Garage_money').AsInt == 1"
+		scriptCondition="GetVar('Garage_item_bolts').AsInt == 1 and GetVar('Garage_item_nuts').AsInt == 1 and GetVar('Garage_item_pena').AsInt == 1 and GetVar('Garage_item_insulation').AsInt == 1 and GetVar('Garage_item_lump').AsInt == 3 and GetVar('Garage_item_cable').AsInt == 1 and GetVar('Garage_item_tplug').AsInt == 1 and GetVar('Garage_item_roulet').AsInt == 1 and GetVar('Garage_item_pipe_wrench').AsInt == 1 and GetVar('Garage_item_tb').AsInt == 1 and GetVar('Garage_item_fitanyashka').AsInt == 1 and GetVar('Garage_item_kaktus').AsInt == 1 and GetVar('Garage_money').AsInt == 1"
 		scriptResult="GetCurNpc():SetSpokenCount(1); TActivate('CreateGarage'); EndConversation()" />
 
 <!--Root/r0m0/Гараж: список крафтов-->
@@ -1008,7 +1008,38 @@
 		text="Находясь в гараже, с помощью верстака вы можете заниматься созданием предметов, оружия и модулей для своего автомобиля.|@FF0000AA|@FF1D1D1D[Выберите предмет для создания]"
 		role="NPC"
 		scriptCondition="GetVar('Generator_lvl').AsInt >=1 and GetVar('Garage_Builden').AsInt == 1"
-		nextReplies="Dlg_npc_0013210 Dlg_npc_0013211 Dlg_npc_0013212 Dlg_npc_0013213 Dlg_npc_0013214 Dlg_npc_0013215 Dlg_npc_0013216 Dlg_npc_0013217 Dlg_npc_0013218 Dlg_npc_0013219 Dlg_npc_0013220 Dlg_npc_0013221 Dlg_npc_0013222 Dlg_npc_0013223 Dlg_npc_0013224 Dlg_npc_0013225 Dlg_npc_0013226 Dlg_npc_0013227 Dlg_npc_0013228 Dlg_npc_0013229 Dlg_npc_0013230 Dlg_npc_0013231 Dlg_npc_0013232 Dlg_npc_0013233 Dlg_npc_0013234 Dlg_npc_0013235 Dlg_npc_0013236 Dlg_npc_0013237 Dlg_npc_0013238 Dlg_npc_0013239 Dlg_npc_0013240 Dlg_npc_0013241 Dlg_npc_0013242 Dlg_npc_0013243 Dlg_npc_0013244 Dlg_npc_0013245 Dlg_npc_0013246 Dlg_npc_0013247 Dlg_npc_0013248 Dlg_npc_0013249 Dlg_npc_0013250 Dlg_npc_0013251 Dlg_npc_0013252 Dlg_npc_0013253 Dlg_npc_0013254 Dlg_npc_0013255 Dlg_npc_0013256 Dlg_npc_0013257 Dlg_npc_0013258 Dlg_npc_0013259 Dlg_npc_0013201" />
+		nextReplies="Dlg_npc_0013300 Dlg_npc_0013301 Dlg_npc_001335 Dlg_npc_0013302 Dlg_npc_0013303 Dlg_npc_0013304 Dlg_npc_0013306 Dlg_npc_0013307 Dlg_npc_0013308 Dlg_npc_0013309 Dlg_npc_0013201" />
+
+	<Reply
+		name="Dlg_npc_0013201"
+		text="Выход."
+		role="PLAYER"
+		scriptResult="EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_00132010"
+		text="Назад."
+		role="PLAYER"
+		nextReplies="Dlg_npc_0013200" />
+
+<!--Root/r0m0/Гараж: Вооружение-->
+	<Reply
+		name="Dlg_npc_0013300"
+		text="Вооружение."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_craft_guns" />
+
+	<Reply
+		name="Dlg_npc_garage_craft_guns"
+		text="Находясь в гараже, с помощью верстака вы можете заниматься созданием предметов, оружия и модулей для своего автомобиля.|@FF0000AA|@FF1D1D1D[Выберите предмет для создания]"
+		role="NPC"
+		nextReplies="Dlg_npc_0013237 Dlg_npc_0013210 Dlg_npc_0013211 Dlg_npc_0013238 Dlg_npc_0013239 Dlg_npc_0013241 Dlg_npc_0013243 Dlg_npc_0013240 Dlg_npc_0013242 Dlg_npc_0013244 Dlg_npc_0013245 Dlg_npc_0013246 Dlg_npc_0013247 Dlg_npc_0013248 Dlg_npc_0013249 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_0013237"
+		text="Американский шершень."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_american_hornet_0 Dlg_npc_garage_american_hornet_1" />
 
 	<Reply
 		name="Dlg_npc_0013210"
@@ -1023,162 +1054,6 @@
 		nextReplies="Dlg_npc_garage_kord_0 Dlg_npc_garage_kord_1" />
 
 	<Reply
-		name="Dlg_npc_0013212"
-		text="Плата."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_plate_0 Dlg_npc_garage_plate_1" />
-
-	<Reply
-		name="Dlg_npc_0013213"
-		text="Конденсаторы."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_kondesators_0 Dlg_npc_garage_kondesators_1" />
-
-	<Reply
-		name="Dlg_npc_0013214"
-		text="Детали."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_details_0 Dlg_npc_garage_details_1" />
-
-	<Reply
-		name="Dlg_npc_0013215"
-		text="Металлолом."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_metall_0 Dlg_npc_garage_metall_1" />
-
-	<Reply
-		name="Dlg_npc_0013216"
-		text="Крепкий металл."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_metall_use_0 Dlg_npc_garage_metall_use_1" />
-
-	<Reply
-		name="Dlg_npc_0013217"
-		text="Улучшенное оборудование."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_machinery_use_0 Dlg_npc_garage_machinery_use_1" />
-
-	<Reply
-		name="Dlg_npc_0013218"
-		text="Высокотехнологичная электроника."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_electronics_use_0 Dlg_npc_garage_electronics_use_1" />
-
-	<Reply
-		name="Dlg_npc_0013219"
-		text="Бочка с топливом."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_oil_use_0 Dlg_npc_garage_oil_use_1" />
-
-	<Reply
-		name="Dlg_npc_0013220"
-		text="Канистра топлива."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_fuel_full_use_0 Dlg_npc_garage_fuel_full_use_1" />
-
-	<Reply
-		name="Dlg_npc_0013221"
-		text="Провода."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_wires_0 Dlg_npc_garage_wires_1" />
-
-	<Reply
-		name="Dlg_npc_0013222"
-		text="Порох «Глухарь»."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_gunpowder_0 Dlg_npc_garage_gunpowder_1" />
-
-	<Reply
-		name="Dlg_npc_0013223"
-		text="Ящик патронов для Пулемёта."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_ammo_chest_machinegun_0 Dlg_npc_garage_ammo_chest_machinegun_1" />
-
-	<Reply
-		name="Dlg_npc_0013224"
-		text="Тройник."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_tplug_0 Dlg_npc_garage_tplug_1" />
-
-	<Reply
-		name="Dlg_npc_0013225"
-		text="Магнит."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_magnet_0 Dlg_npc_garage_magnet_1" />
-
-	<Reply
-		name="Dlg_npc_0013226"
-		text="Круглогубцы."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_pliers_round_0 Dlg_npc_garage_pliers_round_1" />
-
-	<Reply
-		name="Dlg_npc_0013227"
-		text="Силовой кабель."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_cable_0 Dlg_npc_garage_cable_1" />
-
-	<Reply
-		name="Dlg_npc_0013228"
-		text="Газоанализатор."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_gazan_0 Dlg_npc_garage_gazan_1" />
-
-	<Reply
-		name="Dlg_npc_0013229"
-		text="Счетчик Гейгера."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_geiger_0 Dlg_npc_garage_geiger_1" />
-
-	<Reply
-		name="Dlg_npc_0013230"
-		text="Автомобильный аккумулятор."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_car_battery_0 Dlg_npc_garage_car_battery_1" />
-
-	<Reply
-		name="Dlg_npc_0013231"
-		text="Аккумулятор."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_accum_0 Dlg_npc_garage_accum_1" />
-
-	<Reply
-		name="Dlg_npc_0013232"
-		text="Литиевая аккумуляторная батарейка."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_green_battery_0 Dlg_npc_garage_green_battery_1" />
-
-	<Reply
-		name="Dlg_npc_0013233"
-		text="Двигатель."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_engine_0 Dlg_npc_garage_engine_1" />
-
-	<Reply
-		name="Dlg_npc_0013234"
-		text="Свеча зажигания."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_svech_0 Dlg_npc_garage_svech_1" />
-
-	<Reply
-		name="Dlg_npc_0013235"
-		text="Кабелерез «Bulbex»."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_buldex_0 Dlg_npc_garage_buldex_1" />
-
-	<Reply
-		name="Dlg_npc_0013236"
-		text="Набор инструментов."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_toolset_0 Dlg_npc_garage_toolset_1" />
-
-	<Reply
-		name="Dlg_npc_0013237"
-		text="Американский шершень."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_american_hornet_0 Dlg_npc_garage_american_hornet_1" />
-
-	<Reply
 		name="Dlg_npc_0013238"
 		text="Максим."
 		role="PLAYER"
@@ -1191,28 +1066,28 @@
 		nextReplies="Dlg_npc_garage_fagot_0 Dlg_npc_garage_fagot_1" />
 
 	<Reply
-		name="Dlg_npc_0013240"
-		text="Рапира."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_rapier_0 Dlg_npc_garage_rapier_1" />
-
-	<Reply
 		name="Dlg_npc_0013241"
 		text="Вулкан."
 		role="PLAYER"
 		nextReplies="Dlg_npc_garage_vulcan_0 Dlg_npc_garage_vulcan_1" />
 
 	<Reply
-		name="Dlg_npc_0013242"
-		text="Флаг."
-		role="PLAYER"
-		nextReplies="Dlg_npc_garage_flag_0 Dlg_npc_garage_flag_1" />
-
-	<Reply
 		name="Dlg_npc_0013243"
 		text="КПВТ."
 		role="PLAYER"
 		nextReplies="Dlg_npc_garage_kpvt_0 Dlg_npc_garage_kpvt_1" />
+
+	<Reply
+		name="Dlg_npc_0013240"
+		text="Рапира."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_rapier_0 Dlg_npc_garage_rapier_1" />
+
+	<Reply
+		name="Dlg_npc_0013242"
+		text="Флаг."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_flag_0 Dlg_npc_garage_flag_1" />
 
 	<Reply
 		name="Dlg_npc_0013244"
@@ -1250,6 +1125,25 @@
 		role="PLAYER"
 		nextReplies="Dlg_npc_garage_turbo_0 Dlg_npc_garage_turbo_1" />
 
+<!--Root/r0m0/Гараж: Амуниция-->
+	<Reply
+		name="Dlg_npc_0013301"
+		text="Амуниция."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_craft_ammunition" />
+
+	<Reply
+		name="Dlg_npc_garage_craft_ammunition"
+		text="Находясь в гараже, с помощью верстака вы можете заниматься созданием предметов, оружия и модулей для своего автомобиля.|@FF0000AA|@FF1D1D1D[Выберите предмет для создания]"
+		role="NPC"
+		nextReplies="Dlg_npc_0013223 Dlg_npc_0013250 Dlg_npc_0013251 Dlg_npc_0013252 Dlg_npc_0013253 Dlg_npc_0013254 Dlg_npc_0013255 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_0013223"
+		text="Ящик патронов для Пулемёта."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_ammo_chest_machinegun_0 Dlg_npc_garage_ammo_chest_machinegun_1" />
+
 	<Reply
 		name="Dlg_npc_0013250"
 		text="Ящик дроби для Дробовика."
@@ -1286,6 +1180,160 @@
 		role="PLAYER"
 		nextReplies="Dlg_npc_garage_ammo_ballon_plasmagun_0 Dlg_npc_garage_ammo_ballon_plasmagun_1" />
 
+<!--Root/r0m0/Гараж: Гаджеты-->
+	<Reply
+		name="Dlg_npc_001335"
+		text="Гаджеты."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_craft_gadgets" />
+
+	<Reply
+		name="Dlg_npc_garage_craft_gadgets"
+		text="Находясь в гараже, с помощью верстака вы можете заниматься созданием предметов, оружия и модулей для своего автомобиля.|@FF0000AA|@FF1D1D1D[Выберите предмет для создания]"
+		role="NPC"
+		nextReplies="Dlg_npc_0013260 Dlg_npc_0013261 Dlg_npc_0013262 Dlg_npc_0013263 Dlg_npc_0013264 Dlg_npc_0013265 Dlg_npc_0013266 Dlg_npc_0013267 Dlg_npc_0013268 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_0013260"
+		text="Электромеханический комплекс ''Сфено''."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_gadget_sfeno_0 Dlg_npc_garage_gadget_sfeno_1" />
+
+	<Reply
+		name="Dlg_npc_0013261"
+		text="Магнитно-оптическая система ''Квазар''."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_gadget_kvazar_0 Dlg_npc_garage_gadget_kvazar_1" />
+
+	<Reply
+		name="Dlg_npc_0013262"
+		text="Комплекс ''FireEye''."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_gadget_fireeye_0 Dlg_npc_garage_gadget_fireeye_1" />
+
+	<Reply
+		name="Dlg_npc_0013263"
+		text="Система ''Doom-4''."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_gadget_doom4_0 Dlg_npc_garage_gadget_doom4_1" />
+
+	<Reply
+		name="Dlg_npc_0013264"
+		text="Катанные броневые листы с дополнительным цементированием."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_gadget_durability2_0 Dlg_npc_garage_gadget_durability2_1" />
+
+	<Reply
+		name="Dlg_npc_0013265"
+		text="Электронная инжекторная система."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_gadget_speed_and_torque_0 Dlg_npc_garage_gadget_speed_and_torque_1" />
+
+	<Reply
+		name="Dlg_npc_0013266"
+		text="Система ''Sagitta''."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_gadget_sagitta_0 Dlg_npc_garage_gadget_sagitta_1" />
+
+	<Reply
+		name="Dlg_npc_0013267"
+		text="Система ''Альбатрос''."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_gadget_albatros_0 Dlg_npc_garage_gadget_albatros_1" />
+
+	<Reply
+		name="Dlg_npc_0013268"
+		text="Система ''Сато''."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_gadget_sato_0 Dlg_npc_garage_gadget_sato_1" />
+
+<!--Root/r0m0/Гараж: Предметы для использования-->
+	<Reply
+		name="Dlg_npc_0013302"
+		text="Предметы для использования."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_craft_use_items" />
+
+	<Reply
+		name="Dlg_npc_garage_craft_use_items"
+		text="Находясь в гараже, с помощью верстака вы можете заниматься созданием предметов, оружия и модулей для своего автомобиля.|@FF0000AA|@FF1D1D1D[Выберите предмет для создания]"
+		role="NPC"
+		nextReplies="Dlg_npc_0013216 Dlg_npc_0013217 Dlg_npc_0013218 Dlg_npc_0013219 Dlg_npc_0013220 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_0013216"
+		text="Крепкий металл."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_metall_use_0 Dlg_npc_garage_metall_use_1" />
+
+	<Reply
+		name="Dlg_npc_0013217"
+		text="Улучшенное оборудование."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_machinery_use_0 Dlg_npc_garage_machinery_use_1" />
+
+	<Reply
+		name="Dlg_npc_0013218"
+		text="Высокотехнологичная электроника."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_electronics_use_0 Dlg_npc_garage_electronics_use_1" />
+
+	<Reply
+		name="Dlg_npc_0013219"
+		text="Бочка с топливом."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_oil_use_0 Dlg_npc_garage_oil_use_1" />
+
+	<Reply
+		name="Dlg_npc_0013220"
+		text="Канистра топлива."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_fuel_full_use_0 Dlg_npc_garage_fuel_full_use_1" />
+
+<!--Root/r0m0/Гараж: Стройматериалы-->
+	<Reply
+		name="Dlg_npc_0013303"
+		text="Стройматериалы."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_craft_building_items" />
+
+	<Reply
+		name="Dlg_npc_garage_craft_building_items"
+		text="Находясь в гараже, с помощью верстака вы можете заниматься созданием предметов, оружия и модулей для своего автомобиля.|@FF0000AA|@FF1D1D1D[Выберите предмет для создания]"
+		role="NPC"
+		nextReplies="Dlg_npc_0013214 Dlg_npc_0013215 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_0013214"
+		text="Детали."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_details_0 Dlg_npc_garage_details_1" />
+
+	<Reply
+		name="Dlg_npc_0013215"
+		text="Металлолом."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_metall_0 Dlg_npc_garage_metall_1" />
+
+<!--Root/r0m0/Гараж: Электроника-->
+	<Reply
+		name="Dlg_npc_0013304"
+		text="Электроника."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_craft_electronics_items" />
+
+	<Reply
+		name="Dlg_npc_garage_craft_electronics_items"
+		text="Находясь в гараже, с помощью верстака вы можете заниматься созданием предметов, оружия и модулей для своего автомобиля.|@FF0000AA|@FF1D1D1D[Выберите предмет для создания]"
+		role="NPC"
+		nextReplies="Dlg_npc_0013227 Dlg_npc_0013256 Dlg_npc_0013257 Dlg_npc_0013258 Dlg_npc_0013212 Dlg_npc_0013213 Dlg_npc_0013221 Dlg_npc_0013224 Dlg_npc_0013225 Dlg_npc_0013228 Dlg_npc_0013229 Dlg_npc_0013233 Dlg_npc_0013234 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_0013227"
+		text="Силовой кабель."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_cable_0 Dlg_npc_garage_cable_1" />
+
 	<Reply
 		name="Dlg_npc_0013256"
 		text="Лампа накаливания."
@@ -1305,22 +1353,158 @@
 		nextReplies="Dlg_npc_garage_ultra_lump_0 Dlg_npc_garage_ultra_lump_1" />
 
 	<Reply
+		name="Dlg_npc_0013212"
+		text="Плата."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_plate_0 Dlg_npc_garage_plate_1" />
+
+	<Reply
+		name="Dlg_npc_0013213"
+		text="Конденсаторы."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_kondesators_0 Dlg_npc_garage_kondesators_1" />
+
+	<Reply
+		name="Dlg_npc_0013221"
+		text="Провода."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_wires_0 Dlg_npc_garage_wires_1" />
+
+	<Reply
+		name="Dlg_npc_0013224"
+		text="Тройник."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_tplug_0 Dlg_npc_garage_tplug_1" />
+
+	<Reply
+		name="Dlg_npc_0013225"
+		text="Магнит."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_magnet_0 Dlg_npc_garage_magnet_1" />
+
+	<Reply
+		name="Dlg_npc_0013228"
+		text="Газоанализатор."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_gazan_0 Dlg_npc_garage_gazan_1" />
+
+	<Reply
+		name="Dlg_npc_0013229"
+		text="Счетчик Гейгера."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_geiger_0 Dlg_npc_garage_geiger_1" />
+
+	<Reply
+		name="Dlg_npc_0013233"
+		text="Двигатель."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_engine_0 Dlg_npc_garage_engine_1" />
+
+	<Reply
+		name="Dlg_npc_0013234"
+		text="Свеча зажигания."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_svech_0 Dlg_npc_garage_svech_1" />
+
+<!--Root/r0m0/Гараж: Энергия-->
+	<Reply
+		name="Dlg_npc_0013306"
+		text="Энергия."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_craft_energy_items" />
+
+	<Reply
+		name="Dlg_npc_garage_craft_energy_items"
+		text="Находясь в гараже, с помощью верстака вы можете заниматься созданием предметов, оружия и модулей для своего автомобиля.|@FF0000AA|@FF1D1D1D[Выберите предмет для создания]"
+		role="NPC"
+		nextReplies="Dlg_npc_0013231 Dlg_npc_0013230 Dlg_npc_0013232 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_0013231"
+		text="Аккумулятор."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_accum_0 Dlg_npc_garage_accum_1" />
+
+	<Reply
+		name="Dlg_npc_0013230"
+		text="Автомобильный аккумулятор."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_car_battery_0 Dlg_npc_garage_car_battery_1" />
+
+	<Reply
+		name="Dlg_npc_0013232"
+		text="Литиевая аккумуляторная батарейка."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_green_battery_0 Dlg_npc_garage_green_battery_1" />
+
+<!--Root/r0m0/Гараж: Возгораемые предметы-->
+	<Reply
+		name="Dlg_npc_0013307"
+		text="Возгораемые предметы."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_craft_flammable_items" />
+
+	<Reply
+		name="Dlg_npc_garage_craft_flammable_items"
+		text="Находясь в гараже, с помощью верстака вы можете заниматься созданием предметов, оружия и модулей для своего автомобиля.|@FF0000AA|@FF1D1D1D[Выберите предмет для создания]"
+		role="NPC"
+		nextReplies="Dlg_npc_0013222 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_0013222"
+		text="Порох «Глухарь»."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_gunpowder_0 Dlg_npc_garage_gunpowder_1" />
+
+<!--Root/r0m0/Гараж: Инструменты-->
+	<Reply
+		name="Dlg_npc_0013308"
+		text="Инструменты."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_craft_tools_items" />
+
+	<Reply
+		name="Dlg_npc_garage_craft_tools_items"
+		text="Находясь в гараже, с помощью верстака вы можете заниматься созданием предметов, оружия и модулей для своего автомобиля.|@FF0000AA|@FF1D1D1D[Выберите предмет для создания]"
+		role="NPC"
+		nextReplies="Dlg_npc_0013226 Dlg_npc_0013235 Dlg_npc_0013236 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_0013226"
+		text="Круглогубцы."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_pliers_round_0 Dlg_npc_garage_pliers_round_1" />
+
+	<Reply
+		name="Dlg_npc_0013235"
+		text="Кабелерез «Bulbex»."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_buldex_0 Dlg_npc_garage_buldex_1" />
+
+	<Reply
+		name="Dlg_npc_0013236"
+		text="Набор инструментов."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_toolset_0 Dlg_npc_garage_toolset_1" />
+
+<!--Root/r0m0/Гараж: Другое-->
+	<Reply
+		name="Dlg_npc_0013309"
+		text="Другое."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_craft_other_items" />
+
+	<Reply
+		name="Dlg_npc_garage_craft_other_items"
+		text="Находясь в гараже, с помощью верстака вы можете заниматься созданием предметов, оружия и модулей для своего автомобиля.|@FF0000AA|@FF1D1D1D[Выберите предмет для создания]"
+		role="NPC"
+		nextReplies="Dlg_npc_0013259 Dlg_npc_00132010" />
+
+	<Reply
 		name="Dlg_npc_0013259"
 		text="Статуэтка Кэ Цин."
 		role="PLAYER"
 		nextReplies="Dlg_npc_garage_keqing_0 Dlg_npc_garage_keqing_1" />
-
-	<Reply
-		name="Dlg_npc_0013201"
-		text="Выход."
-		role="PLAYER"
-		scriptResult="EndConversation()" />
-
-	<Reply
-		name="Dlg_npc_00132010"
-		text="Назад."
-		role="PLAYER"
-		nextReplies="Dlg_npc_0013200" />
 
 <!--Root/r0m0/Гараж: крафт - ПКТ-->
 	<Reply
@@ -6019,6 +6203,984 @@
 		scriptCondition="GetVar('GarageCraft_Keqing_item_fitanyashka').AsInt == 1 and GetVar('GarageCraft').AsInt == 3"
 		scriptResult="SetVar('GarageCraft', 0); SetVar('GarageCraftingName', '0'); AddItemsToPlayerRepository('item_keqing', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_keqing'); SetVar('GarageCraft_Keqing_item_fitanyashka', 0)"
 		nextReplies="Dlg_npc_garage_keqing_0 Dlg_npc_garage_keqing_1" />
+
+<!--Root/r0m0/Гараж: крафт - Электромеханический комплекс "Сфено"-->
+	<Reply
+		name="Dlg_npc_garage_gadget_sfeno_0"
+		text="Создание: @FF1D1D1DЭлектромеханический комплекс ''Сфено''|Количество: @FF1D1D1D1|@FF0000AA|Скорострельность огнестрельного оружия: @FF1D1D1D+30%|Повреждение огнестрельного оружия: @FF1D1D1D+30%|@FF0000AA|Время создания: @FF1D1D1D00:40:00|@FF0000AA|@FF780a0a[Включите генератор]|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|Детали - @FF1D1D1Dx2|На выбор: @FF1D1D1D[Рабочее оборудование - x2, Улучшенное оборудование - x2]|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Generator_on').AsInt == 0"
+		nextReplies="Dlg_npc_garage_gadget_sfeno_3 Dlg_npc_garage_gadget_sfeno_5 Dlg_npc_garage_gadget_sfeno_7 Dlg_npc_garage_gadget_sfeno_9 Dlg_npc_garage_gadget_sfeno_11 Dlg_npc_garage_gadget_sfeno_12 Dlg_npc_garage_gadget_sfeno_13 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sfeno_1"
+		text="Создание: @FF1D1D1DЭлектромеханический комплекс ''Сфено''|Количество: @FF1D1D1D1|@FF0000AA|Скорострельность огнестрельного оружия: @FF1D1D1D+30%|Повреждение огнестрельного оружия: @FF1D1D1D+30%|@FF0000AA|Время создания: @FF1D1D1D00:40:00|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|Детали - @FF1D1D1Dx2|На выбор: @FF1D1D1D[Рабочее оборудование - x2, Улучшенное оборудование - x2]|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Generator_on').AsInt == 1"
+		nextReplies="Dlg_npc_garage_gadget_sfeno_2 Dlg_npc_garage_gadget_sfeno_3 Dlg_npc_garage_gadget_sfeno_4 Dlg_npc_garage_gadget_sfeno_5 Dlg_npc_garage_gadget_sfeno_6 Dlg_npc_garage_gadget_sfeno_7 Dlg_npc_garage_gadget_sfeno_8 Dlg_npc_garage_gadget_sfeno_9 Dlg_npc_garage_gadget_sfeno_10 Dlg_npc_garage_gadget_sfeno_11 Dlg_npc_garage_gadget_sfeno_12 Dlg_npc_garage_gadget_sfeno_13 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sfeno_2"
+		text="Передать Детали - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('details', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetSfeno_details').AsInt == 2)"
+		scriptResult="RemoveItemsFromPlayerRepository('details', 1); SetVar('GarageCraft_GadgetSfeno_details', GetVar('GarageCraft_GadgetSfeno_details').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'details')"
+		nextReplies="Dlg_npc_garage_gadget_sfeno_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sfeno_3"
+		text="Забрать Детали - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSfeno_details').AsInt > 0 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('details', 1); SetVar('GarageCraft_GadgetSfeno_details', GetVar('GarageCraft_GadgetSfeno_details').AsInt - 1); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'details')"
+		nextReplies="Dlg_npc_garage_gadget_sfeno_0 Dlg_npc_garage_gadget_sfeno_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sfeno_4"
+		text="Передать Рабочее оборудование - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('machinery', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetSfeno_machinery').AsInt == 2) and not(GetVar('GarageCraft_GadgetSfeno_machinery_use').AsInt > 0)"
+		scriptResult="RemoveItemsFromPlayerRepository('machinery', 1); SetVar('GarageCraft_GadgetSfeno_machinery', GetVar('GarageCraft_GadgetSfeno_machinery').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'machinery')"
+		nextReplies="Dlg_npc_garage_gadget_sfeno_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sfeno_5"
+		text="Забрать Рабочее оборудование - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSfeno_machinery').AsInt > 0 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('machinery', 1); SetVar('GarageCraft_GadgetSfeno_machinery', GetVar('GarageCraft_GadgetSfeno_machinery').AsInt - 1); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'machinery')"
+		nextReplies="Dlg_npc_garage_gadget_sfeno_0 Dlg_npc_garage_gadget_sfeno_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sfeno_6"
+		text="Передать Улучшенное оборудование - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('machinery_use', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetSfeno_machinery_use').AsInt == 2) and not(GetVar('GarageCraft_GadgetSfeno_machinery').AsInt > 0)"
+		scriptResult="RemoveItemsFromPlayerRepository('machinery_use', 1); SetVar('GarageCraft_GadgetSfeno_machinery_use', GetVar('GarageCraft_GadgetSfeno_machinery_use').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'machinery_use')"
+		nextReplies="Dlg_npc_garage_gadget_sfeno_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sfeno_7"
+		text="Забрать Улучшенное оборудование - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSfeno_machinery_use').AsInt > 0 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('machinery_use', 1); SetVar('GarageCraft_GadgetSfeno_machinery_use', GetVar('GarageCraft_GadgetSfeno_machinery_use').AsInt - 1); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'machinery_use')"
+		nextReplies="Dlg_npc_garage_gadget_sfeno_0 Dlg_npc_garage_gadget_sfeno_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sfeno_8"
+		text="Передать Набор инструментов - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_toolset', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetSfeno_item_toolset').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_toolset', 1); SetVar('GarageCraft_GadgetSfeno_item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_toolset')"
+		nextReplies="Dlg_npc_garage_gadget_sfeno_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sfeno_9"
+		text="Забрать Набор инструментов - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSfeno_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('item_toolset', 1); SetVar('GarageCraft_GadgetSfeno_item_toolset', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_toolset')"
+		nextReplies="Dlg_npc_garage_gadget_sfeno_0 Dlg_npc_garage_gadget_sfeno_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sfeno_10"
+		text="Начать сборку!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSfeno_details').AsInt == 2 and GetVar('GarageCraft_GadgetSfeno_machinery').AsInt == 2 and GetVar('GarageCraft_GadgetSfeno_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0 or GetVar('GarageCraft_GadgetSfeno_details').AsInt == 2 and GetVar('GarageCraft_GadgetSfeno_machinery_use').AsInt == 2 and GetVar('GarageCraft_GadgetSfeno_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="TActivate('GarageCraftingStart'); SetVar('GarageCraftingName', 'firing_rate_guns_and_add_damage_guns'); SetVar('GarageCrafting_time_hour', 0); SetVar('GarageCrafting_time_minute', 40); SetVar('GarageCrafting_time_second', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sfeno_11"
+		text="Прервать сборку!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSfeno_details').AsInt == 2 and GetVar('GarageCraft_GadgetSfeno_machinery').AsInt == 2 and GetVar('GarageCraft_GadgetSfeno_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 1"
+		scriptResult="TActivate('IfCraftingTimeStop'); AddItemsToPlayerRepository('details', 2); AddItemsToPlayerRepository('machinery', 2); AddItemsToPlayerRepository('item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing_count', 'details', 2); AddFadingMsgByStrIdFormatted('fm_player_add_thing_count', 'machinery', 2); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); SetVar('GarageCraft_GadgetSfeno_details', 0); SetVar('GarageCraft_GadgetSfeno_machinery', 0); SetVar('GarageCraft_GadgetSfeno_machinery_use', 0); SetVar('GarageCraft_GadgetSfeno_item_toolset', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sfeno_12"
+		text="Прервать сборку!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSfeno_details').AsInt == 2 and GetVar('GarageCraft_GadgetSfeno_machinery_use').AsInt == 2 and GetVar('GarageCraft_GadgetSfeno_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 1"
+		scriptResult="TActivate('IfCraftingTimeStop'); AddItemsToPlayerRepository('details', 2); AddItemsToPlayerRepository('machinery_use', 2); AddItemsToPlayerRepository('item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing_count', 'details', 2); AddFadingMsgByStrIdFormatted('fm_player_add_thing_count', 'machinery_use', 2); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); SetVar('GarageCraft_GadgetSfeno_details', 0); SetVar('GarageCraft_GadgetSfeno_machinery', 0); SetVar('GarageCraft_GadgetSfeno_machinery_use', 0); SetVar('GarageCraft_GadgetSfeno_item_toolset', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sfeno_13"
+		text="Получить созданный предмет!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSfeno_details').AsInt == 2 and GetVar('GarageCraft_GadgetSfeno_machinery').AsInt == 2 and GetVar('GarageCraft_GadgetSfeno_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 3 or GetVar('GarageCraft_GadgetSfeno_details').AsInt == 2 and GetVar('GarageCraft_GadgetSfeno_machinery_use').AsInt == 2 and GetVar('GarageCraft_GadgetSfeno_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 3"
+		scriptResult="SetVar('GarageCraft', 0); SetVar('GarageCraftingName', '0'); AddItemsToPlayerRepository('item_toolset', 1); AddItemsToPlayerRepository('firing_rate_guns_and_add_damage_guns', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'firing_rate_guns_and_add_damage_guns'); SetVar('GarageCraft_GadgetSfeno_details', 0); SetVar('GarageCraft_GadgetSfeno_machinery', 0); SetVar('GarageCraft_GadgetSfeno_machinery_use', 0); SetVar('GarageCraft_GadgetSfeno_item_toolset', 0)"
+		nextReplies="Dlg_npc_garage_gadget_sfeno_0 Dlg_npc_garage_gadget_sfeno_1" />
+
+<!--Root/r0m0/Гараж: крафт - Магнитно-оптическая система "Квазар"-->
+	<Reply
+		name="Dlg_npc_garage_gadget_kvazar_0"
+		text="Создание: @FF1D1D1DМагнитно-оптическая система ''Квазар''|Количество: @FF1D1D1D1|@FF0000AA|Скорострельность энергетического оружия: @FF1D1D1D+20%|Повреждение энергетического оружия: @FF1D1D1D+40%|@FF0000AA|Время создания: @FF1D1D1D00:40:00|@FF0000AA|@FF780a0a[Включите генератор]|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|Детали - @FF1D1D1Dx2|Литиевая аккумуляторная батарейка - @FF1D1D1Dx1|Повербанк - @FF1D1D1Dx1|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Generator_on').AsInt == 0"
+		nextReplies="Dlg_npc_garage_gadget_kvazar_3 Dlg_npc_garage_gadget_kvazar_5 Dlg_npc_garage_gadget_kvazar_7 Dlg_npc_garage_gadget_kvazar_9 Dlg_npc_garage_gadget_kvazar_11 Dlg_npc_garage_gadget_kvazar_12 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_kvazar_1"
+		text="Создание: @FF1D1D1DМагнитно-оптическая система ''Квазар''|Количество: @FF1D1D1D1|@FF0000AA|Скорострельность энергетического оружия: @FF1D1D1D+20%|Повреждение энергетического оружия: @FF1D1D1D+40%|@FF0000AA|Время создания: @FF1D1D1D00:40:00|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|Детали - @FF1D1D1Dx2|Литиевая аккумуляторная батарейка - @FF1D1D1Dx1|Повербанк - @FF1D1D1Dx1|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Generator_on').AsInt == 1"
+		nextReplies="Dlg_npc_garage_gadget_kvazar_2 Dlg_npc_garage_gadget_kvazar_3 Dlg_npc_garage_gadget_kvazar_4 Dlg_npc_garage_gadget_kvazar_5 Dlg_npc_garage_gadget_kvazar_6 Dlg_npc_garage_gadget_kvazar_7 Dlg_npc_garage_gadget_kvazar_8 Dlg_npc_garage_gadget_kvazar_9 Dlg_npc_garage_gadget_kvazar_10 Dlg_npc_garage_gadget_kvazar_11 Dlg_npc_garage_gadget_kvazar_12 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_kvazar_2"
+		text="Передать Детали - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('details', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetKvazar_details').AsInt == 2)"
+		scriptResult="RemoveItemsFromPlayerRepository('details', 1); SetVar('GarageCraft_GadgetKvazar_details', GetVar('GarageCraft_GadgetKvazar_details').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'details')"
+		nextReplies="Dlg_npc_garage_gadget_kvazar_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_kvazar_3"
+		text="Забрать Детали - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetKvazar_details').AsInt > 0 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('details', 1); SetVar('GarageCraft_GadgetKvazar_details', GetVar('GarageCraft_GadgetKvazar_details').AsInt - 1); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'details')"
+		nextReplies="Dlg_npc_garage_gadget_kvazar_0 Dlg_npc_garage_gadget_kvazar_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_kvazar_4"
+		text="Передать Литиевую аккумуляторную батарейку - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_green_battery', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetKvazar_item_green_battery').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_green_battery', 1); SetVar('GarageCraft_GadgetKvazar_item_green_battery', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_green_battery')"
+		nextReplies="Dlg_npc_garage_gadget_kvazar_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_kvazar_5"
+		text="Забрать Литиевую аккумуляторную батарейку - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetKvazar_item_green_battery').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('item_green_battery', 1); SetVar('GarageCraft_GadgetKvazar_item_green_battery', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_green_battery')"
+		nextReplies="Dlg_npc_garage_gadget_kvazar_0 Dlg_npc_garage_gadget_kvazar_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_kvazar_6"
+		text="Передать Повербанк - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_powerbank', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetKvazar_item_powerbank').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_powerbank', 1); SetVar('GarageCraft_GadgetKvazar_item_powerbank', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_powerbank')"
+		nextReplies="Dlg_npc_garage_gadget_kvazar_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_kvazar_7"
+		text="Забрать Повербанк - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetKvazar_item_powerbank').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('item_powerbank', 1); SetVar('GarageCraft_GadgetKvazar_item_powerbank', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_powerbank')"
+		nextReplies="Dlg_npc_garage_gadget_kvazar_0 Dlg_npc_garage_gadget_kvazar_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_kvazar_8"
+		text="Передать Набор инструментов - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_toolset', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetKvazar_item_toolset').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_toolset', 1); SetVar('GarageCraft_GadgetKvazar_item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_toolset')"
+		nextReplies="Dlg_npc_garage_gadget_kvazar_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_kvazar_9"
+		text="Забрать Набор инструментов - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetKvazar_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('item_toolset', 1); SetVar('GarageCraft_GadgetKvazar_item_toolset', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_toolset')"
+		nextReplies="Dlg_npc_garage_gadget_kvazar_0 Dlg_npc_garage_gadget_kvazar_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_kvazar_10"
+		text="Начать сборку!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetKvazar_details').AsInt == 2 and GetVar('GarageCraft_GadgetKvazar_item_green_battery').AsInt == 1 and GetVar('GarageCraft_GadgetKvazar_item_powerbank').AsInt == 1 and GetVar('GarageCraft_GadgetKvazar_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="TActivate('GarageCraftingStart'); SetVar('GarageCraftingName', 'firing_rate_energy_and_add_damage_energy'); SetVar('GarageCrafting_time_hour', 0); SetVar('GarageCrafting_time_minute', 40); SetVar('GarageCrafting_time_second', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_kvazar_11"
+		text="Прервать сборку!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetKvazar_details').AsInt == 2 and GetVar('GarageCraft_GadgetKvazar_item_green_battery').AsInt == 1 and GetVar('GarageCraft_GadgetKvazar_item_powerbank').AsInt == 1 and GetVar('GarageCraft_GadgetKvazar_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 1"
+		scriptResult="TActivate('IfCraftingTimeStop'); AddItemsToPlayerRepository('details', 2); AddItemsToPlayerRepository('item_green_battery', 1); AddItemsToPlayerRepository('item_powerbank', 1); AddItemsToPlayerRepository('item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing_count', 'details', 2); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_green_battery'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_powerbank'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); SetVar('GarageCraft_GadgetKvazar_details', 0); SetVar('GarageCraft_GadgetKvazar_item_green_battery', 0); SetVar('GarageCraft_GadgetKvazar_item_powerbank', 0); SetVar('GarageCraft_GadgetKvazar_item_toolset', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_kvazar_12"
+		text="Получить созданный предмет!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetKvazar_details').AsInt == 2 and GetVar('GarageCraft_GadgetKvazar_item_green_battery').AsInt == 1 and GetVar('GarageCraft_GadgetKvazar_item_powerbank').AsInt == 1 and GetVar('GarageCraft_GadgetKvazar_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 3"
+		scriptResult="SetVar('GarageCraft', 0); SetVar('GarageCraftingName', '0'); AddItemsToPlayerRepository('item_toolset', 1); AddItemsToPlayerRepository('firing_rate_energy_and_add_damage_energy', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'firing_rate_energy_and_add_damage_energy'); SetVar('GarageCraft_GadgetKvazar_details', 0); SetVar('GarageCraft_GadgetKvazar_item_green_battery', 0); SetVar('GarageCraft_GadgetKvazar_item_powerbank', 0); SetVar('GarageCraft_GadgetKvazar_item_toolset', 0)"
+		nextReplies="Dlg_npc_garage_gadget_kvazar_0 Dlg_npc_garage_gadget_kvazar_1" />
+
+<!--Root/r0m0/Гараж: крафт - Комплекс "FireEye"-->
+	<Reply
+		name="Dlg_npc_garage_gadget_fireeye_0"
+		text="Создание: @FF1D1D1DКомплекс ''FireEye''|Количество: @FF1D1D1D1|@FF0000AA|Повреждение огнестрельного оружия: @FF1D1D1D+30%|Точность огнестрельного оружия: @FF1D1D1D+30%|@FF0000AA|Время создания: @FF1D1D1D01:00:00|@FF0000AA|@FF780a0a[Включите генератор]|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|Детали - @FF1D1D1Dx2|На выбор: @FF1D1D1D[Электроника, Высокотехнологичная электроника]|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Generator_on').AsInt == 0"
+		nextReplies="Dlg_npc_garage_gadget_fireeye_3 Dlg_npc_garage_gadget_fireeye_5 Dlg_npc_garage_gadget_fireeye_7 Dlg_npc_garage_gadget_fireeye_9 Dlg_npc_garage_gadget_fireeye_11 Dlg_npc_garage_gadget_fireeye_12 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_fireeye_1"
+		text="Создание: @FF1D1D1DКомплекс ''FireEye''|Количество: @FF1D1D1D1|@FF0000AA|Повреждение огнестрельного оружия: @FF1D1D1D+30%|Точность огнестрельного оружия: @FF1D1D1D+30%|@FF0000AA|Время создания: @FF1D1D1D01:00:00|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|Детали - @FF1D1D1Dx2|На выбор: @FF1D1D1D[Электроника, Высокотехнологичная электроника]|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Generator_on').AsInt == 1"
+		nextReplies="Dlg_npc_garage_gadget_fireeye_2 Dlg_npc_garage_gadget_fireeye_3 Dlg_npc_garage_gadget_fireeye_4 Dlg_npc_garage_gadget_fireeye_5 Dlg_npc_garage_gadget_fireeye_6 Dlg_npc_garage_gadget_fireeye_7 Dlg_npc_garage_gadget_fireeye_8 Dlg_npc_garage_gadget_fireeye_9 Dlg_npc_garage_gadget_fireeye_10 Dlg_npc_garage_gadget_fireeye_11 Dlg_npc_garage_gadget_fireeye_12 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_fireeye_2"
+		text="Передать Детали - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('details', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetFireEye_details').AsInt == 2)"
+		scriptResult="RemoveItemsFromPlayerRepository('details', 1); SetVar('GarageCraft_GadgetFireEye_details', GetVar('GarageCraft_GadgetFireEye_details').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'details')"
+		nextReplies="Dlg_npc_garage_gadget_fireeye_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_fireeye_3"
+		text="Забрать Детали - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetFireEye_details').AsInt > 0 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('details', 1); SetVar('GarageCraft_GadgetFireEye_details', GetVar('GarageCraft_GadgetFireEye_details').AsInt - 1); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'details')"
+		nextReplies="Dlg_npc_garage_gadget_fireeye_0 Dlg_npc_garage_gadget_fireeye_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_fireeye_4"
+		text="Передать Электронику - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('electronics', 1) and GetVar('GarageCraft').AsInt == 0 and GetVar('GarageCraft_GadgetFireEye_electronics').AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('electronics', 1); SetVar('GarageCraft_GadgetFireEye_electronics', 'electronics'); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'electronics')"
+		nextReplies="Dlg_npc_garage_gadget_fireeye_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_fireeye_5"
+		text="Забрать Электронику - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetFireEye_electronics').AsString == 'electronics' and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('electronics', 1); SetVar('GarageCraft_GadgetFireEye_electronics', '0'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'electronics')"
+		nextReplies="Dlg_npc_garage_gadget_fireeye_0 Dlg_npc_garage_gadget_fireeye_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_fireeye_6"
+		text="Передать Высокотехнологичную электронику - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('electronics_use', 1) and GetVar('GarageCraft').AsInt == 0 and GetVar('GarageCraft_GadgetFireEye_electronics').AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('electronics_use', 1); SetVar('GarageCraft_GadgetFireEye_electronics', 'electronics_use'); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'electronics_use')"
+		nextReplies="Dlg_npc_garage_gadget_fireeye_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_fireeye_7"
+		text="Забрать Высокотехнологичную электронику - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetFireEye_electronics').AsString == 'electronics_use' and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('electronics_use', 1); SetVar('GarageCraft_GadgetFireEye_electronics', '0'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'electronics_use')"
+		nextReplies="Dlg_npc_garage_gadget_fireeye_0 Dlg_npc_garage_gadget_fireeye_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_fireeye_8"
+		text="Передать Набор инструментов - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_toolset', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetFireEye_item_toolset').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_toolset', 1); SetVar('GarageCraft_GadgetFireEye_item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_toolset')"
+		nextReplies="Dlg_npc_garage_gadget_fireeye_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_fireeye_9"
+		text="Забрать Набор инструментов - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetFireEye_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('item_toolset', 1); SetVar('GarageCraft_GadgetFireEye_item_toolset', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_toolset')"
+		nextReplies="Dlg_npc_garage_gadget_fireeye_0 Dlg_npc_garage_gadget_fireeye_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_fireeye_10"
+		text="Начать сборку!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetFireEye_details').AsInt == 2 and not(GetVar('GarageCraft_GadgetFireEye_electronics').AsString == '0') and GetVar('GarageCraft_GadgetFireEye_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="TActivate('GarageCraftingStart'); SetVar('GarageCraftingName', 'add_damage_guns_and_grouping_angle_guns'); SetVar('GarageCrafting_time_hour', 1); SetVar('GarageCrafting_time_minute', 0); SetVar('GarageCrafting_time_second', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_fireeye_11"
+		text="Прервать сборку!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetFireEye_details').AsInt == 2 and not(GetVar('GarageCraft_GadgetFireEye_electronics').AsString == '0') and GetVar('GarageCraft_GadgetFireEye_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 1"
+		scriptResult="TActivate('IfCraftingTimeStop'); AddItemsToPlayerRepository('details', 2); AddItemsToPlayerRepository(GetVar('GarageCraft_GadgetFireEye_electronics').AsString, 1); AddItemsToPlayerRepository('item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing_count', 'details', 2); AddFadingMsgByStrIdFormatted('fm_player_add_thing', GetVar('GarageCraft_GadgetFireEye_electronics').AsString); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); SetVar('GarageCraft_GadgetFireEye_details', 0); SetVar('GarageCraft_GadgetFireEye_electronics', '0'); SetVar('GarageCraft_GadgetFireEye_item_toolset', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_fireeye_12"
+		text="Получить созданный предмет!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetFireEye_details').AsInt == 2 and not(GetVar('GarageCraft_GadgetFireEye_electronics').AsString == '0') and GetVar('GarageCraft_GadgetFireEye_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 3"
+		scriptResult="SetVar('GarageCraft', 0); SetVar('GarageCraftingName', '0'); AddItemsToPlayerRepository('item_toolset', 1); AddItemsToPlayerRepository('add_damage_guns_and_grouping_angle_guns', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'add_damage_guns_and_grouping_angle_guns'); SetVar('GarageCraft_GadgetFireEye_details', 0); SetVar('GarageCraft_GadgetFireEye_electronics', '0'); SetVar('GarageCraft_GadgetFireEye_item_toolset', 0)"
+		nextReplies="Dlg_npc_garage_gadget_fireeye_0 Dlg_npc_garage_gadget_fireeye_1" />
+
+<!--Root/r0m0/Гараж: крафт - Система "Doom-4"-->
+	<Reply
+		name="Dlg_npc_garage_gadget_doom4_0"
+		text="Создание: @FF1D1D1DСистема ''Doom-4''|Количество: @FF1D1D1D1|@FF0000AA|Скорострельность энергетического оружия: @FF1D1D1D+30%|Повреждение энергетического оружия: @FF1D1D1D+30%|@FF0000AA|Время создания: @FF1D1D1D01:00:00|@FF0000AA|@FF780a0a[Включите генератор]|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|Детали - @FF1D1D1Dx2|Литиевая аккумуляторная батарейка - @FF1D1D1Dx2|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Generator_on').AsInt == 0"
+		nextReplies="Dlg_npc_garage_gadget_doom4_3 Dlg_npc_garage_gadget_doom4_5 Dlg_npc_garage_gadget_doom4_7 Dlg_npc_garage_gadget_doom4_9 Dlg_npc_garage_gadget_doom4_10 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_doom4_1"
+		text="Создание: @FF1D1D1DСистема ''Doom-4''|Количество: @FF1D1D1D1|@FF0000AA|Скорострельность энергетического оружия: @FF1D1D1D+30%|Повреждение энергетического оружия: @FF1D1D1D+30%|@FF0000AA|Время создания: @FF1D1D1D01:00:00|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|Детали - @FF1D1D1Dx2|Литиевая аккумуляторная батарейка - @FF1D1D1Dx2|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Generator_on').AsInt == 1"
+		nextReplies="Dlg_npc_garage_gadget_doom4_2 Dlg_npc_garage_gadget_doom4_3 Dlg_npc_garage_gadget_doom4_4 Dlg_npc_garage_gadget_doom4_5 Dlg_npc_garage_gadget_doom4_6 Dlg_npc_garage_gadget_doom4_7 Dlg_npc_garage_gadget_doom4_8 Dlg_npc_garage_gadget_doom4_9 Dlg_npc_garage_gadget_doom4_10 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_doom4_2"
+		text="Передать Детали - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('details', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetDoom4_details').AsInt == 2)"
+		scriptResult="RemoveItemsFromPlayerRepository('details', 1); SetVar('GarageCraft_GadgetDoom4_details', GetVar('GarageCraft_GadgetDoom4_details').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'details')"
+		nextReplies="Dlg_npc_garage_gadget_doom4_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_doom4_3"
+		text="Забрать Детали - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetDoom4_details').AsInt > 0 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('details', 1); SetVar('GarageCraft_GadgetDoom4_details', GetVar('GarageCraft_GadgetDoom4_details').AsInt - 1); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'details')"
+		nextReplies="Dlg_npc_garage_gadget_doom4_0 Dlg_npc_garage_gadget_doom4_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_doom4_4"
+		text="Передать Литиевую аккумуляторную батарейку - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_green_battery', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetDoom4_item_green_battery').AsInt == 2)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_green_battery', 1); SetVar('GarageCraft_GadgetDoom4_item_green_battery', GetVar('GarageCraft_GadgetDoom4_item_green_battery').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_green_battery')"
+		nextReplies="Dlg_npc_garage_gadget_doom4_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_doom4_5"
+		text="Забрать Литиевую аккумуляторную батарейку - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetDoom4_item_green_battery').AsInt > 0 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('item_green_battery', 1); SetVar('GarageCraft_GadgetDoom4_item_green_battery', GetVar('GarageCraft_GadgetDoom4_item_green_battery').AsInt - 1); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_green_battery')"
+		nextReplies="Dlg_npc_garage_gadget_doom4_0 Dlg_npc_garage_gadget_doom4_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_doom4_6"
+		text="Передать Набор инструментов - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_toolset', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetDoom4_item_toolset').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_toolset', 1); SetVar('GarageCraft_GadgetDoom4_item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_toolset')"
+		nextReplies="Dlg_npc_garage_gadget_doom4_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_doom4_7"
+		text="Забрать Набор инструментов - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetDoom4_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('item_toolset', 1); SetVar('GarageCraft_GadgetDoom4_item_toolset', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_toolset')"
+		nextReplies="Dlg_npc_garage_gadget_doom4_0 Dlg_npc_garage_gadget_doom4_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_doom4_8"
+		text="Начать сборку!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetDoom4_details').AsInt == 2 and GetVar('GarageCraft_GadgetDoom4_item_green_battery').AsInt == 2 and GetVar('GarageCraft_GadgetDoom4_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="TActivate('GarageCraftingStart'); SetVar('GarageCraftingName', 'add_damage_energy_and_firing_rate_energy'); SetVar('GarageCrafting_time_hour', 1); SetVar('GarageCrafting_time_minute', 0); SetVar('GarageCrafting_time_second', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_doom4_9"
+		text="Прервать сборку!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetDoom4_details').AsInt == 2 and GetVar('GarageCraft_GadgetDoom4_item_green_battery').AsInt == 2 and GetVar('GarageCraft_GadgetDoom4_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 1"
+		scriptResult="TActivate('IfCraftingTimeStop'); AddItemsToPlayerRepository('details', 2); AddItemsToPlayerRepository('item_green_battery', 2); AddItemsToPlayerRepository('item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing_count', 'details', 2); AddFadingMsgByStrIdFormatted('fm_player_add_thing_count', 'item_green_battery', 2); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); SetVar('GarageCraft_GadgetDoom4_details', 0); SetVar('GarageCraft_GadgetDoom4_item_green_battery', 0); SetVar('GarageCraft_GadgetDoom4_item_toolset', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_doom4_10"
+		text="Получить созданный предмет!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetDoom4_details').AsInt == 2 and GetVar('GarageCraft_GadgetDoom4_item_green_battery').AsInt == 2 and GetVar('GarageCraft_GadgetDoom4_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 3"
+		scriptResult="SetVar('GarageCraft', 0); SetVar('GarageCraftingName', '0'); AddItemsToPlayerRepository('item_toolset', 1); AddItemsToPlayerRepository('add_damage_energy_and_firing_rate_energy', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'add_damage_energy_and_firing_rate_energy'); SetVar('GarageCraft_GadgetDoom4_details', 0); SetVar('GarageCraft_GadgetDoom4_item_green_battery', 0); SetVar('GarageCraft_GadgetDoom4_item_toolset', 0)"
+		nextReplies="Dlg_npc_garage_gadget_doom4_0 Dlg_npc_garage_gadget_doom4_1" />
+
+<!--Root/r0m0/Гараж: крафт - Катанные броневые листы с дополнительным цементированием-->
+	<Reply
+		name="Dlg_npc_garage_gadget_durability2_0"
+		text="Создание: @FF1D1D1DКатанные броневые листы с дополнительным цементированием|Количество: @FF1D1D1D1|@FF0000AA|Броня: @FF1D1D1D+20%|@FF0000AA|Время создания: @FF1D1D1D00:30:00|@FF0000AA|@FF780a0a[Включите генератор]|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|На выбор: @FF1D1D1D[Металлолом - x2, Крепкий металл - x2]|Металлические запчасти - @FF1D1D1Dx1|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Generator_on').AsInt == 0"
+		nextReplies="Dlg_npc_garage_gadget_durability2_3 Dlg_npc_garage_gadget_durability2_5 Dlg_npc_garage_gadget_durability2_7 Dlg_npc_garage_gadget_durability2_9 Dlg_npc_garage_gadget_durability2_11 Dlg_npc_garage_gadget_durability2_12 Dlg_npc_garage_gadget_durability2_13 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_durability2_1"
+		text="Создание: @FF1D1D1DКатанные броневые листы с дополнительным цементированием|Количество: @FF1D1D1D1|@FF0000AA|Броня: @FF1D1D1D+20%|@FF0000AA|Время создания: @FF1D1D1D00:30:00|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|На выбор: @FF1D1D1D[Металлолом - x2, Крепкий металл - x2]|Металлические запчасти - @FF1D1D1Dx1|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Generator_on').AsInt == 1"
+		nextReplies="Dlg_npc_garage_gadget_durability2_2 Dlg_npc_garage_gadget_durability2_3 Dlg_npc_garage_gadget_durability2_4 Dlg_npc_garage_gadget_durability2_5 Dlg_npc_garage_gadget_durability2_6 Dlg_npc_garage_gadget_durability2_7 Dlg_npc_garage_gadget_durability2_8 Dlg_npc_garage_gadget_durability2_9 Dlg_npc_garage_gadget_durability2_10 Dlg_npc_garage_gadget_durability2_11 Dlg_npc_garage_gadget_durability2_12 Dlg_npc_garage_gadget_durability2_13 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_durability2_2"
+		text="Передать Металлолом - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('scrap_metal', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetDurability2_scrap_metal').AsInt == 2) and not(GetVar('GarageCraft_GadgetDurability2_scrap_metal_use').AsInt > 0)"
+		scriptResult="RemoveItemsFromPlayerRepository('scrap_metal', 1); SetVar('GarageCraft_GadgetDurability2_scrap_metal', GetVar('GarageCraft_GadgetDurability2_scrap_metal').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'scrap_metal')"
+		nextReplies="Dlg_npc_garage_gadget_durability2_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_durability2_3"
+		text="Забрать Металлолом - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetDurability2_scrap_metal').AsInt > 0 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('scrap_metal', 1); SetVar('GarageCraft_GadgetDurability2_scrap_metal', GetVar('GarageCraft_GadgetDurability2_scrap_metal').AsInt - 1); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'scrap_metal')"
+		nextReplies="Dlg_npc_garage_gadget_durability2_0 Dlg_npc_garage_gadget_durability2_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_durability2_4"
+		text="Передать Крепкий металл - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('scrap_metal_use', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetDurability2_scrap_metal_use').AsInt == 2) and not(GetVar('GarageCraft_GadgetDurability2_scrap_metal').AsInt > 0)"
+		scriptResult="RemoveItemsFromPlayerRepository('scrap_metal_use', 1); SetVar('GarageCraft_GadgetDurability2_scrap_metal_use', GetVar('GarageCraft_GadgetDurability2_scrap_metal_use').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'scrap_metal_use')"
+		nextReplies="Dlg_npc_garage_gadget_durability2_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_durability2_5"
+		text="Забрать Крепкий металл - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetDurability2_scrap_metal_use').AsInt > 0 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('scrap_metal_use', 1); SetVar('GarageCraft_GadgetDurability2_scrap_metal_use', GetVar('GarageCraft_GadgetDurability2_scrap_metal_use').AsInt - 1); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'scrap_metal_use')"
+		nextReplies="Dlg_npc_garage_gadget_durability2_0 Dlg_npc_garage_gadget_durability2_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_durability2_6"
+		text="Передать Металлические запчасти - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_parts', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetDurability2_item_parts').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_parts', 1); SetVar('GarageCraft_GadgetDurability2_item_parts', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_parts')"
+		nextReplies="Dlg_npc_garage_gadget_durability2_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_durability2_7"
+		text="Забрать Металлические запчасти - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetDurability2_item_parts').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('item_parts', 1); SetVar('GarageCraft_GadgetDurability2_item_parts', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_parts')"
+		nextReplies="Dlg_npc_garage_gadget_durability2_0 Dlg_npc_garage_gadget_durability2_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_durability2_8"
+		text="Передать Набор инструментов - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_toolset', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetDurability2_item_toolset').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_toolset', 1); SetVar('GarageCraft_GadgetDurability2_item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_toolset')"
+		nextReplies="Dlg_npc_garage_gadget_durability2_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_durability2_9"
+		text="Забрать Набор инструментов - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetDurability2_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('item_toolset', 1); SetVar('GarageCraft_GadgetDurability2_item_toolset', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_toolset')"
+		nextReplies="Dlg_npc_garage_gadget_durability2_0 Dlg_npc_garage_gadget_durability2_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_durability2_10"
+		text="Начать сборку!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetDurability2_scrap_metal').AsInt == 2 and GetVar('GarageCraft_GadgetDurability2_item_parts').AsInt == 1 and GetVar('GarageCraft_GadgetDurability2_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0 or GetVar('GarageCraft_GadgetDurability2_scrap_metal_use').AsInt == 2 and GetVar('GarageCraft_GadgetDurability2_item_parts').AsInt == 1 and GetVar('GarageCraft_GadgetDurability2_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="TActivate('GarageCraftingStart'); SetVar('GarageCraftingName', 'additional_durability2'); SetVar('GarageCrafting_time_hour', 0); SetVar('GarageCrafting_time_minute', 30); SetVar('GarageCrafting_time_second', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_durability2_11"
+		text="Прервать сборку!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetDurability2_scrap_metal').AsInt == 2 and GetVar('GarageCraft_GadgetDurability2_item_parts').AsInt == 1 and GetVar('GarageCraft_GadgetDurability2_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 1"
+		scriptResult="TActivate('IfCraftingTimeStop'); AddItemsToPlayerRepository('scrap_metal', 2); AddItemsToPlayerRepository('item_parts', 1); AddItemsToPlayerRepository('item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing_count', 'scrap_metal', 2); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_parts'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); SetVar('GarageCraft_GadgetDurability2_scrap_metal', 0); SetVar('GarageCraft_GadgetDurability2_scrap_metal_use', 0); SetVar('GarageCraft_GadgetDurability2_item_parts', 0); SetVar('GarageCraft_GadgetDurability2_item_toolset', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_durability2_12"
+		text="Прервать сборку!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetDurability2_scrap_metal_use').AsInt == 2 and GetVar('GarageCraft_GadgetDurability2_item_parts').AsInt == 1 and GetVar('GarageCraft_GadgetDurability2_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 1"
+		scriptResult="TActivate('IfCraftingTimeStop'); AddItemsToPlayerRepository('scrap_metal_use', 2); AddItemsToPlayerRepository('item_parts', 1); AddItemsToPlayerRepository('item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing_count', 'scrap_metal_use', 2); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_parts'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); SetVar('GarageCraft_GadgetDurability2_scrap_metal', 0); SetVar('GarageCraft_GadgetDurability2_scrap_metal_use', 0); SetVar('GarageCraft_GadgetDurability2_item_parts', 0); SetVar('GarageCraft_GadgetDurability2_item_toolset', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_durability2_13"
+		text="Получить созданный предмет!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetDurability2_scrap_metal').AsInt == 2 and GetVar('GarageCraft_GadgetDurability2_item_parts').AsInt == 1 and GetVar('GarageCraft_GadgetDurability2_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 3 or GetVar('GarageCraft_GadgetDurability2_scrap_metal_use').AsInt == 2 and GetVar('GarageCraft_GadgetDurability2_item_parts').AsInt == 1 and GetVar('GarageCraft_GadgetDurability2_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 3"
+		scriptResult="SetVar('GarageCraft', 0); SetVar('GarageCraftingName', '0'); AddItemsToPlayerRepository('item_toolset', 1); AddItemsToPlayerRepository('additional_durability2', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'additional_durability2'); SetVar('GarageCraft_GadgetDurability2_scrap_metal', 0); SetVar('GarageCraft_GadgetDurability2_scrap_metal_use', 0); SetVar('GarageCraft_GadgetDurability2_item_parts', 0); SetVar('GarageCraft_GadgetDurability2_item_toolset', 0)"
+		nextReplies="Dlg_npc_garage_gadget_durability2_0 Dlg_npc_garage_gadget_durability2_1" />
+
+<!--Root/r0m0/Гараж: крафт - Электронная инжекторная система-->
+	<Reply
+		name="Dlg_npc_garage_gadget_speed_and_torque_0"
+		text="Создание: @FF1D1D1DЭлектронная инжекторная система|Количество: @FF1D1D1D1|@FF0000AA|Скорость: @FF1D1D1D+15%|Мощность: @FF1D1D1D+15%|@FF0000AA|Время создания: @FF1D1D1D00:50:00|@FF0000AA|@FF780a0a[Включите генератор]|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|Детали - @FF1D1D1Dx2|Термометр - @FF1D1D1Dx1|Силиконовая трубка - @FF1D1D1Dx1|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Generator_on').AsInt == 0"
+		nextReplies="Dlg_npc_garage_gadget_speed_and_torque_3 Dlg_npc_garage_gadget_speed_and_torque_5 Dlg_npc_garage_gadget_speed_and_torque_7 Dlg_npc_garage_gadget_speed_and_torque_9 Dlg_npc_garage_gadget_speed_and_torque_11 Dlg_npc_garage_gadget_speed_and_torque_12 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_speed_and_torque_1"
+		text="Создание: @FF1D1D1DЭлектронная инжекторная система|Количество: @FF1D1D1D1|@FF0000AA|Скорость: @FF1D1D1D+15%|Мощность: @FF1D1D1D+15%|@FF0000AA|Время создания: @FF1D1D1D00:50:00|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|Детали - @FF1D1D1Dx2|Термометр - @FF1D1D1Dx1|Силиконовая трубка - @FF1D1D1Dx1|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Generator_on').AsInt == 1"
+		nextReplies="Dlg_npc_garage_gadget_speed_and_torque_2 Dlg_npc_garage_gadget_speed_and_torque_3 Dlg_npc_garage_gadget_speed_and_torque_4 Dlg_npc_garage_gadget_speed_and_torque_5 Dlg_npc_garage_gadget_speed_and_torque_6 Dlg_npc_garage_gadget_speed_and_torque_7 Dlg_npc_garage_gadget_speed_and_torque_8 Dlg_npc_garage_gadget_speed_and_torque_9 Dlg_npc_garage_gadget_speed_and_torque_10 Dlg_npc_garage_gadget_speed_and_torque_11 Dlg_npc_garage_gadget_speed_and_torque_12 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_speed_and_torque_2"
+		text="Передать Детали - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('details', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetSpeedAndTorque_details').AsInt == 2)"
+		scriptResult="RemoveItemsFromPlayerRepository('details', 1); SetVar('GarageCraft_GadgetSpeedAndTorque_details', GetVar('GarageCraft_GadgetSpeedAndTorque_details').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'details')"
+		nextReplies="Dlg_npc_garage_gadget_speed_and_torque_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_speed_and_torque_3"
+		text="Забрать Детали - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSpeedAndTorque_details').AsInt > 0 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('details', 1); SetVar('GarageCraft_GadgetSpeedAndTorque_details', GetVar('GarageCraft_GadgetSpeedAndTorque_details').AsInt - 1); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'details')"
+		nextReplies="Dlg_npc_garage_gadget_speed_and_torque_0 Dlg_npc_garage_gadget_speed_and_torque_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_speed_and_torque_4"
+		text="Передать Термометр - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_thermometer', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetSpeedAndTorque_item_thermometer').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_thermometer', 1); SetVar('GarageCraft_GadgetSpeedAndTorque_item_thermometer', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_thermometer')"
+		nextReplies="Dlg_npc_garage_gadget_speed_and_torque_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_speed_and_torque_5"
+		text="Забрать Термометр - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSpeedAndTorque_item_thermometer').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('item_thermometer', 1); SetVar('GarageCraft_GadgetSpeedAndTorque_item_thermometer', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_thermometer')"
+		nextReplies="Dlg_npc_garage_gadget_speed_and_torque_0 Dlg_npc_garage_gadget_speed_and_torque_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_speed_and_torque_6"
+		text="Передать Силиконовую трубку - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_tube', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetSpeedAndTorque_item_tube').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_tube', 1); SetVar('GarageCraft_GadgetSpeedAndTorque_item_tube', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_tube')"
+		nextReplies="Dlg_npc_garage_gadget_speed_and_torque_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_speed_and_torque_7"
+		text="Забрать Силиконовую трубку - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSpeedAndTorque_item_tube').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('item_tube', 1); SetVar('GarageCraft_GadgetSpeedAndTorque_item_tube', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_tube')"
+		nextReplies="Dlg_npc_garage_gadget_speed_and_torque_0 Dlg_npc_garage_gadget_speed_and_torque_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_speed_and_torque_8"
+		text="Передать Набор инструментов - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_toolset', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetSpeedAndTorque_item_toolset').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_toolset', 1); SetVar('GarageCraft_GadgetSpeedAndTorque_item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_toolset')"
+		nextReplies="Dlg_npc_garage_gadget_speed_and_torque_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_speed_and_torque_9"
+		text="Забрать Набор инструментов - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSpeedAndTorque_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('item_toolset', 1); SetVar('GarageCraft_GadgetSpeedAndTorque_item_toolset', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_toolset')"
+		nextReplies="Dlg_npc_garage_gadget_speed_and_torque_0 Dlg_npc_garage_gadget_speed_and_torque_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_speed_and_torque_10"
+		text="Начать сборку!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSpeedAndTorque_details').AsInt == 2 and GetVar('GarageCraft_GadgetSpeedAndTorque_item_thermometer').AsInt == 1 and GetVar('GarageCraft_GadgetSpeedAndTorque_item_tube').AsInt == 1 and GetVar('GarageCraft_GadgetSpeedAndTorque_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="TActivate('GarageCraftingStart'); SetVar('GarageCraftingName', 'add_speed_and_torque'); SetVar('GarageCrafting_time_hour', 0); SetVar('GarageCrafting_time_minute', 50); SetVar('GarageCrafting_time_second', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_speed_and_torque_11"
+		text="Прервать сборку!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSpeedAndTorque_details').AsInt == 2 and GetVar('GarageCraft_GadgetSpeedAndTorque_item_thermometer').AsInt == 1 and GetVar('GarageCraft_GadgetSpeedAndTorque_item_tube').AsInt == 1 and GetVar('GarageCraft_GadgetSpeedAndTorque_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 1"
+		scriptResult="TActivate('IfCraftingTimeStop'); AddItemsToPlayerRepository('details', 2); AddItemsToPlayerRepository('item_thermometer', 1); AddItemsToPlayerRepository('item_tube', 1); AddItemsToPlayerRepository('item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing_count', 'details', 2); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_thermometer'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_tube'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); SetVar('GarageCraft_GadgetSpeedAndTorque_details', 0); SetVar('GarageCraft_GadgetSpeedAndTorque_item_thermometer', 0); SetVar('GarageCraft_GadgetSpeedAndTorque_item_tube', 0); SetVar('GarageCraft_GadgetSpeedAndTorque_item_toolset', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_speed_and_torque_12"
+		text="Получить созданный предмет!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSpeedAndTorque_details').AsInt == 2 and GetVar('GarageCraft_GadgetSpeedAndTorque_item_thermometer').AsInt == 1 and GetVar('GarageCraft_GadgetSpeedAndTorque_item_tube').AsInt == 1 and GetVar('GarageCraft_GadgetSpeedAndTorque_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 3"
+		scriptResult="SetVar('GarageCraft', 0); SetVar('GarageCraftingName', '0'); AddItemsToPlayerRepository('item_toolset', 1); AddItemsToPlayerRepository('add_speed_and_torque', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'add_speed_and_torque'); SetVar('GarageCraft_GadgetSpeedAndTorque_details', 0); SetVar('GarageCraft_GadgetSpeedAndTorque_item_thermometer', 0); SetVar('GarageCraft_GadgetSpeedAndTorque_item_tube', 0); SetVar('GarageCraft_GadgetSpeedAndTorque_item_toolset', 0)"
+		nextReplies="Dlg_npc_garage_gadget_speed_and_torque_0 Dlg_npc_garage_gadget_speed_and_torque_1" />
+
+<!--Root/r0m0/Гараж: крафт - Система "Sagitta"-->
+	<Reply
+		name="Dlg_npc_garage_gadget_sagitta_0"
+		text="Создание: @FF1D1D1DСистема ''Sagitta''|Количество: @FF1D1D1D1|@FF0000AA|Конструкция: @FF1D1D1D+75|Скорость: @FF1D1D1D+20%|@FF0000AA|Время создания: @FF1D1D1D01:00:00|@FF0000AA|@FF780a0a[Включите генератор]|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|Детали - @FF1D1D1Dx2|На выбор: @FF1D1D1D[Рабочее оборудование - x2, Улучшенное оборудование - x2]|Термометр - @FF1D1D1Dx1|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Generator_on').AsInt == 0"
+		nextReplies="Dlg_npc_garage_gadget_sagitta_3 Dlg_npc_garage_gadget_sagitta_5 Dlg_npc_garage_gadget_sagitta_7 Dlg_npc_garage_gadget_sagitta_9 Dlg_npc_garage_gadget_sagitta_11 Dlg_npc_garage_gadget_sagitta_13 Dlg_npc_garage_gadget_sagitta_14 Dlg_npc_garage_gadget_sagitta_15 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sagitta_1"
+		text="Создание: @FF1D1D1DСистема ''Sagitta''|Количество: @FF1D1D1D1|@FF0000AA|Конструкция: @FF1D1D1D+75|Скорость: @FF1D1D1D+20%|@FF0000AA|Время создания: @FF1D1D1D01:00:00|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|Детали - @FF1D1D1Dx2|На выбор: @FF1D1D1D[Рабочее оборудование - x2, Улучшенное оборудование - x2]|Термометр - @FF1D1D1Dx1|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Generator_on').AsInt == 1"
+		nextReplies="Dlg_npc_garage_gadget_sagitta_2 Dlg_npc_garage_gadget_sagitta_3 Dlg_npc_garage_gadget_sagitta_4 Dlg_npc_garage_gadget_sagitta_5 Dlg_npc_garage_gadget_sagitta_6 Dlg_npc_garage_gadget_sagitta_7 Dlg_npc_garage_gadget_sagitta_8 Dlg_npc_garage_gadget_sagitta_9 Dlg_npc_garage_gadget_sagitta_10 Dlg_npc_garage_gadget_sagitta_11 Dlg_npc_garage_gadget_sagitta_12 Dlg_npc_garage_gadget_sagitta_13 Dlg_npc_garage_gadget_sagitta_14 Dlg_npc_garage_gadget_sagitta_15 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sagitta_2"
+		text="Передать Детали - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('details', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetSagitta_details').AsInt == 2)"
+		scriptResult="RemoveItemsFromPlayerRepository('details', 1); SetVar('GarageCraft_GadgetSagitta_details', GetVar('GarageCraft_GadgetSagitta_details').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'details')"
+		nextReplies="Dlg_npc_garage_gadget_sagitta_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sagitta_3"
+		text="Забрать Детали - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSagitta_details').AsInt > 0 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('details', 1); SetVar('GarageCraft_GadgetSagitta_details', GetVar('GarageCraft_GadgetSagitta_details').AsInt - 1); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'details')"
+		nextReplies="Dlg_npc_garage_gadget_sagitta_0 Dlg_npc_garage_gadget_sagitta_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sagitta_4"
+		text="Передать Рабочее оборудование - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('machinery', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetSagitta_machinery').AsInt == 2) and not(GetVar('GarageCraft_GadgetSagitta_machinery_use').AsInt > 0)"
+		scriptResult="RemoveItemsFromPlayerRepository('machinery', 1); SetVar('GarageCraft_GadgetSagitta_machinery', GetVar('GarageCraft_GadgetSagitta_machinery').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'machinery')"
+		nextReplies="Dlg_npc_garage_gadget_sagitta_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sagitta_5"
+		text="Забрать Рабочее оборудование - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSagitta_machinery').AsInt > 0 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('machinery', 1); SetVar('GarageCraft_GadgetSagitta_machinery', GetVar('GarageCraft_GadgetSagitta_machinery').AsInt - 1); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'machinery')"
+		nextReplies="Dlg_npc_garage_gadget_sagitta_0 Dlg_npc_garage_gadget_sagitta_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sagitta_6"
+		text="Передать Улучшенное оборудование - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('machinery_use', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetSagitta_machinery_use').AsInt == 2) and not(GetVar('GarageCraft_GadgetSagitta_machinery').AsInt > 0)"
+		scriptResult="RemoveItemsFromPlayerRepository('machinery_use', 1); SetVar('GarageCraft_GadgetSagitta_machinery_use', GetVar('GarageCraft_GadgetSagitta_machinery_use').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'machinery_use')"
+		nextReplies="Dlg_npc_garage_gadget_sagitta_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sagitta_7"
+		text="Забрать Улучшенное оборудование - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSagitta_machinery_use').AsInt > 0 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('machinery_use', 1); SetVar('GarageCraft_GadgetSagitta_machinery_use', GetVar('GarageCraft_GadgetSagitta_machinery_use').AsInt - 1); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'machinery_use')"
+		nextReplies="Dlg_npc_garage_gadget_sagitta_0 Dlg_npc_garage_gadget_sagitta_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sagitta_8"
+		text="Передать Термометр - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_thermometer', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetSagitta_item_thermometer').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_thermometer', 1); SetVar('GarageCraft_GadgetSagitta_item_thermometer', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_thermometer')"
+		nextReplies="Dlg_npc_garage_gadget_sagitta_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sagitta_9"
+		text="Забрать Термометр - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSagitta_item_thermometer').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('item_thermometer', 1); SetVar('GarageCraft_GadgetSagitta_item_thermometer', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_thermometer')"
+		nextReplies="Dlg_npc_garage_gadget_sagitta_0 Dlg_npc_garage_gadget_sagitta_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sagitta_10"
+		text="Передать Набор инструментов - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_toolset', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetSagitta_item_toolset').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_toolset', 1); SetVar('GarageCraft_GadgetSagitta_item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_toolset')"
+		nextReplies="Dlg_npc_garage_gadget_sagitta_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sagitta_11"
+		text="Забрать Набор инструментов - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSagitta_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('item_toolset', 1); SetVar('GarageCraft_GadgetSagitta_item_toolset', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_toolset')"
+		nextReplies="Dlg_npc_garage_gadget_sagitta_0 Dlg_npc_garage_gadget_sagitta_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sagitta_12"
+		text="Начать сборку!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSagitta_details').AsInt == 2 and GetVar('GarageCraft_GadgetSagitta_machinery').AsInt == 2 and GetVar('GarageCraft_GadgetSagitta_item_thermometer').AsInt == 1 and GetVar('GarageCraft_GadgetSagitta_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0 or GetVar('GarageCraft_GadgetSagitta_details').AsInt == 2 and GetVar('GarageCraft_GadgetSagitta_machinery_use').AsInt == 2 and GetVar('GarageCraft_GadgetSagitta_item_thermometer').AsInt == 1 and GetVar('GarageCraft_GadgetSagitta_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="TActivate('GarageCraftingStart'); SetVar('GarageCraftingName', 'add_stability_and_speed'); SetVar('GarageCrafting_time_hour', 1); SetVar('GarageCrafting_time_minute', 0); SetVar('GarageCrafting_time_second', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sagitta_13"
+		text="Прервать сборку!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSagitta_details').AsInt == 2 and GetVar('GarageCraft_GadgetSagitta_machinery').AsInt == 2 and GetVar('GarageCraft_GadgetSagitta_item_thermometer').AsInt == 1 and GetVar('GarageCraft_GadgetSagitta_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 1"
+		scriptResult="TActivate('IfCraftingTimeStop'); AddItemsToPlayerRepository('details', 2); AddItemsToPlayerRepository('machinery', 2); AddItemsToPlayerRepository('item_thermometer', 1); AddItemsToPlayerRepository('item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing_count', 'details', 2); AddFadingMsgByStrIdFormatted('fm_player_add_thing_count', 'machinery', 2); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_thermometer'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); SetVar('GarageCraft_GadgetSagitta_details', 0); SetVar('GarageCraft_GadgetSagitta_machinery', 0); SetVar('GarageCraft_GadgetSagitta_machinery_use', 0); SetVar('GarageCraft_GadgetSagitta_item_thermometer', 0); SetVar('GarageCraft_GadgetSagitta_item_toolset', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sagitta_14"
+		text="Прервать сборку!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSagitta_details').AsInt == 2 and GetVar('GarageCraft_GadgetSagitta_machinery_use').AsInt == 2 and GetVar('GarageCraft_GadgetSagitta_item_thermometer').AsInt == 1 and GetVar('GarageCraft_GadgetSagitta_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 1"
+		scriptResult="TActivate('IfCraftingTimeStop'); AddItemsToPlayerRepository('details', 2); AddItemsToPlayerRepository('machinery_use', 2); AddItemsToPlayerRepository('item_thermometer', 1); AddItemsToPlayerRepository('item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing_count', 'details', 2); AddFadingMsgByStrIdFormatted('fm_player_add_thing_count', 'machinery_use', 2); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_thermometer'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); SetVar('GarageCraft_GadgetSagitta_details', 0); SetVar('GarageCraft_GadgetSagitta_machinery', 0); SetVar('GarageCraft_GadgetSagitta_machinery_use', 0); SetVar('GarageCraft_GadgetSagitta_item_thermometer', 0); SetVar('GarageCraft_GadgetSagitta_item_toolset', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sagitta_15"
+		text="Получить созданный предмет!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSagitta_details').AsInt == 2 and GetVar('GarageCraft_GadgetSagitta_machinery').AsInt == 2 and GetVar('GarageCraft_GadgetSagitta_item_thermometer').AsInt == 1 and GetVar('GarageCraft_GadgetSagitta_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 3 or GetVar('GarageCraft_GadgetSagitta_details').AsInt == 2 and GetVar('GarageCraft_GadgetSagitta_machinery_use').AsInt == 2 and GetVar('GarageCraft_GadgetSagitta_item_thermometer').AsInt == 1 and GetVar('GarageCraft_GadgetSagitta_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 3"
+		scriptResult="SetVar('GarageCraft', 0); SetVar('GarageCraftingName', '0'); AddItemsToPlayerRepository('item_toolset', 1); AddItemsToPlayerRepository('add_stability_and_speed', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'add_stability_and_speed'); SetVar('GarageCraft_GadgetSagitta_details', 0); SetVar('GarageCraft_GadgetSagitta_machinery', 0); SetVar('GarageCraft_GadgetSagitta_machinery_use', 0); SetVar('GarageCraft_GadgetSagitta_item_thermometer', 0); SetVar('GarageCraft_GadgetSagitta_item_toolset', 0)"
+		nextReplies="Dlg_npc_garage_gadget_sagitta_0 Dlg_npc_garage_gadget_sagitta_1" />
+
+<!--Root/r0m0/Гараж: крафт - Система "Альбатрос"-->
+	<Reply
+		name="Dlg_npc_garage_gadget_albatros_0"
+		text="Создание: @FF1D1D1DСистема ''Альбатрос''|Количество: @FF1D1D1D1|@FF0000AA|Конструкция: @FF1D1D1D+100|Мощность: @FF1D1D1D+15%|@FF0000AA|Время создания: @FF1D1D1D01:00:00|@FF0000AA|@FF780a0a[Включите генератор]|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|Детали - @FF1D1D1Dx2|На выбор: @FF1D1D1D[Электроника, Высокотехнологичная электроника]|Датчик давления - @FF1D1D1Dx1|Изолента - @FF1D1D1Dx1|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Generator_on').AsInt == 0"
+		nextReplies="Dlg_npc_garage_gadget_albatros_3 Dlg_npc_garage_gadget_albatros_5 Dlg_npc_garage_gadget_albatros_7 Dlg_npc_garage_gadget_albatros_9 Dlg_npc_garage_gadget_albatros_11 Dlg_npc_garage_gadget_albatros_13 Dlg_npc_garage_gadget_albatros_15 Dlg_npc_garage_gadget_albatros_16 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_albatros_1"
+		text="Создание: @FF1D1D1DСистема ''Альбатрос''|Количество: @FF1D1D1D1|@FF0000AA|Конструкция: @FF1D1D1D+100|Мощность: @FF1D1D1D+15%|@FF0000AA|Время создания: @FF1D1D1D01:00:00|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|Детали - @FF1D1D1Dx2|На выбор: @FF1D1D1D[Электроника, Высокотехнологичная электроника]|Датчик давления - @FF1D1D1Dx1|Изолента - @FF1D1D1Dx1|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Generator_on').AsInt == 1"
+		nextReplies="Dlg_npc_garage_gadget_albatros_2 Dlg_npc_garage_gadget_albatros_3 Dlg_npc_garage_gadget_albatros_4 Dlg_npc_garage_gadget_albatros_5 Dlg_npc_garage_gadget_albatros_6 Dlg_npc_garage_gadget_albatros_7 Dlg_npc_garage_gadget_albatros_8 Dlg_npc_garage_gadget_albatros_9 Dlg_npc_garage_gadget_albatros_10 Dlg_npc_garage_gadget_albatros_11 Dlg_npc_garage_gadget_albatros_12 Dlg_npc_garage_gadget_albatros_13 Dlg_npc_garage_gadget_albatros_14 Dlg_npc_garage_gadget_albatros_15 Dlg_npc_garage_gadget_albatros_16 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_albatros_2"
+		text="Передать Детали - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('details', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetAlbatros_details').AsInt == 2)"
+		scriptResult="RemoveItemsFromPlayerRepository('details', 1); SetVar('GarageCraft_GadgetAlbatros_details', GetVar('GarageCraft_GadgetAlbatros_details').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'details')"
+		nextReplies="Dlg_npc_garage_gadget_albatros_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_albatros_3"
+		text="Забрать Детали - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetAlbatros_details').AsInt > 0 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('details', 1); SetVar('GarageCraft_GadgetAlbatros_details', GetVar('GarageCraft_GadgetAlbatros_details').AsInt - 1); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'details')"
+		nextReplies="Dlg_npc_garage_gadget_albatros_0 Dlg_npc_garage_gadget_albatros_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_albatros_4"
+		text="Передать Электронику - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('electronics', 1) and GetVar('GarageCraft').AsInt == 0 and GetVar('GarageCraft_GadgetAlbatros_electronics').AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('electronics', 1); SetVar('GarageCraft_GadgetAlbatros_electronics', 'electronics'); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'electronics')"
+		nextReplies="Dlg_npc_garage_gadget_albatros_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_albatros_5"
+		text="Забрать Электронику - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetAlbatros_electronics').AsString == 'electronics' and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('electronics', 1); SetVar('GarageCraft_GadgetAlbatros_electronics', '0'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'electronics')"
+		nextReplies="Dlg_npc_garage_gadget_albatros_0 Dlg_npc_garage_gadget_albatros_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_albatros_6"
+		text="Передать Высокотехнологичную электронику - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('electronics_use', 1) and GetVar('GarageCraft').AsInt == 0 and GetVar('GarageCraft_GadgetAlbatros_electronics').AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('electronics_use', 1); SetVar('GarageCraft_GadgetAlbatros_electronics', 'electronics_use'); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'electronics_use')"
+		nextReplies="Dlg_npc_garage_gadget_albatros_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_albatros_7"
+		text="Забрать Высокотехнологичную электронику - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetAlbatros_electronics').AsString == 'electronics_use' and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('electronics_use', 1); SetVar('GarageCraft_GadgetAlbatros_electronics', '0'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'electronics_use')"
+		nextReplies="Dlg_npc_garage_gadget_albatros_0 Dlg_npc_garage_gadget_albatros_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_albatros_8"
+		text="Передать Датчик давления - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_datchik', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetAlbatros_item_datchik').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_datchik', 1); SetVar('GarageCraft_GadgetAlbatros_item_datchik', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_datchik')"
+		nextReplies="Dlg_npc_garage_gadget_albatros_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_albatros_9"
+		text="Забрать Датчик давления - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetAlbatros_item_datchik').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('item_datchik', 1); SetVar('GarageCraft_GadgetAlbatros_item_datchik', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_datchik')"
+		nextReplies="Dlg_npc_garage_gadget_albatros_0 Dlg_npc_garage_gadget_albatros_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_albatros_10"
+		text="Передать Изоленту - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_insulation', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetAlbatros_item_insulation').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_insulation', 1); SetVar('GarageCraft_GadgetAlbatros_item_insulation', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_insulation')"
+		nextReplies="Dlg_npc_garage_gadget_albatros_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_albatros_11"
+		text="Забрать Изоленту - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetAlbatros_item_insulation').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('item_insulation', 1); SetVar('GarageCraft_GadgetAlbatros_item_insulation', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_insulation')"
+		nextReplies="Dlg_npc_garage_gadget_albatros_0 Dlg_npc_garage_gadget_albatros_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_albatros_12"
+		text="Передать Набор инструментов - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_toolset', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetAlbatros_item_toolset').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_toolset', 1); SetVar('GarageCraft_GadgetAlbatros_item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_toolset')"
+		nextReplies="Dlg_npc_garage_gadget_albatros_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_albatros_13"
+		text="Забрать Набор инструментов - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetAlbatros_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('item_toolset', 1); SetVar('GarageCraft_GadgetAlbatros_item_toolset', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_toolset')"
+		nextReplies="Dlg_npc_garage_gadget_albatros_0 Dlg_npc_garage_gadget_albatros_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_albatros_14"
+		text="Начать сборку!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetAlbatros_details').AsInt == 2 and not(GetVar('GarageCraft_GadgetAlbatros_electronics').AsString == '0') and GetVar('GarageCraft_GadgetAlbatros_item_datchik').AsInt == 1 and GetVar('GarageCraft_GadgetAlbatros_item_insulation').AsInt == 1 and GetVar('GarageCraft_GadgetAlbatros_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="TActivate('GarageCraftingStart'); SetVar('GarageCraftingName', 'add_torque_and_stability'); SetVar('GarageCrafting_time_hour', 1); SetVar('GarageCrafting_time_minute', 0); SetVar('GarageCrafting_time_second', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_albatros_15"
+		text="Прервать сборку!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetAlbatros_details').AsInt == 2 and not(GetVar('GarageCraft_GadgetAlbatros_electronics').AsString == '0') and GetVar('GarageCraft_GadgetAlbatros_item_datchik').AsInt == 1 and GetVar('GarageCraft_GadgetAlbatros_item_insulation').AsInt == 1 and GetVar('GarageCraft_GadgetAlbatros_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 1"
+		scriptResult="TActivate('IfCraftingTimeStop'); AddItemsToPlayerRepository('details', 2); AddItemsToPlayerRepository(GetVar('GarageCraft_GadgetAlbatros_electronics').AsString, 1); AddItemsToPlayerRepository('item_datchik', 1); AddItemsToPlayerRepository('item_insulation', 1); AddItemsToPlayerRepository('item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing_count', 'details', 2); AddFadingMsgByStrIdFormatted('fm_player_add_thing', GetVar('GarageCraft_GadgetAlbatros_electronics').AsString); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_datchik'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_insulation'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); SetVar('GarageCraft_GadgetAlbatros_details', 0); SetVar('GarageCraft_GadgetAlbatros_electronics', '0'); SetVar('GarageCraft_GadgetAlbatros_item_datchik', 0); SetVar('GarageCraft_GadgetAlbatros_item_insulation', 0); SetVar('GarageCraft_GadgetAlbatros_item_toolset', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_albatros_16"
+		text="Получить созданный предмет!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetAlbatros_details').AsInt == 2 and not(GetVar('GarageCraft_GadgetAlbatros_electronics').AsString == '0') and GetVar('GarageCraft_GadgetAlbatros_item_datchik').AsInt == 1 and GetVar('GarageCraft_GadgetAlbatros_item_insulation').AsInt == 1 and GetVar('GarageCraft_GadgetAlbatros_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 3"
+		scriptResult="SetVar('GarageCraft', 0); SetVar('GarageCraftingName', '0'); AddItemsToPlayerRepository('item_toolset', 1); AddItemsToPlayerRepository('add_torque_and_stability', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'add_torque_and_stability'); SetVar('GarageCraft_GadgetAlbatros_details', 0); SetVar('GarageCraft_GadgetAlbatros_electronics', '0'); SetVar('GarageCraft_GadgetAlbatros_item_datchik', 0); SetVar('GarageCraft_GadgetAlbatros_item_insulation', 0); SetVar('GarageCraft_GadgetAlbatros_item_toolset', 0)"
+		nextReplies="Dlg_npc_garage_gadget_albatros_0 Dlg_npc_garage_gadget_albatros_1" />
+
+<!--Root/r0m0/Гараж: крафт - Система "Сато"-->
+	<Reply
+		name="Dlg_npc_garage_gadget_sato_0"
+		text="Создание: @FF1D1D1DСистема ''Сато''|Количество: @FF1D1D1D1|@FF0000AA|Конструкция: @FF1D1D1D+125|Топливный бак: @FF1D1D1D+75%|@FF0000AA|Время создания: @FF1D1D1D00:45:00|@FF0000AA|@FF780a0a[Включите генератор]|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|На выбор:  @FF1D1D1D[Горючее, Канистра топлива]|На выбор: @FF1D1D1D[Электроника, Высокотехнологичная электроника]|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Generator_on').AsInt == 0"
+		nextReplies="Dlg_npc_garage_gadget_sato_3 Dlg_npc_garage_gadget_sato_5 Dlg_npc_garage_gadget_sato_7 Dlg_npc_garage_gadget_sato_9 Dlg_npc_garage_gadget_sato_11 Dlg_npc_garage_gadget_sato_13 Dlg_npc_garage_gadget_sato_14 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sato_1"
+		text="Создание: @FF1D1D1DСистема ''Сато''|Количество: @FF1D1D1D1|@FF0000AA|Конструкция: @FF1D1D1D+125|Топливный бак: @FF1D1D1D+75%|@FF0000AA|Время создания: @FF1D1D1D00:45:00|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|На выбор:  @FF1D1D1D[Горючее, Канистра топлива]|На выбор: @FF1D1D1D[Электроника, Высокотехнологичная электроника]|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Generator_on').AsInt == 1"
+		nextReplies="Dlg_npc_garage_gadget_sato_2 Dlg_npc_garage_gadget_sato_3 Dlg_npc_garage_gadget_sato_4 Dlg_npc_garage_gadget_sato_5 Dlg_npc_garage_gadget_sato_6 Dlg_npc_garage_gadget_sato_7 Dlg_npc_garage_gadget_sato_8 Dlg_npc_garage_gadget_sato_9 Dlg_npc_garage_gadget_sato_10 Dlg_npc_garage_gadget_sato_11 Dlg_npc_garage_gadget_sato_12 Dlg_npc_garage_gadget_sato_13 Dlg_npc_garage_gadget_sato_14 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sato_2"
+		text="Передать Горючее - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('fuel', 1) and GetVar('GarageCraft').AsInt == 0 and GetVar('GarageCraft_GadgetSato_fuel').AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('fuel', 1); SetVar('GarageCraft_GadgetSato_fuel', 'fuel'); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'fuel')"
+		nextReplies="Dlg_npc_garage_gadget_sato_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sato_3"
+		text="Забрать Горючее - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSato_fuel').AsString == 'fuel' and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('fuel', 1); SetVar('GarageCraft_GadgetSato_fuel', '0'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'fuel')"
+		nextReplies="Dlg_npc_garage_gadget_sato_0 Dlg_npc_garage_gadget_sato_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sato_4"
+		text="Передать Канистру топлива - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('fuel_full_use', 1) and GetVar('GarageCraft').AsInt == 0 and GetVar('GarageCraft_GadgetSato_fuel').AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('fuel_full_use', 1); SetVar('GarageCraft_GadgetSato_fuel', 'fuel_full_use'); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'fuel_full_use')"
+		nextReplies="Dlg_npc_garage_gadget_sato_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sato_5"
+		text="Забрать Канистру топлива - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSato_fuel').AsString == 'fuel_full_use' and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('fuel_full_use', 1); SetVar('GarageCraft_GadgetSato_fuel', '0'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'fuel_full_use')"
+		nextReplies="Dlg_npc_garage_gadget_sato_0 Dlg_npc_garage_gadget_sato_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sato_6"
+		text="Передать Электронику - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('electronics', 1) and GetVar('GarageCraft').AsInt == 0 and GetVar('GarageCraft_GadgetSato_electronics').AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('electronics', 1); SetVar('GarageCraft_GadgetSato_electronics', 'electronics'); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'electronics')"
+		nextReplies="Dlg_npc_garage_gadget_sato_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sato_7"
+		text="Забрать Электронику - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSato_electronics').AsString == 'electronics' and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('electronics', 1); SetVar('GarageCraft_GadgetSato_electronics', '0'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'electronics')"
+		nextReplies="Dlg_npc_garage_gadget_sato_0 Dlg_npc_garage_gadget_sato_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sato_8"
+		text="Передать Высокотехнологичную электронику - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('electronics_use', 1) and GetVar('GarageCraft').AsInt == 0 and GetVar('GarageCraft_GadgetSato_electronics').AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('electronics_use', 1); SetVar('GarageCraft_GadgetSato_electronics', 'electronics_use'); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'electronics_use')"
+		nextReplies="Dlg_npc_garage_gadget_sato_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sato_9"
+		text="Забрать Высокотехнологичную электронику - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSato_electronics').AsString == 'electronics_use' and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('electronics_use', 1); SetVar('GarageCraft_GadgetSato_electronics', '0'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'electronics_use')"
+		nextReplies="Dlg_npc_garage_gadget_sato_0 Dlg_npc_garage_gadget_sato_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sato_10"
+		text="Передать Набор инструментов - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_toolset', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_GadgetSato_item_toolset').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_toolset', 1); SetVar('GarageCraft_GadgetSato_item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_toolset')"
+		nextReplies="Dlg_npc_garage_gadget_sato_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sato_11"
+		text="Забрать Набор инструментов - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_GadgetSato_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('item_toolset', 1); SetVar('GarageCraft_GadgetSato_item_toolset', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_toolset')"
+		nextReplies="Dlg_npc_garage_gadget_sato_0 Dlg_npc_garage_gadget_sato_1" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sato_12"
+		text="Начать сборку!"
+		role="PLAYER"
+		scriptCondition="not(GetVar('GarageCraft_GadgetSato_fuel').AsString == '0') and not(GetVar('GarageCraft_GadgetSato_electronics').AsString == '0') and GetVar('GarageCraft_GadgetSato_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="TActivate('GarageCraftingStart'); SetVar('GarageCraftingName', 'additional_fuel_tank2_add_damage_guns'); SetVar('GarageCrafting_time_hour', 0); SetVar('GarageCrafting_time_minute', 45); SetVar('GarageCrafting_time_second', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sato_13"
+		text="Прервать сборку!"
+		role="PLAYER"
+		scriptCondition="not(GetVar('GarageCraft_GadgetSato_fuel').AsString == '0') and not(GetVar('GarageCraft_GadgetSato_electronics').AsString == '0') and GetVar('GarageCraft_GadgetSato_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 1"
+		scriptResult="TActivate('IfCraftingTimeStop'); AddItemsToPlayerRepository(GetVar('GarageCraft_GadgetSato_fuel').AsString, 1); AddItemsToPlayerRepository(GetVar('GarageCraft_GadgetSato_electronics').AsString, 1); AddItemsToPlayerRepository('item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing', GetVar('GarageCraft_GadgetSato_fuel').AsString); AddFadingMsgByStrIdFormatted('fm_player_add_thing', GetVar('GarageCraft_GadgetSato_electronics').AsString); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); SetVar('GarageCraft_GadgetSato_fuel', '0'); SetVar('GarageCraft_GadgetSato_electronics', '0'); SetVar('GarageCraft_GadgetSato_item_toolset', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_gadget_sato_14"
+		text="Получить созданный предмет!"
+		role="PLAYER"
+		scriptCondition="not(GetVar('GarageCraft_GadgetSato_fuel').AsString == '0') and not(GetVar('GarageCraft_GadgetSato_electronics').AsString == '0') and GetVar('GarageCraft_GadgetSato_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 3"
+		scriptResult="SetVar('GarageCraft', 0); SetVar('GarageCraftingName', '0'); AddItemsToPlayerRepository('item_toolset', 1); AddItemsToPlayerRepository('additional_fuel_tank2_add_damage_guns', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'additional_fuel_tank2_add_damage_guns'); SetVar('GarageCraft_GadgetSato_fuel', '0'); SetVar('GarageCraft_GadgetSato_electronics', '0'); SetVar('GarageCraft_GadgetSato_item_toolset', 0)"
+		nextReplies="Dlg_npc_garage_gadget_sato_0 Dlg_npc_garage_gadget_sato_1" />
 
 <!--Root/r0m0/Выход с карты-->
 	<Reply

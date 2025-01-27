@@ -541,6 +541,24 @@ function UseAmmoItems(ammo_used)
 			end
 		end
 	end
+
+	local basket_special_weapon = GetPlayerVehicle():GetPartByName("BASKET_SPECIAL_WEAPON")	
+	if basket_special_weapon then
+		local prot = basket_special_weapon:GetProperty("Prototype").AsString
+		local poolshells = basket_special_weapon:GetShellsInPool()
+		local currentshells = basket_special_weapon:GetShellsInCurrentCharge()
+		if poolshells == 0 and currentshells == 0 then
+			if HasPlayerAmountOfItems("ammo_ballon_turbo", 1) then
+				if prot == "someTurboAccelerationPusher" then
+					if prot == "someTurboAccelerationPusher" then basket_special_weapon:SetShellsInPool(29) end
+					RemoveItemsFromPlayerRepository("ammo_ballon_turbo", 1)
+					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
+					CreateEffectTTLed("ET_S_USE_RELOAD_BALLON_TURBO", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1252)
+					if ammo_used == 1 then SetVar("Use_AmmoBallonTurbo", GetVar("Use_AmmoBallonTurbo").AsInt+1) end
+				end
+			end
+		end
+	end
 end
 
 -- Дать патроны для конкретного оружия
@@ -551,6 +569,7 @@ function AddAmmoItemsForGuns(veh, count)
 	local big_gun
 	local giant_gun
 	local side_gun
+	local special_gun
 
 	if count == nil then count = 1 end
 
@@ -640,6 +659,13 @@ function AddAmmoItemsForGuns(veh, count)
 				vehicle:AddItemsToRepository("ammo_chest_artillery", count)
 			end
 		end
+
+		if vehicle:GetPartByName("BASKET_SPECIAL_WEAPON") then
+			special_gun = vehicle:GetPartByName("BASKET_SPECIAL_WEAPON"):GetProperty("Prototype").AsString
+			if special_gun == "someTurboAccelerationPusher" then
+				vehicle:AddItemsToRepository("ammo_ballon_turbo", count)
+			end
+		end
 	end
 end
 
@@ -653,7 +679,7 @@ function CreateBarrelLootBox(name, pos)
 	local use2 = {"fuel_full_use", "machinery_use", "electronics_use", "item_key_gate_basefelix", "item_key_gate_thetown"}
 
 	local ammo1 = {"ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_shotgun"}
-	local ammo2 = {"ammo_chest_heavygun", "ammo_chest_rocketgun", "ammo_chest_artillerygun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun"}
+	local ammo2 = {"ammo_chest_heavygun", "ammo_chest_rocketgun", "ammo_chest_artillerygun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo"}
 
 	local building1 = {"item_bolts", "item_hose", "item_insulation", "item_nails", "item_nuts", "item_parts", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_tube"}
 	local building2 = {"item_kek", "item_military_tube", "item_pena", "item_thermometer", "item_datchik"}
@@ -805,12 +831,16 @@ function CreateGunBox(name, pos)
 				elseif gun_item == "hurricane01" or gun_item == "rocketLauncher" or gun_item == "big_swingfire01" or gun_item == "mrakSideGun" or gun_item == "hailSideGun" or gun_item == "hunterSideGun" then
 					ammo_item = "ammo_chest_rocketgun"
 				elseif gun_item == "maxim01" or gun_item == "odin01" then
-					if random(2) == 1 then
+					if random(3) == 1 then
 						ammo_item = "ammo_ballon_lasergun"
 					end
 				elseif gun_item == "fagot01" or gun_item == "elephant01" or gun_item == "hammer01" then
-					if random(2) == 1 then
+					if random(3) == 1 then
 						ammo_item = "ammo_ballon_plasmagun"
+					end
+				elseif gun_item == "someTurboAccelerationPusher" then
+					if random(2) == 1 then
+						ammo_item = "ammo_ballon_turbo"
 					end
 				end
 				if not(ammo_item == 0) then
@@ -864,7 +894,7 @@ function AllItems()
 					"doski", "details", "shkatulka",
 					"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use", "fuel_nil_use",
 					"item_key_gate_thetown", "item_key_gate_basefelix",
-					"ammo_chest_artillerygun", "ammo_chest_artillerygunForSale", "ammo_chest_heavygun", "ammo_chest_heavygunForSale", "ammo_chest_machinegun", "ammo_chest_machinegunForSale", "ammo_chest_rocketgun", "ammo_chest_rocketgunForSale", "ammo_chest_shotgun", "ammo_chest_shotgunForSale", "ammo_ballon_lasergun", "ammo_ballon_plasmagun",
+					"ammo_chest_artillerygun", "ammo_chest_artillerygunForSale", "ammo_chest_heavygun", "ammo_chest_heavygunForSale", "ammo_chest_machinegun", "ammo_chest_machinegunForSale", "ammo_chest_rocketgun", "ammo_chest_rocketgunForSale", "ammo_chest_shotgun", "ammo_chest_shotgunForSale", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo",
 					"item_bolts", "item_datchik", "item_hose", "item_insulation", "item_kek", "item_military_tube", "item_nails", "item_nuts", "item_parts", "item_pena", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_thermometer", "item_tube",
 					"item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires",
 					"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery",

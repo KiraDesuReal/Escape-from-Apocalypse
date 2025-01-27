@@ -305,6 +305,11 @@
 			SetVar("GarageCraft_AmmoBallonPlasmagun_item_wd40_100", 0)
 			SetVar("GarageCraft_AmmoBallonPlasmagun_item_toolset", 0)
 
+			SetVar("GarageCraft_AmmoBallonTurbo_item_filter", 0)
+			SetVar("GarageCraft_AmmoBallonTurbo_item_h2o2", 0)
+			SetVar("GarageCraft_AmmoBallonTurbo_item_wd40_100", 0)
+			SetVar("GarageCraft_AmmoBallonTurbo_item_toolset", 0)
+
 			SetVar("GarageCraft_Lump_item_electronics_components", 0)
 			SetVar("GarageCraft_Lump_item_helix", 0)
 			SetVar("GarageCraft_Lump_item_nippers", 0)
@@ -446,6 +451,22 @@
 					if GetVar("Generator_on").AsInt == 1 then
 						if GetVar("Generator_lvl").AsInt == 1 then
 							getObj("gen_2_lvl_1"):SetNodeAction(AT_MOVE1)
+
+							local red_light = GetEntityByName("gen_lvl_1_red_light")
+							if red_light then red_light:Remove() end
+							
+							for i=1,2 do
+								local yellow_light = GetEntityByName("gen_lvl_1_yellow_light_"..i)
+								if not(yellow_light) then
+									CreateNewSgNodeObject("ET_PS_LENS_D6", "gen_lvl_1_yellow_light_1", -1, -1, CVector(805.210, 267.481, 1004.139), Quaternion(0, 0, 0, 0), 1)
+									CreateNewSgNodeObject("ET_LS_LIGHT_TEST", "gen_lvl_1_yellow_light_2", -1, -1, CVector(805.210, 267.481, 1004.139), Quaternion(0, 0, 0, 0), 0.6)
+								end
+							end
+							
+							local smoke = GetEntityByName("gen_lvl_1_smoke")
+							if not(smoke) then
+								CreateNewSgNodeObject("ET_PS_GENERATOR_LVL1_SMOKE", "gen_lvl_1_smoke", -1, -1, CVector(809.552, 263.368, 1005.154), Quaternion(0, 0, 0, 0), 1)
+							end
 						end
 						TActivate("Generator_timer")
 						TActivate("IfGenerator_On")
@@ -1145,6 +1166,7 @@
 			CreateNewDummyObject("books", "chestScavs_7", -1, -1, CVector(915.679, 258.207, 911.978), Quaternion(0, 0, 0, 0))
 			CreateNewDummyObject("bottles", "chestScavs_8", -1, -1, CVector(915.131, 258.293, 913.950), Quaternion(0, 0, 0, 0))
 			CreateNewSgNodeObject("detail", "chestScavs_9", -1, -1, CVector(914.328, 257.863, 912.047), Quaternion(0.013, 0.012, 0.713, 0.701), 0.2)
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN9", "chestScavs_10", -1, -1, CVector(getPos("ChestScavs_Build_loc")), Quaternion(0, 0, 0, 0), 0.1)
 
 			SetVar("ChestScavs_Builden", 1)
 			TDeactivate("ChestScavs_BuildInfo")
@@ -1376,7 +1398,7 @@
 							"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_pipe_wrench", "item_ratchet_wrench", "item_sewing_kit", 
 							"item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_woodclock",
 							"someTurboAccelerationPusher", "maxim01", "fagot01", "flag01", "rainmetal01", "elephant01", "omega01", "cyclops01", "octopus01", "marsSideGun", "hunterSideGun", "hammer01",
-							"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", 
+							"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo",
 							"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 				loot_count = random(3,5)
 			elseif GetVar("ChestScavs_Search").AsInt == 4 then
@@ -1406,7 +1428,7 @@
 							"item_airfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_metallodetector",
 							"item_buldex", "item_handrill", "item_pipe_wrench", "item_ratchet_wrench", 
 							"item_cat", "item_chain_gold", "item_chiken", "item_lion", "item_rolex", "item_skullring", "item_woodclock", 
-							"fagot01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "cyclops01", "octopus01", "marsSideGun", "hunterSideGun", "hammer01", "hailSideGun", "zeusSideGun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun",
+							"fagot01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "cyclops01", "octopus01", "marsSideGun", "hunterSideGun", "hammer01", "hailSideGun", "zeusSideGun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo",
 							"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 				if GetVar("ChestScavs_Search").AsInt == 5 then loot_count = random(3,6) end 
 				if GetVar("ChestScavs_Search").AsInt == 6 then loot_count = random(4,6) end 
@@ -1666,6 +1688,10 @@
 
 			CreateNewDummyObject("r2_substation_barrel", "gen_1_lvl_1", -1, -1, CVector(807.966, 253.215, 1005.037), Quaternion(0.0000, 0.7025, 0.0000, 0.7117))
 		    CreateNewDummyObject("generator_motor", "gen_2_lvl_1", -1, -1, CVector(810.740, 255, 999.550), Quaternion(0, 0, 0, 0))
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN9", "gen_3_lvl_1", -1, -1, CVector(getPos("Generator_Build_loc")), Quaternion(0, 0, 0, 0), 0.15)
+
+			CreateNewSgNodeObject("ET_PS_LENS_D1", "gen_lvl_1_red_light", -1, -1, CVector(805.210, 267.481, 1004.139), Quaternion(0, 0, 0, 0), 0.6)
+
 			SetVar("Generator_lvl", 1)
 			TDeactivate("Generator_BuildInfo")
 			trigger:Deactivate()
@@ -1675,15 +1701,29 @@
 	<trigger Name="CreateGenerator_lvl_2" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			for i=1,2 do
+			for i=1,3 do
 				local g = GetEntityByName("gen_"..i.."_lvl_1")
 				if g then g:Remove() end
 			end
+
+			for i=1,2 do
+				local yellow_light = GetEntityByName("gen_lvl_1_yellow_light_"..i)
+				if yellow_light then yellow_light:Remove() end
+			end
+
+			local smoke = GetEntityByName("gen_lvl_1_smoke")
+			if smoke then smoke:Remove() end
+
+			local red_light = GetEntityByName("gen_lvl_1_red_light")
+			if red_light then red_light:Remove() end
 
 			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(810, 255, 993), Quaternion(0, 0, 0, 1), 6000)
 			CreateEffectTTLed( "ET_S_BUILDING", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1800)
 
 		    CreateNewDummyObject("generator", "gen_1_lvl_2", -1, -1, CVector(810, 255, 993), Quaternion(0, 1, 0, 1))
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN9", "gen_2_lvl_2", -1, -1, CVector(getPos("Generator_Build_lvl_2_loc")), Quaternion(0, 0, 0, 0), 0.1)
+
+			CreateNewSgNodeObject("ET_PS_LENS_D1", "gen_lvl_2_red_light", -1, -1, CVector(811.805, 257.686, 994.554), Quaternion(0, 0, 0, 0), 0.6)
 
 			if GetVar("Generator_time_work_second").AsInt > 0 or GetVar("Generator_time_work_minute").AsInt > 0 or GetVar("Generator_time_work_hour").AsInt > 0 then
 				SetVar("Generator_time_work_second", 0)
@@ -1701,10 +1741,21 @@
 	<trigger Name="CreateGenerator_lvl_3" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			local g = GetEntityByName("gen_1_lvl_2")
-			if g then g:Remove() end
+			for i=1,2 do
+				local g = GetEntityByName("gen_"..i.."_lvl_2")
+				if g then g:Remove() end
+			end
+
 			local m = GetEntityByName("mine_tower")
 			if m then m:Remove() end
+
+			local red_light = GetEntityByName("gen_lvl_2_red_light")
+			if red_light then red_light:Remove() end
+
+			for i2=1,2 do
+				local light = GetEntityByName("gen_lvl_2_light_"..i2)
+				if light then light:Remove() end
+			end
 
 			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(790, 255, 1003), Quaternion(0, 0, 0, 1), 6000)
 			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(776, 255, 1005), Quaternion(0, 0, 0, 1), 6000)
@@ -1744,10 +1795,27 @@
 			if GetVar("Generator_lvl").AsInt == 1 then
 				getObj("gen_2_lvl_1"):SetNodeAction(AT_STAND1)
 				TDeactivate("GeneratorTimeWork")
+
+				for i=1,2 do
+					local yellow_light = GetEntityByName("gen_lvl_1_yellow_light_"..i)
+					if yellow_light then yellow_light:Remove() end
+				end
+
+				local smoke = GetEntityByName("gen_lvl_1_smoke")
+				if smoke then smoke:Remove() end
+
+				CreateNewSgNodeObject("ET_PS_LENS_D1", "gen_lvl_1_red_light", -1, -1, CVector(805.210, 267.481, 1004.139), Quaternion(0, 0, 0, 0), 0.6)
 			elseif GetVar("Generator_lvl").AsInt == 2 then
 				local g = GetEntityByName("generator_sound")
 				if g then g:Remove() end
 				TDeactivate("GeneratorTimeWork_2")
+
+				for i2=1,2 do
+					local light = GetEntityByName("gen_lvl_2_light_"..i2)
+					if light then light:Remove() end
+				end
+
+				CreateNewSgNodeObject("ET_PS_LENS_D1", "gen_lvl_2_red_light", -1, -1, CVector(811.805, 257.686, 994.554), Quaternion(0, 0, 0, 0), 0.6)
 			end
 			TActivate("IfGenerator_Off")
 			TDeactivate("Generator_timer")
@@ -1762,9 +1830,22 @@
 			if GetVar("Generator_lvl").AsInt == 1 then
 				getObj("gen_2_lvl_1"):SetNodeAction(AT_MOVE1)
 				TActivate("GeneratorTimeMsgActivate")
+
+				local red_light = GetEntityByName("gen_lvl_1_red_light")
+				if red_light then red_light:Remove() end
+
+				CreateNewSgNodeObject("ET_PS_LENS_D6", "gen_lvl_1_yellow_light_1", -1, -1, CVector(805.210, 267.481, 1004.139), Quaternion(0, 0, 0, 0), 1)
+				CreateNewSgNodeObject("ET_LS_LIGHT_TEST", "gen_lvl_1_yellow_light_2", -1, -1, CVector(805.210, 267.481, 1004.139), Quaternion(0, 0, 0, 0), 0.6)
+				CreateNewSgNodeObject("ET_PS_GENERATOR_LVL1_SMOKE", "gen_lvl_1_smoke", -1, -1, CVector(809.552, 263.368, 1005.154), Quaternion(0, 0, 0, 0), 1)
 			elseif GetVar("Generator_lvl").AsInt == 2 then
 				CreateNewSgNodeObject("ET_S_GENERATOR", "generator_sound", -1, -1, CVector(810, 255, 993), Quaternion(0, 0, 0, 0))
 				TActivate("GeneratorTimeMsgActivate")
+
+				local red_light = GetEntityByName("gen_lvl_2_red_light")
+				if red_light then red_light:Remove() end
+
+				CreateNewSgNodeObject("ET_PS_LENS_D8", "gen_lvl_2_light_1", -1, -1, CVector(811.805, 257.686, 994.554), Quaternion(0, 0, 0, 0), 0.3)
+				CreateNewSgNodeObject("ET_PS_GENERATOR_LVL2_LIGHT", "gen_lvl_2_light_2", -1, -1, CVector(810, 255.100, 993), Quaternion(0, 0, 0, 0), 1)
 			end
 			TActivate("IfGenerator_On")
 			TActivate("Generator_timer")
@@ -2185,6 +2266,7 @@
 			CreateNewDummyObject("kaktus", "gr_48", -1, -1, CVector(944.220, 262.170, 947.769), Quaternion(0.0000, 0.8179, 0.0000, 0.5754))
 			CreateNewSgNodeObject("ET_S_ITEM_MUSIC01", "gr_49", -1, -1, CVector(946.222, 265.006, 957.790), Quaternion(0, 0, 0, 0))
 			CreateNewDummyObject("bottles", "gr_50", -1, -1, CVector(923.099, 262.814, 949.319), Quaternion(0, 0, 0, 0))
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN9", "gr_51", -1, -1, CVector(getPos("Garage_Build_loc")), Quaternion(0, 0, 0, 0), 0.15)
 			SetVar("Garage_Builden", 1)
 			
 			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(945, 255, 957), Quaternion(0, 0, 0, 1), 6000)

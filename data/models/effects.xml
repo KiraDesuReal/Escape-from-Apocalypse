@@ -38,6 +38,10 @@
 		<Node name="Sound3" class="SgSoundSourceNode" id="S_USE_RELOAD_BALLON" looped="0"/>
 	</Node>
 
+	<Node name="ET_S_USE_RELOAD_BALLON_TURBO" class="SgNode">
+		<Node name="Sound3" class="SgSoundSourceNode" id="S_USE_RELOAD_BALLON_TURBO" looped="0"/>
+	</Node>
+
 	<Node name="ET_PS_FUEL_PETROL_START" class="SgNode">
 		<Node name="noise" class="SgSoundSourceNode" id="S_FUEL_PETROL_START" looped="0" /> 
 	</Node>
@@ -94,6 +98,15 @@
 
 	<Node name="ET_S_GENERATOR_MOTOR" class="SgNode">
 		<Node name="Sound3" class="SgSoundSourceNode" id="S_GENERATOR_MOTOR" looped="1" />
+	</Node>
+
+	<Node name="ET_PS_GENERATOR_LVL1_SMOKE" class="SgNode">
+		<Node name="Object0" class="SgParticlesNode" id="PS_BOSS1_SMOKE" psNumEmitterMesh="-1" />
+		<Node name="Sound3" class="SgSoundSourceNode" id="S_CAR_BURNING_SMALL" looped="1"/>
+	</Node>
+
+	<Node name="ET_PS_GENERATOR_LVL2_LIGHT" class="SgNode">
+		<Node name="Object0" class="SgPointLightSourceNode" id="LS_LIGHT_GEN_LVL2" psNumEmitterMesh="-1" />
 	</Node>
 
 	<Node name="ET_S_GENERATOR" class="SgNode">
@@ -398,6 +411,10 @@
 
 	<Node name="ET_LS_LIGHT_RED" class="SgNode">
 		<Node name="Object2" class="SgPointLightSourceNode" id="LS_LIGHT_RED" psNumEmitterMesh="-1" />
+	</Node>
+
+	<Node name="ET_PS_ORACUL_MAIN9" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_ORACUL_MAIN9" psNumEmitterMesh="-1" />
 	</Node>
 
 	<Node name="ET_PS_ORACUL_MAIN7" class="SgNode">
@@ -3417,6 +3434,10 @@
 
 	<Node name="ET_PS_LENS_D6" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_D6" psNumEmitterMesh="-1" /> 
+	</Node>
+
+	<Node name="ET_PS_LENS_D8" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_D8" psNumEmitterMesh="-1" /> 
 	</Node>
 
 	<Node name="ET_PS_LENS_S3" class="SgNode">

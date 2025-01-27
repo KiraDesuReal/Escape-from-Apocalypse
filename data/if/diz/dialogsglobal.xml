@@ -1136,7 +1136,7 @@
 		name="Dlg_npc_garage_craft_ammunition"
 		text="Находясь в гараже, с помощью верстака вы можете заниматься созданием предметов, оружия и модулей для своего автомобиля.|@FF0000AA|@FF1D1D1D[Выберите предмет для создания]"
 		role="NPC"
-		nextReplies="Dlg_npc_0013223 Dlg_npc_0013250 Dlg_npc_0013251 Dlg_npc_0013252 Dlg_npc_0013253 Dlg_npc_0013254 Dlg_npc_0013255 Dlg_npc_00132010" />
+		nextReplies="Dlg_npc_0013223 Dlg_npc_0013250 Dlg_npc_0013251 Dlg_npc_0013252 Dlg_npc_0013253 Dlg_npc_0013254 Dlg_npc_0013255 Dlg_npc_0013269 Dlg_npc_00132010" />
 
 	<Reply
 		name="Dlg_npc_0013223"
@@ -1179,6 +1179,12 @@
 		text="Баллон с жидкостью для Плазменной пушки."
 		role="PLAYER"
 		nextReplies="Dlg_npc_garage_ammo_ballon_plasmagun_0 Dlg_npc_garage_ammo_ballon_plasmagun_1" />
+
+	<Reply
+		name="Dlg_npc_0013269"
+		text="Баллон с воздухом для Турбо-ускорения."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_ammo_ballon_turbo_0 Dlg_npc_garage_ammo_ballon_turbo_1" />
 
 <!--Root/r0m0/Гараж: Гаджеты-->
 	<Reply
@@ -5832,6 +5838,107 @@
 		scriptCondition="GetVar('GarageCraft_AmmoBallonPlasmagun_item_waterfilter').AsInt == 1 and GetVar('GarageCraft_AmmoBallonPlasmagun_item_battery_d').AsInt == 2 and GetVar('GarageCraft_AmmoBallonPlasmagun_item_naci').AsInt == 1 and GetVar('GarageCraft_AmmoBallonPlasmagun_item_wd40_100').AsInt == 1 and GetVar('GarageCraft_AmmoBallonPlasmagun_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 3"
 		scriptResult="SetVar('GarageCraft', 0); SetVar('GarageCraftingName', '0'); AddItemsToPlayerRepository('item_toolset', 1); AddItemsToPlayerRepository('ammo_ballon_plasmagun', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'ammo_ballon_plasmagun'); SetVar('GarageCraft_AmmoBallonPlasmagun_item_waterfilter', 0); SetVar('GarageCraft_AmmoBallonPlasmagun_item_battery_d', 0); SetVar('GarageCraft_AmmoBallonPlasmagun_item_naci', 0); SetVar('GarageCraft_AmmoBallonPlasmagun_item_wd40_100', 0); SetVar('GarageCraft_AmmoBallonPlasmagun_item_toolset', 0)"
 		nextReplies="Dlg_npc_garage_ammo_ballon_plasmagun_0 Dlg_npc_garage_ammo_ballon_plasmagun_1" />
+
+<!--Root/r0m0/Гараж: крафт - Баллон с воздухом для Турбо-ускорения-->
+	<Reply
+		name="Dlg_npc_garage_ammo_ballon_turbo_0"
+		text="Создание: @FF1D1D1DБаллон с воздухом для Турбо-ускорения|Количество: @FF1D1D1D1|@FF0000AA|Время создания: @FF1D1D1D00:30:00|@FF0000AA|@FF780a0a[Включите генератор]|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|Воздушный фильтр - @FF1D1D1Dx1|Бутылка перекиси водорода «H2O2» - @FF1D1D1Dx1|WD-40 100мл - @FF1D1D1Dx1|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Generator_on').AsInt == 0"
+		nextReplies="Dlg_npc_garage_ammo_ballon_turbo_3 Dlg_npc_garage_ammo_ballon_turbo_5 Dlg_npc_garage_ammo_ballon_turbo_7 Dlg_npc_garage_ammo_ballon_turbo_9 Dlg_npc_garage_ammo_ballon_turbo_11 Dlg_npc_garage_ammo_ballon_turbo_12 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_garage_ammo_ballon_turbo_1"
+		text="Создание: @FF1D1D1DБаллон с воздухом для Турбо-ускорения|Количество: @FF1D1D1D1|@FF0000AA|Время создания: @FF1D1D1D00:30:00|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|Воздушный фильтр - @FF1D1D1Dx1|Бутылка перекиси водорода «H2O2» - @FF1D1D1Dx1|WD-40 100мл - @FF1D1D1Dx1|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Generator_on').AsInt == 1"
+		nextReplies="Dlg_npc_garage_ammo_ballon_turbo_2 Dlg_npc_garage_ammo_ballon_turbo_3 Dlg_npc_garage_ammo_ballon_turbo_4 Dlg_npc_garage_ammo_ballon_turbo_5 Dlg_npc_garage_ammo_ballon_turbo_6 Dlg_npc_garage_ammo_ballon_turbo_7 Dlg_npc_garage_ammo_ballon_turbo_8 Dlg_npc_garage_ammo_ballon_turbo_9 Dlg_npc_garage_ammo_ballon_turbo_10 Dlg_npc_garage_ammo_ballon_turbo_11 Dlg_npc_garage_ammo_ballon_turbo_12 Dlg_npc_00132010" />
+
+	<Reply
+		name="Dlg_npc_garage_ammo_ballon_turbo_2"
+		text="Передать Воздушный фильтр - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_filter', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_AmmoBallonTurbo_item_filter').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_filter', 1); SetVar('GarageCraft_AmmoBallonTurbo_item_filter', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_filter')"
+		nextReplies="Dlg_npc_garage_ammo_ballon_turbo_1" />
+
+	<Reply
+		name="Dlg_npc_garage_ammo_ballon_turbo_3"
+		text="Забрать Воздушный фильтр - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_AmmoBallonTurbo_item_filter').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('item_filter', 1); SetVar('GarageCraft_AmmoBallonTurbo_item_filter', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_filter')"
+		nextReplies="Dlg_npc_garage_ammo_ballon_turbo_0 Dlg_npc_garage_ammo_ballon_turbo_1" />
+
+	<Reply
+		name="Dlg_npc_garage_ammo_ballon_turbo_4"
+		text="Передать Бутылка перекиси водорода «H2O2» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_h2o2', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_AmmoBallonTurbo_item_h2o2').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_h2o2', 1); SetVar('GarageCraft_AmmoBallonTurbo_item_h2o2', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_h2o2')"
+		nextReplies="Dlg_npc_garage_ammo_ballon_turbo_1" />
+
+	<Reply
+		name="Dlg_npc_garage_ammo_ballon_turbo_5"
+		text="Забрать Бутылка перекиси водорода «H2O2» - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_AmmoBallonTurbo_item_h2o2').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('item_h2o2', 1); SetVar('GarageCraft_AmmoBallonTurbo_item_h2o2', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_h2o2')"
+		nextReplies="Dlg_npc_garage_ammo_ballon_turbo_0 Dlg_npc_garage_ammo_ballon_turbo_1" />
+
+	<Reply
+		name="Dlg_npc_garage_ammo_ballon_turbo_6"
+		text="Передать WD-40 100мл - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_wd40_100', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_AmmoBallonTurbo_item_wd40_100').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_wd40_100', 1); SetVar('GarageCraft_AmmoBallonTurbo_item_wd40_100', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_wd40_100')"
+		nextReplies="Dlg_npc_garage_ammo_ballon_turbo_1" />
+
+	<Reply
+		name="Dlg_npc_garage_ammo_ballon_turbo_7"
+		text="Забрать WD-40 100мл - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_AmmoBallonTurbo_item_wd40_100').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('item_wd40_100', 1); SetVar('GarageCraft_AmmoBallonTurbo_item_wd40_100', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_wd40_100')"
+		nextReplies="Dlg_npc_garage_ammo_ballon_turbo_0 Dlg_npc_garage_ammo_ballon_turbo_1" />
+
+	<Reply
+		name="Dlg_npc_garage_ammo_ballon_turbo_8"
+		text="Передать Набор инструментов - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_toolset', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_AmmoBallonTurbo_item_toolset').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_toolset', 1); SetVar('GarageCraft_AmmoBallonTurbo_item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_toolset')"
+		nextReplies="Dlg_npc_garage_ammo_ballon_turbo_1" />
+
+	<Reply
+		name="Dlg_npc_garage_ammo_ballon_turbo_9"
+		text="Забрать Набор инструментов - x1"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_AmmoBallonTurbo_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="AddItemsToPlayerRepository('item_toolset', 1); SetVar('GarageCraft_AmmoBallonTurbo_item_toolset', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_toolset')"
+		nextReplies="Dlg_npc_garage_ammo_ballon_turbo_0 Dlg_npc_garage_ammo_ballon_turbo_1" />
+
+	<Reply
+		name="Dlg_npc_garage_ammo_ballon_turbo_10"
+		text="Начать сборку!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_AmmoBallonTurbo_item_filter').AsInt == 1 and GetVar('GarageCraft_AmmoBallonTurbo_item_h2o2').AsInt == 1 and GetVar('GarageCraft_AmmoBallonTurbo_item_wd40_100').AsInt == 1 and GetVar('GarageCraft_AmmoBallonTurbo_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
+		scriptResult="TActivate('GarageCraftingStart'); SetVar('GarageCraftingName', 'ammo_ballon_turbo'); SetVar('GarageCrafting_time_hour', 0); SetVar('GarageCrafting_time_minute', 30); SetVar('GarageCrafting_time_second', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_ammo_ballon_turbo_11"
+		text="Прервать сборку!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_AmmoBallonTurbo_item_filter').AsInt == 1 and GetVar('GarageCraft_AmmoBallonTurbo_item_h2o2').AsInt == 1 and GetVar('GarageCraft_AmmoBallonTurbo_item_wd40_100').AsInt == 1 and GetVar('GarageCraft_AmmoBallonTurbo_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 1"
+		scriptResult="TActivate('IfCraftingTimeStop'); AddItemsToPlayerRepository('item_filter', 1); AddItemsToPlayerRepository('item_h2o2', 1); AddItemsToPlayerRepository('item_wd40_100', 1); AddItemsToPlayerRepository('item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_filter'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_h2o2'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_wd40_100'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); SetVar('GarageCraft_AmmoBallonTurbo_item_filter', 0); SetVar('GarageCraft_AmmoBallonTurbo_item_h2o2', 0); SetVar('GarageCraft_AmmoBallonTurbo_item_wd40_100', 0); SetVar('GarageCraft_AmmoBallonTurbo_item_toolset', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_garage_ammo_ballon_turbo_12"
+		text="Получить созданный предмет!"
+		role="PLAYER"
+		scriptCondition="GetVar('GarageCraft_AmmoBallonTurbo_item_filter').AsInt == 1 and GetVar('GarageCraft_AmmoBallonTurbo_item_h2o2').AsInt == 1 and GetVar('GarageCraft_AmmoBallonTurbo_item_wd40_100').AsInt == 1 and GetVar('GarageCraft_AmmoBallonTurbo_item_toolset').AsInt == 1 and GetVar('GarageCraft').AsInt == 3"
+		scriptResult="SetVar('GarageCraft', 0); SetVar('GarageCraftingName', '0'); AddItemsToPlayerRepository('item_toolset', 1); AddItemsToPlayerRepository('ammo_ballon_turbo', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'ammo_ballon_turbo'); SetVar('GarageCraft_AmmoBallonTurbo_item_filter', 0); SetVar('GarageCraft_AmmoBallonTurbo_item_h2o2', 0); SetVar('GarageCraft_AmmoBallonTurbo_item_wd40_100', 0); SetVar('GarageCraft_AmmoBallonTurbo_item_toolset', 0)"
+		nextReplies="Dlg_npc_garage_ammo_ballon_turbo_0 Dlg_npc_garage_ammo_ballon_turbo_1" />
 
 <!--Root/r0m0/Гараж: крафт - Лампа накаливания-->
 	<Reply

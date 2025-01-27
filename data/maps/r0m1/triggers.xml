@@ -33,6 +33,7 @@
 			SetVar("Use_AmmoChestShotGun", 0)
 			SetVar("Use_AmmoBallonLaserGun", 0)
 			SetVar("Use_AmmoBallonPlasmaGun", 0)
+			SetVar("Use_AmmoBallonTurbo", 0)
 			SetVar("PlayerSkin", 0)
 
 			SetVar("Generator_time_work_hour", 0)
@@ -411,6 +412,7 @@
 			SetVar("Use_AmmoChestShotGun", 0)
 			SetVar("Use_AmmoBallonLaserGun", 0)
 			SetVar("Use_AmmoBallonPlasmaGun", 0)
+			SetVar("Use_AmmoBallonTurbo", 0)
 
 			for i=1,4 do
 				SetVar("loot_"..i, 0)
@@ -1345,6 +1347,7 @@
 			if GetVar("Use_AmmoChestShotGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_shotgun", GetVar("Use_AmmoChestShotGun").AsInt) end
 			if GetVar("Use_AmmoBallonLaserGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_ballon_lasergun", GetVar("Use_AmmoBallonLaserGun").AsInt) end
 			if GetVar("Use_AmmoBallonPlasmaGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_ballon_plasmagun", GetVar("Use_AmmoBallonPlasmaGun").AsInt) end
+			if GetVar("Use_AmmoBallonTurbo").AsInt > 0 then AddItemsToPlayerRepository("ammo_ballon_turbo", GetVar("Use_AmmoBallonTurbo").AsInt) end
 
 			SetVar("PlayerDie", 0)
 

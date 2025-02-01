@@ -984,9 +984,23 @@ function AddPlayerRandomConfigurationVehicle()
 end
 
 -- Сокращенная функция вывода сообщения в консоль
-function c(msg)
+function con(msg)
 	println(msg)
 end
+
+-- Безопасная смена скина у объекта
+function SafeSetSkinObj(name, num)
+	if num == nil then num = 0 end
+
+	local obj = GetEntityByName(name)
+	if obj then 
+		obj:SetSkin(num)
+	else
+		LOG("Object "..name.." not found!")
+	end
+end
+
+
 
 
 

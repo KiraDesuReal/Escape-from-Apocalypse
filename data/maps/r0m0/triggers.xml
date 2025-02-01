@@ -390,6 +390,7 @@
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 			SetVar("q_testing_mission_hornet", 0)
+			SetVar("q_testing_mission_american_hornet", 0)
 			SetVar("q_fuel1_item_fuel", 0)
 			SetVar("q_fuel2_item_fuel", 0)
 			SetVar("q_fuel2_can_be_given", 0)
@@ -403,6 +404,34 @@
 			SetVar("q_bitok2_item_cooler", 0)
 			SetVar("q_bitok2_item_plate", 0)
 			SetVar("q_bitok3_can_be_given", 0)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="StartGlobalVars" active="1">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if CHESTSCAVS_TIMER_HOUR_GLOBAL then CHESTSCAVS_TIMER_HOUR_GLOBAL = 0 end
+			if CHESTSCAVS_TIMER_MINUTE_GLOBAL then CHESTSCAVS_TIMER_MINUTE_GLOBAL = 0 end
+			if CHESTSCAVS_TIMER_SECOND_GLOBAL then CHESTSCAVS_TIMER_SECOND_GLOBAL = 0 end
+			if CHESTSCAVS_SEARCH_GLOBAL then CHESTSCAVS_SEARCH_GLOBAL = 0 end
+
+			if GENERATOR_TIMER_HOUR_GLOBAL then GENERATOR_TIMER_HOUR_GLOBAL = 0 end
+			if GENERATOR_TIMER_MINUTE_GLOBAL then GENERATOR_TIMER_MINUTE_GLOBAL = 0 end
+			if GENERATOR_TIMER_SECOND_GLOBAL then GENERATOR_TIMER_SECOND_GLOBAL = 0 end
+			if GENERATOR_LVL_GLOBAL then GENERATOR_LVL_GLOBAL = 0 end
+			if GENERATOR_ON_GLOBAL then GENERATOR_ON_GLOBAL = 0 end
+
+			if COUNT_RAIDS then COUNT_RAIDS = 0 end
+
+			if R4M1_exit then R4M1_exit = 0 end
+			if R0M1_exit then R0M1_exit = 0 end
+			
+			if GARAGE_CRAFTING_TIME_HOUR_GLOBAL then GARAGE_CRAFTING_TIME_HOUR_GLOBAL = 0 end
+			if GARAGE_CRAFTING_TIME_MINUTE_GLOBAL then GARAGE_CRAFTING_TIME_MINUTE_GLOBAL = 0 end
+			if GARAGE_CRAFTING_TIME_SECOND_GLOBAL then GARAGE_CRAFTING_TIME_SECOND_GLOBAL = 0 end
+			if GARAGE_CRAFT_GLOBAL then GARAGE_CRAFT_GLOBAL = 0 end
+			if GARAGE_CRAFT_PAUSE_GLOBAL then GARAGE_CRAFT_PAUSE_GLOBAL = 0 end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -422,6 +451,7 @@
 				if GetVar("ChestScavs_Search").AsInt > 0 and GetVar("ChestScavs_time_hour").AsInt == 0 and GetVar("ChestScavs_time_minute").AsInt == 0 and GetVar("ChestScavs_time_second").AsInt == 0 then
 					if GetVar("ChestScavs_Loot").AsInt == 0 then
 						TActivate("ChestScavs_CreateLoot")
+						TActivate("ChestScavs_RemoveTimer3D")
 					end
 				elseif GetVar("ChestScavs_Search").AsInt > 0 then
 					if GetVar("ChestScavs_time_hour").AsInt > 0 or GetVar("ChestScavs_time_minute").AsInt > 0 or GetVar("ChestScavs_time_second").AsInt > 0 then
@@ -442,6 +472,8 @@
 					if GetVar("Generator_on").AsInt == 0 then
 						AddFadingMsgByStrIdFormatted("fm_generator_fuel_nil")
 						SoundFadingMsg()
+						local t = GetEntityByName("gen_3D_text")
+						if t then t:SetSkin(1) end
 					end
 				end
 			end
@@ -476,6 +508,7 @@
 					SetVar("Generator_on", 0)
 					TActivate("Generator_Stop")
 					SetVar("Generator_time_work_msg", "0")
+					TActivate("Generator_UpdateTimer3D")
 				end
 			end
 
@@ -531,11 +564,20 @@
 							TActivate("GarageCrafting_timer")
 							TActivate("GarageLamppost")
 							CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "GarageCraftingProcessSoundFX", -1, -1, CVector(938, 263, 957), Quaternion(0, 0, 0, 0))
+						elseif GetVar("Generator_on").AsInt == 0 and GetVar("GarageCraftPause").AsInt == 1 then
+							local t = GetEntityByName("gr_52")
+							if t then t:SetSkin(7) end
 						end
+					else
+						local t = GetEntityByName("gr_52")
+						if t then t:SetSkin(5) end
 					end
+					TActivate("GarageCraftingUpdateTimeMsg")
+					TActivate("Garage_UpdateTimer3D")
 					TActivate("GarageCraftingTimeMsgActivate")
 				else
 					if GetVar("GarageCraft").AsInt == 2 then
+						TActivate("Garage_UpdateTimer3D")
 						TActivate("IfCraftingDone")
 					end
 				end
@@ -590,6 +632,7 @@
 				if IsQuestComplete("q_test_drive3") then CabAndBasket:AddItems("molokovozCargo03_6x8", 1) end
 				CabAndBasket:AddItems("uralCab01", 1)
 				if IsQuestComplete("q_test_drive5") then CabAndBasket:AddItems("uralCab02", 1) end
+				if IsQuestComplete("q_test_drive6") then CabAndBasket:AddItems("uralCargo02_7x9", 1) end
 				CabAndBasket:AddItems("uralCargo01_6x9", 1)
 				CabAndBasket:AddItems("belazCab01", 1)
 				CabAndBasket:AddItems("belazCargo01_6x12", 1)
@@ -1049,7 +1092,7 @@
 			local items = getn(start_items)
 
 			for i=1,items do
-				local Item = CreateNewObject{prototypeName = start_items[i], objName = "StartItem"..random(10000), belong = 1100}
+				local Item = CreateNewObject{prototypeName = start_items[i], objName = "StartItem"..i, belong = 1100}
 				local ItemId = GetEntityByID(Item)
 				if ChestId and ItemId then
 					ChestId:AddChild(ItemId)
@@ -1167,6 +1210,7 @@
 			CreateNewDummyObject("bottles", "chestScavs_8", -1, -1, CVector(915.131, 258.293, 913.950), Quaternion(0, 0, 0, 0))
 			CreateNewSgNodeObject("detail", "chestScavs_9", -1, -1, CVector(914.328, 257.863, 912.047), Quaternion(0.013, 0.012, 0.713, 0.701), 0.2)
 			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN9", "chestScavs_10", -1, -1, CVector(getPos("ChestScavs_Build_loc")), Quaternion(0, 0, 0, 0), 0.1)
+			CreateNewDummyObject("3D_text", "chestScavs_11", -1, -1, CVector(916.503, 261.819, 911.050), Quaternion(0.0000, -0.707, 0.0000, 0.707), 0)
 
 			SetVar("ChestScavs_Builden", 1)
 			TDeactivate("ChestScavs_BuildInfo")
@@ -1185,6 +1229,7 @@
 			if GetVar("ChestScavs_Search").AsInt == 6 then SetVar("ChestScavs_time_hour", 1) SetVar("ChestScavs_time_minute", 0) SetVar("ChestScavs_time_second", 0) end
 
 			TActivate("ChestScavs_Timer")
+			TActivate("ChestScavs_CreateTimer3D")
 
 			AddFadingMsgByStrIdFormatted("fm_chest_scavs_start")
 			SoundFadingMsg()
@@ -1233,16 +1278,19 @@
 				end
 			end
 
-			if 0 > hour and 0 > min and 0 > sec then
+			if hour == 0 and min == 0 and sec == 0 then
 				SetVar("ChestScavs_time_hour", 0)
 				SetVar("ChestScavs_time_minute", 0)
 				SetVar("ChestScavs_time_second", 0)
 				SetVar("ChestScavs_time_msg", "0")
 				TActivate("CreateScavMove")
 				TDeactivate("ChestScavs_Time")
+				TActivate("ChestScavs_RemoveTimer3D")
 			else
 				TActivate("cst")
 			end
+
+			TActivate("ChestScavs_UpdateTimer3D")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1272,8 +1320,109 @@
 		</script>
 	</trigger>
 
+	<trigger Name="ChestScavs_CreateTimer3D" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewDummyObject("3D_timer", "cs_3D_timer_1", -1, -1, CVector(916.503, 264.336, 917.138), Quaternion(0.0000, -0.707, 0.0000, 0.707), 0)
+			CreateNewDummyObject("3D_timer", "cs_3D_timer_2", -1, -1, CVector(916.503, 264.336, 915.138), Quaternion(0.0000, -0.707, 0.0000, 0.707), 0)
+			CreateNewDummyObject("3D_timer", "cs_3D_timer_3", -1, -1, CVector(916.503, 264.336, 913.688), Quaternion(0.0000, -0.707, 0.0000, 0.707), 10)
+			CreateNewDummyObject("3D_timer", "cs_3D_timer_4", -1, -1, CVector(916.503, 264.336, 912.237), Quaternion(0.0000, -0.707, 0.0000, 0.707), 0)
+			CreateNewDummyObject("3D_timer", "cs_3D_timer_5", -1, -1, CVector(916.503, 264.336, 910.236), Quaternion(0.0000, -0.707, 0.0000, 0.707), 0)
+			CreateNewDummyObject("3D_timer", "cs_3D_timer_6", -1, -1, CVector(916.503, 264.336, 908.786), Quaternion(0.0000, -0.707, 0.0000, 0.707), 10)
+			CreateNewDummyObject("3D_timer", "cs_3D_timer_7", -1, -1, CVector(916.503, 264.336, 907.335), Quaternion(0.0000, -0.707, 0.0000, 0.707), 0)
+			CreateNewDummyObject("3D_timer", "cs_3D_timer_8", -1, -1, CVector(916.503, 264.336, 905.335), Quaternion(0.0000, -0.707, 0.0000, 0.707), 0)
+			TActivate("ChestScavs_UpdateTimer3D")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ChestScavs_RemoveTimer3D" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i=1,8 do
+				local cs3dTimer = GetEntityByName("cs_3D_timer_"..i)
+				if cs3dTimer then cs3dTimer:Remove() end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ChestScavs_UpdateTimer3D" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i=1,8 do
+				local cs3dTimer = GetEntityByName("cs_3D_timer_"..i)
+				if not(cs3dTimer) then TActivate("ChestScavs_CreateTimer3D") end
+			end
+
+			local hour1, hour2, min1, min2, sec1, sec2 = 0, 0, 0, 0, 0, 0
+
+			hour1 = tonumber(strsub(GetVar("ChestScavs_time_hour").AsInt, 1, 1))
+
+			if GetVar("ChestScavs_time_hour").AsInt >= 10 then
+				hour2 = tonumber(strsub(GetVar("ChestScavs_time_hour").AsInt, 2, 2))
+			end
+
+			min1 = tonumber(strsub(GetVar("ChestScavs_time_minute").AsInt, 1, 1))
+
+			if GetVar("ChestScavs_time_minute").AsInt >= 10 then
+				min2 = tonumber(strsub(GetVar("ChestScavs_time_minute").AsInt, 2, 2))
+			end
+
+			sec1 = tonumber(strsub(GetVar("ChestScavs_time_second").AsInt, 1, 1))
+
+			if GetVar("ChestScavs_time_second").AsInt >= 10 then
+				sec2 = tonumber(strsub(GetVar("ChestScavs_time_second").AsInt, 2, 2))
+			end
+
+			if GetVar("ChestScavs_time_hour").AsInt >= 10 then
+				local g1 = GetEntityByName("cs_3D_timer_1")
+				if g1 then g1:SetSkin(hour1) end
+
+				local g2 = GetEntityByName("cs_3D_timer_2")
+				if g2 then g2:SetSkin(hour2) end
+			else
+				local g1 = GetEntityByName("cs_3D_timer_1")
+				if g1 then g1:SetSkin(0) end
+
+				local g2 = GetEntityByName("cs_3D_timer_2")
+				if g2 then g2:SetSkin(hour1) end
+			end
+
+			if GetVar("ChestScavs_time_minute").AsInt >= 10 then
+				local g4 = GetEntityByName("cs_3D_timer_4")
+				if g4 then g4:SetSkin(min1) end
+
+				local g5 = GetEntityByName("cs_3D_timer_5")
+				if g5 then g5:SetSkin(min2) end
+			else
+				local g4 = GetEntityByName("cs_3D_timer_4")
+				if g4 then g4:SetSkin(0) end
+
+				local g5 = GetEntityByName("cs_3D_timer_5")
+				if g5 then g5:SetSkin(min1) end
+			end
+
+			if GetVar("ChestScavs_time_second").AsInt >= 10 then
+				local g7 = GetEntityByName("cs_3D_timer_7")
+				if g7 then g7:SetSkin(sec1) end
+
+				local g8 = GetEntityByName("cs_3D_timer_8")
+				if g8 then g8:SetSkin(sec2) end
+			else
+				local g7 = GetEntityByName("cs_3D_timer_7")
+				if g7 then g7:SetSkin(0) end
+
+				local g8 = GetEntityByName("cs_3D_timer_8")
+				if g8 then g8:SetSkin(sec1) end
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 	<trigger Name="CreateScavMove" active="0">
-		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
 		<script>
 			local pos = {CVector(1879, 255, 1370), CVector(200, 255, 388)}
 			local rot = {Quaternion(-0.014, -0.506, 0.003, 0.862), Quaternion(-0.009, 0.703, 0.005, 0.711)}
@@ -1282,6 +1431,13 @@
 
 			local list = {"Sml1CarScav", "Sml2CarScav", "Sml3CarScav", "Sml4CarScav", "Scout1CarScav", "Scout2CarScav", "Scout3CarScav", "Fighter2CarScav", "Hunter2CarScav"}
 			local model = list[random(getn(list))]
+
+			local veh0 = GetEntityByName("ScavMoveToChest_vehicle_0")
+			if veh0 then
+				veh0:Remove()
+				getObj("RemoveScavMoveToChest"):DelEvent("GE_OBJECT_ENTERS_LOCATION")
+				TDeactivate("RemoveScavMoveToChest")
+			end
 
 			TeamCreate("ScavMoveToChest", 1090, pos[r], {model}, nil, 0, rot[r])
 
@@ -1321,6 +1477,9 @@
 			AddFadingMsgByStrIdFormatted("fm_chest_scavs_scav_move")
 			SoundFadingMsg()
 
+			local cs3dText = GetEntityByName("chestScavs_11")
+			if cs3dText then cs3dText:SetSkin(2) end
+ 
 			TActivate("ChestScavs_EntersLoc")
 			TDeactivate("ChestScavs_Timer")
 			TDeactivate("cst")
@@ -1453,6 +1612,10 @@
 			AddFadingMsgByStrIdFormatted("fm_chest_scavs_loot")
 			SoundFadingMsg()
 			CreateEffectInsertedInRemove("ET_S_CHEST_SCAVS_END", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+
+			local cs3dText = GetEntityByName("chestScavs_11")
+			if cs3dText then cs3dText:SetSkin(3) end
+
 			TActivate("RemoveLootOrNot")
 			TDeactivate("ChestScavs_Timer")
 			TDeactivate("cst")
@@ -1462,15 +1625,15 @@
 	</trigger>
 
 	<trigger Name="RemoveLootOrNot" active="0">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ChestScavs_Build_loc" />
-		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="ChestScavs_Build_loc" />
+		<event eventid="GE_OBJECT_DIE" ObjName="ChestScavsForLoot" />
 		<script>
-			local l = GetEntityByName("ChestScavsForLoot")
-			if not(l) then
-				SetVar("ChestScavs_Search", 0)
-				SetVar("ChestScavs_Loot", 0)
-				trigger:Deactivate()
-			end
+			SetVar("ChestScavs_Search", 0)
+			SetVar("ChestScavs_Loot", 0)
+
+			local cs3dText = GetEntityByName("chestScavs_11")
+			if cs3dText then cs3dText:SetSkin(0) end
+
+			trigger:Deactivate()
 		</script>
 	</trigger>
 
@@ -1654,28 +1817,6 @@
 		</script>
 	</trigger>
 
-	<trigger Name="GeneratorTimeWork" active="0">
-		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Generator_lvl_1_Timer_loc" />
-		<script>
-			if GetVar("Generator_on").AsInt == 1 then
-				if not(GetVar("Generator_time_work_msg").AsString == "0") then
-					AddFadingMsgByStrIdFormatted("fm_generator_time_work", GetVar("Generator_time_work_msg").AsString)
-				end
-			end
-		</script>
-	</trigger>
-
-	<trigger Name="GeneratorTimeWork_2" active="0">
-		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Generator_lvl_2_Timer_loc" />
-		<script>
-			if GetVar("Generator_on").AsInt == 1 then
-				if not(GetVar("Generator_time_work_msg").AsString == "0") then
-					AddFadingMsgByStrIdFormatted("fm_generator_time_work", GetVar("Generator_time_work_msg").AsString)
-				end
-			end
-		</script>
-	</trigger>
-
 	<trigger Name="CreateGenerator_lvl_1" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -1692,8 +1833,19 @@
 
 			CreateNewSgNodeObject("ET_PS_LENS_D1", "gen_lvl_1_red_light", -1, -1, CVector(805.210, 267.481, 1004.139), Quaternion(0, 0, 0, 0), 0.6)
 
+			CreateNewDummyObject("3D_text", "gen_3D_text", -1, -1, CVector(814.834, 266.750, 1000.375), Quaternion(0.0000, 0.7071, 0.0000, 0.7071), 0)
+
+			local gen_3d_text = GetEntityByName("gen_3D_text")
+
+			if GetVar("Generator_time_work_second").AsInt == 0 and GetVar("Generator_time_work_minute").AsInt == 0 and GetVar("Generator_time_work_hour").AsInt == 0 then
+				if gen_3d_text then gen_3d_text:SetSkin(1) end
+			else
+				if gen_3d_text then gen_3d_text:SetSkin(6) end
+			end
+
 			SetVar("Generator_lvl", 1)
 			TDeactivate("Generator_BuildInfo")
+			TActivate("Generator_CreateTimer3D")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1701,13 +1853,13 @@
 	<trigger Name="CreateGenerator_lvl_2" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			for i=1,3 do
-				local g = GetEntityByName("gen_"..i.."_lvl_1")
+			for i1=1,3 do
+				local g = GetEntityByName("gen_"..i1.."_lvl_1")
 				if g then g:Remove() end
 			end
 
-			for i=1,2 do
-				local yellow_light = GetEntityByName("gen_lvl_1_yellow_light_"..i)
+			for i2=1,2 do
+				local yellow_light = GetEntityByName("gen_lvl_1_yellow_light_"..i2)
 				if yellow_light then yellow_light:Remove() end
 			end
 
@@ -1716,6 +1868,15 @@
 
 			local red_light = GetEntityByName("gen_lvl_1_red_light")
 			if red_light then red_light:Remove() end
+
+			local gen_3d_text = GetEntityByName("gen_3D_text")
+			if gen_3d_text then gen_3d_text:SetPosition(CVector(810.506, 262.980, 992.528)) end 
+
+			local posTimerZ = {986.702, 988.702, 990.153, 991.604, 993.604, 995.055, 996.506, 998.506}
+			for i3=1,8 do
+				local gen_3d_timer = GetEntityByName("gen_3D_timer_"..i3)
+				if gen_3d_timer then gen_3d_timer:SetPosition(CVector(810.496, 265.497, posTimerZ[i3])) end
+			end
 
 			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(810, 255, 993), Quaternion(0, 0, 0, 1), 6000)
 			CreateEffectTTLed( "ET_S_BUILDING", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1800)
@@ -1729,11 +1890,15 @@
 				SetVar("Generator_time_work_second", 0)
 				SetVar("Generator_time_work_minute", 0)
 				SetVar("Generator_time_work_hour", 2)
+				if gen_3d_text then gen_3d_text:SetSkin(6) end
+			else
+				if gen_3d_text then gen_3d_text:SetSkin(1) end
 			end
-		
+
 			SetVar("Generator_lvl", 2)
 			TDeactivate("Generator_BuildInfo")
 			TDeactivate("GeneratorTimeWork")
+			TActivate("Generator_UpdateTimer3D")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1756,6 +1921,9 @@
 				local light = GetEntityByName("gen_lvl_2_light_"..i2)
 				if light then light:Remove() end
 			end
+
+			local t = GetEntityByName("gen_3D_text")
+			if t then t:Remove() end
 
 			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(790, 255, 1003), Quaternion(0, 0, 0, 1), 6000)
 			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(776, 255, 1005), Quaternion(0, 0, 0, 1), 6000)
@@ -1784,7 +1952,8 @@
 			SetVar("Generator_on", 1)
 			TActivate("IfGenerator_On")
 			TDeactivate("Generator_BuildInfo")
-			TDeactivate("GeneratorTimeWork_2")
+			TDeactivate("GeneratorTimeWork")
+			TActivate("Generator_RemoveTimer3D")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1808,7 +1977,7 @@
 			elseif GetVar("Generator_lvl").AsInt == 2 then
 				local g = GetEntityByName("generator_sound")
 				if g then g:Remove() end
-				TDeactivate("GeneratorTimeWork_2")
+				TDeactivate("GeneratorTimeWork")
 
 				for i2=1,2 do
 					local light = GetEntityByName("gen_lvl_2_light_"..i2)
@@ -1817,6 +1986,12 @@
 
 				CreateNewSgNodeObject("ET_PS_LENS_D1", "gen_lvl_2_red_light", -1, -1, CVector(811.805, 257.686, 994.554), Quaternion(0, 0, 0, 0), 0.6)
 			end
+			
+			if GetVar("Generator_time_work_second").AsInt > 0 or GetVar("Generator_time_work_minute").AsInt > 0 or GetVar("Generator_time_work_hour").AsInt > 0 then
+				local gen_3d_text = GetEntityByName("gen_3D_text")
+				if gen_3d_text then gen_3d_text:SetSkin(6) end
+			end
+
 			TActivate("IfGenerator_Off")
 			TDeactivate("Generator_timer")
 			TDeactivate("gt")
@@ -1847,6 +2022,10 @@
 				CreateNewSgNodeObject("ET_PS_LENS_D8", "gen_lvl_2_light_1", -1, -1, CVector(811.805, 257.686, 994.554), Quaternion(0, 0, 0, 0), 0.3)
 				CreateNewSgNodeObject("ET_PS_GENERATOR_LVL2_LIGHT", "gen_lvl_2_light_2", -1, -1, CVector(810, 255.100, 993), Quaternion(0, 0, 0, 0), 1)
 			end
+
+			local gen_3d_text = GetEntityByName("gen_3D_text")
+			if gen_3d_text then gen_3d_text:SetSkin(0) end
+
 			TActivate("IfGenerator_On")
 			TActivate("Generator_timer")
 			trigger:Deactivate()
@@ -1854,12 +2033,10 @@
 	</trigger>
 
 	<trigger Name="GeneratorTimeMsgActivate" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			if GetVar("Generator_lvl").AsInt == 1 then
+			if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
 				TActivate("GeneratorTimeWork")
-			elseif GetVar("Generator_lvl").AsInt == 2 then
-				TActivate("GeneratorTimeWork_2")
 			end
 			trigger:Deactivate()
 		</script>
@@ -1871,7 +2048,7 @@
 			local hour = GetVar("Generator_time_work_hour").AsInt
 			local min = GetVar("Generator_time_work_minute").AsInt
 			local sec = GetVar("Generator_time_work_second").AsInt
-			
+
 			local nulH, nulM, nulS = "", "", ""
 
 			if 10 > hour then nulH = 0 end
@@ -1879,8 +2056,9 @@
 			if 10 > sec then nulS = 0 end
 
 			local Msg = nulH..hour..":"..nulM..min..":"..nulS..sec
-			SetVar("Generator_time_work_msg", Msg)
 
+			SetVar("Generator_time_work_msg", Msg)
+			
 			if not(0 > hour) and not(0 > min) then
 				sec = sec - 1
 				SetVar("Generator_time_work_second", sec)
@@ -1896,7 +2074,7 @@
 				end
 			end
 
-			if 0 > hour and 0 > min and 0 > sec then
+			if hour == 0 and min == 0 and sec == 0 then
 				SetVar("Generator_time_work_second", 0)
 				SetVar("Generator_time_work_minute", 0)
 				SetVar("Generator_time_work_hour", 0)
@@ -1905,10 +2083,14 @@
 				TActivate("Generator_Stop")
 				AddFadingMsgByStrIdFormatted("fm_generator_fuel_nil")
 				SoundFadingMsg()
+				local t = GetEntityByName("gen_3D_text")
+				if t then t:SetSkin(1) end
 			else
 				TActivate("gt")
 			end
 
+			TActivate("Generator_UpdateTimer3D")
+	
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1917,6 +2099,124 @@
 		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
 		<script>
 			TActivate("Generator_timer")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="GeneratorTimeWork" active="0">
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Generator_lvl_1_Timer_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Generator_lvl_1_Timer_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Generator_lvl_2_Timer_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Generator_lvl_2_Timer_loc" />
+		<script>
+			local event = trigger:GetCallEvent()
+			local eventName = trigger:GetCallObjName()
+			
+			if event == "GE_OBJECT_IN_LOCATION" and eventName == "Generator_lvl_1_Timer_loc" and GetVar("Generator_lvl").AsInt == 1 or event == "GE_OBJECT_IN_LOCATION" and eventName == "Generator_lvl_2_Timer_loc" and GetVar("Generator_lvl").AsInt == 2 then
+				if not(GetVar("Generator_time_work_msg").AsString == "0") then
+					AddFadingMsgByStrIdFormatted("fm_generator_time_work", GetVar("Generator_time_work_msg").AsString)
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="Generator_CreateTimer3D" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewDummyObject("3D_timer", "gen_3D_timer_1", -1, -1, CVector(814.834, 269.321, 994.549), Quaternion(0.0000, 0.7071, 0.0000, 0.7071), 0)
+			CreateNewDummyObject("3D_timer", "gen_3D_timer_2", -1, -1, CVector(814.834, 269.321, 996.549), Quaternion(0.0000, 0.7071, 0.0000, 0.7071), 0)
+			CreateNewDummyObject("3D_timer", "gen_3D_timer_3", -1, -1, CVector(814.834, 269.321, 998.000), Quaternion(0.0000, 0.7071, 0.0000, 0.7071), 10)
+			CreateNewDummyObject("3D_timer", "gen_3D_timer_4", -1, -1, CVector(814.834, 269.321, 999.451), Quaternion(0.0000, 0.7071, 0.0000, 0.7071), 0)
+			CreateNewDummyObject("3D_timer", "gen_3D_timer_5", -1, -1, CVector(814.834, 269.321, 1001.451), Quaternion(0.0000, 0.7071, 0.0000, 0.7071), 0)
+			CreateNewDummyObject("3D_timer", "gen_3D_timer_6", -1, -1, CVector(814.834, 269.321, 1002.902), Quaternion(0.0000, 0.7071, 0.0000, 0.7071), 10)
+			CreateNewDummyObject("3D_timer", "gen_3D_timer_7", -1, -1, CVector(814.834, 269.321, 1004.353), Quaternion(0.0000, 0.7071, 0.0000, 0.7071), 0)
+			CreateNewDummyObject("3D_timer", "gen_3D_timer_8", -1, -1, CVector(814.834, 269.321, 1006.353), Quaternion(0.0000, 0.7071, 0.0000, 0.7071), 0)
+			TActivate("Generator_UpdateTimer3D")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Generator_RemoveTimer3D" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i=1,8 do
+				local gen_3dTimer = GetEntityByName("gen_3D_timer_"..i)
+				if gen_3dTimer then gen_3dTimer:Remove() end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Generator_UpdateTimer3D" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i=1,8 do
+				local gen_3dTimer = GetEntityByName("gen_3D_timer_"..i)
+				if not(gen_3dTimer) then TActivate("Generator_CreateTimer3D") end
+			end
+
+			local hour1, hour2, min1, min2, sec1, sec2 = 0, 0, 0, 0, 0, 0
+
+			hour1 = tonumber(strsub(GetVar("Generator_time_work_hour").AsInt, 1, 1))
+
+			if GetVar("Generator_time_work_hour").AsInt >= 10 then
+				hour2 = tonumber(strsub(GetVar("Generator_time_work_hour").AsInt, 2, 2))
+			end
+
+			min1 = tonumber(strsub(GetVar("Generator_time_work_minute").AsInt, 1, 1))
+
+			if GetVar("Generator_time_work_minute").AsInt >= 10 then
+				min2 = tonumber(strsub(GetVar("Generator_time_work_minute").AsInt, 2, 2))
+			end
+
+			sec1 = tonumber(strsub(GetVar("Generator_time_work_second").AsInt, 1, 1))
+
+			if GetVar("Generator_time_work_second").AsInt >= 10 then
+				sec2 = tonumber(strsub(GetVar("Generator_time_work_second").AsInt, 2, 2))
+			end
+
+			if GetVar("Generator_time_work_hour").AsInt >= 10 then
+				local g1 = GetEntityByName("gen_3D_timer_1")
+				if g1 then g1:SetSkin(hour1) end
+
+				local g2 = GetEntityByName("gen_3D_timer_2")
+				if g2 then g2:SetSkin(hour2) end
+			else
+				local g1 = GetEntityByName("gen_3D_timer_1")
+				if g1 then g1:SetSkin(0) end
+
+				local g2 = GetEntityByName("gen_3D_timer_2")
+				if g2 then g2:SetSkin(hour1) end
+			end
+
+			if GetVar("Generator_time_work_minute").AsInt >= 10 then
+				local g4 = GetEntityByName("gen_3D_timer_4")
+				if g4 then g4:SetSkin(min1) end
+
+				local g5 = GetEntityByName("gen_3D_timer_5")
+				if g5 then g5:SetSkin(min2) end
+			else
+				local g4 = GetEntityByName("gen_3D_timer_4")
+				if g4 then g4:SetSkin(0) end
+
+				local g5 = GetEntityByName("gen_3D_timer_5")
+				if g5 then g5:SetSkin(min1) end
+			end
+
+			if GetVar("Generator_time_work_second").AsInt >= 10 then
+				local g7 = GetEntityByName("gen_3D_timer_7")
+				if g7 then g7:SetSkin(sec1) end
+
+				local g8 = GetEntityByName("gen_3D_timer_8")
+				if g8 then g8:SetSkin(sec2) end
+			else
+				local g7 = GetEntityByName("gen_3D_timer_7")
+				if g7 then g7:SetSkin(0) end
+
+				local g8 = GetEntityByName("gen_3D_timer_8")
+				if g8 then g8:SetSkin(sec1) end
+			end
+
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1979,6 +2279,10 @@
 						CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "GarageCraftingProcessSoundFX", -1, -1, CVector(938, 263, 957), Quaternion(0, 0, 0, 0))
 						SetVar("GarageCraftPause", 0)
 						TActivate("GarageLamppost")
+						if not(GetVar("GarageCraft").AsInt == 3) then
+							local t = GetEntityByName("gr_52")
+							if t then t:SetSkin(0) end
+						end
 					end
 				end
 
@@ -2042,6 +2346,12 @@
 					local sound = GetEntityByName("GarageCraftingProcessSoundFX")
 					if sound then sound:Remove() end
 					SetVar("GarageCraftPause", 1)
+					local t = GetEntityByName("gr_52")
+					if GetVar("Generator_time_work_second").AsInt > 0 or GetVar("Generator_time_work_minute").AsInt > 0 or GetVar("Generator_time_work_hour").AsInt > 0 then
+						if t then t:SetSkin(7) end
+					else
+						if t then t:SetSkin(5) end
+					end
 				end
 			end
 
@@ -2267,6 +2577,7 @@
 			CreateNewSgNodeObject("ET_S_ITEM_MUSIC01", "gr_49", -1, -1, CVector(946.222, 265.006, 957.790), Quaternion(0, 0, 0, 0))
 			CreateNewDummyObject("bottles", "gr_50", -1, -1, CVector(923.099, 262.814, 949.319), Quaternion(0, 0, 0, 0))
 			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN9", "gr_51", -1, -1, CVector(getPos("Garage_Build_loc")), Quaternion(0, 0, 0, 0), 0.15)
+			CreateNewDummyObject("3D_text", "gr_52", -1, -1, CVector(891.887, 263.610, 957.593), Quaternion(0.0000, -0.7071, 0.0000, 0.7071), 0)
 			SetVar("Garage_Builden", 1)
 			
 			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(945, 255, 957), Quaternion(0, 0, 0, 1), 6000)
@@ -2375,6 +2686,7 @@
 			CreateEffectTTLed("ET_S_GARAGE_CRAFTING_START", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 2100)
 			CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "GarageCraftingProcessSoundFX", -1, -1, CVector(938, 263, 957), Quaternion(0, 0, 0, 0))
 			TActivate("GarageLamppost")
+			TActivate("Garage_CreateTimer3D")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -2410,11 +2722,13 @@
 				end
 			end
 
-			if 0 > hour and 0 > min and 0 > sec then
+			if hour == 0 and min == 0 and sec == 0 then
 				TActivate("IfCraftingDone")
 			else
 				TActivate("gct")
 			end
+
+			TActivate("Garage_UpdateTimer3D")
 
 			trigger:Deactivate()
 		</script>
@@ -2428,10 +2742,130 @@
 		</script>
 	</trigger>
 
+	<trigger Name="Garage_CreateTimer3D" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewDummyObject("3D_timer", "gr_3D_timer_1", -1, -1, CVector(891.887, 266.127, 963.419), Quaternion(0.0000, -0.7071, 0.0000, 0.7071), 0)
+			CreateNewDummyObject("3D_timer", "gr_3D_timer_2", -1, -1, CVector(891.887, 266.127, 961.419), Quaternion(0.0000, -0.7071, 0.0000, 0.7071), 0)
+			CreateNewDummyObject("3D_timer", "gr_3D_timer_3", -1, -1, CVector(891.887, 266.127, 959.969), Quaternion(0.0000, -0.7071, 0.0000, 0.7071), 10)
+			CreateNewDummyObject("3D_timer", "gr_3D_timer_4", -1, -1, CVector(891.887, 266.127, 958.518), Quaternion(0.0000, -0.7071, 0.0000, 0.7071), 0)
+			CreateNewDummyObject("3D_timer", "gr_3D_timer_5", -1, -1, CVector(891.887, 266.127, 956.517), Quaternion(0.0000, -0.7071, 0.0000, 0.7071), 0)
+			CreateNewDummyObject("3D_timer", "gr_3D_timer_6", -1, -1, CVector(891.887, 266.127, 955.067), Quaternion(0.0000, -0.7071, 0.0000, 0.7071), 10)
+			CreateNewDummyObject("3D_timer", "gr_3D_timer_7", -1, -1, CVector(891.887, 266.127, 953.616), Quaternion(0.0000, -0.7071, 0.0000, 0.7071), 0)
+			CreateNewDummyObject("3D_timer", "gr_3D_timer_8", -1, -1, CVector(891.887, 266.127, 951.616), Quaternion(0.0000, -0.7071, 0.0000, 0.7071), 0)
+			TActivate("Garage_UpdateTimer3D")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Garage_RemoveTimer3D" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i=1,8 do
+				local gr_3dTimer = GetEntityByName("gr_3D_timer_"..i)
+				if gr_3dTimer then gr_3dTimer:Remove() end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Garage_UpdateTimer3D" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i=1,8 do
+				local gr_3dTimer = GetEntityByName("gr_3D_timer_"..i)
+				if not(gr_3dTimer) then TActivate("Garage_CreateTimer3D") end
+			end
+
+			local hour1, hour2, min1, min2, sec1, sec2 = 0, 0, 0, 0, 0, 0
+
+			hour1 = tonumber(strsub(GetVar("GarageCrafting_time_hour").AsInt, 1, 1))
+
+			if GetVar("GarageCrafting_time_hour").AsInt >= 10 then
+				hour2 = tonumber(strsub(GetVar("GarageCrafting_time_hour").AsInt, 2, 2))
+			end
+
+			min1 = tonumber(strsub(GetVar("GarageCrafting_time_minute").AsInt, 1, 1))
+
+			if GetVar("GarageCrafting_time_minute").AsInt >= 10 then
+				min2 = tonumber(strsub(GetVar("GarageCrafting_time_minute").AsInt, 2, 2))
+			end
+
+			sec1 = tonumber(strsub(GetVar("GarageCrafting_time_second").AsInt, 1, 1))
+
+			if GetVar("GarageCrafting_time_second").AsInt >= 10 then
+				sec2 = tonumber(strsub(GetVar("GarageCrafting_time_second").AsInt, 2, 2))
+			end
+
+			if GetVar("GarageCrafting_time_hour").AsInt >= 10 then
+				local g1 = GetEntityByName("gr_3D_timer_1")
+				if g1 then g1:SetSkin(hour1) end
+
+				local g2 = GetEntityByName("gr_3D_timer_2")
+				if g2 then g2:SetSkin(hour2) end
+			else
+				local g1 = GetEntityByName("gr_3D_timer_1")
+				if g1 then g1:SetSkin(0) end
+
+				local g2 = GetEntityByName("gr_3D_timer_2")
+				if g2 then g2:SetSkin(hour1) end
+			end
+
+			if GetVar("GarageCrafting_time_minute").AsInt >= 10 then
+				local g4 = GetEntityByName("gr_3D_timer_4")
+				if g4 then g4:SetSkin(min1) end
+
+				local g5 = GetEntityByName("gr_3D_timer_5")
+				if g5 then g5:SetSkin(min2) end
+			else
+				local g4 = GetEntityByName("gr_3D_timer_4")
+				if g4 then g4:SetSkin(0) end
+
+				local g5 = GetEntityByName("gr_3D_timer_5")
+				if g5 then g5:SetSkin(min1) end
+			end
+
+			if GetVar("GarageCrafting_time_second").AsInt >= 10 then
+				local g7 = GetEntityByName("gr_3D_timer_7")
+				if g7 then g7:SetSkin(sec1) end
+
+				local g8 = GetEntityByName("gr_3D_timer_8")
+				if g8 then g8:SetSkin(sec2) end
+			else
+				local g7 = GetEntityByName("gr_3D_timer_7")
+				if g7 then g7:SetSkin(0) end
+
+				local g8 = GetEntityByName("gr_3D_timer_8")
+				if g8 then g8:SetSkin(sec1) end
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 	<trigger Name="GarageCraftingTimeMsgActivate" active="0">
 		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
 		<script>
 			TActivate("GarageCraftingTimeMsg")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="GarageCraftingUpdateTimeMsg" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local hour = GetVar("GarageCrafting_time_hour").AsInt
+			local min = GetVar("GarageCrafting_time_minute").AsInt
+			local sec = GetVar("GarageCrafting_time_second").AsInt
+			
+			local nulH, nulM, nulS = "", "", ""
+
+			if 10 > hour then nulH = 0 end
+			if 10 > min then nulM = 0 end
+			if 10 > sec then nulS = 0 end
+
+			local Msg = nulH..hour..":"..nulM..min..":"..nulS..sec
+			SetVar("GarageCrafting_time_msg", Msg)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -2443,6 +2877,8 @@
 			local event = trigger:GetCallEvent()
 
 			if not(GetVar("GarageCrafting_time_msg").AsString == "0") then
+				TActivate("GarageCraftingUpdateTimeMsg")
+
 				if GetVar("GarageCraftPause").AsInt == 0 and event == "GE_OBJECT_IN_LOCATION" then
 					AddFadingMsgByStrIdFormatted("fm_chest_scavs_timer", GetVar("GarageCrafting_time_msg").AsString)
 				end
@@ -2477,10 +2913,15 @@
 			TDeactivate("GarageCraftingTimeMsgActivate")
 			TDeactivate("GarageCraftingTimeMsg")
 
+			TActivate("Garage_RemoveTimer3D")
+
 			if hour >= 6 then TActivate("GarageRemoveLamppost") end
 
 			local sound = GetEntityByName("GarageCraftingProcessSoundFX")
 			if sound then sound:Remove() end
+
+			local t = GetEntityByName("gr_52")
+			if t then t:SetSkin(0) end
 
 			trigger:Deactivate()
 		</script>
@@ -2502,6 +2943,9 @@
 			TDeactivate("GarageCraftingTimeMsgActivate")
 			TDeactivate("GarageCraftingTimeMsg")
 
+			TActivate("Garage_RemoveTimer3D")
+			TActivate("IfGetCraft")
+
 			if hour >= 6 then TActivate("GarageRemoveLamppost") end
 
 			AddFadingMsgByStrIdFormatted("fm_garage_crafting_done", GetVar("GarageCraftingName").AsString)
@@ -2511,7 +2955,22 @@
 			local sound = GetEntityByName("GarageCraftingProcessSoundFX")
 			if sound then sound:Remove() end
 
+			local t = GetEntityByName("gr_52")
+			if t then t:SetSkin(4) end
+
 			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="IfGetCraft" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Garage_Crafting_Timer_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Garage_Crafting_Timer_loc" />
+		<script>
+			if GetVar("GarageCraft").AsInt == 0 then
+				local t = GetEntityByName("gr_52")
+				if t then t:SetSkin(0) end
+				trigger:Deactivate()
+			end
 		</script>
 	</trigger>
 
@@ -2883,10 +3342,8 @@
 						TDeactivate("Generator_timer")
 						TDeactivate("gt")
 						TDeactivate("GeneratorTimeMsgActivate")
-						if GetVar("Generator_lvl").AsInt == 1 then
+						if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
 							TDeactivate("GeneratorTimeWork")
-						elseif GetVar("Generator_lvl").AsInt == 2 then
-							TDeactivate("GeneratorTimeWork_2")
 						end
 					end
 				end
@@ -2958,26 +3415,6 @@
 				local town1 = GetEntityByName("Town_r0m0_enter")
 				if town1 then town1:SetPosition(CVector(858.564, 255.000, 985.160)) end
 			end
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-	<trigger Name="tr" active="0">
-		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
-		<script>
-			TActivate("CreateGarage")
-			TActivate("CreateGenerator_lvl_1")
-			SetVar("Generator_time_work_minute", 30)
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-	<trigger Name="tr1" active="0">
-		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
-		<script>
-			SetVar("GarageCrafting_time_hour", 0)
-			SetVar("GarageCrafting_time_minute", 0)
-			SetVar("GarageCrafting_time_second", 3)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -3097,6 +3534,24 @@
 		</script>
 	</trigger>
 
+-- Дебютовая миссия
+
+	<trigger Name="q_testing_mission_Revard" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("q_testing_mission_american_hornet").AsInt == 0 then
+				AddPlayerMoney(20000)
+				AddItemsToPlayerRepository("specter01", 1)
+				AddItemsToPlayerRepository("ammo_chest_machinegun", 1) 
+			else
+				AddPlayerMoney(25000)
+				AddItemsToPlayerRepository("pkt01", 1)
+				AddItemsToPlayerRepository("ammo_chest_machinegun", 1) 
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+	
 -- Поисковая миссия
 		
 	<trigger Name="q_search_data_RemoveQuestItem" active="0">

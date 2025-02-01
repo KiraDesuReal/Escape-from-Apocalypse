@@ -170,6 +170,20 @@
 		windwavy="0"
 		trans="0" />
 
+	<model
+		id="3D_text"
+		file="data\models\buildings\region0\3d_text\3d_text.gam"
+		shadow="0"
+		windwavy="0"
+		trans="0" />
+
+	<model
+		id="3D_timer"
+		file="data\models\buildings\region0\3d_text\3d_timer\3d_text_timer.gam"
+		shadow="0"
+		windwavy="0"
+		trans="0" />
+
 <!-- Region 5 -->
 
 	<model
@@ -343,7 +357,7 @@
 	<model
 		id="inscriptions"
 		file="data\models\buildings\region5\inscriptions\inscriptions.gam"
-		shadow="1"
+		shadow="0"
 		windwavy="0"
 		trans="0" />
 
@@ -371,7 +385,7 @@
 	<model
 		id="road_sign_zone"
 		file="data\models\buildings\region5\road_sign_zone\road_sign_zone.gam"
-		shadow="1"
+		shadow="0"
 		windwavy="0"
 		trans="0" />
 

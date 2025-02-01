@@ -452,7 +452,9 @@
 				end
 
 				if GetVar("GarageCrafting_time_hour").AsInt > 0 or GetVar("GarageCrafting_time_minute").AsInt > 0 or GetVar("GarageCrafting_time_second").AsInt > 0 then
-					TActivate("GarageCrafting_Timer")
+					if GetVar("GarageCraftPause").AsInt == 0 then
+						TActivate("GarageCrafting_Timer")
+					end
 				end
 			end
 
@@ -481,7 +483,7 @@
 			local hourC = GetVar("ChestScavs_time_hour").AsInt
 			local minC = GetVar("ChestScavs_time_minute").AsInt
 			local secC = GetVar("ChestScavs_time_second").AsInt
-
+			--println("Chest: "..hourC.." "..minC.." "..secC)
 			if not(0 > hourC) and not(0 > minC) then
 				secC = secC - 1
 				SetVar("ChestScavs_time_second", secC)
@@ -497,7 +499,7 @@
 				end
 			end
 
-			if 0 > hourC and 0 > minC and 0 > secC then
+			if hourC == 0 and minC == 0 and secC == 0 then
 				SetVar("ChestScavs_time_hour", 0)
 				SetVar("ChestScavs_time_minute", 0)
 				SetVar("ChestScavs_time_second", 0)
@@ -512,7 +514,7 @@
 			local hourG = GetVar("Generator_time_work_hour").AsInt
 			local minG = GetVar("Generator_time_work_minute").AsInt
 			local secG = GetVar("Generator_time_work_second").AsInt
-			
+			--println("Genetator: "..hourG.." "..minG.." "..secG)
 			if not(0 > hourG) and not(0 > minG) then
 				secG = secG - 1
 				SetVar("Generator_time_work_second", secG)
@@ -528,7 +530,7 @@
 				end
 			end
 
-			if 0 > hourG and 0 > minG and 0 > secG then
+			if hourG == 0 and minG == 0 and secG == 0 then
 				SetVar("Generator_time_work_second", 0)
 				SetVar("Generator_time_work_minute", 0)
 				SetVar("Generator_time_work_hour", 0)
@@ -537,7 +539,6 @@
 					SetVar("GarageCraftPause", 1)
 				end
 			end
-			--println("Genetator: "..hourG.." "..minG.." "..secG)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -548,7 +549,7 @@
 			local hourGC = GetVar("GarageCrafting_time_hour").AsInt
 			local minGC = GetVar("GarageCrafting_time_minute").AsInt
 			local secGC = GetVar("GarageCrafting_time_second").AsInt
-
+			--println("Craft: "..hourGC.." "..minGC.." "..secGC)
 			if not(0 > hourGC) and not(0 > minGC) then
 				secGC = secGC - 1
 				SetVar("GarageCrafting_time_second", secGC)
@@ -564,14 +565,13 @@
 				end
 			end
 
-			if 0 > hourGC and 0 > minGC and 0 > secGC then
+			if hourGC == 0 and minGC == 0 and secGC == 0 then
 				SetVar("GarageCrafting_time_second", 0)
 				SetVar("GarageCrafting_time_minute", 0)
 				SetVar("GarageCrafting_time_hour", 0)
 				SetVar("GarageCraftPause", 0)
 				SetVar("GarageCraft", 2)
 			end
-			--println("Craft: "..hourGC.." "..minGC.." "..secGC)
 			trigger:Deactivate()
 		</script>
 	</trigger>

@@ -7334,7 +7334,7 @@
 		role="PLAYER"
 		nextReplies="Dlg_npc_0013108"/>
 
-<!--Root/r0m0/Дебютовая миссия-->
+<!--Root/r0m0/Проба пера-->
 
 	<Reply
 		name="Dlg_npc_q_testing_mission_1"
@@ -7432,7 +7432,7 @@
 		name="Dlg_pl_q_testing_mission_14"
 		text="Отлично."
 		role="PLAYER"
-		scriptResult="CompleteQuest('q_testing_mission_3'); TActivate('SoundQuestFihished'); EndConversation()" />
+		scriptResult="CompleteQuest('q_testing_mission_3'); TActivate('SoundQuestFihished'); AddPlayerMoney(20000); AddItemsToPlayerRepository('specter01', 1); AddItemsToPlayerRepository('ammo_chest_machinegun', 1); EndConversation()" />
 
 	<Reply
 		name="Dlg_npc_q_testing_mission_15"
@@ -7445,7 +7445,7 @@
 		name="Dlg_pl_q_testing_mission_16"
 		text="Спасибо, рад стараться."
 		role="PLAYER"
-		scriptResult="CompleteQuest('q_testing_mission_3'); TActivate('SoundQuestFihished'); EndConversation()" />
+		scriptResult="CompleteQuest('q_testing_mission_3'); TActivate('SoundQuestFihished'); AddPlayerMoney(25000); AddItemsToPlayerRepository('pkt01', 1); AddItemsToPlayerRepository('ammo_chest_machinegun', 1); EndConversation()" />
 
 <!--Root/r0m0/Прапорщик-->
 
@@ -8112,7 +8112,7 @@
 		text="Приветствую тебя, друг! Чем я могу тебе помочь?"
 		role="NPC"
 		scriptCondition="IsQuestComplete('q_rebuild')"
-		nextReplies="Dlg_pl_q_test_drive1 Dlg_pl_to_q_test_drive1 Dlg_pl_q_test_drive2 Dlg_pl_to_q_test_drive2 Dlg_pl_q_test_drive3 Dlg_pl_to_q_test_drive3 Dlg_pl_q_test_drive4 Dlg_pl_to_q_test_drive4 Dlg_pl_q_test_drive5 Dlg_pl_to_q_test_drive5 Dlg_pl_q_test_drive6 Dlg_pl_to_q_test_drive6 Dlg_pl_q_bitok1 Dlg_pl_to_q_bitok1 Dlg_pl_q_bitok2 Dlg_pl_to_q_bitok2 Dlg_pl_q_bitok3 Dlg_pl_to_q_bitok3 Dlg_pl_mechanic_exit" />
+		nextReplies="Dlg_pl_q_test_drive1 Dlg_pl_to_q_test_drive1 Dlg_pl_q_test_drive2 Dlg_pl_to_q_test_drive2 Dlg_pl_q_test_drive3 Dlg_pl_to_q_test_drive3 Dlg_pl_q_test_drive4 Dlg_pl_to_q_test_drive4 Dlg_pl_q_test_drive5 Dlg_pl_to_q_test_drive5 Dlg_pl_q_test_drive6 Dlg_pl_to_q_test_drive6 Dlg_pl_q_test_drive7 Dlg_pl_to_q_test_drive7 Dlg_pl_q_test_drive8 Dlg_pl_to_q_test_drive8 Dlg_pl_q_ural_or_belaz Dlg_pl_to_q_ural_or_belaz Dlg_pl_q_bitok1 Dlg_pl_to_q_bitok1 Dlg_pl_q_bitok2 Dlg_pl_to_q_bitok2 Dlg_pl_q_bitok3 Dlg_pl_to_q_bitok3 Dlg_pl_mechanic_exit" />
 
 	<Reply
 		name="Dlg_pl_mechanic_exit"
@@ -8210,6 +8210,52 @@
 		scriptCondition="IsQuestTaken('q_test_drive6') and not(IsQuestComplete('q_test_drive6'))"
 		nextReplies="Dlg_npc_q_test_drive6_1" />
 
+<!--Тест драйв - Часть 7-->
+	<Reply
+		name="Dlg_pl_q_test_drive7"
+		text="Есть ли для меня работа? (Принять задание: Тест драйв - Часть 7)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_test_drive7')"
+		nextReplies="Dlg_npc_q_test_drive7_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_test_drive7"
+		text="На счёт задания Тест драйв - Часть 7."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_test_drive7') and not(IsQuestComplete('q_test_drive7'))"
+		nextReplies="Dlg_npc_q_test_drive7_1" />
+
+<!--Тест драйв - Часть 8-->
+	<Reply
+		name="Dlg_pl_q_test_drive8"
+		text="Есть ли для меня работа? (Принять задание: Тест драйв - Часть 8)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_test_drive8')"
+		nextReplies="Dlg_npc_q_test_drive8_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_test_drive8"
+		text="На счёт задания Тест драйв - Часть 8."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_test_drive8') and not(IsQuestComplete('q_test_drive8'))"
+		nextReplies="Dlg_npc_q_test_drive8_3" />
+
+<!--Заманчивое предложение-->
+	<Reply
+		name="Dlg_pl_q_ural_or_belaz"
+		text="Есть ли для меня работа? (Принять задание: Заманчивое предложение)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_ural_or_belaz')"
+		scriptResult="TakeQuest('q_ural_or_belaz'); TActivate('SoundQuestTaken')"
+		nextReplies="Dlg_pl_q_ural_or_belaz_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_ural_or_belaz"
+		text="На счёт задания Заманчивое предложение."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_ural_or_belaz') and not(IsQuestComplete('q_ural_or_belaz')) and not(IsQuestFailed('q_ural_or_belaz'))"
+		nextReplies="Dlg_pl_q_ural_or_belaz_12" />
+
 <!--Биток - Часть 1-->
 	<Reply
 		name="Dlg_pl_q_bitok1"
@@ -8283,7 +8329,7 @@
 
 	<Reply
 		name="Dlg_npc_q_test_drive1_5"
-		text="Итак, заказчику надо собрать бюджетный автомобиль, предназначенный для грузоперевозок, с умереной огневой мощью и максимальной вместимостью кузова. Проще говоря конфигурация должна быть следующей:|Машина: @FF1D1D1DВэн|Кабина: @FF1D1D1DЖук (Уровень II)|Кузов: @FF1D1D1DБорг (Уровень III)|Вооружение: @FF1D1D1DПКТ|Справишься? Если что, заходи, помогу с советом.|@FF0000AA|@FF1D1D1DНаграда:|- Неизвестная награда|- Случайная награда|- Деньги: @FF1D1D1D50.000 монет"
+		text="Итак, заказчику надо собрать бюджетный автомобиль, предназначенный для грузоперевозок, с умереной огневой мощью и максимальной вместимостью кузова. Проще говоря конфигурация должна быть следующей:|@FF0000AA|Машина: @FF1D1D1DВэн|Кабина: @FF1D1D1DЖук (Уровень II)|Кузов: @FF1D1D1DБорг (Уровень III)|Вооружение: @FF1D1D1DПКТ|@FF0000AA|Справишься? Если что, заходи, помогу с советом.|@FF0000AA|@FF1D1D1DНаграда:|- Неизвестная награда|- Случайная награда|- Деньги: @FF1D1D1D50.000 монет"
 		role="NPC"
 		nextReplies="Dlg_npc_q_test_drive1_6 Dlg_npc_q_test_drive1_7 Dlg_npc_q_test_drive1_8" />
 
@@ -8337,7 +8383,7 @@
 
 	<Reply
 		name="Dlg_npc_q_test_drive2_3"
-		text="Заказчик просит собрать манёвренный грузовик, с возможностью установки двух орудий, а вместимость кузова оставить в стоке. Конфигурация должна быть следующей:|Машина: @FF1D1D1DМолоковоз|Кабина: @FF1D1D1DШип (Уровень III)|Кузов: @FF1D1D1DТент (Уровень I)|Вооружение: @FF1D1D1DСпектр, ПКТ|@FF0000AA|@FF1D1D1DНаграда:|- Кузов: @FF1D1D1DГенератор (Молоковоз, Уровень II) в продаже|- Пулемёт: @FF1D1D1DКПВТ в продаже - x1|- Предмет: @FF1D1D1DУлучшенное оборудование - x2|- Деньги: @FF1D1D1D60.000 монет"
+		text="Заказчик просит собрать манёвренный грузовик, с возможностью установки двух орудий, а вместимость кузова оставить в стоке. Конфигурация должна быть следующей:|@FF0000AA|Машина: @FF1D1D1DМолоковоз|Кабина: @FF1D1D1DШип (Уровень III)|Кузов: @FF1D1D1DТент (Уровень I)|Вооружение: @FF1D1D1DСпектр, ПКТ|@FF0000AA|@FF1D1D1DНаграда:|- Кузов: @FF1D1D1DГенератор (Молоковоз, Уровень II) в продаже|- Пулемёт: @FF1D1D1DКПВТ в продаже - x1|- Предмет: @FF1D1D1DУлучшенное оборудование - x2|- Деньги: @FF1D1D1D60.000 монет"
 		role="NPC"
 		nextReplies="Dlg_npc_q_test_drive2_4 Dlg_npc_q_test_drive2_5 Dlg_npc_q_test_drive2_6" />
 
@@ -8529,7 +8575,7 @@
 
 	<Reply
 		name="Dlg_npc_q_test_drive6_1"
-		text="О, привет! Хорошо что зашёл. Знаешь, за всё время работы с оружием, мне нравились миниганы - за их сумасшедшую скорострельность и почти бесконечную ленту патронов. Тем самым они могут вызывать устрашающую мощь. Я вот к чему клоню. Есть один заказ, надо сделать сборку Урала, с установленными двумя пулемётами Вулкан.|Кабина: @FF1D1D1DШтандарт (Уровень II)|Кузов: @FF1D1D1DХолод (Уровень I)|Справишься?|@FF0000AA|@FF1D1D1DНаграда:|- Кузов: @FF1D1D1DФрахт (Урал, Уровень II) в продаже|- Пулемёт: @FF1D1D1DКПВТ в продаже - x1|- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x2|- Предмет: @FF1D1D1DЯщик патронов для Пулемёта в продаже - x1|- Деньги: @FF1D1D1D60.000 монет"
+		text="О, привет! Хорошо что зашёл. Знаешь, за всё время работы с оружием, мне нравились миниганы - за их сумасшедшую скорострельность и почти бесконечную ленту патронов. Тем самым они могут вызывать устрашающую мощь. Я вот к чему клоню. Есть один заказ, надо сделать сборку Урала, с установленными двумя пулемётами Вулкан.|@FF0000AA|Кабина: @FF1D1D1DШтандарт (Уровень II)|Кузов: @FF1D1D1DХолод (Уровень I)|@FF0000AA|Справишься?|@FF0000AA|@FF1D1D1DНаграда:|- Кузов: @FF1D1D1DФрахт (Урал, Уровень II) в продаже|- Пулемёт: @FF1D1D1DКПВТ в продаже - x1|- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x2|- Предмет: @FF1D1D1DЯщик патронов для Пулемёта в продаже - x1|- Деньги: @FF1D1D1D60.000 монет"
 		role="NPC"
 		nextReplies="Dlg_npc_q_test_drive6_2 Dlg_npc_q_test_drive6_3 Dlg_npc_q_test_drive6_4" />
 
@@ -8564,6 +8610,178 @@
 	<Reply
 		name="Dlg_npc_q_test_drive6_6"
 		text="Я бы вовсе отказался от Вулканов и установил что-то по лучше. Спасибо за награду."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Тест драйв - Часть 7 -->
+
+	<Reply
+		name="Dlg_npc_q_test_drive7_1"
+		text="Привет, я как раз думаю, что делать с этим заказом, вот тебе его и поручу. Возьмешься за него? Надо испытать Молоковоз, вот точная инструкция.|@FF0000AA|Кабина: @FF1D1D1DБолт (Уровень I)|Кузов: @FF1D1D1DГенератор (Уровень II)|Вооружение: @FF1D1D1DКорд|@FF0000AA|@FF1D1D1DНаграда:|- Кузов: @FF1D1D1DПанцирь (Урал, Уровень IV) в продаже|- Гаджет: @FF1D1D1DСвободный затвор с плавающей муфтой в продаже - x1|- Пушка: @FF1D1D1DРапира в продаже - x1|- Предмет: @FF1D1D1DЯщик патронов для Пушки в продаже - x1|- Деньги: @FF1D1D1D50.000 монет"
+		role="NPC"
+		nextReplies="Dlg_npc_q_test_drive7_2 Dlg_npc_q_test_drive7_3 Dlg_npc_q_test_drive7_4" />
+
+	<Reply
+		name="Dlg_npc_q_test_drive7_2"
+		text="Хорошо, я возьмусь за работу."
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_test_drive7'))"
+		scriptResult="TakeQuest('q_test_drive7'); TActivate('SoundQuestTaken'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_q_test_drive7_3"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_test_drive7_4')"
+		scriptResult="CompleteQuest('q_test_drive7_4'); TActivate('SoundQuestFihished')"
+		nextReplies="Dlg_npc_q_test_drive7_5" />
+
+	<Reply
+		name="Dlg_npc_q_test_drive7_4"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_test_drive7') and not(IsQuestTaken('q_test_drive7_4'))"
+		nextReplies="Dlg_npc_mechanic_1" />
+
+	<Reply
+		name="Dlg_npc_q_test_drive7_5"
+		text="Спасибо, а то я всё голову ломал, кому поручить это задание, выручил. Вот твоя награда."
+		role="NPC"
+		nextReplies="Dlg_npc_q_test_drive7_6" />
+
+	<Reply
+		name="Dlg_npc_q_test_drive7_6"
+		text="Ради хорошей награды, можно и потрудиться."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Тест драйв - Часть 8 -->
+
+	<Reply
+		name="Dlg_npc_q_test_drive8_1"
+		text="О, это ты, приветствую. Я вот так смотрю и вижу что у нас давно не было хороших сборок, как считаешь?"
+		role="NPC"
+		nextReplies="Dlg_npc_q_test_drive8_2" />
+
+	<Reply
+		name="Dlg_npc_q_test_drive8_2"
+		text="Возможно, у тебя есть что-то на примете?"
+		role="PLAYER"
+		nextReplies="Dlg_npc_q_test_drive8_3" />
+
+	<Reply
+		name="Dlg_npc_q_test_drive8_3"
+		text="Верно мыслишь. Такой заказ есть, думаю, он тебе понравиться. Надо собрать Урал, с двумя установленными пушками Рапира. Вот подробная инструкция, ознакомься.|@FF0000AA|Кабина: @FF1D1D1DШтандарт (Уровень II)|Кузов: @FF1D1D1DПанцирь (Уровень IV)|Вооружение: @FF1D1D1DРапира - x2|@FF0000AA|@FF1D1D1DНаграда:|- Кабина: @FF1D1D1DМорион (Урал, Уровень IV) в продаже|- Гаджет: @FF1D1D1DЭлектроспуск в продаже - x1|- Пушка: @FF1D1D1DРейнметалл в продаже - x1|- Предмет: @FF1D1D1D Ящик патронов для Пушки - x1|- Деньги: @FF1D1D1D55.000 монет"
+		role="NPC"
+		nextReplies="Dlg_npc_q_test_drive8_4 Dlg_npc_q_test_drive8_5 Dlg_npc_q_test_drive8_6" />
+
+	<Reply
+		name="Dlg_npc_q_test_drive8_4"
+		text="По рукам."
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_test_drive8'))"
+		scriptResult="TakeQuest('q_test_drive8'); TActivate('SoundQuestTaken'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_q_test_drive8_5"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_test_drive8_4')"
+		scriptResult="CompleteQuest('q_test_drive8_4'); TActivate('SoundQuestFihished')"
+		nextReplies="Dlg_npc_q_test_drive8_7" />
+
+	<Reply
+		name="Dlg_npc_q_test_drive8_6"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_test_drive8') and not(IsQuestTaken('q_test_drive8_4'))"
+		nextReplies="Dlg_npc_mechanic_1" />
+
+	<Reply
+		name="Dlg_npc_q_test_drive8_7"
+		text="Отлично, вижу ты справился с задачей, ну а другого я и не ожидал. Как тебе сборка? Судя по тестам, сборка не плохая, но звезд с неба не хватает. Впрочем, это уже не твоя проблема. Ты выполнил задание, вот награда."
+		role="NPC"
+		nextReplies="Dlg_npc_q_test_drive8_8" />
+
+	<Reply
+		name="Dlg_npc_q_test_drive8_8"
+		text="Отлично."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Заманчивое предложение -->
+
+	<Reply
+		name="Dlg_pl_q_ural_or_belaz_1"
+		text="Привет Наёмник! Слушай, есть одно дело. Вообщем, нам хотят в ближайшее время привезти партию Белазов для тестов. Видел такие?"
+		role="NPC"
+		nextReplies="Dlg_pl_q_ural_or_belaz_2" />
+
+	<Reply
+		name="Dlg_pl_q_ural_or_belaz_2"
+		text="Было пару раз, встречал на дорогах."
+		role="PLAYER"
+		nextReplies="Dlg_pl_q_ural_or_belaz_3" />
+
+	<Reply
+		name="Dlg_pl_q_ural_or_belaz_3"
+		text="Так вот, это огромная махина, с большими колёсами и отличным бронированием. Наверняка из неё можно сделать классные сборки для тестов. Из за этой новости, появилось много кандидатов на тестировку этих Белазов, поэтому спрошу прямо как уже опытному сборщику и бойцу. Заинтересован ли ты в сборке и тестировке этих Белазов, или же предпочтешь рассекать пустоши на уже проверенном Урале? В противном же случае я просто предложу работу другому исполнителю.|@FF0000AA|@FF1D1D1DНаграда:|- Транспорт: @FF1D1D1DБелаз в продаже|- Предмет: @FF1D1D1DВысокотехнологичная электроника - x4"
+		role="NPC"
+		nextReplies="Dlg_pl_q_ural_or_belaz_4 Dlg_pl_q_ural_or_belaz_5 Dlg_pl_q_ural_or_belaz_6" />
+
+	<Reply
+		name="Dlg_pl_q_ural_or_belaz_12"
+		text="Ну что, надумал? Спрошу еще раз: Заинтересован ли ты в сборке и тестировке Белазов, или же предпочтешь рассекать пустоши на уже проверенном Урале? В противном же случае я просто предложу работу другому исполнителю.|@FF0000AA|@FF1D1D1DНаграда:|- Транспорт: @FF1D1D1DБелаз в продаже|- Предмет: @FF1D1D1DВысокотехнологичная электроника - x4"
+		role="NPC"
+		nextReplies="Dlg_pl_q_ural_or_belaz_4 Dlg_pl_q_ural_or_belaz_5 Dlg_pl_q_ural_or_belaz_6" />
+	
+	<Reply
+		name="Dlg_pl_q_ural_or_belaz_4"
+		text="Я пожалуй предпочту Урал."
+		role="PLAYER"
+		nextReplies="Dlg_pl_q_ural_or_belaz_7"
+		scriptResult="CompleteQuest('q_ural_or_belaz_1')" />
+
+	<Reply
+		name="Dlg_pl_q_ural_or_belaz_5"
+		text="Я заинтересован в сборках Белазов, всегда мечтал прокатиться на этой здоровой махине."
+		role="PLAYER"
+		nextReplies="Dlg_pl_q_ural_or_belaz_9"
+		scriptResult="CompleteQuest('q_ural_or_belaz_2')" />
+
+	<Reply
+		name="Dlg_pl_q_ural_or_belaz_6"
+		text="Мне надо время подумать."
+		role="PLAYER"
+		nextReplies="Dlg_pl_q_ural_or_belaz_10" />
+
+	<Reply
+		name="Dlg_pl_q_ural_or_belaz_7"
+		text="Что ж, хорошо. С тобой значит продолжим сборки Уралов, а на Белазов буду привлекать других исполнителей. Благодарю за быстрый ответ. Зайди ко мне попозже, мне надо с некоторыми делами разобраться, как закончу, продолжим работу."
+		role="NPC"
+		nextReplies="Dlg_pl_q_ural_or_belaz_8" />
+
+	<Reply
+		name="Dlg_pl_q_ural_or_belaz_9"
+		text="Хорошо, рад это слышать. Тогда я не стану рассматривать других кандидатов и буду предлагать сборки Белазов тебе. Благодарю за быстрый ответ. Зайди ко мне попозже, мне надо с некоторыми делами разобраться, как закончу, начнем работу."
+		role="NPC"
+		nextReplies="Dlg_pl_q_ural_or_belaz_8" />
+
+	<Reply
+		name="Dlg_pl_q_ural_or_belaz_8"
+		text="Хорошо, так и поступлю."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+	<Reply
+		name="Dlg_pl_q_ural_or_belaz_10"
+		text="Хорошо, ты волен сам решать как действовать дальше. Только не тяни слишком долго."
+		role="NPC"
+		nextReplies="Dlg_pl_q_ural_or_belaz_11" />
+
+	<Reply
+		name="Dlg_pl_q_ural_or_belaz_11"
+		text="Окей."
 		role="PLAYER"
 		scriptResult="EndConversation()"/>
 
@@ -8697,7 +8915,7 @@
 
 	<Reply
 		name="Dlg_npc_q_bitok2_1"
-		text="И снова здравствуй! Я как раз закончил работу с электропитанием. Теперь мне необходимы компьютерные компоненты: Центральные процессора, кулера и платы. Принеси мне их, и тогда почти все будет готово.|@FF0000AA|@FF1D1D1DНаграда:|- Гаджет: @FF1D1D1DВоздушная система охлаждения пулемета - x1|- Деньги: @FF1D1D1D40.000 монет"
+		text="И снова здравствуй! Я как раз закончил работу с электропитанием. Теперь мне необходимы компьютерные компоненты: Центральные процессора, кулера и платы. Принеси мне их, и тогда почти все будет готово.|@FF0000AA|@FF1D1D1DНаграда:|- Гаджет: @FF1D1D1DВоздушная система охлаждения пулемета в продаже - x1|- Деньги: @FF1D1D1D40.000 монет"
 		role="NPC"
 		nextReplies="Dlg_npc_q_bitok2_2 Dlg_npc_q_bitok2_3 Dlg_npc_q_bitok2_4 Dlg_npc_q_bitok2_5 Dlg_npc_q_bitok2_6 Dlg_npc_q_bitok2_7 Dlg_npc_q_bitok2_8 Dlg_npc_q_bitok2_9 Dlg_npc_q_bitok2_10" />
 

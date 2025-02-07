@@ -50,7 +50,6 @@ function FailQuest( questName )
 	g_QuestStateManager:FailQuest( questName )
 
 	if g_QuestStateManager:IsQuestTaken( questName ) and g_QuestStateManager:IsQuestFailed( questName ) then
-		AddImportantFadingMsgByStrIdFormatted("fm_fail_quest", questName)
 		CreateEffectInsertedInRemove("ET_S_QUEST_FAIL", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
 	end
 end
@@ -59,7 +58,6 @@ function FailQuestIfTaken( questName )
 	g_QuestStateManager:FailQuestIfTaken( questName )
 
 	if g_QuestStateManager:IsQuestFailed( questName ) then
-		AddImportantFadingMsgByStrIdFormatted("fm_fail_quest", questName)
 		CreateEffectInsertedInRemove("ET_S_QUEST_FAIL", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
 	end
 end

@@ -341,22 +341,7 @@
 		Rot="0.000 1.000 0.000 0.000"
 		PointOfViewInInterface="785 340 847"
 		CaravansDest="">
-		<Object
-			Name="Town_r0m0_Shop"
-			Belong="1100"
-			Prototype="shop">
-			<GunsAndGadgets>
-			</GunsAndGadgets>
-		</Object>
-
-		<Object
-			Flags="21"
-			Name="Town_r0m0_enter"
-			Belong="1100"
-			Prototype="genericLocation"
-			Pos="0 0 0"
-			Radius="50.000" />
-
+		
 		<Object
 			Name="Town_r0m0_Bar"
 			Belong="1100"
@@ -386,11 +371,194 @@
 			Belong="1100"
 			Prototype="workshop">
 			<CabinsAndBaskets>
-			</CabinsAndBaskets>
 
+				<Item
+					PosX="5"
+					PosY="0"
+					Flags="16"
+					Prototype="bugCargo01_4x5" />
+
+				<Item
+					PosX="0"
+					PosY="5"
+					Flags="16"
+					Prototype="bugCargo02_4x6" />
+
+				<Item
+					PosX="5"
+					PosY="5"
+					Flags="16"
+					Prototype="molokovozCargo01_5x8" />
+
+				<Item
+					PosX="0"
+					PosY="10"
+					Flags="16"
+					Prototype="uralCargo01_6x9" />
+
+				<Item
+					PosX="5"
+					PosY="10"
+					Flags="16"
+					Prototype="belazCargo01_6x12" />
+
+				<Item
+					PosX="0"
+					PosY="15"
+					Flags="16"
+					Prototype="mirotvorecCargo01_7x9" />
+
+				<Item
+					PosX="5"
+					PosY="15"
+					Flags="16"
+					Prototype="cruiserCargo01_8x11" />
+
+				<Item
+					PosX="0"
+					PosY="20"
+					Flags="16"
+					Prototype="bugCab01" />
+
+				<Item
+					PosX="5"
+					PosY="20"
+					Flags="16"
+					Prototype="molokovozCab01" />
+
+				<Item
+					PosX="0"
+					PosY="25"
+					Flags="16"
+					Prototype="molokovozCab02" />
+
+				<Item
+					PosX="5"
+					PosY="25"
+					Flags="16"
+					Prototype="uralCab01" />
+
+				<Item
+					PosX="0"
+					PosY="30"
+					Flags="16"
+					Prototype="uralCab02" />
+
+				<Item
+					PosX="5"
+					PosY="30"
+					Flags="16"
+					Prototype="belazCab01" />
+
+				<Item
+					PosX="0"
+					PosY="35"
+					Flags="16"
+					Prototype="mirotvorecCab01" />
+
+				<Item
+					PosX="5"
+					PosY="35"
+					Flags="16"
+					Prototype="cruiserCab01" />
+
+			</CabinsAndBaskets>
 			<Vehicles>
+
+				<Item
+					PosX="0"
+					PosY="0"
+					Flags="16"
+					Prototype="BugForSale">
+					<Parts />
+					<Repository />
+				</Item>
+
 			</Vehicles>
 		</Object>
+
+		<Object
+			Name="Town_r0m0_Shop"
+			Belong="1100"
+			Prototype="shop">
+			<GunsAndGadgets>
+
+				<Item
+					PosX="0"
+					PosY="0"
+					Flags="16"
+					Prototype="cooling_system_guns" />
+
+				<Item
+					PosX="1"
+					PosY="0"
+					Flags="16"
+					Prototype="firing_rate_guns" />
+
+				<Item
+					PosX="0"
+					PosY="1"
+					Flags="16"
+					Prototype="grouping_angle_guns" />
+
+				<Item
+					PosX="1"
+					PosY="1"
+					Flags="16"
+					Prototype="add_damage_guns" />
+
+				<Item
+					PosX="2"
+					PosY="1"
+					Flags="16"
+					Prototype="firing_range_guns" />
+
+				<Item
+					PosX="3"
+					PosY="1"
+					Flags="16"
+					Prototype="additional_fuel_tank" />
+
+				<Item
+					PosX="4"
+					PosY="1"
+					Flags="16"
+					Prototype="additional_torque" />
+
+				<Item
+					PosX="5"
+					PosY="1"
+					Flags="16"
+					Prototype="additional_durability" />
+
+				<Item
+					PosX="6"
+					PosY="1"
+					Flags="16"
+					Prototype="additional_stability" />
+
+				<Item
+					PosX="7"
+					PosY="1"
+					Flags="16"
+					Prototype="ammo_chest_machinegunForSale" />
+
+				<Item
+					PosX="8"
+					PosY="1"
+					Flags="16"
+					Prototype="ammo_chest_shotgunForSale" />
+
+			</GunsAndGadgets>
+		</Object>
+
+		<Object
+			Flags="21"
+			Name="Town_r0m0_enter"
+			Belong="1100"
+			Prototype="genericLocation"
+			Pos="0 0 0"
+			Radius="50.000" />
 	</Object>
 
 	<Object

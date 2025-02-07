@@ -72,7 +72,7 @@
 			SetVar("q_kill_scavs_Die", 0)
 
 			SetVar("q_test_drive1_killscavs", 0)
-			for q_td=2,6 do
+			for q_td=2,8 do
 				SetVar("q_test_drive"..q_td.."_killscavs", 0)
 				SetVar("q_test_drive"..q_td.."_killPMC", 0)
 			end
@@ -3907,6 +3907,14 @@
 			if IsQuestTaken("q_test_drive6") and not(IsQuestComplete("q_test_drive6_2")) then
 				TActivate("q_test_drive6_killscavs")
 			end
+
+			if IsQuestTaken("q_test_drive7") and not(IsQuestComplete("q_test_drive7_2")) then
+				TActivate("q_test_drive7_killscavs")
+			end
+
+			if IsQuestTaken("q_test_drive8") and not(IsQuestComplete("q_test_drive8_2")) then
+				TActivate("q_test_drive8_killscavs")
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -3935,6 +3943,14 @@
 
 			if IsQuestTaken("q_test_drive6") and not(IsQuestComplete("q_test_drive6_3")) then
 				TActivate("q_test_drive6_killPMC")
+			end
+
+			if IsQuestTaken("q_test_drive7") and not(IsQuestComplete("q_test_drive7_3")) then
+				TActivate("q_test_drive7_killPMC")
+			end
+
+			if IsQuestTaken("q_test_drive8") and not(IsQuestComplete("q_test_drive8_3")) then
+				TActivate("q_test_drive8_killPMC")
 			end
 			trigger:Deactivate()
 		</script>
@@ -4607,6 +4623,122 @@
 							SoundFadingMsg()
 						else
 							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_test_drive6", GetVar("q_test_drive6_killPMC").AsInt, 15)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Тест драйв - Часть 7
+	
+	<trigger Name="q_test_drive7_killscavs" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Molokovoz" and GetVar("PlayerCabin").AsString == "molokovozCab01" and GetVar("PlayerBasket").AsString == "molokovozCargo02_6x9" then
+				local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_SMALL_GUN_0")
+				if bas_big_0 then 
+					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
+				end
+
+				if bas_big_0 == "kord01" then
+					if not(GetVar("q_test_drive7_killscavs").AsInt == 10) then
+						SetVar("q_test_drive7_killscavs", GetVar("q_test_drive7_killscavs").AsInt+1)
+						if GetVar("q_test_drive7_killscavs").AsInt >= 10 then
+							CompleteSubtask("q_test_drive7_2")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills_complete", "q_test_drive7", GetVar("q_test_drive7_killscavs").AsInt, 10)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_test_drive7", GetVar("q_test_drive7_killscavs").AsInt, 10)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_test_drive7_killPMC" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Molokovoz" and GetVar("PlayerCabin").AsString == "molokovozCab01" and GetVar("PlayerBasket").AsString == "molokovozCargo02_6x9" then
+				local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_SMALL_GUN_0")
+				if bas_big_0 then 
+					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
+				end
+
+				if bas_big_0 == "kord01" then
+					if not(GetVar("q_test_drive7_killPMC").AsInt == 5) then
+						SetVar("q_test_drive7_killPMC", GetVar("q_test_drive7_killPMC").AsInt+1)
+						if GetVar("q_test_drive7_killPMC").AsInt >= 5 then
+							CompleteSubtask("q_test_drive7_3")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills_complete", "q_test_drive7", GetVar("q_test_drive7_killPMC").AsInt, 5)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_test_drive7", GetVar("q_test_drive7_killPMC").AsInt, 5)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Тест драйв - Часть 8
+	
+	<trigger Name="q_test_drive8_killscavs" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Ural" and GetVar("PlayerCabin").AsString == "uralCab02" and GetVar("PlayerBasket").AsString == "uralCargo04_7x10" then
+				local cab_big_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
+				local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+				if cab_big_1 and bas_big_0 then 
+					cab_big_1 = cab_big_1:GetProperty("Prototype").AsString 
+					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
+				end
+
+				if cab_big_1 == "rapier01" and bas_big_0 == "rapier01" then
+					if not(GetVar("q_test_drive8_killscavs").AsInt == 40) then
+						SetVar("q_test_drive8_killscavs", GetVar("q_test_drive8_killscavs").AsInt+1)
+						if GetVar("q_test_drive8_killscavs").AsInt >= 40 then
+							CompleteSubtask("q_test_drive8_2")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills_complete", "q_test_drive8", GetVar("q_test_drive8_killscavs").AsInt, 40)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_test_drive8", GetVar("q_test_drive8_killscavs").AsInt, 40)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_test_drive8_killPMC" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Ural" and GetVar("PlayerCabin").AsString == "uralCab02" and GetVar("PlayerBasket").AsString == "uralCargo04_7x10" then
+				local cab_big_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
+				local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+				if cab_big_1 and bas_big_0 then 
+					cab_big_1 = cab_big_1:GetProperty("Prototype").AsString 
+					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
+				end
+
+				if cab_big_1 == "rapier01" and bas_big_0 == "rapier01" then
+					if not(GetVar("q_test_drive8_killPMC").AsInt == 20) then
+						SetVar("q_test_drive8_killPMC", GetVar("q_test_drive8_killPMC").AsInt+1)
+						if GetVar("q_test_drive8_killPMC").AsInt >= 20 then
+							CompleteSubtask("q_test_drive8_3")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills_complete", "q_test_drive8", GetVar("q_test_drive8_killPMC").AsInt, 20)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_test_drive8", GetVar("q_test_drive8_killPMC").AsInt, 20)
 							SoundFadingMsg()
 						end
 					end

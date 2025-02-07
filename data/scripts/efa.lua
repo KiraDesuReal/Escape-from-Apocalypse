@@ -1000,6 +1000,46 @@ function SafeSetSkinObj(name, num)
 	end
 end
 
+-- Добавить машину в город
+function AddVehicleToTown(Item, Count)
+	local Workshop = GetEntityByName("Town_r0m0_Workshop")
+	local Vehicles = Workshop:GetRepositoryByTypename("Vehicles")
+
+	if Count == nil then Count = 1 end
+
+	if Workshop and Vehicles then
+		Vehicles:AddItems(Item, Count)
+	end
+end
+
+-- Добавить кабину или кузов в город
+function AddCabinsOrBasketsToTown(Item, Count)
+	local Workshop = GetEntityByName("Town_r0m0_Workshop")
+	local CabAndBasket = Workshop:GetRepositoryByTypename("CabinsAndBaskets")
+
+	if Count == nil then Count = 1 end
+
+	if Workshop and CabAndBasket then
+		CabAndBasket:AddItems(Item, Count)
+	end
+end
+
+-- Добавить предмет в город
+function AddItemToTown(Item, Count)
+	local Shop = GetEntityByName("Town_r0m0_Shop")
+	local GunAndGadget = Shop:GetRepositoryByTypename("GunsAndGadgets")
+
+	if Count == nil then Count = 1 end
+
+	if Shop and GunAndGadget then
+		GunAndGadget:AddItems(Item, Count)
+	end
+end
+
+
+
+
+
 
 
 

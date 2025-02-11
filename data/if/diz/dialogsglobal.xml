@@ -7761,7 +7761,7 @@
 		text="Задача выполнена!"
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_kill_scavs_2')"
-		scriptResult="CompleteQuest('q_kill_scavs_2'); TActivate('SoundQuestFihished'); TActivate('q_kill_scavs_Revard')"
+		scriptResult="CompleteQuest('q_kill_scavs_2'); TActivate('SoundQuestFihished'); AddPlayerRandomItemOrMoney({'pkt01', 'kord01', 'ammo_chest_machinegun'}, 1, random(15000, 25000))"
 		nextReplies="Dlg_npc_q_kill_scavs_7" />
 
 	<Reply
@@ -8112,7 +8112,7 @@
 		text="Приветствую тебя, друг! Чем я могу тебе помочь?"
 		role="NPC"
 		scriptCondition="IsQuestComplete('q_rebuild')"
-		nextReplies="Dlg_pl_q_test_drive1 Dlg_pl_to_q_test_drive1 Dlg_pl_q_test_drive2 Dlg_pl_to_q_test_drive2 Dlg_pl_q_test_drive3 Dlg_pl_to_q_test_drive3 Dlg_pl_q_test_drive4 Dlg_pl_to_q_test_drive4 Dlg_pl_q_test_drive5 Dlg_pl_to_q_test_drive5 Dlg_pl_q_test_drive6 Dlg_pl_to_q_test_drive6 Dlg_pl_q_test_drive7 Dlg_pl_to_q_test_drive7 Dlg_pl_q_test_drive8 Dlg_pl_to_q_test_drive8 Dlg_pl_q_ural_or_belaz Dlg_pl_to_q_ural_or_belaz Dlg_pl_q_bitok1 Dlg_pl_to_q_bitok1 Dlg_pl_q_bitok2 Dlg_pl_to_q_bitok2 Dlg_pl_q_bitok3 Dlg_pl_to_q_bitok3 Dlg_pl_mechanic_exit" />
+		nextReplies="Dlg_pl_q_test_drive1 Dlg_pl_to_q_test_drive1 Dlg_pl_q_test_drive2 Dlg_pl_to_q_test_drive2 Dlg_pl_q_test_drive3 Dlg_pl_to_q_test_drive3 Dlg_pl_q_test_drive4 Dlg_pl_to_q_test_drive4 Dlg_pl_q_test_drive5 Dlg_pl_to_q_test_drive5 Dlg_pl_q_test_drive6 Dlg_pl_to_q_test_drive6 Dlg_pl_q_test_drive7 Dlg_pl_to_q_test_drive7 Dlg_pl_q_test_drive8 Dlg_pl_to_q_test_drive8 Dlg_pl_q_ural_or_belaz Dlg_pl_to_q_ural_or_belaz Dlg_pl_q_naturalist1 Dlg_pl_to_q_naturalist1 Dlg_pl_q_naturalist2 Dlg_pl_to_q_naturalist2 Dlg_pl_q_naturalist3 Dlg_pl_to_q_naturalist3 Dlg_pl_q_naturalist4 Dlg_pl_to_q_naturalist4 Dlg_pl_q_naturalist5 Dlg_pl_to_q_naturalist5 Dlg_pl_q_bitok1 Dlg_pl_to_q_bitok1 Dlg_pl_q_bitok2 Dlg_pl_to_q_bitok2 Dlg_pl_q_bitok3 Dlg_pl_to_q_bitok3 Dlg_pl_mechanic_exit" />
 
 	<Reply
 		name="Dlg_pl_mechanic_exit"
@@ -8255,6 +8255,81 @@
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_ural_or_belaz') and not(IsQuestComplete('q_ural_or_belaz')) and not(IsQuestFailed('q_ural_or_belaz'))"
 		nextReplies="Dlg_pl_q_ural_or_belaz_12" />
+
+<!--Натуралист - Часть 1-->
+	<Reply
+		name="Dlg_pl_q_naturalist1"
+		text="Есть ли для меня работа? (Принять задание: Натуралист - Часть 1)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_naturalist1') and GetVar('q_naturalist1_or_q_belazist1_can_be_given').AsInt == 1"
+		nextReplies="Dlg_npc_q_naturalist1_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_naturalist1"
+		text="На счёт задания Натуралист - Часть 1."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_naturalist1') and not(IsQuestComplete('q_naturalist1'))"
+		nextReplies="Dlg_npc_q_naturalist1_3" />
+
+<!--Натуралист - Часть 2-->
+	<Reply
+		name="Dlg_pl_q_naturalist2"
+		text="Есть ли для меня работа? (Принять задание: Натуралист - Часть 2)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_naturalist2')"
+		nextReplies="Dlg_npc_q_naturalist2_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_naturalist2"
+		text="На счёт задания Натуралист - Часть 2."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_naturalist2') and not(IsQuestComplete('q_naturalist2'))"
+		nextReplies="Dlg_npc_q_naturalist2_1" />
+
+<!--Натуралист - Часть 3-->
+	<Reply
+		name="Dlg_pl_q_naturalist3"
+		text="Есть ли для меня работа? (Принять задание: Натуралист - Часть 3)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_naturalist3')"
+		nextReplies="Dlg_npc_q_naturalist3_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_naturalist3"
+		text="На счёт задания Натуралист - Часть 3."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_naturalist3') and not(IsQuestComplete('q_naturalist3'))"
+		nextReplies="Dlg_npc_q_naturalist3_5" />
+
+<!--Натуралист - Часть 4-->
+	<Reply
+		name="Dlg_pl_q_naturalist4"
+		text="Есть ли для меня работа? (Принять задание: Натуралист - Часть 4)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_naturalist4')"
+		nextReplies="Dlg_npc_q_naturalist4_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_naturalist4"
+		text="На счёт задания Натуралист - Часть 4."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_naturalist4') and not(IsQuestComplete('q_naturalist4'))"
+		nextReplies="Dlg_npc_q_naturalist4_1" />
+
+<!--Натуралист - Часть 5-->
+	<Reply
+		name="Dlg_pl_q_naturalist5"
+		text="Есть ли для меня работа? (Принять задание: Натуралист - Часть 5)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_naturalist5')"
+		nextReplies="Dlg_npc_q_naturalist5_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_naturalist5"
+		text="На счёт задания Натуралист - Часть 5."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_naturalist5') and not(IsQuestComplete('q_naturalist5'))"
+		nextReplies="Dlg_npc_q_naturalist5_3" />
 
 <!--Биток - Часть 1-->
 	<Reply
@@ -8782,6 +8857,264 @@
 	<Reply
 		name="Dlg_pl_q_ural_or_belaz_11"
 		text="Окей."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Натуралист - Часть 1 -->
+
+	<Reply
+		name="Dlg_npc_q_naturalist1_1"
+		text="Приветствую Наёмник! Я как раз закончил с делами, а значит можем приступить к заказам. Я как раз получил для тебя такой, с интересной сборкой Урала."
+		role="NPC"
+		nextReplies="Dlg_npc_q_naturalist1_2" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist1_2"
+		text="Продолжай."
+		role="PLAYER"
+		nextReplies="Dlg_npc_q_naturalist1_3" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist1_3"
+		text="Итак, надо собрать Урал, с кабиной Морион и кузовом Холод, вооружение Рейнметалл и КПВТ. Вот как всегда инструкция, можешь ознакомиться.|@FF0000AA|Кабина: @FF1D1D1DМорион (Уровень IV)|Кузов: @FF1D1D1DХолод (Уровень I)|Вооружение: @FF1D1D1DРейнметалл, КПВТ|@FF0000AA|@FF1D1D1DНаграда:|- Кузов: @FF1D1D1DТигр (Урал, Уровень V) в продаже|- Кабина: @FF1D1D1DБоливар (Белаз, Уровень II) в продаже|- Кузов: @FF1D1D1DКонструктор (Белаз, Уровень II) в продаже|- Неизвестная награда|- Деньги: @FF1D1D1D65.000 монет"
+		role="NPC"
+		nextReplies="Dlg_npc_q_naturalist1_4 Dlg_npc_q_naturalist1_5 Dlg_npc_q_naturalist1_6" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist1_4"
+		text="По рукам."
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_naturalist1'))"
+		scriptResult="TakeQuest('q_naturalist1'); TActivate('SoundQuestTaken'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist1_5"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_naturalist1_4')"
+		scriptResult="CompleteQuest('q_naturalist1_4'); TActivate('SoundQuestFihished')"
+		nextReplies="Dlg_npc_q_naturalist1_7" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist1_6"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_naturalist1') and not(IsQuestTaken('q_naturalist1_4'))"
+		nextReplies="Dlg_npc_mechanic_1" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist1_7"
+		text="Рад это слышать, как всегда, все чётко по плану. Судя по тестам, лучше бы заменить КПВТ на еще один Рейнметалл. Я сообщу это заказчику, ты выполнил свою работу, награда будет ждать у тебя в кузове."
+		role="NPC"
+		nextReplies="Dlg_npc_q_naturalist1_8" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist1_8"
+		text="Хорошо."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Натуралист - Часть 2 -->
+
+	<Reply
+		name="Dlg_npc_q_naturalist2_1"
+		text="О, это ты! Привет. Я как раз приготовил тебе новое задание. Слушай, нужно собрать Урал, с возможностью установить два пулемёта Вектор, кабина и кузов на твой выбор, главное чтобы было два пулемёта. Знаю что Векторы достаточно посредственные в плане убойной мощи, но уж такой заказ. Справишься?|@FF0000AA|@FF1D1D1DНаграда:|- Кабина: @FF1D1D1DЛорд (Урал, Уровень III) в продаже|- Кузов: @FF1D1D1DЦилиндр (Белаз, Уровень V) в продаже|- Пушка: @FF1D1D1DЦиклоп в продаже - x1|- Пулемёт: @FF1D1D1DСпрут - x1|- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x1|- Предмет: @FF1D1D1DЯщик патронов для Пушки - x1|- Деньги: @FF1D1D1D60.000 монет"
+		role="NPC"
+		nextReplies="Dlg_npc_q_naturalist2_2 Dlg_npc_q_naturalist2_3 Dlg_npc_q_naturalist2_4" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist2_2"
+		text="Кажется придется по возиться."
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_naturalist2'))"
+		scriptResult="TakeQuest('q_naturalist2'); TActivate('SoundQuestTaken'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist2_3"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_naturalist2_4')"
+		scriptResult="CompleteQuest('q_naturalist2_4'); TActivate('SoundQuestFihished')"
+		nextReplies="Dlg_npc_q_naturalist2_5" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist2_4"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_naturalist2') and not(IsQuestTaken('q_naturalist2_4'))"
+		nextReplies="Dlg_npc_mechanic_1" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist2_5"
+		text="Отлично, ты справился. Однако по тестам можно сказать следующее: Урал - хорошая машина, при учёте что на ней хорошее вооружение. Хе-хе. Вообщем, при возможности лучше заменить Векторы на что-то более хорошее, например, на Рейнметалл, отличная пушка."
+		role="NPC"
+		nextReplies="Dlg_npc_q_naturalist2_6" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist2_6"
+		text="Полностью согласен данным утверждением."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Натуралист - Часть 3 -->
+
+	<Reply
+		name="Dlg_npc_q_naturalist3_1"
+		text="Привет Наёмник! Думаю ты уже соскучился по классным и убойным сборкам, ведь так?"
+		role="NPC"
+		nextReplies="Dlg_npc_q_naturalist3_2" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist3_2"
+		text="Думаю, ты прав. Было бы не плохо прокатиться на чём-нибудь действительно хорошем."
+		role="PLAYER"
+		nextReplies="Dlg_npc_q_naturalist3_3" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist3_3"
+		text="Соглашусь, в последнее время не доводиться получать заказы на интересные сборки, но один такой у меня есть."
+		role="NPC"
+		nextReplies="Dlg_npc_q_naturalist3_4" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist3_4"
+		text="Я весь во внимании."
+		role="PLAYER"
+		nextReplies="Dlg_npc_q_naturalist3_5" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist3_5"
+		text="Вообщем слушай, нам предстоит протестировать сборку Урала с установленным Рейнметаллом и двумя Рапирами. Вот как всегда полное техническое задание, ознакомься и принимайся за работу.|@FF0000AA|Кабина: @FF1D1D1DЛорд (Уровень III)|Кузов: @FF1D1D1DПанцирь (Уровень IV)|Вооружение: @FF1D1D1DРейнметалл - x1, Рапира - x2|@FF0000AA|@FF1D1D1DНаграда:|- Кузов: @FF1D1D1DКрейсер (Урал, Уровень III) в продаже|- Кабина: @FF1D1D1DТерминатор (Белаз, Уровень IV) в продаже|- Гаджет: @FF1D1D1DОптический прицел с просветленной оптикой и антибликовой защитой в продаже - x1|- Пулемёт: @FF1D1D1DСпрут - x1|- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x1|- Деньги: @FF1D1D1D70.000 монет"
+		role="NPC"
+		nextReplies="Dlg_npc_q_naturalist3_6 Dlg_npc_q_naturalist3_7 Dlg_npc_q_naturalist3_8" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist3_6"
+		text="Сейчас посмотрим, что это за сборка такая."
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_naturalist3'))"
+		scriptResult="TakeQuest('q_naturalist3'); TActivate('SoundQuestTaken'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist3_7"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_naturalist3_4')"
+		scriptResult="CompleteQuest('q_naturalist3_4'); TActivate('SoundQuestFihished')"
+		nextReplies="Dlg_npc_q_naturalist3_9" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist3_8"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_naturalist3') and not(IsQuestTaken('q_naturalist3_4'))"
+		nextReplies="Dlg_npc_mechanic_1" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist3_9"
+		text="Вот это да! Настоящие комбо из пушек, но для большего баланса лучше устанавливать только один тип вооружения. В данном случае, либо Рейнметаллы, либо Рапиры, так сборка будет выглядеть намного лучше. Задание выполнено, можешь забирать награду."
+		role="NPC"
+		nextReplies="Dlg_npc_q_naturalist3_10" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist3_10"
+		text="Хорошо, я учту это когда буду собирать собственные конфигурации машин."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Натуралист - Часть 4 -->
+
+	<Reply
+		name="Dlg_npc_q_naturalist4_1"
+		text="Привет, есть у меня для тебя работа. Помоги мне протестировать сборку Урала, с установленным Циклопом и одним Рейнметаллом, остальное вооружение на твой выбор, кабина тоже. Видимо заказчику стало интересно, как будет выглядеть дуэт из этих двух пушек. Думаю, ты справишься.|@FF0000AA|Кабина: @FF1D1D1Dна выбор|Кузов: @FF1D1D1DКрейсер (Уровень III)|Вооружение: @FF1D1D1DРейнметалл, Циклоп|@FF0000AA|@FF1D1D1DНаграда:|- Кабина: @FF1D1D1DВитязь (Урал, Уровень V) в продаже|- Кабина: @FF1D1D1DРок (Белаз, Уровень III) в продаже|- Гаджет: @FF1D1D1DТурбонаддув в продаже - x1|- Пулемёт: @FF1D1D1DСпрут в продаже - x1|- Ракетная установка: @FF1D1D1DОхотник в продаже - x1|- Предмет: @FF1D1D1DЯщик патронов для Пулемёта в продаже - x1|- Предмет: @FF1D1D1DЯщик боеприпасов для Ракетной установки в продаже - x1|- Деньги: @FF1D1D1D70.000 монет"
+		role="NPC"
+		nextReplies="Dlg_npc_q_naturalist4_2 Dlg_npc_q_naturalist4_3 Dlg_npc_q_naturalist4_4" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist4_2"
+		text="По рукам."
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_naturalist4'))"
+		scriptResult="TakeQuest('q_naturalist4'); TActivate('SoundQuestTaken'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist4_3"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_naturalist4_4')"
+		scriptResult="CompleteQuest('q_naturalist4_4'); TActivate('SoundQuestFihished')"
+		nextReplies="Dlg_npc_q_naturalist4_5" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist4_4"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_naturalist4') and not(IsQuestTaken('q_naturalist4_4'))"
+		nextReplies="Dlg_npc_mechanic_1" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist4_5"
+		text="Отлично, знал что ты справишься. Не знаю что заказчику пришло в голову, чтобы оснастить Урал только одним Рейнметаллом, но предположу лишь что, больше у него ничего и нет. Однако тебе это не помешало выполнить заказ, и это радует, вот твоя награда."
+		role="NPC"
+		nextReplies="Dlg_npc_q_naturalist4_6" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist4_6"
+		text="Спасибо."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Натуралист - Часть 5 -->
+
+	<Reply
+		name="Dlg_npc_q_naturalist5_1"
+		text="Привет Наёмник. У меня остался для тебя последний заказ на сборку Урала, но очень интересный, думаю, он тебе понравиться."
+		role="NPC"
+		nextReplies="Dlg_npc_q_naturalist5_2" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist5_2"
+		text="Так, и что же это за сборка?"
+		role="PLAYER"
+		nextReplies="Dlg_npc_q_naturalist5_3" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist5_3"
+		text="И так, сборка должна быть следующей. Нам необходимо собрать грузовик Урал с возможностью установить на него пулемёт Спрут и три пушки Рейлметалл. Вот взгляни на инструкцию, здесь все расписано.|@FF0000AA|Кабина: @FF1D1D1DВитязь (Уровень V)|Кузов: @FF1D1D1DКрейсер (Уровень III)|Вооружение: @FF1D1D1DРейнметалл - x3, Спрут - x1|@FF0000AA|@FF1D1D1DНаграда:|- Транспорт: @FF1D1D1DМиротворец в продаже|- Кабина: @FF1D1D1DЧереп (Миротворец, Уровень II) в продаже|- Кузов: @FF1D1D1DЦентурион (Миротворец, Уровень II) в продаже|- Кабина: @FF1D1D1DЩит (Белаз, Уровень V) в продаже|- Кузов: @FF1D1D1DКолосс (Белаз, Уровень III) в продаже|- Кузов: @FF1D1D1DГром (Белаз, Уровень IV) в продаже|- Гаджет: @FF1D1D1DБольшая канистра в продаже - x1|- Пушка: @FF1D1D1DРейнметалл в продаже - x1|- Дробовик: @FF1D1D1DФлаг - x1|- Предмет: @FF1D1D1DЯщик патронов для Пушки в продаже - x1|- Предмет: @FF1D1D1DЯщик дроби для Дробовика - x1|- Деньги: @FF1D1D1D70.000 монет"
+		role="NPC"
+		nextReplies="Dlg_npc_q_naturalist5_4 Dlg_npc_q_naturalist5_5 Dlg_npc_q_naturalist5_6" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist5_4"
+		text="Отлично, я берусь за работу."
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_naturalist5'))"
+		scriptResult="TakeQuest('q_naturalist5'); TActivate('SoundQuestTaken'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist5_5"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_naturalist5_5')"
+		scriptResult="CompleteQuest('q_naturalist5_5'); TActivate('SoundQuestFihished')"
+		nextReplies="Dlg_npc_q_naturalist5_7" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist5_6"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_naturalist5') and not(IsQuestTaken('q_naturalist5_5'))"
+		nextReplies="Dlg_npc_mechanic_1" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist5_7"
+		text="Молодец. Теперь с уверенностью можно сказать что, это самая топовая сборка на Урал. Тот кто её заказал, явно разбирается в своём деле. Твоя работа по сборкам Уралов выполнена, можешь забирать награду. И загляни ко мне попозже, мы продолжим работу с заказами."
+		role="NPC"
+		nextReplies="Dlg_npc_q_naturalist5_8" />
+
+	<Reply
+		name="Dlg_npc_q_naturalist5_8"
+		text="Отлично, так и поступлю."
 		role="PLAYER"
 		scriptResult="EndConversation()"/>
 

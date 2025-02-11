@@ -405,6 +405,7 @@
 			SetVar("q_bitok2_item_plate", 0)
 			SetVar("q_bitok3_can_be_given", 0)
 			SetVar("q_naturalist1_or_q_belazist1_can_be_given", 0)
+			SetVar("q_test_drive9_can_be_given", 0)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -616,8 +617,9 @@
 				if IsQuestComplete("q_rebuild") then Vehicles:AddItems("MolokovozForSale", 1) end
 				if IsQuestComplete("q_test_drive5") then Vehicles:AddItems("UralForSale", 1) end
 				if IsQuestComplete("q_ural_or_belaz") then Vehicles:AddItems("BelazForSale", 1) end
+				if IsQuestComplete("q_naturalist5") then Vehicles:AddItems("MirotvorecForSale", 1) end
 			end
-
+			
 			if Workshop and CabAndBasket then
 				if IsQuestComplete("q_explore_r1m1") then CabAndBasket:AddItems("bugCab02", 1) end
 				if IsQuestComplete("q_fuel1") then CabAndBasket:AddItems("bugCab03", 1) end
@@ -625,9 +627,17 @@
 				if IsQuestComplete("q_test_drive1") then CabAndBasket:AddItems("molokovozCab03", 1) end
 				if IsQuestComplete("q_test_drive2") then CabAndBasket:AddItems("molokovozCargo02_6x9", 1) end
 				if IsQuestComplete("q_test_drive3") then CabAndBasket:AddItems("molokovozCargo03_6x8", 1) end
+				if IsQuestComplete("q_naturalist2") then CabAndBasket:AddItems("uralCab03", 1) end
 				if IsQuestComplete("q_test_drive8") then CabAndBasket:AddItems("uralCab04", 1) end
+				if IsQuestComplete("q_naturalist4") then CabAndBasket:AddItems("uralCab05", 1) end
 				if IsQuestComplete("q_test_drive6") then CabAndBasket:AddItems("uralCargo02_7x9", 1) end
+				if IsQuestComplete("q_naturalist3") then CabAndBasket:AddItems("uralCargo03_9x10", 1) end
 				if IsQuestComplete("q_test_drive7") then CabAndBasket:AddItems("uralCargo04_7x10", 1) end
+				if IsQuestComplete("q_naturalist1") then CabAndBasket:AddItems("uralCargo05_8x9", 1) CabAndBasket:AddItems("belazCab02", 1) CabAndBasket:AddItems("belazCargo02_8x11", 1) end
+				if IsQuestComplete("q_naturalist4") then CabAndBasket:AddItems("belazCab03", 1) end
+				if IsQuestComplete("q_naturalist3") then CabAndBasket:AddItems("belazCab04", 1) end
+				if IsQuestComplete("q_naturalist5") then CabAndBasket:AddItems("belazCab05", 1) CabAndBasket:AddItems("belazCargo03_11x12", 1) CabAndBasket:AddItems("belazCargo04_6x10", 1) end
+				if IsQuestComplete("q_naturalist2") then CabAndBasket:AddItems("belazCargo05_9x10", 1) end
 			end
 
 			if Shop and GunAndGadget then
@@ -643,6 +653,10 @@
 				if IsQuestComplete("q_test_drive7") then GunAndGadget:AddItems("add_damage_guns2", 1) GunAndGadget:AddItems("rapier01", 1) GunAndGadget:AddItems("ammo_chest_heavygunForSale", 1) end
 				if IsQuestComplete("q_test_drive8") then GunAndGadget:AddItems("firing_rate_guns2", 1) GunAndGadget:AddItems("rainmetal01", 1) end
 				if IsQuestComplete("q_bitok2") then GunAndGadget:AddItems("cooling_system_guns2", 1) end
+				if IsQuestComplete("q_naturalist2") then GunAndGadget:AddItems("cyclops01", 1) end
+				if IsQuestComplete("q_naturalist3") then GunAndGadget:AddItems("grouping_angle_guns2", 1) end
+				if IsQuestComplete("q_naturalist4") then GunAndGadget:AddItems("additional_torque2", 1) GunAndGadget:AddItems("octopus01", 1) GunAndGadget:AddItems("hunterSideGun", 1) GunAndGadget:AddItems("ammo_chest_machinegunForSale", 1) GunAndGadget:AddItems("ammo_chest_rocketgunForSale", 1) end
+				if IsQuestComplete("q_naturalist5") then GunAndGadget:AddItems("additional_fuel_tank2", 1) GunAndGadget:AddItems("rainmetal01", 1) GunAndGadget:AddItems("ammo_chest_heavygunForSale", 1) end
 			end
 
 		    trigger:Deactivate()
@@ -3479,32 +3493,16 @@
 				TActivate("q_test_drive1_config")
 			end
 
-			if IsQuestTaken("q_test_drive2") and not(IsQuestComplete("q_test_drive2_1")) then
-				TActivate("q_test_drive2_config")
+			for i1 = 2,8 do
+				if IsQuestTaken("q_test_drive"..i1) and not(IsQuestComplete("q_test_drive"..i1.."_1")) then
+					TActivate("q_test_drive"..i1.."_config")
+				end
 			end
-
-			if IsQuestTaken("q_test_drive3") and not(IsQuestComplete("q_test_drive3_1")) then
-				TActivate("q_test_drive3_config")
-			end
-
-			if IsQuestTaken("q_test_drive4") and not(IsQuestComplete("q_test_drive4_1")) then
-				TActivate("q_test_drive4_config")
-			end
-
-			if IsQuestTaken("q_test_drive5") and not(IsQuestComplete("q_test_drive5_1")) then
-				TActivate("q_test_drive5_config")
-			end
-
-			if IsQuestTaken("q_test_drive6") and not(IsQuestComplete("q_test_drive6_1")) then
-				TActivate("q_test_drive6_config")
-			end
-
-			if IsQuestTaken("q_test_drive7") and not(IsQuestComplete("q_test_drive7_1")) then
-				TActivate("q_test_drive7_config")
-			end
-
-			if IsQuestTaken("q_test_drive8") and not(IsQuestComplete("q_test_drive8_1")) then
-				TActivate("q_test_drive8_config")
+			
+			for i2 = 1,5 do
+				if IsQuestTaken("q_naturalist"..i2) and not(IsQuestComplete("q_naturalist"..i2.."_1")) then
+					TActivate("q_naturalist"..i2.."_config")
+				end
 			end
 		</script>
 	</trigger>
@@ -3531,6 +3529,10 @@
 			if IsQuestComplete("q_ural_or_belaz") and not(GetVar("q_naturalist1_or_q_belazist1_can_be_given").AsInt == 1) then 
 				SetVar("q_naturalist1_or_q_belazist1_can_be_given", 1)
 			end
+
+			if IsQuestComplete("q_naturalist5") and not(GetVar("q_test_drive9_can_be_given").AsInt == 1) then 
+				SetVar("q_test_drive9_can_be_given", 1)
+			end
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -3542,22 +3544,6 @@
 		<script>
 			local item = GetEntityByName("ItemDataQuest")
 			if item then item:Remove() end	
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
--- Огонь на поражение
-
-	<trigger Name="q_kill_scavs_Revard" active="0">
-		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
-		<script>
-			local item = {"pkt01", "kord01", "ammo_chest_machinegun"}
-			local r = random(2)
-			if r == 1 then
-				AddItemsToPlayerRepository(item[random(getn(item))])
-			else
-				AddPlayerMoney(random(15000,25000))
-			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -3588,15 +3574,6 @@
 		end
 		trigger:Deactivate()
 	</script>
-	</trigger>
-
-	<trigger Name="q_test_drive1_Revard" active="0">
-		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
-		<script>
-			local item = {"ammo_chest_machinegun", "machinery_use", "scrap_metal_use"}
-			AddItemsToPlayerRepository(item[random(getn(item))], random(1,2))
-			trigger:Deactivate()
-		</script>
 	</trigger>
 
 -- Тест драйв - Часть 2
@@ -3725,17 +3702,6 @@
 		</script>
 	</trigger>
 
-	<trigger Name="q_test_drive5_Revard" active="0">
-		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
-		<script>
-			for i=1,random(3) do
-				local item = {"ammo_chest_machinegun", "ammo_chest_heavygun", "machinery_use", "electronics_use"}
-				AddItemsToPlayerRepository(item[random(getn(item))], 1)
-			end
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
 -- Тест драйв - Часть 6
 
 	<trigger Name="q_test_drive6_config" active="0">
@@ -3828,6 +3794,177 @@
 			end
 
 			if l == 5 then CompleteSubtask("q_test_drive8_1") end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Натуралист - Часть 1
+
+	<trigger Name="q_naturalist1_config" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local prot = GetPlayerVehicle():GetProperty("Prototype").AsString
+			local cabin = GetPlayerVehicle():GetCabin()
+			local basket = GetPlayerVehicle():GetBasket()
+			local cab_big_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
+			local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+
+			local l = 0
+			if prot == "UralForSale" then 
+				l = l + 1
+				if cabin and basket then 
+					cabin = cabin:GetProperty("Prototype").AsString 
+					basket = basket:GetProperty("Prototype").AsString 
+					if cabin == "uralCab04" then l = l + 1 end
+					if basket == "uralCargo01_6x9" then l = l + 1 end
+				end
+				if cab_big_1 and bas_big_0 then
+					cab_big_1 = cab_big_1:GetProperty("Prototype").AsString 
+					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
+					if cab_big_1 == "rainmetal01" and bas_big_0 == "kpvt01" or bas_big_0 == "rainmetal01" and cab_big_1 == "kpvt01" then l = l + 1 end
+				end
+			end
+		
+			if l == 4 then CompleteSubtask("q_naturalist1_1") end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Натуралист - Часть 2
+
+	<trigger Name="q_naturalist2_config" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local prot = GetPlayerVehicle():GetProperty("Prototype").AsString
+			local cab_big_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
+			local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+
+			local l = 0
+			if prot == "UralForSale" then 
+				l = l + 1
+				if cab_big_1 and bas_big_0 then
+					cab_big_1 = cab_big_1:GetProperty("Prototype").AsString 
+					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
+					if cab_big_1 == "vector01" and bas_big_0 == "vector01" then l = l + 1 end
+				end
+			end
+
+			if l == 2 then CompleteSubtask("q_naturalist2_1") end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Натуралист - Часть 3
+
+	<trigger Name="q_naturalist3_config" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local prot = GetPlayerVehicle():GetProperty("Prototype").AsString
+			local cabin = GetPlayerVehicle():GetCabin()
+			local basket = GetPlayerVehicle():GetBasket()
+			local cab_big_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
+			local cab_big_2 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_2")
+			local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+
+			local l = 0
+			if prot == "UralForSale" then 
+				l = l + 1
+				if cabin and basket then 
+					cabin = cabin:GetProperty("Prototype").AsString 
+					basket = basket:GetProperty("Prototype").AsString 
+					if cabin == "uralCab03" then l = l + 1 end
+					if basket == "uralCargo04_7x10" then l = l + 1 end
+				end
+				if cab_big_1 and cab_big_2 and bas_big_0 then
+					cab_big_1 = cab_big_1:GetProperty("Prototype").AsString 
+					cab_big_2 = cab_big_2:GetProperty("Prototype").AsString 
+					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
+					if cab_big_1 == "rapier01" or cab_big_1 == "rainmetal01" then l = l + 1 end
+					if cab_big_2 == "rapier01" or cab_big_2 == "rainmetal01" then l = l + 1 end
+					if bas_big_0 == "rapier01" or bas_big_0 == "rainmetal01" then l = l + 1 end
+				end
+			end
+
+			if l == 6 then CompleteSubtask("q_naturalist3_1") end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Натуралист - Часть 4
+
+	<trigger Name="q_naturalist4_config" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local prot = GetPlayerVehicle():GetProperty("Prototype").AsString
+			local basket = GetPlayerVehicle():GetBasket()
+			local bas_giant = GetPlayerVehicle():GetPartByName("BASKET_GIANT_GUN")
+
+			local slots = {"CABIN_BIG_GUN_1", "CABIN_BIG_GUN_2", "BASKET_BIG_GUN_0"}
+
+			local l = 0
+	
+			if prot == "UralForSale" then 
+				l = l + 1
+				if basket then 
+					basket = basket:GetProperty("Prototype").AsString 
+					if basket == "uralCargo03_9x10" then l = l + 1 end
+				end
+
+				for i=1,3 do
+					if GetPlayerVehicle():GetPartByName(slots[i]) then
+						local protgun = GetPlayerVehicle():GetPartByName(slots[i]):GetProperty("Prototype").AsString
+						if protgun == "rainmetal01" then l = l + 1 end
+					end
+				end
+
+				if bas_giant then
+					bas_giant = bas_giant:GetProperty("Prototype").AsString 
+					if bas_giant == "cyclops01" then l = l + 1 end
+				end
+			end
+
+			if l == 4 then CompleteSubtask("q_naturalist4_1") end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Натуралист - Часть 5
+
+	<trigger Name="q_naturalist5_config" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local prot = GetPlayerVehicle():GetProperty("Prototype").AsString
+			local cabin = GetPlayerVehicle():GetCabin()
+			local basket = GetPlayerVehicle():GetBasket()
+
+			local bas_giant = GetPlayerVehicle():GetPartByName("BASKET_GIANT_GUN")
+			local slots = {"CABIN_BIG_GUN_1", "CABIN_BIG_GUN_2", "BASKET_BIG_GUN_0"}
+
+			local l = 0
+
+			if prot == "UralForSale" then 
+				l = l + 1
+				if cabin and basket then 
+					cabin = cabin:GetProperty("Prototype").AsString 
+					basket = basket:GetProperty("Prototype").AsString 
+					if cabin == "uralCab05" then l = l + 1 end
+					if basket == "uralCargo03_9x10" then l = l + 1 end
+				end
+
+				for i=1,3 do
+					if GetPlayerVehicle():GetPartByName(slots[i]) then
+						local protgun = GetPlayerVehicle():GetPartByName(slots[i]):GetProperty("Prototype").AsString
+						if protgun == "rainmetal01" then l = l + 1 end
+					end
+				end
+
+				if bas_giant then
+					bas_giant = bas_giant:GetProperty("Prototype").AsString 
+					if bas_giant == "octopus01" then l = l + 1 end
+				end
+			end
+
+			if l == 7 then CompleteSubtask("q_naturalist5_1") end
 			trigger:Deactivate()
 		</script>
 	</trigger>

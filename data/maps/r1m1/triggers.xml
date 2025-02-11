@@ -80,6 +80,13 @@
 				SetVar("q_test_drive"..q_td_rc.."_raidcount", 0)
 			end
 
+			for q_n=1,5 do
+				SetVar("q_naturalist"..q_n.."_killscavs", 0)
+				SetVar("q_naturalist"..q_n.."_killPMC", 0)
+			end
+
+			SetVar("q_naturalist5_raidcount", 0)
+
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -3888,32 +3895,32 @@
 				TActivate("q_test_drive1_killscavs")
 			end
 
-			if IsQuestTaken("q_test_drive2") and not(IsQuestComplete("q_test_drive2_2")) then
-				TActivate("q_test_drive2_killscavs")
+			for i1 = 2,3 do
+				if IsQuestTaken("q_test_drive"..i1) and not(IsQuestComplete("q_test_drive"..i1.."_2")) then
+					TActivate("q_test_drive"..i1.."_killscavs")
+				end
 			end
 
-			if IsQuestTaken("q_test_drive3") and not(IsQuestComplete("q_test_drive3_2")) then
-				TActivate("q_test_drive3_killscavs")
+			for i2 = 4,5 do
+				if IsQuestTaken("q_test_drive"..i2) and not(IsQuestComplete("q_test_drive"..i2.."_3")) then
+					TActivate("q_test_drive"..i2.."_killscavs")
+				end
 			end
 
-			if IsQuestTaken("q_test_drive4") and not(IsQuestComplete("q_test_drive4_3")) then
-				TActivate("q_test_drive4_killscavs")
+			for i3 = 6,8 do
+				if IsQuestTaken("q_test_drive"..i3) and not(IsQuestComplete("q_test_drive"..i3.."_2")) then
+					TActivate("q_test_drive"..i3.."_killscavs")
+				end
+			end
+			
+			for i4 = 1,4 do
+				if IsQuestTaken("q_naturalist"..i4) and not(IsQuestComplete("q_naturalist"..i4.."_2")) then
+					TActivate("q_naturalist"..i4.."_killscavs")
+				end
 			end
 
-			if IsQuestTaken("q_test_drive5") and not(IsQuestComplete("q_test_drive5_3")) then
-				TActivate("q_test_drive5_killscavs")
-			end
-
-			if IsQuestTaken("q_test_drive6") and not(IsQuestComplete("q_test_drive6_2")) then
-				TActivate("q_test_drive6_killscavs")
-			end
-
-			if IsQuestTaken("q_test_drive7") and not(IsQuestComplete("q_test_drive7_2")) then
-				TActivate("q_test_drive7_killscavs")
-			end
-
-			if IsQuestTaken("q_test_drive8") and not(IsQuestComplete("q_test_drive8_2")) then
-				TActivate("q_test_drive8_killscavs")
+			if IsQuestTaken("q_naturalist5") and not(IsQuestComplete("q_naturalist5_3")) then
+				TActivate("q_naturalist5_killscavs")
 			end
 			trigger:Deactivate()
 		</script>
@@ -3925,32 +3932,32 @@
 			SetVar("PlayerKillPMC", GetVar("PlayerKillPMC").AsInt+1)
 			println("PMC kill: "..GetVar("PlayerKillPMC").AsInt)
 
-			if IsQuestTaken("q_test_drive2") and not(IsQuestComplete("q_test_drive2_3")) then
-				TActivate("q_test_drive2_killPMC")
+			for i1 = 2,3 do
+				if IsQuestTaken("q_test_drive"..i1) and not(IsQuestComplete("q_test_drive"..i1.."_3")) then
+					TActivate("q_test_drive"..i1.."_killPMC")
+				end
 			end
 
-			if IsQuestTaken("q_test_drive3") and not(IsQuestComplete("q_test_drive3_3")) then
-				TActivate("q_test_drive3_killPMC")
+			for i2 = 4,5 do
+				if IsQuestTaken("q_test_drive"..i2) and not(IsQuestComplete("q_test_drive"..i2.."_4")) then
+					TActivate("q_test_drive"..i2.."_killPMC")
+				end
 			end
 
-			if IsQuestTaken("q_test_drive4") and not(IsQuestComplete("q_test_drive4_4")) then
-				TActivate("q_test_drive4_killPMC")
+			for i3 = 6,8 do
+				if IsQuestTaken("q_test_drive"..i3) and not(IsQuestComplete("q_test_drive"..i3.."_3")) then
+					TActivate("q_test_drive"..i3.."_killPMC")
+				end
 			end
 
-			if IsQuestTaken("q_test_drive5") and not(IsQuestComplete("q_test_drive5_4")) then
-				TActivate("q_test_drive5_killPMC")
+			for i4 = 1,4 do
+				if IsQuestTaken("q_naturalist"..i4) and not(IsQuestComplete("q_naturalist"..i4.."_3")) then
+					TActivate("q_naturalist"..i4.."_killPMC")
+				end
 			end
 
-			if IsQuestTaken("q_test_drive6") and not(IsQuestComplete("q_test_drive6_3")) then
-				TActivate("q_test_drive6_killPMC")
-			end
-
-			if IsQuestTaken("q_test_drive7") and not(IsQuestComplete("q_test_drive7_3")) then
-				TActivate("q_test_drive7_killPMC")
-			end
-
-			if IsQuestTaken("q_test_drive8") and not(IsQuestComplete("q_test_drive8_3")) then
-				TActivate("q_test_drive8_killPMC")
+			if IsQuestTaken("q_naturalist5") and not(IsQuestComplete("q_naturalist5_4")) then
+				TActivate("q_naturalist5_killPMC")
 			end
 			trigger:Deactivate()
 		</script>
@@ -4021,12 +4028,14 @@
 	<trigger Name="IfRaidCountForQuest" active="0">
 	<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			if IsQuestTaken("q_test_drive4") and not(IsQuestComplete("q_test_drive4_2")) then
-				TActivate("q_test_drive4_countraid")
+			for i1 = 4,5 do
+				if IsQuestTaken("q_test_drive"..i1) and not(IsQuestComplete("q_test_drive"..i1.."_2")) then
+					TActivate("q_test_drive"..i1.."_countraid")
+				end
 			end
 
-			if IsQuestTaken("q_test_drive5") and not(IsQuestComplete("q_test_drive5_2")) then
-				TActivate("q_test_drive5_countraid")
+			if IsQuestTaken("q_naturalist5") and not(IsQuestComplete("q_naturalist5_2")) then
+				TActivate("q_naturalist5_countraid")
 			end
 			trigger:Deactivate()
 		</script>
@@ -4470,12 +4479,13 @@
 				if bas_big_0 == "kpvt01" then
 					if not(GetVar("q_test_drive4_raidcount").AsInt == 3) then
 						SetVar("q_test_drive4_raidcount", GetVar("q_test_drive4_raidcount").AsInt+1)
-						AddFadingMsgByStrIdFormatted("fm_progress_quest_raidcount", "q_test_drive4", GetVar("q_test_drive4_raidcount").AsInt, 3)
-						SoundFadingMsg()
 						if GetVar("q_test_drive4_raidcount").AsInt == 3 then 
 							CompleteSubtask("q_test_drive4_2")
 							AddFadingMsgByStrIdFormatted("fm_progress_quest_raidcount_complete", "q_test_drive4", GetVar("q_test_drive4_raidcount").AsInt, 3)
 							SoundFadingMsg() 
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_raidcount", "q_test_drive4", GetVar("q_test_drive4_raidcount").AsInt, 3)
+							SoundFadingMsg()
 						end
 					end
 				end
@@ -4558,11 +4568,12 @@
 				if cab_small == "storm01" and bas_big_0 == "rapier01" then
 					if not(GetVar("q_test_drive5_raidcount").AsInt == 3) then
 						SetVar("q_test_drive5_raidcount", GetVar("q_test_drive5_raidcount").AsInt+1)
-						AddFadingMsgByStrIdFormatted("fm_progress_quest_raidcount", "q_test_drive5", GetVar("q_test_drive5_raidcount").AsInt, 3)
-						SoundFadingMsg()
 						if GetVar("q_test_drive5_raidcount").AsInt == 3 then 
 							CompleteSubtask("q_test_drive5_2") 
 							AddFadingMsgByStrIdFormatted("fm_progress_quest_raidcount_complete", "q_test_drive5", GetVar("q_test_drive5_raidcount").AsInt, 3)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_raidcount", "q_test_drive5", GetVar("q_test_drive5_raidcount").AsInt, 3)
 							SoundFadingMsg()
 						end
 					end
@@ -4747,6 +4758,399 @@
 			trigger:Deactivate()
 		</script>
 	</trigger>
+
+-- Натуралист - Часть 1
+	
+	<trigger Name="q_naturalist1_killscavs" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Ural" and GetVar("PlayerCabin").AsString == "uralCab04" and GetVar("PlayerBasket").AsString == "uralCargo01_6x9" then
+				local cab_big_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
+				local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+				if cab_big_1 and bas_big_0 then 
+					cab_big_1 = cab_big_1:GetProperty("Prototype").AsString 
+					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
+				end
+
+				if cab_big_1 == "rainmetal01" and bas_big_0 == "kpvt01" or bas_big_0 == "rainmetal01" and cab_big_1 == "kpvt01" then
+					if not(GetVar("q_naturalist1_killscavs").AsInt == 30) then
+						SetVar("q_naturalist1_killscavs", GetVar("q_naturalist1_killscavs").AsInt+1)
+						if GetVar("q_naturalist1_killscavs").AsInt >= 30 then
+							CompleteSubtask("q_naturalist1_2")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills_complete", "q_naturalist1", GetVar("q_naturalist1_killscavs").AsInt, 30)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_naturalist1", GetVar("q_naturalist1_killscavs").AsInt, 30)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_naturalist1_killPMC" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Ural" and GetVar("PlayerCabin").AsString == "uralCab04" and GetVar("PlayerBasket").AsString == "uralCargo01_6x9" then
+				local cab_big_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
+				local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+				if cab_big_1 and bas_big_0 then 
+					cab_big_1 = cab_big_1:GetProperty("Prototype").AsString 
+					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
+				end
+
+				if cab_big_1 == "rainmetal01" and bas_big_0 == "kpvt01" or bas_big_0 == "rainmetal01" and cab_big_1 == "kpvt01" then
+					if not(GetVar("q_naturalist1_killPMC").AsInt == 15) then
+						SetVar("q_naturalist1_killPMC", GetVar("q_naturalist1_killPMC").AsInt+1)
+						if GetVar("q_naturalist1_killPMC").AsInt >= 15 then
+							CompleteSubtask("q_naturalist1_3")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills_complete", "q_naturalist1", GetVar("q_naturalist1_killPMC").AsInt, 15)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_naturalist1", GetVar("q_naturalist1_killPMC").AsInt, 15)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+
+-- Натуралист - Часть 2
+	
+	<trigger Name="q_naturalist2_killscavs" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Ural" then
+				local cab_big_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
+				local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+				if cab_big_1 and bas_big_0 then 
+					cab_big_1 = cab_big_1:GetProperty("Prototype").AsString 
+					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
+				end
+
+				if cab_big_1 == "vector01" and bas_big_0 == "vector01" then
+					if not(GetVar("q_naturalist2_killscavs").AsInt == 20) then
+						SetVar("q_naturalist2_killscavs", GetVar("q_naturalist2_killscavs").AsInt+1)
+						if GetVar("q_naturalist2_killscavs").AsInt >= 20 then
+							CompleteSubtask("q_naturalist2_2")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills_complete", "q_naturalist2", GetVar("q_naturalist2_killscavs").AsInt, 20)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_naturalist2", GetVar("q_naturalist2_killscavs").AsInt, 20)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_naturalist2_killPMC" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Ural" then
+				local cab_big_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
+				local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+				if cab_big_1 and bas_big_0 then 
+					cab_big_1 = cab_big_1:GetProperty("Prototype").AsString 
+					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
+				end
+
+				if cab_big_1 == "vector01" and bas_big_0 == "vector01" then
+					if not(GetVar("q_naturalist2_killPMC").AsInt == 5) then
+						SetVar("q_naturalist2_killPMC", GetVar("q_naturalist2_killPMC").AsInt+1)
+						if GetVar("q_naturalist2_killPMC").AsInt >= 5 then
+							CompleteSubtask("q_naturalist2_3")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills_complete", "q_naturalist2", GetVar("q_naturalist2_killPMC").AsInt, 5)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_naturalist2", GetVar("q_naturalist2_killPMC").AsInt, 5)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+
+-- Натуралист - Часть 3
+	
+	<trigger Name="q_naturalist3_killscavs" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Ural" and GetVar("PlayerCabin").AsString == "uralCab03" and GetVar("PlayerBasket").AsString == "uralCargo04_7x10" then
+				local cab_big_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
+				local cab_big_2 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_2")
+				local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+				if cab_big_1 and cab_big_2 and bas_big_0 then 
+					cab_big_1 = cab_big_1:GetProperty("Prototype").AsString 
+					cab_big_2 = cab_big_2:GetProperty("Prototype").AsString
+					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
+				end
+
+				local l = 0
+				if cab_big_1 == "rapier01" or cab_big_1 == "rainmetal01" then l = l + 1 end
+				if cab_big_2 == "rapier01" or cab_big_2 == "rainmetal01" then l = l + 1 end
+				if bas_big_0 == "rapier01" or bas_big_0 == "rainmetal01" then l = l + 1 end
+
+				if l == 3 then
+					if not(GetVar("q_naturalist3_killscavs").AsInt == 5) then
+						SetVar("q_naturalist3_killscavs", GetVar("q_naturalist3_killscavs").AsInt+1)
+						if GetVar("q_naturalist3_killscavs").AsInt >= 5 then
+							CompleteSubtask("q_naturalist3_2")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills_complete", "q_naturalist3", GetVar("q_naturalist3_killscavs").AsInt, 5)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_naturalist3", GetVar("q_naturalist3_killscavs").AsInt, 5)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_naturalist3_killPMC" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Ural" and GetVar("PlayerCabin").AsString == "uralCab03" and GetVar("PlayerBasket").AsString == "uralCargo04_7x10" then
+				local cab_big_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
+				local cab_big_2 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_2")
+				local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+				if cab_big_1 and cab_big_2 and bas_big_0 then 
+					cab_big_1 = cab_big_1:GetProperty("Prototype").AsString 
+					cab_big_2 = cab_big_2:GetProperty("Prototype").AsString
+					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
+				end
+
+				local l = 0
+				if cab_big_1 == "rapier01" or cab_big_1 == "rainmetal01" then l = l + 1 end
+				if cab_big_2 == "rapier01" or cab_big_2 == "rainmetal01" then l = l + 1 end
+				if bas_big_0 == "rapier01" or bas_big_0 == "rainmetal01" then l = l + 1 end
+
+				if l == 3 then
+					if not(GetVar("q_naturalist3_killPMC").AsInt == 15) then
+						SetVar("q_naturalist3_killPMC", GetVar("q_naturalist3_killPMC").AsInt+1)
+						if GetVar("q_naturalist3_killPMC").AsInt >= 15 then
+							CompleteSubtask("q_naturalist3_3")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills_complete", "q_naturalist3", GetVar("q_naturalist3_killPMC").AsInt, 15)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_naturalist3", GetVar("q_naturalist3_killPMC").AsInt, 15)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+
+-- Натуралист - Часть 4
+	
+	<trigger Name="q_naturalist4_killscavs" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Ural" and GetVar("PlayerBasket").AsString == "uralCargo03_9x10" then
+				local bas_giant = GetPlayerVehicle():GetPartByName("BASKET_GIANT_GUN")
+				local slots = {"CABIN_BIG_GUN_1", "CABIN_BIG_GUN_2", "BASKET_BIG_GUN_0"}
+
+				local l = 0
+
+				for i=1,3 do
+					if GetPlayerVehicle():GetPartByName(slots[i]) then
+						local protgun = GetPlayerVehicle():GetPartByName(slots[i]):GetProperty("Prototype").AsString
+						if protgun == "rainmetal01" then l = l + 1 end
+					end
+				end
+
+				if bas_giant then
+					bas_giant = bas_giant:GetProperty("Prototype").AsString 
+					if bas_giant == "cyclops01" then l = l + 1 end
+				end
+	
+				if l == 2 then
+					if not(GetVar("q_naturalist4_killscavs").AsInt == 10) then
+						SetVar("q_naturalist4_killscavs", GetVar("q_naturalist4_killscavs").AsInt+1)
+						if GetVar("q_naturalist4_killscavs").AsInt >= 10 then
+							CompleteSubtask("q_naturalist4_2")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills_complete", "q_naturalist4", GetVar("q_naturalist4_killscavs").AsInt, 10)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_naturalist4", GetVar("q_naturalist4_killscavs").AsInt, 10)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_naturalist4_killPMC" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Ural" and GetVar("PlayerBasket").AsString == "uralCargo03_9x10" then
+				local bas_giant = GetPlayerVehicle():GetPartByName("BASKET_GIANT_GUN")
+				local slots = {"CABIN_BIG_GUN_1", "CABIN_BIG_GUN_2", "BASKET_BIG_GUN_0"}
+
+				local l = 0
+
+				for i=1,3 do
+					if GetPlayerVehicle():GetPartByName(slots[i]) then
+						local protgun = GetPlayerVehicle():GetPartByName(slots[i]):GetProperty("Prototype").AsString
+						if protgun == "rainmetal01" then l = l + 1 end
+					end
+				end
+
+				if bas_giant then
+					bas_giant = bas_giant:GetProperty("Prototype").AsString 
+					if bas_giant == "cyclops01" then l = l + 1 end
+				end
+
+				if l == 2 then
+					if not(GetVar("q_naturalist4_killPMC").AsInt == 20) then
+						SetVar("q_naturalist4_killPMC", GetVar("q_naturalist4_killPMC").AsInt+1)
+						if GetVar("q_naturalist4_killPMC").AsInt >= 20 then
+							CompleteSubtask("q_naturalist4_3")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills_complete", "q_naturalist4", GetVar("q_naturalist4_killPMC").AsInt, 20)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_naturalist4", GetVar("q_naturalist4_killPMC").AsInt, 20)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+
+-- Натуралист - Часть 5
+
+	<trigger Name="q_naturalist5_countraid" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Ural" and GetVar("PlayerCabin").AsString == "uralCab05" and GetVar("PlayerBasket").AsString == "uralCargo03_9x10" then
+				local bas_giant = GetPlayerVehicle():GetPartByName("BASKET_GIANT_GUN")
+				local slots = {"CABIN_BIG_GUN_1", "CABIN_BIG_GUN_2", "BASKET_BIG_GUN_0"}
+
+				local l = 0
+
+				for i=1,3 do
+					if GetPlayerVehicle():GetPartByName(slots[i]) then
+						local protgun = GetPlayerVehicle():GetPartByName(slots[i]):GetProperty("Prototype").AsString
+						if protgun == "rainmetal01" then l = l + 1 end
+					end
+				end
+
+				if bas_giant then
+					bas_giant = bas_giant:GetProperty("Prototype").AsString 
+					if bas_giant == "octopus01" then l = l + 1 end
+				end
+
+				if l == 4 then
+					if not(GetVar("q_naturalist5_raidcount").AsInt == 3) then
+						SetVar("q_naturalist5_raidcount", GetVar("q_naturalist5_raidcount").AsInt+1)
+						if GetVar("q_naturalist5_raidcount").AsInt == 3 then
+							CompleteSubtask("q_naturalist5_2") 
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_raidcount_complete", "q_naturalist5", GetVar("q_naturalist5_raidcount").AsInt, 3)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_raidcount", "q_naturalist5", GetVar("q_naturalist5_raidcount").AsInt, 3)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+	
+	<trigger Name="q_naturalist5_killscavs" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Ural" and GetVar("PlayerCabin").AsString == "uralCab05" and GetVar("PlayerBasket").AsString == "uralCargo03_9x10" then
+				local bas_giant = GetPlayerVehicle():GetPartByName("BASKET_GIANT_GUN")
+				local slots = {"CABIN_BIG_GUN_1", "CABIN_BIG_GUN_2", "BASKET_BIG_GUN_0"}
+
+				local l = 0
+
+				for i=1,3 do
+					if GetPlayerVehicle():GetPartByName(slots[i]) then
+						local protgun = GetPlayerVehicle():GetPartByName(slots[i]):GetProperty("Prototype").AsString
+						if protgun == "rainmetal01" then l = l + 1 end
+					end
+				end
+
+				if bas_giant then
+					bas_giant = bas_giant:GetProperty("Prototype").AsString 
+					if bas_giant == "octopus01" then l = l + 1 end
+				end
+
+				if l == 4 then
+					if not(GetVar("q_naturalist5_killscavs").AsInt == 25) then
+						SetVar("q_naturalist5_killscavs", GetVar("q_naturalist5_killscavs").AsInt+1)
+						if GetVar("q_naturalist5_killscavs").AsInt >= 25 then
+							CompleteSubtask("q_naturalist5_3")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills_complete", "q_naturalist5", GetVar("q_naturalist5_killscavs").AsInt, 25)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_naturalist5", GetVar("q_naturalist5_killscavs").AsInt, 25)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+
+	<trigger Name="q_naturalist5_killPMC" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Ural" and GetVar("PlayerCabin").AsString == "uralCab05" and GetVar("PlayerBasket").AsString == "uralCargo03_9x10" then
+				local bas_giant = GetPlayerVehicle():GetPartByName("BASKET_GIANT_GUN")
+				local slots = {"CABIN_BIG_GUN_1", "CABIN_BIG_GUN_2", "BASKET_BIG_GUN_0"}
+
+				local l = 0
+
+				for i=1,3 do
+					if GetPlayerVehicle():GetPartByName(slots[i]) then
+						local protgun = GetPlayerVehicle():GetPartByName(slots[i]):GetProperty("Prototype").AsString
+						if protgun == "rainmetal01" then l = l + 1 end
+					end
+				end
+
+				if bas_giant then
+					bas_giant = bas_giant:GetProperty("Prototype").AsString 
+					if bas_giant == "octopus01" then l = l + 1 end
+				end
+
+				if l == 4 then
+					if not(GetVar("q_naturalist5_killPMC").AsInt == 30) then
+						SetVar("q_naturalist5_killPMC", GetVar("q_naturalist5_killPMC").AsInt+1)
+						if GetVar("q_naturalist5_killPMC").AsInt >= 30 then
+							CompleteSubtask("q_naturalist5_4")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills_complete", "q_naturalist5", GetVar("q_naturalist5_killPMC").AsInt, 30)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_naturalist5", GetVar("q_naturalist5_killPMC").AsInt, 30)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>	
 
 -- Биток - Часть 3
 	

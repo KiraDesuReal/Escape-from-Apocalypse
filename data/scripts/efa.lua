@@ -1036,6 +1036,36 @@ function AddItemToTown(Item, Count)
 	end
 end
 
+-- Выдать игроку случайный предмет из списка, либо выдать деньги
+function AddPlayerRandomItemOrMoney(items, countItems, money)
+	local itemList = items
+	if countItems == nil then countItems = 1 end
+	
+	if random(2) == 1 then
+		if itemList then
+			for i = 1, countItems do
+				AddItemsToPlayerRepository(itemList[random(getn(itemList))], 1)
+			end
+		end
+	else
+		if money then
+			AddPlayerMoney(money)
+		end
+	end
+end
+
+-- Выдать игроку случайный предмет из списка
+function AddPlayerRandomItem(items, countItems)
+	local itemList = items
+	if countItems == nil then countItems = 1 end
+
+	if itemList then
+		for i = 1, countItems do
+			AddItemsToPlayerRepository(itemList[random(getn(itemList))], 1)
+		end
+	end
+end
+
 
 
 

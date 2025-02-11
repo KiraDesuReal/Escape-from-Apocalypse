@@ -207,7 +207,7 @@
 		CheckAll="0"
 		ConditionToGive="all complete"
 		PrecedingQuests="q_rebuild"
-		OnComplete='AddPlayerMoney(50000); TActivate("q_test_drive1_Revard"); AddCabinsOrBasketsToTown("molokovozCab03")'>
+		OnComplete='AddCabinsOrBasketsToTown("molokovozCab03"); AddPlayerRandomItem({"ammo_chest_machinegun", "machinery_use", "scrap_metal_use"}, random(1, 2)); AddPlayerMoney(50000)'>
 		<quest
 			Name="q_test_drive1_11"
 			Automatic="1"
@@ -391,7 +391,7 @@
 		CheckAll="0"
 		ConditionToGive="all complete"
 		PrecedingQuests="q_test_drive4"
-		OnComplete='AddPlayerMoney(50000); AddVehicleToTown("UralForSale"); AddCabinsOrBasketsToTown("uralCab02"); TActivate("q_test_drive5_Revard")'>
+		OnComplete='AddVehicleToTown("UralForSale"); AddCabinsOrBasketsToTown("uralCab02"); AddPlayerRandomItem({"ammo_chest_machinegun", "ammo_chest_heavygun", "machinery_use", "electronics_use"}, random(1, 3)); AddPlayerMoney(50000)'>
 		<quest
 			Name="q_test_drive5_1"
 			Automatic="1"
@@ -711,6 +711,245 @@
 			ConditionToGive="all taken"
 			PrecedingQuests="q_ural_or_belaz"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_ural_or_belaz"); TActivate("SoundQuestComplete")' />
+	</quest>
+<!--Root/r0m0/Натуралист Часть 1-->
+	<quest
+		Name="q_naturalist1"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_ural_or_belaz_1"
+		OnComplete='AddCabinsOrBasketsToTown("uralCargo05_8x9"); AddCabinsOrBasketsToTown("belazCab02"); AddCabinsOrBasketsToTown("belazCargo02_8x11"); AddItemsToPlayerRepository("rainmetal01"); AddPlayerMoney(65000)'>
+		<quest
+			Name="q_naturalist1_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_naturalist1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_naturalist1")' />
+
+		<quest
+			Name="q_naturalist1_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_naturalist1_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_naturalist1")' />
+
+		<quest
+			Name="q_naturalist1_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_naturalist1_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_naturalist1")' />
+
+		<quest
+			Name="q_naturalist1_4"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_naturalist1_2 q_naturalist1_3"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_naturalist1")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+	</quest>
+<!--Root/r0m0/Натуралист Часть 2-->
+	<quest
+		Name="q_naturalist2"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_naturalist1"
+		OnComplete='AddCabinsOrBasketsToTown("uralCab03"); AddCabinsOrBasketsToTown("belazCargo05_9x10"); AddItemToTown("cyclops01"); AddItemsToPlayerRepository("octopus01"); AddItemsToPlayerRepository("ammo_chest_machinegun"); AddItemsToPlayerRepository("ammo_chest_heavygun"); AddPlayerMoney(60000)'>
+		<quest
+			Name="q_naturalist2_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_naturalist2"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_naturalist2")' />
+
+		<quest
+			Name="q_naturalist2_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_naturalist2_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_naturalist2")' />
+
+		<quest
+			Name="q_naturalist2_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_naturalist2_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_naturalist2")' />
+
+		<quest
+			Name="q_naturalist2_4"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_naturalist2_2 q_naturalist2_3"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_naturalist2")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+	</quest>
+<!--Root/r0m0/Натуралист Часть 3-->
+	<quest
+		Name="q_naturalist3"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_naturalist2"
+		OnComplete='AddCabinsOrBasketsToTown("uralCargo03_9x10"); AddCabinsOrBasketsToTown("belazCab04"); AddItemToTown("grouping_angle_guns2"); AddItemsToPlayerRepository("octopus01"); AddItemsToPlayerRepository("ammo_chest_machinegun"); AddPlayerMoney(70000)'>
+		<quest
+			Name="q_naturalist3_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_naturalist3"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_naturalist3")' />
+
+		<quest
+			Name="q_naturalist3_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_naturalist3_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_naturalist3")' />
+
+		<quest
+			Name="q_naturalist3_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_naturalist3_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_naturalist3")' />
+
+		<quest
+			Name="q_naturalist3_4"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_naturalist3_2 q_naturalist3_3"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_naturalist3")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+	</quest>
+<!--Root/r0m0/Натуралист Часть 4-->
+	<quest
+		Name="q_naturalist4"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_naturalist3"
+		OnComplete='AddCabinsOrBasketsToTown("uralCab05"); AddCabinsOrBasketsToTown("belazCab03"); AddItemToTown("additional_torque2"); AddItemToTown("octopus01"); AddItemToTown("hunterSideGun"); AddItemToTown("ammo_chest_machinegunForSale"); AddItemToTown("ammo_chest_rocketgunForSale"); AddPlayerMoney(70000)'>
+		<quest
+			Name="q_naturalist4_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_naturalist4"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_naturalist4")' />
+
+		<quest
+			Name="q_naturalist4_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_naturalist4_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_naturalist4")' />
+
+		<quest
+			Name="q_naturalist4_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_naturalist4_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_naturalist4")' />
+
+		<quest
+			Name="q_naturalist4_4"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_naturalist4_2 q_naturalist4_3"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_naturalist4")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+	</quest>
+<!--Root/r0m0/Натуралист Часть 5-->
+	<quest
+		Name="q_naturalist5"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_naturalist4"
+		OnComplete='AddVehicleToTown("MirotvorecForSale"); AddCabinsOrBasketsToTown("belazCab05"); AddCabinsOrBasketsToTown("belazCargo03_11x12"); AddCabinsOrBasketsToTown("belazCargo04_6x10"); AddItemToTown("additional_fuel_tank2"); AddItemToTown("rainmetal01"); AddItemToTown("ammo_chest_heavygunForSale"); AddItemsToPlayerRepository("flag01"); AddItemsToPlayerRepository("ammo_chest_shotgun"); AddPlayerMoney(70000)'>
+		<quest
+			Name="q_naturalist5_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_naturalist5"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_naturalist5")' />
+
+		<quest
+			Name="q_naturalist5_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_naturalist5_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_naturalist5")' />
+
+		<quest
+			Name="q_naturalist5_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_naturalist5_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_naturalist5")' />
+
+		<quest
+			Name="q_naturalist5_4"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_naturalist5_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_naturalist5")' />
+
+		<quest
+			Name="q_naturalist5_5"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_naturalist5_2 q_naturalist5_3 q_naturalist5_4"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_naturalist5")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
 	</quest>
 <!--Root/r4m2/Сюжетные-->
 	<quest

@@ -85,6 +85,11 @@
 				SetVar("q_naturalist"..q_n.."_killPMC", 0)
 			end
 
+			for q_b=1,8 do
+				SetVar("q_belazist"..q_b.."_killscavs", 0)
+				SetVar("q_belazist"..q_b.."_killPMC", 0)
+			end
+
 			SetVar("q_naturalist5_raidcount", 0)
 
 		    trigger:Deactivate()
@@ -3922,6 +3927,12 @@
 			if IsQuestTaken("q_naturalist5") and not(IsQuestComplete("q_naturalist5_3")) then
 				TActivate("q_naturalist5_killscavs")
 			end
+
+			for i5 = 1,4 do
+				if IsQuestTaken("q_belazist"..i5) and not(IsQuestComplete("q_belazist"..i5.."_2")) then
+					TActivate("q_belazist"..i5.."_killscavs")
+				end
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -3958,6 +3969,12 @@
 
 			if IsQuestTaken("q_naturalist5") and not(IsQuestComplete("q_naturalist5_4")) then
 				TActivate("q_naturalist5_killPMC")
+			end
+
+			for i5 = 1,4 do
+				if IsQuestTaken("q_belazist"..i5) and not(IsQuestComplete("q_belazist"..i5.."_3")) then
+					TActivate("q_belazist"..i5.."_killPMC")
+				end
 			end
 			trigger:Deactivate()
 		</script>
@@ -5151,6 +5168,292 @@
 			trigger:Deactivate()
 		</script>
 	</trigger>	
+
+-- Белазист - Часть 1
+	
+	<trigger Name="q_belazist1_killscavs" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Belaz" and GetVar("PlayerCabin").AsString == "belazCab01" and GetVar("PlayerBasket").AsString == "belazCargo01_6x12" then
+				local cab_sml_gun = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
+				local bas_big_gun_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+
+				local l = 0
+
+				if cab_sml_gun and bas_big_gun_0 then
+					cab_sml_gun = cab_sml_gun:GetProperty("Prototype").AsString 
+					bas_big_gun_0 = bas_big_gun_0:GetProperty("Prototype").AsString 
+					if cab_sml_gun and bas_big_gun_0 then l = l + 1 end
+				end
+
+				if l == 1 then
+					if not(GetVar("q_belazist1_killscavs").AsInt == 15) then
+						SetVar("q_belazist1_killscavs", GetVar("q_belazist1_killscavs").AsInt+1)
+						if GetVar("q_belazist1_killscavs").AsInt >= 15 then
+							CompleteSubtask("q_belazist1_2")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills_complete", "q_belazist1", GetVar("q_belazist1_killscavs").AsInt, 15)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_belazist1", GetVar("q_belazist1_killscavs").AsInt, 15)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+
+	<trigger Name="q_belazist1_killPMC" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Belaz" and GetVar("PlayerCabin").AsString == "belazCab01" and GetVar("PlayerBasket").AsString == "belazCargo01_6x12" then
+				local cab_sml_gun = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
+				local bas_big_gun_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+
+				local l = 0
+
+				if cab_sml_gun and bas_big_gun_0 then
+					cab_sml_gun = cab_sml_gun:GetProperty("Prototype").AsString 
+					bas_big_gun_0 = bas_big_gun_0:GetProperty("Prototype").AsString 
+					if cab_sml_gun and bas_big_gun_0 then l = l + 1 end
+				end
+
+				if l == 1 then
+					if not(GetVar("q_belazist1_killPMC").AsInt == 5) then
+						SetVar("q_belazist1_killPMC", GetVar("q_belazist1_killPMC").AsInt+1)
+						if GetVar("q_belazist1_killPMC").AsInt >= 5 then
+							CompleteSubtask("q_belazist1_3")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills_complete", "q_belazist1", GetVar("q_belazist1_killPMC").AsInt, 5)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_belazist1", GetVar("q_belazist1_killPMC").AsInt, 5)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+
+-- Белазист - Часть 2
+	
+	<trigger Name="q_belazist2_killscavs" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Belaz" and GetVar("PlayerCabin").AsString == "belazCab02" and GetVar("PlayerBasket").AsString == "belazCargo02_8x11" then
+				local cab_sml_gun = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
+				local cab_sml_gun_1 = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN_1")
+				local bas_big_gun_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+
+				local l = 0
+
+				if cab_sml_gun and cab_sml_gun_1 and bas_big_gun_0 then
+					cab_sml_gun = cab_sml_gun:GetProperty("Prototype").AsString 
+					cab_sml_gun_1 = cab_sml_gun_1:GetProperty("Prototype").AsString 
+					bas_big_gun_0 = bas_big_gun_0:GetProperty("Prototype").AsString 
+					if cab_sml_gun == "kord01" and cab_sml_gun_1 == "kord01" then l = l + 1 end
+					if bas_big_gun_0 == "kpvt01" then l = l + 1 end
+				end
+
+				if l == 2 then
+					if not(GetVar("q_belazist2_killscavs").AsInt == 15) then
+						SetVar("q_belazist2_killscavs", GetVar("q_belazist2_killscavs").AsInt+1)
+						if GetVar("q_belazist2_killscavs").AsInt >= 15 then
+							CompleteSubtask("q_belazist2_2")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills_complete", "q_belazist2", GetVar("q_belazist2_killscavs").AsInt, 15)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_belazist2", GetVar("q_belazist2_killscavs").AsInt, 15)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+
+	<trigger Name="q_belazist2_killPMC" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Belaz" and GetVar("PlayerCabin").AsString == "belazCab02" and GetVar("PlayerBasket").AsString == "belazCargo02_8x11" then
+				local cab_sml_gun = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
+				local cab_sml_gun_1 = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN_1")
+				local bas_big_gun_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+
+				local l = 0
+
+				if cab_sml_gun and cab_sml_gun_1 and bas_big_gun_0 then
+					cab_sml_gun = cab_sml_gun:GetProperty("Prototype").AsString 
+					cab_sml_gun_1 = cab_sml_gun_1:GetProperty("Prototype").AsString 
+					bas_big_gun_0 = bas_big_gun_0:GetProperty("Prototype").AsString 
+					if cab_sml_gun == "kord01" and cab_sml_gun_1 == "kord01" then l = l + 1 end
+					if bas_big_gun_0 == "kpvt01" then l = l + 1 end
+				end
+
+				if l == 2 then
+					if not(GetVar("q_belazist2_killPMC").AsInt == 15) then
+						SetVar("q_belazist2_killPMC", GetVar("q_belazist2_killPMC").AsInt+1)
+						if GetVar("q_belazist2_killPMC").AsInt >= 15 then
+							CompleteSubtask("q_belazist2_3")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills_complete", "q_belazist2", GetVar("q_belazist2_killPMC").AsInt, 15)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_belazist2", GetVar("q_belazist2_killPMC").AsInt, 15)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+
+-- Белазист - Часть 3
+	
+	<trigger Name="q_belazist3_killscavs" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Belaz" and GetVar("PlayerCabin").AsString == "belazCab04" and GetVar("PlayerBasket").AsString == "belazCargo05_9x10" then
+				local cab_big_gun_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
+				local bas_big_gun_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+
+				local l = 0
+
+				if cab_big_gun_1 and bas_big_gun_0 then
+					cab_big_gun_1 = cab_big_gun_1:GetProperty("Prototype").AsString 
+					bas_big_gun_0 = bas_big_gun_0:GetProperty("Prototype").AsString 
+					if cab_big_gun_1 == "rainmetal01" and bas_big_gun_0 == "rainmetal01" then l = l + 1 end
+				end
+
+				if l == 1 then
+					if not(GetVar("q_belazist3_killscavs").AsInt == 20) then
+						SetVar("q_belazist3_killscavs", GetVar("q_belazist3_killscavs").AsInt+1)
+						if GetVar("q_belazist3_killscavs").AsInt >= 20 then
+							CompleteSubtask("q_belazist3_2")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills_complete", "q_belazist3", GetVar("q_belazist3_killscavs").AsInt, 20)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_belazist3", GetVar("q_belazist3_killscavs").AsInt, 20)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+
+	<trigger Name="q_belazist3_killPMC" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Belaz" and GetVar("PlayerCabin").AsString == "belazCab04" and GetVar("PlayerBasket").AsString == "belazCargo05_9x10" then
+				local cab_big_gun_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
+				local bas_big_gun_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+
+				local l = 0
+
+				if cab_big_gun_1 and bas_big_gun_0 then
+					cab_big_gun_1 = cab_big_gun_1:GetProperty("Prototype").AsString 
+					bas_big_gun_0 = bas_big_gun_0:GetProperty("Prototype").AsString 
+					if cab_big_gun_1 == "rainmetal01" and bas_big_gun_0 == "rainmetal01" then l = l + 1 end
+				end
+
+				if l == 1 then
+					if not(GetVar("q_belazist3_killPMC").AsInt == 15) then
+						SetVar("q_belazist3_killPMC", GetVar("q_belazist3_killPMC").AsInt+1)
+						if GetVar("q_belazist3_killPMC").AsInt >= 15 then
+							CompleteSubtask("q_belazist3_3")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills_complete", "q_belazist3", GetVar("q_belazist3_killPMC").AsInt, 15)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_pmc_kills", "q_belazist3", GetVar("q_belazist3_killPMC").AsInt, 15)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+
+-- Белазист - Часть 4
+	
+	<trigger Name="q_belazist4_killscavs" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Belaz" and GetVar("PlayerCabin").AsString == "belazCab03" then
+				local cab_giant_gun = GetPlayerVehicle():GetPartByName("CABIN_GIANT_GUN")
+				local bas_big_gun_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+
+				local l = 0
+
+				if cab_giant_gun and bas_big_gun_0 then
+					cab_giant_gun = cab_giant_gun:GetProperty("Prototype").AsString 
+					bas_big_gun_0 = bas_big_gun_0:GetProperty("Prototype").AsString 
+					if cab_giant_gun == "octopus01" and bas_big_gun_0 == "rainmetal01" then l = l + 1 end
+				end
+
+				local q_var = GetVar("q_belazist4_killscavs").AsInt
+				local kills = 10
+
+				if l == 1 then
+					if not(q_var == kills) then
+						q_var = q_var + 1
+						SetVar("q_belazist4_killscavs", q_var)
+						if q_var >= kills then
+							CompleteSubtask("q_belazist4_2")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills_complete", "q_belazist4", q_var, kills)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_belazist4", q_var, kills)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+
+	<trigger Name="q_belazist4_killPMC" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerCar").AsString == "Belaz" and GetVar("PlayerCabin").AsString == "belazCab03" then
+				local cab_giant_gun = GetPlayerVehicle():GetPartByName("CABIN_GIANT_GUN")
+				local bas_big_gun_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+
+				local l = 0
+
+				if cab_giant_gun and bas_big_gun_0 then
+					cab_giant_gun = cab_giant_gun:GetProperty("Prototype").AsString 
+					bas_big_gun_0 = bas_big_gun_0:GetProperty("Prototype").AsString 
+					if cab_giant_gun == "octopus01" and bas_big_gun_0 == "rainmetal01" then l = l + 1 end
+				end
+
+				local q_var = GetVar("q_belazist4_killPMC").AsInt
+				local kills = 20
+
+				if l == 1 then
+					if not(q_var == kills) then
+						q_var = q_var + 1
+						SetVar("q_belazist4_killPMC", q_var)
+						if q_var >= kills then
+							CompleteSubtask("q_belazist4_3")
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills_complete", "q_belazist4", q_var, kills)
+							SoundFadingMsg()
+						else
+							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_belazist4", q_var, kills)
+							SoundFadingMsg()
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>											
 
 -- Биток - Часть 3
 	

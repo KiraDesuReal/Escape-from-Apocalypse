@@ -8112,7 +8112,7 @@
 		text="Приветствую тебя, друг! Чем я могу тебе помочь?"
 		role="NPC"
 		scriptCondition="IsQuestComplete('q_rebuild')"
-		nextReplies="Dlg_pl_q_test_drive1 Dlg_pl_to_q_test_drive1 Dlg_pl_q_test_drive2 Dlg_pl_to_q_test_drive2 Dlg_pl_q_test_drive3 Dlg_pl_to_q_test_drive3 Dlg_pl_q_test_drive4 Dlg_pl_to_q_test_drive4 Dlg_pl_q_test_drive5 Dlg_pl_to_q_test_drive5 Dlg_pl_q_test_drive6 Dlg_pl_to_q_test_drive6 Dlg_pl_q_test_drive7 Dlg_pl_to_q_test_drive7 Dlg_pl_q_test_drive8 Dlg_pl_to_q_test_drive8 Dlg_pl_q_ural_or_belaz Dlg_pl_to_q_ural_or_belaz Dlg_pl_q_naturalist1 Dlg_pl_to_q_naturalist1 Dlg_pl_q_naturalist2 Dlg_pl_to_q_naturalist2 Dlg_pl_q_naturalist3 Dlg_pl_to_q_naturalist3 Dlg_pl_q_naturalist4 Dlg_pl_to_q_naturalist4 Dlg_pl_q_naturalist5 Dlg_pl_to_q_naturalist5 Dlg_pl_q_bitok1 Dlg_pl_to_q_bitok1 Dlg_pl_q_bitok2 Dlg_pl_to_q_bitok2 Dlg_pl_q_bitok3 Dlg_pl_to_q_bitok3 Dlg_pl_mechanic_exit" />
+		nextReplies="Dlg_pl_q_test_drive1 Dlg_pl_to_q_test_drive1 Dlg_pl_q_test_drive2 Dlg_pl_to_q_test_drive2 Dlg_pl_q_test_drive3 Dlg_pl_to_q_test_drive3 Dlg_pl_q_test_drive4 Dlg_pl_to_q_test_drive4 Dlg_pl_q_test_drive5 Dlg_pl_to_q_test_drive5 Dlg_pl_q_test_drive6 Dlg_pl_to_q_test_drive6 Dlg_pl_q_test_drive7 Dlg_pl_to_q_test_drive7 Dlg_pl_q_test_drive8 Dlg_pl_to_q_test_drive8 Dlg_pl_q_ural_or_belaz Dlg_pl_to_q_ural_or_belaz Dlg_pl_q_naturalist1 Dlg_pl_to_q_naturalist1 Dlg_pl_q_naturalist2 Dlg_pl_to_q_naturalist2 Dlg_pl_q_naturalist3 Dlg_pl_to_q_naturalist3 Dlg_pl_q_naturalist4 Dlg_pl_to_q_naturalist4 Dlg_pl_q_naturalist5 Dlg_pl_to_q_naturalist5 Dlg_pl_q_belazist1 Dlg_pl_to_q_belazist1 Dlg_pl_q_belazist2 Dlg_pl_to_q_belazist2 Dlg_pl_q_belazist3 Dlg_pl_to_q_belazist3 Dlg_pl_q_belazist4 Dlg_pl_to_q_belazist4 Dlg_pl_q_bitok1 Dlg_pl_to_q_bitok1 Dlg_pl_q_bitok2 Dlg_pl_to_q_bitok2 Dlg_pl_q_bitok3 Dlg_pl_to_q_bitok3 Dlg_pl_mechanic_exit" />
 
 	<Reply
 		name="Dlg_pl_mechanic_exit"
@@ -8330,6 +8330,66 @@
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_naturalist5') and not(IsQuestComplete('q_naturalist5'))"
 		nextReplies="Dlg_npc_q_naturalist5_3" />
+
+<!--Белазист - Часть 1-->
+	<Reply
+		name="Dlg_pl_q_belazist1"
+		text="Есть ли для меня работа? (Принять задание: Белазист - Часть 1)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_belazist1') and GetVar('q_naturalist1_or_q_belazist1_can_be_given').AsInt == 1"
+		nextReplies="Dlg_npc_q_belazist1_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_belazist1"
+		text="На счёт задания Белазист - Часть 1."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_belazist1') and not(IsQuestComplete('q_belazist1'))"
+		nextReplies="Dlg_npc_q_belazist1_3" />
+
+<!--Белазист - Часть 2-->
+	<Reply
+		name="Dlg_pl_q_belazist2"
+		text="Есть ли для меня работа? (Принять задание: Белазист - Часть 2)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_belazist2')"
+		nextReplies="Dlg_npc_q_belazist2_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_belazist2"
+		text="На счёт задания Белазист - Часть 2."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_belazist2') and not(IsQuestComplete('q_belazist2'))"
+		nextReplies="Dlg_npc_q_belazist2_1" />
+
+<!--Белазист - Часть 3-->
+	<Reply
+		name="Dlg_pl_q_belazist3"
+		text="Есть ли для меня работа? (Принять задание: Белазист - Часть 3)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_belazist3')"
+		nextReplies="Dlg_npc_q_belazist3_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_belazist3"
+		text="На счёт задания Белазист - Часть 3."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_belazist3') and not(IsQuestComplete('q_belazist3'))"
+		nextReplies="Dlg_npc_q_belazist3_1" />
+
+<!--Белазист - Часть 4-->
+	<Reply
+		name="Dlg_pl_q_belazist4"
+		text="Есть ли для меня работа? (Принять задание: Белазист - Часть 4)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_belazist4')"
+		nextReplies="Dlg_npc_q_belazist4_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_belazist4"
+		text="На счёт задания Белазист - Часть 4."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_belazist4') and not(IsQuestComplete('q_belazist4'))"
+		nextReplies="Dlg_npc_q_belazist4_3" />
 
 <!--Биток - Часть 1-->
 	<Reply
@@ -9115,6 +9175,198 @@
 	<Reply
 		name="Dlg_npc_q_naturalist5_8"
 		text="Отлично, так и поступлю."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Белазист - Часть 1 -->
+
+	<Reply
+		name="Dlg_npc_q_belazist1_1"
+		text="Здорова Наёмник! К нам как раз приехала первая партия Белазов, так что, мы можем начать работать уже сейчас. Ты готов?"
+		role="NPC"
+		nextReplies="Dlg_npc_q_belazist1_2" />
+
+	<Reply
+		name="Dlg_npc_q_belazist1_2"
+		text="Конечно, трудности меня не пугают."
+		role="PLAYER"
+		nextReplies="Dlg_npc_q_belazist1_3" />
+
+	<Reply
+		name="Dlg_npc_q_belazist1_3"
+		text="Отлично, рад это слышать. С таким настроем и работа пойдет хорошо. И так, давай к делу. Первый заказ будет следующим: Для начала нам необходимо просто проверить работоспособность этой техники, так как нам ещё не пришло никаких апгрейдов, а раз так, то твоя задача просто протестировать Белаз в полном стоке, вооружение можешь ставить на свой вкус.|@FF0000AA|@FF1D1D1DНаграда:|- Кузов: @FF1D1D1DТигр (Урал, Уровень V) в продаже|- Кабина: @FF1D1D1DБоливар (Белаз, Уровень II) в продаже|- Кузов: @FF1D1D1DКонструктор (Белаз, Уровень II) в продаже|- Неизвестная награда|- Деньги: @FF1D1D1D65.000 монет"
+		role="NPC"
+		nextReplies="Dlg_npc_q_belazist1_4 Dlg_npc_q_belazist1_5 Dlg_npc_q_belazist1_6" />
+
+	<Reply
+		name="Dlg_npc_q_belazist1_4"
+		text="И снова стоковая техника, но видимо другого выбора у меня нет."
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_belazist1'))"
+		scriptResult="TakeQuest('q_belazist1'); TActivate('SoundQuestTaken'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_q_belazist1_5"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_belazist1_4')"
+		scriptResult="CompleteQuest('q_belazist1_4'); TActivate('SoundQuestFihished')"
+		nextReplies="Dlg_npc_q_belazist1_7" />
+
+	<Reply
+		name="Dlg_npc_q_belazist1_6"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_belazist1') and not(IsQuestTaken('q_belazist1_4'))"
+		nextReplies="Dlg_npc_mechanic_1" />
+
+	<Reply
+		name="Dlg_npc_q_belazist1_7"
+		text="Мда.. Но этого следовало ожидать, Белаз с такой конфигурацией никогда не предназначался для сражений, в первую очередь это строительная техника, но да ладно, в ближайшее время нам должны прийти первые улучшения, так что, ещё посмотрим на что способна эта чудо-техника."
+		role="NPC"
+		nextReplies="Dlg_npc_q_belazist1_8" />
+
+	<Reply
+		name="Dlg_npc_q_belazist1_8"
+		text="Хорошо, надеюсь, Белазы смогут оправдать ожидания."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Белазист - Часть 2 -->
+
+	<Reply
+		name="Dlg_npc_q_belazist2_1"
+		text="Привет! Рад тебя снова видеть. Нам пришли первые улучшения, поэтому сходу даю тебе следующий заказ. Вот тебе инструкция, сделай такую сборку чтобы можно было установить два пулемёта Корд на кабину и один пулемёт КПВТ на кузов, а после протестируй её в бою. Ты меня ещё не подводил, поэтому думаю ты справишься.|@FF0000AA|Кабина: @FF1D1D1DБоливар (Уровень II)|Кузов: @FF1D1D1DКонструктор (Уровень II)|Вооружение: @FF1D1D1DКорд - x2, КПВТ - x1|@FF0000AA|@FF1D1D1DНаграда:|- Кабина: @FF1D1D1DЛорд (Урал, Уровень III) в продаже|- Кабина: @FF1D1D1DТерминатор (Белаз, Уровень IV) в продаже|- Кузов: @FF1D1D1DЦилиндр (Белаз, Уровень V) в продаже|- Пушка: @FF1D1D1DЦиклоп в продаже - x1|- Гаджет: @FF1D1D1DТурбонаддув - x1|- Пулемёт: @FF1D1D1DСпрут - x1|- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x1|- Предмет: @FF1D1D1DЯщик патронов для Пушки - x1|- Деньги: @FF1D1D1D60.000 монет"
+		role="NPC"
+		nextReplies="Dlg_npc_q_belazist2_2 Dlg_npc_q_belazist2_3 Dlg_npc_q_belazist2_4" />
+
+	<Reply
+		name="Dlg_npc_q_belazist2_2"
+		text="Думаю я справлюсь."
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_belazist2'))"
+		scriptResult="TakeQuest('q_belazist2'); TActivate('SoundQuestTaken'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_q_belazist2_3"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_belazist2_4')"
+		scriptResult="CompleteQuest('q_belazist2_4'); TActivate('SoundQuestFihished')"
+		nextReplies="Dlg_npc_q_belazist2_5" />
+
+	<Reply
+		name="Dlg_npc_q_belazist2_4"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_belazist2') and not(IsQuestTaken('q_belazist2_4'))"
+		nextReplies="Dlg_npc_mechanic_1" />
+
+	<Reply
+		name="Dlg_npc_q_belazist2_5"
+		text="Сборка явно лучше предыдущей. Примерно на 5%. Но это не твоя вина, работа выполнена как всегда отлично. Можешь забирать награду, а я пока пойду получу новые запчасти и подумаю как можно усовершенствовать сборку."
+		role="NPC"
+		nextReplies="Dlg_npc_q_belazist2_6" />
+
+	<Reply
+		name="Dlg_npc_q_belazist2_6"
+		text="Я пожалуй тоже пойду."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Белазист - Часть 3 -->
+
+	<Reply
+		name="Dlg_npc_q_belazist3_1"
+		text="О, привет, да есть один заказ. Эта сборка выглядит уже намного лучше, вот взгляни сам. Надо собрать Белаз и установить на него два Рейнметалла, нужные для этого запчасти у нас в наличии, так что проблем со сборкой не возникнет.|@FF0000AA|Кабина: @FF1D1D1DТерминатор (Уровень IV)|Кузов: @FF1D1D1DЦилиндр (Уровень V)|Вооружение: @FF1D1D1DРейнметалл - x2|@FF0000AA|@FF1D1D1DНаграда:|- Кузов: @FF1D1D1DКрейсер (Урал, Уровень III) в продаже|- Кабина: @FF1D1D1DРок (Белаз, Уровень III) в продаже|- Гаджет: @FF1D1D1DОптический прицел с просветленной оптикой и антибликовой защитой в продаже - x1|- Гаджет: @FF1D1D1DТурбонаддув - x1|- Пулемёт: @FF1D1D1DСпрут - x1|- Пулемёт: @FF1D1D1DРейнметалл - x1|- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x1|- Предмет: @FF1D1D1DЯщик патронов для Пушки - x1|- Деньги: @FF1D1D1D70.000 монет"
+		role="NPC"
+		nextReplies="Dlg_npc_q_belazist3_2 Dlg_npc_q_belazist3_3 Dlg_npc_q_belazist3_4" />
+
+	<Reply
+		name="Dlg_npc_q_belazist3_2"
+		text="Отлично, ожидай меня с готовыми тестами."
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_belazist3'))"
+		scriptResult="TakeQuest('q_belazist3'); TActivate('SoundQuestTaken'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_q_belazist3_3"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_belazist3_4')"
+		scriptResult="CompleteQuest('q_belazist3_4'); TActivate('SoundQuestFihished')"
+		nextReplies="Dlg_npc_q_belazist3_5" />
+
+	<Reply
+		name="Dlg_npc_q_belazist3_4"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_belazist3') and not(IsQuestTaken('q_belazist3_4'))"
+		nextReplies="Dlg_npc_mechanic_1" />
+
+	<Reply
+		name="Dlg_npc_q_belazist3_5"
+		text="Ага, судя по тестам, результат меня устраивает. Рейнметаллы хорошо вписались в эту сборку, а раз так то будем двигаться в этом направлении. Так.. Посмотрим что можно с этим сделать. Твоя работа выполнена, можешь идти, и про награду не забудь."
+		role="NPC"
+		nextReplies="Dlg_npc_q_belazist3_6" />
+
+	<Reply
+		name="Dlg_npc_q_belazist3_6"
+		text="Хорошо."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Белазист - Часть 4 -->
+
+	<Reply
+		name="Dlg_npc_q_belazist4_1"
+		text="Привет Наёмник. У меня есть для тебя один заказ, было бы не плохо сделать эту сборку и протестировать её в бою. Ты готов?"
+		role="NPC"
+		nextReplies="Dlg_npc_q_belazist4_2" />
+
+	<Reply
+		name="Dlg_npc_q_belazist4_2"
+		text="Что от меня требуется?"
+		role="PLAYER"
+		nextReplies="Dlg_npc_q_belazist4_3" />
+
+	<Reply
+		name="Dlg_npc_q_belazist4_3"
+		text="Вот. Гляди на инструкцию. Собери вот такой Белаз, на кабину установи Пулемёт Спрут, а на кузов Рейнметалл. Кузов кстати можешь выбрать любой, главное установи на него Рейнметалл. Все понятно? Тогда удачи со сборкой.|@FF0000AA|Кабина: @FF1D1D1DРок (Уровень III)|Кузов: @FF1D1D1Dна выбор|Вооружение: @FF1D1D1DСпрут, Рейнметалл|@FF0000AA|@FF1D1D1DНаграда:|- Кабина: @FF1D1D1DВитязь (Урал, Уровень V) в продаже|- Кузов: @FF1D1D1DГром (Белаз, Уровень IV) в продаже|- Гаджет: @FF1D1D1DТурбонаддув в продаже - x1|- Пулемёт: @FF1D1D1DСпрут в продаже - x1|- Ракетная установка: @FF1D1D1DОхотник в продаже - x1|- Предмет: @FF1D1D1DЯщик патронов для Пулемёта в продаже - x1|- Предмет: @FF1D1D1DЯщик боеприпасов для Ракетницы в продаже - x1|- Деньги: @FF1D1D1D70.000 монет"
+		role="NPC"
+		nextReplies="Dlg_npc_q_belazist4_4 Dlg_npc_q_belazist4_5 Dlg_npc_q_belazist4_6" />
+
+	<Reply
+		name="Dlg_npc_q_belazist4_4"
+		text="По рукам!"
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_belazist4'))"
+		scriptResult="TakeQuest('q_belazist4'); TActivate('SoundQuestTaken'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_q_belazist4_5"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_belazist4_4')"
+		scriptResult="CompleteQuest('q_belazist4_4'); TActivate('SoundQuestFihished')"
+		nextReplies="Dlg_npc_q_belazist4_7" />
+
+	<Reply
+		name="Dlg_npc_q_belazist4_6"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_belazist4') and not(IsQuestTaken('q_belazist4_4'))"
+		nextReplies="Dlg_npc_mechanic_1" />
+
+	<Reply
+		name="Dlg_npc_q_belazist4_7"
+		text="Отлично. Единственный минус этой сборки это, недостаток вооружения. Вот если бы добавить сюда ещё одну пушку... Ай. Ладно. Думаю мы этот вопрос как-нибудь решим. Работа выполнена, можешь идти."
+		role="NPC"
+		nextReplies="Dlg_npc_q_belazist4_8" />
+
+	<Reply
+		name="Dlg_npc_q_belazist4_8"
+		text="Отлично, буду ждать новых заказов."
 		role="PLAYER"
 		scriptResult="EndConversation()"/>
 

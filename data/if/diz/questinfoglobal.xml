@@ -2809,6 +2809,230 @@
 	</QuestInfo>
 
 	<QuestInfo
+		questName="q_belazist1"
+		briefDiz="Белазист - Часть 1"
+		fullDiz="Первый заказ будет следующим: Для начала нам необходимо просто проверить работоспособность этой техники, так как нам ещё не пришло никаких апгрейдов, а раз так, то твоя задача просто протестировать Белаз в полном стоке, вооружение можешь ставить на свой вкус.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кузов: @FF1D1D1DТигр (Урал, Уровень V) в продаже|@FF404040- Кабина: @FF1D1D1DБоливар (Белаз, Уровень II) в продаже|@FF404040- Кузов: @FF1D1D1DКонструктор (Белаз, Уровень II) в продаже|@FF404040- Неизвестная награда|@FF404040- Деньги: @FF1D1D1D65.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist1_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist1_2"
+		briefDiz="Убить 15 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist1_3"
+		briefDiz="Убить 5 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist1_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist2"
+		briefDiz="Белазист - Часть 2"
+		fullDiz="Нам пришли первые улучшения, поэтому сходу даю тебе следующий заказ. Вот тебе инструкция, сделай такую сборку чтобы можно было установить два пулемёта Корд на кабину и один пулемёт КПВТ на кузов, а после протестируй её в бою.|@FF0000AA|@FF404040Кабина: @FF1D1D1DБоливар (Уровень II)|@FF404040Кузов: @FF1D1D1DКонструктор (Уровень II)|@FF404040Вооружение: @FF1D1D1DКорд - x2, КПВТ - x1|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кабина: @FF1D1D1DЛорд (Урал, Уровень III) в продаже|@FF404040- Кабина: @FF1D1D1DТерминатор (Белаз, Уровень IV) в продаже|@FF404040- Кузов: @FF1D1D1DЦилиндр (Белаз, Уровень V) в продаже|@FF404040- Пушка: @FF1D1D1DЦиклоп в продаже - x1|@FF404040- Гаджет: @FF1D1D1DТурбонаддув - x1|@FF404040- Пулемёт: @FF1D1D1DСпрут - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пушки - x1|@FF404040- Деньги: @FF1D1D1D60.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist2_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist2_2"
+		briefDiz="Убить 15 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist2_3"
+		briefDiz="Убить 15 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist2_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist3"
+		briefDiz="Белазист - Часть 3"
+		fullDiz="Надо собрать Белаз и установить на него два Рейнметалла, нужные для этого запчасти у нас в наличии, так что проблем со сборкой не возникнет.|@FF0000AA|@FF404040Кабина: @FF1D1D1DТерминатор (Уровень IV)|@FF404040Кузов: @FF1D1D1DЦилиндр (Уровень V)|@FF404040Вооружение: @FF1D1D1DРейнметалл - x2|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кузов: @FF1D1D1DКрейсер (Урал, Уровень III) в продаже|@FF404040- Кабина: @FF1D1D1DРок (Белаз, Уровень III) в продаже|@FF404040- Гаджет: @FF1D1D1DОптический прицел с просветленной оптикой и @FF0000ААА@FF1D1D1Dантибликовой защитой в продаже - x1|@FF404040- Гаджет: @FF1D1D1DТурбонаддув - x1|@FF404040- Пулемёт: @FF1D1D1DСпрут - x1|@FF404040- Пулемёт: @FF1D1D1DРейнметалл - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пушки - x1|@FF404040- Деньги: @FF1D1D1D70.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist3_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist3_2"
+		briefDiz="Убить 20 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist3_3"
+		briefDiz="Убить 15 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist3_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist4"
+		briefDiz="Белазист - Часть 4"
+		fullDiz="Гляди на инструкцию. Собери вот такой Белаз, на кабину установи Пулемёт Спрут, а на кузов Рейнметалл. Кузов кстати можешь выбрать любой, главное установи на него Рейнметалл.|@FF0000AA|@FF404040Кабина: @FF1D1D1DРок (Уровень III)|@FF404040Кузов: @FF1D1D1Dна выбор|@FF404040Вооружение: @FF1D1D1DСпрут, Рейнметалл|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кабина: @FF1D1D1DВитязь (Урал, Уровень V) в продаже|@FF404040- Кузов: @FF1D1D1DГром (Белаз, Уровень IV) в продаже|@FF404040- Гаджет: @FF1D1D1DТурбонаддув в продаже - x1|@FF404040- Пулемёт: @FF1D1D1DСпрут в продаже - x1|@FF404040- Ракетная установка: @FF1D1D1DОхотник в продаже - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пулемёта в продаже - x1|@FF404040- Предмет: @FF1D1D1DЯщик боеприпасов для Ракетницы в продаже - x1|@FF404040- Деньги: @FF1D1D1D70.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist4_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist4_2"
+		briefDiz="Убить 10 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist4_3"
+		briefDiz="Убить 20 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist4_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
 		questName="q_testing_mission"
 		briefDiz="Проба пера"
 		fullDiz="Значит слушай, твое первое задание: у нас тут бандитов развелось, по всей округе ездят, их зовут Дикими. Подстрели, допустим 5 штук этих дикарей, и притащи с них пулемёты Шершень, 3 штуки. Это и будет твоим первым заданием. За дело, наёмник!|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Пулемёт: @FF1D1D1DСпектр - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x1|@FF404040- Деньги: @FF1D1D1D20.000 монет"

@@ -1135,6 +1135,236 @@
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_belazist4")'
 			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
 	</quest>
+<!--Root/r0m0/Белазист Часть 5-->
+	<quest
+		Name="q_belazist5"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_belazist4"
+		OnComplete='AddCabinsOrBasketsToTown("belazCargo03_11x12"); AddItemToTown("additional_fuel_tank2"); AddItemToTown("rainmetal01"); AddItemToTown("ammo_chest_heavygunForSale"); AddItemsToPlayerRepository("additional_torque2"); AddItemsToPlayerRepository("flag01"); AddItemsToPlayerRepository("ammo_chest_shotgun"); AddPlayerMoney(70000)'>
+		<quest
+			Name="q_belazist5_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_belazist5"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_belazist5")' />
+
+		<quest
+			Name="q_belazist5_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_belazist5_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_belazist5")' />
+
+		<quest
+			Name="q_belazist5_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_belazist5_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_belazist5")' />
+
+		<quest
+			Name="q_belazist5_4"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_belazist5_2 q_belazist5_3"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_belazist5")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+	</quest>
+<!--Root/r0m0/Белазист Часть 6-->
+	<quest
+		Name="q_belazist6"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_belazist5"
+		OnComplete='AddCabinsOrBasketsToTown("belazCab05"); AddItemToTown("add_damage_guns2"); AddItemsToPlayerRepository("add_stability_and_speed"); AddItemsToPlayerRepository("rainmetal01"); AddItemsToPlayerRepository("ammo_chest_heavygun"); AddPlayerMoney(75000)'>
+		<quest
+			Name="q_belazist6_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_belazist6"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_belazist6")' />
+
+		<quest
+			Name="q_belazist6_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_belazist6_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_belazist6")' />
+
+		<quest
+			Name="q_belazist6_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_belazist6_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_belazist6")' />
+
+		<quest
+			Name="q_belazist6_4"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_belazist6_2 q_belazist6_3"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_belazist6")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+	</quest>
+<!--Root/r0m0/Белазист Часть 7-->
+	<quest
+		Name="q_belazist7"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_belazist6"
+		OnComplete='AddVehicleToTown("MirotvorecForSale"); AddItemToTown("additional_durability2"); AddItemToTown("flag01"); AddItemToTown("ammo_chest_shotgunForSale"); AddItemsToPlayerRepository("add_stability_and_speed"); AddPlayerMoney(90000)'>
+		<quest
+			Name="q_belazist7_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_belazist7"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_belazist7")' />
+
+		<quest
+			Name="q_belazist7_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_belazist7_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_belazist7")' />
+
+		<quest
+			Name="q_belazist7_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_belazist7_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_belazist7")' />
+
+		<quest
+			Name="q_belazist7_4"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_belazist7_2 q_belazist7_3"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_belazist7")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+	</quest>
+<!--Root/r0m0/Белазист Часть 8-->
+	<quest
+		Name="q_belazist8"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all taken"
+		PrecedingQuests="q_test_drive9"
+		OnComplete='AddCabinsOrBasketsToTownIfNotCompleteQuest("mirotvorecCab03", "q_test_drive10"); AddCabinsOrBasketsToTownIfNotCompleteQuest("mirotvorecCargo03_8x10", "q_test_drive10"); AddItemToTown("octopus01"); AddItemToTown("rainmetal01"); AddItemToTown("flag01"); AddItemToTown("ammo_chest_artillerygunForSale"); AddItemsToPlayerRepository("add_stability_and_speed"); AddItemsToPlayerRepository("add_torque_and_stability"); AddItemsToPlayerRepository("ammo_chest_heavygun"); AddItemsToPlayerRepository("ammo_chest_shotgun"); AddPlayerMoney(200000)'>
+		<quest
+			Name="q_belazist8_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_belazist7"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_belazist8")' />
+
+		<quest
+			Name="q_belazist8_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_belazist8_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_belazist8")' />
+
+		<quest
+			Name="q_belazist8_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_belazist8_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_belazist8")' />
+
+		<quest
+			Name="q_belazist8_4"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_belazist8_2 q_belazist8_3"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_belazist8")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+	</quest>
+<!--Root/r0m0/Тест драйв Часть 9-->
+	<quest
+		Name="q_test_drive9"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="any complete"
+		PrecedingQuests="q_naturalist5 q_belazist7"
+		OnComplete='AddCabinsOrBasketsToTown("mirotvorecCab04"); AddCabinsOrBasketsToTown("mirotvorecCargo04_7x10"); AddItemToTown("additional_durability2"); AddItemsToPlayerRepository("hailSideGun"); AddItemsToPlayerRepository("odin01"); AddItemsToPlayerRepository("ammo_chest_rocketgun"); AddItemsToPlayerRepository("ammo_ballon_lasergun"); AddPlayerMoney(100000)'>
+		<quest
+			Name="q_test_drive9_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_test_drive8"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_test_drive9")' />
+
+		<quest
+			Name="q_test_drive9_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_test_drive9_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_test_drive9")' />
+
+		<quest
+			Name="q_test_drive9_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_test_drive9_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_test_drive9")' />
+
+		<quest
+			Name="q_test_drive9_4"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_test_drive9_2 q_test_drive9_3"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive9")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+	</quest>
 <!--Root/r4m2/Сюжетные-->
 	<quest
 		Name="r4m2_FightWithCrazy"

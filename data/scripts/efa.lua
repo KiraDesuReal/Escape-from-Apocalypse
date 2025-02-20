@@ -656,7 +656,7 @@ function AddAmmoItemsForGuns(veh, count)
 				vehicle:AddItemsToRepository("ammo_chest_rocketgun", count)
 			end
 			if side_gun == "marsSideGun" then
-				vehicle:AddItemsToRepository("ammo_chest_artillery", count)
+				vehicle:AddItemsToRepository("ammo_chest_artillerygun", count)
 			end
 		end
 
@@ -1021,6 +1021,20 @@ function AddCabinsOrBasketsToTown(Item, Count)
 
 	if Workshop and CabAndBasket then
 		CabAndBasket:AddItems(Item, Count)
+	end
+end
+
+-- Добавить кабину или кузов в город если не выполнен конкретный квест
+function AddCabinsOrBasketsToTownIfNotCompleteQuest(Item, Quest, Count)
+	local Workshop = GetEntityByName("Town_r0m0_Workshop")
+	local CabAndBasket = Workshop:GetRepositoryByTypename("CabinsAndBaskets")
+
+	if Count == nil then Count = 1 end
+
+	if Workshop and CabAndBasket then
+		if Quest and not(IsQuestComplete(Quest)) then
+			CabAndBasket:AddItems(Item, Count)
+		end
 	end
 end
 

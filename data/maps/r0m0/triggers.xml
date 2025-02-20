@@ -405,6 +405,7 @@
 			SetVar("q_bitok2_item_plate", 0)
 			SetVar("q_bitok3_can_be_given", 0)
 			SetVar("q_naturalist1_or_q_belazist1_can_be_given", 0)
+			SetVar("q_belazist8_can_be_given", 0)
 			SetVar("q_test_drive9_can_be_given", 0)
 			trigger:Deactivate()
 		</script>
@@ -617,7 +618,7 @@
 				if IsQuestComplete("q_rebuild") then Vehicles:AddItems("MolokovozForSale", 1) end
 				if IsQuestComplete("q_test_drive5") then Vehicles:AddItems("UralForSale", 1) end
 				if IsQuestComplete("q_ural_or_belaz") then Vehicles:AddItems("BelazForSale", 1) end
-				if IsQuestComplete("q_naturalist5") then Vehicles:AddItems("MirotvorecForSale", 1) end
+				if IsQuestComplete("q_naturalist5") or IsQuestComplete("q_belazist7") then Vehicles:AddItems("MirotvorecForSale", 1) end
 			end
 			
 			if Workshop and CabAndBasket then
@@ -643,12 +644,18 @@
 				if IsQuestComplete("q_naturalist1") or IsQuestComplete("q_belazist1") then CabAndBasket:AddItems("belazCab02", 1) end
 				if IsQuestComplete("q_naturalist4") or IsQuestComplete("q_belazist3") then CabAndBasket:AddItems("belazCab03", 1) end
 				if IsQuestComplete("q_naturalist3") or IsQuestComplete("q_belazist2") then CabAndBasket:AddItems("belazCab04", 1) end
-				if IsQuestComplete("q_naturalist5") then CabAndBasket:AddItems("belazCab05", 1) end
+				if IsQuestComplete("q_naturalist5") or IsQuestComplete("q_belazist6") then CabAndBasket:AddItems("belazCab05", 1) end
 
 				if IsQuestComplete("q_naturalist1") or IsQuestComplete("q_belazist1") then CabAndBasket:AddItems("belazCargo02_8x11", 1) end
-				if IsQuestComplete("q_naturalist5") then CabAndBasket:AddItems("belazCargo03_11x12", 1) end
+				if IsQuestComplete("q_naturalist5") or IsQuestComplete("q_belazist5") then CabAndBasket:AddItems("belazCargo03_11x12", 1) end
 				if IsQuestComplete("q_naturalist5") or IsQuestComplete("q_belazist4") then CabAndBasket:AddItems("belazCargo04_6x10", 1) end
 				if IsQuestComplete("q_naturalist2") or IsQuestComplete("q_belazist2") then CabAndBasket:AddItems("belazCargo05_9x10", 1) end
+
+				if IsQuestComplete("q_belazist8") then CabAndBasket:AddItems("mirotvorecCab03", 1) end
+				if IsQuestComplete("q_test_drive9") then CabAndBasket:AddItems("mirotvorecCab04", 1) end
+
+				if IsQuestComplete("q_belazist8") then CabAndBasket:AddItems("mirotvorecCargo03_8x10", 1) end
+				if IsQuestComplete("q_test_drive9") then CabAndBasket:AddItems("mirotvorecCargo04_7x10", 1) end
 			end
 
 			if Shop and GunAndGadget then
@@ -667,7 +674,11 @@
 				if IsQuestComplete("q_naturalist2") or IsQuestComplete("q_belazist2") then GunAndGadget:AddItems("cyclops01", 1) end
 				if IsQuestComplete("q_naturalist3") or IsQuestComplete("q_belazist3") then GunAndGadget:AddItems("grouping_angle_guns2", 1) end
 				if IsQuestComplete("q_naturalist4") or IsQuestComplete("q_belazist4") then GunAndGadget:AddItems("additional_torque2", 1) GunAndGadget:AddItems("octopus01", 1) GunAndGadget:AddItems("hunterSideGun", 1) GunAndGadget:AddItems("ammo_chest_machinegunForSale", 1) GunAndGadget:AddItems("ammo_chest_rocketgunForSale", 1) end
-				if IsQuestComplete("q_naturalist5") then GunAndGadget:AddItems("additional_fuel_tank2", 1) GunAndGadget:AddItems("rainmetal01", 1) GunAndGadget:AddItems("ammo_chest_heavygunForSale", 1) end
+				if IsQuestComplete("q_naturalist5") or IsQuestComplete("q_belazist5") then GunAndGadget:AddItems("additional_fuel_tank2", 1) GunAndGadget:AddItems("rainmetal01", 1) GunAndGadget:AddItems("ammo_chest_heavygunForSale", 1) end
+				if IsQuestComplete("q_belazist6") then GunAndGadget:AddItems("add_damage_guns2", 1) end
+				if IsQuestComplete("q_belazist7") then GunAndGadget:AddItems("additional_durability2", 1) GunAndGadget:AddItems("flag01", 1) GunAndGadget:AddItems("ammo_chest_shotgunForSale", 1) end
+				if IsQuestComplete("q_test_drive9") then GunAndGadget:AddItems("additional_durability2", 1) end
+				if IsQuestComplete("q_belazist8") then CabAndBasket:AddItems("octopus01", 1) CabAndBasket:AddItems("rainmetal01", 1) CabAndBasket:AddItems("flag01", 1) CabAndBasket:AddItems("ammo_chest_artillerygunForSale", 1) end
 			end
 
 		    trigger:Deactivate()
@@ -3504,7 +3515,7 @@
 				TActivate("q_test_drive1_config")
 			end
 
-			for i1 = 2,8 do
+			for i1 = 2,9 do
 				if IsQuestTaken("q_test_drive"..i1) and not(IsQuestComplete("q_test_drive"..i1.."_1")) then
 					TActivate("q_test_drive"..i1.."_config")
 				end
@@ -3516,7 +3527,7 @@
 				end
 			end
 
-			for i3 = 1,4 do
+			for i3 = 1,8 do
 				if IsQuestTaken("q_belazist"..i3) and not(IsQuestComplete("q_belazist"..i3.."_1")) then
 					TActivate("q_belazist"..i3.."_config")
 				end
@@ -3547,8 +3558,12 @@
 				SetVar("q_naturalist1_or_q_belazist1_can_be_given", 1)
 			end
 
-			if IsQuestComplete("q_naturalist5") and not(GetVar("q_test_drive9_can_be_given").AsInt == 1) then 
-				SetVar("q_test_drive9_can_be_given", 1)
+			if IsQuestComplete("q_naturalist5") or IsQuestComplete("q_belazist7") then 
+				if not(GetVar("q_test_drive9_can_be_given").AsInt == 1) then SetVar("q_test_drive9_can_be_given", 1) end
+			end
+
+			if IsQuestTaken("q_test_drive9") and not(GetVar("q_belazist8_can_be_given").AsInt == 1) then 
+				SetVar("q_belazist8_can_be_given", 1)
 			end
 		    trigger:Deactivate()
 		</script>
@@ -4120,6 +4135,187 @@
 			end
 
 			if l == 3 then CompleteSubtask("q_belazist4_1") end
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+
+-- Белазист - Часть 5
+
+	<trigger Name="q_belazist5_config" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local prot = GetPlayerVehicle():GetProperty("Prototype").AsString
+			local cabin = GetPlayerVehicle():GetCabin()
+			local basket = GetPlayerVehicle():GetBasket()
+
+			local cab_giant_gun = GetPlayerVehicle():GetPartByName("CABIN_GIANT_GUN")
+			local bas_giant_gun = GetPlayerVehicle():GetPartByName("BASKET_GIANT_GUN")
+			local bas_giant_gun_0 = GetPlayerVehicle():GetPartByName("BASKET_GIANT_GUN_0")
+			
+			local l = 0
+
+			if prot == "BelazForSale" then 
+				l = l + 1
+				if cabin and basket then 
+					cabin = cabin:GetProperty("Prototype").AsString 
+					basket = basket:GetProperty("Prototype").AsString 
+					if cabin == "belazCab03" and basket == "belazCargo04_6x10" then l = l + 1 end
+				end
+
+				if cab_giant_gun and bas_giant_gun and bas_giant_gun_0 then
+					cab_giant_gun = cab_giant_gun:GetProperty("Prototype").AsString 
+					bas_giant_gun = bas_giant_gun:GetProperty("Prototype").AsString 
+					bas_giant_gun_0 = bas_giant_gun_0:GetProperty("Prototype").AsString
+					if cab_giant_gun and bas_giant_gun and bas_giant_gun_0 then l = l + 1 end
+				end
+			end
+
+			if l == 3 then CompleteSubtask("q_belazist5_1") end
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+
+-- Белазист - Часть 6
+
+	<trigger Name="q_belazist6_config" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local prot = GetPlayerVehicle():GetProperty("Prototype").AsString
+			local cabin = GetPlayerVehicle():GetCabin()
+			local basket = GetPlayerVehicle():GetBasket()
+
+			local cab_big_gun_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
+			local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+			local bas_big_1 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_1")
+			
+			local l = 0
+
+			if prot == "BelazForSale" then 
+				l = l + 1
+				if cabin and basket then 
+					cabin = cabin:GetProperty("Prototype").AsString 
+					basket = basket:GetProperty("Prototype").AsString 
+					if cabin == "belazCab04" and basket == "belazCargo03_11x12" then l = l + 1 end
+				end
+
+				if cab_big_gun_1 and bas_big_0 and bas_big_1 then
+					cab_big_gun_1 = cab_big_gun_1:GetProperty("Prototype").AsString 
+					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
+					bas_big_1 = bas_big_1:GetProperty("Prototype").AsString
+					if cab_big_gun_1 == "rainmetal01" and bas_big_0 == "rainmetal01" and bas_big_1 == "rainmetal01" then l = l + 1 end
+				end
+			end
+
+			if l == 3 then CompleteSubtask("q_belazist6_1") end
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+
+-- Белазист - Часть 7
+
+	<trigger Name="q_belazist7_config" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local prot = GetPlayerVehicle():GetProperty("Prototype").AsString
+			local cabin = GetPlayerVehicle():GetCabin()
+			local basket = GetPlayerVehicle():GetBasket()
+
+			local cab_giant_gun = GetPlayerVehicle():GetPartByName("CABIN_GIANT_GUN")
+			local slots = {"CABIN_BIG_GUN_1", "BASKET_BIG_GUN_0", "BASKET_BIG_GUN_1"}
+	
+			local l, f = 0, 0
+
+			if prot == "BelazForSale" then 
+				l = l + 1
+				if cabin and basket then 
+					cabin = cabin:GetProperty("Prototype").AsString 
+					basket = basket:GetProperty("Prototype").AsString 
+					if cabin == "belazCab05" and basket == "belazCargo03_11x12" then l = l + 1 end
+				end
+
+				for i=1,3 do
+					if GetPlayerVehicle():GetPartByName(slots[i]) then
+						local protgun = GetPlayerVehicle():GetPartByName(slots[i]):GetProperty("Prototype").AsString
+						if protgun == "rainmetal01" then l = l + 1 end
+						if protgun == "flag01" then f = 1 end
+					end
+				end
+
+				if cab_giant_gun then
+					cab_giant_gun = cab_giant_gun:GetProperty("Prototype").AsString 
+					if cab_giant_gun == "cyclops01" then l = l + 1 end
+				end
+			end
+
+			if l == 5 and f == 1 then CompleteSubtask("q_belazist7_1") end
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+
+-- Белазист - Часть 8
+
+	<trigger Name="q_belazist8_config" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local prot = GetPlayerVehicle():GetProperty("Prototype").AsString
+			local cabin = GetPlayerVehicle():GetCabin()
+			local basket = GetPlayerVehicle():GetBasket()
+
+			local slots = {"CABIN_BIG_GUN_1", "BASKET_BIG_GUN_0", "BASKET_BIG_GUN_1"}
+
+			local l = 0
+
+			if prot == "BelazForSale" then 
+				l = l + 1
+				if cabin and basket then 
+					cabin = cabin:GetProperty("Prototype").AsString 
+					basket = basket:GetProperty("Prototype").AsString 
+					if cabin == "belazCab05" and basket == "belazCargo03_11x12" then l = l + 1 end
+				end
+
+				for i=1,3 do
+					if GetPlayerVehicle():GetPartByName(slots[i]) then
+						local protgun = GetPlayerVehicle():GetPartByName(slots[i]):GetProperty("Prototype").AsString
+						if protgun == "bumblebee01" then l = l + 1 end
+					end
+				end
+			end
+
+			if l == 5 then CompleteSubtask("q_belazist8_1") end
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+
+-- Тест драйв - Часть 9
+
+	<trigger Name="q_test_drive9_config" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local prot = GetPlayerVehicle():GetProperty("Prototype").AsString
+			local cabin = GetPlayerVehicle():GetCabin()
+			local basket = GetPlayerVehicle():GetBasket()
+
+			local cab_big_gun_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
+			local bas_giant_gun = GetPlayerVehicle():GetPartByName("BASKET_GIANT_GUN")
+		
+			local l = 0
+
+			if prot == "MirotvorecForSale" then 
+				l = l + 1
+				if cabin and basket then 
+					cabin = cabin:GetProperty("Prototype").AsString 
+					basket = basket:GetProperty("Prototype").AsString 
+					if cabin == "mirotvorecCab02" and basket == "mirotvorecCargo02_7x10" then l = l + 1 end
+				end
+
+				if cab_big_gun_1 and bas_giant_gun then
+					cab_big_gun_1 = cab_big_gun_1:GetProperty("Prototype").AsString 
+					bas_giant_gun = bas_giant_gun:GetProperty("Prototype").AsString 
+					if cab_big_gun_1 == "flag01" and bas_giant_gun == "cyclops01" then l = l + 1 end
+				end
+			end
+
+			if l == 3 then CompleteSubtask("q_test_drive9_1") end
 			trigger:Deactivate()
 		</script>
 	</trigger>	

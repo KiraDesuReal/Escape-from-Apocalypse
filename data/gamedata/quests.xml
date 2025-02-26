@@ -1288,7 +1288,7 @@
 			SubQuestsCondition="and"
 			CheckAll="0"
 			ConditionToGive="all taken"
-			PrecedingQuests="q_belazist7"
+			PrecedingQuests="q_belazist8"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_belazist8")' />
 
 		<quest
@@ -1334,7 +1334,7 @@
 			SubQuestsCondition="and"
 			CheckAll="0"
 			ConditionToGive="all taken"
-			PrecedingQuests="q_test_drive8"
+			PrecedingQuests="q_test_drive9"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_test_drive9")' />
 
 		<quest
@@ -1363,6 +1363,282 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_test_drive9_2 q_test_drive9_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive9")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+	</quest>
+<!--Root/r0m0/ׂוסע הנאיג ׳אסעü 10-->
+	<quest
+		Name="q_test_drive10"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_test_drive9"
+		OnComplete='AddCabinsOrBasketsToTownIfNotCompleteQuest("mirotvorecCab03", "q_belazist8"); AddCabinsOrBasketsToTownIfNotCompleteQuest("mirotvorecCargo03_8x10", "q_belazist8"); AddItemToTown("add_damage_guns2"); AddItemToTown("octopus01"); AddItemToTown("rainmetal01"); AddItemToTown("flag01"); AddItemsToPlayerRepository("ammo_chest_machinegun"); AddItemsToPlayerRepository("ammo_chest_heavygun"); AddItemsToPlayerRepository("ammo_chest_shotgun"); AddPlayerMoney(100000)'>
+		<quest
+			Name="q_test_drive10_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_test_drive10"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_test_drive10")' />
+
+		<quest
+			Name="q_test_drive10_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_test_drive10_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_test_drive10")' />
+
+		<quest
+			Name="q_test_drive10_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_test_drive10_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_test_drive10")' />
+
+		<quest
+			Name="q_test_drive10_4"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_test_drive10_2 q_test_drive10_3"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive10")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+	</quest>
+<!--Root/r0m0/ׂוסע הנאיג ׳אסעü 11-->
+	<quest
+		Name="q_test_drive11"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_test_drive10"
+		OnComplete='AddVehicleToTown("CruiserForSale"); AddCabinsOrBasketsToTown("mirotvorecCargo05_9x11"); AddItemsToPlayerRepository("firing_rate_guns_and_add_damage_guns"); AddItemsToPlayerRepository("odin01"); AddItemsToPlayerRepository("ammo_ballon_lasergun"); AddItemsToPlayerRepository("electronics_use", 4); AddPlayerMoney(110000)'>
+		<quest
+			Name="q_test_drive11_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_test_drive11"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_test_drive11")' />
+
+		<quest
+			Name="q_test_drive11_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_test_drive11_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_test_drive11")' />
+
+		<quest
+			Name="q_test_drive11_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_test_drive11_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_test_drive11")' />
+
+		<quest
+			Name="q_test_drive11_4"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_test_drive11_2 q_test_drive11_3"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive11")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+	</quest>
+<!--Root/r0m0/ׂוסע הנאיג ׳אסעü 12-->
+	<quest
+		Name="q_test_drive12"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_test_drive11"
+		OnComplete='AddCabinsOrBasketsToTown("mirotvorecCab05"); AddItemToTown("flag01"); AddItemsToPlayerRepository("add_damage_guns_and_grouping_angle_guns"); AddItemsToPlayerRepository("elephant01"); AddItemsToPlayerRepository("ammo_ballon_plasmagun"); AddItemsToPlayerRepository("ammo_chest_shotgun"); AddPlayerMoney(120000)'>
+		<quest
+			Name="q_test_drive12_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_test_drive12"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_test_drive12")' />
+
+		<quest
+			Name="q_test_drive12_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_test_drive12_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_test_drive12")' />
+
+		<quest
+			Name="q_test_drive12_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_test_drive12_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_test_drive12")' />
+
+		<quest
+			Name="q_test_drive12_4"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_test_drive12_2 q_test_drive12_3"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive12")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+	</quest>
+<!--Root/r0m0/ׂוסע הנאיג ׳אסעü 13-->
+	<quest
+		Name="q_test_drive13"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_test_drive12"
+		OnComplete='AddItemToTown("firing_rate_guns_and_add_damage_guns"); AddItemToTown("add_damage_guns_and_grouping_angle_guns"); AddItemToTown("add_stability_and_speed"); AddItemsToPlayerRepository("electronics_use", 5); AddPlayerMoney(100000)'>
+		<quest
+			Name="q_test_drive13_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_test_drive13"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_test_drive13")' />
+
+		<quest
+			Name="q_test_drive13_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_test_drive13_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_test_drive13")' />
+
+		<quest
+			Name="q_test_drive13_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_test_drive13_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_test_drive13")' />
+
+		<quest
+			Name="q_test_drive13_4"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_test_drive13_2 q_test_drive13_3"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive13")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+	</quest>
+<!--Root/r0m0/ׂוסע הנאיג ׳אסעü 14-->
+	<quest
+		Name="q_test_drive14"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all taken"
+		PrecedingQuests="q_test_drive13"
+		OnComplete='AddCabinsOrBasketsToTown("cruiserCab02"); AddCabinsOrBasketsToTown("cruiserCargo02_8x12"); AddItemsToPlayerRepository("add_speed_and_torque"); AddItemsToPlayerRepository("add_damage_energy_and_firing_rate_energy"); AddItemsToPlayerRepository("odin01"); AddItemsToPlayerRepository("ammo_ballon_lasergun"); AddPlayerMoney(130000)'>
+		<quest
+			Name="q_test_drive14_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_test_drive14"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_test_drive14")' />
+
+		<quest
+			Name="q_test_drive14_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_test_drive14_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_test_drive14")' />
+
+		<quest
+			Name="q_test_drive14_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_test_drive14_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_test_drive14")' />
+
+		<quest
+			Name="q_test_drive14_4"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_test_drive14_2 q_test_drive14_3"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive14")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+	</quest>
+<!--Root/r0m0/ׂוסע הנאיג ׳אסעü 15-->
+	<quest
+		Name="q_test_drive15"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_test_drive14"
+		OnComplete='AddItemToTown("additional_durability2"); AddItemsToPlayerRepository("firing_rate_energy_and_add_damage_energy"); AddItemsToPlayerRepository("add_damage_energy_and_firing_rate_energy"); AddItemsToPlayerRepository("add_torque_and_stability"); AddItemsToPlayerRepository("ammo_ballon_lasergun"); AddItemsToPlayerRepository("ammo_ballon_plasmagun"); AddItemsToPlayerRepository("ammo_chest_rocketgun"); AddItemsToPlayerRepository("ammo_chest_artillerygun"); AddPlayerMoney(130000)'>
+		<quest
+			Name="q_test_drive15_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_test_drive14"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_test_drive15")' />
+
+		<quest
+			Name="q_test_drive15_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_test_drive15_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_test_drive15")' />
+
+		<quest
+			Name="q_test_drive15_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_test_drive15_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_test_drive15")' />
+
+		<quest
+			Name="q_test_drive15_4"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_test_drive15_2 q_test_drive15_3"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive15")'
 			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
 	</quest>
 <!--Root/r4m2/ׁ‏זועםûו-->

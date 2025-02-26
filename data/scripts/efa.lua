@@ -98,7 +98,7 @@ function GiveGunsForVehicle(vehicle, side_random)
 	local smallgun={hornet,"specter01","pkt01","kord01","maxim01","storm01","fagot01"}
 	local biggun={"rapier01","vector01","vulcan01","flag01","kpvt01","rainmetal01","elephant01","odin01","bumblebee01","omega01","hurricane01"}
 	local giantgun={"cyclops01","octopus01","rocketLauncher","big_swingfire01"}
-	local sidegun={"hailSideGun","marsSideGun","zeusSideGun","hunterSideGun"}
+	local sidegun={"marsSideGun","hunterSideGun","mrakSideGun"}
 	local side_rand = 1
 	if side_random == 1 then
 		side_rand = random(4)
@@ -117,7 +117,7 @@ function GiveGunsForVehicle(vehicle, side_random)
 					gun=giantgun[exrandom(4)]
 				elseif j==4 then
 					if side_rand == 1 then		
-						gun=sidegun[random(4)]
+						gun=sidegun[random(3)]
 					else
 						gun=""
 					end

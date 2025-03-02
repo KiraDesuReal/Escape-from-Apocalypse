@@ -691,6 +691,7 @@
 				if IsQuestComplete("q_test_drive12") then GunAndGadget:AddItems("flag01", 1) end
 				if IsQuestComplete("q_test_drive13") then GunAndGadget:AddItems("firing_rate_guns_and_add_damage_guns", 1) GunAndGadget:AddItems("add_damage_guns_and_grouping_angle_guns", 1) GunAndGadget:AddItems("add_stability_and_speed", 1) end
 				if IsQuestComplete("q_test_drive15") then GunAndGadget:AddItems("additional_durability2", 1) end
+				if IsQuestComplete("q_turbo") then GunAndGadget:AddItems("someTurboAccelerationPusher", 1) GunAndGadget:AddItems("ammo_ballon_turboForSale", 1) end
 			end
 
 		    trigger:Deactivate()
@@ -3089,6 +3090,12 @@
 				AddItemsToPlayerRepository("ammo_chest_shotgun", shotgun)
 			end
 
+			local turbo = GetItemsAmount("ammo_ballon_turboForSale")
+			if HasPlayerAmountOfItems("ammo_ballon_turboForSale", turbo) and turbo > 0 then
+				RemoveItemsFromPlayerRepository("ammo_ballon_turboForSale", turbo)
+				AddItemsToPlayerRepository("ammo_ballon_turbo", turbo)
+			end
+
 			if GetVar("WatchCredits").AsInt == 0 then
 				if IsQuestComplete("q_kill_scavs") and IsQuestComplete("q_fuel2") and IsQuestComplete("q_base_scavs") and IsQuestComplete("q_test_drive6") then
 					if GetVar("DialogSelectMap").AsInt == 0 then
@@ -3543,6 +3550,10 @@
 				if IsQuestTaken("q_belazist"..i3) and not(IsQuestComplete("q_belazist"..i3.."_1")) then
 					TActivate("q_belazist"..i3.."_config")
 				end
+			end
+
+			if IsQuestTaken("q_turbo") and not(IsQuestComplete("q_turbo_1")) then
+				TActivate("q_turbo_config")
 			end
 		</script>
 	</trigger>
@@ -4505,6 +4516,22 @@
 			end
 
 			if l == 2 then CompleteSubtask("q_test_drive15_1") end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+	
+-- Жажда скорости
+
+	<trigger Name="q_turbo_config" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local spec_slot = GetPlayerVehicle():GetPartByName("BASKET_SPECIAL_WEAPON")
+
+			if spec_slot then
+				spec_slot = spec_slot:GetProperty("Prototype").AsString
+				if spec_slot == "someTurboAccelerationPusher" then CompleteSubtask("q_turbo_1") end
+			end
+
 			trigger:Deactivate()
 		</script>
 	</trigger>	

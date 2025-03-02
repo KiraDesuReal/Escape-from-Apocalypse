@@ -8112,7 +8112,7 @@
 		text="Приветствую тебя, друг! Чем я могу тебе помочь?"
 		role="NPC"
 		scriptCondition="IsQuestComplete('q_rebuild')"
-		nextReplies="Dlg_pl_q_test_drive1 Dlg_pl_to_q_test_drive1 Dlg_pl_q_test_drive2 Dlg_pl_to_q_test_drive2 Dlg_pl_q_test_drive3 Dlg_pl_to_q_test_drive3 Dlg_pl_q_test_drive4 Dlg_pl_to_q_test_drive4 Dlg_pl_q_test_drive5 Dlg_pl_to_q_test_drive5 Dlg_pl_q_test_drive6 Dlg_pl_to_q_test_drive6 Dlg_pl_q_test_drive7 Dlg_pl_to_q_test_drive7 Dlg_pl_q_test_drive8 Dlg_pl_to_q_test_drive8 Dlg_pl_q_ural_or_belaz Dlg_pl_to_q_ural_or_belaz Dlg_pl_q_naturalist1 Dlg_pl_to_q_naturalist1 Dlg_pl_q_naturalist2 Dlg_pl_to_q_naturalist2 Dlg_pl_q_naturalist3 Dlg_pl_to_q_naturalist3 Dlg_pl_q_naturalist4 Dlg_pl_to_q_naturalist4 Dlg_pl_q_naturalist5 Dlg_pl_to_q_naturalist5 Dlg_pl_q_belazist1 Dlg_pl_to_q_belazist1 Dlg_pl_q_belazist2 Dlg_pl_to_q_belazist2 Dlg_pl_q_belazist3 Dlg_pl_to_q_belazist3 Dlg_pl_q_belazist4 Dlg_pl_to_q_belazist4 Dlg_pl_q_belazist5 Dlg_pl_to_q_belazist5 Dlg_pl_q_belazist6 Dlg_pl_to_q_belazist6 Dlg_pl_q_belazist7 Dlg_pl_to_q_belazist7 Dlg_pl_q_belazist8 Dlg_pl_to_q_belazist8 Dlg_pl_q_test_drive9 Dlg_pl_to_q_test_drive9 Dlg_pl_q_test_drive10 Dlg_pl_to_q_test_drive10 Dlg_pl_q_test_drive11 Dlg_pl_to_q_test_drive11 Dlg_pl_q_test_drive12 Dlg_pl_to_q_test_drive12 Dlg_pl_q_test_drive13 Dlg_pl_to_q_test_drive13 Dlg_pl_q_test_drive14 Dlg_pl_to_q_test_drive14 Dlg_pl_q_test_drive15 Dlg_pl_to_q_test_drive15 Dlg_pl_q_bitok1 Dlg_pl_to_q_bitok1 Dlg_pl_q_bitok2 Dlg_pl_to_q_bitok2 Dlg_pl_q_bitok3 Dlg_pl_to_q_bitok3 Dlg_pl_mechanic_exit" />
+		nextReplies="Dlg_pl_q_test_drive1 Dlg_pl_to_q_test_drive1 Dlg_pl_q_test_drive2 Dlg_pl_to_q_test_drive2 Dlg_pl_q_test_drive3 Dlg_pl_to_q_test_drive3 Dlg_pl_q_test_drive4 Dlg_pl_to_q_test_drive4 Dlg_pl_q_test_drive5 Dlg_pl_to_q_test_drive5 Dlg_pl_q_test_drive6 Dlg_pl_to_q_test_drive6 Dlg_pl_q_test_drive7 Dlg_pl_to_q_test_drive7 Dlg_pl_q_test_drive8 Dlg_pl_to_q_test_drive8 Dlg_pl_q_ural_or_belaz Dlg_pl_to_q_ural_or_belaz Dlg_pl_q_naturalist1 Dlg_pl_to_q_naturalist1 Dlg_pl_q_naturalist2 Dlg_pl_to_q_naturalist2 Dlg_pl_q_naturalist3 Dlg_pl_to_q_naturalist3 Dlg_pl_q_naturalist4 Dlg_pl_to_q_naturalist4 Dlg_pl_q_naturalist5 Dlg_pl_to_q_naturalist5 Dlg_pl_q_belazist1 Dlg_pl_to_q_belazist1 Dlg_pl_q_belazist2 Dlg_pl_to_q_belazist2 Dlg_pl_q_belazist3 Dlg_pl_to_q_belazist3 Dlg_pl_q_belazist4 Dlg_pl_to_q_belazist4 Dlg_pl_q_belazist5 Dlg_pl_to_q_belazist5 Dlg_pl_q_belazist6 Dlg_pl_to_q_belazist6 Dlg_pl_q_belazist7 Dlg_pl_to_q_belazist7 Dlg_pl_q_belazist8 Dlg_pl_to_q_belazist8 Dlg_pl_q_test_drive9 Dlg_pl_to_q_test_drive9 Dlg_pl_q_test_drive10 Dlg_pl_to_q_test_drive10 Dlg_pl_q_test_drive11 Dlg_pl_to_q_test_drive11 Dlg_pl_q_test_drive12 Dlg_pl_to_q_test_drive12 Dlg_pl_q_test_drive13 Dlg_pl_to_q_test_drive13 Dlg_pl_q_test_drive14 Dlg_pl_to_q_test_drive14 Dlg_pl_q_test_drive15 Dlg_pl_to_q_test_drive15 Dlg_pl_q_bitok1 Dlg_pl_to_q_bitok1 Dlg_pl_q_bitok2 Dlg_pl_to_q_bitok2 Dlg_pl_q_bitok3 Dlg_pl_to_q_bitok3 Dlg_pl_q_turbo Dlg_pl_to_q_turbo Dlg_pl_mechanic_exit" />
 
 	<Reply
 		name="Dlg_pl_mechanic_exit"
@@ -8600,6 +8600,21 @@
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_bitok3') and not(IsQuestComplete('q_bitok3'))"
 		nextReplies="Dlg_npc_q_bitok3_3" />
+
+<!--Жажда скорости -->
+	<Reply
+		name="Dlg_pl_q_turbo"
+		text="Есть ли для меня работа? (Принять задание: Жажда скорости)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_turbo')"
+		nextReplies="Dlg_npc_q_turbo_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_turbo"
+		text="На счёт задания Жажда скорости."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_turbo') and not(IsQuestComplete('q_turbo'))"
+		nextReplies="Dlg_npc_q_turbo_3" />
 
 <!--Root/r0m0/Тест драйв - Часть 1-->
 
@@ -10397,6 +10412,60 @@
 	<Reply
 		name="Dlg_npc_q_bitok3_8"
 		text="Наконец-то теперь ты сможешь закончить свою биткоин ферму. Надеюсь, она окупит свои затраты."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Жажда скорости -->
+
+	<Reply
+		name="Dlg_npc_q_turbo_1"
+		text="Привет. Как хорошо что ты зашёл, мне понадобиться твоя помощь. Смотри. Видишь что у меня есть. Это Турбо-ускорение, в собственном исполнении. Устройство позволяющее ускорить автомобиль в полтора раза в течении 5 секунд. Полезная штука, с помощью которой можно доехать до нужной точки быстрее, или наоборот, быстро уехать от преследователей. Вообщем, мне нужно чтобы ты помог протестировать это устройство на возможные неполадки в работе оборудования."
+		role="NPC"
+		nextReplies="Dlg_npc_q_turbo_2" />
+
+	<Reply
+		name="Dlg_npc_q_turbo_2"
+		text="Звучит интересно, говори что нужно сделать."
+		role="PLAYER"
+		nextReplies="Dlg_npc_q_turbo_3" />
+
+	<Reply
+		name="Dlg_npc_q_turbo_3"
+		text="Установи Турбо акселератор в специальный слот под кузовом автомобиля, система должна сразу же определить его. Дальше ничего сложного, жмешь на кнопку и машина ускоряется. Только следи за количеством нитро, вот держи баллончик на случай если закончиться запас. Ну, вроде всё объяснил, проблем возникнуть не должно, своё дело я знаю. Буду ждать от тебя результатов.|@FF0000AA|@FF1D1D1DНаграда:|- Предмет: @FF1D1D1DТурбо-ускорение в продаже - x1|- Предмет: @FF1D1D1DБаллон с воздухом для Турбо-ускорения в продаже - x1|- Деньги: @FF1D1D1D30.000 монет"
+		role="NPC"
+		nextReplies="Dlg_npc_q_turbo_4 Dlg_npc_q_turbo_5 Dlg_npc_q_turbo_6" />
+
+	<Reply
+		name="Dlg_npc_q_turbo_4"
+		text="Выглядит не сложно, я справлюсь."
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_turbo'))"
+		scriptResult="TakeQuest('q_turbo'); TActivate('SoundQuestTaken'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_q_turbo_5"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_turbo_3')"
+		scriptResult="CompleteQuest('q_turbo_3'); TActivate('SoundQuestFihished')"
+		nextReplies="Dlg_npc_q_turbo_7" />
+
+	<Reply
+		name="Dlg_npc_q_turbo_6"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_turbo') and not(IsQuestTaken('q_turbo_3'))"
+		nextReplies="Dlg_npc_mechanic_1" />
+
+	<Reply
+		name="Dlg_npc_q_turbo_7"
+		text="Отлично, рад что всё прошло успешно. Ты здорово мне помог, теперь можно смело запустить массовое производство, а после отправить на продажу."
+		role="NPC"
+		nextReplies="Dlg_npc_q_turbo_8" />
+
+	<Reply
+		name="Dlg_npc_q_turbo_8"
+		text="Отличное устройство, я продолжу им пользоваться."
 		role="PLAYER"
 		scriptResult="EndConversation()"/>
 

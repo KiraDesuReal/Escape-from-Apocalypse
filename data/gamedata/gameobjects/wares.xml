@@ -389,6 +389,15 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_ballon_turboForSale"
+		Price	= "26"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
 
 <!-- Building Items -->
 

@@ -184,26 +184,50 @@ function HealItems()
 	local fuelcar = GetPlayerFuel()
 	local fuelmax = GetPlayerMaxFuel()
 
+	local cabin = vehP:GetCabin()
+	local basket = vehP:GetBasket()
+
+	local durabilityCabMax = cabin:GetPropertyById(20).AsInt
+	local durabilityBasMax = basket:GetPropertyById(20).AsInt
+	local durabilityCab = cabin:GetPropertyById(19).AsInt
+	local durabilityBas = basket:GetPropertyById(19).AsInt
+
 	local scrap_metal_procent = 10
 	local machinery_procent = 25
 	local electronics_procent = 40
+
+	local scrap_metal_procent_d = 30
+	local machinery_procent_d = 20
+	local electronics_procent_d = 10
 
 	local oil_procent = 15
 	local fuel_procent = 30
 
 	local fuel_use_procent = 25
 
-	local procent
-	local hp_pr
-
+	local procent, procent_d_cab, procent_d_bas = 0, 0, 0 
+	local hp_pr, d_pr_cab, d_pr_bas = 0, 0, 0
+	
 	if HasPlayerAmountOfItems("scrap_metal_use", 1) and HasPlayerAmountOfItems("machinery_use", 1) and HasPlayerAmountOfItems("electronics_use", 1) then
 		procent = healthmax / 100 * electronics_procent
 		hp_pr = healthmax - procent
 		if vehP then 
 			if hp_pr >= healthcar then
+				procent_d_cab = durabilityCabMax / 100 * electronics_procent_d
+				procent_d_bas = durabilityBasMax / 100 * electronics_procent_d
+
+				d_pr_cab = durabilityCab + procent_d_cab
+				d_pr_bas = durabilityBas + procent_d_bas
+
+				if d_pr_cab >= durabilityCabMax then d_pr_cab = durabilityCabMax end
+				if d_pr_bas >= durabilityBasMax then d_pr_bas = durabilityBasMax end
+
+				if cabin then cabin:SetProperty("durability", d_pr_cab) end 
+				if basket then basket:SetProperty("durability", d_pr_bas) end 
+
 				vehP:AddModifier( "hp", "+ "..procent ) 
 				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_electronics", procent, healthcar + procent)
+				AddFadingMsgByStrIdFormatted("fm_use_electronics", procent, healthcar + procent, procent_d_cab, d_pr_cab, procent_d_bas, d_pr_bas)
 				RemoveItemsFromPlayerRepository("electronics_use", 1)
 			end
 		end
@@ -214,9 +238,21 @@ function HealItems()
 		hp_pr = healthmax - procent
 		if vehP then 
 			if hp_pr >= healthcar then
+				procent_d_cab = durabilityCabMax / 100 * electronics_procent_d
+				procent_d_bas = durabilityBasMax / 100 * electronics_procent_d
+
+				d_pr_cab = durabilityCab + procent_d_cab
+				d_pr_bas = durabilityBas + procent_d_bas
+
+				if d_pr_cab >= durabilityCabMax then d_pr_cab = durabilityCabMax end
+				if d_pr_bas >= durabilityBasMax then d_pr_bas = durabilityBasMax end
+
+				if cabin then cabin:SetProperty("durability", d_pr_cab) end 
+				if basket then basket:SetProperty("durability", d_pr_bas) end 
+
 				vehP:AddModifier( "hp", "+ "..procent ) 
 				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_electronics", procent, healthcar + procent)
+				AddFadingMsgByStrIdFormatted("fm_use_electronics", procent, healthcar + procent, procent_d_cab, d_pr_cab, procent_d_bas, d_pr_bas)
 				RemoveItemsFromPlayerRepository("electronics_use", 1)
 			end
 		end
@@ -227,9 +263,21 @@ function HealItems()
 		hp_pr = healthmax - procent
 		if vehP then 
 			if hp_pr >= healthcar then
+				procent_d_cab = durabilityCabMax / 100 * machinery_procent_d
+				procent_d_bas = durabilityBasMax / 100 * machinery_procent_d
+
+				d_pr_cab = durabilityCab + procent_d_cab
+				d_pr_bas = durabilityBas + procent_d_bas
+
+				if d_pr_cab >= durabilityCabMax then d_pr_cab = durabilityCabMax end
+				if d_pr_bas >= durabilityBasMax then d_pr_bas = durabilityBasMax end
+
+				if cabin then cabin:SetProperty("durability", d_pr_cab) end 
+				if basket then basket:SetProperty("durability", d_pr_bas) end
+
 				vehP:AddModifier( "hp", "+ "..procent ) 
 				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_machinery", procent, healthcar + procent)
+				AddFadingMsgByStrIdFormatted("fm_use_machinery", procent, healthcar + procent, procent_d_cab, d_pr_cab, procent_d_bas, d_pr_bas)
 				RemoveItemsFromPlayerRepository("machinery_use", 1)
 			end
 		end
@@ -240,9 +288,21 @@ function HealItems()
 		hp_pr = healthmax - procent
 		if vehP then 
 			if hp_pr >= healthcar then
+				procent_d_cab = durabilityCabMax / 100 * electronics_procent_d
+				procent_d_bas = durabilityBasMax / 100 * electronics_procent_d
+
+				d_pr_cab = durabilityCab + procent_d_cab
+				d_pr_bas = durabilityBas + procent_d_bas
+
+				if d_pr_cab >= durabilityCabMax then d_pr_cab = durabilityCabMax end
+				if d_pr_bas >= durabilityBasMax then d_pr_bas = durabilityBasMax end
+
+				if cabin then cabin:SetProperty("durability", d_pr_cab) end 
+				if basket then basket:SetProperty("durability", d_pr_bas) end 
+
 				vehP:AddModifier( "hp", "+ "..procent ) 
 				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_electronics", procent, healthcar + procent)
+				AddFadingMsgByStrIdFormatted("fm_use_electronics", procent, healthcar + procent, procent_d_cab, d_pr_cab, procent_d_bas, d_pr_bas)
 				RemoveItemsFromPlayerRepository("electronics_use", 1)
 			end
 		end
@@ -253,9 +313,21 @@ function HealItems()
 		hp_pr = healthmax - procent
 		if vehP then 
 			if hp_pr >= healthcar then
+				procent_d_cab = durabilityCabMax / 100 * machinery_procent_d
+				procent_d_bas = durabilityBasMax / 100 * machinery_procent_d
+
+				d_pr_cab = durabilityCab + procent_d_cab
+				d_pr_bas = durabilityBas + procent_d_bas
+
+				if d_pr_cab >= durabilityCabMax then d_pr_cab = durabilityCabMax end
+				if d_pr_bas >= durabilityBasMax then d_pr_bas = durabilityBasMax end
+
+				if cabin then cabin:SetProperty("durability", d_pr_cab) end 
+				if basket then basket:SetProperty("durability", d_pr_bas) end
+
 				vehP:AddModifier( "hp", "+ "..procent ) 
 				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_machinery", procent, healthcar + procent)
+				AddFadingMsgByStrIdFormatted("fm_use_machinery", procent, healthcar + procent, procent_d_cab, d_pr_cab, procent_d_bas, d_pr_bas)
 				RemoveItemsFromPlayerRepository("machinery_use", 1)
 			end
 		end
@@ -266,9 +338,21 @@ function HealItems()
 		hp_pr = healthmax - procent
 		if vehP then 
 			if hp_pr >= healthcar then
+				procent_d_cab = durabilityCabMax / 100 * scrap_metal_procent_d
+				procent_d_bas = durabilityBasMax / 100 * scrap_metal_procent_d
+
+				d_pr_cab = durabilityCab + procent_d_cab
+				d_pr_bas = durabilityBas + procent_d_bas
+
+				if d_pr_cab >= durabilityCabMax then d_pr_cab = durabilityCabMax end
+				if d_pr_bas >= durabilityBasMax then d_pr_bas = durabilityBasMax end
+
+				if cabin then cabin:SetProperty("durability", d_pr_cab) end 
+				if basket then basket:SetProperty("durability", d_pr_bas) end
+
 				vehP:AddModifier( "hp", "+ "..procent ) 
 				CreateEffectTTLed( "ET_PS_USE_ARM", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_scrap_metal", procent, healthcar + procent)
+				AddFadingMsgByStrIdFormatted("fm_use_scrap_metal", procent, healthcar + procent, procent_d_cab, d_pr_cab, procent_d_bas, d_pr_bas)
 				RemoveItemsFromPlayerRepository("scrap_metal_use", 1)
 			end
 		end

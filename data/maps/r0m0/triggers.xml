@@ -1127,6 +1127,9 @@
 				end
 			end	
 
+			AddItemsToPlayerRepository("machinery_use", 1)
+			AddItemsToPlayerRepository("ammo_chest_machinegun", 1)
+
 			TActivate("Inventory_lvl_2_BuildInfo")
 			TActivate("ChestScavs_BuildInfo")
 		    trigger:Deactivate()
@@ -3097,16 +3100,10 @@
 			end
 
 			if GetVar("WatchCredits").AsInt == 0 then
-				if IsQuestComplete("q_kill_scavs") and IsQuestComplete("q_fuel2") and IsQuestComplete("q_base_scavs") and IsQuestComplete("q_test_drive6") then
-					if GetVar("DialogSelectMap").AsInt == 0 then
-						println("AllQuestsCompleted")
-						TActivate("OpenGate1ForCredits")
-					end
-				end
+				TActivate("trQuestsForCredits")
 			end
 
 			SetCameraBehindPlayerVehicle()
-
 		</script>
 	</trigger>
 
@@ -3239,6 +3236,28 @@
 		</script>
 	</trigger>
 
+<!-- Триггер отслеживающий выполнение необходимых квестов для запуска титров -->
+	<trigger Name="trQuestsForCredits" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local quests = {"q_kill_scavs", "q_fuel2", "q_base_scavs", "q_test_drive13", "q_test_drive15", "q_bitok3", "q_turbo"}
+			local len = getn(quests)
+			local complete = 0
+
+			for i = 1, len do  
+				if IsQuestComplete(quests[i]) then
+					complete = complete + 1
+				end
+			end
+
+			if GetVar("DialogSelectMap").AsInt == 0 and complete == len then
+				println("AllQuestsCompleted")
+				TActivate("OpenGate1ForCredits")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 <!-- Игрок едет в зону, чтобы запустилась катсцена с титрами -->
 	<trigger Name="OpenGate1ForCredits" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
@@ -3301,6 +3320,15 @@
 		</script>
 	</trigger>
 
+	<trigger Name="MessageEndGame" active="0">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local b = SpawnMessageBox("90006")
+			if b == 1 then StopPlayingCustomMusic() end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 <!-- Таймер отслеживающий загрузку сейвов -->
 	<trigger Name="CheckLoadSaveTimer" active="0">
 		<event timeout="1" eventid="GE_TIME_PERIOD" />
@@ -3321,16 +3349,6 @@
 		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
 			TActivate("CheckLoadSaveTimer")
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-<!-- Рестарт карты -->
-	<trigger Name="RestartMap" active="0">
-		<event timeout="0" eventid="GE_TIME_PERIOD" />
-		<script>
-			PassToMap("r0m0", "FromLocation")
-			TActivate("ExitMap")
 			trigger:Deactivate()
 		</script>
 	</trigger>

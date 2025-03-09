@@ -160,7 +160,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			NodeScale	= "1 1 1"
 			Mass		= "40.0"
 			MaxHealth	= "250" 
-			MaxFuel	= "150" 
+			MaxFuel	= "80" 
 			BrakingSound="ET_S_BRAKE01"
 			PneumoSound	="ET_S_PNEUMO_BRAKE01"
 			GearShiftSound="ET_S_GEAR_SHIFT01"
@@ -178,7 +178,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			NodeScale	= "1 1 1"
 			Mass		= "40.0"
 			MaxHealth	= "400" 
-			MaxFuel	= "450" 
+			MaxFuel	= "150" 
 			BrakingSound="ET_S_BRAKE01"
 			PneumoSound	="ET_S_PNEUMO_BRAKE01"
 			GearShiftSound="ET_S_GEAR_SHIFT01"
@@ -214,7 +214,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			NodeScale	= "1 1 1"
 			Mass		= "40.0"
 			MaxHealth	= "400" 
-			MaxFuel	= "450.0" 
+			MaxFuel	= "200" 
 			BrakingSound="ET_S_BRAKE01"
 			PneumoSound	="ET_S_PNEUMO_BRAKE01"
 			GearShiftSound="ET_S_GEAR_SHIFT01"
@@ -1148,15 +1148,21 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			MaxTorque			= "40"
 			Price				= "1500"	
 			MaxSpeed			= "110.0"
-			LoadPoints			= "LP_SML01" >
-				<GroupsHealth
-					Main   = "0" 
-					Breakable1   = "0.2"	
-				    	Breakable2   = "0.6"
-					Breakable3   = "0.4"
-					Breakable4   = "0.4"
-					Breakable5   = "0.4"
-				/>
+			LoadPoints			= "LP_SML01"
+			FuelConsumption     = "0.4" >
+			<GadgetDescription>
+				<Slot
+					ResourceType	= "GADGET_COMMON"
+					MaxAmount	= "1" />
+			</GadgetDescription>
+			<GroupsHealth
+				Main   = "0" 
+				Breakable1   = "0.2"	
+				Breakable2   = "0.6"
+				Breakable3   = "0.4"
+				Breakable4   = "0.4"
+				Breakable5   = "0.4"
+			/>
 		</Prototype>
 
 		<Prototype
@@ -1175,17 +1181,23 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "1800"	
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
 			MaxSpeed			= "100.0"
-			LoadPoints			= "LP_SML01" >
-				<GroupsHealth
-					Main   = "0"
-					Breakable1   = "0.2"	
-				    	Breakable2   = "0.4"
-					Breakable3   = "0.4"
-					Breakable4   = "0.3"
-					Breakable5   = "0.3"
-					Breakable6   = "0.4"
-					Breakable7   = "0.4"
-				/>
+			LoadPoints			= "LP_SML01"
+			FuelConsumption     = "0.38" >
+			<GadgetDescription>
+				<Slot
+					ResourceType	= "GADGET_COMMON"
+					MaxAmount	= "2" />
+			</GadgetDescription>
+			<GroupsHealth
+				Main   = "0"
+				Breakable1   = "0.2"	
+				Breakable2   = "0.4"
+				Breakable3   = "0.4"
+				Breakable4   = "0.3"
+				Breakable5   = "0.3"
+				Breakable6   = "0.4"
+				Breakable7   = "0.4"
+			/>
 		</Prototype>
 		<Prototype
 			Class				= "Cabin"
@@ -1234,15 +1246,24 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "2100"	
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
 			MaxSpeed			= "90.0"
-			LoadPoints			= "LP_SML01" >
-				<GroupsHealth
-					Main   = "0"
-					Breakable1   = "0.3"	
-				    	Breakable2   = "0.4"
-					Breakable3   = "0.4"
-					Breakable4   = "0.4"
-					Breakable5   = "0.2"
-				/>
+			LoadPoints			= "LP_SML01"
+			FuelConsumption     = "0.35" >
+			<GadgetDescription>
+				<Slot
+					ResourceType	= "GADGET_COMMON"
+					MaxAmount	= "1" />
+				<Slot
+					ResourceType	= "GADGET_WEAPON"
+					MaxAmount	= "1" />
+			</GadgetDescription>  
+			<GroupsHealth
+				Main   = "0"
+				Breakable1   = "0.3"	
+				Breakable2   = "0.4"
+				Breakable3   = "0.4"
+				Breakable4   = "0.4"
+				Breakable5   = "0.2"
+			/>
 		</Prototype>
 
 		<Prototype
@@ -1261,10 +1282,14 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "3000"	
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
 			MaxSpeed			= "100.0"
-			LoadPoints			= "LP_SML01" >
-				<GroupsHealth
-					Main   = "5"
-				/>
+			LoadPoints			= "LP_SML01"
+			FuelConsumption     = "0.45" >
+			<Slot
+				ResourceType	= "GADGET_WEAPON"
+				MaxAmount	= "1" />  
+			<GroupsHealth
+				Main   = "5"
+			/>
 		</Prototype>
 
 
@@ -1284,13 +1309,22 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			MaxTorque			= "80"
 			Price				= "6000"	
 			MaxSpeed			= "100.0"
-			LoadPoints			= "LP_SML01 LP_BIG01" >
-				<GroupsHealth
-					Main   = "5"	
-					Breakable1   = "3"	
-				    	Breakable2   = "3"
-					Breakable3   = "3"
-				/>
+			LoadPoints			= "LP_SML01 LP_BIG01"
+			FuelConsumption     = "0.45" >
+			<GadgetDescription>
+				<Slot
+					ResourceType	= "GADGET_COMMON"
+					MaxAmount	= "2" />
+				<Slot
+					ResourceType	= "GADGET_WEAPON"
+					MaxAmount	= "2" />  
+			</GadgetDescription>
+			<GroupsHealth
+				Main   = "5"	
+				Breakable1   = "3"	
+				Breakable2   = "3"
+				Breakable3   = "3"
+			/>
 		</Prototype>
 
 		<Prototype
@@ -1412,14 +1446,23 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			MaxTorque			= "80"
 			Price				= "3000"	
 			MaxSpeed			= "100.0"
-			LoadPoints			= "LP_SML01 LP_BIG01" >
-				<GroupsHealth
-					Main   = "5"	
-				    Breakable1   = "1"
-					Breakable2   = "2"
-					Breakable3   = "3"
-					Breakable4   = "4"
-				/>
+			LoadPoints			= "LP_SML01 LP_BIG01"
+			FuelConsumption     = "0.5" >
+			<GadgetDescription>
+				<Slot
+					ResourceType	= "GADGET_COMMON"
+					MaxAmount	= "2" />
+				<Slot
+					ResourceType	= "GADGET_WEAPON"
+					MaxAmount	= "2" /> 
+			</GadgetDescription>
+			<GroupsHealth
+				Main   = "5"	
+				Breakable1   = "1"
+				Breakable2   = "2"
+				Breakable3   = "3"
+				Breakable4   = "4"
+			/>
 		</Prototype>
 
 		<Prototype
@@ -2677,6 +2720,194 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 				RepositorySize		= "10 10"/>
 		</Prototype>
 
+		<Prototype
+			Class				= "Basket"
+			Name				= "ScavfakeCargo_1"
+			ModelFile			= "cub"
+			CanBeUsedInAutogenerating  =  "0"
+			VisibleInEncyclopedia   = "false"
+			ResourceType		= "FAKE_BIGBASKET"
+			Durability			= "5"
+			DurCoeffsForDamageTypes	= "0 0 0"
+			NodeScale			= "1 1 1"
+			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
+
+
+			Price				= "0"
+			RepairCoef			= "0"
+
+			Mass				= "1.0" >
+			<RepositoryDescription
+				RepositorySize		= "4 4"/>
+		</Prototype>
+
+		<Prototype
+			Class				= "Basket"
+			Name				= "ScavfakeCargo_2"
+			ModelFile			= "cub"
+			CanBeUsedInAutogenerating  =  "0"
+			VisibleInEncyclopedia   = "false"
+			ResourceType		= "FAKE_BIGBASKET"
+			Durability			= "5"
+			DurCoeffsForDamageTypes	= "0 0 0"
+			NodeScale			= "1 1 1"
+			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
+
+
+			Price				= "0"
+			RepairCoef			= "0"
+
+			Mass				= "1.0" >
+			<RepositoryDescription
+				RepositorySize		= "5 4"/>
+		</Prototype>
+
+		<Prototype
+			Class				= "Basket"
+			Name				= "ScavfakeCargo_3"
+			ModelFile			= "cub"
+			CanBeUsedInAutogenerating  =  "0"
+			VisibleInEncyclopedia   = "false"
+			ResourceType		= "FAKE_BIGBASKET"
+			Durability			= "5"
+			DurCoeffsForDamageTypes	= "0 0 0"
+			NodeScale			= "1 1 1"
+			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
+
+
+			Price				= "0"
+			RepairCoef			= "0"
+
+			Mass				= "1.0" >
+			<RepositoryDescription
+				RepositorySize		= "7 4"/>
+		</Prototype>
+
+		<Prototype
+			Class				= "Basket"
+			Name				= "ScavfakeCargo_4"
+			ModelFile			= "cub"
+			CanBeUsedInAutogenerating  =  "0"
+			VisibleInEncyclopedia   = "false"
+			ResourceType		= "FAKE_BIGBASKET"
+			Durability			= "5"
+			DurCoeffsForDamageTypes	= "0 0 0"
+			NodeScale			= "1 1 1"
+			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
+
+
+			Price				= "0"
+			RepairCoef			= "0"
+
+			Mass				= "1.0" >
+			<RepositoryDescription
+				RepositorySize		= "4 6"/>
+		</Prototype>
+
+		<Prototype
+			Class				= "Basket"
+			Name				= "ScavfakeCargo_5"
+			ModelFile			= "cub"
+			CanBeUsedInAutogenerating  =  "0"
+			VisibleInEncyclopedia   = "false"
+			ResourceType		= "FAKE_BIGBASKET"
+			Durability			= "5"
+			DurCoeffsForDamageTypes	= "0 0 0"
+			NodeScale			= "1 1 1"
+			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
+
+
+			Price				= "0"
+			RepairCoef			= "0"
+
+			Mass				= "1.0" >
+			<RepositoryDescription
+				RepositorySize		= "4 5"/>
+		</Prototype>
+
+		<Prototype
+			Class				= "Basket"
+			Name				= "ScavfakeCargo_6"
+			ModelFile			= "cub"
+			CanBeUsedInAutogenerating  =  "0"
+			VisibleInEncyclopedia   = "false"
+			ResourceType		= "FAKE_BIGBASKET"
+			Durability			= "5"
+			DurCoeffsForDamageTypes	= "0 0 0"
+			NodeScale			= "1 1 1"
+			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
+
+
+			Price				= "0"
+			RepairCoef			= "0"
+
+			Mass				= "1.0" >
+			<RepositoryDescription
+				RepositorySize		= "4 7"/>
+		</Prototype>
+
+		<Prototype
+			Class				= "Basket"
+			Name				= "ScavfakeCargo_7"
+			ModelFile			= "cub"
+			CanBeUsedInAutogenerating  =  "0"
+			VisibleInEncyclopedia   = "false"
+			ResourceType		= "FAKE_BIGBASKET"
+			Durability			= "5"
+			DurCoeffsForDamageTypes	= "0 0 0"
+			NodeScale			= "1 1 1"
+			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
+
+
+			Price				= "0"
+			RepairCoef			= "0"
+
+			Mass				= "1.0" >
+			<RepositoryDescription
+				RepositorySize		= "5 5"/>
+		</Prototype>
+
+		<Prototype
+			Class				= "Basket"
+			Name				= "ScavfakeCargo_8"
+			ModelFile			= "cub"
+			CanBeUsedInAutogenerating  =  "0"
+			VisibleInEncyclopedia   = "false"
+			ResourceType		= "FAKE_BIGBASKET"
+			Durability			= "5"
+			DurCoeffsForDamageTypes	= "0 0 0"
+			NodeScale			= "1 1 1"
+			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
+
+
+			Price				= "0"
+			RepairCoef			= "0"
+
+			Mass				= "1.0" >
+			<RepositoryDescription
+				RepositorySize		= "6 4"/>
+		</Prototype>
+
+		<Prototype
+			Class				= "Basket"
+			Name				= "fakePlayerCargo"
+			ModelFile			= "cub"
+			CanBeUsedInAutogenerating  =  "0"
+			VisibleInEncyclopedia   = "false"
+			ResourceType		= "FAKE_BIGBASKET"
+			Durability			= "5"
+			DurCoeffsForDamageTypes	= "0 0 0"
+			NodeScale			= "1 1 1"
+			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
+
+
+			Price				= "0"
+			RepairCoef			= "0"
+
+			Mass				= "1.0" >
+			<RepositoryDescription
+				RepositorySize		= "2 2"/>
+		</Prototype>
 
 		<Prototype
 			Class				= "Basket"

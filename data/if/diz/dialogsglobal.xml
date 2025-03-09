@@ -4,8 +4,15 @@
 		name="Dlg_npc_001302"
 		text="С помощью заправки можно починиться и заправиться.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Горючее - @FF1D1D1Dx2|Болты - @FF1D1D1Dx2|Гайки - @FF1D1D1Dx2|Металлические запчасти - @FF1D1D1Dx1|Лампа накаливания - @FF1D1D1Dx2|Набор напильников «FullMaster» - @FF1D1D1Dx1|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Возможность заправлять пустые канистры топливом|- Регенерация топлива: @FF1D1D1D1ед/15сек"
 		role="NPC"
-		scriptCondition="GetVar('PetrolStationBuild_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0"
+		scriptCondition="GetVar('PetrolStationBuild_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_pl_001303 Dlg_pl_001305 Dlg_pl_001306 Dlg_pl_001307 Dlg_pl_001309 Dlg_pl_0013010 Dlg_pl_0013011 Dlg_pl_001312 Dlg_pl_001313" />
+	
+	<Reply
+		name="Dlg_npc_0013022"
+		text="С помощью заправки можно починиться и заправиться.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Горючее - @FF1D1D1Dx2|Болты - @FF1D1D1Dx2|Гайки - @FF1D1D1Dx2|Металлические запчасти - @FF1D1D1Dx1|Лампа накаливания - @FF1D1D1Dx2|Набор напильников «FullMaster» - @FF1D1D1Dx1|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Возможность заправлять пустые канистры топливом|- Регенерация топлива: @FF1D1D1D1ед/15сек"
+		role="NPC"
+		scriptCondition="GetVar('PetrolStationBuild_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0 and GetVar('PlayerBelong').AsString == 'SCAV'"
+		nextReplies="Dlg_pl_001312" />
 
 	<Reply
 		name="Dlg_pl_001303"
@@ -82,8 +89,15 @@
 		name="Dlg_npc_001314"
 		text="Дополнительный ящик, в котором можно складировать свои вещи.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Дрель - @FF1D1D1Dx1|Саморезы - @FF1D1D1Dx2|Гвозди - @FF1D1D1Dx2|Отвертка - @FF1D1D1Dx1|Рулетка - @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1"
 		role="NPC"
-		scriptCondition="GetVar('Inventory_lvl_2_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0"
+		scriptCondition="GetVar('Inventory_lvl_2_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_pl_001315 Dlg_pl_001316 Dlg_pl_001317 Dlg_pl_001318 Dlg_pl_001319 Dlg_pl_001320 Dlg_pl_001321 Dlg_pl_001322" />
+	
+	<Reply
+		name="Dlg_npc_0013144"
+		text="Дополнительный ящик, в котором можно складировать свои вещи.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Дрель - @FF1D1D1Dx1|Саморезы - @FF1D1D1Dx2|Гвозди - @FF1D1D1Dx2|Отвертка - @FF1D1D1Dx1|Рулетка - @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Inventory_lvl_2_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0 and GetVar('PlayerBelong').AsString == 'SCAV'"
+		nextReplies="Dlg_pl_001321" />
 
 	<Reply
 		name="Dlg_pl_001315"
@@ -152,14 +166,14 @@
 		name="Dlg_npc_001323"
 		text="Специальный ящик для диких. Построив его, вы сможете просить диких добывать для вас различные предметы, при условии если хорошо им заплатите.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Тайник уровня @FF1D1D1DII|Электроника - @FF1D1D1Dx2|Рабочее оборудование - @FF1D1D1Dx1|Книги - @FF1D1D1Dx1|Бутылки - @FF1D1D1Dx1|Детали - @FF1D1D1Dx1|Ананага - @FF1D1D1Dx1|Золотые часы - @FF1D1D1Dx1|Золотая цепочка - @FF1D1D1Dx3|Золотое кольцо с черепом - @FF1D1D1Dx2"
 		role="NPC"
-		scriptCondition="GetVar('Inventory_lvl_2_Builden').AsInt == 0 and GetVar('ChestScavs_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0"
+		scriptCondition="GetVar('Inventory_lvl_2_Builden').AsInt == 0 and GetVar('ChestScavs_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0 or GetVar('Inventory_lvl_2_Builden').AsInt == 1 and GetVar('ChestScavs_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0 and GetVar('PlayerBelong').AsString == 'SCAV'"
 		nextReplies="Dlg_pl_001336" />
 
 	<Reply
 		name="Dlg_npc_001325"
 		text="Специальный ящик для диких. Построив его, вы сможете просить диких добывать для вас различные предметы, при условии если хорошо им заплатите.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Тайник уровня @FF1D1D1DII|Электроника - @FF1D1D1Dx2|Рабочее оборудование - @FF1D1D1Dx1|Книги - @FF1D1D1Dx1|Бутылки - @FF1D1D1Dx1|Детали - @FF1D1D1Dx1|Ананага - @FF1D1D1Dx1|Золотые часы - @FF1D1D1Dx1|Золотая цепочка - @FF1D1D1Dx3|Золотое кольцо с черепом - @FF1D1D1Dx2"
 		role="NPC"
-		scriptCondition="GetVar('Inventory_lvl_2_Builden').AsInt == 1 and GetVar('ChestScavs_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0"
+		scriptCondition="GetVar('Inventory_lvl_2_Builden').AsInt == 1 and GetVar('ChestScavs_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_pl_001326 Dlg_pl_0013226 Dlg_pl_001327 Dlg_pl_0013227 Dlg_pl_001328 Dlg_pl_001329 Dlg_pl_001330 Dlg_pl_001331 Dlg_pl_001332 Dlg_pl_001333 Dlg_pl_001334 Dlg_pl_001336 Dlg_pl_001337" />
 
 	<Reply
@@ -269,8 +283,15 @@
 		name="Dlg_npc_001400"
 		text="Дикие попытаются добыть для вас ценные предметы, в зависимости от суммы оплаты.|@FF0000AA|@FF1D1D1D5000 монет @FF404040- Время ожидания: @FF1D1D1D00:15:00|@FF1D1D1D20.000 монет  @FF404040- Время ожидания: @FF1D1D1D00:30:00|@FF1D1D1D100.000 монет @FF404040- Время ожидания: @FF1D1D1D00:45:00|@FF1D1D1DВодка @FF404040- Время ожидания: @FF1D1D1D00:25:00|@FF1D1D1DРазведданные @FF404040- Время ожидания: @FF1D1D1D00:50:00|@FF1D1D1DАнанага @FF404040- Время ожидания: @FF1D1D1D01:00:00"
 		role="NPC"
-		scriptCondition="GetVar('Inventory_lvl_2_Builden').AsInt == 1 and GetVar('ChestScavs_Builden').AsInt == 1 and GetVar('ChestScavs_Search').AsInt == 0"
+		scriptCondition="GetVar('Inventory_lvl_2_Builden').AsInt == 1 and GetVar('ChestScavs_Builden').AsInt == 1 and GetVar('ChestScavs_Search').AsInt == 0 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_npc_001401 Dlg_npc_001402 Dlg_npc_001403 Dlg_npc_001404 Dlg_npc_001405 Dlg_npc_001406 Dlg_npc_001407" />
+
+	<Reply
+		name="Dlg_npc_0014000"
+		text="Дикие попытаются добыть для вас ценные предметы, в зависимости от суммы оплаты.|@FF0000AA|@FF1D1D1D5000 монет @FF404040- Время ожидания: @FF1D1D1D00:15:00|@FF1D1D1D20.000 монет  @FF404040- Время ожидания: @FF1D1D1D00:30:00|@FF1D1D1D100.000 монет @FF404040- Время ожидания: @FF1D1D1D00:45:00|@FF1D1D1DВодка @FF404040- Время ожидания: @FF1D1D1D00:25:00|@FF1D1D1DРазведданные @FF404040- Время ожидания: @FF1D1D1D00:50:00|@FF1D1D1DАнанага @FF404040- Время ожидания: @FF1D1D1D01:00:00"
+		role="NPC"
+		scriptCondition="GetVar('Inventory_lvl_2_Builden').AsInt == 1 and GetVar('ChestScavs_Builden').AsInt == 1 and GetVar('ChestScavs_Search').AsInt == 0 and GetVar('PlayerBelong').AsString == 'SCAV'"
+		nextReplies="Dlg_npc_001407" />
 
 	<Reply
 		name="Dlg_npc_001401"
@@ -331,8 +352,15 @@
 		name="Dlg_npc_001338"
 		text="Туннель ведущий в неизвестное направление.|@FF0000AA|Этап - I|@FF0000AA|@FF1D1D1DДля расчистки завала требуется:|Кувалда «Vitalik» - @FF1D1D1Dx1"
 		role="NPC"
-		scriptCondition="GetVar('Tunel_Builden').AsInt == 0"
+		scriptCondition="GetVar('Tunel_Builden').AsInt == 0 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_pl_001339 Dlg_pl_001340 Dlg_pl_001341" />
+
+	<Reply
+		name="Dlg_npc_0013388"
+		text="Туннель ведущий в неизвестное направление.|@FF0000AA|Этап - I|@FF0000AA|@FF1D1D1DДля расчистки завала требуется:|Кувалда «Vitalik» - @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Tunel_Builden').AsInt == 0 and GetVar('PlayerBelong').AsString == 'SCAV'"
+		nextReplies="Dlg_pl_001340" />
 
 	<Reply
 		name="Dlg_pl_001339"
@@ -360,8 +388,15 @@
 		name="Dlg_npc_001342"
 		text="Туннель ведущий в неизвестное направление.|@FF0000AA|Этап - II|@FF0000AA|@FF1D1D1DДля расчистки завала требуется:|Ручная дрель - @FF1D1D1Dx1|Ножницы для резки металла - @FF1D1D1Dx1"
 		role="NPC"
-		scriptCondition="GetVar('Tunel_Builden').AsInt == 1"
+		scriptCondition="GetVar('Tunel_Builden').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_pl_001343 Dlg_pl_001344 Dlg_pl_001346 Dlg_pl_001347" />
+
+	<Reply
+		name="Dlg_npc_0013422"
+		text="Туннель ведущий в неизвестное направление.|@FF0000AA|Этап - II|@FF0000AA|@FF1D1D1DДля расчистки завала требуется:|Ручная дрель - @FF1D1D1Dx1|Ножницы для резки металла - @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Tunel_Builden').AsInt == 1 and GetVar('PlayerBelong').AsString == 'SCAV'"
+		nextReplies="Dlg_pl_001346" />
 
 	<Reply
 		name="Dlg_pl_001343"
@@ -397,8 +432,15 @@
 		name="Dlg_npc_001348"
 		text="Туннель ведущий в неизвестное направление.|@FF0000AA|Этап - III|@FF0000AA|@FF1D1D1DДля постройки требуется:|Гофрированный шланг - @FF1D1D1Dx1|Лента «KEK» - @FF1D1D1Dx1|Набор инструментов - @FF1D1D1Dx1|Компоненты электроники - @FF1D1D1Dx2|Провода - @FF1D1D1Dx1|Кусачки - @FF1D1D1Dx1|Круглогубцы - @FF1D1D1Dx1"
 		role="NPC"
-		scriptCondition="GetVar('Tunel_Builden').AsInt == 2"
+		scriptCondition="GetVar('Tunel_Builden').AsInt == 2 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_pl_001349 Dlg_pl_001350 Dlg_pl_001351 Dlg_pl_001352 Dlg_pl_001353 Dlg_pl_001354 Dlg_pl_001355 Dlg_pl_001356 Dlg_pl_001357" />
+
+	<Reply
+		name="Dlg_npc_0013488"
+		text="Туннель ведущий в неизвестное направление.|@FF0000AA|Этап - III|@FF0000AA|@FF1D1D1DДля постройки требуется:|Гофрированный шланг - @FF1D1D1Dx1|Лента «KEK» - @FF1D1D1Dx1|Набор инструментов - @FF1D1D1Dx1|Компоненты электроники - @FF1D1D1Dx2|Провода - @FF1D1D1Dx1|Кусачки - @FF1D1D1Dx1|Круглогубцы - @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Tunel_Builden').AsInt == 2 and GetVar('PlayerBelong').AsString == 'SCAV'"
+		nextReplies="Dlg_pl_001356" />
 
 	<Reply
 		name="Dlg_pl_001349"
@@ -475,8 +517,15 @@
 		name="Dlg_npc_001358"
 		text="Генератор подающий энергию на все модули убежища.|@FF0000AA|Уровень - I|@FF0000AA|@FF1D1D1DДля постройки требуется:|Свеча зажигания - @FF1D1D1Dx1|Двигатель - @FF1D1D1Dx1|Доски - @FF1D1D1Dx1|Нефть - @FF1D1D1Dx2|Деньги: @FF1D1D1D100.000 монет"
 		role="NPC"
-		scriptCondition="GetVar('Generator_lvl').AsInt == 0"
+		scriptCondition="GetVar('Generator_lvl').AsInt == 0 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_pl_001359 Dlg_pl_001360 Dlg_pl_001361 Dlg_pl_001364 Dlg_pl_0013641 Dlg_pl_001365 Dlg_pl_001366 Dlg_pl_001367" />
+
+	<Reply
+		name="Dlg_npc_0013588"
+		text="Генератор подающий энергию на все модули убежища.|@FF0000AA|Уровень - I|@FF0000AA|@FF1D1D1DДля постройки требуется:|Свеча зажигания - @FF1D1D1Dx1|Двигатель - @FF1D1D1Dx1|Доски - @FF1D1D1Dx1|Нефть - @FF1D1D1Dx2|Деньги: @FF1D1D1D100.000 монет"
+		role="NPC"
+		scriptCondition="GetVar('Generator_lvl').AsInt == 0 and GetVar('PlayerBelong').AsString == 'SCAV'"
+		nextReplies="Dlg_pl_001366" />
 
 	<Reply
 		name="Dlg_pl_001359"
@@ -544,15 +593,29 @@
 		name="Dlg_npc_001373"
 		text="Генератор подающий энергию на все модули убежища.|@FF0000AA|Уровень - II|@FF0000AA|@FF1D1D1DДля постройки требуется:|Свеча зажигания - @FF1D1D1Dx2|Двигатель - @FF1D1D1Dx1|Реле - @FF1D1D1Dx2|Провода - @FF1D1D1Dx4|Кабелерез «Bulbex» - @FF1D1D1Dx1"
 		role="NPC"
-		scriptCondition="GetVar('Generator_time_work_second').AsInt > 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 or GetVar('Generator_time_work_minute').AsInt > 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 or GetVar('Generator_time_work_hour').AsInt > 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1"
+		scriptCondition="GetVar('Generator_time_work_second').AsInt > 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 or GetVar('Generator_time_work_minute').AsInt > 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 or GetVar('Generator_time_work_hour').AsInt > 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_pl_001374 Dlg_pl_001375 Dlg_pl_001376 Dlg_pl_001377 Dlg_pl_001378 Dlg_pl_001379 Dlg_pl_0013799 Dlg_pl_001380" />
+	
+	<Reply
+		name="Dlg_npc_001373333"
+		text="Генератор подающий энергию на все модули убежища.|@FF0000AA|Уровень - II|@FF0000AA|@FF1D1D1DДля постройки требуется:|Свеча зажигания - @FF1D1D1Dx2|Двигатель - @FF1D1D1Dx1|Реле - @FF1D1D1Dx2|Провода - @FF1D1D1Dx4|Кабелерез «Bulbex» - @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Generator_time_work_second').AsInt > 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 or GetVar('Generator_time_work_minute').AsInt > 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 or GetVar('Generator_time_work_hour').AsInt > 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 and GetVar('PlayerBelong').AsString == 'SCAV'"
+		nextReplies="Dlg_pl_0013799" />
 
 	<Reply
 		name="Dlg_npc_0013733"
 		text="Генератор подающий энергию на все модули убежища.|@FF0000AA|Уровень - II|@FF0000AA|@FF1D1D1DДля постройки требуется:|Свеча зажигания - @FF1D1D1Dx2|Двигатель - @FF1D1D1Dx1|Реле - @FF1D1D1Dx2|Провода - @FF1D1D1Dx4|Кабелерез «Bulbex» - @FF1D1D1Dx1"
 		role="NPC"
-		scriptCondition="GetVar('Generator_time_work_second').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 and GetVar('Generator_time_work_minute').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 and GetVar('Generator_time_work_hour').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1"
+		scriptCondition="GetVar('Generator_time_work_second').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 and GetVar('Generator_time_work_minute').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 and GetVar('Generator_time_work_hour').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_pl_0013744 Dlg_pl_001374 Dlg_pl_001375 Dlg_pl_001376 Dlg_pl_001377 Dlg_pl_001378 Dlg_pl_001379 Dlg_pl_00137999 Dlg_pl_0013800" />
+
+	<Reply
+		name="Dlg_npc_00137333"
+		text="Генератор подающий энергию на все модули убежища.|@FF0000AA|Уровень - II|@FF0000AA|@FF1D1D1DДля постройки требуется:|Свеча зажигания - @FF1D1D1Dx2|Двигатель - @FF1D1D1Dx1|Реле - @FF1D1D1Dx2|Провода - @FF1D1D1Dx4|Кабелерез «Bulbex» - @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Generator_time_work_second').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 and GetVar('Generator_time_work_minute').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 and GetVar('Generator_time_work_hour').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 and GetVar('PlayerBelong').AsString == 'SCAV'"
+		nextReplies="Dlg_pl_00137999" />
 
 	<Reply
 		name="Dlg_pl_0013744"
@@ -642,8 +705,15 @@
 		name="Dlg_npc_001386"
 		text="Генератор подающий энергию на все модули убежища. Не требует топливо.|@FF0000AA|Уровень - III|@FF0000AA|@FF1D1D1DДля постройки требуется:|Блок питания - @FF1D1D1Dx2|Реле - @FF1D1D1Dx2|Металлические запчасти - @FF1D1D1Dx3|Военный кабель - @FF1D1D1Dx1|Плата - @FF1D1D1Dx1|Передовой преобразователь тока - @FF1D1D1Dx1|Деньги: @FF1D1D1D1.000.000 монет"
 		role="NPC"
-		scriptCondition="GetVar('Generator_lvl').AsInt == 2 and GetVar('Generator_dlg').AsInt == 1"
+		scriptCondition="GetVar('Generator_lvl').AsInt == 2 and GetVar('Generator_dlg').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_pl_001387 Dlg_pl_001389 Dlg_pl_001391 Dlg_pl_001392 Dlg_pl_001393 Dlg_pl_001394 Dlg_pl_001396 Dlg_pl_001397 Dlg_pl_001398 Dlg_pl_001399" />
+	
+	<Reply
+		name="Dlg_npc_0013866"
+		text="Генератор подающий энергию на все модули убежища. Не требует топливо.|@FF0000AA|Уровень - III|@FF0000AA|@FF1D1D1DДля постройки требуется:|Блок питания - @FF1D1D1Dx2|Реле - @FF1D1D1Dx2|Металлические запчасти - @FF1D1D1Dx3|Военный кабель - @FF1D1D1Dx1|Плата - @FF1D1D1Dx1|Передовой преобразователь тока - @FF1D1D1Dx1|Деньги: @FF1D1D1D1.000.000 монет"
+		role="NPC"
+		scriptCondition="GetVar('Generator_lvl').AsInt == 2 and GetVar('Generator_dlg').AsInt == 1 and GetVar('PlayerBelong').AsString == 'SCAV'"
+		nextReplies="Dlg_pl_001398" />
 
 	<Reply
 		name="Dlg_pl_001387"
@@ -728,8 +798,15 @@
 		name="Dlg_npc_001368"
 		text="Загрузите топливо и включите генератор."
 		role="NPC"
-		scriptCondition="GetVar('Generator_dlg').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1"
+		scriptCondition="GetVar('Generator_dlg').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_pl_001369 Dlg_pl_001370 Dlg_pl_0013711 Dlg_pl_0013712 Dlg_pl_00137122 Dlg_pl_001372" />
+
+	<Reply
+		name="Dlg_npc_0013688"
+		text="Загрузите топливо и включите генератор."
+		role="NPC"
+		scriptCondition="GetVar('Generator_dlg').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('PlayerBelong').AsString == 'SCAV'"
+		nextReplies="Dlg_pl_001372" />
 
 	<Reply
 		name="Dlg_pl_001369"
@@ -781,8 +858,15 @@
 		name="Dlg_npc_001381"
 		text="Загрузите топливо и включите генератор."
 		role="NPC"
-		scriptCondition="GetVar('Generator_dlg').AsInt == 0 and GetVar('Generator_lvl').AsInt == 2"
+		scriptCondition="GetVar('Generator_dlg').AsInt == 0 and GetVar('Generator_lvl').AsInt == 2 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_pl_001382 Dlg_pl_001383 Dlg_pl_001384 Dlg_pl_001385 Dlg_pl_001372" />
+
+	<Reply
+		name="Dlg_npc_0013811"
+		text="Загрузите топливо и включите генератор."
+		role="NPC"
+		scriptCondition="GetVar('Generator_dlg').AsInt == 0 and GetVar('Generator_lvl').AsInt == 2 and GetVar('PlayerBelong').AsString == 'SCAV'"
+		nextReplies="Dlg_pl_001372" />
 
 	<Reply
 		name="Dlg_pl_001382"
@@ -821,14 +905,14 @@
 		name="Dlg_npc_0013100"
 		text="Освещение убежища с помощью фонарей.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Генератор уровня @FF1D1D1DI|Энергосберегающая лампа - @FF1D1D1Dx12|Провода - @FF1D1D1Dx6|Деньги: @FF1D1D1D50.000 монет"
 		role="NPC"
-		scriptCondition="GetVar('Generator_lvl').AsInt == 0 and GetVar('Lampposts_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0"
+		scriptCondition="GetVar('Generator_lvl').AsInt == 0 and GetVar('Lampposts_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0 or GetVar('Generator_lvl').AsInt >= 1 and GetVar('Lampposts_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0 and GetVar('PlayerBelong').AsString == 'SCAV'"
 		nextReplies="Dlg_pl_0013106" />
 
 	<Reply
 		name="Dlg_npc_0013101"
 		text="Освещение убежища с помощью фонарей.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Генератор уровня @FF1D1D1DI|Энергосберегающая лампа - @FF1D1D1Dx12|Провода - @FF1D1D1Dx6|Деньги: @FF1D1D1D50.000 монет"
 		role="NPC"
-		scriptCondition="GetVar('Generator_lvl').AsInt >= 1 and GetVar('Lampposts_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0"
+		scriptCondition="GetVar('Generator_lvl').AsInt >= 1 and GetVar('Lampposts_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_pl_0013102 Dlg_pl_0013103 Dlg_pl_0013104 Dlg_pl_0013105 Dlg_pl_0013106 Dlg_pl_0013107" />
 
 	<Reply
@@ -874,14 +958,14 @@
 		name="Dlg_npc_0013117"
 		text="Гараж - неотъемлемое место в жизни каждого махиниста, где из простых болтов и гаек создаются чудовищные бронемашины.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Генератор уровня @FF1D1D1DI|Болты - @FF1D1D1Dx1|Гайки - @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1|Изолента - @FF1D1D1Dx1|Лампа накаливания - @FF1D1D1Dx3|Силовой кабель - @FF1D1D1Dx1|Тройник - @FF1D1D1Dx1|Рулетка - @FF1D1D1Dx1|Шарнирный ключ «КШС» - @FF1D1D1Dx1|Туалетная бумага - @FF1D1D1Dx1|Дакимакура FitaNyashka - @FF1D1D1Dx1|Кактус - @FF1D1D1Dx1|Деньги: @FF1D1D1D500.000 монет|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Возможность создавать предметы|- Регенерация HP: @FF1D1D1D1ед/5сек"
 		role="NPC"
-		scriptCondition="GetVar('Generator_lvl').AsInt == 0 and GetVar('Garage_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0"
+		scriptCondition="GetVar('Generator_lvl').AsInt == 0 and GetVar('Garage_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0 or GetVar('Generator_lvl').AsInt >= 1 and GetVar('Garage_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0 and GetVar('PlayerBelong').AsString == 'SCAV'"
 		nextReplies="Dlg_npc_0013132" />
 
 	<Reply
 		name="Dlg_npc_0013118"
 		text="Гараж - неотъемлемое место в жизни каждого махиниста, где из простых болтов и гаек создаются чудовищные бронемашины.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Генератор уровня @FF1D1D1DI|Болты - @FF1D1D1Dx1|Гайки - @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1|Изолента - @FF1D1D1Dx1|Лампа накаливания - @FF1D1D1Dx3|Силовой кабель - @FF1D1D1Dx1|Тройник - @FF1D1D1Dx1|Рулетка - @FF1D1D1Dx1|Шарнирный ключ «КШС» - @FF1D1D1Dx1|Туалетная бумага - @FF1D1D1Dx1|Дакимакура FitaNyashka - @FF1D1D1Dx1|Кактус - @FF1D1D1Dx1|Деньги: @FF1D1D1D500.000 монет|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Возможность создавать предметы|- Регенерация HP: @FF1D1D1D1ед/5сек"
 		role="NPC"
-		scriptCondition="GetVar('Generator_lvl').AsInt >= 0 and GetVar('Garage_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0"
+		scriptCondition="GetVar('Generator_lvl').AsInt >= 1 and GetVar('Garage_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_npc_0013119 Dlg_npc_0013120 Dlg_npc_0013121 Dlg_npc_0013122 Dlg_npc_0013123 Dlg_npc_0013124 Dlg_npc_0013125 Dlg_npc_0013126 Dlg_npc_0013127 Dlg_npc_0013128 Dlg_npc_0013129 Dlg_npc_00131230 Dlg_npc_0013131 Dlg_npc_0013132 Dlg_npc_0013133" />
 
 	<Reply
@@ -1007,8 +1091,15 @@
 		name="Dlg_npc_0013200"
 		text="Находясь в гараже, с помощью верстака вы можете заниматься созданием предметов, оружия и модулей для своего автомобиля.|@FF0000AA|@FF1D1D1D[Выберите предмет для создания]"
 		role="NPC"
-		scriptCondition="GetVar('Generator_lvl').AsInt >=1 and GetVar('Garage_Builden').AsInt == 1"
+		scriptCondition="GetVar('Generator_lvl').AsInt >=1 and GetVar('Garage_Builden').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_npc_0013300 Dlg_npc_0013301 Dlg_npc_001335 Dlg_npc_0013302 Dlg_npc_0013303 Dlg_npc_0013304 Dlg_npc_0013306 Dlg_npc_0013307 Dlg_npc_0013308 Dlg_npc_0013309 Dlg_npc_0013201" />
+	
+	<Reply
+		name="Dlg_npc_00132000"
+		text="Находясь в гараже, с помощью верстака вы можете заниматься созданием предметов, оружия и модулей для своего автомобиля."
+		role="NPC"
+		scriptCondition="GetVar('Generator_lvl').AsInt >=1 and GetVar('Garage_Builden').AsInt == 1 and GetVar('PlayerBelong').AsString == 'SCAV'"
+		nextReplies="Dlg_npc_0013201" />
 
 	<Reply
 		name="Dlg_npc_0013201"

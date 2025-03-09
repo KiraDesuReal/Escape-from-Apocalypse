@@ -82,6 +82,22 @@ if GARAGE_CRAFT_PAUSE_GLOBAL == nil then
 	GARAGE_CRAFT_PAUSE_GLOBAL = 0
 end
 
+if PLAYER_BELONG_GLOBAL == nil then
+	PLAYER_BELONG_GLOBAL = 0
+end
+
+if SCAV_CAR_TIME_HOUR == nil then
+	SCAV_CAR_TIME_HOUR = 0
+end
+
+if SCAV_CAR_TIME_MINUTE == nil then
+	SCAV_CAR_TIME_MINUTE = 0
+end
+
+if SCAV_CAR_TIME_SECOND == nil then
+	SCAV_CAR_TIME_SECOND = 0
+end
+
 -- Рандомизируем пушки ботам 
 function GiveGunsForVehicle(vehicle, side_random)
 	local veh=vehicle
@@ -1160,6 +1176,18 @@ function AddPlayerRandomItem(items, countItems)
 	if itemList then
 		for i = 1, countItems do
 			AddItemsToPlayerRepository(itemList[random(getn(itemList))], 1)
+		end
+	end
+end
+
+-- Добавить предметы в кузов машины если там есть место
+function AddItemsToRepositoryIfCanPlace(car, prototypeName, amount)
+	if amount == nil then amount = 1 end
+
+	local veh = car
+	if veh then
+		if veh:CanPlaceItemsToRepository(prototypeName, amount) ~=nil then
+			veh:AddItemsToRepository(prototypeName, amount)
 		end
 	end
 end

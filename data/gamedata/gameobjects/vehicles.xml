@@ -629,6 +629,55 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class			= "Vehicle"
+		Name			= "Scout_Scav_Player"
+		ResourceType			= "VEHICLE"
+
+		DiffRatio		= "2.5"
+		MaxEngineRpm		= "7000"
+		LowGearShiftLimit	= "1000"
+		HighGearShiftLimit	= "2000"
+
+		SteeringSpeed		= "1.0"
+		
+		HornSound		= "ET_S_HORN01"
+
+		DecisionMatrix		= "vehiclemain.lua"
+		LookRadius			= "200.0"
+		IntersectionRadius	= "4.0"
+		TakingRadius		= "7.0"
+		DriftCoeff		= "0.2"
+		MassSize		= "4 1 2"
+		MassTranslation		= "0 -1.4 0"
+		DestroyEffectPiercing	= "ET_PS_VEH_EXP1_SMALL"
+		DestroyEffectBlast	= "ET_PS_VEH_EXP2_SMALL"
+		DestroyEffectEnergy	= "ET_PS_VEH_EXP3_SMALL"
+		DestroyEffectWater	= "ET_PS_VEH_EXP2_SMALL"
+
+		AdditionalWheelsHover = "0.2"
+
+		Abstract 		= "true"	>
+
+		<MainPartDescription id = "CHASSIS" partResourceType = "SCOUT_CHASSIS">
+			<PartDescription id = "CABIN" partResourceType = "SCOUT_CABIN" lpName = "LP_CAB01" >
+				<PartDescription id="CABIN_SMALL_GUN" partResourceType = "SMALL_GUN" lpName = "LP_SML01" />
+			</PartDescription>
+			<PartDescription id = "BASKET" partResourceType="FAKE_BASKET" lpName = "LP_CAB01" />
+		</MainPartDescription>
+
+		<Parts>
+			<Part id = "CHASSIS"			Prototype = "scoutChassis_Scav" />
+		</Parts>
+
+		<Wheels>
+			<Wheel Prototype = "scoutWheel01" steering = "correct" />
+			<Wheel Prototype = "scoutWheel01" steering = "correct" />
+			<Wheel Prototype = "scoutWheel02" />
+			<Wheel Prototype = "scoutWheel02" />
+		</Wheels>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
 		Name			= "Fighter_Scav"
 		ResourceType			= "VEHICLE"
 
@@ -646,6 +695,55 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		LookRadius			= "250.0"
 		IntersectionRadius	= "5.0"
 		TakingRadius		= "30.0"
+
+		MassSize		= "6 1 3"
+		MassTranslation		= "0 -2.0 -0.2" 
+		DestroyEffectPiercing	= "ET_PS_VEH_EXP1_MED"
+		DestroyEffectBlast	= "ET_PS_VEH_EXP2_MED"
+		DestroyEffectEnergy	= "ET_PS_VEH_EXP3_MED"
+		DestroyEffectWater	= "ET_PS_VEH_EXP2_MED"
+
+		Abstract 		= "true"	>
+
+		<MainPartDescription id = "CHASSIS" partResourceType = "FIGHTER_CHASSIS">
+			<PartDescription id = "CABIN" partResourceType = "FIGHTER_CABIN" lpName = "LP_CAB01" >
+				<PartDescription id="CABIN_SMALL_GUN" partResourceType = "SMALL_GUN" lpName = "LP_SML01" />
+				<PartDescription id="CABIN_BIG_GUN_1" partResourceType = "BIG_GUN" lpName = "LP_BIG01" />
+			</PartDescription>
+			<PartDescription id = "BASKET" partResourceType="FAKE_BASKET" lpName = "LP_CAB01" />
+		</MainPartDescription>
+
+		<Parts>
+			<Part id = "CHASSIS"			Prototype = "fighterChassis_Scav" />
+		</Parts>
+
+		<Wheels>
+			<Wheel Prototype = "fighterWheel01l" steering = "correct" />
+			<Wheel Prototype = "fighterWheel01r" steering = "correct" />
+			<Wheel Prototype = "fighterWheel02l" />
+			<Wheel Prototype = "fighterWheel02r" />
+		</Wheels>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
+		Name			= "Fighter_Scav_Player"
+		ResourceType			= "VEHICLE"
+
+		DiffRatio		= "3.0"
+		MaxEngineRpm		= "7000"
+		LowGearShiftLimit	= "1000"
+		HighGearShiftLimit	= "2000"
+
+		SteeringSpeed		= "0.5"
+
+		HornSound		= "ET_S_HORN01"
+
+		DecisionMatrix		= "vehiclemain.lua"
+		DriftCoeff		= "0.5"
+		LookRadius			= "200.0"
+		IntersectionRadius	= "4.0"
+		TakingRadius		= "7.0"
 
 		MassSize		= "6 1 3"
 		MassTranslation		= "0 -2.0 -0.2" 
@@ -744,6 +842,56 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		LookRadius			= "250.0"
 		IntersectionRadius	= "4.5"
 		TakingRadius		= "30.0"
+
+		MassSize		= "10 1 5"
+		MassTranslation		= "0 -1.6 0"
+		DestroyEffectPiercing	= "ET_PS_VEH_EXP1_MED"
+		DestroyEffectBlast	= "ET_PS_VEH_EXP2_MED"
+		DestroyEffectEnergy	= "ET_PS_VEH_EXP3_MED"
+		DestroyEffectWater	= "ET_PS_VEH_EXP2_MED"
+
+		Abstract 		= "true"	>
+
+		<MainPartDescription id = "CHASSIS" partResourceType = "HUNTER_CHASSIS">
+			<PartDescription id = "CABIN" partResourceType = "HUNTER_CABIN" lpName = "LP_CAB01" >
+				<PartDescription id="CABIN_SMALL_GUN" partResourceType = "SMALL_GUN" lpName = "LP_SML01" />
+				<PartDescription id="CABIN_BIG_GUN_1" partResourceType = "BIG_GUN" lpName = "LP_BIG01" />
+				<PartDescription id="CABIN_GIANT_GUN" partResourceType = "GIANT_GUN" lpName = "LP_GIANT01" />
+			</PartDescription>
+			<PartDescription id = "BASKET" partResourceType="FAKE_BASKET" lpName = "LP_CAB01" />
+		</MainPartDescription>
+
+		<Parts>
+			<Part id = "CHASSIS"			Prototype = "hunterChassis_Scav" />
+		</Parts>
+
+		<Wheels>
+			<Wheel Prototype = "hunterWheel01l" steering = "correct" />
+			<Wheel Prototype = "hunterWheel01r" steering = "correct" />
+			<Wheel Prototype = "hunterWheel01l" />
+			<Wheel Prototype = "hunterWheel01r" />
+		</Wheels>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
+		Name			= "Hunter_Scav_Player"
+		ResourceType			= "VEHICLE"
+
+		DiffRatio		= "5.0"
+		MaxEngineRpm		= "5000"
+		LowGearShiftLimit	= "1000"
+		HighGearShiftLimit	= "2000"
+
+		SteeringSpeed		= "0.5"
+
+		HornSound		= "ET_S_HORN01"
+
+		DecisionMatrix		= "vehiclemain.lua"
+
+		LookRadius			= "200.0"
+		IntersectionRadius	= "4"
+		TakingRadius		= "7.0"
 
 		MassSize		= "10 1 5"
 		MassTranslation		= "0 -1.6 0"
@@ -1948,6 +2096,16 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class			= "Vehicle"
+		Name			= "ScoutCarForPlayer"
+		ParentPrototype 	= "Scout_Scav_Player">
+		<Parts>
+			<Part id = "CABIN"		Prototype = "scoutCab01" />
+			<Part id = "BASKET"		Prototype = "fakeCargo" />
+		</Parts>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
 		Name			= "Scout1CarScav"
 		ParentPrototype 	= "Scout_Scav"
 		VisibleInEncyclopedia	= "true">
@@ -1979,6 +2137,16 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class			= "Vehicle"
+		Name			= "FighterCarForPlayer"
+		ParentPrototype 	= "Fighter_Scav_Player">
+		<Parts>
+			<Part id = "CABIN"			Prototype = "fighterCab01" />
+			<Part id = "BASKET"		Prototype = "fakeCargo" />
+		</Parts>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
 		Name			= "Fighter1CarScav"
 		ParentPrototype 	= "Fighter_Scav"
 		VisibleInEncyclopedia	= "true">
@@ -2005,6 +2173,16 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		<Parts>
 			<Part id = "CABIN"			Prototype = "fighterScavCab03" />
 			<Part id = "BASKET"		Prototype = "bigfakeCargo" />
+		</Parts>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
+		Name			= "HunterCarForPlayer"
+		ParentPrototype 	= "Hunter_Scav_Player">
+		<Parts>
+			<Part id = "CABIN"			Prototype = "hunterCab02" />
+			<Part id = "BASKET"		Prototype = "fakeCargo" />
 		</Parts>
 	</Prototype>
 

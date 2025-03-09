@@ -108,7 +108,7 @@
 			Belong="1100"
 			Prototype="NPC"
 			ModelName=""
-			helloReplyNames="Dlg_npc_001302"
+			helloReplyNames="Dlg_npc_001302 Dlg_npc_0013022"
 			SpokenCount="0" />
 	</Object>
 
@@ -123,7 +123,7 @@
 			Belong="1100"
 			Prototype="NPC"
 			ModelName=""
-			helloReplyNames="Dlg_npc_001338"
+			helloReplyNames="Dlg_npc_001338 Dlg_npc_0013388"
 			SpokenCount="0" />
 
 		<Object
@@ -131,7 +131,7 @@
 			Belong="1100"
 			Prototype="NPC"
 			ModelName=""
-			helloReplyNames="Dlg_npc_001342"
+			helloReplyNames="Dlg_npc_001342 Dlg_npc_0013422"
 			SpokenCount="0" />
 
 		<Object
@@ -139,7 +139,7 @@
 			Belong="1100"
 			Prototype="NPC"
 			ModelName=""
-			helloReplyNames="Dlg_npc_001348"
+			helloReplyNames="Dlg_npc_001348 Dlg_npc_0013488"
 			SpokenCount="0" />
 	</Object>
 
@@ -182,7 +182,7 @@
 			Belong="1100"
 			Prototype="NPC"
 			ModelName=""
-			helloReplyNames="Dlg_npc_001314"
+			helloReplyNames="Dlg_npc_001314 Dlg_npc_0013144"
 			SpokenCount="0" />
 	</Object>
 
@@ -197,7 +197,7 @@
 			Belong="1100"
 			Prototype="NPC"
 			ModelName=""
-			helloReplyNames="Dlg_npc_001323 Dlg_npc_001325 Dlg_npc_001400"
+			helloReplyNames="Dlg_npc_001323 Dlg_npc_001325 Dlg_npc_001400 Dlg_npc_0014000"
 			SpokenCount="0" />
 	</Object>
 
@@ -226,7 +226,7 @@
 			Belong="1100"
 			Prototype="NPC"
 			ModelName=""
-			helloReplyNames="Dlg_npc_001358 Dlg_npc_001368"
+			helloReplyNames="Dlg_npc_001358 Dlg_npc_0013588 Dlg_npc_001368 Dlg_npc_0013688"
 			SpokenCount="0" />
 			
 		<Object
@@ -234,7 +234,7 @@
 			Belong="1100"
 			Prototype="NPC"
 			ModelName=""
-			helloReplyNames="Dlg_npc_001373 Dlg_npc_0013733"
+			helloReplyNames="Dlg_npc_001373 Dlg_npc_001373333 Dlg_npc_0013733 Dlg_npc_00137333"
 			SpokenCount="0" />
 	</Object>
 
@@ -256,7 +256,7 @@
 			Belong="1100"
 			Prototype="NPC"
 			ModelName=""
-			helloReplyNames="Dlg_npc_001381"
+			helloReplyNames="Dlg_npc_001381 Dlg_npc_0013811"
 			SpokenCount="0" />
 
 		<Object
@@ -264,7 +264,7 @@
 			Belong="1100"
 			Prototype="NPC"
 			ModelName=""
-			helloReplyNames="Dlg_npc_001386"
+			helloReplyNames="Dlg_npc_001386 Dlg_npc_0013866"
 			SpokenCount="0" />
 	</Object>
 
@@ -301,7 +301,7 @@
 			Belong="1100"
 			Prototype="NPC"
 			ModelName=""
-			helloReplyNames="Dlg_npc_0013117 Dlg_npc_0013118 Dlg_npc_0013200"
+			helloReplyNames="Dlg_npc_0013117 Dlg_npc_0013118 Dlg_npc_0013200 Dlg_npc_00132000"
 			SpokenCount="0" />
 	</Object>
 
@@ -311,6 +311,20 @@
 		Prototype="genericLocation"
 		Pos="888.526 255.000 958.182"
 		Radius="10.000"/>
+
+	<Object
+		Name="ScavCarSpawn_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="895.371 255.000 894.831"
+		Radius="10.000"/>
+
+	<Object
+		Name="ScavCarSpawn_Timer_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="895.371 255.000 894.831"
+		Radius="11.500"/>
 	
 	<Object
 		Name="tp_1_loc"

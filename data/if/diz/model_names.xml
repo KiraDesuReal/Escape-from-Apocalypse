@@ -1883,6 +1883,51 @@
 		value="Кузов" />
 
 	<Item
+		id="ScavfakeCargo_1"
+		locForm="0"
+		value="Кузов 4x4" />
+
+	<Item
+		id="ScavfakeCargo_2"
+		locForm="0"
+		value="Кузов 5x4" />
+
+	<Item
+		id="ScavfakeCargo_3"
+		locForm="0"
+		value="Кузов 7x4" />
+
+	<Item
+		id="ScavfakeCargo_4"
+		locForm="0"
+		value="Кузов 4x6" />
+	
+	<Item
+		id="ScavfakeCargo_5"
+		locForm="0"
+		value="Кузов 4x5" />
+
+	<Item
+		id="ScavfakeCargo_6"
+		locForm="0"
+		value="Кузов 4x7" />
+
+	<Item
+		id="ScavfakeCargo_7"
+		locForm="0"
+		value="Кузов 5x5" />
+
+	<Item
+		id="ScavfakeCargo_8"
+		locForm="0"
+		value="Кузов 6x4" />
+
+	<Item
+		id="fakePlayerCargo"
+		locForm="0"
+		value="Кузов" />
+
+	<Item
 		id="fakeCab"
 		locForm="0"
 		value="Кабина" />
@@ -2013,6 +2058,11 @@
 		value="Кузнечик" />
 
 	<Item
+		id="ScoutCarForPlayer"
+		locForm="0"
+		value="Скаут" />
+
+	<Item
 		id="Scout1CarScav"
 		locForm="0"
 		value="Скаут" />
@@ -2028,6 +2078,11 @@
 		value="Скаут" />
 
 	<Item
+		id="FighterCarForPlayer"
+		locForm="0"
+		value="Боец" />
+
+	<Item
 		id="Fighter1CarScav"
 		locForm="0"
 		value="Боец" />
@@ -2041,6 +2096,11 @@
 		id="Fighter2CarBoss"
 		locForm="0"
 		value="Работяга" />
+
+	<Item
+		id="HunterCarForPlayer"
+		locForm="0"
+		value="Охотник" />
 
 	<Item
 		id="Hunter2CarScav"

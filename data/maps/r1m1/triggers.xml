@@ -120,6 +120,10 @@
 			SetVar("GarageCraft", 0)
 			SetVar("GarageCraftPause", 0)
 
+			SetVar("ScavCar_time_hour", 0)
+			SetVar("ScavCar_time_minute", 0)
+			SetVar("ScavCar_time_second", 0)
+
 			if COUNT_RAIDS then SetVar("CountRaids", COUNT_RAIDS) end 
 
 			if CHESTSCAVS_TIMER_HOUR_GLOBAL > 0 then SetVar("ChestScavs_time_hour", CHESTSCAVS_TIMER_HOUR_GLOBAL) end
@@ -138,6 +142,10 @@
 			if GARAGE_CRAFTING_TIME_SECOND_GLOBAL > 0 then SetVar("GarageCrafting_time_second", GARAGE_CRAFTING_TIME_SECOND_GLOBAL) end
 			if GARAGE_CRAFT_GLOBAL > 0 then SetVar("GarageCraft", GARAGE_CRAFT_GLOBAL) end
 			if GARAGE_CRAFT_PAUSE_GLOBAL then SetVar("GarageCraftPause", GARAGE_CRAFT_PAUSE_GLOBAL) end
+
+			if SCAV_CAR_TIME_HOUR > 0 then SetVar("ScavCar_time_hour", SCAV_CAR_TIME_HOUR) end
+			if SCAV_CAR_TIME_MINUTE > 0 then SetVar("ScavCar_time_minute", SCAV_CAR_TIME_MINUTE) end
+			if SCAV_CAR_TIME_SECOND > 0 then SetVar("ScavCar_time_second", SCAV_CAR_TIME_SECOND) end
 
 			TActivate("GlobalVar")
 
@@ -472,6 +480,10 @@
 				end
 			end
 
+			if GetVar("ScavCar_time_hour").AsInt > 0 or GetVar("ScavCar_time_minute").AsInt > 0 or GetVar("ScavCar_time_second").AsInt > 0 then
+				TActivate("ScavCar_Timer")
+			end
+
 			if not(0 > min) then
 				sec = sec - 1
 				SetVar("TimeRaidSecond",sec)
@@ -585,6 +597,37 @@
 				SetVar("GarageCrafting_time_hour", 0)
 				SetVar("GarageCraftPause", 0)
 				SetVar("GarageCraft", 2)
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ScavCar_Timer" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local hourSC = GetVar("ScavCar_time_hour").AsInt
+			local minSC = GetVar("ScavCar_time_minute").AsInt
+			local secSC = GetVar("ScavCar_time_second").AsInt
+			--println("Scav Car: "..hourSC.." "..minSC.." "..secSC)
+			if not(0 > hourSC) and not(0 > minSC) then
+				secSC = secSC - 1
+				SetVar("ScavCar_time_second", secSC)
+				if 0 > secSC then
+					SetVar("ScavCar_time_second", 59)
+					minSC = minSC - 1
+					SetVar("ScavCar_time_minute", minSC)
+				end
+				if 0 > minSC then
+					SetVar("ScavCar_time_minute", 59)
+					hourSC = hourSC - 1
+					SetVar("ScavCar_time_hour", hourSC)
+				end
+			end
+
+			if hourSC == 0 and minSC == 0 and secSC == 0 then
+				SetVar("ScavCar_time_hour", 0)
+				SetVar("ScavCar_time_minute", 0)
+				SetVar("ScavCar_time_second", 0)
 			end
 			trigger:Deactivate()
 		</script>
@@ -3835,6 +3878,10 @@
 			if GARAGE_CRAFTING_TIME_SECOND_GLOBAL then GARAGE_CRAFTING_TIME_SECOND_GLOBAL = GetVar("GarageCrafting_time_second").AsInt end
 			if GARAGE_CRAFT_GLOBAL then GARAGE_CRAFT_GLOBAL = GetVar("GarageCraft").AsInt end
 			if GARAGE_CRAFT_PAUSE_GLOBAL then GARAGE_CRAFT_PAUSE_GLOBAL = GetVar("GarageCraftPause").AsInt end
+
+			if SCAV_CAR_TIME_HOUR then SCAV_CAR_TIME_HOUR = GetVar("ScavCar_time_hour").AsInt end
+			if SCAV_CAR_TIME_MINUTE then SCAV_CAR_TIME_MINUTE = GetVar("ScavCar_time_minute").AsInt end
+			if SCAV_CAR_TIME_SECOND then SCAV_CAR_TIME_SECOND = GetVar("ScavCar_time_second").AsInt end
 
 			TDeactivate("IfChargeCar")
 			

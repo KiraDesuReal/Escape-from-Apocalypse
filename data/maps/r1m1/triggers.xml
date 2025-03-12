@@ -52,6 +52,8 @@
 			SetVar("PlayerKillScavs", 0)
 			SetVar("PlayerKillPMC", 0)
 
+			SetVar("ScavCarma", "0.00")
+
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -94,6 +96,8 @@
 				SetVar("q_belazist"..q_b.."_killPMC", 0)
 			end
 
+			SetWeather(0)
+
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -124,6 +128,8 @@
 			SetVar("ScavCar_time_minute", 0)
 			SetVar("ScavCar_time_second", 0)
 
+			SetVar("PlayerBelong", "BEAR")
+
 			if COUNT_RAIDS then SetVar("CountRaids", COUNT_RAIDS) end 
 
 			if CHESTSCAVS_TIMER_HOUR_GLOBAL > 0 then SetVar("ChestScavs_time_hour", CHESTSCAVS_TIMER_HOUR_GLOBAL) end
@@ -147,12 +153,23 @@
 			if SCAV_CAR_TIME_MINUTE > 0 then SetVar("ScavCar_time_minute", SCAV_CAR_TIME_MINUTE) end
 			if SCAV_CAR_TIME_SECOND > 0 then SetVar("ScavCar_time_second", SCAV_CAR_TIME_SECOND) end
 
+			if SCAV_CARMA_GLOBAL then SetVar("ScavCarma", SCAV_CARMA_GLOBAL) end
+
+			if PLAYER_BELONG_GLOBAL then SetVar("PlayerBelong", PLAYER_BELONG_GLOBAL) end
+
+			if GetVar("PlayerBelong").AsString == "SCAV" then
+				SetTolerance(1100, 1082, RS_NEUTRAL)
+			else
+				SetTolerance(1100, 1082, RS_ENEMY)
+				TActivate("QuestsActivate")
+			end
+
 			TActivate("GlobalVar")
 
 			TActivate("PetrolStations")
 
 			TActivate("PlayerCarConfiguration")
-			TActivate("IfChangeCar")
+			TActivate("IfChargeCar")
 			TActivate("SpawnPlayer")
 			TActivate("StartFadeEffect")
 
@@ -173,15 +190,12 @@
 
 			TActivate("CreateBossProbability")
 
-			TActivate("QuestsActivate")
-
 			CreateNewBreakableObject("lamppost2", "fonar", 1002, CVector(3055.078, 349.812, 1446.906), Quaternion(0.0000, -0.7133, 0.0000, 0.7009), 0)
 
 			if IsQuestItemPresent("quest_item_map_r1m1") and GetVar("Map").AsInt == 0 then
 				map()
 				SetVar("Map", 1)
 			end
-			
 		</script>
 	</trigger>
 
@@ -264,7 +278,15 @@
 			local vehPlayer = GetPlayerVehicle()
 			if vehPlayer then
 				vehPlayer:setImmortalMode(1)
-				vehPlayer:SetNameFromScript("PlayerCarForDead")
+				if GetVar("PlayerBelong").AsString == "SCAV" then
+					vehPlayer:SetNameFromScript("ScavCarForPlayer")
+					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
+					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "ScavCarForPlayer")
+				else
+					vehPlayer:SetNameFromScript("PlayerCar")
+					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
+					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "PlayerCar")
+				end
 			end
 			TActivate("FakePlayerDead")
 			TActivate("PlayerCarConfiguration")
@@ -347,7 +369,7 @@
 	<trigger Name="SpawnPlayer" active="0">
 		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
-
+			
 			local posr1 = random(10)
 			local posrr1={
 				CVector(1111.746, 303.447, 3529.309),
@@ -360,7 +382,7 @@
 				CVector(1625.450, 318.769, 2383.752),
 				CVector(3139.961, 356.520, 3144.354),
 				CVector(3075.630, 357.404, 3489.001)} 
-
+			
 			local posr2 = random(10)
 			local posrr2={
 				CVector(2615.098, 320.599, 2020.458),
@@ -373,8 +395,27 @@
 				CVector(2634.281, 320.436, 907.682),
 				CVector(3487.845, 324.339, 748.105),
 				CVector(3225.707, 320.430, 1334.481)}
+			
+			local posr_scav1={
+				CVector(924.792, 289.898, 2939.595),
+				CVector(670.863, 320.057, 2892.741),
+				CVector(1430.792, 302.800, 2512.974),
+				CVector(2290.667, 321.301, 2874.635),
+				CVector(2127.924, 305.328, 3080.592),
+				CVector(1040.301, 296.503, 2200.368),
+				CVector(3045.781, 334.970, 2508.133),
+				CVector(3629.278, 379.554, 3498.144)}
 
-			local Z = random(9)		
+			local posr_scav2={
+				CVector(415.002, 330.454, 2469.008),
+				CVector(469.195, 334.746, 2097.589),
+				CVector(1027.904, 287.751, 1283.049),
+				CVector(1946.857, 329.629, 1496.421),
+				CVector(1437.240, 297.461, 1058.790),
+				CVector(2540.764, 319.883, 433.270),
+				CVector(3010.013, 316.333, 587.384),
+				CVector(503.729, 283.233, 394.671)}
+	
 			local rotarr={
 				Quaternion(-0.029, 0.679, -0.021, 0.734),
 				Quaternion(0.001, 0.626, 0.002, 0.780),
@@ -387,27 +428,50 @@
 				Quaternion(-0.003, -1.000, -0.006, -0.015)}
 
 			local spawns = random(2)
-
-			if spawns == 1 then
-				SetVar("PosPlayer1",posr1)
-				SetVar("SpawnPlayer",1)
-				TActivate("Exits_RidzinBaseTroiskoe")
+			if spawns == 1 then 
+				SetVar("SpawnPlayer", 1)
+				if not(GetVar("PlayerBelong").AsString == "SCAV") then
+					SetVar("PosPlayer1", posr1)
+					TActivate("Exits_RidzinBaseTroiskoe")
+				else
+					TActivate("ExitsForScav_RidzinBaseScavTroiskoe")
+				end
 			else
-				SetVar("PosPlayer2",posr2)
-				SetVar("SpawnPlayer",2)
-				TActivate("Exits_FaterTownGloohoe")
+				SetVar("SpawnPlayer", 2)
+				if not(GetVar("PlayerBelong").AsString == "SCAV") then
+					SetVar("PosPlayer2", posr2)
+					TActivate("Exits_FaterTownGloohoe")
+				else
+					TActivate("ExitsForScav_FaterGloohoeTheTown")
+				end
 			end
-		
+
 			local vehPlayer = GetPlayerVehicle()
 			if vehPlayer then
-				vehPlayer:SetRotation(rotarr[Z])
+				vehPlayer:SetRotation(rotarr[random(getn(rotarr))])
 				vehPlayer:setImmortalMode(1)
 				if spawns == 1 then
-					vehPlayer:SetGamePositionOnGround(posrr1[posr1])
+					if not(GetVar("PlayerBelong").AsString == "SCAV") then
+						vehPlayer:SetGamePositionOnGround(posrr1[posr1])
+					else
+						vehPlayer:SetGamePositionOnGround(posr_scav1[random(getn(posr_scav1))])
+					end
 				else
-					vehPlayer:SetGamePositionOnGround(posrr2[posr2])
+					if not(GetVar("PlayerBelong").AsString == "SCAV") then
+						vehPlayer:SetGamePositionOnGround(posrr2[posr1])
+					else
+						vehPlayer:SetGamePositionOnGround(posr_scav2[random(getn(posr_scav2))])
+					end
 				end
-				vehPlayer:SetNameFromScript("PlayerCarForDead")
+				if GetVar("PlayerBelong").AsString == "SCAV" then
+					vehPlayer:SetNameFromScript("ScavCarForPlayer")
+					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
+					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "ScavCarForPlayer")
+				else
+					vehPlayer:SetNameFromScript("PlayerCar")
+					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
+					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "PlayerCar")
+				end
 				vehPlayer:SetThrottle(0)
 				vehPlayer:SetCustomLinearVelocity(0)
 			end
@@ -423,8 +487,12 @@
 	<trigger Name="TimerRaidStart" active="0">
 		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
-			SetVar("TimeRaidMinute",13)
-			SetVar("TimeRaidSecond",59)
+			if GetVar("PlayerBelong").AsString == "SCAV" then
+				SetVar("TimeRaidMinute", 9)
+			else
+				SetVar("TimeRaidMinute", 13)
+			end
+			SetVar("TimeRaidSecond", 59)
 			SetVar("TimeRaidMsg", 0)
 			TActivate("TimerRaid")
 			trigger:Deactivate() 
@@ -455,7 +523,7 @@
 			elseif min == 9 and sec == 59 then
 				AddImportantFadingMsgByStrIdFormatted("fm_time_raid", Msg)
 			elseif min == 5 and sec == 59 then
-				TActivate("CreateScavs")
+				if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("CreateScavs") end
 			elseif min == 4 and sec == 59 or min == 2 and sec == 59 or min == 1 and sec == 59 then
 				AddImportantFadingMsgByStrIdFormatted("fm_time_raid_red", Msg)
 			elseif min == 0 and sec == 59 or min == 0 and sec == 30 or min == 0 and sec == 10  or min == 0 and 5 >= sec and not(sec == 0) then
@@ -665,9 +733,16 @@
 
 			local TextTime = day.." "..nulH..hour..":"..nulM..minute
 
-			local user = os.getenv("USERNAME")
+			local user
+			local Msg
 
-			local Msg = "Рейд №"..count.."|День: "..TextTime.."|Оператор ЧВК "..user.."|Край"
+			if GetVar("PlayerBelong").AsString == "SCAV" then
+				user = GenerateRandomScavName()
+				Msg = "Рейд №"..count.."|День: "..TextTime.."|"..user.."|Край"
+			else
+				user = os.getenv("USERNAME")
+				Msg = "Рейд №"..count.."|День: "..TextTime.."|Оператор ЧВК "..user.."|Край"
+			end
 
 			AddFadingMsgByStrIdFormatted("fm_raid_info", Msg)
 
@@ -712,6 +787,64 @@
 			TActivate ("RoadToRidzin")
 			TActivate ("BaseFelix")
 
+			local ExitZaTheTroiskoeRandom = random (2)
+			if ExitZaTheTroiskoeRandom == 1 then
+				TActivate ("ZaTheTroiskoe")
+				CreateNewSgNodeObject("ET_PS_LENS_D4", "LightZaTheTroiskoeExit1", -1, -1, CVector(3055.050, 356.400, 1447.950), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.3)
+				CreateNewSgNodeObject("ET_PS_LENS_D4", "LightZaTheTroiskoeExit2", -1, -1, CVector(3055.150, 356.400, 1445.900), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.3)
+				CreateNewSgNodeObject("ET_LS_LIGHT_TEST", "LightZaTheTroiskoeExit3", -1, -1, CVector(3056.365, 358.100, 1446.900), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.1)
+				TActivate ("FonarZaTheTroiskoeExit_Broken")
+				SetVar("ExitZaTheTroiskoe",1)
+			end
+
+			local RoadToFaterRandom = random  (2)
+			if RoadToFaterRandom == 1 then
+				SetVar("ExitRoadToFater",1)
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE", "SmokeRoadToFater1", -1, -1, CVector(2085.447, 312.800, 3646.448), Quaternion(0, 0, 0, 0), 2)
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE", "SmokeRoadToFater2", -1, -1, CVector(2064.941, 330.600, 3664.033), Quaternion(0, 0, 0, 0), 2)
+			end
+		
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Активация выходов для Дикого Фатер(Рандом) Глухое Горы -->
+	<trigger Name="ExitsForScav_FaterGloohoeTheTown" active="0">
+		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			local RoadToFaterRandom = random  (2)
+			if RoadToFaterRandom == 1 then
+				TActivate ("RoadToFater")
+				SetVar("ExitRoadToFater",1)
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE", "SmokeRoadToFater1", -1, -1, CVector(2085.447, 312.800, 3646.448), Quaternion(0, 0, 0, 0), 2)
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE", "SmokeRoadToFater2", -1, -1, CVector(2064.941, 330.600, 3664.033), Quaternion(0, 0, 0, 0), 2)
+			end
+
+			TActivate ("ZaTheGloohoe")
+			TActivate ("ZaTheTown_exitScav")
+
+			local ExitZaTheTroiskoeRandom = random (2)
+			if ExitZaTheTroiskoeRandom == 1 then
+				CreateNewSgNodeObject("ET_PS_LENS_D4", "LightZaTheTroiskoeExit1", -1, -1, CVector(3055.050, 356.400, 1447.950), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.3)
+				CreateNewSgNodeObject("ET_PS_LENS_D4", "LightZaTheTroiskoeExit2", -1, -1, CVector(3055.150, 356.400, 1445.900), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.3)
+				CreateNewSgNodeObject("ET_LS_LIGHT_TEST", "LightZaTheTroiskoeExit3", -1, -1, CVector(3056.365, 358.100, 1446.900), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.1)
+				TActivate ("FonarZaTheTroiskoeExit_Broken")
+				SetVar("ExitZaTheTroiskoe",1)
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Активация выходов для Дикого Риджин База Троицкое(Рандом) -->
+	<trigger Name="ExitsForScav_RidzinBaseScavTroiskoe" active="0">
+		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			TActivate ("RoadToRidzin")
+			TActivate("BaseScavs_exitScav")
+			
 			local ExitZaTheTroiskoeRandom = random (2)
 			if ExitZaTheTroiskoeRandom == 1 then
 				TActivate ("ZaTheTroiskoe")
@@ -846,6 +979,37 @@
  		</script>
 	</trigger>
 
+	<trigger Name="ZaTheTown_exitScav" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ZaTheTown_exitScav_loc" />
+		<script>
+			if GetVar("PetrolStation_Refill_Process").AsInt == 0 then
+				SetVar("ExitTimer",6)
+				AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitScav_ZaTheTown")
+				SoundFadingMsg()
+				TActivate ("LeaveZoneExit")
+				TActivate ("ExitTimer")
+			end
+ 		</script>
+	</trigger>
+
+	<trigger Name="BaseScavs_exitScav" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BaseScavs_exitScav_loc" />
+		<script>
+			if 1 >= GetTolerance(1100, 1082) then
+				AddImportantFadingMsgByStrIdFormatted("fm_player_scav_close_exit", "ExitScav_BaseScavs")
+				SoundFadingMsg()
+			else
+				if GetVar("PetrolStation_Refill_Process").AsInt == 0 then
+					SetVar("ExitTimer",6)
+					AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitScav_BaseScavs")
+					SoundFadingMsg()
+					TActivate ("LeaveZoneExit")
+					TActivate ("ExitTimer")
+				end
+			end
+ 		</script>
+	</trigger>
+
 <!-- Игрок покидает зону выхода -->
 	<trigger Name="LeaveZoneExit" active="0">
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ToR1M3_Exit" />
@@ -853,6 +1017,8 @@
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ToR1M2_Exit" />
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="BaseFelix_Exit" />
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ZaTheTroiskoe_Exit" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ZaTheTown_exitScav_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="BaseScavs_exitScav_loc" />
 		<script>
 			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_leaves_location")
 			SoundFadingMsg()
@@ -870,11 +1036,18 @@
 			SetVar("ExitTimer", timer)
 	
 			if timer == 0 then
-				TActivate("ExitToMap")
 				TDeactivate("LeaveZoneExit")
 				SetVar("ExitTimer",6)
 				PassToMap("r0m0", "FromLocation")
-				TActivate("IfExitForQuest")
+				if GetVar("PlayerBelong").AsString == "SCAV" then 
+					if 1 >= GetTolerance(1100, 1082) then
+						SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.4)
+					end
+					SetVar("ScavCarma", GetVar("ScavCarma").AsString + 0.1)
+				else
+					TActivate("IfExitForQuest") 
+				end
+				TActivate("ExitToMap")
 				trigger:Deactivate()
 			else
 				AddFadingMsgByStrIdFormatted("fm_player_exit_location", timer)
@@ -905,9 +1078,21 @@
 			end
 
 			if GetVar("SpawnPlayer").AsInt == 1 then
-				AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits2LocationR1M1")
+				if GetVar("PlayerBelong").AsString == "SCAV" then
+					if 1 >= GetTolerance(1100, 1082) then
+						AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits2LocationR1M1_ForScav_2")
+					else
+						AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits2LocationR1M1_ForScav")
+					end
+				else
+					AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits2LocationR1M1")
+				end
 			else
-				AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits1LocationR1M1")
+				if GetVar("PlayerBelong").AsString == "SCAV" then
+					AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits1LocationR1M1_ForScav")
+				else
+					AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits1LocationR1M1")
+				end
 			end
 
 			TActivate("ShowExits_Activate")
@@ -1000,7 +1185,9 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
-			TActivate("KillsScavs")
+			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("KillsScavs") end
+			SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
+			println("Scavs kill: "..GetVar("PlayerKillScavs").AsInt) 
 			if GetVar("CountScav_1_loc").AsInt > count then
 			return
 			end
@@ -1136,7 +1323,9 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
-			TActivate("KillsScavs")
+			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("KillsScavs") end 
+			SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
+			println("Scavs kill: "..GetVar("PlayerKillScavs").AsInt)
 			if GetVar("CountScav_2_loc").AsInt > count then
 			return
 			end
@@ -1275,7 +1464,9 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
-			TActivate("KillsScavs")
+			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("KillsScavs") end 
+			SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
+			println("Scavs kill: "..GetVar("PlayerKillScavs").AsInt)
 			if GetVar("CountScav_3_loc").AsInt > count then
 			return
 			end
@@ -1410,7 +1601,9 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
-			TActivate("KillsScavs")
+			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("KillsScavs") end 
+			SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
+			println("Scavs kill: "..GetVar("PlayerKillScavs").AsInt)
 			if GetVar("CountScav_4_loc").AsInt > count then
 			return
 			end
@@ -1547,7 +1740,9 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
-			TActivate("KillsScavs")
+			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("KillsScavs") end 
+			SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
+			println("Scavs kill: "..GetVar("PlayerKillScavs").AsInt)
 			if GetVar("CountScav_5_loc").AsInt > count then
 			return
 			end
@@ -1694,7 +1889,9 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
-			TActivate("KillsScavs")
+			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("KillsScavs") end 
+			SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
+			println("Scavs kill: "..GetVar("PlayerKillScavs").AsInt)
 			if GetVar("CountScav_6_loc").AsInt > count then
 			return
 			end
@@ -1835,7 +2032,9 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
-			TActivate("KillsScavs")
+			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("KillsScavs") end 
+			SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
+			println("Scavs kill: "..GetVar("PlayerKillScavs").AsInt)
 			if GetVar("CountScav_7_loc").AsInt > count then
 			return
 			end
@@ -1980,7 +2179,9 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
-			TActivate("KillsScavs")
+			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("KillsScavs") end 
+			SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
+			println("Scavs kill: "..GetVar("PlayerKillScavs").AsInt)
 			if GetVar("CountScav_8_loc").AsInt > count then
 			return
 			end
@@ -2913,7 +3114,7 @@
 			local sec = GetVar("TimeRaidSecond").AsInt
 
 			if 9 >= min and sec == 59 and not(2 >= min) then
-				if (10 >= air_rand) then
+				if (5 >= air_rand) then
 					TActivate("SpawnOracle_AirDrop")
 					trigger:Deactivate()
 				end
@@ -2926,7 +3127,7 @@
 	</trigger>		
 
 	<trigger Name="SpawnOracle_AirDrop" active="0">
-		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<event timeout="10" eventid="GE_TIME_PERIOD" />
 		<script>
 
 			AddImportantFadingMsgByStrIdFormatted("fm_airdrop_start")
@@ -3256,17 +3457,25 @@
 					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3075.630, 357.404, 3489.001)}
 				elseif pl_pos1 == 10 then
 					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354)}
+				else
+					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
 				end
 
 				if pl_pos1 >= 1 then
 					pos1_count_pmc = random(2,3)
+				else
+					pos1_count_pmc = random(2)
 				end
 
-				paths_pos1 = shuffled_range_take (pos1_count_pmc, 1, 9)
+				if GetVar("PlayerBelong").AsString == "SCAV" then
+					paths_pos1 = shuffled_range_take (pos1_count_pmc, 1, 10)
+					pos2_count_pmc = random(2,3)
+				else
+					paths_pos1 = shuffled_range_take (pos1_count_pmc, 1, 9)
+					pos2_count_pmc = random(2,4)
+				end
 
 				pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
-				pos2_count_pmc = random(2,4)
-
 				paths_pos2 = shuffled_range_take (pos2_count_pmc, 1, 10)
 	
 			elseif sp == 2 then
@@ -3290,17 +3499,25 @@
 					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3225.707, 320.430, 1334.481)}
 				elseif pl_pos2 == 10 then
 					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105)}
+				else
+					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
 				end
 
 				if pl_pos2 >= 1 then
 					pos2_count_pmc = random(2,3)
+				else
+					pos2_count_pmc = random(2)
 				end
 
-				paths_pos2 = shuffled_range_take (pos2_count_pmc, 1, 9)
+				if GetVar("PlayerBelong").AsString == "SCAV" then
+					paths_pos2 = shuffled_range_take (pos2_count_pmc, 1, 10)
+					pos1_count_pmc = random(2,3)
+				else
+					paths_pos2 = shuffled_range_take (pos2_count_pmc, 1, 9)
+					pos1_count_pmc = random(2,4)
+				end
 
 				pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
-				pos1_count_pmc = random(2,4)
-
 				paths_pos1 = shuffled_range_take (pos1_count_pmc, 1, 10)
 			end
 
@@ -3523,7 +3740,13 @@
 			trigger:IncCount()
 			local count = trigger:GetCount()
 			local pmc = GetVar("CountPMC_Spawn1").AsInt + GetVar("CountPMC_Spawn2").AsInt
-			TActivate("KillsPMC")
+			if GetVar("PlayerBelong").AsString == "SCAV" then 
+				SetVar("ScavCarma", GetVar("ScavCarma").AsString + 0.2) 
+			else 
+				TActivate("KillsPMC") 
+			end
+			SetVar("PlayerKillPMC", GetVar("PlayerKillPMC").AsInt+1)
+			println("PMC kill: "..GetVar("PlayerKillPMC").AsInt)
 			if pmc > count then
 				return
 			end
@@ -3631,7 +3854,9 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
-			TActivate("KillsScavs")
+			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("KillsScavs") end 
+			SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
+			println("Scavs kill: "..GetVar("PlayerKillScavs").AsInt)
 			if GetVar("CountScavs").AsInt > count then
 				return
 			end
@@ -3690,8 +3915,6 @@
 				TDeactivate ("ZaTheGloohoe")
 			end
 
-			TDeactivate ("BaseFelix")
-
 			if GetVar("ExitZaTheTroiskoe").AsInt==1 then
 				TDeactivate ("ZaTheTroiskoe")
 				TDeactivate ("FonarZaTheTroiskoeExit_Broken")
@@ -3708,6 +3931,10 @@
 					if gs then gs:Remove() end
 				end
 			end
+
+			TDeactivate ("BaseFelix")
+			TDeactivate("ZaTheTown_exitScav")
+			TDeactivate("BaseScavs_exitScav")
 
 			--удаление диких на локациях
 			for loc=1,8 do
@@ -3859,6 +4086,7 @@
 			end
 
 			TDeactivate("FakePlayerDead")
+			getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
 		
 			--глобал переменные
 			if COUNT_RAIDS then COUNT_RAIDS = GetVar("CountRaids").AsInt end
@@ -3882,6 +4110,10 @@
 			if SCAV_CAR_TIME_HOUR then SCAV_CAR_TIME_HOUR = GetVar("ScavCar_time_hour").AsInt end
 			if SCAV_CAR_TIME_MINUTE then SCAV_CAR_TIME_MINUTE = GetVar("ScavCar_time_minute").AsInt end
 			if SCAV_CAR_TIME_SECOND then SCAV_CAR_TIME_SECOND = GetVar("ScavCar_time_second").AsInt end
+
+			if SCAV_CARMA_GLOBAL then SCAV_CARMA_GLOBAL = GetVar("ScavCarma").AsString end
+
+			if PLAYER_BELONG_GLOBAL then PLAYER_BELONG_GLOBAL = GetVar("PlayerBelong").AsString end
 
 			TDeactivate("IfChargeCar")
 			
@@ -3916,6 +4148,8 @@
 				TDeactivate("q_bitok3_1")
 			end
 
+			SetTolerance(1087, 1100, RS_ENEMY)
+
 			println("MAP CLEAR")
 
 			trigger:Deactivate()
@@ -3931,9 +4165,7 @@
 	<trigger Name="KillsScavs" active="0">
 	<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
-			println("Scavs kill: "..GetVar("PlayerKillScavs").AsInt)
-
+			
 			QuestsKillScavs()
 
 			if IsQuestTaken("q_testing_mission") and not(IsQuestComplete("q_testing_mission_1")) then
@@ -3955,9 +4187,7 @@
 	<trigger Name="KillsPMC" active="0">
 	<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			SetVar("PlayerKillPMC", GetVar("PlayerKillPMC").AsInt+1)
-			println("PMC kill: "..GetVar("PlayerKillPMC").AsInt)
-
+		
 			QuestsKillPMC()
 
 			trigger:Deactivate()

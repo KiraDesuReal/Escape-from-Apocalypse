@@ -385,6 +385,7 @@
 			SetVar("PlayerBelong", "BEAR")
 
 			SetVar("ScavTutorial", 0)
+			SetVar("ScavCarma", "0.00")
 
 			SetVar("ScavCar_time_hour", 0)
 			SetVar("ScavCar_time_minute", 0)
@@ -452,6 +453,8 @@
 			if SCAV_CAR_TIME_HOUR then SCAV_CAR_TIME_HOUR = 0 end
 			if SCAV_CAR_TIME_MINUTE then SCAV_CAR_TIME_MINUTE = 0 end
 			if SCAV_CAR_TIME_SECOND then SCAV_CAR_TIME_SECOND = 0 end
+
+			if SCAV_CARMA_GLOBAL then SCAV_CARMA_GLOBAL = "0.00" end
 			
 			trigger:Deactivate()
 		</script>
@@ -606,12 +609,14 @@
 				else
 					TActivate("ScavCarTimeMsgActivate")
 					TActivate("ScavCar_timer")
+					if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("trChangeCarMessageTimer") end
 				end
 			end
 
 		--другое
 			if PLAYER_BELONG_GLOBAL then PLAYER_BELONG_GLOBAL = GetVar("PlayerBelong").AsString end
 			if COUNT_RAIDS then SetVar("CountRaids", COUNT_RAIDS) end
+			if SCAV_CARMA_GLOBAL then SetVar("ScavCarma", SCAV_CARMA_GLOBAL) end
 
 			if GetVar("PlayerBelong").AsString == "SCAV" then
 				if getObj("ScavCarForPlayer"):GetSkin() == -1 then
@@ -631,6 +636,9 @@
 					end
 					pl:setImmortalMode(1)
 				end
+				local car = GetEntityByName("ScavCarForPlayer")
+				if car then car:SetBelong(1000) end
+				if GetVar("ScavCar_timer").AsInt == 0 and getObj("trChangeCarMessage"):IsActivated() == 0 then TActivate("trChangeCarMessage") end
 			end
 			
 			TActivate("trCreateVehicleMove")
@@ -657,6 +665,7 @@
 			local GunAndGadget = Shop:GetRepositoryByTypename("GunsAndGadgets")
 	
 			if Workshop and Vehicles then
+				Vehicles:AddItems("BugForSale", 1)
 				if IsQuestComplete("q_rebuild") then Vehicles:AddItems("MolokovozForSale", 1) end
 				if IsQuestComplete("q_test_drive5") then Vehicles:AddItems("UralForSale", 1) end
 				if IsQuestComplete("q_ural_or_belaz") then Vehicles:AddItems("BelazForSale", 1) end
@@ -3553,14 +3562,23 @@
 			end
 					
 			GetPlayerVehicle():SetCustomControlEnabled( false )
-			GetPlayerVehicle():setGodMode(0)
+			GetPlayerVehicle():setGodMode(1)
+			GetPlayerVehicle():setImmortalMode(1)
 
 			if GetVar("ScavTutorial").AsInt == 0 then TActivate("trScavTutorial") end
 
-			TActivate("TpPlayerCarInScavZone_Loc")
+			if 15000 >= GetPlayerMoney() and getObj("PlayerCar"):GetMaxHealth() == 100 and getObj("PlayerCar"):GetMaxFuel() == 0 then
+				TActivate("TpPlayerCarInPlayerZone")
+			else
+				TActivate("TpPlayerCarInScavZone_Loc")
+			end
+
+			TActivate("trShowCarmaScav")
 			TActivate("ClosedModules")
 
 			SetCameraBehindPlayerVehicle()
+
+			SetTolerance(1100, 1082, RS_NEUTRAL)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -3578,7 +3596,12 @@
 			end
 
 			local sc = getObj("ScavCarForPlayer")
-			if sc then sc:SetBelong(1000) end
+			local cabin = sc:GetCabin()
+			local basket = sc:GetBasket()
+			if sc then 
+				sc:SetBelong(1000) 
+				sc:setGodMode(0)
+			end
 				
 			GetPlayerVehicle():setGodMode(0)
 			GetPlayerVehicle():SetCustomControlEnabled( false )
@@ -3586,8 +3609,11 @@
 
 			TActivate("TpPlayerCarInScavZone_Loc")
 			TActivate("OpenModules")
-
+			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("ScavCarHeal") end
+		
 			SetCameraBehindPlayerVehicle()
+			
+			SetTolerance(1100, 1082, RS_ENEMY)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -3615,6 +3641,36 @@
 			if veh then
 				veh:SetGamePositionOnGround(getPos("ScavCarSpawn_loc"))
 				veh:SetRotation(Quaternion(0.010, 0.005, 0.000, -1.000))
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="TpPlayerCarInPlayerZone" active="0">
+		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local veh = getObj("PlayerCar")
+			if veh then
+				veh:SetGamePositionOnGround(getPos("FromLocation"))
+				veh:SetRotation(Quaternion(-0.009, -0.005, -0.000, 1.000))
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ScavCarHeal" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ScavCarSpawn_loc" />
+		<script>
+			local veh = getObj("ScavCarForPlayer")
+			local cabin = veh:GetCabin()
+			local basket = veh:GetBasket()
+			local skin = veh:GetSkin()
+			if veh then
+				veh:AddModifier("hp", "+ 10000")
+				veh:AddModifier("fuel", "+ 10000")
+				if not(cabin == nil) then veh:SetNewPart("CABIN", cabin:GetProperty("Prototype").AsString) end
+				if not(basket == nil) then basket:SetProperty("durability", basket:GetPropertyById("20").AsString) end
+				veh:SetSkin(skin)
 			end
 			trigger:Deactivate()
 		</script>
@@ -3670,15 +3726,59 @@
 		</script>
 	</trigger>
 
+	<trigger Name="trShowCarmaScav" active="0">
+		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local c = GetVar("ScavCarma").AsString
+			local carma
+			if strsub(c, 1, 1) == "-" then
+				carma = tonumber(strsub(c, 1, 5))
+			else
+				carma = tonumber(strsub(c, 1, 4))
+			end
+			local color = "@ffffffff"
+			if carma > 0 then 
+				color = "@ff7ac716" 
+			elseif 0 > carma then
+				color = "@ffa30d0d" 
+			end
+			local msg = ""..color..carma..""
+			AddFadingMsgByStrIdFormatted("fm_scav_carma", msg)
+			SoundFadingMsg()
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 <!-- Таймер машины дикого -->
 	<trigger Name="trScavCar_timerStart" active="0">
 		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
 		<script>
+			local c = GetVar("ScavCarma").AsString
+			local carma
+			local min = 10
+
+			if strsub(c, 1, 1) == "-" then
+				carma = tonumber(strsub(c, 1, 5))
+			else
+				carma = tonumber(strsub(c, 1, 4))
+			end
+		
+			if carma >= 3 then min = 5
+			elseif carma >= 2 then min = 7 
+			elseif carma >= 1.5 then min = 8 
+			elseif carma >= 0 then min = 10 
+			elseif -3 >= carma then min = 20
+			elseif -2 >= carma then min = 16 
+			elseif -1.5 >= carma then min = 14 
+			elseif -1 >= carma then min = 12 
+			end
+			
 			SetVar("ScavCar_time_hour", 0)
-			SetVar("ScavCar_time_minute", 10)
+			SetVar("ScavCar_time_minute", min)
 			SetVar("ScavCar_time_second", 0)
 			SetVar("ScavCar_timer", 1)
 			TActivate("trChangeCarMessageTimer")
+			TDeactivate("trChangeCarMessage")
 			TActivate("ScavCarTimeMsgActivate")
 			TActivate("ScavCar_CreateTimer3D")
 			TActivate("ScavCar_timer")
@@ -3904,7 +4004,7 @@
 
 			local Chest = CreateNewObject{prototypeName = "someChest", objName = "ChestFromScavCar"}	
 			local ChestId = GetEntityByID(Chest)
-			ChestId:SetPosition(CVector(889.994, 255, 894.440))
+			ChestId:SetPosition(CVector(898.134, 255, 988.361))
 
 			for i2 = 1, l do
 				if count[i2] > 1 then
@@ -3963,6 +4063,17 @@
 			local carScav = GetEntityByName("ScavCarForPlayer")
 			if carScav then carScav:Remove() end
 
+			SetTolerance(1100, 1082, RS_ENEMY)
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="RestartMap" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			PassToMap("r0m0", "FromR0M0")
+			TActivate("ExitMap")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4085,7 +4196,14 @@
 				end
 			end
 
-			TActivate("TpPlayerCarInScavZone")
+			TDeactivate("trChangeCarMessage")
+			TDeactivate("trChangeCarMessageTimer")
+			
+			if 15000 >= GetPlayerMoney() and getObj("PlayerCar"):GetMaxHealth() == 100 and getObj("PlayerCar"):GetMaxFuel() == 0 then
+				if GetVar("PlayerBelong").AsString == "SCAV" then TActivate("TpPlayerCarInPlayerZone") end
+			else
+				TActivate("TpPlayerCarInScavZone")
+			end
 
 		--другое
 			TDeactivate("CheckLoadSaveTimer")
@@ -4093,6 +4211,7 @@
 
 			if PLAYER_BELONG_GLOBAL then PLAYER_BELONG_GLOBAL = GetVar("PlayerBelong").AsString end
 			if COUNT_RAIDS then COUNT_RAIDS = GetVar("CountRaids").AsInt end
+			if SCAV_CARMA_GLOBAL then SCAV_CARMA_GLOBAL = GetVar("ScavCarma").AsString end
 
 			println("MAP CLEAR")
 

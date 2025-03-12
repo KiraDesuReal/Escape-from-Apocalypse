@@ -53,23 +53,33 @@
 					CreateEffectTTLed("ET_S_ENGINE_URAL_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 1272)
 				elseif player_car == "Belaz" then
 					CreateEffectTTLed("ET_S_ENGINE_BELAZ"..random(2).."_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 3200)
-				elseif player_car == "Mirotvorec" then
+				elseif player_car == "Mirotvorec" or player_car == "hunterChassis_Scav" then
 					CreateEffectTTLed("ET_S_ENGINE_MIROTVOREC_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 923)
-				elseif player_car == "Cruiser" then
+				elseif player_car == "Cruiser" or player_car == "scoutChassis_Scav" then
 					CreateEffectTTLed("ET_S_ENGINE_CRUISER_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 930)
+				elseif player_car == "fighterChassis_Scav" then
+					CreateEffectTTLed("ET_S_ENGINE_FIGHTER_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 1601)
 				end
 			end
 
-			if GetVar("SpawnPlayer").AsInt==1 then
-				AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits2LocationR1M1")
+			if GetVar("SpawnPlayer").AsInt == 1 then
+				if GetVar("PlayerBelong").AsString == "SCAV" then
+					AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits2LocationR1M1_ForScav")
+				else
+					AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits2LocationR1M1")
+				end
 			else
-				AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits1LocationR1M1")
+				if GetVar("PlayerBelong").AsString == "SCAV" then
+					AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits1LocationR1M1_ForScav")
+				else
+					AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits1LocationR1M1")
+				end
 			end
 
 			TActivate("MessageRaid")
 			TActivate("TimerRaidStart")
 			TActivate("CreatePMC")
-			TActivate("IfRaidCountForQuest")
+			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("IfRaidCountForQuest") end
 			TActivate("ShowExits_Start")
 
 			AllowSave(false)
@@ -104,7 +114,7 @@
 
 			TActivate("cutTimeRaid_End")
 			TDeactivate("IfChargeCar")
-			TActivate("IfPlayerDieForQuest")
+			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("IfPlayerDieForQuest") end 
 	
 			trigger:Deactivate()
 		</script>
@@ -137,12 +147,19 @@
 			DisableGodMode()
 
 			local pl = GetPlayerVehicle()
-			local plProt = pl:GetProperty("Prototype").AsString
-			local skin = pl:GetSkin()
-			SetVar("PlayerSkin", skin)
-			AddPlayerNewVehicle(plProt)
+			if not(GetVar("PlayerBelong").AsString == "SCAV") then
+				local plProt = pl:GetProperty("Prototype").AsString
+				local skin = pl:GetSkin()
+				SetVar("PlayerSkin", skin)
+				AddPlayerNewVehicle(plProt)
+				TActivate("UpdateCabinBasket")
+			else
+				if pl then pl:SetSkin(-1) end
+				if 1 >= GetTolerance(1100, 1082) then
+					SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.4)
+				end
+			end
 
-			TActivate("UpdateCabinBasket")
 			TActivate("ExitFadeEffect")
 		
 			trigger:Deactivate()
@@ -165,14 +182,13 @@
 
 <!-- Фейк смерть игрока -->
 	<trigger Name="FakePlayerDead" active="0">
-		<event eventid="GE_VEHICLE_WITHOUT_HEALTH" ObjName="PlayerCarForDead" />
 		<script>
 			TActivate("PlayerCarConfiguration")
 			TActivate("cutPlayerDead")
 			TDeactivate("TimerRaid")
 			TDeactivate("AirDropProbability")
 			TDeactivate("IfChargeCar")
-			TActivate("IfPlayerDieForQuest")
+			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("IfPlayerDieForQuest") end 
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -262,6 +278,14 @@
 				AddPlayerNewVehicle("MirotvorecChassis")
 			elseif GetVar("PlayerCar").AsString == "Cruiser" then
 				AddPlayerNewVehicle("CruiserChassis")
+			end
+
+			if GetVar("PlayerBelong").AsString == "SCAV" then
+				local plf = GetPlayerVehicle()
+				if plf then plf:SetSkin(-1) end
+				if 1 >= GetTolerance(1100, 1082) then
+					SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.4)
+				end
 			end
 
 			GetPlayerVehicle():setGodMode(1)

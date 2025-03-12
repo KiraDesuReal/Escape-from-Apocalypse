@@ -1138,7 +1138,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			ModelFile			= "scoutCab01"
 			ResourceType			= "SCOUT_CABIN"
 			NodeScale			= "1 1 1"
-			Durability			= "60"
+			Durability			= "20"
 			DurCoeffsForDamageTypes	= "15 -25 -25"
 			VisibleInEncyclopedia = "false"
 			Mass				= "2.0"
@@ -1171,7 +1171,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			ModelFile			= "scoutCab02"
 			ResourceType			= "SCOUT_CABIN"
 			NodeScale			= "1 1 1"
-			Durability			= "70"
+			Durability			= "25"
 			DurCoeffsForDamageTypes	= "20 -25 -25"
 			VisibleInEncyclopedia = "false"
 			Mass				= "2.0"
@@ -1236,7 +1236,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			ModelFile			= "scoutCab03"
 			ResourceType			= "SCOUT_CABIN"
 			NodeScale			= "1 1 1"
-			Durability			= "80"
+			Durability			= "30"
 			DurCoeffsForDamageTypes	= "25 -25 -25"
 			VisibleInEncyclopedia = "false"
 			Mass				= "2.0"
@@ -1272,7 +1272,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			ModelFile			= "fighterCab01"
 			ResourceType			= "FIGHTER_CABIN"
 			NodeScale			= "1 1 1"
-			Durability			= "100"
+			Durability			= "40"
 			DurCoeffsForDamageTypes	= "25 -20 -25"
 			VisibleInEncyclopedia = "false"
 			Mass				= "3.0"
@@ -1299,7 +1299,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			ModelFile			= "fighterCab02"
 			ResourceType			= "FIGHTER_CABIN"
 			NodeScale			= "1 1 1"
-			Durability			= "100"
+			Durability			= "45"
 			DurCoeffsForDamageTypes	= "20 0 -25"
 			VisibleInEncyclopedia = "false"
 			Mass				= "3.0"
@@ -1436,7 +1436,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			ModelFile			= "hunterCab02"
 			ResourceType			= "HUNTER_CABIN"
 			NodeScale			= "1 1 1"
-			Durability			= "150"
+			Durability			= "60"
 			DurCoeffsForDamageTypes	= "16 10 -10"
 			VisibleInEncyclopedia = "false"
 			Mass				= "5.0"
@@ -2669,6 +2669,22 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			<RepositoryDescription
 				RepositorySize		= "0 0"/>
 		</Prototype>
+
+		<Prototype
+			Class				= "Basket"
+			Name				= "fakePlayerCargo"
+			VisibleInEncyclopedia   = "false"
+			ModelFile			= "point"
+			ResourceType		= "FAKE_BASKET"
+			Durability			= "0"
+			DurCoeffsForDamageTypes	= "0 0 0"
+			NodeScale			= "1 1 1"
+			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
+			Price				= "1"
+			Mass				= "1" >
+			<RepositoryDescription
+				RepositorySize		= "2 2"/>
+		</Prototype>
 		
 		<Prototype
 			Class				= "Basket"
@@ -2886,27 +2902,6 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Mass				= "1.0" >
 			<RepositoryDescription
 				RepositorySize		= "6 4"/>
-		</Prototype>
-
-		<Prototype
-			Class				= "Basket"
-			Name				= "fakePlayerCargo"
-			ModelFile			= "cub"
-			CanBeUsedInAutogenerating  =  "0"
-			VisibleInEncyclopedia   = "false"
-			ResourceType		= "FAKE_BIGBASKET"
-			Durability			= "5"
-			DurCoeffsForDamageTypes	= "0 0 0"
-			NodeScale			= "1 1 1"
-			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
-
-
-			Price				= "0"
-			RepairCoef			= "0"
-
-			Mass				= "1.0" >
-			<RepositoryDescription
-				RepositorySize		= "2 2"/>
 		</Prototype>
 
 		<Prototype

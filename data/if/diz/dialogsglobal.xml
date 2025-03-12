@@ -7545,13 +7545,7 @@
 		text="Здравствуй наёмник! Что тебя интересует?"
 		role="NPC"
 		scriptCondition="IsQuestComplete('q_testing_mission')"
-		nextReplies="Dlg_pl_q_search_data Dlg_pl_to_q_search_data Dlg_pl_q_explore_r1m1 Dlg_pl_to_q_explore_r1m1 Dlg_pl_q_kill_scavs Dlg_pl_to_q_kill_scavs Dlg_pl_q_clearing_r1m1 Dlg_pl_to_q_clearing_r1m1 Dlg_pl_q_base_scavs Dlg_pl_to_q_base_scavs Dlg_pl_q_fuel1 Dlg_pl_to_q_fuel1 Dlg_pl_q_fuel2 Dlg_pl_to_q_fuel2 Dlg_pl_prapor_exit" />
-
-	<Reply
-		name="Dlg_pl_prapor_exit"
-		text="Выход."
-		role="PLAYER"
-		scriptResult="EndConversation()" />
+		nextReplies="Dlg_pl_q_search_data Dlg_pl_to_q_search_data Dlg_pl_q_explore_r1m1 Dlg_pl_to_q_explore_r1m1 Dlg_pl_q_kill_scavs Dlg_pl_to_q_kill_scavs Dlg_pl_q_clearing_r1m1 Dlg_pl_to_q_clearing_r1m1 Dlg_pl_q_base_scavs Dlg_pl_to_q_base_scavs Dlg_pl_q_fuel1 Dlg_pl_to_q_fuel1 Dlg_pl_q_fuel2 Dlg_pl_to_q_fuel2 Dlg_pl_npc_exit" />
 
 <!--Поисковая миссия-->
 	<Reply
@@ -8203,13 +8197,7 @@
 		text="Приветствую тебя, друг! Чем я могу тебе помочь?"
 		role="NPC"
 		scriptCondition="IsQuestComplete('q_rebuild')"
-		nextReplies="Dlg_pl_q_test_drive1 Dlg_pl_to_q_test_drive1 Dlg_pl_q_test_drive2 Dlg_pl_to_q_test_drive2 Dlg_pl_q_test_drive3 Dlg_pl_to_q_test_drive3 Dlg_pl_q_test_drive4 Dlg_pl_to_q_test_drive4 Dlg_pl_q_test_drive5 Dlg_pl_to_q_test_drive5 Dlg_pl_q_test_drive6 Dlg_pl_to_q_test_drive6 Dlg_pl_q_test_drive7 Dlg_pl_to_q_test_drive7 Dlg_pl_q_test_drive8 Dlg_pl_to_q_test_drive8 Dlg_pl_q_ural_or_belaz Dlg_pl_to_q_ural_or_belaz Dlg_pl_q_naturalist1 Dlg_pl_to_q_naturalist1 Dlg_pl_q_naturalist2 Dlg_pl_to_q_naturalist2 Dlg_pl_q_naturalist3 Dlg_pl_to_q_naturalist3 Dlg_pl_q_naturalist4 Dlg_pl_to_q_naturalist4 Dlg_pl_q_naturalist5 Dlg_pl_to_q_naturalist5 Dlg_pl_q_belazist1 Dlg_pl_to_q_belazist1 Dlg_pl_q_belazist2 Dlg_pl_to_q_belazist2 Dlg_pl_q_belazist3 Dlg_pl_to_q_belazist3 Dlg_pl_q_belazist4 Dlg_pl_to_q_belazist4 Dlg_pl_q_belazist5 Dlg_pl_to_q_belazist5 Dlg_pl_q_belazist6 Dlg_pl_to_q_belazist6 Dlg_pl_q_belazist7 Dlg_pl_to_q_belazist7 Dlg_pl_q_belazist8 Dlg_pl_to_q_belazist8 Dlg_pl_q_test_drive9 Dlg_pl_to_q_test_drive9 Dlg_pl_q_test_drive10 Dlg_pl_to_q_test_drive10 Dlg_pl_q_test_drive11 Dlg_pl_to_q_test_drive11 Dlg_pl_q_test_drive12 Dlg_pl_to_q_test_drive12 Dlg_pl_q_test_drive13 Dlg_pl_to_q_test_drive13 Dlg_pl_q_test_drive14 Dlg_pl_to_q_test_drive14 Dlg_pl_q_test_drive15 Dlg_pl_to_q_test_drive15 Dlg_pl_q_bitok1 Dlg_pl_to_q_bitok1 Dlg_pl_q_bitok2 Dlg_pl_to_q_bitok2 Dlg_pl_q_bitok3 Dlg_pl_to_q_bitok3 Dlg_pl_q_turbo Dlg_pl_to_q_turbo Dlg_pl_mechanic_exit" />
-
-	<Reply
-		name="Dlg_pl_mechanic_exit"
-		text="Выход."
-		role="PLAYER"
-		scriptResult="EndConversation()" />
+		nextReplies="Dlg_pl_q_test_drive1 Dlg_pl_to_q_test_drive1 Dlg_pl_q_test_drive2 Dlg_pl_to_q_test_drive2 Dlg_pl_q_test_drive3 Dlg_pl_to_q_test_drive3 Dlg_pl_q_test_drive4 Dlg_pl_to_q_test_drive4 Dlg_pl_q_test_drive5 Dlg_pl_to_q_test_drive5 Dlg_pl_q_test_drive6 Dlg_pl_to_q_test_drive6 Dlg_pl_q_test_drive7 Dlg_pl_to_q_test_drive7 Dlg_pl_q_test_drive8 Dlg_pl_to_q_test_drive8 Dlg_pl_q_ural_or_belaz Dlg_pl_to_q_ural_or_belaz Dlg_pl_q_naturalist1 Dlg_pl_to_q_naturalist1 Dlg_pl_q_naturalist2 Dlg_pl_to_q_naturalist2 Dlg_pl_q_naturalist3 Dlg_pl_to_q_naturalist3 Dlg_pl_q_naturalist4 Dlg_pl_to_q_naturalist4 Dlg_pl_q_naturalist5 Dlg_pl_to_q_naturalist5 Dlg_pl_q_belazist1 Dlg_pl_to_q_belazist1 Dlg_pl_q_belazist2 Dlg_pl_to_q_belazist2 Dlg_pl_q_belazist3 Dlg_pl_to_q_belazist3 Dlg_pl_q_belazist4 Dlg_pl_to_q_belazist4 Dlg_pl_q_belazist5 Dlg_pl_to_q_belazist5 Dlg_pl_q_belazist6 Dlg_pl_to_q_belazist6 Dlg_pl_q_belazist7 Dlg_pl_to_q_belazist7 Dlg_pl_q_belazist8 Dlg_pl_to_q_belazist8 Dlg_pl_q_test_drive9 Dlg_pl_to_q_test_drive9 Dlg_pl_q_test_drive10 Dlg_pl_to_q_test_drive10 Dlg_pl_q_test_drive11 Dlg_pl_to_q_test_drive11 Dlg_pl_q_test_drive12 Dlg_pl_to_q_test_drive12 Dlg_pl_q_test_drive13 Dlg_pl_to_q_test_drive13 Dlg_pl_q_test_drive14 Dlg_pl_to_q_test_drive14 Dlg_pl_q_test_drive15 Dlg_pl_to_q_test_drive15 Dlg_pl_q_bitok1 Dlg_pl_to_q_bitok1 Dlg_pl_q_bitok2 Dlg_pl_to_q_bitok2 Dlg_pl_q_bitok3 Dlg_pl_to_q_bitok3 Dlg_pl_q_turbo Dlg_pl_to_q_turbo Dlg_pl_npc_exit" />
 
 <!--Тест драйв - Часть 1-->
 	<Reply
@@ -10559,5 +10547,61 @@
 		text="Отличное устройство, я продолжу им пользоваться."
 		role="PLAYER"
 		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Скупщик-->
+
+	<Reply
+		name="Dlg_npc_buyer_1"
+		text="И так, давай коротко и по делу. С чем пожаловал?"
+		role="NPC"
+		scriptCondition="15000 >= GetPlayerMoney()"
+		nextReplies="Dlg_pl_buyer_2 Dlg_pl_npc_exit" />
+
+	<Reply
+		name="Dlg_pl_npc_exit"
+		text="Кажется я ошибся дверью."
+		role="PLAYER"
+		scriptResult="EndConversation()" />
+
+<!--Root/r0m0/Скупщик: Попросить помощь у диких-->
+
+	<Reply
+		name="Dlg_pl_buyer_2"
+		text="Хочу попросить помощь у Диких."
+		role="PLAYER"
+		scriptCondition="15000 >= GetPlayerMoney() and GetPlayerMaxFuel() == 0 and GetPlayerMaxHealth() == 100"
+		nextReplies="Dlg_npc_buyer_3 Dlg_npc_buyer_5" />
+
+	<Reply
+		name="Dlg_npc_buyer_3"
+		text="К сожалению в ближайшее время Дикие не смогут тебе помочь, у них свои дела есть. Если просьба будет актуальна, попробуй связаться со мной позже, а пока свободен."
+		role="NPC"
+		scriptCondition="GetVar('ScavCar_timer').AsInt == 1"
+		nextReplies="Dlg_npc_buyer_4" />
+
+	<Reply
+		name="Dlg_npc_buyer_4"
+		text="Видимо придется подождать."
+		role="PLAYER"
+		scriptResult="EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_buyer_5"
+		text="Окей. Дикие прибудут в ближайшее время. Ожидай."
+		role="NPC"
+		scriptCondition="GetVar('ScavCar_timer').AsInt == 0"
+		nextReplies="Dlg_npc_buyer_6 Dlg_npc_buyer_7" />
+
+	<Reply
+		name="Dlg_npc_buyer_6"
+		text="Отлично. Буду ждать."
+		role="PLAYER"
+		scriptResult="TActivate('trChangeCar'); TDeactivate('trChangeCarMessage'); LeaveTown(true)" />
+
+	<Reply
+		name="Dlg_npc_buyer_7"
+		text="Я передумал."
+		role="PLAYER"
+		scriptResult="EndConversation()" />
 
 </DialogsResource>

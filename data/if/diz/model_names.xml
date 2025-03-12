@@ -2028,6 +2028,16 @@
 		value="ВЫХОД03 - Тропа за Троицким" />
 
 	<Item
+		id="ExitScav_ZaTheTown"
+		locForm="0"
+		value="ВЫХОД02 - Горы Южного" />
+
+	<Item
+		id="ExitScav_BaseScavs"
+		locForm="0"
+		value="ВЫХОД02 - База диких" />
+
+	<Item
 		id="Exits1LocationR1M1"
 		locForm="0"
 		value="ВЫХОД01 - Дорога на Таможню|ВЫХОД02 - Ущелье базы диких|ВЫХОД03 - Дорога на Фатерлянд ??:??:??" />
@@ -2036,6 +2046,21 @@
 		id="Exits2LocationR1M1"
 		locForm="0"
 		value="ВЫХОД01 - Дорога в Риджин|ВЫХОД02 - Ущелье базы диких|ВЫХОД03 - Тропа за Троицким ??:??:??" />
+
+	<Item
+		id="Exits1LocationR1M1_ForScav"
+		locForm="0"
+		value="ВЫХОД01 - Дорога на Таможню|ВЫХОД02 - Горы Южного|ВЫХОД03 - Дорога на Фатерлянд ??:??:??" />
+
+	<Item
+		id="Exits2LocationR1M1_ForScav"
+		locForm="0"
+		value="ВЫХОД01 - Дорога в Риджин|ВЫХОД02 - База диких|ВЫХОД03 - Тропа за Троицким ??:??:??" />
+
+	<Item
+		id="Exits2LocationR1M1_ForScav_2"
+		locForm="0"
+		value="ВЫХОД01 - Дорога в Риджин|@ffa30d0dВЫХОД02 - База диких|@ffffffffВЫХОД03 - Тропа за Троицким ??:??:??" />
 
 	<Item
 		id="Sml1CarScav"

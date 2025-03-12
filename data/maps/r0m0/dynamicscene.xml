@@ -378,6 +378,16 @@
 				cfg="148"
 				helloReplyNames="Dlg_npc_q_rebuild_1 Dlg_npc_q_rebuild_9 Dlg_npc_mechanic_1"
 				SpokenCount="0" />
+
+			<Object
+				Name="Buyer_NPC"
+				Belong="1100"
+				Prototype="NPC"
+				ModelName="manmenu_mask"
+				skin="0"
+				cfg="102"
+				helloReplyNames="Dlg_npc_buyer_1"
+				SpokenCount="0" />
 		</Object>
 
 		<Object
@@ -490,16 +500,6 @@
 
 			</CabinsAndBaskets>
 			<Vehicles>
-
-				<Item
-					PosX="0"
-					PosY="0"
-					Flags="16"
-					Prototype="BugForSale">
-					<Parts />
-					<Repository />
-				</Item>
-
 			</Vehicles>
 		</Object>
 

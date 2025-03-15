@@ -192,12 +192,30 @@
 
 			TActivate("CreateBossProbability")
 
-			CreateNewBreakableObject("lamppost2", "fonar", 1002, CVector(3055.078, 349.812, 1446.906), Quaternion(0.0000, -0.7133, 0.0000, 0.7009), 0)
+			TActivate("RemoveFonar")
 
 			if IsQuestItemPresent("quest_item_map_r1m1") and GetVar("Map").AsInt == 0 then
 				map()
 				SetVar("Map", 1)
 			end
+		</script>
+	</trigger>
+
+	<trigger Name="RemoveFonar" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local f = GetEntityByName("fonar")
+			if f then f:Remove() end
+			TActivate("CreateFonar")
+			trigger:Deactivate()    
+		</script>
+	</trigger>
+
+	<trigger Name="CreateFonar" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewBreakableObject("lamppost2", "fonar", 1002, CVector(3055.078, 349.812, 1446.906), Quaternion(0.0000, -0.7133, 0.0000, 0.7009), 0)
+			trigger:Deactivate()    
 		</script>
 	</trigger>
 
@@ -4327,8 +4345,7 @@
 		<script>
 
 			--фонарь
-			local f = GetEntityByName("fonar")
-			if f then f:Remove() end
+			TActivate("RemoveFonar")
 
 			--ворота ёжного
 			local g = GetEntityByName("gate_thetown")

@@ -1224,10 +1224,13 @@ end
 -- Отслеживание попаданий по цели
 function ObjUnderAttack(ObjTarget, ObjAttack)
 	local target = getObj(ObjTarget)
-	if not(target:IsAlive()) then
+	if target and target:IsAlive() then
 		local car = getObj(ObjAttack)
 		local belong = car:GetBelong()
+		SetVar("LastUnderAttack", belong)
 		return belong
+	else
+		SetVar("LastUnderAttack", 0)
 	end 
 end
 

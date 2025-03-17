@@ -828,7 +828,7 @@ function CreateBarrelLootBox(name, pos)
 	if mapName == "r1m1" then loc = "r1m1" end
 
 	if loc == "r1m1" then
-		exlusive = {"potato", "firewood", "item_pants40grn", "item_salo"}
+		exlusive = {"potato", "firewood", "item_pants40grn"}
 	end
 
 	CreateNewDummyObject("plastic_barrel", name, -1, -1, pos, Quaternion(0, 0, 0, 0),1)
@@ -1009,7 +1009,7 @@ function AllItems()
 					"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 					"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 					"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe",
-					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_jeton_bear", "item_jeton_usec", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_salo", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector",
+					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_jeton_bear", "item_jeton_usec", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector",
 					"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
 					"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_vitaly",
 					"item_quest_search_data",
@@ -1018,37 +1018,6 @@ function AllItems()
 					"someTurboAccelerationPusher", "engineOilPusher", "nailsPusher", "Smoke", "minePusher", "minePusher_1", "minePusher_2",
 					"cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns", "cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "additional_fuel_tank2", "additional_torque2", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 	return Items
-end
-
--- Выдача уникальных предметов
-function AddSpecialItemsCommunity()
-	local username = os.getenv("USERNAME")
-
-	if username == "K.Makise" or GetComputerName == "K.Makise" or username == "KiraDesu" or GetComputerName == "KiraDesu" then
-		AddItemsToPlayerRepository("item_keqing", 1)
-		AddFadingMsgByStrIdFormatted("fm_get_special_community_item")
-		SoundFadingMsg()
-	elseif username == "Carsen" or GetComputerName == "Carsen" or username == "Mr.Player" or GetComputerName == "Mr.Player" or username == "Mr. Player" or GetComputerName == "Mr. Player" or username == "carsen" or GetComputerName == "carsen" then
-		AddItemsToPlayerRepository("item_carsen", 1)
-		AddFadingMsgByStrIdFormatted("fm_get_special_community_item")
-		SoundFadingMsg()
-	elseif username == "Emre Kara" or GetComputerName == "Emre Kara" or username == "EmreKara" or GetComputerName == "EmreKara" then
-		AddItemsToPlayerRepository("item_emre_kara", 1)
-		AddFadingMsgByStrIdFormatted("fm_get_special_community_item")
-		SoundFadingMsg()
-	elseif username == "Gusak" or GetComputerName == "Gusak" or username == "Ilya" or GetComputerName == "Ilya" or username == "Ilya_Gusak" or GetComputerName == "Ilya_Gusak" or username == "Usok" or GetComputerName == "Usok" or username == "Kusok" or GetComputerName == "Kusok" or username == "Ilya_sever" or GetComputerName == "Ilya_sever" then
-		AddItemsToPlayerRepository("item_kaktus", 1)
-		AddFadingMsgByStrIdFormatted("fm_get_special_community_item")
-		SoundFadingMsg()
-	elseif username == "IT-PRODUCTION" or GetComputerName == "IT-PRODUCTION" or username == "MONOLIT" or GetComputerName == "MONOLIT" or username == "Monolit" or GetComputerName == "Monolit" or username == "Monolit Studio" or GetComputerName == "Monolit Studio" or username == "IT PRODUCTION" or GetComputerName == "IT PRODUCTION" then
-		AddItemsToPlayerRepository("item_monolit", 1)
-		AddFadingMsgByStrIdFormatted("fm_get_special_community_item")
-		SoundFadingMsg()
-	elseif username == "Seel" or GetComputerName == "Seel" or username == "realseel" or GetComputerName == "realseel" or username == "Seel Vault" or GetComputerName == "Seel Vault" or username == "SeelBees" or GetComputerName == "SeelBees" or username == "kto" or GetComputerName == "kto" or username == "Kto" or GetComputerName == "Kto" then
-		AddItemsToPlayerRepository("item_ex", 1)
-		AddFadingMsgByStrIdFormatted("fm_get_special_community_item")
-		SoundFadingMsg()
-	end
 end
 
 -- Рандомная конфигурация машины игрока
@@ -1224,13 +1193,18 @@ end
 -- Отслеживание попаданий по цели
 function ObjUnderAttack(ObjTarget, ObjAttack)
 	local target = getObj(ObjTarget)
-	if target and target:IsAlive() then
+	if target then
 		local car = getObj(ObjAttack)
-		local belong = car:GetBelong()
-		SetVar("LastUnderAttack", belong)
-		return belong
-	else
-		SetVar("LastUnderAttack", 0)
+		if car then
+			local belong = car:GetBelong()
+			if belong > 0 then
+				SetVar("LastUnderAttack", belong)
+				con("BELONG "..belong)
+				return belong
+			else
+				con("BELONG < 0")
+			end
+		end
 	end 
 end
 

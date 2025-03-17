@@ -160,7 +160,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			NodeScale	= "1 1 1"
 			Mass		= "40.0"
 			MaxHealth	= "250" 
-			MaxFuel	= "80" 
+			MaxFuel	= "50" 
 			BrakingSound="ET_S_BRAKE01"
 			PneumoSound	="ET_S_PNEUMO_BRAKE01"
 			GearShiftSound="ET_S_GEAR_SHIFT01"
@@ -178,7 +178,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			NodeScale	= "1 1 1"
 			Mass		= "40.0"
 			MaxHealth	= "400" 
-			MaxFuel	= "150" 
+			MaxFuel	= "80" 
 			BrakingSound="ET_S_BRAKE01"
 			PneumoSound	="ET_S_PNEUMO_BRAKE01"
 			GearShiftSound="ET_S_GEAR_SHIFT01"
@@ -214,7 +214,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			NodeScale	= "1 1 1"
 			Mass		= "40.0"
 			MaxHealth	= "400" 
-			MaxFuel	= "200" 
+			MaxFuel	= "120" 
 			BrakingSound="ET_S_BRAKE01"
 			PneumoSound	="ET_S_PNEUMO_BRAKE01"
 			GearShiftSound="ET_S_GEAR_SHIFT01"
@@ -1149,7 +1149,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "1500"	
 			MaxSpeed			= "110.0"
 			LoadPoints			= "LP_SML01"
-			FuelConsumption     = "0.4" >
+			FuelConsumption     = "0.65" >
 			<GadgetDescription>
 				<Slot
 					ResourceType	= "GADGET_COMMON"
@@ -1182,7 +1182,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
 			MaxSpeed			= "100.0"
 			LoadPoints			= "LP_SML01"
-			FuelConsumption     = "0.38" >
+			FuelConsumption     = "0.63" >
 			<GadgetDescription>
 				<Slot
 					ResourceType	= "GADGET_COMMON"
@@ -1247,7 +1247,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
 			MaxSpeed			= "90.0"
 			LoadPoints			= "LP_SML01"
-			FuelConsumption     = "0.35" >
+			FuelConsumption     = "0.6" >
 			<GadgetDescription>
 				<Slot
 					ResourceType	= "GADGET_COMMON"
@@ -1283,7 +1283,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
 			MaxSpeed			= "100.0"
 			LoadPoints			= "LP_SML01"
-			FuelConsumption     = "0.45" >
+			FuelConsumption     = "0.7" >
 			<Slot
 				ResourceType	= "GADGET_WEAPON"
 				MaxAmount	= "1" />  
@@ -1310,7 +1310,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "6000"	
 			MaxSpeed			= "100.0"
 			LoadPoints			= "LP_SML01 LP_BIG01"
-			FuelConsumption     = "0.45" >
+			FuelConsumption     = "0.7" >
 			<GadgetDescription>
 				<Slot
 					ResourceType	= "GADGET_COMMON"
@@ -1447,7 +1447,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "3000"	
 			MaxSpeed			= "100.0"
 			LoadPoints			= "LP_SML01 LP_BIG01"
-			FuelConsumption     = "0.5" >
+			FuelConsumption     = "0.85" >
 			<GadgetDescription>
 				<Slot
 					ResourceType	= "GADGET_COMMON"

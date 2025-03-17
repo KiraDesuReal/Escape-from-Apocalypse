@@ -535,7 +535,7 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 				if mapName == "r1m1" then loc = "r1m1" end
 
 				if loc == "r1m1" then
-					exlusive = {"potato", "firewood", "item_pants40grn", "item_salo"}
+					exlusive = {"potato", "firewood", "item_pants40grn"}
 					local items_array1 = getn(items1)
 					for i=1,getn(exlusive) do
 						items1[items_array1 + i] = exlusive[i]

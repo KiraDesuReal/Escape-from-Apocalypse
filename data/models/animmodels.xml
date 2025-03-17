@@ -156,21 +156,6 @@
 	</model>
 
 	<model
-		id="road_sign_region1"
-		file="data\models\buildings\region1\road_sign\road_sign.gam"
-		shadowVolume="1"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="keqing"
-		file="data\models\objects\keqing\kek.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
 		id="3D_text"
 		file="data\models\buildings\region0\3d_text\3d_text.gam"
 		shadow="0"
@@ -187,13 +172,6 @@
 <!-- Region 5 -->
 
 	<model
-		id="abandoned_house"
-		file="data\models\buildings\region5\abandoned_house\abandoned_house.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
 		id="barded_wire"
 		file="data\models\buildings\region5\barded_wire\barded_wire.gam"
 		shadow="1"
@@ -208,62 +186,6 @@
 		trans="0" />
 
 	<model
-		id="barn_1"
-		file="data\models\buildings\region5\barn_1\barn_1.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="big_gate"
-		file="data\models\buildings\region5\big_gate\big_gate.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="big_gate_red"
-		file="data\models\buildings\region5\big_gate\big_gate_red.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="bus_stop"
-		file="data\models\buildings\region5\bus_stop\bus_stop.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="road_sign_bus_stop"
-		file="data\models\buildings\region5\bus_stop\road_sign_busstop.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="cabin_container"
-		file="data\models\buildings\region5\cabin_container\cabin_container.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="chainlink_fence_1"
-		file="data\models\buildings\region5\chainlink_fence\chainlink_fence_1.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="concrete_fence_1"
-		file="data\models\buildings\region5\concrete_fence\concrete_fence_1.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-		
-	<model
 		id="concrete_fence_2"
 		file="data\models\buildings\region5\concrete_fence\concrete_fence_3.gam"
 		shadow="1"
@@ -271,85 +193,8 @@
 		trans="0" />
 
 	<model
-		id="concrete_fence_brik_1"
-		file="data\models\buildings\region5\concrete_fence\concrete_fence_brik_1.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
 		id="concrete_fence_brik_2"
 		file="data\models\buildings\region5\concrete_fence\concrete_fence_brik_3.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-		
-	<model
-		id="container_1"
-		file="data\models\buildings\region5\container\container_1.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="container_2"
-		file="data\models\buildings\region5\container\container_2.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="corrugated_fence"
-		file="data\models\buildings\region5\corrugated_fence\corrugated_fence.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="farm"
-		file="data\models\buildings\region5\farm\farm.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="garage_1"
-		file="data\models\buildings\region5\garage\garage.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="house_1"
-		file="data\models\buildings\region5\house_1\house_1.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="house_2"
-		file="data\models\buildings\region5\house_2\house_2.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="house_3"
-		file="data\models\buildings\region5\house_3\house_3.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="house_4"
-		file="data\models\buildings\region5\house_4\house_4.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="house_5"
-		file="data\models\buildings\region5\house_5\house_5.gam"
 		shadow="1"
 		windwavy="0"
 		trans="0" />
@@ -362,114 +207,9 @@
 		trans="0" />
 
 	<model
-		id="metall_barrel"
-		file="data\models\buildings\region5\metall_barrel\metall_barrel.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="metall_fence"
-		file="data\models\buildings\region5\metall_fence\metall_fence.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="road_sign_mines"
-		file="data\models\buildings\region5\road_sign_mines\road_sign_mines.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
 		id="road_sign_zone"
 		file="data\models\buildings\region5\road_sign_zone\road_sign_zone.gam"
 		shadow="0"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="stump"
-		file="data\models\buildings\region5\stump\stump.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="tent"
-		file="data\models\buildings\region5\tent\tent.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="tentplate"
-		file="data\models\buildings\region5\tent\tentplate.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="trash_can_1"
-		file="data\models\buildings\region5\trash_can\trash_can_1.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="trash_can_2"
-		file="data\models\buildings\region5\trash_can\trash_can_2.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="wood_electro_stolb"
-		file="data\models\buildings\region5\wood_electro_stolb\wood_electro_stolb_1.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="wood_fence_door_left"
-		file="data\models\buildings\region5\wood_fence\wood_door_left.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="wood_fence_door_right"
-		file="data\models\buildings\region5\wood_fence\wood_door_right.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="wood_fence_1"
-		file="data\models\buildings\region5\wood_fence\wood_fence_1.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="wood_fence_2"
-		file="data\models\buildings\region5\wood_fence\wood_fence_2.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="wood_fence_linker"
-		file="data\models\buildings\region5\wood_fence\wood_fence_linker.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="wooden_fence"
-		file="data\models\buildings\region5\wood_fence\wooden_fence.gam"
-		shadow="1"
 		windwavy="0"
 		trans="0" />
 

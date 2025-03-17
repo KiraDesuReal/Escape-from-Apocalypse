@@ -10555,10 +10555,10 @@
 		text="И так, давай коротко и по делу. С чем пожаловал?"
 		role="NPC"
 		scriptCondition="15000 >= GetPlayerMoney()"
-		nextReplies="Dlg_pl_buyer_2 Dlg_pl_npc_exit" />
+		nextReplies="Dlg_pl_buyer_2 Dlg_pl_buyer_exit" />
 
 	<Reply
-		name="Dlg_pl_npc_exit"
+		name="Dlg_pl_buyer_exit"
 		text="Кажется я ошибся дверью."
 		role="PLAYER"
 		scriptResult="EndConversation()" />
@@ -10601,6 +10601,12 @@
 	<Reply
 		name="Dlg_npc_buyer_7"
 		text="Я передумал."
+		role="PLAYER"
+		scriptResult="EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_npc_exit"
+		text="Выход."
 		role="PLAYER"
 		scriptResult="EndConversation()" />
 

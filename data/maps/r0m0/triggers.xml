@@ -637,7 +637,7 @@
 					pl:setImmortalMode(1)
 				end
 				local car = GetEntityByName("ScavCarForPlayer")
-				if car then car:SetBelong(1000) end
+				if car then car:SetBelong(1093) end
 				if GetVar("ScavCar_timer").AsInt == 0 and getObj("trChangeCarMessage"):IsActivated() == 0 then TActivate("trChangeCarMessage") end
 			end
 			
@@ -3176,9 +3176,6 @@
 				TActivate("trQuestsForCredits")
 			end
 
-			local plf = GetPlayerVehicle()
-			if plf then plf:SetNameFromScript("PlayerCar") end
-
 			SetCameraBehindPlayerVehicle()
 		</script>
 	</trigger>
@@ -3331,7 +3328,6 @@
 			end
 
 			if GetVar("DialogSelectMap").AsInt == 0 and complete == len then
-				println("AllQuestsCompleted")
 				TActivate("OpenGate1ForCredits")
 			end
 			trigger:Deactivate()
@@ -3449,7 +3445,7 @@
 				cab = {"hunterCab02"}
 			end
 			
-			CreateVehicleEx(car, "ScavCarForPlayer", CVector(getPos("ScavCarSpawn_loc")), 1000)
+			CreateVehicleEx(car, "ScavCarForPlayer", CVector(getPos("ScavCarSpawn_loc")), 1093)
 
 			local car = GetEntityByName("ScavCarForPlayer")
 			if car then
@@ -3548,7 +3544,7 @@
 		<script>
 			local plf = GetPlayerVehicle()
 			if plf then 
-				plf:SetNameFromScript("PlayerCar") 
+				plf:SetNameFromScript("PlayerCarChange") 
 				plf:setGodMode(1)
 			end
 
@@ -3567,10 +3563,11 @@
 
 			if GetVar("ScavTutorial").AsInt == 0 then TActivate("trScavTutorial") end
 
-			if 15000 >= GetPlayerMoney() and getObj("PlayerCar"):GetMaxHealth() == 100 and getObj("PlayerCar"):GetMaxFuel() == 0 then
+			if 15000 >= GetPlayerMoney() and getObj("PlayerCarChange"):GetMaxHealth() == 100 and getObj("PlayerCarChange"):GetMaxFuel() == 0 then
 				TActivate("TpPlayerCarInPlayerZone")
 			else
 				TActivate("TpPlayerCarInScavZone_Loc")
+				SetVar("DialogSelectMap", 1)
 			end
 
 			TActivate("trShowCarmaScav")
@@ -3589,7 +3586,7 @@
 			GetPlayerVehicle():setGodMode(1)
 			SetVar("PlayerBelong", "BEAR")
 
-			local veh = getObj("PlayerCar")
+			local veh = getObj("PlayerCarChange")
 			if veh then
 				CapturePlayerVehicle(0, "ChCar2")
 				g_Player:AddChild(veh)
@@ -3599,7 +3596,7 @@
 			local cabin = sc:GetCabin()
 			local basket = sc:GetBasket()
 			if sc then 
-				sc:SetBelong(1000) 
+				sc:SetBelong(1093) 
 				sc:setGodMode(0)
 			end
 				
@@ -3614,6 +3611,7 @@
 			SetCameraBehindPlayerVehicle()
 			
 			SetTolerance(1100, 1082, RS_ENEMY)
+			SetVar("DialogSelectMap", 1)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -3623,6 +3621,7 @@
 		<script>
 			TActivate("TpPlayerCarInScavZone")
 			TActivate("trChangeCarMessage")
+			SetVar("DialogSelectMap", 0)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -3632,7 +3631,7 @@
 		<script>
 			local carName
 			if GetVar("PlayerBelong").AsString == "SCAV" then 
-				carName = "PlayerCar"
+				carName = "PlayerCarChange"
 			else 
 				carName = "ScavCarForPlayer"
 			end
@@ -3649,7 +3648,7 @@
 	<trigger Name="TpPlayerCarInPlayerZone" active="0">
 		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
 		<script>
-			local veh = getObj("PlayerCar")
+			local veh = getObj("PlayerCarChange")
 			if veh then
 				veh:SetGamePositionOnGround(getPos("FromLocation"))
 				veh:SetRotation(Quaternion(-0.009, -0.005, -0.000, 1.000))
@@ -3679,9 +3678,9 @@
 	<trigger Name="ClosedModules" active="0">
 		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
 		<script>
-			local t = GetEntityByName("Town_r0m0")
-			if t then t:SetOpenGateToPlayer(false) end
-
+			local t = GetEntityByName("Town_r0m0_enter")
+			if t then t:SetPosition(CVector(0, 0, 0)) end
+		
 			if GetVar("PetrolStationBuild_Builden").AsInt == 1 then
 				local p = GetEntityByName("PetrolStationTown1")
 				if p then p:SetOpenGateToPlayer(false) end
@@ -3699,8 +3698,8 @@
 	<trigger Name="OpenModules" active="0">
 		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
 		<script>
-			local t = GetEntityByName("Town_r0m0")
-			if t then t:SetOpenGateToPlayer(true) end
+			local t = GetEntityByName("Town_r0m0_enter")
+			if t then t:SetPosition(CVector(858.564, 255.000, 985.160)) end
 
 			if GetVar("PetrolStationBuild_Builden").AsInt == 1 then
 				local p = GetEntityByName("PetrolStationTown1")
@@ -3974,7 +3973,7 @@
 			trigger:Deactivate()
 		</script>
 	</trigger>
-
+	
 <!-- Игрок вернулся из рейда на машине дикого -->
 	<trigger Name="AddItemsInChestFromScavCar" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
@@ -4038,7 +4037,7 @@
 			GetPlayerVehicle():setGodMode(1)
 			SetVar("PlayerBelong", "BEAR")
 
-			local veh = getObj("PlayerCar")
+			local veh = getObj("PlayerCarChange")
 			if veh then
 				CapturePlayerVehicle(0, "ChCar2")
 				g_Player:AddChild(veh)
@@ -4065,15 +4064,6 @@
 
 			SetTolerance(1100, 1082, RS_ENEMY)
 
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-	<trigger Name="RestartMap" active="0">
-		<event timeout="0" eventid="GE_TIME_PERIOD" />
-		<script>
-			PassToMap("r0m0", "FromR0M0")
-			TActivate("ExitMap")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4199,7 +4189,7 @@
 			TDeactivate("trChangeCarMessage")
 			TDeactivate("trChangeCarMessageTimer")
 			
-			if 15000 >= GetPlayerMoney() and getObj("PlayerCar"):GetMaxHealth() == 100 and getObj("PlayerCar"):GetMaxFuel() == 0 then
+			if 15000 >= GetPlayerMoney() and getObj("PlayerCarChange"):GetMaxHealth() == 100 and getObj("PlayerCarChange"):GetMaxFuel() == 0 then
 				if GetVar("PlayerBelong").AsString == "SCAV" then TActivate("TpPlayerCarInPlayerZone") end
 			else
 				TActivate("TpPlayerCarInScavZone")
@@ -4212,8 +4202,6 @@
 			if PLAYER_BELONG_GLOBAL then PLAYER_BELONG_GLOBAL = GetVar("PlayerBelong").AsString end
 			if COUNT_RAIDS then COUNT_RAIDS = GetVar("CountRaids").AsInt end
 			if SCAV_CARMA_GLOBAL then SCAV_CARMA_GLOBAL = GetVar("ScavCarma").AsString end
-
-			println("MAP CLEAR")
 
 			trigger:Deactivate()
 		</script>

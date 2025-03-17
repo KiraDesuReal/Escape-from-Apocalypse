@@ -52,8 +52,6 @@
 			SetVar("PlayerKillScavs", 0)
 			SetVar("PlayerKillPMC", 0)
 
-			SetVar("ScavCarma", "0.00")
-
 			SetVar("LastUnderAttack", 0)
 
 		    trigger:Deactivate()
@@ -129,8 +127,6 @@
 			SetVar("ScavCar_time_hour", 0)
 			SetVar("ScavCar_time_minute", 0)
 			SetVar("ScavCar_time_second", 0)
-
-			SetVar("PlayerBelong", "BEAR")
 
 			if COUNT_RAIDS then SetVar("CountRaids", COUNT_RAIDS) end 
 
@@ -366,21 +362,6 @@
 				SetVar("PlayerCar", chassis)
 			end
 
-			println("Cabin_Small_Gun:"..GetVar("Cabin_Small_Gun").AsString)
-			println("Cabin_Small_Gun_1:"..GetVar("Cabin_Small_Gun_1").AsString)
-			println("Cabin_Big_Gun_1:"..GetVar("Cabin_Big_Gun_1").AsString)
-			println("Cabin_Big_Gun_2:"..GetVar("Cabin_Big_Gun_2").AsString)
-			println("Cabin_Giant_Gun:"..GetVar("Cabin_Giant_Gun").AsString)
-
-			println("Basket_Small_Gun_0:"..GetVar("Basket_Small_Gun_0").AsString)
-			println("Basket_Big_Gun_0:"..GetVar("Basket_Big_Gun_0").AsString)
-			println("Basket_Big_Gun_1:"..GetVar("Basket_Big_Gun_1").AsString)
-			println("Basket_Giant_Gun:"..GetVar("Basket_Giant_Gun").AsString)
-			println("Basket_Giant_Gun_0:"..GetVar("Basket_Giant_Gun_0").AsString)
-			println("Basket_Side_Gun_0:"..GetVar("Basket_Side_Gun_0").AsString)
-
-			println("Chassis:"..GetVar("PlayerCar").AsString.." Cabin:"..GetVar("PlayerCabin").AsString.." Basket:"..GetVar("PlayerBasket").AsString)
-			
 			trigger:Deactivate() 
 		</script>
 	</trigger>
@@ -1206,15 +1187,8 @@
 			trigger:IncCount()
 			local count = trigger:GetCount()
 
-			if GetVar("LastUnderAttack").AsInt == 1100 then
-				SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
-				println("Scavs kill: "..GetVar("PlayerKillScavs").AsInt) 
-				if GetVar("PlayerBelong").AsString == "SCAV" then 
-					SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.2) 
-				else
-					TActivate("KillsScavs") 
-				end
-			end
+			TActivate("IfPlayerKillScav")
+			getObj("ScavInLocation01_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", trigger:GetCallObjName())
 	
 			if GetVar("CountScav_1_loc").AsInt > count then
 			return
@@ -1310,7 +1284,7 @@
 
 	<trigger Name="ScavInLocation01_UnderAttack" active="0">
 		<script>
-			con(ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0)))
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0))
 		</script>
 	</trigger>
 
@@ -1390,15 +1364,8 @@
 			trigger:IncCount()
 			local count = trigger:GetCount()
 
-			if GetVar("LastUnderAttack").AsInt == 1100 then
-				SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
-				println("Scavs kill: "..GetVar("PlayerKillScavs").AsInt) 
-				if GetVar("PlayerBelong").AsString == "SCAV" then 
-					SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.2) 
-				else
-					TActivate("KillsScavs") 
-				end
-			end
+			TActivate("IfPlayerKillScav")
+			getObj("ScavInLocation02_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", trigger:GetCallObjName())
 
 			if GetVar("CountScav_2_loc").AsInt > count then
 			return
@@ -1494,7 +1461,7 @@
 
 	<trigger Name="ScavInLocation02_UnderAttack" active="0">
 		<script>
-			con(ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0)))
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0))
 		</script>
 	</trigger>
 
@@ -1577,15 +1544,8 @@
 			trigger:IncCount()
 			local count = trigger:GetCount()
 
-			if GetVar("LastUnderAttack").AsInt == 1100 then
-				SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
-				println("Scavs kill: "..GetVar("PlayerKillScavs").AsInt) 
-				if GetVar("PlayerBelong").AsString == "SCAV" then 
-					SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.2) 
-				else
-					TActivate("KillsScavs") 
-				end
-			end
+			TActivate("IfPlayerKillScav")
+			getObj("ScavInLocation03_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", trigger:GetCallObjName())
 
 			if GetVar("CountScav_3_loc").AsInt > count then
 			return
@@ -1682,7 +1642,7 @@
 
 	<trigger Name="ScavInLocation03_UnderAttack" active="0">
 		<script>
-			con(ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0)))
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0))
 		</script>
 	</trigger>
 
@@ -1761,15 +1721,8 @@
 			trigger:IncCount()
 			local count = trigger:GetCount()
 
-			if GetVar("LastUnderAttack").AsInt == 1100 then
-				SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
-				println("Scavs kill: "..GetVar("PlayerKillScavs").AsInt) 
-				if GetVar("PlayerBelong").AsString == "SCAV" then 
-					SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.2) 
-				else
-					TActivate("KillsScavs") 
-				end
-			end
+			TActivate("IfPlayerKillScav")
+			getObj("ScavInLocation04_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", trigger:GetCallObjName())
 
 			if GetVar("CountScav_4_loc").AsInt > count then
 			return
@@ -1865,7 +1818,7 @@
 
 	<trigger Name="ScavInLocation04_UnderAttack" active="0">
 		<script>
-			con(ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0)))
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0))
 		</script>
 	</trigger>
 
@@ -1946,15 +1899,8 @@
 			trigger:IncCount()
 			local count = trigger:GetCount()
 
-			if GetVar("LastUnderAttack").AsInt == 1100 then
-				SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
-				println("Scavs kill: "..GetVar("PlayerKillScavs").AsInt) 
-				if GetVar("PlayerBelong").AsString == "SCAV" then 
-					SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.2) 
-				else
-					TActivate("KillsScavs") 
-				end
-			end
+			TActivate("IfPlayerKillScav")
+			getObj("ScavInLocation05_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", trigger:GetCallObjName())
 
 			if GetVar("CountScav_5_loc").AsInt > count then
 			return
@@ -2050,7 +1996,7 @@
 
 	<trigger Name="ScavInLocation05_UnderAttack" active="0">
 		<script>
-			con(ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0)))
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0))
 		</script>
 	</trigger>
 
@@ -2141,15 +2087,8 @@
 			trigger:IncCount()
 			local count = trigger:GetCount()
 
-			if GetVar("LastUnderAttack").AsInt == 1100 then
-				SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
-				println("Scavs kill: "..GetVar("PlayerKillScavs").AsInt) 
-				if GetVar("PlayerBelong").AsString == "SCAV" then 
-					SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.2) 
-				else
-					TActivate("KillsScavs") 
-				end
-			end
+			TActivate("IfPlayerKillScav")
+			getObj("ScavInLocation06_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", trigger:GetCallObjName())
 
 			if GetVar("CountScav_6_loc").AsInt > count then
 			return
@@ -2245,7 +2184,7 @@
 
 	<trigger Name="ScavInLocation06_UnderAttack" active="0">
 		<script>
-			con(ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0)))
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0))
 		</script>
 	</trigger>
 
@@ -2330,15 +2269,8 @@
 			trigger:IncCount()
 			local count = trigger:GetCount()
 
-			if GetVar("LastUnderAttack").AsInt == 1100 then
-				SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
-				println("Scavs kill: "..GetVar("PlayerKillScavs").AsInt) 
-				if GetVar("PlayerBelong").AsString == "SCAV" then 
-					SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.2) 
-				else
-					TActivate("KillsScavs") 
-				end
-			end
+			TActivate("IfPlayerKillScav")
+			getObj("ScavInLocation07_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", trigger:GetCallObjName())
 
 			if GetVar("CountScav_7_loc").AsInt > count then
 			return
@@ -2434,7 +2366,7 @@
 
 	<trigger Name="ScavInLocation07_UnderAttack" active="0">
 		<script>
-			con(ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0)))
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0))
 		</script>
 	</trigger>
 
@@ -2523,15 +2455,8 @@
 			trigger:IncCount()
 			local count = trigger:GetCount()
 
-			if GetVar("LastUnderAttack").AsInt == 1100 then
-				SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
-				println("Scavs kill: "..GetVar("PlayerKillScavs").AsInt) 
-				if GetVar("PlayerBelong").AsString == "SCAV" then 
-					SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.2) 
-				else
-					TActivate("KillsScavs") 
-				end
-			end
+			TActivate("IfPlayerKillScav")
+			getObj("ScavInLocation08_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", trigger:GetCallObjName())
 
 			if GetVar("CountScav_8_loc").AsInt > count then
 			return
@@ -2627,7 +2552,7 @@
 
 	<trigger Name="ScavInLocation08_UnderAttack" active="0">
 		<script>
-			con(ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0)))
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0))
 		</script>
 	</trigger>
 
@@ -3033,7 +2958,7 @@
 						"item_battery_aa", "item_battery_d",
 						"item_hunter_spich", "item_lighter", "item_spich", "item_zibbo",
 						"item_salt", "item_soap", "item_tb", "item_toothpaste",
-						"item_pants40grn", "item_salo", "item_vodka",
+						"item_pants40grn", "item_vodka",
 						"hornet01", "specter01", "pkt01", "kord01", "storm01", "vector01", "vulcan01"}	
 			
 			for i=1,5 do
@@ -4080,8 +4005,8 @@
 				end
 			end
 			
-			println("PMCspawn1_"..pos1_count_pmc)
-			println("PMCspawn2_"..pos2_count_pmc)
+			--println("PMCspawn1_"..pos1_count_pmc)
+			--println("PMCspawn2_"..pos2_count_pmc)
 
 			TActivate("PMC_To_Exits_loc")
 
@@ -4187,18 +4112,22 @@
 			local count = trigger:GetCount()
 			local pmc = GetVar("CountPMC_Spawn1").AsInt + GetVar("CountPMC_Spawn2").AsInt
 
-			if GetVar("LastUnderAttack").AsInt == 1100 then
-				SetVar("PlayerKillPMC", GetVar("PlayerKillPMC").AsInt+1)
-				println("PMC kill: "..GetVar("PlayerKillPMC").AsInt)
-				if GetVar("PlayerBelong").AsString == "SCAV" then 
-					SetVar("ScavCarma", GetVar("ScavCarma").AsString + 0.2) 
-				else 
-					TActivate("KillsPMC") 
-				end
-			end
+			TActivate("IfPlayerKillPMC")
+
+			getObj("PMC_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", trigger:GetCallObjName())
 
 			if pmc > count then
 				return
+			end
+
+			for i=1,GetVar("CountPMC_Spawn1").AsInt do
+				trigger:DelEventObj("GE_OBJECT_DIE", "PMC_"..i.."_Spawn1_vehicle_0")
+				getObj("PMC_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "PMC_"..i.."_Spawn1_vehicle_0")
+			end
+
+			for j=1,GetVar("CountPMC_Spawn2").AsInt do
+				trigger:DelEventObj("GE_OBJECT_DIE", "PMC_"..j.."_Spawn2_vehicle_0")
+				getObj("PMC_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "PMC_"..j.."_Spawn2_vehicle_0")
 			end
 
 			TDeactivate("TpBirge_1")
@@ -4207,14 +4136,33 @@
 			TDeactivate("TActivTpBirge")
 			TDeactivate("PMC_To_Exits_loc")
 			TDeactivate("PMC_UnderAttack")
-			println("PMC_DIE")
+			println("ALL_PMC_DIE")
 			trigger:Deactivate() 
 		</script>
 	</trigger>
 
 	<trigger Name="PMC_UnderAttack" active="0">
 		<script>
-			con(ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0)))
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0))
+		</script>
+	</trigger>
+
+	<trigger Name="IfPlayerKillPMC" active="0">
+	<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("LastUnderAttack").AsInt == 1100 then
+				SetVar("PlayerKillPMC", GetVar("PlayerKillPMC").AsInt+1)
+				println("PLAYER PMC KILL: "..GetVar("PlayerKillPMC").AsInt)
+				SetVar("LastUnderAttack", 0)
+				if GetVar("PlayerBelong").AsString == "SCAV" then 
+					SetVar("ScavCarma", GetVar("ScavCarma").AsString + 0.2) 
+				else 
+					TActivate("KillsPMC") 
+				end
+			else
+				println("PMC KILL: "..GetVar("LastUnderAttack").AsInt)
+			end
+			trigger:Deactivate() 
 		</script>
 	</trigger>
 
@@ -4307,15 +4255,8 @@
 			trigger:IncCount()
 			local count = trigger:GetCount()
 
-			if GetVar("LastUnderAttack").AsInt == 1100 then
-				SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
-				println("Scavs kill: "..GetVar("PlayerKillScavs").AsInt)
-				if GetVar("PlayerBelong").AsString == "SCAV" then 
-					SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.2) 
-				else
-					TActivate("KillsScavs") 
-				end
-			end
+			TActivate("IfPlayerKillScav")
+			getObj("Scavs_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", trigger:GetCallObjName())
 
 			if GetVar("CountScavs").AsInt > count then
 				return
@@ -4335,7 +4276,26 @@
 
 	<trigger Name="Scavs_UnderAttack" active="0">
 		<script>
-			con(ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0)))
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0))
+		</script>
+	</trigger>
+
+	<trigger Name="IfPlayerKillScav" active="0">
+	<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("LastUnderAttack").AsInt == 1100 then
+				SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
+				println("PLAYER SCAV KILL: "..GetVar("PlayerKillScavs").AsInt)
+				SetVar("LastUnderAttack", 0)
+				if GetVar("PlayerBelong").AsString == "SCAV" then 
+					SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.2) 
+				else
+					TActivate("KillsScavs") 
+				end
+			else
+				println("SCAV KILL: "..GetVar("LastUnderAttack").AsInt)
+			end
+			trigger:Deactivate() 
 		</script>
 	</trigger>
 
@@ -4609,8 +4569,6 @@
 			end
 
 			SetTolerance(1087, 1100, RS_ENEMY)
-
-			println("MAP CLEAR")
 
 			trigger:Deactivate()
 		</script>

@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="assets/efa_logo.png" alt="EFA_Logo" width="400">
+    <img src="assets/efa_logo.png" alt="EFA_Logo" width="600">
     <h2>Escape from Apocalypse</h2>
     <p>Модификация, целью которой является, перенос всех возможных механик и игрового опыта из Escape from Tarkov в Ex Machina.</p>
     <h4>Найти модификацию можно также на этих ресурсах:</h4>
@@ -71,14 +71,14 @@
 
 # Скачать модификацию
 
-#### Для работы модификации требуется установить `Community Remaster` v1.14.1 с помощью `Commod v2.2.1`
+#### Для работы модификации требуется установить `Community Remaster v1.14.1` с помощью `Commod v2.2.1`
 
 <div align="center">
     <br>
     <b>Актуальная версия:</b>
     <br>
     <a href="">
-        <img src="assets/git_assets/b_download.png" onmouseover="this.src='assets/git_assets/b_download_h.png'" style="position: relative; left: 35px; bottom: 30px;" alt="download" width="350">
+        <img src="assets/git_assets/b_download2.png" alt="download" width="400">
     </a>
 </div>
 
@@ -125,12 +125,12 @@ _Диалог с NPC_
 
 <br>
 
-> ![Building](assets/building.gif)
+> ![Building](assets/building.gif)<br>
 _Строительство модулей в **Убежище**_
 
 <br>
 
-> ![Quests](assets/quests.gif)
+> ![Quests](assets/quests.gif)<br>
 _Новые квесты, вдохновленные **Escape from Tarkov**_
 
 <br>
@@ -142,11 +142,12 @@ _Новые квесты, вдохновленные **Escape from Tarkov**_
     <summary>Информация о лицензии</summary>
 
 <ol>
+<br>
     Проект распространяется в полном виде только на <b>Github.com</b>, <b>Discord DEM</b> и <b>Форуме Deus Wiki</b>. Распространение файлов на других сайтах посторонними людьми не разрешено.
 <br></br>
     Исходный код проекта лицензирован под MIT-подобной лицензией (исключая коммерческое использование) и может быть свободно использован как основа для создания ваших собственных модов. Пожалуйста, не забывайте сохранять текст лицензии и ссылку на проект, если используете его части.
 <br></br>
-    Для подробностей, пожалуйста, ознакомьтесь с полным текстом лицензии в файле <i><a href="">LICENSE</a></i>.
+    Для подробностей, пожалуйста, ознакомьтесь с полным текстом лицензии в файле <i><a href="LICENSE.txt">LICENSE</a></i>.
 </ol>
 </details>
 

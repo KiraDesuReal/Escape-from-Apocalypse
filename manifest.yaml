@@ -1,0 +1,61 @@
+
+name: escape_from_apocalypse
+language: ru
+installment: exmachina
+ 
+display_name: Escape from Apocalypse
+version: "0.9"
+build: "250320"
+description: |
+  Геймплейная модификация к игре Ex Machina, цель которой, перенести возможные механики и игровой опыт из Escape from Tarkov в Ex Machina. 
+  
+  В этой модификации вас ждёт полностью новый игровой процесс, строительство убежища, новые предметы, механики, локации и квесты. Всё что может повторить игровой процесс из Escape from Tarkov есть в этой модификации.
+authors: KiraDesu
+ 
+logo: assets/efa_logo.png
+install_banner: assets/efa_logo.png
+release_date: "01.04.2025"
+link: https://github.com/KiraDesuReal/Escape-from-Apocalypse
+trailer_url: https://www.youtube.com/watch?v=peD_LgR01Oc
+tags: [gameplay, visual]
+change_log: assets/change_list.md
+
+screenshots:
+  - img: assets/new_items.png
+    text: Более 150 новых предметов для сбора, начиная от строительных материалов, заканчивая электроникой.
+  - img: assets/new_loc.png
+    text: Новые локации [На скриншоте изображено Убежище и Подземелье с ипытанием].
+  - img: assets/dialoge.png
+    text: Диалог с NPC.
+  - img: assets/building.gif
+    text: Строительство модулей в Убежище.
+  - img: assets/quests.gif
+    text: Новые квесты, вдохновленные Escape from Tarkov.
+
+no_base_content: false
+strict_requirements: true
+compatible_minor_versions: false
+compatible_patch_versions: false
+
+data_dirs:
+  - data
+
+patcher_version_requirement: "2.2.1"
+
+config_options:
+  firstLevel: "r0m0"
+
+prerequisites:
+  - name: [community_remaster]
+    versions: 
+     - "1.14.1"
+    optional_content:
+     - hd_gun_models
+     - hd_vehicle_models
+     - ost_remaster
+
+incompatible:
+  - name: community_remaster
+    versions: []
+    optional_content:
+    - english_localization

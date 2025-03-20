@@ -3758,7 +3758,7 @@
 			if player_car == "Belaz" then number = 3 end
 			if player_car == "Mirotvorec" then number = 4 end
 
-			local modellist = {"Bug01PMC", "Molokovoz01PMC", "Ural01PMC", "Belaz01PMC", "Cruiser01PMC", "Mirotvorec01PMC"}
+			local modellist = {"Bug01PMC", "Molokovoz01PMC", "Ural01PMC", "Cruiser01PMC", "Belaz01PMC", "Mirotvorec01PMC"}
 			local model_rand = getn(modellist)
 			
 			local bug_cab = {"bugCab01", "bugCab02", "bugCab03"}
@@ -4136,7 +4136,6 @@
 			TDeactivate("TActivTpBirge")
 			TDeactivate("PMC_To_Exits_loc")
 			TDeactivate("PMC_UnderAttack")
-			println("ALL_PMC_DIE")
 			trigger:Deactivate() 
 		</script>
 	</trigger>
@@ -4152,7 +4151,7 @@
 		<script>
 			if GetVar("LastUnderAttack").AsInt == 1100 then
 				SetVar("PlayerKillPMC", GetVar("PlayerKillPMC").AsInt+1)
-				println("PLAYER PMC KILL: "..GetVar("PlayerKillPMC").AsInt)
+				--println("PLAYER PMC KILL: "..GetVar("PlayerKillPMC").AsInt)
 				SetVar("LastUnderAttack", 0)
 				if GetVar("PlayerBelong").AsString == "SCAV" then 
 					SetVar("ScavCarma", GetVar("ScavCarma").AsString + 0.2) 
@@ -4160,7 +4159,7 @@
 					TActivate("KillsPMC") 
 				end
 			else
-				println("PMC KILL: "..GetVar("LastUnderAttack").AsInt)
+				--println("PMC KILL: "..GetVar("LastUnderAttack").AsInt)
 			end
 			trigger:Deactivate() 
 		</script>
@@ -4269,7 +4268,6 @@
 		
 			TDeactivate("Scavs_Reached")
 			TDeactivate("Scavs_UnderAttack")
-			println("All_Scavs_Dead")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4285,7 +4283,7 @@
 		<script>
 			if GetVar("LastUnderAttack").AsInt == 1100 then
 				SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
-				println("PLAYER SCAV KILL: "..GetVar("PlayerKillScavs").AsInt)
+				--println("PLAYER SCAV KILL: "..GetVar("PlayerKillScavs").AsInt)
 				SetVar("LastUnderAttack", 0)
 				if GetVar("PlayerBelong").AsString == "SCAV" then 
 					SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.2) 
@@ -4293,7 +4291,7 @@
 					TActivate("KillsScavs") 
 				end
 			else
-				println("SCAV KILL: "..GetVar("LastUnderAttack").AsInt)
+				--println("SCAV KILL: "..GetVar("LastUnderAttack").AsInt)
 			end
 			trigger:Deactivate() 
 		</script>

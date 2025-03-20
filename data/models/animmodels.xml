@@ -2398,7 +2398,7 @@
 				restartOnAnimationChange="0"
 				ImmediateRemove="0" />
 		</action>
--->	</model>
+	</model>
 
 	<model
 		id="omega01"
@@ -2898,10 +2898,10 @@
 				effect_id="ET_PS_HORNET_FIRE"
 				restartOnAnimationChange="1"
 				ImmediateRemove="0" />
-
+			
 			<lp
-				id="LP_GUN"
-				effect_id="ET_PS_SHELL_SML_MGUN_R"
+				id="LP_SHELL01"
+				effect_id="ET_PS_SHELL_SML_MGUN"
 				restartOnAnimationChange="1"
 				ImmediateRemove="0" />
 		</action>

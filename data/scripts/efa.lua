@@ -1,8 +1,8 @@
 -- Special for Escape from Apocalypse
 
 if EFA_VERSION == nil then
-	EFA_VERSION = "0.5 ALPHA"
-	EFA_BUILD = "240617"
+	EFA_VERSION = "0.9 BETA"
+	EFA_BUILD = "250320"
 
 	LOG("ESCAPE FROM APOCALYPSE VERSION: "..EFA_VERSION.." | BUILD: "..EFA_BUILD)
 end
@@ -1199,10 +1199,7 @@ function ObjUnderAttack(ObjTarget, ObjAttack)
 			local belong = car:GetBelong()
 			if belong > 0 then
 				SetVar("LastUnderAttack", belong)
-				con("BELONG "..belong)
 				return belong
-			else
-				con("BELONG < 0")
 			end
 		end
 	end 

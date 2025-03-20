@@ -23,7 +23,49 @@
 			volume	= "255" 
 			minDist	= "30"
 		/>
-		
+
+		<group
+			id		= "EXPLOSIONS_GATE"
+			volume	= "100" 
+			minDist	= "100"
+		/>
+
+		<group
+			id		= "CREATE_KEY"
+			volume	= "255" 
+			minDist	= "70"
+		/>
+
+		<group
+			id		= "AMBIENT_DUNGEON"
+			volume	= "255" 
+			minDist	= "5500"
+		/>
+
+		<group
+			id		= "AMBIENT_DUNGEON_KEY"
+			volume	= "255" 
+			minDist	= "20"
+		/>
+
+		<group 
+			id		= "GENERATOR" 
+			volume	= "255" 
+			minDist	= "50"
+		/>
+
+		<group 
+			id		= "ITEM_MUSIC" 
+			volume	= "30" 
+			minDist	= "5"
+		/>
+
+		<group 
+			id		= "COLOR_FIER" 
+			volume	= "255" 
+			minDist	= "10"
+		/>
+
 		<group 
 			id		= "GUNFIRE" 
 			volume	= "160" 
@@ -81,7 +123,7 @@
 		<group
 			id		= "BOSS03"
 			volume	= "250" 
-			minDist	= "90"
+			minDist	= "100"
 		/>
 		<group
 			id		= "BOSS04"
@@ -102,7 +144,7 @@
 		/>
 		<group
 			id		= "WATER"
-			volume	= "100" 
+			volume	= "75" 
 			minDist	= "50"
 		/>
 		<group
@@ -129,8 +171,8 @@
 		/>
 		<group
 			id		= "LAKE"
-			volume	= "100" 
-			minDist	= "50"
+			volume	= "200" 
+			minDist	= "80"
 		/>
 
 		<group

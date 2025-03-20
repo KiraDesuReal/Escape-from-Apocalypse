@@ -2,15 +2,87 @@
 <Music>
 
 	<model
+		id="silence"
+		file="data\music\silence.ogg"
+	/>
+
+<!-- MainMenu -->
+	<model
 		id="mainmenu"
 		file="data\music\mainmenu_remaster.ogg"
 		/>
 
 	<model
-		id="silence"
-		file="data\music\silence.ogg"
+		id="music01"
+		file="data\music\mainmenu\music01.ogg"
 		/>
-		
+
+	<model
+		id="music02"
+		file="data\music\mainmenu\music02.ogg"
+		/>
+
+	<model
+		id="music03"
+		file="data\music\mainmenu\music03.ogg"
+		/>
+
+	<model
+		id="music04"
+		file="data\music\mainmenu\music04.ogg"
+		/>
+
+	<model
+		id="music05"
+		file="data\music\mainmenu\music05.ogg"
+		/>
+
+	<model
+		id="music06"
+		file="data\music\mainmenu\music06.ogg"
+		/>
+
+	<model
+		id="music07"
+		file="data\music\mainmenu\music07.ogg"
+		/>
+
+	<model
+		id="music08"
+		file="data\music\mainmenu\music08.ogg"
+		/>
+
+	<model
+		id="music09"
+		file="data\music\mainmenu\music09.ogg"
+		/>
+
+	<model
+		id="music10"
+		file="data\music\mainmenu\music10.ogg"
+		/>
+
+	<model
+		id="music11"
+		file="data\music\mainmenu\music11.ogg"
+		/>
+
+	<model
+		id="music12"
+		file="data\music\mainmenu\music12.ogg"
+		/>
+
+<!-- Dungeons -->	
+	<model
+		id="dungeon01"
+		file="data\music\dungeons\dungeon01.ogg"
+	/>
+
+	<model
+		id="dungeon02"
+		file="data\music\dungeons\dungeon02.ogg"
+	/>
+
 		
 	<!-- Towns -->
 	<model
@@ -217,6 +289,9 @@
 	<model
 		id="Bio08"
 		file="data\music\cinematics\Bio08.ogg" />
+	<model
+		id="Credits01"
+		file="data\music\cinematics\Credits01.ogg" />
 	<model
 		id="Death01"
 		file="data\music\cinematics\Death01.ogg" />

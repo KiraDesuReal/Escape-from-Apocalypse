@@ -11,7 +11,27 @@
 			file="data\models\AnimModels.xml" />
 
 		<Item
-			id="fence_long2"
+			id="barded_wire"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="barded_wire_long"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="road_sign_zone"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="concrete_fence_2"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="concrete_fence_brik_2"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="inscriptions"
 			file="data\models\AnimModels.xml" />
 
 		<Item
@@ -27,7 +47,87 @@
 			file="data\models\AnimModels.xml" />
 
 		<Item
+			id="plastic_barrel"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="airbox1"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="airbox2"
+			file="data\models\AnimModels.xml" />
+
+		<Item
 			id="birbs"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03chassis"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03propeller"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03cab01"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03cab02"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03cab03"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03cab03_2"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03cab04"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03wing_left"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03wing_right"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03machinegun_left"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03machinegun_leftgun"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03machinegun_right"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03machinegun_rightgun"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03rocketlauncher_left"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03rocketlauncher_leftgun"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03rocketlauncher_right"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="boss03rocketlauncher_rightgun"
 			file="data\models\AnimModels.xml" />
 
 		<Item
@@ -244,6 +344,14 @@
 
 		<Item
 			id="hornet01gun"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="american_hornet01"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="american_hornet01gun"
 			file="data\models\AnimModels.xml" />
 
 		<Item
@@ -990,6 +1098,27 @@
 			id="tobacco" 
 			file="data\models\AnimModels.xml"/>
 
+		<Item 
+			id="disk" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="disk_exmachina" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="fitanyashka" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="monolit" 
+			file="data\models\AnimModels.xml"/>
+		
+		<Item 
+			id="kaktus" 
+			file="data\models\AnimModels.xml"/>
+
+
 <!-- gadgets -->
 		<Item 
 			id="gadget_01" 
@@ -1135,6 +1264,7 @@
 		<Item 
 			id="storm01" 
 			file="data\models\AnimModels.xml"/>
+		
 		<Item 
 			id="storm01gun" 
 			file="data\models\AnimModels.xml"/>
@@ -1226,7 +1356,6 @@
 		<Item 
 			id="hail01Rgun" 
 			file="data\models\AnimModels.xml"/>
-
 
 		<Item 
 			id="vector01" 
@@ -1424,12 +1553,12 @@
 		<Item 
 			id="dozerChassis" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="dozerCab01" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="dozerSusp01" 
@@ -1450,7 +1579,7 @@
 		<Item 	
 			id="sml1Cab01" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 9 10 11 12 15 16;" />
+			/>
 
 		<Item 
 			id="sml1Susp01" 
@@ -1475,12 +1604,12 @@
 		<Item 
 			id="sml2Cab01" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 9 10 11 12 15 16;" />
+			/>
 
 		<Item 
 			id="sml2Cab01_formula" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 9 10 11 12 15 16;" />
+			/>
 
 		<Item 
 			id="sml2Susp01" 
@@ -1505,7 +1634,7 @@
 		<Item 
 			id="sml3Cab01" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 9 10 11 12 15 16;" />
+			/>
 
 		<Item 
 			id="sml3Susp01" 
@@ -1526,7 +1655,7 @@
 		<Item 
 			id="sml4Cab01" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="sml4Susp01" 
@@ -1551,17 +1680,17 @@
 		<Item 
 			id="scoutCab01" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="scoutCab02" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="scoutCab03" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="scoutSusp01" 
@@ -1584,14 +1713,24 @@
 			file="data\models\AnimModels.xml"/>
 
 		<Item 	
+			id="fighterCab01_Dead" 
+			file="data\models\AnimModels.xml"   
+			/>
+
+		<Item 	
 			id="fighterCab01" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="fighterCab02" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
+
+		<Item 
+			id="fighterCab03" 
+			file="data\models\AnimModels.xml"   
+			/>
 
 		<Item 	
 			id="fighterSusp01l" 
@@ -1632,12 +1771,17 @@
 		<Item 
 			id="hunterCab01" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="hunterCab02" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
+
+		<Item 
+			id="hunterCab03" 
+			file="data\models\AnimModels.xml"   
+			/>
 
 		<Item 
 			id="hunterSusp01" 
@@ -1658,22 +1802,22 @@
 		<Item 
 			id="cruiserCab01" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="cruiserCab02" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="cruiserCargo01" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="cruiserCargo02" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 			
 		<Item 
 			id="cruiserSusp01" 
@@ -1694,32 +1838,37 @@
 		<Item 
 			id="bugCab01" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8 9 10 11 12 15 16;" />
+			/>
 
 		<Item 
 			id="bugCab02" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8 9 10 11 12 15 16;" />
+			/>
 
 		<Item 
 			id="bugCab03" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8 9 10 11 12 15 16;" />
+			/>
+
+		<Item 
+			id="bugCab03Fake" 
+			file="data\models\AnimModels.xml"   
+			/>
 
 		<Item 
 			id="bugCargo01" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8 9 10 11 12 15 16;" />
+			/>
 
 		<Item 
 			id="bugCargo02" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8 9 10 11 12 15 16;" />
+			/>
 
 		<Item 
 			id="bugCargo03" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8 9 10 11 12 15 16;" />
+			/>
 
 		<Item 
 			id="bugSusp01" 
@@ -1744,52 +1893,52 @@
 		<Item 
 			id="uralCab01" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="uralCab02" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="uralCab03" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="uralCab04" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="uralCab05" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="uralCargo01" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="uralCargo02" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="uralCargo03" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="uralCargo04" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="uralCargo05" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="uralSusp01" 
@@ -1822,37 +1971,37 @@
 		<Item 
 			id="molokovozCab01" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8 9 10 11 12 15 16;" />
+			/>
 
 		<Item 
 			id="molokovozCab02" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8 9 10 11 12 15 16;" />
+			/>
 
 		<Item 
 			id="molokovozCab03" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8 9 10 11 12 15 16;" />
+			/>
 
 		<Item 
 			id="molokovozCargo01" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8 9 10 11 12 15 16;" />
+			/>
 
 		<Item 
 			id="molokovozCargo02" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8 9 10 11 12 15 16;" />
+			/>
 
 		<Item 
 			id="molokovozCargo03" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8 9 10 11 12 15 16;" />
+			/>
 
 		<Item 
 			id="molokovozCargo04" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8 9 10 11 12 15 16;" />
+			/>
 
 		<Item 
 			id="molokovozSus_f_r" 
@@ -1889,52 +2038,52 @@
 		<Item 
 			id="belazCab01" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="belazCab02" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="belazCab03" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="belazCab04" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="belazCab05" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="belazCargo01" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="belazCargo02" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="belazCargo03" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="belazCargo04" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="belazCargo05" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="belazSusp01" 
@@ -1963,52 +2112,52 @@
 		<Item 
 			id="mirotvorecCab01" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="mirotvorecCargo01" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="mirotvorecCab02" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="mirotvorecCargo02" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="mirotvorecCab03" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="mirotvorecCargo03" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="mirotvorecCab04" 
 			file="data\models\AnimModels.xml"   
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 	
 			id="mirotvorecCargo04" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="mirotvorecCab05" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="mirotvorecCargo05" 
 			file="data\models\AnimModels.xml"    
-			params = "skins: 0 1 2 4 8;" />
+			/>
 
 		<Item 
 			id="robotshassis01" 
@@ -2224,6 +2373,14 @@
 			file="data\models\AnimModels.xml"/>
 
 		<Item
+			id="quest_box_videocard"
+			file="data\models\AnimModels.xml" />
+
+		<Item 
+			id="map_location" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item
 			id="heavy_dot_brocken1"
 			file="data\models\AnimModels.xml" />
 
@@ -2280,6 +2437,25 @@
 		<Item id="S_OPENING_GATE" />
 		<Item id="S_OPENING_GATE_END" />
 		<Item id="S_CLOSED_GATE" />
+		
+		<Item id="S_FADING_MSG" />
+		<Item id="S_DEATH" />
+
+		<Item id="S_USE_RELOAD_ARTILLERYGUN" />
+		<Item id="S_USE_RELOAD_HEAVYGUN" />
+		<Item id="S_USE_RELOAD_MACHINEGUN" />
+		<Item id="S_USE_RELOAD_ROCKETGUN" />
+		<Item id="S_USE_RELOAD_SHOTGUN" />
+		<Item id="S_USE_RELOAD_BALLON" />
+		<Item id="S_USE_RELOAD_BALLON_TURBO" />
+
+		<Item id="S_QUEST_COMPLETE" />
+		<Item id="S_QUEST_FAIL" />
+		<Item id="S_QUEST_FINISHED" />
+		<Item id="S_QUEST_TAKEN" />
+		<Item id="S_SUBTASK_COMPLETE" />
+
+		<Item id="S_COLOR_FIER" />
 
 		<Item id="S_CRASH_METAL01" />
 		<Item id="S_CRASH_METAL02" />

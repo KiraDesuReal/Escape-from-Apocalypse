@@ -13,16 +13,18 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 		NodeScale		= "1 1 1"
 		Mass			= "1.0"
 		
-		BulletPrototype	= "raybullet"
+		BulletPrototype	= "raybullet_rapier01"
 		ExplosionType	= "CANNON"
 		FiringEffect	= "none"
 		Damage		= "160"
 		FiringRate		= "24"
 		GroupingAngle	= "0.6"
 		FiringRange		= "1200"
-		RecoilForce		= "50"
+		RecoilForce		= "5000"
 		DamageType	= "BLAST"
 		Decal				= "DC_GUN"
+		ShellsPoolSize  = "44"
+		WithShellsPoolLimit	= "true"
 
 		ChargeSize     = "1"
 		RechargingTime = "2.5"
@@ -30,13 +32,44 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 		Durability		= "70"
 		
 		BlastWavePrototype      = "smallBlastWave"
-		Price			= "20400"
+		Price			= "12100"
 		FiringType		= "Cannon"
 		/>
 
 	<Prototype
 		Class			= "BulletLauncher"
 		Name			= "vector01"
+		ModelFile		= "vector01"
+		ResourceType		= "BIG_GUN"
+		NodeScale		= "1 1 1"
+		Mass			= "1.0"
+		
+		TracerEffect ="ET_PS_TRACER1"
+		TracerRange = "1" 
+
+		BulletPrototype		= "raybullet_vector01"
+		ExplosionType		= "MACHINEGUN"
+		FiringEffect		= "none"
+		Damage			= "13"
+		FiringRate		= "300"
+		GroupingAngle		= "1.4"
+		FiringRange		= "750"
+		RecoilForce		= "250"
+		ShellsPoolSize  = "270"
+		WithShellsPoolLimit	= "true"
+		
+		ChargeSize     = "135"
+		RechargingTime = "3.5"
+
+		Decal				= "DC_BIG_MACHINEGUN"
+
+		Price			= "5140"
+                FiringType		= "MachineGun"
+		Durability			= "50"/>
+
+	<Prototype
+		Class			= "BulletLauncher"
+		Name			= "vector01_unlimited"
 		ModelFile		= "vector01"
 		ResourceType		= "BIG_GUN"
 		NodeScale		= "1 1 1"
@@ -52,20 +85,51 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 		FiringRate		= "300"
 		GroupingAngle		= "1.4"
 		FiringRange		= "750"
-		RecoilForce		= "50"
+		RecoilForce		= "250"
+		ShellsPoolSize  = "270"
+		WithShellsPoolLimit	= "true"
 		
 		ChargeSize     = "135"
 		RechargingTime = "3.5"
 
 		Decal				= "DC_BIG_MACHINEGUN"
 
-		Price			= "5520"
+		Price			= "5140"
                 FiringType		= "MachineGun"
-		Durability			= "50"/>
+		Durability			= "50"
+		VisibleInEncyclopedia	= "false" />
 
 	<Prototype
 		Class			= "BulletLauncher"
 		Name			= "vulcan01"
+		ModelFile			= "vulcan01"
+		ResourceType		= "BIG_GUN"
+		NodeScale		= "1 1 1"
+		Mass			= "1.0"
+		
+		BulletPrototype		= "raybullet_vulcan01"
+		ExplosionType		= "MACHINEGUN"
+		FiringEffect		= "none"
+		Damage			= "5"
+		FiringRate		= "1100"
+		GroupingAngle		= "0.9"
+		FiringRange		= "400"
+		RecoilForce		= "150"
+		ShellsPoolSize  = "840"
+		WithShellsPoolLimit	= "true"
+		
+		ChargeSize     = "210"
+		RechargingTime = "7"
+
+		Decal				= "DC_BIG_MACHINEGUN"
+
+		Price			= "7650"
+                FiringType		= "MachineGun"
+		Durability		= "30"/>
+
+	<Prototype
+		Class			= "BulletLauncher"
+		Name			= "vulcan01_unlimited"
 		ModelFile			= "vulcan01"
 		ResourceType		= "BIG_GUN"
 		NodeScale		= "1 1 1"
@@ -78,16 +142,19 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 		FiringRate		= "1100"
 		GroupingAngle		= "0.9"
 		FiringRange		= "400"
-		RecoilForce		= "50"
+		RecoilForce		= "150"
+		ShellsPoolSize  = "840"
+		WithShellsPoolLimit	= "true"
 		
 		ChargeSize     = "210"
 		RechargingTime = "7"
 
 		Decal				= "DC_BIG_MACHINEGUN"
 
-		Price			= "5630"
+		Price			= "7650"
                 FiringType		= "MachineGun"
-		Durability		= "30"/>
+		Durability		= "30"
+		VisibleInEncyclopedia	= "false" />
 
 	<Prototype
 		Class			= "BulletLauncher"
@@ -97,7 +164,7 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 		NodeScale		= "1 1 1"
 		Mass			= "1.0"
 
-		BulletPrototype		= "raybullet"
+		BulletPrototype		= "raybullet_flag01"
 		ExplosionType		= "MACHINEGUN"
 		FiringEffect		= "none"
 		Damage		= "320"
@@ -105,14 +172,16 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 		FiringRate		= "14"
 		GroupingAngle		= "3"
 		FiringRange		= "300"
-		RecoilForce		= "1000"
+		RecoilForce		= "3000"
+		ShellsPoolSize  = "21"
+		WithShellsPoolLimit	= "true"
 
 		Decal			= "DC_BIG_MACHINEGUN"
 
 		ChargeSize     = "1"
 		RechargingTime = "4"
 
-		Price			= "17860"
+		Price			= "19100"
                 FiringType		= "ShotGun"
 		BlastWavePrototype      = "smallBlastWave"
 		Durability		= "200"/>
@@ -125,21 +194,23 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 		NodeScale		= "1 1 1"
 		Mass			= "1.0"
 		
-		BulletPrototype		= "raybullet"
+		BulletPrototype		= "raybullet_kpvt01"
 		ExplosionType		= "AUTOCANNON"
 		FiringEffect		= "none"
 		Damage		= "8"
 		FiringRate		= "700"
 		GroupingAngle		= "1.1"
 		FiringRange		= "1000"
-		RecoilForce		= "300"
+		RecoilForce		= "500"
+		ShellsPoolSize  = "650"
+		WithShellsPoolLimit	= "true"
 		
 		Decal				= "DC_BIG_MACHINEGUN"
 
 		ChargeSize     = "130"
 		RechargingTime = "6"
 
-		Price			= "6400"
+		Price			= "11080"
                 FiringType		= "MachineGun"
 		Durability		= "60"/>
 
@@ -151,21 +222,23 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 		NodeScale		= "1 1 1"
 		Mass			= "1.0"
 		
-		BulletPrototype		= "raybullet"
+		BulletPrototype		= "raybullet_rainmetal01"
 		ExplosionType		= "AUTOCANNON"
 		FiringEffect		= "none"
 		Damage		= "18"
 		FiringRate		= "300"
 		GroupingAngle		= "1.0"
 		FiringRange		= "800"
-		RecoilForce		= "300"
+		RecoilForce		= "1500"
+		ShellsPoolSize  = "240"
+		WithShellsPoolLimit	= "true"
 		
 		Decal				= "DC_BIG_MACHINEGUN"
 
 		ChargeSize     = "80"
 		RechargingTime = "5"
 
-		Price			= "24580"
+		Price			= "24400"
                 FiringType		= "Cannon"
 		BlastWavePrototype      = "smallBlastWave_rainmetal"
 		Durability		= "100" />
@@ -178,7 +251,7 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 		NodeScale		= "1 1 1"
 		Mass			= "1.0"
 
-		BulletPrototype	= "somePlasmaBunch"
+		BulletPrototype	= "somePlasmaBunch_elephant01"
 		ExplosionType	= "PLASMA"
 		FiringEffect		= "none"
 		Damage		= "750"
@@ -186,13 +259,15 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 		GroupingAngle		= "0.8"
 		FiringRange		= "200"
 		RecoilForce		= "500"
+		ShellsPoolSize  = "18"
+		WithShellsPoolLimit	= "true"
 		
 		ChargeSize     = "1"
 		RechargingTime = "4.5"
 
 		Decal				= "DC_LASER"
                 FiringType		= "Plasma"
-		Price			= "45100"
+		Price			= "64100"
 
 		Durability		= "250"/>
 	
@@ -207,19 +282,21 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 		
 		Decal				= "DC_LASER"
 
-		BulletPrototype		= "someLaserBeamBlue"
+		BulletPrototype		= "someLaserBeamBlue_odin01"
 		ExplosionType		= "LASER"
 		FiringEffect		= "none"
 		Damage			= "130"
 		FiringRate		= "90"
 		GroupingAngle		= "0.3"
 		FiringRange		= "800"
-		RecoilForce		= "300"
+		RecoilForce		= "500"
+		ShellsPoolSize  = "60"
+		WithShellsPoolLimit	= "true"
 
 		ChargeSize     		= "20"
 		RechargingTime 		= "3.5"
                 FiringType		= "Laser"
-		Price			= "51250"
+		Price			= "77000"
 
 		Durability		= "250"/>
 
@@ -233,25 +310,27 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 		
 		Decal				= "DC_GUN"
 
-		BulletPrototype		= "someMortarShell"
+		BulletPrototype		= "someMortarShell_bumblebee01"
 		ExplosionType		= "GRENADE"
 		FiringEffect		= "none"
 		Damage			= "115"
 		FiringRate		= "70"
 		GroupingAngle		= "2.1"
 		FiringRange		= "600"
-		RecoilForce		= "300"
+		RecoilForce		= "700"
+		ShellsPoolSize  = "42"
+		WithShellsPoolLimit	= "true"
 
 		ActionDist		= "1000"		
 		InitialVelocity		= "70"
 
 		BlastWavePrototype      = "smallBlastWave_bumblebee"
-		ChargeSize     = "21"
+		ChargeSize     = "22"
 		RechargingTime = "6"
 
 		TurningSpeed		= "100"
                 FiringType		= "Artillery"
-		Price			= "13310"
+		Price			= "6910"
 
 		Durability		= "400"/>
 
@@ -268,19 +347,21 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 
 		Decal				= "DC_GUN"
 
-		BulletPrototype		= "someMortarShell02"
+		BulletPrototype		= "someMortarShell02_omega01"
 		ExplosionType		= "GRENADE"
 		FiringEffect		= "none"
 		Damage		= "170"
 		FiringRate		= "90"
 		GroupingAngle		= "1.1"
 		FiringRange		= "500"
-		RecoilForce		= "300"
+		RecoilForce		= "700"
+		ShellsPoolSize  = "36"
+		WithShellsPoolLimit	= "true"
         
 		ChargeSize     = "18"
 		RechargingTime = "8"
 
-		Price			= "42000"
+		Price			= "21750"
         FiringType		= "Artillery"
 
 		TurningSpeed		= "100"

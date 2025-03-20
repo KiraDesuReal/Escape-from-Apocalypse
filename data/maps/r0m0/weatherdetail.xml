@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<Weather>
+	<WeatherItem
+		name="r0m0_clear01">
+		<ColorType
+			name="sunrise"
+			LightmapTexture="lightmap_sunrisetime_r0m0.dds"
+			CloudsTexture="skyclear1.dds" />
+
+		<ColorType
+			name="day"
+			LightmapTexture="lightmap_daytime_r0m0.dds"
+			CloudsTexture="skyclear1.dds" />
+
+		<ColorType
+			name="sunset"
+			LightmapTexture="lightmap_sunsettime_r0m0.dds"
+			CloudsTexture="skyclear1.dds" />
+
+		<ColorType
+			name="night"
+			LightmapTexture="lightmap_nighttime_r0m0.dds"
+			CloudsTexture="skyclear1.dds" />
+	</WeatherItem>
+
+	<WeatherItem
+		name="r0m0_rain">
+		<ColorType
+			name="sunrise"
+			LightmapTexture="lightmap_sunrisetime_r0m0.dds"
+			CloudsTexture="skyrainy.dds" />
+
+		<ColorType
+			name="day"
+			LightmapTexture="lightmap_daytime_r0m0.dds"
+			CloudsTexture="skyrainy.dds" />
+
+		<ColorType
+			name="sunset"
+			LightmapTexture="lightmap_sunsettime_r0m0.dds"
+			CloudsTexture="skyblight.dds" />
+
+		<ColorType
+			name="night"
+			LightmapTexture="lightmap_nighttime_r0m0.dds"
+			CloudsTexture="skyrainy.dds" />
+	</WeatherItem>
+
+	<WeatherItem
+		name="r0m0_foggy">
+		<ColorType
+			name="sunrise"
+			LightmapTexture="lightmap_sunrisetime_r0m0.dds"
+			CloudsTexture="skyovercast.dds" />
+
+		<ColorType
+			name="day"
+			LightmapTexture="lightmap_daytime_r0m0.dds"
+			CloudsTexture="skyovercast.dds" />
+
+		<ColorType
+			name="sunset"
+			LightmapTexture="lightmap_sunsettime_r0m0.dds"
+			CloudsTexture="skyovercast.dds" />
+
+		<ColorType
+			name="night"
+			LightmapTexture="lightmap_nighttime_r0m0.dds"
+			CloudsTexture="skyovercast.dds" />
+	</WeatherItem>
+</Weather>

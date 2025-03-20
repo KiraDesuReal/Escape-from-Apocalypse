@@ -21,10 +21,55 @@ $Id: Plasma.xml,v 1.16 2005/10/18 06:12:48 anton Exp $
 
 	<Prototype
 		Class			= "PlasmaBunch"
+		Name			= "somePlasmaBunch_fagot01"		
+	
+		ModelFile		= "plasma01"
+		ExplosionType	= "PLASMA" 
+
+		Price           = "1150"
+
+		Velocity		= "150"
+		Acceleration	= "1000"
+		FlyTime		= "30.0"
+		Size			= "0.5 0.5 1"
+	/>
+
+	<Prototype
+		Class			= "PlasmaBunch"
+		Name			= "somePlasmaBunch_elephant01"		
+	
+		ModelFile		= "plasma01"
+		ExplosionType	= "PLASMA" 
+
+		Price           = "1100"
+
+		Velocity		= "150"
+		Acceleration	= "1000"
+		FlyTime		= "30.0"
+		Size			= "0.5 0.5 1"
+	/>
+
+	<Prototype
+		Class			= "PlasmaBunch"
 		Name			= "somePlasmaBunchBig"		
 	
 		ModelFile		= "plasma_big01"
 		ExplosionType	= "PLASMA" 
+
+		Velocity		= "150"
+		Acceleration	= "1000"
+		FlyTime		= "15.0"
+		Size			= "0.5 0.5 1"
+	/>
+
+	<Prototype
+		Class			= "PlasmaBunch"
+		Name			= "somePlasmaBunchBig_hammer01"		
+	
+		ModelFile		= "plasma_big01"
+		ExplosionType	= "PLASMA" 
+
+		Price           = "4200"
 
 		Velocity		= "150"
 		Acceleration	= "1000"
@@ -45,12 +90,43 @@ $Id: Plasma.xml,v 1.16 2005/10/18 06:12:48 anton Exp $
 		FlyTime		= "25.0"
 		Size			= "0.5 0.5 1"
 	/>
+
+	<Prototype
+		Class			= "PlasmaBunch"
+		Name			= "someLaserBeamGreen_maxim01"		
+	
+		ModelFile		= "laser01"
+		ExplosionType	= "LASER" 
+
+		Price           = "142"
+
+		Velocity		= "800"
+		Acceleration	= "1000"
+		FlyTime		= "25.0"
+		Size			= "0.5 0.5 1"
+	/>
+
 	<Prototype
 		Class			= "PlasmaBunch"
 		Name			= "someLaserBeamBlue"		
 	
 		ModelFile		= "laser02"
 		ExplosionType	= "LASER" 
+
+		Velocity		= "800"
+		Acceleration	= "1000"
+		FlyTime		= "25.0"
+		Size			= "0.5 0.5 1"
+	/>
+
+	<Prototype
+		Class			= "PlasmaBunch"
+		Name			= "someLaserBeamBlue_odin01"		
+	
+		ModelFile		= "laser02"
+		ExplosionType	= "LASER" 
+
+		Price           = "300"
 
 		Velocity		= "800"
 		Acceleration	= "1000"
@@ -71,7 +147,7 @@ $Id: Plasma.xml,v 1.16 2005/10/18 06:12:48 anton Exp $
 		
 		Decal				= "DC_LASER"
 
-		BulletPrototype	= "somePlasmaBunchBig"
+		BulletPrototype	= "somePlasmaBunchBig_hammer01"
 		ExplosionType	= "PLASMA"
 		FiringEffect	= "none"
 		Damage		= "1500"
@@ -82,8 +158,10 @@ $Id: Plasma.xml,v 1.16 2005/10/18 06:12:48 anton Exp $
 		FiringType		= "Plasma"
 		ChargeSize     = "1"
 		RechargingTime = "5"
+		ShellsPoolSize="14"
+		WithShellsPoolLimit	= "true"
 		
-		Price		= "87000"
+		Price		= "64000"
 
 		Durability		= "400"/>
 

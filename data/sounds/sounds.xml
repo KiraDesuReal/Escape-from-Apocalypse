@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
 <sounds>
-
 <!-- Use Items -->
 
 	<model
@@ -18,6 +17,48 @@
 	<model
 		id="S_USE_OIL"
 		file="data\sounds\other\use_items\oil.wav"
+		group="SOUND2D"
+		/>
+
+	<model
+		id="S_USE_RELOAD_ARTILLERYGUN"
+		file="data\sounds\other\use_items\reload_artillerygun.wav"
+		group="SOUND2D"
+		/>
+
+	<model
+		id="S_USE_RELOAD_HEAVYGUN"
+		file="data\sounds\other\use_items\reload_heavygun.wav"
+		group="SOUND2D"
+		/>
+
+	<model
+		id="S_USE_RELOAD_MACHINEGUN"
+		file="data\sounds\other\use_items\reload_machinegun.wav"
+		group="SOUND2D"
+		/>
+
+	<model
+		id="S_USE_RELOAD_ROCKETGUN"
+		file="data\sounds\other\use_items\reload_rocketgun.wav"
+		group="SOUND2D"
+		/>
+
+	<model
+		id="S_USE_RELOAD_SHOTGUN"
+		file="data\sounds\other\use_items\reload_shotgun.wav"
+		group="SOUND2D"
+		/>
+
+	<model
+		id="S_USE_RELOAD_BALLON"
+		file="data\sounds\other\use_items\reload_ballon.wav"
+		group="SOUND2D"
+		/>
+
+	<model
+		id="S_USE_RELOAD_BALLON_TURBO"
+		file="data\sounds\Shooting\Special\car_oil_open.wav"
 		group="SOUND2D"
 		/>
 
@@ -60,7 +101,224 @@
 		file="data\sounds\other\gate\closed_gate.wav"
 		group="GATE_OPEN"
 		/>
-		
+
+<!-- Interface -->
+
+	<model
+		id="S_FADING_MSG"
+		file="data\sounds\other\interface\fading_msg.wav"
+		group="SOUND2D"
+		/>
+
+	<model
+		id="S_BUY"
+		file="data\sounds\other\interface\buy.ogg"
+		group="SOUND2D"
+		/>
+
+	<model
+		id="S_DEATH"
+		file="data\sounds\other\interface\death.wav"
+		group="SOUND2D"
+		/>
+
+<!-- Building -->
+
+	<model
+		id="S_BUILDING"
+		file="data\sounds\other\interface\building.wav"
+		group="SOUND2D"
+		/>
+
+<!-- Generator -->
+
+	<model
+		id="S_GENERATOR_MOTOR_STAND"
+		file="data\sounds\other\generator\windgenerator_stand1.wav"
+		group="GENERATOR"
+	/>
+
+	<model
+		id="S_GENERATOR_MOTOR"
+		file="data\sounds\other\generator\windgenerator_move1.wav"
+		group="GENERATOR"
+	/>
+
+	<model
+		id="S_GENERATOR"
+		file="data\sounds\other\generator\generator.wav"
+		group="GENERATOR"
+	/>
+
+	<model
+		id="S_GENERATOR_ORACLE"
+		file="data\sounds\other\generator\generator_oracle.wav"
+		group="GENERATOR"
+	/>
+
+<!-- Garage -->
+
+	<model
+		id="S_GARAGE_CRAFTING_START"
+		file="data\sounds\other\garage\garage_crafting_start.wav"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_GARAGE_CRAFTING_END"
+		file="data\sounds\other\garage\garage_crafting_end.wav"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_GARAGE_CRAFTING_STOP"
+		file="data\sounds\other\garage\garage_crafting_stop.wav"
+		group="SOUND2D"
+	/>
+
+
+<!-- Chest Scavs -->
+
+	<model
+		id="S_CHEST_SCAVS_START"
+		file="data\sounds\other\chest_scavs\chest_scavs_start.ogg"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_CHEST_SCAVS_END"
+		file="data\sounds\other\chest_scavs\chest_scavs_end.ogg"
+		group="SOUND2D"
+	/>
+
+<!-- Dungeon --> 
+
+	<model
+		id="S_DUNGEON_AMBIENT_1"
+		file="data\sounds\other\dungeon\dungeon_ambient_1.wav"
+		group="AMBIENT_DUNGEON"
+	/>
+
+	<model
+		id="S_DUNGEON_AMBIENT_KEY"
+		file="data\sounds\other\dungeon\dungeon_ambient_key.wav"
+		group="AMBIENT_DUNGEON_KEY"
+	/>
+
+	<model
+		id="S_DUNGEON_CREATE_KEY"
+		file="data\sounds\other\dungeon\dungeon_key.wav"
+		group="CREATE_KEY"
+	/>
+
+	<model
+		id="S_POST_CHALLENGE_ROTATE"
+		file="data\sounds\other\dungeon\post_challenge_rotate.wav"
+		group="AMBIENT_DUNGEON_KEY"
+	/>
+
+	<model
+		id="S_POST_CHALLENGE"
+		file="data\sounds\other\dungeon\post_challenge1.wav"
+		group="AMBIENT_DUNGEON_KEY"
+	/>
+
+	<model
+		id="S_DUNGEON_START"
+		file="data\sounds\other\dungeon\dungeon_start.wav"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_DUNGEON_COMPLETE_CHALLENGE"
+		file="data\sounds\other\dungeon\dungeon_complete_challenge.wav"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_DUNGEON_FAIL_CHALLENGE"
+		file="data\sounds\other\dungeon\dungeon_fail_challenge.wav"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_DUNGEON_OPEN_GATE"
+		file="data\sounds\other\dungeon\dungeon_door_open.wav"
+		group="GATE_OPEN"
+	/>
+
+	<model
+		id="S_DUNGEON_OPEN_GATE_END"
+		file="data\sounds\other\dungeon\dungeon_door_open_end.wav"
+		group="GATE_OPEN"
+	/>
+	
+	<model
+		id="S_DUNGEON_ENTERS"
+		file="data\sounds\other\dungeon\dungeon_enters.wav"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_PICK_ITEM"
+		file="data\sounds\other\interface\pick_item.wav"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_DUNGEON_NEW_FAZE"
+		file="data\sounds\other\dungeon\dungeon_new_faze.wav"
+		group="SOUND2D"
+	/>
+
+<!-- Quest --> 
+
+	<model
+		id="S_QUEST_COMPLETE"
+		file="data\sounds\other\quest\quest_complete.ogg"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_QUEST_FAIL"
+		file="data\sounds\other\quest\quest_fail.ogg"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_QUEST_FINISHED"
+		file="data\sounds\other\quest\quest_finished.ogg"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_QUEST_TAKEN"
+		file="data\sounds\other\quest\quest_taken.ogg"
+		group="SOUND2D"
+	/>
+
+	<model
+		id="S_SUBTASK_COMPLETE"
+		file="data\sounds\other\quest\subtask_complete.ogg"
+		group="SOUND2D"
+	/>
+
+<!-- Item Music --> 
+
+	<model
+		id="S_ITEM_MUSIC01"
+		file="data\music\item_music\item_music01.ogg"
+		group="ITEM_MUSIC"
+	/>
+
+<!-- Color Fier --> 
+
+	<model
+		id="S_COLOR_FIER"
+		file="data\sounds\other\color_fier\color_fier.wav"
+		group="COLOR_FIER"
+	/>
+
 <!-- Crash --> 
 
 	<model
@@ -1188,6 +1446,11 @@
 
 <!-- Explosions --> 
 
+	<model
+		id="S_EXPLOSION_GATE"
+		file="data\sounds\Explosion\explosion06.wav"
+		group="EXPLOSIONS_GATE"
+	/>
 
 	<model
 		id="S_EXPLOSION01"
@@ -1333,7 +1596,7 @@
 	<model
 		id="S_STARTING01"
 		file="data\sounds\Driving\Starting\starting01.wav"
-		/>
+		group="SOUND2D" />
 
 	<model
 		id="S_STARTING02"
@@ -1343,37 +1606,37 @@
 	<model
 		id="S_STARTING03"
 		file="data\sounds\Driving\Starting\starting03.wav"
-		/>
+		group="SOUND2D" />
 
 	<model
 		id="S_STARTING04"
 		file="data\sounds\Driving\Starting\starting04.wav"
-		/>
+		group="SOUND2D" />
 
 	<model
 		id="S_STARTING05"
 		file="data\sounds\Driving\Starting\starting05.wav"
-		/>
+		group="SOUND2D" />
 
 	<model
 		id="S_STARTING06"
 		file="data\sounds\Driving\Starting\starting06.wav"
-		/>
+		group="SOUND2D" />
 
 	<model
 		id="S_STARTING07"
 		file="data\sounds\Driving\Starting\starting07.wav"
-		/>
+		group="SOUND2D" />
 
 	<model
 		id="S_STARTING08"
 		file="data\sounds\Driving\Starting\starting08.wav"
-		/>
+		group="SOUND2D" />
 
 	<model
 		id="S_STARTING09"
 		file="data\sounds\Driving\Starting\starting09.wav"
-		/>
+		group="SOUND2D" />
 
 	<model
 		id="S_BELAZ_ENGINE_LOW"
@@ -1820,21 +2083,21 @@
 <!-- 2d -->
 
 		<model
-        		id="S_RECHARGE_WEAPON"
-        		file="data\sounds\effects\Shells\gun_reload.wav"
-        		group="SOUND3D"
+        	id="S_RECHARGE_WEAPON"
+        	file="data\sounds\effects\Shells\gun_reload.wav"
+        	group="SOUND2D"
 		/>                    
 
 		<model
-		id="S_CAR_BURNING_SMALL"
+			id="S_CAR_BURNING_SMALL"
 			file="data\sounds\other\burnrng\car_burning_small.wav"
-                  group="BURNING_SMALL"
-            />
+            group="BURNING_SMALL"
+        />
 
 		<model
 			id="S_CAR_BURNING"
 			file="data\sounds\other\burnrng\car_burning01.wav"
-             group="BURNING_SMALL"
+         	group="BURNING_SMALL"
             />
 
 <!-- 		cinematic sound				 -->

@@ -55,6 +55,7 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 			<Type Name="MIROTVOREC_TRAILER_CABIN" />
 			<Type Name="TANK_CABIN" />
 			<Type Name="SML2_CABIN_FORMULA" />
+			<Type Name="FAKE_CABIN" />
 		</Type>
 		
 		<Type Name="BASKET" geomsize="5 5">
@@ -97,6 +98,7 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 			<Type Name="OIL_USE" />
 			<Type Name="DOSKI" />
 			<Type Name="DETAILS" />
+			<Type Name="SHKATULKA" />
 		</Type>
 
 		<Type Name="DIGGED" geomsize="2 2" >
@@ -121,8 +123,92 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 			<Type Name="ELECTRONICS_USE" />
 		</Type>
 
+
+		<Type Name="SIZE_18X0" geomsize="18 0">
+			<Type Name="ITEM_OPACITY" />
+		</Type>
+
+
 		<Type Name="KEYS" geomsize="2 2">
 			<Type Name="ITEM_KEY" />
+		</Type>
+		
+
+		<Type Name="SIZE_1X1" geomsize="1 1">
+			<Type Name="ITEM_SIZE_1X1" />
+		</Type>
+
+		<Type Name="SIZE_1X2" geomsize="1 2">
+			<Type Name="ITEM_SIZE_1X2" />
+		</Type>
+
+
+		<Type Name="SIZE_2X1" geomsize="2 1">
+			<Type Name="ITEM_SIZE_2X1" />
+		</Type>
+
+		<Type Name="SIZE_2X2" geomsize="2 2">
+			<Type Name="ITEM_SIZE_2X2" />
+		</Type>
+
+		<Type Name="SIZE_2X3" geomsize="2 3">
+			<Type Name="ITEM_SIZE_2X3" />
+		</Type>
+
+		<Type Name="SIZE_2X4" geomsize="2 4">
+			<Type Name="ITEM_SIZE_2X4" />
+		</Type>
+
+		<Type Name="SIZE_2X5" geomsize="2 5">
+			<Type Name="ITEM_SIZE_2X5" />
+		</Type>
+
+		<Type Name="SIZE_2X6" geomsize="2 6">
+			<Type Name="ITEM_SIZE_2X6" />
+		</Type>
+
+
+		<Type Name="SIZE_3X2" geomsize="3 2">
+			<Type Name="ITEM_SIZE_3X2" />
+		</Type>
+
+		<Type Name="SIZE_3X3" geomsize="3 3">
+			<Type Name="ITEM_SIZE_3X3" />
+		</Type>
+
+		<Type Name="SIZE_3X4" geomsize="3 4">
+			<Type Name="ITEM_SIZE_3X4" />
+		</Type>
+
+		<Type Name="SIZE_3X8" geomsize="3 8">
+			<Type Name="ITEM_SIZE_3X8" />
+		</Type>
+
+	
+		<Type Name="SIZE_4X2" geomsize="4 2">
+			<Type Name="ITEM_SIZE_4X2" />
+		</Type>
+
+		<Type Name="SIZE_4X4" geomsize="4 4">
+			<Type Name="ITEM_SIZE_4X4" />
+		</Type>
+
+		
+		<Type Name="SIZE_5X3" geomsize="5 3">
+			<Type Name="ITEM_SIZE_5X3" />
+		</Type>
+
+		<Type Name="SIZE_5X4" geomsize="5 4">
+			<Type Name="ITEM_SIZE_5X4" />
+		</Type>
+
+		<Type Name="SIZE_5X5" geomsize="5 5">
+			<Type Name="ITEM_SIZE_5X5" />
+		</Type>
+
+
+		<Type Name="SIZE_8X4" geomsize="8 4">
+			<Type Name="ITEM_SIZE_8X4" />
 		</Type>
 
 	</Type>
@@ -177,5 +263,7 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 		<Type Name="QUEST_REPROBOT" />
 		
 		<Type Name="QUEST_KEY" />
+
+		<Type Name="QUEST_ITEMS" />
 	</Type>
 </ResourceTypes>

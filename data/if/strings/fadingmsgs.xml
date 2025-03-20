@@ -30,15 +30,47 @@
 
 	<string
 		id="fm_fail_quest"
-		value="Вы провалили задание." />
+		value="Квест %1p провален!" />
 
 	<string
 		id="fm_complete_quest"
-		value="Вы выполнили задание." />
+		value="Квест %1p выполнен!" />
 
 	<string
 		id="fm_take_quest"
-		value="Вы получили новое задание." />
+		value="Квест %1p взят!" />
+
+	<string
+		id="fm_to_finish_quest"
+		value="Квест %1p доступен к завершению!" />
+
+	<string
+		id="fm_complete_subtask"
+		value="Подзадача квеста %1p выполнена!" />
+
+	<string
+		id="fm_progress_quest_scavs_kills"
+		value="Прогресс по квесту %1p:|Диких убито: %2d/%3d" />
+
+	<string
+		id="fm_progress_quest_scavs_kills_complete"
+		value="@ff59db12Прогресс по квесту %1p:|Диких убито: %2d/%3d" />
+
+	<string
+		id="fm_progress_quest_pmc_kills"
+		value="Прогресс по квесту %1p:|ЧВК убито: %2d/%3d" />
+
+	<string
+		id="fm_progress_quest_pmc_kills_complete"
+		value="@ff59db12Прогресс по квесту %1p:|ЧВК убито: %2d/%3d" />
+
+	<string
+		id="fm_progress_quest_raidcount"
+		value="Прогресс по квесту %1p:|Проведено рейдов: %2d/%3d" />
+
+	<string
+		id="fm_progress_quest_raidcount_complete"
+		value="@ff59db12Прогресс по квесту %1p:|Проведено рейдов: %2d/%3d" />
 
 	<string
 		id="fm_cant_move"
@@ -122,7 +154,7 @@
 
 	<string
 		id="fm_item_pickup"
-		value="Вы подняли предмет: %1s." />
+		value="Вы подняли предмет: %1s" />
 
 	<string
 		id="fm_sunrise"
@@ -154,7 +186,11 @@
 
 	<string
 		id="fm_player_add_thing"
-		value="Вы получили предмет %1p!" />
+		value="Вы получили предмет: %1p" />
+
+	<string
+		id="fm_player_add_thing_count"
+		value="Вы получили предмет: %1p - x%2d" />
 
 	<string
 		id="fm_cheat_is_not_allowed"
@@ -170,11 +206,11 @@
 
 	<string
 		id="fm_player_exit_location"
-		value="Выход через %1d." />
+		value="Выход через: %1d" />
 
 	<string
 		id="fm_player_exit_enters_location"
-		value="Оставайтесь в зоне выхода.|@ff6cff00%1p." />
+		value="Оставайтесь в зоне выхода|@ff6cff00%1p" />
 
 	<string
 		id="fm_player_exit_leaves_location"
@@ -186,23 +222,23 @@
 
 	<string
 		id="fm_use_scrap_metal"
-		value="@ffffba00Использован: Крепкий металл. Прочность +%1d" />
+		value="Использован: Крепкий металл||@ff00ff4eПрочность +%1d (%2d)|@ffffba00Броня кабины +%3d (%4d)|Броня кузова +%5d (%6d)" />
 
 	<string
 		id="fm_use_machinery"
-		value="@ff00ff4eИспользовано: Рабочее оборудование. Прочность +%1d" />
+		value="Использовано: Рабочее оборудование||@ff00ff4eПрочность +%1d (%2d)|@ffffba00Броня кабины +%3d (%4d)|Броня кузова +%5d (%6d)" />
 
 	<string
 		id="fm_use_oil"
-		value="@ff0042ffИспользована: Нефть. Топливо +%1d" />
+		value="Использована: Бочка с нефтью||@ff0042ffТопливо +%1d (%2d)" />
 
 	<string
 		id="fm_use_electronics"
-		value="@ff00ff4eИспользована: Высоко-технологичная электроника. Прочность +%1d" />
+		value="Использована: Высокотехнологичная электроника||@ff00ff4eПрочность +%1d (%2d)|@ffffba00Броня кабины +%3d (%4d)|Броня кузова +%5d (%6d)" />
 
 	<string
 		id="fm_use_fuel_full"
-		value="@ff0042ffИспользована: Канистра топлива. Топливо +%1d" />
+		value="Использована: Канистра топлива||@ff0042ffТопливо +%1d (%2d)" />
 
 	<string
 		id="fm_fuel_petrol_start"
@@ -223,5 +259,184 @@
 	<string
 		id="fm_item_to_quest_items"
 		value="Предмет: %1p, перенесен в квестовые." />
-		
+
+	<string
+		id="fm_remove_quest_item"
+		value="Предмет: %1p, удален из квестовых." />
+
+	<string
+		id="fm_used_key"
+		value="Осталось использований: %1d" />
+
+	<string
+		id="fm_airdrop_start"
+		value="Воздушное пространство загружено.|Ожидайте прибытия!" />
+
+	<string
+		id="fm_raid_info"
+		value="%1p" />
+
+	<string
+		id="fm_time_raid"
+		value="Осталось %1p" />
+
+	<string
+		id="fm_time_raid_red"
+		value="@ffc82323Осталось %1p" />
+
+	<string
+		id="fm_item_to_npc"
+		value="Вы передали предмет: %1p" />
+
+	<string
+		id="fm_items_to_build"
+		value="Для постройки требуется:|%1p" />
+
+	<string
+		id="fm_generator_load_item"
+		value="Вы загрузили предмет: %1p" />
+
+	<string
+		id="fm_generator_on"
+		value="Генератор включен!" />
+
+	<string
+		id="fm_generator_off"
+		value="Генератор выключен!" />
+
+	<string
+		id="fm_generator_time_work"
+		value="Время работы генератора: %1p" />
+
+	<string
+		id="fm_generator_fuel_nil"
+		value="В генераторе закончилось топливо!" />
+
+	<string
+		id="fm_chest_scavs_start"
+		value="Дикие отправились за добычей!" />
+
+	<string
+		id="fm_chest_scavs_scav_move"
+		value="Ожидайте прибытия диких с добычей." />
+
+	<string
+		id="fm_chest_scavs_loot"
+		value="Дикие принесли добычу!" />
+
+	<string
+		id="fm_chest_scavs_timer"
+		value="Осталось: %1p" />
+
+	<string
+		id="fm_start_challenge"
+		value="Испытание началось!" />
+
+	<string
+		id="fm_challenge_score"
+		value="@ffffc600Счёт: %1d @ff72ff00+%2d" />
+
+	<string
+		id="fm_dungeon_timer"
+		value="Осталось %1d секунд" />
+
+	<string
+		id="fm_complete_challenge"
+		value="Испытание выполнено!" />
+
+	<string
+		id="fm_done_challenge"
+		value="Испытание завершено!" />
+
+	<string
+		id="fm_challenge_your_record"
+		value="@ffffc600Ваш рекорд: %1d" />
+
+	<string
+		id="fm_challenge_your_score"
+		value="@ffffc600Вы набрали: %1d" />
+
+	<string
+		id="fm_challenge_kill_2"
+		value="x2" />
+
+	<string
+		id="fm_challenge_kill_3"
+		value="x3" />
+	
+	<string
+		id="fm_challenge_kill_4"
+		value="x4" />
+
+	<string
+		id="fm_challenge_restart"
+		value="Нажмите гудок, чтобы завершить испытание." />
+
+	<string
+		id="fm_use_ammo_chest"
+		value="@ffffba00Пополнен боезапас для: %1p" />
+
+	<string
+		id="fm_marker_target"
+		value="Маркировка цели..." />
+
+	<string
+		id="fm_target_defence_timer"
+		value="Защищайте цель: %1d" />
+
+	<string
+		id="fm_marker_install"
+		value="Маркер установлен!" />
+
+	<string
+		id="fm_marker_leaves_zone"
+		value="Вы покинули зону маркировки!" />
+
+	<string
+		id="fm_get_special_community_item"
+		value="@ffffc000Вы получили свой уникальный предмет!" />
+
+	<string
+		id="fm_not_key"
+		value="У вас нет необходимого ключа!" />
+
+	<string
+		id="fm_player_take_item"
+		value="Вы забрали предмет: %1p" />
+
+	<string
+		id="fm_garage_crafting_start"
+		value="Сборка предмета %1p началась!" />
+
+	<string
+		id="fm_garage_crafting_stop"
+		value="Сборка предмета %1p была прервана!" />
+
+	<string
+		id="fm_garage_crafting_done"
+		value="@ffffc000В гараже изготовлен предмет: %1p!" />
+
+	<string
+		id="fm_garage_crafting_stopped"
+		value="@ff9d0a0a[Нет электричества]|@ffffffffСборка предмета %1p приостановлена!" />
+
+	<string
+		id="fm_garage_crafting_restart"
+		value="@ff7ac716[Электричество подано]|@ffffffffСборка предмета %1p возобновлена!" />
+
+	<string
+		id="fm_garage_crafting_timer_pause"
+		value="@ff9d0a0a[Сборка приостановлена]|@ffffffffОсталось: %1p" />
+
+	<string
+		id="fm_scav_car_for_player"
+		value="Дикие готовы одолжить вам свою машину!" />
+
+	<string
+		id="fm_player_scav_close_exit"
+		value="@ffa30d0d%1p|Вы не можете воспользоваться данным выходом, так как испортили отношения с дикими." />
+
+	<string
+		id="fm_scav_carma"
+		value="Карма дикого: %1p" />
 </resource>

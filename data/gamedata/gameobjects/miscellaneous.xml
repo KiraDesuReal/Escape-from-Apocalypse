@@ -23,6 +23,11 @@
 		LookRadius		= "10.0" />
 
 	<Prototype
+		Class			= "Location"
+		Name			= "genericLocationTunnel"	
+		LookRadius		= "10.0" />
+
+	<Prototype
 		Class			= "Team"
 		Name			= "team"
 		DecisionMatrix	= "teammain.lua" 

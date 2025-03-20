@@ -1,0 +1,1621 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<triggers>
+
+	<trigger Name="GlobalVar" active="1">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			SetVar("TimerMain",250)
+			SetVar("PermanentScore",0)
+			CreateNewDummyObject("post_challenge", "post", -1, -1, CVector(739.525, 254.800, 983.778), Quaternion(0, 0, 0, 1), 0)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Установка стандартных значений при запуске карты -->
+	<trigger Name="StartMap" active="1">
+		<event eventid="GE_GAME_START" ObjName="Player1" />
+		<script>
+			SetVar("SoundCreateKey",0)
+			SetVar("RotateKey",0)
+			SetVar("Score",0)
+			SetVar("ScoreUP",50)
+			SetVar("PlayerDie",0)
+			SetVar("ChallengeComplete", 0)
+			SetVar("Combo", 0)
+			SetVar("ComboTimer", 3)
+			SetVar("PlayerInSpawnLoc", 0)
+			SetVar("Music", 0)
+			SetVar("StartChallenge", 0)
+			SetVar("Use_AmmoChestArtilleryGun", 0)
+			SetVar("Use_AmmoChestHeavyGun", 0)
+			SetVar("Use_AmmoChestMachineGun", 0)
+			SetVar("Use_AmmoChestRocketGun", 0)
+			SetVar("Use_AmmoChestShotGun", 0)
+			SetVar("Use_AmmoBallonLaserGun", 0)
+			SetVar("Use_AmmoBallonPlasmaGun", 0)
+			SetVar("Use_AmmoBallonTurbo", 0)
+			SetVar("PlayerSkin", 0)
+
+			SetVar("Generator_time_work_hour", 0)
+			SetVar("Generator_time_work_minute", 0)
+			SetVar("Generator_time_work_second", 0)
+			SetVar("Generator_lvl", 0)
+			SetVar("Generator_on", 0)
+
+			SetVar("ChestScavs_time_hour", 0)
+			SetVar("ChestScavs_time_minute", 0)
+			SetVar("ChestScavs_time_second", 0)
+			SetVar("ChestScavs_Search", 0)
+			SetVar("ChestScavs_timer", 0)
+
+			SetVar("GarageCrafting_time_hour", 0)
+			SetVar("GarageCrafting_time_minute", 0)
+			SetVar("GarageCrafting_time_second", 0)
+			SetVar("GarageCraft", 0)
+			SetVar("GarageCraftPause", 0)
+			SetVar("GarageCraft_timer", 0)
+
+			SetVar("ScavCar_time_hour", 0)
+			SetVar("ScavCar_time_minute", 0)
+			SetVar("ScavCar_time_second", 0)
+			SetVar("ScavCar_timer", 0)
+
+			for i=1,4 do
+				SetVar("loot_"..i, 0)
+			end
+
+			local t = GetVar("TimerMain").AsInt
+			SetVar("Timer", t)
+
+			local p = GetEntityByName("post")
+			if p then p:SetSkin(0) end
+
+			local Plf = GetPlayerVehicle()
+			if Plf then
+				Plf:SetRotation(Quaternion(0.009, 0.002, 0.000, -1.000))
+				Plf:SetCustomControlEnabled( true )
+				Plf:SetCustomLinearVelocity( 0 )
+				Plf:SetThrottle( 0 )
+				Plf:SetCustomControlEnabled( false )
+				Plf:setGodMode(1)
+			end
+
+			TActivate("Tutorial")
+			TActivate("CreateKey_EntresLoc")
+			TActivate("RemoveKey")
+			TActivate("RemoveKeyUnActive")
+			TActivate("ExitFromMap_loc")
+
+			AllowSave(false)
+
+			SetCameraBehindPlayerVehicle()
+
+			if GENERATOR_TIMER_HOUR_GLOBAL > 0 then SetVar("Generator_time_work_hour", GENERATOR_TIMER_HOUR_GLOBAL) end
+			if GENERATOR_TIMER_MINUTE_GLOBAL > 0 then SetVar("Generator_time_work_minute", GENERATOR_TIMER_MINUTE_GLOBAL) end
+			if GENERATOR_TIMER_SECOND_GLOBAL > 0 then SetVar("Generator_time_work_second", GENERATOR_TIMER_SECOND_GLOBAL) end
+			if GENERATOR_LVL_GLOBAL then SetVar("Generator_lvl", GENERATOR_LVL_GLOBAL) end
+			if GENERATOR_ON_GLOBAL then SetVar("Generator_on", GENERATOR_ON_GLOBAL) end
+
+			if CHESTSCAVS_TIMER_HOUR_GLOBAL > 0 then SetVar("ChestScavs_time_hour", CHESTSCAVS_TIMER_HOUR_GLOBAL) end
+			if CHESTSCAVS_TIMER_MINUTE_GLOBAL > 0 then SetVar("ChestScavs_time_minute", CHESTSCAVS_TIMER_MINUTE_GLOBAL) end
+			if CHESTSCAVS_TIMER_SECOND_GLOBAL > 0 then SetVar("ChestScavs_time_second", CHESTSCAVS_TIMER_SECOND_GLOBAL) end
+			if CHESTSCAVS_SEARCH_GLOBAL > 0 then SetVar("ChestScavs_Search", CHESTSCAVS_SEARCH_GLOBAL) end
+
+			if GARAGE_CRAFTING_TIME_HOUR_GLOBAL > 0 then SetVar("GarageCrafting_time_hour", GARAGE_CRAFTING_TIME_HOUR_GLOBAL) end
+			if GARAGE_CRAFTING_TIME_MINUTE_GLOBAL > 0 then SetVar("GarageCrafting_time_minute", GARAGE_CRAFTING_TIME_MINUTE_GLOBAL) end
+			if GARAGE_CRAFTING_TIME_SECOND_GLOBAL > 0 then SetVar("GarageCrafting_time_second", GARAGE_CRAFTING_TIME_SECOND_GLOBAL) end
+			if GARAGE_CRAFT_GLOBAL > 0 then SetVar("GarageCraft", GARAGE_CRAFT_GLOBAL) end
+			if GARAGE_CRAFT_PAUSE_GLOBAL then SetVar("GarageCraftPause", GARAGE_CRAFT_PAUSE_GLOBAL) end
+
+			if SCAV_CAR_TIME_HOUR > 0 then SetVar("ScavCar_time_hour", SCAV_CAR_TIME_HOUR) end
+			if SCAV_CAR_TIME_MINUTE > 0 then SetVar("ScavCar_time_minute", SCAV_CAR_TIME_MINUTE) end
+			if SCAV_CAR_TIME_SECOND > 0 then SetVar("ScavCar_time_second", SCAV_CAR_TIME_SECOND) end
+
+			if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
+				if GetVar("Generator_time_work_second").AsInt > 0 or GetVar("Generator_time_work_minute").AsInt > 0 or GetVar("Generator_time_work_hour").AsInt > 0 then
+					if GetVar("Generator_on").AsInt == 1 then
+						if getObj("TimerGlobal"):IsActivated() == 0 then TActivate("TimerGlobal") end
+
+						if GetVar("GarageCrafting_time_hour").AsInt > 0 or GetVar("GarageCrafting_time_minute").AsInt > 0 or GetVar("GarageCrafting_time_second").AsInt > 0 then
+							SetVar("GarageCraft_timer", 1)
+						end
+					end
+				end
+			end
+
+			if GetVar("ChestScavs_Search").AsInt > 0 then
+				if GetVar("ChestScavs_time_hour").AsInt > 0 or GetVar("ChestScavs_time_minute").AsInt > 0 or GetVar("ChestScavs_time_second").AsInt > 0 then
+					if getObj("TimerGlobal"):IsActivated() == 0 then TActivate("TimerGlobal") end
+					SetVar("ChestScavs_timer", 1)
+				end
+			end 
+
+			if GetVar("ScavCar_time_hour").AsInt > 0 or GetVar("ScavCar_time_minute").AsInt > 0 or GetVar("ScavCar_time_second").AsInt > 0 then
+				if getObj("TimerGlobal"):IsActivated() == 0 then TActivate("TimerGlobal") end
+				SetVar("ScavCar_timer", 1)
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="Tutorial" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			SpawnMessageBox("3")
+			TActivate("PlayMusic")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="PlayMusic" active="0">
+		<event 	timeout="1.25" eventid="GE_TIME_PERIOD" />
+		<script>
+			PlayCustomMusic("dungeon01")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Выход с карты -->
+	<trigger Name="ExitFromMap_loc" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Exit1_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Exit2_loc" />
+		<script>
+			if GetVar("StartChallenge").AsInt == 0 then
+				local b = SpawnMessageBox("2")
+				if b == 1 then
+					TActivate("ExitMap")
+					R0M1_exit = 1
+					PassToMap("r0m0", "FromTunel", -1)
+				end
+			end
+		</script>
+	</trigger>
+
+<!-- Создание ворот -->
+	<trigger Name="CreateGate" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewDummyObject("quay_round_line", "quay1", -1, -1, CVector(621.864, 254.545, 984.225), Quaternion(0.0000, -0.7071, 0.0000, 0.7071), 0)
+			CreateNewSgNodeObject("agro_gate", "gate1Sg", -1, -1, CVector(628.390, 254.545, 982.722), Quaternion(0.0000, -0.7071, 0.0000, 0.7071), 2.2)
+
+			CreateNewDummyObject("quay_round_line", "quay2", -1, -1, CVector(855.358, 254.545, 981.329), Quaternion(0.0000, 0.7071, 0.0000, 0.7071), 0)
+			CreateNewSgNodeObject("agro_gate", "gate2Sg", -1, -1, CVector(848.853, 254.545, 982.735), Quaternion(0.0000, 0.7071, 0.0000, 0.7071), 2.2)
+
+			CreateEffectInsertedInRemove("ET_PS_EXPLOSION_GATE_DUNGEON", CVector(621.864, 254.545, 984.225), Quaternion(0, 0, 0, 1), true)
+			CreateEffectInsertedInRemove("ET_PS_EXPLOSION_GATE_DUNGEON", CVector(855.358, 254.545, 981.329), Quaternion(0, 0, 0, 1), true)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="RemoveGate" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i=1,2 do
+				local gate = GetEntityByName("gate"..i.."Sg")
+				if gate then gate:Remove() end
+			end
+
+			for i=1,2 do
+				local quay = GetEntityByName("quay"..i)
+				if quay then quay:Remove() end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Создание 'ключа' для начала испытания -->
+	<trigger Name="CreateKey_EntresLoc" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="CreateKey_loc" />
+		<script>
+			SetVar("SoundCreateKey",1)
+			TActivate("CreateKey")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateKey" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+	
+			CreateNewDummyObject("post_challenge_sword", "sword", -1, -1, CVector(739.525, 254, 983.778), Quaternion(0.0000, 0.7071, 0.0000, 0.7071), 0)
+			CreateNewSgNodeObject("ET_PS_LENS_D1", "frame_red", -1, -1, CVector(739.525, 257.100, 983.778), Quaternion(0.0000, 0.7071, 0.0000, 0.7071), 1)
+			CreateEffectInsertedInRemove("ET_PS_DRONE_EX_D", CVector(739.525, 265, 983.778), Quaternion(0, 0, 0, 1), true)
+
+			CreateNewSgNodeObject("ET_S_DUNGEON_AMBIENT_KEY", "SdKey", -1, -1, CVector(739.957, 254, 984.051), Quaternion(0, 0, 0, 1), 0)
+			if GetVar("SoundCreateKey").AsInt==1 then
+				CreateEffectInsertedInRemove("ET_S_DUNGEON_CREATE_KEY", CVector(739.525, 275, 983.778), Quaternion(0, 0, 0, 1), true)
+				SetVar("SoundCreateKey",0)
+			end
+
+			TActivate("RotateKey")
+			TActivate("Start_YesOrNot")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="RotateKey"	active="0">
+		<event	timeout="0.01"		eventid="GE_TIME_PERIOD" />
+		<script>
+
+			local k = getObj("sword")
+			local zq = 	Quaternion(0, 0, 0, 1)
+			if GetVar("RotateKey").AsInt==0 then
+				zq:RotY(RAD(0.2))
+			else 
+				zq:RotY(RAD(1.2))
+			end
+			if k then
+			    local rot = k:GetRotation()
+            	k:SetRotation(zq*rot)
+			end
+			
+		</script>
+	</trigger>
+
+	<trigger Name="RemoveKey" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			
+			local k = GetEntityByName("sword")
+			if k then k:Remove() end
+
+			local kf = GetEntityByName("frame_red")
+			if kf then kf:Remove() end
+
+			local sd = GetEntityByName("SdKey")
+			if sd then sd:Remove() end
+			
+			CreateEffectInsertedInRemove("ET_PS_DRONE_EX_D", CVector(739.525, 265, 983.778), Quaternion(0, 0, 0, 1), true)
+
+			TDeactivate("RotateKey")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="RemoveKeyUnActive" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			SetVar("RotateKey",0)
+			
+			local k = GetEntityByName("sword")
+			if k then k:Remove() end
+
+			local kf = GetEntityByName("frame_blue")
+			if kf then kf:Remove() end
+
+			local sd = GetEntityByName("SdPostRot")
+			if sd then sd:Remove() end
+			
+			CreateEffectInsertedInRemove("ET_PS_DRONE_EX_D", CVector(739.525, 265, 983.778), Quaternion(0, 0, 0, 1), true)
+		
+			TDeactivate("RotateKey")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Активация\Деактивация 'ключа' -->
+	<trigger Name="ActivateKey" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			SetVar("RotateKey",1)
+
+			if GetVar("ChallengeComplete").AsInt==1 then
+				CreateNewDummyObject("post_challenge_sword", "sword", -1, -1, CVector(739.525, 254, 983.778), Quaternion(0.0000, 0.7071, 0.0000, 0.7071), 0)
+				TActivate("RotateKey")
+			end
+			
+			local kf = GetEntityByName("frame_red")
+			if kf then kf:Remove() end
+
+			local p = GetEntityByName("post")
+			if p then p:SetSkin(1) end
+
+			local sw = GetEntityByName("sword")
+			if sw then sw:SetSkin(1) end
+
+			local sd = GetEntityByName("SdKey")
+			if sd then sd:Remove() end
+
+			CreateNewSgNodeObject("ET_PS_LENS_D5", "frame_blue", -1, -1, CVector(739.525, 257.100, 983.778), Quaternion(0.0000, 0.7071, 0.0000, 0.7071), 1)
+			CreateNewSgNodeObject("ET_S_POST_CHALLENGE_ROTATE", "SdPostRot", -1, -1, CVector(739.957, 254, 984.051), Quaternion(0, 0, 0, 1), 0)
+
+			TActivate("SwordUp")
+			TActivate("DeaSword_Y")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SwordUp" active="0">
+		<event 	timeout="0.01"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local sw = getObj("sword")
+			local swCoor = sw:GetPosition()
+			swCoor.y = swCoor.y + 0.015
+			sw:SetPosition(swCoor)
+		</script>
+	</trigger>
+
+	<trigger Name="SwordDown" active="0">
+		<event 	timeout="0.01"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local sw = getObj("sword")
+			local swCoor = sw:GetPosition()
+			swCoor.y = swCoor.y - 0.015
+			sw:SetPosition(swCoor)
+		</script>
+	</trigger>
+
+	<trigger Name="DeaSword_Y" active="0">
+		<event 	timeout="0.5"		eventid="GE_TIME_PERIOD" />
+		<script>
+			TDeactivate("SwordUp")
+			TDeactivate("SwordDown")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="DeActivateKey" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			SetVar("RotateKey",0)
+			
+			local kf = GetEntityByName("frame_blue")
+			if kf then kf:Remove() end
+
+			local p = GetEntityByName("post")
+			if p then p:SetSkin(0) end
+
+			local sw = GetEntityByName("sword")
+			if sw then sw:SetSkin(0) end
+
+			local sd = GetEntityByName("SdPostRot")
+			if sd then sd:Remove() end
+
+			CreateNewSgNodeObject("ET_PS_LENS_D1", "frame_red", -1, -1, CVector(739.525, 257.100, 983.778), Quaternion(0.0000, 0.7071, 0.0000, 0.7071), 1)
+			CreateNewSgNodeObject("ET_S_DUNGEON_AMBIENT_KEY", "SdKey", -1, -1, CVector(739.957, 254, 984.051), Quaternion(0, 0, 0, 1), 0)
+			
+			TActivate("SwordDown")
+			TActivate("DeaSword_Y")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Начало испытания -->
+	<trigger Name="Start_YesOrNot" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Start_loc" />
+		<script>
+
+			local s
+
+			if GetVar("ChallengeComplete").AsInt==1 then
+				s = 4
+			else
+				s = 1
+			end 
+
+			local b = SpawnMessageBox(s)
+			if b == 1 then
+				TActivate("CreateGate")
+				TActivate("ActivateKey")
+				TActivate("StartChallenge")
+				trigger:Deactivate()
+			end
+
+		</script>
+	</trigger>
+
+	<trigger Name="StartChallenge" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			SetVar("Score", 0)
+			SetVar("ScoreUP", 50)
+			SetVar("PlayerInSpawnLoc", 0)
+			SetVar("ChallengeComplete", 0)
+			SetVar("StartChallenge", 1)
+
+			SetVar("Use_AmmoChestArtilleryGun", 0)
+			SetVar("Use_AmmoChestHeavyGun", 0)
+			SetVar("Use_AmmoChestMachineGun", 0)
+			SetVar("Use_AmmoChestRocketGun", 0)
+			SetVar("Use_AmmoChestShotGun", 0)
+			SetVar("Use_AmmoBallonLaserGun", 0)
+			SetVar("Use_AmmoBallonPlasmaGun", 0)
+			SetVar("Use_AmmoBallonTurbo", 0)
+
+			for i=1,4 do
+				SetVar("loot_"..i, 0)
+			end
+
+			if GetVar("Music").AsInt == 1 then
+				PlayCustomMusic("dungeon02")
+			end
+
+			AddImportantFadingMsgByStrIdFormatted("fm_start_challenge")
+
+			local Plf = GetPlayerVehicle()
+			local skin = Plf:GetSkin()
+			local PlfCoor = Plf:GetPosition()
+			if Plf then
+				Plf:setGodMode(0)
+				Plf:setImmortalMode(1)
+				CreateEffectInsertedInRemove("ET_S_DUNGEON_START", PlfCoor, Quaternion(0, 0, 0, 1), true)
+				Plf:SetNameFromScript("PlayerCarForDead")
+			end
+
+			SetVar("PlayerSkin", skin)
+			
+			TActivate("ChallengeFaze")
+			TActivate("TimerStart")
+			TActivate("IfPlayerWithoutHP")
+			TActivate("EntersRestartChallenge")
+			TActivate("UseItems")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Спавн врагов -->
+	<trigger Name="ChallengeFaze" active="0">
+		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			local l = GetVar("Score").AsInt
+			local RandomLocList
+
+			if l == 0 then
+				RandomLocList = {"SpawnEnemy1_loc"}
+			else
+				if GetVar("PlayerInSpawnLoc").AsInt == 1 then
+					RandomLocList = {"SpawnEnemy2_loc", "SpawnEnemy3_loc", "SpawnEnemy4_loc"}
+				elseif GetVar("PlayerInSpawnLoc").AsInt == 2 then
+					RandomLocList = {"SpawnEnemy1_loc", "SpawnEnemy3_loc", "SpawnEnemy4_loc"}
+				elseif GetVar("PlayerInSpawnLoc").AsInt == 3 then
+					RandomLocList = {"SpawnEnemy1_loc", "SpawnEnemy2_loc", "SpawnEnemy4_loc"}
+				elseif GetVar("PlayerInSpawnLoc").AsInt == 4 then
+					RandomLocList = {"SpawnEnemy1_loc", "SpawnEnemy2_loc", "SpawnEnemy3_loc"}
+				else
+					RandomLocList = {"SpawnEnemy1_loc", "SpawnEnemy2_loc", "SpawnEnemy3_loc", "SpawnEnemy4_loc"}
+				end
+			end
+
+			SetVar("PlayerInSpawnLoc", 0)
+			local RandomLoc = RandomLocList[random(getn(RandomLocList))]
+			
+			local Rotate
+			if RandomLoc == "SpawnEnemy1_loc" then
+				Rotate = Quaternion(0.007, 0.711, 0.007, -0.703)
+			elseif RandomLoc == "SpawnEnemy2_loc" then
+				Rotate = Quaternion(0.000, 1.000, 0.009, 0.011)
+			elseif RandomLoc == "SpawnEnemy3_loc" then
+				Rotate = Quaternion(0.009, 0.008, -0.000, -1.000)
+			elseif RandomLoc == "SpawnEnemy4_loc" then
+				Rotate = Quaternion(0.007, -0.701, -0.007, -0.713)
+			end
+
+			local scout_cab = {"scoutCab01", "scoutCab02", "scoutCab02"}
+			local fight_cab = {"fighterCab01", "fighterCab02"}
+
+			local bug_cab = {"bugCab01", "bugCab02", "bugCab03"}
+			local bug_cargo = {"bugCargo01", "bugCargo02", "bugCargo03"}
+		
+			local mol_cab = {"molokovozCab01", "molokovozCab02" ,"molokovozCab03"}
+			local mol_cargo = {"molokovozCargo01", "molokovozCargo02", "molokovozCargo03"}
+
+			local ural_cab = {"uralCab01", "uralCab02", "uralCab03", "uralCab04", "uralCab05"}
+			local ural_cargo = {"uralCargo01", "uralCargo02", "uralCargo03", "uralCargo04", "uralCargo05"}
+
+			local bel_cab = {"belazCab01", "belazCab02", "belazCab03", "belazCab04", "belazCab05"}
+			local bel_cargo = {"belazCargo01", "belazCargo02", "belazCargo03", "belazCargo04", "belazCargo05"}
+		
+			local mir_cab = {"mirotvorecCab01", "mirotvorecCab02", "mirotvorecCab03", "mirotvorecCab04", "mirotvorecCab05"}
+			local mir_cargo = {"mirotvorecCargo01", "mirotvorecCargo02", "mirotvorecCargo03", "mirotvorecCargo04", "mirotvorecCargo05"}
+	
+			local cru_cab = {"cruiserCab01", "cruiserCab02"}
+			local cru_cargo = {"cruiserCargo01", "cruiserCargo02"}
+
+			local RandomCarList
+	
+			if (150 >= l) then
+				RandomCarList = {"Sml1CarScav", "Sml2CarScav", "Sml3CarScav", "Sml4CarScav"}
+				SetVar("ScoreUP", 10)
+			elseif (l >= 2000) then
+				RandomCarList = {"Dozer01", "Tank01", "Mirotvorec01PMC", "Cruiser01PMC", "Belaz01PMC"}
+				SetVar("ScoreUP", 200)
+			elseif (l >= 1700) then
+				RandomCarList = {"Mirotvorec01PMC", "Cruiser01PMC"}
+				SetVar("ScoreUP", 150)
+			elseif (l >= 1500) then
+				RandomCarList = {"Belaz01PMC"}
+				SetVar("ScoreUP", 125)
+			elseif (l >= 1200) then
+				RandomCarList = {"Ural01PMC"}
+				SetVar("ScoreUP", 100)
+			elseif (l >= 1000) then
+				RandomCarList = {"Molokovoz01PMC"}
+			elseif (l >= 800) then
+				RandomCarList = {"Bug01PMC", "Molokovoz01PMC"}
+				SetVar("ScoreUP", 75)
+			elseif (l >= 550) then
+				RandomCarList = {"Bug01PMC", "Fighter1CarScav", "Hunter2CarScav"}
+				SetVar("ScoreUP", 50)
+			elseif (l >= 300) then
+				RandomCarList = {"Scout1CarScav", "Fighter1CarScav", "Hunter2CarScav"}
+				SetVar("ScoreUP", 30)
+			elseif (l >= 150) then
+				RandomCarList = {"Sml1CarScav", "Sml2CarScav", "Sml3CarScav", "Sml4CarScav", "Scout1CarScav", "Fighter1CarScav"}
+				SetVar("ScoreUP", 15)
+			end
+
+			local RandomCar = getn(RandomCarList)
+
+			local randCar
+			local Car
+			
+			if l >= 800 then
+				randCar = random(2)
+			elseif l >= 550 then
+				randCar = random(3)
+			else
+				randCar = random(2,4)
+			end
+
+			if randCar == 1 then
+				Car = {RandomCarList[random(RandomCar)]}
+			elseif randCar == 2 then
+				Car = {RandomCarList[random(RandomCar)], RandomCarList[random(RandomCar)]}
+			elseif randCar == 3 then
+				Car = {RandomCarList[random(RandomCar)], RandomCarList[random(RandomCar)], RandomCarList[random(RandomCar)]}
+			elseif randCar == 4 then
+				Car = {RandomCarList[random(RandomCar)], RandomCarList[random(RandomCar)], RandomCarList[random(RandomCar)], RandomCarList[random(RandomCar)]}
+			end
+
+			local belong 
+			if 550 > l then
+				belong = 1082 
+			else
+				belong = random(1088, 1089)
+			end
+
+			TeamCreate("Enemy", belong, CVector(getPos(RandomLoc)), Car, nil, 0, Rotate)
+
+			local hornet
+			if belong == 1089 then
+				hornet = "american_hornet01"
+			else
+				hornet = "hornet01"
+			end
+
+			local smallgun={hornet,"specter01","pkt01","storm01","kord01"}
+			local smallgunRand = getn(smallgun)
+			local biggun={"rapier01","vector01","vulcan01","kpvt01","bumblebee01","rainmetal01","flag01","omega01","elephant01","odin01","hurricane01"}
+			local biggunRand = getn(biggun)
+
+			local giantgun = {""}
+			local sidegun = {""}
+
+			if l > 2000 then
+				sidegun={"marsSideGun","hunterSideGun","mrakSideGun"}
+				giantgun={"cyclops01","octopus01","rocketLauncher","big_swingfire01"}
+			elseif l > 1500 then
+				giantgun={"cyclops01","octopus01","rocketLauncher","big_swingfire01"}
+			else
+				giantgun={"cyclops01","octopus01"}
+			end
+
+			local giantgunRand = getn(giantgun)
+			local sidegunRand = getn(sidegun)
+	
+			local forI = randCar - 1
+
+			for i=0,forI do
+				local Enemy = GetEntityByName ("Enemy_vehicle_"..i)
+				local EnemyHP = Enemy:GetMaxHealth()
+				local Prot = Enemy:GetProperty("Prototype").AsString
+				local EnCoor = Enemy:GetPosition()
+				
+				local num = 0
+				if l >= 1650 then num = 1 end
+				if l >= 1800 then num = 2 end
+				if l >= 1950 then num = 3 end
+
+				local hp = 0
+				if l >= 2200 then hp = l / 4 end
+			
+				if Enemy then 
+					Enemy:setImmortalMode(1)
+					CreateEffectInsertedInRemove("ET_PS_DRONE_EX_D", EnCoor, Quaternion(0, 0, 0, 1), true)
+					if l >= 2200 then
+						EnemyHP = EnemyHP + hp
+						Enemy:AddModifier("maxhp", "= "..EnemyHP)
+						Enemy:AddModifier("hp", "= "..EnemyHP)
+					end
+					if Prot == "Scout1CarScav" then
+						Enemy:SetNewPart("CABIN",scout_cab[random(3)])
+					elseif Prot == "Fighter1CarScav" then
+						Enemy:SetNewPart("CABIN",fight_cab[random(2)])
+					elseif Prot == "Bug01PMC" then
+						Enemy:SetNewPart("CABIN",bug_cab[random(3)])
+						Enemy:SetNewPart("BASKET",bug_cargo[random(3)])
+					elseif Prot == "Molokovoz01PMC" then
+						Enemy:SetNewPart("CABIN",mol_cab[random(3)])
+						Enemy:SetNewPart("BASKET",mol_cargo[random(3)])
+					elseif Prot == "Ural01PMC" then
+						Enemy:SetNewPart("CABIN",ural_cab[random(5)])
+						Enemy:SetNewPart("BASKET",ural_cargo[random(5)])
+					elseif Prot == "Belaz01PMC" then
+						Enemy:SetNewPart("CABIN",bel_cab[random(2 + num)])
+						Enemy:SetNewPart("BASKET",bel_cargo[random(2 + num)])
+					elseif Prot == "Mirotvorec01PMC" then
+						Enemy:SetNewPart("CABIN",mir_cab[random(2 + num)])
+						Enemy:SetNewPart("BASKET",mir_cargo[random(2 + num)])
+					elseif Prot == "Cruiser01PMC" then
+						Enemy:SetNewPart("CABIN",cru_cab[random(2)])
+						Enemy:SetNewPart("BASKET",cru_cargo[random(2)])
+					end
+				end
+				
+				GunsForEnemy(Enemy, smallgun[exrandom(smallgunRand)], biggun[exrandom(biggunRand)], giantgun[exrandom(giantgunRand)], sidegun[exrandom(sidegunRand)])
+				TActivate("Enemy_"..i.."_Without_Health")
+			end
+
+			TDeactivate("EntersLocSpawnEnemy")
+			TActivate("EnemyFaze_AllDead")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Отслеживание HP врагов -->
+	<trigger Name="Enemy_0_Without_Health" active="0">
+	<event eventid="GE_VEHICLE_WITHOUT_HEALTH" ObjName="Enemy_vehicle_0" />
+		<script>
+			local loots = GetEntityByName("loot_1")
+			if loots then 
+				TDeactivate("RotateLoot_1")
+				TDeactivate("DistLoot_1")
+				loots:Remove() 
+			end
+			TActivate("trEnemy_0_Without_Health")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="trEnemy_0_Without_Health" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local randLoot = random(2)
+			local l = GetVar("Score").AsInt
+	
+			local itemList = {"scrap_metal_use"}
+			if 550 > l then 
+				itemList = {"scrap_metal_use"}
+			elseif l >= 2000 then 
+				itemList = {"machinery_use", "electronics_use"} 
+			elseif l >= 1500 then 
+				itemList = {"scrap_metal_use", "machinery_use", "electronics_use"} 
+			elseif l >= 550 then 
+				itemList = {"scrap_metal_use", "machinery_use"} 
+			end
+
+			local item = itemList[random(getn(itemList))]
+
+			local model
+			if item == "scrap_metal_use" then model = "lom" end
+			if item == "machinery_use" then model = "rabochee_oborudovanie" end
+			if item == "electronics_use" then model = "mikro" end
+		
+			local EnemyQ1 = GetEntityByName("Enemy_vehicle_0")
+			local EnCoor1 = EnemyQ1:GetPosition()
+			if EnemyQ1 then 
+				CreateEffectInsertedInRemove("ET_PS_VEH_EXP2_MED1", EnCoor1, Quaternion(0, 0, 0, 1), true)
+				if randLoot == 1 then
+					local loot = CreateNewSgNodeObject(model, "loot_1", -1, -1, EnCoor1, Quaternion(0, 0, 0, 1), 0.75)
+					local lootPos = loot:GetPosition()
+					lootPos.y = lootPos.y - lootPos.y + 257
+					loot:SetPosition(lootPos)
+					TActivate("RotateLoot_1") 
+					TActivate("DistLoot_1")
+					SetVar("loot_1", item)
+				end
+				EnemyQ1:Remove()
+			end
+			TActivate("trScore")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Enemy_1_Without_Health" active="0">
+	<event eventid="GE_VEHICLE_WITHOUT_HEALTH" ObjName="Enemy_vehicle_1" />
+		<script>
+			local loots = GetEntityByName("loot_2")
+			if loots then 
+				TDeactivate("RotateLoot_2")
+				TDeactivate("DistLoot_2")
+				loots:Remove() 
+			end
+			TActivate("trEnemy_1_Without_Health")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="trEnemy_1_Without_Health" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local randLoot = random(2)
+			local l = GetVar("Score").AsInt
+
+			local itemList = {"scrap_metal_use"}
+			if 550 > l then 
+				itemList = {"scrap_metal_use"}
+			elseif l >= 2000 then 
+				itemList = {"machinery_use", "electronics_use"} 
+			elseif l >= 1500 then 
+				itemList = {"scrap_metal_use", "machinery_use", "electronics_use"} 
+			elseif l >= 550 then 
+				itemList = {"scrap_metal_use", "machinery_use"} 
+			end
+			
+			local item = itemList[random(getn(itemList))]
+
+			local model
+			if item == "scrap_metal_use" then model = "lom" end
+			if item == "machinery_use" then model = "rabochee_oborudovanie" end
+			if item == "electronics_use" then model = "mikro" end
+	
+			local EnemyQ1 = GetEntityByName("Enemy_vehicle_1")
+			local EnCoor1 = EnemyQ1:GetPosition()
+			if EnemyQ1 then 
+				CreateEffectInsertedInRemove("ET_PS_VEH_EXP2_MED1", EnCoor1, Quaternion(0, 0, 0, 1), true)
+				if randLoot == 1 then
+					CreateNewSgNodeObject(model, "loot_2", -1, -1, EnCoor1, Quaternion(0, 0, 0, 1), 0.75)
+					local loot = GetEntityByName("loot_2")
+					local lootPos = loot:GetPosition()
+					lootPos.y = lootPos.y - lootPos.y + 257
+					loot:SetPosition(lootPos)
+					TActivate("RotateLoot_2") 
+					TActivate("DistLoot_2")
+					SetVar("loot_2", item)
+				end
+				EnemyQ1:Remove()
+			end
+			TActivate("trScore")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Enemy_2_Without_Health" active="0">
+	<event eventid="GE_VEHICLE_WITHOUT_HEALTH" ObjName="Enemy_vehicle_2" />
+		<script>
+			local loots = GetEntityByName("loot_3")
+			if loots then 
+				TDeactivate("RotateLoot_3")
+				TDeactivate("DistLoot_3")
+				loots:Remove() 
+			end
+			TActivate("trEnemy_2_Without_Health")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="trEnemy_2_Without_Health" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local randLoot = random(2)
+			local l = GetVar("Score").AsInt
+
+			local itemList = {"scrap_metal_use"}
+			if 550 > l then 
+				itemList = {"scrap_metal_use"}
+			elseif l >= 2000 then 
+				itemList = {"machinery_use", "electronics_use"} 
+			elseif l >= 1500 then 
+				itemList = {"scrap_metal_use", "machinery_use", "electronics_use"} 
+			elseif l >= 550 then 
+				itemList = {"scrap_metal_use", "machinery_use"} 
+			end
+			
+			local item = itemList[random(getn(itemList))]
+
+			local model
+			if item == "scrap_metal_use" then model = "lom" end
+			if item == "machinery_use" then model = "rabochee_oborudovanie" end
+			if item == "electronics_use" then model = "mikro" end
+	
+			local EnemyQ1 = GetEntityByName("Enemy_vehicle_2")
+			local EnCoor1 = EnemyQ1:GetPosition()
+			if EnemyQ1 then 
+				CreateEffectInsertedInRemove("ET_PS_VEH_EXP2_MED1", EnCoor1, Quaternion(0, 0, 0, 1), true)
+				if randLoot == 1 then
+					CreateNewSgNodeObject(model, "loot_3", -1, -1, EnCoor1, Quaternion(0, 0, 0, 1), 0.75)
+					local loot = GetEntityByName("loot_3")
+					local lootPos = loot:GetPosition()
+					lootPos.y = lootPos.y - lootPos.y + 257
+					loot:SetPosition(lootPos)
+					TActivate("RotateLoot_3")
+					TActivate("DistLoot_3")
+					SetVar("loot_3", item)
+				end
+				EnemyQ1:Remove()
+			end
+			TActivate("trScore")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Enemy_3_Without_Health" active="0">
+	<event eventid="GE_VEHICLE_WITHOUT_HEALTH" ObjName="Enemy_vehicle_3" />
+		<script>
+			local loots = GetEntityByName("loot_4")
+			if loots then 
+				TDeactivate("RotateLoot_4")
+				TDeactivate("DistLoot_4")
+				loots:Remove() 
+			end
+			TActivate("trEnemy_3_Without_Health")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="trEnemy_3_Without_Health" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local randLoot = random(2)
+			local l = GetVar("Score").AsInt
+
+			local itemList = {"scrap_metal_use"}
+			if 550 > l then 
+				itemList = {"scrap_metal_use"}
+			elseif l >= 2000 then 
+				itemList = {"machinery_use", "electronics_use"} 
+			elseif l >= 1500 then 
+				itemList = {"scrap_metal_use", "machinery_use", "electronics_use"} 
+			elseif l >= 550 then 
+				itemList = {"scrap_metal_use", "machinery_use"} 
+			end
+			
+			local item = itemList[random(getn(itemList))]
+
+			local model
+			if item == "scrap_metal_use" then model = "lom" end
+			if item == "machinery_use" then model = "rabochee_oborudovanie" end
+			if item == "electronics_use" then model = "mikro" end
+	
+			local EnemyQ1 = GetEntityByName("Enemy_vehicle_3")
+			local EnCoor1 = EnemyQ1:GetPosition()
+			if EnemyQ1 then 
+				CreateEffectInsertedInRemove("ET_PS_VEH_EXP2_MED1", EnCoor1, Quaternion(0, 0, 0, 1), true)
+				if randLoot == 1 then
+					CreateNewSgNodeObject(model, "loot_4", -1, -1, EnCoor1, Quaternion(0, 0, 0, 1), 0.75)
+					local loot = GetEntityByName("loot_4")
+					local lootPos = loot:GetPosition()
+					lootPos.y = lootPos.y - lootPos.y + 257
+					loot:SetPosition(lootPos)
+					TActivate("RotateLoot_4") 
+					TActivate("DistLoot_4")
+					SetVar("loot_4", item)
+				end
+				EnemyQ1:Remove()
+			end
+			TActivate("trScore")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="trScore" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local sc = GetVar("ScoreUP").AsInt
+			local l = GetVar("Score").AsInt
+			local c = GetVar("Combo").AsInt
+
+			c = c + 1
+
+			if c >= 2 then
+				sc = sc * c
+			end 
+
+			l = l + sc
+
+			AddFadingMsgByStrIdFormatted("fm_challenge_score", l, sc)
+			SetVar("Score",l)
+
+			if c >= 4 then
+				SetVar("Combo", 0)
+			else
+				SetVar("Combo", c)
+			end 
+
+			if c >= 2 then
+				AddImportantFadingMsgByStrIdFormatted("fm_challenge_kill_"..c)
+			end
+			
+			TActivate("DEA_EnemyDestrouedCOMBO")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="RotateLoot_1"	active="0">
+		<event	timeout="0.05"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local k = getObj("loot_1")
+			if k then
+				local zq = 	Quaternion(0, 0, 0, 1)
+				zq:RotY(RAD(1.2))
+				local rot = k:GetRotation()
+				k:SetRotation(zq*rot)
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="RotateLoot_2"	active="0">
+		<event	timeout="0.05"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local k = getObj("loot_2")
+			if k then
+				local zq = 	Quaternion(0, 0, 0, 1)
+				zq:RotY(RAD(1.2))
+				local rot = k:GetRotation()
+				k:SetRotation(zq*rot)
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="RotateLoot_3"	active="0">
+		<event	timeout="0.05"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local k = getObj("loot_3")
+			if k then
+				local zq = 	Quaternion(0, 0, 0, 1)
+				zq:RotY(RAD(1.2))
+				local rot = k:GetRotation()
+				k:SetRotation(zq*rot)
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="RotateLoot_4"	active="0">
+		<event	timeout="0.05"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local k = getObj("loot_4")
+			if k then
+				local zq = 	Quaternion(0, 0, 0, 1)
+				zq:RotY(RAD(1.2))
+				local rot = k:GetRotation()
+				k:SetRotation(zq*rot)
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="DistLoot_1" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			local run = GetEntityByName("loot_1")
+			local len
+			if run and run:IsAlive() then
+				len = Dist(pl, run)
+				if (10 > len) then
+					if run then 
+						if HasPlayerFreePlaceForItems(GetVar("loot_1").AsString, 1)~=nil then
+							AddItemsToPlayerRepository(GetVar("loot_1").AsString, 1)
+							CreateNewSgNodeObject("ET_PS_DRONE_EX_D", "fx1", -1, -1,  run:GetPosition(), Quaternion(0, 0, 0, 1), 0.2)
+							CreateEffectInsertedInRemove("ET_S_PICK_ITEM", pl:GetPosition(), Quaternion(0, 0, 0, 1), true)
+							TDeactivate("RotateLoot_1")
+							run:Remove() 
+							trigger:Deactivate()
+						end
+					end
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="DistLoot_2" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			local run = GetEntityByName("loot_2")
+			local len
+			if run and run:IsAlive() then
+				len = Dist(pl, run)
+				if (10 > len) then
+					if run then 
+						if HasPlayerFreePlaceForItems(GetVar("loot_2").AsString, 1)~=nil then
+							AddItemsToPlayerRepository(GetVar("loot_2").AsString, 1)
+							CreateNewSgNodeObject("ET_PS_DRONE_EX_D", "fx2", -1, -1,  run:GetPosition(), Quaternion(0, 0, 0, 1), 0.2)
+							CreateEffectInsertedInRemove("ET_S_PICK_ITEM", pl:GetPosition(), Quaternion(0, 0, 0, 1), true)
+							TDeactivate("RotateLoot_2")
+							run:Remove()
+							trigger:Deactivate()
+						end
+					end
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="DistLoot_3" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			local run = GetEntityByName("loot_3")
+			local len
+			if run and run:IsAlive() then
+				len = Dist(pl, run)
+				if (10 > len) then
+					if run then 
+						if HasPlayerFreePlaceForItems(GetVar("loot_3").AsString, 1)~=nil then
+							AddItemsToPlayerRepository(GetVar("loot_3").AsString, 1)
+							CreateNewSgNodeObject("ET_PS_DRONE_EX_D", "fx3", -1, -1,  run:GetPosition(), Quaternion(0, 0, 0, 1), 0.2)
+							CreateEffectInsertedInRemove("ET_S_PICK_ITEM", pl:GetPosition(), Quaternion(0, 0, 0, 1), true)
+							TDeactivate("RotateLoot_3")
+							run:Remove() 
+							trigger:Deactivate()
+						end
+					end
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="DistLoot_4" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			local run = GetEntityByName("loot_4")
+			local len
+			if run and run:IsAlive() then
+				len = Dist(pl, run)
+				if (10 > len) then
+					if run then 
+						if HasPlayerFreePlaceForItems(GetVar("loot_4").AsString, 1)~=nil then
+							AddItemsToPlayerRepository(GetVar("loot_4").AsString, 1)
+							CreateNewSgNodeObject("ET_PS_DRONE_EX_D", "fx4", -1, -1,  run:GetPosition(), Quaternion(0, 0, 0, 1), 0.2)
+							CreateEffectInsertedInRemove("ET_S_PICK_ITEM", pl:GetPosition(), Quaternion(0, 0, 0, 1), true)
+							TDeactivate("RotateLoot_4")
+							run:Remove() 
+							trigger:Deactivate()
+						end
+					end
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="RemoveLoots" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i=1,4 do
+				local loot = GetEntityByName("loot_"..i)
+				if loot then loot:Remove() end
+				SetVar("loot_"..i, 0)
+				TDeactivate("DistLoot_"..i)
+				TDeactivate("RotateLoot_"..i)
+				local fx = GetEntityByName("fx"..i)
+				if fx then fx:Remove() end
+			end
+			TDeactivate("UseItems")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="UseItems" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			local hp = GetPlayerHealth() 
+			if pl and hp >= 1 then 
+				ItemUse(1) 
+			else 
+				trigger:Deactivate() 
+			end
+		</script>
+	</trigger>
+
+<!-- Все враги сдохли -->
+	<trigger Name="EnemyFaze_AllDead" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			if getObj("Enemy_0_Without_Health"):IsActivated()==0 and getObj("Enemy_1_Without_Health"):IsActivated()==0 and getObj("Enemy_2_Without_Health"):IsActivated()==0 and getObj("Enemy_3_Without_Health"):IsActivated()==0 then
+				TActivate("EntersLocSpawnEnemy")
+				TActivate("trChallengeFaze")
+				for i=1,4 do
+					local fx = GetEntityByName("fx"..i)
+					if fx then fx:Remove() end
+				end
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="trChallengeFaze" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("ChallengeFaze")
+			CreateEffectInsertedInRemove("ET_S_DUNGEON_NEW_FAZE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="EntersLocSpawnEnemy" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="SpawnEnemy1_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="SpawnEnemy1_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="SpawnEnemy2_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="SpawnEnemy2_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="SpawnEnemy3_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="SpawnEnemy3_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="SpawnEnemy4_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="SpawnEnemy4_loc" />
+		<script>
+			local locname = trigger:GetCallObjName()
+			local locnum = tonumber(strsub(locname,11,11))
+			SetVar("PlayerInSpawnLoc", locnum)
+		</script>
+	</trigger>
+
+<!-- Таймер для комбо убийств -->
+	<trigger Name="EnemyDestrouedCOMBO" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			local t = GetVar("ComboTimer").AsInt
+			
+			if t == 0 then
+				SetVar("Combo", 0)
+				SetVar("ComboTimer", 0)
+				trigger:Deactivate()
+			else
+				t = t - 1
+				SetVar("ComboTimer", t)
+			end
+
+		</script>
+	</trigger>
+
+	<trigger Name="DEA_EnemyDestrouedCOMBO" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			SetVar("ComboTimer", 3)
+			if getObj("EnemyDestrouedCOMBO"):IsActivated()==0 then
+				TActivate("EnemyDestrouedCOMBO")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Удаление врагов -->
+	<trigger Name="RemoveEnemys" active="0">
+		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+		
+			if getObj("Enemy_0_Without_Health"):IsActivated()==1 then
+				local Enemy = GetEntityByName ("Enemy_vehicle_0")
+				local EnCoor = Enemy:GetPosition()
+				if Enemy then 
+					CreateEffectInsertedInRemove("ET_PS_DRONE_EX_D", EnCoor, Quaternion(0, 0, 0, 1), true)
+					Enemy:Remove()
+				end
+			end
+
+			if getObj("Enemy_1_Without_Health"):IsActivated()==1 then
+				local Enemy2 = GetEntityByName ("Enemy_vehicle_1")
+				local EnCoor2 = Enemy2:GetPosition()
+				if Enemy2 then 
+					CreateEffectInsertedInRemove("ET_PS_DRONE_EX_D", EnCoor2, Quaternion(0, 0, 0, 1), true)
+					Enemy2:Remove()
+				end
+			end
+
+			if getObj("Enemy_2_Without_Health"):IsActivated()==1 then
+				local Enemy3 = GetEntityByName ("Enemy_vehicle_2")
+				local EnCoor3 = Enemy3:GetPosition()
+				if Enemy3 then 
+					CreateEffectInsertedInRemove("ET_PS_DRONE_EX_D", EnCoor3, Quaternion(0, 0, 0, 1), true)
+					Enemy3:Remove()
+				end
+			end
+
+			if getObj("Enemy_3_Without_Health"):IsActivated()==1 then
+				local Enemy4 = GetEntityByName ("Enemy_vehicle_3")
+				local EnCoor4 = Enemy4:GetPosition()
+				if Enemy4 then 
+					CreateEffectInsertedInRemove("ET_PS_DRONE_EX_D", EnCoor4, Quaternion(0, 0, 0, 1), true)
+					Enemy4:Remove()
+				end
+			end
+
+			for i=0,3 do
+				TDeactivate("Enemy_"..i.."_Without_Health")
+			end
+
+			TDeactivate("EnemyFaze_AllDead")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Таймер -->
+	<trigger Name="TimerStart" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			local t = GetVar("TimerMain").AsInt
+			SetVar("Timer", t)
+			if getObj("Timer"):IsActivated()==0 then
+				TActivate("Timer")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Timer" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			local t = GetVar("Timer").AsInt
+
+			if t == 250 or t == 180 or t == 120 or t == 60 or t == 30 or t == 10 or 6 > t and not(t == 0) then
+				AddImportantFadingMsgByStrIdFormatted("fm_dungeon_timer", t)
+			end
+
+			if t == 0 then
+				SetVar("Timer", 0)
+				GetPlayerVehicle():AddModifier( "hp", "+ 10000" ) 
+				TActivate("ChallengeComplete")
+				trigger:Deactivate()
+			else
+				t = t - 1
+				SetVar("Timer", t)
+			end
+
+		</script>
+	</trigger>
+
+	<trigger Name="EntersRestartChallenge" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Start_loc" />
+		<script>
+			AddFadingMsgByStrIdFormatted("fm_challenge_restart")
+			TActivate("trRestartChallenge")
+			TActivate("LeavesRestartChallenge")
+		</script>
+	</trigger>
+
+	<trigger Name="LeavesRestartChallenge" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Start_loc" />
+		<script>
+			TDeactivate("trRestartChallenge")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="trRestartChallenge" active="0">
+		<event eventid="GE_PLAYER_VEHICLE_HORN" ObjName="Player1" />
+		<script>
+			SetVar("PlayerDie",2)
+			TDeactivate("TimerStart")
+			TDeactivate("Timer")
+			TActivate("ChallengeComplete")
+			TActivate("RemoveEnemys")
+			TActivate("DeActivateKey")
+			TDeactivate("LeavesRestartChallenge")
+			TDeactivate("EntersRestartChallenge")
+			GetPlayerVehicle():AddModifier( "hp", "+ 10000" ) 
+			GetPlayerVehicle():AddModifier( "fuel", "+ 10000" ) 
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Конец испытания -->
+	<trigger Name="ChallengeComplete" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			
+			local l = GetVar("Score").AsInt
+
+			SetVar("Music", 1)
+			SetVar("StartChallenge", 0)
+
+			if GetVar("PlayerDie").AsInt == 1 or GetVar("PlayerDie").AsInt == 2 then
+				AddImportantFadingMsgByStrIdFormatted("fm_done_challenge")
+			else
+				AddImportantFadingMsgByStrIdFormatted("fm_complete_challenge")
+				TActivate("RemoveEnemys")
+				SetVar("ChallengeComplete", 1)
+				TActivate("RemoveKeyUnActive")
+			end
+
+			AddFadingMsgByStrIdFormatted("fm_challenge_your_score", l)
+
+			StopPlayingCustomMusic()
+			
+			local Plf = GetPlayerVehicle()
+			local cabin = Plf:GetCabin()
+			local basket = Plf:GetBasket()
+			local PlfCoor = Plf:GetPosition()
+			if Plf then
+				Plf:setGodMode(1)
+				Plf:setImmortalMode(0)
+				if GetVar("PlayerDie").AsInt == 2 then
+					CreateEffectInsertedInRemove("ET_S_DUNGEON_FAIL_CHALLENGE", PlfCoor, Quaternion(0, 0, 0, 1), true)
+				else
+					CreateEffectInsertedInRemove("ET_S_DUNGEON_COMPLETE_CHALLENGE", PlfCoor, Quaternion(0, 0, 0, 1), true)
+				end
+				if not(cabin == nil) then Plf:SetNewPart("CABIN", cabin:GetProperty("Prototype").AsString) end
+				if not(basket == nil) then basket:SetProperty("durability", basket:GetPropertyById("20").AsString) end
+				Plf:SetSkin(GetVar("PlayerSkin").AsInt)
+			end
+
+			RemoveItemsFromPlayerRepository("scrap_metal_use", GetItemsAmount("scrap_metal_use"))
+			RemoveItemsFromPlayerRepository("machinery_use", GetItemsAmount("machinery_use"))
+			RemoveItemsFromPlayerRepository("electronics_use", GetItemsAmount("electronics_use"))
+
+			if GetVar("Use_AmmoChestArtilleryGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_artillerygun", GetVar("Use_AmmoChestArtilleryGun").AsInt) end
+			if GetVar("Use_AmmoChestHeavyGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_heavygun", GetVar("Use_AmmoChestHeavyGun").AsInt) end
+			if GetVar("Use_AmmoChestMachineGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_machinegun", GetVar("Use_AmmoChestMachineGun").AsInt) end
+			if GetVar("Use_AmmoChestRocketGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_rocketgun", GetVar("Use_AmmoChestRocketGun").AsInt) end
+			if GetVar("Use_AmmoChestShotGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_shotgun", GetVar("Use_AmmoChestShotGun").AsInt) end
+			if GetVar("Use_AmmoBallonLaserGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_ballon_lasergun", GetVar("Use_AmmoBallonLaserGun").AsInt) end
+			if GetVar("Use_AmmoBallonPlasmaGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_ballon_plasmagun", GetVar("Use_AmmoBallonPlasmaGun").AsInt) end
+			if GetVar("Use_AmmoBallonTurbo").AsInt > 0 then AddItemsToPlayerRepository("ammo_ballon_turbo", GetVar("Use_AmmoBallonTurbo").AsInt) end
+
+			SetVar("PlayerDie", 0)
+
+			TActivate("Start_YesOrNot")
+			TActivate("RemoveGate")
+			TActivate("YourRecord")
+			TActivate("RemoveLoots")
+
+			TDeactivate("TimerStart")
+			TDeactivate("Timer")
+			TDeactivate("EntersRestartChallenge")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="YourRecord" active="0">
+		<event 	timeout="2" eventid="GE_TIME_PERIOD" />
+		<script>
+			
+			local l = GetVar("Score").AsInt
+			local p = GetVar("PermanentScore").AsInt
+
+			if GetVar("Score").AsInt > p then
+				SetVar("PermanentScore", l)
+			end
+
+			AddImportantFadingMsgByStrIdFormatted("fm_challenge_your_record", GetVar("PermanentScore").AsInt)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Отслеживание HP игрока -->
+	<trigger Name="IfPlayerWithoutHP" active="0">
+		<event eventid="GE_VEHICLE_WITHOUT_HEALTH" ObjName="PlayerCarForDead" />
+		<script>
+
+			GetPlayerVehicle():AddModifier( "hp", "+ 10000" ) 
+			GetPlayerVehicle():AddModifier( "fuel", "+ 10000" ) 
+
+			SetVar("PlayerDie",1)
+			TDeactivate("TimerStart")
+			TDeactivate("Timer")
+			TActivate("ChallengeComplete")
+			TActivate("RemoveEnemys")
+			TActivate("DeActivateKey")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Глобальный таймер -->
+	<trigger Name="TimerGlobal" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>	
+			if GetVar("Generator_on").AsInt == 1 then
+				if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
+					TActivate("GeneratorTimer")
+				end
+			end
+
+			if GetVar("ChestScavs_timer").AsInt == 1 then
+				TActivate("ChestScavTimer")
+			end
+
+			if GetVar("GarageCraft_timer").AsInt == 1 and GetVar("Generator_on").AsInt == 1 and GetVar("GarageCraftPause").AsInt == 0 then
+				TActivate("GarageGraftingTimer")
+			end
+
+			if GetVar("ScavCar_timer").AsInt == 1 then
+				TActivate("ScavCarTimer")
+			end
+			
+			if GetVar("Generator_on").AsInt == 0 and GetVar("ChestScavs_timer").AsInt == 0 and GetVar("GarageCraft_timer").AsInt == 0 and GetVar("ScavCar_timer").AsInt == 0 then
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="GeneratorTimer" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local hourG = GetVar("Generator_time_work_hour").AsInt
+			local minG = GetVar("Generator_time_work_minute").AsInt
+			local secG = GetVar("Generator_time_work_second").AsInt
+
+			if not(0 > hourG) and not(0 > minG) then
+				secG = secG - 1
+				SetVar("Generator_time_work_second", secG)
+				if 0 > secG then
+					SetVar("Generator_time_work_second", 59)
+					minG = minG - 1
+					SetVar("Generator_time_work_minute", minG)
+				end
+				if 0 > minG then
+					SetVar("Generator_time_work_minute", 59)
+					hourG = hourG - 1
+					SetVar("Generator_time_work_hour", hourG)
+				end
+			end
+
+			if hourG == 0 and minG == 0 and secG == 0 then
+				SetVar("Generator_time_work_second", 0)
+				SetVar("Generator_time_work_minute", 0)
+				SetVar("Generator_time_work_hour", 0)
+				SetVar("Generator_on", 0)
+				SetVar("GarageCraft_timer", 0)
+				if GetVar("GarageCrafting_time_hour").AsInt > 0 or GetVar("GarageCrafting_time_minute").AsInt > 0 or GetVar("GarageCrafting_time_second").AsInt > 0 then
+					SetVar("GarageCraftPause", 1)
+				end
+			end
+			--println("Genetator: "..hourG.." "..minG.." "..secG)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ChestScavTimer" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local hourC = GetVar("ChestScavs_time_hour").AsInt
+			local minC = GetVar("ChestScavs_time_minute").AsInt
+			local secC = GetVar("ChestScavs_time_second").AsInt
+
+			if not(0 > hourC) and not(0 > minC) then
+				secC = secC - 1
+				SetVar("ChestScavs_time_second", secC)
+				if 0 > secC then
+					SetVar("ChestScavs_time_second", 59)
+					minC = minC - 1
+					SetVar("ChestScavs_time_minute", minC)
+				end
+				if 0 > minC then
+					SetVar("ChestScavs_time_minute", 59)
+					hourC = hourC - 1
+					SetVar("ChestScavs_time_hour", hourC)
+				end
+			end
+
+			if hourC == 0 and minC == 0 and secC == 0 then
+				SetVar("ChestScavs_time_hour", 0)
+				SetVar("ChestScavs_time_minute", 0)
+				SetVar("ChestScavs_time_second", 0)
+				SetVar("ChestScavs_timer", 0)
+			end
+			--println("Chest: "..hourC.." "..minC.." "..secC)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="GarageGraftingTimer" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local hourGC = GetVar("GarageCrafting_time_hour").AsInt
+			local minGC = GetVar("GarageCrafting_time_minute").AsInt
+			local secGC = GetVar("GarageCrafting_time_second").AsInt
+
+			if not(0 > hourGC) and not(0 > minGC) then
+				secGC = secGC - 1
+				SetVar("GarageCrafting_time_second", secGC)
+				if 0 > secGC then
+					SetVar("GarageCrafting_time_second", 59)
+					minGC = minGC - 1
+					SetVar("GarageCrafting_time_minute", minGC)
+				end
+				if 0 > minGC then
+					SetVar("GarageCrafting_time_minute", 59)
+					hourGC = hourGC - 1
+					SetVar("GarageCrafting_time_hour", hourGC)
+				end
+			end
+
+			if hourGC == 0 and minGC == 0 and secGC == 0 then
+				SetVar("GarageCrafting_time_second", 0)
+				SetVar("GarageCrafting_time_minute", 0)
+				SetVar("GarageCrafting_time_hour", 0)
+				SetVar("GarageCraftPause", 0)
+				SetVar("GarageCraft", 2)
+				SetVar("GarageCraft_timer", 0)
+			end
+			--println("Craft: "..hourGC.." "..minGC.." "..secGC)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ScavCarTimer" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local hourSC = GetVar("ScavCar_time_hour").AsInt
+			local minSC = GetVar("ScavCar_time_minute").AsInt
+			local secSC = GetVar("ScavCar_time_second").AsInt
+	
+			if not(0 > hourSC) and not(0 > minSC) then
+				secSC = secSC - 1
+				SetVar("ScavCar_time_second", secSC)
+				if 0 > secSC then
+					SetVar("ScavCar_time_second", 59)
+					minSC = minSC - 1
+					SetVar("ScavCar_time_minute", minSC)
+				end
+				if 0 > minSC then
+					SetVar("ScavCar_time_minute", 59)
+					hourSC = hourSC - 1
+					SetVar("ScavCar_time_hour", hourSC)
+				end
+			end
+
+			if hourSC == 0 and minSC == 0 and secSC == 0 then
+				SetVar("ScavCar_time_hour", 0)
+				SetVar("ScavCar_time_minute", 0)
+				SetVar("ScavCar_time_second", 0)
+				SetVar("ScavCar_timer", 0)
+			end
+			--println("Scav Car: "..hourSC.." "..minSC.." "..secSC)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Выход с карты -->
+	<trigger Name="ExitMap" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local vehPlayer = GetPlayerVehicle()
+			if vehPlayer then
+				vehPlayer:SetCustomControlEnabled( true )
+				vehPlayer:SetCustomLinearVelocity( 0 )
+				vehPlayer:SetThrottle( 0 )
+				vehPlayer:SetCustomControlEnabled( false )
+			end
+
+			if GENERATOR_TIMER_HOUR_GLOBAL then GENERATOR_TIMER_HOUR_GLOBAL = GetVar("Generator_time_work_hour").AsInt end
+			if GENERATOR_TIMER_MINUTE_GLOBAL then GENERATOR_TIMER_MINUTE_GLOBAL = GetVar("Generator_time_work_minute").AsInt end
+			if GENERATOR_TIMER_SECOND_GLOBAL then GENERATOR_TIMER_SECOND_GLOBAL = GetVar("Generator_time_work_second").AsInt end
+			if GENERATOR_ON_GLOBAL then GENERATOR_ON_GLOBAL = GetVar("Generator_on").AsInt end
+
+			if CHESTSCAVS_TIMER_HOUR_GLOBAL then CHESTSCAVS_TIMER_HOUR_GLOBAL = GetVar("ChestScavs_time_hour").AsInt end
+			if CHESTSCAVS_TIMER_MINUTE_GLOBAL then CHESTSCAVS_TIMER_MINUTE_GLOBAL = GetVar("ChestScavs_time_minute").AsInt end
+			if CHESTSCAVS_TIMER_SECOND_GLOBAL then CHESTSCAVS_TIMER_SECOND_GLOBAL = GetVar("ChestScavs_time_second").AsInt end
+			if CHESTSCAVS_SEARCH_GLOBAL then CHESTSCAVS_SEARCH_GLOBAL = GetVar("ChestScavs_Search").AsInt end
+
+			if GARAGE_CRAFTING_TIME_HOUR_GLOBAL then GARAGE_CRAFTING_TIME_HOUR_GLOBAL = GetVar("GarageCrafting_time_hour").AsInt end
+			if GARAGE_CRAFTING_TIME_MINUTE_GLOBAL then GARAGE_CRAFTING_TIME_MINUTE_GLOBAL = GetVar("GarageCrafting_time_minute").AsInt end
+			if GARAGE_CRAFTING_TIME_SECOND_GLOBAL then GARAGE_CRAFTING_TIME_SECOND_GLOBAL = GetVar("GarageCrafting_time_second").AsInt end
+			if GARAGE_CRAFT_GLOBAL then GARAGE_CRAFT_GLOBAL = GetVar("GarageCraft").AsInt end
+			if GARAGE_CRAFT_PAUSE_GLOBAL then GARAGE_CRAFT_PAUSE_GLOBAL = GetVar("GarageCraftPause").AsInt end
+
+			if SCAV_CAR_TIME_HOUR then SCAV_CAR_TIME_HOUR = GetVar("ScavCar_time_hour").AsInt end
+			if SCAV_CAR_TIME_MINUTE then SCAV_CAR_TIME_MINUTE = GetVar("ScavCar_time_minute").AsInt end
+			if SCAV_CAR_TIME_SECOND then SCAV_CAR_TIME_SECOND = GetVar("ScavCar_time_second").AsInt end
+
+			TDeactivate("TimerGlobal")
+			TDeactivate("PlayMusic")
+			
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+</triggers>

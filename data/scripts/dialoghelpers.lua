@@ -17,7 +17,8 @@ function TakeQuest( questName )
 	g_QuestStateManager:TakeQuest( questName )
 
 	if g_QuestStateManager:IsQuestTaken( questName ) then
- 		AddImportantFadingMsgId( "fm_take_quest" )
+		AddImportantFadingMsgByStrIdFormatted("fm_take_quest", questName)
+		CreateEffectInsertedInRemove("ET_S_QUEST_TAKEN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
 	end
 end
 
@@ -25,7 +26,15 @@ function CompleteQuest( questName )
 	g_QuestStateManager:CompleteQuest( questName )
 
 	if g_QuestStateManager:IsQuestTaken( questName ) and g_QuestStateManager:IsQuestComplete( questName ) then
- 		AddImportantFadingMsgId( "fm_complete_quest" )
+		CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+	end
+end
+
+function CompleteSubtask( questName )
+	g_QuestStateManager:CompleteQuest( questName )
+
+	if g_QuestStateManager:IsQuestTaken( questName ) and g_QuestStateManager:IsQuestComplete( questName ) then
+		CreateEffectInsertedInRemove("ET_S_SUBTASK_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
 	end
 end
 
@@ -33,7 +42,7 @@ function CompleteQuestIfTaken( questName )
 	g_QuestStateManager:CompleteQuestIfTaken( questName )
 
 	if g_QuestStateManager:IsQuestComplete( questName ) then
- 		AddImportantFadingMsgId( "fm_complete_quest" )
+		CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
 	end
 end
 
@@ -41,7 +50,7 @@ function FailQuest( questName )
 	g_QuestStateManager:FailQuest( questName )
 
 	if g_QuestStateManager:IsQuestTaken( questName ) and g_QuestStateManager:IsQuestFailed( questName ) then
- 		AddImportantFadingMsgId( "fm_fail_quest" )
+		CreateEffectInsertedInRemove("ET_S_QUEST_FAIL", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
 	end
 end
 
@@ -49,7 +58,7 @@ function FailQuestIfTaken( questName )
 	g_QuestStateManager:FailQuestIfTaken( questName )
 
 	if g_QuestStateManager:IsQuestFailed( questName ) then
- 		AddImportantFadingMsgId( "fm_fail_quest" )
+		CreateEffectInsertedInRemove("ET_S_QUEST_FAIL", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
 	end
 end
 
@@ -336,6 +345,11 @@ end
 
 
 -- »счезающие сообщени€------------------------------------------------------------------------
+function SoundFadingMsg()
+	local pl = GetPlayerVehicle()
+	local plPos = pl:GetPosition()
+	CreateEffectTTLed("ET_PS_FADING_MSG", plPos, Quaternion(0, 0, 0, 0), 600)
+end
 
 -- ƒобавить сообщение, параметр - текст сообщени€.
 -- Ќе рекомендуетс€ использовать в св€зи с проблемой локализации.

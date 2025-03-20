@@ -249,7 +249,7 @@ $Id: Towns.xml,v 1.74 2005/11/29 06:27:45 anton Exp $
 			Class="AffixGenerator"
 			Name="cityaffixGenerator">
 
-                        <Affix AffixName = "excellent_gun" />
+            <Affix AffixName = "excellent_gun" />
 			<Affix AffixName = "advanced_gun" />
 			<Affix AffixName = "rapid_firing_gun" />
 			<Affix AffixName = "deadly_gun" />
@@ -288,17 +288,66 @@ $Id: Towns.xml,v 1.74 2005/11/29 06:27:45 anton Exp $
 			Class="AffixGenerator"
 			Name="citytruxaffixGenerator">
 
-                        <Affix AffixName = "excellent_cabin" />
+            <Affix AffixName = "excellent_cabin" />
 			<Affix AffixName = "advanced_cabin" />
 			<Affix AffixName = "excellent_basket" />
 			<Affix AffixName = "advanced_basket" />
 			
 		</Prototype>
+
+		<Prototype
+			Class="AffixGenerator"
+			Name="Town_r0m0_affixGenerator">
+
+            <Affix AffixName = "excellent_cabin" />
+			<Affix AffixName = "advanced_cabin" />
+			<Affix AffixName = "excellent_basket" />
+			<Affix AffixName = "advanced_basket" />
+			<Affix AffixName = "rusty_cabin" />
+			<Affix AffixName = "rusty_basket" />
+			<Affix AffixName = "useless_cabin" />
+			<Affix AffixName = "useless_basket" />
+			
+		</Prototype>
+
+		<Prototype
+			Class="RepositoryObjectsGenerator"
+			Name="Town_r0m0_gunGenerator">
+
+			<Object PrototypeName="specter01" />
+			<Object PrototypeName="storm01" />
+			<Object PrototypeName="vector01" />
+			<Object PrototypeName="vulcan01" />
+			<Object PrototypeName="bumblebee01" />
+
+		</Prototype>
 		
+		<Prototype
+			Class="AffixGenerator"
+			Name="Town_r0m0_gunaffixGenerator">
 
-
-
-
+            <Affix AffixName = "excellent_gun" />
+			<Affix AffixName = "advanced_gun" />
+			<Affix AffixName = "rapid_firing_gun" />
+			<Affix AffixName = "deadly_gun" />
+			<Affix AffixName = "destructive_gun" />
+			<Affix AffixName = "with_long_barrel_gun" />
+			<Affix AffixName = "with_electric_sight_gun" />
+			<Affix AffixName = "with_nitro_cooling_gun"	 />
+			<Affix AffixName = "rusty_gun" />
+			<Affix AffixName = "assault_gun" />
+			<Affix AffixName = "with_enlarged_barrel_gun" />
+			<Affix AffixName = "with_laser_sight_gun" />
+			<Affix AffixName = "with_water_cooling_gun"	/>
+			<Affix AffixName = "useless_gun" />
+			<Affix AffixName = "slow_gun" />      
+			<Affix AffixName = "without_sight_gun" />
+			<Affix AffixName = "without_cooling_gun" />
+			<Affix AffixName = "with_truncated_barrel_gun" />
+			<Affix AffixName = "weak_gun" />
+			
+		</Prototype>
+		
 		<Prototype
 			Class		= "Town"
 			Name		= "TownSouth"
@@ -2981,7 +3030,43 @@ $Id: Towns.xml,v 1.74 2005/11/29 06:27:45 anton Exp $
 			Vehicles 	= ""
 			/>
 
+		<Prototype
+			Class		= "Town"
+			Name		= "PetrolStationTown_2"
+			
+			NodeScale	= "1 1 1" 
 
+			GateModelFile 	= ""
+
+			IsIntersecting		= "true"
+			LookRadius			= "200"
+			IntersectionRadius	= "25" 
+
+			Vehicles 	= ""
+			/>
+
+		<Prototype
+			Class		= "Town"
+			Name		= "Town_r0m0"
+			NodeScale	= "1 1 1" 
+			
+			IsIntersecting		= "true"
+			LookRadius		= "200"
+			IntersectionRadius	= "30" 
+
+			GunGenerator		= "Town_r0m0_gunGenerator"
+			DesiredGunsInWorkshop	= "20"
+
+			GunAffixGenerator	= "Town_r0m0_gunaffixGenerator"
+			GunAffixesCount		= "2"
+
+			Vehicles 	= "">
+
+			<ResourceCoeff Coeff="1.1" Dispersion="0.75" Resource="GUN" />
+			<ResourceCoeff Coeff="1.0" Dispersion="10.0" Resource="GADGET" />
+		    <ResourceCoeff Coeff="1.0" Dispersion="20.0" Resource="CABIN" />
+			<ResourceCoeff Coeff="1.0" Dispersion="20.0" Resource="BASKET" />
+		</Prototype>
 
 	</Folder>
 </Prototypes>

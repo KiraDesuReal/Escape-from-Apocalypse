@@ -24,14 +24,14 @@ $Id: SmallGuns.xml,v 1.58 2005/11/28 07:43:57 anton Exp $
 		RecoilForce		= "2"		
 
 		CanBeUsedInAutogenerating  =  "0"
-		Price			= "8600"
+		Price			= "20000"
 		
 		ChargeSize     		= "1"
 		RechargingTime 		= "10"
 
 		Durability		= "20" 
 		
-		ShellsPoolSize		= "25"
+		ShellsPoolSize		= "28"
 		WithShellsPoolLimit	= "true"
 		
 		AccelerationValue	= "1.6"
@@ -57,7 +57,7 @@ $Id: SmallGuns.xml,v 1.58 2005/11/28 07:43:57 anton Exp $
 		RecoilForce		= "2"		
 
 		CanBeUsedInAutogenerating  =  "0"
-		Price			= "3670"
+		Price			= "4000"
 		
 		ChargeSize     		= "20"
 		RechargingTime 		= "8"
@@ -176,7 +176,7 @@ $Id: SmallGuns.xml,v 1.58 2005/11/28 07:43:57 anton Exp $
 		RecoilForce			= "2"		
       		DamageType	= "BLAST"
 		CanBeUsedInAutogenerating  =  "0"
-		Price			= "3540"
+		Price			= "1530"
 		
 		ChargeSize     		= "1"
 		RechargingTime 		= "4"
@@ -206,7 +206,7 @@ $Id: SmallGuns.xml,v 1.58 2005/11/28 07:43:57 anton Exp $
 		RecoilForce			= "2"		
 		DamageType	= "BLAST"
 		CanBeUsedInAutogenerating  =  "0"
-		Price			= "7400"
+		Price			= "2300"
 		
 		ChargeSize     		= "1"
 		RechargingTime 		= "3"
@@ -228,6 +228,37 @@ $Id: SmallGuns.xml,v 1.58 2005/11/28 07:43:57 anton Exp $
 		TracerEffect 		="ET_PS_TRACER1"
 		TracerRange 		= "1" 
 		
+		BulletPrototype		= "raybullet_hornet01"
+		ExplosionType		= "MACHINEGUN"
+		FiringEffect		= "none"
+		Damage			= "5"
+		FiringRate			= "400"
+		GroupingAngle		= "0.8"
+		FiringRange		= "500"
+		RecoilForce		= "100"
+				FiringType		= "MachineGun"
+		Price			= "1900"
+		
+		Decal				= "DC_SML_MACHINEGUN"
+
+		ShellsPoolSize		= "280"
+		WithShellsPoolLimit	= "true"
+
+		ChargeSize     = "70"
+		RechargingTime = "2"
+
+		Durability			= "20" />
+
+	<Prototype
+		Class			= "BulletLauncher"
+		Name			= "hornet01_unlimited"
+		ModelFile			= "hornet01"
+		ResourceType		= "SMALL_GUN"
+		NodeScale		= "1 1 1"
+		Mass			= "1.0"
+		TracerEffect 		="ET_PS_TRACER1"
+		TracerRange 		= "1" 
+		
 		BulletPrototype		= "raybullet"
 		ExplosionType		= "MACHINEGUN"
 		FiringEffect		= "none"
@@ -235,9 +266,43 @@ $Id: SmallGuns.xml,v 1.58 2005/11/28 07:43:57 anton Exp $
 		FiringRate			= "400"
 		GroupingAngle		= "0.8"
 		FiringRange		= "500"
-		RecoilForce		= "2"
-                FiringType		= "MachineGun"
-		Price			= "280"
+		RecoilForce		= "100"
+				FiringType		= "MachineGun"
+		Price			= "1900"
+		
+		Decal				= "DC_SML_MACHINEGUN"
+
+		ShellsPoolSize		= "280"
+		WithShellsPoolLimit	= "true"
+
+		ChargeSize     = "70"
+		RechargingTime = "2"
+
+		Durability			= "20"
+		VisibleInEncyclopedia	= "false" />
+
+	<Prototype
+		Class			= "BulletLauncher"
+		Name			= "american_hornet01"
+		ModelFile			= "american_hornet01"
+		ResourceType		= "SMALL_GUN"
+		NodeScale		= "1 1 1"
+		Mass			= "1.0"
+		TracerEffect 		="ET_PS_TRACER1"
+		TracerRange 		= "1" 
+		
+		BulletPrototype		= "raybullet_ametican_hornet01"
+		ExplosionType		= "MACHINEGUN"
+		FiringEffect		= "none"
+		Damage			= "6"
+		FiringRate			= "400"
+		GroupingAngle		= "0.8"
+		FiringRange		= "500"
+		RecoilForce		= "100"
+				FiringType		= "MachineGun"
+		Price			= "2500"
+		ShellsPoolSize  = "350"
+		WithShellsPoolLimit	= "true"
 		
 		Decal				= "DC_SML_MACHINEGUN"
 
@@ -257,17 +322,19 @@ $Id: SmallGuns.xml,v 1.58 2005/11/28 07:43:57 anton Exp $
 		TracerEffect ="ET_PS_TRACER1"
 		TracerRange = "1" 
 			
-		BulletPrototype		= "raybullet"
+		BulletPrototype		= "raybullet_specter01"
 		ExplosionType		= "MACHINEGUN"
 		FiringEffect		= "none"
 		Damage			= "5"
 		FiringRate			= "600"
 		GroupingAngle		= "0.8"
 		FiringRange		= "500"
-		RecoilForce		= "2"
+		RecoilForce		= "150"
 		FiringType		= "MachineGun"
-		Price			= "590"
-		
+		Price			= "5100"
+		ShellsPoolSize  = "280"
+		WithShellsPoolLimit	= "true"
+
 		Decal				= "DC_SML_MACHINEGUN"
 
 		ChargeSize     = "70"
@@ -277,7 +344,70 @@ $Id: SmallGuns.xml,v 1.58 2005/11/28 07:43:57 anton Exp $
 
 	<Prototype
 		Class			= "BulletLauncher"
+		Name			= "specter01_unlimited"
+		ModelFile			= "specter01"
+		ResourceType		= "SMALL_GUN"
+		NodeScale		= "1 1 1"
+		Mass			= "1.0"
+				
+		TracerEffect ="ET_PS_TRACER1"
+		TracerRange = "1" 
+			
+		BulletPrototype		= "raybullet"
+		ExplosionType		= "MACHINEGUN"
+		FiringEffect		= "none"
+		Damage			= "5"
+		FiringRate			= "600"
+		GroupingAngle		= "0.8"
+		FiringRange		= "500"
+		RecoilForce		= "150"
+		FiringType		= "MachineGun"
+		Price			= "5100"
+		ShellsPoolSize  = "280"
+		WithShellsPoolLimit	= "true"
+
+		Decal				= "DC_SML_MACHINEGUN"
+
+		ChargeSize     = "70"
+		RechargingTime = "2.5"
+
+		Durability			= "20"
+		VisibleInEncyclopedia	= "false" />
+
+	<Prototype
+		Class			= "BulletLauncher"
 		Name			= "pkt01"
+		ModelFile		= "pkt01"
+		ResourceType		= "SMALL_GUN"
+		NodeScale		= "1 1 1"
+		Mass			= "1.0"
+		
+		TracerEffect ="ET_PS_TRACER1"
+		TracerRange = "1" 
+	
+		BulletPrototype		= "raybullet_pkt01"
+		ExplosionType		= "MACHINEGUN"
+		FiringEffect		= "none"
+		Damage		= "6"
+		FiringRate		= "650"
+		GroupingAngle		= "0.5"
+		FiringRange		= "1000"
+		RecoilForce		= "250"
+		FiringType		= "MachineGun"
+		Price			= "6800"
+		ShellsPoolSize  = "400"
+		WithShellsPoolLimit	= "true"
+		
+		Decal				= "DC_SML_MACHINEGUN"
+
+		ChargeSize     = "80"
+		RechargingTime = "3"
+
+		Durability		= "25"/>
+
+	<Prototype
+		Class			= "BulletLauncher"
+		Name			= "pkt01_unlimited"
 		ModelFile		= "pkt01"
 		ResourceType		= "SMALL_GUN"
 		NodeScale		= "1 1 1"
@@ -293,16 +423,19 @@ $Id: SmallGuns.xml,v 1.58 2005/11/28 07:43:57 anton Exp $
 		FiringRate		= "650"
 		GroupingAngle		= "0.5"
 		FiringRange		= "1000"
-		RecoilForce		= "1"
+		RecoilForce		= "250"
 		FiringType		= "MachineGun"
-		Price			= "1670"
+		Price			= "6800"
+		ShellsPoolSize  = "400"
+		WithShellsPoolLimit	= "true"
 		
 		Decal				= "DC_SML_MACHINEGUN"
 
 		ChargeSize     = "80"
 		RechargingTime = "3"
 
-		Durability		= "25"/>
+		Durability		= "25"
+		VisibleInEncyclopedia	= "false" />
 
 	<Prototype
 		Class			= "BulletLauncher"
@@ -315,16 +448,18 @@ $Id: SmallGuns.xml,v 1.58 2005/11/28 07:43:57 anton Exp $
 		TracerEffect ="ET_PS_TRACER1"
 		TracerRange = "1" 
 	
-		BulletPrototype		= "raybullet"
+		BulletPrototype		= "raybullet_kord01"
 		ExplosionType		= "MACHINEGUN"
 		FiringEffect		= "none"
 		Damage		= "10"
 		FiringRate		= "450"
 		GroupingAngle		= "0.9"
 		FiringRange		= "1000"
-		RecoilForce		= "2"
+		RecoilForce		= "250"
                 FiringType		= "MachineGun"
-		Price			= "3680"
+		Price			= "9200"
+		ShellsPoolSize  = "220"
+		WithShellsPoolLimit	= "true"
 		
 		Decal				= "DC_SML_MACHINEGUN"
 
@@ -342,17 +477,19 @@ $Id: SmallGuns.xml,v 1.58 2005/11/28 07:43:57 anton Exp $
 		NodeScale		= "1 1 1"
 		Mass			= "1.0"
 		
-		BulletPrototype	= "someLaserBeamGreen"
+		BulletPrototype	= "someLaserBeamGreen_maxim01"
 		ExplosionType	= "LASER"
 		FiringEffect	= "none"
 		Damage		= "65"
 		FiringRate		= "90"
 		GroupingAngle		= "0.3"
 		FiringRange		= "800"
-		RecoilForce		= "0"
+		RecoilForce		= "1"
                 FiringType		= "Laser"
-		Price			= "26600"
-		
+		Price			= "15000"
+		ShellsPoolSize  = "70"
+		WithShellsPoolLimit	= "true"
+
 		Decal				= "DC_LASER"
 
 		ChargeSize     = "35"
@@ -369,7 +506,7 @@ $Id: SmallGuns.xml,v 1.58 2005/11/28 07:43:57 anton Exp $
 		NodeScale		= "1 1 1"
 		Mass			= "1.0"
 		
-		BulletPrototype	= "raybullet"
+		BulletPrototype	= "raybullet_storm01"
 		ExplosionType	= "MACHINEGUN"
 		FiringEffect	= "none"
 		Damage		= "160"
@@ -377,9 +514,11 @@ $Id: SmallGuns.xml,v 1.58 2005/11/28 07:43:57 anton Exp $
 		GroupingAngle	= "4"
 		NumBulletsInShot	= "20"
 		FiringRange		= "200"
-		RecoilForce		= "3"
+		RecoilForce		= "500"
                 FiringType		= "ShotGun"
-		Price			= "3450"
+		Price			= "3200"
+		ShellsPoolSize  = "25"
+		WithShellsPoolLimit	= "true"
 		
 		Decal				= "DC_SML_MACHINEGUN"
 
@@ -396,7 +535,7 @@ $Id: SmallGuns.xml,v 1.58 2005/11/28 07:43:57 anton Exp $
 		NodeScale		= "1 1 1"
 		Mass			= "1.0"
 		
-		BulletPrototype		= "somePlasmaBunch"
+		BulletPrototype		= "somePlasmaBunch_fagot01"
 		ExplosionType		= "PLASMA"
 		FiringEffect		= "none"
 		Damage			= "400"
@@ -405,7 +544,9 @@ $Id: SmallGuns.xml,v 1.58 2005/11/28 07:43:57 anton Exp $
 		FiringRange		= "2000"
 		RecoilForce		= "1"
                 FiringType		= "Plasma"
-		Price			= "25500"
+		Price			= "20750"
+		ShellsPoolSize  = "14"
+		WithShellsPoolLimit	= "true"
 				
 		Decal				= "DC_LASER"
 

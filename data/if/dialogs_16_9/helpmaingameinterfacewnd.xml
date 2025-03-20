@@ -99,7 +99,7 @@
 
 		<Node
 			name="btnExit"
-			org="1280.000 1003.000 225.000 45.000"
+			org="1280.000 1015.000 225.000 45.000"
 			style="265728"
 			order="2"
 			id="1"
@@ -124,7 +124,7 @@
 		<Node
 			name="btnExit_emboss"
 			class="Wnd"
-			org="1277.000 1000.000 231.000 51.000"
+			org="1277.000 1012.000 231.000 51.000"
 			style="768"
 			order="2"
 			id="1"
@@ -303,6 +303,7 @@
 			<Animations/>
 		</Node>
 
+	<!--
 		<Node
 			name="wndHpLabel"
 			class="Wnd"
@@ -486,7 +487,7 @@
 			textColorDisabled="ff7f7f7f">
 			<Animations/>
 		</Node>
-
+	-->
 		<Node
 			name="wndWeaponLabel"
 			class="Wnd"
@@ -536,7 +537,7 @@
 		<Node
 			name="wndFadingMessagesLabel"
 			class="Wnd"
-			org="74.000 950.000 211.000 45.000"
+			org="74.000 840.000 211.000 45.000"
 			style="265728"
 			order="3"
 			id="70007"
@@ -559,7 +560,7 @@
 		<Node
 			name="wndFadingMessagesZone"
 			class="Wnd"
-			org="0.000 960.000 360.000 120.000"
+			org="0.000 850.000 360.000 120.000"
 			style="265728"
 			order="3"
 			id="70007"
@@ -582,7 +583,7 @@
 		<Node
 			name="wndImportantFadingMessagesLabel"
 			class="Wnd"
-			org="819.000 210.000 281.000 45.000"
+			org="819.000 120.000 281.000 45.000"
 			style="265728"
 			order="3"
 			id="70008"
@@ -605,7 +606,7 @@
 		<Node
 			name="wndImportantFadingMessagesZone"
 			class="Wnd"
-			org="470.000 145.000 980.000 120.000"
+			org="470.000 55.000 980.000 120.000"
 			style="265728"
 			order="3"
 			id="70008"
@@ -720,7 +721,7 @@
 		<Node
 			name="wndActionIconsLabel"
 			class="Wnd"
-			org="1685.000 906.000 211.000 45.000"
+			org="1700.000 906.000 211.000 45.000"
 			style="265728"
 			order="3"
 			id="70011"
@@ -743,7 +744,7 @@
 		<Node
 			name="wndActionIconsZone"
 			class="Wnd"
-			org="1648.000 977.000 180.000 90.000"
+			org="1663.000 977.000 180.000 90.000"
 			style="265728"
 			order="3"
 			id="70011"

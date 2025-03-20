@@ -17,6 +17,19 @@ $Id: Mortar.xml,v 1.13 2005/10/25 09:54:48 anton Exp $
 
 		Size			= "0.5 0.5 1"
 	/>
+
+	<Prototype
+		Class			= "MortarShell"
+		Name			= "someMortarShell_bumblebee01"			
+
+		ModelFile		= "shell01"
+		ExplosionType		= "GRENADE" 
+		Price			= "100"		
+		FlyTime			= "100"
+
+		Size			= "0.5 0.5 1"
+	/>
+
 	<Prototype
 		Class			= "MortarShell"
 		Name			= "someMortarShell02"			
@@ -30,13 +43,28 @@ $Id: Mortar.xml,v 1.13 2005/10/25 09:54:48 anton Exp $
 		BlastWavePrototype      = "smallBlastWave"
 
 	/>
+
+	<Prototype
+		Class			= "MortarShell"
+		Name			= "someMortarShell02_omega01"			
+
+		ModelFile		= "shell02"
+		ExplosionType		= "GRENADE" 
+		Price			= "375"		
+		FlyTime			= "100"
+
+		Size			= "0.5 0.5 1"
+		BlastWavePrototype      = "smallBlastWave"
+
+	/>
+
 	<Prototype
 		Class			= "MortarShell"
 		Name			= "marsMortarShell"			
 
 		ModelFile		= "shell01"
 		ExplosionType		= "GRENADE" 
-		Price			= "3000"
+		Price			= "6000"
 		FlyTime			= "100"
 
 		Size			= "0.5 0.5 1"

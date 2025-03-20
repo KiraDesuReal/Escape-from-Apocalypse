@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<DynamicScene
+	LastId="9">
+	<Object
+		Name="Player1"
+		Belong="1100"
+		Prototype="player">
+		<Object
+			Name="MyCar"
+			Belong="1100"
+			Prototype="Bug01"
+			Pos="507.539 255.041 927.363"
+			Rot="0.009 0.002 0.000 -1.000">
+			<Parts />
+
+			<Repository />
+		</Object>
+	</Object>
+
+	<Object
+		Name="FromR0M0"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="507.539 255.041 927.363"
+		Radius="10.000" />
+
+	<Object
+		Name="Exit1_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="506.826 254.546 887.857"
+		Radius="18.000" />
+
+	<Object
+		Name="CreateKey_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="740.171 254.546 983.872"
+		Radius="112.000" />
+
+	<Object
+		Name="Start_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="739.442 254.546 983.184"
+		Radius="7.000" />
+
+	<Object
+		Name="Exit2_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="929.056 254.546 984.136"
+		Radius="18.000" />
+
+	<Object
+		Name="SpawnEnemy1_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="803.347 254.546 984.138"
+		Radius="30.000" />
+
+	<Object
+		Name="SpawnEnemy2_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="735.456 254.546 1064.113"
+		Radius="30.000" />
+
+	<Object
+		Name="SpawnEnemy3_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="735.019 254.546 908.066"
+		Radius="30.000" />
+
+	<Object
+		Name="SpawnEnemy4_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="657.868 254.546 983.935"
+		Radius="30.000" />
+		
+</DynamicScene>

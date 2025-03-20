@@ -1,60 +1,6 @@
 <?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
 <QuestInfoResource>
 	<QuestInfo
-		questName="BuyKollizey_Quest"
-		briefDiz="Стать совладельцем Колизея"
-		fullDiz="У меня появилась возможность стать совладельцем Колизея. За свой взнос я получу долю акций и стабильную прибыль."
-		isMainQuest="0">
-		<Map
-			name="r1m2"
-			targetObjName="TheTickets" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="Buyer_Quest1"
-		briefDiz="Отвезти пакет в город"
-		fullDiz="Нужно отвезти пакет в Южный. У торговца Серго есть какие-то дела с моим отцом. "
-		isMainQuest="1">
-		<Map
-			name="r1m1"
-			targetObjName="TheTown" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="CombatInKollizey_Quest"
-		briefDiz="Показательное выступление"
-		fullDiz="Я должен устроить в Колизее показательное сражение, чтобы привлечь публику."
-		isMainQuest="0" />
-
-	<QuestInfo
-		questName="CombatInKollizey_Quest1"
-		briefDiz="Добраться до Арены"
-		isMainQuest="0">
-		<Map
-			name="r1m2"
-			targetObjName="Kolizey_location" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="CombatInKollizey_Quest2"
-		briefDiz="Одержать победу в поединке"
-		isMainQuest="0">
-		<Map
-			name="r1m2"
-			targetObjName="Gladiator1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="DestroyRuins_Quest"
-		briefDiz="Ограбить археологов"
-		fullDiz="Говорят, археологи выкопали что-то интересное. На охрану они поскупились, так что можно неплохо поживиться."
-		isMainQuest="0">
-		<Map
-			name="r1m2"
-			targetObjName="CarOfSiencer" />
-	</QuestInfo>
-
-	<QuestInfo
 		questName="Dynamic_Convoy_0"
 		briefDiz="Сопроводить транспорт до объекта %2n"
 		fullDiz="Селение %1n просит вас сопроводить транспорт с ценным грузом до объекта %2n за %3d."
@@ -139,3297 +85,2279 @@
 		isMainQuest="0" />
 
 	<QuestInfo
-		questName="EastTalkKollizey_Quest"
-		briefDiz="Сообщить в Восточный"
-		fullDiz="Рассказать об открытии Колизея жителям Восточного. "
-		isMainQuest="0">
-		<Map
-			name="r1m2"
-			targetObjName="Esting" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="FindBen2_Quest"
-		briefDiz="Разыскать Бена"
-		fullDiz="Мне повезло: Бен Дроссель живет неподалеку. Я должен встретиться с ним и выяснить, как он связан со мной и с недавними событиями."
+		questName="q_base_scavs"
+		briefDiz="Это наша территория"
+		fullDiz="Помнишь, я как то раз упоминал военную базу, которую отстроили Дикие на локации Край? Тут в общем пришёл заказ на выявление точного месторасположения этой базы. Кому попало не доверишь это поручение. И тут - ты. Короче, вот тебе маяк, пользоваться проще простого. Приехал на место маркировки, нажал на кнопку, установил, уехал, всё - сигнал идёт. Только смотри не потеряй, остальные будешь за бабло покупать. Все ясно? Тогда за дело, боец!|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Пулемёт: @FF1D1D1DПКТ в продаже - x1|@FF404040- Пулемёт: @FF1D1D1DКорд в продаже - x1|@FF404040- Деньги: @FF1D1D1D35.000 монет"
 		isMainQuest="1">
 		<Map
-			name="r1m2" />
-	</QuestInfo>
+			name="r0m0" />
 
-	<QuestInfo
-		questName="FindBen_Quest"
-		briefDiz="Узнать, кто такой Бен Дроссель"
-		fullDiz="Вся моя жизнь перевернулась. Чтобы обрести себя, я должен найти своего настоящего отца во что бы то ни стало! Единственная зацепка – имя Бен Дроссель."
-		isMainQuest="1">
-		<Map
-			name="r1m1" />
-
-		<Map
-			name="r1m2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="FindGomerA_Quest1"
-		briefDiz="Найти Гомера"
-		fullDiz="Гомер наверняка отсиживается в баре одного из рыбацких поселков. Найти его будет несложно."
-		isMainQuest="1" />
-
-	<QuestInfo
-		questName="FindGomerB_Quest1"
-		briefDiz="Найти Гомера"
-		fullDiz="Гомер наверняка отсиживается в баре одного из рыбацких поселков. Найти его будет несложно."
-		isMainQuest="1" />
-
-	<QuestInfo
-		questName="FreeExtremistLeader_Quest1"
-		briefDiz="Освободить лидера экстремистов"
-		fullDiz="Склад заняли экстремисты. Если я освобожу их лидера из плена, они уйдут и позволят торговцам спокойно работать. "
-		isMainQuest="0">
-		<Map
-			name="r1m4" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="FreeExtremistLeader_Quest2"
-		briefDiz="Узнать в Ольме, где держат лидера"
-		isMainQuest="0">
-		<Map
-			name="r1m4"
-			targetObjName="TheOlme_enter" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="FreeExtremistLeader_Quest3"
-		briefDiz="Перехватить транспорт с лидером"
-		isMainQuest="0">
-		<Map
-			name="r1m4"
-			coordinate="2348.362 249.000 2963.589" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="FreeExtremistLeader_Quest3_1"
-		briefDiz="Уничтожить охрану"
-		isMainQuest="0">
-		<Map
-			name="r1m4"
-			targetObjName="LeaderGuardTeam" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="FreeExtremistLeader_Quest3_2"
-		briefDiz="Разоружить головную машину"
-		isMainQuest="0">
-		<Map
-			name="r1m4"
-			targetObjName="LeaderCar_vehicle_0" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="FreeExtremistLeader_Quest4"
-		briefDiz="Отвезти лидера к его бойцам"
-		isMainQuest="0">
-		<Map
-			name="r1m4"
-			targetObjName="StorageVil_enter" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="HelpRuins_Quest"
-		briefDiz="Помочь археологам"
-		fullDiz="Бандиты досаждают ученым-археологам, которые ведут раскопки неподалеку. Я согласился защитить их от нападок бандитов, которые покушаются на откопанные сокровища."
-		isMainQuest="0">
-		<Map
-			name="r1m2"
-			targetObjName="CarOfAntiSiencer" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="KillExtremist_Quest1"
-		briefDiz="Убить бандитов, захвативших склад"
-		fullDiz="Склад можно очистить двумя путями, один из них - это убить всех экстремистов."
-		isMainQuest="0">
-		<Map
-			name="r1m4"
-			targetObjName="ExtrGuardTeam" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="Kollizey_Quest"
-		briefDiz="Помочь организовать работу Колизея"
-		fullDiz="Предприниматели хотят снова открыть Колизей. К сожалению, рекламный бюджет у них просто неприлично мал. Да и опыта кот наплакал. Но я все равно согласился помочь им в этом нелегком деле."
-		isMainQuest="0">
-		<Map
-			name="r1m2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="MidgardTalkKollizey_Quest"
-		briefDiz="Сообщить в Мидгард"
-		fullDiz="Рассказать о Колизее в Мидгарде. Там наверняка будут рады узнать о появлении нового центра развлечений."
-		isMainQuest="0">
-		<Map
-			name="r1m2"
-			targetObjName="Midragd" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="PortoTalkKollizey_Quest"
-		briefDiz="Сообщить в Порто"
-		fullDiz="Рассказать о Колизее в Порто. Скоро народ из всех крупных городов повалит туда на поиски развлечений."
-		isMainQuest="0">
-		<Map
-			name="r1m2"
-			targetObjName="Porto" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="ReturnToDirector2_Quest"
-		briefDiz="Вернуться к владельцу Колизея"
-		fullDiz="Я выполнил свою часть сделки. Теперь нужно получить заслуженную награду."
-		isMainQuest="0">
-		<Map
-			name="r1m2"
-			targetObjName="TheTickets" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="ReturnToDirector_Quest"
-		briefDiz="Вернуться к владельцу Колизея"
-		fullDiz="Я выполнил свою часть сделки. Теперь нужно получить заслуженную награду."
-		isMainQuest="0">
-		<Map
-			name="r1m2"
-			targetObjName="TheTickets" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="SeeSigns_Quest"
-		briefDiz="Осмотреть знаки"
-		fullDiz="Люди жалуются на появление загадочных знаков на полях. Надо разобраться."
-		isMainQuest="0">
-		<Map
-			name="r1m2"
-			targetObjName="Sign_location" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="Signs_Quest"
-		briefDiz="Знаки на полях"
-		fullDiz="Люди жалуются на появление загадочных знаков на полях. Возможно, в их появлении есть какая-то логика."
-		isMainQuest="0">
-		<Map
-			name="r1m2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="TRS_Quest2"
-		briefDiz="Приехать на склад"
-		isMainQuest="0">
-		<Map
-			name="r1m4"
-			targetObjName="StorageVil_enter" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="TRS_Quest3a"
-		briefDiz="Убить захватчиков"
-		isMainQuest="0">
-		<Map
-			name="r1m4"
-			targetObjName="StorageVil_enter" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="TRS_Quest3b"
-		briefDiz="Освободить лидера"
-		isMainQuest="0">
-		<Map
-			name="r1m4" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="TRS_Quest4"
-		briefDiz="Сообщить об очистке склада"
-		isMainQuest="0">
-		<Map
-			name="r1m4"
-			targetObjName="TheOlme_enter" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="TalkProfessor_Quest"
-		briefDiz="Рассказать ученым о знаках"
-		fullDiz="Ума не приложу, что могло вызвать это странное явление. Ученые в Мидгарде могут разобраться, что здесь на самом деле происходит."
-		isMainQuest="0">
-		<Map
-			name="r1m2"
-			targetObjName="Midragd" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="TalkWithFather_Quest"
-		briefDiz="Вернуться домой"
-		fullDiz="Самое время вернуться домой после успешной сделки."
-		isMainQuest="1">
-		<Map
-			name="r1m1"
-			targetObjName="TheGloohoe" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="TraiderStorage_Quest1"
-		briefDiz="Освободить склад от бандитов"
-		fullDiz="Склад торговцев заняли экстремисты. Должен быть какой-то способ выгнать их оттуда. "
-		isMainQuest="0">
-		<Map
-			name="r1m4" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="WhereSigns_Quest"
-		briefDiz="Проверить деревню"
-		fullDiz="Жители деревни Яр напуганы. Возможно, происходит что-то серьезное."
-		isMainQuest="0">
-		<Map
-			name="r1m2"
-			targetObjName="TheSign" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="WorkGiver_Quest1"
-		briefDiz="Отвезти богатого фермера"
-		fullDiz="Когда я привезу фермера на заправку, он хорошо мне заплатит. Главное - сделать это быстро и доставить его точно в пункт назначения."
-		isMainQuest="0">
-		<Map
-			name="r1m1"
-			targetObjName="TheOilVillageQ2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_ArriveToFelix_Quest"
-		briefDiz="Приехать на базу Феликса"
-		isMainQuest="1">
-		<Map
-			name="r1m1"
-			targetObjName="FelixBaseLoc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_AttackFelixBase_Quest"
-		briefDiz="Избавиться от охраны"
-		isMainQuest="1">
-		<Map
-			name="r1m1"
-			targetObjName="FelixBanditCars2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_BarForTunel_Quest"
-		briefDiz="Поговорить с барменом в Асгарде"
-		fullDiz="Судя по всему, жители этого города знают, как проехать через горы на запад."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="Asgard" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_BarInGelvetcia_Quest"
-		briefDiz="Приехать в бар и назвать пароль"
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="ToR2M2" />
-
-		<Map
-			name="r2m2"
-			targetObjName="Toskana" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_BombInAsgard_Quest"
-		briefDiz="Купить в Асгарде взрывчатку"
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="Asgard" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_BombInShahts_Quest"
-		briefDiz="Купить взрывчатку в шахтерском поселке"
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="TheShahts" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_BombShahtsAtakBandits_Quest"
-		briefDiz="Отбить атаку бандитов"
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="ShahtsBoss" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_BombShahtsReturn_Quest"
-		briefDiz="Вернуться в посёлок"
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="TheShahts" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_CaravanFromTuzzToVillage_Quest"
-		briefDiz="Сопроводить транспорт по деревням"
-		fullDiz="Моя задача - обеспечить безопасность транспорта. Груз должен быть доставлен любой ценой."
-		isMainQuest="1">
-		<Map
-			name="r2m1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_CaravanToMidgardBen_Quest"
-		briefDiz="Вернуться с транспортом в Мидгард"
-		isMainQuest="1">
-		<Map
-			name="r1m2"
-			targetObjName="KARAVANMIDGARD_vehicle_0" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_CaravanToPortoBen_Quest"
-		briefDiz="Сопроводить транспорт в Порто"
-		isMainQuest="1">
-		<Map
-			name="r1m2"
-			targetObjName="KARAVANPORTO_vehicle_0" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_DefeatLisasBandits"
-		briefDiz="Спасти Лису"
-		isMainQuest="1">
-		<Map
-			name="r1m1"
-			targetObjName="ToR1M2" />
-
-		<Map
-			name="r1m2"
-			targetObjName="LisaInBanditDen" />
-
-		<Map
-			name="r1m3"
-			targetObjName="ToR1M2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_DestroyBridge_Quest"
-		briefDiz="Заложить бомбу"
-		fullDiz="У меня есть взрывчатка. Осталось только заминировать мост."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="BaseGuardian_enter" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_DriveBanditFromOilMine_Quest"
-		briefDiz="Освободить скважину от бандитов"
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="OilMineBoss" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FatherRoomInMinin_Quest"
-		briefDiz="Обыскать дом отца"
-		isMainQuest="1">
-		<Map
-			name="r1m2" />
-
-		<Map
-			name="r1m3"
-			targetObjName="HouseLoc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindAksel_Quest"
-		briefDiz="Найти Акселя"
-		fullDiz="Аксель заправляет бандой негодяев в Аржане. Мне нужно найти способ пересечь горы, чтобы добраться до него."
-		isMainQuest="1">
-		<Map
-			name="r1m2" />
-
-		<Map
-			name="r1m3" />
-
-		<Map
-			name="r2m1" />
-
-		<Map
-			name="r2m2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindBanditBaseOfOilMine_Quest"
-		briefDiz="Найти и уничтожить лагерь бандитов"
-		fullDiz="Последний противник убегает. Я могу проследить за ним до базы бандитов и уничтожить это паучье гнездо."
-		isMainQuest="0" />
-
-	<QuestInfo
-		questName="d_FindBanditBaseOfOilMine_Quest1"
-		briefDiz="Проследить за беглецом"
-		isMainQuest="0">
-		<Map
-			name="r1m3"
-			targetObjName="OilMineRuner_vehicle_0" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindBanditBaseOfOilMine_Quest2"
-		briefDiz="Напасть на базу"
-		isMainQuest="0">
-		<Map
-			name="r1m3"
-			targetObjName="OilMineBaseBoss" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindBenInEast_Quest"
-		briefDiz="Продолжить поиски в Восточном"
-		isMainQuest="1">
-		<Map
-			name="r1m1"
-			targetObjName="ToR1M2" />
-
-		<Map
-			name="r1m2"
-			targetObjName="Esting" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindBenInMidgard_Quest"
-		briefDiz="Последний раз Бена видели в Мидгарде"
-		isMainQuest="1">
-		<Map
-			name="r1m2"
-			targetObjName="Midragd" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindBenInSouth_Quest"
-		briefDiz="Расспросить о нем в Баре Южного"
-		isMainQuest="1">
-		<Map
-			name="r1m1"
-			targetObjName="TheTown" />
-
-		<Map
-			name="r1m2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindBenInStaruha_Quest"
-		briefDiz="Встретиться с деревенской ведьмой"
-		isMainQuest="1">
-		<Map
-			name="r1m1" />
-
-		<Map
-			name="r1m2"
-			targetObjName="TheArtefact" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindDoorInTunel_Quest"
-		briefDiz="Найти вход в тоннель"
-		fullDiz="Теперь я знаю, где находится тоннель. Надеюсь, что не возникнет никаких трудностей с поездом по нему."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="ToR2M1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindFelix_Quest"
-		briefDiz="Найти Феликса в баре Южного"
-		isMainQuest="1">
-		<Map
-			name="r1m1"
-			targetObjName="TheTown" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindHouseOfBen_Quest"
-		briefDiz="Поговорить с  Беном в его хижине"
-		fullDiz="Скоро я увижусь с Беном Дросселем и узнаю правду о своем происхождении."
-		isMainQuest="1">
-		<Map
-			name="r1m2"
-			targetObjName="TheBen_House" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindKeyInTunel_Quest"
-		briefDiz="Поговорить с барменом"
-		fullDiz="Скорее всего, у бармена есть ключ от тоннеля, и его можно купить, если я правильно понимаю законы рынка."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="Asgard" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindLisaInBandit_Quest"
-		briefDiz="Проверить возможное место засады"
-		isMainQuest="1">
-		<Map
-			name="r1m1" />
-
-		<Map
-			name="r1m2"
-			targetObjName="LisaInBanditPlen" />
-
-		<Map
-			name="r1m3" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindLisaInBase_Quest"
-		briefDiz="Спросить о Лисе на Базе 51"
-		fullDiz="Похоже, Лиса не так проста, как кажется. Она явно связана с бандитами. Не то что бы я очень удивился..."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="TheBase" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindLisaInGelvetcia_Quest"
-		briefDiz="Догнать Лису в Гельвеции"
-		fullDiz="Догнать Лису в Гельвеции."
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="TheGelvetcia" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindLisaInMidragd_Quest"
-		briefDiz="Искать Лису в Мидгарде"
-		isMainQuest="1">
-		<Map
-			name="r1m1" />
-
-		<Map
-			name="r1m2"
-			targetObjName="Midragd" />
-
-		<Map
-			name="r1m3"
-			targetObjName="ToR1M2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindLisaInPesht_Quest"
-		briefDiz="Проверить в Пеште"
-		isMainQuest="1">
-		<Map
-			name="r1m1"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r1m2" />
-
-		<Map
-			name="r1m3"
-			targetObjName="Pesht" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindLisaInPorto_Quest"
-		briefDiz="Искать Лису в Порто"
-		isMainQuest="1">
-		<Map
-			name="r1m1" />
-
-		<Map
-			name="r1m2"
-			targetObjName="Porto" />
-
-		<Map
-			name="r1m3" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindLisaOnSever_Quest"
-		briefDiz="Поговорить с Лисой"
-		fullDiz="Похоже, Феликс все-таки не повинен в смерти моего отца. Остается Лиса - единственный свидетель. Она поехала на север. Мне - за ней."
-		isMainQuest="1">
-		<Map
-			name="r1m1" />
-
-		<Map
-			name="r1m2" />
-
-		<Map
-			name="r1m3" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindOracul_Quest"
-		briefDiz="Найти Оракула"
-		fullDiz="На далеком северном острове, по слухам, живет оракул. След, оставленный Айвеном Го, ведет туда."
-		isMainQuest="1">
-		<Map
-			name="r1m2"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r1m3" />
-
-		<Map
-			name="r1m4" />
-
-		<Map
-			name="r2m1"
-			targetObjName="ToR3M1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindRealFatherRoom_Quest"
-		briefDiz="Найти жилище отца"
-		fullDiz="Мой отец еще может быть жив! Я посвящу свою жизнь его поискам.|Какие-нибудь зацепки могли остаться в его жилище в Минине."
-		isMainQuest="1">
-		<Map
-			name="r1m2" />
-
-		<Map
-			name="r1m3" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindVerbInAR_Quest"
-		briefDiz="Найти в Марецции вербовщика в АР"
-		fullDiz="Алый Рассвет ищет новых бойцов. Стать одним из них – это шанс приблизиться к Акселю."
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="ToR2M2" />
-
-		<Map
-			name="r2m2"
-			targetObjName="Marezzia" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindVerbInSNG_Quest"
-		briefDiz="Найти в Тузе вербовщика в СНГ"
-		fullDiz="Независимые Города нуждаются в помощи в борьбе с Акселем. Вместе мы сможем сокрушить тирана."
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="TheTuzz" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindVrata_Quest"
-		briefDiz="Найти Морские Врата"
-		fullDiz="Где-то далеко на севере находятся Морские врата. Караван из Минина покажет мне правильный путь."
-		isMainQuest="1">
-		<Map
-			name="r1m3" />
-
-		<Map
-			name="r1m4" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindWorkersToOilMine_Quest"
-		briefDiz="Договориться с работниками в Минине"
-		fullDiz="Работники со скважины сидят в баре Минина, надо с ними договориться, чтобы они вернулись на работу."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="Minin" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FindZasadaInTunel_Quest"
-		briefDiz="Найти место для засады"
-		fullDiz="Наверняка рано или поздно кто-то выедет из туннеля. У него-то я и экспроприирую ключ. Главное – дождаться. "
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="ZasadaLocQ" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FirstVillage_Quest"
-		briefDiz="Следовать за транспортом до деревни Генденбургск"
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="KARAVANvvt_vehicle_0" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FreeTunel_Quest"
-		briefDiz="Освободить тоннель"
-		fullDiz="До сих пор АР получает ресурсы и наемников через тоннель. Захватив его, СНГ обрубит захватчикам важную артерию. Чтобы сделать это, придется убить всех охранников."
-		isMainQuest="1" />
-
-	<QuestInfo
-		questName="d_FreeTunel_Quest1"
-		briefDiz="Добраться до тоннеля"
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="TunnelAttackLocation" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FreeTunel_Quest2"
-		briefDiz="Убить бандитов"
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="TunelTeamFighters" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_FromTuzzToGelvetcia_Quest"
-		briefDiz="Отправиться в Гельвецию"
-		fullDiz="Мои поступки были оценены по заслугам, и я буду представлен верховному командованию СНГ."
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="TheGelvetcia" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_GetAkselBandit_Quest"
-		briefDiz="Добраться до Акселя"
-		fullDiz="Момент истины близок. Скоро я Смогу посмотреть Акселю в глаза."
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="ToR2M2small" />
-
-		<Map
-			name="r2m2"
-			targetObjName="Zeon" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_GetBigBoom_Quest"
-		briefDiz="Найти мощное оружие в Заимке"
-		isMainQuest="1">
-		<Map
-			name="r1m1"
-			targetObjName="TheOilVillage" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_GetBomb_Quest"
-		briefDiz="Добыть взрывчатку"
-		fullDiz="Чтобы жители Пешта пропустили меня, я должен устранить угрозу нападения бандитов. Самый простой способ сделать это - взорвать мост, ведущий к их базе."
-		isMainQuest="1">
-		<Map
-			name="r1m3" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_GetHelpWorkersInMinin_Quest"
-		briefDiz="Освободить скважину от бандитов"
-		fullDiz="Чтобы проехать дальше на север, мне нужно наладить добычу нефти. Тогда я смогу отправиться с торговым караваном на север."
-		isMainQuest="1">
-		<Map
-			name="r1m3" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_GetSupportOneOfTheBands1_Quest"
-		briefDiz="Заручиться поддержкой крупной группировки"
-		fullDiz="Плохие новости. Лиса - подружка какого-то местного авторитета. Вряд ли я смогу в одиночку подобраться к нему. Придется искать союзников."
-		isMainQuest="1">
-		<Map
-			name="r2m1" />
-
-		<Map
-			name="r2m2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_GetSupportOneOfTheBands2_Quest"
-		briefDiz="Заручиться поддержкой крупной группировки"
-		fullDiz="Похоже, что одному мне до Акселя не добраться. Необходимо заручиться поддержкой крупной группировки."
-		isMainQuest="1">
-		<Map
-			name="r2m1" />
-
-		<Map
-			name="r2m2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_GiveMoneyToBase_Quest"
-		briefDiz="Собрать денег за проезд"
-		fullDiz="Бандиты согласны пропустить меня через свои земли за 10000."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="BaseGuardian_enter" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_GiveProblemToBase_Quest"
-		briefDiz="Показать бандитам, с кем они связались"
-		fullDiz="Похоже, единственный язык, который понимают эти мерзавцы, - это звук выстрелов. Я им покажу!"
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="Argument" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_HelpSideVillageSNG_Quest"
-		briefDiz="Защитить пограничную деревню"
-		fullDiz="Небольшие поселения постоянно подвергаются атакам головорезов Алого Рассвета. Я могу предотвратить нападение, и я сделаю это. "
-		isMainQuest="1" />
-
-	<QuestInfo
-		questName="d_HelpSideVillageSNG_Quest1"
-		briefDiz="Добраться до деревни"
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="TheUnderAttaks" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_HelpSideVillageSNG_Quest2"
-		briefDiz="Отразить нападение"
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="Razboy" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_IntrigaOfMerMinin_Quest"
-		briefDiz="Разобраться в интригах"
-		fullDiz="Из-за грязных интриг работники из профсоюза отказываются добывать нефть. Возможно, слухи о коррумпированности мэра недалеки от правды."
-		isMainQuest="1">
-		<Map
-			name="r1m3" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_KillFelix_Quest"
-		briefDiz="Убить Феликса"
-		isMainQuest="1">
-		<Map
-			name="r1m1"
-			targetObjName="FelixBanditCars3" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_Lisa_Quest"
-		briefDiz="Показать Лисе местность"
-		fullDiz="Загадочная девушка предложила показать ей местность. Возможно, она перевозит контрабанду."
-		isMainQuest="0">
 		<Map
 			name="r1m1" />
 	</QuestInfo>
 
 	<QuestInfo
-		questName="d_MeetLeaderGelvetcia_Quest"
-		briefDiz="Встретиться с лидером сопротивления"
+		questName="q_base_scavs_1"
+		briefDiz="Поменить маркером MS2000 базу диких"
 		isMainQuest="1">
 		<Map
-			name="r2m1" />
+			name="r0m0" />
 
-		<Map
-			name="r2m2"
-			targetObjName="Lager" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_MeetWithGelvetciaSopr_Quest"
-		briefDiz="Связаться с сопротивлением в Тоскане"
-		fullDiz="А вот и возможность подобраться поближе к Акселю. Я должен встретиться с повстанцами в Тоскане и выяснить все, что они сочтут возможным сообщить."
-		isMainQuest="1">
-		<Map
-			name="r2m1" />
-
-		<Map
-			name="r2m2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_MoveCanistraToMinin_Quest"
-		briefDiz="Отвезти первую канистру нефти в Минин"
-		fullDiz="Эта канистра лишь символ того, что скважина вновь заработала. Надо отвезти ее в город."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="Minin" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_MoveFreelancersToOilMine_Quest"
-		briefDiz="Отвезти наемных работников на скважину"
-		fullDiz="Как только я привезу рабочих на скважину, они сразу начнут работать. А значит, моя поездка на север состоится совсем скоро."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="TheBanditOilMine" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_MoveInParis_Quest"
-		briefDiz="На побережье"
-		fullDiz="Мне нужно найти вход в подводный тоннель, ведущий на остров Оракула."
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="ParisLocation" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_MoveLeaderInGelvetcia_Quest"
-		briefDiz="Доставить лидера в Гельвецию"
-		fullDiz="После всего, что случилось, лидер повстанцев просто обязан сообщить важные сведения."
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="TheGelvetcia" />
-
-		<Map
-			name="r2m2"
-			targetObjName="ToR2M1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_MoveToMer_Quest"
-		briefDiz="Проследить за мэром"
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="MerCar_vehicle_0" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_MoveToMinin_Quest"
-		briefDiz="Приехать в Минин"
-		isMainQuest="1">
-		<Map
-			name="r1m2" />
-
-		<Map
-			name="r1m3"
-			targetObjName="Minin" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_MoveToPesht_Quest"
-		briefDiz="Узнать в Пеште, как добраться до Минина"
-		isMainQuest="1">
-		<Map
-			name="r1m2"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r1m3"
-			targetObjName="Pesht" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_MoveWithGeneralToGelvetcia_Quest"
-		briefDiz="Доставить генерала АР в Гельвецию"
-		fullDiz="Операция прошла успешно. Мне удалось захватить генерала АР. В Гельвеции его заставят рассказать все, что он знает."
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="TheGelvetcia" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_MoveWorkersToOilMine_Quest"
-		briefDiz="Отвезти работников на скважину"
-		fullDiz="Теперь рабочие - сами хозяева своей судьбы, и они согласились вновь работать на скважине."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="TheBanditOilMine" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_OpenTunel_Quest"
-		briefDiz="Открыть тоннель ключом"
-		fullDiz="Ключ от тоннеля у меня. Осталось только открыть его."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="ToR2M1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_PatrulSideSNG_Quest"
-		briefDiz="Патрулировать границу"
-		fullDiz="Мое первое задание - патрулировать границу на предмет машин противника."
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="SideLine" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_PayWorkersMoney_Quest"
-		briefDiz="Нанять работников со стороны"
-		fullDiz="Наверняка в соседней деревне можно договориться с работниками. За небольшие подъемные они точно согласятся работать на шахте."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="TheVozleMinin" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_PunishBandits_Quest"
-		briefDiz="Помочь Эду разобраться с бандитами"
-		fullDiz="Жители округа решили проучить бандитов. Это отличный шанс потренироваться в стрельбе."
-		isMainQuest="0">
-		<Map
-			name="r1m1"
-			targetObjName="RevolutionTimeEndLoc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_ReturnToTuzzAfterCaravan_Quest"
-		briefDiz="Вернуться с транспортом в Туз и отчитаться"
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="KARAVANvvt_vehicle_0" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_ReturnTuzz_Quest"
-		briefDiz="Вернуться в Туз"
-		fullDiz="Вернуться в Туз"
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="TheTuzz" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_ReturntoMerOfMinin_Quest"
-		briefDiz="Доложить мэру об освобождении скважины от бандитов"
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="Minin" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_RideAcrossBase_Quest"
-		briefDiz="Попробовать пересечь реку в другом месте"
-		fullDiz="Мне необходимо попасть на другую сторону реки. Сделать это можно только в Пеште или на территории бандитов..."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="BaseGuardian_enter" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_SecondVillage_Quest"
-		briefDiz="Следовать за транспортом до деревни Роторск"
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="KARAVANvvt_vehicle_0" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_SerchCarTunel_Quest"
-		briefDiz="Проследить за машиной"
-		fullDiz="Я могу проследить за машиной из тоннеля и попробовать забрать ключ, когда водитель выйдет из нее."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="Pioneer_vehicle_0" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_SinFather_Quest"
-		briefDiz="Отомстить за смерть отца"
-		fullDiz="Где бы ни прятался убийца, я найду его и накажу за преступления!"
-		isMainQuest="1">
 		<Map
 			name="r1m1" />
 	</QuestInfo>
 
 	<QuestInfo
-		questName="d_SkladMidgardBen_Quest"
-		briefDiz="Зайти на склад в Мидгарде"
+		questName="q_base_scavs_2"
+		briefDiz="Выжить и выйти с локации"
 		isMainQuest="1">
 		<Map
-			name="r1m2"
-			targetObjName="Midragd" />
-	</QuestInfo>
+			name="r0m0" />
 
-	<QuestInfo
-		questName="d_TakeGeneralOfBandits_Quest"
-		briefDiz="Захватить генерала бандитов"
-		fullDiz="Вместе с несколькими машинами СНГ я должен захватить генерала АР."
-		isMainQuest="1" />
-
-	<QuestInfo
-		questName="d_TakeGeneralOfBandits_Quest1"
-		briefDiz="Добраться до места засады"
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="BossARLocation" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_TakeGeneralOfBandits_Quest2"
-		briefDiz="Захватить генерала АР"
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="BossARCar" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_TalkAboutVrataInMinin_Quest"
-		briefDiz="Узнать про Морские Врата"
-		fullDiz="Кто-нибудь в Минине наверняка знает про Морские Врата."
-		isMainQuest="1">
-		<Map
-			name="r1m2"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r1m3"
-			targetObjName="Minin" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_TalkMerAboutOilMineAttack_Quest"
-		briefDiz="Поговорить с мэром"
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="Minin" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_TrueAboutMer_Quest"
-		briefDiz="Сообщить о преступлении мэра"
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="Minin" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_TunelInAsgard_Quest"
-		briefDiz="Спросить в Асгарде о тоннеле"
-		fullDiz="Спросить в Асгарде о тоннеле."
-		isMainQuest="1">
-		<Map
-			name="r1m2"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r1m3"
-			targetObjName="Asgard" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_Village1_Quest"
-		briefDiz="Первая деревня"
-		isMainQuest="0">
-		<Map
-			name="r1m1"
-			targetObjName="TheOilVillage" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_Village2_Quest"
-		briefDiz="Вторая деревня"
-		isMainQuest="0">
-		<Map
-			name="r1m1"
-			targetObjName="TheContraVillage" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_Village3_Quest"
-		briefDiz="Третья деревня"
-		isMainQuest="0">
-		<Map
-			name="r1m1"
-			targetObjName="TheFreedom" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="d_WinLisaInBattle_Quest"
-		briefDiz="Победить Лису в поединке"
-		fullDiz="Наконец-то я могу сразиться с обманщицей Лисой в честном поединке!"
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="LisaInCar_vehicle_0" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="q_FH1"
-		briefDiz="Поискать по деревням"
-		isMainQuest="0">
-		<Map
-			name="r1m4" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="q_FH2"
-		briefDiz="Вернуть Филимона домой"
-		isMainQuest="0">
-		<Map
-			name="r1m4"
-			targetObjName="FVPerch_enter" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="q_FindHusbent"
-		briefDiz="Найти мужа"
-		fullDiz="Женщина попросила меня вернуть мужа домой. Он немного не в себе, к тому же любит пропустить стаканчик-другой. "
-		isMainQuest="0" />
-
-	<QuestInfo
-		questName="q_PWS1"
-		briefDiz="Приехать на поле"
-		isMainQuest="0">
-		<Map
-			name="r3m1"
-			targetObjName="ToR3M2" />
-
-		<Map
-			name="r3m2"
-			targetObjName="SignPlace_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="q_PWS2"
-		briefDiz="Сообщить в Мидгард учёным о знаках"
-		isMainQuest="0">
-		<Map
-			name="r1m1"
-			targetObjName="ToR1M2" />
-
-		<Map
-			name="r1m2"
-			targetObjName="Midragd" />
-
-		<Map
-			name="r1m3"
-			targetObjName="ToR1M2" />
-
-		<Map
-			name="r1m4"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r2m1"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r2m2"
-			targetObjName="ToR2M1" />
-
-		<Map
-			name="r3m1" />
-
-		<Map
-			name="r3m2"
-			targetObjName="ToR3M1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="q_PlaceWithSign"
-		briefDiz="Странные знаки на поле"
-		fullDiz="Друид сказал, что на его поле появились странные знаки. Стоит посмотреть, что же он имел в виду."
-		isMainQuest="0" />
-
-	<QuestInfo
-		questName="q_VisitDruid"
-		briefDiz="Проведать друида"
-		fullDiz="Одинокий друид, наверное, скучает по своим. Нужно ему передать гостинец от старого друга."
-		isMainQuest="0">
-		<Map
-			name="r3m1"
-			targetObjName="ToR3M2" />
-
-		<Map
-			name="r3m2"
-			targetObjName="AloneDruidBuilding" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m1_Botanik_Quest"
-		briefDiz="Привезти медикаменты ботанику"
-		fullDiz="Интересно, где можно достать медикаменты? Может, стоит поискать в развалинах..."
-		isMainQuest="0">
-		<Map
-			name="r1m1"
-			targetObjName="BotanicHouse" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m1_FindBotanik_Quest"
-		briefDiz="Найти ученого ботаника"
-		fullDiz="Старый солдат много говорил. По-моему, информация о ботанике - это единственное, что он сказал по делу."
-		isMainQuest="0">
-		<Map
-			name="r1m1"
-			targetObjName="BotanicHouse" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m1_Hospital_Quest"
-		briefDiz="Обыскать заброшенную больницу"
-		fullDiz="Мне рассказали, что неподалеку есть заброшенная больница. Думаю, там можно найти что-нибудь интересное."
-		isMainQuest="0">
-		<Map
-			name="r1m1"
-			targetObjName="Hospital_Loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m2_FindHmirInMidgard"
-		briefDiz="Скорее в Мидгард"
-		fullDiz="Человек, который продавал диск, мог отправиться в Мидгард после несостоявшейся сделки с Беном."
-		isMainQuest="1">
-		<Map
-			name="r1m2"
-			targetObjName="Midragd" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m2_Glagiators_Quest"
-		briefDiz="Победить гладиатора на Арене"
-		isMainQuest="1">
-		<Map
-			name="r1m2"
-			targetObjName="Gladiator2" />
-
-		<Map
-			name="r1m3" />
-
-		<Map
-			name="r1m4"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r2m1" />
-
-		<Map
-			name="r3m1" />
-
-		<Map
-			name="r3m2"
-			targetObjName="ToR3M1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m2_GoToArena_Quest"
-		briefDiz="Добраться до Арены"
-		isMainQuest="1">
-		<Map
-			name="r1m2"
-			targetObjName="Kolizey_location" />
-
-		<Map
-			name="r1m3"
-			targetObjName="ToR1M2" />
-
-		<Map
-			name="r1m4"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r2m1"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r2m2"
-			targetObjName="ToR2M1" />
-
-		<Map
-			name="r3m1" />
-
-		<Map
-			name="r3m2"
-			targetObjName="ToR3M1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m2_MovemineralToMidgard_Quest"
-		briefDiz="Отдать материал и 100'000 мастеру в Мидгарде"
-		isMainQuest="1">
-		<Map
-			name="r1m2"
-			targetObjName="Midragd" />
-
-		<Map
-			name="r1m3"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r1m4" />
-
-		<Map
-			name="r2m1" />
-
-		<Map
-			name="r3m1" />
-
-		<Map
-			name="r3m2"
-			targetObjName="ToR3M1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m2_RedkiyMineral_Quest"
-		briefDiz="Спросить про редкий материал"
-		isMainQuest="1">
-		<Map
-			name="r1m2"
-			targetObjName="TheTickets" />
-
-		<Map
-			name="r1m3" />
-
-		<Map
-			name="r1m4"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r2m1" />
-
-		<Map
-			name="r3m1" />
-
-		<Map
-			name="r3m2"
-			targetObjName="ToR3M1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m2_TW_BanAboutAlien"
-		briefDiz="Поговорить с Беном о тарелке"
-		fullDiz="Мне нужно точно узнать, не встречался ли Айвен Го в своих путешествиях с иноземным присутствием. Бен – единственный, кто точно может мне это сказать."
-		isMainQuest="1">
-		<Map
-			name="r1m1"
-			targetObjName="ToR1M2" />
-
-		<Map
-			name="r1m2"
-			targetObjName="TheBen_House" />
-
-		<Map
-			name="r4m1"
-			targetObjName="ToR1M1" />
-
-		<Map
-			name="r4m2"
-			targetObjName="ToR4M1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m2_TalkAboutRedkiyMineral_Quest"
-		briefDiz="Приехать в Мидгард"
-		isMainQuest="1">
-		<Map
-			name="r1m2"
-			targetObjName="Midragd" />
-
-		<Map
-			name="r1m3"
-			targetObjName="ToR1M2" />
-
-		<Map
-			name="r1m4"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r2m1"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r3m1" />
-
-		<Map
-			name="r3m2"
-			targetObjName="ToR3M1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m3_ArchHelp"
-		briefDiz="Отвезти старика"
-		fullDiz="Старик попросил отвезти его к руинам, где бы он мог найти успокоение."
-		isMainQuest="0">
-		<Map
-			name="r1m3"
-			targetObjName="TheLibrary" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m3_BonnyAndKlideQuest"
-		briefDiz="Помочь Конни и Блайд"
-		fullDiz="Надо отвезти странную молодую семью домой. Они обещают хорошую награду за несложную работенку."
-		isMainQuest="0">
-		<Map
-			name="r1m3"
-			targetObjName="TheTrap" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m3_CrazyManQuest"
-		briefDiz="Найти Центр Развлечений"
-		fullDiz="Центр Развлечений - просто рай какой-то, если верить рекламным лозунгам этого мальчишки из бара в Пеште."
-		isMainQuest="0">
-		<Map
-			name="r1m3"
-			targetObjName="TheCircus" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m3_DestroyOracle"
-		briefDiz="Уничтожить Оракула"
-		fullDiz="Мои глаза открылись: Оракул безумен. Он пытается уничтожить Источник и все его тайны. Но я этого не допущу! "
-		isMainQuest="1">
-		<Map
-			name="r1m3" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m3_DestroyRadiationSource"
-		briefDiz="Устранить источник помех"
-		fullDiz="Электростанция в городе Сель является источником помех. Я должен найти способ вырубить её хотя бы на несколько минут."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="ToR2M1" />
-
-		<Map
-			name="r2m1"
-			targetObjName="TheSel" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m3_FightWithThief"
-		briefDiz="Отобрать второй диск у вора"
-		fullDiz="Этот вор ещё не знает, с кем связался! Диск будет моим любой ценой. Только смерть одного из нас может разрешить эту проблему."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="ThiefCar" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m3_FindHmirinSever"
-		briefDiz="Узнать путь на север"
-		fullDiz="Преследование загадочного торговца оказалось сложнее, чем я рассчитывал. Теперь мне нужно узнать дорогу на север в Минине."
-		isMainQuest="1">
-		<Map
-			name="r1m2"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r1m3"
-			targetObjName="Minin" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m3_FindThiefFromFatherHouse"
-		briefDiz="Узнать про разгром"
-		fullDiz="В доме отца все перевернуто вверх дном. Возможно, кто-то из людей видел, что здесь произошло. Надо спросить в баре."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="Minin" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m3_FindVrata_KnowPlace"
-		briefDiz="Узнать, где находятся Врата"
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="ToR1M4" />
-
-		<Map
-			name="r1m4" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m3_LisaWithOberegAndDisk_Quest"
-		briefDiz="Искать Лису в Либриуме"
-		fullDiz="Лиса украла оберег и диски. Надо ее догнать, пока она совсем не пропала."
-		isMainQuest="1">
-		<Map
-			name="r1m3" />
-
-		<Map
-			name="r2m1" />
-
-		<Map
-			name="r2m2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m3_MoveToOraculAfterThief"
-		briefDiz="Доставить второй диск Оракулу"
-		fullDiz="Теперь, когда у меня есть оба диска, я смогу наконец узнать о судьбе отца. Надеюсь, содержимое дневника поможет мне проследовать по его стопам. Конечно, для этого потребуется отправиться в Игнотт к Оракулу."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="ToR1M4" />
-
-		<Map
-			name="r1m4"
-			targetObjName="ToR3M1" />
-
-		<Map
-			name="r3m1"
-			targetObjName="ToR3M2" />
-
-		<Map
-			name="r3m2"
-			targetObjName="Oracle_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m3_OldTownOutsiderCar_Quest"
-		briefDiz="Поймать беглеца в заброшенном городе"
-		fullDiz="В заброшенном городе, недалеко от деревни, скрывается бандит. Жители деревни дадут мне неплохие деньги, чтобы я его убил."
-		isMainQuest="0">
-		<Map
-			name="r1m3"
-			targetObjName="OldTownOutsiderCar" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m3_TW_OralceAboutAlien"
-		briefDiz="Поговорить с Оракулом"
-		fullDiz="Оракул должен знать, где найти достаточно мощное оружие, чтобы уничтожить корабль пришельцев. Это страшное место нужно выжечь на сотню километров вокруг!"
-		isMainQuest="1">
-		<Map
-			name="r1m1"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r1m3"
-			targetObjName="ToR1M4" />
-
-		<Map
-			name="r4m1"
-			targetObjName="ToR1M1" />
-
-		<Map
-			name="r4m2"
-			targetObjName="ToR4M1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m3_TalkWithThiefFromFatherHouse"
-		briefDiz="Найти вора"
-		fullDiz="Скорее всего, вор скрывается на Базе 51. Он попытается сбыть краденое там, где собирается всякий сброд."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="TheBase" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m3_ToLisaToAsgard"
-		briefDiz="Догнать Лису"
-		fullDiz="Я должен торопиться! Надо узнать в Асгарде, куда поехала Лиса, пока след еще не остыл."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="Asgard" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m4_FindVrata_GotoToGate"
-		briefDiz="Добраться до Врат"
-		isMainQuest="1">
-		<Map
-			name="r1m4"
-			targetObjName="ToR3M1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m4_OvercomeMirras"
-		briefDiz="Преодолеть болото"
-		fullDiz="Путь к Вратам преграждает болото. Нужно найти брод или тропу, чтобы перебраться на другую сторону."
-		isMainQuest="1">
-		<Map
-			name="r1m4"
-			targetObjName="MorassRoad_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r1m4_TalkWithOldTraderAboutSecondDisk"
-		briefDiz="Найти торговца"
-		fullDiz="Человек, который предлагал Бену купить диск, подходящий под описание Оракула, живет где-то здесь. Надеюсь, это именно то, что я ищу."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="ToR1M4" />
-
-		<Map
-			name="r1m4"
-			targetObjName="TheOlme_enter" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m1_ArtAntipod_Quest"
-		briefDiz="Поговорить с ценителем старины"
-		fullDiz="Кто-то украл у Эстета ценный шедевр – образец древнего искусства. Ниточка ведет к некоему ценителю старины."
-		isMainQuest="0">
-		<Map
-			name="r2m1"
-			targetObjName="TheDoubtful" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m1_ArtGulik_Quest"
-		briefDiz="Забрать шедевр у Жулика"
-		fullDiz="Виновник всего этого безобразия – некто Жулик. Надо его догнать и отобрать шедевр. Силой, если понадобится."
-		isMainQuest="0">
-		<Map
-			name="r2m1"
-			targetObjName="GulikCar" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m1_ArtViva_Quest"
-		briefDiz="Вернуть шедевр"
-		fullDiz="Чтобы получить награду, надо вернуть шедевр Эстету. Хотя можно и подумать, ведь есть ещё заинтересованные лица."
-		isMainQuest="0">
-		<Map
-			name="r2m1"
-			targetObjName="TheSel" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m1_DeployBloks"
-		briefDiz="Установить блокиратор"
-		fullDiz="Устройство Ньери сможет блокировать смертоносное излучение Источника. Но только если я установлю его в непосредственной близости от упавшего корабля."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="OraculEndLoc" />
-
-		<Map
-			name="r2m1"
-			targetObjName="ToR1M3" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m1_DestroyAlienShip"
-		briefDiz="Уничтожить базу пришельцев"
-		fullDiz="Боевой корабль пришельцев появился неизвестно откуда. Именно он испускает волны, блокирующие сигналы Оракула. Враг должен быть уничтожен во имя спасения человечества."
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="ALIENSLoc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m1_KillGodFather_Quest"
-		briefDiz="Ликвидировать Босса мафии"
-		fullDiz="Босс мафии может причинить мне много проблем, когда узнает, что я украл его товар. Надо убить его, прежде чем это произойдёт."
-		isMainQuest="0">
-		<Map
-			name="r2m1"
-			targetObjName="BossNarcotikCar_vehicle_0" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m1_KillNarcoticsCaravan_Quest"
-		briefDiz="Уничтожить транспорт и забрать груз"
-		isMainQuest="0">
-		<Map
-			name="r2m1"
-			targetObjName="CaravanWithNarcotikCars" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m1_ReturnNarcotics_Quest"
-		briefDiz="Вернуться с товаром к Жулику"
-		isMainQuest="0">
-		<Map
-			name="r2m1"
-			targetObjName="TheGelvetcia" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m1_TW_AlienInShip"
-		briefDiz="Поговорить с пришельцами"
-		fullDiz="Какая удача! Из-за неполадок на станции пришельцы выдали местонахождение своей базы. Теперь я смогу поговорить с ними."
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="ALIENSLoc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m1_TW_SellsCivilian"
-		briefDiz="Поговорить с жителями Селя"
-		fullDiz="Где-то в окрестностях этого города-электростанции Айвен Го в свое время заметил активность пришельцев."
-		isMainQuest="1">
-		<Map
-			name="r1m2"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r1m3"
-			targetObjName="ToR2M1" />
-
-		<Map
-			name="r2m1"
-			targetObjName="TheSel" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m1_TakeNarcotics_Quest"
-		briefDiz="Перехватить груз"
-		fullDiz="К югу отсюда скоро отправится транспорт с грузом, который можно выгодно продать. Он попытается проехать незамеченным, но только не для меня."
-		isMainQuest="0">
-		<Map
-			name="r2m1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_AferaARSNG"
-		briefDiz="Выдать себя за борца сопротивления"
-		fullDiz="Моя задача – проникнуть в ряды сопротивления, прикинувшись агентом СНГ. Я знаю явку и пароль. Этого должно быть достаточно."
-		isMainQuest="1">
-		<Map
-			name="r2m2"
-			targetObjName="Toskana" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_AfterAfera"
-		briefDiz="Доложить в Марецции"
-		fullDiz="Пора возвращаться в Мареццию за наградой и за новым заданием."
-		isMainQuest="1">
-		<Map
-			name="r2m2"
-			targetObjName="Marezzia" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_DestroySNGKaravan"
-		briefDiz="Нарушить тыловое снабжение врага"
-		fullDiz="Моя задача - уничтожить транспорт. Всё, что смогу украсть, мое."
-		isMainQuest="1">
-		<Map
-			name="r2m1" />
-
-		<Map
-			name="r2m2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_FightFelix"
-		briefDiz="Победить Феликса"
-		fullDiz="Феликс снова встал у меня на пути. На этот раз я не пощажу его!"
-		isMainQuest="1" />
-
-	<QuestInfo
-		questName="r2m2_FightFelix_1"
-		briefDiz="Добраться до арены"
-		isMainQuest="1">
-		<Map
-			name="r2m2"
-			targetObjName="Arena" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_FightFelix_2"
-		briefDiz="Победить Феликса"
-		isMainQuest="1">
-		<Map
-			name="r2m2"
-			targetObjName="FelixCars_vehicle_0" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_FightFelix_3"
-		briefDiz="Вернуться в монастырь"
-		isMainQuest="1">
-		<Map
-			name="r2m2"
-			targetObjName="Monastery" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_FightLisaToMonastir"
-		briefDiz="Остановить Лису"
-		fullDiz="Любым способом надо остановить Лису. Я больше не позволю ей обманывать меня или кого бы то ни было ещё!"
-		isMainQuest="1">
-		<Map
-			name="r2m2"
-			targetObjName="LisaRunCar_vehicle_0" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_FightWithAxelInArena_Quest"
-		briefDiz="Драться с Акселем"
-		fullDiz="Я сражусь с Акселем на арене и заставлю его рассказать мне всё."
-		isMainQuest="1" />
-
-	<QuestInfo
-		questName="r2m2_FightWithAxelInArena_Quest_1"
-		briefDiz="Встретиться с Акселем на Арене"
-		isMainQuest="1">
-		<Map
-			name="r2m2"
-			targetObjName="Arena" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_FightWithAxelInArena_Quest_2"
-		briefDiz="Победить Акселя"
-		isMainQuest="1">
-		<Map
-			name="r2m2"
-			targetObjName="AxelCarWar_vehicle_0" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_FindLisAfterAxelAndFatherDie_Quest"
-		briefDiz="Искать Лису в городе Сель"
-		fullDiz="Аксель поклялся, что не причастен к смерти отца. Я пожил немного среди этих людей и теперь склонен верить ему. Значит, нужно найти Лису и заставить ее рассказать мне правду."
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="TheSel" />
-
-		<Map
-			name="r2m2"
-			targetObjName="ToR2M1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_FindROMinCastle"
-		briefDiz="Приехать в монастырь"
-		fullDiz="Что-то есть подозрительное в простом задании привезти вино из монастыря..."
-		isMainQuest="1">
-		<Map
-			name="r2m2"
-			targetObjName="Monastery" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_FindSNGKaravan"
-		briefDiz="Напасть на транспорт"
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="KaravanSNGTill" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_GiveBardakToEnemy"
-		briefDiz="Внести сумятицу в ряды противника"
-		fullDiz="Пора начать психологическую атаку. Для начала я должен уничтожить несколько патрульных машин северян."
-		isMainQuest="1">
-		<Map
-			name="r2m2"
-			targetObjName="SNGProviantRiders" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_GiveBardakToSideVillage"
-		briefDiz="Напасть на деревню"
-		fullDiz="Жители этой деревни были замечены в связях с врагом. Я нападу на неё, чтобы оттянуть силы СНГ с основного направления атаки."
-		isMainQuest="1" />
-
-	<QuestInfo
-		questName="r2m2_GiveBardakToSideVillage_1"
-		briefDiz="Уничтожить охрану"
-		isMainQuest="1">
-		<Map
-			name="r2m2"
-			targetObjName="SNGInVill1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_GiveBardakToSideVillage_2"
-		briefDiz="Уничтожить подкрепление"
-		isMainQuest="1">
-		<Map
-			name="r2m2"
-			targetObjName="SNGInVill2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_GiveDisk2ToOrakul"
-		briefDiz="Отвезти второй диск к Оракулу"
-		fullDiz="Теперь, когда у меня есть второй диск, я смогу, наконец, расшифровать дневник Айвена Го. Конечно, для этого потребуется отправиться в Игнотт к Оракулу."
-		isMainQuest="1">
-		<Map
-			name="r1m3" />
-
-		<Map
-			name="r1m4" />
-
-		<Map
-			name="r2m1" />
-
-		<Map
-			name="r2m2"
-			targetObjName="ToR2M1" />
-
-		<Map
-			name="r3m1"
-			targetObjName="ToR3M2" />
-
-		<Map
-			name="r3m2"
-			targetObjName="Oracle_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_GoToLibrium"
-		briefDiz="Пробраться на территорию врага"
-		isMainQuest="1">
-		<Map
-			name="r2m2"
-			targetObjName="ToR2M1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_Head1HunterQuest"
-		briefDiz="Убить язычника"
-		isMainQuest="0">
-		<Map
-			name="r2m2"
-			targetObjName="ShamanCar1_vehicle_0" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_Head2HunterQuest"
-		briefDiz="Убить еретика"
-		isMainQuest="0">
-		<Map
-			name="r2m2"
-			targetObjName="ShamanCar2_vehicle_0" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_HeadsHunterQuest"
-		briefDiz="Поручение Настоятельницы"
-		fullDiz="Настоятельница Монастыря предложила мне поохотиться на сектантов. Почему бы и нет."
-		isMainQuest="0">
-		<Map
-			name="r2m2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_HelpAllSNGPeople"
-		briefDiz="Спасти лидера"
-		fullDiz="Лидер повстанцев должен остаться в живых. Он может сообщить важные сведения о планах врага."
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="TheGelvetcia" />
-
-		<Map
-			name="r2m2"
-			targetObjName="ToR2M1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_KillMrPresidentAndOther"
-		briefDiz="Убить лидеров СНГ во время переговоров"
-		fullDiz="Если я прекращу эту войну, то наверняка получу награду из рук Акселя."
-		isMainQuest="1">
-		<Map
-			name="r2m2"
-			targetObjName="LeadersSNG" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_MoveToZeonToAlex"
-		briefDiz="Встретиться с Акселем"
-		fullDiz="Настало время получить награду из рук Акселя. Это мой единственный шанс приблизиться к нему на расстояние выстрела."
-		isMainQuest="1">
-		<Map
-			name="r2m2"
-			targetObjName="Zeon" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_OldDvigatel1_Quest"
-		briefDiz="Отвезти хлам в деревню неподалеку"
-		fullDiz="Непыльная работенка - перевезти груз из одного места в другое. Это не очень увлекательно, но за это мне платят неплохие деньги."
-		isMainQuest="0">
-		<Map
-			name="r2m2"
-			targetObjName="NewVillage" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_OldDvigatel2_Quest"
-		briefDiz="Отвезти хлам обратно в Мареццию"
-		fullDiz="История с перевозкой старого двигателя становится интересной. Не успел я отдать его в деревне, как мне вернули его обратно с просьбой вернуть обратно в Мареццию."
-		isMainQuest="0">
-		<Map
-			name="r2m2"
-			targetObjName="Marezzia" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_ReturnHeadsQuest"
-		briefDiz="Вернуться в Монастырь"
-		isMainQuest="0">
-		<Map
-			name="r2m2"
-			targetObjName="Monastery" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_ReturnToMarecciaFromCastle"
-		briefDiz="Вернуться в Мареццию"
-		fullDiz="Пора возвращаться в Мареццию за наградой и новым заданием."
-		isMainQuest="1">
-		<Map
-			name="r2m2"
-			targetObjName="Marezzia" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_ReturnToMarecciaFromKaravanSNG"
-		briefDiz="Вернуться в Мареццию"
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="ToR2M2" />
-
-		<Map
-			name="r2m2"
-			targetObjName="Marezzia" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_ReturnToMarecciaFromVillage"
-		briefDiz="Вернуться в Мареццию"
-		fullDiz="Пора возвращаться в Мареццию за наградой и за новым заданием."
-		isMainQuest="1">
-		<Map
-			name="r2m2"
-			targetObjName="Marezzia" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_ToKillAllSNGPeople"
-		briefDiz="Уничтожить лагерь повстанцев"
-		fullDiz="Мне дали приказ убить беззащитных повстанцев. Меня терзают сомнения, ведь это настоящее злодеяние."
-		isMainQuest="1" />
-
-	<QuestInfo
-		questName="r2m2_ToKillAllSNGPeople_1"
-		briefDiz="Найти повстанцев"
-		isMainQuest="1">
-		<Map
-			name="r2m2"
-			targetObjName="Lager" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_ToKillAllSNGPeople_2"
-		briefDiz="Уничтожить повстанцев"
-		isMainQuest="1">
-		<Map
-			name="r2m2"
-			targetObjName="LagerCarrrs" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_ToLisaToMonastir"
-		briefDiz="Узнать о Лисе в Монастыре"
-		fullDiz="По последним сведениям, Лиса прячется в Монастыре. Там я ее и настигну!"
-		isMainQuest="1">
-		<Map
-			name="r2m2"
-			targetObjName="Monastery" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_Znaki2Midgard_Quest"
-		briefDiz="Рассказать про знаки учёным в Мидгарде"
-		fullDiz="Учёных в Мидгарде заинтересует такая информация. Возможно, мне даже удастся на этом подзаработать деньжат."
-		isMainQuest="0">
-		<Map
-			name="r1m1"
-			targetObjName="ToR1M2" />
-
-		<Map
-			name="r1m2"
-			targetObjName="Midragd" />
-
-		<Map
-			name="r1m3"
-			targetObjName="ToR1M2" />
-
-		<Map
-			name="r1m4"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r2m1"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r2m2"
-			targetObjName="ToR2M1" />
-
-		<Map
-			name="r3m1" />
-
-		<Map
-			name="r3m2"
-			targetObjName="ToR3M1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r2m2_Znaki2_Quest"
-		briefDiz="Взглянуть на поле"
-		fullDiz="Стоит посмотреть, что же так пугает крестьян на полях."
-		isMainQuest="0">
-		<Map
-			name="r2m2"
-			targetObjName="ZnakiLoc2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m1_ClearSanctuary"
-		briefDiz="Очистить святилище"
-		fullDiz="Чтобы завоевать доверие друидов, я должен очистить их святилище от стальных чудовищ"
-		isMainQuest="1">
-		<Map
-			name="r1m4"
-			targetObjName="ToR3M1" />
-
-		<Map
-			name="r2m1"
-			targetObjName="ToR3M1" />
-
-		<Map
-			name="r3m1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m1_ClearSanctuary_DestroyOut"
-		briefDiz="Завалить выход из логова монстров"
-		isMainQuest="1">
-		<Map
-			name="r3m1"
-			targetObjName="ExitFromDung_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m1_ClearSanctuary_GotoSanctuary"
-		briefDiz="Добраться до святилища"
-		isMainQuest="1">
-		<Map
-			name="r3m1"
-			targetObjName="NearStoneHendj_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m1_ClearSanctuary_KillMonster"
-		briefDiz="Уничтожить монстров"
-		isMainQuest="1">
-		<Map
-			name="r3m1"
-			targetObjName="TeamLoggers" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m1_ClearSanctuary_ReturnDruid"
-		briefDiz="Вернуться в Сет"
-		isMainQuest="1">
-		<Map
-			name="r3m1"
-			targetObjName="Set_enter" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m1_ClearSanctuary_ReturnDruid2"
-		briefDiz="Вернуться в Сет"
-		isMainQuest="1">
-		<Map
-			name="r3m1"
-			targetObjName="Set_enter" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m1_FindMoreNative"
-		briefDiz="Найти мирных аборигенов"
-		fullDiz="Встреченные жители оказались весьма негостеприимны. Нужно поискать другие селения, где меня лучше встретят."
-		isMainQuest="1">
-		<Map
-			name="r3m1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m1_FindNative"
-		briefDiz="Отыскать местных жителей"
-		fullDiz="Я в первый раз в этих землях. Нужно найти местных жителей и узнать у них, где искать Оракула."
-		isMainQuest="1">
-		<Map
-			name="r1m4"
-			targetObjName="ToR3M1" />
-
-		<Map
-			name="r3m1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m1_FindNative_2"
-		briefDiz="Найти местных жителей"
-		fullDiz="Я в первый раз в этих землях. Нужно найти местных жителей и узнать у них, где искать Оракула."
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="ToR3M1" />
-
-		<Map
-			name="r3m1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m1_GoToOracle"
-		briefDiz="Последовать к Оракулу"
-		fullDiz="Наконец-то мне удалось найти путь к Оракулу."
-		isMainQuest="1">
-		<Map
-			name="r1m4"
-			targetObjName="ToR3M1" />
-
-		<Map
-			name="r2m1"
-			targetObjName="ToR3M1" />
-
-		<Map
-			name="r3m1"
-			targetObjName="ToR3M2" />
-
-		<Map
-			name="r3m2"
-			targetObjName="Oracle_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m1_KnowAboutUluk"
-		briefDiz="Узнать, что случилось с Улуком"
-		fullDiz="Из Улука давно не поступало новостей. Друиды просят меня узнать, что случилось с его жителями."
-		isMainQuest="0">
-		<Map
-			name="r3m1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m1_KnowAboutUluk_GotoSet"
-		briefDiz="Сообщить Фионию"
-		isMainQuest="0">
-		<Map
-			name="r3m1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m1_KnowAboutUluk_GotoUluk"
-		briefDiz="Приехать в Улук"
-		isMainQuest="0">
-		<Map
-			name="r3m1"
-			targetObjName="TheUluk" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m1_LureMainDriud"
-		briefDiz="Выманить Верховного Друида"
-		fullDiz="Машинопоклонники хотят свергнуть друидов и захватить власть. Поэтому они хотят убить Верховного друида. Если я помогу им, то узнаю, как проехать к Оракулу."
-		isMainQuest="1">
-		<Map
-			name="r1m4"
-			targetObjName="ToR3M1" />
-
-		<Map
-			name="r2m1"
-			targetObjName="ToR3M1" />
-
-		<Map
-			name="r3m1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m1_LureMainDriud_Ambush"
-		briefDiz="Привезти друида в место засады"
-		isMainQuest="1">
-		<Map
-			name="r3m1"
-			targetObjName="UlukAmush_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m1_LureMainDriud_Talk"
-		briefDiz="Поговорить с друидом"
-		isMainQuest="1">
-		<Map
-			name="r3m1"
-			targetObjName="TheSet" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m1_LureMainDriud_Uluk"
-		briefDiz="Приехать в Улук"
-		isMainQuest="1">
-		<Map
-			name="r3m1"
-			targetObjName="TheUluk" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m1_RescueUlukCivil"
-		briefDiz="Спасти жителей Улука"
-		fullDiz="Не все жители Улука подались в религию машин. Те, кто остался верен вере Друидов, подвергаются гонениям. Я просто не могу оставить их на верную смерть."
-		isMainQuest="0">
-		<Map
-			name="r3m1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m1_RescueUlukCivil_GotoVillage"
-		briefDiz="Доехать до временного убежища"
-		isMainQuest="0">
-		<Map
-			name="r3m1"
-			targetObjName="RescueCiv_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m1_RescueUlukCivil_RepelAttack"
-		briefDiz="Отразить нападение машин"
-		isMainQuest="0">
-		<Map
-			name="r3m1"
-			targetObjName="UlukArmy" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m1_RescueUlukCivil_TakeToSet"
-		briefDiz="Сопроводить их до Сета"
-		isMainQuest="0">
-		<Map
-			name="r3m1"
-			targetObjName="BezhenVeh2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m1_TalkWithMainDruid"
-		briefDiz="Связаться с Верховным друидом"
-		fullDiz="Верховный Друид  живет в Сете. Скорее всего, он знает, где искать Оракула."
-		isMainQuest="1">
-		<Map
-			name="r1m4"
-			targetObjName="ToR3M1" />
-
-		<Map
-			name="r2m1"
-			targetObjName="ToR3M1" />
-
-		<Map
-			name="r3m1"
-			targetObjName="TheSet" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m2_DestroyOracleGuard"
-		briefDiz="Уничтожить защитников Оракула"
-		fullDiz="Если фанатики не понимают по-хорошему, значит придётся разговаривать с ними на их же языке."
-		isMainQuest="1">
-		<Map
-			name="r3m2"
-			targetObjName="OracleDefenders" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m2_FindInfoAboutFather"
-		briefDiz="Найти информацию об отце"
-		fullDiz="Дневник пролил свет на судьбу отца. Теперь я точно знаю, что искать его следует по ту сторону Пустыни Смерти."
-		isMainQuest="1">
-		<Map
-			name="r1m1"
-			targetObjName="ToR4M1" />
-
-		<Map
-			name="r1m2"
-			targetObjName="ToR1M1" />
-
-		<Map
-			name="r1m3"
-			targetObjName="ToR1M2" />
-
-		<Map
-			name="r1m4"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r2m1"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r2m2"
-			targetObjName="ToR2M1" />
-
-		<Map
-			name="r3m1"
-			targetObjName="ToR1M4" />
-
-		<Map
-			name="r3m2"
-			targetObjName="ToR3M1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m2_MonterHead"
-		briefDiz="Принести голову чудища"
-		fullDiz="Защитники оракула пропустят меня, если чудище будет убито. В качестве доказательства нужно принести его голову."
-		isMainQuest="1" />
-
-	<QuestInfo
-		questName="r3m2_MonterHead_1"
-		briefDiz="Добраться до города живых мертвецов"
-		isMainQuest="1">
-		<Map
-			name="r3m1"
-			targetObjName="ToR3M2" />
-
-		<Map
-			name="r3m2"
-			targetObjName="Monster_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m2_MonterHead_2"
-		briefDiz="Победить монстра"
-		isMainQuest="1">
-		<Map
-			name="r3m1"
-			targetObjName="ToR3M2" />
-
-		<Map
-			name="r3m2"
-			targetObjName="TeamBigMonster_vehicle_0" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m2_MonterHead_3"
-		briefDiz="Отдать голову защитникам"
-		isMainQuest="1">
-		<Map
-			name="r3m1"
-			targetObjName="ToR3M2" />
-
-		<Map
-			name="r3m2"
-			targetObjName="OracleDefenders_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m2_OracleMemory"
-		briefDiz="Вернуть Оракулу память"
-		fullDiz="Похоже, что оракул вовсе не такой всезнающий, каким был прежде. Чтобы вернуть ему память, нужно отвезти ремонтников в указанные места."
-		isMainQuest="1">
-		<Map
-			name="r3m1"
-			targetObjName="ToR3M2" />
-
-		<Map
-			name="r3m2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m2_OracleMemory_1"
-		briefDiz="Доставить робота-настройщика"
-		isMainQuest="1">
-		<Map
-			name="r3m1"
-			targetObjName="ToR3M2" />
-
-		<Map
-			name="r3m2"
-			targetObjName="VK1_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m2_OracleMemory_2"
-		briefDiz="Доставить робота-помощника"
-		isMainQuest="1">
-		<Map
-			name="r3m1"
-			targetObjName="ToR3M2" />
-
-		<Map
-			name="r3m2"
-			targetObjName="VK2_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m2_OracleMemory_3"
-		briefDiz="Доставить робота-ремонтника"
-		isMainQuest="1">
-		<Map
-			name="r3m1"
-			targetObjName="ToR3M2" />
-
-		<Map
-			name="r3m2"
-			targetObjName="VK3_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m2_OracleMemory_Return"
-		briefDiz="Вернуться к Оракулу"
-		isMainQuest="1">
-		<Map
-			name="r3m1"
-			targetObjName="ToR3M2" />
-
-		<Map
-			name="r3m2"
-			targetObjName="Oracle_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m2_OvercomeOracleGuard"
-		briefDiz="Преодолеть защитников Оракула"
-		fullDiz="На пути к Оракулу стоят его стражи, нужно договориться с ними или избавиться от них."
-		isMainQuest="1">
-		<Map
-			name="r3m1"
-			targetObjName="ToR3M2" />
-
-		<Map
-			name="r3m2"
-			targetObjName="OracleDefenders_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m2_ReadyToTravel"
-		briefDiz="Подготовиться к путешествию в пустыню"
-		fullDiz="Машину надо модернизировать, чтобы я смог на ней пересечь пустыню. У меня есть чертеж, так что нужно найти мастера, который выполнит работу."
-		isMainQuest="1" />
-
-	<QuestInfo
-		questName="r3m2_RevengeDestroyVillage"
-		briefDiz="Отомстить за уничтожение деревни"
-		fullDiz="Дневник Айвена Го действительно содержал планы устройства, с помощью которого можно пересечь Пустыню Смерти. Теперь я выслежу и накажу тех, кто разрушил мою деревню!"
-		isMainQuest="1">
-		<Map
-			name="r1m1"
-			targetObjName="ToR4M1" />
-
-		<Map
-			name="r1m2"
-			targetObjName="ToR1M1" />
-
-		<Map
-			name="r1m3"
-			targetObjName="ToR1M2" />
-
-		<Map
-			name="r1m4"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r2m1"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r3m1"
-			targetObjName="ToR2M1" />
-
-		<Map
-			name="r3m2"
-			targetObjName="ToR3M1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m2_RideToFatherRoomAfterOracul"
-		briefDiz="Вернуться в дом отца"
-		fullDiz="Возможно, второй диск находится в доме отца. Я мог пропустить что-то, когда был там в первый раз. Но теперь я точно знаю, что искать."
-		isMainQuest="1">
-		<Map
-			name="r1m3"
-			targetObjName="HouseLoc" />
-
-		<Map
-			name="r1m4"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r2m1"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r2m2"
-			targetObjName="ToR2M1" />
-
-		<Map
-			name="r3m1"
-			targetObjName="ToR1M4" />
-
-		<Map
-			name="r3m2"
-			targetObjName="ToR3M1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m2_TalkWithBenAboutCarAfterOracul"
-		briefDiz="Поговорить с Беном о втором диске"
-		fullDiz="Некий Бен Дроссель, старый исследователь и друг Айвена Го, может знать что-нибудь о местонахождении второго диска."
-		isMainQuest="1">
-		<Map
-			name="r1m2"
-			targetObjName="TheBen_House" />
-
-		<Map
-			name="r1m3"
-			targetObjName="ToR1M2" />
-
-		<Map
-			name="r1m4"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r2m1"
-			targetObjName="ToR1M3" />
-
-		<Map
-			name="r2m2"
-			targetObjName="ToR2M1" />
-
-		<Map
-			name="r3m1"
-			targetObjName="ToR2M1" />
-
-		<Map
-			name="r3m2"
-			targetObjName="ToR3M1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m2_TalkWithLisa"
-		briefDiz="Поговорить с Лисой"
-		fullDiz="Оракул утверждает, что Лиса знает больше, чем говорит. В любом случае нужно встретиться с ней."
-		isMainQuest="1">
-		<Map
-			name="r2m1"
-			targetObjName="ToR3M1" />
-
-		<Map
-			name="r3m1"
-			targetObjName="TheRazboynik" />
-
-		<Map
-			name="r3m2"
-			targetObjName="ToR3M1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m2_TwoMagicThing"
-		briefDiz="Принести Оракулу два артефакта"
-		fullDiz="Оракул согласится мне помочь, только если ему принести два артефакта с заброшенного завода."
-		isMainQuest="1">
-		<Map
-			name="r3m2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m2_TwoMagicThing_Factory"
-		briefDiz="Приехать к Заводу"
-		isMainQuest="1">
-		<Map
-			name="r3m1"
-			targetObjName="ToR3M2" />
-
-		<Map
-			name="r3m2"
-			targetObjName="Factory_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m2_TwoMagicThing_FindThing"
-		briefDiz="Найти первый артефакт"
-		isMainQuest="1">
-		<Map
-			name="r3m1"
-			targetObjName="ToR3M2" />
-
-		<Map
-			name="r3m2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m2_TwoMagicThing_FindThing_2"
-		briefDiz="Найти второй артефакт"
-		isMainQuest="1">
-		<Map
-			name="r3m1"
-			targetObjName="ToR3M2" />
-
-		<Map
-			name="r3m2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r3m2_TwoMagicThing_Return"
-		briefDiz="Вернуться к Оракулу"
-		isMainQuest="1">
-		<Map
-			name="r3m1"
-			targetObjName="ToR3M2" />
-
-		<Map
-			name="r3m2"
-			targetObjName="Oracle_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r4m1_FPR_MeetWithOldMan"
-		briefDiz="Встретиться с жителями Бухары"
-		isMainQuest="1">
-		<Map
-			name="r4m1"
-			targetObjName="Buhara_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r4m1_FRP_GotoKef"
-		briefDiz="Съездить в Кеф"
-		isMainQuest="1">
-		<Map
-			name="r4m1"
-			targetObjName="TheKef" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r4m1_FRP_HelpKef"
-		briefDiz="Обеспечить Кеф нефтью"
-		isMainQuest="0">
-		<Map
-			name="r4m1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r4m1_FindMilitaryBase"
-		briefDiz="Найти базу бандитов"
-		fullDiz="Мне известно только примерное направление на эту базу. Но я уверен, что смогу легко найти это место и наказать убийц моего отца!"
-		isMainQuest="1">
-		<Map
-			name="r1m1"
-			targetObjName="ToR4M1" />
-
-		<Map
-			name="r1m2"
-			targetObjName="ToR1M1" />
-
-		<Map
-			name="r1m3"
-			targetObjName="ToR1M2" />
-
-		<Map
-			name="r4m1"
-			targetObjName="ToR4M2" />
-
-		<Map
-			name="r4m2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r4m1_FindNative"
-		briefDiz="Найти мастерскую"
-		fullDiz="Мне удалось пересечь Пустыню Смерти! Теперь было бы неплохо найти мастерскую. Остается лишь надеяться, что не все местные жители агрессивны."
-		isMainQuest="1">
-		<Map
-			name="r1m1"
-			targetObjName="ToR4M1" />
-
-		<Map
-			name="r4m1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r4m1_FindResponsiblePeople"
-		briefDiz="Отыскать вменяемых людей"
-		fullDiz="В этой пустыне живут странные люди. Я ничего не могу от них добиться. Нужно найти хоть кого-то, кто сможет ответить на мои вопросы."
-		isMainQuest="1">
-		<Map
-			name="r1m1"
-			targetObjName="ToR4M1" />
-
-		<Map
-			name="r4m1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r4m1_GotoAivenGo"
-		briefDiz="Последовать за Айвеном Го"
-		fullDiz="Айвен поехал в этом направлении, больше ничего не известно. Я последую за ним и выясню, что с ним произошло."
-		isMainQuest="1">
-		<Map
-			name="r1m1"
-			targetObjName="ToR4M1" />
-
-		<Map
-			name="r1m2"
-			targetObjName="ToR1M2" />
-
-		<Map
-			name="r1m3"
-			targetObjName="ToR1M2" />
-
-		<Map
-			name="r4m1"
-			targetObjName="ToR4M2" />
-
-		<Map
-			name="r4m2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r4m1_KNO_BringOil"
-		briefDiz="Привезти нефть в Кеф"
-		isMainQuest="1">
-		<Map
-			name="r4m1"
-			targetObjName="TheKef" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r4m1_KNO_FindSpecialist"
-		briefDiz="Искать нефтегонщика в Алихаме"
-		isMainQuest="1">
-		<Map
-			name="r4m1"
-			targetObjName="r4_AlihamVil" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r4m1_KNO_FindSpecialist_1"
-		briefDiz="Догнать специалиста по перегонке"
-		isMainQuest="1">
-		<Map
-			name="r4m1"
-			targetObjName="LostEngineer_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r4m1_KNO_GotoOiler"
-		briefDiz="Съездить за нефтью на скважину"
-		isMainQuest="1">
-		<Map
-			name="r4m1"
-			targetObjName="Oil_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r4m1_KNO_ReportToKef"
-		briefDiz="Сообщить о неудаче в Кеф"
-		isMainQuest="1">
-		<Map
-			name="r4m1"
-			targetObjName="TheKef" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r4m1_Kef_NeedOil"
-		briefDiz="Кеф нуждается в нефти"
-		fullDiz="Без нефти жители Кефа как без рук. Я помогу им привезти её, воспользовавшись грузовиком-цистерной. Всё равно ждать, пока не вернулась экспедиция."
-		isMainQuest="1">
-		<Map
-			name="r1m1"
-			targetObjName="ToR4M1" />
-
-		<Map
-			name="r4m1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r4m1_RBC_DefendCountry"
-		briefDiz="Защитить деревню от нападения"
-		isMainQuest="1">
-		<Map
-			name="r4m1"
-			targetObjName="BuharsAttackers" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r4m1_RBC_Evacuate"
-		briefDiz="Эвакуировать людей Бухары в порт"
-		isMainQuest="1">
-		<Map
-			name="r4m1"
-			targetObjName="Buharers_vehicle_0" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r4m1_RBC_GotoPort"
-		briefDiz="Найти порт, откуда я смогу отправить корабль с беженцами в безопасное место"
-		isMainQuest="1">
-		<Map
-			name="r4m1"
-			targetObjName="Port_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r4m1_RescueBuharsCivilian"
-		briefDiz="Спасти жителей Бухары"
-		fullDiz="Если я помогу этим людям спастись от преследования, тогда можно будет рассчитывать на их содействие."
-		isMainQuest="1">
-		<Map
-			name="r1m1"
-			targetObjName="ToR4M1" />
-
-		<Map
-			name="r4m1" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r4m2_DestroyPlate"
-		briefDiz="Уничтожить тарелку"
-		fullDiz="Тарелка является источником излучения, которое разрушило наш мир. Она должна быть уничтожена!"
-		isMainQuest="1">
-		<Map
-			name="r1m1" />
-
-		<Map
-			name="r1m2" />
-
-		<Map
-			name="r1m3" />
-
-		<Map
-			name="r1m4" />
-
-		<Map
-			name="r2m1" />
-
-		<Map
-			name="r2m2" />
-
-		<Map
-			name="r3m1" />
-
-		<Map
-			name="r3m2" />
-
-		<Map
-			name="r4m1" />
-
-		<Map
-			name="r4m2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r4m2_FightWithCrazy"
-		briefDiz="Очистить местность от безумцев"
-		fullDiz="Все следы указывают на военную базу. Мне нужно хорошенько здесь всё осмотреть. Но я не думаю, что эти ребята настроены дружелюбно. Даже если это и ложный путь, я хотя бы очищу это место от безумцев, терроризирующих округу."
-		isMainQuest="1">
-		<Map
-			name="r4m1"
-			targetObjName="ToR4M2" />
-
-		<Map
-			name="r4m2"
-			targetObjName="MilitaryBase_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r4m2_InvestigationPlate"
-		briefDiz="Исследовать Источник"
-		fullDiz="Ученый сказал что-то о корабле пришельцев. Нужно посмотреть на этот Источник поближе."
-		isMainQuest="1">
-		<Map
-			name="r4m1"
-			targetObjName="ToR4M2" />
-
-		<Map
-			name="r4m2"
-			targetObjName="PlateRadiation_loc" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r4m2_NeutralizePlate"
-		briefDiz="Обезвредить тарелку"
-		fullDiz="Корабль пришельцев является источником излучения, которое разрушило наш мир. Её необходимо обезвредить."
-		isMainQuest="1">
-		<Map
-			name="r1m1" />
-
-		<Map
-			name="r1m2" />
-
-		<Map
-			name="r1m3" />
-
-		<Map
-			name="r1m4" />
-
-		<Map
-			name="r2m1" />
-
-		<Map
-			name="r2m2" />
-
-		<Map
-			name="r3m1" />
-
-		<Map
-			name="r3m2" />
-
-		<Map
-			name="r4m1" />
-
-		<Map
-			name="r4m2" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="r4m2_TalkWithScientific"
-		briefDiz="Поговорить с ученым об Источнике"
-		fullDiz="Я увидел это ужасное место и еле унес ноги. Страшная сила влекла меня прямо к сердцу излучения. Туда, где уже стояли парализованные люди. Что-то нужно предпринять! Возможно, ученый знает, как остановить это безумие."
-		isMainQuest="1">
-		<Map
-			name="r4m1"
-			targetObjName="ToR4M2" />
-
-		<Map
-			name="r4m2"
-			targetObjName="ScientiferVillage" />
-	</QuestInfo>
-
-	<QuestInfo
-		questName="ExitBaseFelix"
-		briefDiz="ВЫХОД02 - Военная база"
-		isMainQuest="1">
 		<Map
 			name="r1m1" />
 	</QuestInfo>
 
 	<QuestInfo
-		questName="ExitLocation1"
-		briefDiz="Выйти с локации Край"
-		fullDiz="Найдите зону выхода."
+		questName="q_base_scavs_3"
+		briefDiz="Доложить о выполненной работе"
 		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
 		<Map
 			name="r1m1" />
 	</QuestInfo>
 
 	<QuestInfo
-		questName="ExitLocation2"
-		briefDiz="Выйти с локации Край"
-		fullDiz="Найдите зону выхода."
+		questName="q_belazist1"
+		briefDiz="Белазист - Часть 1"
+		fullDiz="Первый заказ будет следующим: Для начала нам необходимо просто проверить работоспособность этой техники, так как нам ещё не пришло никаких апгрейдов, а раз так, то твоя задача просто протестировать Белаз в полном стоке, вооружение можешь ставить на свой вкус.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кузов: @FF1D1D1DТигр (Урал, Уровень V) в продаже|@FF404040- Кабина: @FF1D1D1DБоливар (Белаз, Уровень II) в продаже|@FF404040- Кузов: @FF1D1D1DКонструктор (Белаз, Уровень II) в продаже|@FF404040- Неизвестная награда|@FF404040- Деньги: @FF1D1D1D65.000 монет"
 		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
 		<Map
 			name="r1m1" />
 	</QuestInfo>
 
 	<QuestInfo
-		questName="ExitRoadToFater"
-		briefDiz="ВЫХОД01 - Дорога на Фатерлянд"
+		questName="q_belazist1_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
 		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
 		<Map
 			name="r1m1" />
 	</QuestInfo>
 
 	<QuestInfo
-		questName="ExitRoadToRidzin"
-		briefDiz="ВЫХОД01 - Дорога в Риджин"
+		questName="q_belazist1_2"
+		briefDiz="Убить 15 Диких"
 		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
 		<Map
 			name="r1m1" />
 	</QuestInfo>
 
 	<QuestInfo
-		questName="ExitRoadToRidzin1"
-		briefDiz="ВЫХОД01 - Дорога в Риджин"
+		questName="q_belazist1_3"
+		briefDiz="Убить 5 бойцов ЧВК"
 		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
 		<Map
 			name="r1m1" />
 	</QuestInfo>
 
 	<QuestInfo
-		questName="ExitZaTheGloohoe"
-		briefDiz="ВЫХОД03 - Окраины"
+		questName="q_belazist1_4"
+		briefDiz="Доложить об успешности тест драйва"
 		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
 		<Map
 			name="r1m1" />
 	</QuestInfo>
 
 	<QuestInfo
-		questName="ExitZaTheGloohoeRand"
-		briefDiz="ВЫХОД03 - Окраины ??:??:??"
+		questName="q_belazist2"
+		briefDiz="Белазист - Часть 2"
+		fullDiz="Нам пришли первые улучшения, поэтому сходу даю тебе следующий заказ. Вот тебе инструкция, сделай такую сборку чтобы можно было установить два пулемёта Корд на кабину и один пулемёт КПВТ на кузов, а после протестируй её в бою.|@FF0000AA|@FF404040Кабина: @FF1D1D1DБоливар (Уровень II)|@FF404040Кузов: @FF1D1D1DКонструктор (Уровень II)|@FF404040Вооружение: @FF1D1D1DКорд - x2, КПВТ - x1|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кабина: @FF1D1D1DЛорд (Урал, Уровень III) в продаже|@FF404040- Кабина: @FF1D1D1DТерминатор (Белаз, Уровень IV) в продаже|@FF404040- Кузов: @FF1D1D1DЦилиндр (Белаз, Уровень V) в продаже|@FF404040- Пушка: @FF1D1D1DЦиклоп в продаже - x1|@FF404040- Гаджет: @FF1D1D1DТурбонаддув - x1|@FF404040- Пулемёт: @FF1D1D1DСпрут - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пушки - x1|@FF404040- Деньги: @FF1D1D1D60.000 монет"
 		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
 		<Map
 			name="r1m1" />
 	</QuestInfo>
 
 	<QuestInfo
-		questName="ExitZaTheTown"
-		briefDiz="ВЫХОД02 - Горы за Южным"
+		questName="q_belazist2_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
 		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
 		<Map
 			name="r1m1" />
 	</QuestInfo>
 
 	<QuestInfo
-		questName="ExitZaTheTroiskoe"
-		briefDiz="ВЫХОД03 - За Троицким"
+		questName="q_belazist2_2"
+		briefDiz="Убить 15 Диких"
 		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
 		<Map
 			name="r1m1" />
 	</QuestInfo>
 
 	<QuestInfo
-		questName="ExitZaTheTroiskoeRand"
-		briefDiz="ВЫХОД03 - За Троицким ??:??:??"
+		questName="q_belazist2_3"
+		briefDiz="Убить 15 бойцов ЧВК"
 		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
 		<Map
 			name="r1m1" />
 	</QuestInfo>
-	
+
+	<QuestInfo
+		questName="q_belazist2_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist3"
+		briefDiz="Белазист - Часть 3"
+		fullDiz="Надо собрать Белаз и установить на него два Рейнметалла, нужные для этого запчасти у нас в наличии, так что проблем со сборкой не возникнет.|@FF0000AA|@FF404040Кабина: @FF1D1D1DТерминатор (Уровень IV)|@FF404040Кузов: @FF1D1D1DЦилиндр (Уровень V)|@FF404040Вооружение: @FF1D1D1DРейнметалл - x2|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кузов: @FF1D1D1DКрейсер (Урал, Уровень III) в продаже|@FF404040- Кабина: @FF1D1D1DРок (Белаз, Уровень III) в продаже|@FF404040- Гаджет: @FF1D1D1DОптический прицел с просветленной оптикой и @FF0000ААА@FF1D1D1Dантибликовой защитой в продаже - x1|@FF404040- Гаджет: @FF1D1D1DТурбонаддув - x1|@FF404040- Пулемёт: @FF1D1D1DСпрут - x1|@FF404040- Пулемёт: @FF1D1D1DРейнметалл - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пушки - x1|@FF404040- Деньги: @FF1D1D1D70.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist3_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist3_2"
+		briefDiz="Убить 20 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist3_3"
+		briefDiz="Убить 15 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist3_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist4"
+		briefDiz="Белазист - Часть 4"
+		fullDiz="Гляди на инструкцию. Собери вот такой Белаз, на кабину установи Пулемёт Спрут, а на кузов Рейнметалл. Кузов кстати можешь выбрать любой, главное установи на него Рейнметалл.|@FF0000AA|@FF404040Кабина: @FF1D1D1DРок (Уровень III)|@FF404040Кузов: @FF1D1D1Dна выбор|@FF404040Вооружение: @FF1D1D1DСпрут - x1, Рейнметалл - x1|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кабина: @FF1D1D1DВитязь (Урал, Уровень V) в продаже|@FF404040- Кузов: @FF1D1D1DГром (Белаз, Уровень IV) в продаже|@FF404040- Гаджет: @FF1D1D1DТурбонаддув в продаже - x1|@FF404040- Пулемёт: @FF1D1D1DСпрут в продаже - x1|@FF404040- Ракетная установка: @FF1D1D1DОхотник в продаже - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пулемёта в продаже - x1|@FF404040- Предмет: @FF1D1D1DЯщик боеприпасов для Ракетницы в продаже - x1|@FF404040- Деньги: @FF1D1D1D70.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist4_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist4_2"
+		briefDiz="Убить 10 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist4_3"
+		briefDiz="Убить 20 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist4_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist5"
+		briefDiz="Белазист - Часть 5"
+		fullDiz="Смотри, надо на Белаз установить огромные пушки, ты с такими уже сталкивался, только здесь их надо целых 3 штуки. Необычная сборка, будет интересно посмотреть на её огневую мощь в бою. Думаю ты мне с этим поможешь.|@FF0000AA|@FF404040Кабина: @FF1D1D1DРок (Уровень III)|@FF404040Кузов: @FF1D1D1DГром (Уровень IV)|@FF404040Вооружение: @FF1D1D1Dна выбор|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кузов: @FF1D1D1DКолосс (Белаз, Уровень III) в продаже|@FF404040- Гаджет: @FF1D1D1DБольшая канистра в продаже - x1|@FF404040- Гаджет: @FF1D1D1DТурбонаддув - x1|@FF404040- Пушка: @FF1D1D1DРейнметалл в продаже - x1|@FF404040- Дробовик: @FF1D1D1DФлаг - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пушки в продаже - x1|@FF404040- Предмет: @FF1D1D1DЯщик дроби для Дробовика - x1|@FF404040- Деньги: @FF1D1D1D70.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist5_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist5_2"
+		briefDiz="Убить 5 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist5_3"
+		briefDiz="Убить 30 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist5_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist6"
+		briefDiz="Белазист - Часть 6"
+		fullDiz="Вижу ты заинтересовался, вот, смотри. Собери сборку Белаза так, чтобы на него можно было установить три Рейнметалла. Как по мне, сборка отличная, так что ты справишься. Буду ждать тебя с результатами.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кабина: @FF1D1D1DЩит (Белаз, Уровень V) в продаже|@FF404040- Гаджет: @FF1D1D1DСвободный затвор с плавающей муфтой в продаже - x1|@FF404040- Гаджет: @FF1D1D1DСистема ''Sagitta'' - x1|@FF404040- Пушка: @FF1D1D1DРейнметалл - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пушки - x1|@FF404040- Деньги: @FF1D1D1D75.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist6_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist6_2"
+		briefDiz="Убить 15 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist6_3"
+		briefDiz="Убить 30 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist6_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist7"
+		briefDiz="Белазист - Часть 7"
+		fullDiz="По заказу требуется собрать Белаз и установить на него один Циклоп, один Флаг и два Рейнметалла. Насколько я понимаю, смысл всей этой сборки в нанесении колоссального урона за один удар. Будет интересно посмотреть так ли это. Жду от тебя результатов.|@FF0000AA|@FF404040Кабина: @FF1D1D1DЩит (Уровень V)|@FF404040Кузов: @FF1D1D1DКолосс (Уровень III)|@FF404040Вооружение: @FF1D1D1DЦиклоп - x1, Флаг - x1, Рейнметалл - x2|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Транспорт: @FF1D1D1DМиротворец в продаже|@FF404040- Гаджет: @FF1D1D1DКатанные броневые листы с дополнительным @FF0000ААА@FF1D1D1Dцементированием в продаже - x1|@FF404040- Гаджет: @FF1D1D1DСистема ''Sagitta'' - x1|@FF404040- Дробовик: @FF1D1D1DФлаг в продаже - x1|@FF404040- Предмет: @FF1D1D1DЯщик дроби для Дробовика в продаже - x1|@FF404040- Деньги: @FF1D1D1D90.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist7_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist7_2"
+		briefDiz="Убить 20 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist7_3"
+		briefDiz="Убить 40 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist7_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist8"
+		briefDiz="Белазист - Часть 8"
+		fullDiz="У заказчика довольно необычный вкус в технике, просит собрать ему Белаз и установить на него три Шмеля. Буду благодарен если ты мне поможешь, вот, взгляни на инструкцию.|@FF0000AA|@FF404040Кабина: @FF1D1D1DЩит (Уровень V)|@FF404040Кузов: @FF1D1D1DКолосс (Уровень III)|@FF404040Вооружение: @FF1D1D1DШмель - x3|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кабина: @FF1D1D1DМетеор (Миротворец, Уровень III) в продаже|@FF0000ААА@FF780a0a[Если не получено ранее]|@FF404040- Кузов: @FF1D1D1DМайа (Миротворец, Уровень III) в продаже|@FF0000ААА@FF780a0a[Если не получено ранее]|@FF404040- Гаджет: @FF1D1D1DСистема ''Sagitta'' - x1|@FF404040- Гаджет: @FF1D1D1DСистема ''Альбатрос'' - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пушки - x1|@FF404040- Предмет: @FF1D1D1DЯщик дроби для Дробовика - x1|@FF404040- Предмет: @FF1D1D1DЯщик боеприпасов для Артиллерии в продаже - x1|@FF404040- Неизвестная награда - @FF1D1D1Dx3|@FF404040- Деньги: @FF1D1D1D200.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist8_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist8_2"
+		briefDiz="Убить 50 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist8_3"
+		briefDiz="Убить 50 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist8_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok1"
+		briefDiz="Биток - Часть 1"
+		fullDiz="Мне нужны детали электропитания, принеси мне несколько кабелей, тройников и блоков питания. За награду не переживай, все будет в полном объёме.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Пулемёт: @FF1D1D1DКПВТ - x1|@FF404040- Предмет: @FF1D1D1DВысокотехнологичная электроника - x2|@FF404040- Деньги: @FF1D1D1D35.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok1_1"
+		briefDiz="Найти и передать 2 Силовых кабеля"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok1_2"
+		briefDiz="Найти и передать 2 Тройника"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok1_3"
+		briefDiz="Найти и передать 2 Блока питания"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok2"
+		briefDiz="Биток - Часть 2"
+		fullDiz="Теперь мне необходимы компьютерные компоненты: Центральные процессора, кулера и платы. Принеси мне их, и тогда почти все будет готово.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Гаджет: @FF1D1D1DВоздушная система охлаждения пулемета в продаже - x1|@FF404040- Деньги: @FF1D1D1D40.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok2_1"
+		briefDiz="Найти и передать 3 Центральных процессора"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok2_2"
+		briefDiz="Найти и передать 3 Кулера"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok2_3"
+		briefDiz="Найти и передать 3 Платы"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok3"
+		briefDiz="Биток - Часть 3"
+		fullDiz="Так как я уже тогда начинал заниматься биткоин фермой, я заранее заказал четыре партии видеокарт, но к сожалению дошли только две. Как ты видишь, недостающие видеокарты мне по прежнему нужны. Отслеживание товара прервалось в городе Южный, думаю, он все еще там. Если тебе удастся его найти, ты здорово мне поможешь.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Неизвестная награда"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok3_1"
+		briefDiz="Найти груз с видеокартами"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok3_2"
+		briefDiz="Передать груз с видеокартами Механику"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok3_22"
+		briefDiz="Выйти и выжить с локации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_clearing_r1m1"
+		briefDiz="Зачистка территории"
+		fullDiz="Твоя задача: навести шороху в этих точках локации и зачистить их. Учитывая твои прошлые успехи, ты и с этим справишься. А с меня, как обычно награда и кое-что ещё, а что именно, узнаешь когда справишься с заданием. Ну, как? Готов?|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кузов: @FF1D1D1DБорг (Вэн, Уровень III) в продаже|@FF404040- Пулемёт: @FF1D1D1DКорд - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пулемёта в продаже - x1|@FF404040- Квестовый предмет: @FF1D1D1DКарта Края|@FF404040- Деньги: @FF1D1D1D40.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_clearing_r1m1_1"
+		briefDiz="Убить 5 диких на подъезде к Южному"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_clearing_r1m1_2"
+		briefDiz="Убить 5 диких на территории заброшенной больницы"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_clearing_r1m1_3"
+		briefDiz="Убить 5 диких на военной базе"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_clearing_r1m1_4"
+		briefDiz="Убить 5 диких около деревни Заимка"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_clearing_r1m1_5"
+		briefDiz="Убить 5 диких около деревень Гугулино и Троицкое"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_clearing_r1m1_6"
+		briefDiz="Доложить Прапорщику и получить награду"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_explore_r1m1"
+		briefDiz="Разведка местности"
+		fullDiz="Хорошо боец, вот тебе следующее задание. Проедь по этим точкам и разведай обстановку вокруг их, на локации Край. Не обязательно зачищать, просто разведуй. А дальше посмотрим что делать. Ну, что, справишься?|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кабина: @FF1D1D1DРаботяга (Вэн, Уровень II) в продаже|@FF404040- Пулемёт: @FF1D1D1DПКТ - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x1|@FF404040- Деньги: @FF1D1D1D35.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_explore_r1m1_1"
+		briefDiz="Разведать местность около деревни Глухое"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_explore_r1m1_2"
+		briefDiz="Разведать местность около деревни Южного"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_explore_r1m1_3"
+		briefDiz="Разведать местность на базе Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_explore_r1m1_4"
+		briefDiz="Разведать местность около деревни Заимка"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_explore_r1m1_5"
+		briefDiz="Разведать местность около деревни Троицкое"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_explore_r1m1_6"
+		briefDiz="Разведать местность на подъезде к городу Южный"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_explore_r1m1_7"
+		briefDiz="Доложить Прапорщику"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_fuel1"
+		briefDiz="Топливо - Часть 1"
+		fullDiz="Для начала нам нужно добыть несколько канистр с топливом, думаю 3-х штук пока будет достаточно. Добудь их, а потом скажу что делать далее. По рукам?|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кабина: @FF1D1D1DСкорпион (Вэн, Уровень III) в продаже|@FF404040- Пулемёт: @FF1D1D1DКорд - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x1|@FF404040- Предмет: @FF1D1D1DУлучшенное оборудование - x2|@FF404040- Деньги: @FF1D1D1D40.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_fuel1_1"
+		briefDiz="Передать 3 Канистры топлива"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_fuel2"
+		briefDiz="Топливо - Часть 2"
+		fullDiz="Слушай, значит. Я на днях собираюсь отправить своих ребят в экспедицию на локацию Край, и мне бы не хотелось чтобы они встряли посреди дороги, окруженные Дикими из за нехватки топлива. Поэтому прошу от тебя следующее: проверь заправки на их работоспособность и привези еще канистр с топливом. Так мне будет спокойней, зная что парни смогут добыть топливо в случае чего. Задача ясна? Тогда за дело!|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Пулемёт: @FF1D1D1DКорд в продаже - x1|@FF404040- Предмет: @FF1D1D1DКрепкий металл - x2|@FF404040- Предмет: @FF1D1D1DУлучшенное оборудование - x2|@FF404040- Деньги: @FF1D1D1D40.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_fuel2_1"
+		briefDiz="Проверить работоспособность заправки №1"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_fuel2_2"
+		briefDiz="Проверить работоспособность заправки №2"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_fuel2_3"
+		briefDiz="Проверить работоспособность заправки №3"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_fuel2_4"
+		briefDiz="Передать 3 Канистры топлива"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_fuel2_5"
+		briefDiz="Доложить о выполненной работе"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_kill_scavs"
+		briefDiz="Огонь на поражение"
+		fullDiz="Вот тебе задачка значит. Локация Край, там у моих ребят свои дела образовались, однако делам этим мешает местное отребье, которое по какой то причине возомнила себя хозяевами этой территории, даже свою базу отстроили где-то в ущелье. В общем бандюков там хватает, и надо бы с ними разобраться. Думаю у такого как ты, это не вызовет проблем. За работу!|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Пулемёт: @FF1D1D1DПКТ в продаже - x1|@FF404040- Случайная награда|@FF404040- Деньги: @FF1D1D1D20.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_kill_scavs_1"
+		briefDiz="Убить 15 диких на локации Край"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_kill_scavs_2"
+		briefDiz="Получить награду"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist1"
+		briefDiz="Натуралист - Часть 1"
+		fullDiz="Надо собрать Урал, с кабиной Морион и кузовом Холод, вооружение Рейнметалл и КПВТ. Вот как всегда инструкция, можешь ознакомиться.|@FF0000AA|@FF404040Кабина: @FF1D1D1DМорион (Уровень IV)|@FF404040Кузов: @FF1D1D1DХолод (Уровень I)|@FF404040Вооружение: @FF1D1D1DРейнметалл - x1, КПВТ - x1|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кузов: @FF1D1D1DТигр (Урал, Уровень V) в продаже|@FF404040- Кабина: @FF1D1D1DБоливар (Белаз, Уровень II) в продаже|@FF404040- Кузов: @FF1D1D1DКонструктор (Белаз, Уровень II) в продаже|@FF404040- Неизвестная награда|@FF404040- Деньги: @FF1D1D1D65.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist1_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist1_2"
+		briefDiz="Убить 30 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist1_3"
+		briefDiz="Убить 15 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist1_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist2"
+		briefDiz="Натуралист - Часть 2"
+		fullDiz="Слушай, нужно собрать Урал, с возможностью установить два пулемёта Вектор, кабина и кузов на твой выбор, главное чтобы было два пулемёта. Знаю что Векторы достаточно посредственные в плане убойной мощи, но уж такой заказ. Справишься?|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кабина: @FF1D1D1DЛорд (Урал, Уровень III) в продаже|@FF404040- Кузов: @FF1D1D1DЦилиндр (Белаз, Уровень V) в продаже|@FF404040- Пушка: @FF1D1D1DЦиклоп в продаже - x1|@FF404040- Пулемёт: @FF1D1D1DСпрут - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пушки - x1|@FF404040- Деньги: @FF1D1D1D60.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist2_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist2_2"
+		briefDiz="Убить 20 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist2_3"
+		briefDiz="Убить 5 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist2_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist3"
+		briefDiz="Натуралист - Часть 3"
+		fullDiz="Вообщем слушай, нам предстоит протестировать сборку Урала с установленным Рейнметаллом и двумя Рапирами. Вот как всегда полное техническое задание, ознакомься и принимайся за работу.|@FF0000AA|@FF404040Кабина: @FF1D1D1DЛорд (Уровень III)|@FF404040Кузов: @FF1D1D1DПанцирь (Уровень IV)|@FF404040Вооружение: @FF1D1D1DРейнметалл - x1, Рапира - x2|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кузов: @FF1D1D1DКрейсер (Урал, Уровень III) в продаже|@FF404040- Кабина: @FF1D1D1DТерминатор (Белаз, Уровень IV) в продаже|@FF404040- Гаджет: @FF1D1D1DОптический прицел с просветленной оптикой и @FF0000ААА@FF1D1D1Dантибликовой защитой в продаже - x1|@FF404040- Пулемёт: @FF1D1D1DСпрут - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x1|@FF404040- Деньги: @FF1D1D1D70.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist3_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist3_2"
+		briefDiz="Убить 5 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist3_3"
+		briefDiz="Убить 15 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist3_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist4"
+		briefDiz="Натуралист - Часть 4"
+		fullDiz="Помоги мне протестировать сборку Урала, с установленным Циклопом и одним Рейнметаллом, остальное вооружение на твой выбор, кабина тоже. Видимо заказчику стало интересно, как будет выглядеть дуэт из этих двух пушек. Думаю, ты справишься.|@FF0000AA|@FF404040Кабина: @FF1D1D1Dна выбор|@FF404040Кузов: @FF1D1D1DКрейсер (Уровень III)|@FF404040Вооружение: @FF1D1D1DЦиклоп - x1, Рейнметалл - x1|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кабина: @FF1D1D1DВитязь (Урал, Уровень V) в продаже|@FF404040- Кабина: @FF1D1D1DРок (Белаз, Уровень III) в продаже|@FF404040- Гаджет: @FF1D1D1DТурбонаддув в продаже - x1|@FF404040- Пулемёт: @FF1D1D1DСпрут в продаже - x1|@FF404040- Ракетная установка: @FF1D1D1DОхотник в продаже - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пулемёта в продаже - x1|@FF404040- Предмет: @FF1D1D1DЯщик боеприпасов для Ракетницы в продаже - x1|@FF404040- Деньги: @FF1D1D1D70.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist4_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist4_2"
+		briefDiz="Убить 10 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist4_3"
+		briefDiz="Убить 20 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist4_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist5"
+		briefDiz="Натуралист - Часть 5"
+		fullDiz="Нам необходимо собрать грузовик Урал с возможностью установить на него пулемёт Спрут и три пушки Рейлметалл. Вот взгляни на инструкцию, здесь все расписано.|@FF0000AA|@FF404040Кабина: @FF1D1D1DВитязь (Уровень V)|@FF404040Кузов: @FF1D1D1DКрейсер (Уровень III)|@FF404040Вооружение: @FF1D1D1DРейнметалл - x3, Спрут - x1|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Транспорт: @FF1D1D1DМиротворец в продаже|@FF404040- Кабина: @FF1D1D1DЩит (Белаз, Уровень V) в продаже|@FF404040- Кузов: @FF1D1D1DКолосс (Белаз, Уровень III) в продаже|@FF404040- Кузов: @FF1D1D1DГром (Белаз, Уровень IV) в продаже|@FF404040- Гаджет: @FF1D1D1DБольшая канистра в продаже - x1|@FF404040- Пушка: @FF1D1D1DРейнметалл в продаже - x1|@FF404040- Дробовик: @FF1D1D1DФлаг - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пушки в продаже - x1|@FF404040- Предмет: @FF1D1D1DЯщик дроби для Дробовика - x1|@FF404040- Деньги: @FF1D1D1D70.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist5_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist5_2"
+		briefDiz="Протестировать автомобиль в 3-х рейдах"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist5_3"
+		briefDiz="Убить 25 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist5_4"
+		briefDiz="Убить 30 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist5_5"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_rebuild"
+		briefDiz="Ремонт"
+		fullDiz="Чтобы закончить работу, мне не хватает всего ничего: один Автомобильный аккумулятор и 2 штуки Свечей зажигания. Принеси мне их, и тогда я смогу закончить работу с ремонтом.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Транспорт: @FF1D1D1DМолоковоз в продаже|@FF404040- Кабина: @FF1D1D1DВихрь (Молоковоз, Уровень II) в продаже|@FF404040- Пулёмет: @FF1D1D1DКорд - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для пулемёта - x1|@FF404040- Деньги: @FF1D1D1D50.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_rebuild_1"
+		briefDiz="Передать Автомобильный аккумулятор"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_rebuild_2"
+		briefDiz="Передать 2 Свечи зажигания"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_rebuild_3"
+		briefDiz="Поговорить с Механиком"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_search_data"
+		briefDiz="Поисковая миссия"
+		fullDiz="Вообщем, слушай. Один из моих бойцов давно не выходит на связь, времени прошло уже достаточно, а он до сих пор не объявился. Скорее всего он погиб. Однако нёс он мне одну важную информацию, которая все еще мне нужна. Отправил я его в заброщенную больницу, та, которая в Краю находится. Выясни что с ним стреслось и по возможности забери информацию. В долгу не останусь.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Пулемёт: @FF1D1D1DКорд - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x1|@FF404040- Деньги: @FF1D1D1D25.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_search_data_1"
+		briefDiz="Найти посыльного"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_search_data_2"
+		briefDiz="Забрать информацию"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_search_data_3"
+		briefDiz="Выйти и выжить с локации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_search_data_4"
+		briefDiz="Передать информацию Прапорщику"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive1"
+		briefDiz="Тест драйв - Часть 1"
+		fullDiz="Итак, заказчику надо собрать бюджетный автомобиль, предназначенный для грузоперевозок, с умереной огневой мощью и максимальной вместимостью кузова. Проще говоря конфигурация должна быть следующей:|@FF0000AA|@FF404040Машина: @FF1D1D1DВэн|@FF404040Кабина: @FF1D1D1DЖук (Уровень II)|@FF404040Кузов: @FF1D1D1DБорг (Уровень III)|@FF404040Вооружение: @FF1D1D1DПКТ - x1|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Неизвестная награда|- Случайная награда|- Деньги: @FF1D1D1D50.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive10"
+		briefDiz="Тест драйв - Часть 10"
+		fullDiz="Привет, у меня для тебя есть работа. Нужен Миротворец чтобы на него можно было установить 3 большие пушки, то есть с тремя большими слотами. Всё остальное на своё усмотрение.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кабина: @FF1D1D1DМетеор (Миротворец, Уровень III) в продаже|@FF0000ААА@FF780a0a[Если не получено ранее]|@FF404040- Кузов: @FF1D1D1DМайа (Миротворец, Уровень III) в продаже|@FF0000ААА@FF780a0a[Если не получено ранее]|@FF404040- Гаджет: @FF1D1D1DСвободный затвор с плавающей муфтой в продаже - x1|@FF404040- Пулемёт: @FF1D1D1DСпрут в продаже - x1|@FF404040- Пушка: @FF1D1D1DРейнметалл в продаже - x1|@FF404040- Дробовик: @FF1D1D1DФлаг в продаже - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пушки - x1|@FF404040- Предмет: @FF1D1D1DЯщик дроби для Дробовика - x1|@FF404040- Деньги: @FF1D1D1D100.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive10_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive10_2"
+		briefDiz="Убить 10 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive10_3"
+		briefDiz="Убить 20 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive10_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive11"
+		briefDiz="Тест драйв - Часть 11"
+		fullDiz="Вообщем, необходимо собрать Миротворца, и установить на него три Рейнметалла и один Спрут. Сам знаешь, пушки довольно мощные так что, сборка выйдет хорошей. Вот тебе инструкция, ознакомься.|@FF0000AA|@FF404040Кабина: @FF1D1D1DМетеор (Уровень III)|@FF404040Кузов: @FF1D1D1DМайа (Уровень III)|@FF404040Вооружение: @FF1D1D1DРейнметалл - x3, Спрут - x1|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Транспорт: @FF1D1D1DКрейсер в продаже|@FF404040- Кузов: @FF1D1D1DЭкскалибур (Миротворец, Уровень V) в продаже|@FF404040- Гаджет: @FF1D1D1DЭлектромеханический комплекс ''Сфено'' - x1|@FF404040- Лазерная установка: @FF1D1D1DОдин - x1|@FF404040- Предмет: @FF1D1D1DБаллон с жидкостью для Лазерной установки - x1|@FF404040- Предмет: @FF1D1D1DВысокотехнологичная электроника - x4|@FF404040- Деньги: @FF1D1D1D110.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive11_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive11_2"
+		briefDiz="Убить 25 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive11_3"
+		briefDiz="Убить 35 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive11_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive12"
+		briefDiz="Тест драйв - Часть 12"
+		fullDiz="Привет, есть работа. Требуется установить на Миротворца три дробовика Флаг и одну пушку Циклоп. Вся мощность вооружения заключается в одном выстреле, так что промахи не допустимы. Но ты, Наёмник, боец уже с опытом, так что я в тебе не сомневаюсь. За дело!|@FF0000AA|@FF404040Кабина: @FF1D1D1DБулат (Уровень IV)|@FF404040Кузов: @FF1D1D1DЭкскалибур (Уровень V)|@FF404040Вооружение: @FF1D1D1DФлаг - x3, Циклоп - x1|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кабина: @FF1D1D1DФантом (Миротворец, Уровень V) в продаже|@FF404040- Гаджет: @FF1D1D1DКомплекс ''FireEye'' - x1|@FF404040- Плазменная установка: @FF1D1D1DСлон - x1|@FF404040- Дробовик: @FF1D1D1DФлаг в продаже - x1|@FF404040- Предмет: @FF1D1D1DБаллон с жидкостью для Плазменной пушки - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Дробовика - x1|@FF404040- Деньги: @FF1D1D1D120.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive12_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive12_2"
+		briefDiz="Убить 20 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive12_3"
+		briefDiz="Убить 40 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive12_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive13"
+		briefDiz="Тест драйв - Часть 13"
+		fullDiz="Вообщем, слушай. Собери Миротворца в его топовой комплектации, а из вооружения установи два пулемёта Спрут и две пушки Рейнметалл. Ничего сложного нет, так что ты справишься. Буду ждать от тебя результатов.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Гаджет: @FF1D1D1DЭлектромеханический комплекс ''Сфено'' в продаже - x1|@FF404040- Гаджет: @FF1D1D1DКомплекс ''FireEye'' в продаже - x1|@FF404040- Гаджет: @FF1D1D1DСистема ''Sagitta'' в продаже - x1|@FF404040- Предмет: @FF1D1D1DВысокотехнологичная электроника - x5|@FF404040- Деньги: @FF1D1D1D100.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive13_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive13_2"
+		briefDiz="Убить 100 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive13_3"
+		briefDiz="Убить 100 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive13_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive14"
+		briefDiz="Тест драйв - Часть 14"
+		fullDiz="По заказу требуется собрать грузовик Крейсер в базовой комплектации, а из вооружения установить пулемёты Спрут и КПВТ. Сборка не ультимативная, но тебе не составит труда её протестировать.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кабина: @FF1D1D1DКабина Крейсера (Уровень II) в продаже|@FF404040- Кузов: @FF1D1D1DКузов Крейсера 8x12 (Уровень II) в продаже|@FF404040- Гаджет: @FF1D1D1DЭлектронная инжекторная система - x1|@FF404040- Гаджет: @FF1D1D1DСистема ''Doom-4'' - x1|@FF404040- Лазерная установка: @FF1D1D1DОдин - x1|@FF404040- Предмет: @FF1D1D1DБаллон с жидкостью для Лазерной установки - x1|@FF404040- Деньги: @FF1D1D1D130.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive14_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive14_2"
+		briefDiz="Убить 15 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive14_3"
+		briefDiz="Убить 15 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive14_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive15"
+		briefDiz="Тест драйв - Часть 15"
+		fullDiz="Собери Крейсер в топовой комплектации, все нужные запчасти у нас имеются. А так же установи две лазерные установки Один и любую боковую установку, ты наверняка их уже встречал, такое вооружение устанавливается в специальный слот на кузов автомобиля.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Гаджет: @FF1D1D1DКатанные броневые листы с дополнительным @FF0000ААА@FF1D1D1Dцементированием в продаже - x1|@FF404040- Гаджет: @FF1D1D1DМагнитно-оптическая система ''Квазар'' - x1|@FF404040- Гаджет: @FF1D1D1DСистема ''Doom-4'' - x1|@FF404040- Гаджет: @FF1D1D1DСистема ''Альбатрос'' - x1|@FF404040- Предмет: @FF1D1D1DБаллон с жидкостью для Лазерной установки - x1|@FF404040- Предмет: @FF1D1D1DБаллон с жидкостью для Плазменной пушки - x1|@FF404040- Предмет: @FF1D1D1DЯщик боеприпасов для Ракетной установки - x1|@FF404040- Предмет: @FF1D1D1DЯщик боеприпасов для Артиллерии - x1|@FF404040- Деньги: @FF1D1D1D130.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive15_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive15_2"
+		briefDiz="Убить 25 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive15_3"
+		briefDiz="Убить 20 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive15_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive1_1"
+		briefDiz="Убить 15 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive1_11"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive1_2"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive2"
+		briefDiz="Тест драйв - Часть 2"
+		fullDiz="Заказчик просит собрать манёвренный грузовик, с возможностью установки двух орудий, а вместимость кузова оставить в стоке. Конфигурация должна быть следующей:|@FF0000AA|@FF404040Машина: @FF1D1D1DМолоковоз|@FF404040Кабина: @FF1D1D1DШип (Уровень III)|@FF404040Кузов: @FF1D1D1DТент (Уровень I)|@FF404040Вооружение: @FF1D1D1DСпектр - x1, ПКТ - x1|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кузов: @FF1D1D1DГенератор (Молоковоз, Уровень II) в продаже|@FF404040- Пулемёт: @FF1D1D1DКПВТ в продаже - x1|@FF404040- Предмет: @FF1D1D1DУлучшенное оборудование - x2|@FF404040- Деньги: @FF1D1D1D60.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive2_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive2_2"
+		briefDiz="Убить 20 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive2_3"
+		briefDiz="Убить 10 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive2_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive3"
+		briefDiz="Тест драйв - Часть 3"
+		fullDiz="Заказчик просит протестировать сборку Вэна в полном стоке, с установленным пулемётом Шершень. Аргументирует это тем что, ему интересно насколько конкурентноспособно это старьё в нынешних условиях. Понимаю, сборка ужасная, однако, я больше не знаю кому ещё предложить этот заказ.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кузов: @FF1D1D1DБокс (Молоковоз, Уровень III) в продаже|@FF404040- Предмет: @FF1D1D1DЯщик дроби для Дробовика в продаже - x1|@FF404040- Предмет: @FF1D1D1DВысокотехнологичная электроника - x3|@FF404040- Деньги: @FF1D1D1D60.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive3_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive3_2"
+		briefDiz="Убить 5 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive3_3"
+		briefDiz="Убить 5 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive3_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive4"
+		briefDiz="Тест драйв - Часть 4"
+		fullDiz="Надо собрать Молоковоз, с установленным пулемётом КПВТ на кузове. Это основные критерии, кабину можно не трогать. Сборка не сложная, так что думаю, ты справишься.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Пушка: @FF1D1D1DРапира в продаже - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пушки в продаже - x1|@FF404040- Деньги: @FF1D1D1D50.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive4_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive4_2"
+		briefDiz="Протестировать автомобиль в 3-х рейдах"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive4_3"
+		briefDiz="Убить 30 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive4_4"
+		briefDiz="Убить 15 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive4_5"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive5"
+		briefDiz="Тест драйв - Часть 5"
+		fullDiz="По заказу надо собрать Молоковоз, с установленной пушкой Рапира и дробовиком Шторм. Сборка выглядит интересно, что скажешь? По рукам?|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Транспорт: @FF1D1D1DУрал в продаже|@FF404040- Неизвестная награда|- Случайная награда|- Деньги: @FF1D1D1D50.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive5_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive5_2"
+		briefDiz="Протестировать автомобиль в 3-х рейдах"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive5_3"
+		briefDiz="Убить 30 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive5_4"
+		briefDiz="Убить 20 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive5_5"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive6"
+		briefDiz="Тест драйв - Часть 6"
+		fullDiz="Есть один заказ, надо сделать сборку Урала, с установленными двумя пулемётами Вулкан.|@FF0000AA|@FF404040Кабина: @FF1D1D1DШтандарт (Уровень II)|@FF404040Кузов: @FF1D1D1DХолод (Уровень I)|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кузов: @FF1D1D1DФрахт (Урал, Уровень II) в продаже|@FF404040- Пулемёт: @FF1D1D1DКПВТ в продаже - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x2|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пулемёта в продаже - x1|@FF404040- Деньги: @FF1D1D1D60.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive6_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive6_2"
+		briefDiz="Убить 30 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive6_3"
+		briefDiz="Убить 15 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive6_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive7"
+		briefDiz="Тест драйв - Часть 7"
+		fullDiz="Привет, я как раз думаю, что делать с этим заказом, вот тебе его и поручу. Возьмешься за него? Надо испытать Молоковоз, вот точная инструкция.|@FF0000AA|@FF404040Кабина: @FF1D1D1DБолт (Уровень I)|@FF404040Кузов: @FF1D1D1DГенератор (Уровень II)|@FF404040Вооружение: @FF1D1D1DКорд - x1|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кузов: @FF1D1D1DПанцирь (Урал, Уровень IV) в продаже|@FF404040- Гаджет: @FF1D1D1DСвободный затвор с плавающей муфтой в продаже - x1|@FF404040- Пушка: @FF1D1D1DРапира в продаже - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пушки в продаже - x1|@FF404040- Деньги: @FF1D1D1D50.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive7_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive7_2"
+		briefDiz="Убить 10 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive7_3"
+		briefDiz="Убить 5 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive7_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive8"
+		briefDiz="Тест драйв - Часть 8"
+		fullDiz="Есть один заказ, думаю, он тебе понравиться. Надо собрать Урал, с двумя установленными пушками Рапира. Вот подробная инструкция, ознакомься.|@FF0000AA|@FF404040Кабина: @FF1D1D1DШтандарт (Уровень II)|@FF404040Кузов: @FF1D1D1DПанцирь (Уровень IV)|@FF404040Вооружение: @FF1D1D1DРапира - x2|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кабина: @FF1D1D1DМорион (Урал, Уровень IV) в продаже|@FF404040- Гаджет: @FF1D1D1DЭлектроспуск в продаже - x1|@FF404040- Пушка: @FF1D1D1DРейнметалл в продаже - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пушки - x1|@FF404040- Деньги: @FF1D1D1D55.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive8_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive8_2"
+		briefDiz="Убить 40 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive8_3"
+		briefDiz="Убить 20 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive8_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive9"
+		briefDiz="Тест драйв - Часть 9"
+		fullDiz="Есть один заказ, заказчик просит собрать ему Миротворца и установить на него один дробовик Флаг и одну пушку Циклоп. Ничего сложного нет, так что трудностей не возникнет.|@FF0000AA|@FF404040Кабина: @FF1D1D1DЧереп (Уровень II)|@FF404040Кузов: @FF1D1D1DЦентурион (Уровень II)|@FF404040Вооружение: @FF1D1D1DФлаг - x1, Циклоп - x1|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Кабина: @FF1D1D1DБулат (Миротворец, Уровень IV) в продаже|@FF404040- Кузов: @FF1D1D1DМасамунэ (Миротворец, Уровень IV) в продаже|@FF404040- Гаджет: @FF1D1D1DКатанные броневые листы с дополнительным @FF0000ААА@FF1D1D1Dцементированием в продаже - x1|@FF404040- Ракетная установка: @FF1D1D1DГрад - x1|@FF404040- Лазерная установка: @FF1D1D1DОдин - x1|@FF404040- Предмет: @FF1D1D1DЯщик боеприпасов для Ракетной установки - x1|@FF404040- Предмет: @FF1D1D1DБаллон с жидкостью для Лазерной установки - x1|@FF404040- Деньги: @FF1D1D1D100.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive9_1"
+		briefDiz="Собрать автомобиль необходимой конфигурации"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive9_2"
+		briefDiz="Убить 15 Диких"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive9_3"
+		briefDiz="Убить 15 бойцов ЧВК"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive9_4"
+		briefDiz="Доложить об успешности тест драйва"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_testing_mission"
+		briefDiz="Проба пера"
+		fullDiz="Значит слушай, твое первое задание: у нас тут бандитов развелось, по всей округе ездят, их зовут Дикими. Подстрели, допустим 5 штук этих дикарей, и притащи с них пулемёты Шершень, 3 штуки. Это и будет твоим первым заданием. За дело, наёмник!|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Пулемёт: @FF1D1D1DСпектр - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x1|@FF404040- Деньги: @FF1D1D1D20.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_testing_mission_1"
+		briefDiz="Убить 5 диких на локации Край"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_testing_mission_2"
+		briefDiz="Найти и передать три пулемёта Шершень "
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_testing_mission_3"
+		briefDiz="Получить награду"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_turbo"
+		briefDiz="Жажда скорости"
+		fullDiz="Установи Турбо акселератор в специальный слот под кузовом автомобиля, система должна сразу же определить его. Дальше ничего сложного, жмешь на кнопку и машина ускоряется. Только следи за количеством нитро, вот держи баллончик на случай если закончиться запас.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Предмет: @FF1D1D1DТурбо-ускорение в продаже - x1|@FF404040- Предмет: @FF1D1D1DБаллон с воздухом для Турбо-ускорения в продаже - x1|@FF404040- Деньги: @FF1D1D1D30.000 монет"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_turbo_1"
+		briefDiz="Установить турбо-ускорение"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_turbo_2"
+		briefDiz="Использовать турбо-ускорение в рейде"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_turbo_3"
+		briefDiz="Поговорить с Механиком"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_ural_or_belaz"
+		briefDiz="Заманчивое предложение"
+		fullDiz="Слушай, есть одно дело. Вообщем, нам хотят в ближайшее время привезти партию Белазов для тестов. это огромная махина, с большими колёсами и отличным бронированием. Наверняка из неё можно сделать классные сборки для тестов. Из за этой новости, появилось много кандидатов на тестировку этих Белазов, поэтому спрошу прямо как уже опытному сборщику и бойцу. Заинтересован ли ты в сборке и тестировке этих Белазов, или же предпочтешь рассекать пустоши на уже проверенном Урале? В противном же случае я просто предложу работу другому исполнителю.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Транспорт: @FF1D1D1DБелаз в продаже|@FF404040- Предмет: @FF1D1D1DВысокотехнологичная электроника - x4"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_ural_or_belaz_1"
+		briefDiz="Выбрать Урал"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_ural_or_belaz_2"
+		briefDiz="Выбрать Белаз"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+	</QuestInfo>
 </QuestInfoResource>

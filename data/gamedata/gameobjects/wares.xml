@@ -8,36 +8,36 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "potato"
-		Price	= "3000"
+		Price	= "2000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= "potatoe"
 		ResourceType= "POTATO" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "scrap_metal"
-		Price	= "7000"
+		Price	= "5000"
 		Durability	= "100"
-		PriceDispersion      = "7"
+		PriceDispersion      = "5"
 		ModelFile	= "lom"
 		ResourceType= "SCRAP_METAL" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "firewood"
-		Price	= "3000"
+		Price	= "2250"
 		Durability	= "90"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= "koroldrov"
 		ResourceType= "FIREWOOD" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "oil"
-		Price	= "8000"
+		Price	= "5500"
 		Durability	= "70"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= "back_exp"
 		ResourceType= "OIL" />
 
@@ -46,25 +46,25 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Name		= "gear"
 		Price	= "100"
 		Durability	= "60"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= "detail"
 		ResourceType= "GEAR" />   -->
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "bottle"
-		Price	= "10000"
+		Price	= "7000"
 		Durability	= "10"
-		PriceDispersion      = "7"
+		PriceDispersion      = "5"
 		ModelFile	= "bottles"
 		ResourceType= "BOTTLE" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "fuel"
-		Price	= "15000"
+		Price	= "9000"
 		Durability	= "50"
-		PriceDispersion      = "7"
+		PriceDispersion      = "5"
 		ModelFile	= "kanistr"
 		ResourceType= "FUEL" />
 
@@ -72,7 +72,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "machinery"
-		Price	= "20000"
+		Price	= "12000"
 		Durability	= "30"
 		PriceDispersion      = "5"
 		ModelFile	= "rabochee_oborudovanie"
@@ -81,7 +81,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "tobacco"
-		Price	= "7000"
+		Price	= "4000"
 		Durability	= "70"
 		PriceDispersion      = "5"
 		ModelFile	= "tobacco"
@@ -90,7 +90,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "book"
-		Price	= "15500"
+		Price	= "10000"
 		Durability	= "90"
 		PriceDispersion      = "5"
 		ModelFile	= "books"
@@ -107,7 +107,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "electronics"
-		Price	= "30000"
+		Price	= "15000"
 		Durability	= "20"
 		PriceDispersion      = "5"
 		ModelFile	= "mikro"
@@ -165,10 +165,12 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		ModelFile		= "factory_box"
 		ResourceType= "EXPLOSION_STONE" /> -->
 
-		<Prototype
+<!-- New-Old Items -->
+
+	<Prototype
 		Class		= "Ware"
 		Name		= "doski"
-		Price	= "7000"
+		Price	= "3500"
 		Durability	= "90"
 		PriceDispersion      = "5"
 		ModelFile	= "doski"
@@ -177,7 +179,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "details"
-		Price	= "9000"
+		Price	= "6000"
 		Durability	= "30"
 		PriceDispersion      = "5"
 		ModelFile	= "detail"
@@ -185,17 +187,28 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class		= "Ware"
+		Name		= "shkatulka"
+		Price	= "12000"
+		Durability	= "20"
+		PriceDispersion      = "5"
+		ModelFile	= "shkatulka_a"
+		ResourceType= "SHKATULKA" />	
+
+<!-- Use Items -->
+	
+	<Prototype
+		Class		= "Ware"
 		Name		= "scrap_metal_use"
-		Price	= "10000"
+		Price	= "5000"
 		Durability	= "100"
-		PriceDispersion      = "7"
+		PriceDispersion      = "5"
 		ModelFile	= "lom"
 		ResourceType= "SCRAP_METAL_USE" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "machinery_use"
-		Price	= "20500"
+		Price	= "12500"
 		Durability	= "30"
 		PriceDispersion      = "5"
 		ModelFile	= "rabochee_oborudovanie"
@@ -204,7 +217,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "electronics_use"
-		Price	= "35000"
+		Price	= "18000"
 		Durability	= "20"
 		PriceDispersion      = "5"
 		ModelFile	= "mikro"
@@ -213,47 +226,1536 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "oil_use"
-		Price	= "12500"
+		Price	= "7500"
 		Durability	= "70"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= "back_exp"
 		ResourceType= "OIL_USE" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "fuel_full_use"
-		Price	= "18700"
+		Price	= "11400"
 		Durability	= "50"
-		PriceDispersion      = "7"
+		PriceDispersion      = "5"
 		ModelFile	= "kanistr"
 		ResourceType= "FUEL_FULL_USE" />
 
 	<Prototype
 		Class		= "Ware"
 		Name		= "fuel_nil_use"
-		Price	= "3700"
+		Price	= "1200"
 		Durability	= "70"
-		PriceDispersion      = "7"
+		PriceDispersion      = "5"
 		ModelFile	= "kanistr"
 		ResourceType= "FUEL_NIL_USE" />
 
+<!-- Keys -->		
 	
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_key_gate_thetown"
-		Price	= "10000"
+		Price	= "14000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= "quest_key_for_tunnel"
 		ResourceType= "ITEM_KEY" />
 
 	<Prototype
 		Class		= "Ware"
-		Name		= "item_key_gate_r1m3"
-		Price	= "40000"
+		Name		= "item_key_gate_basefelix"
+		Price	= "6000"
 		Durability	= "100"
-		PriceDispersion      = "10"
+		PriceDispersion      = "5"
 		ModelFile	= "quest_key_for_tunnel"
 		ResourceType= "ITEM_KEY" />
+
+<!-- Ammo -->
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_chest_artillerygun"
+		Price	= "26600"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_4X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_chest_artillerygunForSale"
+		Price	= "38"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_4X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_chest_heavygun"
+		Price	= "16250"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_chest_heavygunForSale"
+		Price	= "27"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_chest_machinegun"
+		Price	= "8900"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_chest_machinegunForSale"
+		Price	= "14"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_chest_rocketgun"
+		Price	= "24000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_4X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_chest_rocketgunForSale"
+		Price	= "33"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_4X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_chest_shotgun"
+		Price	= "5650"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_chest_shotgunForSale"
+		Price	= "10"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_ballon_lasergun"
+		Price	= "14850"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_ballon_plasmagun"
+		Price	= "20550"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_ballon_turbo"
+		Price	= "15750"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_ballon_turboForSale"
+		Price	= "26"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+
+<!-- Building Items -->
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_bolts"
+		Price	= "4500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />	
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_datchik"
+		Price	= "20000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_3X2" />	
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_hose"
+		Price	= "4500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_4X2" />	
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_insulation"
+		Price	= "3000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />	
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_kek"
+		Price	= "9000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />	
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_military_tube"
+		Price	= "13500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />	
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_nails"
+		Price	= "2600"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />	
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_nuts"
+		Price	= "3200"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />	
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_parts"
+		Price	= "7500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />	
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_pena"
+		Price	= "14000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X4" />	
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_plex"
+		Price	= "6500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_poheram"
+		Price	= "6300"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_scotch"
+		Price	= "2100"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_screws"
+		Price	= "3800"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_thermometer"
+		Price	= "16000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_tube"
+		Price	= "7500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+<!-- Electronics Items -->
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_bp"
+		Price	= "17500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_3X3" />
+	
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_cable"
+		Price	= "9000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_3X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_converter"
+		Price	= "100000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_4X4" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_cooler"
+		Price	= "8000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_cpu"
+		Price	= "5000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_drill"
+		Price	= "12800"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_3X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_dvd"
+		Price	= "4500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_3X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_electronics_components"
+		Price	= "6500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+	
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_energo_lump"
+		Price	= "6100"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_engine"
+		Price	= "31000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_4X4" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_gazan"
+		Price	= "8000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X4" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_geiger"
+		Price	= "8500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X4" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_gpu"
+		Price	= "200000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_4X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_hdd"
+		Price	= "12000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_3X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_helix"
+		Price	= "9000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_1X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_iridiym"
+		Price	= "37000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_kondesators"
+		Price	= "5500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_lcd"
+		Price	= "15000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_3X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_lump"
+		Price	= "4000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_magnet"
+		Price	= "5500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_military_cable"
+		Price	= "16000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_3X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_phone"
+		Price	= "6500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_plate"
+		Price	= "8500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_ram"
+		Price	= "5000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_rele"
+		Price	= "4500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_1X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_svech"
+		Price	= "4850"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_1X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_tetris"
+		Price	= "42000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X4" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_tplug"
+		Price	= "3200"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_ultra_lump"
+		Price	= "7250"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+	
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_usb"
+		Price	= "2300"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_virtex"
+		Price	= "80000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_vpx"
+		Price	= "67500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_wires"
+		Price	= "3000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+<!-- Energy Items -->
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_accum"
+		Price	= "6000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_battery_aa"
+		Price	= "2500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X1" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_battery_d"
+		Price	= "1500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X1" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_car_battery"
+		Price	= "28000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_5X4" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_cyclon"
+		Price	= "22000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_3X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_green_battery"
+		Price	= "15000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X1" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_powerbank"
+		Price	= "9800"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_tank_battery"
+		Price	= "400000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_8X4" />
+
+<!-- Flammable Items -->
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_dry"
+		Price	= "16500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_hunter_spich"
+		Price	= "3000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />	
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_lighter"
+		Price	= "3250"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_1X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_prisadka"
+		Price	= "25500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_propan"
+		Price	= "18200"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_3X4" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_spich"
+		Price	= "2500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_survl"
+		Price	= "6500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_termit"
+		Price	= "32000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_trotile"
+		Price	= "11000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_wd40_100"
+		Price	= "3000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_1X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_wd40_400"
+		Price	= "7000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_zibbo"
+		Price	= "4000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_gunpowder"
+		Price	= "14400"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+<!-- Household Items -->
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_alkani"
+		Price	= "8500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_hlor"
+		Price	= "9000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_3X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_paper"
+		Price	= "5000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_4X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_salt"
+		Price	= "3500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_soap"
+		Price	= "2500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_soda"
+		Price	= "4500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_tb"
+		Price	= "3700"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_toothpaste"
+		Price	= "4000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+<!-- Info Items -->
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_diary"
+		Price	= "16000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_diary_s"
+		Price	= "12000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_disk"
+		Price	= "9250"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "disk"
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_disk_exmachina"
+		Price	= "23250"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "disk_exmachina"
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_flashdrive"
+		Price	= "12000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_manual"
+		Price	= "9255"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_rozvidka"
+		Price	= "120000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_3X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_sas"
+		Price	= "25250"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_ssd"
+		Price	= "23500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+<!-- Medical Items -->
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_aquapeps"
+		Price	= "11300"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_c6h8o6"
+		Price	= "10000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_h2o2"
+		Price	= "5500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_ledx"
+		Price	= "450000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_medical_tools"
+		Price	= "3600"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_naci"
+		Price	= "4700"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_oftalmaskop"
+		Price	= "54000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_suringe"
+		Price	= "8000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+<!-- Other Items -->
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_airfilter"
+		Price	= "70000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_5X5" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_ananaga"
+		Price	= "100000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X4" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_emre_kara"
+		Price	= "18000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "dragon01gun"
+		ResourceType= "ITEM_SIZE_4X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_filter"
+		Price	= "15000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_3X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_fitanyashka"
+		Price	= "33500"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "fitanyashka"
+		ResourceType= "ITEM_SIZE_2X5" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_jeton_bear"
+		Price	= "5000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_jeton_usec"
+		Price	= "5000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_pants40grn"
+		Price	= "24"
+		Durability	= "100"
+		PriceDispersion      = "0"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X4" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_paracord"
+		Price	= "34000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_4X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_pavlikrpg"
+		Price	= "0"
+		Durability	= "0"
+		PriceDispersion      = "0"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X6" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_vitalik"
+		Price	= "56000"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_3X8" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_vodka"
+		Price	= "9000"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X4" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_waterfilter"
+		Price	= "19500"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X4" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_zapal"
+		Price	= "3800"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_monolit"
+		Price	= "9000"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= "monolit"
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_kaktus"
+		Price	= "11500"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= "kaktus"
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_keqing"
+		Price	= "20110"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_carsen"
+		Price	= "8700"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_metallodetector"
+		Price	= "22460"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+<!-- Tools Items -->
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_awl"
+		Price	= "12000"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_buldex"
+		Price	= "25000"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X4" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_fullmaster"
+		Price	= "12000"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_3X3" />
+	
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_handrill"
+		Price	= "18000"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_5X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_leatherman"
+		Price	= "11000"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+	
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_metalscissors"
+		Price	= "8000"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X4" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_nippers"
+		Price	= "6500"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_pipe_wrench"
+		Price	= "30000"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X4" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_pliers"
+		Price	= "3400"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_pliers_round"
+		Price	= "10000"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_ratchet_wrench"
+		Price	= "37000"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X4" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_roulet"
+		Price	= "2000"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_screw"
+		Price	= "3000"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_screw_flat"
+		Price	= "5000"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_screw_flat_long"
+		Price	= "11000"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_sewing_kit"
+		Price	= "14600"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_toolset"
+		Price	= "11500"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_3X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_wrench"
+		Price	= "2000"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+<!-- Valuables Items -->
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_bitcoin"
+		Price	= "215000"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_cat"
+		Price	= "24400"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X5" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_chain"
+		Price	= "6500"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_chain_gold"
+		Price	= "27500"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_chiken"
+		Price	= "34400"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_4X4" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_ex"
+		Price	= "16500"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_lion"
+		Price	= "90000"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_5X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_rolex"
+		Price	= "26500"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_skullring"
+		Price	= "49000"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_teapon"
+		Price	= "18000"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+		
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_woodclock"
+		Price	= "31500"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_4X4" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_vitaly"
+		Price	= "108500"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_3X3" />
+
+<!-- Quest Items -->
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_quest_search_data"
+		Price	= "1"
+		Durability	= "1"
+		PriceDispersion      = "0"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_quest_box_videocard"
+		Price	= "1"
+		Durability	= "1"
+		PriceDispersion      = "0"
+		ModelFile	= "quest_box_videocard"
+		ResourceType= "ITEM_SIZE_2X2" />
+
+<!-- Special Items -->
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_ms2000"
+		Price	= "4500"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+
+<!-- Opacity Item -->
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_opacity"
+		Price	= "0"
+		Durability	= "0"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_OPACITY" />
 		
 </Prototypes>

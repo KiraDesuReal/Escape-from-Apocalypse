@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="windows-1251" standalone="yes" ?><!-- $Id: AnimModels.xml,v 1.5 2004/11/25 10:51:16 den Exp $  -->
 <AnimatedModels>
-<!-- objects 
-	model
-		id="cargo"
-		shadow="1"
-		shadowVolume="1"
-		windwavy="0"
-		file="data\models\objects\cargo.gam" -->
 
 	<model
 		id="point"
@@ -24,8 +17,24 @@
 		<action
 			name="STAND1">
 			<lp
-				id=""
+				id="sound"
 				effect_id="ET_PS_FOREST"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+	</model>
+
+	<model
+		id="lake"
+		file="data\models\ammo\plasma01.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="STAND1">
+			<lp
+				id="sound"
+				effect_id="ET_PS_LAKE"
 				restartOnAnimationChange="0"
 				ImmediateRemove="0" />
 		</action>
@@ -44,6 +53,278 @@
 		shadowVolume="1"
 		windwavy="0"
 		file="data\models\objects\box\boxbox.gam" />
+
+	<model
+		id="plastic_barrel"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\objects\box\plastic_barrel_box.gam" />
+
+	<model
+		id="airbox1"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\objects\box\airbox.gam">
+		<action
+			name="STAND1">
+			<lp
+				id="LP_LIGHT1"
+				effect_id="ET_PS_AIRBOX"
+				restartOnAnimationChange="1"
+				ImmediateRemove="1" />
+		</action>
+	</model>
+
+	<model
+		id="airbox2"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\objects\box\airbox2.gam">
+		<action
+			name="STAND1">
+			<lp
+				id="LP_LIGHT1"
+				effect_id="ET_PS_AIRBOX"
+				restartOnAnimationChange="1"
+				ImmediateRemove="1" />
+		</action>
+	</model>
+
+	<model
+		id="generator_motor"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\buildings\region0\motor.gam">
+		<action
+			name="STAND1">
+			<lp
+				id="sound"
+				effect_id="ET_S_GENERATOR_MOTOR_STAND"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+		<action
+			name="MOVE1">
+			<lp
+				id="sound"
+				effect_id="ET_S_GENERATOR_MOTOR"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+	</model>
+
+	<model
+		id="generator"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\buildings\region0\generator\generator.gam" />
+
+	<model
+		id="post_challenge"
+		file="data\models\buildings\domain\post_challenge\post_challenge.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0"/>
+
+	<model
+		id="post_challenge_sword"
+		file="data\models\buildings\domain\post_challenge\post_challenge_sword.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0">
+	</model>
+
+	<model
+		id="s_dungeon_ambient_1"
+		file="data\models\ammo\plasma01.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="STAND1">
+			<lp
+				id="sound"
+				effect_id="ET_S_DUNGEON_AMBIENT_1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+	</model>
+
+	<model
+		id="3D_text"
+		file="data\models\buildings\region0\3d_text\3d_text.gam"
+		shadow="0"
+		windwavy="0"
+		trans="0" />
+
+	<model
+		id="3D_timer"
+		file="data\models\buildings\region0\3d_text\3d_timer\3d_text_timer.gam"
+		shadow="0"
+		windwavy="0"
+		trans="0" />
+
+<!-- Region 5 -->
+
+	<model
+		id="barded_wire"
+		file="data\models\buildings\region5\barded_wire\barded_wire.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0" />
+
+	<model
+		id="barded_wire_long"
+		file="data\models\buildings\region5\barded_wire\barded_wire_long.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0" />
+
+	<model
+		id="concrete_fence_2"
+		file="data\models\buildings\region5\concrete_fence\concrete_fence_3.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0" />
+
+	<model
+		id="concrete_fence_brik_2"
+		file="data\models\buildings\region5\concrete_fence\concrete_fence_brik_3.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0" />
+
+	<model
+		id="inscriptions"
+		file="data\models\buildings\region5\inscriptions\inscriptions.gam"
+		shadow="0"
+		windwavy="0"
+		trans="0" />
+
+	<model
+		id="road_sign_zone"
+		file="data\models\buildings\region5\road_sign_zone\road_sign_zone.gam"
+		shadow="0"
+		windwavy="0"
+		trans="0" />
+
+	<model
+		id="dub_kust1_r2_snow"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\dub_kust1_r2snow.gam" />
+
+	<model
+		id="dub_kust2_r2_snow"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\dub_kust2_r2snow.gam" />
+
+	<model
+		id="dub1_snow"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\dub1snow.gam" />
+
+	<model
+		id="dub2_snow"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\dub2snow.gam" />
+
+	<model
+		id="dub3_snow"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\dub3snow.gam" />
+
+	<model
+		id="elka1_snow"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\elka1snow.gam" />
+
+	<model
+		id="elka2_snow"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\elka2snow.gam" />
+
+	<model
+		id="elka3_snow"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\elka3snow.gam" />
+
+	<model
+		id="listvenoe1_snow"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\listvenoe1snow.gam" />
+
+	<model
+		id="listvenoe2_snow"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\listvenoe2snow.gam" />
+
+	<model
+		id="listvenoe3_snow"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\listvenoe3snow.gam" />
+
+	<model
+		id="sosna1_snow"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\sosna1snow.gam" />
+
+	<model
+		id="sosna2_snow"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\sosna2snow.gam" />
+
+	<model
+		id="sosna3_snow"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\sosna3snow.gam" />
+
 
 	<model
 		id="conteiner"
@@ -429,6 +710,44 @@
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\tobacco.gam" />
+
+<!-- info items -->
+	<model
+		id="disk"
+		shadow="0"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\info\disk.gam" />
+
+	<model
+		id="disk_exmachina"
+		shadow="0"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\info\disk_exmachina.gam" />
+
+<!-- other items -->
+	<model
+		id="fitanyashka"
+		shadow="0"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\other\fitanyashka.gam" />
+
+	<model
+		id="monolit"
+		shadow="0"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\other\monolit.gam" />
+
+	<model
+		id="kaktus"
+		shadow="0"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\other\kaktus.gam" />
+
 <!-- masks -->
 	<model
 		id="mask_hero"
@@ -526,8 +845,13 @@
 		trans="0"
 		composite="0" />
 
-
-
+	<model
+		id="manmenu_mask"
+		file="data\models\Masks\Region0\manmenu.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0"
+		composite="0" />
 
 <!-- nature -->
 	<model
@@ -878,6 +1202,14 @@
 		windwavy="0"
 		useImpostors = "1"
 		file="data\models\nature\region1\trees\listvenoe1.gam" />
+
+	<model
+		id="listvenoe1_r5"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors = "1"
+		file="data\models\nature\region1\trees\listvenoe1_r5.gam" />
 
 	<model
 		id="listvenoe2"
@@ -2066,7 +2398,7 @@
 				restartOnAnimationChange="0"
 				ImmediateRemove="0" />
 		</action>
--->	</model>
+	</model>
 
 	<model
 		id="omega01"
@@ -2533,6 +2865,58 @@
 	</model>
 
 	<model
+		id="american_hornet01"
+		shadow="1"
+		windwavy="0"
+		file="data\models\guns\sml_hornet01.gam">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+	</model>
+
+	<model
+		id="american_hornet01gun"
+		shadow="1"
+		windwavy="0"
+		file="data\models\guns\sml_american_hornet01_gun.gam">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+
+		<action
+			name="MOVE1">
+			<lp
+				id="LP_FIRE01"
+				effect_id="ET_PS_HORNET_FIRE"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+			
+			<lp
+				id="LP_SHELL01"
+				effect_id="ET_PS_SHELL_SML_MGUN"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="STAND1">
+			<lp
+				id="LP_FIRE01"
+				effect_id="ET_PS_MACHINEGUN_STAND"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+	</model>
+
+	<model
 		id="vulcan01"
 		shadow="1"
 		windwavy="0"
@@ -2660,7 +3044,6 @@
 				restartOnAnimationChange="0"
 				ImmediateRemove="0" />
 		</action>
-
 	</model>
 
 	<model
@@ -2857,7 +3240,6 @@
 		</action>
 	</model>
 
-
 	<model
 		id="workshop2"
 		shadow="1"
@@ -2874,6 +3256,21 @@
 		</action>
 	</model>
 
+	<model
+		id="workshop1_r0m0"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\buildings\region1\workshop1.gam">
+	</model>
+
+	<model
+		id="workshop2_r0m0"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\buildings\region1\workshop2.gam">
+	</model>
 
 	<model
 		id="fishman1"
@@ -3112,6 +3509,33 @@
 				id="LP_PROJECTOR"
 				effect_id="ET_PS_PROJECTOR_TANK"
 				restartOnAnimationChange="0" />
+		</action>
+	</model>
+
+	<model
+		id="tankChassisFake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\tank\shassis01.gam">
+		<action
+			name="DEATH1"
+			skin="8">
+			<lp
+				id="w"
+				effect_id="ET_PS_VEH_EXP_SHASSIS_BIG"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="DEATH2"
+			skin="8">
+			<lp
+				id="w"
+				effect_id="ET_PS_VEH_EXP_SHASSIS1_BIG"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
 		</action>
 	</model>
 
@@ -5322,6 +5746,51 @@
 	</model>
 
 	<model
+		id="scoutCab01Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\scout\cab01.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="scoutCab02Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\scout\cab02.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="scoutCab03Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\scout\cab03.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
 		id="fighterChassis"
 		shadow="1"
 		windwavy="0"
@@ -5509,6 +5978,44 @@
 				restartOnAnimationChange="1"
 				ImmediateRemove="0" />
 		</action>
+	</model>
+
+	<model
+		id="fighterCab01_Dead"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\fighter\cab01.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="fighterCab02Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\fighter\cab02.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="fighterCab03Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\fighter\cab03\cab03.gam">
 	</model>
 
 	<model
@@ -5836,6 +6343,124 @@
 
 			<lp
 				id="LP_LIGHT08"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_PROJECTOR"
+				effect_id="ET_PS_PROJECTOR_FIGHTER_CAB02"
+				restartOnAnimationChange="0" />
+		</action>
+	</model>
+
+	<model
+		id="fighterCab03"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\fighter\cab03\cab03.gam">
+
+		<action
+			name="STAND1">
+
+			<lp
+				id="LP_EXH01"
+				effect_id="ET_PS_EXHAUST_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_EXH02"
+				effect_id="ET_PS_EXHAUST_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="MOVE1">
+			<lp
+				id="LP_GLOW01"
+				effect_id="ET_PS_BLINK"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_GLOW02"
+				effect_id="ET_PS_BLINK1"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_EXH01"
+				effect_id="ET_PS_EXHAUST_POW_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_EXH02"
+				effect_id="ET_PS_EXHAUST_POW_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="MOVE2">
+			<lp
+				id="LP_GLOW01"
+				effect_id="ET_PS_BLINK"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_GLOW02"
+				effect_id="ET_PS_BLINK1"
+				restartOnAnimationChange="0" />
+		
+			<lp
+				id="LP_EXH01"
+				effect_id="ET_PS_EXHAUST_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_EXH02"
+				effect_id="ET_PS_EXHAUST_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="RESERVED2">
+			
+			<lp
+				id="LP_LIGHT01"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT02"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT03"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT04"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT05"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT06"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT07"
 				effect_id="ET_PS_HLIGHT"
 				restartOnAnimationChange="0" />
 
@@ -6207,6 +6832,255 @@
 				restartOnAnimationChange="0" />
 		</action>
 	</model>
+
+	<model
+		id="hunterCab03"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\hunter\cab03\cab03.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+
+		<action
+			name="STAND1">
+			<lp
+				id="LP_EXH01"
+				effect_id="ET_PS_EXHAUST_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_EXH02"
+				effect_id="ET_PS_EXHAUST_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="MOVE1">
+			<lp
+				id="LP_EXH01"
+				effect_id="ET_PS_EXHAUST_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_EXH02"
+				effect_id="ET_PS_EXHAUST_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+			<lp
+				id="LP_EXH03"
+				effect_id="ET_PS_EXHAUST_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_EXH04"
+				effect_id="ET_PS_EXHAUST_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+			<lp
+				id="LP_EXH05"
+				effect_id="ET_PS_EXHAUST_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_EXH06"
+				effect_id="ET_PS_EXHAUST_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="MOVE2">
+			<lp
+				id="LP_EXH01"
+				effect_id="ET_PS_EXHAUST_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_EXH02"
+				effect_id="ET_PS_EXHAUST_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+			<lp
+				id="LP_EXH03"
+				effect_id="ET_PS_EXHAUST_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_EXH04"
+				effect_id="ET_PS_EXHAUST_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+			<lp
+				id="LP_EXH05"
+				effect_id="ET_PS_EXHAUST_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_EXH06"
+				effect_id="ET_PS_EXHAUST_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_GLOW01"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_GLOW02"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_GLOW03"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_GLOW04"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_GLOW05"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+		</action>
+
+		<action
+			name="RESERVED2">
+
+			<lp
+				id="LP_GLOW01"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_GLOW02"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_GLOW03"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_GLOW04"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_GLOW05"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+				
+			<lp
+				id="LP_LIGHT01"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT02"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+				
+			<lp
+				id="LP_LIGHT03"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT04"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+				
+			<lp
+				id="LP_LIGHT05"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT06"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+				
+			<lp
+				id="LP_LIGHT07"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT08"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_PROJECTOR"
+				effect_id="ET_PS_PROJECTOR_HUNTER_CAB02"
+				restartOnAnimationChange="0" />
+		</action>
+	</model>
+
+	<model
+		id="hunterCab01Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\hunter\cab01.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="hunterCab02Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\hunter\cab02.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="hunterCab03Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\hunter\cab03\cab03.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+	
 <!-- Mirotvorec -->
 	<model
 		id="mirotvorecChassis"
@@ -7669,6 +8543,81 @@
 	</model>
 
 	<model
+		id="mirotvorecCab01Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\mirotvorec\cab01.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="mirotvorecCab02Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\mirotvorec\cabT1.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="mirotvorecCab03Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\mirotvorec\cabT2.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="mirotvorecCab04Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\mirotvorec\cabV1.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="mirotvorecCab05Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\mirotvorec\cabV2.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
 		id="mirotvorecCargo01"
 		file="data\models\vehicles\mirotvorec\cargo01.gam"
 		shadow="1"
@@ -7902,6 +8851,23 @@
 				restartOnAnimationChange="0" />
 		</action>
 	</model>
+
+	<model
+		id="mirotvorecCargo03Fake"
+		file="data\models\vehicles\mirotvorec\cargoT2.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
 <!-- Cruiser -->
 	<model
 		id="cruiserChassis"
@@ -9408,6 +10374,54 @@
 	</model>
 
 	<model
+		id="bugCab01Fake"
+		file="data\models\vehicles\bug\cab01.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="16" />
+
+		<action
+			name="DEATH2"
+			skin="16" />
+	</model>
+
+	<model
+		id="bugCab02Fake"
+		file="data\models\vehicles\bug\cab02.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="16" />
+
+		<action
+			name="DEATH2"
+			skin="16" />
+	</model>
+
+	<model
+		id="bugCab03Fake"
+		file="data\models\vehicles\bug\cab03.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="16" />
+
+		<action
+			name="DEATH2"
+			skin="16" />
+	</model>
+
+	<model
 		id="bugCargo01"
 		file="data\models\vehicles\bug\cargo01.gam"
 		shadow="1"
@@ -9514,6 +10528,22 @@
 				effect_id="ET_PS_GLOW"
 				restartOnAnimationChange="0" />
 		</action>
+	</model>
+
+	<model
+		id="bugCargo02Fake"
+		file="data\models\vehicles\bug\cargo02.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="16" />
+
+		<action
+			name="DEATH2"
+			skin="16" />
 	</model>
 
 	<model
@@ -10597,6 +11627,86 @@
 	</model>
 
 	<model
+		id="uralCab01Fake"
+		file="data\models\vehicles\ural\cab01.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="uralCab02Fake"
+		file="data\models\vehicles\ural\cabT1.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="uralCab03Fake"
+		file="data\models\vehicles\ural\cabT2.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="uralCab04Fake"
+		file="data\models\vehicles\ural\cabV1.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="uralCab05Fake"
+		file="data\models\vehicles\ural\cabV2.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
 		id="uralCargo01"
 		file="data\models\vehicles\ural\cargo01.gam"
 		shadow="1"
@@ -11440,6 +12550,51 @@
 	</model>
 
 	<model
+		id="molokovozCab01Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\molokovoz\cab01.gam">
+		<action
+			name="DEATH1"
+			skin="16" />
+
+		<action
+			name="DEATH2"
+			skin="16" />
+	</model>
+
+	<model
+		id="molokovozCab02Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\molokovoz\cab02.gam">
+		<action
+			name="DEATH1"
+			skin="16" />
+
+		<action
+			name="DEATH2"
+			skin="16" />
+	</model>
+
+	<model
+		id="molokovozCab03Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\molokovoz\cab03.gam">
+		<action
+			name="DEATH1"
+			skin="16" />
+
+		<action
+			name="DEATH2"
+			skin="16" />
+	</model>
+
+	<model
 		id="molokovozCargo01"
 		shadow="1"
 		shadowVolume="1"
@@ -11628,6 +12783,21 @@
 				effect_id="ET_PS_GLOW_QUAD"
 				restartOnAnimationChange="0" />
 		</action>
+	</model>
+
+	<model
+		id="molokovozCargo01Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\molokovoz\cargo01.gam">
+		<action
+			name="DEATH1"
+			skin="16" />
+
+		<action
+			name="DEATH2"
+			skin="16" />
 	</model>
 
 	<model
@@ -12138,6 +13308,21 @@
 				effect_id="ET_PS_PROJECTOR_BELAZ_CAB04"
 				restartOnAnimationChange="0" />
 		</action>
+	</model>
+
+	<model
+		id="belazCab04Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\belaz\cabV1.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
 	</model>
 
 	<model
@@ -12832,6 +14017,81 @@
 	</model>
 
 	<model
+		id="belazCargo01Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\belaz\cargo01.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="belazCargo02Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\belaz\cargoT1.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="belazCargo03Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\belaz\cargoT2.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="belazCargo04Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\belaz\cargoV1.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="belazCargo05Fake"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\belaz\cargoV2.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
 		id="submarine"
 		file="data\models\monsters\submarine\Submarina.gam"
 		shadowVolume="0"
@@ -13378,7 +14638,8 @@
 		file="data\models\monsters\boss03\basket_01.gam"
 		shadow="0"
 		windwavy="0"
-		trans="0" />
+		trans="0">
+	</model>
 
 	<model
 		id="boss03cab01"
@@ -13680,16 +14941,7 @@
 		shadow="1"
 		windwavy="0"
 		trans="0">
-		<action
-			name="STAND1">
-			<lp
-				id=""
-				effect_id="ET_PS_S_VILLAGE01"
-				restartOnAnimationChange="0"
-				ImmediateRemove="0" />
-		</action>
 	</model>
-
 
 	<model
 		id="bridge_span1"
@@ -15908,6 +17160,14 @@
 		trans="0" />
 
 	<model
+		id="lamppost1_r5"
+		file="data\models\buildings\region1\lamppost1_r5.gam"
+		shadowVolume="1"
+		shadow="1"
+		windwavy="0"
+		trans="0" />
+
+	<model
 		id="lamppost2"
 		file="data\models\buildings\region1\lamppost2.gam"
 		shadowVolume="1"
@@ -16319,6 +17579,20 @@
 		trans="0" />
 
 	<model
+		id="factory_rr_angar1_r0m0"
+		file="data\models\buildings\region0\factory_rr_angar1_r0m0.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0" />
+
+	<model
+		id="factory_rr_angar2_r0m0"
+		file="data\models\buildings\region0\factory_rr_angar2_r0m0.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0" />
+
+	<model
 		id="garage"
 		file="data\models\buildings\region3\factory\garage.gam"
 		shadow="1"
@@ -16363,13 +17637,6 @@
 	<model
 		id="wood_tramp"
 		file="data\models\buildings\region3\factory\wood_tramp.gam"
-		shadow="1"
-		windwavy="0"
-		trans="0" />
-
-	<model
-		id="big_brock_wall"
-		file="data\models\buildings\region3\factory\big_brock_wall.gam"
 		shadow="1"
 		windwavy="0"
 		trans="0" />
@@ -17121,6 +18388,14 @@
 	<model
 		id="oracle_house"
 		file="data\models\buildings\region3\oracle_house.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0"
+		composite="0" />
+
+	<model
+		id="oracle_house_r0m0"
+		file="data\models\buildings\region0\oracle_house_r0m0.gam"
 		shadow="1"
 		windwavy="0"
 		trans="0"
@@ -18892,10 +20167,25 @@
 		</action>
 	</model>
 
-
 	<model
 		id="quest_key_for_tunnel"
 		file="data\models\questitems\key.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0"
+		composite="0" />
+
+	<model
+		id="quest_box_videocard"
+		file="data\models\objects\box\box_videocard.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0"
+		composite="0" />
+
+	<model
+		id="map_location"
+		file="data\models\questitems\map_location.gam"
 		shadow="1"
 		windwavy="0"
 		trans="0"

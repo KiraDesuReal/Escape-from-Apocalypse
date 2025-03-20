@@ -5,13 +5,13 @@
 
 <Properties>
 	<Belongs
-		Values="1002 1003 1004 1005 1008 1009 1010 1011 1012 1013 1014 1015 1016 1017 1019 1020 1021 1022 1023 1025 1026 1030 1053 1060 1061 1062 1082"/>
+		Values="1002 1003 1004 1005 1008 1009 1010 1011 1012 1013 1014 1015 1016 1017 1019 1020 1021 1022 1023 1025 1026 1030 1053 1060 1061 1062 1082 1086 1087 1088 1089"/>
 
 	<IzvratRepository
 		MaxSize="13 12"/>
 
 	<GroundRepository
-		Size="18 300"/>
+		Size="18 100"/>
 
 	<Mult
 		GameTimeMult="60"
@@ -23,7 +23,7 @@
 		TimeBetweenBursts="500"/>
 
 	<DynamicQuest
-		ProbabilityToGenerateDynamicQuestInTown="0.8"/>
+		ProbabilityToGenerateDynamicQuestInTown="0"/>
 
 	<CommonPaths
 		Relationship="data/gamedata/Relationship.xml"
@@ -48,7 +48,7 @@
 
 	<Vehicles
 		VehiclesDropChests="true"
-		MaxSpeedWithNoFuel="10"/>
+		MaxSpeedWithNoFuel="0"/>
 
 	<SmartCursor
 		InfoAreaRadius="70"
@@ -85,8 +85,8 @@
 
 	<Articles
 		DefaultRegenerationTime="60"
-		ProbabilityToDropArticlesFromDeadVehicles="0.80"
-		ProbabilityToDropGunsFromDeadVehicles="0.65"/>
+		ProbabilityToDropArticlesFromDeadVehicles="1"
+		ProbabilityToDropGunsFromDeadVehicles="1"/>
 
 	<InfectionZones
 		ZoneRespawnTimeOutIncreaseCoeff="1.0"
@@ -96,8 +96,8 @@
 		ColorFriend="ff87e400"
 		ColorEnemy="ffff3300"
 		ColorTargetCaptured="ffff8700"
-		TargetInfoContourWidth="0.007"
-		TargetCapturedContourWidth="0.007"/>
+		TargetInfoContourWidth="0"
+		TargetCapturedContourWidth="0"/>
 
 	<PlayerPassmap
 		PlayerPassMapUnpassableMu="0.3"
@@ -107,27 +107,17 @@
 	<Weapon
 		MaxGroupingAngle="5"
 		TimeOutForReAimGuns="0.3"/>
-
+		
 	<DifficultyLevels>
 		<Level
-			Name="EasyLevel"
-			EnemyWeaponCoeff="0.5"
-			EnemyShootingDelay="1.0"/>
-
-		<Level
-			Name="MediumLevel"
-			EnemyWeaponCoeff="1.0"
-			EnemyShootingDelay="0.75"/>
-
-		<Level
 			Name="HardLevel"
-			EnemyWeaponCoeff="1.5"
-			EnemyShootingDelay="0.5"/>
+			EnemyWeaponCoeff="1.35"
+			EnemyShootingDelay="0.6"/>
 
 		<Level
-			Name="ImpossibleLevel"
-			EnemyWeaponCoeff="3.0"
-			EnemyShootingDelay="0.0"/>
+			Name="HardLevelPlus"
+			EnemyWeaponCoeff="1.65"
+			EnemyShootingDelay="0.5"/>
 	</DifficultyLevels>
 
 	<Price

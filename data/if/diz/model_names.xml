@@ -78,7 +78,7 @@
 	<Item
 		id="grouping_angle_guns2"
 		locForm="0"
-		value="Оптический прицел с просветленной оптикой и антибликовой защитой." />
+		value="Оптический прицел с просветленной оптикой и антибликовой защитой" />
 
 	<Item
 		id="add_damage_guns2"
@@ -113,7 +113,7 @@
 	<Item
 		id="firing_rate_guns_and_add_damage_guns"
 		locForm="0"
-		value="Электромеханический комплекс &quot;Сфено&quot;  " />
+		value="Электромеханический комплекс &quot;Сфено&quot;" />
 
 	<Item
 		id="firing_rate_energy_and_add_damage_energy"
@@ -123,7 +123,7 @@
 	<Item
 		id="firing_rate_explosion_and_add_damage_explosion"
 		locForm="0"
-		value="Электромеханический комплекс &quot;Огненный шторм&quot;." />
+		value="Электромеханический комплекс &quot;Огненный шторм&quot;" />
 
 	<Item
 		id="add_damage_guns_and_grouping_angle_guns"
@@ -183,7 +183,7 @@
 	<Item
 		id="add_stability_and_speed"
 		locForm="0"
-		value="Система &quot;Sagitta&quot;  " />
+		value="Система &quot;Sagitta&quot;" />
 
 	<Item
 		id="add_torque_and_stability"
@@ -431,6 +431,21 @@
 		value="Бокс" />
 
 	<Item
+		id="molokovozCargo01_5x8"
+		locForm="0"
+		value="Тент" />
+
+	<Item
+		id="molokovozCargo02_6x9"
+		locForm="0"
+		value="Генератор" />
+
+	<Item
+		id="molokovozCargo03_6x8"
+		locForm="0"
+		value="Бокс" />
+
+	<Item
 		id="belazCab01"
 		locForm="0"
 		value="Зод" />
@@ -480,6 +495,32 @@
 		locForm="0"
 		value="Цилиндр" />
 
+	
+	<Item
+		id="belazCargo01_6x12"
+		locForm="0"
+		value="Хост" />
+
+	<Item
+		id="belazCargo02_8x11"
+		locForm="0"
+		value="Конструктор" />
+
+	<Item
+		id="belazCargo03_11x12"
+		locForm="0"
+		value="Колосс" />
+
+	<Item
+		id="belazCargo04_6x10"
+		locForm="0"
+		value="Гром" />
+
+	<Item
+		id="belazCargo05_9x10"
+		locForm="0"
+		value="Цилиндр" />
+
 	<Item
 		id="bugCab01"
 		locForm="0"
@@ -507,6 +548,21 @@
 
 	<Item
 		id="bugCargo03"
+		locForm="0"
+		value="Борг" />
+
+	<Item
+		id="bugCargo01_4x5"
+		locForm="0"
+		value="Газ" />
+
+	<Item
+		id="bugCargo02_4x6"
+		locForm="0"
+		value="Каскад" />
+
+	<Item
+		id="bugCargo03_5x7"
 		locForm="0"
 		value="Борг" />
 
@@ -561,6 +617,31 @@
 		value="Тигр" />
 
 	<Item
+		id="uralCargo01_6x9"
+		locForm="0"
+		value="Холод" />
+
+	<Item
+		id="uralCargo02_7x9"
+		locForm="0"
+		value="Фрахт" />
+
+	<Item
+		id="uralCargo03_9x10"
+		locForm="0"
+		value="Крейсер" />
+
+	<Item
+		id="uralCargo04_7x10"
+		locForm="0"
+		value="Панцирь" />
+
+	<Item
+		id="uralCargo05_8x9"
+		locForm="0"
+		value="Тигр" />
+
+	<Item
 		id="BelazForSale"
 		locForm="0"
 		value="Белаз" />
@@ -579,6 +660,11 @@
 		id="MolokovozForSale"
 		locForm="0"
 		value="Молоковоз" />
+
+	<Item
+		id="CruiserForSale"
+		locForm="0"
+		value="Крейсер" />
 
 	<Item
 		id="MolokovozCargo04"
@@ -636,6 +722,31 @@
 		value="Экскалибур" />
 
 	<Item
+		id="mirotvorecCargo01_7x9"
+		locForm="0"
+		value="Клык" />
+
+	<Item
+		id="mirotvorecCargo02_7x10"
+		locForm="0"
+		value="Центурион" />
+
+	<Item
+		id="mirotvorecCargo03_8x10"
+		locForm="0"
+		value="Майа" />
+
+	<Item
+		id="mirotvorecCargo04_7x10"
+		locForm="0"
+		value="Масамунэ" />
+
+	<Item
+		id="mirotvorecCargo05_9x11"
+		locForm="0"
+		value="Экскалибур" />
+
+	<Item
 		id="MirotvorecForSale"
 		locForm="0"
 		value="Миротворец" />
@@ -689,6 +800,11 @@
 		id="hornet01"
 		locForm="0"
 		value="Шершень" />
+
+	<Item
+		id="american_hornet01"
+		locForm="0"
+		value="Американский шершень" />
 
 	<Item
 		id="specter01"
@@ -1312,6 +1428,36 @@
 		value="Дот" />
 
 	<Item
+		id="sack_dot1_specter"
+		locForm="0"
+		value="Засада" />
+
+	<Item
+		id="sack_dot2_specter"
+		locForm="0"
+		value="Баррикада" />
+
+	<Item
+		id="sack_dot2_hornet"
+		locForm="0"
+		value="Баррикада" />
+
+	<Item
+		id="sack_dot2_pkt"
+		locForm="0"
+		value="Баррикада" />
+
+	<Item
+		id="base_heavy_dot3_vector"
+		locForm="0"
+		value="Дот" />
+
+	<Item
+		id="exits_heavy_dot4_vulcan"
+		locForm="0"
+		value="Дот" />
+
+	<Item
 		id="PublicDemoBug01"
 		locForm="0"
 		value="Машина Старика" />
@@ -1732,14 +1878,69 @@
 		value="Кузов" />
 
 	<Item
+		id="fakeCargoForSale"
+		locForm="0"
+		value="Кузов" />
+
+	<Item
+		id="ScavfakeCargo_1"
+		locForm="0"
+		value="Кузов 4x4" />
+
+	<Item
+		id="ScavfakeCargo_2"
+		locForm="0"
+		value="Кузов 5x4" />
+
+	<Item
+		id="ScavfakeCargo_3"
+		locForm="0"
+		value="Кузов 7x4" />
+
+	<Item
+		id="ScavfakeCargo_4"
+		locForm="0"
+		value="Кузов 4x6" />
+	
+	<Item
+		id="ScavfakeCargo_5"
+		locForm="0"
+		value="Кузов 4x5" />
+
+	<Item
+		id="ScavfakeCargo_6"
+		locForm="0"
+		value="Кузов 4x7" />
+
+	<Item
+		id="ScavfakeCargo_7"
+		locForm="0"
+		value="Кузов 5x5" />
+
+	<Item
+		id="ScavfakeCargo_8"
+		locForm="0"
+		value="Кузов 6x4" />
+
+	<Item
+		id="fakePlayerCargo"
+		locForm="0"
+		value="Кузов" />
+
+	<Item
+		id="fakeCab"
+		locForm="0"
+		value="Кабина" />
+
+	<Item
 		id="cruiserCab01"
 		locForm="1"
-		value="Кабина Крейсера" />
+		value="Кабина Крейсера (Уровень I)" />
 
 	<Item
 		id="cruiserCab02"
 		locForm="1"
-		value="Кабина Крейсера" />
+		value="Кабина Крейсера (Уровень II)" />
 
 	<Item
 		id="cruiserCargo01"
@@ -1750,6 +1951,16 @@
 		id="cruiserCargo02"
 		locForm="0"
 		value="Кузов Крейсера" />
+
+	<Item
+		id="cruiserCargo01_8x11"
+		locForm="0"
+		value="Кузов Крейсера 8x11" />
+
+	<Item
+		id="cruiserCargo02_8x12"
+		locForm="0"
+		value="Кузов Крейсера 8x12" />
 	
 	<Item
 		id="Smoke"
@@ -1791,20 +2002,15 @@
 		locForm="0"
 		value="Гладиатор" />
 
-		<Item
+	<Item
 		id="ExitRoadToFater"
 		locForm="0"
-		value="ВЫХОД01 - Дорога на Фатерлянд" />
-
-	<Item
-		id="ExitZaTheTown"
-		locForm="0"
-		value="ВЫХОД02 - Горы за Южным" />
+		value="ВЫХОД03 - Дорога на Фатерлянд" />
 
 	<Item
 		id="ExitZaTheGloohoe"
 		locForm="0"
-		value="ВЫХОД03 - Окраины" />
+		value="ВЫХОД01 - Дорога на Таможню" />
 
 	<Item
 		id="ExitRoadToRidzin"
@@ -1814,22 +2020,47 @@
 	<Item
 		id="ExitBaseFelix"
 		locForm="0"
-		value="ВЫХОД02 - Военная база" />
+		value="ВЫХОД02 - Ущелье базы диких" />
 
 	<Item
 		id="ExitZaTheTroiskoe"
 		locForm="0"
-		value="ВЫХОД03 - За Троицким" />
+		value="ВЫХОД03 - Тропа за Троицким" />
+
+	<Item
+		id="ExitScav_ZaTheTown"
+		locForm="0"
+		value="ВЫХОД02 - Горы Южного" />
+
+	<Item
+		id="ExitScav_BaseScavs"
+		locForm="0"
+		value="ВЫХОД02 - База диких" />
 
 	<Item
 		id="Exits1LocationR1M1"
 		locForm="0"
-		value="ВЫХОД01 - Дорога на Фатерлянд|ВЫХОД02 - Горы за Южным|ВЫХОД03 - Окраины ??:??:??" />
+		value="ВЫХОД01 - Дорога на Таможню|ВЫХОД02 - Ущелье базы диких|ВЫХОД03 - Дорога на Фатерлянд ??:??:??" />
 
 	<Item
 		id="Exits2LocationR1M1"
 		locForm="0"
-		value="ВЫХОД01 - Дорога в Риджин|ВЫХОД02 - Военная база|ВЫХОД03 - За Троицким ??:??:??" />
+		value="ВЫХОД01 - Дорога в Риджин|ВЫХОД02 - Ущелье базы диких|ВЫХОД03 - Тропа за Троицким ??:??:??" />
+
+	<Item
+		id="Exits1LocationR1M1_ForScav"
+		locForm="0"
+		value="ВЫХОД01 - Дорога на Таможню|ВЫХОД02 - Горы Южного|ВЫХОД03 - Дорога на Фатерлянд ??:??:??" />
+
+	<Item
+		id="Exits2LocationR1M1_ForScav"
+		locForm="0"
+		value="ВЫХОД01 - Дорога в Риджин|ВЫХОД02 - База диких|ВЫХОД03 - Тропа за Троицким ??:??:??" />
+
+	<Item
+		id="Exits2LocationR1M1_ForScav_2"
+		locForm="0"
+		value="ВЫХОД01 - Дорога в Риджин|@ffa30d0dВЫХОД02 - База диких|@ffffffffВЫХОД03 - Тропа за Троицким ??:??:??" />
 
 	<Item
 		id="Sml1CarScav"
@@ -1852,6 +2083,11 @@
 		value="Кузнечик" />
 
 	<Item
+		id="ScoutCarForPlayer"
+		locForm="0"
+		value="Скаут" />
+
+	<Item
 		id="Scout1CarScav"
 		locForm="0"
 		value="Скаут" />
@@ -1867,6 +2103,11 @@
 		value="Скаут" />
 
 	<Item
+		id="FighterCarForPlayer"
+		locForm="0"
+		value="Боец" />
+
+	<Item
 		id="Fighter1CarScav"
 		locForm="0"
 		value="Боец" />
@@ -1877,14 +2118,94 @@
 		value="Боец" />
 
 	<Item
+		id="Fighter2CarBoss"
+		locForm="0"
+		value="Работяга" />
+
+	<Item
+		id="HunterCarForPlayer"
+		locForm="0"
+		value="Охотник" />
+
+	<Item
 		id="Hunter2CarScav"
 		locForm="0"
 		value="Охотник" />
 
 	<Item
+		id="Hunter2CarBoss"
+		locForm="0"
+		value="Витали" />
+
+	<Item
 		id="Bug01PMC"
 		locForm="0"
 		value="Вэн" />
+
+	<Item
+		id="Bug01PL"
+		locForm="0"
+		value="Вэн" />
+
+	<Item
+		id="Bug01ForStart"
+		locForm="0"
+		value="Вэн" />
+
+	<Item
+		id="BugChassis"
+		locForm="0"
+		value="Платформа" />
+
+	<Item
+		id="Molokovoz01PMC"
+		locForm="0"
+		value="Молоковоз" />
+
+	<Item
+		id="MolokovozChassis"
+		locForm="0"
+		value="Платформа" />
+
+	<Item
+		id="Ural01PMC"
+		locForm="0"
+		value="Урал" />
+
+	<Item
+		id="UralChassis"
+		locForm="0"
+		value="Платформа" />
+
+	<Item
+		id="Belaz01PMC"
+		locForm="0"
+		value="Белаз" />
+
+	<Item
+		id="BelazChassis"
+		locForm="0"
+		value="Платформа" />
+
+	<Item
+		id="Mirotvorec01PMC"
+		locForm="0"
+		value="Миротворец" />
+
+	<Item
+		id="MirotvorecChassis"
+		locForm="0"
+		value="Платформа" />
+
+	<Item
+		id="Cruiser01PMC"
+		locForm="0"
+		value="Крейсер" />
+
+	<Item
+		id="CruiserChassis"
+		locForm="0"
+		value="Платформа" />
 
 	<Item
 		id="doski"
@@ -1895,6 +2216,11 @@
 		id="details"
 		locForm="0"
 		value="Детали" />
+
+	<Item
+		id="shkatulka"
+		locForm="0"
+		value="Шкатулка" />
 
 	
 	<Item
@@ -1910,12 +2236,12 @@
 	<Item
 		id="electronics_use"
 		locForm="0"
-		value="Высоко-технологичная электроника" />
+		value="Высокотехнологичная электроника" />
 
 	<Item
 		id="oil_use"
 		locForm="0"
-		value="Нефть" />
+		value="Бочка с топливом" />
 
 	<Item
 		id="fuel_full_use"
@@ -1926,6 +2252,7 @@
 		id="fuel_nil_use"
 		locForm="0"
 		value="Пустая канистра" />
+
 
 	<Item
 		id="item_key_gate_thetown"
@@ -1938,13 +2265,1048 @@
 		value="Ключ от ворот Южного" />
 
 	<Item
-		id="item_key_gate_r1m3"
+		id="item_key_gate_basefelix"
 		locForm="0"
-		value="Ключ от Дороги на Фатерлянд" />
+		value="Ключ от ворот в ущелье" />
+
+	
+	<Item
+		id="ammo_chest_artillerygun"
+		locForm="0"
+		value="Ящик боеприпасов для Артиллерии" />
 
 	<Item
-		id="quest_item_key_gate_r1m3"
+		id="ammo_chest_artillerygunForSale"
 		locForm="0"
-		value="Ключ от Дороги на Фатерлянд" />
+		value="Ящик боеприпасов для Артиллерии" />
+
+	<Item
+		id="ammo_chest_heavygun"
+		locForm="0"
+		value="Ящик патронов для Пушки" />
+
+	<Item
+		id="ammo_chest_heavygunForSale"
+		locForm="0"
+		value="Ящик патронов для Пушки" />
+
+	<Item
+		id="ammo_chest_machinegun"
+		locForm="0"
+		value="Ящик патронов для Пулемёта" />
+
+	<Item
+		id="ammo_chest_machinegunForSale"
+		locForm="0"
+		value="Ящик патронов для Пулемёта" />
+
+	<Item
+		id="ammo_chest_rocketgun"
+		locForm="0"
+		value="Ящик боеприпасов для Ракетной установки" />
+
+	<Item
+		id="ammo_chest_rocketgunForSale"
+		locForm="0"
+		value="Ящик боеприпасов для Ракетной установки" />
+
+	<Item
+		id="ammo_chest_shotgun"
+		locForm="0"
+		value="Ящик дроби для Дробовика" />
+
+	<Item
+		id="ammo_chest_shotgunForSale"
+		locForm="0"
+		value="Ящик дроби для Дробовика" />
+
+	<Item
+		id="ammo_ballon_lasergun"
+		locForm="0"
+		value="Баллон с жидкостью для Лазерной установки" />
+
+	<Item
+		id="ammo_ballon_plasmagun"
+		locForm="0"
+		value="Баллон с жидкостью для Плазменной пушки" />
+
+	<Item
+		id="ammo_ballon_turbo"
+		locForm="0"
+		value="Баллон с воздухом для Турбо-ускорения" />
+
+	<Item
+		id="ammo_ballon_turboForSale"
+		locForm="0"
+		value="Баллон с воздухом для Турбо-ускорения" />
+
+
+	<Item
+		id="item_bolts"
+		locForm="0"
+		value="Болты" />
+
+	<Item
+		id="item_datchik"
+		locForm="0"
+		value="Датчик давления" />
+
+	<Item
+		id="item_hose"
+		locForm="0"
+		value="Гофрированный шланг" />
+
+	<Item
+		id="item_insulation"
+		locForm="0"
+		value="Изолента" />
+
+	<Item
+		id="item_kek"
+		locForm="0"
+		value="Лента «KEK»" />
+
+	<Item
+		id="item_military_tube"
+		locForm="0"
+		value="Гофрированная трубка" />
+
+	<Item
+		id="item_nails"
+		locForm="0"
+		value="Гвозди" />
+
+	<Item
+		id="item_nuts"
+		locForm="0"
+		value="Гайки" />
+
+	<Item
+		id="item_parts"
+		locForm="0"
+		value="Металлические запчасти" />
+
+	<Item
+		id="item_pena"
+		locForm="0"
+		value="Монтажная пена" />
+
+	<Item
+		id="item_plex"
+		locForm="0"
+		value="Оргстекло" />
+
+	<Item
+		id="item_poheram"
+		locForm="0"
+		value="Тюбик холодной сварки «Poheram»" />
+
+	<Item
+		id="item_scotch"
+		locForm="0"
+		value="Скотч" />
+
+	<Item
+		id="item_screws"
+		locForm="0"
+		value="Саморезы" />
+
+	<Item
+		id="item_thermometer"
+		locForm="0"
+		value="Термометр" />
+
+	<Item
+		id="item_tube"
+		locForm="0"
+		value="Силиконовая трубка" />
+	
+
+	<Item
+		id="item_bp"
+		locForm="0"
+		value="Блок питания" />
+
+	<Item
+		id="item_cable"
+		locForm="0"
+		value="Силовой кабель" />
+
+	<Item
+		id="item_converter"
+		locForm="0"
+		value="Передовой преобразователь тока" />
+
+	<Item
+		id="item_cooler"
+		locForm="0"
+		value="Кулер" />
+
+	<Item
+		id="item_cpu"
+		locForm="0"
+		value="Центральный процессор" />
+
+	<Item
+		id="item_drill"
+		locForm="0"
+		value="Дрель" />
+
+	<Item
+		id="item_dvd"
+		locForm="0"
+		value="DVD привод" />
+
+	<Item
+		id="item_electronics_components"
+		locForm="0"
+		value="Компоненты электроники" />
+
+	<Item
+		id="item_energo_lump"
+		locForm="0"
+		value="Энергосберегающая лампа" />
+
+	<Item
+		id="item_engine"
+		locForm="0"
+		value="Двигатель" />
+
+	<Item
+		id="item_gazan"
+		locForm="0"
+		value="Газоанализатор" />
+
+	<Item
+		id="item_geiger"
+		locForm="0"
+		value="Счетчик Гейгера" />
+
+	<Item
+		id="item_gpu"
+		locForm="0"
+		value="Видеокарта" />
+
+	<Item
+		id="item_hdd"
+		locForm="0"
+		value="Жесткий диск" />
+
+	<Item
+		id="item_helix"
+		locForm="0"
+		value="Спираль накаливания" />
+
+	<Item
+		id="item_iridiym"
+		locForm="0"
+		value="Военный тепловизионный модуль «Иридиум»" />
+
+	<Item
+		id="item_kondesators"
+		locForm="0"
+		value="Конденсаторы" />
+
+	<Item
+		id="item_lcd"
+		locForm="0"
+		value="LCD дисплей" />
+
+	<Item
+		id="item_lump"
+		locForm="0"
+		value="Лампа накаливания" />
+
+	<Item
+		id="item_magnet"
+		locForm="0"
+		value="Магнит" />
+
+	<Item
+		id="item_military_cable"
+		locForm="0"
+		value="Военный кабель" />
+
+	<Item
+		id="item_phone"
+		locForm="0"
+		value="Cмартфон" />
+
+	<Item
+		id="item_plate"
+		locForm="0"
+		value="Плата" />
+
+	<Item
+		id="item_ram"
+		locForm="0"
+		value="Оперативная память" />
+
+	<Item
+		id="item_rele"
+		locForm="0"
+		value="Реле" />
+
+	<Item
+		id="item_svech"
+		locForm="0"
+		value="Свеча зажигания" />
+
+	<Item
+		id="item_tetris"
+		locForm="0"
+		value="Тетриз" />
+
+	<Item
+		id="item_tplug"
+		locForm="0"
+		value="Тройник" />
+
+	<Item
+		id="item_ultra_lump"
+		locForm="0"
+		value="Ультрафиолетовая лампа" />
+
+	<Item
+		id="item_usb"
+		locForm="0"
+		value="USB Адаптер" />
+
+	<Item
+		id="item_virtex"
+		locForm="0"
+		value="Программируемый процессор «Virtex»" />
+
+	<Item
+		id="item_vpx"
+		locForm="0"
+		value="Твердотельный накопитель «VPX»" />
+
+	<Item
+		id="item_wires"
+		locForm="0"
+		value="Провода" />
+
+	
+	<Item
+		id="item_accum"
+		locForm="0"
+		value="Аккумулятор" />
+
+	<Item
+		id="item_battery_aa"
+		locForm="0"
+		value="Батарейка типа «AA»" />
+
+	<Item
+		id="item_battery_d"
+		locForm="0"
+		value="Батарейка типа «D»" />
+
+	<Item
+		id="item_car_battery"
+		locForm="0"
+		value="Автомобильный аккумулятор" />
+
+	<Item
+		id="item_cyclon"
+		locForm="0"
+		value="Аккумуляторная батарея «Циклон»" />
+
+	<Item
+		id="item_green_battery"
+		locForm="0"
+		value="Литиевая аккумуляторная батарейка" />
+
+	<Item
+		id="item_powerbank"
+		locForm="0"
+		value="Повербанк" />
+
+	<Item
+		id="item_tank_battery"
+		locForm="0"
+		value="Военный аккумулятор" />
+
+
+	<Item
+		id="item_dry"
+		locForm="0"
+		value="Сухое горючее" />
+
+	<Item
+		id="item_hunter_spich"
+		locForm="0"
+		value="Охотничьи спички" />
+
+	<Item
+		id="item_lighter"
+		locForm="0"
+		value="Зажигалка" />
+
+	<Item
+		id="item_prisadka"
+		locForm="0"
+		value="Присадка" />
+
+	<Item
+		id="item_propan"
+		locForm="0"
+		value="Пропан" />
+	
+	<Item
+		id="item_spich"
+		locForm="0"
+		value="Спички" />
+
+	<Item
+		id="item_survl"
+		locForm="0"
+		value="Зажигалка выживальщика" />
+
+	<Item
+		id="item_termit"
+		locForm="0"
+		value="Термит" />
+
+	<Item
+		id="item_trotile"
+		locForm="0"
+		value="Тротил" />
+
+	<Item
+		id="item_wd40_100"
+		locForm="0"
+		value="WD-40 100мл" />
+
+	<Item
+		id="item_wd40_400"
+		locForm="0"
+		value="WD-40 400мл" />
+
+	<Item
+		id="item_zibbo"
+		locForm="0"
+		value="Бензиновая зажигалка" />
+
+	<Item
+		id="item_gunpowder"
+		locForm="0"
+		value="Порох «Глухарь»" />
+
+
+	<Item
+		id="item_alkani"
+		locForm="0"
+		value="Щелочь" />
+
+	<Item
+		id="item_hlor"
+		locForm="0"
+		value="Хлорка" />
+
+	<Item
+		id="item_paper"
+		locForm="0"
+		value="Бумага" />
+
+	<Item
+		id="item_salt"
+		locForm="0"
+		value="Соль" />
+
+	<Item
+		id="item_soap"
+		locForm="0"
+		value="Мыло" />
+
+	<Item
+		id="item_soda"
+		locForm="0"
+		value="Сода" />
+
+	<Item
+		id="item_tb"
+		locForm="0"
+		value="Туалетная бумага" />
+
+	<Item
+		id="item_toothpaste"
+		locForm="0"
+		value="Зубная паста" />
+
+
+	<Item
+		id="item_diary"
+		locForm="0"
+		value="Ежедневник" />
+
+	<Item
+		id="item_diary_s"
+		locForm="0"
+		value="Тонкий ежедневник" />
+
+	<Item
+		id="item_disk"
+		locForm="0"
+		value="CD Диск" />
+
+	<Item
+		id="item_disk_exmachina"
+		locForm="0"
+		value="Диск с игрой Ex Machina" />
+
+	<Item
+		id="item_flashdrive"
+		locForm="0"
+		value="Флешка" />
+
+	<Item
+		id="item_manual"
+		locForm="0"
+		value="Мануал" />
+
+	<Item
+		id="item_rozvidka"
+		locForm="0"
+		value="Разведданные" />
+
+	<Item
+		id="item_sas"
+		locForm="0"
+		value="SAS диск" />
+
+	<Item
+		id="item_ssd"
+		locForm="0"
+		value="SSD диск" />
+
+
+	<Item
+		id="item_aquapeps"
+		locForm="0"
+		value="Банка с таблетками для очистки воды «Аквапепс»" />
+
+	<Item
+		id="item_c6h8o6"
+		locForm="0"
+		value="Аскорбинка" />
+
+	<Item
+		id="item_h2o2"
+		locForm="0"
+		value="Бутылка перекиси водорода «H2O2»" />
+
+	<Item
+		id="item_ledx"
+		locForm="0"
+		value="LEDX" />
+
+	<Item
+		id="item_medical_tools"
+		locForm="0"
+		value="Медицинские инструменты" />
+
+	<Item
+		id="item_naci"
+		locForm="0"
+		value="Бутылка физраствора «NaCI»" />
+
+	<Item
+		id="item_oftalmaskop"
+		locForm="0"
+		value="Офтальмоскоп" />
+
+	<Item
+		id="item_suringe"
+		locForm="0"
+		value="Шприц" />
+
+
+	<Item
+		id="item_airfilter"
+		locForm="0"
+		value="Фильтр-поглотитель «ФП-100»" />
+
+	<Item
+		id="item_ananaga"
+		locForm="0"
+		value="Ананага" />
+
+	<Item
+		id="item_emre_kara"
+		locForm="0"
+		value="Emre Kara" />
+
+	<Item
+		id="item_filter"
+		locForm="0"
+		value="Воздушный фильтр" />
+
+	<Item
+		id="item_fitanyashka"
+		locForm="0"
+		value="Дакимакура FitaNyashka" />
+
+	<Item
+		id="item_jeton_bear"
+		locForm="0"
+		value="Жетон BEAR" />
+
+	<Item
+		id="item_jeton_usec"
+		locForm="0"
+		value="Жетон USEC" />
+
+	<Item
+		id="item_pants40grn"
+		locForm="0"
+		value="Штаны" />
+
+	<Item
+		id="item_paracord"
+		locForm="0"
+		value="Паракорд" />
+	
+	<Item
+		id="item_pavlikrpg"
+		locForm="0"
+		value="Плюшевая игрушка" />
+		
+	<Item
+		id="item_vitalik"
+		locForm="0"
+		value="Кувалда «Vitalik»" />
+
+	<Item
+		id="item_vodka"
+		locForm="0"
+		value="Водка" />
+
+	<Item
+		id="item_waterfilter"
+		locForm="0"
+		value="Водный фильтр" />
+
+	<Item
+		id="item_zapal"
+		locForm="0"
+		value="Запал «УЗРГМ» для гранат" />
+
+	<Item
+		id="item_monolit"
+		locForm="0"
+		value="Визитная карта MONOLIT" />
+
+	<Item
+		id="item_kaktus"
+		locForm="0"
+		value="Кактус" />
+
+	<Item
+		id="item_keqing"
+		locForm="0"
+		value="Статуэтка Кэ Цин" />
+	
+	<Item
+		id="item_carsen"
+		locForm="0"
+		value="Брелок Mr. Carsen" />
+
+	<Item
+		id="item_metallodetector"
+		locForm="0"
+		value="Металлоискатель" />
+
+
+	<Item
+		id="item_awl"
+		locForm="0"
+		value="Шило" />
+
+	<Item
+		id="item_buldex"
+		locForm="0"
+		value="Кабелерез «Bulbex»" />
+
+	<Item
+		id="item_fullmaster"
+		locForm="0"
+		value="Набор напильников «FullMaster»" />
+
+	<Item
+		id="item_handrill"
+		locForm="0"
+		value="Ручная дрель" />
+
+	<Item
+		id="item_leatherman"
+		locForm="0"
+		value="Мультитул «Leatherman»" />
+
+	<Item
+		id="item_metalscissors"
+		locForm="0"
+		value="Ножницы для резки металла" />
+
+	<Item
+		id="item_nippers"
+		locForm="0"
+		value="Кусачки" />
+	
+	<Item
+		id="item_pipe_wrench"
+		locForm="0"
+		value="Шарнирный ключ «КШС»" />
+
+	<Item
+		id="item_pliers"
+		locForm="0"
+		value="Плоскогубцы" />
+
+	<Item
+		id="item_pliers_round"
+		locForm="0"
+		value="Круглогубцы" />
+
+	<Item
+		id="item_ratchet_wrench"
+		locForm="0"
+		value="Трещоточный ключ" />
+
+	<Item
+		id="item_roulet"
+		locForm="0"
+		value="Рулетка" />
+
+	<Item
+		id="item_screw"
+		locForm="0"
+		value="Отвертка" />
+
+	<Item
+		id="item_screw_flat"
+		locForm="0"
+		value="Отвертка плоская" />
+
+	<Item
+		id="item_screw_flat_long"
+		locForm="0"
+		value="Отвертка плоская длинная" />
+
+	<Item
+		id="item_sewing_kit"
+		locForm="0"
+		value="Набор для шитья" />
+
+	<Item
+		id="item_toolset"
+		locForm="0"
+		value="Набор инструментов" />
+
+	<Item
+		id="item_wrench"
+		locForm="0"
+		value="Гаечный ключ" />
+
+
+	<Item
+		id="item_bitcoin"
+		locForm="0"
+		value="Биткоин" />	
+
+	<Item
+		id="item_cat"
+		locForm="0"
+		value="Статуэтка кота" />
+
+	<Item
+		id="item_chain"
+		locForm="0"
+		value="Ювелирная цепочка" />
+
+	<Item
+		id="item_chain_gold"
+		locForm="0"
+		value="Золотая цепочка" />
+
+	<Item
+		id="item_chiken"
+		locForm="0"
+		value="Золотой петух" />
+
+	<Item
+		id="item_ex"
+		locForm="0"
+		value="Монета EX" />
+
+	<Item
+		id="item_lion"
+		locForm="0"
+		value="Бронзовый лев" />
+
+	<Item
+		id="item_rolex"
+		locForm="0"
+		value="Золотые часы" />
+
+	<Item
+		id="item_skullring"
+		locForm="0"
+		value="Золотое кольцо с черепом" />
+
+	<Item
+		id="item_teapon"
+		locForm="0"
+		value="Антикварный чайник" />
+
+	<Item
+		id="item_woodclock"
+		locForm="0"
+		value="Деревянные часы" />
+
+	<Item
+		id="item_vitaly"
+		locForm="0"
+		value="Старинная монета" />
+
+	
+	<Item
+		id="item_quest_search_data"
+		locForm="0"
+		value="Документы" />
+
+	<Item
+		id="quest_item_map_r1m1"
+		locForm="0"
+		value="Карта Края" />
+
+	<Item
+		id="item_quest_box_videocard"
+		locForm="0"
+		value="Груз с видеокартами" />
+
+
+	<Item
+		id="item_ms2000"
+		locForm="0"
+		value="Маркер MS2000" />
+
+
+	<Item
+		id="item_opacity"
+		locForm="0"
+		value="@ffffffff" />
+
+	
+	<Item
+		id="q_testing_mission"
+		locForm="0"
+		value="Проба пера" />
+
+	<Item
+		id="q_search_data"
+		locForm="0"
+		value="Поисковая миссия" />
+
+	<Item
+		id="q_explore_r1m1"
+		locForm="0"
+		value="Разведка местности" />
+
+	<Item
+		id="q_clearing_r1m1"
+		locForm="0"
+		value="Зачистка территории" />
+
+	<Item
+		id="q_kill_scavs"
+		locForm="0"
+		value="Огонь на поражение" />
+
+	<Item
+		id="q_fuel1"
+		locForm="0"
+		value="Топливо - Часть 1" />
+
+	<Item
+		id="q_fuel2"
+		locForm="0"
+		value="Топливо - Часть 2" />
+
+	<Item
+		id="q_base_scavs"
+		locForm="0"
+		value="Это наша территория" />
+
+	<Item
+		id="q_rebuild"
+		locForm="0"
+		value="Ремонт" />
+
+	<Item
+		id="q_test_drive1"
+		locForm="0"
+		value="Тест драйв - Часть 1" />
+
+	<Item
+		id="q_test_drive2"
+		locForm="0"
+		value="Тест драйв - Часть 2" />
+
+	<Item
+		id="q_test_drive3"
+		locForm="0"
+		value="Тест драйв - Часть 3" />
+
+	<Item
+		id="q_test_drive4"
+		locForm="0"
+		value="Тест драйв - Часть 4" />
+
+	<Item
+		id="q_test_drive5"
+		locForm="0"
+		value="Тест драйв - Часть 5" />
+
+	<Item
+		id="q_test_drive6"
+		locForm="0"
+		value="Тест драйв - Часть 6" />
+
+	<Item
+		id="q_test_drive7"
+		locForm="0"
+		value="Тест драйв - Часть 7" />
+
+	<Item
+		id="q_test_drive8"
+		locForm="0"
+		value="Тест драйв - Часть 8" />
+
+	<Item
+		id="q_ural_or_belaz"
+		locForm="0"
+		value="Заманчивое предложение" />
+
+	<Item
+		id="q_naturalist1"
+		locForm="0"
+		value="Натуралист - Часть 1" />
+
+	<Item
+		id="q_naturalist2"
+		locForm="0"
+		value="Натуралист - Часть 2" />
+
+	<Item
+		id="q_naturalist3"
+		locForm="0"
+		value="Натуралист - Часть 3" />
+
+	<Item
+		id="q_naturalist4"
+		locForm="0"
+		value="Натуралист - Часть 4" />
+
+	<Item
+		id="q_naturalist5"
+		locForm="0"
+		value="Натуралист - Часть 5" />
+
+	<Item
+		id="q_belazist1"
+		locForm="0"
+		value="Белазист - Часть 1" />
+
+	<Item
+		id="q_belazist2"
+		locForm="0"
+		value="Белазист - Часть 2" />
+
+	<Item
+		id="q_belazist3"
+		locForm="0"
+		value="Белазист - Часть 3" />
+
+	<Item
+		id="q_belazist4"
+		locForm="0"
+		value="Белазист - Часть 4" />
+
+	<Item
+		id="q_belazist5"
+		locForm="0"
+		value="Белазист - Часть 5" />
+
+	<Item
+		id="q_belazist6"
+		locForm="0"
+		value="Белазист - Часть 6" />
+
+	<Item
+		id="q_belazist7"
+		locForm="0"
+		value="Белазист - Часть 7" />
+
+	<Item
+		id="q_belazist8"
+		locForm="0"
+		value="Белазист - Часть 8" />
+
+	<Item
+		id="q_test_drive9"
+		locForm="0"
+		value="Тест драйв - Часть 9" />
+
+	<Item
+		id="q_test_drive10"
+		locForm="0"
+		value="Тест драйв - Часть 10" />
+
+	<Item
+		id="q_test_drive11"
+		locForm="0"
+		value="Тест драйв - Часть 11" />
+
+	<Item
+		id="q_test_drive12"
+		locForm="0"
+		value="Тест драйв - Часть 12" />
+
+	<Item
+		id="q_test_drive13"
+		locForm="0"
+		value="Тест драйв - Часть 13" />
+
+	<Item
+		id="q_test_drive14"
+		locForm="0"
+		value="Тест драйв - Часть 14" />
+
+	<Item
+		id="q_test_drive15"
+		locForm="0"
+		value="Тест драйв - Часть 15" />
+
+	<Item
+		id="q_bitok1"
+		locForm="0"
+		value="Биток - Часть 1" />
+
+	<Item
+		id="q_bitok2"
+		locForm="0"
+		value="Биток - Часть 2" />
+
+	<Item
+		id="q_bitok3"
+		locForm="0"
+		value="Биток - Часть 3" />
+
+	<Item
+		id="q_turbo"
+		locForm="0"
+		value="Жажда скорости" />
 
 </ModelNames>

@@ -6,7 +6,7 @@
 	<Node
 		name="WeaponInfoList"
 		class="Wnd"
-		org="1836.000 338.000 129.000 68.000"
+		org="1816.000 338.000 129.000 68.000"
 		style="768"
 		order="-1"
 		id="0"
@@ -26,7 +26,7 @@
 		<Node
 			name="WeaponInfoWnd"
 			class="Wnd"
-			org="0.000 22.000 84.000 68.000"
+			org="0.000 22.000 104.000 88.000"
 			style="768"
 			order="-1"
 			id="0"
@@ -46,57 +46,10 @@
 			<Animations/>
 		</Node>
 
-		<!--
-	<Node
-
-	name="wndNoAmmoBg"
-
-	class="ImageWnd"
-
-	org="0.000 16.000 60.000 48.000"
-
-	style="768"
-
-	order="-1"
-
-	id="0"
-
-	caption=""
-
-	tip=""
-
-	backimage=""
-
-	image="data\if\ico\MainGameInterfaceWnd\semiblack.dds"
-
-	paneName="PaneGrayThin"
-
-	scrollPaneName="Scroll1"
-
-	paneFlags="0"
-
-	wrap="2"
-
-	format="1"
-
-	font="0"
-
-	clientEdges="0.000 0.000 0.000 0.000"
-
-	wndColor="00000000"
-
-	textColor="ffffffff"
-
-	textColorDisabled="ff7f7f7f">
-
-	<Animations />
-
-	</Node>
--->
 		<Node
 			name="wndIco"
 			class="ImageWnd"
-			org="17.000 35.000 43.000 43.000"
+			org="17.000 35.000 64.000 64.000"
 			style="768"
 			order="0"
 			id="0"
@@ -120,7 +73,7 @@
 		<Node
 			name="wndAmmo"
 			class="Wnd"
-			org="25.000 59.000 38.000 26.000"
+			org="35.000 74.000 42.000 32.000"
 			style="2816"
 			order="8"
 			id="0"
@@ -135,7 +88,7 @@
 			font="1"
 			clientEdges="0.000 0.000 0.000 0.000"
 			wndColor="00000000"
-			textColor="ffffffff"
+			textColor="ff040404"
 			textColorDisabled="ff7f7f7f">
 			<Animations/>
 		</Node>
@@ -143,7 +96,7 @@
 		<Node
 			name="wndGroup"
 			class="Wnd"
-			org="17.000 59.000 10.000 26.000"
+			org="17.000 27.000 16.000 36.000"
 			style="2816"
 			order="8"
 			id="0"
@@ -154,11 +107,11 @@
 			scrollPaneName="Scroll1"
 			paneFlags="0"
 			wrap="0"
-			format="1"
-			font="1"
+			format="2"
+			font="0"
 			clientEdges="0.000 0.000 0.000 0.000"
 			wndColor="00000000"
-			textColor="ffffdd57"
+			textColor="ffffffff"
 			textColorDisabled="ff7f7f7f">
 			<Animations/>
 		</Node>
@@ -166,7 +119,7 @@
 		<Node
 			name="wndCanShotBg"
 			class="ImageWnd"
-			org="14.000 31.000 49.500 51.000"
+			org="14.000 30.000 68.000 73.000"
 			style="768"
 			order="-1"
 			id="0"
@@ -190,7 +143,7 @@
 		<Node
 			name="wndBg"
 			class="ImageWnd"
-			org="0.000 22.000 84.000 68.000"
+			org="0.000 21.000 104.000 89.000"
 			style="768"
 			order="-1"
 			id="0"
@@ -214,7 +167,7 @@
 		<Node
 			name="wndCharge"
 			class="ProgressBarWnd"
-			org="70.000 28.000 10.000 56.000"
+			org="88.000 28.000 11.000 76.000"
 			style="3840"
 			order="6"
 			id="0"
@@ -234,7 +187,7 @@
 			barColor="ff00ff00"
 			numOfSteps="10"
 			orientation="1"
-			barTexture="data\if\ico\WeaponInfoList\weapon_bar_ready.dds"
+			barTexture="data\if\ico_hd\WeaponInfoList\weapon_bar_ready.dds"
 			textureStyle="1"
 			textStyle="0">
 			<Animations/>
@@ -243,14 +196,14 @@
 		<Node
 			name="wndDecorTop"
 			class="ImageWnd"
-			org="76.000 0.000 11.000 22.000"
+			org="95.000 0.000 11.000 22.000"
 			style="768"
 			order="-1"
 			id="0"
 			caption=""
 			tip=""
 			backimage=""
-			image="data\if\ico\WeaponInfoList\weapon_holder_top.dds"
+			image="data\if\ico_hd\WeaponInfoList\weapon_holder_top.dds"
 			paneName="PaneGrayThin"
 			scrollPaneName="Scroll1"
 			paneFlags="0"
@@ -267,14 +220,14 @@
 		<Node
 			name="wndDecorBottom"
 			class="ImageWnd"
-			org="76.000 107.000 11.000 22.000"
+			org="95.000 107.000 11.000 22.000"
 			style="768"
 			order="-1"
 			id="0"
 			caption=""
 			tip=""
 			backimage=""
-			image="data\if\ico\WeaponInfoList\weapon_holder_bottom.dds"
+			image="data\if\ico_hd\WeaponInfoList\weapon_holder_bottom.dds"
 			paneName="PaneGrayThin"
 			scrollPaneName="Scroll1"
 			paneFlags="0"

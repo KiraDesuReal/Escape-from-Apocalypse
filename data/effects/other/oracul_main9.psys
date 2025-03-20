@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<PSEditor>
+	<PS
+		Name="PS2"
+		Class="Poly">
+		<Emitter
+			ParticleAgeMin="1000.000"
+			ParticleAgeMax="1000.000"
+			MaxParticles="50"
+			EmitAtPeriod="21.000"
+			Phase="0.000"
+			EmitLength="0.100"
+			RepeatPeriod="1000.000"
+			ResetTime="1000.000"
+			LocalStop="1"
+			StopTime="0.300"
+			PhaseMax="0.500" />
+
+		<Force
+			Min="0.000 0.000 0.000"
+			Max="0.000 0.000 0.000"
+			Type="sphere"
+			PosMin="0.000 0.000 0.000"
+			PosMax="0.000 0.000 0.000" />
+
+		<Mesh
+			Enable="1"
+			Points="20"
+			Radius="7.000"
+			Point1="0.000 0.000 0.000"
+			Point2="0.000 0.000 0.000"
+			Forv="1"
+			Back="0" />
+
+		<Keys>
+			<Color
+				k:0="1214820072"
+				k:1="-1"
+				k:2="-1"
+				k:3="-1"
+				k:4="-1"
+				k:5="-1"
+				k:6="-1"
+				k:7="-1"
+				k:8="-1"
+				k:9="-1"
+				k:10="-1"
+				k:11="-1"
+				k:12="-1"
+				k:13="-1"
+				k:14="-6306307"
+				k:15="-1"
+				k:16="-1"
+				k:17="-1"
+				k:18="-1"
+				k:19="929875444" />
+
+			<Size
+				k:0="0.000"
+				k:1="0.446"
+				k:2="0.743"
+				k:3="0.941"
+				k:4="1.040"
+				k:5="0.990"
+				k:6="0.941"
+				k:7="0.891"
+				k:8="0.891"
+				k:9="0.941"
+				k:10="0.792"
+				k:11="0.891"
+				k:12="0.941"
+				k:13="0.941"
+				k:14="0.891"
+				k:15="1.188"
+				k:16="1.238"
+				k:17="1.040"
+				k:18="0.842"
+				k:19="1.089" />
+		</Keys>
+
+		<Render
+			TrailLen="12"
+			ScaleParts="3.500"
+			BlendMode="2"
+			UpdateXForm="1"
+			SpriteAngle="0.000"
+			Orient="0"
+			Texture="data\fx\trail\trail11.tga"
+			Weather="0"
+			TexTiling="0.000"
+			ParentDependency="0.000" />
+
+		<Attr
+			Name="SpaceAttractor3"
+			Class="Space">
+			<Emitter
+				SystemMode="cart"
+				FuncMode="rnd"
+				WorkMode="vel"
+				PeriodX="2.000"
+				PeriodY="2.000"
+				PeriodZ="2.000"
+				Phase="0.000"
+				EmitLength="1.000"
+				RepeatPeriod="1.000"
+				TimeMode="global"
+				EmitterOn="0" />
+
+			<Force
+				Min="0.000 32.000 0.000"
+				Max="0.000 32.000 0.000" />
+		</Attr>
+
+		<Attr
+			Name="RotAttractor3"
+			Class="Rotate">
+			<Emitter
+				WorkMode="vel"
+				Phase="0.000"
+				EmitLength="1.000"
+				RepeatPeriod="1.000"
+				TimeMode="global"
+				EmitterOn="0" />
+
+			<Force
+				Min="0.000 0.000 0.000"
+				Max="0.000 0.000 0.000" />
+		</Attr>
+
+		<Attr
+			Name="PointAttractor4"
+			Class="Point">
+			<Emitter
+				WorkMode="accel"
+				Phase="0.000"
+				EmitLength="1.000"
+				RepeatPeriod="1.000"
+				TimeMode="global" />
+
+			<Force
+				Min="0.000"
+				Max="0.000"
+				Pos="0.000 7.000 0.000" />
+		</Attr>
+	</PS>
+</PSEditor>

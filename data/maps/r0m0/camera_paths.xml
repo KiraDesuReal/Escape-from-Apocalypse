@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes"?>
+<Paths>
+	<Path Name = "start_game">
+		<Point  coord="1659 400 702" rotation="0 0 0 1"/>   
+	</Path>
+
+	<Path Name = "tunel_cam01">
+		<Point  coord="850.208 262.412 1054.428" rotation="-0.042 0.707 -0.042 0.705"/>
+		<Point  coord="844.063 261.678 1054.436" rotation="-0.046 0.706 -0.046 0.705"/> 
+	</Path>
+
+	<Path Name = "credits_cam01">
+		<Point  coord="987.779 259.406 1489.431" rotation="0.042 -0.006 -0.000 0.999"/>
+		<Point  coord="989.611 258.881 1526.612" rotation="-0.001 -0.030 0.000 1.000"/>
+	</Path>
+
+	<Path Name = "credits_cam_player01">
+		<Point  coord="-3 1.15 1.9"/>
+	</Path>
+
+	<Path Name = "credits_cam_player01_1">
+		<Point  coord="-0.5 2.1 1.8" rotation="-0.148 -0.576 0.107 0.797" zoom="2.6"/>
+	</Path>
+
+	<Path Name = "credits_cam_player01_2">
+		<!--<Point  coord="-1.8 1.7 0.1" zoom="2"/>-->
+		<Point  coord="-1.8 1.7 0.6" zoom="2"/>
+	</Path>
+
+	<Path Name = "credits_cam_player01_3">
+		<Point  coord="-0.1 1.85 -1.5" rotation="-0.026 0.717 -0.027 0.696" zoom="2.8"/>
+	</Path>
+
+	<Path Name = "credits_cam_player02">
+		<!--<Point  coord="-0.8 2.3 1.15" rotation="-0.198 -0.545 0.134 0.804" zoom="1.4"/>-->
+		<Point  coord="-0.8 2.3 1.5" rotation="-0.198 -0.545 0.134 0.804" zoom="1.4"/>
+	</Path>
+
+	<Path Name = "credits_cam_player02_1">
+		<!--<Point  coord="-1.8 1.8 0.1" zoom="2"/>-->
+		<Point  coord="-1.8 1.8 0.6" zoom="2"/>
+	</Path>
+
+	<Path Name = "credits_cam_player02_2">
+		<!--<Point  coord="0 2.05 1.25" rotation="-0.075 -0.688 0.072 0.719" zoom="3"/>-->
+		<Point  coord="-0.05 2.05 1.8" rotation="-0.075 -0.688 0.072 0.719" zoom="3"/>
+	</Path>
+
+	<Path Name = "credits_cam_keqing01">
+		<Point  coord="-3 1.5 1.6" zoom="1.5"/>
+	</Path>
+
+	<Path Name = "credits_cam_keqing01_2">
+		<Point  coord="-1.8 1.8 0.7" zoom="3"/>
+	</Path>
+
+	<Path Name = "credits_cam_keqing02">
+		<Point  coord="-0.65 2.35 1.6" rotation="-0.198 -0.545 0.134 0.804" zoom="2"/>
+	</Path>
+
+	<Path Name = "credits_cam_keqing02_1">
+		<Point  coord="-1.8 1.95 0.6" zoom="5"/>
+	</Path>
+
+	<Path Name = "credits_cam_keqing02_2">
+		<Point  coord="0.057 2.01 1.8" rotation="-0.075 -0.688 0.072 0.719" zoom="4"/>
+	</Path>
+
+	<Path Name = "credits_cam_keqing02_3">
+		<Point  coord="0.14 2.08 -1.5" rotation="-0.026 0.717 -0.027 0.696" zoom="4"/>
+	</Path>
+
+	<Path Name = "credits_cam_keqing02_4">
+		<Point  coord="-1.5 1.77 0.72" zoom="3"/>
+	</Path>
+
+	<Path Name = "credits_cam03">
+		<Point  coord="1069.575 313.492 1413.845" rotation="-0.063 0.475 -0.034 0.877"/>
+		<Point  coord="1055.961 310.983 1422.644" rotation="-0.065 0.470 -0.035 0.879"/>
+	</Path>
+
+</Paths>

@@ -11,6 +11,7 @@
 		<Item id="LS_LIGHT_TEST2" file="data/models/lights/test2.xml"/>
 		<Item id="LS_LIGHT_YELLOW" file="data/models/lights/yellow.xml"/>
 		<Item id="LS_LIGHT_RED" file="data/models/lights/red.xml"/>
+		<Item id="LS_LIGHT_GEN_LVL2" file="data/models/lights/gen_lvl2_light.xml"/>
 	</LightsServer>
 
 	<DecalsServer>
@@ -59,6 +60,9 @@
 	<Item id="PS_SUBMARINE_WAVE2"					file="data\Effects\Other\submarine_wave2.psys"/>
 
 <!--lights-->
+		<Item id="PS_BLINK"				file="data\Effects\Lights\blink.psys"/>
+		<Item id="PS_BLINK1"			file="data\Effects\Lights\blink1.psys"/>
+
 		<Item id="PS_LENS_D1"			file="data\Effects\Lights\lens_d1.psys"/>
 		<Item id="PS_LENS_D2"			file="data\Effects\Lights\lens_d2.psys"/>
 		<Item id="PS_LENS_D3"			file="data\Effects\Lights\lens_d3.psys"/>
@@ -66,6 +70,7 @@
 		<Item id="PS_LENS_D5"			file="data\Effects\Lights\lens_d5.psys"/>
 		<Item id="PS_LENS_D6"			file="data\Effects\Lights\lens_d6.psys"/>
 		<Item id="PS_LENS_D7"			file="data\Effects\Lights\lens_d7.psys"/>
+		<Item id="PS_LENS_D8"			file="data\Effects\Lights\lens_d8.psys"/>
 
 		<Item id="PS_LENS_S1"			file="data\Effects\Lights\lens_s1.psys"/>
 		<Item id="PS_LENS_S2"			file="data\Effects\Lights\lens_s2.psys"/>
@@ -131,6 +136,7 @@
 		<Item id="PS_ORACUL_MAIN6"					file="data\Effects\Other\oracul_main6.psys"/>
 		<Item id="PS_ORACUL_MAIN7"					file="data\Effects\Other\oracul_main7.psys"/>
 		<Item id="PS_ORACUL_MAIN8"					file="data\Effects\Other\oracul_main8.psys"/>
+		<Item id="PS_ORACUL_MAIN9"					file="data\Effects\Other\oracul_main9.psys"/>
 
 		<Item id="PS_HOUSE_MED_FIRE_1"				file="data\Effects\Other\house_med_fire_1.psys"/>
 		<Item id="PS_HOUSE_MED_FIRE_2"				file="data\Effects\Other\house_med_fire_2.psys"/>
@@ -174,6 +180,9 @@
 		<Item id="PS_VEN_EXP_SMOKE" 			file="data\Effects\other\ven_exp_smoke.psys"/>
 		<Item id="PS_VEN_EXP_SMOKE1" 			file="data\Effects\other\ven_exp_smoke1.psys"/>
 		<Item id="PS_VEN_EXP_SPARKLE" 		file="data\Effects\venexps\ven_exp_sparkle.psys"/>
+
+		<Item id="PS_AIR_SMOKE"				file="data\Effects\Other\air_smoke.psys"/>
+		<Item id="PS_GREEN_SMOKE"			file="data\Effects\Other\green_smoke.psys"/>
 
 <!--Rockets-->
 		<Item id="PS_ROCKET_BIG_GLOW" 		file="data\Effects\rockets\rocket_big_glow.psys"/>
@@ -597,9 +606,26 @@
 	</SpritesServer>
 
 	<MusicServer>
-		<Item id="mainmenu" />
 
 		<Item id="silence" />
+
+		<Item id="mainmenu" />
+
+		<Item id="music01" />
+		<Item id="music02" />
+		<Item id="music03" />
+		<Item id="music04" />
+		<Item id="music05" />
+		<Item id="music06" />
+		<Item id="music07" />
+		<Item id="music08" />
+		<Item id="music09" />
+		<Item id="music10" />
+		<Item id="music11" />
+		<Item id="music12" />
+
+		<Item id="dungeon01" />
+		<Item id="dungeon02" />
 
 		<!-- Towns -->	
 		<Item id="bar" />
@@ -667,6 +693,7 @@
 		<Item id="Bio06" />
 		<Item id="Bio07unloop" />
 		<Item id="Bio08" />
+		<Item id="Credits01" />
 		<Item id="Death01" />
 		<Item id="Death02" />
 		<Item id="IntenseDialogue01" />

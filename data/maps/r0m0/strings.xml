@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<resource>
+    
+	<string
+		id="90001"
+		value="У вас имеется пустая канистра для топлива.|Желаете её заправить? Это будет стоить 18500 монет."
+		numButtons="2" />
+
+	<string
+		id="90002"
+		value="Вы желаете проехать через туннель?"
+		numButtons="2" />
+
+	<string
+		id="90003"
+		value="Починитесь, перед тем как пересечь туннель!|Кто знает, какие опасности могут ожидать вас по ту сторону."
+		numButtons="1" />
+
+	<string
+		id="90004"
+		value="Escape from Apocalypse||Добро пожаловать в Escape from Apocalypse. EFA - модификация, целью которой является, перенос всех возможных механик и игрового опыта из Escape from Tarkov в Ex Machina. На данный момент модификация находится в разработке, а значит многое может поменяться со временем.||Из за технической сложности модификации, приготовьтесь к тому, что любая нестабильность может привести к вылету игры и, как следствие, откату всего игрового прогресса до последнего сохранения.||Да, вы будете умирать и часто. Помните - это всего лишь игра. Желаем вам удачи!"
+		numButtons="1" />
+
+	<string
+		id="90005"
+		value="Escape from Apocalypse||Данное сохранение несовместимо с текущей версией модификации!||Пожалуйста, начните новую игру."
+		numButtons="1" />
+
+	<string
+		id="90006"
+		value="Escape from Apocalypse||Спасибо что играли в Escape from Apocalypse! Модификация и дальше продолжит своё развитие, одно из таких нововведений, локация Лес - точная копия из Escape from Tarkov. Создание этой локации оказалось настолько время затратной что, оттягивать выпуск модификации не лучшее решение, поэтому EFA вышел лишь с одной стартовой локацией.||Новая локация привнесёт новую территорию для изучения, новые предметы, квесты, торговцы и игровые механики.||Также планируется дорабатывать уже существующие аспекты EFA, такие как, убежище, система крафтов и прочие улучшения игрового процесса.||Помимо этого планируются различные игровые ивенты, приурочены к какому-либо событию, а также для разнообразия игрового процесса. За прохождение ивентов, игрок сможет получать памятные награды, которые будут сохранятся и в последующих версиях EFA.||Следите за дальнейшем развитием EFA на официальных источниках:|GitHub: github.com/KiraDesuReal|Discord: discord.gg/qKK2Efx|Форум Deus Ex Machina: forum.deuswiki.com||Спасибо за игру!"
+		numButtons="1" />
+
+	<string
+		id="90007"
+		value="Вы желаете одолжить машину у Диких?"
+		numButtons="2" />
+
+	<string
+		id="90008"
+		value="Вы хотите вернуть свою машину?"
+		numButtons="2" />
+
+	<string
+		id="90009"
+		value="Escape from Apocalypse||Игровой процесс за Дикого несколько отличается от основного персонажа. Вам выдается случайная машина, со случайным вооружением и снаряжением.||Дальше всё зависит только от вас: Это ваша территория, где вы устанавливаете собственные правила."
+		numButtons="1" />
+
+	<string
+		id="90010"
+		value="Вы не можете пока одолжить машину у Диких."
+		numButtons="1" />
+
+	<string
+		id="90011"
+		value="Вы не можете пока одолжить машину у Диких. Сперва опустошите контейнер с предметами."
+		numButtons="1" />
+
+	<string
+		id="77773"
+		msgType="SCROLL"
+		image="data\if\ico\CinemaPanel\foreground_movie_shade_midle.dds"
+		upOverlay="data\if\ico\CinemaPanel\foreground_movie_shade_up.dds"
+		downOverlay="data\if\ico\CinemaPanel\foreground_movie_shade.dds"
+		time="1" />
+
+	<string
+		id="1"
+		msgType="SCROLL"
+		image="data\if\ico\InventoryDlg\Opacity1.dds"
+		upOverlay="data\if\ico\InventoryDlg\Opacity1.dds"
+		downOverlay="data\if\ico\InventoryDlg\Opacity1.dds"
+		value="@FF0000АААAAAAAAAAAAAAAAAAAAAA@ffffc000Escape from Apocalypse||@FF0000AA||@FF0000АААAAAAAAAAAAAAAAAAAAAAААААА@ffffc000Авторство||@FF0000АААAAAAAAAAAAAAAAAAАА@ffffffffКирилл «KiraDesu» Салтыков||@FF0000AA||@FF0000АААAAAAAAAAAAAAAAААА@ffffc000Заимствование из модификаций||@FF0000АААAAAAAAAAAAAAAAAАAAAA@ffffffffkto mod 5.0 - Xml правки|@FF0000АААAAAAAAAAAAAAAAAAAA@ffffffffBooster Mod - Зимние ассеты|@FF0000АААAAAAAAAAAAAAAАА@ffffffffImproved Storyline - Маски персонажей||@FF0000AA||@FF0000ААAАAАААААААААААААААААААА@ffffc000Escape from Tarkov||@FF0000АААAAAAAAАААААААААААААААААААА@ffffffffМузыка|@FF0000АААAAAAAAААААААААААААААААААААА@ffffffffЗвуки|@FF0000АААAAAAAAААААААААААААААААААААА@ffffffffСтиль|@FF0000АААAAAAAAАААААААААААААААААААА@ffffffffДизайн||@FF0000AA||@FF0000ААAАAAAAAAAAAAAAAAAAAAAAAAАА@ffffc0003D Модели||@FF0000ААAАAAAAAAAAAAAAAAAAAAAAAAAAА@ffffffffИсточник|@FF0000ААAАAAAAAAAAAAAAAAAAAAAAAAA@ffffffffsketchfab.com"
+		fontSize="24"
+		scrollSpeed="2.75"
+		time="21.8" />
+		
+	<string
+		id="2"
+		msgType="SCROLL"
+		image="data\if\ico\InventoryDlg\Opacity1.dds"
+		upOverlay="data\if\ico\InventoryDlg\Opacity1.dds"
+		downOverlay="data\if\ico\InventoryDlg\Opacity1.dds"
+		value="@FF0000АААAAAAAAAAAAA@ffffc000Музыка||@FF0000АААAAAAAAA@ffffffffFrontier - Geneburn|@FF0000АААAAAAA@ffffffffComprehend - Geneburn|@FF0000АААAAAAAA@ffffffffDesolated - Geneburn|@FF0000АААAAAAA@ffffffffDark Horizon - Geneburn|@FF0000АААAAAAAAA@ffffffffBetrayal - Geneburn|@FF0000АААAAAAAAA@ffffffffEclipse - Geneburn|@FF0000АААAAA@ffffffffPrepare for Escape - Geneburn|@FF0000АААAAAAAA@ffffffffCountdown - Geneburn|@FF0000АААAAA@ffffffffThe Blood We Spill - Geneburn|@FF0000АААAAAAAAAA@ffffffffEchoes - Geneburn|@FF0000АААAA@ffffffffRules of Engagement - Geneburn|@FF0000АААAAAAAAAA@ffffffffDenial - Geneburn||@FF0000АAAAAA@ffffffffAgainst All Odds - Yu-Peng Chen||@FF0000АААAAAAAAAA@ffffffffFukashigi no Karte||@FF0000AA||@FF0000АААAAAAAAAAA@ffffc000Тестирование||@FF0000ААAAAA@ffffffffДмитрий «MONOLIT» Дьячков|@FF0000ААAAAAAA@ffffffffИлья «Gusak» Астафьев||@FF0000AA||@FF0000АААAAAAAAA@ffffc000Отдельное спасибо:||@FF0000АААAA@ffffffffАнна «FitaNyashka» Бондаренко||@FF0000ААAAAA@ffffffffСообществу Deus Ex Machina|@FF0000АААAAAAAAA@ffffffffdiscord.gg/qKK2Efx||@FF0000ААAAAAAAA@ffffffffВики Deus Ex Machina|@FF0000АААAAAAAAAAA@ffffffffdeuswiki.com||@FF0000ААAAAAАA@ffffffffФоруму Deus Ex Machina|@FF0000АААAAAAAAA@ffffffffforum.deuswiki.com||@FF0000ААAA@ffffffffЗа базу информации по Ex Machina||@FF0000АAAAAA@ffffffffА также всем Компатчерам за|@ffffffffпрекрастный Community Patch / Remaster||@FF0000АA||@FF0000АAАAАА@ffffc000Скачать модификацию можно|@FF0000АAАAААААА@ffffc000также на этих ресурсах||@FF0000АААAAAAAAA@ffffffffdiscord.gg/qKK2Efx|@FF0000АААAAAAAAA@ffffffffforum.deuswiki.com|@FF0000АААAAAAА@ffffffffgithub.com/KiraDesuReal||@FF0000АA||@FF0000АAАA@ffffc000Ex Machina: Escape from Apocalypse||@FF0000ААAAAAAAAA@ffffc000Команда разработки|@FF0000ААAAAААААА@ffffc000NYAN~NYAN Games"
+		fontSize="24"
+		scrollSpeed="2.23"
+		time="40.6" />
+
+	<string
+		id="3"
+		msgType="SCROLL"
+		image="data\if\ico\InventoryDlg\Opacity1.dds"
+		upOverlay="data\if\ico\InventoryDlg\Opacity1.dds"
+		downOverlay="data\if\ico\InventoryDlg\Opacity1.dds"
+		value="@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffc000Community Patch / Remaster||@FF0000АА||@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffc000Команда разработки||@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffАлександр «Seel» Парфененков|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffАлександр «ThePlain» Фатеев|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffАлексей «__nEmPoBu4__» Смирнов|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffАнна Жукова|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffАнтон Попов|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffВладислав «OverLine» Курочкин|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffДмитрий «Гном» Сащенко|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffИван «ICAS-14» Черепанов|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffЛеонид «KoYoT» Кочетов|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffМаксим «Spok» Бердников|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffМарк «Apocalypse007» Малыгин|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffНик «EL_BIBIKA» Кононенко|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffПавел «pavlikrpg» Иванов|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffСерафим «Varisane» Шагин||@FF0000АА||@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffc000Экспертный совет||@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffBuba|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffOracle|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffRusya_27|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffЛеонид «KoYoT» Кочетов|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffСемимахов||@FF0000АА||@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffc000Тестирование||@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffSuslo Red|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffИван «MrKarfen» Атаманов|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffСемён «Omezera» Озерицкий|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffPushistik_7977|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffAnarxolis|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffScorpyX|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffАлександр192|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffTerorchat"
+		fontSize="24"
+		scrollSpeed="2.45"
+		time="29.7" />
+
+	<string
+		id="4"
+		msgType="SCROLL"
+		image="data\if\ico\InventoryDlg\Opacity1.dds"
+		upOverlay="data\if\ico\InventoryDlg\Opacity1.dds"
+		downOverlay="data\if\ico\InventoryDlg\Opacity1.dds"
+		value="@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffc000Отдельное спасибо:||@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffСообществу Deus Ex Machina|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffdiscord.gg/qKK2Efx||@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffСообществу EM2ch|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffvk.com/em2ch||@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffПаблику Ex Machina Вконтакте|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffvk.com/exmachina2||@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffc000А также:||@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffЗрителям канала «Павлик RPG»||@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffНашим жёнам, девушкам, родственникам|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffи кошкам, которые терпели нас|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffво время разработки||@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffВсем тем, кто ждал|@FF0000АААAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@ffffffffи поддерживал этот проект"
+		fontSize="24"
+		scrollSpeed="5.3"
+		time="1" />
+	
+</resource>

@@ -78,7 +78,7 @@
     <br>
     <b>Актуальная версия:</b>
     <br><br/>
-    <a href="https://github.com/KiraDesuReal/Escape-from-Apocalypse/releases/tag/0.9-250320">
+    <a href="https://github.com/KiraDesuReal/Escape-from-Apocalypse/releases/tag/v0.9-250320">
         <img src="assets/git_assets/b_download.png" alt="download" width="250">
     </a>
 </div>
@@ -88,7 +88,7 @@
 **Описание установки:**
 
 1. Установить `Community Remaster` со `всеми дополнительными опциями` по инструкции с [этой](https://github.com/DeusExMachinaTeam/EM-CommunityPatch/blob/main/README.md) страницы
-2. В `Community Mod Manager (commod.exe)` на вкладке `Моды` нажмите `Добавить мод` и укажите архив, который вы скачали [отсюда](https://github.com/KiraDesuReal/Escape-from-Apocalypse/releases/tag/0.9-250320)
+2. В `Community Mod Manager (commod.exe)` на вкладке `Моды` нажмите `Добавить мод` и укажите архив, который вы скачали [отсюда](https://github.com/KiraDesuReal/Escape-from-Apocalypse/releases/tag/v0.9-250320)
 3. После его появления в списке модов нажмите `Распаковать`
 4. После распаковки нажмите `Установить` и следуйте инструкциям мод-менеджера
 5. Приятной игры

@@ -3176,6 +3176,9 @@
 				TActivate("trQuestsForCredits")
 			end
 
+			local plf = GetPlayerVehicle()
+			if plf then plf:SetNameFromScript("PlayerCar") end
+
 			SetCameraBehindPlayerVehicle()
 		</script>
 	</trigger>

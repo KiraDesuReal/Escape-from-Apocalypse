@@ -674,50 +674,78 @@
 			end
 			
 			if Workshop and CabAndBasket then
+				CabAndBasket:AddItems("bugCab01", 1)
 				if IsQuestComplete("q_explore_r1m1") then CabAndBasket:AddItems("bugCab02", 1) end
 				if IsQuestComplete("q_fuel1") then CabAndBasket:AddItems("bugCab03", 1) end
 
+				CabAndBasket:AddItems("bugCargo01_4x5", 1)
+				CabAndBasket:AddItems("bugCargo02_4x6", 1)
 				if IsQuestComplete("q_clearing_r1m1") then CabAndBasket:AddItems("bugCargo03_5x7", 1) end
-
+				
+				CabAndBasket:AddItems("molokovozCab01", 1)
+				CabAndBasket:AddItems("molokovozCab02", 1)
 				if IsQuestComplete("q_test_drive1") then CabAndBasket:AddItems("molokovozCab03", 1) end
 
+				CabAndBasket:AddItems("molokovozCargo01_5x8", 1)
 				if IsQuestComplete("q_test_drive2") then CabAndBasket:AddItems("molokovozCargo02_6x9", 1) end
 				if IsQuestComplete("q_test_drive3") then CabAndBasket:AddItems("molokovozCargo03_6x8", 1) end
 
+				CabAndBasket:AddItems("uralCab01", 1)
+				CabAndBasket:AddItems("uralCab02", 1)
 				if IsQuestComplete("q_naturalist2") or IsQuestComplete("q_belazist2") then CabAndBasket:AddItems("uralCab03", 1) end
 				if IsQuestComplete("q_test_drive8") then CabAndBasket:AddItems("uralCab04", 1) end
 				if IsQuestComplete("q_naturalist4") or IsQuestComplete("q_belazist4") then CabAndBasket:AddItems("uralCab05", 1) end
 
+				CabAndBasket:AddItems("uralCargo01_6x9", 1)
 				if IsQuestComplete("q_test_drive6") then CabAndBasket:AddItems("uralCargo02_7x9", 1) end
 				if IsQuestComplete("q_naturalist3") or IsQuestComplete("q_belazist3") then CabAndBasket:AddItems("uralCargo03_9x10", 1) end
 				if IsQuestComplete("q_test_drive7") then CabAndBasket:AddItems("uralCargo04_7x10", 1) end
 				if IsQuestComplete("q_naturalist1") or IsQuestComplete("q_belazist1") then CabAndBasket:AddItems("uralCargo05_8x9", 1) end 
 
+				CabAndBasket:AddItems("belazCab01", 1)
 				if IsQuestComplete("q_naturalist1") or IsQuestComplete("q_belazist1") then CabAndBasket:AddItems("belazCab02", 1) end
 				if IsQuestComplete("q_naturalist4") or IsQuestComplete("q_belazist3") then CabAndBasket:AddItems("belazCab03", 1) end
 				if IsQuestComplete("q_naturalist3") or IsQuestComplete("q_belazist2") then CabAndBasket:AddItems("belazCab04", 1) end
 				if IsQuestComplete("q_naturalist5") or IsQuestComplete("q_belazist6") then CabAndBasket:AddItems("belazCab05", 1) end
 
+				CabAndBasket:AddItems("belazCargo01_6x12", 1)
 				if IsQuestComplete("q_naturalist1") or IsQuestComplete("q_belazist1") then CabAndBasket:AddItems("belazCargo02_8x11", 1) end
 				if IsQuestComplete("q_naturalist5") or IsQuestComplete("q_belazist5") then CabAndBasket:AddItems("belazCargo03_11x12", 1) end
 				if IsQuestComplete("q_naturalist5") or IsQuestComplete("q_belazist4") then CabAndBasket:AddItems("belazCargo04_6x10", 1) end
 				if IsQuestComplete("q_naturalist2") or IsQuestComplete("q_belazist2") then CabAndBasket:AddItems("belazCargo05_9x10", 1) end
 
+				CabAndBasket:AddItems("mirotvorecCab01", 1)
+				CabAndBasket:AddItems("mirotvorecCab02", 1)
 				if IsQuestComplete("q_belazist8") or IsQuestComplete("q_test_drive10") then CabAndBasket:AddItems("mirotvorecCab03", 1) end
 				if IsQuestComplete("q_test_drive9") then CabAndBasket:AddItems("mirotvorecCab04", 1) end
 				if IsQuestComplete("q_test_drive12") then CabAndBasket:AddItems("mirotvorecCab05", 1) end
 
+				CabAndBasket:AddItems("mirotvorecCargo01_7x9", 1)
+				CabAndBasket:AddItems("mirotvorecCargo02_7x10", 1)
 				if IsQuestComplete("q_belazist8") or IsQuestComplete("q_test_drive10") then CabAndBasket:AddItems("mirotvorecCargo03_8x10", 1) end
 				if IsQuestComplete("q_test_drive9") then CabAndBasket:AddItems("mirotvorecCargo04_7x10", 1) end
 				if IsQuestComplete("q_test_drive11") then CabAndBasket:AddItems("mirotvorecCargo05_9x11", 1) end
 
+				CabAndBasket:AddItems("cruiserCab01", 1)
 				if IsQuestComplete("q_test_drive14") then CabAndBasket:AddItems("cruiserCab02", 1) end
 
+				CabAndBasket:AddItems("cruiserCargo01_8x11", 1)
 				if IsQuestComplete("q_test_drive14") then CabAndBasket:AddItems("cruiserCargo02_8x12", 1) end
 			end
 
 			if Shop and GunAndGadget then
 				GunAndGadget:AddItems("hornet01", random(0,2))
+				GunAndGadget:AddItems("cooling_system_guns", 1)
+				GunAndGadget:AddItems("firing_rate_guns", 1)
+				GunAndGadget:AddItems("grouping_angle_guns", 1)
+				GunAndGadget:AddItems("add_damage_guns", 1)
+				GunAndGadget:AddItems("firing_range_guns", 1)
+				GunAndGadget:AddItems("additional_fuel_tank", 1)
+				GunAndGadget:AddItems("additional_torque", 1)
+				GunAndGadget:AddItems("additional_durability", 1)
+				GunAndGadget:AddItems("additional_stability", 1)
+				GunAndGadget:AddItems("ammo_chest_machinegunForSale", 1)
+				GunAndGadget:AddItems("ammo_chest_shotgunForSale", 1)
 				if IsQuestComplete("q_clearing_r1m1") then GunAndGadget:AddItems("ammo_chest_machinegunForSale", 1) end
 				if IsQuestComplete("q_kill_scavs") then GunAndGadget:AddItems("pkt01", 1) end
 				if IsQuestComplete("q_fuel2") then GunAndGadget:AddItems("kord01", 1) end
@@ -4221,7 +4249,7 @@
 			trigger:Deactivate()
 		</script>
 	</trigger>
-
+	
 <!--
 **************************************************************************************************
 ** ÊÂÅÑÒÛ

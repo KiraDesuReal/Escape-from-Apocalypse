@@ -105,6 +105,11 @@ if SCAV_CARMA_GLOBAL == nil then
 	SCAV_CARMA_GLOBAL = "0.00"
 end
 
+-- Дебаг
+if DEBUG == nil then
+	DEBUG = 0
+end
+
 -- Рандомизируем пушки ботам 
 function GiveGunsForVehicle(vehicle, side_random)
 	local veh=vehicle
@@ -1203,6 +1208,19 @@ function ObjUnderAttack(ObjTarget, ObjAttack)
 			end
 		end
 	end 
+end
+
+-- Включение дебаг отладки
+function Debug(num)
+	if num == nil then num = 1 end
+
+	if num == 0 then
+		DEBUG = 0
+		println("Debug: OFF")
+	else
+		DEBUG = 1
+		println("Debug: ON")
+	end
 end
 
 

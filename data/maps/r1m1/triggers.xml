@@ -194,6 +194,15 @@
 				map()
 				SetVar("Map", 1)
 			end
+
+			if DEBUG == 1 then
+				println("START MAP: r1m1")
+				println("RAID: "..GetVar("CountRaids").AsInt)
+				println("PLAYER BELONG: "..GetVar("PlayerBelong").AsString)
+				LOG("START MAP: r1m1")
+				LOG("RAID: "..GetVar("CountRaids").AsInt)
+				LOG("PLAYER BELONG: "..GetVar("PlayerBelong").AsString)
+			end
 		</script>
 	</trigger>
 
@@ -295,13 +304,13 @@
 			if vehPlayer then
 				vehPlayer:setImmortalMode(1)
 				if GetVar("PlayerBelong").AsString == "SCAV" then
-					vehPlayer:SetNameFromScript("ScavCarForPlayer")
+					vehPlayer:SetNameFromScript("ScavCarForPlayer_InRaid")
 					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
-					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "ScavCarForPlayer")
+					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "ScavCarForPlayer_InRaid")
 				else
-					vehPlayer:SetNameFromScript("PlayerCar")
+					vehPlayer:SetNameFromScript("PlayerCar_InRaid")
 					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
-					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "PlayerCar")
+					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "PlayerCar_InRaid")
 				end
 			end
 			TActivate("FakePlayerDead")
@@ -378,7 +387,7 @@
 				CVector(1682.261, 298.439, 3438.135),
 				CVector(1123.300, 291.430, 3159.539),
 				CVector(2152.141, 315.074, 3580.439),
-				CVector(1752.767, 293.082, 2798.231),
+				CVector(1724.581, 287.790, 2807.061),
 				CVector(2331.947, 337.677, 2469.048),
 				CVector(1625.450, 318.769, 2383.752),
 				CVector(3139.961, 356.520, 3144.354),
@@ -392,7 +401,7 @@
 				CVector(474.234, 314.937, 1476.468),
 				CVector(837.313, 281.698, 631.074),
 				CVector(1803.762, 303.403, 489.376),
-				CVector(2393.522, 303.432, 976.278),
+				CVector(2289.344, 303.686, 993.879),
 				CVector(2634.281, 320.436, 907.682),
 				CVector(3487.845, 324.339, 748.105),
 				CVector(3225.707, 320.430, 1334.481)}
@@ -465,13 +474,13 @@
 					end
 				end
 				if GetVar("PlayerBelong").AsString == "SCAV" then
-					vehPlayer:SetNameFromScript("ScavCarForPlayer")
+					vehPlayer:SetNameFromScript("ScavCarForPlayer_InRaid")
 					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
-					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "ScavCarForPlayer")
+					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "ScavCarForPlayer_InRaid")
 				else
-					vehPlayer:SetNameFromScript("PlayerCar")
+					vehPlayer:SetNameFromScript("PlayerCar_InRaid")
 					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
-					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "PlayerCar")
+					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "PlayerCar_InRaid")
 				end
 				vehPlayer:SetThrottle(0)
 				vehPlayer:SetCustomLinearVelocity(0)
@@ -1199,7 +1208,6 @@
 				getObj("ScavInLocation01_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc1_vehicle_0")
 			end
 
-			SetVar("CountScav_1_loc", 0)
 			TActivate("SpawnScavsInLocation01_Restart")
 			TDeactivate("SpawnScavsInLocation01_Enters")
 			TDeactivate("SpawnScavsInLocation01_Leaves")
@@ -1249,7 +1257,6 @@
 				getObj("ScavInLocation01_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc1_vehicle_0")
 			end
 
-			TActivate("SpawnScavsInLocation01_Enters")
 			SetVar("CountScav_1_loc", 0)
 			trigger:Deactivate()
 		</script>
@@ -1277,6 +1284,7 @@
 
 			if l == count then
 				TActivate("ScavInLocation01_Remove")
+				TActivate("SpawnScavsInLocation01_Enters")
 				trigger:Deactivate()
 			end
 		</script>
@@ -1376,7 +1384,6 @@
 				getObj("ScavInLocation02_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc2_vehicle_0")
 			end
 
-			SetVar("CountScav_2_loc", 0)
 			TActivate("SpawnScavsInLocation02_Restart")
 			TDeactivate("SpawnScavsInLocation02_Enters")
 			TDeactivate("SpawnScavsInLocation02_Leaves")
@@ -1426,7 +1433,6 @@
 				getObj("ScavInLocation02_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc2_vehicle_0")
 			end
 
-			TActivate("SpawnScavsInLocation02_Enters")
 			SetVar("CountScav_2_loc", 0)
 			trigger:Deactivate()
 		</script>
@@ -1454,6 +1460,7 @@
 
 			if l == count then
 				TActivate("ScavInLocation02_Remove")
+				TActivate("SpawnScavsInLocation02_Enters")
 				trigger:Deactivate()
 			end
 		</script>
@@ -1557,7 +1564,6 @@
 				getObj("ScavInLocation03_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc3_vehicle_0")
 			end
 
-			SetVar("CountScav_3_loc", 0)
 			TActivate("SpawnScavsInLocation03_Restart")
 			TDeactivate("SpawnScavsInLocation03_Enters")
 			TDeactivate("SpawnScavsInLocation03_Leaves")
@@ -1607,7 +1613,6 @@
 				getObj("ScavInLocation03_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc3_vehicle_0")
 			end
 
-			TActivate("SpawnScavsInLocation03_Enters")
 			SetVar("CountScav_3_loc", 0)
 			trigger:Deactivate()
 		</script>
@@ -1635,6 +1640,7 @@
 
 			if l == count then
 				TActivate("ScavInLocation03_Remove")
+				TActivate("SpawnScavsInLocation03_Enters")
 				trigger:Deactivate()
 			end
 		</script>
@@ -1733,7 +1739,6 @@
 				getObj("ScavInLocation04_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc4_vehicle_0")
 			end
 
-			SetVar("CountScav_4_loc", 0)
 			TActivate("SpawnScavsInLocation04_Restart")
 			TDeactivate("SpawnScavsInLocation04_Enters")
 			TDeactivate("SpawnScavsInLocation04_Leaves")
@@ -1783,7 +1788,6 @@
 				getObj("ScavInLocation04_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc4_vehicle_0")
 			end
 
-			TActivate("SpawnScavsInLocation04_Enters")
 			SetVar("CountScav_4_loc", 0)
 			trigger:Deactivate()
 		</script>
@@ -1811,6 +1815,7 @@
 
 			if l == count then
 				TActivate("ScavInLocation04_Remove")
+				TActivate("SpawnScavsInLocation04_Enters")
 				trigger:Deactivate()
 			end
 		</script>
@@ -1911,7 +1916,6 @@
 				getObj("ScavInLocation05_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc5_vehicle_0")
 			end
 
-			SetVar("CountScav_5_loc", 0)
 			TActivate("SpawnScavsInLocation05_Restart")
 			TDeactivate("SpawnScavsInLocation05_Enters")
 			TDeactivate("SpawnScavsInLocation05_Leaves")
@@ -1961,7 +1965,6 @@
 				getObj("ScavInLocation05_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc5_vehicle_0")
 			end
 
-			TActivate("SpawnScavsInLocation05_Enters")
 			SetVar("CountScav_5_loc", 0)
 			trigger:Deactivate()
 		</script>
@@ -1988,6 +1991,7 @@
 			end
 
 			if l == count then
+				TActivate("SpawnScavsInLocation05_Enters")
 				TActivate("ScavInLocation05_Remove")
 				trigger:Deactivate()
 			end
@@ -2099,7 +2103,6 @@
 				getObj("ScavInLocation06_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc6_vehicle_0")
 			end
 
-			SetVar("CountScav_6_loc", 0)
 			TActivate("SpawnScavsInLocation06_Restart")
 			TDeactivate("SpawnScavsInLocation06_Enters")
 			TDeactivate("SpawnScavsInLocation06_Leaves")
@@ -2149,7 +2152,6 @@
 				getObj("ScavInLocation06_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc6_vehicle_0")
 			end
 
-			TActivate("SpawnScavsInLocation06_Enters")
 			SetVar("CountScav_6_loc", 0)
 			trigger:Deactivate()
 		</script>
@@ -2177,6 +2179,7 @@
 
 			if l == count then
 				TActivate("ScavInLocation06_Remove")
+				TActivate("SpawnScavsInLocation06_Enters")
 				trigger:Deactivate()
 			end
 		</script>
@@ -2281,7 +2284,6 @@
 				getObj("ScavInLocation07_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc7_vehicle_0")
 			end
 
-			SetVar("CountScav_7_loc", 0)
 			TActivate("SpawnScavsInLocation07_Restart")
 			TDeactivate("SpawnScavsInLocation07_Enters")
 			TDeactivate("SpawnScavsInLocation07_Leaves")
@@ -2331,7 +2333,6 @@
 				getObj("ScavInLocation07_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc7_vehicle_0")
 			end
 
-			TActivate("SpawnScavsInLocation07_Enters")
 			SetVar("CountScav_7_loc", 0)
 			trigger:Deactivate()
 		</script>
@@ -2359,6 +2360,7 @@
 
 			if l == count then
 				TActivate("ScavInLocation07_Remove")
+				TActivate("SpawnScavsInLocation07_Enters")
 				trigger:Deactivate()
 			end
 		</script>
@@ -2467,7 +2469,6 @@
 				getObj("ScavInLocation08_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc8_vehicle_0")
 			end
 
-			SetVar("CountScav_8_loc", 0)
 			TActivate("SpawnScavsInLocation08_Restart")
 			TDeactivate("SpawnScavsInLocation08_Enters")
 			TDeactivate("SpawnScavsInLocation08_Leaves")
@@ -2517,7 +2518,6 @@
 				getObj("ScavInLocation08_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc8_vehicle_0")
 			end
 
-			TActivate("SpawnScavsInLocation08_Enters")
 			SetVar("CountScav_8_loc", 0)
 			trigger:Deactivate()
 		</script>
@@ -2545,6 +2545,7 @@
 
 			if l == count then
 				TActivate("ScavInLocation08_Remove")
+				TActivate("SpawnScavsInLocation08_Enters")
 				trigger:Deactivate()
 			end
 		</script>
@@ -3808,27 +3809,27 @@
 
 			if sp == 1 then
 				if pl_pos1 == 1 then
-					pos1_pmc = {CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
+					pos1_pmc = {CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1724.581, 287.790, 2807.061),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
 				elseif pl_pos1 == 2 then
-					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
+					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1724.581, 287.790, 2807.061),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
 				elseif pl_pos1 == 3 then
-					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
+					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1724.581, 287.790, 2807.061),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
 				elseif pl_pos1 == 4 then
-					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
+					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(2152.141, 315.074, 3580.439),CVector(1724.581, 287.790, 2807.061),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
 				elseif pl_pos1 == 5 then
-					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
+					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(1724.581, 287.790, 2807.061),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
 				elseif pl_pos1 == 6 then
 					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
 				elseif pl_pos1 == 7 then
-					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
+					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1724.581, 287.790, 2807.061),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
 				elseif pl_pos1 == 8 then
-					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
+					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1724.581, 287.790, 2807.061),CVector(2331.947, 337.677, 2469.048),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
 				elseif pl_pos1 == 9 then
-					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3075.630, 357.404, 3489.001)}
+					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1724.581, 287.790, 2807.061),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3075.630, 357.404, 3489.001)}
 				elseif pl_pos1 == 10 then
-					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354)}
+					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1724.581, 287.790, 2807.061),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354)}
 				else
-					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
+					pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1724.581, 287.790, 2807.061),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
 				end
 
 				if pl_pos1 >= 1 then
@@ -3845,32 +3846,32 @@
 					pos2_count_pmc = random(2,4)
 				end
 
-				pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
+				pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2289.344, 303.686, 993.879),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
 				paths_pos2 = shuffled_range_take (pos2_count_pmc, 1, 10)
 	
 			elseif sp == 2 then
 				if pl_pos2 == 1 then
-					pos2_pmc = {CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
+					pos2_pmc = {CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2289.344, 303.686, 993.879),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
 				elseif pl_pos2 == 2 then
-					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
+					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2289.344, 303.686, 993.879),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
 				elseif pl_pos2 == 3 then
-					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
+					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2289.344, 303.686, 993.879),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
 				elseif pl_pos2 == 4 then
-					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
+					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2289.344, 303.686, 993.879),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
 				elseif pl_pos2 == 5 then
-					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
+					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(1803.762, 303.403, 489.376),CVector(2289.344, 303.686, 993.879),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
 				elseif pl_pos2 == 6 then
-					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
+					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(2289.344, 303.686, 993.879),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
 				elseif pl_pos2 == 7 then
 					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
 				elseif pl_pos2 == 8 then
-					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
+					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2289.344, 303.686, 993.879),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
 				elseif pl_pos2 == 9 then
-					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3225.707, 320.430, 1334.481)}
+					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2289.344, 303.686, 993.879),CVector(2634.281, 320.436, 907.682),CVector(3225.707, 320.430, 1334.481)}
 				elseif pl_pos2 == 10 then
-					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105)}
+					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2289.344, 303.686, 993.879),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105)}
 				else	
-					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2393.522, 303.432, 976.278),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
+					pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2289.344, 303.686, 993.879),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
 				end
 
 				if pl_pos2 >= 1 then
@@ -3887,7 +3888,7 @@
 					pos1_count_pmc = random(2,4)
 				end
 
-				pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1752.767, 293.082, 2798.231),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
+				pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1724.581, 287.790, 2807.061),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
 				paths_pos1 = shuffled_range_take (pos1_count_pmc, 1, 10)
 			end
 
@@ -4005,9 +4006,6 @@
 				end
 			end
 			
-			--println("PMCspawn1_"..pos1_count_pmc)
-			--println("PMCspawn2_"..pos2_count_pmc)
-
 			TActivate("PMC_To_Exits_loc")
 
 			TActivate("TpBirge_1")
@@ -4136,6 +4134,7 @@
 			TDeactivate("TActivTpBirge")
 			TDeactivate("PMC_To_Exits_loc")
 			TDeactivate("PMC_UnderAttack")
+			if DEBUG == 1 then println("ALL PMC DIE") LOG("ALL PMC DIE") end
 			trigger:Deactivate() 
 		</script>
 	</trigger>
@@ -4151,7 +4150,7 @@
 		<script>
 			if GetVar("LastUnderAttack").AsInt == 1100 then
 				SetVar("PlayerKillPMC", GetVar("PlayerKillPMC").AsInt+1)
-				--println("PLAYER PMC KILL: "..GetVar("PlayerKillPMC").AsInt)
+				if DEBUG == 1 then println("PLAYER PMC KILL: "..GetVar("PlayerKillPMC").AsInt) LOG("PLAYER PMC KILL: "..GetVar("PlayerKillPMC").AsInt) end
 				SetVar("LastUnderAttack", 0)
 				if GetVar("PlayerBelong").AsString == "SCAV" then 
 					SetVar("ScavCarma", GetVar("ScavCarma").AsString + 0.2) 
@@ -4159,7 +4158,7 @@
 					TActivate("KillsPMC") 
 				end
 			else
-				--println("PMC KILL: "..GetVar("LastUnderAttack").AsInt)
+				if DEBUG == 1 then println("PMC KILL: "..GetVar("LastUnderAttack").AsInt) LOG("PMC KILL: "..GetVar("LastUnderAttack").AsInt) end 
 			end
 			trigger:Deactivate() 
 		</script>
@@ -4268,6 +4267,7 @@
 		
 			TDeactivate("Scavs_Reached")
 			TDeactivate("Scavs_UnderAttack")
+			if DEBUG == 1 then println("ALL SCAV DIE") LOG("ALL SCAV DIE") end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4283,7 +4283,7 @@
 		<script>
 			if GetVar("LastUnderAttack").AsInt == 1100 then
 				SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
-				--println("PLAYER SCAV KILL: "..GetVar("PlayerKillScavs").AsInt)
+				if DEBUG == 1 then println("PLAYER SCAV KILL: "..GetVar("PlayerKillScavs").AsInt) LOG("PLAYER SCAV KILL: "..GetVar("PlayerKillScavs").AsInt) end
 				SetVar("LastUnderAttack", 0)
 				if GetVar("PlayerBelong").AsString == "SCAV" then 
 					SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.2) 
@@ -4291,7 +4291,7 @@
 					TActivate("KillsScavs") 
 				end
 			else
-				--println("SCAV KILL: "..GetVar("LastUnderAttack").AsInt)
+				if DEBUG == 1 then println("SCAV KILL: "..GetVar("LastUnderAttack").AsInt) LOG("SCAV KILL: "..GetVar("LastUnderAttack").AsInt) end
 			end
 			trigger:Deactivate() 
 		</script>
@@ -4362,10 +4362,7 @@
 
 			--удаление диких на локациях
 			for loc=1,8 do
-				if not(GetVar("CountScav_"..loc.."_loc").AsInt == 0) then
-					TActivate("ScavInLocation0"..loc.."_Remove")
-				end
-
+				TActivate("ScavInLocation0"..loc.."_Remove")
 				TDeactivate("SpawnScavsInLocation0"..loc)
 				TDeactivate("ScavInLocation0"..loc.."_Die")
 				TDeactivate("SpawnScavsInLocation0"..loc.."_Restart")
@@ -4567,6 +4564,19 @@
 			end
 
 			SetTolerance(1087, 1100, RS_ENEMY)
+
+			if DEBUG == 1 then
+				println("EXIT MAP: r1m1")
+				println("PLAYER BELONG: "..GetVar("PlayerBelong").AsString)
+				println("SCAV CARMA: "..GetVar("ScavCarma").AsString)
+				println("PLAYER SCAV KILL: "..GetVar("PlayerKillScavs").AsInt)
+				println("PLAYER PMC KILL: "..GetVar("PlayerKillPMC").AsInt)
+				LOG("EXIT MAP: r1m1")
+				LOG("PLAYER BELONG: "..GetVar("PlayerBelong").AsString)
+				LOG("SCAV CARMA: "..GetVar("ScavCarma").AsString)
+				LOG("PLAYER SCAV KILL: "..GetVar("PlayerKillScavs").AsInt)
+				LOG("PLAYER PMC KILL: "..GetVar("PlayerKillPMC").AsInt)
+			end
 
 			trigger:Deactivate()
 		</script>

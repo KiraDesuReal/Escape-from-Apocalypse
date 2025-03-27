@@ -10569,7 +10569,7 @@
 		name="Dlg_pl_buyer_2"
 		text="Хочу попросить помощь у Диких."
 		role="PLAYER"
-		scriptCondition="15000 >= GetPlayerMoney() and GetPlayerMaxFuel() == 0 and GetPlayerMaxHealth() == 100"
+		scriptCondition="15000 >= GetPlayerMoney() and GetPlayerMaxFuel() == 0 and GetPlayerMaxHealth() == 100 and not(getObj('ChestFromScavCar'))"
 		nextReplies="Dlg_npc_buyer_3 Dlg_npc_buyer_5" />
 
 	<Reply

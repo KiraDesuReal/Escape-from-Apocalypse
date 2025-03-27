@@ -501,7 +501,7 @@
 					end
 				end
 			end
-			
+
 			if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
 				if GetVar("Generator_time_work_second").AsInt > 0 or GetVar("Generator_time_work_minute").AsInt > 0 or GetVar("Generator_time_work_hour").AsInt > 0 then
 					if GetVar("Generator_on").AsInt == 1 then
@@ -549,7 +549,7 @@
 				local fx = GetEntityByName("fx")
 				if fx then fx:Remove() end
 			end
-		
+
 		--гараж
 			if GARAGE_CRAFTING_TIME_HOUR_GLOBAL then SetVar("GarageCrafting_time_hour", GARAGE_CRAFTING_TIME_HOUR_GLOBAL) end
 			if GARAGE_CRAFTING_TIME_MINUTE_GLOBAL then SetVar("GarageCrafting_time_minute", GARAGE_CRAFTING_TIME_MINUTE_GLOBAL) end
@@ -584,7 +584,7 @@
 					end
 				end
 			end
-		
+
 		--заправка
 			if GetVar("PetrolStationBuild_Builden").AsInt == 1 then
 				TActivate("PlayerFuel")
@@ -640,7 +640,7 @@
 				if car then car:SetBelong(1093) end
 				if GetVar("ScavCar_timer").AsInt == 0 and getObj("trChangeCarMessage"):IsActivated() == 0 then TActivate("trChangeCarMessage") end
 			end
-			
+
 			TActivate("trCreateVehicleMove")
 		
 			AllowSave(true)
@@ -3205,7 +3205,13 @@
 			end
 
 			local plf = GetPlayerVehicle()
-			if plf then plf:SetNameFromScript("PlayerCar") end
+			if plf then 
+				plf:SetNameFromScript("PlayerCar") 
+				if not(plf:GetMaxHealth() == 100) and not(plf:GetMaxFuel() == 0) then
+					local plfChange = getObj("PlayerCarChange")
+					if plfChange then plfChange:SetNameFromScript("PlayerCarPlatform") end
+				end
+			end
 
 			SetCameraBehindPlayerVehicle()
 		</script>
@@ -3504,13 +3510,13 @@
 
 			local car = GetEntityByName("ScavCarForPlayer")
 			if car then
-				if random(1,3) == 1 then 
+				if random(1,2) == 1 then 
 					AddAmmoItemsForGuns(car, 1)
 				end
-				for i1=1,random(2) do
+				for i1=1,random(3) do
 					AddItemsToRepositoryIfCanPlace(car, use[random(getn(use))], random(0,1))
 				end
-				if random(0,2) == 1 then 
+				if random(0,3) == 1 then 
 					AddItemsToRepositoryIfCanPlace(car, ammo[random(getn(ammo))], random(0,1))
 				end
 				if random(0,3) == 1 then
@@ -3594,7 +3600,7 @@
 
 			if GetVar("ScavTutorial").AsInt == 0 then TActivate("trScavTutorial") end
 
-			if 15000 >= GetPlayerMoney() and getObj("PlayerCarChange"):GetMaxHealth() == 100 and getObj("PlayerCarChange"):GetMaxFuel() == 0 then
+			if getObj("PlayerCarChange"):GetMaxHealth() == 100 and getObj("PlayerCarChange"):GetMaxFuel() == 0 then
 				TActivate("TpPlayerCarInPlayerZone")
 			else
 				TActivate("TpPlayerCarInScavZone_Loc")
@@ -4203,7 +4209,7 @@
 				TDeactivate("rpft")
 				TDeactivate("PlayerFuel")
 			end
-		
+
 		--машина диких
 			if SCAV_CAR_TIME_HOUR then SCAV_CAR_TIME_HOUR = GetVar("ScavCar_time_hour").AsInt end
 			if SCAV_CAR_TIME_MINUTE then SCAV_CAR_TIME_MINUTE = GetVar("ScavCar_time_minute").AsInt end
@@ -4220,8 +4226,15 @@
 			TDeactivate("trChangeCarMessage")
 			TDeactivate("trChangeCarMessageTimer")
 			
-			if 15000 >= GetPlayerMoney() and getObj("PlayerCarChange"):GetMaxHealth() == 100 and getObj("PlayerCarChange"):GetMaxFuel() == 0 then
-				if GetVar("PlayerBelong").AsString == "SCAV" then TActivate("TpPlayerCarInPlayerZone") end
+			local car = getObj("PlayerCarChange")
+			if GetVar("PlayerBelong").AsString == "SCAV" then
+				if car then
+					if car:GetMaxHealth() == 100 and car:GetMaxFuel() == 0 then
+						TActivate("TpPlayerCarInPlayerZone")
+					else
+						TActivate("TpPlayerCarInScavZone")
+					end
+				end
 			else
 				TActivate("TpPlayerCarInScavZone")
 			end
@@ -4234,6 +4247,15 @@
 			if COUNT_RAIDS then COUNT_RAIDS = GetVar("CountRaids").AsInt end
 			if SCAV_CARMA_GLOBAL then SCAV_CARMA_GLOBAL = GetVar("ScavCarma").AsString end
 
+			if DEBUG == 1 then
+				println("EXIT MAP: r0m0")
+				println("PLAYER BELONG: "..GetVar("PlayerBelong").AsString)
+				println("SCAV CARMA: "..GetVar("ScavCarma").AsString)
+				LOG("EXIT MAP: r0m0")
+				LOG("PLAYER BELONG: "..GetVar("PlayerBelong").AsString)
+				LOG("SCAV CARMA: "..GetVar("ScavCarma").AsString)
+			end
+		
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4241,15 +4263,22 @@
 	<trigger Name="Message" active="1">
 		<event timeout="3" eventid="GE_TIME_PERIOD" />
 		<script>
+			EnableAutoHelp(false)
+
 			local b = SpawnMessageBox("90004")
 			if b == 1 then
 				local town1 = GetEntityByName("Town_r0m0_enter")
 				if town1 then town1:SetPosition(CVector(858.564, 255.000, 985.160)) end
+
+				local b1 = SpawnMessageBox("90000")
+				if b1 == 1 then
+					EnableAutoHelp(true)
+					ShowHelp("HELP_ID_MAIN_GAME_INTERFACE")
+				end
 			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
-	
 <!--
 **************************************************************************************************
 ** КВЕСТЫ

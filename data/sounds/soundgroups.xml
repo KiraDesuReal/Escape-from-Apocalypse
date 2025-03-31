@@ -172,7 +172,13 @@
 		<group
 			id		= "LAKE"
 			volume	= "200" 
-			minDist	= "80"
+			minDist	= "40"
+		/>
+
+		<group
+			id		= "FOREST"
+			volume	= "200" 
+			minDist	= "150"
 		/>
 
 		<group

@@ -591,39 +591,17 @@
 
 	<Reply
 		name="Dlg_npc_001373"
-		text="Генератор подающий энергию на все модули убежища.|@FF0000AA|Уровень - II|@FF0000AA|@FF1D1D1DДля постройки требуется:|Свеча зажигания - @FF1D1D1Dx2|Двигатель - @FF1D1D1Dx1|Реле - @FF1D1D1Dx2|Провода - @FF1D1D1Dx4|Кабелерез «Bulbex» - @FF1D1D1Dx1"
+		text="Генератор подающий энергию на все модули убежища.|@FF0000AA|Уровень - II|@FF0000AA|@FF1D1D1DДля постройки требуется:|Свеча зажигания - @FF1D1D1Dx2|Двигатель - @FF1D1D1Dx1|Реле - @FF1D1D1Dx2|Провода - @FF1D1D1Dx2|Кабелерез «Bulbex» - @FF1D1D1Dx1"
 		role="NPC"
-		scriptCondition="GetVar('Generator_time_work_second').AsInt > 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 or GetVar('Generator_time_work_minute').AsInt > 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 or GetVar('Generator_time_work_hour').AsInt > 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
+		scriptCondition="GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_pl_001374 Dlg_pl_001375 Dlg_pl_001376 Dlg_pl_001377 Dlg_pl_001378 Dlg_pl_001379 Dlg_pl_0013799 Dlg_pl_001380" />
 	
 	<Reply
 		name="Dlg_npc_001373333"
-		text="Генератор подающий энергию на все модули убежища.|@FF0000AA|Уровень - II|@FF0000AA|@FF1D1D1DДля постройки требуется:|Свеча зажигания - @FF1D1D1Dx2|Двигатель - @FF1D1D1Dx1|Реле - @FF1D1D1Dx2|Провода - @FF1D1D1Dx4|Кабелерез «Bulbex» - @FF1D1D1Dx1"
+		text="Генератор подающий энергию на все модули убежища.|@FF0000AA|Уровень - II|@FF0000AA|@FF1D1D1DДля постройки требуется:|Свеча зажигания - @FF1D1D1Dx2|Двигатель - @FF1D1D1Dx1|Реле - @FF1D1D1Dx2|Провода - @FF1D1D1Dx2|Кабелерез «Bulbex» - @FF1D1D1Dx1"
 		role="NPC"
-		scriptCondition="GetVar('Generator_time_work_second').AsInt > 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 or GetVar('Generator_time_work_minute').AsInt > 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 or GetVar('Generator_time_work_hour').AsInt > 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 and GetVar('PlayerBelong').AsString == 'SCAV'"
+		scriptCondition="GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 and GetVar('PlayerBelong').AsString == 'SCAV'"
 		nextReplies="Dlg_pl_0013799" />
-
-	<Reply
-		name="Dlg_npc_0013733"
-		text="Генератор подающий энергию на все модули убежища.|@FF0000AA|Уровень - II|@FF0000AA|@FF1D1D1DДля постройки требуется:|Свеча зажигания - @FF1D1D1Dx2|Двигатель - @FF1D1D1Dx1|Реле - @FF1D1D1Dx2|Провода - @FF1D1D1Dx4|Кабелерез «Bulbex» - @FF1D1D1Dx1"
-		role="NPC"
-		scriptCondition="GetVar('Generator_time_work_second').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 and GetVar('Generator_time_work_minute').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 and GetVar('Generator_time_work_hour').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
-		nextReplies="Dlg_pl_0013744 Dlg_pl_001374 Dlg_pl_001375 Dlg_pl_001376 Dlg_pl_001377 Dlg_pl_001378 Dlg_pl_001379 Dlg_pl_00137999 Dlg_pl_0013800" />
-
-	<Reply
-		name="Dlg_npc_00137333"
-		text="Генератор подающий энергию на все модули убежища.|@FF0000AA|Уровень - II|@FF0000AA|@FF1D1D1DДля постройки требуется:|Свеча зажигания - @FF1D1D1Dx2|Двигатель - @FF1D1D1Dx1|Реле - @FF1D1D1Dx2|Провода - @FF1D1D1Dx4|Кабелерез «Bulbex» - @FF1D1D1Dx1"
-		role="NPC"
-		scriptCondition="GetVar('Generator_time_work_second').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 and GetVar('Generator_time_work_minute').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 and GetVar('Generator_time_work_hour').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_dlg').AsInt == 1 and GetVar('PlayerBelong').AsString == 'SCAV'"
-		nextReplies="Dlg_pl_00137999" />
-
-	<Reply
-		name="Dlg_pl_0013744"
-		text="Передать Канистру топлива - x1"
-		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('fuel_full_use', 1) and not(GetVar('Generator_lvl_2_item_fuel_full').AsInt==1)"
-		scriptResult="RemoveItemsFromPlayerRepository('fuel_full_use', 1); SetVar('Generator_lvl_2_item_fuel_full', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'fuel_full_use')"
-		nextReplies="Dlg_npc_0013733" />
 
 	<Reply
 		name="Dlg_pl_001374"
@@ -631,7 +609,7 @@
 		role="PLAYER"
 		scriptCondition="HasPlayerAmountOfItems('item_svech', 1) and not(GetVar('Generator_lvl_1_item_svech').AsInt==3)"
 		scriptResult="RemoveItemsFromPlayerRepository('item_svech', 1); SetVar('Generator_lvl_1_item_svech', GetVar('Generator_lvl_1_item_svech').AsInt+1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_svech')"
-		nextReplies="Dlg_npc_001373 Dlg_npc_0013733" />
+		nextReplies="Dlg_npc_001373" />
 
 	<Reply
 		name="Dlg_pl_001375"
@@ -639,7 +617,7 @@
 		role="PLAYER"
 		scriptCondition="HasPlayerAmountOfItems('item_engine', 1) and not(GetVar('Generator_lvl_1_item_engine').AsInt==2)"
 		scriptResult="RemoveItemsFromPlayerRepository('item_engine', 1); SetVar('Generator_lvl_1_item_engine', 2); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_engine')"
-		nextReplies="Dlg_npc_001373 Dlg_npc_0013733" />
+		nextReplies="Dlg_npc_001373" />
 
 	<Reply
 		name="Dlg_pl_001376"
@@ -647,15 +625,15 @@
 		role="PLAYER"
 		scriptCondition="HasPlayerAmountOfItems('item_rele', 1) and not(GetVar('Generator_lvl_2_item_rele').AsInt==2)"
 		scriptResult="RemoveItemsFromPlayerRepository('item_rele', 1); SetVar('Generator_lvl_2_item_rele', GetVar('Generator_lvl_2_item_rele').AsInt+1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_rele')"
-		nextReplies="Dlg_npc_001373 Dlg_npc_0013733" />
+		nextReplies="Dlg_npc_001373" />
 
 	<Reply
 		name="Dlg_pl_001377"
 		text="Передать Провода - x1"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('item_wires', 1) and not(GetVar('Generator_lvl_2_item_wires').AsInt==4)"
+		scriptCondition="HasPlayerAmountOfItems('item_wires', 1) and not(GetVar('Generator_lvl_2_item_wires').AsInt==2)"
 		scriptResult="RemoveItemsFromPlayerRepository('item_wires', 1); SetVar('Generator_lvl_2_item_wires', GetVar('Generator_lvl_2_item_wires').AsInt+1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_wires')"
-		nextReplies="Dlg_npc_001373 Dlg_npc_0013733" />
+		nextReplies="Dlg_npc_001373" />
 
 	<Reply
 		name="Dlg_pl_001378"
@@ -663,13 +641,13 @@
 		role="PLAYER"
 		scriptCondition="HasPlayerAmountOfItems('item_buldex', 1) and not(GetVar('Generator_lvl_2_item_buldex').AsInt==1)"
 		scriptResult="RemoveItemsFromPlayerRepository('item_buldex', 1); SetVar('Generator_lvl_2_item_buldex', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_buldex')"
-		nextReplies="Dlg_npc_001373 Dlg_npc_0013733" />
+		nextReplies="Dlg_npc_001373" />
 
 	<Reply
 		name="Dlg_pl_001379"
 		text="Назад."
 		role="PLAYER"
-		scriptCondition="not(GetVar('Generator_lvl_1_item_svech').AsInt == 3) or not(GetVar('Generator_lvl_1_item_engine').AsInt == 2) or not(GetVar('Generator_lvl_2_item_rele').AsInt == 2) or not(GetVar('Generator_lvl_2_item_wires').AsInt == 4) or not(GetVar('Generator_lvl_2_item_buldex').AsInt == 1)"
+		scriptCondition="not(GetVar('Generator_lvl_1_item_svech').AsInt == 3) or not(GetVar('Generator_lvl_1_item_engine').AsInt == 2) or not(GetVar('Generator_lvl_2_item_rele').AsInt == 2) or not(GetVar('Generator_lvl_2_item_wires').AsInt == 2) or not(GetVar('Generator_lvl_2_item_buldex').AsInt == 1)"
 		scriptResult="SetVar('Generator_dlg', 0); TDeactivate('Generator_BuildInfo')"
 		nextReplies="Dlg_npc_001368" />
 
@@ -677,28 +655,14 @@
 		name="Dlg_pl_0013799"
 		text="Выход."
 		role="PLAYER"
-		scriptCondition="not(GetVar('Generator_lvl_1_item_svech').AsInt == 3) or not(GetVar('Generator_lvl_1_item_engine').AsInt == 2) or not(GetVar('Generator_lvl_2_item_rele').AsInt == 2) or not(GetVar('Generator_lvl_2_item_wires').AsInt == 4) or not(GetVar('Generator_lvl_2_item_buldex').AsInt == 1)"
-		scriptResult="EndConversation()" />
-
-	<Reply
-		name="Dlg_pl_00137999"
-		text="Выход."
-		role="PLAYER"
-		scriptCondition="not(GetVar('Generator_lvl_2_item_fuel_full').AsInt == 1) or not(GetVar('Generator_lvl_1_item_svech').AsInt == 3) or not(GetVar('Generator_lvl_1_item_engine').AsInt == 2) or not(GetVar('Generator_lvl_2_item_rele').AsInt == 2) or not(GetVar('Generator_lvl_2_item_wires').AsInt == 4) or not(GetVar('Generator_lvl_2_item_buldex').AsInt == 1)"
+		scriptCondition="not(GetVar('Generator_lvl_1_item_svech').AsInt == 3) or not(GetVar('Generator_lvl_1_item_engine').AsInt == 2) or not(GetVar('Generator_lvl_2_item_rele').AsInt == 2) or not(GetVar('Generator_lvl_2_item_wires').AsInt == 2) or not(GetVar('Generator_lvl_2_item_buldex').AsInt == 1)"
 		scriptResult="EndConversation()" />
 
 	<Reply
 		name="Dlg_pl_001380"
 		text="Построить."
 		role="PLAYER"
-		scriptCondition="GetVar('Generator_lvl_1_item_svech').AsInt == 3 and GetVar('Generator_lvl_1_item_engine').AsInt == 2 and GetVar('Generator_lvl_2_item_rele').AsInt == 2 and GetVar('Generator_lvl_2_item_wires').AsInt == 4 and GetVar('Generator_lvl_2_item_buldex').AsInt == 1"
-		scriptResult="SetVar('Generator_dlg', 0); TActivate('CreateGenerator_lvl_2'); EndConversation()" />
-
-	<Reply
-		name="Dlg_pl_0013800"
-		text="Построить."
-		role="PLAYER"
-		scriptCondition="GetVar('Generator_lvl_2_item_fuel_full').AsInt == 1 and GetVar('Generator_lvl_1_item_svech').AsInt == 3 and GetVar('Generator_lvl_1_item_engine').AsInt == 2 and GetVar('Generator_lvl_2_item_rele').AsInt == 2 and GetVar('Generator_lvl_2_item_wires').AsInt == 4 and GetVar('Generator_lvl_2_item_buldex').AsInt == 1"
+		scriptCondition="GetVar('Generator_lvl_1_item_svech').AsInt == 3 and GetVar('Generator_lvl_1_item_engine').AsInt == 2 and GetVar('Generator_lvl_2_item_rele').AsInt == 2 and GetVar('Generator_lvl_2_item_wires').AsInt == 2 and GetVar('Generator_lvl_2_item_buldex').AsInt == 1"
 		scriptResult="SetVar('Generator_dlg', 0); TActivate('CreateGenerator_lvl_2'); EndConversation()" />
 
 	<Reply
@@ -799,7 +763,7 @@
 		text="Загрузите топливо и включите генератор."
 		role="NPC"
 		scriptCondition="GetVar('Generator_dlg').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
-		nextReplies="Dlg_pl_001369 Dlg_pl_001370 Dlg_pl_0013711 Dlg_pl_0013712 Dlg_pl_00137122 Dlg_pl_001372" />
+		nextReplies="Dlg_pl_001369 Dlg_pl_001370 Dlg_pl_0013711 Dlg_pl_00137122 Dlg_pl_001372" />
 
 	<Reply
 		name="Dlg_npc_0013688"
@@ -833,18 +797,10 @@
 		nextReplies="Dlg_npc_001368" />
 
 	<Reply
-		name="Dlg_pl_0013712"
-		text="Улучшить до уровня II."
-		role="PLAYER"
-		scriptCondition="GetVar('Generator_time_work_second').AsInt == 0 and GetVar('Generator_on').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_time_work_minute').AsInt == 0 and GetVar('Generator_on').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1 and GetVar('Generator_time_work_hour').AsInt == 0 and GetVar('Generator_on').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1"
-		scriptResult="TActivate('Generator_BuildInfo'); SetVar('Generator_dlg', 1)"
-		nextReplies="Dlg_npc_0013733" />
-
-	<Reply
 		name="Dlg_pl_00137122"
 		text="Улучшить до уровня II."
 		role="PLAYER"
-		scriptCondition="GetVar('Generator_time_work_second').AsInt > 0 and GetVar('Generator_on').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1 or GetVar('Generator_time_work_minute').AsInt > 0 and GetVar('Generator_on').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1 or GetVar('Generator_time_work_hour').AsInt > 0 and GetVar('Generator_on').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1"
+		scriptCondition="GetVar('Generator_on').AsInt == 0 and GetVar('Generator_lvl').AsInt == 1"
 		scriptResult="TActivate('Generator_BuildInfo'); SetVar('Generator_dlg', 1)"
 		nextReplies="Dlg_npc_001373" />
 
@@ -7764,7 +7720,7 @@
 
 	<Reply
 		name="Dlg_npc_q_clearing_r1m1_2"
-		text="Отлично. Тогда, слушай значит. По твоим координатам разведки нам теперь известно что, местность Края окружена бандитами. Территория сама по себе не богатая, так что мало кого привлекает. А это значит, что сильного сопротивления не будет."
+		text="Отлично. Тогда, слушай значит. По твоим координатам разведки нам теперь известно, что местность Края окружена бандитами. Территория сама по себе не богатая, так что мало кого привлекает. А это значит что, сильного сопротивления не будет."
 		role="NPC"
 		nextReplies="Dlg_pl_q_clearing_r1m1_3" />
 
@@ -7830,7 +7786,7 @@
 
 	<Reply
 		name="Dlg_npc_q_kill_scavs_3"
-		text="Вот тебе задачка значит. Локация Край, там у моих ребят свои дела образовались, однако делам этим мешает местное отребье, которое по какой то причине возомнила себя хозяевами этой территории, даже свою базу отстроили где-то в ущелье. В общем бандюков там хватает, и надо бы с ними разобраться. Думаю у такого как ты, это не вызовет проблем. За работу!|@FF0000AA|@FF1D1D1DНаграда:|- Пулемёт: @FF1D1D1DПКТ в продаже - x1|- Случайная награда|- Деньги: @FF1D1D1D20.000 монет"
+		text="Вот тебе задачка значит. Локация Край, там у моих ребят свои дела образовались, однако делам этим мешает местное отребье, которое по какой-то причине возомнила себя хозяевами этой территории, даже свою базу отстроили где-то в ущелье. В общем бандюков там хватает, и надо бы с ними разобраться. Думаю у такого как ты, это не вызовет проблем. За работу!|@FF0000AA|@FF1D1D1DНаграда:|- Пулемёт: @FF1D1D1DПКТ в продаже - x1|- Случайная награда|- Деньги: @FF1D1D1D20.000 монет"
 		role="NPC"
 		nextReplies="Dlg_pl_q_kill_scavs_4 Dlg_pl_q_kill_scavs_5 Dlg_pl_q_kill_scavs_6" />
 
@@ -10596,7 +10552,7 @@
 		name="Dlg_npc_buyer_6"
 		text="Отлично. Буду ждать."
 		role="PLAYER"
-		scriptResult="TActivate('trChangeCar'); TDeactivate('trChangeCarMessage'); LeaveTown(true)" />
+		scriptResult="TActivate('ClosedModules'); TActivate('trChangeCarTimer'); TDeactivate('trChangeCarMessage'); EndConversation(); LeaveTown()" />
 
 	<Reply
 		name="Dlg_npc_buyer_7"

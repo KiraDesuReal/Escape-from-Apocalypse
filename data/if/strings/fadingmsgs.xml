@@ -257,6 +257,18 @@
 		value="Данная заправка не функционирует!" />
 
 	<string
+		id="fm_petrol_need_generator"
+		value="Включите генератор, чтобы заправить канистру топливом!" />
+
+	<string
+		id="fm_fuel_petrol_stopped"
+		value="@ff9d0a0a[Нет электричества]|@ffffffffЗаправка топлива приостановлена!" />
+
+	<string
+		id="fm_fuel_petrol_restart"
+		value="@ff7ac716[Электричество подано]|@ffffffffЗаправка топлива возобновлена!" />
+
+	<string
 		id="fm_item_to_quest_items"
 		value="Предмет: %1p, перенесен в квестовые." />
 
@@ -434,9 +446,13 @@
 
 	<string
 		id="fm_player_scav_close_exit"
-		value="@ffa30d0d%1p|Вы не можете воспользоваться данным выходом, так как испортили отношения с дикими." />
+		value="@ffa30d0d%1p|@ffffffffВы не можете воспользоваться данным выходом, так как испортили отношения с дикими." />
 
 	<string
 		id="fm_scav_carma"
 		value="Карма дикого: %1p" />
+
+	<string
+		id="fm_scav_give_loot"
+		value="Рейд за дикого успешно завершен!|Заберите свои предметы в специальном ящике." />
 </resource>

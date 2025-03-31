@@ -619,10 +619,12 @@
 			if SCAV_CARMA_GLOBAL then SetVar("ScavCarma", SCAV_CARMA_GLOBAL) end
 
 			if GetVar("PlayerBelong").AsString == "SCAV" then
-				if getObj("ScavCarForPlayer"):GetSkin() == -1 then
-					TActivate("CreateNewScavCar")
-				else
-					TActivate("AddItemsInChestFromScavCar")
+				if getObj("ScavCarForPlayer") then
+					if getObj("ScavCarForPlayer"):GetSkin() == -1 then
+						TActivate("CreateNewScavCar")
+					else
+						TActivate("AddItemsInChestFromScavCar")
+					end
 				end
 			else
 				local pl = GetPlayerVehicle()
@@ -650,6 +652,11 @@
 			TActivate("VehiclesForSale")
 
 			SetCameraBehindPlayerVehicle()
+
+			if DEBUG == 1 then
+				println("=================== START MAP: r0m0 ===================")
+				LOG("=================== START MAP: r0m0 ===================")
+			end
 		</script>
 	</trigger>
 
@@ -961,7 +968,7 @@
 		<script>
 			if not(GetVar("PlayerBelong").AsString == "SCAV") then
 				if not(GetVar("PetrolStationBuild_fuel_full_use").AsInt == 2) or not(GetVar("PetrolStationBuild_item_bolts").AsInt == 2) or not(GetVar("PetrolStationBuild_item_nuts").AsInt == 2) or not(GetVar("PetrolStationBuild_item_parts").AsInt == 1) or not(GetVar("PetrolStationBuild_item_lump").AsInt == 2) or not(GetVar("PetrolStationBuild_item_fullmaster").AsInt == 1) then
-					local item_1, item_2, item_3, item_4, item_6, item_6 = "", "", "", "", "", ""
+					local item_1, item_2, item_3, item_4, item_5, item_6 = "", "", "", "", "", ""
 				
 					if GetVar("PetrolStationBuild_fuel_full_use").AsInt ~= 2 then item_1 = "Горючее - x"..(2 - GetVar("PetrolStationBuild_fuel_full_use").AsInt).."|" end
 					if GetVar("PetrolStationBuild_item_bolts").AsInt ~= 2 then item_2 = "Болты - x"..(2 - GetVar("PetrolStationBuild_item_bolts").AsInt).."|" end
@@ -972,7 +979,7 @@
 
 					local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6
 
-					AddFadingMsgByStrIdFormatted("fm_items_to_build", msg)
+					if msg then AddFadingMsgByStrIdFormatted("fm_items_to_build", msg) end
 				end
 			end
 		</script>
@@ -1016,6 +1023,7 @@
 			SetVar("PetrolStationBuild_Builden", 1)
 			TDeactivate("PetrolStation_BuildInfo")
 			TActivate("PlayerFuel")
+			TActivate("UseFuelNil_InPetrolStation01")
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1062,29 +1070,35 @@
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation_loc" />
 		<script>
 			if HasPlayerAmountOfItems("fuel_nil_use", 1) then
-				local b = SpawnMessageBox( "90001" )
-				if b == 1 then
-					if GetPlayerMoney() >= 18500 then
-						AddPlayerMoney(- 18500)
-						CreateEffectTTLed( "ET_PS_FUEL_PETROL_START", CVector(906.852, 255, 1040.380), Quaternion(0, 0, 0, 1), 800)
-						AddFadingMsgByStrIdFormatted("fm_fuel_petrol_start")
-						SoundFadingMsg()
-						RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
-						TActivate("SoundPetrolProcess_InPertolStation01")
-						GetPlayerVehicle():SetThrottle( 0 )
-						GetPlayerVehicle():SetCustomLinearVelocity( 0 )
-						local town = GetEntityByName ("PetrolStationTown1")
-						if town then town:SetOpenGateToPlayer(false) end
-						local town1 = GetEntityByName ("Town_r0m0")
-						if town1 then town1:SetOpenGateToPlayer(false) end
-						SetVar("PetrolStation_Refill", 1)
-						SetVar("PetrolStation_Refill_Process", 1)
-						SetVar("PetrolStation_FuelTime", 20)
-						trigger:Deactivate()
-					else
-						AddFadingMsgByStrIdFormatted("fm_player_not_money")
-						SoundFadingMsg()
+				if GetVar("Generator_on").AsInt == 1 then
+					local b = SpawnMessageBox("90001")
+					if b == 1 then
+						if GetPlayerMoney() >= 18500 then
+							AddPlayerMoney(- 18500)
+							CreateEffectTTLed( "ET_PS_FUEL_PETROL_START", CVector(906.852, 255, 1040.380), Quaternion(0, 0, 0, 1), 800)
+							AddFadingMsgByStrIdFormatted("fm_fuel_petrol_start")
+							SoundFadingMsg()
+							RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
+							TActivate("SoundPetrolProcess_InPertolStation01")
+							GetPlayerVehicle():SetThrottle( 0 )
+							GetPlayerVehicle():SetCustomLinearVelocity( 0 )
+							local town = GetEntityByName ("PetrolStationTown1")
+							if town then town:SetOpenGateToPlayer(false) end
+							local town1 = GetEntityByName ("Town_r0m0")
+							if town1 then town1:SetOpenGateToPlayer(false) end
+							SetVar("PetrolStation_Refill", 1)
+							SetVar("PetrolStation_Refill_Process", 1)
+							SetVar("PetrolStation_FuelTime", 20)
+							AllowSave(false)
+							trigger:Deactivate()
+						else
+							AddFadingMsgByStrIdFormatted("fm_player_not_money")
+							SoundFadingMsg()
+						end
 					end
+				else
+					AddFadingMsgByStrIdFormatted("fm_petrol_need_generator")
+					SoundFadingMsg()
 				end
 			end
 		</script>
@@ -1159,6 +1173,8 @@
 
 			local town1 = GetEntityByName ("Town_r0m0")
 			if town1 then town1:SetOpenGateToPlayer(true) end
+
+			AllowSave(true)
 
 			TActivate("UseFuelNil_InPetrolStation01")
 			TDeactivate("FuelFull_Timer")
@@ -1239,7 +1255,7 @@
 
 					local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6
 
-					AddFadingMsgByStrIdFormatted("fm_items_to_build", msg)
+					if msg then AddFadingMsgByStrIdFormatted("fm_items_to_build", msg) end
 				end
 			end
 		</script>
@@ -1304,7 +1320,7 @@
 		
 					local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7..""..item_8..""..item_9
 
-					AddFadingMsgByStrIdFormatted("fm_items_to_build", msg)
+					if msg then AddFadingMsgByStrIdFormatted("fm_items_to_build", msg) end
 				end
 			end
 		</script>
@@ -1844,7 +1860,7 @@
 
 					local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7
 
-					AddFadingMsgByStrIdFormatted("fm_items_to_build", msg)
+					if msg then AddFadingMsgByStrIdFormatted("fm_items_to_build", msg) end
 				end
 			end
 		</script>
@@ -1870,7 +1886,7 @@
 		<script>
 			if not(GetVar("PlayerBelong").AsString == "SCAV") then
 				local maxhp = GetPlayerMaxHealth()
-				local hp = GetPlayerHealth() 
+				local hp = math.floor(GetPlayerHealth() + 0.5)
 
 				if GetVar("PetrolStation_Refill_Process").AsInt == 0 then
 					local Plf = GetPlayerVehicle()
@@ -1910,35 +1926,34 @@
 			local item_0, item_1, item_2, item_3, item_4, item_5, item_6 = "", "", "", "", "", "", ""
 			local t = trigger:GetCallObjName()
 
-			if not(GetVar("PlayerBelong").AsString == "SCAV") then
-				if GetVar("Generator_lvl").AsInt == 0 and t == "Generator_Build_loc" or GetVar("Generator_lvl").AsInt == 1 and t == "Generator_Build_loc" or GetVar("Generator_lvl").AsInt == 2 and t == "Generator_Build_lvl_2_loc" then
-					if GetVar("Generator_lvl").AsInt == 0 then
-						if GetVar("Generator_lvl_1_item_svech").AsInt ~= 1 then item_1 = "Свеча зажигания - x1|" end
-						if GetVar("Generator_lvl_1_item_engine").AsInt ~= 1 then item_2 = "Двигатель - x1|" end
-						if GetVar("Generator_lvl_1_doski").AsInt ~= 1 then item_3 = "Доски - x1|" end
-						if GetVar("Generator_lvl_1_oil").AsInt ~= 2 then item_4 = "Нефть - x"..(2 - GetVar("Generator_lvl_1_oil").AsInt) end
-					elseif GetVar("Generator_lvl").AsInt == 1 then
-						if GetVar("Generator_time_work_second").AsInt == 0 and GetVar("Generator_time_work_minute").AsInt == 0 and GetVar("Generator_time_work_hour").AsInt == 0 then
-							if GetVar("Generator_lvl_2_item_fuel_full").AsInt ~= 1 then item_0 = "Канистра топлива - x1|" end
+			if not(GetVar("Generator_lvl_1_item_svech").AsInt == 3) or not(GetVar("Generator_lvl_1_item_engine").AsInt == 2) or not(GetVar("Generator_lvl_1_doski").AsInt == 1) or not(GetVar("Generator_lvl_1_oil").AsInt == 2) or not(GetVar("Generator_lvl_1_money").AsInt == 2) or not(GetVar("Generator_lvl_2_item_rele").AsInt == 4) or not(GetVar("Generator_lvl_2_item_wires").AsInt == 2) or not(GetVar("Generator_lvl_2_item_buldex").AsInt == 1) or not(GetVar("Generator_lvl_3_item_bp").AsInt == 2) or not(GetVar("Generator_lvl_3_item_parts").AsInt == 3) or not(GetVar("Generator_lvl_3_item_military_cable").AsInt == 1) or not(GetVar("Generator_lvl_3_item_plate").AsInt == 1) or not(GetVar("Generator_lvl_3_item_converter").AsInt == 1) then
+				if not(GetVar("PlayerBelong").AsString == "SCAV") then
+					if GetVar("Generator_lvl").AsInt == 0 and t == "Generator_Build_loc" or GetVar("Generator_lvl").AsInt == 1 and t == "Generator_Build_loc" or GetVar("Generator_lvl").AsInt == 2 and t == "Generator_Build_lvl_2_loc" then
+						if GetVar("Generator_lvl").AsInt == 0 then
+							if GetVar("Generator_lvl_1_item_svech").AsInt ~= 1 then item_1 = "Свеча зажигания - x1|" end
+							if GetVar("Generator_lvl_1_item_engine").AsInt ~= 1 then item_2 = "Двигатель - x1|" end
+							if GetVar("Generator_lvl_1_doski").AsInt ~= 1 then item_3 = "Доски - x1|" end
+							if GetVar("Generator_lvl_1_oil").AsInt ~= 2 then item_4 = "Нефть - x"..(2 - GetVar("Generator_lvl_1_oil").AsInt).."|" end
+							if GetVar("Generator_lvl_1_money").AsInt ~= 1 then item_5 = "Передать 100.000 монет" end
+						elseif GetVar("Generator_lvl").AsInt == 1 then
+							if GetVar("Generator_lvl_1_item_svech").AsInt ~= 3 then item_1 = "Свеча зажигания - x"..(3 - GetVar("Generator_lvl_1_item_svech").AsInt).."|" end
+							if GetVar("Generator_lvl_1_item_engine").AsInt ~= 2 then item_2 = "Двигатель - x1|" end
+							if GetVar("Generator_lvl_2_item_rele").AsInt ~= 2 then item_3 = "Реле - x"..(2 - GetVar("Generator_lvl_2_item_rele").AsInt).."|" end
+							if GetVar("Generator_lvl_2_item_wires").AsInt ~= 2 then item_4 = "Провода - x"..(2 - GetVar("Generator_lvl_2_item_wires").AsInt).."|" end
+							if GetVar("Generator_lvl_2_item_buldex").AsInt ~= 1 then item_5 = "Кабелерез «Bulbex» - x1" end
+						elseif GetVar("Generator_lvl").AsInt == 2 and t == "Generator_Build_lvl_2_loc" then
+							if GetVar("Generator_lvl_3_item_bp").AsInt ~= 2 then item_0 = "Блок питания - x"..(2 - GetVar("Generator_lvl_3_item_bp").AsInt).."|" end
+							if GetVar("Generator_lvl_2_item_rele").AsInt ~= 4 then item_1 = "Реле - x"..(4 - GetVar("Generator_lvl_2_item_rele").AsInt).."|" end
+							if GetVar("Generator_lvl_3_item_parts").AsInt ~= 3 then item_2 = "Металлические запчасти - x"..(3 - GetVar("Generator_lvl_3_item_parts").AsInt).."|" end
+							if GetVar("Generator_lvl_3_item_military_cable").AsInt ~= 1 then item_3 = "Военный кабель - x1|" end
+							if GetVar("Generator_lvl_3_item_plate").AsInt ~= 1 then item_4 = "Плата - x1|" end
+							if GetVar("Generator_lvl_3_item_converter").AsInt ~= 1 then item_5 = "Передовой преобразователь тока - x1|" end
+							if GetVar("Generator_lvl_1_money").AsInt ~= 2 then item_6 = "Передать 1.000.000 монет" end
 						end
-						if GetVar("Generator_lvl_1_item_svech").AsInt ~= 3 then item_1 = "Свеча зажигания - x"..(3 - GetVar("Generator_lvl_1_item_svech").AsInt).."|" end
-						if GetVar("Generator_lvl_1_item_engine").AsInt ~= 2 then item_2 = "Двигатель - x1|" end
-						if GetVar("Generator_lvl_2_item_rele").AsInt ~= 2 then item_3 = "Реле - x"..(2 - GetVar("Generator_lvl_2_item_rele").AsInt).."|" end
-						if GetVar("Generator_lvl_2_item_wires").AsInt ~= 4 then item_4 = "Провода - x"..(4 - GetVar("Generator_lvl_2_item_wires").AsInt).."|" end
-						if GetVar("Generator_lvl_2_item_buldex").AsInt ~= 1 then item_5 = "Кабелерез «Bulbex» - x1" end
-					elseif GetVar("Generator_lvl").AsInt == 2 and t == "Generator_Build_lvl_2_loc" then
-						if GetVar("Generator_lvl_3_item_bp").AsInt ~= 2 then item_1 = "Блок питания - x"..(2 - GetVar("Generator_lvl_3_item_bp").AsInt).."|" end
-						if GetVar("Generator_lvl_2_item_rele").AsInt ~= 4 then item_2 = "Реле - x"..(4 - GetVar("Generator_lvl_2_item_rele").AsInt).."|" end
-						if GetVar("Generator_lvl_3_item_parts").AsInt ~= 3 then item_3 = "Металлические запчасти - x"..(3 - GetVar("Generator_lvl_3_item_parts").AsInt).."|" end
-						if GetVar("Generator_lvl_3_item_military_cable").AsInt ~= 1 then item_4 = "Военный кабель - x1|" end
-						if GetVar("Generator_lvl_3_item_plate").AsInt ~= 1 then item_5 = "Плата - x1|" end
-						if GetVar("Generator_lvl_3_item_converter").AsInt ~= 1 then item_6 = "Передовой преобразователь тока - x1" end
-					end
 
-					local msg = item_0..""..item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6
+						local msg = item_0..""..item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6
 
-					if not(GetVar("Generator_lvl_1_item_svech").AsInt == 4) or not(GetVar("Generator_lvl_1_item_engine").AsInt == 2) or not(GetVar("Generator_lvl_1_doski").AsInt == 1) or not(GetVar("Generator_lvl_1_oil").AsInt == 2) or not(GetVar("Generator_lvl_1_money").AsInt == 2) or not(GetVar("Generator_lvl_2_item_rele").AsInt == 4) or not(GetVar("Generator_lvl_2_item_wires").AsInt == 4) or not(GetVar("Generator_lvl_2_item_buldex").AsInt == 1) or not(GetVar("Generator_lvl_3_item_bp").AsInt == 2) or not(GetVar("Generator_lvl_3_item_parts").AsInt == 3) or not(GetVar("Generator_lvl_3_item_military_cable").AsInt == 1) or not(GetVar("Generator_lvl_3_item_plate").AsInt == 1) or not(GetVar("Generator_lvl_3_item_converter").AsInt == 1) then
-						AddFadingMsgByStrIdFormatted("fm_items_to_build", msg)
+						if msg then AddFadingMsgByStrIdFormatted("fm_items_to_build", msg) end
 					end
 				end
 			end
@@ -2101,7 +2116,9 @@
 				local smoke = GetEntityByName("gen_lvl_1_smoke")
 				if smoke then smoke:Remove() end
 
-				CreateNewSgNodeObject("ET_PS_LENS_D1", "gen_lvl_1_red_light", -1, -1, CVector(805.210, 267.481, 1004.139), Quaternion(0, 0, 0, 0), 0.6)
+				if not(getObj("gen_lvl_1_red_light")) then
+					CreateNewSgNodeObject("ET_PS_LENS_D1", "gen_lvl_1_red_light", -1, -1, CVector(805.210, 267.481, 1004.139), Quaternion(0, 0, 0, 0), 0.6)
+				end
 			elseif GetVar("Generator_lvl").AsInt == 2 then
 				local g = GetEntityByName("generator_sound")
 				if g then g:Remove() end
@@ -2112,7 +2129,9 @@
 					if light then light:Remove() end
 				end
 
-				CreateNewSgNodeObject("ET_PS_LENS_D1", "gen_lvl_2_red_light", -1, -1, CVector(811.805, 257.686, 994.554), Quaternion(0, 0, 0, 0), 0.6)
+				if not(getObj("gen_lvl_2_red_light")) then
+					CreateNewSgNodeObject("ET_PS_LENS_D1", "gen_lvl_2_red_light", -1, -1, CVector(811.805, 257.686, 994.554), Quaternion(0, 0, 0, 0), 0.6)
+				end
 			end
 			
 			if GetVar("Generator_time_work_second").AsInt > 0 or GetVar("Generator_time_work_minute").AsInt > 0 or GetVar("Generator_time_work_hour").AsInt > 0 then
@@ -2373,13 +2392,17 @@
 						local town1 = GetEntityByName ("Town_r0m0")
 						if town1 then town1:SetOpenGateToPlayer(false) end
 
+						AllowSave(false)
+
+						AddFadingMsgByStrIdFormatted("fm_fuel_petrol_restart")
+						SoundFadingMsg()
+
 						SetVar("PetrolStation_Refill_Process", 1)
 					end
 				else
 					local lw = GetEntityByName("LIGHTWORK01")
 					if not(lw) then
 						CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK01", -1, -1, CVector(913.161, 267.300, 1033.075), Quaternion(0, 0, 0, 1), 0.6)
-						TActivate("UseFuelNil_InPetrolStation01")
 					end
 				end
 			end
@@ -2442,6 +2465,11 @@
 					local town1 = GetEntityByName ("Town_r0m0")
 					if town1 then town1:SetOpenGateToPlayer(true) end
 
+					AllowSave(true)
+
+					AddFadingMsgByStrIdFormatted("fm_fuel_petrol_stopped")
+					SoundFadingMsg()
+
 					CreateEffectTTLed( "ET_PS_FUEL_PETROL_END", CVector(906.852, 255, 1040.380), Quaternion(0, 0, 0, 1), 1000)
 
 					SetVar("PetrolStation_Refill_Process", 0)
@@ -2451,8 +2479,6 @@
 				else
 					local lw = GetEntityByName("LIGHTWORK01")
 					if lw then lw:Remove() end
-
-					TDeactivate("UseFuelNil_InPetrolStation01")
 				end
 			end
 
@@ -2507,15 +2533,16 @@
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Lampposts_Build_loc" />
 		<script>
 			if not(GetVar("PlayerBelong").AsString == "SCAV") then
-				if not(GetVar("Lampposts_item_energo_lump").AsInt == 12) or not(GetVar("Lampposts_item_wires").AsInt == 6) then
-					local item_1, item_2 = "", ""
+				if not(GetVar("Lampposts_item_energo_lump").AsInt == 12) or not(GetVar("Lampposts_item_wires").AsInt == 6) or not(GetVar('Lampposts_money').AsInt == 1) then
+					local item_1, item_2, item_3 = "", "", ""
 			
 					if GetVar("Lampposts_item_energo_lump").AsInt ~= 12 then item_1 = "Энергосберегающая лампа - x"..(12 - GetVar("Lampposts_item_energo_lump").AsInt).."|" end
-					if GetVar("Lampposts_item_wires").AsInt ~= 6 then item_2 = "Провода - x"..(6 - GetVar("Lampposts_item_wires").AsInt) end
+					if GetVar("Lampposts_item_wires").AsInt ~= 6 then item_2 = "Провода - x"..(6 - GetVar("Lampposts_item_wires").AsInt).."|" end
+					if GetVar("Lampposts_money").AsInt ~= 1 then item_3 = "Передать 50.000 монет" end
 
-					local msg = item_1..""..item_2
+					local msg = item_1..""..item_2..""..item_3
 
-					AddFadingMsgByStrIdFormatted("fm_items_to_build", msg)
+					if msg then AddFadingMsgByStrIdFormatted("fm_items_to_build", msg) end
 				end
 			end
 		</script>
@@ -2624,8 +2651,8 @@
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Garage_Build_loc" />
 		<script>
 			if not(GetVar("PlayerBelong").AsString == "SCAV") then
-				if not(GetVar("Garage_item_bolts").AsInt == 1) or not(GetVar("Garage_item_nuts").AsInt == 1) or not(GetVar("Garage_item_pena").AsInt == 1) or not(GetVar("Garage_item_insulation").AsInt == 1) or not(GetVar("Garage_item_lump").AsInt == 3) or not(GetVar("Garage_item_cable").AsInt == 1) or not(GetVar("Garage_item_tplug").AsInt == 1) or not(GetVar("Garage_item_roulet").AsInt == 1) or not(GetVar("Garage_item_pipe_wrench").AsInt == 1) or not(GetVar("Garage_item_tb").AsInt == 1) or not(GetVar("Garage_item_fitanyashka").AsInt == 1) or not(GetVar("Garage_item_kaktus").AsInt == 1) then
-					local item_1, item_2, item_3, item_4, item_5, item_6, item_7, item_8, item_9, item_10, item_11, item_12 = "", "", "", "", "", "", "", "", "", "", "", ""
+				if not(GetVar("Garage_item_bolts").AsInt == 1) or not(GetVar("Garage_item_nuts").AsInt == 1) or not(GetVar("Garage_item_pena").AsInt == 1) or not(GetVar("Garage_item_insulation").AsInt == 1) or not(GetVar("Garage_item_lump").AsInt == 3) or not(GetVar("Garage_item_cable").AsInt == 1) or not(GetVar("Garage_item_tplug").AsInt == 1) or not(GetVar("Garage_item_roulet").AsInt == 1) or not(GetVar("Garage_item_pipe_wrench").AsInt == 1) or not(GetVar("Garage_item_tb").AsInt == 1) or not(GetVar("Garage_item_fitanyashka").AsInt == 1) or not(GetVar("Garage_item_kaktus").AsInt == 1) or not(GetVar('Garage_money').AsInt == 1) then
+					local item_1, item_2, item_3, item_4, item_5, item_6, item_7, item_8, item_9, item_10, item_11, item_12, item_13 = "", "", "", "", "", "", "", "", "", "", "", "", ""
 				
 					if GetVar("Garage_item_bolts").AsInt ~= 1 then item_1 = "Болты - x1|" end
 					if GetVar("Garage_item_nuts").AsInt ~= 1 then item_2 = "Гайки - x1|" end
@@ -2638,11 +2665,12 @@
 					if GetVar("Garage_item_pipe_wrench").AsInt ~= 1 then item_9 = "Шарнирный ключ «КШС» - x1|" end
 					if GetVar("Garage_item_tb").AsInt ~= 1 then item_10 = "Туалетная бумага - x1|" end
 					if GetVar("Garage_item_fitanyashka").AsInt ~= 1 then item_11 = "Дакимакура FitaNyashka - x1|" end
-					if GetVar("Garage_item_kaktus").AsInt ~= 1 then item_12 = "Кактус - x1" end
+					if GetVar("Garage_item_kaktus").AsInt ~= 1 then item_12 = "Кактус - x1|" end
+					if GetVar("Garage_money").AsInt ~= 1 then item_13 = "Передать 500.000 монет" end
 
-					local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7..""..item_8..""..item_9..""..item_10..""..item_11..""..item_12
+					local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7..""..item_8..""..item_9..""..item_10..""..item_11..""..item_12..""..item_13
 
-					AddFadingMsgByStrIdFormatted("fm_items_to_build", msg)
+					if msg then AddFadingMsgByStrIdFormatted("fm_items_to_build", msg) end
 				end
 			end
 		</script>
@@ -3207,10 +3235,6 @@
 			local plf = GetPlayerVehicle()
 			if plf then 
 				plf:SetNameFromScript("PlayerCar") 
-				if not(plf:GetMaxHealth() == 100) and not(plf:GetMaxFuel() == 0) then
-					local plfChange = getObj("PlayerCarChange")
-					if plfChange then plfChange:SetNameFromScript("PlayerCarPlatform") end
-				end
 			end
 
 			SetCameraBehindPlayerVehicle()
@@ -3473,13 +3497,17 @@
 			local list = {"ScoutCarForPlayer", "FighterCarForPlayer", "HunterCarForPlayer"}
 			local car = list[random(getn(list))]
 			local cab
+			local cargo
 
 			if car == "ScoutCarForPlayer" then
 				cab = {"scoutCab01", "scoutCab02", "scoutCab03"}
+				cargo = {"ScavfakeCargo_1", "ScavfakeCargo_2", "ScavfakeCargo_5", "ScavfakeCargo_7"}
 			elseif car == "FighterCarForPlayer" then
 				cab = {"fighterCab01", "fighterCab02"}
+				cargo = {"ScavfakeCargo_4", "ScavfakeCargo_7", "ScavfakeCargo_8"}
 			elseif car == "HunterCarForPlayer" then
 				cab = {"hunterCab02"}
+				cargo = {"ScavfakeCargo_3", "ScavfakeCargo_4", "ScavfakeCargo_6", "ScavfakeCargo_8"}
 			end
 			
 			CreateVehicleEx(car, "ScavCarForPlayer", CVector(getPos("ScavCarSpawn_loc")), 1093)
@@ -3488,7 +3516,7 @@
 			if car then
 				car:SetRotation(Quaternion(0.010, 0.005, 0.000, -1.000))
 				car:SetNewPart("CABIN", cab[random(getn(cab))])
-				car:SetNewPart("BASKET", "ScavfakeCargo_"..random(1,8))
+				car:SetNewPart("BASKET", cargo[random(getn(cargo))])
 				car:SetRandomSkin()
 				GiveGunsForVehicle(car)
 			end
@@ -3506,7 +3534,7 @@
 			local ammo = {"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo"}
 			local gun = {"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun"}
 			local gadget = {"someTurboAccelerationPusher", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns", "cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "additional_fuel_tank2", "additional_torque2", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
-			local AllItems = AllItems()
+			local AllItems = AllItemsForScav()
 
 			local car = GetEntityByName("ScavCarForPlayer")
 			if car then
@@ -3525,7 +3553,7 @@
 				if random(0,3) == 1 then
 					AddItemsToRepositoryIfCanPlace(car, gadget[random(getn(gadget))], 1)
 				end
-				if random(0,3) == 1 then
+				if random(0,2) == 1 then
 					AddItemsToRepositoryIfCanPlace(car, AllItems[random(getn(AllItems))], random(0,1))
 				end
 			end
@@ -3588,7 +3616,7 @@
 			SetVar("PlayerBelong", "SCAV")
 			CapturePlayerVehicle(0, "ChCar1")
 			SaveWeaponGroups()
-					
+
 			local veh = getObj("ScavCarForPlayer")
 			if veh then
 				g_Player:AddChild(veh)
@@ -3600,7 +3628,8 @@
 
 			if GetVar("ScavTutorial").AsInt == 0 then TActivate("trScavTutorial") end
 
-			if getObj("PlayerCarChange"):GetMaxHealth() == 100 and getObj("PlayerCarChange"):GetMaxFuel() == 0 then
+			local plf = GetEntityByName("PlayerCarChange")
+			if plf and plf:GetMaxHealth() == 100 and plf:GetMaxFuel() == 0 then
 				TActivate("TpPlayerCarInPlayerZone")
 			else
 				TActivate("TpPlayerCarInScavZone_Loc")
@@ -3717,6 +3746,9 @@
 		<script>
 			local t = GetEntityByName("Town_r0m0_enter")
 			if t then t:SetPosition(CVector(0, 0, 0)) end
+
+			local t1 = GetEntityByName("Town_r0m0")
+			if t1 then t1:SetOpenGateToPlayer(false) end
 		
 			if GetVar("PetrolStationBuild_Builden").AsInt == 1 then
 				local p = GetEntityByName("PetrolStationTown1")
@@ -3737,6 +3769,9 @@
 		<script>
 			local t = GetEntityByName("Town_r0m0_enter")
 			if t then t:SetPosition(CVector(858.564, 255.000, 985.160)) end
+
+			local t1 = GetEntityByName("Town_r0m0")
+			if t1 then t1:SetOpenGateToPlayer(true) end
 
 			if GetVar("PetrolStationBuild_Builden").AsInt == 1 then
 				local p = GetEntityByName("PetrolStationTown1")
@@ -4038,14 +4073,15 @@
 				end
 			end
 
-			local Chest = CreateNewObject{prototypeName = "someChest", objName = "ChestFromScavCar"}	
+			local Chest = CreateNewObject{prototypeName = "mainChest", objName = "ChestFromScavCar"}	
 			local ChestId = GetEntityByID(Chest)
 			ChestId:SetPosition(CVector(898.134, 255, 988.361))
+			ChestId:SetSkin(8)
 
 			for i2 = 1, l do
 				if count[i2] > 1 then
 					for c = 1, count[i2] do
-						local Item = CreateNewObject{prototypeName = items[i2], objName = "ItemFromScavCar_"..i2.."_"..c, belong = 1100}
+						local Item = CreateNewObject{prototypeName = items[i2], objName = "ItemFromScavCar_"..random(100000).."_"..random(10000), belong = 1100}
 						local ItemId = GetEntityByID(Item)
 
 						if ChestId and ItemId then
@@ -4053,7 +4089,7 @@
 						end
 					end
 				else
-					local Item = CreateNewObject{prototypeName = items[i2], objName = "ItemFromScavCar_"..i2, belong = 1100}
+					local Item = CreateNewObject{prototypeName = items[i2], objName = "ItemFromScavCar_"..random(100000), belong = 1100}
 					local ItemId = GetEntityByID(Item)
 
 					if ChestId and ItemId then
@@ -4063,6 +4099,9 @@
 			end
 
 			TActivate("CreateNewScavCar")
+
+			AddFadingMsgByStrIdFormatted("fm_scav_give_loot")
+			SoundFadingMsg()
 
 			trigger:Deactivate()
 		</script>
@@ -4101,6 +4140,14 @@
 
 			SetTolerance(1100, 1082, RS_ENEMY)
 
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="trChangeCarTimer" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("trChangeCar")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4248,10 +4295,10 @@
 			if SCAV_CARMA_GLOBAL then SCAV_CARMA_GLOBAL = GetVar("ScavCarma").AsString end
 
 			if DEBUG == 1 then
-				println("EXIT MAP: r0m0")
+				println("=================== EXIT MAP: r0m0 ===================")
 				println("PLAYER BELONG: "..GetVar("PlayerBelong").AsString)
 				println("SCAV CARMA: "..GetVar("ScavCarma").AsString)
-				LOG("EXIT MAP: r0m0")
+				LOG("=================== EXIT MAP: r0m0 ===================")
 				LOG("PLAYER BELONG: "..GetVar("PlayerBelong").AsString)
 				LOG("SCAV CARMA: "..GetVar("ScavCarma").AsString)
 			end

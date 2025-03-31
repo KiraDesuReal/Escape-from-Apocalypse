@@ -1149,7 +1149,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "1500"	
 			MaxSpeed			= "110.0"
 			LoadPoints			= "LP_SML01"
-			FuelConsumption     = "0.65" >
+			FuelConsumption     = "0.7" >
 			<GadgetDescription>
 				<Slot
 					ResourceType	= "GADGET_COMMON"
@@ -1182,11 +1182,14 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
 			MaxSpeed			= "100.0"
 			LoadPoints			= "LP_SML01"
-			FuelConsumption     = "0.63" >
+			FuelConsumption     = "0.65" >
 			<GadgetDescription>
 				<Slot
 					ResourceType	= "GADGET_COMMON"
-					MaxAmount	= "2" />
+					MaxAmount	= "1" />
+				<Slot
+					ResourceType	= "GADGET_WEAPON"
+					MaxAmount	= "1" />
 			</GadgetDescription>
 			<GroupsHealth
 				Main   = "0"
@@ -1247,14 +1250,11 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
 			MaxSpeed			= "90.0"
 			LoadPoints			= "LP_SML01"
-			FuelConsumption     = "0.6" >
+			FuelConsumption     = "0.63" >
 			<GadgetDescription>
 				<Slot
 					ResourceType	= "GADGET_COMMON"
-					MaxAmount	= "1" />
-				<Slot
-					ResourceType	= "GADGET_WEAPON"
-					MaxAmount	= "1" />
+					MaxAmount	= "2" />
 			</GadgetDescription>  
 			<GroupsHealth
 				Main   = "0"
@@ -1283,10 +1283,15 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
 			MaxSpeed			= "100.0"
 			LoadPoints			= "LP_SML01"
-			FuelConsumption     = "0.7" >
-			<Slot
-				ResourceType	= "GADGET_WEAPON"
-				MaxAmount	= "1" />  
+			FuelConsumption     = "1.0" >
+			<GadgetDescription>
+				<Slot
+					ResourceType	= "GADGET_COMMON"
+					MaxAmount	= "1" />  
+				<Slot
+					ResourceType	= "GADGET_WEAPON"
+					MaxAmount	= "1" />  
+			</GadgetDescription>
 			<GroupsHealth
 				Main   = "5"
 			/>
@@ -1310,11 +1315,11 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "6000"	
 			MaxSpeed			= "100.0"
 			LoadPoints			= "LP_SML01 LP_BIG01"
-			FuelConsumption     = "0.7" >
+			FuelConsumption     = "1.05" >
 			<GadgetDescription>
 				<Slot
 					ResourceType	= "GADGET_COMMON"
-					MaxAmount	= "2" />
+					MaxAmount	= "1" />
 				<Slot
 					ResourceType	= "GADGET_WEAPON"
 					MaxAmount	= "2" />  
@@ -1447,7 +1452,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "3000"	
 			MaxSpeed			= "100.0"
 			LoadPoints			= "LP_SML01 LP_BIG01"
-			FuelConsumption     = "0.85" >
+			FuelConsumption     = "0.9" >
 			<GadgetDescription>
 				<Slot
 					ResourceType	= "GADGET_COMMON"
@@ -2008,7 +2013,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			<GadgetDescription>
 				<Slot
 					ResourceType	= "GADGET_COMMON"
-					MaxAmount	= "1" />
+					MaxAmount	= "2" />
 
 				<Slot
 					ResourceType	= "GADGET_WEAPON"
@@ -2097,11 +2102,11 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			<GadgetDescription>
 				<Slot
 					ResourceType	= "GADGET_COMMON"
-					MaxAmount	= "1" />
+					MaxAmount	= "3" />
 
 				<Slot
 					ResourceType	= "GADGET_WEAPON"
-					MaxAmount	= "2" />         
+					MaxAmount	= "3" />         
 			</GadgetDescription>
 			<GroupsHealth
 				Main   = "0"	
@@ -2320,7 +2325,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 				<Slot
 					ResourceType	= "GADGET_WEAPON"
-					MaxAmount	= "1" />         
+					MaxAmount	= "2" />         
 			</GadgetDescription>
 			<GroupsHealth
 				Main   = "0"	
@@ -2530,7 +2535,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			<GadgetDescription>
 				<Slot
 					ResourceType	= "GADGET_COMMON"
-					MaxAmount	= "1" />
+					MaxAmount	= "2" />
 
 				<Slot
 					ResourceType	= "GADGET_WEAPON"
@@ -2573,6 +2578,10 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			LoadPoints			= "LP_BIG01 LP_BIG02" >
 			<GadgetDescription>
 				<Slot
+					ResourceType	= "GADGET_COMMON"
+					MaxAmount	= "1" />   
+
+				<Slot
 					ResourceType	= "GADGET_WEAPON"
 					MaxAmount	= "3" />         
 			</GadgetDescription>
@@ -2612,6 +2621,10 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			LoadPoints			= "LP_BIG01 LP_GIANT01" >
 			<GadgetDescription>
+				<Slot
+					ResourceType	= "GADGET_COMMON"
+					MaxAmount	= "3" />  
+
 				<Slot
 					ResourceType	= "GADGET_WEAPON"
 					MaxAmount	= "4" />         

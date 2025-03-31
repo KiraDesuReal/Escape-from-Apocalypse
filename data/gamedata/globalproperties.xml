@@ -65,7 +65,7 @@
 		DistanceFromPlayerToMoveout="300"/>
 
 	<Repair
-		HealthUnitPrice="1.0"/>
+		HealthUnitPrice="2.0"/>
 
 	<ObstacleAvoidance
 		DefaultLookBoxLength="100.0"
@@ -111,13 +111,13 @@
 	<DifficultyLevels>
 		<Level
 			Name="HardLevel"
-			EnemyWeaponCoeff="1.35"
-			EnemyShootingDelay="0.6"/>
+			EnemyWeaponCoeff="1.4"
+			EnemyShootingDelay="0.5"/>
 
 		<Level
 			Name="HardLevelPlus"
-			EnemyWeaponCoeff="1.65"
-			EnemyShootingDelay="0.5"/>
+			EnemyWeaponCoeff="1.7"
+			EnemyShootingDelay="0.4"/>
 	</DifficultyLevels>
 
 	<Price

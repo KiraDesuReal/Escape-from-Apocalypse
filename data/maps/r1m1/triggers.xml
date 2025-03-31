@@ -196,11 +196,9 @@
 			end
 
 			if DEBUG == 1 then
-				println("START MAP: r1m1")
-				println("RAID: "..GetVar("CountRaids").AsInt)
+				println("=================== START MAP: r1m1 ===================")
 				println("PLAYER BELONG: "..GetVar("PlayerBelong").AsString)
-				LOG("START MAP: r1m1")
-				LOG("RAID: "..GetVar("CountRaids").AsInt)
+				LOG("=================== START MAP: r1m1 ===================")
 				LOG("PLAYER BELONG: "..GetVar("PlayerBelong").AsString)
 			end
 		</script>
@@ -304,13 +302,13 @@
 			if vehPlayer then
 				vehPlayer:setImmortalMode(1)
 				if GetVar("PlayerBelong").AsString == "SCAV" then
-					vehPlayer:SetNameFromScript("ScavCarForPlayer_InRaid")
+					vehPlayer:SetNameFromScript("ScavCarForPlayer")
 					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
-					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "ScavCarForPlayer_InRaid")
+					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "ScavCarForPlayer")
 				else
-					vehPlayer:SetNameFromScript("PlayerCar_InRaid")
+					vehPlayer:SetNameFromScript("PlayerCar")
 					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
-					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "PlayerCar_InRaid")
+					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "PlayerCar")
 				end
 			end
 			TActivate("FakePlayerDead")
@@ -474,13 +472,13 @@
 					end
 				end
 				if GetVar("PlayerBelong").AsString == "SCAV" then
-					vehPlayer:SetNameFromScript("ScavCarForPlayer_InRaid")
+					vehPlayer:SetNameFromScript("ScavCarForPlayer")
 					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
-					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "ScavCarForPlayer_InRaid")
+					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "ScavCarForPlayer")
 				else
-					vehPlayer:SetNameFromScript("PlayerCar_InRaid")
+					vehPlayer:SetNameFromScript("PlayerCar")
 					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
-					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "PlayerCar_InRaid")
+					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "PlayerCar")
 				end
 				vehPlayer:SetThrottle(0)
 				vehPlayer:SetCustomLinearVelocity(0)
@@ -574,6 +572,7 @@
 
 			if 0 > min and 0 >= sec then
 				TActivate("cutTimeRaid")
+				TActivate("DeactivateAllExits")
 				trigger:Deactivate() 
 			end
 			
@@ -1005,7 +1004,7 @@
 	<trigger Name="BaseScavs_exitScav" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BaseScavs_exitScav_loc" />
 		<script>
-			if 1 >= GetTolerance(1100, 1082) then
+			if 1.5 >= GetTolerance(1100, 1082) then
 				AddImportantFadingMsgByStrIdFormatted("fm_player_scav_close_exit", "ExitScav_BaseScavs")
 				SoundFadingMsg()
 			else
@@ -1015,7 +1014,21 @@
 					SoundFadingMsg()
 					TActivate ("LeaveZoneExit")
 					TActivate ("ExitTimer")
+					TActivate("BaseScavs_exitScavInLoc")
 				end
+			end
+ 		</script>
+	</trigger>
+
+	<trigger Name="BaseScavs_exitScavInLoc" active="0">
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="BaseScavs_exitScav_loc" />
+		<script>
+			if 1.5 >= GetTolerance(1100, 1082) then
+				TDeactivate("LeaveZoneExit")
+				TDeactivate("ExitTimer")
+				AddImportantFadingMsgByStrIdFormatted("fm_player_scav_close_exit", "ExitScav_BaseScavs")
+				SoundFadingMsg()
+				trigger:Deactivate()
 			end
  		</script>
 	</trigger>
@@ -1033,6 +1046,7 @@
 			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_leaves_location")
 			SoundFadingMsg()
 			TDeactivate("ExitTimer")
+			TDeactivate("BaseScavs_exitScavInLoc")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1050,10 +1064,11 @@
 				SetVar("ExitTimer",6)
 				PassToMap("r0m0", "FromLocation")
 				if GetVar("PlayerBelong").AsString == "SCAV" then 
-					if 1 >= GetTolerance(1100, 1082) then
+					if 1.5 >= GetTolerance(1100, 1082) then
 						SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.4)
 					end
 					SetVar("ScavCarma", GetVar("ScavCarma").AsString + 0.1)
+					TDeactivate("BaseScavs_exitScavInLoc")
 				else
 					TActivate("IfExitForQuest") 
 				end
@@ -1063,6 +1078,24 @@
 				AddFadingMsgByStrIdFormatted("fm_player_exit_location", timer)
 			end
 
+		</script>
+	</trigger>
+
+	<trigger Name="DeactivateAllExits" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			TDeactivate("RoadToFater")
+			TDeactivate("ZaTheGloohoe")
+			TDeactivate("RoadToRidzin")
+			TDeactivate("BaseFelix")
+			TDeactivate("BaseFelixExtract")
+			TDeactivate("ZaTheTroiskoe")
+			TDeactivate("ZaTheTown_exitScav")
+			TDeactivate("BaseScavs_exitScav")
+			TDeactivate("BaseScavs_exitScavInLoc")
+			TDeactivate("LeaveZoneExit")
+			TDeactivate("ExitTimer")
+			trigger:Deactivate()
 		</script>
 	</trigger>
 
@@ -1089,7 +1122,7 @@
 
 			if GetVar("SpawnPlayer").AsInt == 1 then
 				if GetVar("PlayerBelong").AsString == "SCAV" then
-					if 1 >= GetTolerance(1100, 1082) then
+					if 1.5 >= GetTolerance(1100, 1082) then
 						AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits2LocationR1M1_ForScav_2")
 					else
 						AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits2LocationR1M1_ForScav")
@@ -2575,11 +2608,10 @@
 			local hp = GetPlayerHealth() 
 			if pl and hp >= 1 then 
 				ItemUse() 
+				UseItemsForQuest()
 			else 
 				trigger:Deactivate() 
 			end
-
-			UseItemsForQuest()
 		</script>
 	</trigger>
 
@@ -3213,7 +3245,7 @@
 	<trigger Name="CreateTheTownLootBox" active="0">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-			local items = {"machinery", "book", "electronics", "shkatulka", 
+			local items = {"machinery_use", "book", "electronics_use", "shkatulka", 
 							"ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_chest_artillerygun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo",
 							"item_datchik", "item_kek", "item_military_tube", "item_pena", "item_thermometer", "item_tube",
 							"item_bp", "item_drill", "item_engine", "item_hdd", "item_lcd", "item_military_cable", "item_tetris",
@@ -4153,7 +4185,7 @@
 				if DEBUG == 1 then println("PLAYER PMC KILL: "..GetVar("PlayerKillPMC").AsInt) LOG("PLAYER PMC KILL: "..GetVar("PlayerKillPMC").AsInt) end
 				SetVar("LastUnderAttack", 0)
 				if GetVar("PlayerBelong").AsString == "SCAV" then 
-					SetVar("ScavCarma", GetVar("ScavCarma").AsString + 0.2) 
+					SetVar("ScavCarma", GetVar("ScavCarma").AsString + 0.1) 
 				else 
 					TActivate("KillsPMC") 
 				end
@@ -4359,6 +4391,7 @@
 			TDeactivate ("BaseFelix")
 			TDeactivate("ZaTheTown_exitScav")
 			TDeactivate("BaseScavs_exitScav")
+			TDeactivate("BaseScavs_exitScavInLoc")
 
 			--удаление диких на локациях
 			for loc=1,8 do
@@ -4566,12 +4599,12 @@
 			SetTolerance(1087, 1100, RS_ENEMY)
 
 			if DEBUG == 1 then
-				println("EXIT MAP: r1m1")
+				println("=================== EXIT MAP: r1m1 ===================")
 				println("PLAYER BELONG: "..GetVar("PlayerBelong").AsString)
 				println("SCAV CARMA: "..GetVar("ScavCarma").AsString)
 				println("PLAYER SCAV KILL: "..GetVar("PlayerKillScavs").AsInt)
 				println("PLAYER PMC KILL: "..GetVar("PlayerKillPMC").AsInt)
-				LOG("EXIT MAP: r1m1")
+				LOG("=================== EXIT MAP: r1m1 ===================")
 				LOG("PLAYER BELONG: "..GetVar("PlayerBelong").AsString)
 				LOG("SCAV CARMA: "..GetVar("ScavCarma").AsString)
 				LOG("PLAYER SCAV KILL: "..GetVar("PlayerKillScavs").AsInt)
@@ -4833,12 +4866,13 @@
 	<trigger Name="q_clearing_r1m1_KillScavs" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			local kills = {5, 5, 5, 5, 5}
+			local kills = {3, 5, 5, 5, 5}
 			for i=1,5 do
 				if GetVar("q_clearing_r1m1_EnemyInLoc").AsInt == i then
 					if not(GetVar("q_clearing_r1m1_DieScavs_loc_"..i).AsInt == kills[i]) then
 						SetVar("q_clearing_r1m1_DieScavs_loc_"..i, GetVar("q_clearing_r1m1_DieScavs_loc_"..i).AsInt+1)
 						if GetVar("q_clearing_r1m1_DieScavs_loc_"..i).AsInt >= kills[i] then
+							SetVar("q_clearing_r1m1_DieScavs_loc_"..i, kills[i])
 							CompleteSubtask("q_clearing_r1m1_"..i)
 							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills_complete", "q_clearing_r1m1", GetVar("q_clearing_r1m1_DieScavs_loc_"..i).AsInt, kills[i])
 							SoundFadingMsg()

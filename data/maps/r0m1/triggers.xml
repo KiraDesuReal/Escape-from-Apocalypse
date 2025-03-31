@@ -538,11 +538,12 @@
 				SetVar("ScoreUP", 100)
 			elseif (l >= 1000) then
 				RandomCarList = {"Molokovoz01PMC"}
+				SetVar("ScoreUP", 85)
 			elseif (l >= 800) then
 				RandomCarList = {"Bug01PMC", "Molokovoz01PMC"}
 				SetVar("ScoreUP", 75)
 			elseif (l >= 550) then
-				RandomCarList = {"Bug01PMC", "Fighter1CarScav", "Hunter2CarScav"}
+				RandomCarList = {"Fighter1CarScav", "Hunter2CarScav"}
 				SetVar("ScoreUP", 50)
 			elseif (l >= 300) then
 				RandomCarList = {"Scout1CarScav", "Fighter1CarScav", "Hunter2CarScav"}
@@ -689,18 +690,22 @@
 	<trigger Name="trEnemy_0_Without_Health" active="0">
 		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
-			local randLoot = random(2)
+			local randLoot
 			local l = GetVar("Score").AsInt
 	
 			local itemList = {"scrap_metal_use"}
-			if 550 > l then 
-				itemList = {"scrap_metal_use"}
-			elseif l >= 2000 then 
+			if l >= 2000 then 
 				itemList = {"machinery_use", "electronics_use"} 
+				randLoot = 1
 			elseif l >= 1500 then 
 				itemList = {"scrap_metal_use", "machinery_use", "electronics_use"} 
+				randLoot = random(2)
 			elseif l >= 550 then 
 				itemList = {"scrap_metal_use", "machinery_use"} 
+				randLoot = random(3)
+			else
+				itemList = {"scrap_metal_use"}
+				randLoot = random(4)
 			end
 
 			local item = itemList[random(getn(itemList))]
@@ -747,18 +752,22 @@
 	<trigger Name="trEnemy_1_Without_Health" active="0">
 		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
-			local randLoot = random(2)
+			local randLoot
 			local l = GetVar("Score").AsInt
 
 			local itemList = {"scrap_metal_use"}
-			if 550 > l then 
-				itemList = {"scrap_metal_use"}
-			elseif l >= 2000 then 
+			if l >= 2000 then 
 				itemList = {"machinery_use", "electronics_use"} 
+				randLoot = 1
 			elseif l >= 1500 then 
 				itemList = {"scrap_metal_use", "machinery_use", "electronics_use"} 
+				randLoot = random(2)
 			elseif l >= 550 then 
 				itemList = {"scrap_metal_use", "machinery_use"} 
+				randLoot = random(3)
+			else
+				itemList = {"scrap_metal_use"}
+				randLoot = random(4)
 			end
 			
 			local item = itemList[random(getn(itemList))]
@@ -806,18 +815,22 @@
 	<trigger Name="trEnemy_2_Without_Health" active="0">
 		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
-			local randLoot = random(2)
+			local randLoot
 			local l = GetVar("Score").AsInt
 
 			local itemList = {"scrap_metal_use"}
-			if 550 > l then 
-				itemList = {"scrap_metal_use"}
-			elseif l >= 2000 then 
+			if l >= 2000 then 
 				itemList = {"machinery_use", "electronics_use"} 
+				randLoot = 1
 			elseif l >= 1500 then 
 				itemList = {"scrap_metal_use", "machinery_use", "electronics_use"} 
+				randLoot = random(2)
 			elseif l >= 550 then 
 				itemList = {"scrap_metal_use", "machinery_use"} 
+				randLoot = random(3)
+			else
+				itemList = {"scrap_metal_use"}
+				randLoot = random(4)
 			end
 			
 			local item = itemList[random(getn(itemList))]
@@ -865,18 +878,22 @@
 	<trigger Name="trEnemy_3_Without_Health" active="0">
 		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
-			local randLoot = random(2)
+			local randLoot
 			local l = GetVar("Score").AsInt
 
 			local itemList = {"scrap_metal_use"}
-			if 550 > l then 
-				itemList = {"scrap_metal_use"}
-			elseif l >= 2000 then 
+			if l >= 2000 then 
 				itemList = {"machinery_use", "electronics_use"} 
+				randLoot = 1
 			elseif l >= 1500 then 
 				itemList = {"scrap_metal_use", "machinery_use", "electronics_use"} 
+				randLoot = random(2)
 			elseif l >= 550 then 
 				itemList = {"scrap_metal_use", "machinery_use"} 
+				randLoot = random(3)
+			else
+				itemList = {"scrap_metal_use"}
+				randLoot = random(4)
 			end
 			
 			local item = itemList[random(getn(itemList))]

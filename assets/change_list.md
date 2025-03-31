@@ -47,4 +47,4 @@
 + Добавлена карма _Дикого_
 + Множество других изменений и улучшений
 
-**Инструкция по установке и прочая информация находиться на [главной странице](https://github.com/KiraDesuReal/Escape-from-Apocalypse/blob/main/README.md) модификации на GitHub.**
+**Инструкция по установке и прочая информация находится на [главной странице](https://github.com/KiraDesuReal/Escape-from-Apocalypse/blob/main/README.md) модификации на GitHub.**

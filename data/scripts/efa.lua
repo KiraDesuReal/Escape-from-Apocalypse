@@ -205,11 +205,40 @@ function ItemUse(ammo_used)
 end
 
 function HealItems()
+	local HealItems = {"scrap_metal_use", "machinery_use", "electronics_use"}
+	local FuelItems = {"oil_use", "fuel_full_use"}
+	local HealItemsToPlayer, FuelItemsToPlayer = {}, {}
+	local heal, fuel = 0, 0
+
+	for h = 1, 3 do
+		if HasPlayerAmountOfItems(HealItems[h], 1) then
+			heal = heal + 1
+			HealItemsToPlayer[heal] = HealItems[h]
+		end
+	end
+
+	for f = 1, 2 do
+		if HasPlayerAmountOfItems(FuelItems[f], 1) then
+			fuel = fuel + 1
+			FuelItemsToPlayer[fuel] = FuelItems[f]
+		end
+	end
+
+	if HealItemsToPlayer[1] then
+		UseRestoreItem(HealItemsToPlayer[1])
+	end
+
+	if FuelItemsToPlayer[1] then
+		UseRestoreItem(FuelItemsToPlayer[1])
+	end
+end
+
+function UseRestoreItem(item)
 	local vehP = GetPlayerVehicle()
 	local PlfCoor = vehP:GetPosition()
-	local healthcar = GetPlayerHealth() 
+	local healthcar = math.floor(GetPlayerHealth() + 0.5)
 	local healthmax = GetPlayerMaxHealth()
-	local fuelcar = GetPlayerFuel()
+	local fuelcar = math.floor(GetPlayerFuel() + 0.5)
 	local fuelmax = GetPlayerMaxFuel()
 
 	local cabin = vehP:GetCabin()
@@ -220,209 +249,73 @@ function HealItems()
 	local durabilityCab = cabin:GetPropertyById(19).AsInt
 	local durabilityBas = basket:GetPropertyById(19).AsInt
 
-	local scrap_metal_procent = 10
-	local machinery_procent = 25
-	local electronics_procent = 40
-
-	local scrap_metal_procent_d = 30
-	local machinery_procent_d = 20
-	local electronics_procent_d = 10
-
-	local oil_procent = 15
-	local fuel_procent = 30
-
-	local fuel_use_procent = 25
-
+	local procent_item, procent_item_d, procent_fuel_item = 0, 0, 0
+	
 	local procent, procent_d_cab, procent_d_bas = 0, 0, 0 
 	local hp_pr, d_pr_cab, d_pr_bas = 0, 0, 0
-	
-	if HasPlayerAmountOfItems("scrap_metal_use", 1) and HasPlayerAmountOfItems("machinery_use", 1) and HasPlayerAmountOfItems("electronics_use", 1) then
-		procent = healthmax / 100 * electronics_procent
-		hp_pr = healthmax - procent
-		if vehP then 
-			if hp_pr >= healthcar then
-				procent_d_cab = durabilityCabMax / 100 * electronics_procent_d
-				procent_d_bas = durabilityBasMax / 100 * electronics_procent_d
 
-				d_pr_cab = durabilityCab + procent_d_cab
-				d_pr_bas = durabilityBas + procent_d_bas
+	local fm, fx = 0, 0
 
-				if d_pr_cab >= durabilityCabMax then d_pr_cab = durabilityCabMax end
-				if d_pr_bas >= durabilityBasMax then d_pr_bas = durabilityBasMax end
-
-				if cabin then cabin:SetProperty("durability", d_pr_cab) end 
-				if basket then basket:SetProperty("durability", d_pr_bas) end 
-
-				vehP:AddModifier( "hp", "+ "..procent ) 
-				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_electronics", procent, healthcar + procent, procent_d_cab, d_pr_cab, procent_d_bas, d_pr_bas)
-				RemoveItemsFromPlayerRepository("electronics_use", 1)
-			end
-		end
+	if item == "scrap_metal_use" then
+		procent_item = 10
+		procent_item_d = 30
+		fm = "fm_use_scrap_metal"
+		fx = "ET_PS_USE_ARM"
+	elseif item == "machinery_use" then
+		procent_item = 25
+		procent_item_d = 20
+		fm = "fm_use_machinery"
+		fx = "ET_PS_USE_LIFE"
+	elseif item == "electronics_use" then
+		procent_item = 40
+		procent_item_d = 10
+		fm = "fm_use_electronics"
+		fx = "ET_PS_USE_LIFE"
+	elseif item == "oil_use" then
+		procent_fuel_item = 15
+		fm = "fm_use_oil"
+	elseif item == "fuel_full_use" then
+		procent_fuel_item = 30
+		fm = "fm_use_fuel_full"
 	end
 
-	if HasPlayerAmountOfItems("machinery_use", 1) and HasPlayerAmountOfItems("electronics_use", 1) then
-		procent = healthmax / 100 * electronics_procent
+	if item == "scrap_metal_use" or item == "machinery_use" or item == "electronics_use" then
+		procent = healthmax / 100 * procent_item
 		hp_pr = healthmax - procent
 		if vehP then 
 			if hp_pr >= healthcar then
-				procent_d_cab = durabilityCabMax / 100 * electronics_procent_d
-				procent_d_bas = durabilityBasMax / 100 * electronics_procent_d
+				procent_d_cab = durabilityCabMax / 100 * procent_item_d
+				procent_d_bas = durabilityBasMax / 100 * procent_item_d
 
 				d_pr_cab = durabilityCab + procent_d_cab
 				d_pr_bas = durabilityBas + procent_d_bas
 
-				if d_pr_cab >= durabilityCabMax then d_pr_cab = durabilityCabMax end
-				if d_pr_bas >= durabilityBasMax then d_pr_bas = durabilityBasMax end
+				if d_pr_cab >= durabilityCabMax then 
+					d_pr_cab = durabilityCabMax 
+				end
 
-				if cabin then cabin:SetProperty("durability", d_pr_cab) end 
-				if basket then basket:SetProperty("durability", d_pr_bas) end 
-
-				vehP:AddModifier( "hp", "+ "..procent ) 
-				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_electronics", procent, healthcar + procent, procent_d_cab, d_pr_cab, procent_d_bas, d_pr_bas)
-				RemoveItemsFromPlayerRepository("electronics_use", 1)
-			end
-		end
-	end
-
-	if HasPlayerAmountOfItems("scrap_metal_use", 1) and HasPlayerAmountOfItems("machinery_use", 1) then
-		procent = healthmax / 100 * machinery_procent
-		hp_pr = healthmax - procent
-		if vehP then 
-			if hp_pr >= healthcar then
-				procent_d_cab = durabilityCabMax / 100 * machinery_procent_d
-				procent_d_bas = durabilityBasMax / 100 * machinery_procent_d
-
-				d_pr_cab = durabilityCab + procent_d_cab
-				d_pr_bas = durabilityBas + procent_d_bas
-
-				if d_pr_cab >= durabilityCabMax then d_pr_cab = durabilityCabMax end
-				if d_pr_bas >= durabilityBasMax then d_pr_bas = durabilityBasMax end
+				if d_pr_bas >= durabilityBasMax then 
+					d_pr_bas = durabilityBasMax 
+				end
 
 				if cabin then cabin:SetProperty("durability", d_pr_cab) end 
 				if basket then basket:SetProperty("durability", d_pr_bas) end
 
-				vehP:AddModifier( "hp", "+ "..procent ) 
-				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_machinery", procent, healthcar + procent, procent_d_cab, d_pr_cab, procent_d_bas, d_pr_bas)
-				RemoveItemsFromPlayerRepository("machinery_use", 1)
+				vehP:AddModifier("hp", "+ "..procent ) 
+				CreateEffectTTLed(fx, PlfCoor, Quaternion(0, 0, 0, 1), 1000)
+				AddFadingMsgByStrIdFormatted(fm, procent, healthcar + procent, procent_d_cab, d_pr_cab, procent_d_bas, d_pr_bas)
+				RemoveItemsFromPlayerRepository(item, 1)
 			end
 		end
-	end
-
-	if HasPlayerAmountOfItems("electronics_use", 1) then
-		procent = healthmax / 100 * electronics_procent
-		hp_pr = healthmax - procent
-		if vehP then 
-			if hp_pr >= healthcar then
-				procent_d_cab = durabilityCabMax / 100 * electronics_procent_d
-				procent_d_bas = durabilityBasMax / 100 * electronics_procent_d
-
-				d_pr_cab = durabilityCab + procent_d_cab
-				d_pr_bas = durabilityBas + procent_d_bas
-
-				if d_pr_cab >= durabilityCabMax then d_pr_cab = durabilityCabMax end
-				if d_pr_bas >= durabilityBasMax then d_pr_bas = durabilityBasMax end
-
-				if cabin then cabin:SetProperty("durability", d_pr_cab) end 
-				if basket then basket:SetProperty("durability", d_pr_bas) end 
-
-				vehP:AddModifier( "hp", "+ "..procent ) 
-				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_electronics", procent, healthcar + procent, procent_d_cab, d_pr_cab, procent_d_bas, d_pr_bas)
-				RemoveItemsFromPlayerRepository("electronics_use", 1)
-			end
-		end
-	end
-
-	if HasPlayerAmountOfItems("machinery_use", 1) then
-		procent = healthmax / 100 * machinery_procent
-		hp_pr = healthmax - procent
-		if vehP then 
-			if hp_pr >= healthcar then
-				procent_d_cab = durabilityCabMax / 100 * machinery_procent_d
-				procent_d_bas = durabilityBasMax / 100 * machinery_procent_d
-
-				d_pr_cab = durabilityCab + procent_d_cab
-				d_pr_bas = durabilityBas + procent_d_bas
-
-				if d_pr_cab >= durabilityCabMax then d_pr_cab = durabilityCabMax end
-				if d_pr_bas >= durabilityBasMax then d_pr_bas = durabilityBasMax end
-
-				if cabin then cabin:SetProperty("durability", d_pr_cab) end 
-				if basket then basket:SetProperty("durability", d_pr_bas) end
-
-				vehP:AddModifier( "hp", "+ "..procent ) 
-				CreateEffectTTLed( "ET_PS_USE_LIFE", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_machinery", procent, healthcar + procent, procent_d_cab, d_pr_cab, procent_d_bas, d_pr_bas)
-				RemoveItemsFromPlayerRepository("machinery_use", 1)
-			end
-		end
-	end
-
-	if HasPlayerAmountOfItems("scrap_metal_use", 1) then
-		procent = healthmax / 100 * scrap_metal_procent
-		hp_pr = healthmax - procent
-		if vehP then 
-			if hp_pr >= healthcar then
-				procent_d_cab = durabilityCabMax / 100 * scrap_metal_procent_d
-				procent_d_bas = durabilityBasMax / 100 * scrap_metal_procent_d
-
-				d_pr_cab = durabilityCab + procent_d_cab
-				d_pr_bas = durabilityBas + procent_d_bas
-
-				if d_pr_cab >= durabilityCabMax then d_pr_cab = durabilityCabMax end
-				if d_pr_bas >= durabilityBasMax then d_pr_bas = durabilityBasMax end
-
-				if cabin then cabin:SetProperty("durability", d_pr_cab) end 
-				if basket then basket:SetProperty("durability", d_pr_bas) end
-
-				vehP:AddModifier( "hp", "+ "..procent ) 
-				CreateEffectTTLed( "ET_PS_USE_ARM", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_scrap_metal", procent, healthcar + procent, procent_d_cab, d_pr_cab, procent_d_bas, d_pr_bas)
-				RemoveItemsFromPlayerRepository("scrap_metal_use", 1)
-			end
-		end
-	end
-
-	if HasPlayerAmountOfItems("oil_use", 1) and HasPlayerAmountOfItems("fuel_full_use", 1) then
-		procent = fuelmax / 100 * fuel_procent
-		hp_pr = fuelmax / 100 * fuel_use_procent
+	else
+		procent = fuelmax / 100 * procent_fuel_item
+		hp_pr = fuelmax / 100 * 25
 		if vehP then 
 			if hp_pr >= fuelcar then
-				vehP:AddModifier( "fuel", "+ "..procent ) 
-				CreateEffectTTLed( "ET_PS_USE_OIL", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_fuel_full", procent, fuelcar + procent)
-				RemoveItemsFromPlayerRepository("fuel_full_use", 1)
-				AddItemsToPlayerRepository("fuel_nil_use", 1)
-			end
-		end
-	end
-
-	if HasPlayerAmountOfItems("fuel_full_use", 1) then
-		procent = fuelmax / 100 * fuel_procent
-		hp_pr = fuelmax / 100 * fuel_use_procent
-		if vehP then 
-			if hp_pr >= fuelcar then
-				vehP:AddModifier( "fuel", "+ "..procent ) 
-				CreateEffectTTLed( "ET_PS_USE_OIL", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_fuel_full", procent, fuelcar + procent)
-				RemoveItemsFromPlayerRepository("fuel_full_use", 1)
-				AddItemsToPlayerRepository("fuel_nil_use", 1)
-			end
-		end
-	end
-
-	if HasPlayerAmountOfItems("oil_use", 1) then
-		procent = fuelmax / 100 * oil_procent
-		hp_pr = fuelmax / 100 * fuel_use_procent
-		if vehP then 
-			if hp_pr >= fuelcar then
-				vehP:AddModifier( "fuel", "+ "..procent ) 
-				CreateEffectTTLed( "ET_PS_USE_OIL", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
-				AddFadingMsgByStrIdFormatted("fm_use_oil", procent, fuelcar + procent)
-				RemoveItemsFromPlayerRepository("oil_use", 1)
+				vehP:AddModifier("fuel", "+ "..procent ) 
+				CreateEffectTTLed("ET_PS_USE_OIL", PlfCoor, Quaternion(0, 0, 0, 1), 1000)
+				AddFadingMsgByStrIdFormatted(fm, procent, fuelcar + procent)
+				RemoveItemsFromPlayerRepository(item, 1)
 			end
 		end
 	end
@@ -909,13 +802,13 @@ function CreateGunBox(name, pos)
 	local affics = random(0,2)
 	local gun_r = random(2)
 	local ammo_r = random(2)
-	local ammo_item = 0
+	local ammo_item
 
 	if notloot > 10 then
 		if gun_r == 1 then
 			local gun_item = gun_rand[random(getn(gun_rand))]
-
-			local Gun = CreateNewObject{prototypeName = gun_item, objName = "GunItem_1", belong = 1100}
+			
+			local Gun = CreateNewObject{prototypeName = gun_item, objName = "GunItem_"..random(10000), belong = 1100}
 			local GunId = GetEntityByID(Gun)
 
 			local afflist = {}
@@ -932,7 +825,7 @@ function CreateGunBox(name, pos)
 			end
 			
 			if ammo_r == 1 then
-				if gun_item == "hornet01" or gun_item == "specter01" or gun_item == "pkt01" or gun_item == "kord01" or gun_item == "vector01" or gun_item == "vulcan01" or gun_item == "kpvt01" or gun_item == "vulcan01" or gun_item == "octopus01" then
+				if gun_item == "hornet01" or gun_item == "specter01" or gun_item == "pkt01" or gun_item == "kord01" or gun_item == "vector01" or gun_item == "vulcan01" or gun_item == "kpvt01" or gun_item == "octopus01" then
 					ammo_item = "ammo_chest_machinegun"
 				elseif gun_item == "storm01" or gun_item == "flag01" then
 					ammo_item = "ammo_chest_shotgun"
@@ -955,8 +848,8 @@ function CreateGunBox(name, pos)
 						ammo_item = "ammo_ballon_turbo"
 					end
 				end
-				if not(ammo_item == 0) then
-					local Ammo = CreateNewObject{prototypeName = ammo_item, objName = "AmmoItem_1", belong = 1100}
+				if ammo_item then
+					local Ammo = CreateNewObject{prototypeName = ammo_item, objName = "AmmoItem_"..random(10000), belong = 1100}
 					local AmmoId = GetEntityByID(Ammo)
 					if ChestId and AmmoId then
 						ChestId:AddChild(AmmoId)
@@ -1021,6 +914,28 @@ function AllItems()
 					"item_ms2000",
 					"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun",
 					"someTurboAccelerationPusher", "engineOilPusher", "nailsPusher", "Smoke", "minePusher", "minePusher_1", "minePusher_2",
+					"cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns", "cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "additional_fuel_tank2", "additional_torque2", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
+	return Items
+end
+
+function AllItemsForScav()
+	local Items = {"potato", "scrap_metal", "firewood", "oil", "bottle", "fuel", "machinery", "tobacco", "book", "electronics",
+					"doski", "details", "shkatulka",
+					"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use", "fuel_nil_use",
+					"item_key_gate_thetown", "item_key_gate_basefelix",
+					"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo",
+					"item_bolts", "item_datchik", "item_hose", "item_insulation", "item_kek", "item_military_tube", "item_nails", "item_nuts", "item_parts", "item_pena", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_thermometer", "item_tube",
+					"item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires",
+					"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery",
+					"item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder",
+					"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
+					"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
+					"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe",
+					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector",
+					"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
+					"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock",
+					"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun",
+					"someTurboAccelerationPusher",
 					"cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns", "cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "additional_fuel_tank2", "additional_torque2", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 	return Items
 end
@@ -1175,8 +1090,8 @@ end
 
 -- Генерация случайного имени для дикого
 function GenerateRandomScavName()
-	local firstName = {"Иван", "Дмитрий", "Дима", "Димка", "Айвен", "Бен", "Виталий", "Виталик", "Виталя", "Вася", "Пися", "Максим", "Ашот", "Федя", "Фердинанд", "Саня", "Санька", "Илья", "Илюха", "Леха", "Петька", "Савелий", "Валерий", "Киса", "Кот", "Дед", "Мошенник", "Папич", "Павел", "Павлик", "Витёк", "Вантуз", "Даня", "Данила", "Димон", "Кирюха", "Боря", "Борис", "Кабан", "Макс", "Карсен", "Алик", "Пашка", "Вован", "Анатолий", "Стёпа", "Мыш", "Муж", "Аксель", "Феликс", "Вор", "Дик", "Миха", "Михаил", "Ростислав", "Колян", "Коля", "Ёбырь", "Игрок", "Пётр", "Петруха", "Дод", "Петрович", "Алекс", "Алексей", "Сергей", "Серёга", "Серго", "Гном", "Друид", "Бандит", "Бродяга", "Кочевник", "Работяга", "Америго", "Сэм", "Конни", "Блайд", "Дронн"}
-	local secondName = {"Слабый", "Сильный", "Мощный", "Меткий", "Скорострел", "Железный", "Бронированный", "Неудачник", "Наркоман", "Белазист", "Натурал", "РПГ", "Гусак", "Дикарь", "Сметана", "Базированный", "Программист", "Айтишник", "Опасный", "Страшный", "Крепкий", "Улучшенный", "Апгрейднутый", "Моряк", "Ебанько", "Герой", "Новичок", "Бывалый", "Профи", "Мастер", "Водила", "Ананага", "Бобёр", "Вертухай", "Заднеприводный", "Мрачный", "Киберпсих", "Киберспортсмен", "Торговец", "Бармен", "Оракул", "Наркоторговец", "Ненаркоторговец", "Наркоман", "Кепка", "Кепарик", "Рыхлый", "Казах", "Самурай", "Япончик", "Пончик", "Сладкий", "Ботан", "Сфено", "Затвор", "Помощник", "Кусок", "Спрут", "Рейнметалл", "Фагот", "Скоростной", "Яйцо", "Упитыш", "Крепыш", "Клоун", "Бебра", "Яебу", "Правильный", "ЧСВ", "Полторашка", "Бигмак", "Микрофон", "Вибрирующий", "Разрядник", "Няшка", "Меченый", "Пух", "Мозголюб", "Левый", "Правый", "Фермер", "Мокрый", "Влажный", "Наглый", "Глушитель", "Чарли", "Капец", "Пиздюк", "Гондурас", "Овощебаза", "Сиська", "Компатчер", "Шиза", "Обезьяна", "Дристомёт", "Иваныч", "Иванов", "Барыга", "Одноглазый", "Ебучий", "Везунчик", "Крипто", "Мякиш", "Махинист", "Го", "Дроссель", "Идёт", "Замузик", "Крутой", "Любитель", "Поедатель", "Предатель", "Белаз", "Скаут", "Боец", "Таракан", "Клоп", "Муравей", "Медведь", "Охотник", "Урал", "Сагитта", "Филимон", "Отверствие", "Скорб", "Казино", "Генератор", "Терминатор", "Странник", "Младший", "Старший", "Бензобак"}
+	local firstName = {"Иван", "Дмитрий", "Дима", "Димка", "Айвен", "Бен", "Виталий", "Виталик", "Виталя", "Вася", "Пися", "Максим", "Ашот", "Федя", "Фердинанд", "Саня", "Санька", "Илья", "Илюха", "Леха", "Петька", "Савелий", "Валерий", "Киса", "Кот", "Дед", "Мошенник", "Папич", "Павел", "Павлик", "Витёк", "Вантуз", "Даня", "Данила", "Димон", "Кирюха", "Боря", "Борис", "Кабан", "Макс", "Карсен", "Алик", "Пашка", "Вован", "Анатолий", "Стёпа", "Мыш", "Муж", "Аксель", "Феликс", "Вор", "Дик", "Миха", "Михаил", "Ростислав", "Колян", "Коля", "Ёбырь", "Игрок", "Пётр", "Петруха", "Дод", "Петрович", "Алекс", "Алексей", "Сергей", "Серёга", "Серго", "Гном", "Друид", "Бандит", "Бродяга", "Кочевник", "Работяга", "Америго", "Сэм", "Конни", "Блайд", "Дронн", "Серый", "Талик", "Гит", "Святослав", "Мистер", "Кот", "Санёк", "Тим", "Мишаня", "Фёдор", "Васян", "Никита", "Никитка", "Монолит", "Станислав", "Стас", "Стасян"}
+	local secondName = {"Слабый", "Сильный", "Мощный", "Меткий", "Скорострел", "Железный", "Бронированный", "Неудачник", "Наркоман", "Белазист", "Натурал", "РПГ", "Гусак", "Дикарь", "Сметана", "Базированный", "Программист", "Айтишник", "Опасный", "Страшный", "Крепкий", "Улучшенный", "Апгрейднутый", "Моряк", "Ебанько", "Герой", "Новичок", "Бывалый", "Профи", "Мастер", "Водила", "Ананага", "Бобёр", "Вертухай", "Заднеприводный", "Мрачный", "Киберпсих", "Киберспортсмен", "Торговец", "Бармен", "Оракул", "Наркоторговец", "Ненаркоторговец", "Наркоман", "Кепка", "Кепарик", "Рыхлый", "Казах", "Самурай", "Япончик", "Пончик", "Сладкий", "Ботан", "Сфено", "Затвор", "Помощник", "Кусок", "Спрут", "Рейнметалл", "Фагот", "Скоростной", "Яйцо", "Упитыш", "Крепыш", "Клоун", "Бебра", "Яебу", "Правильный", "ЧСВ", "Полторашка", "Бигмак", "Микрофон", "Вибрирующий", "Разрядник", "Няшка", "Меченый", "Пух", "Мозголюб", "Левый", "Правый", "Фермер", "Мокрый", "Влажный", "Наглый", "Глушитель", "Чарли", "Капец", "Пиздюк", "Гондурас", "Овощебаза", "Сиська", "Компатчер", "Шиза", "Обезьяна", "Дристомёт", "Иваныч", "Иванов", "Барыга", "Одноглазый", "Ебучий", "Везунчик", "Крипто", "Мякиш", "Махинист", "Го", "Дроссель", "Идёт", "Замузик", "Крутой", "Любитель", "Поедатель", "Предатель", "Белаз", "Скаут", "Боец", "Таракан", "Клоп", "Муравей", "Медведь", "Охотник", "Урал", "Сагитта", "Филимон", "Отверствие", "Скорб", "Казино", "Генератор", "Терминатор", "Странник", "Младший", "Старший", "Бензобак", "Грузин", "Дырявый", "Снайпер", "Крип", "Крипто", "Грустный", "Шляпа", "Заводской", "Паштет", "Арахис", "Умник", "Дотер", "Буянов", "Мудрый"}
 	local Name = ""..firstName[random(getn(firstName))].." "..secondName[random(getn(secondName))]..""
 
 	return Name

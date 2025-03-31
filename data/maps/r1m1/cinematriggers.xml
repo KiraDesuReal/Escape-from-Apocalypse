@@ -155,7 +155,7 @@
 				TActivate("UpdateCabinBasket")
 			else
 				if pl then pl:SetSkin(-1) end
-				if 1 >= GetTolerance(1100, 1082) then
+				if 1.5 >= GetTolerance(1100, 1082) then
 					SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.4)
 				end
 			end
@@ -185,6 +185,7 @@
 		<script>
 			TActivate("PlayerCarConfiguration")
 			TActivate("cutPlayerDead")
+			TActivate("DeactivateAllExits")
 			TDeactivate("TimerRaid")
 			TDeactivate("AirDropProbability")
 			TDeactivate("IfChargeCar")
@@ -283,7 +284,7 @@
 			if GetVar("PlayerBelong").AsString == "SCAV" then
 				local plf = GetPlayerVehicle()
 				if plf then plf:SetSkin(-1) end
-				if 1 >= GetTolerance(1100, 1082) then
+				if 1.5 >= GetTolerance(1100, 1082) then
 					SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.4)
 				end
 			end

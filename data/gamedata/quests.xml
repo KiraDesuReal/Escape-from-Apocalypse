@@ -56,6 +56,15 @@
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_fuel2")' />
 
 		<quest
+			Name="q_fuel2_6"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_fuel2"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_fuel2")' />
+
+		<quest
 			Name="q_fuel2_4"
 			Automatic="1"
 			SubQuestsCondition="and"
@@ -70,7 +79,7 @@
 			SubQuestsCondition="and"
 			CheckAll="0"
 			ConditionToGive="all complete"
-			PrecedingQuests="q_fuel2_1 q_fuel2_2 q_fuel2_3 q_fuel2_4"
+			PrecedingQuests="q_fuel2_1 q_fuel2_2 q_fuel2_3 q_fuel2_6 q_fuel2_4"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_fuel2")'
 			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
 	</quest>

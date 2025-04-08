@@ -2169,7 +2169,8 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class			= "Vehicle"
 		Name			= "Fighter2CarBoss"
-		ParentPrototype 	= "FighterBoss">
+		ParentPrototype 	= "FighterBoss"
+		VisibleInEncyclopedia	= "true">
 		<Parts>
 			<Part id = "CABIN"			Prototype = "fighterScavCab03" />
 			<Part id = "BASKET"		Prototype = "bigfakeCargo" />
@@ -2200,7 +2201,8 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class			= "Vehicle"
 		Name			= "Hunter2CarBoss"
-		ParentPrototype 	= "HunterBoss">
+		ParentPrototype 	= "HunterBoss"
+		VisibleInEncyclopedia	= "true">
 		<Parts>
 			<Part id = "CABIN"			Prototype = "hunterScavCab03" />
 			<Part id = "BASKET"		Prototype = "bigfakeCargo" />

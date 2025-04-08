@@ -183,7 +183,7 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 			ModelFile	= "cargo"
 			Mass		= "15"
 
-			LifeTime	= "180"
+			LifeTime	= "120"
 
 			IntersectionRadius	= "1.7" />
 
@@ -241,7 +241,7 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 			ModelFile	= "cargo"
 			Mass		= "15"
 
-			LifeTime	= "120"
+			LifeTime	= "60"
 			
 			IntersectionRadius	= "1.7" />
 	</Folder>

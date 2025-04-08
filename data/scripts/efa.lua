@@ -1,8 +1,9 @@
 -- Special for Escape from Apocalypse
 
 if EFA_VERSION == nil then
-	EFA_VERSION = "0.9 BETA"
-	EFA_BUILD = "250320"
+	EFA_VERSION = "0.91 BETA"
+	EFA_BUILD = "250407"
+	WIPE = 0
 
 	LOG("ESCAPE FROM APOCALYPSE VERSION: "..EFA_VERSION.." | BUILD: "..EFA_BUILD)
 end
@@ -146,6 +147,69 @@ function GiveGunsForVehicle(vehicle, side_random)
 				elseif j==4 then
 					if side_rand == 1 then		
 						gun=sidegun[random(3)]
+					else
+						gun=""
+					end
+				end
+				if veh:CanPartBeAttached(slot) then
+					veh:SetNewPart(slot,gun)
+				end
+				k=k+1
+			end
+			k=1
+			j=j+1
+		end
+		j=1
+		i=i+1
+	end
+end
+
+function GiveGunsForPMC(vehicle)
+	local veh=vehicle
+	local belong = veh:GetBelong()
+	local hornet
+
+	if belong == 1089 then
+		hornet = "american_hornet01"
+	else
+		hornet = "hornet01"
+	end
+
+	local parts={"CABIN_","BASKET_","CHASSIS_"}
+	local slots={"SMALL_","BIG_","GIANT_","SIDE_"}
+	local guns={"GUN","GUN_0","GUN_1","GUN_2"}
+
+	local smallgun={hornet,"specter01","pkt01","kord01","maxim01","storm01","fagot01"}
+	local biggun={"rapier01","vector01","vulcan01","kpvt01","elephant01","odin01","bumblebee01","omega01"}
+	local giantgun={"cyclops01","octopus01","hammer01"}
+	local sidegun={"hunterSideGun","marsSideGun","mrakSideGun"}
+	local side_random = 0
+
+	local player = GetVar("PlayerCar").AsString
+	if player == "Molokovoz" then
+		side_random = 0
+		biggun[getn(biggun) + 1] = "rainmetal01"
+	elseif player == "Ural" or player == "Belaz" or player == "Mirotvorec" or player == "Cruiser" then
+		biggun={"rapier01","vector01","vulcan01","kpvt01","elephant01","odin01","bumblebee01","omega01","flag01","rainmetal01","hurricane01"}
+		giantgun={"cyclops01","octopus01","rocketLauncher","big_swingfire01","hammer01"}
+		side_random = random(4) 
+	end
+
+	local i,j,k=1,1,1
+	while parts[i] do
+		while slots[j] do
+			while guns[k] do
+				local gun=1
+				local slot=parts[i]..slots[j]..guns[k]
+				if j==1 then
+					gun=smallgun[random(7)]
+				elseif j==2 then
+					gun=biggun[random(getn(biggun))]
+				elseif j==3 then
+					gun=giantgun[exrandom(getn(giantgun))]
+				elseif j==4 then
+					if side_random == 1 then		
+						gun=sidegun[exrandom(3)]
 					else
 						gun=""
 					end
@@ -344,11 +408,11 @@ function UseAmmoItems(ammo_used)
 			if poolshells == 0 and currentshells == 0 then
 				if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) then
 					if prot == "hornet01" or prot == "american_hornet01" or prot == "specter01" or prot == "pkt01" or prot == "kord01"  then
-						if prot == "hornet01" then small_gun:SetShellsInPool(280) end
-						if prot == "american_hornet01" then small_gun:SetShellsInPool(350) end
-						if prot == "specter01" then small_gun:SetShellsInPool(280) end
-						if prot == "pkt01" then small_gun:SetShellsInPool(400) end
-						if prot == "kord01" then small_gun:SetShellsInPool(220) end
+						if prot == "hornet01" then small_gun:SetShellsInPool(350) end
+						if prot == "american_hornet01" then small_gun:SetShellsInPool(420) end
+						if prot == "specter01" then small_gun:SetShellsInPool(350) end
+						if prot == "pkt01" then small_gun:SetShellsInPool(480) end
+						if prot == "kord01" then small_gun:SetShellsInPool(275) end
 						RemoveItemsFromPlayerRepository("ammo_chest_machinegun", 1)
 						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
 						CreateEffectTTLed("ET_S_USE_RELOAD_MACHINEGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1750)
@@ -357,7 +421,7 @@ function UseAmmoItems(ammo_used)
 				end
 				if HasPlayerAmountOfItems("ammo_chest_shotgun", 1) then
 					if prot == "storm01" then
-						if prot == "storm01" then small_gun:SetShellsInPool(25) end
+						if prot == "storm01" then small_gun:SetShellsInPool(26) end
 						RemoveItemsFromPlayerRepository("ammo_chest_shotgun", 1)
 						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
 						CreateEffectTTLed("ET_S_USE_RELOAD_SHOTGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
@@ -366,7 +430,7 @@ function UseAmmoItems(ammo_used)
 				end
 				if HasPlayerAmountOfItems("ammo_ballon_lasergun", 1) then
 					if prot == "maxim01" then
-						if prot == "maxim01" then small_gun:SetShellsInPool(70) end
+						if prot == "maxim01" then small_gun:SetShellsInPool(105) end
 						RemoveItemsFromPlayerRepository("ammo_ballon_lasergun", 1)
 						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
 						CreateEffectTTLed("ET_S_USE_RELOAD_BALLON", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1920)
@@ -375,7 +439,7 @@ function UseAmmoItems(ammo_used)
 				end
 				if HasPlayerAmountOfItems("ammo_ballon_plasmagun", 1) then
 					if prot == "fagot01" then
-						if prot == "fagot01" then small_gun:SetShellsInPool(14) end
+						if prot == "fagot01" then small_gun:SetShellsInPool(15) end
 						RemoveItemsFromPlayerRepository("ammo_ballon_plasmagun", 1)
 						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
 						CreateEffectTTLed("ET_S_USE_RELOAD_BALLON", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1920)
@@ -396,8 +460,8 @@ function UseAmmoItems(ammo_used)
 			if poolshells == 0 and currentshells == 0 then
 				if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) then
 					if prot == "rapier01" or prot == "rainmetal01" then
-						if prot == "rapier01" then big_gun:SetShellsInPool(44) end
-						if prot == "rainmetal01" then big_gun:SetShellsInPool(240) end
+						if prot == "rapier01" then big_gun:SetShellsInPool(45) end
+						if prot == "rainmetal01" then big_gun:SetShellsInPool(320) end
 						RemoveItemsFromPlayerRepository("ammo_chest_heavygun", 1)
 						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
 						CreateEffectTTLed("ET_S_USE_RELOAD_HEAVYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 2500)
@@ -406,9 +470,9 @@ function UseAmmoItems(ammo_used)
 				end
 				if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) then
 					if prot == "vector01" or prot == "vulcan01" or prot == "kpvt01" then
-						if prot == "vector01" then big_gun:SetShellsInPool(270) end
-						if prot == "vulcan01" then big_gun:SetShellsInPool(840) end
-						if prot == "kpvt01" then big_gun:SetShellsInPool(650) end
+						if prot == "vector01" then big_gun:SetShellsInPool(405) end
+						if prot == "vulcan01" then big_gun:SetShellsInPool(1050) end
+						if prot == "kpvt01" then big_gun:SetShellsInPool(780) end
 						RemoveItemsFromPlayerRepository("ammo_chest_machinegun", 1)
 						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
 						CreateEffectTTLed("ET_S_USE_RELOAD_MACHINEGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1750)
@@ -417,7 +481,7 @@ function UseAmmoItems(ammo_used)
 				end
 				if HasPlayerAmountOfItems("ammo_chest_shotgun", 1) then
 					if prot == "flag01" then
-						if prot == "flag01" then big_gun:SetShellsInPool(21) end
+						if prot == "flag01" then big_gun:SetShellsInPool(22) end
 						RemoveItemsFromPlayerRepository("ammo_chest_shotgun", 1)
 						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
 						CreateEffectTTLed("ET_S_USE_RELOAD_SHOTGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
@@ -426,8 +490,8 @@ function UseAmmoItems(ammo_used)
 				end
 				if HasPlayerAmountOfItems("ammo_chest_artillerygun", 1) then
 					if prot == "bumblebee01" or prot == "omega01" then
-						if prot == "bumblebee01" then big_gun:SetShellsInPool(42) end
-						if prot == "omega01" then big_gun:SetShellsInPool(36) end
+						if prot == "bumblebee01" then big_gun:SetShellsInPool(70) end
+						if prot == "omega01" then big_gun:SetShellsInPool(54) end
 						RemoveItemsFromPlayerRepository("ammo_chest_artillerygun", 1)
 						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
 						CreateEffectTTLed("ET_S_USE_RELOAD_ARTILLERYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1055)
@@ -436,7 +500,7 @@ function UseAmmoItems(ammo_used)
 				end
 				if HasPlayerAmountOfItems("ammo_chest_rocketgun", 1) then
 					if prot == "hurricane01" then
-						if prot == "hurricane01" then big_gun:SetShellsInPool(18) end
+						if prot == "hurricane01" then big_gun:SetShellsInPool(24) end
 						RemoveItemsFromPlayerRepository("ammo_chest_rocketgun", 1)
 						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
 						CreateEffectTTLed("ET_S_USE_RELOAD_ROCKETGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 732)
@@ -445,7 +509,7 @@ function UseAmmoItems(ammo_used)
 				end
 				if HasPlayerAmountOfItems("ammo_ballon_lasergun", 1) then
 					if prot == "odin01" then
-						if prot == "odin01" then big_gun:SetShellsInPool(60) end
+						if prot == "odin01" then big_gun:SetShellsInPool(80) end
 						RemoveItemsFromPlayerRepository("ammo_ballon_lasergun", 1)
 						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
 						CreateEffectTTLed("ET_S_USE_RELOAD_BALLON", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1920)
@@ -454,7 +518,7 @@ function UseAmmoItems(ammo_used)
 				end
 				if HasPlayerAmountOfItems("ammo_ballon_plasmagun", 1) then
 					if prot == "elephant01" then
-						if prot == "elephant01" then big_gun:SetShellsInPool(18) end
+						if prot == "elephant01" then big_gun:SetShellsInPool(19) end
 						RemoveItemsFromPlayerRepository("ammo_ballon_plasmagun", 1)
 						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
 						CreateEffectTTLed("ET_S_USE_RELOAD_BALLON", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1920)
@@ -475,7 +539,7 @@ function UseAmmoItems(ammo_used)
 			if poolshells == 0 and currentshells == 0 then
 				if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) then
 					if prot == "cyclops01" then
-						if prot == "cyclops01" then giant_gun:SetShellsInPool(28) end
+						if prot == "cyclops01" then giant_gun:SetShellsInPool(29) end
 						RemoveItemsFromPlayerRepository("ammo_chest_heavygun", 1)
 						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
 						CreateEffectTTLed("ET_S_USE_RELOAD_HEAVYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 2500)
@@ -484,7 +548,7 @@ function UseAmmoItems(ammo_used)
 				end
 				if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) then
 					if prot == "octopus01" then
-						if prot == "octopus01" then giant_gun:SetShellsInPool(360) end
+						if prot == "octopus01" then giant_gun:SetShellsInPool(480) end
 						RemoveItemsFromPlayerRepository("ammo_chest_machinegun", 1)
 						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
 						CreateEffectTTLed("ET_S_USE_RELOAD_MACHINEGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1750)
@@ -493,8 +557,8 @@ function UseAmmoItems(ammo_used)
 				end
 				if HasPlayerAmountOfItems("ammo_chest_rocketgun", 1) then
 					if prot == "rocketLauncher" or prot == "big_swingfire01" then
-						if prot == "rocketLauncher" then giant_gun:SetShellsInPool(16) end
-						if prot == "big_swingfire01" then giant_gun:SetShellsInPool(18) end
+						if prot == "rocketLauncher" then giant_gun:SetShellsInPool(24) end
+						if prot == "big_swingfire01" then giant_gun:SetShellsInPool(24) end
 						RemoveItemsFromPlayerRepository("ammo_chest_rocketgun", 1)
 						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
 						CreateEffectTTLed("ET_S_USE_RELOAD_ROCKETGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 732)
@@ -503,7 +567,7 @@ function UseAmmoItems(ammo_used)
 				end
 				if HasPlayerAmountOfItems("ammo_ballon_plasmagun", 1) then
 					if prot == "hammer01" then
-						if prot == "hammer01" then giant_gun:SetShellsInPool(14) end
+						if prot == "hammer01" then giant_gun:SetShellsInPool(15) end
 						RemoveItemsFromPlayerRepository("ammo_ballon_plasmagun", 1)
 						AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
 						CreateEffectTTLed("ET_S_USE_RELOAD_BALLON", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1920)
@@ -526,9 +590,9 @@ function UseAmmoItems(ammo_used)
 		if poolshells_l == 0 and currentshells_l == 0 or poolshells_r == 0 and currentshells_r == 0 then
 			if HasPlayerAmountOfItems("ammo_chest_rocketgun", 1) then
 				if prot == "hailSideGun" or prot == "hunterSideGun" or prot == "mrakSideGun" then
-					if prot == "hailSideGun" then basket_side_l:SetShellsInPool(12) basket_side_r:SetShellsInPool(12) end
-					if prot == "hunterSideGun" then basket_side_l:SetShellsInPool(4) basket_side_r:SetShellsInPool(4) end
-					if prot == "mrakSideGun" then basket_side_l:SetShellsInPool(12) basket_side_r:SetShellsInPool(12) end
+					if prot == "hailSideGun" then basket_side_l:SetShellsInPool(18) basket_side_r:SetShellsInPool(18) end
+					if prot == "hunterSideGun" then basket_side_l:SetShellsInPool(8) basket_side_r:SetShellsInPool(8) end
+					if prot == "mrakSideGun" then basket_side_l:SetShellsInPool(14) basket_side_r:SetShellsInPool(14) end
 					RemoveItemsFromPlayerRepository("ammo_chest_rocketgun", 1)
 					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
 					CreateEffectTTLed("ET_S_USE_RELOAD_ROCKETGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 732)
@@ -537,7 +601,7 @@ function UseAmmoItems(ammo_used)
 			end
 			if HasPlayerAmountOfItems("ammo_chest_artillerygun", 1) then
 				if prot == "marsSideGun" then
-					if prot == "marsSideGun" then basket_side_l:SetShellsInPool(3) basket_side_r:SetShellsInPool(3) end
+					if prot == "marsSideGun" then basket_side_l:SetShellsInPool(6) basket_side_r:SetShellsInPool(6) end
 					RemoveItemsFromPlayerRepository("ammo_chest_artillerygun", 1)
 					AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", prot)
 					CreateEffectTTLed("ET_S_USE_RELOAD_ARTILLERYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1055)
@@ -698,7 +762,7 @@ function CreateBarrelLootBox(name, pos)
 	local flammable1 = {"item_hunter_spich", "item_lighter", "item_spich", "item_survl", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder"}
 	local flammable2 = {"item_trotile", "item_dry", "item_gunpowder", "item_propan", "item_prisadka", "item_termit"}
 
-	local household1 = {"item_paper", "item_salt", "item_soap", "item_tb", "item_toothpaste"}
+	local household1 = {"item_paper", "item_stakanyash", "item_salt", "item_soap", "item_tb", "item_toothpaste"}
 	local household2 = {"item_soap", "item_salt", "item_alkani", "item_hlor"}
 
 	local info1 = {"item_disk", "item_manual", "item_diary_s", "item_hdd", "item_flashdrive", "item_diary", "item_disk_exmachina", "item_ssd", "item_sas", "item_rozvidka"}
@@ -706,12 +770,12 @@ function CreateBarrelLootBox(name, pos)
 	local medical1 = {"item_h2o2", "item_medical_tools", "item_naci", "item_suringe"}
 	local medical2 = {"item_medical_tools", "item_naci", "item_h2o2", "item_suringe", "item_c6h8o6",  "item_aquapeps", "item_oftalmaskop", "item_ledx"}
 
-	local other1 = {"item_zapal", "item_carsen", "item_vodka", "item_monolit", "item_kaktus", "item_filter", "item_emre_kara", "item_waterfilter", "item_keqing", "item_fitanyashka", "item_paracord", "item_vitalik", "item_airfilter", "item_ananaga"}
+	local other1 = {"item_zapal", "item_stakanyash", "item_carsen", "item_vodka", "item_monolit", "item_kaktus", "item_filter", "item_emre_kara", "item_waterfilter", "item_keqing", "item_metallodetector", "item_fitanyashka", "item_paracord", "item_vitalik", "item_airfilter", "item_ananaga"}
 
 	local tools1 = {"item_metalscissors", "item_nippers", "item_pliers", "item_pliers_round", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_wrench"}
 	local tools2 = {"item_screw_flat_long", "item_leatherman", "item_toolset", "item_fullmaster", "item_awl", "item_sewing_kit", "item_handrill", "item_buldex", "item_pipe_wrench", "item_ratchet_wrench", "item_vitalik"}
 	
-	local valuables1 = {"item_chain", "item_carsen", "item_monolit", "book", "item_kaktus", "shkatulka", "item_ex", "item_teapon", "item_emre_kara", "item_keqing", "item_metallodetector", "item_cat", "item_rolex", "item_chain_gold", "item_fitanyashka", "item_chiken", "item_skullring", "item_vitalik", "item_lion", "item_bitcoin"}
+	local valuables1 = {"item_chain", "item_carsen", "item_monolit", "book", "item_kaktus", "shkatulka", "item_ex", "item_teapon", "item_emre_kara", "item_keqing", "item_metallodetector", "item_cat", "item_rolex", "item_chain_gold", "item_fitanyashka", "item_chiken", "item_skullring", "item_vitalik", "item_ananaga", "item_lion", "item_bitcoin"}
 
 	local gun1 = {"hornet01", "specter01", "pkt01", "storm01", "vector01", "vulcan01", "kpvt01", "rapier01", "bumblebee01"} 
 	local gun2 = {"pkt01", "kord01", "maxim01", "fagot01", "someTurboAccelerationPusher", "omega01", "elephant01", "flag01", "odin01", "rainmetal01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun"}
@@ -803,12 +867,10 @@ function CreateGunBox(name, pos)
 	local gun_r = random(2)
 	local ammo_r = random(2)
 	local ammo_item
-
 	if notloot > 10 then
 		if gun_r == 1 then
 			local gun_item = gun_rand[random(getn(gun_rand))]
-			
-			local Gun = CreateNewObject{prototypeName = gun_item, objName = "GunItem_"..random(10000), belong = 1100}
+			local Gun = CreateNewObject{prototypeName = gun_item, objName = "GunItem_1", belong = 1100}
 			local GunId = GetEntityByID(Gun)
 
 			local afflist = {}
@@ -819,11 +881,11 @@ function CreateGunBox(name, pos)
 					GunId:ApplyAffixByName(afflist[i])
 				end
 			end
-
+		
 			if ChestId and GunId then
 				ChestId:AddChild(GunId)
 			end
-			
+
 			if ammo_r == 1 then
 				if gun_item == "hornet01" or gun_item == "specter01" or gun_item == "pkt01" or gun_item == "kord01" or gun_item == "vector01" or gun_item == "vulcan01" or gun_item == "kpvt01" or gun_item == "octopus01" then
 					ammo_item = "ammo_chest_machinegun"
@@ -849,7 +911,7 @@ function CreateGunBox(name, pos)
 					end
 				end
 				if ammo_item then
-					local Ammo = CreateNewObject{prototypeName = ammo_item, objName = "AmmoItem_"..random(10000), belong = 1100}
+					local Ammo = CreateNewObject{prototypeName = ammo_item, objName = "AmmoItem_1", belong = 1100}
 					local AmmoId = GetEntityByID(Ammo)
 					if ChestId and AmmoId then
 						ChestId:AddChild(AmmoId)
@@ -860,7 +922,7 @@ function CreateGunBox(name, pos)
 
 		for l=1,count do
 			local gadget_rand = {gadget1[random(getn(gadget1))], gadget2[random(getn(gadget2))], gadget3[random(getn(gadget3))]}
-			local Gadgets = CreateNewObject{prototypeName = gadget_rand[exrandom(getn(gadget_rand))], objName = "GadgetItem_"..l, belong = 1100}
+			local Gadgets = CreateNewObject{prototypeName = gadget_rand[random(getn(gadget_rand))], objName = "GadgetItem_"..l, belong = 1100}
 			local GadgetsId = GetEntityByID(Gadgets)
 			if ChestId and GadgetsId then
 				ChestId:AddChild(GadgetsId)
@@ -907,7 +969,7 @@ function AllItems()
 					"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 					"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 					"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe",
-					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_jeton_bear", "item_jeton_usec", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector",
+					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_jeton_bear", "item_jeton_usec", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash",
 					"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
 					"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_vitaly",
 					"item_quest_search_data",
@@ -931,7 +993,7 @@ function AllItemsForScav()
 					"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 					"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 					"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe",
-					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector",
+					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash",
 					"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
 					"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock",
 					"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun",
@@ -1090,8 +1152,8 @@ end
 
 -- Генерация случайного имени для дикого
 function GenerateRandomScavName()
-	local firstName = {"Иван", "Дмитрий", "Дима", "Димка", "Айвен", "Бен", "Виталий", "Виталик", "Виталя", "Вася", "Пися", "Максим", "Ашот", "Федя", "Фердинанд", "Саня", "Санька", "Илья", "Илюха", "Леха", "Петька", "Савелий", "Валерий", "Киса", "Кот", "Дед", "Мошенник", "Папич", "Павел", "Павлик", "Витёк", "Вантуз", "Даня", "Данила", "Димон", "Кирюха", "Боря", "Борис", "Кабан", "Макс", "Карсен", "Алик", "Пашка", "Вован", "Анатолий", "Стёпа", "Мыш", "Муж", "Аксель", "Феликс", "Вор", "Дик", "Миха", "Михаил", "Ростислав", "Колян", "Коля", "Ёбырь", "Игрок", "Пётр", "Петруха", "Дод", "Петрович", "Алекс", "Алексей", "Сергей", "Серёга", "Серго", "Гном", "Друид", "Бандит", "Бродяга", "Кочевник", "Работяга", "Америго", "Сэм", "Конни", "Блайд", "Дронн", "Серый", "Талик", "Гит", "Святослав", "Мистер", "Кот", "Санёк", "Тим", "Мишаня", "Фёдор", "Васян", "Никита", "Никитка", "Монолит", "Станислав", "Стас", "Стасян"}
-	local secondName = {"Слабый", "Сильный", "Мощный", "Меткий", "Скорострел", "Железный", "Бронированный", "Неудачник", "Наркоман", "Белазист", "Натурал", "РПГ", "Гусак", "Дикарь", "Сметана", "Базированный", "Программист", "Айтишник", "Опасный", "Страшный", "Крепкий", "Улучшенный", "Апгрейднутый", "Моряк", "Ебанько", "Герой", "Новичок", "Бывалый", "Профи", "Мастер", "Водила", "Ананага", "Бобёр", "Вертухай", "Заднеприводный", "Мрачный", "Киберпсих", "Киберспортсмен", "Торговец", "Бармен", "Оракул", "Наркоторговец", "Ненаркоторговец", "Наркоман", "Кепка", "Кепарик", "Рыхлый", "Казах", "Самурай", "Япончик", "Пончик", "Сладкий", "Ботан", "Сфено", "Затвор", "Помощник", "Кусок", "Спрут", "Рейнметалл", "Фагот", "Скоростной", "Яйцо", "Упитыш", "Крепыш", "Клоун", "Бебра", "Яебу", "Правильный", "ЧСВ", "Полторашка", "Бигмак", "Микрофон", "Вибрирующий", "Разрядник", "Няшка", "Меченый", "Пух", "Мозголюб", "Левый", "Правый", "Фермер", "Мокрый", "Влажный", "Наглый", "Глушитель", "Чарли", "Капец", "Пиздюк", "Гондурас", "Овощебаза", "Сиська", "Компатчер", "Шиза", "Обезьяна", "Дристомёт", "Иваныч", "Иванов", "Барыга", "Одноглазый", "Ебучий", "Везунчик", "Крипто", "Мякиш", "Махинист", "Го", "Дроссель", "Идёт", "Замузик", "Крутой", "Любитель", "Поедатель", "Предатель", "Белаз", "Скаут", "Боец", "Таракан", "Клоп", "Муравей", "Медведь", "Охотник", "Урал", "Сагитта", "Филимон", "Отверствие", "Скорб", "Казино", "Генератор", "Терминатор", "Странник", "Младший", "Старший", "Бензобак", "Грузин", "Дырявый", "Снайпер", "Крип", "Крипто", "Грустный", "Шляпа", "Заводской", "Паштет", "Арахис", "Умник", "Дотер", "Буянов", "Мудрый"}
+	local firstName = {"Иван", "Дмитрий", "Дима", "Димка", "Айвен", "Айваныч", "Бен", "Виталий", "Виталик", "Виталя", "Вася", "Пися", "Максим", "Ашот", "Федя", "Фердинанд", "Саня", "Санька", "Илья", "Илюха", "Леха", "Петька", "Савелий", "Валерий", "Киса", "Кот", "Дед", "Мошенник", "Папич", "Павел", "Павлик", "Витёк", "Вантуз", "Даня", "Данила", "Димон", "Кирюха", "Боря", "Борис", "Кабан", "Макс", "Карсен", "Алик", "Пашка", "Вован", "Анатолий", "Стёпа", "Мыш", "Муж", "Аксель", "Феликс", "Вор", "Дик", "Миха", "Михаил", "Ростислав", "Колян", "Коля", "Ёбырь", "Игрок", "Пётр", "Петруха", "Дод", "Петрович", "Алекс", "Алексей", "Сергей", "Серёга", "Серго", "Гном", "Друид", "Бандит", "Бродяга", "Кочевник", "Работяга", "Америго", "Сэм", "Конни", "Блайд", "Дронн", "Серый", "Талик", "Гит", "Святослав", "Мистер", "Кот", "Санёк", "Тим", "Мишаня", "Фёдор", "Васян", "Никита", "Никитка", "Монолит", "Станислав", "Стас", "Стасян", "Стакан"}
+	local secondName = {"Слабый", "Сильный", "Мощный", "Меткий", "Скорострел", "Железный", "Бронированный", "Неудачник", "Наркоман", "Белазист", "Натурал", "РПГ", "Гусак", "Дикарь", "Сметана", "Базированный", "Программист", "Айтишник", "Опасный", "Страшный", "Крепкий", "Улучшенный", "Апгрейднутый", "Моряк", "Ебанько", "Герой", "Новичок", "Бывалый", "Профи", "Мастер", "Водила", "Ананага", "Бобёр", "Вертухай", "Заднеприводный", "Мрачный", "Киберпсих", "Киберспортсмен", "Торговец", "Бармен", "Оракул", "Наркоторговец", "Ненаркоторговец", "Наркоман", "Кепка", "Кепарик", "Рыхлый", "Казах", "Самурай", "Япончик", "Пончик", "Сладкий", "Ботан", "Сфено", "Затвор", "Помощник", "Кусок", "Спрут", "Рейнметалл", "Фагот", "Скоростной", "Яйцо", "Упитыш", "Крепыш", "Клоун", "Бебра", "Яебу", "Правильный", "ЧСВ", "Полторашка", "Бигмак", "Микрофон", "Вибрирующий", "Разрядник", "Няшка", "Меченый", "Пух", "Мозголюб", "Левый", "Правый", "Фермер", "Мокрый", "Влажный", "Наглый", "Глушитель", "Чарли", "Капец", "Пиздюк", "Гондурас", "Овощебаза", "Сиська", "Компатчер", "Шиза", "Обезьяна", "Дристомёт", "Иваныч", "Иванов", "Барыга", "Одноглазый", "Ебучий", "Везунчик", "Крипто", "Мякиш", "Махинист", "Го", "Дроссель", "Идёт", "Замузик", "Крутой", "Любитель", "Поедатель", "Предатель", "Белаз", "Скаут", "Боец", "Таракан", "Клоп", "Муравей", "Медведь", "Охотник", "Урал", "Сагитта", "Филимон", "Отверствие", "Скорб", "Казино", "Генератор", "Терминатор", "Странник", "Младший", "Старший", "Бензобак", "Грузин", "Дырявый", "Снайпер", "Крип", "Крипто", "Грустный", "Шляпа", "Заводской", "Паштет", "Арахис", "Умник", "Дотер", "Буянов", "Мудрый", "Долбоящер"}
 	local Name = ""..firstName[random(getn(firstName))].." "..secondName[random(getn(secondName))]..""
 
 	return Name
@@ -1111,18 +1173,19 @@ function RandomItem(item, procent)
 end
 
 -- Отслеживание попаданий по цели
-function ObjUnderAttack(ObjTarget, ObjAttack)
+function ObjUnderAttack(ObjTarget, ObjAttack, TriggerName)
 	local target = getObj(ObjTarget)
-	if target then
-		local car = getObj(ObjAttack)
-		if car then
-			local belong = car:GetBelong()
-			if belong > 0 then
-				SetVar("LastUnderAttack", belong)
-				return belong
+	local car = getObj(ObjAttack)
+	if car then
+		local belong = car:GetBelong()
+		if belong > 0 then
+			SetVar(ObjTarget.."_UnderAttack", belong)
+			if not(target) and belong == 1100 then
+				if TriggerName then TActivate(TriggerName) end
 			end
+			return belong
 		end
-	end 
+	end
 end
 
 -- Включение дебаг отладки
@@ -1138,6 +1201,25 @@ function Debug(num)
 	end
 end
 
+-- Проверка, есть ли в кузове игрока место под установленные гаджеты
+function IfCanPlaceForGadgets()
+	local plf = GetPlayerVehicle()
+	local cab_prot = plf:GetCabin():GetProperty("Prototype").AsString
+
+	local cabin = {"bugCab01", "bugCab02", "bugCab03", "molokovozCab01", "molokovozCab02", "molokovozCab03", "uralCab01", "uralCab02", "uralCab03", "uralCab04", "uralCab05", "belazCab01", "belazCab02", "belazCab03", "belazCab04", "belazCab05", "mirotvorecCab01", "mirotvorecCab02", "mirotvorecCab03", "mirotvorecCab04", "mirotvorecCab05", "cruiserCab01", "cruiserCab02"}
+	local common_slots = {0, 2, 0, 0, 0, 2, 1, 1, 2, 1, 3, 3, 3, 3, 4, 4, 2, 1, 2, 1, 3, 3, 4}
+	local weapon_slots = {1, 0, 1, 1, 2, 1, 2, 2, 2, 2, 3, 1, 1, 2, 3, 3, 2, 3, 3, 3, 4, 2, 3}
+
+	if plf then
+		for i=1, getn(cabin) do
+			if cab_prot == cabin[i] then
+				if plf:CanPlaceItemsToRepository("cooling_system_guns", weapon_slots[i]) ~=nil and plf:CanPlaceItemsToRepository("additional_fuel_tank", common_slots[i]) ~=nil then 
+					return 1 
+				end
+			end
+		end
+	end
+end
 
 
 

@@ -779,17 +779,17 @@
 	<Item
 		id="scoutCab01"
 		locForm="1"
-		value="Кабина Скаута" />
+		value="Кабина Скаута (Уровень I)" />
 
 	<Item
 		id="scoutCab02"
 		locForm="1"
-		value="Кабина Скаута" />
+		value="Кабина Скаута (Уровень II)" />
 
 	<Item
 		id="scoutCab03"
 		locForm="1"
-		value="Кабина Скаута" />
+		value="Кабина Скаута (Уровень III)" />
 
 	<Item
 		id="tank01"
@@ -1850,22 +1850,32 @@
 	<Item
 		id="hunterCab01"
 		locForm="1"
-		value="Кабина Охотника" />
+		value="Кабина Охотника (Уровень I)" />
 
 	<Item
 		id="hunterCab02"
 		locForm="1"
-		value="Кабина Охотника" />
+		value="Кабина Охотника (Уровень II)" />
+
+	<Item
+		id="hunterScavCab03"
+		locForm="1"
+		value="Кабина Охотника (Уровень III)" />
 
 	<Item
 		id="fighterCab01"
 		locForm="1"
-		value="Кабина Бойца" />
+		value="Кабина Бойца (Уровень I)" />
 
 	<Item
 		id="fighterCab02"
 		locForm="1"
-		value="Кабина Бойца" />
+		value="Кабина Бойца (Уровень II)" />
+
+	<Item
+		id="fighterScavCab03"
+		locForm="1"
+		value="Кабина Бойца (Уровень III)" />
 
 	<Item
 		id="arcadescoutCab"
@@ -2229,12 +2239,27 @@
 		value="Крепкий металл" />
 
 	<Item
+		id="scrap_metal_use_ForSale"
+		locForm="0"
+		value="Крепкий металл" />
+
+	<Item
 		id="machinery_use"
 		locForm="0"
 		value="Улучшенное оборудование" />
 
 	<Item
+		id="machinery_use_ForSale"
+		locForm="0"
+		value="Улучшенное оборудование" />
+
+	<Item
 		id="electronics_use"
+		locForm="0"
+		value="Высокотехнологичная электроника" />
+
+	<Item
+		id="electronics_use_ForSale"
 		locForm="0"
 		value="Высокотехнологичная электроника" />
 
@@ -2917,6 +2942,11 @@
 		id="item_metallodetector"
 		locForm="0"
 		value="Металлоискатель" />
+
+	<Item
+		id="item_stakanyash"
+		locForm="0"
+		value="Стакан" />
 
 
 	<Item

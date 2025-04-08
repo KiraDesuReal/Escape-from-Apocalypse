@@ -64,6 +64,17 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
                 WaveForceIntensity      = "10.0"
                 WaveDamageIntensity     = "120.0"
         />
+
+        <Prototype
+                Class                   = "BlastWave"
+                Name                    = "someBlastWave_hurricane"
+                
+                Radius                  = "10.0"
+                Effect                  = "ET_PS_AIRWAVE1"
+                WaveForceIntensity      = "10.0"
+                WaveDamageIntensity     = "120.0"
+        />
+
         <Prototype
                 Class                   = "BlastWave"
                 Name                    = "superBlastWave"
@@ -78,7 +89,7 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
                 Class                   = "BlastWave"
                 Name                    = "someBlastWaveRocket01"
                 
-                Radius                  = "50.0"
+                Radius                  = "15.0"
                 Effect                  = "ET_PS_AIRWAVE1"
                 WaveForceIntensity      = "1.0"
                 WaveDamageIntensity     = "120.0"
@@ -118,10 +129,44 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
 
         <Prototype
                 Class                   = "BlastWave"
+                Name                    = "smallBlastWave_mortal"
+                Effect                  = "ET_PS_AIRWAVE2"
+                
+                Radius                  = "10.0"
+
+                WaveForceIntensity      = "30.0"
+                WaveDamageIntensity     = "30.0"
+        />
+
+        <Prototype
+                Class                   = "BlastWave"
+                Name                    = "smallBlastWave_rapier"
+                Effect                  = "ET_PS_AIRWAVE2"
+                
+                Radius                  = "10.0"
+
+                WaveForceIntensity      = "30.0"
+                WaveDamageIntensity     = "30.0"
+        />
+
+        <Prototype
+                Class                   = "BlastWave"
+                Name                    = "smallBlastWave_flag"
+                Effect                  = "ET_PS_AIRWAVE2"
+                
+                Radius                  = "5.0"
+
+                WaveForceIntensity      = "30.0"
+                WaveDamageIntensity     = "30.0"
+        />
+
+
+        <Prototype
+                Class                   = "BlastWave"
                 Name                    = "smallBlastWave_rainmetal"
                 Effect                  = "ET_PS_AIRWAVE2"
                 
-                Radius                  = "30.0"
+                Radius                  = "15.0"
 
                 WaveForceIntensity      = "18.0"
                 WaveDamageIntensity     = "18.0"
@@ -132,7 +177,7 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
                 Name                    = "smallBlastWave_bumblebee"
                 Effect                  = "ET_PS_AIRWAVE2"
                 
-                Radius                  = "30.0"
+                Radius                  = "10.0"
 
                 WaveForceIntensity      = "13.0"
                 WaveDamageIntensity     = "13.0"
@@ -223,7 +268,7 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
                 MinTurningRadius                = "20"
                 Size                    = "0.5 0.5 2"
                 Mass                            = "0.1"
-                BlastWavePrototype      = "someBlastWave"
+                BlastWavePrototype      = "someBlastWaveRocket01"
                 />
 
         <Prototype
@@ -240,7 +285,7 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
                 MinTurningRadius                = "20"
                 Size                    = "0.5 0.5 2"
                 Mass                            = "0.1"
-                BlastWavePrototype      = "someBlastWave"
+                BlastWavePrototype      = "someBlastWaveRocket01"
                 />
 
         <Prototype
@@ -257,7 +302,7 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
                 MinTurningRadius                = "20"
                 Size                    = "0.5 0.5 2"
                 Mass                            = "0.1"
-                BlastWavePrototype      = "someBlastWave"
+                BlastWavePrototype      = "someBlastWaveRocket01"
                 />
 
         <Prototype
@@ -320,7 +365,7 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
                 MinTurningRadius                = "20"
                 Size                    = "0.5 0.5 2"
                 Mass                            = "0.1"
-                BlastWavePrototype      = "someBlastWave"
+                BlastWavePrototype      = "someBlastWave_hurricane"
                 />
 
 

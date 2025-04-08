@@ -207,6 +207,16 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class		= "Ware"
+		Name		= "scrap_metal_use_ForSale"
+		Price	= "5"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "lom"
+		VisibleInEncyclopedia	= "false"
+		ResourceType= "SCRAP_METAL_USE" />
+
+	<Prototype
+		Class		= "Ware"
 		Name		= "machinery_use"
 		Price	= "12500"
 		Durability	= "30"
@@ -216,11 +226,31 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class		= "Ware"
+		Name		= "machinery_use_ForSale"
+		Price	= "12"
+		Durability	= "30"
+		PriceDispersion      = "5"
+		ModelFile	= "rabochee_oborudovanie"
+		VisibleInEncyclopedia	= "false"
+		ResourceType= "MACHINERY_USE" />
+
+	<Prototype
+		Class		= "Ware"
 		Name		= "electronics_use"
 		Price	= "18000"
 		Durability	= "20"
 		PriceDispersion      = "5"
 		ModelFile	= "mikro"
+		ResourceType= "ELECTRONICS_USE" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "electronics_use_ForSale"
+		Price	= "18"
+		Durability	= "20"
+		PriceDispersion      = "5"
+		ModelFile	= "mikro"
+		VisibleInEncyclopedia	= "false"
 		ResourceType= "ELECTRONICS_USE" />
 
 	<Prototype
@@ -288,6 +318,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
+		VisibleInEncyclopedia	= "false"
 		ResourceType= "ITEM_SIZE_4X2" />
 
 	<Prototype
@@ -306,6 +337,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
+		VisibleInEncyclopedia	= "false"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
@@ -324,6 +356,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
+		VisibleInEncyclopedia	= "false"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
@@ -342,6 +375,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
+		VisibleInEncyclopedia	= "false"
 		ResourceType= "ITEM_SIZE_4X2" />
 
 	<Prototype
@@ -360,6 +394,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
+		VisibleInEncyclopedia	= "false"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
@@ -396,6 +431,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
+		VisibleInEncyclopedia	= "false"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 
@@ -1441,6 +1477,15 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X3" />
 
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_stakanyash"
+		Price	= "3750"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
 <!-- Tools Items -->
 
 	<Prototype
@@ -1756,6 +1801,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "0"
 		PriceDispersion      = "5"
 		ModelFile	= ""
+		VisibleInEncyclopedia	= "false"
 		ResourceType= "ITEM_OPACITY" />
 		
 </Prototypes>

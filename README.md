@@ -78,7 +78,7 @@
     <br>
     <b>Актуальная версия:</b>
     <br><br/>
-    <a href="https://github.com/KiraDesuReal/Escape-from-Apocalypse/releases/tag/v0.9-250320">
+    <a href="https://github.com/KiraDesuReal/Escape-from-Apocalypse/releases/tag/v0.91-250409">
         <img src="assets/git_assets/b_download.png" alt="download" width="250">
     </a>
 </div>
@@ -88,14 +88,14 @@
 **Описание установки:**
 
 1. Установить `Community Remaster` со `всеми дополнительными опциями` по инструкции с [этой](https://github.com/DeusExMachinaTeam/EM-CommunityPatch/blob/main/README.md) страницы
-2. В `Community Mod Manager (commod.exe)` на вкладке `Моды` нажмите `Добавить мод` и укажите архив, который вы скачали [отсюда](https://github.com/KiraDesuReal/Escape-from-Apocalypse/releases/tag/v0.9-250320)
+2. В `Community Mod Manager (commod.exe)` на вкладке `Моды` нажмите `Добавить мод` и укажите архив, который вы скачали [отсюда](https://github.com/KiraDesuReal/Escape-from-Apocalypse/releases/tag/v0.91-250409)
 3. После его появления в списке модов нажмите `Распаковать`
 4. После распаковки нажмите `Установить` и следуйте инструкциям мод-менеджера
 5. Приятной игры
 
 ## Медиа
 
-**Видео связанные с Escape fromApocalypse:**
+**Видео по Escape from Apocalypse:**
 
 <br>
 
@@ -106,6 +106,11 @@ _Трейлер модификации показывающий нововвед
 
 > [![Gameplay Trailer](assets/git_assets/prewiew_efa_gameplay_trailer.jpg)](https://www.youtube.com/watch?v=peD_LgR01Oc)
 _Трейлер игрового процесса, позволяющий ознакомиться с модификацией и получить первое впечатление._
+
+<br>
+
+> [![Tutorial_1](assets/git_assets/prewiew_efa_guige_1.jpg)](https://www.youtube.com/watch?v=4Ws9AZlLk4g)
+_**Escape from Apocalypse**, одна из немногих модификаций для игры **Ex Machina**, с высоким порогом вхождения. В этом видео мы поможем новичкам лучше разобраться в этой модификации и расскажем с чего лучше стоит начать._
 
 ## Скриншоты
 

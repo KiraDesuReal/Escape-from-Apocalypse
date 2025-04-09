@@ -2,7 +2,7 @@
 
 if EFA_VERSION == nil then
 	EFA_VERSION = "0.91 BETA"
-	EFA_BUILD = "250407"
+	EFA_BUILD = "250409"
 	WIPE = 0
 
 	LOG("ESCAPE FROM APOCALYPSE VERSION: "..EFA_VERSION.." | BUILD: "..EFA_BUILD)
@@ -826,7 +826,7 @@ function CreateBarrelLootBox(name, pos)
 			items[items_get + 1] = exlusive[random(getn(exlusive))]
 		end
 
-		local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "BarrelItem_"..l, belong = 1100}
+		local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "BarrelItem_"..random(10000), belong = 1100}
 		local ItemId = GetEntityByID(Item)
 
 		if ChestId and ItemId then
@@ -854,7 +854,7 @@ function CreateGunBox(name, pos)
 	ChestPos.y = ChestPos.y + 1
 	ChestId:SetPosition(ChestPos)
 
-	local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityGunItem_1", belong = 1100}
+	local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityGunItem_"..name, belong = 1100}
 	local OpacityItemId = GetEntityByID(OpacityItem)
 
 	if ChestId and OpacityItemId then
@@ -869,8 +869,8 @@ function CreateGunBox(name, pos)
 	local ammo_item
 	if notloot > 10 then
 		if gun_r == 1 then
-			local gun_item = gun_rand[random(getn(gun_rand))]
-			local Gun = CreateNewObject{prototypeName = gun_item, objName = "GunItem_1", belong = 1100}
+			local gun_item = gun_rand[random(getn(gun_rand))]		
+			local Gun = CreateNewObject{prototypeName = gun_item, objName = "GunItem_"..random(10000).."_"..name, belong = 1100}
 			local GunId = GetEntityByID(Gun)
 
 			local afflist = {}
@@ -911,7 +911,7 @@ function CreateGunBox(name, pos)
 					end
 				end
 				if ammo_item then
-					local Ammo = CreateNewObject{prototypeName = ammo_item, objName = "AmmoItem_1", belong = 1100}
+					local Ammo = CreateNewObject{prototypeName = ammo_item, objName = "AmmoItem_"..random(10000).."_"..name, belong = 1100}
 					local AmmoId = GetEntityByID(Ammo)
 					if ChestId and AmmoId then
 						ChestId:AddChild(AmmoId)
@@ -922,7 +922,7 @@ function CreateGunBox(name, pos)
 
 		for l=1,count do
 			local gadget_rand = {gadget1[random(getn(gadget1))], gadget2[random(getn(gadget2))], gadget3[random(getn(gadget3))]}
-			local Gadgets = CreateNewObject{prototypeName = gadget_rand[random(getn(gadget_rand))], objName = "GadgetItem_"..l, belong = 1100}
+			local Gadgets = CreateNewObject{prototypeName = gadget_rand[random(getn(gadget_rand))], objName = "GadgetItem_"..random(10000).."_"..name, belong = 1100}
 			local GadgetsId = GetEntityByID(Gadgets)
 			if ChestId and GadgetsId then
 				ChestId:AddChild(GadgetsId)
@@ -1220,8 +1220,6 @@ function IfCanPlaceForGadgets()
 		end
 	end
 end
-
-
 
 
 

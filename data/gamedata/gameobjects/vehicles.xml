@@ -641,6 +641,9 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		
 		HornSound		= "ET_S_HORN01"
 
+		CameraHeight          = "4"
+        CameraMaxDist         = "15" 
+
 		DecisionMatrix		= "vehiclemain.lua"
 		LookRadius			= "200.0"
 		IntersectionRadius	= "4.0"
@@ -739,8 +742,10 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 		HornSound		= "ET_S_HORN01"
 
+		CameraMaxDist         = "20"
+
 		DecisionMatrix		= "vehiclemain.lua"
-		DriftCoeff		= "0.5"
+		DriftCoeff		= "0.1"
 		LookRadius			= "200.0"
 		IntersectionRadius	= "4.0"
 		TakingRadius		= "7.0"
@@ -887,11 +892,15 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 		HornSound		= "ET_S_HORN01"
 
+		CameraHeight          = "4.5"
+        CameraMaxDist         = "18"
+
 		DecisionMatrix		= "vehiclemain.lua"
 
 		LookRadius			= "200.0"
 		IntersectionRadius	= "4"
 		TakingRadius		= "7.0"
+		DriftCoeff		= "0.2"
 
 		MassSize		= "10 1 5"
 		MassTranslation		= "0 -1.6 0"
@@ -1305,6 +1314,9 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		SteeringSpeed		= "0.9"
 
 		HornSound		= "ET_S_HORN04"
+
+		CameraHeight          = "5"
+        CameraMaxDist         = "22"
 
 		DecisionMatrix		= "vehiclemain.lua"
 
@@ -2169,7 +2181,8 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class			= "Vehicle"
 		Name			= "Fighter2CarBoss"
-		ParentPrototype 	= "FighterBoss">
+		ParentPrototype 	= "FighterBoss"
+		VisibleInEncyclopedia	= "true">
 		<Parts>
 			<Part id = "CABIN"			Prototype = "fighterScavCab03" />
 			<Part id = "BASKET"		Prototype = "bigfakeCargo" />
@@ -2200,7 +2213,8 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class			= "Vehicle"
 		Name			= "Hunter2CarBoss"
-		ParentPrototype 	= "HunterBoss">
+		ParentPrototype 	= "HunterBoss"
+		VisibleInEncyclopedia	= "true">
 		<Parts>
 			<Part id = "CABIN"			Prototype = "hunterScavCab03" />
 			<Part id = "BASKET"		Prototype = "bigfakeCargo" />

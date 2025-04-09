@@ -31,7 +31,7 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 
 		Durability		= "70"
 		
-		BlastWavePrototype      = "smallBlastWave"
+		BlastWavePrototype      = "smallBlastWave_rapier"
 		Price			= "12100"
 		FiringType		= "Cannon"
 		/>
@@ -183,7 +183,7 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 
 		Price			= "19100"
                 FiringType		= "ShotGun"
-		BlastWavePrototype      = "smallBlastWave"
+		BlastWavePrototype      = "smallBlastWave_flag"
 		Durability		= "200"/>
 
 	<Prototype
@@ -318,7 +318,7 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 		GroupingAngle		= "2.1"
 		FiringRange		= "600"
 		RecoilForce		= "700"
-		ShellsPoolSize  = "42"
+		ShellsPoolSize  = "48"
 		WithShellsPoolLimit	= "true"
 
 		ActionDist		= "1000"		

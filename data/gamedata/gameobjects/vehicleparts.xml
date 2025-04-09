@@ -105,7 +105,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			ResourceType= "SML2_CHASSIS"
 			NodeScale	= "1 1 1"
 			Mass		= "50.0" 			
-			MaxHealth	= "150" 
+			MaxHealth	= "125" 
 			MaxFuel	= "100"
 			BrakingSound="ET_S_BRAKE01"
 			PneumoSound	="ET_S_PNEUMO_BRAKE01"
@@ -123,7 +123,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			ResourceType= "SML3_CHASSIS"
 			NodeScale	= "1 1 1"
 			Mass		= "50.0" 			
-			MaxHealth	= "175" 
+			MaxHealth	= "150" 
 			MaxFuel	= "100"
 			BrakingSound="ET_S_BRAKE01"
 			PneumoSound	="ET_S_PNEUMO_BRAKE01"
@@ -141,7 +141,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			ResourceType= "SML4_CHASSIS"
 			NodeScale	= "1 1 1"
 			Mass		= "50.0" 			
-			MaxHealth	= "200" 
+			MaxHealth	= "175" 
 			MaxFuel	= "100"
 			BrakingSound="ET_S_BRAKE01"
 			PneumoSound	="ET_S_PNEUMO_BRAKE01"
@@ -159,7 +159,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			ResourceType	= "SCOUT_CHASSIS"
 			NodeScale	= "1 1 1"
 			Mass		= "40.0"
-			MaxHealth	= "250" 
+			MaxHealth	= "225" 
 			MaxFuel	= "50" 
 			BrakingSound="ET_S_BRAKE01"
 			PneumoSound	="ET_S_PNEUMO_BRAKE01"
@@ -177,7 +177,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			ResourceType	= "FIGHTER_CHASSIS"
 			NodeScale	= "1 1 1"
 			Mass		= "40.0"
-			MaxHealth	= "400" 
+			MaxHealth	= "300" 
 			MaxFuel	= "80" 
 			BrakingSound="ET_S_BRAKE01"
 			PneumoSound	="ET_S_PNEUMO_BRAKE01"
@@ -1362,19 +1362,20 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 					MaxAmount	= "1" />         
 			</GadgetDescription>
 				<GroupsHealth
-					Main   = "5"	
-					Breakable1   = "3"	
-				    Breakable2   = "3"
-					Breakable3   = "3"	
-					Breakable4   = "3"	
-				    Breakable5   = "3"
-					Breakable6   = "3"	
-					Breakable7   = "3"	
-				    Breakable8   = "3"
-					Breakable9   = "3"
-					Breakable10   = "3"	
-				    Breakable11   = "3"
-					Breakable12   = "3"
+					Main   		= "0"	
+					Breakable1   	= "0.4"	
+				    	Breakable2   	= "0.3"
+					Breakable3  	= "0.4"
+					Breakable4   	= "0.4"	
+				    	Breakable5   	= "0.4"
+					Breakable6  	= "0.5"
+					Breakable7   	= "0.3"	
+				    	Breakable8   	= "0.4"
+					Breakable9  	= "0.5"
+					Breakable10   	= "0.4"	
+				    	Breakable11   	= "0.5"
+					Breakable12  	= "0.3"
+					Breakable13  	= "0.4"
 				/>
 		</Prototype>
 
@@ -1477,7 +1478,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			ResourceType			= "HUNTER_CABIN"
 			NodeScale			= "1 1 1"
 			Durability			= "150"
-			DurCoeffsForDamageTypes	= "25 10 -10"
+			DurCoeffsForDamageTypes	= "15 5 -10"
 			VisibleInEncyclopedia = "false"
 
                         FuelConsumption                 = "0.23"
@@ -1758,7 +1759,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			Price				= "29998"
 			RepairCoef			= "0.3"
-                        FuelConsumption                 = "0.4"
+            FuelConsumption                 = "0.3"
 			EngineHighSound			= "ET_S_ENGINE_MOLOKO_1_HIGH"
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CAB"
 			MaxSpeed			= "110.0">
@@ -1795,7 +1796,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CAB"
 			Price				= "32000"
 			RepairCoef			= "0.3"
-                        FuelConsumption                 = "0.4"
+            FuelConsumption                 = "0.3"
 			MaxSpeed			= "115.0">
 			<GadgetDescription>
 				<Slot
@@ -1869,7 +1870,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0.3"
 
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CAB"
-                        FuelConsumption                 = "0.4"
+            FuelConsumption                 = "0.32"
 			MaxSpeed			= "120.0"
 			LoadPoints			= "LP_SML01" >
 
@@ -1913,7 +1914,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			Price				= "99998"
 			RepairCoef			= "0.4"
-                        FuelConsumption                 = "0.3"
+            FuelConsumption                 = "0.25"
                         EngineHighSound			= "ET_S_ENGINE_URAL_1_HIGH"
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CAB"
 			MaxSpeed			= "130.0"  
@@ -1961,7 +1962,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0.4"
 
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CAB"
-                        FuelConsumption                 = "0.3"
+            FuelConsumption                 = "0.25"
 			MaxSpeed			= "140.0"  
 			LoadPoints			= "LP_BIG01" >
 
@@ -2004,7 +2005,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			Price				= "140000"
 			RepairCoef			= "0.4"
-                        FuelConsumption                 = "0.3"
+            FuelConsumption                 = "0.25"
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CAB"
                         EngineHighSound			= "ET_S_ENGINE_URAL_3_HIGH"
 			MaxSpeed			= "160.0"  
@@ -2051,7 +2052,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			Price				= "115000"
 			RepairCoef			= "0.4"
-                        FuelConsumption                 = "0.3"
+            FuelConsumption                 = "0.25"
 			MaxSpeed			= "150.0"  
 			LoadPoints			= "LP_BIG01" >
 
@@ -2095,7 +2096,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			Price				= "160000"
 			RepairCoef			= "0.4"
-                        FuelConsumption                 = "0.3"
+            FuelConsumption                 = "0.25"
 			MaxSpeed			= "155.0"  
 			LoadPoints			= "LP_BIG01 LP_BIG02" >
 
@@ -2186,7 +2187,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			Price				= "161998"
 			RepairCoef			= "0.5"
-                        FuelConsumption                 = "0.4"
+            FuelConsumption                 = "0.3"
 			LoadPoints			= "LP_SML01" 
                         EngineHighSound		= "ET_S_ENGINE_BELAZ_1_HIGH">
 			<GadgetDescription>
@@ -2227,7 +2228,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			Price				= "170000"
 			RepairCoef			= "0.5"
-                        FuelConsumption                 = "0.4"
+            FuelConsumption                 = "0.3"
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CAB"
 			LoadPoints			= "LP_SML01 LP_SML02" 
                         EngineHighSound			= "ET_S_ENGINE_BELAZ_2_HIGH">
@@ -2315,7 +2316,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			MaxSpeed			= "120.0"
 			Price				= "195000"
 			RepairCoef			= "0.5"
-                        FuelConsumption                 = "0.4"
+            FuelConsumption                 = "0.3"
 			LoadPoints			= "LP_GIANT01" >
 
 			<GadgetDescription>
@@ -2357,7 +2358,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			Price				= "205000"
 			RepairCoef			= "0.5"
-                        FuelConsumption                 = "0.4"
+            FuelConsumption                 = "0.3"
 			LoadPoints			= "LP_SML01 LP_BIG01" >
 
 			<GadgetDescription>
@@ -2399,7 +2400,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			Price				= "225000"
 			RepairCoef			= "0.5"
-                        FuelConsumption                 = "0.4"
+            FuelConsumption                 = "0.3"
 			LoadPoints			= "LP_GIANT01 LP_BIG01" >
 
 			<GadgetDescription>
@@ -2441,7 +2442,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			Price				= "229998"
 			RepairCoef			= "0.6"
-                        FuelConsumption                 = "0.45"
+            FuelConsumption                 = "0.4"
                         EngineHighSound			= "ET_S_ENGINE_MIR_1_HIGH"
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CAB"
 
@@ -2484,7 +2485,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			Price				= "240000"
 			RepairCoef			= "0.6"
-                        FuelConsumption                 = "0.45"
+            FuelConsumption                 = "0.4"
 			MaxSpeed			= "130.0"
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CAB"
                         EngineHighSound			= "ET_S_ENGINE_MIR_2_HIGH"
@@ -2527,7 +2528,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			Price				= "260000"
 			RepairCoef			= "0.6"
-                        FuelConsumption                 = "0.45"
+            FuelConsumption                 = "0.4"
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CAB"
                         EngineHighSound		= "ET_S_ENGINE_MIR_3_HIGH"
 			MaxSpeed			= "140.0"
@@ -2570,7 +2571,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			Price				= "280000"
 			RepairCoef			= "0.6"
-                        FuelConsumption                 = "0.45"
+            FuelConsumption                 = "0.4"
                         EngineHighSound		= "ET_S_ENGINE_MIR_4_HIGH"
 			MaxSpeed			= "145.0"
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CAB"
@@ -2614,7 +2615,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			Price				= "320000"
  			RepairCoef			= "0.6"
-                        FuelConsumption                 = "0.45"
+        	FuelConsumption                 = "0.4"
                        EngineHighSound		= "ET_S_ENGINE_MIR_5_HIGH"
 			MaxSpeed			= "150.0"
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CAB"

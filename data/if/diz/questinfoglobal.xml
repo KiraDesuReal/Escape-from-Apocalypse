@@ -154,7 +154,7 @@
 
 	<QuestInfo
 		questName="q_belazist1_2"
-		briefDiz="Убить 15 Диких"
+		briefDiz="Убить 10 Диких"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -266,7 +266,7 @@
 
 	<QuestInfo
 		questName="q_belazist3_2"
-		briefDiz="Убить 20 Диких"
+		briefDiz="Убить 15 Диких"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -389,7 +389,7 @@
 
 	<QuestInfo
 		questName="q_belazist5_3"
-		briefDiz="Убить 30 бойцов ЧВК"
+		briefDiz="Убить 15 бойцов ЧВК"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -445,7 +445,7 @@
 
 	<QuestInfo
 		questName="q_belazist6_3"
-		briefDiz="Убить 30 бойцов ЧВК"
+		briefDiz="Убить 20 бойцов ЧВК"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -948,6 +948,17 @@
 	</QuestInfo>
 
 	<QuestInfo
+		questName="q_fuel2_6"
+		briefDiz="Заправить канистру топливом на любой заправке"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
 		questName="q_fuel2_4"
 		briefDiz="Передать 3 Канистры топлива"
 		isMainQuest="1">
@@ -1028,7 +1039,7 @@
 
 	<QuestInfo
 		questName="q_naturalist1_2"
-		briefDiz="Убить 30 Диких"
+		briefDiz="Убить 20 Диких"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -1039,7 +1050,7 @@
 
 	<QuestInfo
 		questName="q_naturalist1_3"
-		briefDiz="Убить 15 бойцов ЧВК"
+		briefDiz="Убить 10 бойцов ЧВК"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -1084,7 +1095,7 @@
 
 	<QuestInfo
 		questName="q_naturalist2_2"
-		briefDiz="Убить 20 Диких"
+		briefDiz="Убить 15 Диких"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -1207,7 +1218,7 @@
 
 	<QuestInfo
 		questName="q_naturalist4_3"
-		briefDiz="Убить 20 бойцов ЧВК"
+		briefDiz="Убить 15 бойцов ЧВК"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -1263,7 +1274,7 @@
 
 	<QuestInfo
 		questName="q_naturalist5_3"
-		briefDiz="Убить 25 Диких"
+		briefDiz="Убить 15 Диких"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -1398,7 +1409,7 @@
 	<QuestInfo
 		questName="q_test_drive1"
 		briefDiz="Тест драйв - Часть 1"
-		fullDiz="Итак, заказчику надо собрать бюджетный автомобиль, предназначенный для грузоперевозок, с умереной огневой мощью и максимальной вместимостью кузова. Проще говоря конфигурация должна быть следующей:|@FF0000AA|@FF404040Машина: @FF1D1D1DВэн|@FF404040Кабина: @FF1D1D1DЖук (Уровень II)|@FF404040Кузов: @FF1D1D1DБорг (Уровень III)|@FF404040Вооружение: @FF1D1D1DПКТ - x1|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Неизвестная награда|- Случайная награда|- Деньги: @FF1D1D1D50.000 монет"
+		fullDiz="Итак, заказчику надо собрать бюджетный автомобиль, предназначенный для грузоперевозок, с умереной огневой мощью и максимальной вместимостью кузова. Проще говоря конфигурация должна быть следующей:|@FF0000AA|@FF404040Машина: @FF1D1D1DВэн|@FF404040Кабина: @FF1D1D1DЖук (Уровень I)|@FF404040Кузов: @FF1D1D1DБорг (Уровень III)|@FF404040Вооружение: @FF1D1D1DПКТ - x1|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Неизвестная награда|- Случайная награда|- Деньги: @FF1D1D1D50.000 монет"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -1443,7 +1454,7 @@
 
 	<QuestInfo
 		questName="q_test_drive10_3"
-		briefDiz="Убить 20 бойцов ЧВК"
+		briefDiz="Убить 15 бойцов ЧВК"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -1488,7 +1499,7 @@
 
 	<QuestInfo
 		questName="q_test_drive11_2"
-		briefDiz="Убить 25 Диких"
+		briefDiz="Убить 15 Диких"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -1499,7 +1510,7 @@
 
 	<QuestInfo
 		questName="q_test_drive11_3"
-		briefDiz="Убить 35 бойцов ЧВК"
+		briefDiz="Убить 15 бойцов ЧВК"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -1544,7 +1555,7 @@
 
 	<QuestInfo
 		questName="q_test_drive12_2"
-		briefDiz="Убить 20 Диких"
+		briefDiz="Убить 15 Диких"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -1555,7 +1566,7 @@
 
 	<QuestInfo
 		questName="q_test_drive12_3"
-		briefDiz="Убить 40 бойцов ЧВК"
+		briefDiz="Убить 20 бойцов ЧВК"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -1712,7 +1723,7 @@
 
 	<QuestInfo
 		questName="q_test_drive15_2"
-		briefDiz="Убить 25 Диких"
+		briefDiz="Убить 20 Диких"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -1723,7 +1734,7 @@
 
 	<QuestInfo
 		questName="q_test_drive15_3"
-		briefDiz="Убить 20 бойцов ЧВК"
+		briefDiz="Убить 15 бойцов ЧВК"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -1745,7 +1756,7 @@
 
 	<QuestInfo
 		questName="q_test_drive1_1"
-		briefDiz="Убить 15 Диких"
+		briefDiz="Убить 5 Диких"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -1801,7 +1812,7 @@
 
 	<QuestInfo
 		questName="q_test_drive2_2"
-		briefDiz="Убить 20 Диких"
+		briefDiz="Убить 10 Диких"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -1857,7 +1868,7 @@
 
 	<QuestInfo
 		questName="q_test_drive3_2"
-		briefDiz="Убить 5 Диких"
+		briefDiz="Убить 3 Диких"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -1868,7 +1879,7 @@
 
 	<QuestInfo
 		questName="q_test_drive3_3"
-		briefDiz="Убить 5 бойцов ЧВК"
+		briefDiz="Убить 3 бойцов ЧВК"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -1891,7 +1902,7 @@
 	<QuestInfo
 		questName="q_test_drive4"
 		briefDiz="Тест драйв - Часть 4"
-		fullDiz="Надо собрать Молоковоз, с установленным пулемётом КПВТ на кузове. Это основные критерии, кабину можно не трогать. Сборка не сложная, так что думаю, ты справишься.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Пушка: @FF1D1D1DРапира в продаже - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пушки в продаже - x1|@FF404040- Деньги: @FF1D1D1D50.000 монет"
+		fullDiz="Надо собрать Молоковоз, с установленным пулемётом КПВТ на кузове, а кабину оставить в стоке. Это основные критерии. Сборка не сложная, так что думаю, ты справишься.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Пушка: @FF1D1D1DРапира в продаже - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для Пушки в продаже - x1|@FF404040- Деньги: @FF1D1D1D50.000 монет"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -1924,7 +1935,7 @@
 
 	<QuestInfo
 		questName="q_test_drive4_3"
-		briefDiz="Убить 30 Диких"
+		briefDiz="Убить 15 Диких"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -1935,7 +1946,7 @@
 
 	<QuestInfo
 		questName="q_test_drive4_4"
-		briefDiz="Убить 15 бойцов ЧВК"
+		briefDiz="Убить 10 бойцов ЧВК"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -1991,7 +2002,7 @@
 
 	<QuestInfo
 		questName="q_test_drive5_3"
-		briefDiz="Убить 30 Диких"
+		briefDiz="Убить 15 Диких"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -2002,7 +2013,7 @@
 
 	<QuestInfo
 		questName="q_test_drive5_4"
-		briefDiz="Убить 20 бойцов ЧВК"
+		briefDiz="Убить 10 бойцов ЧВК"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -2047,7 +2058,7 @@
 
 	<QuestInfo
 		questName="q_test_drive6_2"
-		briefDiz="Убить 30 Диких"
+		briefDiz="Убить 20 Диких"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -2103,7 +2114,7 @@
 
 	<QuestInfo
 		questName="q_test_drive7_2"
-		briefDiz="Убить 10 Диких"
+		briefDiz="Убить 5 Диких"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -2159,7 +2170,7 @@
 
 	<QuestInfo
 		questName="q_test_drive8_2"
-		briefDiz="Убить 40 Диких"
+		briefDiz="Убить 20 Диких"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -2170,7 +2181,7 @@
 
 	<QuestInfo
 		questName="q_test_drive8_3"
-		briefDiz="Убить 20 бойцов ЧВК"
+		briefDiz="Убить 10 бойцов ЧВК"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -2215,7 +2226,7 @@
 
 	<QuestInfo
 		questName="q_test_drive9_2"
-		briefDiz="Убить 15 Диких"
+		briefDiz="Убить 10 Диких"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -2271,7 +2282,7 @@
 
 	<QuestInfo
 		questName="q_testing_mission_2"
-		briefDiz="Найти и передать три пулемёта Шершень "
+		briefDiz="Найти и передать 3 пулемёта Шершень "
 		isMainQuest="1">
 		<Map
 			name="r0m0" />

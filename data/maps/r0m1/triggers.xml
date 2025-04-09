@@ -1367,10 +1367,6 @@
 				Plf:SetSkin(GetVar("PlayerSkin").AsInt)
 			end
 
-			RemoveItemsFromPlayerRepository("scrap_metal_use", GetItemsAmount("scrap_metal_use"))
-			RemoveItemsFromPlayerRepository("machinery_use", GetItemsAmount("machinery_use"))
-			RemoveItemsFromPlayerRepository("electronics_use", GetItemsAmount("electronics_use"))
-
 			if GetVar("Use_AmmoChestArtilleryGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_artillerygun", GetVar("Use_AmmoChestArtilleryGun").AsInt) end
 			if GetVar("Use_AmmoChestHeavyGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_heavygun", GetVar("Use_AmmoChestHeavyGun").AsInt) end
 			if GetVar("Use_AmmoChestMachineGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_machinegun", GetVar("Use_AmmoChestMachineGun").AsInt) end

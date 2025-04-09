@@ -129,6 +129,7 @@
 			SetVar("ScavCar_time_second", 0)
 
 			if COUNT_RAIDS then SetVar("CountRaids", COUNT_RAIDS) end 
+			SetVar("CountRaids", GetVar("CountRaids").AsInt + 1)
 
 			if CHESTSCAVS_TIMER_HOUR_GLOBAL > 0 then SetVar("ChestScavs_time_hour", CHESTSCAVS_TIMER_HOUR_GLOBAL) end
 			if CHESTSCAVS_TIMER_MINUTE_GLOBAL > 0 then SetVar("ChestScavs_time_minute", CHESTSCAVS_TIMER_MINUTE_GLOBAL) end
@@ -198,8 +199,12 @@
 			if DEBUG == 1 then
 				println("=================== START MAP: r1m1 ===================")
 				println("PLAYER BELONG: "..GetVar("PlayerBelong").AsString)
+				println("RAID: "..GetVar("CountRaids").AsInt)
+				println("OBJ CONTAINER: "..g_ObjCont:size())
 				LOG("=================== START MAP: r1m1 ===================")
 				LOG("PLAYER BELONG: "..GetVar("PlayerBelong").AsString)
+				LOG("RAID: "..GetVar("CountRaids").AsInt)
+				LOG("OBJ CONTAINER: "..g_ObjCont:size())
 			end
 		</script>
 	</trigger>
@@ -715,9 +720,6 @@
 		<event timeout="7" eventid="GE_TIME_PERIOD" />
 		<script>
 		
-			local l = GetVar("CountRaids").AsInt
-			l = l + 1
-			SetVar("CountRaids", l)
 			local count = GetVar("CountRaids").AsInt
 			
 			local time = g_ObjCont:GetGameTime().AsString
@@ -740,10 +742,12 @@
 
 			if 10 > minute then nulM = 0 end
 
+			if 10 > minute and 10 > hour then day = tonumber(strsub(time, 5, 6)) end
+
 			local TextTime = day.." "..nulH..hour..":"..nulM..minute
 
-			local user
-			local Msg
+			local user = ""
+			local Msg = ""
 
 			if GetVar("PlayerBelong").AsString == "SCAV" then
 				user = GenerateRandomScavName()
@@ -952,6 +956,8 @@
 						TActivate("BaseFelixExtract")
 					end
 				end
+				GetPlayerVehicle():SetThrottle(0)
+				GetPlayerVehicle():SetCustomLinearVelocity(0)
 			else
 				AddFadingMsgByStrIdFormatted("fm_not_key")
 				SoundFadingMsg()
@@ -1212,6 +1218,7 @@
 			for k=1,count_scav do
 				getObj("ScavInLocation01_Die"):AddEvent("GE_OBJECT_DIE", "Scav"..k.."_loc1_vehicle_0")
 				getObj("ScavInLocation01_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "Scav"..k.."_loc1_vehicle_0")
+				SetVar("Scav"..k.."_loc1_vehicle_0_UnderAttack", 0)
 			end
 
 			SetVar("CountScav_1_loc", count_scav)
@@ -1228,10 +1235,20 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
+			local carName = trigger:GetCallObjName()
 
-			TActivate("IfPlayerKillScav")
-			getObj("ScavInLocation01_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", trigger:GetCallObjName())
-	
+			if GetVar(carName.."_UnderAttack").AsInt == 1100 then
+				TActivate("IfPlayerKillScav")
+			else
+				if DEBUG == 1 then 
+					println("SCAV KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+					LOG("SCAV KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+				end
+			end
+
+			getObj("ScavInLocation01_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", carName)
+			SetVar(carName.."_UnderAttack", 0)
+
 			if GetVar("CountScav_1_loc").AsInt > count then
 			return
 			end
@@ -1241,11 +1258,12 @@
 				getObj("ScavInLocation01_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc1_vehicle_0")
 			end
 
+			if DEBUG == 1 then println("ALL SCAVS IN LOC 1 DIE") LOG("ALL SCAVS IN LOC 1 DIE") end
+
 			TActivate("SpawnScavsInLocation01_Restart")
 			TDeactivate("SpawnScavsInLocation01_Enters")
 			TDeactivate("SpawnScavsInLocation01_Leaves")
 			TDeactivate("ScavInLocation01_Dist")
-			TDeactivate("ScavInLocation01_UnderAttack")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1288,6 +1306,7 @@
 
 				getObj("ScavInLocation01_Die"):DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc1_vehicle_0")
 				getObj("ScavInLocation01_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc1_vehicle_0")
+				SetVar("Scav"..s1.."_loc1_vehicle_0_UnderAttack", 0)
 			end
 
 			SetVar("CountScav_1_loc", 0)
@@ -1325,7 +1344,7 @@
 
 	<trigger Name="ScavInLocation01_UnderAttack" active="0">
 		<script>
-			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0))
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0), "IfPlayerKillScav")
 		</script>
 	</trigger>
 
@@ -1388,6 +1407,7 @@
 			for k=1,count_scav do
 				getObj("ScavInLocation02_Die"):AddEvent("GE_OBJECT_DIE", "Scav"..k.."_loc2_vehicle_0")
 				getObj("ScavInLocation02_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "Scav"..k.."_loc2_vehicle_0")
+				SetVar("Scav"..k.."_loc2_vehicle_0_UnderAttack", 0)
 			end
 
 			SetVar("CountScav_2_loc", count_scav)
@@ -1404,9 +1424,19 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
+			local carName = trigger:GetCallObjName()
 
-			TActivate("IfPlayerKillScav")
-			getObj("ScavInLocation02_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", trigger:GetCallObjName())
+			if GetVar(carName.."_UnderAttack").AsInt == 1100 then
+				TActivate("IfPlayerKillScav")
+			else
+				if DEBUG == 1 then 
+					println("SCAV KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+					LOG("SCAV KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+				end
+			end
+
+			getObj("ScavInLocation02_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", carName)
+			SetVar(carName.."_UnderAttack", 0)
 
 			if GetVar("CountScav_2_loc").AsInt > count then
 			return
@@ -1417,11 +1447,12 @@
 				getObj("ScavInLocation02_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc2_vehicle_0")
 			end
 
+			if DEBUG == 1 then println("ALL SCAVS IN LOC 2 DIE") LOG("ALL SCAVS IN LOC 2 DIE") end
+
 			TActivate("SpawnScavsInLocation02_Restart")
 			TDeactivate("SpawnScavsInLocation02_Enters")
 			TDeactivate("SpawnScavsInLocation02_Leaves")
 			TDeactivate("ScavInLocation02_Dist")
-			TDeactivate("ScavInLocation02_UnderAttack")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1464,6 +1495,7 @@
 
 				getObj("ScavInLocation02_Die"):DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc2_vehicle_0")
 				getObj("ScavInLocation02_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc2_vehicle_0")
+				SetVar("Scav"..s1.."_loc2_vehicle_0_UnderAttack", 0)
 			end
 
 			SetVar("CountScav_2_loc", 0)
@@ -1501,7 +1533,7 @@
 
 	<trigger Name="ScavInLocation02_UnderAttack" active="0">
 		<script>
-			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0))
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0), "IfPlayerKillScav")
 		</script>
 	</trigger>
 
@@ -1567,6 +1599,7 @@
 			for k=1,count_scav do
 				getObj("ScavInLocation03_Die"):AddEvent("GE_OBJECT_DIE", "Scav"..k.."_loc3_vehicle_0")
 				getObj("ScavInLocation03_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "Scav"..k.."_loc3_vehicle_0")
+				SetVar("Scav"..k.."_loc3_vehicle_0_UnderAttack", 0)
 			end
 
 			SetVar("CountScav_3_loc", count_scav)
@@ -1583,9 +1616,19 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
+			local carName = trigger:GetCallObjName()
 
-			TActivate("IfPlayerKillScav")
-			getObj("ScavInLocation03_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", trigger:GetCallObjName())
+			if GetVar(carName.."_UnderAttack").AsInt == 1100 then
+				TActivate("IfPlayerKillScav")
+			else
+				if DEBUG == 1 then 
+					println("SCAV KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+					LOG("SCAV KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+				end
+			end
+
+			getObj("ScavInLocation03_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", carName)
+			SetVar(carName.."_UnderAttack", 0)
 
 			if GetVar("CountScav_3_loc").AsInt > count then
 			return
@@ -1597,11 +1640,12 @@
 				getObj("ScavInLocation03_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc3_vehicle_0")
 			end
 
+			if DEBUG == 1 then println("ALL SCAVS IN LOC 3 DIE") LOG("ALL SCAVS IN LOC 3 DIE") end
+
 			TActivate("SpawnScavsInLocation03_Restart")
 			TDeactivate("SpawnScavsInLocation03_Enters")
 			TDeactivate("SpawnScavsInLocation03_Leaves")
 			TDeactivate("ScavInLocation03_Dist")
-			TDeactivate("ScavInLocation03_UnderAttack")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1644,6 +1688,7 @@
 
 				getObj("ScavInLocation03_Die"):DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc3_vehicle_0")
 				getObj("ScavInLocation03_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc3_vehicle_0")
+				SetVar("Scav"..s1.."_loc3_vehicle_0_UnderAttack", 0)
 			end
 
 			SetVar("CountScav_3_loc", 0)
@@ -1681,7 +1726,7 @@
 
 	<trigger Name="ScavInLocation03_UnderAttack" active="0">
 		<script>
-			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0))
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0), "IfPlayerKillScav")
 		</script>
 	</trigger>
 
@@ -1743,6 +1788,7 @@
 			for k=1,count_scav do
 				getObj("ScavInLocation04_Die"):AddEvent("GE_OBJECT_DIE", "Scav"..k.."_loc4_vehicle_0")
 				getObj("ScavInLocation04_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "Scav"..k.."_loc4_vehicle_0")
+				SetVar("Scav"..k.."_loc4_vehicle_0_UnderAttack", 0)
 			end
 
 			SetVar("CountScav_4_loc", count_scav)
@@ -1759,9 +1805,19 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
+			local carName = trigger:GetCallObjName()
 
-			TActivate("IfPlayerKillScav")
-			getObj("ScavInLocation04_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", trigger:GetCallObjName())
+			if GetVar(carName.."_UnderAttack").AsInt == 1100 then
+				TActivate("IfPlayerKillScav")
+			else
+				if DEBUG == 1 then 
+					println("SCAV KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+					LOG("SCAV KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+				end
+			end
+
+			getObj("ScavInLocation04_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", carName)
+			SetVar(carName.."_UnderAttack", 0)
 
 			if GetVar("CountScav_4_loc").AsInt > count then
 			return
@@ -1772,11 +1828,12 @@
 				getObj("ScavInLocation04_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc4_vehicle_0")
 			end
 
+			if DEBUG == 1 then println("ALL SCAVS IN LOC 4 DIE") LOG("ALL SCAVS IN LOC 4 DIE") end
+
 			TActivate("SpawnScavsInLocation04_Restart")
 			TDeactivate("SpawnScavsInLocation04_Enters")
 			TDeactivate("SpawnScavsInLocation04_Leaves")
 			TDeactivate("ScavInLocation04_Dist")
-			TDeactivate("ScavInLocation04_UnderAttack")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1819,6 +1876,7 @@
 
 				getObj("ScavInLocation04_Die"):DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc4_vehicle_0")
 				getObj("ScavInLocation04_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc4_vehicle_0")
+				SetVar("Scav"..s1.."_loc4_vehicle_0_UnderAttack", 0)
 			end
 
 			SetVar("CountScav_4_loc", 0)
@@ -1856,7 +1914,7 @@
 
 	<trigger Name="ScavInLocation04_UnderAttack" active="0">
 		<script>
-			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0))
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0), "IfPlayerKillScav")
 		</script>
 	</trigger>
 
@@ -1920,6 +1978,7 @@
 			for k=1,count_scav do
 				getObj("ScavInLocation05_Die"):AddEvent("GE_OBJECT_DIE", "Scav"..k.."_loc5_vehicle_0")
 				getObj("ScavInLocation05_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "Scav"..k.."_loc5_vehicle_0")
+				SetVar("Scav"..k.."_loc5_vehicle_0_UnderAttack", 0)
 			end
 
 			SetVar("CountScav_5_loc", count_scav)
@@ -1936,9 +1995,19 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
+			local carName = trigger:GetCallObjName()
 
-			TActivate("IfPlayerKillScav")
-			getObj("ScavInLocation05_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", trigger:GetCallObjName())
+			if GetVar(carName.."_UnderAttack").AsInt == 1100 then
+				TActivate("IfPlayerKillScav")
+			else
+				if DEBUG == 1 then 
+					println("SCAV KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+					LOG("SCAV KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+				end
+			end
+
+			getObj("ScavInLocation05_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", carName)
+			SetVar(carName.."_UnderAttack", 0)
 
 			if GetVar("CountScav_5_loc").AsInt > count then
 			return
@@ -1949,11 +2018,12 @@
 				getObj("ScavInLocation05_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc5_vehicle_0")
 			end
 
+			if DEBUG == 1 then println("ALL SCAVS IN LOC 5 DIE") LOG("ALL SCAVS IN LOC 5 DIE") end
+
 			TActivate("SpawnScavsInLocation05_Restart")
 			TDeactivate("SpawnScavsInLocation05_Enters")
 			TDeactivate("SpawnScavsInLocation05_Leaves")
 			TDeactivate("ScavInLocation05_Dist")
-			TDeactivate("ScavInLocation05_UnderAttack")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1996,6 +2066,7 @@
 
 				getObj("ScavInLocation05_Die"):DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc5_vehicle_0")
 				getObj("ScavInLocation05_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc5_vehicle_0")
+				SetVar("Scav"..s1.."_loc5_vehicle_0_UnderAttack", 0)
 			end
 
 			SetVar("CountScav_5_loc", 0)
@@ -2033,7 +2104,7 @@
 
 	<trigger Name="ScavInLocation05_UnderAttack" active="0">
 		<script>
-			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0))
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0), "IfPlayerKillScav")
 		</script>
 	</trigger>
 
@@ -2107,6 +2178,7 @@
 			for k=1,count_scav do
 				getObj("ScavInLocation06_Die"):AddEvent("GE_OBJECT_DIE", "Scav"..k.."_loc6_vehicle_0")
 				getObj("ScavInLocation06_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "Scav"..k.."_loc6_vehicle_0")
+				SetVar("Scav"..k.."_loc6_vehicle_0_UnderAttack", 0)
 			end
 
 			SetVar("CountScav_6_loc", count_scav)
@@ -2123,9 +2195,19 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
+			local carName = trigger:GetCallObjName()
 
-			TActivate("IfPlayerKillScav")
-			getObj("ScavInLocation06_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", trigger:GetCallObjName())
+			if GetVar(carName.."_UnderAttack").AsInt == 1100 then
+				TActivate("IfPlayerKillScav")
+			else
+				if DEBUG == 1 then 
+					println("SCAV KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+					LOG("SCAV KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+				end
+			end
+
+			getObj("ScavInLocation06_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", carName)
+			SetVar(carName.."_UnderAttack", 0)
 
 			if GetVar("CountScav_6_loc").AsInt > count then
 			return
@@ -2136,11 +2218,12 @@
 				getObj("ScavInLocation06_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc6_vehicle_0")
 			end
 
+			if DEBUG == 1 then println("ALL SCAVS IN LOC 6 DIE") LOG("ALL SCAVS IN LOC 6 DIE") end
+
 			TActivate("SpawnScavsInLocation06_Restart")
 			TDeactivate("SpawnScavsInLocation06_Enters")
 			TDeactivate("SpawnScavsInLocation06_Leaves")
 			TDeactivate("ScavInLocation06_Dist")
-			TDeactivate("ScavInLocation06_UnderAttack")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -2183,6 +2266,7 @@
 
 				getObj("ScavInLocation06_Die"):DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc6_vehicle_0")
 				getObj("ScavInLocation06_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc6_vehicle_0")
+				SetVar("Scav"..s1.."_loc6_vehicle_0_UnderAttack", 0)
 			end
 
 			SetVar("CountScav_6_loc", 0)
@@ -2220,7 +2304,7 @@
 
 	<trigger Name="ScavInLocation06_UnderAttack" active="0">
 		<script>
-			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0))
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0), "IfPlayerKillScav")
 		</script>
 	</trigger>
 
@@ -2258,7 +2342,7 @@
 
 			local path = {CVector(1971.739, 302.472, 951.001), CVector(2050.920, 301.738, 905.167), CVector(2113.665, 302.513, 899.520), CVector(2157.544, 302.700, 936.778), CVector(2209.236, 303.580, 907.247), CVector(2247.232, 302.144, 958.265), CVector(2302.053, 304.369, 973.852), CVector(2337.177, 303.666, 828.817), CVector(2118.364, 302.579, 860.890)}
 
-			local count_scav = random (1,3)
+			local count_scav = random (1,2)
 
 			for j=1,count_scav do
 				local model = enemylist[random(scav)]
@@ -2288,6 +2372,7 @@
 			for k=1,count_scav do
 				getObj("ScavInLocation07_Die"):AddEvent("GE_OBJECT_DIE", "Scav"..k.."_loc7_vehicle_0")
 				getObj("ScavInLocation07_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "Scav"..k.."_loc7_vehicle_0")
+				SetVar("Scav"..k.."_loc7_vehicle_0_UnderAttack", 0)
 			end
 
 			SetVar("CountScav_7_loc", count_scav)
@@ -2304,9 +2389,19 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
+			local carName = trigger:GetCallObjName()
 
-			TActivate("IfPlayerKillScav")
-			getObj("ScavInLocation07_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", trigger:GetCallObjName())
+			if GetVar(carName.."_UnderAttack").AsInt == 1100 then
+				TActivate("IfPlayerKillScav")
+			else
+				if DEBUG == 1 then 
+					println("SCAV KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+					LOG("SCAV KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+				end
+			end
+
+			getObj("ScavInLocation07_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", carName)
+			SetVar(carName.."_UnderAttack", 0)
 
 			if GetVar("CountScav_7_loc").AsInt > count then
 			return
@@ -2317,11 +2412,12 @@
 				getObj("ScavInLocation07_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc7_vehicle_0")
 			end
 
+			if DEBUG == 1 then println("ALL SCAVS IN LOC 7 DIE") LOG("ALL SCAVS IN LOC 7 DIE") end
+
 			TActivate("SpawnScavsInLocation07_Restart")
 			TDeactivate("SpawnScavsInLocation07_Enters")
 			TDeactivate("SpawnScavsInLocation07_Leaves")
 			TDeactivate("ScavInLocation07_Dist")
-			TDeactivate("ScavInLocation07_UnderAttack")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -2364,6 +2460,7 @@
 
 				getObj("ScavInLocation07_Die"):DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc7_vehicle_0")
 				getObj("ScavInLocation07_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc7_vehicle_0")
+				SetVar("Scav"..s1.."_loc7_vehicle_0_UnderAttack", 0)
 			end
 
 			SetVar("CountScav_7_loc", 0)
@@ -2401,7 +2498,7 @@
 
 	<trigger Name="ScavInLocation07_UnderAttack" active="0">
 		<script>
-			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0))
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0), "IfPlayerKillScav")
 		</script>
 	</trigger>
 
@@ -2473,6 +2570,7 @@
 			for k=1,count_scav do
 				getObj("ScavInLocation08_Die"):AddEvent("GE_OBJECT_DIE", "Scav"..k.."_loc8_vehicle_0")
 				getObj("ScavInLocation08_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "Scav"..k.."_loc8_vehicle_0")
+				SetVar("Scav"..k.."_loc8_vehicle_0_UnderAttack", 0)
 			end
 
 			SetVar("CountScav_8_loc", count_scav)
@@ -2489,9 +2587,19 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
+			local carName = trigger:GetCallObjName()
 
-			TActivate("IfPlayerKillScav")
-			getObj("ScavInLocation08_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", trigger:GetCallObjName())
+			if GetVar(carName.."_UnderAttack").AsInt == 1100 then
+				TActivate("IfPlayerKillScav")
+			else
+				if DEBUG == 1 then 
+					println("SCAV KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+					LOG("SCAV KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+				end
+			end
+
+			getObj("ScavInLocation08_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", carName)
+			SetVar(carName.."_UnderAttack", 0)
 
 			if GetVar("CountScav_8_loc").AsInt > count then
 			return
@@ -2502,11 +2610,12 @@
 				getObj("ScavInLocation08_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc8_vehicle_0")
 			end
 
+			if DEBUG == 1 then println("ALL SCAVS IN LOC 8 DIE") LOG("ALL SCAVS IN LOC 8 DIE") end
+
 			TActivate("SpawnScavsInLocation08_Restart")
 			TDeactivate("SpawnScavsInLocation08_Enters")
 			TDeactivate("SpawnScavsInLocation08_Leaves")
 			TDeactivate("ScavInLocation08_Dist")
-			TDeactivate("ScavInLocation08_UnderAttack")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -2549,6 +2658,7 @@
 
 				getObj("ScavInLocation08_Die"):DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc8_vehicle_0")
 				getObj("ScavInLocation08_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc8_vehicle_0")
+				SetVar("Scav"..s1.."_loc8_vehicle_0_UnderAttack", 0)
 			end
 
 			SetVar("CountScav_8_loc", 0)
@@ -2586,7 +2696,7 @@
 
 	<trigger Name="ScavInLocation08_UnderAttack" active="0">
 		<script>
-			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0))
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0), "IfPlayerKillScav")
 		</script>
 	</trigger>
 
@@ -2689,7 +2799,7 @@
 
 			SetVar("PetrolStation_Refill_Process", 0)
 
-			if IsQuestTaken('q_fuel2') and not(IsQuestComplete('q_fuel2_1')) then CompleteSubtask("q_fuel2_1") end
+			if IsQuestTaken("q_fuel2_6") and not(IsQuestComplete('q_fuel2_6')) then CompleteSubtask("q_fuel2_6") end
 		
 			trigger:Deactivate() 
 		</script>
@@ -2768,7 +2878,7 @@
 
 			SetVar("PetrolStation_Refill_Process", 0)
 		
-			if IsQuestTaken('q_fuel2') and not(IsQuestComplete('q_fuel2_2')) then CompleteSubtask("q_fuel2_2") end
+			if IsQuestTaken("q_fuel2_6") and not(IsQuestComplete('q_fuel2_6')) then CompleteSubtask("q_fuel2_6") end
 
 			trigger:Deactivate() 
 		</script>
@@ -2848,7 +2958,7 @@
 
 			SetVar("PetrolStation_Refill_Process", 0)
 
-			if IsQuestTaken('q_fuel2') and not(IsQuestComplete('q_fuel2_3')) then CompleteSubtask("q_fuel2_3") end
+			if IsQuestTaken("q_fuel2_6") and not(IsQuestComplete('q_fuel2_6')) then CompleteSubtask("q_fuel2_6") end
 		
 			trigger:Deactivate() 
 		</script>
@@ -2990,7 +3100,7 @@
 						"item_cooler", "item_cpu", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_kondesators", "item_lump", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tplug", "item_usb", "item_wires",
 						"item_battery_aa", "item_battery_d",
 						"item_hunter_spich", "item_lighter", "item_spich", "item_zibbo",
-						"item_salt", "item_soap", "item_tb", "item_toothpaste",
+						"item_salt", "item_stakanyash", "item_soap", "item_tb", "item_toothpaste",
 						"item_pants40grn", "item_vodka",
 						"hornet01", "specter01", "pkt01", "kord01", "storm01", "vector01", "vulcan01"}	
 			
@@ -3002,7 +3112,7 @@
 				local count = random(4)
 
 				for l=1,count do
-					local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "ScavItem_"..l, belong = 1100}
+					local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "ScavItem_"..random(10000), belong = 1100}
 					local ItemId = GetEntityByID(Item)
 					if ChestId and ItemId then
 						ChestId:AddChild(ItemId)
@@ -3028,7 +3138,7 @@
 		<script>
 			local items = {"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_medical_tools", "item_naci", "item_suringe",
 							"scrap_metal_use", "machinery_use",
-							"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_tb", "item_toothpaste"}
+							"item_alkani", "item_hlor", "item_paper", "item_stakanyash", "item_salt", "item_soap", "item_tb", "item_toothpaste"}
 			
 			for i=1,7 do
 				local Chest = CreateNewObject{prototypeName = "mainChest", objName = "MedicalBox"..i.."Chest"}	
@@ -3052,7 +3162,7 @@
 			
 				if notloot > 10 then
 					for l=1,count do
-						local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "MedItem_"..l, belong = 1100}
+						local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "MedItem_"..random(10000), belong = 1100}
 						local ItemId = GetEntityByID(Item)
 						if ChestId and ItemId then
 							ChestId:AddChild(ItemId)
@@ -3099,7 +3209,7 @@
 			
 				if notloot > 10 then
 					if useItem == 1 then
-						local UseItem = CreateNewObject{prototypeName = use[exrandom(getn(use))], objName = "TehnoUseItem_1", belong = 1100}
+						local UseItem = CreateNewObject{prototypeName = use[exrandom(getn(use))], objName = "TehnoUseItem_"..random(10000), belong = 1100}
 						local UseItemId = GetEntityByID(UseItem)
 						if ChestId and UseItemId then
 							ChestId:AddChild(UseItemId)
@@ -3107,7 +3217,7 @@
 					end
 					
 					for l=1,count do
-						local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "TehnoItem_"..l, belong = 1100}
+						local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "TehnoItem_"..random(10000), belong = 1100}
 						local ItemId = GetEntityByID(Item)
 						if ChestId and ItemId then
 							ChestId:AddChild(ItemId)
@@ -3150,7 +3260,7 @@
 			
 				if notloot > 10 then
 					for l=1,count do
-						local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "ToolsItem_"..l, belong = 1100}
+						local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "ToolsItem_"..random(10000), belong = 1100}
 						local ItemId = GetEntityByID(Item)
 						if ChestId and ItemId then
 							ChestId:AddChild(ItemId)
@@ -3165,7 +3275,7 @@
 	<trigger Name="CreateValuablesLootBox" active="0">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-			local items = {"book", "shkatulka", "item_key_gate_thetown", "item_key_gate_basefelix", "item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_emre_kara", "item_fitanyashka", "item_monolit", "item_kaktus", "item_keqing", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_carsen", "item_metallodetector"}
+			local items = {"book", "shkatulka", "item_key_gate_thetown", "item_key_gate_basefelix", "item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_emre_kara", "item_fitanyashka", "item_monolit", "item_kaktus", "item_keqing", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_carsen", "item_metallodetector", "item_ananaga"}
 
 			for i=1,7 do
 				local Chest = CreateNewObject{prototypeName = "mainChest", objName = "ValuablesBox"..i.."Chest"}	
@@ -3189,7 +3299,7 @@
 				
 				if notloot > 10 then
 					for l=1,count do
-						local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "ValuableItem_"..l, belong = 1100}
+						local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "ValuableItem_"..random(10000), belong = 1100}
 						local ItemId = GetEntityByID(Item)
 
 						if ChestId and ItemId then
@@ -3230,7 +3340,7 @@
 			
 				if notloot > 10 then
 					for l=1,count do
-						local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "ElectronicsItem_"..l, belong = 1100}
+						local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "ElectronicsItem_"..random(10000), belong = 1100}
 						local ItemId = GetEntityByID(Item)
 						if ChestId and ItemId then
 							ChestId:AddChild(ItemId)
@@ -3252,7 +3362,7 @@
 							"item_car_battery", "item_cyclon", "item_green_battery",
 							"item_dry", "item_prisadka", "item_propan", "item_termit",
 							"item_disk", "item_disk_exmachina", "item_flashdrive", "item_sas", "item_ssd",
-							"item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector",
+							"item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_ananaga",
 							"item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon",
 							"fagot01", "maxim01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "big_swingfire01", "cyclops01", "octopus01", "rocketLauncher", "someTurboAccelerationPusher"}
 
@@ -3273,7 +3383,7 @@
 					ChestId:AddChild(OpacityItemId)
 				end
 
-				local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "TheTownItem_"..i, belong = 1100}
+				local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "TheTownItem_"..random(10000), belong = 1100}
 				local ItemId = GetEntityByID(Item)
 				if ChestId and ItemId then
 					ChestId:AddChild(ItemId)
@@ -3288,8 +3398,8 @@
 		<script>
 			local ChestRandom = {"DeadScav2Chest", "GunBox"..random(4,6).."Chest", "GunBox12Chest", "TehnoBox5Chest", "ElectronicsBox2Chest"}
 			local Chest = GetEntityByName(ChestRandom[random(getn(ChestRandom))])
-	
-			local Item = CreateNewObject{prototypeName = "item_key_gate_basefelix", objName = "KeyGateBaseFelixItem_1", belong = 1100}
+			
+			local Item = CreateNewObject{prototypeName = "item_key_gate_basefelix", objName = "KeyGateBaseFelixItem_"..random(10000), belong = 1100}
 			local ItemId = GetEntityByID(Item)
 
 			if Chest and ItemId then
@@ -3433,8 +3543,8 @@
 			end
 
 			local boss = GetEntityByName ("Boss_vehicle_0")
-			if boss then
-				boss:setGodMode(0)
+			if boss then 
+				boss:setGodMode(0) 
 			end
 
 			TDeactivate("BossEnemy_LeavesLoc")
@@ -3728,7 +3838,7 @@
 			end
 			
 			for j=1,lootcount do
-				local loot1 = CreateNewObject{prototypeName = items[random(getn(items))], objName = "AirItems_"..j, belong = 1100}
+				local loot1 = CreateNewObject{prototypeName = items[random(getn(items))], objName = "AirItems_"..random(10000), belong = 1100}
 				local loot1Id = GetEntityByID(loot1)
 						
 				if ChestId and loot1Id then
@@ -3736,14 +3846,14 @@
 				end
 
 				if GetVar("AirType").AsInt == 2 then
-					local life1 = CreateNewObject{prototypeName = life[random(getn(life))], objName = "AirItemsLife_"..j, belong = 1100}
+					local life1 = CreateNewObject{prototypeName = life[random(getn(life))], objName = "AirItemsLife_"..random(10000), belong = 1100}
 					local life1Id = GetEntityByID(life1)
 						
 					if ChestId and life1Id then
 						ChestId:AddChild(life1Id)
 					end
 
-					local fuel1 = CreateNewObject{prototypeName = fuel[random(getn(fuel))], objName = "AirItemsFuel_"..j, belong = 1100}
+					local fuel1 = CreateNewObject{prototypeName = fuel[random(getn(fuel))], objName = "AirItemsFuel_"..random(10000), belong = 1100}
 					local fuel1Id = GetEntityByID(fuel1)
 						
 					if ChestId and fuel1Id then
@@ -3773,6 +3883,8 @@
 			getObj("Oracle_AirDrop"):SetPosition(CVector(440, 251, 3825))
 			getObj("Oracle_AirDrop"):SetRotation(Quaternion(0, 0, 0, 1))
 			SetVar("AirType", 0)
+			local mover = GetEntityByName("MoverB")
+			if mover then mover:Remove() end
 			trigger:Deactivate() 
 		</script>
 	</trigger>
@@ -3792,40 +3904,32 @@
 			if player_car == "Mirotvorec" then number = 4 end
 
 			local modellist = {"Bug01PMC", "Molokovoz01PMC", "Ural01PMC", "Cruiser01PMC", "Belaz01PMC", "Mirotvorec01PMC"}
-			local model_rand = getn(modellist)
-			
+	
 			local bug_cab = {"bugCab01", "bugCab02", "bugCab03"}
-			local bug_cab_r = getn(bug_cab)
 			local bug_cargo = {"bugCargo01_PMC", "bugCargo02_PMC", "bugCargo03_PMC"}
-			local bug_cargo_r = getn(bug_cargo)
 
 			local mol_cab = {"molokovozCab01", "molokovozCab02" ,"molokovozCab03"}
-			local mol_cab_r = getn(mol_cab)
 			local mol_cargo = {"molokovozCargo01_PMC", "molokovozCargo02_PMC", "molokovozCargo03_PMC"}
-			local mol_cargo_r = getn(mol_cargo)
 
-			local ural_cab = {"uralCab01", "uralCab02", "uralCab03", "uralCab04", "uralCab05"}
-			local ural_cab_r = getn(ural_cab)
-			local ural_cargo = {"uralCargo01_PMC", "uralCargo02_PMC", "uralCargo03_PMC", "uralCargo04_PMC", "uralCargo05_PMC"}
-			local ural_cargo_r = getn(ural_cargo)
+			local ural_cab = {"uralCab01", "uralCab02", "uralCab04", "uralCab03", "uralCab05"}
+			local ural_cargo
 
-			local bel_cab = {"belazCab01", "belazCab02", "belazCab03", "belazCab04", "belazCab05"}
-			local bel_cab_r = getn(bel_cab)
-			local bel_cargo = {"belazCargo01_PMC", "belazCargo02_PMC", "belazCargo03_PMC", "belazCargo04_PMC", "belazCargo05_PMC"}
-			local bel_cargo_r = getn(bel_cargo)
+			if player_car == "Molokovoz" then
+				ural_cargo = {"uralCargo01_PMC", "uralCargo04_PMC", "uralCargo05_PMC", "uralCargo03_PMC"}
+			else
+				ural_cargo = {"uralCargo01_PMC", "uralCargo02_PMC", "uralCargo04_PMC", "uralCargo05_PMC", "uralCargo03_PMC"}
+			end
+			
+			local bel_cab = {"belazCab01", "belazCab02", "belazCab04", "belazCab03", "belazCab05"}
+			local bel_cargo = {"belazCargo01_PMC", "belazCargo02_PMC", "belazCargo04_PMC", "belazCargo05_PMC", "belazCargo03_PMC"}
 
-			local mir_cab = {"mirotvorecCab01", "mirotvorecCab02", "mirotvorecCab03", "mirotvorecCab04", "mirotvorecCab05"}
-			local mir_cab_r = getn(mir_cab)
+			local mir_cab = {"mirotvorecCab01", "mirotvorecCab02", "mirotvorecCab04", "mirotvorecCab03", "mirotvorecCab05"}
 			local mir_cargo = {"mirotvorecCargo01_PMC", "mirotvorecCargo02_PMC", "mirotvorecCargo03_PMC", "mirotvorecCargo04_PMC", "mirotvorecCargo05_PMC"}
-			local mir_cargo_r = getn(mir_cargo)
 
 			local cru_cab = {"cruiserCab01", "cruiserCab02"}
-			local cru_cab_r = getn(cru_cab)
 			local cru_cargo = {"cruiserCargo01_PMC", "cruiserCargo02_PMC"}
-			local cru_cargo_r = getn(cru_cargo)
 
 			local belong = {1088,1089}
-			local belong_r = getn(belong)
 
 			local pl_pos1 = GetVar("PosPlayer1").AsInt
 			local pl_pos2 = GetVar("PosPlayer2").AsInt
@@ -3931,30 +4035,30 @@
 				local model = modellist[random(2 + number)]
 				local num = paths_pos1[p1]
 
-				TeamCreate("PMC_"..p1.."_Spawn1", belong[random(belong_r)], pos1_pmc[num], {model}, nil, 1)
+				TeamCreate("PMC_"..p1.."_Spawn1", belong[random(2)], pos1_pmc[num], {model}, nil, 1)
 
 				local pmc = GetEntityByName ("PMC_"..p1.."_Spawn1_vehicle_0")
 				if pmc then
 					if model == "Bug01PMC" then
-						pmc:SetNewPart("CABIN",bug_cab[random(bug_cab_r)])
-						pmc:SetNewPart("BASKET",bug_cargo[random(bug_cargo_r)])
+						pmc:SetNewPart("CABIN",bug_cab[random(getn(bug_cab))])
+						pmc:SetNewPart("BASKET",bug_cargo[random(getn(bug_cargo))])
 					elseif model == "Molokovoz01PMC" then
-						pmc:SetNewPart("CABIN",mol_cab[random(mol_cab_r)])
-						pmc:SetNewPart("BASKET",mol_cargo[random(mol_cargo_r)])
+						pmc:SetNewPart("CABIN",mol_cab[random(getn(mol_cab))])
+						pmc:SetNewPart("BASKET",mol_cargo[random(getn(mol_cargo))])
 					elseif model == "Ural01PMC" then
-						pmc:SetNewPart("CABIN",ural_cab[random(ural_cab_r)])
-						pmc:SetNewPart("BASKET",ural_cargo[random(ural_cargo_r)])
+						pmc:SetNewPart("CABIN",ural_cab[random(getn(ural_cab))])
+						pmc:SetNewPart("BASKET",ural_cargo[random(getn(ural_cargo))])
 					elseif model == "Belaz01PMC" then
-						pmc:SetNewPart("CABIN",bel_cab[random(bel_cab_r)])
-						pmc:SetNewPart("BASKET",bel_cargo[random(bel_cargo_r)])
+						pmc:SetNewPart("CABIN",bel_cab[random(getn(bel_cab))])
+						pmc:SetNewPart("BASKET",bel_cargo[random(getn(bel_cargo))])
 					elseif model == "Mirotvorec01PMC" then
-						pmc:SetNewPart("CABIN",mir_cab[random(mir_cab_r)])
-						pmc:SetNewPart("BASKET",mir_cargo[random(mir_cargo_r)])
+						pmc:SetNewPart("CABIN",mir_cab[random(getn(mir_cab))])
+						pmc:SetNewPart("BASKET",mir_cargo[random(getn(mir_cargo))])
 					elseif model == "Cruiser01PMC" then
-						pmc:SetNewPart("CABIN",cru_cab[random(cru_cab_r)])
-						pmc:SetNewPart("BASKET",cru_cargo[random(cru_cargo_r)])
+						pmc:SetNewPart("CABIN",cru_cab[random(getn(cru_cab))])
+						pmc:SetNewPart("BASKET",cru_cargo[random(getn(cru_cargo))])
 					end
-					GiveGunsForVehicle(pmc, 1)
+					GiveGunsForPMC(pmc)
 					AddAmmoItemsForGuns(pmc)
 				end
 
@@ -3992,30 +4096,30 @@
 				local model = modellist[random(2 + number)]
 				local num = paths_pos2[p2]
 			
-				TeamCreate("PMC_"..p2.."_Spawn2", belong[random(belong_r)], pos2_pmc[num], {model}, nil, 1)
+				TeamCreate("PMC_"..p2.."_Spawn2", belong[random(2)], pos2_pmc[num], {model}, nil, 1)
 				
 				local pmc = GetEntityByName ("PMC_"..p2.."_Spawn2_vehicle_0")
 				if pmc then
 					if model == "Bug01PMC" then
-						pmc:SetNewPart("CABIN",bug_cab[random(bug_cab_r)])
-						pmc:SetNewPart("BASKET",bug_cargo[random(bug_cargo_r)])
+						pmc:SetNewPart("CABIN",bug_cab[random(getn(bug_cab))])
+						pmc:SetNewPart("BASKET",bug_cargo[random(getn(bug_cargo))])
 					elseif model == "Molokovoz01PMC" then
-						pmc:SetNewPart("CABIN",mol_cab[random(mol_cab_r)])
-						pmc:SetNewPart("BASKET",mol_cargo[random(mol_cargo_r)])
+						pmc:SetNewPart("CABIN",mol_cab[random(getn(mol_cab))])
+						pmc:SetNewPart("BASKET",mol_cargo[random(getn(mol_cargo))])
 					elseif model == "Ural01PMC" then
-						pmc:SetNewPart("CABIN",ural_cab[random(ural_cab_r)])
-						pmc:SetNewPart("BASKET",ural_cargo[random(ural_cargo_r)])
+						pmc:SetNewPart("CABIN",ural_cab[random(getn(ural_cab))])
+						pmc:SetNewPart("BASKET",ural_cargo[random(getn(ural_cargo))])
 					elseif model == "Belaz01PMC" then
-						pmc:SetNewPart("CABIN",bel_cab[random(bel_cab_r)])
-						pmc:SetNewPart("BASKET",bel_cargo[random(bel_cargo_r)])
+						pmc:SetNewPart("CABIN",bel_cab[random(getn(bel_cab))])
+						pmc:SetNewPart("BASKET",bel_cargo[random(getn(bel_cargo))])
 					elseif model == "Mirotvorec01PMC" then
-						pmc:SetNewPart("CABIN",mir_cab[random(mir_cab_r)])
-						pmc:SetNewPart("BASKET",mir_cargo[random(mir_cargo_r)])
+						pmc:SetNewPart("CABIN",mir_cab[random(getn(mir_cab))])
+						pmc:SetNewPart("BASKET",mir_cargo[random(getn(mir_cargo))])
 					elseif model == "Cruiser01PMC" then
-						pmc:SetNewPart("CABIN",cru_cab[random(cru_cab_r)])
-						pmc:SetNewPart("BASKET",cru_cargo[random(cru_cargo_r)])
+						pmc:SetNewPart("CABIN",cru_cab[random(getn(cru_cab))])
+						pmc:SetNewPart("BASKET",cru_cargo[random(getn(cru_cargo))])
 					end
-					GiveGunsForVehicle(pmc, 1)
+					GiveGunsForPMC(pmc)
 					AddAmmoItemsForGuns(pmc)
 				end
 
@@ -4047,10 +4151,12 @@
 			for i=1,pos1_count_pmc do
 				getObj("PMC_Die"):AddEvent("GE_OBJECT_DIE", "PMC_"..i.."_Spawn1_vehicle_0")
 				getObj("PMC_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "PMC_"..i.."_Spawn1_vehicle_0")
+				SetVar("PMC_"..i.."_Spawn1_vehicle_0_UnderAttack", 0)
 			end
 			for j=1,pos2_count_pmc do
 				getObj("PMC_Die"):AddEvent("GE_OBJECT_DIE", "PMC_"..j.."_Spawn2_vehicle_0")
 				getObj("PMC_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "PMC_"..j.."_Spawn2_vehicle_0")
+				SetVar("PMC_"..j.."_Spawn2_vehicle_0_UnderAttack", 0)
 			end
 				
 			SetVar("CountPMC_Spawn1", pos1_count_pmc)
@@ -4129,6 +4235,10 @@
 			for i=0,amount - 1 do 
 				local car = getObj(trigger:GetTriggeredObjectID(i)) 
 				if car and car:IsAlive() then 
+					local carName = car:GetName()
+					getObj("PMC_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", carName)
+					getObj("PMC_Die"):DelEventObj("GE_OBJECT_DIE", carName)
+					SetVar(carName.."_UnderAttack", 0)
 					car:Remove() 
 				end 
 			end
@@ -4141,10 +4251,19 @@
 			trigger:IncCount()
 			local count = trigger:GetCount()
 			local pmc = GetVar("CountPMC_Spawn1").AsInt + GetVar("CountPMC_Spawn2").AsInt
+			local carName = trigger:GetCallObjName()
 
-			TActivate("IfPlayerKillPMC")
+			if GetVar(carName.."_UnderAttack").AsInt == 1100 then
+				TActivate("IfPlayerKillPMC")
+			else
+				if DEBUG == 1 then 
+					println("PMC KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+					LOG("PMC KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+				end
+			end
 
-			getObj("PMC_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", trigger:GetCallObjName())
+			getObj("PMC_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", carName)
+			SetVar(carName.."_UnderAttack", 0)
 
 			if pmc > count then
 				return
@@ -4165,7 +4284,6 @@
 			TDeactivate("TDeaTpBirge")
 			TDeactivate("TActivTpBirge")
 			TDeactivate("PMC_To_Exits_loc")
-			TDeactivate("PMC_UnderAttack")
 			if DEBUG == 1 then println("ALL PMC DIE") LOG("ALL PMC DIE") end
 			trigger:Deactivate() 
 		</script>
@@ -4173,24 +4291,19 @@
 
 	<trigger Name="PMC_UnderAttack" active="0">
 		<script>
-			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0))
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0), "IfPlayerKillPMC")
 		</script>
 	</trigger>
 
 	<trigger Name="IfPlayerKillPMC" active="0">
 	<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			if GetVar("LastUnderAttack").AsInt == 1100 then
-				SetVar("PlayerKillPMC", GetVar("PlayerKillPMC").AsInt+1)
-				if DEBUG == 1 then println("PLAYER PMC KILL: "..GetVar("PlayerKillPMC").AsInt) LOG("PLAYER PMC KILL: "..GetVar("PlayerKillPMC").AsInt) end
-				SetVar("LastUnderAttack", 0)
-				if GetVar("PlayerBelong").AsString == "SCAV" then 
-					SetVar("ScavCarma", GetVar("ScavCarma").AsString + 0.1) 
-				else 
-					TActivate("KillsPMC") 
-				end
-			else
-				if DEBUG == 1 then println("PMC KILL: "..GetVar("LastUnderAttack").AsInt) LOG("PMC KILL: "..GetVar("LastUnderAttack").AsInt) end 
+			SetVar("PlayerKillPMC", GetVar("PlayerKillPMC").AsInt+1)
+			if DEBUG == 1 then println("PLAYER PMC KILL: "..GetVar("PlayerKillPMC").AsInt) LOG("PLAYER PMC KILL: "..GetVar("PlayerKillPMC").AsInt) end
+			if GetVar("PlayerBelong").AsString == "SCAV" then 
+				SetVar("ScavCarma", GetVar("ScavCarma").AsString + 0.1) 
+			else 
+				TActivate("KillsPMC") 
 			end
 			trigger:Deactivate() 
 		</script>
@@ -4255,6 +4368,7 @@
 				getObj("Scavs_Reached"):AddEvent("GE_TARGET_REACHED", "Scav_"..i.."_vehicle_0")
 				getObj("Scavs_Dead"):AddEvent("GE_OBJECT_DIE", "Scav_"..i.."_vehicle_0")
 				getObj("Scavs_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "Scav_"..i.."_vehicle_0")
+				SetVar("Scav_"..i.."_vehicle_0_UnderAttack", 0)
 			end
 
 			TActivate("Scavs_Reached")
@@ -4284,9 +4398,19 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
+			local carName = trigger:GetCallObjName()
 
-			TActivate("IfPlayerKillScav")
-			getObj("Scavs_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", trigger:GetCallObjName())
+			if GetVar(carName.."_UnderAttack").AsInt == 1100 then
+				TActivate("IfPlayerKillScav")
+			else
+				if DEBUG == 1 then 
+					println("SCAV KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+					LOG("SCAV KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+				end
+			end
+
+			getObj("Scavs_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", carName)
+			SetVar(carName.."_UnderAttack", 0)
 
 			if GetVar("CountScavs").AsInt > count then
 				return
@@ -4298,7 +4422,6 @@
 			end
 		
 			TDeactivate("Scavs_Reached")
-			TDeactivate("Scavs_UnderAttack")
 			if DEBUG == 1 then println("ALL SCAV DIE") LOG("ALL SCAV DIE") end
 			trigger:Deactivate()
 		</script>
@@ -4306,24 +4429,19 @@
 
 	<trigger Name="Scavs_UnderAttack" active="0">
 		<script>
-			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0))
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0), "IfPlayerKillScav")
 		</script>
 	</trigger>
 
 	<trigger Name="IfPlayerKillScav" active="0">
 	<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			if GetVar("LastUnderAttack").AsInt == 1100 then
-				SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
-				if DEBUG == 1 then println("PLAYER SCAV KILL: "..GetVar("PlayerKillScavs").AsInt) LOG("PLAYER SCAV KILL: "..GetVar("PlayerKillScavs").AsInt) end
-				SetVar("LastUnderAttack", 0)
-				if GetVar("PlayerBelong").AsString == "SCAV" then 
-					SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.2) 
-				else
-					TActivate("KillsScavs") 
-				end
+			SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
+			if DEBUG == 1 then println("PLAYER SCAV KILL: "..GetVar("PlayerKillScavs").AsInt) LOG("PLAYER SCAV KILL: "..GetVar("PlayerKillScavs").AsInt) end
+			if GetVar("PlayerBelong").AsString == "SCAV" then 
+				SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.2) 
 			else
-				if DEBUG == 1 then println("SCAV KILL: "..GetVar("LastUnderAttack").AsInt) LOG("SCAV KILL: "..GetVar("LastUnderAttack").AsInt) end
+				TActivate("KillsScavs") 
 			end
 			trigger:Deactivate() 
 		</script>
@@ -4423,36 +4541,50 @@
 			for gun=1,15 do
 				local gunChest = GetEntityByName("GunBox"..gun.."Chest")
 				if gunChest then gunChest:Remove() end
+				local gunChestOpacityItem = GetEntityByName("OpacityGunItem_GunBox"..gun)
+				if gunChestOpacityItem then gunChestOpacityItem:Remove() end
 			end
 
 			for med=1,7 do
 				local medChest = GetEntityByName("MedicalBox"..med.."Chest")
 				if medChest then medChest:Remove() end
+				local medChestOpacityItem = GetEntityByName("OpacityMedItem_"..med)
+				if medChestOpacityItem then medChestOpacityItem:Remove() end
 			end
 
 			for tehno=1,10 do
 				local tehnoChest = GetEntityByName("TehnoBox"..tehno.."Chest")
 				if tehnoChest then tehnoChest:Remove() end
+				local tehnoChestOpacityItem = GetEntityByName("OpacityTehnoItem_"..tehno)
+				if tehnoChestOpacityItem then tehnoChestOpacityItem:Remove() end
 			end
 
 			for tools=1,9 do
 				local toolsChest = GetEntityByName("ToolsBox"..tools.."Chest")
 				if toolsChest then toolsChest:Remove() end
+				local toolsChestOpacityItem = GetEntityByName("OpacityToolsItem_"..tools)
+				if toolsChestOpacityItem then toolsChestOpacityItem:Remove() end
 			end
 
 			for val=1,7 do
 				local valChest = GetEntityByName("ValuablesBox"..val.."Chest")
 				if valChest then valChest:Remove() end
+				local valChestOpacityItem = GetEntityByName("OpacityValuableItem_"..val)
+				if valChestOpacityItem then valChestOpacityItem:Remove() end
 			end
 
 			for el=1,5 do
 				local elChest = GetEntityByName("ElectronicsBox"..el.."Chest")
 				if elChest then elChest:Remove() end
+				local elChestOpacityItem = GetEntityByName("OpacityElectronicsItem_"..el)
+				if elChestOpacityItem then elChestOpacityItem:Remove() end
 			end
 
 			for town=1,5 do
 				local townChest = GetEntityByName("TheTown_"..town.."_Chest")
 				if townChest then townChest:Remove() end
+				local townChestOpacityItem = GetEntityByName("OpacityTheTownItem_"..town)
+				if townChestOpacityItem then townChestOpacityItem:Remove() end
 			end
 
 			--удаление босса
@@ -4464,6 +4596,7 @@
 			local Boss = GetEntityByName("Boss_vehicle_0")
 			if Boss then Boss:Remove() end
 
+			TDeactivate("CreateBossProbability")
 			TDeactivate("CreateBoss")
 			TDeactivate("BossEnemy_Die")
 			TDeactivate("BossEnemy_Dist")
@@ -4494,23 +4627,10 @@
 			local s_hel = GetEntityByName("SH")
 			if s_hel then s_hel:Remove() end
 
+			local mover = GetEntityByName("MoverB")
+			if mover then mover:Remove() end
+
 			--удаление ЧВК
-			for pmc1 = 1,GetVar("CountPMC_Spawn1").AsInt do
-				local pmc1sp = GetEntityByName("PMC_"..pmc1.."_Spawn1_vehicle_0")
-				if pmc1sp then pmc1sp:Remove() end
-
-				getObj("PMC_Die"):DelEventObj("GE_OBJECT_DIE", "PMC_"..pmc1.."_Spawn1_vehicle_0")
-				getObj("PMC_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "PMC_"..pmc1.."_Spawn1_vehicle_0")
-			end
-
-			for pmc2 = 1,GetVar("CountPMC_Spawn2").AsInt do
-				local pmc2sp = GetEntityByName("PMC_"..pmc2.."_Spawn2_vehicle_0")
-				if pmc2sp then pmc2sp:Remove() end
-
-				getObj("PMC_Die"):DelEventObj("GE_OBJECT_DIE", "PMC_"..pmc2.."_Spawn2_vehicle_0")
-				getObj("PMC_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "PMC_"..pmc2.."_Spawn2_vehicle_0")
-			end
-
 			TDeactivate("TpBirge_1")
 			TDeactivate("TpBirge_2")
 			TDeactivate("TDeaTpBirge")
@@ -4519,7 +4639,29 @@
 			TDeactivate("PMC_Die")
 			TDeactivate("PMC_UnderAttack")
 
+			for pmc1 = 1,GetVar("CountPMC_Spawn1").AsInt do
+				local pmc1sp = GetEntityByName("PMC_"..pmc1.."_Spawn1_vehicle_0")
+				if pmc1sp then pmc1sp:Remove() end
+
+				getObj("PMC_Die"):DelEventObj("GE_OBJECT_DIE", "PMC_"..pmc1.."_Spawn1_vehicle_0")
+				getObj("PMC_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "PMC_"..pmc1.."_Spawn1_vehicle_0")
+				SetVar("PMC_"..pmc1.."_Spawn1_vehicle_0_UnderAttack", 0)
+			end
+
+			for pmc2 = 1,GetVar("CountPMC_Spawn2").AsInt do
+				local pmc2sp = GetEntityByName("PMC_"..pmc2.."_Spawn2_vehicle_0")
+				if pmc2sp then pmc2sp:Remove() end
+
+				getObj("PMC_Die"):DelEventObj("GE_OBJECT_DIE", "PMC_"..pmc2.."_Spawn2_vehicle_0")
+				getObj("PMC_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "PMC_"..pmc2.."_Spawn2_vehicle_0")
+				SetVar("PMC_"..pmc2.."_Spawn2_vehicle_0_UnderAttack", 0)
+			end
+
 			--удаление диких
+			TDeactivate("Scavs_Reached")
+			TDeactivate("Scavs_Dead")
+			TDeactivate("Scavs_UnderAttack")
+
 			for s_count=1,GetVar("CountScavs").AsInt do
 				local scavs = GetEntityByName("Scav_"..s_count.."_vehicle_0")
 				if scavs then scavs:Remove() end
@@ -4527,11 +4669,8 @@
 				getObj("Scavs_Reached"):DelEventObj("GE_TARGET_REACHED", "Scav_"..s_count.."_vehicle_0")
 				getObj("Scavs_Dead"):DelEventObj("GE_OBJECT_DIE", "Scav_"..s_count.."_vehicle_0")
 				getObj("Scavs_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav_"..s_count.."_vehicle_0")
+				SetVar("Scav_"..s_count.."_vehicle_0_UnderAttack", 0)
 			end
-
-			TDeactivate("Scavs_Reached")
-			TDeactivate("Scavs_Dead")
-			TDeactivate("Scavs_UnderAttack")
 
 			TDeactivate("FakePlayerDead")
 			getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
@@ -4596,6 +4735,12 @@
 				TDeactivate("q_bitok3_1")
 			end
 
+			if IsQuestTaken("q_fuel2") and not(IsQuestComplete("q_fuel2_5")) then
+				TDeactivate("q_fuel2_petrol_1")
+				TDeactivate("q_fuel2_petrol_2") 
+				TDeactivate("q_fuel2_petrol_3")
+			end
+
 			SetTolerance(1087, 1100, RS_ENEMY)
 
 			if DEBUG == 1 then
@@ -4604,11 +4749,13 @@
 				println("SCAV CARMA: "..GetVar("ScavCarma").AsString)
 				println("PLAYER SCAV KILL: "..GetVar("PlayerKillScavs").AsInt)
 				println("PLAYER PMC KILL: "..GetVar("PlayerKillPMC").AsInt)
+				println("OBJ CONTAINER: "..g_ObjCont:size())
 				LOG("=================== EXIT MAP: r1m1 ===================")
 				LOG("PLAYER BELONG: "..GetVar("PlayerBelong").AsString)
 				LOG("SCAV CARMA: "..GetVar("ScavCarma").AsString)
 				LOG("PLAYER SCAV KILL: "..GetVar("PlayerKillScavs").AsInt)
 				LOG("PLAYER PMC KILL: "..GetVar("PlayerKillPMC").AsInt)
+				LOG("OBJ CONTAINER: "..g_ObjCont:size())
 			end
 
 			trigger:Deactivate()
@@ -4668,12 +4815,18 @@
 				TActivate("q_clearing_r1m1_InLoc")
 			end
 
-			if IsQuestTaken("q_base_scavs") and not(IsQuestComplete("q_base_scavs")) then
+			if IsQuestTaken("q_base_scavs") and not(IsQuestComplete("q_base_scavs_1")) then
 				TActivate("q_base_scavs_EntersBase")
 			end
 
-			if IsQuestTaken("q_bitok3") and not(IsQuestComplete("q_bitok3")) then
+			if IsQuestTaken("q_bitok3") and not(IsQuestComplete("q_bitok3_2")) then
 				TActivate("q_bitok3_SpawnBoxVideocard")
+			end
+
+			if IsQuestTaken("q_fuel2") and not(IsQuestComplete("q_fuel2_5")) then
+				if IsQuestTaken("q_fuel2_1") and not(IsQuestComplete("q_fuel2_1")) then TActivate("q_fuel2_petrol_1") end
+				if IsQuestTaken("q_fuel2_2") and not(IsQuestComplete("q_fuel2_2")) then TActivate("q_fuel2_petrol_2") end
+				if IsQuestTaken("q_fuel2_3") and not(IsQuestComplete("q_fuel2_3")) then TActivate("q_fuel2_petrol_3") end
 			end
 			trigger:Deactivate()
 		</script>
@@ -4998,4 +5151,30 @@
 		</script>
 	</trigger>
 	
+-- Топливо - Часть 2
+
+	<trigger Name="q_fuel2_petrol_1" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="q_fuel2_1_loc" />
+		<script>
+			if IsQuestTaken("q_fuel2_1") and not(IsQuestComplete("q_fuel2_1")) then CompleteSubtask("q_fuel2_1") end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_fuel2_petrol_2" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="q_fuel2_2_loc" />
+		<script>
+			if IsQuestTaken("q_fuel2_2") and not(IsQuestComplete("q_fuel2_2")) then CompleteSubtask("q_fuel2_2") end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_fuel2_petrol_3" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="q_fuel2_3_loc" />
+		<script>
+			if IsQuestTaken("q_fuel2_3") and not(IsQuestComplete("q_fuel2_3")) then CompleteSubtask("q_fuel2_3") end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 </triggers>

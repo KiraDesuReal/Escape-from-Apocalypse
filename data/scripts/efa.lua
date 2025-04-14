@@ -1221,6 +1221,14 @@ function IfCanPlaceForGadgets()
 	end
 end
 
+-- Добавить список предметов в кузов игрока
+function AddListItemsToPlayer(item, amount)
+	for i = 1, getn(item) do
+		AddItemsToPlayerRepository(item[i], amount[i])
+		AddFadingMsgByStrIdFormatted("fm_player_add_thing_count", item[i], amount[i])
+	end
+end
+
 
 
 

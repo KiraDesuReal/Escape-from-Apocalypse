@@ -52,8 +52,6 @@
 			SetVar("PlayerKillScavs", 0)
 			SetVar("PlayerKillPMC", 0)
 
-			SetVar("LastUnderAttack", 0)
-
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4815,11 +4813,11 @@
 				TActivate("q_clearing_r1m1_InLoc")
 			end
 
-			if IsQuestTaken("q_base_scavs") and not(IsQuestComplete("q_base_scavs_1")) then
+			if IsQuestTaken("q_base_scavs") and not(IsQuestComplete("q_base_scavs")) then
 				TActivate("q_base_scavs_EntersBase")
 			end
 
-			if IsQuestTaken("q_bitok3") and not(IsQuestComplete("q_bitok3_2")) then
+			if IsQuestTaken("q_bitok3") and not(IsQuestComplete("q_bitok3")) then
 				TActivate("q_bitok3_SpawnBoxVideocard")
 			end
 

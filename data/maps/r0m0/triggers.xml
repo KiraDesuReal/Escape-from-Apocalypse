@@ -403,7 +403,7 @@
 			SetVar("GarageCraft_Flashdrive_item_ssd", 0)
 			SetVar("GarageCraft_Flashdrive_item_disk_exmachina", 0)
 
-			SetVar("GarageCraft_Virtex_item_plate", 0)
+			SetVar("GarageCraft_Virtex_item_military_plate", 0)
 			SetVar("GarageCraft_Virtex_item_cpu", 0)
 			SetVar("GarageCraft_Virtex_item_kondesators", 0)
 			SetVar("GarageCraft_Virtex_item_manual", 0)
@@ -450,9 +450,9 @@
 
 			SetVar("GarageCraft_Ledx_item_oftalmaskop", 0)
 			SetVar("GarageCraft_Ledx_item_magnet", 0)
-			SetVar("GarageCraft_Ledx_item_virtex", 0)
+			SetVar("GarageCraft_Ledx_item_rfid", 0)
 			SetVar("GarageCraft_Ledx_item_powerbank", 0)
-			SetVar("GarageCraft_Ledx_item_plate", 0)
+			SetVar("GarageCraft_Ledx_item_controller", 0)
 			SetVar("GarageCraft_Ledx_book", 0)
 			SetVar("GarageCraft_Ledx_item_toolset", 0)
 			
@@ -1029,12 +1029,12 @@
 				if not(GetVar("PetrolStationBuild_fuel_full_use").AsInt == 2) or not(GetVar("PetrolStationBuild_item_bolts").AsInt == 2) or not(GetVar("PetrolStationBuild_item_nuts").AsInt == 2) or not(GetVar("PetrolStationBuild_item_parts").AsInt == 1) or not(GetVar("PetrolStationBuild_item_lump").AsInt == 2) or not(GetVar("PetrolStationBuild_item_fullmaster").AsInt == 1) then
 					local item_1, item_2, item_3, item_4, item_5, item_6 = "", "", "", "", "", ""
 				
-					if GetVar("PetrolStationBuild_fuel_full_use").AsInt ~= 2 then item_1 = "Горючее - x"..(2 - GetVar("PetrolStationBuild_fuel_full_use").AsInt).." / Канистра топлива - x"..(2 - GetVar("PetrolStationBuild_fuel_full_use").AsInt).."|" end
-					if GetVar("PetrolStationBuild_item_bolts").AsInt ~= 2 then item_2 = "Болты - x"..(2 - GetVar("PetrolStationBuild_item_bolts").AsInt).."|" end
-					if GetVar("PetrolStationBuild_item_nuts").AsInt ~= 2 then item_3 = "Гайки - x"..(2 - GetVar("PetrolStationBuild_item_nuts").AsInt).."|" end
-					if GetVar("PetrolStationBuild_item_parts").AsInt ~= 1 then item_4 = "Металлические запчасти - x1|" end
-					if GetVar("PetrolStationBuild_item_lump").AsInt ~= 2 then item_5 = "Лампа накаливания - x"..(2 - GetVar("PetrolStationBuild_item_lump").AsInt).."|" end
-					if GetVar("PetrolStationBuild_item_fullmaster").AsInt ~= 1 then item_6 = "Набор напильников «FullMaster» - x1" end
+					if GetVar("PetrolStationBuild_fuel_full_use").AsInt ~= 2 then item_1 = "Горючее - @fff3e5cbx"..(2 - GetVar("PetrolStationBuild_fuel_full_use").AsInt).." @ffffffff/ Канистра топлива - @fff3e5cbx"..(2 - GetVar("PetrolStationBuild_fuel_full_use").AsInt).."|" end
+					if GetVar("PetrolStationBuild_item_bolts").AsInt ~= 2 then item_2 = "@ffffffffБолты - @fff3e5cbx"..(2 - GetVar("PetrolStationBuild_item_bolts").AsInt).."|" end
+					if GetVar("PetrolStationBuild_item_nuts").AsInt ~= 2 then item_3 = "@ffffffffГайки - @fff3e5cbx"..(2 - GetVar("PetrolStationBuild_item_nuts").AsInt).."|" end
+					if GetVar("PetrolStationBuild_item_parts").AsInt ~= 1 then item_4 = "@ffffffffМеталлические запчасти - @fff3e5cbx1|" end
+					if GetVar("PetrolStationBuild_item_lump").AsInt ~= 2 then item_5 = "@ffffffffЛампа накаливания - @fff3e5cbx"..(2 - GetVar("PetrolStationBuild_item_lump").AsInt).."|" end
+					if GetVar("PetrolStationBuild_item_fullmaster").AsInt ~= 1 then item_6 = "@ffffffffНабор напильников «FullMaster» - @fff3e5cbx1" end
 
 					local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6
 
@@ -1305,12 +1305,12 @@
 				if not(GetVar("Inventory_lvl_2_item_drill").AsInt == 1) or not(GetVar("Inventory_lvl_2_item_screws").AsInt == 2) or not(GetVar("Inventory_lvl_2_item_nails").AsInt == 2) or not(GetVar("Inventory_lvl_2_item_screw").AsInt == 1) or not(GetVar("Inventory_lvl_2_item_roulet").AsInt == 1) or not(GetVar("Inventory_lvl_2_item_pena").AsInt == 1) then
 					local item_1, item_2, item_3, item_4, item_5, item_6 = "", "", "", "", "", ""
 				
-					if GetVar("Inventory_lvl_2_item_drill").AsInt ~= 1 then item_1 = "Дрель - x1|" end
-					if GetVar("Inventory_lvl_2_item_screws").AsInt ~= 2 then item_2 = "Саморезы - x"..(2 - GetVar("Inventory_lvl_2_item_screws").AsInt).."|" end
-					if GetVar("Inventory_lvl_2_item_nails").AsInt ~= 2 then item_3 = "Гвозди - x"..(2 - GetVar("Inventory_lvl_2_item_nails").AsInt).."|" end
-					if GetVar("Inventory_lvl_2_item_screw").AsInt ~= 1 then item_4 = "Отвертка - x1|" end
-					if GetVar("Inventory_lvl_2_item_roulet").AsInt ~= 1 then item_5 = "Рулетка - x1|" end
-					if GetVar("Inventory_lvl_2_item_pena").AsInt ~= 1 then item_6 = "Монтажная пена - x1" end
+					if GetVar("Inventory_lvl_2_item_drill").AsInt ~= 1 then item_1 = "Дрель - @fff3e5cbx1|" end
+					if GetVar("Inventory_lvl_2_item_screws").AsInt ~= 2 then item_2 = "@ffffffffСаморезы - @fff3e5cbx"..(2 - GetVar("Inventory_lvl_2_item_screws").AsInt).."|" end
+					if GetVar("Inventory_lvl_2_item_nails").AsInt ~= 2 then item_3 = "@ffffffffГвозди - @fff3e5cbx"..(2 - GetVar("Inventory_lvl_2_item_nails").AsInt).."|" end
+					if GetVar("Inventory_lvl_2_item_screw").AsInt ~= 1 then item_4 = "@ffffffffОтвертка - @fff3e5cbx1|" end
+					if GetVar("Inventory_lvl_2_item_roulet").AsInt ~= 1 then item_5 = "@ffffffffРулетка - @fff3e5cbx1|" end
+					if GetVar("Inventory_lvl_2_item_pena").AsInt ~= 1 then item_6 = "@ffffffffМонтажная пена - @fff3e5cbx1" end
 
 					local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6
 
@@ -1367,15 +1367,15 @@
 				if not(GetVar("ChestScavs_electronics").AsInt == 2) or not(GetVar("ChestScavs_machinery").AsInt == 1) or not(GetVar("ChestScavs_books").AsInt == 1) or not(GetVar("ChestScavs_bottles").AsInt == 1) or not(GetVar("ChestScavs_details").AsInt == 1) or not(GetVar("ChestScavs_item_ananaga").AsInt == 1) or not(GetVar("ChestScavs_item_rolex").AsInt == 1) or not(GetVar("ChestScavs_item_chain_gold").AsInt == 3) or not(GetVar("ChestScavs_item_skullring").AsInt == 2) then
 					local item_1, item_2, item_3, item_4, item_5, item_6, item_7, item_8, item_9 = "", "", "", "", "", "", "", "", ""
 			
-					if GetVar("ChestScavs_electronics").AsInt ~= 2 then item_1 = "Электроника - x"..(2 - GetVar("ChestScavs_electronics").AsInt).." / Высокотехнологичная электроника - x"..(2 - GetVar("ChestScavs_electronics").AsInt).."|" end
-					if GetVar("ChestScavs_machinery").AsInt ~= 1 then item_2 = "Раб. оборудование - x1 / Ул. оборудование - x1|" end
-					if GetVar("ChestScavs_books").AsInt ~= 1 then item_3 = "Книги - x1|" end
-					if GetVar("ChestScavs_bottles").AsInt ~= 1 then item_4 = "Бутылки - x1|" end
-					if GetVar("ChestScavs_details").AsInt ~= 1 then item_5 = "Детали - x1|" end
-					if GetVar("ChestScavs_item_ananaga").AsInt ~= 1 then item_6 = "Ананага - x1|" end
-					if GetVar("ChestScavs_item_rolex").AsInt ~= 1 then item_7 = "Золотые часы - x1|" end
-					if GetVar("ChestScavs_item_chain_gold").AsInt ~= 3 then item_8 = "Золотая цепочка - x"..(3 - GetVar("ChestScavs_item_chain_gold").AsInt).."|" end
-					if GetVar("ChestScavs_item_skullring").AsInt ~= 2 then item_9 = "Золотое кольцо с черепом - x"..(2 - GetVar("ChestScavs_item_skullring").AsInt) end
+					if GetVar("ChestScavs_electronics").AsInt ~= 2 then item_1 = "Электроника - @fff3e5cbx"..(2 - GetVar("ChestScavs_electronics").AsInt).." @ffffffff/ Высокотехнологичная электроника - @fff3e5cbx"..(2 - GetVar("ChestScavs_electronics").AsInt).."|" end
+					if GetVar("ChestScavs_machinery").AsInt ~= 1 then item_2 = "@ffffffffРаб. оборудование - @fff3e5cbx1 @ffffffff/ Ул. оборудование - @fff3e5cbx1|" end
+					if GetVar("ChestScavs_books").AsInt ~= 1 then item_3 = "@ffffffffКниги - @fff3e5cbx1|" end
+					if GetVar("ChestScavs_bottles").AsInt ~= 1 then item_4 = "@ffffffffБутылки - @fff3e5cbx1|" end
+					if GetVar("ChestScavs_details").AsInt ~= 1 then item_5 = "@ffffffffДетали - @fff3e5cbx1|" end
+					if GetVar("ChestScavs_item_ananaga").AsInt ~= 1 then item_6 = "@ffffffffАнанага - @fff3e5cbx1|" end
+					if GetVar("ChestScavs_item_rolex").AsInt ~= 1 then item_7 = "@ffffffffЗолотые часы - @fff3e5cbx1|" end
+					if GetVar("ChestScavs_item_chain_gold").AsInt ~= 3 then item_8 = "@ffffffffЗолотая цепочка - @fff3e5cbx"..(3 - GetVar("ChestScavs_item_chain_gold").AsInt).."|" end
+					if GetVar("ChestScavs_item_skullring").AsInt ~= 2 then item_9 = "@ffffffffЗолотое кольцо с черепом - @fff3e5cbx"..(2 - GetVar("ChestScavs_item_skullring").AsInt) end
 		
 					local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7..""..item_8..""..item_9
 
@@ -1719,7 +1719,7 @@
 							"item_battery_aa", 
 							"item_hunter_spich", "item_lighter", "item_spich", "item_wd40_100", 
 							"item_salt", "item_stakanyash", "item_soap", "item_tb", 
-							"item_medical_tools", 
+							"item_medical_tools", "item_ai2", "item_analgin", "item_med", 
 							"item_zapal", 
 							"hornet01", "american_hornet01", 
 							"cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_explosion", "firing_range_guns", "additional_fuel_tank", "additional_torque", "additional_stability"}
@@ -1734,7 +1734,7 @@
 							"item_survl", "item_wd40_400", "item_gunpowder",
 							"item_alkani", "item_hlor", "item_paper",
 							"item_disk", "item_flashdrive", "item_manual", 
-							"item_aquapeps", "item_c6h8o6", "item_suringe",
+							"item_aquapeps", "item_c6h8o6", "item_suringe", "item_afak", "item_carmed", "item_ifak", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
 							"item_vodka", "item_monolit", "item_kaktus", "item_carsen",
 							"item_awl", "item_leatherman", "item_metalscissors", "item_nippers", "item_pliers_round", "item_screw_flat_long", "item_toolset",
 							"item_chain",
@@ -1745,14 +1745,14 @@
 			elseif GetVar("ChestScavs_Search").AsInt == 3 then
 				lootlist = {"electronics", "electronics_use", 
 							"item_datchik", "item_military_tube", "item_pena", "item_thermometer",
-							"item_bp", "item_drill", "item_engine", "item_iridiym", "item_lcd", "item_military_cable", "item_tetris",
+							"item_bp", "item_drill", "item_engine", "item_iridiym", "item_lcd", "item_military_cable", "item_tetris", "item_controller", "item_rfid", "item_gyrotachometer",
 							"item_car_battery", "item_cyclon", "item_green_battery",
 							"item_dry", "item_prisadka", "item_propan", "item_termit", "item_trotile", "item_gunpowder",
 							"item_diary", "item_diary_s", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_sas", "item_ssd",
 							"item_oftalmaskop", "item_aquapeps",
 							"item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector",
 							"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_pipe_wrench", "item_ratchet_wrench", "item_sewing_kit", 
-							"item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_woodclock",
+							"item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_vaze",
 							"someTurboAccelerationPusher", "maxim01", "fagot01", "flag01", "rainmetal01", "elephant01", "omega01", "cyclops01", "octopus01", "marsSideGun", "hunterSideGun", "hammer01",
 							"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo",
 							"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
@@ -1762,11 +1762,11 @@
 							"scrap_metal_use", "oil_use",
 							"item_key_gate_thetown",
 							"item_bolts", "item_hose", "item_kek", "item_parts", "item_poheram", "item_tube", "item_plex",
-							"item_cable", "item_cooler", "item_cpu", "item_dvd", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_kondesators", "item_magnet", "item_ram", "item_rele", "item_helix", "item_phone", "item_plate", "item_svech", "item_ultra_lump",
+							"item_cable", "item_cooler", "item_cpu", "item_dvd", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_kondesators", "item_magnet", "item_ram", "item_rele", "item_helix", "item_phone", "item_plate", "item_svech", "item_ultra_lump", "item_military_plate",
 							"item_accum",
 							"item_survl", "item_wd40_400", "item_zibbo", "item_gunpowder",
 							"item_alkani", "item_hlor", "item_paper", "item_soda", "item_toothpaste",
-							"item_h2o2", "item_naci", "item_suringe",
+							"item_h2o2", "item_naci", "item_suringe", "item_afak", "item_grizzly", "item_zvezda", "item_morfie", "item_ifak",
 							"item_vodka", "item_monolit", "item_carsen",
 							"item_metalscissors", "item_nippers", "item_pliers", "item_screw_flat",
 							"item_chain",
@@ -1776,14 +1776,14 @@
 				loot_count = random(2,4)
 			elseif GetVar("ChestScavs_Search").AsInt == 5 or GetVar("ChestScavs_Search").AsInt == 6 then
 				lootlist = {"item_datchik", "item_pena", "item_thermometer",
-							"item_converter", "item_engine", "item_iridiym", "item_tetris", "item_virtex", "item_vpx",
+							"item_converter", "item_engine", "item_iridiym", "item_tetris", "item_virtex", "item_vpx", "item_controller", "item_rfid",
 							"item_cyclon", "item_car_battery",
 							"item_prisadka", "item_termit", "item_gunpowder",
 							"item_disk_exmachina", "item_rozvidka", "item_sas", "item_ssd", "item_ananaga",
 							"item_oftalmaskop", 
-							"item_airfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_metallodetector",
+							"item_airfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_metallodetector", 
 							"item_buldex", "item_handrill", "item_pipe_wrench", "item_ratchet_wrench", 
-							"item_cat", "item_chain_gold", "item_chiken", "item_lion", "item_rolex", "item_skullring", "item_woodclock", 
+							"item_cat", "item_chain_gold", "item_chiken", "item_lion", "item_rolex", "item_skullring", "item_woodclock", "item_silver_skull", "item_vaze",
 							"fagot01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "cyclops01", "octopus01", "marsSideGun", "hunterSideGun", "hammer01", "hailSideGun", "zeusSideGun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo",
 							"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 				if GetVar("ChestScavs_Search").AsInt == 5 then loot_count = random(3,6) end 
@@ -1903,18 +1903,18 @@
 					local item_1, item_2, item_3, item_4, item_5, item_6, item_7 = "", "", "", "", "", "", ""
 
 					if GetVar("Tunel_Builden").AsInt == 0 then
-						if GetVar("Tunel_item_vitalik").AsInt ~= 1 then item_1 = "Кувалда «Vitalik» - x1|" end
+						if GetVar("Tunel_item_vitalik").AsInt ~= 1 then item_1 = "Кувалда «Vitalik» - @fff3e5cbx1|" end
 					elseif GetVar("Tunel_Builden").AsInt == 1 then
-						if GetVar("Tunel_item_handrill").AsInt ~= 1 then item_1 = "Ручная дрель - x1|" end
-						if GetVar("Tunel_item_metalscissors").AsInt~= 1 then item_2 = "Ножницы для резки металла - x1|" end
+						if GetVar("Tunel_item_handrill").AsInt ~= 1 then item_1 = "@ffffffffРучная дрель - @fff3e5cbx1|" end
+						if GetVar("Tunel_item_metalscissors").AsInt~= 1 then item_2 = "@ffffffffНожницы для резки металла - @fff3e5cbx1|" end
 					elseif GetVar("Tunel_Builden").AsInt == 2 then
-						if GetVar("Tunel_item_hose").AsInt ~= 1 then item_1 = "Гофрированный шланг - x1|" end
-						if GetVar("Tunel_item_kek").AsInt ~= 1 then item_2 = "Лента «KEK» - x1|" end
-						if GetVar("Tunel_item_toolset").AsInt ~= 1 then item_3 = "Набор инструментов - x1|" end
-						if GetVar("Tunel_item_electronics_components").AsInt ~= 2 then item_4 = "Компоненты электроники - x"..(2 - GetVar("Tunel_item_electronics_components").AsInt).."|" end
-						if GetVar("Tunel_item_wires").AsInt ~= 1 then item_5 = "Провода - x1|" end
-						if GetVar("Tunel_item_nippers").AsInt ~= 1 then item_6 = "Кусачки - x1|" end
-						if GetVar("Tunel_item_pliers_round").AsInt ~= 1 then item_7 = "Круглогубцы - x1" end
+						if GetVar("Tunel_item_hose").AsInt ~= 1 then item_1 = "@ffffffffГофрированный шланг - @fff3e5cbx1|" end
+						if GetVar("Tunel_item_kek").AsInt ~= 1 then item_2 = "@ffffffffЛента «KEK» - @fff3e5cbx1|" end
+						if GetVar("Tunel_item_toolset").AsInt ~= 1 then item_3 = "@ffffffffНабор инструментов - @fff3e5cbx1|" end
+						if GetVar("Tunel_item_electronics_components").AsInt ~= 2 then item_4 = "@ffffffffКомпоненты электроники - @fff3e5cbx"..(2 - GetVar("Tunel_item_electronics_components").AsInt).."|" end
+						if GetVar("Tunel_item_wires").AsInt ~= 1 then item_5 = "@ffffffffПровода - @fff3e5cbx1|" end
+						if GetVar("Tunel_item_nippers").AsInt ~= 1 then item_6 = "@ffffffffКусачки - @fff3e5cbx1|" end
+						if GetVar("Tunel_item_pliers_round").AsInt ~= 1 then item_7 = "@ffffffffКруглогубцы - @fff3e5cbx1" end
 					end
 
 					local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7
@@ -1989,25 +1989,25 @@
 				if not(GetVar("PlayerBelong").AsString == "SCAV") then
 					if GetVar("Generator_lvl").AsInt == 0 and t == "Generator_Build_loc" or GetVar("Generator_lvl").AsInt == 1 and t == "Generator_Build_loc" or GetVar("Generator_lvl").AsInt == 2 and t == "Generator_Build_lvl_2_loc" then
 						if GetVar("Generator_lvl").AsInt == 0 then
-							if GetVar("Generator_lvl_1_item_svech").AsInt ~= 1 then item_1 = "Свеча зажигания - x1|" end
-							if GetVar("Generator_lvl_1_item_engine").AsInt ~= 1 then item_2 = "Двигатель - x1|" end
-							if GetVar("Generator_lvl_1_doski").AsInt ~= 1 then item_3 = "Доски - x1|" end
-							if GetVar("Generator_lvl_1_oil").AsInt ~= 2 then item_4 = "Нефть - x"..(2 - GetVar("Generator_lvl_1_oil").AsInt).." / Бочка с топливом - x"..(2 - GetVar("Generator_lvl_1_oil").AsInt).."|" end
-							if GetVar("Generator_lvl_1_money").AsInt ~= 1 then item_5 = "Передать 100.000 монет" end
+							if GetVar("Generator_lvl_1_item_svech").AsInt ~= 1 then item_1 = "Свеча зажигания - @fff3e5cbx1|" end
+							if GetVar("Generator_lvl_1_item_engine").AsInt ~= 1 then item_2 = "@ffffffffДвигатель - @fff3e5cbx1|" end
+							if GetVar("Generator_lvl_1_doski").AsInt ~= 1 then item_3 = "@ffffffffДоски - @fff3e5cbx1|" end
+							if GetVar("Generator_lvl_1_oil").AsInt ~= 2 then item_4 = "@ffffffffНефть - @fff3e5cbx"..(2 - GetVar("Generator_lvl_1_oil").AsInt).." @ffffffff/ Бочка с топливом - @fff3e5cbx"..(2 - GetVar("Generator_lvl_1_oil").AsInt).."|" end
+							if GetVar("Generator_lvl_1_money").AsInt ~= 1 then item_5 = "@ffffffffПередать @fff3e5cb100.000 монет" end
 						elseif GetVar("Generator_lvl").AsInt == 1 then
-							if GetVar("Generator_lvl_1_item_svech").AsInt ~= 3 then item_1 = "Свеча зажигания - x"..(3 - GetVar("Generator_lvl_1_item_svech").AsInt).."|" end
-							if GetVar("Generator_lvl_1_item_engine").AsInt ~= 2 then item_2 = "Двигатель - x1|" end
-							if GetVar("Generator_lvl_2_item_rele").AsInt ~= 2 then item_3 = "Реле - x"..(2 - GetVar("Generator_lvl_2_item_rele").AsInt).."|" end
-							if GetVar("Generator_lvl_2_item_wires").AsInt ~= 2 then item_4 = "Провода - x"..(2 - GetVar("Generator_lvl_2_item_wires").AsInt).."|" end
-							if GetVar("Generator_lvl_2_item_buldex").AsInt ~= 1 then item_5 = "Кабелерез «Bulbex» - x1" end
+							if GetVar("Generator_lvl_1_item_svech").AsInt ~= 3 then item_1 = "@ffffffffСвеча зажигания - @fff3e5cbx"..(3 - GetVar("Generator_lvl_1_item_svech").AsInt).."|" end
+							if GetVar("Generator_lvl_1_item_engine").AsInt ~= 2 then item_2 = "@ffffffffДвигатель - @fff3e5cbx1|" end
+							if GetVar("Generator_lvl_2_item_rele").AsInt ~= 2 then item_3 = "@ffffffffРеле - @fff3e5cbx"..(2 - GetVar("Generator_lvl_2_item_rele").AsInt).."|" end
+							if GetVar("Generator_lvl_2_item_wires").AsInt ~= 2 then item_4 = "@ffffffffПровода - @fff3e5cbx"..(2 - GetVar("Generator_lvl_2_item_wires").AsInt).."|" end
+							if GetVar("Generator_lvl_2_item_buldex").AsInt ~= 1 then item_5 = "@ffffffffКабелерез «Bulbex» - @fff3e5cbx1" end
 						elseif GetVar("Generator_lvl").AsInt == 2 and t == "Generator_Build_lvl_2_loc" then
-							if GetVar("Generator_lvl_3_item_bp").AsInt ~= 2 then item_0 = "Блок питания - x"..(2 - GetVar("Generator_lvl_3_item_bp").AsInt).."|" end
-							if GetVar("Generator_lvl_2_item_rele").AsInt ~= 4 then item_1 = "Реле - x"..(4 - GetVar("Generator_lvl_2_item_rele").AsInt).."|" end
-							if GetVar("Generator_lvl_3_item_parts").AsInt ~= 3 then item_2 = "Металлические запчасти - x"..(3 - GetVar("Generator_lvl_3_item_parts").AsInt).."|" end
-							if GetVar("Generator_lvl_3_item_military_cable").AsInt ~= 1 then item_3 = "Военный кабель - x1|" end
-							if GetVar("Generator_lvl_3_item_plate").AsInt ~= 1 then item_4 = "Плата - x1|" end
-							if GetVar("Generator_lvl_3_item_converter").AsInt ~= 1 then item_5 = "Передовой преобразователь тока - x1|" end
-							if GetVar("Generator_lvl_1_money").AsInt ~= 2 then item_6 = "Передать 1.000.000 монет" end
+							if GetVar("Generator_lvl_3_item_bp").AsInt ~= 2 then item_0 = "@ffffffffБлок питания - @fff3e5cbx"..(2 - GetVar("Generator_lvl_3_item_bp").AsInt).."|" end
+							if GetVar("Generator_lvl_2_item_rele").AsInt ~= 4 then item_1 = "@ffffffffРеле - @fff3e5cbx"..(4 - GetVar("Generator_lvl_2_item_rele").AsInt).."|" end
+							if GetVar("Generator_lvl_3_item_parts").AsInt ~= 3 then item_2 = "@ffffffffМеталлические запчасти - @fff3e5cbx"..(3 - GetVar("Generator_lvl_3_item_parts").AsInt).."|" end
+							if GetVar("Generator_lvl_3_item_military_cable").AsInt ~= 1 then item_3 = "@ffffffffВоенный кабель - @fff3e5cbx1|" end
+							if GetVar("Generator_lvl_3_item_plate").AsInt ~= 1 then item_4 = "@ffffffffПлата - @fff3e5cbx1|" end
+							if GetVar("Generator_lvl_3_item_converter").AsInt ~= 1 then item_5 = "@ffffffffПередовой преобразователь тока - @fff3e5cbx1|" end
+							if GetVar("Generator_lvl_1_money").AsInt ~= 2 then item_6 = "@ffffffffПередать @fff3e5cb1.000.000 монет" end
 						end
 
 						local msg = item_0..""..item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6
@@ -2595,9 +2595,9 @@
 				if not(GetVar("Lampposts_item_energo_lump").AsInt == 12) or not(GetVar("Lampposts_item_wires").AsInt == 6) or not(GetVar("Lampposts_money").AsInt == 1) then
 					local item_1, item_2, item_3 = "", "", ""
 			
-					if GetVar("Lampposts_item_energo_lump").AsInt ~= 12 then item_1 = "Энергосберегающая лампа - x"..(12 - GetVar("Lampposts_item_energo_lump").AsInt).."|" end
-					if GetVar("Lampposts_item_wires").AsInt ~= 6 then item_2 = "Провода - x"..(6 - GetVar("Lampposts_item_wires").AsInt).."|" end
-					if GetVar("Lampposts_money").AsInt ~= 1 then item_3 = "Передать 50.000 монет" end
+					if GetVar("Lampposts_item_energo_lump").AsInt ~= 12 then item_1 = "Энергосберегающая лампа - @fff3e5cbx"..(12 - GetVar("Lampposts_item_energo_lump").AsInt).."|" end
+					if GetVar("Lampposts_item_wires").AsInt ~= 6 then item_2 = "@ffffffffПровода - @fff3e5cbx"..(6 - GetVar("Lampposts_item_wires").AsInt).."|" end
+					if GetVar("Lampposts_money").AsInt ~= 1 then item_3 = "@ffffffffПередать @fff3e5cb50.000 монет" end
 
 					local msg = item_1..""..item_2..""..item_3
 
@@ -2713,16 +2713,16 @@
 				if not(GetVar("Garage_item_bolts").AsInt == 1) or not(GetVar("Garage_item_nuts").AsInt == 1) or not(GetVar("Garage_item_pena").AsInt == 1) or not(GetVar("Garage_item_lump").AsInt == 3) or not(GetVar("Garage_item_cable").AsInt == 1) or not(GetVar("Garage_item_roulet").AsInt == 1) or not(GetVar("Garage_item_pipe_wrench").AsInt == 1) or not(GetVar("Garage_item_fitanyashka").AsInt == 1) or not(GetVar("Garage_item_kaktus").AsInt == 1) or not(GetVar("Garage_money").AsInt == 1) then
 					local item_1, item_2, item_3, item_4, item_5, item_6, item_7, item_8, item_9, item_10 = "", "", "", "", "", "", "", "", "", ""
 				
-					if GetVar("Garage_item_bolts").AsInt ~= 1 then item_1 = "Болты - x1|" end
-					if GetVar("Garage_item_nuts").AsInt ~= 1 then item_2 = "Гайки - x1|" end
-					if GetVar("Garage_item_pena").AsInt ~= 1 then item_3 = "Монтажная пена - x1|" end
-					if GetVar("Garage_item_lump").AsInt ~= 3 then item_4 = "Лампа накаливания - x"..(3 - GetVar("Garage_item_lump").AsInt).."|" end
-					if GetVar("Garage_item_cable").AsInt ~= 1 then item_5 = "Силовой кабель - x1|" end
-					if GetVar("Garage_item_roulet").AsInt ~= 1 then item_6 = "Рулетка - x1|" end
-					if GetVar("Garage_item_pipe_wrench").AsInt ~= 1 then item_7 = "Шарнирный ключ «КШС» - x1|" end
-					if GetVar("Garage_item_fitanyashka").AsInt ~= 1 then item_8 = "Дакимакура FitaNyashka - x1|" end
-					if GetVar("Garage_item_kaktus").AsInt ~= 1 then item_9 = "Кактус - x1|" end
-					if GetVar("Garage_money").AsInt ~= 1 then item_10 = "Передать 500.000 монет" end
+					if GetVar("Garage_item_bolts").AsInt ~= 1 then item_1 = "Болты - @fff3e5cbx1|" end
+					if GetVar("Garage_item_nuts").AsInt ~= 1 then item_2 = "@ffffffffГайки - @fff3e5cbx1|" end
+					if GetVar("Garage_item_pena").AsInt ~= 1 then item_3 = "@ffffffffМонтажная пена - @fff3e5cbx1|" end
+					if GetVar("Garage_item_lump").AsInt ~= 3 then item_4 = "@ffffffffЛампа накаливания - @fff3e5cbx"..(3 - GetVar("Garage_item_lump").AsInt).."|" end
+					if GetVar("Garage_item_cable").AsInt ~= 1 then item_5 = "@ffffffffСиловой кабель - @fff3e5cbx1|" end
+					if GetVar("Garage_item_roulet").AsInt ~= 1 then item_6 = "@ffffffffРулетка - @fff3e5cbx1|" end
+					if GetVar("Garage_item_pipe_wrench").AsInt ~= 1 then item_7 = "@ffffffffШарнирный ключ «КШС» - @fff3e5cbx1|" end
+					if GetVar("Garage_item_fitanyashka").AsInt ~= 1 then item_8 = "@ffffffffДакимакура FitaNyashka - @fff3e5cbx1|" end
+					if GetVar("Garage_item_kaktus").AsInt ~= 1 then item_9 = "@ffffffffКактус - @fff3e5cbx1|" end
+					if GetVar("Garage_money").AsInt ~= 1 then item_10 = "@ffffffffПередать @fff3e5cb500.000 монет" end
 
 					local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7..""..item_8..""..item_9..""..item_10
 

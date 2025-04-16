@@ -218,6 +218,10 @@
    <Item id="item_virtex" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_virtex.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_virtex.dds"/>
    <Item id="item_vpx" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_vpx.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_vpx.dds"/>
    <Item id="item_wires" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_wires.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_wires.dds"/>
+   <Item id="item_controller" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_controller.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_controller.dds"/>
+   <Item id="item_gyrotachometer" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_gyrotachometer.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_gyrotachometer.dds"/>
+   <Item id="item_military_plate" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_military_plate.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_military_plate.dds"/>
+   <Item id="item_rfid" file="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_rfid.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\electronics\item_rfid.dds"/>
 
    <!-- Energy --> 
    <Item id="item_accum" file="data\if\ico_hd\InventoryDlg\goods\new\energy\item_accum.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\energy\item_accum.dds"/>
@@ -274,6 +278,17 @@
    <Item id="item_naci" file="data\if\ico_hd\InventoryDlg\goods\new\medical\item_naci.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\medical\item_naci.dds"/>
    <Item id="item_oftalmaskop" file="data\if\ico_hd\InventoryDlg\goods\new\medical\item_oftalmaskop.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\medical\item_oftalmaskop.dds"/>
    <Item id="item_suringe" file="data\if\ico_hd\InventoryDlg\goods\new\medical\item_suringe.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\medical\item_suringe.dds"/>
+   <Item id="item_afak" file="data\if\ico_hd\InventoryDlg\goods\new\medical\item_afak.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\medical\item_afak.dds"/>
+   <Item id="item_ai2" file="data\if\ico_hd\InventoryDlg\goods\new\medical\item_ai2.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\medical\item_ai2.dds"/>
+   <Item id="item_analgin" file="data\if\ico_hd\InventoryDlg\goods\new\medical\item_analgin.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\medical\item_analgin.dds"/>
+   <Item id="item_carmed" file="data\if\ico_hd\InventoryDlg\goods\new\medical\item_carmed.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\medical\item_carmed.dds"/>
+   <Item id="item_grizzly" file="data\if\ico_hd\InventoryDlg\goods\new\medical\item_grizzly.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\medical\item_grizzly.dds"/>
+   <Item id="item_ifak" file="data\if\ico_hd\InventoryDlg\goods\new\medical\item_ifak.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\medical\item_ifak.dds"/>
+   <Item id="item_med" file="data\if\ico_hd\InventoryDlg\goods\new\medical\item_med.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\medical\item_med.dds"/>
+   <Item id="item_morfie" file="data\if\ico_hd\InventoryDlg\goods\new\medical\item_morfie.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\medical\item_morfie.dds"/>
+   <Item id="item_salewa" file="data\if\ico_hd\InventoryDlg\goods\new\medical\item_salewa.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\medical\item_salewa.dds"/>
+   <Item id="item_vazelin" file="data\if\ico_hd\InventoryDlg\goods\new\medical\item_vazelin.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\medical\item_vazelin.dds"/>
+   <Item id="item_zvezda" file="data\if\ico_hd\InventoryDlg\goods\new\medical\item_zvezda.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\medical\item_zvezda.dds"/>
 
    <!-- Other -->
    <Item id="item_airfilter" file="data\if\ico_hd\InventoryDlg\goods\new\other\item_airfilter.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\other\item_airfilter.dds"/>
@@ -330,6 +345,8 @@
    <Item id="item_teapon" file="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_teapon.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_teapon.dds"/>
    <Item id="item_woodclock" file="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_woodclock.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_woodclock.dds"/>
    <Item id="item_vitaly" file="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_vitaly.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_vitaly.dds"/>
+   <Item id="item_silver_skull" file="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_silver_skull.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_silver_skull.dds"/>
+   <Item id="item_vaze" file="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_vaze.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\valuables\item_vaze.dds"/>
 
    <!-- Quest Items -->
    <Item id="item_quest_search_data" file="data\if\ico_hd\InventoryDlg\goods\new\quest_items\item_quest_search_data.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\quest_items\item_quest_search_data.dds"/>

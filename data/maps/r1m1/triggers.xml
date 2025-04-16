@@ -3100,6 +3100,7 @@
 						"item_hunter_spich", "item_lighter", "item_spich", "item_zibbo",
 						"item_salt", "item_stakanyash", "item_soap", "item_tb", "item_toothpaste",
 						"item_pants40grn", "item_vodka",
+						"item_ai2", "item_analgin", "item_carmed", "item_med",
 						"hornet01", "specter01", "pkt01", "kord01", "storm01", "vector01", "vulcan01"}	
 			
 			for i=1,5 do
@@ -3134,7 +3135,7 @@
 	<trigger Name="CreateMedicalLootBox" active="0">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-			local items = {"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_medical_tools", "item_naci", "item_suringe",
+			local items = {"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_medical_tools", "item_naci", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
 							"scrap_metal_use", "machinery_use",
 							"item_alkani", "item_hlor", "item_paper", "item_stakanyash", "item_salt", "item_soap", "item_tb", "item_toothpaste"}
 			
@@ -3182,7 +3183,7 @@
 							"scrap_metal", "oil", "bottle", "fuel", "machinery", "tobacco", "doski", "details",
 							"item_filter", "item_paracord", "item_waterfilter", "item_zapal",
 							"item_awl", "item_leatherman", "item_metalscissors", "item_nippers", "item_pliers", "item_pliers_round", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_wrench",
-							"item_cable", "item_drill", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_helix", "item_lump", "item_magnet", "item_rele", "item_svech", "item_tplug", "item_ultra_lump", "item_usb", "item_wires"}
+							"item_cable", "item_drill", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_helix", "item_lump", "item_magnet", "item_rele", "item_svech", "item_tplug", "item_ultra_lump", "item_usb", "item_wires", "item_gyrotachometer", "item_military_plate"}
 			
 			for i=1,10 do
 				local Chest = CreateNewObject{prototypeName = "mainChest", objName = "TehnoBox"..i.."Chest"}	
@@ -3273,7 +3274,7 @@
 	<trigger Name="CreateValuablesLootBox" active="0">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-			local items = {"book", "shkatulka", "item_key_gate_thetown", "item_key_gate_basefelix", "item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_emre_kara", "item_fitanyashka", "item_monolit", "item_kaktus", "item_keqing", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_carsen", "item_metallodetector", "item_ananaga"}
+			local items = {"book", "shkatulka", "item_key_gate_thetown", "item_key_gate_basefelix", "item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_emre_kara", "item_fitanyashka", "item_monolit", "item_kaktus", "item_keqing", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_carsen", "item_metallodetector", "item_ananaga", "item_silver_skull", "item_vaze"}
 
 			for i=1,7 do
 				local Chest = CreateNewObject{prototypeName = "mainChest", objName = "ValuablesBox"..i.."Chest"}	
@@ -3313,7 +3314,7 @@
 	<trigger Name="CreateElectronicsLootBox" active="0">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-			local items = {"item_bp", "item_cable", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_hdd", "item_helix", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tplug", "item_ultra_lump", "item_usb", "item_wires",
+			local items = {"item_bp", "item_cable", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_hdd", "item_helix", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tplug", "item_ultra_lump", "item_usb", "item_wires", "item_gyrotachometer", "item_military_plate", "item_rfid",
 							"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank"}
 
 			for i=1,5 do
@@ -3356,12 +3357,12 @@
 			local items = {"machinery_use", "book", "electronics_use", "shkatulka", 
 							"ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_chest_artillerygun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo",
 							"item_datchik", "item_kek", "item_military_tube", "item_pena", "item_thermometer", "item_tube",
-							"item_bp", "item_drill", "item_engine", "item_hdd", "item_lcd", "item_military_cable", "item_tetris",
+							"item_bp", "item_drill", "item_engine", "item_hdd", "item_lcd", "item_military_cable", "item_tetris", "item_controller", "item_rfid", "item_military_plate", "item_gyrotachometer", "item_iridiym",
 							"item_car_battery", "item_cyclon", "item_green_battery",
 							"item_dry", "item_prisadka", "item_propan", "item_termit",
 							"item_disk", "item_disk_exmachina", "item_flashdrive", "item_sas", "item_ssd",
 							"item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_ananaga",
-							"item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon",
+							"item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_vaze",
 							"fagot01", "maxim01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "big_swingfire01", "cyclops01", "octopus01", "rocketLauncher", "someTurboAccelerationPusher"}
 
 			for i=1,5 do
@@ -3816,16 +3817,18 @@
 			
 			if GetVar("AirType").AsInt == 1 then
 				lootcount = random(5,8)
-				items = {"scrap_metal", "oil", "bottle", "fuel", "machinery", "book", "electronics",
-						"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use",
+				items = {"oil", "bottle", "fuel", "machinery", "tobacco", "book", "electronics",
+						"details", "shkatulka",
+						"item_key_gate_thetown", "item_key_gate_basefelix",
 						"item_datchik", "item_hose", "item_kek", "item_military_tube", "item_pena", "item_thermometer", "item_tube",
-						"item_bp", "item_drill", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_hdd", "item_iridiym", "item_lcd", "item_military_cable", "item_tetris",
-						"item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank",
-						"item_dry", "item_prisadka", "item_propan",
-						"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_sas", "item_ssd",
-						"item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_vodka", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen",
-						"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_sewing_kit", "item_toolset", 
-						"item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_teapon"}
+						"item_bp", "item_converter", "item_drill", "item_energo_lump", "item_engine", "item_gazan", "item_gpu", "item_hdd", "item_iridiym", "item_military_cable", "item_tetris", "item_ultra_lump", "item_virtex", "item_vpx", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid",
+						"item_accum", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery",
+						"item_dry", "item_prisadka", "item_propan", "item_survl", "item_termit", "item_trotile", "item_gunpowder",
+						"item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
+						"item_aquapeps", "item_c6h8o6", "item_ledx", "item_oftalmaskop", "item_afak", "item_grizzly",
+						"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_waterfilter", "item_keqing", "item_metallodetector",
+						"item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_pipe_wrench", "item_ratchet_wrench", "item_toolset", "item_vitalik",
+						"item_bitcoin", "item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_silver_skull", "item_vaze"}
 			else
 				lootcount = random(3,6)
 				items = {"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo",

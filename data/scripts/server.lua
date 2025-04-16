@@ -518,11 +518,11 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 								"item_hunter_spich", "item_lighter", "item_spich", "item_survl", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo",
 								"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_tb", "item_toothpaste",
 								"item_disk", "item_flashdrive", "item_manual", 
-								"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_medical_tools", "item_naci", "item_suringe",
+								"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_medical_tools", "item_naci", "item_suringe", "item_analgin", "item_med", "item_ai2", "item_vazelin", "item_carmed", "item_salewa", "item_morfie", "item_ifak", "item_zvezda", 
 								"item_vodka", "item_zapal", "item_carsen",
 								"item_metalscissors", "item_nippers", "item_pliers", "item_pliers_round", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_wrench"}
 				
-				local items2 = {"item_monolit", "item_leatherman", "item_toolset", "item_kaktus", "item_fullmaster", "item_awl", "item_military_tube", "someTurboAccelerationPusher", "ammo_ballon_turbo", "item_diary_s", "item_bp", "item_lcd", "item_drill", "item_filter", "item_sewing_kit", "item_pena", "item_green_battery", "item_diary", "item_dry", "item_military_cable", "item_ex", "item_thermometer", "item_propan", "item_handrill", "item_teapon", "item_emre_kara", "item_waterfilter", "item_keqing", "item_datchik", "item_ssd", "item_key_gate_thetown", "item_key_gate_basefelix", "item_disk_exmachina", "item_cyclon", "item_buldex", "item_cat", "item_prisadka", "item_sas", "item_rolex", "item_chain_gold", "item_car_battery", "item_pipe_wrench", "item_engine", "item_fitanyashka", "item_paracord", "item_chiken", "item_termit", "item_ratchet_wrench", "item_skullring", "item_oftalmaskop", "item_vitalik", "item_iridiym", "item_tetris", "item_vpx", "item_virtex", "item_airfilter", "item_ananaga", "item_lion", "item_converter", "item_rozvidka", "item_gpu", "item_bitcoin", "item_ledx", "item_tank_battery"}
+				local items2 = {"item_monolit", "item_leatherman", "item_toolset", "item_kaktus", "item_fullmaster", "item_awl", "item_afak", "item_military_tube", "someTurboAccelerationPusher", "ammo_ballon_turbo", "item_diary_s", "item_bp", "item_grizzly", "item_gyrotachometer", "item_lcd", "item_drill", "item_filter", "item_sewing_kit", "item_pena", "item_green_battery", "item_diary", "item_dry", "item_military_cable", "item_military_plate", "item_ex", "item_thermometer", "item_propan", "item_handrill", "item_teapon", "item_emre_kara", "item_waterfilter", "item_keqing", "item_datchik", "item_silver_skull", "item_ssd", "item_key_gate_thetown", "item_key_gate_basefelix", "item_disk_exmachina", "item_cyclon", "item_vaze", "item_buldex", "item_cat", "item_prisadka", "item_sas", "item_rolex", "item_chain_gold", "item_car_battery", "item_pipe_wrench", "item_engine", "item_rfid", "item_controller", "item_fitanyashka", "item_paracord", "item_chiken", "item_termit", "item_ratchet_wrench", "item_skullring", "item_oftalmaskop", "item_vitalik", "item_iridiym", "item_tetris", "item_vpx", "item_virtex", "item_airfilter", "item_ananaga", "item_lion", "item_converter", "item_rozvidka", "item_gpu", "item_bitcoin", "item_ledx", "item_tank_battery"}
 				
 				local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
 				local gadget2 = {"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "additional_fuel_tank2", "additional_torque2", "additional_durability2"}
@@ -564,7 +564,7 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 						end
 
 						for ware2=1,random(2) do
-							vehicle:AddItemsToRepository(items2[exrandom(getn(items2))], random(0,1))
+							vehicle:AddItemsToRepository(items2[exrandom(getn(items2))], 1)
 						end
 
 						vehicle:AddItemsToRepository(gadget_rand[exrandom(getn(gadget_rand))], random(0,1))

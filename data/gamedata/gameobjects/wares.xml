@@ -880,6 +880,42 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X2" />
 
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_controller"
+		Price	= "37000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_gyrotachometer"
+		Price	= "22900"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_military_plate"
+		Price	= "18050"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_rfid"
+		Price	= "35200"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
 <!-- Energy Items -->
 
 	<Prototype
@@ -1299,6 +1335,105 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Class		= "Ware"
 		Name		= "item_suringe"
 		Price	= "8000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_afak"
+		Price	= "11700"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_ai2"
+		Price	= "3800"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_analgin"
+		Price	= "2100"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_carmed"
+		Price	= "7000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_3X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_grizzly"
+		Price	= "17650"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_3X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_ifak"
+		Price	= "9250"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_med"
+		Price	= "2950"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_morfie"
+		Price	= "9400"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_salewa"
+		Price	= "8800"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_vazelin"
+		Price	= "5800"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_zvezda"
+		Price	= "10500"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= ""
@@ -1759,6 +1894,24 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_3X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_silver_skull"
+		Price	= "21700"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_vaze"
+		Price	= "25300"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_4X4" />
 
 <!-- Quest Items -->
 

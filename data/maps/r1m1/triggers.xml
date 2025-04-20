@@ -126,6 +126,11 @@
 			SetVar("ScavCar_time_minute", 0)
 			SetVar("ScavCar_time_second", 0)
 
+			SetVar("WindGenerator_time_hour", 0)
+			SetVar("WindGenerator_time_minute", 0)
+			SetVar("WindGenerator_time_second", 0)
+			SetVar("WindGenerator_status", "0")
+
 			if COUNT_RAIDS then SetVar("CountRaids", COUNT_RAIDS) end 
 			SetVar("CountRaids", GetVar("CountRaids").AsInt + 1)
 
@@ -153,6 +158,11 @@
 			if SCAV_CARMA_GLOBAL then SetVar("ScavCarma", SCAV_CARMA_GLOBAL) end
 
 			if PLAYER_BELONG_GLOBAL then SetVar("PlayerBelong", PLAYER_BELONG_GLOBAL) end
+
+			if WINDGENERATOR_TIME_HOUR_GLOBAL > 0 then SetVar("WindGenerator_time_hour", WINDGENERATOR_TIME_HOUR_GLOBAL) end
+			if WINDGENERATOR_TIME_MINUTE_GLOBAL > 0 then SetVar("WindGenerator_time_minute", WINDGENERATOR_TIME_MINUTE_GLOBAL) end
+			if WINDGENERATOR_TIME_SECOND_GLOBAL > 0 then SetVar("WindGenerator_time_second", WINDGENERATOR_TIME_SECOND_GLOBAL) end
+			if WINDGENERATOR_STATUS_GLOBAL then SetVar("WindGenerator_status", WINDGENERATOR_STATUS_GLOBAL) end
 
 			if GetVar("PlayerBelong").AsString == "SCAV" then
 				SetTolerance(1100, 1082, RS_NEUTRAL)
@@ -563,6 +573,12 @@
 				TActivate("ScavCar_Timer")
 			end
 
+			if GetVar("WindGenerator_time_hour").AsInt > 0 or GetVar("WindGenerator_time_minute").AsInt > 0 or GetVar("WindGenerator_time_second").AsInt > 0 then
+				if GetVar("WindGenerator_status").AsString == "ON" then
+					TActivate("WindGenerator_Timer")
+				end
+			end
+
 			if not(0 > min) then
 				sec = sec - 1
 				SetVar("TimeRaidSecond",sec)
@@ -708,6 +724,38 @@
 				SetVar("ScavCar_time_hour", 0)
 				SetVar("ScavCar_time_minute", 0)
 				SetVar("ScavCar_time_second", 0)
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="WindGenerator_Timer" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local hourWG = GetVar("WindGenerator_time_hour").AsInt
+			local minWG = GetVar("WindGenerator_time_minute").AsInt
+			local secWG = GetVar("WindGenerator_time_second").AsInt
+			--println("WindGenerator: "..hourWG.." "..minWG.." "..secWG)
+			if not(0 > hourWG) and not(0 > minWG) then
+				secWG = secWG - 1
+				SetVar("WindGenerator_time_second", secWG)
+				if 0 > secWG then
+					SetVar("WindGenerator_time_second", 59)
+					minWG = minWG - 1
+					SetVar("WindGenerator_time_minute", minWG)
+				end
+				if 0 > minWG then
+					SetVar("WindGenerator_time_minute", 59)
+					hourWG = hourWG - 1
+					SetVar("WindGenerator_time_hour", hourWG)
+				end
+			end
+
+			if hourWG == 0 and minWG == 0 and secWG == 0 then
+				SetVar("WindGenerator_time_hour", 0)
+				SetVar("WindGenerator_time_minute", 0)
+				SetVar("WindGenerator_time_second", 0)
+				SetVar("WindGenerator_status", "DONE")
 			end
 			trigger:Deactivate()
 		</script>
@@ -4702,6 +4750,11 @@
 			if SCAV_CARMA_GLOBAL then SCAV_CARMA_GLOBAL = GetVar("ScavCarma").AsString end
 
 			if PLAYER_BELONG_GLOBAL then PLAYER_BELONG_GLOBAL = GetVar("PlayerBelong").AsString end
+
+			if WINDGENERATOR_TIME_HOUR_GLOBAL then WINDGENERATOR_TIME_HOUR_GLOBAL = GetVar("WindGenerator_time_hour").AsInt end
+			if WINDGENERATOR_TIME_MINUTE_GLOBAL then WINDGENERATOR_TIME_MINUTE_GLOBAL = GetVar("WindGenerator_time_minute").AsInt end
+			if WINDGENERATOR_TIME_SECOND_GLOBAL then WINDGENERATOR_TIME_SECOND_GLOBAL = GetVar("WindGenerator_time_second").AsInt end
+			if WINDGENERATOR_STATUS_GLOBAL then WINDGENERATOR_STATUS_GLOBAL = GetVar("WindGenerator_status").AsString end
 
 			TDeactivate("IfChargeCar")
 			

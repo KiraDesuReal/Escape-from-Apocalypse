@@ -56,8 +56,8 @@
 
 	<model
 		id="plastic_barrel"
-		shadow="1"
-		shadowVolume="1"
+		shadow="0"
+		shadowVolume="0"
 		windwavy="0"
 		file="data\models\objects\box\plastic_barrel_box.gam" />
 
@@ -165,6 +165,34 @@
 	<model
 		id="3D_timer"
 		file="data\models\buildings\region0\3d_text\3d_timer\3d_text_timer.gam"
+		shadow="0"
+		windwavy="0"
+		trans="0" />
+
+	<model
+		id="3D_text_speed_wind"
+		file="data\models\buildings\region0\3d_text\speed_wind\3d_text_speed_wind.gam"
+		shadow="0"
+		windwavy="0"
+		trans="0" />
+
+	<model
+		id="windgenerator1"
+		file="data\models\buildings\region0\windgenerator\windgenerator1.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0" />
+
+	<model
+		id="windgenerator1_propeller"
+		file="data\models\buildings\region0\windgenerator\propeller1.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0" />
+
+	<model
+		id="windgenerator1_propeller_broken"
+		file="data\models\buildings\region0\windgenerator\propeller1_broken.gam"
 		shadow="0"
 		windwavy="0"
 		trans="0" />

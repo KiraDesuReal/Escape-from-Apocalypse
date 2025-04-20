@@ -9328,6 +9328,160 @@
 		scriptResult="TActivate('IfGetCraft'); SetVar('GarageCraft', 0); SetVar('GarageCraftingName', '0'); AddListItemsToPlayer({'item_fullmaster', 'item_leatherman', 'add_damage_explosion_firing_rate_explosion'}, {1, 1, 1}); SetVar('GarageCraft_GadgetDavid_item_parts', 0); SetVar('GarageCraft_GadgetDavid_item_electronics_components', 0); SetVar('GarageCraft_GadgetDavid_item_trotile', 0); SetVar('GarageCraft_GadgetDavid_item_fullmaster', 0); SetVar('GarageCraft_GadgetDavid_item_leatherman', 0)"
 		nextReplies="Dlg_npc_garage_david_0 Dlg_npc_garage_david_1" />
 
+<!--Root/r0m0/Ветрогенератор постройка-->
+	<Reply
+		name="Dlg_npc_003"
+		text="Ветрогенератор, вырабатывающий энергию за счёт скорости ветра. Позволяет заниматься майнингом криптовалюты.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Двигатель - @FF1D1D1Dx2|Детали - @FF1D1D1Dx2|Термометр - @FF1D1D1Dx1|Саморезы - @FF1D1D1Dx3|Военный кабель - @FF1D1D1Dx1|Военная плата - @FF1D1D1Dx2|Кулер - @FF1D1D1Dx2|Мануал @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Деньги: @FF1D1D1D1.000.000 монет|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Майнинг криптовалюты Биткоин"
+		role="NPC"
+		scriptCondition="GetVar('WindGenerator_Builden').AsInt == 0 and not(GetVar('PlayerBelong').AsString == 'SCAV') and not(GetVar('DialogSelectMap').AsInt == 2)"
+		nextReplies="Dlg_pl_005 Dlg_pl_006 Dlg_pl_007 Dlg_pl_008 Dlg_pl_009 Dlg_pl_0010 Dlg_pl_00101 Dlg_pl_0011 Dlg_pl_0012 Dlg_pl_0013 Dlg_pl_0014 Dlg_pl_0015" />
+	
+	<Reply
+		name="Dlg_npc_004"
+		text="Ветрогенератор, вырабатывающий энергию за счёт скорости ветра. Позволяет заниматься майнингом криптовалюты.|@FF0000AA|@FF780a0a[Дикие не могут передавать предметы для убежища]|@FF0000AA|@FF1D1D1DДля постройки требуется:|Двигатель - @FF1D1D1Dx2|Детали - @FF1D1D1Dx2|Термометр - @FF1D1D1Dx1|Саморезы - @FF1D1D1Dx3|Военный кабель - @FF1D1D1Dx1|Военная плата - @FF1D1D1Dx2|Кулер - @FF1D1D1Dx2|Мануал @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Деньги: @FF1D1D1D1.000.000 монет|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Майнинг криптовалюты Биткоин"
+		role="NPC"
+		scriptCondition="GetVar('WindGenerator_Builden').AsInt == 0 and GetVar('PlayerBelong').AsString == 'SCAV' and not(GetVar('DialogSelectMap').AsInt == 2)"
+		nextReplies="Dlg_pl_0014" />
+
+	<Reply
+		name="Dlg_pl_005"
+		text="Передать Двигатель - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_engine', 1) and not(GetVar('WindGenerator_item_engine').AsInt == 2)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_engine', 1); SetVar('WindGenerator_item_engine', GetVar('WindGenerator_item_engine').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_engine')"
+		nextReplies="Dlg_npc_003" />
+
+	<Reply
+		name="Dlg_pl_006"
+		text="Передать Детали - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('details', 1) and not(GetVar('WindGenerator_details').AsInt == 2)"
+		scriptResult="RemoveItemsFromPlayerRepository('details', 1); SetVar('WindGenerator_details', GetVar('WindGenerator_details').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'details')"
+		nextReplies="Dlg_npc_003" />
+
+	<Reply
+		name="Dlg_pl_007"
+		text="Передать Термометр - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_thermometer', 1) and not(GetVar('WindGenerator_item_thermometer').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_thermometer', 1); SetVar('WindGenerator_item_thermometer', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_thermometer')"
+		nextReplies="Dlg_npc_003" />
+
+	<Reply
+		name="Dlg_pl_008"
+		text="Передать Саморезы - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_screws', 1) and not(GetVar('WindGenerator_item_screws').AsInt == 3)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_screws', 1); SetVar('WindGenerator_item_screws', GetVar('WindGenerator_item_screws').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_screws')"
+		nextReplies="Dlg_npc_003" />
+
+	<Reply
+		name="Dlg_pl_009"
+		text="Передать Военный кабель - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_military_cable', 1) and not(GetVar('WindGenerator_item_military_cable').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_military_cable', 1); SetVar('WindGenerator_item_military_cable', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_military_cable')"
+		nextReplies="Dlg_npc_003" />
+
+	<Reply
+		name="Dlg_pl_0010"
+		text="Передать Военную плату - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_military_plate', 1) and not(GetVar('WindGenerator_item_military_plate').AsInt == 2)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_military_plate', 1); SetVar('WindGenerator_item_military_plate', GetVar('WindGenerator_item_military_plate').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_military_plate')"
+		nextReplies="Dlg_npc_003" />
+
+	<Reply
+		name="Dlg_pl_00101"
+		text="Передать Кулер - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_cooler', 1) and not(GetVar('WindGenerator_item_cooler').AsInt == 2)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_cooler', 1); SetVar('WindGenerator_item_cooler', GetVar('WindGenerator_item_cooler').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_cooler')"
+		nextReplies="Dlg_npc_003" />
+
+	<Reply
+		name="Dlg_pl_0011"
+		text="Передать Мануал - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_manual', 1) and not(GetVar('WindGenerator_item_manual').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_manual', 1); SetVar('WindGenerator_item_manual', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_manual')"
+		nextReplies="Dlg_npc_003" />
+
+	<Reply
+		name="Dlg_pl_0012"
+		text="Передать Набор инструментов - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_toolset', 1) and not(GetVar('WindGenerator_item_toolset').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_toolset', 1); SetVar('WindGenerator_item_toolset', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_toolset')"
+		nextReplies="Dlg_npc_003" />
+
+	<Reply
+		name="Dlg_pl_0013"
+		text="Передать 1.000.000 монет"
+		role="PLAYER"
+		scriptCondition="GetPlayerMoney()>=1000000 and not(GetVar('WindGenerator_money').AsInt == 1)"
+		scriptResult="AddPlayerMoney(-1000000); SetVar('WindGenerator_money', 1)"
+		nextReplies="Dlg_npc_003" />
+
+	<Reply
+		name="Dlg_pl_0014"
+		text="Выход."
+		role="PLAYER"
+		scriptCondition="not(GetVar('WindGenerator_item_engine').AsInt == 2) or not(GetVar('WindGenerator_details').AsInt == 2) or not(GetVar('WindGenerator_item_thermometer').AsInt == 1) or not(GetVar('WindGenerator_item_screws').AsInt == 3) or not(GetVar('WindGenerator_item_military_cable').AsInt == 1) or not(GetVar('WindGenerator_item_military_plate').AsInt == 2) or not(GetVar('WindGenerator_item_cooler').AsInt == 2) or not(GetVar('WindGenerator_item_manual').AsInt == 1) or not(GetVar('WindGenerator_item_toolset').AsInt == 1) or not(GetVar('WindGenerator_money').AsInt == 1)"
+		scriptResult="EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_0015"
+		text="Построить."
+		role="PLAYER"
+		scriptCondition="GetVar('WindGenerator_item_engine').AsInt == 2 and GetVar('WindGenerator_details').AsInt == 2 and GetVar('WindGenerator_item_thermometer').AsInt == 1 and GetVar('WindGenerator_item_screws').AsInt == 3 and GetVar('WindGenerator_item_military_cable').AsInt == 1 and GetVar('WindGenerator_item_military_plate').AsInt == 2 and GetVar('WindGenerator_item_cooler').AsInt == 2 and GetVar('WindGenerator_item_manual').AsInt == 1 and GetVar('WindGenerator_item_toolset').AsInt == 1 and GetVar('WindGenerator_money').AsInt == 1"
+		scriptResult="TActivate('CreateWindGenerator'); AddItemsToPlayerRepository('item_manual'); AddItemsToPlayerRepository('item_toolset'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_manual'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_toolset'); EndConversation()" />
+
+<!--Root/r0m0/Ветрогенератор-->
+	<Reply
+		name="Dlg_npc_windgenerator_1"
+		text="Включите ветрогенератор, чтобы начать майнинг. Скорость ветрогенератора и время майнинга, зависит от текущей скорости ветра."
+		role="NPC"
+		scriptCondition="GetVar('WindGenerator_Builden').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV') and not(GetVar('DialogSelectMap').AsInt == 2)"
+		nextReplies="Dlg_pl_windgenerator_4 Dlg_pl_windgenerator_5 Dlg_pl_windgenerator_6 Dlg_pl_windgenerator_3" />
+	
+	<Reply
+		name="Dlg_npc_windgenerator_2"
+		text="Включите ветрогенератор, чтобы начать майнинг. Скорость ветрогенератора и время майнинга, зависит от текущей скорости ветра.|@FF0000AA|@FF780a0a[Дикие не могут управлять модулями убежища]"
+		role="NPC"
+		scriptCondition="GetVar('WindGenerator_Builden').AsInt == 1 and GetVar('PlayerBelong').AsString == 'SCAV' and not(GetVar('DialogSelectMap').AsInt == 2)"
+		nextReplies="Dlg_pl_windgenerator_3" />
+
+	<Reply
+		name="Dlg_pl_windgenerator_3"
+		text="Выход."
+		role="PLAYER"
+		scriptResult="EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_windgenerator_4"
+		text="Включить ветрогенератор."
+		role="PLAYER"
+		scriptCondition="GetVar('WindGenerator_status').AsString == '0' or GetVar('WindGenerator_status').AsString == 'PAUSE'"
+		scriptResult="TActivate('StartMining'); SetVar('WindGenerator_status', 'ON')"
+		nextReplies="Dlg_npc_windgenerator_1" />
+
+	<Reply
+		name="Dlg_pl_windgenerator_5"
+		text="Выключить ветрогенератор."
+		role="PLAYER"
+		scriptCondition="GetVar('WindGenerator_status').AsString == 'ON'"
+		scriptResult="TActivate('WindGenerator_Stop'); SetVar('WindGenerator_status', 'PAUSE')"
+		nextReplies="Dlg_npc_windgenerator_1" />
+
+	<Reply
+		name="Dlg_pl_windgenerator_6"
+		text="Получить монету Биткоин."
+		role="PLAYER"
+		scriptCondition="GetVar('WindGenerator_status').AsString == 'DONE'"
+		scriptResult="SetVar('WindGenerator_status', '0'); AddItemsToPlayerRepository('item_bitcoin'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_bitcoin'); SafeSetSkinObj('wg_7', 0); TActivate('RestoreRotationWindGeneratorPropeller')"
+		nextReplies="Dlg_npc_windgenerator_1" />
+
 <!--Root/r0m0/Выход с карты-->
 	<Reply
 		name="Dlg_npc_0013108"

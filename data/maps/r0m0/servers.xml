@@ -46,6 +46,22 @@
 			id="3D_timer"
 			file="data\models\AnimModels.xml" />
 
+		<Item
+			id="3D_text_speed_wind"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="windgenerator1"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="windgenerator1_propeller"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="windgenerator1_propeller_broken"
+			file="data\models\AnimModels.xml" />
+
 <!-- dweller cinema -->
 		<Item
 			id="dweller_player"
@@ -1329,6 +1345,14 @@
 			file="data\models\AnimModels.xml" />
 
 		<Item
+			id="concrete_ruins3"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="concrete_ruins4"
+			file="data\models\AnimModels.xml" />
+
+		<Item
 			id="berth"
 			file="data\models\AnimModels.xml" />
 
@@ -2244,6 +2268,8 @@
 		<Item id="S_GARAGE_CRAFTING_START" />
 		<Item id="S_GARAGE_CRAFTING_END" />
 		<Item id="S_GARAGE_CRAFTING_STOP" />
+
+		<Item id="S_WINDGENERATOR" />
 
 		<Item id="S_CRASH_METAL01" />
 		<Item id="S_CRASH_METAL02" />

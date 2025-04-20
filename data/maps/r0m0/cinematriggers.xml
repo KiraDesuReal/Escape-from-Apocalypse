@@ -6,8 +6,11 @@
 		<script>
             g_ObjCont:SetGameTime( 10, 0, 21, 5, 2023 )
 			SetRadarUpgrade(1)
-            SetWeather(0)
-
+			SetWeather(0)
+			SetVar("Weather", 0)
+            SetVar("SpeedWind", random(4, 10))
+			SetVar("GameTimeHour", "DAY")
+			
 			Fly("start_game", CINEMATIC_NO_AIM, 0, 0.1, 0, 1)
 			StartCinematic()
 			UpdateCinematic(1)

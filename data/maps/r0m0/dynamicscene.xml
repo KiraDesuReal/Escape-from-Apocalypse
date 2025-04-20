@@ -325,6 +325,28 @@
 		Prototype="genericLocation"
 		Pos="895.371 255.000 894.831"
 		Radius="11.500"/>
+
+	<Object
+		Name="WindGenerator_Build_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="825.922 255.000 918.264"
+		Radius="2.500">
+		<Object
+			Name="WindGenerator_NPC"
+			Belong="1100"
+			Prototype="NPC"
+			ModelName=""
+			helloReplyNames="Dlg_npc_003 Dlg_npc_004 Dlg_npc_windgenerator_1 Dlg_npc_windgenerator_2"
+			SpokenCount="0" />
+	</Object>
+
+	<Object
+		Name="WindGenerator_Timer_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="825.922 255.000 918.264"
+		Radius="10.000"/>
 	
 	<Object
 		Name="tp_1_loc"

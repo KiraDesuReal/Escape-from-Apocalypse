@@ -148,6 +148,10 @@
 		<Node name="Sound3" class="SgSoundSourceNode" id="S_CHEST_SCAVS_END" looped="0" />
 	</Node>
 
+	<Node name="ET_S_WINDGENERATOR" class="SgNode">
+		<Node name="Sound3" class="SgSoundSourceNode" id="S_WINDGENERATOR" looped="1" />
+	</Node>
+
 	<Node name="ET_PS_EXPLOSION_GATE_DUNGEON" class="SgNode">
 		<Node name="11" class="SgParticlesNode" id="PS_VEN_EXP1_MED_MAIN2" psNumEmitterMesh="-1" />
 		<Node name="12" class="SgParticlesNode" id="PS_VEN_EXP1_MED_DUST" psNumEmitterMesh="-1" />

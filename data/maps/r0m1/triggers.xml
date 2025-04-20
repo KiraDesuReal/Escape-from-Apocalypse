@@ -60,6 +60,12 @@
 			SetVar("ScavCar_time_second", 0)
 			SetVar("ScavCar_timer", 0)
 
+			SetVar("WindGenerator_time_hour", 0)
+			SetVar("WindGenerator_time_minute", 0)
+			SetVar("WindGenerator_time_second", 0)
+			SetVar("WindGenerator_status", "0")
+			SetVar("WindGenerator_timer", 0)
+
 			for i=1,4 do
 				SetVar("loot_"..i, 0)
 			end
@@ -111,6 +117,11 @@
 			if SCAV_CAR_TIME_MINUTE > 0 then SetVar("ScavCar_time_minute", SCAV_CAR_TIME_MINUTE) end
 			if SCAV_CAR_TIME_SECOND > 0 then SetVar("ScavCar_time_second", SCAV_CAR_TIME_SECOND) end
 
+			if WINDGENERATOR_TIME_HOUR_GLOBAL > 0 then SetVar("WindGenerator_time_hour", WINDGENERATOR_TIME_HOUR_GLOBAL) end
+			if WINDGENERATOR_TIME_MINUTE_GLOBAL > 0 then SetVar("WindGenerator_time_minute", WINDGENERATOR_TIME_MINUTE_GLOBAL) end
+			if WINDGENERATOR_TIME_SECOND_GLOBAL > 0 then SetVar("WindGenerator_time_second", WINDGENERATOR_TIME_SECOND_GLOBAL) end
+			if WINDGENERATOR_STATUS_GLOBAL then SetVar("WindGenerator_status", WINDGENERATOR_STATUS_GLOBAL) end
+
 			if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
 				if GetVar("Generator_time_work_second").AsInt > 0 or GetVar("Generator_time_work_minute").AsInt > 0 or GetVar("Generator_time_work_hour").AsInt > 0 then
 					if GetVar("Generator_on").AsInt == 1 then
@@ -133,6 +144,13 @@
 			if GetVar("ScavCar_time_hour").AsInt > 0 or GetVar("ScavCar_time_minute").AsInt > 0 or GetVar("ScavCar_time_second").AsInt > 0 then
 				if getObj("TimerGlobal"):IsActivated() == 0 then TActivate("TimerGlobal") end
 				SetVar("ScavCar_timer", 1)
+			end
+
+			if GetVar("WindGenerator_time_hour").AsInt > 0 or GetVar("WindGenerator_time_minute").AsInt > 0 or GetVar("WindGenerator_time_second").AsInt > 0 then
+				if GetVar("WindGenerator_status").AsString == "ON" then
+					if getObj("TimerGlobal"):IsActivated() == 0 then TActivate("TimerGlobal") end
+					SetVar("WindGenerator_timer", 1)
+				end
 			end
 		</script>
 	</trigger>
@@ -1430,25 +1448,36 @@
 	<trigger Name="TimerGlobal" active="0">
 		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>	
+			local l = 0
+
 			if GetVar("Generator_on").AsInt == 1 then
 				if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
+					l = l + 1
 					TActivate("GeneratorTimer")
 				end
 			end
 
 			if GetVar("ChestScavs_timer").AsInt == 1 then
+				l = l + 1
 				TActivate("ChestScavTimer")
 			end
 
 			if GetVar("GarageCraft_timer").AsInt == 1 and GetVar("Generator_on").AsInt == 1 and GetVar("GarageCraftPause").AsInt == 0 then
+				l = l + 1
 				TActivate("GarageGraftingTimer")
 			end
 
 			if GetVar("ScavCar_timer").AsInt == 1 then
+				l = l + 1
 				TActivate("ScavCarTimer")
 			end
+
+			if GetVar("WindGenerator_timer").AsInt == 1 then
+				l = l + 1
+				TActivate("WindGeneratorTimer")
+			end
 			
-			if GetVar("Generator_on").AsInt == 0 and GetVar("ChestScavs_timer").AsInt == 0 and GetVar("GarageCraft_timer").AsInt == 0 and GetVar("ScavCar_timer").AsInt == 0 then
+			if l == 0 then
 				trigger:Deactivate()
 			end
 		</script>
@@ -1592,6 +1621,39 @@
 		</script>
 	</trigger>
 
+	<trigger Name="WindGeneratorTimer" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local hourWG = GetVar("WindGenerator_time_hour").AsInt
+			local minWG = GetVar("WindGenerator_time_minute").AsInt
+			local secWG = GetVar("WindGenerator_time_second").AsInt
+			if not(0 > hourWG) and not(0 > minWG) then
+				secWG = secWG - 1
+				SetVar("WindGenerator_time_second", secWG)
+				if 0 > secWG then
+					SetVar("WindGenerator_time_second", 59)
+					minWG = minWG - 1
+					SetVar("WindGenerator_time_minute", minWG)
+				end
+				if 0 > minWG then
+					SetVar("WindGenerator_time_minute", 59)
+					hourWG = hourWG - 1
+					SetVar("WindGenerator_time_hour", hourWG)
+				end
+			end
+
+			if hourWG == 0 and minWG == 0 and secWG == 0 then
+				SetVar("WindGenerator_time_hour", 0)
+				SetVar("WindGenerator_time_minute", 0)
+				SetVar("WindGenerator_time_second", 0)
+				SetVar("WindGenerator_status", "DONE")
+				SetVar("WindGenerator_timer", 0)
+			end
+			--println("WindGenerator: "..hourWG.." "..minWG.." "..secWG)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 <!-- Выход с карты -->
 	<trigger Name="ExitMap" active="0">
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
@@ -1623,6 +1685,11 @@
 			if SCAV_CAR_TIME_HOUR then SCAV_CAR_TIME_HOUR = GetVar("ScavCar_time_hour").AsInt end
 			if SCAV_CAR_TIME_MINUTE then SCAV_CAR_TIME_MINUTE = GetVar("ScavCar_time_minute").AsInt end
 			if SCAV_CAR_TIME_SECOND then SCAV_CAR_TIME_SECOND = GetVar("ScavCar_time_second").AsInt end
+
+			if WINDGENERATOR_TIME_HOUR_GLOBAL then WINDGENERATOR_TIME_HOUR_GLOBAL = GetVar("WindGenerator_time_hour").AsInt end
+			if WINDGENERATOR_TIME_MINUTE_GLOBAL then WINDGENERATOR_TIME_MINUTE_GLOBAL = GetVar("WindGenerator_time_minute").AsInt end
+			if WINDGENERATOR_TIME_SECOND_GLOBAL then WINDGENERATOR_TIME_SECOND_GLOBAL = GetVar("WindGenerator_time_second").AsInt end
+			if WINDGENERATOR_STATUS_GLOBAL then WINDGENERATOR_STATUS_GLOBAL = GetVar("WindGenerator_status").AsString end
 
 			TDeactivate("TimerGlobal")
 			TDeactivate("PlayMusic")

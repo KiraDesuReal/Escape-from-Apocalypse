@@ -67,6 +67,12 @@
 		/>
 
 		<group 
+			id		= "WINDGENERATOR" 
+			volume	= "255" 
+			minDist	= "100"
+		/>
+
+		<group 
 			id		= "GUNFIRE" 
 			volume	= "160" 
 			minDist	= "30"

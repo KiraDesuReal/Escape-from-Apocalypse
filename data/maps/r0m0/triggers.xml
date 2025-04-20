@@ -455,7 +455,30 @@
 			SetVar("GarageCraft_Ledx_item_controller", 0)
 			SetVar("GarageCraft_Ledx_book", 0)
 			SetVar("GarageCraft_Ledx_item_toolset", 0)
-			
+
+			SetVar("WindGenerator_item_engine", 0)
+			SetVar("WindGenerator_details", 0)
+			SetVar("WindGenerator_item_thermometer", 0)
+			SetVar("WindGenerator_item_screws", 0)
+			SetVar("WindGenerator_item_military_cable", 0)
+			SetVar("WindGenerator_item_military_plate", 0)
+			SetVar("WindGenerator_item_cooler", 0)
+			SetVar("WindGenerator_item_manual", 0)
+			SetVar("WindGenerator_item_toolset", 0)
+			SetVar("WindGenerator_money", 0)
+			SetVar("WindGenerator_Builden", 0)
+
+			SetVar("WindGenerator_time_hour", 0)
+			SetVar("WindGenerator_time_minute", 0)
+			SetVar("WindGenerator_time_second", 0)
+			SetVar("WindGenerator_time_secondMain", 0)
+			SetVar("WindGenerator_time_msg", "0")
+			SetVar("WindGenerator_status", "0")
+
+			SetVar("Weather", 0)
+			SetVar("SpeedWind", 0)
+			SetVar("GameTimeHour", "0")
+
 			SetVar("CountRaids", 0)
 
 			SetVar("OpenGate_1", 0)
@@ -539,7 +562,11 @@
 			if SCAV_CAR_TIME_SECOND then SCAV_CAR_TIME_SECOND = 0 end
 
 			if SCAV_CARMA_GLOBAL then SCAV_CARMA_GLOBAL = "0.00" end
-			
+
+			if WINDGENERATOR_TIME_HOUR_GLOBAL then WINDGENERATOR_TIME_HOUR_GLOBAL = 0 end
+			if WINDGENERATOR_TIME_MINUTE_GLOBAL then WINDGENERATOR_TIME_MINUTE_GLOBAL = 0 end
+			if WINDGENERATOR_TIME_SECOND_GLOBAL then WINDGENERATOR_TIME_SECOND_GLOBAL = 0 end
+			if WINDGENERATOR_STATUS_GLOBAL then WINDGENERATOR_STATUS_GLOBAL = "0" end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -697,6 +724,23 @@
 				end
 			end
 
+		--ветрогенератор
+			if WINDGENERATOR_TIME_HOUR_GLOBAL then SetVar("WindGenerator_time_hour", WINDGENERATOR_TIME_HOUR_GLOBAL) end
+			if WINDGENERATOR_TIME_MINUTE_GLOBAL then SetVar("WindGenerator_time_minute", WINDGENERATOR_TIME_MINUTE_GLOBAL) end
+			if WINDGENERATOR_TIME_SECOND_GLOBAL then SetVar("WindGenerator_time_second", WINDGENERATOR_TIME_SECOND_GLOBAL) end
+			if WINDGENERATOR_STATUS_GLOBAL then SetVar("WindGenerator_status", WINDGENERATOR_STATUS_GLOBAL) end
+
+			if GetVar("WindGenerator_time_hour").AsInt > 0 or GetVar("WindGenerator_time_minute").AsInt > 0 or GetVar("WindGenerator_time_second").AsInt > 0 then
+				if GetVar("WindGenerator_status").AsString == "ON" then
+					TActivate("RotatePropeller")
+					TActivate("wgt")
+				end
+			else
+				if GetVar("WindGenerator_status").AsString == "DONE" then
+					TActivate("WindGenerator_Done")
+				end
+			end
+
 		--другое
 			if PLAYER_BELONG_GLOBAL then PLAYER_BELONG_GLOBAL = GetVar("PlayerBelong").AsString end
 			if COUNT_RAIDS then SetVar("CountRaids", COUNT_RAIDS) end
@@ -719,6 +763,7 @@
 						R0M1_exit = 0
 					else
 						R0M1_exit = 0
+						TActivate("SetWeatherRandom")
 					end
 					pl:setImmortalMode(1)
 				end
@@ -737,6 +782,8 @@
 			TActivate("trCreateVehicleMove")
 			TActivate("VehiclesForSale")
 			TActivate("trTpPlayerInventory")
+
+			if not(GetVar("CountRaids").AsInt == 0) then TActivate("SetWeatherRandom") end
 
 			if DEBUG == 1 then
 				println("=================== START MAP: r0m0 ===================")
@@ -3186,6 +3233,516 @@
 		</script>
 	</trigger>
 
+<!-- Установка погоды и скорости ветра -->
+	<trigger Name="SetWeatherRandom" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local r = random(0,2)
+			SetWeather(r)
+			SetVar("Weather", r)
+			TActivate("SetSpeedWind")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SetSpeedWind" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local time = g_ObjCont:GetGameTime().AsString
+			local hour = tonumber(strsub(time, 1, 2))
+			local weather = GetVar("Weather").AsInt
+
+			if weather == 0 then
+				SetVar("SpeedWind", random(4, 10))
+			elseif weather == 1 then
+				SetVar("SpeedWind", random(11, 25))
+			elseif weather == 2 then
+				SetVar("SpeedWind", random(5, 15))
+			end
+
+			if 6 > hour then
+				SetVar("SpeedWind", GetVar("SpeedWind").AsInt / 2)
+				local wind = math.floor(GetVar("SpeedWind").AsInt)
+				SetVar("SpeedWind", wind)
+				SetVar("GameTimeHour", "NIGHT")
+			elseif hour >= 6 then
+				SetVar("GameTimeHour", "DAY")
+			end
+
+			TActivate("WindGenerator_UpdateSpeedWindText3D")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Ветрогенератор -->
+	<trigger Name="WindGenerator_Broken" active="1">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewDummyObject("concrete_ruins4", "wg_broken_1", -1, -1, CVector(811.301, 255, 912.462), Quaternion(0.0000, 0.9997, 0.0000, 0.0240))
+			CreateNewDummyObject("concrete_ruins3", "wg_broken_2", -1, -1, CVector(811.992, 254.587, 903.069), Quaternion(0.2397, -0.0201, 0.0095, 0.9706))
+			CreateNewDummyObject("concrete_ruins1", "wg_broken_3", -1, -1, CVector(819.375, 255, 904.021), Quaternion(0.0000, -0.0065, 0.0000, 1.0000))
+			CreateNewDummyObject("waste2", "wg_broken_4", -1, -1, CVector(816.648, 255, 906.491), Quaternion(0, 0, 0, 1))
+			CreateNewDummyObject("waste1", "wg_broken_5", -1, -1, CVector(811.659, 255.133, 904.673), Quaternion(0, 0, 0, 1))
+			CreateNewDummyObject("windgenerator1_propeller_broken", "wg_broken_6", -1, -1, CVector(811.083, 255.515, 911.382), Quaternion(-0.3083, 0.6385, -0.6689, 0.2230))
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "wg_broken_7", -1, -1, CVector(getPos("WindGenerator_Build_loc")), Quaternion(0, 0, 0, 1), 0.15)
+			TActivate("WindGenerator_BuildInfo")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="WindGenerator_BuildInfo" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="WindGenerator_Build_loc" />
+		<script>
+			if not(GetVar("PlayerBelong").AsString == "SCAV") then
+				if not(GetVar("WindGenerator_item_engine").AsInt == 2) or not(GetVar("WindGenerator_details").AsInt == 2) or not(GetVar("WindGenerator_item_thermometer").AsInt == 1) or not(GetVar("WindGenerator_item_screws").AsInt == 3) or not(GetVar("WindGenerator_item_military_cable").AsInt == 1) or not(GetVar("WindGenerator_item_military_plate").AsInt == 2) or not(GetVar("WindGenerator_item_cooler").AsInt == 2) or not(GetVar("WindGenerator_item_manual").AsInt == 1) or not(GetVar("WindGenerator_item_toolset").AsInt == 1) or not(GetVar("WindGenerator_money").AsInt == 1) then
+					local item_1, item_2, item_3, item_4, item_5, item_6, item_7, item_8, item_9, item_10 = "", "", "", "", "", "", "", "", "", ""
+				
+					if GetVar("WindGenerator_item_engine").AsInt ~= 2 then item_1 = "Двигатель - @fff3e5cbx"..(2 - GetVar("WindGenerator_item_engine").AsInt).."|" end
+					if GetVar("WindGenerator_details").AsInt ~= 2 then item_2 = "@ffffffffДетали - @fff3e5cbx"..(2 - GetVar("WindGenerator_details").AsInt).."|" end
+					if GetVar("WindGenerator_item_thermometer").AsInt ~= 1 then item_3 = "@ffffffffТермометр - @fff3e5cbx1|" end
+					if GetVar("WindGenerator_item_screws").AsInt ~= 3 then item_4 = "@ffffffffСаморезы - @fff3e5cbx"..(3 - GetVar("WindGenerator_item_screws").AsInt).."|" end
+					if GetVar("WindGenerator_item_military_cable").AsInt ~= 1 then item_5 = "@ffffffffВоенный кабель - @fff3e5cbx1|" end
+					if GetVar("WindGenerator_item_military_plate").AsInt ~= 2 then item_6 = "@ffffffffВоенная плата - @fff3e5cbx"..(2 - GetVar("WindGenerator_item_military_plate").AsInt).."|" end
+					if GetVar("WindGenerator_item_cooler").AsInt ~= 2 then item_7 = "@ffffffffКулер - @fff3e5cbx"..(2 - GetVar("WindGenerator_item_cooler").AsInt).."|" end
+					if GetVar("WindGenerator_item_manual").AsInt ~= 1 then item_8 = "@ffffffffМануал - @fff3e5cbx1|" end
+					if GetVar("WindGenerator_item_toolset").AsInt ~= 1 then item_9 = "@ffffffffНабор инструментов - @fff3e5cbx1|" end
+					if GetVar("WindGenerator_money").AsInt ~= 1 then item_10 = "@ffffffffПередать @fff3e5cb1.000.000 монет" end
+
+					local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6..""..item_7..""..item_8..""..item_9..""..item_10
+
+					if msg then AddFadingMsgByStrIdFormatted("fm_items_to_build", msg) end
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="CreateWindGenerator" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i = 1, 7 do
+				local wg = GetEntityByName("wg_broken_"..i)
+				if wg then wg:Remove() end
+			end
+
+			CreateNewDummyObject("windgenerator1", "wg_1", -1, -1, CVector(813.580, 259.863, 907.280), Quaternion(0.0000, 0.9419, 0.0000, 0.3359), 1)
+			CreateNewDummyObject("transformator1", "wg_2", -1, -1, CVector(820.920, 255, 905.584), Quaternion(0.0000, -0.7056, 0.0000, 0.7086))
+			CreateNewDummyObject("petrolhouse3", "wg_3", -1, -1, CVector(810.810, 255, 916.163), Quaternion(0.0000, -1.0000, 0.0000, 0.0022))
+			CreateNewDummyObject("civilhouse3_skin", "wg_4", -1, -1, CVector(813.652, 255, 894.375), Quaternion(0.0000, -0.9999, 0.0000, 0.0153))
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN9", "wg_5", -1, -1, CVector(getPos("WindGenerator_Build_loc")), Quaternion(0, 0, 0, 1), 0.15)
+			CreateNewSgNodeObject("windgenerator1_propeller", "wg_6", -1, -1, CVector(816.922, 306.155, 910.079), Quaternion(0.0000, 0.9419, 0.0000, 0.3359), 2)
+			CreateNewDummyObject("3D_text", "wg_7", -1, -1, CVector(815.903, 261.760, 909.172), Quaternion(0.0000, 0.4266, 0.0000, 0.9045), 0)
+			CreateNewDummyObject("3D_text_speed_wind", "wg_8", -1, -1, CVector(815.903, 261.760, 909.172), Quaternion(0.0000, 0.4266, 0.0000, 0.9045), 26)
+	
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(813, 255, 907), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(813, 255, 894), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_S_BUILDING", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1800)
+
+			local text3D = GetEntityByName("wg_7")
+			if text3D then text3D:SetSkin(8) end
+
+			SetVar("WindGenerator_Builden", 1)
+			TDeactivate("WindGenerator_BuildInfo")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="RestoreRotationWindGeneratorPropeller" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local propeller = GetEntityByName("wg_6")
+			if propeller then propeller:SetRotation(Quaternion(0.0000, 0.9419, 0.0000, 0.3359)) end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="RotatePropeller"	active="0">
+		<event	timeout="0.04"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local p = getObj("wg_6")
+			if GetVar("SpeedWind").AsInt > 0 then
+				if p then
+					local zq, zqZ = Quaternion(0, 0, 0, 1), Quaternion(0, 0, 0, 1)
+					zq:RotX(RAD(GetVar("SpeedWind").AsInt / 3))
+					zqZ:RotZ(RAD(GetVar("SpeedWind").AsInt / 3 * 0.8))
+					local rot = p:GetRotation()
+					p:SetRotation(zqZ * zq * rot )
+				else
+					trigger:Deactivate()
+				end
+			else
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="WindGenerator_UpdateSpeedWindText3D"	active="0">
+		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("WindGenerator_status").AsString == "ON" then
+				local text3D = GetEntityByName("wg_8")
+				if text3D then text3D:SetSkin(GetVar("SpeedWind").AsInt) end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="StartMining" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("WindGenerator_time_hour").AsInt == 0 and GetVar("WindGenerator_time_minute").AsInt == 0 and GetVar("WindGenerator_time_second").AsInt == 0 then
+				SetVar("WindGenerator_time_hour", 4)
+				SetVar("WindGenerator_time_minute", 0)
+				SetVar("WindGenerator_time_second", 0)
+				SetVar("WindGenerator_time_secondMain", 14400)
+				TActivate("WindGenerator_CreateTimer3D")
+			end
+
+			SetVar("WindGenerator_status", "ON")
+		
+			CreateNewSgNodeObject("ET_PS_LENS_D5", "wg_light_1", -1, -1, CVector(814.963, 264.896, 895.418), Quaternion(0, 0, 0, 1), 0.8)
+			CreateNewSgNodeObject("ET_PS_LENS_D1", "wg_light_2", -1, -1, CVector(819.633, 305.997, 912.191), Quaternion(0, 0, 0, 1), 1.2)
+			CreateNewSgNodeObject("ET_S_WINDGENERATOR", "wg_sound", -1, -1, CVector(816.922, 306.155, 910.079), Quaternion(0, 0, 0, 1))
+
+			TActivate("RotatePropeller")
+			TActivate("WindGeneratorTimeCalculating")
+			TActivate("WindGeneratorTimeMsgActivate")
+			TActivate("WindGeneratorTimeMsg")
+			TActivate("WindGenerator_UpdateSpeedWindText3D")
+			TActivate("RestoreRotationWindGeneratorPropeller")
+
+			local text3D = GetEntityByName("wg_7")
+			if text3D then text3D:SetSkin(0) end
+
+			AddFadingMsgByStrIdFormatted("fm_windgenerator_on")
+			SoundFadingMsg()
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="WindGenerator_CreateTimer3D" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewDummyObject("3D_timer", "wg_3D_timer_1", -1, -1, CVector(819.592, 264.845, 904.661), Quaternion(0.0000, 0.4266, 0.0000, 0.9045), 0)
+			CreateNewDummyObject("3D_timer", "wg_3D_timer_2", -1, -1, CVector(818.328, 264.845, 906.210), Quaternion(0.0000, 0.4266, 0.0000, 0.9045), 0)
+			CreateNewDummyObject("3D_timer", "wg_3D_timer_3", -1, -1, CVector(817.410, 264.845, 907.334), Quaternion(0.0000, 0.4266, 0.0000, 0.9045), 10)
+			CreateNewDummyObject("3D_timer", "wg_3D_timer_4", -1, -1, CVector(816.494, 264.845, 908.457), Quaternion(0.0000, 0.4266, 0.0000, 0.9045), 0)
+			CreateNewDummyObject("3D_timer", "wg_3D_timer_5", -1, -1, CVector(815.227, 264.845, 910.007), Quaternion(0.0000, 0.4266, 0.0000, 0.9045), 0)
+			CreateNewDummyObject("3D_timer", "wg_3D_timer_6", -1, -1, CVector(814.308, 264.845, 911.130), Quaternion(0.0000, 0.4266, 0.0000, 0.9045), 10)
+			CreateNewDummyObject("3D_timer", "wg_3D_timer_7", -1, -1, CVector(813.392, 264.845, 912.254), Quaternion(0.0000, 0.4266, 0.0000, 0.9045), 0)
+			CreateNewDummyObject("3D_timer", "wg_3D_timer_8", -1, -1, CVector(812.125, 264.845, 913.803), Quaternion(0.0000, 0.4266, 0.0000, 0.9045), 0)
+			TActivate("WindGenerator_UpdateTimer3D")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="WindGenerator_RemoveTimer3D" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i=1,8 do
+				local wg_3dTimer = GetEntityByName("wg_3D_timer_"..i)
+				if wg_3dTimer then wg_3dTimer:Remove() end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="WindGenerator_UpdateTimer3D" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i=1,8 do
+				local wg_3dTimer = GetEntityByName("wg_3D_timer_"..i)
+				if not(wg_3dTimer) then TActivate("WindGenerator_CreateTimer3D") end
+			end
+
+			local hour1, hour2, min1, min2, sec1, sec2 = 0, 0, 0, 0, 0, 0
+
+			hour1 = tonumber(strsub(GetVar("WindGenerator_time_hour").AsInt, 1, 1))
+
+			if GetVar("WindGenerator_time_hour").AsInt >= 10 then
+				hour2 = tonumber(strsub(GetVar("WindGenerator_time_hour").AsInt, 2, 2))
+			end
+
+			min1 = tonumber(strsub(GetVar("WindGenerator_time_minute").AsInt, 1, 1))
+
+			if GetVar("WindGenerator_time_minute").AsInt >= 10 then
+				min2 = tonumber(strsub(GetVar("WindGenerator_time_minute").AsInt, 2, 2))
+			end
+
+			sec1 = tonumber(strsub(GetVar("WindGenerator_time_second").AsInt, 1, 1))
+
+			if GetVar("WindGenerator_time_second").AsInt >= 10 then
+				sec2 = tonumber(strsub(GetVar("WindGenerator_time_second").AsInt, 2, 2))
+			end
+
+			if GetVar("WindGenerator_time_hour").AsInt >= 10 then
+				local g1 = GetEntityByName("wg_3D_timer_1")
+				if g1 then g1:SetSkin(hour1) end
+
+				local g2 = GetEntityByName("wg_3D_timer_2")
+				if g2 then g2:SetSkin(hour2) end
+			else
+				local g1 = GetEntityByName("wg_3D_timer_1")
+				if g1 then g1:SetSkin(0) end
+
+				local g2 = GetEntityByName("wg_3D_timer_2")
+				if g2 then g2:SetSkin(hour1) end
+			end
+
+			if GetVar("WindGenerator_time_minute").AsInt >= 10 then
+				local g4 = GetEntityByName("wg_3D_timer_4")
+				if g4 then g4:SetSkin(min1) end
+
+				local g5 = GetEntityByName("wg_3D_timer_5")
+				if g5 then g5:SetSkin(min2) end
+			else
+				local g4 = GetEntityByName("wg_3D_timer_4")
+				if g4 then g4:SetSkin(0) end
+
+				local g5 = GetEntityByName("wg_3D_timer_5")
+				if g5 then g5:SetSkin(min1) end
+			end
+
+			if GetVar("WindGenerator_time_second").AsInt >= 10 then
+				local g7 = GetEntityByName("wg_3D_timer_7")
+				if g7 then g7:SetSkin(sec1) end
+
+				local g8 = GetEntityByName("wg_3D_timer_8")
+				if g8 then g8:SetSkin(sec2) end
+			else
+				local g7 = GetEntityByName("wg_3D_timer_7")
+				if g7 then g7:SetSkin(0) end
+
+				local g8 = GetEntityByName("wg_3D_timer_8")
+				if g8 then g8:SetSkin(sec1) end
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="WindGeneratorTimeCalculating" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local secMain = GetVar("WindGenerator_time_secondMain").AsInt
+			local speedWind = GetVar("SpeedWind").AsInt
+			local hour, min, sec, sec1 = 0, 0, 0, 0
+
+			secMain = speedWind * speedWind * speedWind
+			secMain = math.floor(secMain / 2.5)
+			secMain = GetVar("WindGenerator_time_secondMain").AsInt - secMain
+
+			hour = math.floor(secMain / 3600)
+			if 0 > hour then hour = 0 end
+	
+			sec = hour * 3600
+			sec = secMain - sec
+
+			min = math.floor(sec / 60)
+			if 0 > min then min = 0 end
+
+			sec1 = min * 60
+			sec1 = sec - sec1
+			if 0 > sec1 then sec1 = 1 end
+
+			SetVar("WindGenerator_time_hour", hour)
+			SetVar("WindGenerator_time_minute", min)
+			SetVar("WindGenerator_time_second", sec1)
+			TActivate("WindGenerator_timer")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="WindGenerator_timer" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			local hour = GetVar("WindGenerator_time_hour").AsInt
+			local min = GetVar("WindGenerator_time_minute").AsInt
+			local sec = GetVar("WindGenerator_time_second").AsInt
+			
+			local nulH, nulM, nulS = "", "", ""
+
+			if 10 > hour then nulH = 0 end
+			if 10 > min then nulM = 0 end
+			if 10 > sec then nulS = 0 end
+
+			local Msg = nulH..hour..":"..nulM..min..":"..nulS..sec
+			SetVar("WindGenerator_time_msg", Msg)
+
+			if not(0 > hour) and not(0 > min) then
+				sec = sec - 1
+				SetVar("WindGenerator_time_second", sec)
+				SetVar("WindGenerator_time_secondMain", GetVar("WindGenerator_time_secondMain").AsInt - 1)
+				if 0 > sec then
+					SetVar("WindGenerator_time_second", 59)
+					min = min - 1
+					SetVar("WindGenerator_time_minute", min)
+				end
+				if 0 > min then
+					SetVar("WindGenerator_time_minute", 59)
+					hour = hour - 1
+					SetVar("WindGenerator_time_hour", hour)
+				end
+			end
+
+			if hour == 0 and min == 0 and sec == 0 then
+				TActivate("WindGenerator_Done")
+			else
+				TActivate("wgt")
+			end
+
+			TActivate("WindGenerator_UpdateTimer3D")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="wgt" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("WindGeneratorTimeCalculating")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="WindGeneratorTimeMsgActivate" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("WindGeneratorTimeMsgLoc")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="WindGeneratorUpdateTimeMsg" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local hour = GetVar("WindGenerator_time_hour").AsInt
+			local min = GetVar("WindGenerator_time_minute").AsInt
+			local sec = GetVar("WindGenerator_time_second").AsInt
+			
+			local nulH, nulM, nulS = "", "", ""
+
+			if 10 > hour then nulH = 0 end
+			if 10 > min then nulM = 0 end
+			if 10 > sec then nulS = 0 end
+
+			local Msg = nulH..hour..":"..nulM..min..":"..nulS..sec
+			SetVar("WindGenerator_time_msg", Msg)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="WindGeneratorTimeMsgLoc" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="WindGenerator_Timer_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="WindGenerator_Timer_loc" />
+		<script>
+			TActivate("WindGeneratorTimeMsg")
+		</script>
+	</trigger>
+
+	<trigger Name="WindGeneratorTimeMsg" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if not(GetVar("WindGenerator_time_msg").AsString == "0") then
+				if GetVar("WindGenerator_status").AsString == "ON" then
+					local speedWind = GetVar("SpeedWind").AsInt
+					local color = "@ffffffff"
+					if speedWind >= 10 then
+						color = "@ff7ac716"
+					elseif speedWind >= 5 then
+						color = "@ffffc000"
+					elseif speedWind >= 1 then
+						color = "@fff3e5cb"
+					elseif speedWind == 0 then
+						color = "@ff9d0a0a"
+					end
+
+					local msgSpeedWind = color..""..speedWind
+
+					TActivate("WindGeneratorUpdateTimeMsg")
+
+					AddFadingMsgByStrIdFormatted("fm_windgenerator_start_mining", msgSpeedWind, GetVar("WindGenerator_time_msg").AsString)
+				elseif GetVar("WindGenerator_status").AsString == "PAUSE" then
+					AddFadingMsgByStrIdFormatted("fm_mining_timer_pause", GetVar("WindGenerator_time_msg").AsString)
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="WindGenerator_Done" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			SetVar("WindGenerator_time_hour", 0)
+			SetVar("WindGenerator_time_minute", 0)
+			SetVar("WindGenerator_time_second", 0)
+			SetVar("WindGenerator_time_secondMain", 0)
+			SetVar("WindGenerator_time_msg", "0")
+
+			SetVar("WindGenerator_status", "DONE")
+
+			TDeactivate("WindGeneratorTimeMsgLoc")
+			TDeactivate("WindGeneratorTimeMsgActivate")
+			TDeactivate("WindGeneratorTimeCalculating")
+			TDeactivate("RotatePropeller")
+			TDeactivate("wgt")
+			TDeactivate("WindGenerator_timer")
+
+			TActivate("WindGenerator_UpdateTimer3D")
+			TActivate("WindGenerator_RemoveTimer3D")
+
+			for i = 1, 2 do
+				local wg_light = GetEntityByName("wg_light_"..i)
+				if wg_light then wg_light:Remove() end
+			end
+
+			local sound = GetEntityByName("wg_sound")
+			if sound then sound:Remove() end
+
+			local text3D = GetEntityByName("wg_7")
+			if text3D then text3D:SetSkin(10) end
+
+			local wg8 = GetEntityByName("wg_8")
+			if wg8 then wg8:SetSkin(26) end
+
+			AddFadingMsgByStrIdFormatted("fm_mining_done")
+			SoundFadingMsg()
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="WindGenerator_Stop" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			SetVar("WindGenerator_status", "PAUSE")
+
+			TDeactivate("wgt")
+			TDeactivate("WindGenerator_timer")
+			TDeactivate("RotatePropeller")
+			TDeactivate("WindGeneratorTimeCalculating")
+
+			TActivate("WindGenerator_UpdateTimer3D")
+			TActivate("RestoreRotationWindGeneratorPropeller")
+
+			for i = 1, 2 do
+				local wg_light = GetEntityByName("wg_light_"..i)
+				if wg_light then wg_light:Remove() end
+			end
+
+			local sound = GetEntityByName("wg_sound")
+			if sound then sound:Remove() end
+
+			local text3D = GetEntityByName("wg_7")
+			if text3D then text3D:SetSkin(9) end
+
+			local wg8 = GetEntityByName("wg_8")
+			if wg8 then wg8:SetSkin(26) end
+
+			AddFadingMsgByStrIdFormatted("fm_windgenerator_off")
+			SoundFadingMsg()
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 <!-- Телепорт -->
 	<trigger Name="Teleport" active="1">
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="tp_1_loc" />
@@ -3289,6 +3846,16 @@
 				plf:SetNameFromScript("PlayerCar") 
 			end
 
+			if hour >= 6 and GetVar("GameTimeHour").AsString == "NIGHT" then
+				TActivate("SetSpeedWind")
+				SetVar("GameTimeHour", "DAY")
+			elseif 6 > hour and GetVar("GameTimeHour").AsString == "DAY" then
+				TActivate("SetSpeedWind")
+				SetVar("GameTimeHour", "NIGHT")
+			end
+
+			TActivate("RestoreRotationWindGeneratorPropeller")
+			
 			SetCameraBehindPlayerVehicle()
 		</script>
 	</trigger>
@@ -3910,7 +4477,7 @@
 			else
 				carma = tonumber(strsub(c, 1, 4))
 			end
-			local color = "@ffffffff"
+			local color = "@fff3e5cb"
 			if carma > 0 then 
 				color = "@ff7ac716" 
 			elseif 0 > carma then
@@ -4261,28 +4828,6 @@
 		</script>
 	</trigger>
 
-	<trigger Name="tr" active="0">
-		<event timeout="0" eventid="GE_TIME_PERIOD" />
-		<script>
-			TActivate("CreateGenerator_lvl_1")
-			TActivate("CreateGarage")
-			SetVar("Generator_time_work_second", 0)
-			SetVar("Generator_time_work_minute", 30)
-			SetVar("Generator_time_work_hour", 0)
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-	<trigger Name="t1" active="0">
-		<event timeout="0" eventid="GE_TIME_PERIOD" />
-		<script>
-			SetVar("GarageCrafting_time_hour", 0)
-			SetVar("GarageCrafting_time_minute", 0)
-			SetVar("GarageCrafting_time_second", 2)
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
 <!-- Выход/очистка карты -->
 	<trigger Name="ExitMap" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
@@ -4417,6 +4962,22 @@
 				end
 			else
 				TActivate("TpPlayerCarInScavZone")
+			end
+
+		--ветрогенератор
+			if WINDGENERATOR_TIME_HOUR_GLOBAL then WINDGENERATOR_TIME_HOUR_GLOBAL = GetVar("WindGenerator_time_hour").AsInt end
+			if WINDGENERATOR_TIME_MINUTE_GLOBAL then WINDGENERATOR_TIME_MINUTE_GLOBAL = GetVar("WindGenerator_time_minute").AsInt end
+			if WINDGENERATOR_TIME_SECOND_GLOBAL then WINDGENERATOR_TIME_SECOND_GLOBAL = GetVar("WindGenerator_time_second").AsInt end
+			if WINDGENERATOR_STATUS_GLOBAL then WINDGENERATOR_STATUS_GLOBAL = GetVar("WindGenerator_status").AsString end
+
+			if GetVar("WindGenerator_time_hour").AsInt > 0 or GetVar("WindGenerator_time_minute").AsInt > 0 or GetVar("WindGenerator_time_second").AsInt > 0 then
+				if GetVar("WindGenerator_status").AsString == "ON" then
+					TDeactivate("wgt")
+					TDeactivate("WindGenerator_timer")
+					TDeactivate("RotatePropeller")
+					TDeactivate("WindGeneratorTimeCalculating")
+				end
+				TActivate("RestoreRotationWindGeneratorPropeller")
 			end
 
 		--другое

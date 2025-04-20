@@ -438,7 +438,7 @@
 
 	<string
 		id="fm_garage_crafting_timer_pause"
-		value="@ff9d0a0a[Сборка приостановлена]|@ffffffffОсталось: %1p" />
+		value="@ff9d0a0a[Сборка приостановлена]|@ffffffffОсталось: @fff3e5cb%1p" />
 
 	<string
 		id="fm_scav_car_for_player"
@@ -454,5 +454,25 @@
 
 	<string
 		id="fm_scav_give_loot"
-		value="Рейд за дикого успешно завершен!|Заберите свои предметы в специальном ящике." />
+		value="Рейд за дикого успешно завершён!|Заберите свои предметы в специальном ящике." />
+
+	<string
+		id="fm_mining_timer_pause"
+		value="@ff9d0a0a[Майнинг приостановлен]|@ffffffffОсталось: @fff3e5cb%1p" />
+
+	<string
+		id="fm_windgenerator_on"
+		value="Ветрогенератор включен!" />
+
+	<string
+		id="fm_windgenerator_off"
+		value="Ветрогенератор выключен!" />
+
+	<string
+		id="fm_mining_done"
+		value="@ff7ac716Майнинг завершён!" />
+
+	<string
+		id="fm_windgenerator_start_mining"
+		value="@ff7ac716[Майнинг запущен]|@ffffffffТекущая скорость ветра: %1p м/c|@ffffffffОсталось: @fff3e5cb%2p" />
 </resource>

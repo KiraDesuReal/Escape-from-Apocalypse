@@ -1246,6 +1246,62 @@ function AddListItemsToPlayer(item, amount)
 	end
 end
 
+-- Разместить предмет на стеллаже
+function ShelfAddItemToSlot()
+	local slot = GetVar("ShelfSelectSlot").AsInt
+	local item = GetVar("ShelfSelectItem_Slot_"..slot).AsString
+	local pos = CVector(0, 0, 0)
+	local rot = Quaternion(0, 0, 0, 1)
+	local model = "cargo"
+	local y = 0
+	local scale = 0.35
+
+	if item == "potato" then model = "potatoe" y = 0.13 end
+	if item == "scrap_metal" or item == "scrap_metal_use" then model = "lom" y = 0.03 end
+	if item == "firewood" then model = "koroldrov" y = -0.3 scale = 0.3 end
+	if item == "oil" or item == "oil_use" then model = "back_exp" y = 0.22 scale = 0.32 end
+	if item == "bottle" then model = "bottles" y = -0.06 end
+	if item == "fuel" or item == "fuel_full_use" or item == "fuel_nil_use" then model = "kanistr" y = 0.03 end
+	if item == "machinery" or item == "machinery_use" then model = "rabochee_oborudovanie" y = -0.24 end
+	if item == "tobacco" then model = "tobacco" y = -0.2 end
+	if item == "book" then model = "books" y = -0.09 end
+	if item == "electronics" or item == "electronics_use" then model = "mikro" y = -0.29 end
+	if item == "doski" then model = "doski" scale = 0.28 end
+	if item == "details" then model = "detail" scale = 0.15 rot = Quaternion(-0.5010, 0.4989, -0.5011, 0.4989) y = -0.15 end
+	if item == "item_key_gate_thetown" or item == "item_key_gate_basefelix" then model = "quest_key_for_tunnel" scale = 0.1 rot = Quaternion(0.0798, 0.5753, -0.8110, 0.0705) y = -0.26 end
+	if item == "item_disk" then model = "disk" scale = 0.05 rot = Quaternion(-0.7071, 0.0000, 0.0000, 0.7071) y = -0.29 end
+	if item == "item_disk_exmachina" then model = "disk_exmachina" scale = 0.05 rot = Quaternion(-0.7071, 0.0000, 0.0000, 0.7071) y = -0.29 end
+	if item == "item_emre_kara" then model = "dragon01gun" y = -0.11 rot = Quaternion(0.0567, 0.0000, 0.0000, 0.9984) end
+	if item == "item_fitanyashka" then model = "fitanyashka" scale = 0.3 rot = Quaternion(-0.2271, 0.0000, 0.0000, 0.9738) y = -0.32 end
+	if item == "item_monolit" then model = "monolit" scale = 0.3 y = -0.28 end
+	if item == "item_kaktus" then model = "kaktus" y = -0.28 end
+	if item == "someTurboAccelerationPusher" then model = "Turboakselerator" y = -0.17 end
+
+	if slot == 1 then pos = CVector(903.327, 255.650 + y, 971.461) end
+	if slot == 2 then pos = CVector(901.610, 255.650 + y, 971.461) end
+	if slot == 3 then pos = CVector(899.450, 255.650 + y, 971.461) end
+	if slot == 4 then pos = CVector(897.700, 255.650 + y, 971.461) end
+	if slot == 5 then pos = CVector(903.327, 257.355 + y, 971.461) end
+	if slot == 6 then pos = CVector(901.610, 257.355 + y, 971.461) end
+	if slot == 7 then pos = CVector(899.450, 257.355 + y, 971.461) end
+	if slot == 8 then pos = CVector(897.700, 257.355 + y, 971.461) end
+	if slot == 9 then pos = CVector(903.327, 259.081 + y, 971.461) end
+	if slot == 10 then pos = CVector(901.610, 259.081 + y, 971.461) end
+	if slot == 11 then pos = CVector(899.450, 259.081 + y, 971.461) end
+	if slot == 12 then pos = CVector(897.700, 259.081 + y, 971.461) end
+
+	CreateNewSgNodeObject(model, "shelf_item_"..item.."_slot_"..slot, -1, -1, pos, rot, scale)
+end
+
+function ShelfRemoveItemToSlot()
+	local slot = GetVar("ShelfSelectSlot").AsInt
+	local item = GetVar("ShelfSelectItem_Slot_"..slot).AsString
+
+	local i = GetEntityByName("shelf_item_"..item.."_slot_"..slot)
+	if i then i:Remove() end
+end
+
+
 
 
 

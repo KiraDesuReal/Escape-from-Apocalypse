@@ -87,14 +87,14 @@
 <!--Root/r0m0/Инвентарь 2 лвл-->
 	<Reply
 		name="Dlg_npc_001314"
-		text="Дополнительный ящик, в котором можно складировать свои вещи.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Дрель - @FF1D1D1Dx1|Саморезы - @FF1D1D1Dx2|Гвозди - @FF1D1D1Dx2|Отвертка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1"
+		text="Дополнительный ящик, в котором можно складировать свои вещи.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Дрель - @FF1D1D1Dx1|Саморезы - @FF1D1D1Dx2|Гвозди - @FF1D1D1Dx2|Отвертка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Возможность построить стенд с предметами"
 		role="NPC"
 		scriptCondition="GetVar('Inventory_lvl_2_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_pl_001315 Dlg_pl_001316 Dlg_pl_001317 Dlg_pl_001318 Dlg_pl_001319 Dlg_pl_001320 Dlg_pl_001321 Dlg_pl_001322" />
 	
 	<Reply
 		name="Dlg_npc_0013144"
-		text="Дополнительный ящик, в котором можно складировать свои вещи.|@FF0000AA|@FF780a0a[Дикие не могут передавать предметы для убежища]|@FF0000AA|@FF1D1D1DДля постройки требуется:|Дрель - @FF1D1D1Dx1|Саморезы - @FF1D1D1Dx2|Гвозди - @FF1D1D1Dx2|Отвертка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1"
+		text="Дополнительный ящик, в котором можно складировать свои вещи.|@FF0000AA|@FF780a0a[Дикие не могут передавать предметы для убежища]|@FF0000AA|@FF1D1D1DДля постройки требуется:|Дрель - @FF1D1D1Dx1|Саморезы - @FF1D1D1Dx2|Гвозди - @FF1D1D1Dx2|Отвертка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Возможность построить стенд с предметами"
 		role="NPC"
 		scriptCondition="GetVar('Inventory_lvl_2_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0 and GetVar('PlayerBelong').AsString == 'SCAV'"
 		nextReplies="Dlg_pl_001321" />
@@ -164,7 +164,7 @@
 <!--Root/r0m0/Ящик диких постройка-->
 	<Reply
 		name="Dlg_npc_001323"
-		text="Специальный ящик для диких. Построив его, вы сможете просить диких добывать для вас различные предметы, при условии если хорошо им заплатите.|@FF0000AA|@FF780a0a[Для передачи предметов, необходимо построить Тайник уровня II]|@FF0000AA|@FF1D1D1DДля постройки требуется:|На выбор: @FF1D1D1D[Электроника - x2, Высокотехнологичная электроника - x2]|На выбор: @FF1D1D1D[Рабочее оборудование - x1, Улучшенное оборудование - x2]|Книги - @FF1D1D1Dx1|Бутылки - @FF1D1D1Dx1|Детали - @FF1D1D1Dx1|Ананага - @FF1D1D1Dx1|Золотые часы - @FF1D1D1Dx1|Золотая цепочка - @FF1D1D1Dx3|Золотое кольцо с черепом - @FF1D1D1Dx2"
+		text="Специальный ящик для диких. Построив его, вы сможете просить диких добывать для вас различные предметы, при условии если хорошо им заплатите.|@FF0000AA|@FF780a0a[Для передачи предметов, необходимо построить Хранилище уровня II]|@FF0000AA|@FF1D1D1DДля постройки требуется:|На выбор: @FF1D1D1D[Электроника - x2, Высокотехнологичная электроника - x2]|На выбор: @FF1D1D1D[Рабочее оборудование - x1, Улучшенное оборудование - x2]|Книги - @FF1D1D1Dx1|Бутылки - @FF1D1D1Dx1|Детали - @FF1D1D1Dx1|Ананага - @FF1D1D1Dx1|Золотые часы - @FF1D1D1Dx1|Золотая цепочка - @FF1D1D1Dx3|Золотое кольцо с черепом - @FF1D1D1Dx2"
 		role="NPC"
 		scriptCondition="GetVar('Inventory_lvl_2_Builden').AsInt == 0 and GetVar('ChestScavs_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0 and not(GetVar('DialogSelectMap').AsInt == 2)"
 		nextReplies="Dlg_pl_001336" />
@@ -9331,14 +9331,14 @@
 <!--Root/r0m0/Ветрогенератор постройка-->
 	<Reply
 		name="Dlg_npc_003"
-		text="Ветрогенератор, вырабатывающий энергию за счёт скорости ветра. Позволяет заниматься майнингом криптовалюты.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Двигатель - @FF1D1D1Dx2|Детали - @FF1D1D1Dx2|Термометр - @FF1D1D1Dx1|Саморезы - @FF1D1D1Dx3|Военный кабель - @FF1D1D1Dx1|Военная плата - @FF1D1D1Dx2|Кулер - @FF1D1D1Dx2|Мануал @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Деньги: @FF1D1D1D1.000.000 монет|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Майнинг криптовалюты Биткоин"
+		text="Ветрогенератор, вырабатывающий энергию за счёт скорости ветра. Позволяет заниматься майнингом криптовалюты.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Двигатель - @FF1D1D1Dx2|Детали - @FF1D1D1Dx2|Термометр - @FF1D1D1Dx1|Саморезы - @FF1D1D1Dx3|Военный кабель - @FF1D1D1Dx1|Военная плата - @FF1D1D1Dx2|Кулер - @FF1D1D1Dx2|Мануал @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Деньги: @FF1D1D1D1.000.000 монет"
 		role="NPC"
 		scriptCondition="GetVar('WindGenerator_Builden').AsInt == 0 and not(GetVar('PlayerBelong').AsString == 'SCAV') and not(GetVar('DialogSelectMap').AsInt == 2)"
 		nextReplies="Dlg_pl_005 Dlg_pl_006 Dlg_pl_007 Dlg_pl_008 Dlg_pl_009 Dlg_pl_0010 Dlg_pl_00101 Dlg_pl_0011 Dlg_pl_0012 Dlg_pl_0013 Dlg_pl_0014 Dlg_pl_0015" />
 	
 	<Reply
 		name="Dlg_npc_004"
-		text="Ветрогенератор, вырабатывающий энергию за счёт скорости ветра. Позволяет заниматься майнингом криптовалюты.|@FF0000AA|@FF780a0a[Дикие не могут передавать предметы для убежища]|@FF0000AA|@FF1D1D1DДля постройки требуется:|Двигатель - @FF1D1D1Dx2|Детали - @FF1D1D1Dx2|Термометр - @FF1D1D1Dx1|Саморезы - @FF1D1D1Dx3|Военный кабель - @FF1D1D1Dx1|Военная плата - @FF1D1D1Dx2|Кулер - @FF1D1D1Dx2|Мануал @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Деньги: @FF1D1D1D1.000.000 монет|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Майнинг криптовалюты Биткоин"
+		text="Ветрогенератор, вырабатывающий энергию за счёт скорости ветра. Позволяет заниматься майнингом криптовалюты.|@FF0000AA|@FF780a0a[Дикие не могут передавать предметы для убежища]|@FF0000AA|@FF1D1D1DДля постройки требуется:|Двигатель - @FF1D1D1Dx2|Детали - @FF1D1D1Dx2|Термометр - @FF1D1D1Dx1|Саморезы - @FF1D1D1Dx3|Военный кабель - @FF1D1D1Dx1|Военная плата - @FF1D1D1Dx2|Кулер - @FF1D1D1Dx2|Мануал @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Набор инструментов @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Деньги: @FF1D1D1D1.000.000 монет"
 		role="NPC"
 		scriptCondition="GetVar('WindGenerator_Builden').AsInt == 0 and GetVar('PlayerBelong').AsString == 'SCAV' and not(GetVar('DialogSelectMap').AsInt == 2)"
 		nextReplies="Dlg_pl_0014" />
@@ -9481,6 +9481,769 @@
 		scriptCondition="GetVar('WindGenerator_status').AsString == 'DONE'"
 		scriptResult="SetVar('WindGenerator_status', '0'); AddItemsToPlayerRepository('item_bitcoin'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_bitcoin'); SafeSetSkinObj('wg_7', 0); TActivate('RestoreRotationWindGeneratorPropeller')"
 		nextReplies="Dlg_npc_windgenerator_1" />
+
+<!--Root/r0m0/Стенд с предметами постройка-->
+	<Reply
+		name="Dlg_npc_01"
+		text="Ваш личный стеллаж, на который можно выставить свои предметы и ценности.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Доски - @FF1D1D1Dx3|Саморезы - @FF1D1D1Dx2|Дрель - @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Плоскогубцы @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Отвертка плоская длинная @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Garage_Builden').AsInt == 0 and GetVar('Shelf_Builden').AsInt == 0 and GetVar('Inventory_lvl_2_Builden').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
+		nextReplies="Dlg_pl_03 Dlg_pl_04 Dlg_pl_05 Dlg_pl_06 Dlg_pl_07 Dlg_pl_08 Dlg_pl_09 Dlg_pl_010" />
+	
+	<Reply
+		name="Dlg_npc_02"
+		text="Ваш личный стеллаж, на который можно выставить свои предметы и ценности.|@FF0000AA|@FF780a0a[Дикие не могут передавать предметы для убежища]|@FF0000AA|@FF1D1D1DДля постройки требуется:|Доски - @FF1D1D1Dx3|Саморезы - @FF1D1D1Dx2|Дрель - @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Плоскогубцы @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Отвертка плоская длинная @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Garage_Builden').AsInt == 0 and GetVar('Shelf_Builden').AsInt == 0 and GetVar('Inventory_lvl_2_Builden').AsInt == 1 and GetVar('PlayerBelong').AsString == 'SCAV'"
+		nextReplies="Dlg_pl_09" />
+
+	<Reply
+		name="Dlg_npc_01_2"
+		text="Ваш личный стеллаж, на который можно выставить свои предметы и ценности.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Доски - @FF1D1D1Dx3|Саморезы - @FF1D1D1Dx2|Дрель - @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Плоскогубцы @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Отвертка плоская длинная @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Garage_Builden').AsInt == 1 and GetVar('Shelf_Builden').AsInt == 0 and GetVar('Inventory_lvl_2_Builden').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
+		nextReplies="Dlg_pl_03 Dlg_pl_04 Dlg_pl_05 Dlg_pl_06 Dlg_pl_07 Dlg_pl_08 Dlg_pl_09 Dlg_pl_010" />
+	
+	<Reply
+		name="Dlg_npc_02_2"
+		text="Ваш личный стеллаж, на который можно выставить свои предметы и ценности.|@FF0000AA|@FF780a0a[Дикие не могут передавать предметы для убежища]|@FF0000AA|@FF1D1D1DДля постройки требуется:|Доски - @FF1D1D1Dx3|Саморезы - @FF1D1D1Dx2|Дрель - @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Плоскогубцы @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Отвертка плоская длинная @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		role="NPC"
+		scriptCondition="GetVar('Garage_Builden').AsInt == 1 and GetVar('Shelf_Builden').AsInt == 0 and GetVar('Inventory_lvl_2_Builden').AsInt == 1 and GetVar('PlayerBelong').AsString == 'SCAV'"
+		nextReplies="Dlg_pl_09" />
+
+	<Reply
+		name="Dlg_pl_03"
+		text="Передать Доски - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('doski', 1) and not(GetVar('Shelf_doski').AsInt == 3)"
+		scriptResult="RemoveItemsFromPlayerRepository('doski', 1); SetVar('Shelf_doski', GetVar('Shelf_doski').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'doski')"
+		nextReplies="Dlg_npc_01 Dlg_npc_01_2" />
+
+	<Reply
+		name="Dlg_pl_04"
+		text="Передать Саморезы - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_screws', 1) and not(GetVar('Shelf_item_screws').AsInt == 2)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_screws', 1); SetVar('Shelf_item_screws', GetVar('Shelf_item_screws').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_screws')"
+		nextReplies="Dlg_npc_01 Dlg_npc_01_2" />
+
+	<Reply
+		name="Dlg_pl_05"
+		text="Передать Дрель - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_drill', 1) and not(GetVar('Shelf_item_drill').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_drill', 1); SetVar('Shelf_item_drill', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_drill')"
+		nextReplies="Dlg_npc_01 Dlg_npc_01_2" />
+
+	<Reply
+		name="Dlg_pl_06"
+		text="Передать Рулетку - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_roulet', 1) and not(GetVar('Shelf_item_roulet').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_roulet', 1); SetVar('Shelf_item_roulet', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_roulet')"
+		nextReplies="Dlg_npc_01 Dlg_npc_01_2" />
+
+	<Reply
+		name="Dlg_pl_07"
+		text="Передать Плоскогубцы - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_pliers', 1) and not(GetVar('Shelf_item_pliers').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_pliers', 1); SetVar('Shelf_item_pliers', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_pliers')"
+		nextReplies="Dlg_npc_01 Dlg_npc_01_2" />
+
+	<Reply
+		name="Dlg_pl_08"
+		text="Передать Отвертку плоскую длинную - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_screw_flat_long', 1) and not(GetVar('Shelf_item_screw_flat_long').AsInt == 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_screw_flat_long', 1); SetVar('Shelf_item_screw_flat_long', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'Shelf_item_screw_flat_long')"
+		nextReplies="Dlg_npc_01 Dlg_npc_01_2" />
+
+	<Reply
+		name="Dlg_pl_09"
+		text="Выход."
+		role="PLAYER"
+		scriptCondition="not(GetVar('Shelf_doski').AsInt == 3) or not(GetVar('Shelf_item_screws').AsInt == 2) or not(GetVar('Shelf_item_drill').AsInt == 1) or not(GetVar('Shelf_item_roulet').AsInt == 1) or not(GetVar('Shelf_item_pliers').AsInt == 1) or not(GetVar('Shelf_item_screw_flat_long').AsInt == 1)"
+		scriptResult="EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_010"
+		text="Построить."
+		role="PLAYER"
+		scriptCondition="GetVar('Shelf_doski').AsInt == 3 and GetVar('Shelf_item_screws').AsInt == 2 and GetVar('Shelf_item_drill').AsInt == 1 and GetVar('Shelf_item_roulet').AsInt == 1 and GetVar('Shelf_item_pliers').AsInt == 1 and GetVar('Shelf_item_screw_flat_long').AsInt == 1"
+		scriptResult="TActivate('CreateShelf'); AddItemsToPlayerRepository('item_roulet'); AddItemsToPlayerRepository('item_pliers'); AddItemsToPlayerRepository('item_screw_flat_long'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_roulet'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_pliers'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_screw_flat_long'); EndConversation()" />
+
+<!--Root/r0m0/Стенд с предметами-->
+	<Reply
+		name="Dlg_npc_011"
+		text="Ваш личный стеллаж, на который можно выставить свои предметы и ценности.|@FF0000AA|@FF1D1D1D[Выберите слот]"
+		role="NPC"
+		scriptCondition="GetVar('Garage_Builden').AsInt == 0 and GetVar('Shelf_Builden').AsInt == 1 and GetVar('Inventory_lvl_2_Builden').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
+		nextReplies="Dlg_pl_shelf_slot_1 Dlg_pl_shelf_slot_2 Dlg_pl_shelf_slot_3 Dlg_pl_shelf_slot_4 Dlg_pl_shelf_slot_5 Dlg_pl_shelf_slot_6 Dlg_pl_shelf_slot_7 Dlg_pl_shelf_slot_8 Dlg_pl_shelf_slot_9 Dlg_pl_shelf_slot_10 Dlg_pl_shelf_slot_11 Dlg_pl_shelf_slot_12 Dlg_pl_shelf_slot_13 Dlg_pl_shelf_slot_14 Dlg_pl_shelf_slot_15 Dlg_pl_shelf_slot_16 Dlg_pl_shelf_slot_17 Dlg_pl_shelf_slot_18 Dlg_pl_shelf_slot_19 Dlg_pl_shelf_slot_20 Dlg_pl_shelf_slot_21 Dlg_pl_shelf_slot_22 Dlg_pl_shelf_slot_23 Dlg_pl_shelf_slot_24 Dlg_pl_exit_shelf" />
+	
+	<Reply
+		name="Dlg_npc_012"
+		text="Ваш личный стеллаж, на который можно выставить свои предметы и ценности.|@FF0000AA|@FF780a0a[Дикие не могут управлять модулями убежища]"
+		role="NPC"
+		scriptCondition="GetVar('Garage_Builden').AsInt == 0 and GetVar('Shelf_Builden').AsInt == 1 and GetVar('Inventory_lvl_2_Builden').AsInt == 1 and GetVar('PlayerBelong').AsString == 'SCAV'"
+		nextReplies="Dlg_pl_exit_shelf" />
+
+	<Reply
+		name="Dlg_npc_011_2"
+		text="Ваш личный стеллаж, на который можно выставить свои предметы и ценности.|@FF0000AA|@FF1D1D1D[Выберите слот]"
+		role="NPC"
+		scriptCondition="GetVar('Garage_Builden').AsInt == 1 and GetVar('Shelf_Builden').AsInt == 1 and GetVar('Inventory_lvl_2_Builden').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
+		nextReplies="Dlg_pl_shelf_slot_1 Dlg_pl_shelf_slot_2 Dlg_pl_shelf_slot_3 Dlg_pl_shelf_slot_4 Dlg_pl_shelf_slot_5 Dlg_pl_shelf_slot_6 Dlg_pl_shelf_slot_7 Dlg_pl_shelf_slot_8 Dlg_pl_shelf_slot_9 Dlg_pl_shelf_slot_10 Dlg_pl_shelf_slot_11 Dlg_pl_shelf_slot_12 Dlg_pl_shelf_slot_13 Dlg_pl_shelf_slot_14 Dlg_pl_shelf_slot_15 Dlg_pl_shelf_slot_16 Dlg_pl_shelf_slot_17 Dlg_pl_shelf_slot_18 Dlg_pl_shelf_slot_19 Dlg_pl_shelf_slot_20 Dlg_pl_shelf_slot_21 Dlg_pl_shelf_slot_22 Dlg_pl_shelf_slot_23 Dlg_pl_shelf_slot_24 Dlg_pl_exit_shelf" />
+	
+	<Reply
+		name="Dlg_npc_012_2"
+		text="Ваш личный стеллаж, на который можно выставить свои предметы и ценности.|@FF0000AA|@FF780a0a[Дикие не могут управлять модулями убежища]"
+		role="NPC"
+		scriptCondition="GetVar('Garage_Builden').AsInt == 1 and GetVar('Shelf_Builden').AsInt == 1 and GetVar('Inventory_lvl_2_Builden').AsInt == 1 and GetVar('PlayerBelong').AsString == 'SCAV'"
+		nextReplies="Dlg_pl_exit_shelf" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_1"
+		text="Слот №1"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_1').AsString == '0'"
+		scriptResult="SetVar('ShelfSelectSlot', 1)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_2"
+		text="Слот №1 (Занят)"
+		role="PLAYER"
+		scriptCondition="not(GetVar('ShelfSelectItem_Slot_1').AsString == '0')"
+		scriptResult="SetVar('ShelfSelectSlot', 1)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_3"
+		text="Слот №2"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_2').AsString == '0'"
+		scriptResult="SetVar('ShelfSelectSlot', 2)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_4"
+		text="Слот №2 (Занят)"
+		role="PLAYER"
+		scriptCondition="not(GetVar('ShelfSelectItem_Slot_2').AsString == '0')"
+		scriptResult="SetVar('ShelfSelectSlot', 2)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_5"
+		text="Слот №3"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_3').AsString == '0'"
+		scriptResult="SetVar('ShelfSelectSlot', 3)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_6"
+		text="Слот №3 (Занят)"
+		role="PLAYER"
+		scriptCondition="not(GetVar('ShelfSelectItem_Slot_3').AsString == '0')"
+		scriptResult="SetVar('ShelfSelectSlot', 3)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_7"
+		text="Слот №4"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_4').AsString == '0'"
+		scriptResult="SetVar('ShelfSelectSlot', 4)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_8"
+		text="Слот №4 (Занят)"
+		role="PLAYER"
+		scriptCondition="not(GetVar('ShelfSelectItem_Slot_4').AsString == '0')"
+		scriptResult="SetVar('ShelfSelectSlot', 4)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_9"
+		text="Слот №5"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_5').AsString == '0'"
+		scriptResult="SetVar('ShelfSelectSlot', 5)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_10"
+		text="Слот №5 (Занят)"
+		role="PLAYER"
+		scriptCondition="not(GetVar('ShelfSelectItem_Slot_5').AsString == '0')"
+		scriptResult="SetVar('ShelfSelectSlot', 5)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_11"
+		text="Слот №6"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_6').AsString == '0'"
+		scriptResult="SetVar('ShelfSelectSlot', 6)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_12"
+		text="Слот №6 (Занят)"
+		role="PLAYER"
+		scriptCondition="not(GetVar('ShelfSelectItem_Slot_6').AsString == '0')"
+		scriptResult="SetVar('ShelfSelectSlot', 6)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_13"
+		text="Слот №7"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_7').AsString == '0'"
+		scriptResult="SetVar('ShelfSelectSlot', 7)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_14"
+		text="Слот №7 (Занят)"
+		role="PLAYER"
+		scriptCondition="not(GetVar('ShelfSelectItem_Slot_7').AsString == '0')"
+		scriptResult="SetVar('ShelfSelectSlot', 7)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_15"
+		text="Слот №8"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_8').AsString == '0'"
+		scriptResult="SetVar('ShelfSelectSlot', 8)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_16"
+		text="Слот №8 (Занят)"
+		role="PLAYER"
+		scriptCondition="not(GetVar('ShelfSelectItem_Slot_8').AsString == '0')"
+		scriptResult="SetVar('ShelfSelectSlot', 8)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_17"
+		text="Слот №9"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_9').AsString == '0'"
+		scriptResult="SetVar('ShelfSelectSlot', 9)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_18"
+		text="Слот №9 (Занят)"
+		role="PLAYER"
+		scriptCondition="not(GetVar('ShelfSelectItem_Slot_9').AsString == '0')"
+		scriptResult="SetVar('ShelfSelectSlot', 9)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_19"
+		text="Слот №10"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_10').AsString == '0'"
+		scriptResult="SetVar('ShelfSelectSlot', 10)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_20"
+		text="Слот №10 (Занят)"
+		role="PLAYER"
+		scriptCondition="not(GetVar('ShelfSelectItem_Slot_10').AsString == '0')"
+		scriptResult="SetVar('ShelfSelectSlot', 10)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_21"
+		text="Слот №11"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_11').AsString == '0'"
+		scriptResult="SetVar('ShelfSelectSlot', 11)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_22"
+		text="Слот №11 (Занят)"
+		role="PLAYER"
+		scriptCondition="not(GetVar('ShelfSelectItem_Slot_11').AsString == '0')"
+		scriptResult="SetVar('ShelfSelectSlot', 11)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_23"
+		text="Слот №12"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_12').AsString == '0'"
+		scriptResult="SetVar('ShelfSelectSlot', 12)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_slot_24"
+		text="Слот №12 (Занят)"
+		role="PLAYER"
+		scriptCondition="not(GetVar('ShelfSelectItem_Slot_12').AsString == '0')"
+		scriptResult="SetVar('ShelfSelectSlot', 12)"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_exit_shelf"
+		text="Выход."
+		role="PLAYER"
+		scriptResult="EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_013"
+		text="Ваш личный стеллаж, на который можно выставить свои предметы и ценности.|@FF0000AA|@FF1D1D1D[Выберите предмет для размещения]"
+		role="NPC"
+		nextReplies="Dlg_pl_shelf_item_1 Dlg_pl_shelf_item_2 Dlg_pl_shelf_item_3 Dlg_pl_shelf_item_4 Dlg_pl_shelf_item_5 Dlg_pl_shelf_item_6 Dlg_pl_shelf_item_7 Dlg_pl_shelf_item_8 Dlg_pl_shelf_item_9 Dlg_pl_shelf_item_10 Dlg_pl_shelf_item_11 Dlg_pl_shelf_item_12 Dlg_pl_shelf_item_13 Dlg_pl_shelf_item_14 Dlg_pl_shelf_item_15 Dlg_pl_shelf_item_16 Dlg_pl_shelf_item_17 Dlg_pl_shelf_item_18 Dlg_pl_shelf_item_19 Dlg_pl_shelf_item_20 Dlg_pl_shelf_item_21 Dlg_pl_shelf_item_22 Dlg_pl_shelf_item_23 Dlg_pl_shelf_item_24 Dlg_pl_shelf_item_27 Dlg_pl_shelf_item_28 Dlg_pl_shelf_item_29 Dlg_pl_shelf_item_30 Dlg_pl_shelf_item_31 Dlg_pl_shelf_item_32 Dlg_pl_shelf_item_33 Dlg_pl_shelf_item_34 Dlg_pl_shelf_item_35 Dlg_pl_shelf_item_36 Dlg_pl_shelf_item_37 Dlg_pl_shelf_item_38 Dlg_pl_shelf_item_39 Dlg_pl_shelf_item_40 Dlg_pl_shelf_item_41 Dlg_pl_shelf_item_42 Dlg_pl_shelf_item_43 Dlg_pl_shelf_item_44 Dlg_pl_shelf_item_45 Dlg_pl_shelf_item_46 Dlg_pl_shelf_item_47 Dlg_pl_shelf_item_48 Dlg_pl_shelf_item_49 Dlg_pl_shelf_item_50 Dlg_pl_shelf_item_51 Dlg_pl_shelf_item_52 Dlg_pl_shelf_item_53 Dlg_pl_shelf_item_54 Dlg_pl_shelf_item_55 Dlg_pl_shelf_item_56 Dlg_pl_back_shelf" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_1"
+		text="Разместить Картошку"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('potato', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('potato', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'potato'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'potato'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_2"
+		text="Забрать Картошку"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'potato'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('potato'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'potato')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_3"
+		text="Разместить Металлолом"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('scrap_metal', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('scrap_metal', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'scrap_metal'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'scrap_metal'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_4"
+		text="Забрать Металлолом"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'scrap_metal'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('scrap_metal'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'scrap_metal')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_5"
+		text="Разместить Дрова"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('firewood', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('firewood', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'firewood'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'firewood'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_6"
+		text="Забрать Дрова"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'firewood'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('firewood'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'firewood')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_7"
+		text="Разместить Нефть"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('oil', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('oil', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'oil'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'oil'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_8"
+		text="Забрать Нефть"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'oil'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('oil'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'oil')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_9"
+		text="Разместить Бутылки"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('bottle', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('bottle', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'bottle'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'bottle'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_10"
+		text="Забрать Бутылки"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'bottle'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('bottle'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'bottle')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_11"
+		text="Разместить Горючее"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('fuel', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('fuel', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'fuel'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'fuel'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_12"
+		text="Забрать Горючее"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'fuel'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('fuel'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'fuel')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_13"
+		text="Разместить Рабочее оборудование"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('machinery', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('machinery', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'machinery'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'machinery'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_14"
+		text="Забрать Рабочее оборудование"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'machinery'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('machinery'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'machinery')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_15"
+		text="Разместить Табак"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('tobacco', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('tobacco', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'tobacco'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'tobacco'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_16"
+		text="Забрать Табак"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'tobacco'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('tobacco'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'tobacco')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_17"
+		text="Разместить Книги"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('book', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('book', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'book'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'book'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_18"
+		text="Забрать Книги"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'book'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('book'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'book')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_19"
+		text="Разместить Электронику"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('electronics', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('electronics', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'electronics'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'electronics'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_20"
+		text="Забрать Электронику"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'electronics'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('electronics'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'electronics')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_21"
+		text="Разместить Доски"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('doski', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('doski', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'doski'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'doski'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_22"
+		text="Забрать Доски"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'doski'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('doski'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'doski')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_23"
+		text="Разместить Детали"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('details', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('details', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'details'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'details'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_24"
+		text="Забрать Детали"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'details'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('details'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'details')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_27"
+		text="Разместить Крепкий металл"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('scrap_metal_use', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('scrap_metal_use', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'scrap_metal_use'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'scrap_metal_use'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_28"
+		text="Забрать Крепкий металл"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'scrap_metal_use'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('scrap_metal_use'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'scrap_metal_use')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_29"
+		text="Разместить Улучшенное оборудование"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('machinery_use', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('machinery_use', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'machinery_use'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'machinery_use'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_30"
+		text="Забрать Улучшенное оборудование"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'machinery_use'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('machinery_use'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'machinery_use')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_31"
+		text="Разместить Высокотехнологичную электронику"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('electronics_use', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('electronics_use', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'electronics_use'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'electronics_use'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_32"
+		text="Забрать Высокотехнологичную электронику"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'electronics_use'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('electronics_use'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'electronics_use')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_33"
+		text="Разместить Бочку с топливом"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('oil_use', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('oil_use', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'oil_use'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'oil_use'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_34"
+		text="Забрать Бочку с топливом"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'oil_use'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('oil_use'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'oil_use')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_35"
+		text="Разместить Канистру топлива"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('fuel_full_use', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('fuel_full_use', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'fuel_full_use'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'fuel_full_use'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_36"
+		text="Забрать Канистру топлива"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'fuel_full_use'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('fuel_full_use'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'fuel_full_use')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_37"
+		text="Разместить Пустую канистру"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('fuel_nil_use', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('fuel_nil_use', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'fuel_nil_use'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'fuel_nil_use'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_38"
+		text="Забрать Пустую канистру"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'fuel_nil_use'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('fuel_nil_use'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'fuel_nil_use')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_39"
+		text="Разместить Ключ от ворот Южного"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_key_gate_thetown', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('item_key_gate_thetown', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'item_key_gate_thetown'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'item_key_gate_thetown'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_40"
+		text="Забрать Ключ от ворот Южного"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'item_key_gate_thetown'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('item_key_gate_thetown'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_key_gate_thetown')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_41"
+		text="Разместить Ключ от ворот в ущелье"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_key_gate_basefelix', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('item_key_gate_basefelix', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'item_key_gate_basefelix'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'item_key_gate_basefelix'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_42"
+		text="Забрать Ключ от ворот в ущелье"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'item_key_gate_basefelix'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('item_key_gate_basefelix'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_key_gate_basefelix')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_43"
+		text="Разместить CD Диск"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_disk', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('item_disk', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'item_disk'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'item_disk'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_44"
+		text="Забрать CD Диск"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'item_disk'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('item_disk'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_disk')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_45"
+		text="Разместить Диск с игрой Ex Machina"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_disk_exmachina', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('item_disk_exmachina', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'item_disk_exmachina'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'item_disk_exmachina'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_46"
+		text="Забрать Диск с игрой Ex Machina"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'item_disk_exmachina'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('item_disk_exmachina'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_disk_exmachina')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_47"
+		text="Разместить Emre Kara"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_emre_kara', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('item_emre_kara', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'item_emre_kara'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'item_emre_kara'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_48"
+		text="Забрать Emre Kara"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'item_emre_kara'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('item_emre_kara'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_emre_kara')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_49"
+		text="Разместить Дакимакуру FitaNyashka"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_fitanyashka', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('item_fitanyashka', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'item_fitanyashka'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'item_fitanyashka'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_50"
+		text="Забрать Дакимакуру FitaNyashka"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'item_fitanyashka'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('item_fitanyashka'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_fitanyashka')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_51"
+		text="Разместить Визитную карту MONOLIT"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_monolit', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('item_monolit', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'item_monolit'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'item_monolit'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_52"
+		text="Забрать Визитную карту MONOLIT"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'item_monolit'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('item_monolit'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_monolit')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_53"
+		text="Разместить Кактус"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_kaktus', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('item_kaktus', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'item_kaktus'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'item_kaktus'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_54"
+		text="Забрать Кактус"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'item_kaktus'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('item_kaktus'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_kaktus')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_55"
+		text="Разместить Турбо-ускорение"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('someTurboAccelerationPusher', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('someTurboAccelerationPusher', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'someTurboAccelerationPusher'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'someTurboAccelerationPusher'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_56"
+		text="Забрать Турбо-ускорение"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'someTurboAccelerationPusher'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('someTurboAccelerationPusher'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'someTurboAccelerationPusher')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_back_shelf"
+		text="Назад."
+		role="PLAYER"
+		scriptResult="SetVar('ShelfSelectSlot', 0)"
+		nextReplies="Dlg_npc_011 Dlg_npc_011_2" />
 
 <!--Root/r0m0/Выход с карты-->
 	<Reply

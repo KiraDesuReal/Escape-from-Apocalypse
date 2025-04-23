@@ -475,6 +475,20 @@
 			SetVar("WindGenerator_time_msg", "0")
 			SetVar("WindGenerator_status", "0")
 
+			SetVar("Shelf_doski", 0)
+			SetVar("Shelf_item_screws", 0)
+			SetVar("Shelf_item_drill", 0)
+			SetVar("Shelf_item_roulet", 0)
+			SetVar("Shelf_item_pliers", 0)
+			SetVar("Shelf_item_screw_flat_long", 0)
+			SetVar("Shelf_Builden", 0)
+
+			SetVar("ShelfSelectSlot", 0)
+
+			for i = 1, 12 do
+				SetVar("ShelfSelectItem_Slot_"..i, "0")
+			end
+
 			SetVar("Weather", 0)
 			SetVar("SpeedWind", 0)
 			SetVar("GameTimeHour", "0")
@@ -1391,6 +1405,8 @@
 			CreateNewDummyObject("cargo", "cont_10_lvl_2", -1, -1, CVector(949.460, 258.173, 982.804), Quaternion(0.000, 1.000, 0.000, -0.000))
 			CreateNewDummyObject("cargo", "cont_11_lvl_2", -1, -1, CVector(952.263, 258.173, 982.805), Quaternion(0.000, 1.000, 0.000, -0.000))
 
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "shelf_build_point", -1, -1, CVector(900.527, 254.700, 976.040), Quaternion(0, 0, 0, 0), 0.08)
+
 			local Chest = CreateNewObject{prototypeName = "opacityChest", objName = "PlayerInventory_Lvl_2"}	
 			local ChestId = GetEntityByID(Chest)
 			ChestId:SetPosition(CVector(947, 255, 979))
@@ -1403,6 +1419,7 @@
 			
 			SetVar("Inventory_lvl_2_Builden", 1)
 			TDeactivate("Inventory_lvl_2_BuildInfo")
+			TActivate("Shelf_BuildInfo")
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1556,7 +1573,8 @@
 	</trigger>
 
 	<trigger Name="ChestScavs_Time" active="0">
-		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="ChestScavs_Timer_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ChestScavs_Timer_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ChestScavs_Timer_loc" />
 		<script>
 			if not(GetVar("ChestScavs_time_msg").AsString == "0") then
 				AddFadingMsgByStrIdFormatted("fm_chest_scavs_timer", GetVar("ChestScavs_time_msg").AsString)
@@ -2018,7 +2036,7 @@
 	<trigger Name="CreateGeneratorPoint" active="1">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "generator_point", -1, -1, CVector(824.307, 253.500, 999.765), Quaternion(0, 0, 0, 0), 0.15)
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "generator_point", -1, -1, CVector(824.307, 254, 999.765), Quaternion(0, 0, 0, 0), 0.15)
 			CreateNewDummyObject("ore_mine_tower", "mine_tower", -1, -1, CVector(776.134, 255, 1005.534), Quaternion(0.0000, -0.0112, 0.0037, 0.9999))
 			TActivate("Generator_BuildInfo")
 			trigger:Deactivate()
@@ -2357,15 +2375,14 @@
 	</trigger>
 
 	<trigger Name="GeneratorTimeWork" active="0">
-		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Generator_lvl_1_Timer_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Generator_lvl_1_Timer_loc" />
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Generator_lvl_1_Timer_loc" />
-		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Generator_lvl_2_Timer_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Generator_lvl_2_Timer_loc" />
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Generator_lvl_2_Timer_loc" />
 		<script>
-			local event = trigger:GetCallEvent()
 			local eventName = trigger:GetCallObjName()
 			
-			if event == "GE_OBJECT_IN_LOCATION" and eventName == "Generator_lvl_1_Timer_loc" and GetVar("Generator_lvl").AsInt == 1 or event == "GE_OBJECT_IN_LOCATION" and eventName == "Generator_lvl_2_Timer_loc" and GetVar("Generator_lvl").AsInt == 2 then
+			if eventName == "Generator_lvl_1_Timer_loc" and GetVar("Generator_lvl").AsInt == 1 or eventName == "Generator_lvl_2_Timer_loc" and GetVar("Generator_lvl").AsInt == 2 then
 				if not(GetVar("Generator_time_work_msg").AsString == "0") then
 					AddFadingMsgByStrIdFormatted("fm_generator_time_work", GetVar("Generator_time_work_msg").AsString)
 				end
@@ -2607,6 +2624,7 @@
 					if sound then sound:Remove() end
 					SetVar("GarageCraftPause", 1)
 					local t = GetEntityByName("gr_52")
+					TActivate("GarageCraftingUpdateTimeMsg")
 					if GetVar("Generator_time_work_second").AsInt > 0 or GetVar("Generator_time_work_minute").AsInt > 0 or GetVar("Generator_time_work_hour").AsInt > 0 then
 						if t then t:SetSkin(7) end
 					else
@@ -3135,18 +3153,16 @@
 
 	<trigger Name="GarageCraftingTimeMsg" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Garage_Crafting_Timer_loc" />
-		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Garage_Crafting_Timer_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Garage_Crafting_Timer_loc" />
 		<script>
-			local event = trigger:GetCallEvent()
-
 			if not(GetVar("GarageCrafting_time_msg").AsString == "0") then
 				TActivate("GarageCraftingUpdateTimeMsg")
 
-				if GetVar("GarageCraftPause").AsInt == 0 and event == "GE_OBJECT_IN_LOCATION" then
+				if GetVar("GarageCraftPause").AsInt == 0 then
 					AddFadingMsgByStrIdFormatted("fm_chest_scavs_timer", GetVar("GarageCrafting_time_msg").AsString)
 				end
 
-				if GetVar("GarageCraftPause").AsInt == 1 and event == "GE_OBJECT_ENTERS_LOCATION" then
+				if GetVar("GarageCraftPause").AsInt == 1 then
 					AddFadingMsgByStrIdFormatted("fm_garage_crafting_timer_pause", GetVar("GarageCrafting_time_msg").AsString)
 				end
 			end
@@ -3739,6 +3755,47 @@
 
 			AddFadingMsgByStrIdFormatted("fm_windgenerator_off")
 			SoundFadingMsg()
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Стенд с предметами -->
+	<trigger Name="Shelf_BuildInfo" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Shelf_Build_loc" />
+		<script>
+			if not(GetVar("PlayerBelong").AsString == "SCAV") then
+				if not(GetVar("Shelf_doski").AsInt == 3) or not(GetVar("Shelf_item_screws").AsInt == 2) or not(GetVar("Shelf_item_drill").AsInt == 1) or not(GetVar("Shelf_item_roulet").AsInt == 1) or not(GetVar("Shelf_item_pliers").AsInt == 1) or not(GetVar("Shelf_item_screw_flat_long").AsInt == 1) then
+					local item_1, item_2, item_3, item_4, item_5, item_6 = "", "", "", "", "", ""
+
+					if GetVar("Shelf_doski").AsInt ~= 3 then item_1 = "Доски - @fff3e5cbx"..(3 - GetVar("Shelf_doski").AsInt).."|" end
+					if GetVar("Shelf_item_screws").AsInt ~= 2 then item_2 = "@ffffffffСаморезы - @fff3e5cbx"..(2 - GetVar("Shelf_item_screws").AsInt).."|" end
+					if GetVar("Shelf_item_drill").AsInt ~= 1 then item_3 = "@ffffffffДрель - @fff3e5cbx1|" end
+					if GetVar("Shelf_item_roulet").AsInt ~= 1 then item_4 = "@ffffffffРулетка - @fff3e5cbx1|" end
+					if GetVar("Shelf_item_pliers").AsInt ~= 1 then item_5 = "@ffffffffПлоскогубцы - @fff3e5cbx1|" end
+					if GetVar("Shelf_item_screw_flat_long").AsInt ~= 1 then item_6 = "@ffffffffОтвертка плоская длинная - @fff3e5cbx1|" end
+	
+					local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5..""..item_6
+
+					if msg then AddFadingMsgByStrIdFormatted("fm_items_to_build", msg) end
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="CreateShelf" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local p = GetEntityByName("shelf_build_point")
+			if p then p:Remove() end
+
+			CreateNewDummyObject("shelf", "shelf_1", -1, -1, CVector(900.562, 255, 971.283), Quaternion(0, 1, 0, 0))
+			CreateNewSgNodeObject("shelf_plant", "shelf_2", -1, -1, CVector(902.964, 260.691, 971.387), Quaternion(0, 0, 0, 1), 0.8)
+
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(900, 255, 971), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_S_BUILDING", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1800)
+
+			SetVar("Shelf_Builden", 1)
+			TDeactivate("Shelf_BuildInfo")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4607,7 +4664,8 @@
 	</trigger>
 
 	<trigger Name="ScavCarTimeMsg" active="0">
-		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="ScavCarSpawn_Timer_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ScavCarSpawn_Timer_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ScavCarSpawn_Timer_loc" />
 		<script>
 			if not(GetVar("ScavCar_time_msg").AsString == "0") then
 				AddFadingMsgByStrIdFormatted("fm_chest_scavs_timer", GetVar("ScavCar_time_msg").AsString)

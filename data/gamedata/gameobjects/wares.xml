@@ -308,7 +308,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "26600"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "ammo_chest_artillerygun"
 		ResourceType= "ITEM_SIZE_4X2" />
 
 	<Prototype
@@ -317,7 +317,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "38"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "ammo_chest_artillerygun"
 		VisibleInEncyclopedia	= "false"
 		ResourceType= "ITEM_SIZE_4X2" />
 
@@ -327,7 +327,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "16250"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "ammo_chest_heavygun"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
@@ -336,7 +336,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "27"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "ammo_chest_heavygun"
 		VisibleInEncyclopedia	= "false"
 		ResourceType= "ITEM_SIZE_2X2" />
 
@@ -346,7 +346,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "8900"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "ammo_chest_machinegun"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
@@ -355,7 +355,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "14"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "ammo_chest_machinegun"
 		VisibleInEncyclopedia	= "false"
 		ResourceType= "ITEM_SIZE_2X2" />
 
@@ -365,7 +365,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "24000"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "ammo_chest_rocketgun"
 		ResourceType= "ITEM_SIZE_4X2" />
 
 	<Prototype
@@ -374,7 +374,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "33"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "ammo_chest_rocketgun"
 		VisibleInEncyclopedia	= "false"
 		ResourceType= "ITEM_SIZE_4X2" />
 
@@ -384,7 +384,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "5650"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "ammo_chest_shotgun"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
@@ -393,7 +393,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "10"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "ammo_chest_shotgun"
 		VisibleInEncyclopedia	= "false"
 		ResourceType= "ITEM_SIZE_2X2" />
 
@@ -403,7 +403,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "14850"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "ammo_ballon_lasergun"
 		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
@@ -412,7 +412,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "20550"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "ammo_ballon_plasmagun"
 		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
@@ -421,7 +421,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "15750"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "ammo_ballon_turbo"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
@@ -430,7 +430,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "26"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "ammo_ballon_turbo"
 		VisibleInEncyclopedia	= "false"
 		ResourceType= "ITEM_SIZE_2X2" />
 
@@ -443,7 +443,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "4500"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "bolts"
 		ResourceType= "ITEM_SIZE_2X2" />	
 
 	<Prototype
@@ -470,7 +470,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "3000"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "insulation"
 		ResourceType= "ITEM_SIZE_2X2" />	
 
 	<Prototype
@@ -506,7 +506,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "3200"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "nuts"
 		ResourceType= "ITEM_SIZE_2X2" />	
 
 	<Prototype
@@ -778,7 +778,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "6500"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "phone"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
@@ -877,7 +877,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "3000"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "wires"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
@@ -933,7 +933,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "2500"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "battery_aa"
 		ResourceType= "ITEM_SIZE_2X1" />
 
 	<Prototype
@@ -942,7 +942,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "1500"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "battery_d"
 		ResourceType= "ITEM_SIZE_2X1" />
 
 	<Prototype
@@ -951,7 +951,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "28000"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "car_battery"
 		ResourceType= "ITEM_SIZE_5X4" />
 
 	<Prototype
@@ -969,7 +969,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "15000"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "green_battery"
 		ResourceType= "ITEM_SIZE_2X1" />
 
 	<Prototype
@@ -1144,7 +1144,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "3500"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "salt"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
@@ -1171,7 +1171,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "3700"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "tb"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
@@ -1456,7 +1456,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "100000"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "ananaga"
 		ResourceType= "ITEM_SIZE_2X4" />
 
 	<Prototype
@@ -1546,7 +1546,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "9000"
 		Durability	= "10"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "vodka"
 		ResourceType= "ITEM_SIZE_2X4" />
 
 	<Prototype
@@ -1618,7 +1618,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "3750"
 		Durability	= "10"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "stakanyash"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 <!-- Tools Items -->
@@ -1737,7 +1737,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "3000"
 		Durability	= "10"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "screw"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
@@ -1773,7 +1773,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "11500"
 		Durability	= "10"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "toolset"
 		ResourceType= "ITEM_SIZE_3X3" />
 
 	<Prototype
@@ -1782,7 +1782,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "2000"
 		Durability	= "10"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "wrench"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 <!-- Valuables Items -->
@@ -1793,7 +1793,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "215000"
 		Durability	= "10"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "bitcoin"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
@@ -1838,7 +1838,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "16500"
 		Durability	= "10"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "ex"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype

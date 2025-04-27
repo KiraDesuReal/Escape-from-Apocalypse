@@ -1039,20 +1039,46 @@
 		scriptCondition="GetVar('Garage_item_bolts').AsInt == 1 and GetVar('Garage_item_nuts').AsInt == 1 and GetVar('Garage_item_pena').AsInt == 1 and GetVar('Garage_item_lump').AsInt == 3 and GetVar('Garage_item_cable').AsInt == 1 and GetVar('Garage_item_roulet').AsInt == 1 and GetVar('Garage_item_pipe_wrench').AsInt == 1 and GetVar('Garage_item_fitanyashka').AsInt == 1 and GetVar('Garage_item_kaktus').AsInt == 1 and GetVar('Garage_money').AsInt == 1"
 		scriptResult="GetCurNpc():SetSpokenCount(1); TActivate('CreateGarage'); AddItemsToPlayerRepository('item_roulet'); AddItemsToPlayerRepository('item_pipe_wrench'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_roulet'); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_pipe_wrench'); EndConversation()" />
 
-<!--Root/r0m0/Гараж: список крафтов-->
+<!--Root/r0m0/Гараж-->
 	<Reply
-		name="Dlg_npc_0013200"
-		text="Находясь в гараже, с помощью верстака вы можете заниматься созданием предметов, оружия и модулей для своего автомобиля.|@FF0000AA|@FF1D1D1D[Выберите категорию предметов]"
+		name="Dlg_npc_garage_1"
+		text="Гараж - неотъемлемое место в жизни каждого махиниста, где из простых болтов и гаек создаются чудовищные бронемашины."
 		role="NPC"
 		scriptCondition="GetVar('Generator_lvl').AsInt >=1 and GetVar('Garage_Builden').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
-		nextReplies="Dlg_npc_0013300 Dlg_npc_0013301 Dlg_npc_001335 Dlg_npc_0013302 Dlg_npc_0013303 Dlg_npc_0013304 Dlg_npc_0013306 Dlg_npc_0013307 Dlg_npc_00133078 Dlg_npc_00133077 Dlg_npc_00133008 Dlg_npc_0013308 Dlg_npc_0013309 Dlg_npc_0013201" />
+		nextReplies="Dlg_pl_garage_3 Dlg_pl_garage_4 Dlg_pl_garage_5 Dlg_npc_0013201" />
 	
 	<Reply
-		name="Dlg_npc_00132000"
-		text="Находясь в гараже, с помощью верстака вы можете заниматься созданием предметов, оружия и модулей для своего автомобиля.|@FF0000AA|@FF780a0a[Дикие не могут передавать предметы для убежища]"
+		name="Dlg_npc_garage_2"
+		text="Гараж - неотъемлемое место в жизни каждого махиниста, где из простых болтов и гаек создаются чудовищные бронемашины.|@FF0000AA|@FF780a0a[Дикие не могут управлять модулями убежища]"
 		role="NPC"
 		scriptCondition="GetVar('Generator_lvl').AsInt >=1 and GetVar('Garage_Builden').AsInt == 1 and GetVar('PlayerBelong').AsString == 'SCAV'"
 		nextReplies="Dlg_npc_0013201" />
+
+	<Reply
+		name="Dlg_pl_garage_3"
+		text="Перейти к верстаку."
+		role="PLAYER"
+		nextReplies="Dlg_npc_0013200" />
+
+	<Reply
+		name="Dlg_pl_garage_4"
+		text="Оставить свою машину на хранение."
+		role="PLAYER"
+		scriptCondition="not(GetVar('CarInGarage').AsInt == 1)"
+		nextReplies="Dlg_npc_change_player_car_in_garage" />
+
+	<Reply
+		name="Dlg_pl_garage_5"
+		text="Забрать свою машину из гаража."
+		role="PLAYER"
+		scriptCondition="GetVar('CarInGarage').AsInt == 1"
+		nextReplies="Dlg_npc_return_player_car_in_garage" />
+
+	<Reply
+		name="Dlg_pl_to_garage"
+		text="Назад."
+		role="PLAYER"
+		nextReplies="Dlg_npc_garage_1" />
 
 	<Reply
 		name="Dlg_npc_0013201"
@@ -1060,6 +1086,51 @@
 		role="PLAYER"
 		scriptResult="EndConversation()" />
 
+<!--Root/r0m0/Гараж: оставить машину -->
+	<Reply
+		name="Dlg_npc_change_player_car_in_garage"
+		text="Вы действительно хотите оставить свою текущую машину на хранение в гараже?"
+		role="NPC"
+		nextReplies="Dlg_npc_change_player_car_in_garage_1 Dlg_npc_change_player_car_in_garage_2" />
+
+	<Reply
+		name="Dlg_npc_change_player_car_in_garage_1"
+		text="Да."
+		role="PLAYER"
+		scriptResult="TActivate('IfCanChangePlayerCarInGarage'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_change_player_car_in_garage_2"
+		text="Нет."
+		role="PLAYER"
+		scriptResult="EndConversation()" />
+
+<!--Root/r0m0/Гараж: вернуть машину -->
+	<Reply
+		name="Dlg_npc_return_player_car_in_garage"
+		text="Вы действительно хотите забрать свою машину из гаража?|@FF0000AA|@FF780a0a[Ваша текущая сборка будет уничтожена]"
+		role="NPC"
+		nextReplies="Dlg_npc_return_player_car_in_garagе_1 Dlg_npc_return_player_car_in_garagе_2" />
+
+	<Reply
+		name="Dlg_npc_return_player_car_in_garagе_1"
+		text="Да."
+		role="PLAYER"
+		scriptResult="TActivate('ReturnPlayerCarFromGarage'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_return_player_car_in_garagе_2"
+		text="Нет."
+		role="PLAYER"
+		scriptResult="EndConversation()" />
+
+<!--Root/r0m0/Гараж: список крафтов-->
+	<Reply
+		name="Dlg_npc_0013200"
+		text="С помощью верстака вы можете заниматься созданием предметов, оружия и модулей для своего автомобиля.|@FF0000AA|@FF1D1D1D[Выберите категорию предметов]"
+		role="NPC"
+		nextReplies="Dlg_npc_0013300 Dlg_npc_0013301 Dlg_npc_001335 Dlg_npc_0013302 Dlg_npc_0013303 Dlg_npc_0013304 Dlg_npc_0013306 Dlg_npc_0013307 Dlg_npc_00133078 Dlg_npc_00133077 Dlg_npc_00133008 Dlg_npc_0013308 Dlg_npc_0013309 Dlg_pl_to_garage Dlg_npc_0013201" />
+	
 	<Reply
 		name="Dlg_npc_00132010"
 		text="Назад."
@@ -9804,7 +9875,7 @@
 		name="Dlg_npc_013"
 		text="Ваш личный стеллаж, на который можно выставить свои предметы и ценности.|@FF0000AA|@FF1D1D1D[Выберите предмет для размещения]"
 		role="NPC"
-		nextReplies="Dlg_pl_shelf_item_1 Dlg_pl_shelf_item_2 Dlg_pl_shelf_item_3 Dlg_pl_shelf_item_4 Dlg_pl_shelf_item_5 Dlg_pl_shelf_item_6 Dlg_pl_shelf_item_7 Dlg_pl_shelf_item_8 Dlg_pl_shelf_item_9 Dlg_pl_shelf_item_10 Dlg_pl_shelf_item_11 Dlg_pl_shelf_item_12 Dlg_pl_shelf_item_13 Dlg_pl_shelf_item_14 Dlg_pl_shelf_item_15 Dlg_pl_shelf_item_16 Dlg_pl_shelf_item_17 Dlg_pl_shelf_item_18 Dlg_pl_shelf_item_19 Dlg_pl_shelf_item_20 Dlg_pl_shelf_item_21 Dlg_pl_shelf_item_22 Dlg_pl_shelf_item_23 Dlg_pl_shelf_item_24 Dlg_pl_shelf_item_27 Dlg_pl_shelf_item_28 Dlg_pl_shelf_item_29 Dlg_pl_shelf_item_30 Dlg_pl_shelf_item_31 Dlg_pl_shelf_item_32 Dlg_pl_shelf_item_33 Dlg_pl_shelf_item_34 Dlg_pl_shelf_item_35 Dlg_pl_shelf_item_36 Dlg_pl_shelf_item_37 Dlg_pl_shelf_item_38 Dlg_pl_shelf_item_39 Dlg_pl_shelf_item_40 Dlg_pl_shelf_item_41 Dlg_pl_shelf_item_42 Dlg_pl_shelf_item_43 Dlg_pl_shelf_item_44 Dlg_pl_shelf_item_45 Dlg_pl_shelf_item_46 Dlg_pl_shelf_item_47 Dlg_pl_shelf_item_48 Dlg_pl_shelf_item_49 Dlg_pl_shelf_item_50 Dlg_pl_shelf_item_51 Dlg_pl_shelf_item_52 Dlg_pl_shelf_item_53 Dlg_pl_shelf_item_54 Dlg_pl_shelf_item_55 Dlg_pl_shelf_item_56 Dlg_pl_back_shelf" />
+		nextReplies="Dlg_pl_shelf_item_1 Dlg_pl_shelf_item_2 Dlg_pl_shelf_item_3 Dlg_pl_shelf_item_4 Dlg_pl_shelf_item_5 Dlg_pl_shelf_item_6 Dlg_pl_shelf_item_7 Dlg_pl_shelf_item_8 Dlg_pl_shelf_item_9 Dlg_pl_shelf_item_10 Dlg_pl_shelf_item_11 Dlg_pl_shelf_item_12 Dlg_pl_shelf_item_13 Dlg_pl_shelf_item_14 Dlg_pl_shelf_item_15 Dlg_pl_shelf_item_16 Dlg_pl_shelf_item_17 Dlg_pl_shelf_item_18 Dlg_pl_shelf_item_19 Dlg_pl_shelf_item_20 Dlg_pl_shelf_item_21 Dlg_pl_shelf_item_22 Dlg_pl_shelf_item_23 Dlg_pl_shelf_item_24 Dlg_pl_shelf_item_27 Dlg_pl_shelf_item_28 Dlg_pl_shelf_item_29 Dlg_pl_shelf_item_30 Dlg_pl_shelf_item_31 Dlg_pl_shelf_item_32 Dlg_pl_shelf_item_33 Dlg_pl_shelf_item_34 Dlg_pl_shelf_item_35 Dlg_pl_shelf_item_36 Dlg_pl_shelf_item_37 Dlg_pl_shelf_item_38 Dlg_pl_shelf_item_57 Dlg_pl_shelf_item_58 Dlg_pl_shelf_item_59 Dlg_pl_shelf_item_60 Dlg_pl_shelf_item_39 Dlg_pl_shelf_item_40 Dlg_pl_shelf_item_41 Dlg_pl_shelf_item_42 Dlg_pl_shelf_item_43 Dlg_pl_shelf_item_44 Dlg_pl_shelf_item_45 Dlg_pl_shelf_item_46 Dlg_pl_shelf_item_63 Dlg_pl_shelf_item_64 Dlg_pl_shelf_item_47 Dlg_pl_shelf_item_48 Dlg_pl_shelf_item_49 Dlg_pl_shelf_item_50 Dlg_pl_shelf_item_51 Dlg_pl_shelf_item_52 Dlg_pl_shelf_item_53 Dlg_pl_shelf_item_54 Dlg_pl_shelf_item_61 Dlg_pl_shelf_item_62 Dlg_pl_shelf_item_65 Dlg_pl_shelf_item_66 Dlg_pl_shelf_item_55 Dlg_pl_shelf_item_56 Dlg_pl_shelf_item_67 Dlg_pl_shelf_item_68 Dlg_pl_back_shelf" />
 
 	<Reply
 		name="Dlg_pl_shelf_item_1"
@@ -10236,6 +10307,102 @@
 		role="PLAYER"
 		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'someTurboAccelerationPusher'"
 		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('someTurboAccelerationPusher'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'someTurboAccelerationPusher')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_57"
+		text="Разместить Смартфон"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_phone', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('item_phone', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'item_phone'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'item_phone'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_58"
+		text="Забрать Смартфон"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'item_phone'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('item_phone'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_phone')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_59"
+		text="Разместить Туалетную бумагу"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_tb', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('item_tb', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'item_tb'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'item_tb'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_60"
+		text="Забрать Туалетную бумагу"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'item_tb'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('item_tb'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_tb')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_61"
+		text="Разместить Стакан"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_stakanyash', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('item_stakanyash', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'item_stakanyash'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'item_stakanyash'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_62"
+		text="Забрать Стакан"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'item_stakanyash'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('item_stakanyash'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_stakanyash')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_63"
+		text="Разместить Ананагу"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_ananaga', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('item_ananaga', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'item_ananaga'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'item_ananaga'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_64"
+		text="Забрать Ананагу"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'item_ananaga'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('item_ananaga'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_ananaga')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_65"
+		text="Разместить Водку"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_vodka', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('item_vodka', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'item_vodka'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'item_vodka'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_66"
+		text="Забрать Водку"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'item_vodka'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('item_vodka'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_vodka')"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_67"
+		text="Разместить Биткоин"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_bitcoin', 1) and GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == '0'"
+		scriptResult="RemoveItemsFromPlayerRepository('item_bitcoin', 1); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, 'item_bitcoin'); AddFadingMsgByStrIdFormatted('fm_item_to_shelf', 'item_bitcoin'); ShelfAddItemToSlot()"
+		nextReplies="Dlg_npc_013" />
+
+	<Reply
+		name="Dlg_pl_shelf_item_68"
+		text="Забрать Биткоин"
+		role="PLAYER"
+		scriptCondition="GetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt).AsString == 'item_bitcoin'"
+		scriptResult="ShelfRemoveItemToSlot(); SetVar('ShelfSelectItem_Slot_'..GetVar('ShelfSelectSlot').AsInt, '0'); AddItemsToPlayerRepository('item_bitcoin'); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_bitcoin')"
 		nextReplies="Dlg_npc_013" />
 
 	<Reply

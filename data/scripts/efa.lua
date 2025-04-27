@@ -1276,6 +1276,12 @@ function ShelfAddItemToSlot()
 	if item == "item_monolit" then model = "monolit" scale = 0.3 y = -0.28 end
 	if item == "item_kaktus" then model = "kaktus" y = -0.28 end
 	if item == "someTurboAccelerationPusher" then model = "Turboakselerator" y = -0.17 end
+	if item == "item_phone" then model = "phone" y = -0.27 scale = 0.3 end
+	if item == "item_tb" then model = "tb" y = -0.05 scale = 0.3 rot = Quaternion(0.0000, -0.8671, 0.0000, 0.4981) end
+	if item == "item_stakanyash" then model = "stakanyash" y = -0.29 end
+	if item == "item_ananaga" then model = "ananaga" y = -0.29 scale = 0.15 rot = Quaternion(0.0000, -0.7716, 0.0000, 0.6361) end
+	if item == "item_vodka" then model = "vodka" y = -0.29 scale = 0.15 rot = Quaternion(0.0000, -0.7716, 0.0000, 0.6361) end
+	if item == "item_bitcoin" then model = "bitcoin" y = -0.28 scale = 0.15 rot = Quaternion(-0.7071, 0.0000, 0.0000, 0.7071) end
 
 	if slot == 1 then pos = CVector(903.327, 255.650 + y, 971.461) end
 	if slot == 2 then pos = CVector(901.610, 255.650 + y, 971.461) end
@@ -1300,6 +1306,34 @@ function ShelfRemoveItemToSlot()
 	local i = GetEntityByName("shelf_item_"..item.."_slot_"..slot)
 	if i then i:Remove() end
 end
+
+-- Установить новую кабину с сохранением брони
+function UpdateCab(obj)
+	local veh = getObj(obj)
+	if veh then
+		local cabin = veh:GetCabin()
+		local skin = veh:GetSkin()
+		if cabin then 
+			SetVar("CabDurability", cabin:GetPropertyById("19").AsString)
+			veh:SetNewPart("CABIN", cabin:GetProperty("Prototype").AsString) 
+			SetCabDurability(obj)
+		end
+		veh:SetSkin(skin)
+	end
+end
+
+function SetCabDurability(obj)
+	local veh = getObj(obj)
+	if veh then
+		local cabin = veh:GetCabin()
+		if cabin then 
+			cabin:SetProperty("durability", GetVar("CabDurability").AsString) 
+			SetVar("CabDurability", 0)
+		end
+	end
+end
+
+
 
 
 

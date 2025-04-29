@@ -3322,7 +3322,7 @@
 	<trigger Name="CreateValuablesLootBox" active="0">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-			local items = {"book", "shkatulka", "item_key_gate_thetown", "item_key_gate_basefelix", "item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_emre_kara", "item_fitanyashka", "item_monolit", "item_kaktus", "item_keqing", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_carsen", "item_metallodetector", "item_ananaga", "item_silver_skull", "item_vaze"}
+			local items = {"book", "shkatulka", "item_key_gate_thetown", "item_key_gate_basefelix", "item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_emre_kara", "item_fitanyashka", "item_monolit", "item_kaktus", "item_keqing", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_carsen", "item_metallodetector", "item_ananaga", "item_silver_skull", "item_vaze", "item_kubok_kikiki"}
 
 			for i=1,7 do
 				local Chest = CreateNewObject{prototypeName = "mainChest", objName = "ValuablesBox"..i.."Chest"}	
@@ -3409,7 +3409,7 @@
 							"item_car_battery", "item_cyclon", "item_green_battery",
 							"item_dry", "item_prisadka", "item_propan", "item_termit",
 							"item_disk", "item_disk_exmachina", "item_flashdrive", "item_sas", "item_ssd",
-							"item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_ananaga",
+							"item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_ananaga", "item_kubok_kikiki",
 							"item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_vaze",
 							"fagot01", "maxim01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "big_swingfire01", "cyclops01", "octopus01", "rocketLauncher", "someTurboAccelerationPusher"}
 
@@ -3874,7 +3874,7 @@
 						"item_dry", "item_prisadka", "item_propan", "item_survl", "item_termit", "item_trotile", "item_gunpowder",
 						"item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 						"item_aquapeps", "item_c6h8o6", "item_ledx", "item_oftalmaskop", "item_afak", "item_grizzly",
-						"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_waterfilter", "item_keqing", "item_metallodetector",
+						"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_waterfilter", "item_keqing", "item_metallodetector", "item_kubok_kikiki",
 						"item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_pipe_wrench", "item_ratchet_wrench", "item_toolset", "item_vitalik",
 						"item_bitcoin", "item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_silver_skull", "item_vaze"}
 			else

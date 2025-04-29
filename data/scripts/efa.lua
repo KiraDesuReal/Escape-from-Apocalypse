@@ -787,12 +787,12 @@ function CreateBarrelLootBox(name, pos)
 	local medical1 = {"item_h2o2", "item_analgin", "item_med", "item_medical_tools", "item_ai2", "item_naci", "item_vazelin", "item_carmed", "item_suringe", "item_salewa", "item_morfie"}
 	local medical2 = {"item_medical_tools", "item_med", "item_ai2", "item_naci", "item_vazelin", "item_h2o2", "item_carmed", "item_suringe", "item_salewa", "item_ifak", "item_morfie", "item_c6h8o6", "item_zvezda", "item_aquapeps", "item_afak", "item_grizzly", "item_oftalmaskop", "item_ledx"}
 
-	local other1 = {"item_zapal", "item_stakanyash", "item_carsen", "item_vodka", "item_monolit", "item_kaktus", "item_filter", "item_emre_kara", "item_waterfilter", "item_keqing", "item_metallodetector", "item_fitanyashka", "item_paracord", "item_vitalik", "item_airfilter", "item_ananaga"}
+	local other1 = {"item_zapal", "item_stakanyash", "item_carsen", "item_vodka", "item_monolit", "item_kaktus", "item_filter", "item_emre_kara", "item_waterfilter", "item_keqing", "item_metallodetector", "item_kubok_kikiki", "item_fitanyashka", "item_paracord", "item_vitalik", "item_airfilter", "item_ananaga"}
 
 	local tools1 = {"item_metalscissors", "item_nippers", "item_pliers", "item_pliers_round", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_wrench"}
 	local tools2 = {"item_screw_flat_long", "item_leatherman", "item_toolset", "item_fullmaster", "item_awl", "item_sewing_kit", "item_handrill", "item_buldex", "item_pipe_wrench", "item_ratchet_wrench", "item_vitalik"}
 	
-	local valuables1 = {"item_chain", "item_carsen", "item_monolit", "book", "item_kaktus", "shkatulka", "item_ex", "item_teapon", "item_emre_kara", "item_keqing", "item_silver_skull", "item_metallodetector", "item_cat", "item_vaze", "item_rolex", "item_chain_gold", "item_fitanyashka", "item_chiken", "item_skullring", "item_vitalik", "item_ananaga", "item_lion", "item_bitcoin"}
+	local valuables1 = {"item_chain", "item_carsen", "item_monolit", "book", "item_kaktus", "shkatulka", "item_ex", "item_teapon", "item_emre_kara", "item_keqing", "item_silver_skull", "item_metallodetector", "item_cat", "item_kubok_kikiki", "item_vaze", "item_rolex", "item_chain_gold", "item_fitanyashka", "item_chiken", "item_skullring", "item_vitalik", "item_ananaga", "item_lion", "item_bitcoin"}
 
 	local gun1 = {"hornet01", "specter01", "pkt01", "storm01", "vector01", "vulcan01", "kpvt01", "rapier01", "bumblebee01"} 
 	local gun2 = {"pkt01", "kord01", "maxim01", "fagot01", "someTurboAccelerationPusher", "omega01", "elephant01", "flag01", "odin01", "rainmetal01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun"}
@@ -986,7 +986,7 @@ function AllItems()
 					"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 					"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 					"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
-					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_jeton_bear", "item_jeton_usec", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash",
+					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_jeton_bear", "item_jeton_usec", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki",
 					"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
 					"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_vitaly", "item_silver_skull", "item_vaze",
 					"item_quest_search_data",
@@ -1010,7 +1010,7 @@ function AllItemsForScav()
 					"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 					"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 					"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
-					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash",
+					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki",
 					"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
 					"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_silver_skull", "item_vaze",
 					"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun",
@@ -1253,7 +1253,7 @@ function ShelfAddItemToSlot()
 	local pos = CVector(0, 0, 0)
 	local rot = Quaternion(0, 0, 0, 1)
 	local model = "cargo"
-	local y = 0
+	local y, z = 0, 0
 	local scale = 0.35
 
 	if item == "potato" then model = "potatoe" y = 0.13 end
@@ -1282,19 +1282,30 @@ function ShelfAddItemToSlot()
 	if item == "item_ananaga" then model = "ananaga" y = -0.29 scale = 0.15 rot = Quaternion(0.0000, -0.7716, 0.0000, 0.6361) end
 	if item == "item_vodka" then model = "vodka" y = -0.29 scale = 0.15 rot = Quaternion(0.0000, -0.7716, 0.0000, 0.6361) end
 	if item == "item_bitcoin" then model = "bitcoin" y = -0.28 scale = 0.15 rot = Quaternion(-0.7071, 0.0000, 0.0000, 0.7071) end
+	if item == "item_ex" then model = "ex" y = -0.27 scale = 0.15 rot = Quaternion(-0.7071, 0.0000, 0.0000, 0.7071) end
+	if item == "ammo_chest_artillerygun" then model = "ammo_chest_artillerygun" y = -0.29 end
+	if item == "ammo_chest_rocketgun" then model = "ammo_chest_rocketgun" y = -0.29 end
+	if item == "ammo_chest_machinegun" then model = "ammo_chest_machinegun" y = -0.29 end
+	if item == "ammo_chest_heavygun" then model = "ammo_chest_heavygun" y = -0.29 end
+	if item == "ammo_chest_shotgun" then model = "ammo_chest_shotgun" y = -0.29 end
+	if item == "ammo_ballon_lasergun" then model = "ammo_ballon_lasergun" y = -0.29 end
+	if item == "ammo_ballon_plasmagun" then model = "ammo_ballon_plasmagun" y = -0.29 end
+	if item == "ammo_ballon_turbo" then model = "ammo_ballon_turbo" y = -0.29 scale = 0.3 end
+	if item == "item_kubok_kikiki" then model = "kubok_cs_kikiki" y = -0.27 scale = 0.21 end
+	if item == "item_metallodetector" then model = "metallodetector" y = 0.26 z = -0.08 scale = 0.3 end
 
-	if slot == 1 then pos = CVector(903.327, 255.650 + y, 971.461) end
-	if slot == 2 then pos = CVector(901.610, 255.650 + y, 971.461) end
-	if slot == 3 then pos = CVector(899.450, 255.650 + y, 971.461) end
-	if slot == 4 then pos = CVector(897.700, 255.650 + y, 971.461) end
-	if slot == 5 then pos = CVector(903.327, 257.355 + y, 971.461) end
-	if slot == 6 then pos = CVector(901.610, 257.355 + y, 971.461) end
-	if slot == 7 then pos = CVector(899.450, 257.355 + y, 971.461) end
-	if slot == 8 then pos = CVector(897.700, 257.355 + y, 971.461) end
-	if slot == 9 then pos = CVector(903.327, 259.081 + y, 971.461) end
-	if slot == 10 then pos = CVector(901.610, 259.081 + y, 971.461) end
-	if slot == 11 then pos = CVector(899.450, 259.081 + y, 971.461) end
-	if slot == 12 then pos = CVector(897.700, 259.081 + y, 971.461) end
+	if slot == 1 then pos = CVector(903.327, 255.650 + y, 971.461 + z) end
+	if slot == 2 then pos = CVector(901.610, 255.650 + y, 971.461 + z) end
+	if slot == 3 then pos = CVector(899.450, 255.650 + y, 971.461 + z) end
+	if slot == 4 then pos = CVector(897.700, 255.650 + y, 971.461 + z) end
+	if slot == 5 then pos = CVector(903.327, 257.355 + y, 971.461 + z) end
+	if slot == 6 then pos = CVector(901.610, 257.355 + y, 971.461 + z) end
+	if slot == 7 then pos = CVector(899.450, 257.355 + y, 971.461 + z) end
+	if slot == 8 then pos = CVector(897.700, 257.355 + y, 971.461 + z) end
+	if slot == 9 then pos = CVector(903.327, 259.081 + y, 971.461 + z) end
+	if slot == 10 then pos = CVector(901.610, 259.081 + y, 971.461 + z) end
+	if slot == 11 then pos = CVector(899.450, 259.081 + y, 971.461 + z) end
+	if slot == 12 then pos = CVector(897.700, 259.081 + y, 971.461 + z) end
 
 	CreateNewSgNodeObject(model, "shelf_item_"..item.."_slot_"..slot, -1, -1, pos, rot, scale)
 end

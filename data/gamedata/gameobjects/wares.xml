@@ -1609,7 +1609,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "22460"
 		Durability	= "10"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "metallodetector"
 		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
@@ -1620,6 +1620,15 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		PriceDispersion      = "5"
 		ModelFile	= "stakanyash"
 		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_kubok_kikiki"
+		Price	= "23333"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= "kubok_cs_kikiki"
+		ResourceType= "ITEM_SIZE_3X3" />
 
 <!-- Tools Items -->
 

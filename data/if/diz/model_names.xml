@@ -366,6 +366,11 @@
 		value="Турбо-ускорение" />
 
 	<Item
+		id="someTurboAccelerationPusher_insured"
+		locForm="0"
+		value="Турбо-ускорение (Застраховано)" />
+
+	<Item
 		id="engineOilPusher"
 		locForm="0"
 		value="Машинное масло" />
@@ -386,9 +391,19 @@
 		value="Циклоп" />
 
 	<Item
+		id="cyclops01_insured"
+		locForm="0"
+		value="Циклоп (Застрахован)" />
+
+	<Item
 		id="big_swingfire01"
 		locForm="0"
 		value="Свингфайр" />
+
+	<Item
+		id="big_swingfire01_insured"
+		locForm="0"
+		value="Свингфайр (Застрахован)" />
 
 	<Item
 		id="rocketLauncher"
@@ -396,9 +411,19 @@
 		value="Дракон" />
 
 	<Item
+		id="rocketLauncher_insured"
+		locForm="0"
+		value="Дракон (Застрахован)" />
+
+	<Item
 		id="storm01"
 		locForm="0"
 		value="Шторм" />
+
+	<Item
+		id="storm01_insured"
+		locForm="0"
+		value="Шторм (Застрахован)" />
 
 	<Item
 		id="molokovozCab01"
@@ -802,9 +827,19 @@
 		value="Шершень" />
 
 	<Item
+		id="hornet01_insured"
+		locForm="0"
+		value="Шершень (Застрахован)" />
+
+	<Item
 		id="american_hornet01"
 		locForm="0"
 		value="Американский шершень" />
+
+	<Item
+		id="american_hornet01_insured"
+		locForm="0"
+		value="Американский шершень (Застрахован)" />
 
 	<Item
 		id="specter01"
@@ -812,9 +847,19 @@
 		value="Спектр" />
 
 	<Item
+		id="specter01_insured"
+		locForm="0"
+		value="Спектр (Застрахован)" />
+
+	<Item
 		id="pkt01"
 		locForm="0"
 		value="ПКТ" />
+
+	<Item
+		id="pkt01_insured"
+		locForm="0"
+		value="ПКТ (Застрахован)" />
 
 	<Item
 		id="kord01"
@@ -822,9 +867,19 @@
 		value="Корд" />
 
 	<Item
+		id="kord01_insured"
+		locForm="0"
+		value="Корд (Застрахован)" />
+
+	<Item
 		id="vector01"
 		locForm="0"
 		value="Вектор" />
+
+	<Item
+		id="vector01_insured"
+		locForm="0"
+		value="Вектор (Застрахован)" />
 
 	<Item
 		id="vulcan01"
@@ -832,9 +887,19 @@
 		value="Вулкан" />
 
 	<Item
+		id="vulcan01_insured"
+		locForm="0"
+		value="Вулкан (Застрахован)" />
+
+	<Item
 		id="maxim01"
 		locForm="0"
 		value="Максим" />
+
+	<Item
+		id="maxim01_insured"
+		locForm="0"
+		value="Максим (Застрахован)" />
 
 	<Item
 		id="rapier01"
@@ -842,9 +907,19 @@
 		value="Рапира" />
 
 	<Item
+		id="rapier01_insured"
+		locForm="1"
+		value="Рапира (Застрахована)" />
+
+	<Item
 		id="fagot01"
 		locForm="0"
 		value="Фагот" />
+
+	<Item
+		id="fagot01_insured"
+		locForm="0"
+		value="Фагот (Застрахован)" />
 
 	<Item
 		id="kpvt01"
@@ -852,9 +927,19 @@
 		value="КПВТ" />
 
 	<Item
+		id="kpvt01_insured"
+		locForm="0"
+		value="КПВТ (Застрахован)" />
+
+	<Item
 		id="rainmetal01"
 		locForm="0"
 		value="Рейнметалл" />
+
+	<Item
+		id="rainmetal01_insured"
+		locForm="0"
+		value="Рейнметалл (Застрахован)" />
 
 	<Item
 		id="octopus01"
@@ -862,12 +947,27 @@
 		value="Спрут" />
 
 	<Item
+		id="octopus01_insured"
+		locForm="0"
+		value="Спрут (Застрахован)" />
+
+	<Item
 		id="elephant01"
 		locForm="0"
 		value="Слон" />
 
 	<Item
+		id="elephant01_insured"
+		locForm="0"
+		value="Слон (Застрахован)" />
+
+	<Item
 		id="flag01"
+		locForm="0"
+		value="Флаг" />
+
+	<Item
+		id="flag01_insured"
 		locForm="0"
 		value="Флаг" />
 
@@ -877,9 +977,19 @@
 		value="Ураган" />
 
 	<Item
+		id="hurricane01_insured"
+		locForm="0"
+		value="Ураган (Застрахован)" />
+
+	<Item
 		id="hailSideGun"
 		locForm="0"
 		value="Град" />
+
+	<Item
+		id="hailSideGun_insured"
+		locForm="0"
+		value="Град (Застрахован)" />
 
 	<Item
 		id="odin01"
@@ -887,9 +997,19 @@
 		value="Один" />
 
 	<Item
+		id="odin01_insured"
+		locForm="0"
+		value="Один (Застрахован)" />
+
+	<Item
 		id="hammer01"
 		locForm="0"
 		value="Молот Тора" />
+
+	<Item
+		id="hammer01_insured"
+		locForm="0"
+		value="Молот Тора (Застрахован)" />
 
 	<Item
 		id="bumblebee01"
@@ -897,9 +1017,19 @@
 		value="Шмель" />
 
 	<Item
+		id="bumblebee01_insured"
+		locForm="0"
+		value="Шмель (Застрахован)" />
+
+	<Item
 		id="omega01"
 		locForm="1"
 		value="Омега" />
+
+	<Item
+		id="omega01_insured"
+		locForm="1"
+		value="Омега (Застрахована)" />
 
 	<Item
 		id="mrakSideGun"
@@ -907,9 +1037,19 @@
 		value="Мрак" />
 
 	<Item
+		id="mrakSideGun_insured"
+		locForm="0"
+		value="Мрак (Застрахована)" />
+
+	<Item
 		id="hunterSideGun"
 		locForm="0"
 		value="Охотник" />
+
+	<Item
+		id="hunterSideGun_insured"
+		locForm="0"
+		value="Охотник (Застрахован)" />
 
 	<Item
 		id="zeusSideGun"
@@ -917,9 +1057,19 @@
 		value="Зевс" />
 
 	<Item
+		id="zeusSideGun_insured"
+		locForm="0"
+		value="Зевс (Застрахован)" />
+
+	<Item
 		id="marsSideGun"
 		locForm="0"
 		value="Марс" />
+
+	<Item
+		id="marsSideGun_insured"
+		locForm="0"
+		value="Марс (Застрахован)" />
 
 	<Item
 		id="minePusher_1"
@@ -2244,6 +2394,11 @@
 		value="Крепкий металл" />
 
 	<Item
+		id="scrap_metal_use_insured"
+		locForm="0"
+		value="Крепкий металл (Застрахован)" />
+
+	<Item
 		id="machinery_use"
 		locForm="0"
 		value="Улучшенное оборудование" />
@@ -2252,6 +2407,11 @@
 		id="machinery_use_ForSale"
 		locForm="0"
 		value="Улучшенное оборудование" />
+
+	<Item
+		id="machinery_use_insured"
+		locForm="0"
+		value="Улучшенное оборудование (Застраховано)" />
 
 	<Item
 		id="electronics_use"
@@ -2264,9 +2424,19 @@
 		value="Высокотехнологичная электроника" />
 
 	<Item
+		id="electronics_use_insured"
+		locForm="0"
+		value="Высокотехнологичная электроника (Застрахована)" />
+
+	<Item
 		id="oil_use"
 		locForm="0"
 		value="Бочка с топливом" />
+
+	<Item
+		id="oil_use_insured"
+		locForm="0"
+		value="Бочка с топливом (Застрахована)" />
 
 	<Item
 		id="fuel_full_use"
@@ -2274,9 +2444,19 @@
 		value="Канистра топлива" />
 
 	<Item
+		id="fuel_full_use_insured"
+		locForm="0"
+		value="Канистра топлива (Застрахована)" />
+
+	<Item
 		id="fuel_nil_use"
 		locForm="0"
 		value="Пустая канистра" />
+
+	<Item
+		id="fuel_nil_use_insured"
+		locForm="0"
+		value="Пустая канистра (Застрахована)" />
 
 
 	<Item
@@ -2306,6 +2486,11 @@
 		value="Ящик боеприпасов для Артиллерии" />
 
 	<Item
+		id="ammo_chest_artillerygun_insured"
+		locForm="0"
+		value="Ящик боеприпасов для Артиллерии (Застрахован)" />
+
+	<Item
 		id="ammo_chest_heavygun"
 		locForm="0"
 		value="Ящик патронов для Пушки" />
@@ -2314,6 +2499,11 @@
 		id="ammo_chest_heavygunForSale"
 		locForm="0"
 		value="Ящик патронов для Пушки" />
+
+	<Item
+		id="ammo_chest_heavygun_insured"
+		locForm="0"
+		value="Ящик патронов для Пушки (Застрахован)" />
 
 	<Item
 		id="ammo_chest_machinegun"
@@ -2326,6 +2516,11 @@
 		value="Ящик патронов для Пулемёта" />
 
 	<Item
+		id="ammo_chest_machinegun_insured"
+		locForm="0"
+		value="Ящик патронов для Пулемёта (Застрахован)" />
+
+	<Item
 		id="ammo_chest_rocketgun"
 		locForm="0"
 		value="Ящик боеприпасов для Ракетной установки" />
@@ -2334,6 +2529,11 @@
 		id="ammo_chest_rocketgunForSale"
 		locForm="0"
 		value="Ящик боеприпасов для Ракетной установки" />
+
+	<Item
+		id="ammo_chest_rocketgun_insured"
+		locForm="0"
+		value="Ящик боеприпасов для Ракетной установки (Застрахован)" />
 
 	<Item
 		id="ammo_chest_shotgun"
@@ -2346,14 +2546,29 @@
 		value="Ящик дроби для Дробовика" />
 
 	<Item
+		id="ammo_chest_shotgun_insured"
+		locForm="0"
+		value="Ящик дроби для Дробовика (Застрахован)" />
+
+	<Item
 		id="ammo_ballon_lasergun"
 		locForm="0"
 		value="Баллон с жидкостью для Лазерной установки" />
 
 	<Item
+		id="ammo_ballon_lasergun_insured"
+		locForm="0"
+		value="Баллон с жидкостью для Лазерной установки (Застрахован)" />
+
+	<Item
 		id="ammo_ballon_plasmagun"
 		locForm="0"
 		value="Баллон с жидкостью для Плазменной пушки" />
+
+	<Item
+		id="ammo_ballon_plasmagun_insured"
+		locForm="0"
+		value="Баллон с жидкостью для Плазменной пушки (Застрахован)" />
 
 	<Item
 		id="ammo_ballon_turbo"
@@ -2364,6 +2579,11 @@
 		id="ammo_ballon_turboForSale"
 		locForm="0"
 		value="Баллон с воздухом для Турбо-ускорения" />
+
+	<Item
+		id="ammo_ballon_turbo_insured"
+		locForm="0"
+		value="Баллон с воздухом для Турбо-ускорения (Застрахован)" />
 
 
 	<Item
@@ -3217,6 +3437,12 @@
 		id="item_opacity"
 		locForm="0"
 		value="@ffffffff" />
+
+
+	<Item
+		id="r1m1"
+		locForm="0"
+		value="Край" />
 
 	
 	<Item

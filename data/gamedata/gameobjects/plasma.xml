@@ -135,9 +135,6 @@ $Id: Plasma.xml,v 1.16 2005/10/18 06:12:48 anton Exp $
 	/>
 
 	<Prototype
-
-
-
 		Class			= "PlasmaBunchLauncher"
 		Name			= "hammer01"
 		ModelFile		= "big_hammer01"
@@ -164,5 +161,34 @@ $Id: Plasma.xml,v 1.16 2005/10/18 06:12:48 anton Exp $
 		Price		= "64000"
 
 		Durability		= "400"/>
+
+	<Prototype
+		Class			= "PlasmaBunchLauncher"
+		Name			= "hammer01_insured"
+		ModelFile		= "big_hammer01"
+		ResourceType	= "GIANT_GUN"
+		NodeScale		= "1 1 1"
+		Mass			= "1.0"
+		
+		Decal				= "DC_LASER"
+
+		BulletPrototype	= "somePlasmaBunchBig_hammer01"
+		ExplosionType	= "PLASMA"
+		FiringEffect	= "none"
+		Damage		= "1500"
+		FiringRate		= "12"
+		GroupingAngle	= "0.1"
+		FiringRange		= "200"
+		RecoilForce		= "550"
+		FiringType		= "Plasma"
+		ChargeSize     = "1"
+		RechargingTime = "5"
+		ShellsPoolSize="14"
+		WithShellsPoolLimit	= "true"
+		
+		Price		= "64000"
+
+		Durability		= "400"
+		VisibleInEncyclopedia	= "false" />
 
 </Prototypes>

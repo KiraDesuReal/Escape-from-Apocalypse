@@ -217,6 +217,16 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class		= "Ware"
+		Name		= "scrap_metal_use_insured"
+		Price	= "5000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "lom"
+		VisibleInEncyclopedia	= "false"
+		ResourceType= "SCRAP_METAL_USE" />
+
+	<Prototype
+		Class		= "Ware"
 		Name		= "machinery_use"
 		Price	= "12500"
 		Durability	= "30"
@@ -228,6 +238,16 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Class		= "Ware"
 		Name		= "machinery_use_ForSale"
 		Price	= "12"
+		Durability	= "30"
+		PriceDispersion      = "5"
+		ModelFile	= "rabochee_oborudovanie"
+		VisibleInEncyclopedia	= "false"
+		ResourceType= "MACHINERY_USE" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "machinery_use_insured"
+		Price	= "12500"
 		Durability	= "30"
 		PriceDispersion      = "5"
 		ModelFile	= "rabochee_oborudovanie"
@@ -255,11 +275,31 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class		= "Ware"
+		Name		= "electronics_use_insured"
+		Price	= "18000"
+		Durability	= "20"
+		PriceDispersion      = "5"
+		ModelFile	= "mikro"
+		VisibleInEncyclopedia	= "false"
+		ResourceType= "ELECTRONICS_USE" />
+
+	<Prototype
+		Class		= "Ware"
 		Name		= "oil_use"
 		Price	= "7500"
 		Durability	= "70"
 		PriceDispersion      = "5"
 		ModelFile	= "back_exp"
+		ResourceType= "OIL_USE" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "oil_use_insured"
+		Price	= "7500"
+		Durability	= "70"
+		PriceDispersion      = "5"
+		ModelFile	= "back_exp"
+		VisibleInEncyclopedia	= "false"
 		ResourceType= "OIL_USE" />
 
 	<Prototype
@@ -273,11 +313,31 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class		= "Ware"
+		Name		= "fuel_full_use_insured"
+		Price	= "11400"
+		Durability	= "50"
+		PriceDispersion      = "5"
+		ModelFile	= "kanistr"
+		VisibleInEncyclopedia	= "false"
+		ResourceType= "FUEL_FULL_USE" />
+
+	<Prototype
+		Class		= "Ware"
 		Name		= "fuel_nil_use"
 		Price	= "1200"
 		Durability	= "70"
 		PriceDispersion      = "5"
 		ModelFile	= "kanistr"
+		ResourceType= "FUEL_NIL_USE" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "fuel_nil_use_insured"
+		Price	= "1200"
+		Durability	= "70"
+		PriceDispersion      = "5"
+		ModelFile	= "kanistr"
+		VisibleInEncyclopedia	= "false"
 		ResourceType= "FUEL_NIL_USE" />
 
 <!-- Keys -->		
@@ -323,6 +383,16 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class		= "Ware"
+		Name		= "ammo_chest_artillerygun_insured"
+		Price	= "26600"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "ammo_chest_artillerygun"
+		VisibleInEncyclopedia	= "false"
+		ResourceType= "ITEM_SIZE_4X2" />
+
+	<Prototype
+		Class		= "Ware"
 		Name		= "ammo_chest_heavygun"
 		Price	= "16250"
 		Durability	= "100"
@@ -334,6 +404,16 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Class		= "Ware"
 		Name		= "ammo_chest_heavygunForSale"
 		Price	= "27"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "ammo_chest_heavygun"
+		VisibleInEncyclopedia	= "false"
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_chest_heavygun_insured"
+		Price	= "16250"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= "ammo_chest_heavygun"
@@ -361,6 +441,16 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class		= "Ware"
+		Name		= "ammo_chest_machinegun_insured"
+		Price	= "8900"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "ammo_chest_machinegun"
+		VisibleInEncyclopedia	= "false"
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
 		Name		= "ammo_chest_rocketgun"
 		Price	= "24000"
 		Durability	= "100"
@@ -372,6 +462,16 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Class		= "Ware"
 		Name		= "ammo_chest_rocketgunForSale"
 		Price	= "33"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "ammo_chest_rocketgun"
+		VisibleInEncyclopedia	= "false"
+		ResourceType= "ITEM_SIZE_4X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_chest_rocketgun_insured"
+		Price	= "24000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= "ammo_chest_rocketgun"
@@ -399,6 +499,16 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class		= "Ware"
+		Name		= "ammo_chest_shotgun_insured"
+		Price	= "5650"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "ammo_chest_shotgun"
+		VisibleInEncyclopedia	= "false"
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
 		Name		= "ammo_ballon_lasergun"
 		Price	= "14850"
 		Durability	= "100"
@@ -408,11 +518,31 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class		= "Ware"
+		Name		= "ammo_ballon_lasergun_insured"
+		Price	= "14850"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "ammo_ballon_lasergun"
+		VisibleInEncyclopedia	= "false"
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
 		Name		= "ammo_ballon_plasmagun"
 		Price	= "20550"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= "ammo_ballon_plasmagun"
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_ballon_plasmagun_insured"
+		Price	= "20550"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "ammo_ballon_plasmagun"
+		VisibleInEncyclopedia	= "false"
 		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
@@ -428,6 +558,16 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Class		= "Ware"
 		Name		= "ammo_ballon_turboForSale"
 		Price	= "26"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "ammo_ballon_turbo"
+		VisibleInEncyclopedia	= "false"
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "ammo_ballon_turbo_insured"
+		Price	= "15750"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= "ammo_ballon_turbo"
@@ -1931,6 +2071,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "1"
 		PriceDispersion      = "0"
 		ModelFile	= ""
+		VisibleInEncyclopedia	= "false"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
@@ -1940,6 +2081,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "1"
 		PriceDispersion      = "0"
 		ModelFile	= "quest_box_videocard"
+		VisibleInEncyclopedia	= "false"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 <!-- Special Items -->

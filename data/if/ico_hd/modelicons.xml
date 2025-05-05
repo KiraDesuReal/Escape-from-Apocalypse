@@ -138,13 +138,19 @@
    <!-- Use -->
    <Item id="scrap_metal_use" file="data\if\ico_hd\InventoryDlg\goods\lom_use.dds" file1="data\if\ico_hd\InventoryDlg\goods\lom_use.dds"/>
    <Item id="scrap_metal_use_ForSale" file="data\if\ico_hd\InventoryDlg\goods\lom_use.dds" file1="data\if\ico_hd\InventoryDlg\goods\lom_use.dds"/>
+   <Item id="scrap_metal_use_insured" file="data\if\ico_hd\InventoryDlg\goods\lom_use_insured.dds" file1="data\if\ico_hd\InventoryDlg\goods\lom_use_insured.dds"/>
    <Item id="machinery_use" file="data\if\ico_hd\InventoryDlg\goods\rabochee_oborudovanie_use.dds" file1="data\if\ico_hd\InventoryDlg\goods\rabochee_oborudovanie_use.dds"/>
    <Item id="machinery_use_ForSale" file="data\if\ico_hd\InventoryDlg\goods\rabochee_oborudovanie_use.dds" file1="data\if\ico_hd\InventoryDlg\goods\rabochee_oborudovanie_use.dds"/>
+   <Item id="machinery_use_insured" file="data\if\ico_hd\InventoryDlg\goods\rabochee_oborudovanie_use_insured.dds" file1="data\if\ico_hd\InventoryDlg\goods\rabochee_oborudovanie_use_insured.dds"/>
    <Item id="electronics_use" file="data\if\ico_hd\InventoryDlg\goods\mikro_use.dds" file1="data\if\ico_hd\InventoryDlg\goods\mikro_use.dds"/>
    <Item id="electronics_use_ForSale" file="data\if\ico_hd\InventoryDlg\goods\mikro_use.dds" file1="data\if\ico_hd\InventoryDlg\goods\mikro_use.dds"/>
+   <Item id="electronics_use_insured" file="data\if\ico_hd\InventoryDlg\goods\mikro_use_insured.dds" file1="data\if\ico_hd\InventoryDlg\goods\mikro_use_insured.dds"/>
    <Item id="oil_use" file="data\if\ico_hd\InventoryDlg\goods\oil_use.dds" file1="data\if\ico_hd\InventoryDlg\goods\oil_use.dds"/>
+   <Item id="oil_use_insured" file="data\if\ico_hd\InventoryDlg\goods\oil_use_insured.dds" file1="data\if\ico_hd\InventoryDlg\goods\oil_use_insured.dds"/>
    <Item id="fuel_full_use" file="data\if\ico_hd\InventoryDlg\goods\kanistra_full_use.dds" file1="data\if\ico_hd\InventoryDlg\goods\kanistra_full_use.dds"/>
+   <Item id="fuel_full_use_insured" file="data\if\ico_hd\InventoryDlg\goods\kanistra_full_use_insured.dds" file1="data\if\ico_hd\InventoryDlg\goods\kanistra_full_use_insured.dds"/>
    <Item id="fuel_nil_use" file="data\if\ico_hd\InventoryDlg\goods\kanistra_nil_use.dds" file1="data\if\ico_hd\InventoryDlg\goods\kanistra_nil_use.dds"/>
+   <Item id="fuel_nil_use_insured" file="data\if\ico_hd\InventoryDlg\goods\kanistra_nil_use_insured.dds" file1="data\if\ico_hd\InventoryDlg\goods\kanistra_nil_use_insured.dds"/>
 
    <!-- Keys -->
    <Item id="item_key_gate_thetown" file="data\if\ico_hd\InventoryDlg\goods\new\keys\item_key_1.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\keys\item_key_1.dds"/>
@@ -153,18 +159,26 @@
    <!-- Ammo -->
    <Item id="ammo_chest_artillerygun" file="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_artillerygun.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_artillerygun.dds"/>
    <Item id="ammo_chest_artillerygunForSale" file="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_artillerygun.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_artillerygun.dds"/>
+   <Item id="ammo_chest_artillerygun_insured" file="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_artillerygun_insured.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_artillerygun_insured.dds"/>
    <Item id="ammo_chest_heavygun" file="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_heavygun.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_heavygun.dds"/>
    <Item id="ammo_chest_heavygunForSale" file="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_heavygun.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_heavygun.dds"/>
+   <Item id="ammo_chest_heavygun_insured" file="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_heavygun_insured.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_heavygun_insured.dds"/>
    <Item id="ammo_chest_machinegun" file="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_machinegun.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_machinegun.dds"/>
    <Item id="ammo_chest_machinegunForSale" file="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_machinegun.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_machinegun.dds"/>
+   <Item id="ammo_chest_machinegun_insured" file="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_machinegun_insured.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_machinegun_insured.dds"/>
    <Item id="ammo_chest_rocketgun" file="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_rocketgun.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_rocketgun.dds"/>
    <Item id="ammo_chest_rocketgunForSale" file="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_rocketgun.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_rocketgun.dds"/>
+   <Item id="ammo_chest_rocketgun_insured" file="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_rocketgun_insured.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_rocketgun_insured.dds"/>
    <Item id="ammo_chest_shotgun" file="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_shotgun.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_shotgun.dds"/>
    <Item id="ammo_chest_shotgunForSale" file="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_shotgun.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_shotgun.dds"/>
+   <Item id="ammo_chest_shotgun_insured" file="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_shotgun_insured.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_chest_shotgun_insured.dds"/>
    <Item id="ammo_ballon_lasergun" file="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_ballon_lasergun.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_ballon_lasergun.dds"/>
+   <Item id="ammo_ballon_lasergun_insured" file="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_ballon_lasergun_insured.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_ballon_lasergun_insured.dds"/>
    <Item id="ammo_ballon_plasmagun" file="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_ballon_plasmagun.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_ballon_plasmagun.dds"/>
+   <Item id="ammo_ballon_plasmagun_insured" file="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_ballon_plasmagun_insured.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_ballon_plasmagun_insured.dds"/>
    <Item id="ammo_ballon_turbo" file="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_ballon_turbo.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_ballon_turbo.dds"/>
    <Item id="ammo_ballon_turboForSale" file="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_ballon_turbo.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_ballon_turbo.dds"/>
+   <Item id="ammo_ballon_turbo_insured" file="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_ballon_turbo_insured.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\ammo\ammo_ballon_turbo_insured.dds"/>
 
    <!-- Building -->
    <Item id="item_bolts" file="data\if\ico_hd\InventoryDlg\goods\new\building\item_bolts.dds" file1="data\if\ico_hd\InventoryDlg\goods\new\building\item_bolts.dds"/>
@@ -363,34 +377,58 @@
    <!-- Giant -->
    <Item id="dragon01"			   file="data\if\ico_hd\InventoryDlg\weapon\dragon.dds"		   file1="data\if\ico_hd\InventoryDlg\weapon\dragon_min.dds"/>
    <Item id="hammer01"			   file="data\if\ico_hd\InventoryDlg\weapon\hammer01.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\hammer01_min.dds"/>
+   <Item id="hammer01_insured"	file="data\if\ico_hd\InventoryDlg\weapon\hammer01_insured.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\hammer01_min.dds"/>
    <Item id="cyclops01"			   file="data\if\ico_hd\InventoryDlg\weapon\Cyclops.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\Cyclops_min.dds"/>
+   <Item id="cyclops01_insured"	file="data\if\ico_hd\InventoryDlg\weapon\Cyclops_insured.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\Cyclops_min.dds"/>
    <Item id="octopus01"		      file="data\if\ico_hd\InventoryDlg\weapon\Octopus.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\Octopus_min.dds"/>
+   <Item id="octopus01_insured"	file="data\if\ico_hd\InventoryDlg\weapon\Octopus_insured.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\Octopus_min.dds"/>
    <Item id="big_swingfire01"	   file="data\if\ico_hd\InventoryDlg\weapon\swingfire.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\swingfire_min.dds"/>
+   <Item id="big_swingfire01_insured"	   file="data\if\ico_hd\InventoryDlg\weapon\swingfire_insured.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\swingfire_min.dds"/>
 
    <Item id="rocketLauncher"		file="data\if\ico_hd\InventoryDlg\weapon\dragon.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\dragon_min.dds"/>
+   <Item id="rocketLauncher_insured"		file="data\if\ico_hd\InventoryDlg\weapon\dragon_insured.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\dragon_min.dds"/>
 
    <!-- Big -->
    <Item id="storm01"			   file="data\if\ico_hd\InventoryDlg\weapon\Storm.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\Storm_min.dds"/>
+   <Item id="storm01_insured"		file="data\if\ico_hd\InventoryDlg\weapon\Storm_insured.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\Storm_min.dds"/>
    <Item id="vulcan01"			   file="data\if\ico_hd\InventoryDlg\weapon\Vulcan.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\Vulcan_min.dds"/>
+   <Item id="vulcan01_insured"	file="data\if\ico_hd\InventoryDlg\weapon\Vulcan_insured.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\Vulcan_min.dds"/>
    <Item id="flag01"			      file="data\if\ico_hd\InventoryDlg\weapon\Flag.dds"			file1="data\if\ico_hd\InventoryDlg\weapon\Flag_min.dds"/>
+   <Item id="flag01_insured"		file="data\if\ico_hd\InventoryDlg\weapon\Flag_insured.dds"			file1="data\if\ico_hd\InventoryDlg\weapon\Flag_min.dds"/>
    <Item id="rainmetal01"		   file="data\if\ico_hd\InventoryDlg\weapon\Rainmetal.dds"	file1="data\if\ico_hd\InventoryDlg\weapon\Rainmetal_min.dds"/>
+   <Item id="rainmetal01_insured"		   file="data\if\ico_hd\InventoryDlg\weapon\Rainmetal_insured.dds"	file1="data\if\ico_hd\InventoryDlg\weapon\Rainmetal_min.dds"/>
    <Item id="rapier01"			   file="data\if\ico_hd\InventoryDlg\weapon\Rapier.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\Rapier_min.dds"/>
+   <Item id="rapier01_insured"	file="data\if\ico_hd\InventoryDlg\weapon\Rapier_insured.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\Rapier_min.dds"/>
    <Item id="kpvt01"			      file="data\if\ico_hd\InventoryDlg\weapon\kpvt01.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\kpvt01_min.dds"/>
+   <Item id="kpvt01_insured"		file="data\if\ico_hd\InventoryDlg\weapon\kpvt01_insured.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\kpvt01_min.dds"/>
    <Item id="elephant01"	      file="data\if\ico_hd\InventoryDlg\weapon\elephant01.dds"	file1="data\if\ico_hd\InventoryDlg\weapon\elephant01_min.dds"/>
+   <Item id="elephant01_insured"	file="data\if\ico_hd\InventoryDlg\weapon\elephant01_insured.dds"	file1="data\if\ico_hd\InventoryDlg\weapon\elephant01_min.dds"/>
    <Item id="hurricane01"	      file="data\if\ico_hd\InventoryDlg\weapon\hurricane01.dds" file1="data\if\ico_hd\InventoryDlg\weapon\hurricane01_min.dds"/>
+   <Item id="hurricane01_insured"	      file="data\if\ico_hd\InventoryDlg\weapon\hurricane01_insured.dds" file1="data\if\ico_hd\InventoryDlg\weapon\hurricane01_min.dds"/>
    <Item id="odin01"			      file="data\if\ico_hd\InventoryDlg\weapon\odin01.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\odin01_min.dds"/>
+   <Item id="odin01_insured"		file="data\if\ico_hd\InventoryDlg\weapon\odin01_insured.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\odin01_min.dds"/>
    <Item id="bumblebee01"	      file="data\if\ico_hd\InventoryDlg\weapon\Bumblebee.dds"	file1="data\if\ico_hd\InventoryDlg\weapon\Bumblebee_min.dds"/>
+   <Item id="bumblebee01_insured"	      file="data\if\ico_hd\InventoryDlg\weapon\Bumblebee_insured.dds"	file1="data\if\ico_hd\InventoryDlg\weapon\Bumblebee_min.dds"/>
    <Item id="omega01"		      file="data\if\ico_hd\InventoryDlg\weapon\omega01.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\omega01_min.dds"/>
+   <Item id="omega01_insured"		      file="data\if\ico_hd\InventoryDlg\weapon\omega01_insured.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\omega01_min.dds"/>
 
    <!-- Small -->
    <Item id="hornet01"			   file="data\if\ico_hd\InventoryDlg\weapon\Hornet.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\Hornet_min.dds"/>
+   <Item id="hornet01_insured"	file="data\if\ico_hd\InventoryDlg\weapon\Hornet_insured.dds" file1="data\if\ico_hd\InventoryDlg\weapon\Hornet_min.dds"/>
    <Item id="american_hornet01"	file="data\if\ico_hd\InventoryDlg\weapon\a_hornet.dds"	file1="data\if\ico_hd\InventoryDlg\weapon\a_hornet_min.dds"/>
+   <Item id="american_hornet01_insured"	file="data\if\ico_hd\InventoryDlg\weapon\a_hornet_insured.dds"	file1="data\if\ico_hd\InventoryDlg\weapon\a_hornet_min.dds"/>
    <Item id="specter01"			   file="data\if\ico_hd\InventoryDlg\weapon\Specter.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\Specter_min.dds"/>
+   <Item id="specter01_insured"	file="data\if\ico_hd\InventoryDlg\weapon\Specter_insured.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\Specter_min.dds"/>
    <Item id="pkt01"			      file="data\if\ico_hd\InventoryDlg\weapon\Pkt.dds"			file1="data\if\ico_hd\InventoryDlg\weapon\Pkt_min.dds"/>
+   <Item id="pkt01_insured"		file="data\if\ico_hd\InventoryDlg\weapon\Pkt_insured.dds"			file1="data\if\ico_hd\InventoryDlg\weapon\Pkt_min.dds"/>
    <Item id="kord01"			      file="data\if\ico_hd\InventoryDlg\weapon\Kord.dds"			file1="data\if\ico_hd\InventoryDlg\weapon\Kord_min.dds"/>
+   <Item id="kord01_insured"		file="data\if\ico_hd\InventoryDlg\weapon\Kord_insured.dds"			file1="data\if\ico_hd\InventoryDlg\weapon\Kord_min.dds"/>
    <Item id="vector01"			   file="data\if\ico_hd\InventoryDlg\weapon\vector01.dds"	file1="data\if\ico_hd\InventoryDlg\weapon\vector01_min.dds"/>
+   <Item id="vector01_insured"	file="data\if\ico_hd\InventoryDlg\weapon\vector01_insured.dds"	file1="data\if\ico_hd\InventoryDlg\weapon\vector01_min.dds"/>
    <Item id="maxim01"			   file="data\if\ico_hd\InventoryDlg\weapon\maxim01.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\maxim01_min.dds"/>
+   <Item id="maxim01_insured"		file="data\if\ico_hd\InventoryDlg\weapon\maxim01_insured.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\maxim01_min.dds"/>
    <Item id="fagot01"			   file="data\if\ico_hd\InventoryDlg\weapon\fagot01.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\fagot01_min.dds"/>
+   <Item id="fagot01_insured"		file="data\if\ico_hd\InventoryDlg\weapon\fagot01_insured.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\fagot01_min.dds"/>
 
    <!-- Special -->
    <Item id="minePusher"		   file="data\if\ico_hd\InventoryDlg\weapon\minoykladchik1.dds"	file1="data\if\ico_hd\InventoryDlg\weapon\minoykladchik1_min.dds"/>
@@ -400,13 +438,19 @@
    <Item id="Smoke"			      file="data\if\ico_hd\InventoryDlg\weapon\dimzavesa.dds"	      file1="data\if\ico_hd\InventoryDlg\weapon\dimzavesa_min.dds"/>
    <Item id="engineOilPusher"		file="data\if\ico_hd\InventoryDlg\weapon\maslorazliv.dds"	   file1="data\if\ico_hd\InventoryDlg\weapon\maslorazliv_min.dds"/>
    <Item id="someTurboAccelerationPusher" file="data\if\ico_hd\InventoryDlg\weapon\turboakselerator.dds"	file1="data\if\ico_hd\InventoryDlg\weapon\turboakselerator_min.dds"/>
+   <Item id="someTurboAccelerationPusher_insured" file="data\if\ico_hd\InventoryDlg\weapon\turboakselerator_insured.dds"	file1="data\if\ico_hd\InventoryDlg\weapon\turboakselerator_min.dds"/>
 
    <!-- Side -->
    <Item id="mrakSideGun"		   file="data\if\ico_hd\InventoryDlg\weapon\mraksidegun.dds"	file1="data\if\ico_hd\InventoryDlg\weapon\mraksidegun_min.dds"/>
+   <Item id="mrakSideGun_insured"		   file="data\if\ico_hd\InventoryDlg\weapon\mraksidegun_insured.dds"	file1="data\if\ico_hd\InventoryDlg\weapon\mraksidegun_min.dds"/>
    <Item id="hunterSideGun"	   file="data\if\ico_hd\InventoryDlg\weapon\huntersidegun.dds"	file1="data\if\ico_hd\InventoryDlg\weapon\huntersidegun_min.dds"/>
+   <Item id="hunterSideGun_insured"	   file="data\if\ico_hd\InventoryDlg\weapon\huntersidegun_insured.dds"	file1="data\if\ico_hd\InventoryDlg\weapon\huntersidegun_min.dds"/>
    <Item id="zeusSideGun"		   file="data\if\ico_hd\InventoryDlg\weapon\zeussidegun.dds"   file1="data\if\ico_hd\InventoryDlg\weapon\zeussidegun_min.dds"/>
+   <Item id="zeusSideGun_insured"		   file="data\if\ico_hd\InventoryDlg\weapon\zeussidegun_insured.dds"   file1="data\if\ico_hd\InventoryDlg\weapon\zeussidegun_min.dds"/>
    <Item id="marsSideGun"		   file="data\if\ico_hd\InventoryDlg\weapon\marssidegun.dds"	file1="data\if\ico_hd\InventoryDlg\weapon\marssidegun_min.dds"/>
+   <Item id="marsSideGun_insured"		   file="data\if\ico_hd\InventoryDlg\weapon\marssidegun_insured.dds"	file1="data\if\ico_hd\InventoryDlg\weapon\marssidegun_min.dds"/>
    <Item id="hailSideGun"	      file="data\if\ico_hd\InventoryDlg\weapon\hailSideGun.dds" file1="data\if\ico_hd\InventoryDlg\weapon\hailSideGun_min.dds"/>
+   <Item id="hailSideGun_insured"	      file="data\if\ico_hd\InventoryDlg\weapon\hailSideGun_insured.dds" file1="data\if\ico_hd\InventoryDlg\weapon\hailSideGun_min.dds"/>
 
    <!-- Tank -->
    <Item id="tank01"			      file="data\if\ico_hd\InventoryDlg\weapon\tank.dds"			file1="data\if\ico_hd\InventoryDlg\weapon\tank_min.dds"/>

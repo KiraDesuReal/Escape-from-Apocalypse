@@ -403,6 +403,37 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
 
         <Prototype
                 Class                   = "RocketLauncher"
+                Name                    = "hurricane01_insured"
+                ModelFile                       = "giant_hurricane01"
+                ResourceType            = "BIG_GUN"
+                NodeScale               = "1 1 1"
+                Mass                    = "1.0"
+
+                Decal                           = "DC_ROKET"
+
+                BulletPrototype         = "hurricane_rocket"
+                ExplosionType           = "BLAST"
+                FiringEffect            = "none"
+		Damage			= "180"
+                FiringRate              = "30"
+                GroupingAngle           = "1"
+                FiringRange             = "600"
+                RecoilForce             = "300"
+                FiringType              = "Rocket"
+		ChargeSize     = "6"
+		RechargingTime = "12"
+
+                ShellsPoolSize          = "18"
+                WithShellsPoolLimit     = "true"
+
+                CanBeUsedInAutogenerating  =  "0"
+                Price           = "20980" 
+
+                Durability                      = "300"
+                VisibleInEncyclopedia = "false"/>
+
+        <Prototype
+                Class                   = "RocketLauncher"
 		Name			= "hurricane01_unlimited"
 		ModelFile			= "giant_hurricane01"
 		ResourceType		= "GIANT_GUN"
@@ -453,6 +484,35 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
                 Price           = "38400" 
 
                 Durability                      = "400" />
+
+        <Prototype
+		Class			= "RocketLauncher"
+                Name                    = "rocketLauncher_insured"
+                ModelFile                       = "dragon01"
+                ResourceType            = "GIANT_GUN"
+                NodeScale               = "1 1 1"
+                Mass                    = "1.0"
+                
+                Decal                           = "DC_ROKET"
+                FiringType              = "Rocket"
+                BulletPrototype         = "dragon_rocket"
+                ExplosionType           = "BLAST" 
+		Damage			= "420"
+		FiringRate		= "30"
+                GroupingAngle           = "1"
+                FiringRange             = "200"
+                RecoilForce             = "150"
+                ShellsPoolSize="16"
+		ChargeSize     = "8"
+                RechargingTime = "12"
+                MaxCharges = "3"
+                WithShellsPoolLimit     = "true"
+
+                CanBeUsedInAutogenerating  =  "0"
+                Price           = "38400" 
+
+                Durability                      = "400"
+                 VisibleInEncyclopedia = "false" />
 
         <Prototype
                 Class                   = "RocketLauncher"
@@ -510,6 +570,36 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
                 
                 CanBeUsedInAutogenerating  =  "0"
 		Price           = "25200" 
+        />
+
+        <Prototype
+		Class			= "RocketLauncher"
+		Name                    = "big_swingfire01_insured"
+		ModelFile                       = "big_swingfire01"
+		ResourceType            = "GIANT_GUN"
+		NodeScale               = "1 1 1"
+		Mass                    = "1.0"
+                
+		Decal                           = "DC_ROKET"
+		FiringType              = "Rocket"
+		BulletPrototype         = "swingfire_rocket"
+		ExplosionType           = "BLAST"
+		Damage			= "280"
+		FiringRate			= "15"
+		GroupingAngle           = "1"
+		FiringRange             = "600"
+		RecoilForce             = "150"
+		Durability              = "200"
+
+		ChargeSize     = "6"
+		RechargingTime = "12"
+
+		ShellsPoolSize          = "18"
+		WithShellsPoolLimit     = "true"
+                
+                CanBeUsedInAutogenerating  =  "0"
+		Price           = "25200" 
+                VisibleInEncyclopedia = "false"
         />
 
 	<Prototype
@@ -633,8 +723,21 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
 
                 <Part id = "BASKET_SIDE_GUN_L"  Prototype = "mrak01L" /> 
                 <Part id = "BASKET_SIDE_GUN_R"  Prototype = "mrak01R" /> 
+        </Prototype>
 
+        <Prototype
+                Class                   = "CompoundGun"
+                Name                            = "mrakSideGun_insured"
 
+                Decal                           = "DC_ROKET"
+
+     		ApplyAffixes	= "false"
+                Price           = "49800"
+                ResourceType            = "SIDE_GUN"
+                VisibleInEncyclopedia = "false">   
+
+                <Part id = "BASKET_SIDE_GUN_L"  Prototype = "mrak01L" /> 
+                <Part id = "BASKET_SIDE_GUN_R"  Prototype = "mrak01R" /> 
         </Prototype>
 
 </Prototypes>

@@ -779,6 +779,7 @@
 						pl:SetGamePositionOnGround(CVector(893.077, 255.493, 987.899))
 						pl:SetRotation(Quaternion(-0.009, -0.005, -0.000, 1.000))
 						R0M1_exit = 0
+						if not(GetVar("CountRaids").AsInt == 0) then TActivate("ReturnInsureItems") end
 					else
 						R0M1_exit = 0
 						TActivate("SetWeatherRandom")
@@ -792,7 +793,6 @@
 
 			AllowSave(true)
 
-			SetVar("ToMap", "0")
 			SetVar("DialogSelectMap", 0)
 
 			SetCameraBehindPlayerVehicle()
@@ -3283,13 +3283,17 @@
 			local prot = pl:GetProperty("Prototype").AsString
 			local chassisCar = "BugChassis"
 
-			pl:SetNameFromScript("PlayerCarInGarage") 
 			pl:setGodMode(1)
-
+			pl:SetCustomLinearVelocity(0)
+			pl:SetThrottle(0)
+			pl:SetCustomControlEnabled(true)
+			pl:SetNameFromScript("PlayerCarInGarage") 
+			
 			if prot == "MolokovozForSale" then chassisCar = "MolokovozChassis" end
 			if prot == "UralForSale" then chassisCar = "UralChassis" end
 			if prot == "BelazForSale" then chassisCar = "BelazChassis" end
 			if prot == "MirotvorecForSale" then chassisCar = "MirotvorecChassis" end
+			if prot == "CruiserForSale" then chassisCar = "CruiserChassis" end
 
 			CreateVehicleEx(chassisCar, "ChassisCarForPlayer", CVector(893.077, 255.493, 987.899), 1100)
 
@@ -3307,11 +3311,7 @@
 			GetPlayerVehicle():SetGamePositionOnGround(CVector(893.077, 255.493, 987.899))
 			GetPlayerVehicle():SetRotation(Quaternion(-0.009, -0.005, -0.000, 1.000))
 
-			local plfInGarage = GetEntityByName("PlayerCarInGarage")
-			if plfInGarage then
-				plfInGarage:SetGamePositionOnGround(CVector(907.885, 255.468, 962.024))
-				plfInGarage:SetRotation(Quaternion(0.007, 0.704, 0.007, -0.710))
-			end
+			TActivate("TpPlayerCarInGarage")
 
 			SetCameraBehindPlayerVehicle()
 			SetVar("CarInGarage", 1)
@@ -3356,6 +3356,21 @@
 				if b == 1 then
 					TActivate("ReturnPlayerCarFromGarage")
 				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="TpPlayerCarInGarage" active="0">
+		<event	timeout="0.5"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local pos = CVector(902.498, 255.467, 957.345)
+			local plfInGarage = GetEntityByName("PlayerCarInGarage")
+			if plfInGarage then
+				local prot = plfInGarage:GetProperty("Prototype").AsString
+				if prot == "BelazForSale" then pos = CVector(903.940, 257.355, 957.419) end
+				plfInGarage:SetGamePositionOnGround(pos)
+				plfInGarage:SetRotation(Quaternion(-0.007, -0.708, -0.007, 0.706))
 			end
 			trigger:Deactivate()
 		</script>
@@ -4137,11 +4152,15 @@
 
 			if GetVar("PlayerBelong").AsString == "SCAV" then
 				TActivate("CreateLootForScavCar")
+			else
+				TActivate("SetVarInsureItems")
 			end
 
 			local map = GetVar("ToMap").AsString
 
 			PassToMap(map, "FromR0M0")
+
+			TActivate("SetDate")
 
 			trigger:Deactivate()
 		</script>
@@ -4967,6 +4986,97 @@
 		</script>
 	</trigger>
 
+<!-- Страховка -->
+	<trigger Name="SetVarInsureItems" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			INSURED_ITEMS_GLOBAL = {}
+			local l = 0
+			local items = {"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun",
+							"someTurboAccelerationPusher",
+							"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use", "fuel_nil_use",
+							"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo"}
+
+			for i = 1, getn(items) do
+				if HasPlayerAmountOfItems(items[i].."_insured", 1) or IfCanGunInSlot(items[i].."_insured") > 0 then
+					local countItems = GetItemsAmount(items[i].."_insured")
+					local countGun = IfCanGunInSlot(items[i].."_insured")
+					if countItems > 0 then
+						for i2 = 1, countItems do
+							l = l + 1
+							INSURED_ITEMS_GLOBAL[l] = items[i]
+							con(INSURED_ITEMS_GLOBAL[l])
+						end
+					end
+					if countGun > 0 then
+						for i3 = 1, countGun do
+							l = l + 1
+							INSURED_ITEMS_GLOBAL[l] = items[i]
+							con(INSURED_ITEMS_GLOBAL[l])
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ReturnInsureItems" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local insured = INSURED_ITEMS_GLOBAL
+			INSURED_ITEMS_GLOBAL = {}
+			local items = {}
+			local l = 0
+
+			if insured ~= nil and getn(insured) ~= 0 then
+				for i = 1, getn(insured) do
+					if not(HasPlayerAmountOfItems(insured[i].."_insured", 1)) and IfCanGunInSlot(insured[i].."_insured") == 0 then
+						if random(2) == 1 then
+							l = l + 1
+							items[l] = insured[i]
+							con("Return_"..i.."_"..insured[i])
+						end
+					end
+				end
+			end
+			
+			if getn(items) ~= 0 then
+				local Chest = CreateNewObject{prototypeName = "mainChest", objName = "ChestReturnInsureItems"}	
+				local ChestId = GetEntityByID(Chest)
+				ChestId:SetPosition(CVector(898.134, 255, 988.361))
+				ChestId:SetSkin(9)
+
+				for i2 = 1, getn(items) do
+					local Item = CreateNewObject{prototypeName = items[i2], objName = "ReturnInsureItem_"..random(100000), belong = 1100}
+					local ItemId = GetEntityByID(Item)
+
+					if ChestId and ItemId then
+						ChestId:AddChild(ItemId)
+					end
+				end
+
+				AddFadingMsgByStrIdFormatted("fm_return_insure_items_"..random(1,8), GetVar("Date").AsString, GetVar("ToMap").AsString)
+				SoundFadingMsg()
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SetDate" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local mouth = strsub(os.date(), 1, 2)
+			local day = strsub(os.date(), 4, 5)
+			local year = strsub(os.date(), 7, 8)
+			local clock = strsub(os.date(), 10, 17)
+
+			local msg = day.."."..mouth..".20"..year.." "..clock
+			SetVar("Date", msg)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 <!-- Выход/очистка карты -->
 	<trigger Name="ExitMap" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
@@ -5059,12 +5169,8 @@
 				end
 
 				if GetVar("CarInGarage").AsInt == 1 then 
-					local plfInGarage = GetEntityByName("PlayerCarInGarage")
-					if plfInGarage then
-						plfInGarage:SetGamePositionOnGround(CVector(907.885, 255.468, 962.024))
-						plfInGarage:SetRotation(Quaternion(0.007, 0.704, 0.007, -0.710))
-						UpdateCab("PlayerCarInGarage") 
-					end
+					TActivate("TpPlayerCarInGarage")
+					UpdateCab("PlayerCarInGarage") 
 				end
 
 				if GARAGE_CRAFTING_TIME_HOUR_GLOBAL then GARAGE_CRAFTING_TIME_HOUR_GLOBAL = GetVar("GarageCrafting_time_hour").AsInt end

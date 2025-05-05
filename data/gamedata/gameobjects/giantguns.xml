@@ -35,6 +35,35 @@ $Id: GiantGuns.xml,v 1.28 2005/11/28 07:43:57 anton Exp $
 
 	<Prototype
 		Class			= "BulletLauncher"
+		Name			= "cyclops01_insured"
+		ModelFile		= "cyclops01"
+		ResourceType		= "GIANT_GUN"
+		NodeScale		= "1 1 1"
+		Mass			= "1.0"
+		
+		Decal				= "DC_GUN"
+
+		BulletPrototype		= "raybullet_cyclops01"
+		ExplosionType		= "CANNON"
+		FiringEffect		= "none"
+		Damage		= "260"
+		FiringRate		= "20"
+		GroupingAngle		= "1.0"
+		FiringRange		= "1600"
+		RecoilForce		= "2000"
+                FiringType		= "Cannon"
+		Price		= "15500"
+		ShellsPoolSize="28"
+		WithShellsPoolLimit	= "true"
+       		DamageType	= "BLAST"
+		ChargeSize     = "1"
+		RechargingTime = "3"
+
+		Durability		= "150"
+		VisibleInEncyclopedia = "false" />
+
+	<Prototype
+		Class			= "BulletLauncher"
 		Name			= "robotgun01"
 		ModelFile		= "robotgun01"
 		ResourceType		= "TANK_GUN"
@@ -86,6 +115,35 @@ $Id: GiantGuns.xml,v 1.28 2005/11/28 07:43:57 anton Exp $
 		Price		= "21840"
 
 		Durability		= "150" />
+
+	<Prototype
+		Class			= "BulletLauncher"
+		Name			= "octopus01_insured"
+		ModelFile		= "octopus01"
+		ResourceType		= "GIANT_GUN"
+		NodeScale		= "1 1 1"
+		Mass			= "1.0"
+		
+		Decal			= "DC_GUN"
+
+		BulletPrototype		= "raybullet_octopus01"
+		ExplosionType		= "AUTOCANNON"
+		FiringEffect		= "none"
+		Damage			= "25"
+		FiringRate		= "300"
+		GroupingAngle		= "2.2"
+		FiringRange		= "900"
+		RecoilForce		= "1000"
+		ShellsPoolSize  = "360"
+		WithShellsPoolLimit	= "true"
+		
+		ChargeSize     		= "120"
+		RechargingTime 		= "6"
+                FiringType		= "MachineGun"
+		Price		= "21840"
+
+		Durability		= "150"
+		VisibleInEncyclopedia = "false" />
 
 <!--	<Prototype
 		Class			= "BulletLauncher"

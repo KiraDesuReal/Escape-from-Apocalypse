@@ -83,8 +83,20 @@ $Id: SideGuns.xml,v 1.43 2005/11/24 09:45:19 anton Exp $
 		ResourceType		= "SIDE_GUN">	
 		<Part id = "BASKET_SIDE_GUN_L"	Prototype = "hail01L" /> 
 		<Part id = "BASKET_SIDE_GUN_R"	Prototype = "hail01R" /> 
+	</Prototype>
 
+	<Prototype
+		Class			= "CompoundGun"
+		Name				= "hailSideGun_insured"
+		Price				= "72000"
+		CanBeUsedInAutogenerating  =  "0"
+		Decal				= "DC_ROKET"
 
+     		ApplyAffixes	= "false"
+		ResourceType		= "SIDE_GUN"
+		VisibleInEncyclopedia = "false">	
+		<Part id = "BASKET_SIDE_GUN_L"	Prototype = "hail01L" /> 
+		<Part id = "BASKET_SIDE_GUN_R"	Prototype = "hail01R" /> 
 	</Prototype>
 
 	<Prototype
@@ -171,6 +183,20 @@ $Id: SideGuns.xml,v 1.43 2005/11/24 09:45:19 anton Exp $
 	</Prototype>
 
 	<Prototype
+		Class			= "CompoundGun"
+		Name				= "marsSideGun_insured"
+		Price		= "44000"
+
+		Decal				= "DC_GUN"
+     		ApplyAffixes	= "false"
+		ResourceType		= "SIDE_GUN"
+		VisibleInEncyclopedia = "false">	
+
+		<Part id = "BASKET_SIDE_GUN_L"	Prototype = "mars01L" /> 
+		<Part id = "BASKET_SIDE_GUN_R"	Prototype = "mars01R" /> 
+	</Prototype>
+
+	<Prototype
 		Class			= "ThunderboltLauncher"
 		Name			= "zeus01R"
 		ModelFile		= "zeus01R"
@@ -244,8 +270,20 @@ $Id: SideGuns.xml,v 1.43 2005/11/24 09:45:19 anton Exp $
 
 		<Part id = "BASKET_SIDE_GUN_L"	Prototype = "zeus01L" /> 
 		<Part id = "BASKET_SIDE_GUN_R"	Prototype = "zeus01R" /> 
+	</Prototype>
 
+	<Prototype
+		Class			= "CompoundGun"
+		Name				= "zeusSideGun_insured"
+		Price		= "80000"
+		Decal				= "DC_LASER"
 
+     		ApplyAffixes	= "false"
+		ResourceType		= "SIDE_GUN"
+		VisibleInEncyclopedia = "false">	
+
+		<Part id = "BASKET_SIDE_GUN_L"	Prototype = "zeus01L" /> 
+		<Part id = "BASKET_SIDE_GUN_R"	Prototype = "zeus01R" /> 
 	</Prototype>
 
 	<Prototype
@@ -322,8 +360,22 @@ $Id: SideGuns.xml,v 1.43 2005/11/24 09:45:19 anton Exp $
 
 		<Part id = "BASKET_SIDE_GUN_L"	Prototype = "hunter01L" /> 
 		<Part id = "BASKET_SIDE_GUN_R"	Prototype = "hunter01R" /> 
+	</Prototype>
+
+	<Prototype
+		Class			= "CompoundGun"
+		Name				= "hunterSideGun_insured"
+
+		Price		= "27800"
+		Decal				= "DC_ROKET"
 
 
+     		ApplyAffixes	= "false"
+		ResourceType		= "SIDE_GUN"
+		VisibleInEncyclopedia = "false">	
+
+		<Part id = "BASKET_SIDE_GUN_L"	Prototype = "hunter01L" /> 
+		<Part id = "BASKET_SIDE_GUN_R"	Prototype = "hunter01R" /> 
 	</Prototype>
 
 </Prototypes>

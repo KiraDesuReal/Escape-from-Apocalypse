@@ -926,14 +926,14 @@
 <!--Root/r0m0/Гараж постройка-->
 	<Reply
 		name="Dlg_npc_0013117"
-		text="Гараж - неотъемлемое место в жизни каждого махиниста, где из простых болтов и гаек создаются чудовищные бронемашины.|@FF0000AA|@FF780a0a[Для передачи предметов, необходимо построить Генератор уровня I]|@FF0000AA|@FF1D1D1DДля постройки требуется:|Болты - @FF1D1D1Dx1|Гайки - @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1|Лампа накаливания - @FF1D1D1Dx3|Силовой кабель - @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Шарнирный ключ «КШС» @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Дакимакура FitaNyashka - @FF1D1D1Dx1|Кактус - @FF1D1D1Dx1|Деньги: @FF1D1D1D500.000 монет|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Возможность создавать предметы|- Регенерация HP: @FF1D1D1D1ед/3сек"
+		text="Гараж - неотъемлемое место в жизни каждого махиниста, где из простых болтов и гаек создаются чудовищные бронемашины.|@FF0000AA|@FF780a0a[Для передачи предметов, необходимо построить Генератор уровня I]|@FF0000AA|@FF1D1D1DДля постройки требуется:|Болты - @FF1D1D1Dx1|Гайки - @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1|Лампа накаливания - @FF1D1D1Dx3|Силовой кабель - @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Шарнирный ключ «КШС» @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Дакимакура FitaNyashka - @FF1D1D1Dx1|Кактус - @FF1D1D1Dx1|Деньги: @FF1D1D1D500.000 монет|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Возможность создавать предметы|- Возможность оставить свою машину на хранение|- Регенерация HP: @FF1D1D1D1ед/3сек"
 		role="NPC"
 		scriptCondition="GetVar('Generator_lvl').AsInt == 0 and GetVar('Garage_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0"
 		nextReplies="Dlg_npc_0013132" />
 
 	<Reply
 		name="Dlg_npc_00131177"
-		text="Гараж - неотъемлемое место в жизни каждого махиниста, где из простых болтов и гаек создаются чудовищные бронемашины.|@FF0000AA|@FF780a0a[Дикие не могут передавать предметы для убежища]|@FF0000AA|@FF1D1D1DДля постройки требуется:|Болты - @FF1D1D1Dx1|Гайки - @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1|Лампа накаливания - @FF1D1D1Dx3|Силовой кабель - @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Шарнирный ключ «КШС» @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Дакимакура FitaNyashka - @FF1D1D1Dx1|Кактус - @FF1D1D1Dx1|Деньги: @FF1D1D1D500.000 монет|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Возможность создавать предметы|- Регенерация HP: @FF1D1D1D1ед/3сек"
+		text="Гараж - неотъемлемое место в жизни каждого махиниста, где из простых болтов и гаек создаются чудовищные бронемашины.|@FF0000AA|@FF780a0a[Дикие не могут передавать предметы для убежища]|@FF0000AA|@FF1D1D1DДля постройки требуется:|Болты - @FF1D1D1Dx1|Гайки - @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1|Лампа накаливания - @FF1D1D1Dx3|Силовой кабель - @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Шарнирный ключ «КШС» @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Дакимакура FitaNyashka - @FF1D1D1Dx1|Кактус - @FF1D1D1Dx1|Деньги: @FF1D1D1D500.000 монет|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Возможность создавать предметы|- Возможность оставить свою машину на хранение|- Регенерация HP: @FF1D1D1D1ед/3сек"
 		role="NPC"
 		scriptCondition="GetVar('Generator_lvl').AsInt >= 1 and GetVar('Garage_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0 and GetVar('PlayerBelong').AsString == 'SCAV'"
 		nextReplies="Dlg_npc_0013132" />
@@ -10747,12 +10747,30 @@
 		scriptResult="CompleteQuest('q_testing_mission_3'); TActivate('SoundQuestFihished'); AddPlayerMoney(25000); AddItemsToPlayerRepository('pkt01', 1); AddItemsToPlayerRepository('ammo_chest_machinegun', 1); EndConversation()" />
 
 <!--Root/r0m0/Прапорщик-->
-
 	<Reply
 		name="Dlg_npc_prapor_1"
 		text="Здравствуй наёмник! Что тебя интересует?"
 		role="NPC"
 		scriptCondition="IsQuestComplete('q_testing_mission')"
+		nextReplies="Dlg_pl_prapor_2 Dlg_pl_prapor_3 Dlg_pl_npc_exit" />
+
+	<Reply
+		name="Dlg_pl_prapor_2"
+		text="Задания."
+		role="PLAYER"
+		nextReplies="Dlg_npc_prapor_quests" />
+
+	<Reply
+		name="Dlg_pl_prapor_3"
+		text="Страховка."
+		role="PLAYER"
+		nextReplies="Dlg_npc_prapor_insure_1 Dlg_npc_prapor_insure_2" />
+
+<!--Root/r0m0/Прапорщик: Задания-->
+	<Reply
+		name="Dlg_npc_prapor_quests"
+		text="Думаю, найдётся что-нибудь для тебя."
+		role="NPC"
 		nextReplies="Dlg_pl_q_search_data Dlg_pl_to_q_search_data Dlg_pl_q_explore_r1m1 Dlg_pl_to_q_explore_r1m1 Dlg_pl_q_kill_scavs Dlg_pl_to_q_kill_scavs Dlg_pl_q_clearing_r1m1 Dlg_pl_to_q_clearing_r1m1 Dlg_pl_q_base_scavs Dlg_pl_to_q_base_scavs Dlg_pl_q_fuel1 Dlg_pl_to_q_fuel1 Dlg_pl_q_fuel2 Dlg_pl_to_q_fuel2 Dlg_pl_npc_exit" />
 
 <!--Поисковая миссия-->
@@ -10900,7 +10918,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_search_data') and not(IsQuestComplete('q_search_data'))"
-		nextReplies="Dlg_npc_prapor_1" />
+		nextReplies="Dlg_npc_prapor_quests" />
 
 	<Reply
 		name="Dlg_npc_q_search_data_7"
@@ -10942,7 +10960,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_explore_r1m1') and not(IsQuestComplete('q_explore_r1m1')) and not(IsQuestTaken('q_explore_r1m1_7'))"
-		nextReplies="Dlg_npc_prapor_1" />
+		nextReplies="Dlg_npc_prapor_quests" />
 
 	<Reply
 		name="Dlg_npc_q_explore_r1m1_5"
@@ -11008,7 +11026,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_clearing_r1m1') and not(IsQuestComplete('q_clearing_r1m1')) and not(IsQuestTaken('q_clearing_r1m1_6'))"
-		nextReplies="Dlg_npc_prapor_1" />
+		nextReplies="Dlg_npc_prapor_quests" />
 
 	<Reply
 		name="Dlg_npc_q_clearing_r1m1_8"
@@ -11062,7 +11080,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_kill_scavs') and not(IsQuestComplete('q_kill_scavs')) and not(IsQuestTaken('q_kill_scavs_2'))"
-		nextReplies="Dlg_npc_prapor_1" />
+		nextReplies="Dlg_npc_prapor_quests" />
 
 	<Reply
 		name="Dlg_npc_q_kill_scavs_7"
@@ -11136,7 +11154,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_fuel1') and not(IsQuestComplete('q_fuel1'))"
-		nextReplies="Dlg_npc_prapor_1" />
+		nextReplies="Dlg_npc_prapor_quests" />
 
 	<Reply
 		name="Dlg_npc_q_fuel1_10"
@@ -11198,7 +11216,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_fuel2') and not(IsQuestComplete('q_fuel2')) and not(IsQuestTaken('q_fuel2_5'))"
-		nextReplies="Dlg_npc_prapor_1" />
+		nextReplies="Dlg_npc_prapor_quests" />
 
 	<Reply
 		name="Dlg_npc_q_fuel2_8"
@@ -11268,7 +11286,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_base_scavs') and not(IsQuestComplete('q_base_scavs_2'))"
-		nextReplies="Dlg_npc_prapor_1" />
+		nextReplies="Dlg_npc_prapor_quests" />
 
 	<Reply
 		name="Dlg_npc_q_base_scavs_7"
@@ -11388,7 +11406,7 @@
 
 	<Reply
 		name="Dlg_npc_q_rebuild_17"
-		text="Ого! Ты их все же принёс! Спасибо. Теперь я наконец смогу закончить ремонт. Вот твоя награда, обращайся. Загляни ко мне потом через пару дней, возможно к этому времени я уже буду свободен."
+		text="Ого! Ты их всё же принёс! Спасибо. Теперь я наконец смогу закончить ремонт. Вот твоя награда, обращайся. Загляни ко мне потом через пару дней, возможно к этому времени я уже буду свободен."
 		role="NPC"
 		nextReplies="Dlg_npc_q_rebuild_18" />
 
@@ -11397,6 +11415,371 @@
 		text="Хорошо. Так и поступлю."
 		role="PLAYER"
 		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Прапорщик: Страховка-->
+	<Reply
+		name="Dlg_npc_prapor_insure_1"
+		text="Если хочешь застраховать свои вещи, то ты пришёл в нужное место. Я предоставляю одни из лучших услуг по страховке. Какое снаряжение хочешь застраховать?|@FF0000AA|@FF1D1D1D[Для страховки, положите необходимые предметы себе в кузов]"
+		role="NPC"
+		scriptCondition="getObj('ChestReturnInsureItems') == nil"
+		nextReplies="Dlg_pl_insure_1 Dlg_pl_insure_2 Dlg_pl_insure_3 Dlg_pl_insure_4 Dlg_pl_insure_5 Dlg_pl_insure_6 Dlg_pl_insure_7 Dlg_pl_insure_8 Dlg_pl_insure_9 Dlg_pl_insure_10 Dlg_pl_insure_11 Dlg_pl_insure_12 Dlg_pl_insure_13 Dlg_pl_insure_14 Dlg_pl_insure_15 Dlg_pl_insure_16 Dlg_pl_insure_17 Dlg_pl_insure_18 Dlg_pl_insure_19 Dlg_pl_insure_20 Dlg_pl_insure_21 Dlg_pl_insure_22 Dlg_pl_insure_23 Dlg_pl_insure_24 Dlg_pl_insure_25 Dlg_pl_insure_26 Dlg_pl_insure_27 Dlg_pl_insure_28 Dlg_pl_insure_29 Dlg_pl_insure_30 Dlg_pl_insure_31 Dlg_pl_insure_32 Dlg_pl_insure_33 Dlg_pl_insure_34 Dlg_pl_insure_35 Dlg_pl_insure_36 Dlg_pl_insure_37 Dlg_pl_insure_38 Dlg_pl_insure_39 Dlg_pl_insure_40 Dlg_pl_insure_41 Dlg_pl_insure_42 Dlg_pl_insure_43 Dlg_pl_npc_exit" />
+
+	<Reply
+		name="Dlg_npc_prapor_insure_2"
+		text="Твои вещи по страховке были возвращены, можешь их забирать."
+		role="NPC"
+		scriptCondition="getObj('ChestReturnInsureItems') ~= nil"
+		nextReplies="Dlg_pl_prapor_insure_3" />
+
+	<Reply
+		name="Dlg_pl_prapor_insure_3"
+		text="Отлично."
+		role="PLAYER"
+		scriptResult="EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_insure_1"
+		text="Застраховать Шершень (Стоимость: 600 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('hornet01', 1) and GetPlayerMoney() >= 600"
+		scriptResult="InsureItem('hornet01'); AddPlayerMoney(-600)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_2"
+		text="Застраховать Американский шершень (Стоимость: 850 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('american_hornet01', 1) and GetPlayerMoney() >= 850"
+		scriptResult="InsureItem('american_hornet01'); AddPlayerMoney(-850)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_3"
+		text="Застраховать Спектр (Стоимость: 1.700 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('specter01', 1) and GetPlayerMoney() >= 1700"
+		scriptResult="InsureItem('specter01'); AddPlayerMoney(-1700)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_4"
+		text="Застраховать ПКТ (Стоимость: 2.250 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('pkt01', 1) and GetPlayerMoney() >= 2250"
+		scriptResult="InsureItem('pkt01'); AddPlayerMoney(-2250)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_5"
+		text="Застраховать Корд (Стоимость: 3.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('kord01', 1) and GetPlayerMoney() >= 3000"
+		scriptResult="InsureItem('kord01'); AddPlayerMoney(-3000)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_6"
+		text="Застраховать Шторм (Стоимость: 1.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('storm01', 1) and GetPlayerMoney() >= 1000"
+		scriptResult="InsureItem('storm01'); AddPlayerMoney(-1000)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_7"
+		text="Застраховать Фагот (Стоимость: 6.900 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('fagot01', 1) and GetPlayerMoney() >= 6900"
+		scriptResult="InsureItem('fagot01'); AddPlayerMoney(-6900)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_8"
+		text="Застраховать Максим (Стоимость: 5.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('maxim01', 1) and GetPlayerMoney() >= 5000"
+		scriptResult="InsureItem('maxim01'); AddPlayerMoney(-5000)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_9"
+		text="Застраховать Вектор (Стоимость: 2.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('vector01', 1) and GetPlayerMoney() >= 2000"
+		scriptResult="InsureItem('vector01'); AddPlayerMoney(-2000)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_10"
+		text="Застраховать Вулкан (Стоимость: 2.600 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('vulcan01', 1) and GetPlayerMoney() >= 2600"
+		scriptResult="InsureItem('vulcan01'); AddPlayerMoney(-2600)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_11"
+		text="Застраховать КПВТ (Стоимость: 3.700 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('kpvt01', 1) and GetPlayerMoney() >= 3700"
+		scriptResult="InsureItem('kpvt01'); AddPlayerMoney(-3700)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_12"
+		text="Застраховать Рапиру (Стоимость: 4.500 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('rapier01', 1) and GetPlayerMoney() >= 4500"
+		scriptResult="InsureItem('rapier01'); AddPlayerMoney(-4500)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_13"
+		text="Застраховать Флаг (Стоимость: 8.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('flag01', 1) and GetPlayerMoney() >= 8000"
+		scriptResult="InsureItem('flag01'); AddPlayerMoney(-8000)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_14"
+		text="Застраховать Рейнметалл (Стоимость: 12.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('rainmetal01', 1) and GetPlayerMoney() >= 12000"
+		scriptResult="InsureItem('rainmetal01'); AddPlayerMoney(-12000)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_15"
+		text="Застраховать Слон (Стоимость: 21.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('elephant01', 1) and GetPlayerMoney() >= 21000"
+		scriptResult="InsureItem('elephant01'); AddPlayerMoney(-21000)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_16"
+		text="Застраховать Один (Стоимость: 25.600 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('odin01', 1) and GetPlayerMoney() >= 25600"
+		scriptResult="InsureItem('odin01'); AddPlayerMoney(-25600)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_17"
+		text="Застраховать Омегу (Стоимость: 7.250 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('omega01', 1) and GetPlayerMoney() >= 7250"
+		scriptResult="InsureItem('omega01'); AddPlayerMoney(-7250)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_18"
+		text="Застраховать Шмель (Стоимость: 2.300 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('bumblebee01', 1) and GetPlayerMoney() >= 2300"
+		scriptResult="InsureItem('bumblebee01'); AddPlayerMoney(-2300)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_19"
+		text="Застраховать Молот Тора (Стоимость: 24.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('hammer01', 1) and GetPlayerMoney() >= 24000"
+		scriptResult="InsureItem('hammer01'); AddPlayerMoney(-24000)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_20"
+		text="Застраховать Охотник (Стоимость: 9.200 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('hunterSideGun', 1) and GetPlayerMoney() >= 9200"
+		scriptResult="InsureItem('hunterSideGun'); AddPlayerMoney(-9200)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_21"
+		text="Застраховать Мрак (Стоимость: 16.600 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('mrakSideGun', 1) and GetPlayerMoney() >= 16600"
+		scriptResult="InsureItem('mrakSideGun'); AddPlayerMoney(-16600)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+	
+	<Reply
+		name="Dlg_pl_insure_22"
+		text="Застраховать Свингфайр (Стоимость: 8.400 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('big_swingfire01', 1) and GetPlayerMoney() >= 8400"
+		scriptResult="InsureItem('big_swingfire01'); AddPlayerMoney(-8400)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_23"
+		text="Застраховать Циклоп (Стоимость: 6.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('cyclops01', 1) and GetPlayerMoney() >= 6000"
+		scriptResult="InsureItem('cyclops01'); AddPlayerMoney(-6000)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_24"
+		text="Застраховать Град (Стоимость: 30.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('hailSideGun', 1) and GetPlayerMoney() >= 30000"
+		scriptResult="InsureItem('hailSideGun'); AddPlayerMoney(-30000)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_25"
+		text="Застраховать Ураган (Стоимость: 8.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('hurricane01', 1) and GetPlayerMoney() >= 8000"
+		scriptResult="InsureItem('hurricane01'); AddPlayerMoney(-8000)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_26"
+		text="Застраховать Дракон (Стоимость: 12.800 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('rocketLauncher', 1) and GetPlayerMoney() >= 12800"
+		scriptResult="InsureItem('rocketLauncher'); AddPlayerMoney(-12800)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_27"
+		text="Застраховать Зевс (Стоимость: 35.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('zeusSideGun', 1) and GetPlayerMoney() >= 35000"
+		scriptResult="InsureItem('zeusSideGun'); AddPlayerMoney(-35000)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_28"
+		text="Застраховать Марс (Стоимость: 14.500 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('marsSideGun', 1) and GetPlayerMoney() >= 14500"
+		scriptResult="InsureItem('marsSideGun'); AddPlayerMoney(-14500)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_29"
+		text="Застраховать Турбо-ускорение (Стоимость: 6.500 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('someTurboAccelerationPusher', 1) and GetPlayerMoney() >= 6500"
+		scriptResult="InsureItem('someTurboAccelerationPusher'); AddPlayerMoney(-6500)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_30"
+		text="Застраховать Ящик боеприпасов для Артиллерии (Стоимость: 8.800 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('ammo_chest_artillerygun', 1) and GetPlayerMoney() >= 8800"
+		scriptResult="InsureItem('ammo_chest_artillerygun'); AddPlayerMoney(-8800)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_31"
+		text="Застраховать Ящик патронов для Пушки (Стоимость: 5.400 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('ammo_chest_heavygun', 1) and GetPlayerMoney() >= 5400"
+		scriptResult="InsureItem('ammo_chest_heavygun'); AddPlayerMoney(-5400)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_32"
+		text="Застраховать Ящик патронов для Пулемёта (Стоимость: 3.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('ammo_chest_machinegun', 1) and GetPlayerMoney() >= 3000"
+		scriptResult="InsureItem('ammo_chest_machinegun'); AddPlayerMoney(-3000)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_33"
+		text="Застраховать Ящик боеприпасов для Ракетной установки (Стоимость: 8.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('ammo_chest_rocketgun', 1) and GetPlayerMoney() >= 8000"
+		scriptResult="InsureItem('ammo_chest_rocketgun'); AddPlayerMoney(-8000)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_34"
+		text="Застраховать Ящик дроби для Дробовика (Стоимость: 2.100 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('ammo_chest_shotgun', 1) and GetPlayerMoney() >= 2100"
+		scriptResult="InsureItem('ammo_chest_shotgun'); AddPlayerMoney(-2100)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_35"
+		text="Застраховать Баллон с жидкостью для Лазерной установки (Стоимость: 5.750 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('ammo_ballon_lasergun', 1) and GetPlayerMoney() >= 5750"
+		scriptResult="InsureItem('ammo_ballon_lasergun'); AddPlayerMoney(-5750)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_36"
+		text="Застраховать Баллон с жидкостью для Плазменной пушки (Стоимость: 7.850 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('ammo_ballon_plasmagun', 1) and GetPlayerMoney() >= 7850"
+		scriptResult="InsureItem('ammo_ballon_plasmagun'); AddPlayerMoney(-7850)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_37"
+		text="Застраховать Баллон с воздухом для Турбо-ускорения (Стоимость: 5.250 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('ammo_ballon_turbo', 1) and GetPlayerMoney() >= 5250"
+		scriptResult="InsureItem('ammo_ballon_turbo'); AddPlayerMoney(-5250)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_38"
+		text="Застраховать Крепкий металл (Стоимость: 1.500 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('scrap_metal_use', 1) and GetPlayerMoney() >= 1500"
+		scriptResult="InsureItem('scrap_metal_use'); AddPlayerMoney(-1500)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_39"
+		text="Застраховать Улучшенное оборудование (Стоимость: 4.100 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('machinery_use', 1) and GetPlayerMoney() >= 4100"
+		scriptResult="InsureItem('machinery_use'); AddPlayerMoney(-4100)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_40"
+		text="Застраховать Высокотехнологичную электронику (Стоимость: 6.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('electronics_use', 1) and GetPlayerMoney() >= 6000"
+		scriptResult="InsureItem('electronics_use'); AddPlayerMoney(-6000)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_41"
+		text="Застраховать Бочку с топливом (Стоимость: 2.500 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('oil_use', 1) and GetPlayerMoney() >= 2500"
+		scriptResult="InsureItem('oil_use'); AddPlayerMoney(-2500)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_42"
+		text="Застраховать Канистру топлива (Стоимость: 3.800 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('fuel_full_use', 1) and GetPlayerMoney() >= 3800"
+		scriptResult="InsureItem('fuel_full_use'); AddPlayerMoney(-3800)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_43"
+		text="Застраховать Пустую канистру (Стоимость: 400 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('fuel_nil_use', 1) and GetPlayerMoney() >= 400"
+		scriptResult="InsureItem('fuel_nil_use'); AddPlayerMoney(-400)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
 
 <!--Root/r0m0/Механик-->
 
@@ -13777,7 +14160,7 @@
 		name="Dlg_pl_buyer_2"
 		text="Хочу попросить помощь у Диких."
 		role="PLAYER"
-		scriptCondition="15000 >= GetPlayerMoney() and GetPlayerMaxFuel() == 0 and GetPlayerMaxHealth() == 100 and not(getObj('ChestFromScavCar'))"
+		scriptCondition="15000 >= GetPlayerMoney() and GetPlayerMaxFuel() == 0 and GetPlayerMaxHealth() == 100 and getObj('ChestFromScavCar') == nil"
 		nextReplies="Dlg_npc_buyer_3 Dlg_npc_buyer_5" />
 
 	<Reply

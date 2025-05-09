@@ -266,10 +266,8 @@
 			
 			local veh = getObj("fakePlayerCar")
 			if veh then veh:Remove() end
-			
-			if GetVar("PlayerCar").AsString == "Bug" then
-				AddPlayerNewVehicle("BugChassis")
-			elseif GetVar("PlayerCar").AsString == "Molokovoz" then
+	
+			if GetVar("PlayerCar").AsString == "Molokovoz" then
 				AddPlayerNewVehicle("MolokovozChassis")
 			elseif GetVar("PlayerCar").AsString == "Ural" then
 				AddPlayerNewVehicle("UralChassis")
@@ -279,6 +277,8 @@
 				AddPlayerNewVehicle("MirotvorecChassis")
 			elseif GetVar("PlayerCar").AsString == "Cruiser" then
 				AddPlayerNewVehicle("CruiserChassis")
+			else
+				AddPlayerNewVehicle("BugChassis")
 			end
 
 			if GetVar("PlayerBelong").AsString == "SCAV" then

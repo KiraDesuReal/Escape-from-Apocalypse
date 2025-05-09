@@ -128,6 +128,11 @@ if DEBUG == nil then
 	DEBUG = 0
 end
 
+-- Спавн дефолтных машин у босса Витали
+if FIX_CRASH_VITALY_GLOBAL == nil then
+	FIX_CRASH_VITALY_GLOBAL = 0 
+end
+
 -- Рандомизируем пушки ботам 
 function GiveGunsForVehicle(vehicle, side_random)
 	local veh=vehicle
@@ -1056,7 +1061,7 @@ function AllItems()
 					"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 					"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 					"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
-					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_jeton_bear", "item_jeton_usec", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki",
+					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_jeton_bear", "item_jeton_usec", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_knife_sectarian",
 					"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
 					"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_vitaly", "item_silver_skull", "item_vaze",
 					"item_quest_search_data",
@@ -1338,7 +1343,7 @@ function ShelfAddItemToSlot()
 	if item == "electronics" or item == "electronics_use" then model = "mikro" y = -0.29 end
 	if item == "doski" then model = "doski" scale = 0.28 end
 	if item == "details" then model = "detail" scale = 0.15 rot = Quaternion(-0.5010, 0.4989, -0.5011, 0.4989) y = -0.15 end
-	if item == "item_key_gate_thetown" or item == "item_key_gate_basefelix" then model = "quest_key_for_tunnel" scale = 0.1 rot = Quaternion(0.0798, 0.5753, -0.8110, 0.0705) y = -0.26 end
+	if item == "item_key_gate_thetown" or item == "item_key_gate_basefelix" then model = "key_1" scale = 0.15 rot = Quaternion(-0.7071, 0.0000, 0.0000, 0.7071) y = -0.27 end
 	if item == "item_disk" then model = "disk" scale = 0.05 rot = Quaternion(-0.7071, 0.0000, 0.0000, 0.7071) y = -0.29 end
 	if item == "item_disk_exmachina" then model = "disk_exmachina" scale = 0.05 rot = Quaternion(-0.7071, 0.0000, 0.0000, 0.7071) y = -0.29 end
 	if item == "item_emre_kara" then model = "dragon01gun" y = -0.11 rot = Quaternion(0.0567, 0.0000, 0.0000, 0.9984) end
@@ -1363,6 +1368,7 @@ function ShelfAddItemToSlot()
 	if item == "ammo_ballon_turbo" then model = "ammo_ballon_turbo" y = -0.29 scale = 0.3 end
 	if item == "item_kubok_kikiki" then model = "kubok_cs_kikiki" y = -0.27 scale = 0.21 end
 	if item == "item_metallodetector" then model = "metallodetector" y = 0.26 z = -0.08 scale = 0.3 end
+	if item == "item_knife_sectarian" then model = "knife_sectarian" y = 0.21 rot = Quaternion(-0.7071, 0.0000, 0.0000, 0.7071) end
 
 	if slot == 1 then pos = CVector(903.327, 255.650 + y, 971.461 + z) end
 	if slot == 2 then pos = CVector(901.610, 255.650 + y, 971.461 + z) end
@@ -1452,6 +1458,19 @@ function IfCanGunInSlot(gun)
 	end
 
 	return l
+end
+
+-- Включить/выключить спавн дефолтных машин у босса Витали
+function FixCrashVitaly(num)
+	if num == nil then num = 1 end
+
+	if num == 1 then
+		FIX_CRASH_VITALY_GLOBAL = 1
+		println("Enable")
+	else
+		FIX_CRASH_VITALY_GLOBAL = 0
+		println("Disable")
+	end
 end
 
 

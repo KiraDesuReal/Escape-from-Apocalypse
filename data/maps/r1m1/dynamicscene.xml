@@ -498,7 +498,7 @@
 		Name="GunBox_7_loc"
 		Belong="1001"
 		Prototype="genericLocation"
-		Pos="1361.451 328.057 779.066"
+		Pos="1360.086 327.750 785.584"
 		Radius="10.000" />
 
 	<Object
@@ -603,7 +603,7 @@
 		Name="MedBox_7_loc"
 		Belong="1001"
 		Prototype="genericLocation"
-		Pos="1352.443 328.247 764.972"
+		Pos="1336.455 328.247 758.658"
 		Radius="10.000" />
 
 	<Object
@@ -652,7 +652,7 @@
 		Name="TehnoBox_7_loc"
 		Belong="1001"
 		Prototype="genericLocation"
-		Pos="1335.664 328.247 759.883"
+		Pos="1335.185 327.024 813.272"
 		Radius="10.000" />
 
 	<Object
@@ -708,7 +708,7 @@
 		Name="ToolsBox_5_loc"
 		Belong="1001"
 		Prototype="genericLocation"
-		Pos="1317.512 328.247 753.123"
+		Pos="1335.052 328.247 782.723"
 		Radius="10.000" />
 
 	<Object
@@ -750,7 +750,7 @@
 		Name="ValuableBox_2_loc"
 		Belong="1001"
 		Prototype="genericLocation"
-		Pos="1304.869 328.247 763.161"
+		Pos="1335.212 327.987 788.196"
 		Radius="10.000" />
 
 	<Object
@@ -806,7 +806,7 @@
 		Name="ElectronicsBox_3_loc"
 		Belong="1001"
 		Prototype="genericLocation"
-		Pos="1304.002 328.247 782.218"
+		Pos="1309.956 328.177 785.131"
 		Radius="10.000" />
 
 	<Object
@@ -36341,5 +36341,31 @@
 		Belong="1001"
 		Prototype="Breakable_Listvenoe2"
 		Pos="468.188 283.950 355.604" />
+
+	<Object
+		Name="lamppost34379"
+		Belong="1001"
+		Prototype="lamppost3"
+		Pos="1309.535 328.248 755.961"
+		Rot="0.000 0.313 0.000 0.950">
+		<Object
+			Belong="1001"
+			Prototype="LightObject"
+			Pos="1309.535 340 755.961"
+			Rot="0 0 0 1" />
+	</Object>
+
+	<Object
+		Name="lamppost34380"
+		Belong="1001"
+		Prototype="lamppost3"
+		Pos="1364.963 328.248 774.632"
+		Rot="0.000 -0.545 0.000 0.838">
+		<Object
+			Belong="1001"
+			Prototype="LightObject"
+			Pos="1364.963 340 774.632"
+			Rot="0 0 0 1" />
+	</Object>
 
 </DynamicScene>

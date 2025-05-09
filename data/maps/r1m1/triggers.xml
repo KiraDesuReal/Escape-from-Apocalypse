@@ -52,6 +52,9 @@
 			SetVar("PlayerKillScavs", 0)
 			SetVar("PlayerKillPMC", 0)
 
+			SetVar("SpawnSectanian", 0)
+			SetVar("CountSectanian", 0)
+
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -196,6 +199,7 @@
 			TActivate("AddKeyGateBaseFelixInChests")
 
 			TActivate("CreateBossProbability")
+			TActivate("CreateSectanianProbability")
 
 			TActivate("RemoveFonar")
 
@@ -3508,24 +3512,27 @@
 			local biggunlist={"rapier01","vector01","vulcan01","kpvt01"}
 			local biggunr = getn(biggunlist)
 
-			local ItemsLifeUse = {"scrap_metal_use", "machinery_use", "electronics_use"}
-			local r2 = getn(ItemsLifeUse)
-
-			local ItemsOilUse = {"oil_use", "fuel_nil_use", "fuel_full_use"}
-			local r3 = getn(ItemsOilUse)
-
+			local ItemsLifeUse = {"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use"}
+		
 			for i=1,4 do 
-				TeamCreate("EnemyBoss"..i, 1086, pos[i], {"Fighter2CarBoss"}, nil, 0)
+				if FIX_CRASH_VITALY_GLOBAL == 1 then
+					TeamCreate("EnemyBoss"..i, 1086, pos[i], {"Fighter2CarBossDefault"}, nil, 0)
+				else
+					TeamCreate("EnemyBoss"..i, 1086, pos[i], {"Fighter2CarBoss"}, nil, 0)
+				end
 
 				local en = GetEntityByName ("EnemyBoss"..i.."_vehicle_0")
 				if en then
-					en:SetSkin(1)
+					if FIX_CRASH_VITALY_GLOBAL == 1 then
+						en:SetSkin(2)
+					else
+						en:SetSkin(1)
+					end
 					en:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
 					en:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
 					for life=1,random(3) do
-						en:AddItemsToRepository(ItemsLifeUse[random(r2)], 1)
+						en:AddItemsToRepository(ItemsLifeUse[random(getn(ItemsLifeUse))], 1)
 					end
-					en:AddItemsToRepository(ItemsOilUse[exrandom(r3)], 1)
 					AddAmmoItemsForGuns(en)
 				end
 
@@ -3540,7 +3547,11 @@
 				end
 			end
 
-			TeamCreate("Boss", 1087, pos_boss[random(pos_boss_r)], {"Hunter2CarBoss"}, nil, 0)
+			if FIX_CRASH_VITALY_GLOBAL == 1 then
+				TeamCreate("Boss", 1087, pos_boss[random(pos_boss_r)], {"Hunter2CarBossDefault"}, nil, 0)
+			else
+				TeamCreate("Boss", 1087, pos_boss[random(pos_boss_r)], {"Hunter2CarBoss"}, nil, 0)
+			end
 
 			local loot = {20,5,35}
 			local items = {"item_vitaly", "item_bitcoin", "item_key_gate_thetown"}
@@ -3550,11 +3561,8 @@
 			if boss then
 				boss:SetSkin(7)
 				boss:SetRotation(rotarr[Z])
-				boss:SetNewPart("CABIN_BIG_GUN_1","vector01")
-				boss:SetNewPart("CABIN_BIG_GUN_2","bumblebee01")
 				boss:setGodMode(1)
-				boss:AddItemsToRepository(ItemsLifeUse[random(r2)], 1)
-				boss:AddItemsToRepository(ItemsOilUse[exrandom(r3)], 1)
+				boss:AddItemsToRepository(ItemsLifeUse[random(getn(ItemsLifeUse))], 1)
 				AddAmmoItemsForGuns(boss)
 				for i=1,3 do
 					if loot[i] >= random(100) then
@@ -3632,7 +3640,6 @@
 			if Boss then Boss:Remove() end
 
 			TDeactivate("BossEnemy_Die")
-			TActivate("CreateBossEntersLoc")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4496,6 +4503,257 @@
 		</script>
 	</trigger>
 
+<!-- Создание сектантов -->
+	<trigger Name="CreateSectanianProbability" active="0">
+		<event timeout="5" eventid="GE_TIME_PERIOD" />
+		<script>
+			local time = g_ObjCont:GetGameTime().AsString
+			local hour = tonumber(strsub(time, 1, 2))
+			if 6 > hour then
+				if 30 >= random(100) then
+					local r = random(2)
+					TActivate("CreateSectanianEnterLoc_"..r)
+					TDeactivate("CreateBossProbability")
+					TDeactivate("CreateBoss")
+					TDeactivate("CreateBossEntersLoc")
+					if r == 1 then 
+						TDeactivate("SpawnScavsInLocation06_Enters")
+						TDeactivate("SpawnScavsInLocation07_Enters")
+					elseif r == 2 then
+						TDeactivate("SpawnScavsInLocation08_Enters")
+					end
+					SetVar("SpawnSectanian", r)
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateSectanianEnterLoc_1" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="SpawnScavs_6_7_loc" />
+		<script>
+			TActivate("CreateSectanian")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateSectanianEnterLoc_2" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="SpawnScavs_8_loc" />
+		<script>
+			TActivate("CreateSectanian")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateSectanianLeavesLoc_1" active="0">
+	<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="SpawnScavs_6_7_loc" />
+		<script>
+			TActivate("SectanianDist")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateSectanianLeavesLoc_2" active="0">
+	<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="SpawnScavs_8_loc" />
+		<script>
+			TActivate("SectanianDist")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateSectanian" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local pos
+			local path_pos
+			
+			if GetVar("SpawnSectanian").AsInt == 1 then
+				pos = {CVector(2198.070, 296.632, 529.180), CVector(2120.836, 296.674, 497.407), CVector(2052.998, 296.797, 469.347), CVector(2018.005, 296.554, 519.502), CVector(1987.255, 296.604, 565.727), CVector(1910.789, 296.648, 601.852), CVector(1853.700, 296.557, 663.528), CVector(1753.489, 302.404, 574.157), CVector(2142.938, 297.313, 722.943), CVector(2221.576, 297.426, 801.943), CVector(2318.972, 297.338, 755.476), CVector(2339.454, 297.474, 700.326), CVector(2129.070, 302.312, 918.293), CVector(2044.962, 302.299, 943.097)}
+				path_pos = {CVector(2017.979, 301.392, 894.463), CVector(2069.839, 301.333, 834.399), CVector(2140.454, 301.613, 779.613), CVector(2233.542, 300.915, 636.898), CVector(2240.213, 300.309, 465.103), CVector(2096.213, 297.516, 460.042), CVector(1938.704, 303.305, 419.713), CVector(1864.597, 302.479, 504.684), CVector(1787.941, 302.245, 579.227), CVector(1826.616, 301.654, 756.928), CVector(1853.810, 301.382, 845.001), CVector(1902.661, 301.430, 935.175)}
+			else
+				pos = {CVector(2802.140, 316.108, 759.759), CVector(2920.031, 316.072, 813.849), CVector(2907.294, 315.954, 912.597), CVector(2989.419, 315.377, 921.308), CVector(3033.525, 316.293, 964.993), CVector(3019.605, 315.330, 1055.130), CVector(2913.006, 316.378, 1079.608), CVector(2826.431, 320.853, 1081.779), CVector(2741.392, 320.331, 951.452), CVector(2814.415, 316.119, 662.129), CVector(3059.778, 316.812, 671.913), CVector(3204.711, 318.250, 735.510), CVector(3170.714, 316.621, 840.492), CVector(3220.652, 316.543, 912.699), CVector(3252.586, 316.603, 1019.735)}
+				path_pos = {CVector(3123.175, 320.200, 1135.296), CVector(3064.785, 318.160, 956.996), CVector(3022.213, 319.930, 803.960), CVector(2894.082, 318.617, 745.615), CVector(2819.834, 319.906, 929.814), CVector(2772.588, 319.340, 1058.304), CVector(2850.501, 319.955, 1076.055), CVector(2974.328, 315.370, 983.011), CVector(3126.649, 317.618, 875.877), CVector(3302.705, 317.260, 835.182), CVector(3276.574, 318.674, 707.438), CVector(3137.806, 316.361, 527.991), CVector(2988.301, 317.378, 397.203), CVector(2765.183, 316.048, 623.412)}
+			end
+
+			local rotarr = {Quaternion(-0.029, 0.679, -0.021, 0.734), Quaternion(0.001, 0.626, 0.002, 0.780), Quaternion(-0.001, 0.558, -0.001, 0.830), Quaternion(-0.029, -0.025, 0.005, 0.999), Quaternion(-0.001, -0.346, 0.001, 0.938), Quaternion(-0.001, -0.724, -0.000, 0.690), Quaternion(-0.025, -0.992, -0.005, 0.125), Quaternion(0.002, -0.914, -0.001, 0.405), Quaternion(-0.003, -1.000, -0.006, -0.015)}
+
+			local gun = {"fagot01", "maxim01", "elephant01", "odin01"}
+			local gunBig = {"elephant01", "odin01"}
+			local ItemsLifeUse = {"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use"}
+
+			local count = random(2,4)
+			SetVar("CountSectanian", count)
+
+			for i=1, count do
+				TeamCreate("Sectanian_"..i, 1094, pos[random(getn(pos))], {"CarChevroleSectanian"}, nil, 0)
+				local sect = GetEntityByName("Sectanian_"..i.."_vehicle_0")
+				if sect then
+					sect:SetSkin(4)
+					sect:SetNewPart("CABIN_SMALL_GUN", gun[random(getn(gun))])
+					sect:SetRotation(rotarr[random(getn(rotarr))])
+					sect:AddItemsToRepository("item_knife_sectarian", 1)
+					for life=1,random(2,4) do
+						sect:AddItemsToRepository(ItemsLifeUse[random(getn(ItemsLifeUse))], 1)
+					end
+					AddAmmoItemsForGuns(sect)
+				end
+
+				local sect_p = GetEntityByName ("Sectanian_"..i)
+				if sect_p then
+					sect_p:StackOpen()
+					for p=1, getn(path_pos) do
+						sect_p:SetDestination(path_pos[random(getn(path_pos))])
+					end
+					sect_p:StackLoop()
+					sect_p:StackClose()
+				end
+
+				getObj("Sectanian_Die"):AddEvent("GE_OBJECT_DIE", "Sectanian_"..i.."_vehicle_0")
+			end
+
+			if 3 >= random(100) then
+				TeamCreate("SectanianMain", 1094, pos[random(getn(pos))], {"Hunter1CarSectanian"}, nil, 0)
+			else
+				TeamCreate("SectanianMain", 1094, pos[random(getn(pos))], {"Fighter2CarSectanian"}, nil, 0)
+			end
+
+			local sect_m = GetEntityByName("SectanianMain_vehicle_0")
+			if sect_m then
+				sect_m:SetSkin(6)
+				sect_m:SetNewPart("CABIN_SMALL_GUN", gun[random(2)])
+				sect_m:SetRotation(rotarr[random(getn(rotarr))])
+				if random(2) == 1 then
+					sect_m:SetNewPart("CABIN_BIG_GUN_1", gunBig[random(2)])
+				end
+				sect_m:AddItemsToRepository("item_knife_sectarian", 1)
+				for life=1,random(2,4) do
+					sect_m:AddItemsToRepository(ItemsLifeUse[random(getn(ItemsLifeUse))], 1)
+				end
+				AddAmmoItemsForGuns(sect_m)
+			end
+
+			local sect_m_p = GetEntityByName("SectanianMain")
+			if sect_m_p then
+				sect_m_p:StackOpen()
+				for p=1, getn(path_pos) do
+					sect_m_p:SetDestination(path_pos[random(getn(path_pos))])
+				end
+				sect_m_p:StackLoop()
+				sect_m_p:StackClose()
+			end
+
+			TActivate("SectanianMain_Die")
+			TActivate("Sectanian_Die")
+			TActivate("CreateSectanianLeavesLoc_"..GetVar("SpawnSectanian").AsInt)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SectanianMain_Die" active="0">
+		<event eventid="GE_OBJECT_DIE" ObjName="SectanianMain" />
+		<script>
+			local count = GetVar("CountSectanian").AsInt
+
+			for i = 1, count do
+				local sect = GetEntityByName("Sectanian_"..i.."_vehicle_0")
+				if sect then
+					local hp = sect:GetHealth()
+					hp = math.floor(hp / 1.5)
+					if 0 >= hp then hp = 1 end
+					sect:AddModifier("hp", "= "..hp)
+				end
+			end
+			trigger:Deactivate()
+ 		</script>
+	</trigger>
+
+	<trigger Name="Sectanian_Die" active="0">
+		<event eventid="GE_OBJECT_DIE" ObjName="SectanianMain" />
+		<script>
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			if GetVar("CountSectanian").AsInt + 1 > count then
+			return
+			end
+
+			for s=1,GetVar("CountSectanian").AsInt do
+				trigger:DelEventObj("GE_OBJECT_DIE", "Sectanian_"..s.."_vehicle_0")
+			end
+
+			TDeactivate("CreateSectanianLeavesLoc_1")
+			TDeactivate("CreateSectanianLeavesLoc_2")
+			TDeactivate("CreateSectanianEnterLoc_1")
+			TDeactivate("CreateSectanianEnterLoc_2")
+			TDeactivate("SectanianDist")
+			TDeactivate("SectanianMain_Die")
+			SetVar("CountSectanian", 0)
+			SetVar("SpawnSectanian", 0)
+			trigger:Deactivate()
+ 		</script>
+	</trigger>
+
+	<trigger Name="SectanianRemove" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local sect_m = GetEntityByName("SectanianMain_vehicle_0")
+			if sect_m then sect_m:Remove() end
+
+			TDeactivate("CreateSectanianLeavesLoc_1")
+			TDeactivate("CreateSectanianLeavesLoc_2")
+			TDeactivate("Sectanian_Die")
+			TDeactivate("SectanianMain_Die")
+			TDeactivate("CreateSectanianEnterLoc_1")
+			TDeactivate("CreateSectanianEnterLoc_2")
+			TDeactivate("SectanianDist")
+
+			for s=1,GetVar("CountSectanian").AsInt do
+				local sect = GetEntityByName("Sectanian_"..s.."_vehicle_0")
+				if sect then sect:Remove() end
+				getObj("Sectanian_Die"):DelEventObj("GE_OBJECT_DIE", "Sectanian_"..s.."_vehicle_0")
+			end
+
+			SetVar("CountSectanian", 0)
+			SetVar("SpawnSectanian", 0)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SectanianDist" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			local len
+			local l = 0
+			local count = GetVar("CountSectanian").AsInt + 1
+			for i = 1, GetVar("CountSectanian").AsInt do
+				local run = GetEntityByName("Sectanian_"..i.."_vehicle_0")
+				if run and run:IsAlive() then
+					len = Dist(pl, run)
+					if (len > 400) then
+						l = l + 1
+					end
+				else
+					count = count - 1
+				end
+			end
+
+			local runMain = GetEntityByName("SectanianMain_vehicle_0")
+			if runMain and runMain:IsAlive() then
+				len = Dist(pl, runMain)
+				if (len > 400) then
+					l = l + 1
+				end
+			else
+				count = count - 1
+			end
+
+			if l == count then
+				TActivate("SectanianRemove")
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
+
 <!-- Выход с локации/Очистка карты для следующего запуска -->
 	<trigger Name="ExitToMap" active="0">
 		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
@@ -4651,6 +4909,9 @@
 			TDeactivate("BossEnemy_Dist")
 			TDeactivate("BossEnemy_LeavesLoc")
 			TDeactivate("CreateBossEntersLoc")
+
+			--удаление сектантов
+			TActivate("SectanianRemove")
 	
 			--аир дроп
 			TDeactivate("AirDropProbability")
@@ -4955,17 +5216,17 @@
 	<trigger Name="q_search_data_CreateDestrBug" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			CreateNewDummyObject("bugChassis", "destr_bug_1", -1, -1, CVector(2886.035, 287.405, 1908.789), Quaternion(-0.0329, -0.9542, -0.0806, 0.2863), 8)
+			CreateNewDummyObject("bugChassis", "destr_bug_1", -1, -1, CVector(2886.035, 287.405, 1908.789), Quaternion(-0.0329, -0.9542, -0.0806, 0.2863), 16)
 			CreateNewDummyObject("bugCab03Fake", "destr_bug_2", -1, -1, CVector(2885.340, 289.098, 1907.710), Quaternion(-0.0160, -0.9580, -0.0587, 0.2802), 16)
 			CreateNewDummyObject("bugCargo03", "destr_bug_3", -1, -1, CVector(2888.762, 288.899, 1910.161), Quaternion(-0.6680, -0.6851, 0.2058, 0.2051), 16)
 			CreateNewDummyObject("bugWheel01", "destr_bug_4", -1, -1, CVector(2885.794, 287.933, 1906.645), Quaternion(0.0593, -0.9456, -0.0020, 0.3199), 16)
 			CreateNewDummyObject("bugWheel01", "destr_bug_5", -1, -1, CVector(2884.045, 287.933, 1907.784), Quaternion(-0.0261, 0.2893, -0.1325, 0.9477), 16)
-			CreateNewDummyObject("bugWheel02", "destr_bug_6", -1, -1, CVector(2886.662, 287.810, 1911.435), Quaternion(-0.2316, 0.2162, -0.7025, 0.6372), 16)
+			CreateNewDummyObject("bugWheel02", "destr_bug_6", -1, -1, CVector(2886.482, 287.810, 1911.690), Quaternion(-0.2316, 0.2162, -0.7025, 0.6372), 16)
 			CreateNewDummyObject("pkt01gun", "destr_bug_7", -1, -1, CVector(2885.572, 290.733, 1908.093), Quaternion(0.0618, -0.9421, 0.1952, 0.2656), 8)
 			CreateNewDummyObject("pkt01", "destr_bug_8", -1, -1, CVector(2885.764, 290.300, 1908.444), Quaternion(0.0218, 0.2843, -0.0586, 0.9567), 8)
 			CreateNewSgNodeObject("ET_PS_BOSS1_SMOKE", "destr_bug_9", -1, -1, CVector(2885.275, 287.547, 1907.911), Quaternion(0, 0, 0, 1), 0)
-			CreateNewSgNodeObject("ET_PS_WHEEL_FIRE_MED_SMOKE1", "destr_bug_10", -1, -1, CVector(2886.755, 287.547, 1911.4001), Quaternion(0, 0, 0, 1), 0)
-			CreateNewSgNodeObject("ET_PS_WHEEL_FIRE_BIG_SMOKE1", "destr_bug_11", -1, -1, CVector(2888.928,287.547, 1910.030), Quaternion(0, 0, 0, 1), 0)
+			CreateNewSgNodeObject("ET_PS_WHEEL_FIRE_MED_SMOKE1", "destr_bug_10", -1, -1, CVector(2886.482, 287.547, 1911.690), Quaternion(0, 0, 0, 1), 0)
+			CreateNewSgNodeObject("ET_PS_WHEEL_FIRE_BIG_SMOKE1", "destr_bug_11", -1, -1, CVector(2888.928, 287.547, 1910.030), Quaternion(0, 0, 0, 1), 0)
 	
 			local anim = GetEntityByName("destr_bug_2")
 			if anim then anim:SetNodeAction(AT_DEATH1) end

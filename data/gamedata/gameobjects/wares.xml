@@ -348,7 +348,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "14000"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= "quest_key_for_tunnel"
+		ModelFile	= "key_1"
 		ResourceType= "ITEM_KEY" />
 
 	<Prototype
@@ -357,7 +357,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "6000"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= "quest_key_for_tunnel"
+		ModelFile	= "key_1"
 		ResourceType= "ITEM_KEY" />
 
 <!-- Ammo -->
@@ -514,7 +514,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= "ammo_ballon_lasergun"
-		ResourceType= "ITEM_SIZE_2X3" />
+		ResourceType= "ITEM_SIZE_2X4" />
 
 	<Prototype
 		Class		= "Ware"
@@ -524,7 +524,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		PriceDispersion      = "5"
 		ModelFile	= "ammo_ballon_lasergun"
 		VisibleInEncyclopedia	= "false"
-		ResourceType= "ITEM_SIZE_2X3" />
+		ResourceType= "ITEM_SIZE_2X4" />
 
 	<Prototype
 		Class		= "Ware"
@@ -533,7 +533,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= "ammo_ballon_plasmagun"
-		ResourceType= "ITEM_SIZE_2X3" />
+		ResourceType= "ITEM_SIZE_2X4" />
 
 	<Prototype
 		Class		= "Ware"
@@ -543,7 +543,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		PriceDispersion      = "5"
 		ModelFile	= "ammo_ballon_plasmagun"
 		VisibleInEncyclopedia	= "false"
-		ResourceType= "ITEM_SIZE_2X3" />
+		ResourceType= "ITEM_SIZE_2X4" />
 
 	<Prototype
 		Class		= "Ware"
@@ -1769,6 +1769,15 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		PriceDispersion      = "5"
 		ModelFile	= "kubok_cs_kikiki"
 		ResourceType= "ITEM_SIZE_3X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_knife_sectarian"
+		Price	= "28235"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= "knife_sectarian"
+		ResourceType= "ITEM_SIZE_3X2" />
 
 <!-- Tools Items -->
 

@@ -196,7 +196,25 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			NodeScale	= "1 1 1"
 			Mass		= "40.0"
 			MaxHealth	= "750" 
-			MaxFuel	= "40.0" 
+			MaxFuel	= "1000" 
+			BrakingSound="ET_S_BRAKE01"
+			PneumoSound	="ET_S_PNEUMO_BRAKE01"
+			GearShiftSound="ET_S_GEAR_SHIFT01"
+			LoadPoints	= "LP_CAB01" >
+				<GroupsHealth
+					Main   = "10000"	
+				/>
+		</Prototype>
+
+		<Prototype
+			Class		= "Chassis"
+			Name		= "fighterSectanianChassis"
+			ModelFile	= "fighterChassis"
+			ResourceType	= "FIGHTER_CHASSIS"
+			NodeScale	= "1 1 1"
+			Mass		= "40.0"
+			MaxHealth	= "850" 
+			MaxFuel	= "1000" 
 			BrakingSound="ET_S_BRAKE01"
 			PneumoSound	="ET_S_PNEUMO_BRAKE01"
 			GearShiftSound="ET_S_GEAR_SHIFT01"
@@ -232,10 +250,46 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			NodeScale	= "1 1 1"
 			Mass		= "40.0"
 			MaxHealth	= "920" 
-			MaxFuel	= "50.0" 
+			MaxFuel	= "1000" 
 			BrakingSound="ET_S_BRAKE01"
 			PneumoSound	="ET_S_PNEUMO_BRAKE01"
 			GearShiftSound="ET_S_GEAR_SHIFT01"
+			LoadPoints	= "LP_CAB01" >
+				<GroupsHealth
+					Main   = "10000"	
+				/>
+		</Prototype>
+
+		<Prototype
+			Class		= "Chassis"
+			Name		= "hunterSectanianChassis"
+			ModelFile	= "hunterChassis"
+			ResourceType	= "HUNTER_CHASSIS"
+			NodeScale	= "1 1 1"
+			Mass		= "40.0"
+			MaxHealth	= "900" 
+			MaxFuel	= "1000" 
+			BrakingSound="ET_S_BRAKE01"
+			PneumoSound	="ET_S_PNEUMO_BRAKE01"
+			GearShiftSound="ET_S_GEAR_SHIFT01"
+			LoadPoints	= "LP_CAB01" >
+				<GroupsHealth
+					Main   = "10000"	
+				/>
+		</Prototype>
+
+		<Prototype
+			Class		= "Chassis"
+			Name		= "ChevroleChassis_Sectanian"
+			ModelFile	= "ChevroleChassis"
+			ResourceType	= "HUNTER_CHASSIS"
+			NodeScale	= "1 1 1"
+			Mass		= "80.0" 
+			MaxHealth	= "700" 
+			MaxFuel	= "1000" 
+			BrakingSound	="ET_S_BRAKE01"
+			PneumoSound		="ET_S_PNEUMO_BRAKE01"
+			GearShiftSound	="ET_S_GEAR_SHIFT01"
 			LoadPoints	= "LP_CAB01" >
 				<GroupsHealth
 					Main   = "10000"	
@@ -1304,7 +1358,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			ModelFile			= "fighterCab02"
 			ResourceType			= "FIGHTER_CABIN"
 			NodeScale			= "1 1 1"
-			Durability			= "45"
+			Durability			= "50"
 			DurCoeffsForDamageTypes	= "20 0 -25"
 			VisibleInEncyclopedia = "false"
 			Mass				= "3.0"
@@ -1507,6 +1561,34 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 					Breakable3   = "4"
 					Breakable4   = "3"
 					Breakable5   = "3"
+				/>
+		</Prototype>
+
+		<Prototype
+			Class				= "Cabin"
+			Name				= "ChevroleCab"
+			ModelFile			= "ChevroleCab"
+			ResourceType			= "HUNTER_CABIN"
+			NodeScale			= "1 1 1"
+			Durability			= "40"
+			DurCoeffsForDamageTypes	= "15 -5 -5"
+			VisibleInEncyclopedia = "false"
+			Mass				= "20.0"
+			MaxPower			= "100.0"
+			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
+			EngineHighSound		        = "ET_S_ENGINE_SCOUT_1_HIGH"
+			MaxTorque			= "70.0"
+            FuelConsumption                 = "0.15"
+			MaxSpeed			= "100.0" 
+			LoadPoints			= "LP_SML01" >
+				<GroupsHealth
+					Main   = "0" 
+					Breakable1   = "0.3"	
+				    Breakable2   = "0.3"
+					Breakable3   = "0.3"
+					Breakable4   = "0.3"
+					Breakable5   = "0.3"
+					Breakable6   = "0.3"
 				/>
 		</Prototype>
 
@@ -6234,6 +6316,33 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			SuspensionRange	= "1.0"
 			mU			= "1.0"
 			EffectType		= "BIGWHEEL" />
+
+
+		<Prototype
+			Class			= "Wheel"
+			Name			= "ChevroleCarWheel_L_01"
+			ModelFile		= "ChevroleCarWheel_L_01"
+			NodeScale		= "1 1 1"
+			Mass			= "10"
+			SuspensionModelFile	= "ChevroleSusp01"
+			SuspensionCFM	= "0.002"
+			SuspensionERP		= "0.25"
+			SuspensionRange	= "0.15"
+			mU			= "1.0" 
+			EffectType		= "SMALLWHEEL" />
+
+		<Prototype
+			Class			= "Wheel"
+			Name			= "ChevroleCarWheel_R_01"
+			ModelFile		= "ChevroleCarWheel_R_01"
+			NodeScale		= "1 1 1"
+			Mass			= "10"
+			SuspensionModelFile	= "ChevroleSusp01"
+			SuspensionCFM	= "0.002"
+			SuspensionERP		= "0.25"
+			SuspensionRange	= "0.15"
+			mU			= "1.0" 
+			EffectType		= "SMALLWHEEL" />
 
 
 		<Prototype

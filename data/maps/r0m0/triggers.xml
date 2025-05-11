@@ -1493,8 +1493,7 @@
 			if GetVar("ChestScavs_Search").AsInt == 5 then SetVar("ChestScavs_time_hour", 0) SetVar("ChestScavs_time_minute", 50) SetVar("ChestScavs_time_second", 0) end
 			if GetVar("ChestScavs_Search").AsInt == 6 then SetVar("ChestScavs_time_hour", 1) SetVar("ChestScavs_time_minute", 0) SetVar("ChestScavs_time_second", 0) end
 
-			TActivate("ChestScavs_Timer")
-			TActivate("ChestScavs_CreateTimer3D")
+			TActivate("ChestScavs_CalculatingTime")
 
 			AddFadingMsgByStrIdFormatted("fm_chest_scavs_start")
 			SoundFadingMsg()
@@ -1508,6 +1507,60 @@
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 			CreateEffectInsertedInRemove("ET_S_CHEST_SCAVS_START", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ChestScavs_CalculatingTime" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local c = GetVar("ScavCarma").AsString
+			local carma
+			if strsub(c, 1, 1) == "-" then
+				carma = tonumber(strsub(c, 2, 5))
+			else
+				carma = tonumber(strsub(c, 1, 4))
+			end
+
+			if not(carma == 0) then
+				local minVar = GetVar("ChestScavs_time_minute").AsInt
+				local hourVar = GetVar("ChestScavs_time_hour").AsInt
+				local secMain, hour, min, sec, sec1, secCalculating = 0, 0, 0, 0, 0, 0
+
+				if not(minVar == 0) then 
+					secMain = minVar * 60
+				elseif not(hourVar == 0) and minVar == 0 then
+					secMain = hourVar * 60 * 60
+				end
+
+				secCalculating = carma * 100
+				secCalculating = math.floor(secCalculating / 1.5)
+				if strsub(c, 1, 1) == "-" then
+					secCalculating = secMain + secCalculating
+				else
+					secCalculating = secMain - secCalculating
+				end
+	
+				hour = math.floor(secCalculating / 3600)
+				if 0 > hour then hour = 0 end
+
+				sec = hour * 3600
+				sec = secCalculating - sec
+
+				min = math.floor(sec / 60)
+				if 0 > min then min = 0 end
+
+				sec1 = min * 60
+				sec1 = sec - sec1
+				if 0 > sec1 then sec1 = 1 end
+
+				SetVar("ChestScavs_time_hour", hour)
+				SetVar("ChestScavs_time_minute", min)
+				SetVar("ChestScavs_time_second", sec1)
+			end
+
+			TActivate("ChestScavs_Timer")
+			TActivate("ChestScavs_CreateTimer3D")
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4462,6 +4515,19 @@
 
 			SetCameraBehindPlayerVehicle()
 
+			local c = GetVar("ScavCarma").AsString
+			local carma
+			if strsub(c, 1, 1) == "-" then
+				carma = tonumber(strsub(c, 1, 5))
+			else
+				carma = tonumber(strsub(c, 1, 4))
+			end
+
+			if carma >= 6 then
+				SetTolerance(1100, 1086, RS_NEUTRAL)
+				SetTolerance(1100, 1087, RS_NEUTRAL)
+			end
+
 			SetTolerance(1100, 1082, RS_NEUTRAL)
 			trigger:Deactivate()
 		</script>
@@ -4495,6 +4561,8 @@
 		
 			SetCameraBehindPlayerVehicle()
 			
+			SetTolerance(1100, 1086, RS_ENEMY)
+			SetTolerance(1100, 1087, RS_ENEMY)
 			SetTolerance(1100, 1082, RS_ENEMY)
 			SetVar("DialogSelectMap", 1)
 			trigger:Deactivate()
@@ -4972,6 +5040,8 @@
 			local carScav = GetEntityByName("ScavCarForPlayer")
 			if carScav then carScav:Remove() end
 
+			SetTolerance(1100, 1086, RS_ENEMY)
+			SetTolerance(1100, 1087, RS_ENEMY)
 			SetTolerance(1100, 1082, RS_ENEMY)
 
 			trigger:Deactivate()

@@ -133,6 +133,11 @@ if FIX_CRASH_VITALY_GLOBAL == nil then
 	FIX_CRASH_VITALY_GLOBAL = 0 
 end
 
+-- ќтслеживание количества брони кабины при попадани€х
+if UNDER_ATTACK_DURABILITY == nil then
+	UNDER_ATTACK_DURABILITY = 0
+end
+
 -- –андомизируем пушки ботам 
 function GiveGunsForVehicle(vehicle, side_random)
 	local veh=vehicle
@@ -1272,11 +1277,54 @@ function ObjUnderAttack(ObjTarget, ObjAttack, TriggerName)
 		local belong = car:GetBelong()
 		if belong > 0 then
 			SetVar(ObjTarget.."_UnderAttack", belong)
+			if UNDER_ATTACK_DURABILITY == 1 then 
+				if target then
+					ObjUnderAttackDurability(ObjTarget, ObjAttack) 
+				end
+			end
 			if not(target) and belong == 1100 then
 				if TriggerName then TActivate(TriggerName) end
 			end
 			return belong
 		end
+	end
+end
+
+function ObjUnderAttackDurability(ObjTarget, ObjAttack)
+	local target = getObj(ObjTarget)
+	local car = getObj(ObjAttack)
+	if car then
+		if target then
+			local cab = target:GetCabin()
+			if cab then
+				local cabDurability = cab:GetPropertyById(19).AsInt
+				if cabDurability == 0 then
+					target:AddModifier("hp", "- 100000")
+				end
+			end
+		end
+	end
+end
+
+function PlayerUnderAttackDurability()
+	local carPlayer = GetPlayerVehicle()
+	if carPlayer then
+		local cabDurability = carPlayer:GetCabin():GetPropertyById(19).AsInt
+		if cabDurability == 0 then
+			carPlayer:AddModifier("hp", "- 100000")
+		end
+	end
+end
+
+function UnderAttackDurability(num)
+	if num == nil then num = 1 end
+
+	if num == 0 then
+		UNDER_ATTACK_DURABILITY = 0
+		println("OFF")
+	else
+		UNDER_ATTACK_DURABILITY = 1
+		println("ON")
 	end
 end
 

@@ -55,6 +55,8 @@
 			SetVar("SpawnSectanian", 0)
 			SetVar("CountSectanian", 0)
 
+			SetVar("BossFrendly", 0)
+
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -167,13 +169,6 @@
 			if WINDGENERATOR_TIME_SECOND_GLOBAL > 0 then SetVar("WindGenerator_time_second", WINDGENERATOR_TIME_SECOND_GLOBAL) end
 			if WINDGENERATOR_STATUS_GLOBAL then SetVar("WindGenerator_status", WINDGENERATOR_STATUS_GLOBAL) end
 
-			if GetVar("PlayerBelong").AsString == "SCAV" then
-				SetTolerance(1100, 1082, RS_NEUTRAL)
-			else
-				SetTolerance(1100, 1082, RS_ENEMY)
-				TActivate("QuestsActivate")
-			end
-
 			TActivate("GlobalVar")
 
 			TActivate("PetrolStations")
@@ -206,6 +201,25 @@
 			if IsQuestItemPresent("quest_item_map_r1m1") and GetVar("Map").AsInt == 0 then
 				map()
 				SetVar("Map", 1)
+			end
+
+			if GetVar("PlayerBelong").AsString == "SCAV" then
+				local c = GetVar("ScavCarma").AsString
+				local carma
+				if strsub(c, 1, 1) == "-" then
+					carma = tonumber(strsub(c, 1, 5))
+				else
+					carma = tonumber(strsub(c, 1, 4))
+				end
+
+				if carma >= 6 then
+					SetTolerance(1100, 1086, RS_NEUTRAL)
+					SetTolerance(1100, 1087, RS_NEUTRAL)
+					SetVar("BossFrendly", 1)
+				end
+			else
+				SetTolerance(1100, 1082, RS_ENEMY)
+				TActivate("QuestsActivate")
 			end
 
 			if DEBUG == 1 then
@@ -322,13 +336,16 @@
 					vehPlayer:SetNameFromScript("ScavCarForPlayer")
 					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
 					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "ScavCarForPlayer")
+					getObj("PlayerUnderAttack"):AddEvent("GE_UNDER_ATTACK", "ScavCarForPlayer")
 				else
 					vehPlayer:SetNameFromScript("PlayerCar")
 					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
 					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "PlayerCar")
+					getObj("PlayerUnderAttack"):AddEvent("GE_UNDER_ATTACK", "PlayerCar")
 				end
 			end
 			TActivate("FakePlayerDead")
+			TActivate("PlayerUnderAttack")
 			TActivate("PlayerCarConfiguration")
 		</script>
 	</trigger>
@@ -492,10 +509,12 @@
 					vehPlayer:SetNameFromScript("ScavCarForPlayer")
 					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
 					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "ScavCarForPlayer")
+					getObj("PlayerUnderAttack"):AddEvent("GE_UNDER_ATTACK", "ScavCarForPlayer")
 				else
 					vehPlayer:SetNameFromScript("PlayerCar")
 					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
 					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "PlayerCar")
+					getObj("PlayerUnderAttack"):AddEvent("GE_UNDER_ATTACK", "PlayerCar")
 				end
 				vehPlayer:SetThrottle(0)
 				vehPlayer:SetCustomLinearVelocity(0)
@@ -503,8 +522,15 @@
 
 			TActivate("SpawnsScavs")
 			TActivate("FakePlayerDead")
+			TActivate("PlayerUnderAttack")
 
 			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="PlayerUnderAttack" active="0">
+		<script>
+			if UNDER_ATTACK_DURABILITY == 1 then PlayerUnderAttackDurability() end
 		</script>
 	</trigger>
 
@@ -1120,6 +1146,14 @@
 				SetVar("ExitTimer",6)
 				PassToMap("r0m0", "FromLocation")
 				if GetVar("PlayerBelong").AsString == "SCAV" then 
+					if GetVar("BossFrendly").AsInt == 1 then
+						if 1.5 >= GetTolerance(1100, 1086) then
+							SetVar("ScavCarma", GetVar("ScavCarma").AsString - 1.0)
+						end
+						if 1.5 >= GetTolerance(1100, 1087) then
+							SetVar("ScavCarma", GetVar("ScavCarma").AsString - 1.0)
+						end
+					end
 					if 1.5 >= GetTolerance(1100, 1082) then
 						SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.4)
 					end
@@ -2769,6 +2803,7 @@
 			if pl and hp >= 1 then 
 				ItemUse() 
 				UseItemsForQuest()
+				if UNDER_ATTACK_DURABILITY == 1 then PlayerUnderAttackDurability() end
 			else 
 				trigger:Deactivate() 
 			end
@@ -4910,6 +4945,8 @@
 			TDeactivate("BossEnemy_LeavesLoc")
 			TDeactivate("CreateBossEntersLoc")
 
+			SetVar("BossFrendly", 0)
+
 			--удаление сектантов
 			TActivate("SectanianRemove")
 	
@@ -4984,7 +5021,9 @@
 
 			TDeactivate("FakePlayerDead")
 			getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
-		
+			TDeactivate("PlayerUnderAttack")
+			getObj("PlayerUnderAttack"):DelEvent("GE_UNDER_ATTACK")
+			
 			--глобал переменные
 			if COUNT_RAIDS then COUNT_RAIDS = GetVar("CountRaids").AsInt end
 

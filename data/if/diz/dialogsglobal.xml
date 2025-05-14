@@ -10787,7 +10787,7 @@
 		name="Dlg_npc_prapor_quests"
 		text="Думаю, найдётся что-нибудь для тебя."
 		role="NPC"
-		nextReplies="Dlg_pl_q_search_data Dlg_pl_to_q_search_data Dlg_pl_q_explore_r1m1 Dlg_pl_to_q_explore_r1m1 Dlg_pl_q_kill_scavs Dlg_pl_to_q_kill_scavs Dlg_pl_q_clearing_r1m1 Dlg_pl_to_q_clearing_r1m1 Dlg_pl_q_base_scavs Dlg_pl_to_q_base_scavs Dlg_pl_q_fuel1 Dlg_pl_to_q_fuel1 Dlg_pl_q_fuel2 Dlg_pl_to_q_fuel2 Dlg_pl_npc_exit" />
+		nextReplies="Dlg_pl_q_search_data Dlg_pl_to_q_search_data Dlg_pl_q_explore_r1m1 Dlg_pl_to_q_explore_r1m1 Dlg_pl_q_kill_scavs Dlg_pl_to_q_kill_scavs Dlg_pl_q_clearing_r1m1 Dlg_pl_to_q_clearing_r1m1 Dlg_pl_q_base_scavs Dlg_pl_to_q_base_scavs Dlg_pl_q_kill_usec Dlg_pl_to_q_kill_usec Dlg_pl_q_sectarian1 Dlg_pl_to_q_sectarian1 Dlg_pl_q_sectarian2 Dlg_pl_to_q_sectarian2 Dlg_pl_q_fuel1 Dlg_pl_to_q_fuel1 Dlg_pl_q_fuel2 Dlg_pl_to_q_fuel2 Dlg_pl_npc_exit" />
 
 <!--Поисковая миссия-->
 	<Reply
@@ -10893,6 +10893,51 @@
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_base_scavs') and not(IsQuestComplete('q_base_scavs'))"
 		nextReplies="Dlg_npc_q_base_scavs_3" />
+
+<!--Друг с запада-->
+	<Reply
+		name="Dlg_pl_q_kill_usec"
+		text="Есть ли для меня работа? (Принять задание: Друг с запада)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_kill_usec')"
+		nextReplies="Dlg_npc_q_kill_usec_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_kill_usec"
+		text="На счёт задания Друг с запада."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_kill_usec') and not(IsQuestComplete('q_kill_usec'))"
+		nextReplies="Dlg_npc_q_kill_usec_3" />
+
+<!--Нашествие сектантов - Часть 1-->
+	<Reply
+		name="Dlg_pl_q_sectarian1"
+		text="Есть ли для меня работа? (Принять задание: Нашествие сектантов - Часть 1)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_sectarian1')"
+		nextReplies="Dlg_npc_q_sectarian1_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_sectarian1"
+		text="На счёт задания Нашествие сектантов - Часть 1."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_sectarian1') and not(IsQuestComplete('q_sectarian1'))"
+		nextReplies="Dlg_npc_q_sectarian1_1" />
+
+<!--Нашествие сектантов - Часть 2-->
+	<Reply
+		name="Dlg_pl_q_sectarian2"
+		text="Есть ли для меня работа? (Принять задание: Нашествие сектантов - Часть 2)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_sectarian2')"
+		nextReplies="Dlg_npc_q_sectarian2_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_sectarian2"
+		text="На счёт задания Нашествие сектантов - Часть 2."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_sectarian2') and not(IsQuestComplete('q_sectarian2'))"
+		nextReplies="Dlg_npc_q_sectarian2_1" />
 
 <!--Root/r0m0/Поисковая миссия-->
 
@@ -11285,7 +11330,7 @@
 		name="Dlg_npc_q_base_scavs_4"
 		text="Купить маркер MS2000 - x1 (Стоимость: 15.000 монет)"
 		role="PLAYER"
-		scriptCondition="IsQuestTaken('q_base_scavs') and not(IsQuestComplete('q_base_scavs_2')) and GetPlayerMoney()>=15000"
+		scriptCondition="IsQuestTaken('q_base_scavs') and not(IsQuestComplete('q_base_scavs_1')) and GetPlayerMoney()>=15000"
 		scriptResult="AddPlayerMoney(-15000); AddItemsToPlayerRepository('item_ms2000', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_ms2000'); TActivate('SoundBuy')"
 		nextReplies="Dlg_npc_q_base_scavs_3" />
 
@@ -11316,6 +11361,184 @@
 		role="PLAYER"
 		scriptResult="EndConversation()"/>
 
+<!--Root/r0m0/Друг с запада-->
+
+	<Reply
+		name="Dlg_npc_q_kill_usec_1"
+		text="Здравия желаю, Наёмник! Как оно, готов к делам по серьёзней?"
+		role="NPC"
+		nextReplies="Dlg_npc_q_kill_usec_2" />
+
+	<Reply
+		name="Dlg_npc_q_kill_usec_2"
+		text="Всегда готов!"
+		role="PLAYER"
+		nextReplies="Dlg_npc_q_kill_usec_3" />
+
+	<Reply
+		name="Dlg_npc_q_kill_usec_3"
+		text="Отлично. Ты конечно вояка с серьёзными намериями, как я погляжу, хе-хе. Короче, сразу к делу. В последнее время, меня начали напрягать Юсеки. Лезут везде где не попадя, да людей моих мочат. Не нравится мне это. По кошмарь их как следует, а я тебе баблеца отсыплю. Идёт? И в качестве доказательства, притащи и их жетоны.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Транспорт: @FF1D1D1DМолоковоз в продаже @FF780a0a[Если не получен ранее]|@FF404040- Пулемёт: @FF1D1D1DКорд - x1|@FF404040- Предмет: @FF1D1D1DЯщик патронов для пулемёта - x1|@FF404040- Предмет: @FF1D1D1DЗолотые часы - x1"
+		role="NPC"
+		nextReplies="Dlg_npc_q_kill_usec_4 Dlg_npc_q_kill_usec_5 Dlg_npc_q_kill_usec_6 Dlg_npc_q_kill_usec_7 Dlg_npc_q_kill_usec_8" />
+
+	<Reply
+		name="Dlg_npc_q_kill_usec_4"
+		text="По рукам!"
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_kill_usec'))"
+		scriptResult="TakeQuest('q_kill_usec'); TActivate('SoundQuestTaken'); EndConversation()"/>
+
+	<Reply
+		name="Dlg_npc_q_kill_usec_5"
+		text="Передать Жетон USEC - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_jeton_usec', 1) and not(GetVar('q_kill_usec_item_jeton').AsInt >= 4) and IsQuestTaken('q_kill_usec_2') and not(IsQuestComplete('q_kill_usec_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_jeton_usec', 1); SetVar('q_kill_usec_item_jeton', GetVar('q_kill_usec_item_jeton').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_jeton_usec')"
+		nextReplies="Dlg_npc_q_kill_usec_3" />
+
+	<Reply
+		name="Dlg_npc_q_kill_usec_6"
+		text="Передать Жетон USEC - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_jeton_usec', 1) and GetVar('q_kill_usec_item_jeton').AsInt >= 4 and IsQuestTaken('q_kill_usec_2') and not(IsQuestComplete('q_kill_usec_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_jeton_usec', 1); SetVar('q_kill_usec_item_jeton', 5); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_jeton_usec'); CompleteSubtask('q_kill_usec_2'); TActivate('SoundSubtaskComplete')"
+		nextReplies="Dlg_npc_q_kill_usec_3" />
+
+	<Reply
+		name="Dlg_npc_q_kill_usec_7"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_kill_usec_3')"
+		scriptResult="CompleteQuest('q_kill_usec_3'); TActivate('SoundQuestFihished')"
+		nextReplies="Dlg_npc_q_kill_usec_9" />
+
+	<Reply
+		name="Dlg_npc_q_kill_usec_8"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_kill_usec') and not(IsQuestTaken('q_kill_usec_3'))"
+		nextReplies="Dlg_npc_prapor_quests" />
+
+	<Reply
+		name="Dlg_npc_q_kill_usec_9"
+		text="Так держать! Держи подарки, вояка. Ты хорошо поработал, шухеру навёл как следует. Теперь будут знать, с кем имеют дело."
+		role="NPC"
+		nextReplies="Dlg_npc_q_kill_usec_10" />
+
+	<Reply
+		name="Dlg_npc_q_kill_usec_10"
+		text="Отлично. Если что, вы знаете к кому обратиться."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Нашествие сектантов - Часть 1-->
+
+	<Reply
+		name="Dlg_npc_q_sectarian1_1"
+		text="Привет! Подходи, есть одно дело для тебя. Такие дела в округе творятся, короче. Недавно мои пацаны выдвинулись в ночной рейд на локацию Край за хабаром и нарвались на каких-то типов в капюшонах. Пацаны конечно не все уцелели, кто смог, свалил по итогу. Что это были за типы, никто не знает. В общем, неподалёку парни нашли что-то типо ритуального круга. Примерное его месторасположение, между Дорогой в Риджин и поселением Заимка. Вот, держи маячок, твоя задача пометить это место и передать нам его точное месторасположение. Задача ясна? Тогда за дело, боец!|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Гаджет: @FF1D1D1DКатанные броневые листы на корпус кабины - x1|@FF404040- Предмет: @FF1D1D1DУлучшенное оборудование - x2|@FF404040- Деньги: @FF1D1D1D40.000 монет"
+		role="NPC"
+		nextReplies="Dlg_npc_q_sectarian1_2 Dlg_npc_q_sectarian1_3 Dlg_npc_q_sectarian1_4 Dlg_npc_q_sectarian1_5" />
+
+	<Reply
+		name="Dlg_npc_q_sectarian1_2"
+		text="Выдвигаюсь!"
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_sectarian1'))"
+		scriptResult="TakeQuest('q_sectarian1'); TActivate('SoundQuestTaken'); EndConversation()"/>
+
+	<Reply
+		name="Dlg_npc_q_sectarian1_3"
+		text="Купить маркер MS2000 - x1 (Стоимость: 15.000 монет)"
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_sectarian1') and not(IsQuestComplete('q_sectarian1_2')) and GetPlayerMoney()>=15000"
+		scriptResult="AddPlayerMoney(-15000); AddItemsToPlayerRepository('item_ms2000', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'item_ms2000'); TActivate('SoundBuy')"
+		nextReplies="Dlg_npc_q_sectarian1_1" />
+
+	<Reply
+		name="Dlg_npc_q_sectarian1_4"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_sectarian1_4')"
+		scriptResult="CompleteQuest('q_sectarian1_4'); TActivate('SoundQuestFihished')"
+		nextReplies="Dlg_npc_q_sectarian1_6" />
+
+	<Reply
+		name="Dlg_npc_q_sectarian1_5"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_sectarian1') and not(IsQuestTaken('q_sectarian1_4'))"
+		nextReplies="Dlg_npc_prapor_quests" />
+
+	<Reply
+		name="Dlg_npc_q_sectarian1_6"
+		text="Отлично, сигнал получен. Я отправил туда экспедицию, будем разбираться что с этими поехавшими не так. Хорошо что не пострадал. Хотя, как я посмотрю, тебе любая работа по плечу. Забирай награду."
+		role="NPC"
+		nextReplies="Dlg_npc_q_sectarian1_7" />
+
+	<Reply
+		name="Dlg_npc_q_sectarian1_7"
+		text="Спасибо."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Нашествие сектантов - Часть 2-->
+
+	<Reply
+		name="Dlg_npc_q_sectarian2_1"
+		text="Так, для тебя есть новая работёнка. Смотри что у меня есть. Этот нож тех самых психов, на которые нарвались мои пацаны. Во время заварушки вальнули парочку и у одного их них нашли этот самый нож. Изделие как видишь необычное, со странными знаками. Короче, с этими типами явно что-то не так, оказалось что серьёзные люди за такое изделие готовы целое состояние отвалить. Если подвернется тебе еще несколько таких ножей найти, сразу тащи их ко мне.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Гаджет: @FF1D1D1DИзоляция топливной системы - x1|@FF404040- Лазерная установка: @FF1D1D1DМаксим - x1|@FF404040- Предмет: @FF1D1D1DБаллон с жидкостью для Лазерной установки - x1|@FF404040- Деньги: @FF1D1D1D50.000 монет"
+		role="NPC"
+		nextReplies="Dlg_npc_q_sectarian2_2 Dlg_npc_q_sectarian2_3 Dlg_npc_q_sectarian2_4 Dlg_npc_q_sectarian2_5 Dlg_npc_q_sectarian2_6" />
+
+	<Reply
+		name="Dlg_npc_q_sectarian2_2"
+		text="По рукам!"
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_sectarian2'))"
+		scriptResult="TakeQuest('q_sectarian2'); TActivate('SoundQuestTaken'); EndConversation()"/>
+
+	<Reply
+		name="Dlg_npc_q_sectarian2_3"
+		text="Передать Нож сектантов - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_knife_sectarian', 1) and not(GetVar('q_sectarian2_3_item_knife_sectarian').AsInt >= 2) and IsQuestTaken('q_sectarian2_3') and not(IsQuestComplete('q_sectarian2_3'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_knife_sectarian', 1); SetVar('q_sectarian2_3_item_knife_sectarian', GetVar('q_sectarian2_3_item_knife_sectarian').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_knife_sectarian')"
+		nextReplies="Dlg_npc_q_sectarian2_1" />
+
+	<Reply
+		name="Dlg_npc_q_sectarian2_4"
+		text="Передать Нож сектантов - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_knife_sectarian', 1) and GetVar('q_sectarian2_3_item_knife_sectarian').AsInt >= 2 and IsQuestTaken('q_sectarian2_3') and not(IsQuestComplete('q_sectarian2_3'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_knife_sectarian', 1); SetVar('q_sectarian2_3_item_knife_sectarian', 2); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_knife_sectarian'); CompleteSubtask('q_sectarian2_3'); TActivate('SoundSubtaskComplete')"
+		nextReplies="Dlg_npc_q_sectarian2_1" />
+
+	<Reply
+		name="Dlg_npc_q_sectarian2_5"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_sectarian2_4')"
+		scriptResult="CompleteQuest('q_sectarian2_4'); TActivate('SoundQuestFihished')"
+		nextReplies="Dlg_npc_q_sectarian2_7" />
+
+	<Reply
+		name="Dlg_npc_q_sectarian2_6"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_sectarian2') and not(IsQuestTaken('q_sectarian2_4'))"
+		nextReplies="Dlg_npc_prapor_quests" />
+
+	<Reply
+		name="Dlg_npc_q_sectarian2_7"
+		text="Ты их действительно принёс. Ну ты даёшь.. сам сектантов завалил? Ну и нервы у тебя. Что-то не чисто с этими типами, правду тебе говорю."
+		role="NPC"
+		nextReplies="Dlg_npc_q_sectarian2_8" />
+
+	<Reply
+		name="Dlg_npc_q_sectarian2_8"
+		text="Да, пришлось с ними повозиться."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
 <!--Root/r0m0/Ремонт-->
 
 	<Reply
@@ -11327,7 +11550,7 @@
 
 	<Reply
 		name="Dlg_npc_q_rebuild_2"
-		text="Прошу прощение за беспокойство, меня к вам послал Прапорщик. Говорит, что у вас ко мне есть дело."
+		text="Прошу прощение за беспокойство, меня к вам послал Прапорщик. Говорит что, у вас ко мне есть дело."
 		role="PLAYER"
 		nextReplies="Dlg_npc_q_rebuild_3" />
 
@@ -11369,7 +11592,7 @@
 
 	<Reply
 		name="Dlg_npc_q_rebuild_9"
-		text="И так, чтобы закончить работу, мне не хватает всего ничего: один Автомобильный аккумулятор и 2 штуки Свечей зажигания. Принеси мне их, и тогда я смогу закончить работу с ремонтом.|@FF0000AA|@FF1D1D1DНаграда:|- Транспорт: @FF1D1D1DМолоковоз в продаже|- Кабина: @FF1D1D1DВихрь (Молоковоз, Уровень II) в продаже|- Пулёмет: @FF1D1D1DКорд - x1|- Предмет: @FF1D1D1DЯщик патронов для пулемёта - x1|- Деньги: @FF1D1D1D50.000 монет"
+		text="И так, чтобы закончить работу, мне не хватает всего ничего: один Автомобильный аккумулятор и 2 штуки Свечей зажигания. Принеси мне их, и тогда я смогу закончить работу с ремонтом.|@FF0000AA|@FF1D1D1DНаграда:|- Транспорт: @FF1D1D1DМолоковоз в продаже @FF780a0a[Если не получен ранее]|- Кабина: @FF1D1D1DВихрь (Молоковоз, Уровень II) в продаже|- Пулёмет: @FF1D1D1DКорд - x1|- Предмет: @FF1D1D1DЯщик патронов для пулемёта - x1|- Деньги: @FF1D1D1D50.000 монет"
 		role="NPC"
 		scriptCondition="CanQuestBeGiven('q_rebuild') or IsQuestTaken('q_rebuild') and not(IsQuestComplete('q_rebuild'))"
 		nextReplies="Dlg_npc_q_rebuild_10 Dlg_npc_q_rebuild_12 Dlg_npc_q_rebuild_13 Dlg_npc_q_rebuild_14 Dlg_npc_q_rebuild_15 Dlg_npc_q_rebuild_16" />
@@ -13426,7 +13649,7 @@
 
 	<Reply
 		name="Dlg_npc_q_belazist8_3"
-		text="У заказчика довольно необычный вкус в технике, просит собрать ему Белаз и установить на него три Шмеля. Это такие миномёты стреляющие настильной траекторией, попасть в противника из такого вооружения будет не просто. Буду благодарен если ты мне поможешь, вот, взгляни на инструкцию.|@FF0000AA|Кабина: @FF1D1D1DЩит (Уровень V)|Кузов: @FF1D1D1DКолосс (Уровень III)|Вооружение: @FF1D1D1DШмель - x3|@FF0000AA|@FF1D1D1DНаграда:|- Кабина: @FF1D1D1DМетеор (Миротворец, Уровень III) в продаже @FF780a0a[Если не получено ранее]|- Кузов: @FF1D1D1DМайа (Миротворец, Уровень III) в продаже @FF780a0a[Если не получено ранее]|- Гаджет: @FF1D1D1DСистема ''Sagitta'' - x1|- Гаджет: @FF1D1D1DСистема ''Альбатрос'' - x1|- Предмет: @FF1D1D1DЯщик патронов для Пушки - x1|- Предмет: @FF1D1D1DЯщик дроби для Дробовика - x1|- Предмет: @FF1D1D1DЯщик боеприпасов для Артиллерии в продаже - x1|- Неизвестная награда - @FF1D1D1Dx3|- Деньги: @FF1D1D1D200.000 монет"
+		text="У заказчика довольно необычный вкус в технике, просит собрать ему Белаз и установить на него три Шмеля. Это такие миномёты стреляющие настильной траекторией, попасть в противника из такого вооружения будет не просто. Буду благодарен если ты мне поможешь, вот, взгляни на инструкцию.|@FF0000AA|Кабина: @FF1D1D1DЩит (Уровень V)|Кузов: @FF1D1D1DКолосс (Уровень III)|Вооружение: @FF1D1D1DШмель - x3|@FF0000AA|@FF1D1D1DНаграда:|- Кабина: @FF1D1D1DМетеор (Миротворец, Уровень III) в продаже @FF780a0a[Если не получена ранее]|- Кузов: @FF1D1D1DМайа (Миротворец, Уровень III) в продаже @FF780a0a[Если не получен ранее]|- Гаджет: @FF1D1D1DСистема ''Sagitta'' - x1|- Гаджет: @FF1D1D1DСистема ''Альбатрос'' - x1|- Предмет: @FF1D1D1DЯщик патронов для Пушки - x1|- Предмет: @FF1D1D1DЯщик дроби для Дробовика - x1|- Предмет: @FF1D1D1DЯщик боеприпасов для Артиллерии в продаже - x1|- Неизвестная награда - @FF1D1D1Dx3|- Деньги: @FF1D1D1D200.000 монет"
 		role="NPC"
 		nextReplies="Dlg_npc_q_belazist8_4 Dlg_npc_q_belazist8_5 Dlg_npc_q_belazist8_6" />
 
@@ -13522,7 +13745,7 @@
 
 	<Reply
 		name="Dlg_npc_q_test_drive10_1"
-		text="Привет, у меня для тебя есть работа. Нужен Миротворец чтобы на него можно было установить 3 большие пушки, то есть с тремя большими слотами. Всё остальное на своё усмотрение.|@FF0000AA|@FF1D1D1DНаграда:|- Кабина: @FF1D1D1DМетеор (Миротворец, Уровень III) в продаже @FF780a0a[Если не получено ранее]|- Кузов: @FF1D1D1DМайа (Миротворец, Уровень III) в продаже @FF780a0a[Если не получено ранее]|- Гаджет: @FF1D1D1DСвободный затвор с плавающей муфтой в продаже - x1|- Пулемёт: @FF1D1D1DСпрут в продаже - x1|- Пушка: @FF1D1D1DРейнметалл в продаже - x1|- Дробовик: @FF1D1D1DФлаг в продаже - x1|- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x1|- Предмет: @FF1D1D1DЯщик патронов для Пушки - x1|- Предмет: @FF1D1D1DЯщик дроби для Дробовика - x1|- Деньги: @FF1D1D1D100.000 монет"
+		text="Привет, у меня для тебя есть работа. Нужен Миротворец чтобы на него можно было установить 3 большие пушки, то есть с тремя большими слотами. Всё остальное на своё усмотрение.|@FF0000AA|@FF1D1D1DНаграда:|- Кабина: @FF1D1D1DМетеор (Миротворец, Уровень III) в продаже @FF780a0a[Если не получена ранее]|- Кузов: @FF1D1D1DМайа (Миротворец, Уровень III) в продаже @FF780a0a[Если не получен ранее]|- Гаджет: @FF1D1D1DСвободный затвор с плавающей муфтой в продаже - x1|- Пулемёт: @FF1D1D1DСпрут в продаже - x1|- Пушка: @FF1D1D1DРейнметалл в продаже - x1|- Дробовик: @FF1D1D1DФлаг в продаже - x1|- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x1|- Предмет: @FF1D1D1DЯщик патронов для Пушки - x1|- Предмет: @FF1D1D1DЯщик дроби для Дробовика - x1|- Деньги: @FF1D1D1D100.000 монет"
 		role="NPC"
 		nextReplies="Dlg_npc_q_test_drive10_2 Dlg_npc_q_test_drive10_3 Dlg_npc_q_test_drive10_4" />
 

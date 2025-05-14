@@ -65,6 +65,10 @@ function QuestsKillPMC()
     if IsQuestTaken("q_belazist8_3") and not(IsQuestComplete("q_belazist8_3")) then Q_Belazist8("q_belazist8_killPMC", 50, "q_belazist8_3", "fm_progress_quest_pmc_kills") end
 end
 
+function QuestsKillPMC_USEC()
+    if IsQuestTaken("q_kill_usec") and not(IsQuestComplete("q_kill_usec_1")) then Q_Kills("q_kill_usec_kills", 5, "q_kill_usec_1", "fm_progress_quest_pmc_usec_kills", "q_kill_usec") end
+end
+
 function IfRaidCountForQuest()
     if IsQuestTaken("q_test_drive4_2") and not(IsQuestComplete("q_test_drive4_2")) then Q_TestDrive4("q_test_drive4_raidcount", 3, "q_test_drive4_2", "fm_progress_quest_raidcount") end
     if IsQuestTaken("q_test_drive5_2") and not(IsQuestComplete("q_test_drive5_2")) then Q_TestDrive5("q_test_drive5_raidcount", 3, "q_test_drive5_2", "fm_progress_quest_raidcount") end
@@ -79,7 +83,7 @@ end
 
 -- Тест драйв
 
-function Q_TestDrive(var, kills, quest, fm, questName)
+function Q_Kills(var, kills, quest, fm, questName)
     local q_var = GetVar(var).AsInt
 
     if not(q_var == kills) then
@@ -104,7 +108,7 @@ function Q_TestDrive1(var, kills, quest, fm)
         local cab_small = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
         if cab_small then cab_small = cab_small:GetProperty("Prototype").AsString end
 
-        if cab_small == "pkt01" then Q_TestDrive(var, kills, quest, fm, "q_test_drive1") end
+        if cab_small == "pkt01" then Q_Kills(var, kills, quest, fm, "q_test_drive1") end
     end
 end
 
@@ -119,7 +123,7 @@ function Q_TestDrive2(var, kills, quest, fm)
             bas_small_0 = bas_small_0:GetProperty("Prototype").AsString 
         end
 
-        if cab_small == "specter01" and bas_small_0 == "pkt01" or cab_small == "pkt01" and bas_small_0 == "specter01" then Q_TestDrive(var, kills, quest, fm, "q_test_drive2") end
+        if cab_small == "specter01" and bas_small_0 == "pkt01" or cab_small == "pkt01" and bas_small_0 == "specter01" then Q_Kills(var, kills, quest, fm, "q_test_drive2") end
     end
 end
 
@@ -130,7 +134,7 @@ function Q_TestDrive3(var, kills, quest, fm)
         local cab_small = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
         if cab_small then cab_small = cab_small:GetProperty("Prototype").AsString end
 
-        if cab_small == "hornet01" or cab_small == "american_hornet01" then Q_TestDrive(var, kills, quest, fm, "q_test_drive3") end
+        if cab_small == "hornet01" or cab_small == "american_hornet01" then Q_Kills(var, kills, quest, fm, "q_test_drive3") end
     end
 end
 
@@ -141,7 +145,7 @@ function Q_TestDrive4(var, kills, quest, fm)
         local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
         if bas_big_0 then bas_big_0 = bas_big_0:GetProperty("Prototype").AsString end
 
-        if bas_big_0 == "kpvt01" then Q_TestDrive(var, kills, quest, fm, "q_test_drive4") end
+        if bas_big_0 == "kpvt01" then Q_Kills(var, kills, quest, fm, "q_test_drive4") end
     end
 end
 
@@ -156,7 +160,7 @@ function Q_TestDrive5(var, kills, quest, fm)
             bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
         end
 
-        if cab_small == "storm01" and bas_big_0 == "rapier01" then Q_TestDrive(var, kills, quest, fm, "q_test_drive5") end
+        if cab_small == "storm01" and bas_big_0 == "rapier01" then Q_Kills(var, kills, quest, fm, "q_test_drive5") end
     end
 end
 
@@ -171,7 +175,7 @@ function Q_TestDrive6(var, kills, quest, fm)
             bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
         end
 
-        if cab_big_1 == "vulcan01" and bas_big_0 == "vulcan01" then Q_TestDrive(var, kills, quest, fm, "q_test_drive6") end
+        if cab_big_1 == "vulcan01" and bas_big_0 == "vulcan01" then Q_Kills(var, kills, quest, fm, "q_test_drive6") end
     end
 end
 
@@ -184,7 +188,7 @@ function Q_TestDrive7(var, kills, quest, fm)
             bas_small_0 = bas_small_0:GetProperty("Prototype").AsString 
         end
 
-        if bas_small_0 == "kord01" then Q_TestDrive(var, kills, quest, fm, "q_test_drive7") end
+        if bas_small_0 == "kord01" then Q_Kills(var, kills, quest, fm, "q_test_drive7") end
     end
 end
 
@@ -199,7 +203,7 @@ function Q_TestDrive8(var, kills, quest, fm)
             bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
         end
 
-        if cab_big_1 == "rapier01" and bas_big_0 == "rapier01" then Q_TestDrive(var, kills, quest, fm, "q_test_drive8") end
+        if cab_big_1 == "rapier01" and bas_big_0 == "rapier01" then Q_Kills(var, kills, quest, fm, "q_test_drive8") end
     end
 end
 
@@ -218,7 +222,7 @@ function Q_TestDrive9(var, kills, quest, fm)
             if cab_big_gun_1 == "flag01" and bas_giant_gun == "cyclops01" then l = l + 1 end
         end
 
-        if l == 1 then Q_TestDrive(var, kills, quest, fm, "q_test_drive9") end
+        if l == 1 then Q_Kills(var, kills, quest, fm, "q_test_drive9") end
     end
 end
 
@@ -236,7 +240,7 @@ function Q_TestDrive10(var, kills, quest, fm)
             end
         end
 
-        if l == 3 then Q_TestDrive(var, kills, quest, fm, "q_test_drive10") end
+        if l == 3 then Q_Kills(var, kills, quest, fm, "q_test_drive10") end
     end
 end
 
@@ -260,7 +264,7 @@ function Q_TestDrive11(var, kills, quest, fm)
             if bas_giant_gun == "octopus01" then l = l + 1 end
         end
 
-        if l == 4 then Q_TestDrive(var, kills, quest, fm, "q_test_drive11") end
+        if l == 4 then Q_Kills(var, kills, quest, fm, "q_test_drive11") end
     end
 end
 
@@ -284,7 +288,7 @@ function Q_TestDrive12(var, kills, quest, fm)
             if bas_giant_gun == "cyclops01" then l = l + 1 end
         end
 
-        if l == 4 then Q_TestDrive(var, kills, quest, fm, "q_test_drive12") end
+        if l == 4 then Q_Kills(var, kills, quest, fm, "q_test_drive12") end
     end
 end
 
@@ -310,7 +314,7 @@ function Q_TestDrive13(var, kills, quest, fm)
             end
         end
 
-        if l == 4 then Q_TestDrive(var, kills, quest, fm, "q_test_drive13") end
+        if l == 4 then Q_Kills(var, kills, quest, fm, "q_test_drive13") end
     end
 end
 
@@ -328,7 +332,7 @@ function Q_TestDrive14(var, kills, quest, fm)
             if cab_big_gun_1 == "kpvt01" and bas_giant_gun == "octopus01" then l = l + 1 end
         end
 
-        if l == 1 then Q_TestDrive(var, kills, quest, fm, "q_test_drive14") end
+        if l == 1 then Q_Kills(var, kills, quest, fm, "q_test_drive14") end
     end
 end
 
@@ -348,7 +352,7 @@ function Q_TestDrive15(var, kills, quest, fm)
             if cab_big_gun_1 == "odin01" and bas_big_gun_0 == "odin01" and bas_side_gun_0 then l = l + 1 end
         end
 
-        if l == 1 then Q_TestDrive(var, kills, quest, fm, "q_test_drive15") end
+        if l == 1 then Q_Kills(var, kills, quest, fm, "q_test_drive15") end
     end
 end
 
@@ -363,7 +367,7 @@ function Q_Naturalist1(var, kills, quest, fm)
             bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
         end
 
-        if cab_big_1 == "rainmetal01" and bas_big_0 == "kpvt01" or bas_big_0 == "rainmetal01" and cab_big_1 == "kpvt01" then Q_TestDrive(var, kills, quest, fm, "q_naturalist1") end
+        if cab_big_1 == "rainmetal01" and bas_big_0 == "kpvt01" or bas_big_0 == "rainmetal01" and cab_big_1 == "kpvt01" then Q_Kills(var, kills, quest, fm, "q_naturalist1") end
     end
 end
 
@@ -378,7 +382,7 @@ function Q_Naturalist2(var, kills, quest, fm)
             bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
         end
 
-        if cab_big_1 == "vector01" and bas_big_0 == "vector01" then Q_TestDrive(var, kills, quest, fm, "q_naturalist2") end
+        if cab_big_1 == "vector01" and bas_big_0 == "vector01" then Q_Kills(var, kills, quest, fm, "q_naturalist2") end
     end
 end
 
@@ -397,7 +401,7 @@ function Q_Naturalist3(var, kills, quest, fm)
             end
         end
 
-        if l == 2 and r == 1 then Q_TestDrive(var, kills, quest, fm, "q_naturalist3") end
+        if l == 2 and r == 1 then Q_Kills(var, kills, quest, fm, "q_naturalist3") end
     end
 end
 
@@ -422,7 +426,7 @@ function Q_Naturalist4(var, kills, quest, fm)
             if bas_giant == "cyclops01" then l = l + 1 end
         end
 
-        if l == 2 then Q_TestDrive(var, kills, quest, fm, "q_naturalist4") end
+        if l == 2 then Q_Kills(var, kills, quest, fm, "q_naturalist4") end
     end
 end
 
@@ -447,7 +451,7 @@ function Q_Naturalist5(var, kills, quest, fm)
             if bas_giant == "octopus01" then l = l + 1 end
         end
 
-        if l == 4 then Q_TestDrive(var, kills, quest, fm, "q_naturalist5") end
+        if l == 4 then Q_Kills(var, kills, quest, fm, "q_naturalist5") end
     end
 end
 
@@ -466,7 +470,7 @@ function Q_Belazist1(var, kills, quest, fm)
             if cab_sml_gun and bas_big_gun_0 then l = l + 1 end
         end
 
-        if l == 1 then Q_TestDrive(var, kills, quest, fm, "q_belazist1") end
+        if l == 1 then Q_Kills(var, kills, quest, fm, "q_belazist1") end
     end
 end
 
@@ -487,7 +491,7 @@ function Q_Belazist2(var, kills, quest, fm)
             if cab_sml_gun == "kord01" and cab_sml_gun_1 == "kord01" and bas_big_gun_0 == "kpvt01" then l = l + 1 end
         end
 
-        if l == 1 then Q_TestDrive(var, kills, quest, fm, "q_belazist2") end
+        if l == 1 then Q_Kills(var, kills, quest, fm, "q_belazist2") end
     end
 end
 
@@ -506,7 +510,7 @@ function Q_Belazist3(var, kills, quest, fm)
             if cab_big_gun_1 == "rainmetal01" and bas_big_gun_0 == "rainmetal01" then l = l + 1 end
         end
 
-        if l == 1 then Q_TestDrive(var, kills, quest, fm, "q_belazist3") end
+        if l == 1 then Q_Kills(var, kills, quest, fm, "q_belazist3") end
     end
 end
 
@@ -525,7 +529,7 @@ function Q_Belazist4(var, kills, quest, fm)
             if cab_giant_gun == "octopus01" and bas_big_gun_0 == "rainmetal01" then l = l + 1 end
         end
 
-        if l == 1 then Q_TestDrive(var, kills, quest, fm, "q_belazist4") end
+        if l == 1 then Q_Kills(var, kills, quest, fm, "q_belazist4") end
     end
 end
 
@@ -546,7 +550,7 @@ function Q_Belazist5(var, kills, quest, fm)
             if cab_giant_gun and bas_giant_gun and bas_giant_gun_0 then l = l + 1 end
         end
 
-        if l == 1 then Q_TestDrive(var, kills, quest, fm, "q_belazist5") end
+        if l == 1 then Q_Kills(var, kills, quest, fm, "q_belazist5") end
     end
 end
 
@@ -567,7 +571,7 @@ function Q_Belazist6(var, kills, quest, fm)
             if cab_big_gun_1 == "rainmetal01" and bas_big_0 == "rainmetal01" and bas_big_1 == "rainmetal01" then l = l + 1 end
         end
 
-        if l == 1 then Q_TestDrive(var, kills, quest, fm, "q_belazist6") end
+        if l == 1 then Q_Kills(var, kills, quest, fm, "q_belazist6") end
     end
 end
 
@@ -593,7 +597,7 @@ function Q_Belazist7(var, kills, quest, fm)
             if cab_giant_gun == "cyclops01" then l = l + 1 end
         end
 
-        if l == 3 and f == 1 then Q_TestDrive(var, kills, quest, fm, "q_belazist7") end
+        if l == 3 and f == 1 then Q_Kills(var, kills, quest, fm, "q_belazist7") end
     end
 end
 
@@ -612,7 +616,7 @@ function Q_Belazist8(var, kills, quest, fm)
             end
         end
 
-        if l == 3 then Q_TestDrive(var, kills, quest, fm, "q_belazist8") end
+        if l == 3 then Q_Kills(var, kills, quest, fm, "q_belazist8") end
     end
 end
 
@@ -630,3 +634,4 @@ function Q_TurboUse()
         end
     end
 end
+

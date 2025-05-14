@@ -1167,6 +1167,20 @@ function AddVehicleToTown(Item, Count)
 	end
 end
 
+-- ƒобавить машину в город если не выполнен конкретный квест
+function AddVehicleToTownIfNotCompleteQuest(Item, Quest, Count)
+	local Workshop = GetEntityByName("Town_r0m0_Workshop")
+	local Vehicles = Workshop:GetRepositoryByTypename("Vehicles")
+
+	if Count == nil then Count = 1 end
+
+	if Workshop and Vehicles then
+		if Quest and not(IsQuestComplete(Quest)) then
+			Vehicles:AddItems(Item, Count)
+		end
+	end
+end
+
 -- ƒобавить кабину или кузов в город
 function AddCabinsOrBasketsToTown(Item, Count)
 	local Workshop = GetEntityByName("Town_r0m0_Workshop")
@@ -1273,19 +1287,27 @@ end
 function ObjUnderAttack(ObjTarget, ObjAttack, TriggerName)
 	local target = getObj(ObjTarget)
 	local car = getObj(ObjAttack)
+	local belongTarget = 0
 	if car then
 		local belong = car:GetBelong()
 		if belong > 0 then
 			SetVar(ObjTarget.."_UnderAttack", belong)
-			if UNDER_ATTACK_DURABILITY == 1 then 
+			if target then
+				belongTarget = target:GetBelong()
+				if UNDER_ATTACK_DURABILITY == 1 then ObjUnderAttackDurability(ObjTarget, ObjAttack) end
+			end
+
+			if belong == 1100 then
 				if target then
-					ObjUnderAttackDurability(ObjTarget, ObjAttack) 
+					if not(target:IsAlive()) then
+						if belongTarget == 1089 then TActivate("KillsPMC_USEC") end
+						if TriggerName then TActivate(TriggerName) end
+					end
+				else
+					if belongTarget == 1089 then TActivate("KillsPMC_USEC") end
+					if TriggerName then TActivate(TriggerName) end
 				end
 			end
-			if not(target) and belong == 1100 then
-				if TriggerName then TActivate(TriggerName) end
-			end
-			return belong
 		end
 	end
 end

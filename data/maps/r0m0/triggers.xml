@@ -542,6 +542,8 @@
 			SetVar("q_belazist8_can_be_given", 0)
 			SetVar("q_test_drive9_can_be_given", 0)
 			SetVar("q_test_drive14_can_be_given", 0)
+			SetVar("q_kill_usec_item_jeton", 0)
+			SetVar("q_sectarian2_3_item_knife_sectarian", 0)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -823,7 +825,7 @@
 	
 			if Workshop and Vehicles then
 				Vehicles:AddItems("BugForSale", 1)
-				if IsQuestComplete("q_rebuild") then Vehicles:AddItems("MolokovozForSale", 1) end
+				if IsQuestComplete("q_rebuild") or IsQuestComplete("q_kill_usec") then Vehicles:AddItems("MolokovozForSale", 1) end
 				if IsQuestComplete("q_test_drive5") then Vehicles:AddItems("UralForSale", 1) end
 				if IsQuestComplete("q_ural_or_belaz") then Vehicles:AddItems("BelazForSale", 1) end
 				if IsQuestComplete("q_naturalist5") or IsQuestComplete("q_belazist7") then Vehicles:AddItems("MirotvorecForSale", 1) end
@@ -840,7 +842,7 @@
 				if IsQuestComplete("q_clearing_r1m1") then CabAndBasket:AddItems("bugCargo03_5x7", 1) end
 				
 				CabAndBasket:AddItems("molokovozCab01", 1)
-				CabAndBasket:AddItems("molokovozCab02", 1)
+				if IsQuestComplete("q_rebuild") then CabAndBasket:AddItems("molokovozCab02", 1) end
 				if IsQuestComplete("q_test_drive1") then CabAndBasket:AddItems("molokovozCab03", 1) end
 
 				CabAndBasket:AddItems("molokovozCargo01_5x8", 1)

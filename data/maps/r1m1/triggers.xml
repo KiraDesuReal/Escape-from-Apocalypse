@@ -99,6 +99,9 @@
 				SetVar("q_belazist"..q_b.."_killPMC", 0)
 			end
 
+			SetVar("q_kill_usec_kills", 0)
+			SetVar("q_sectarian2_1_kills", 0)
+
 			SetWeather(0)
 
 		    trigger:Deactivate()
@@ -4345,6 +4348,11 @@
 			local carName = trigger:GetCallObjName()
 
 			if GetVar(carName.."_UnderAttack").AsInt == 1100 then
+				local car = GetEntityByName(carName)
+				if car then 
+					local belong = car:GetBelong()
+					if belong == 1089 then TActivate("KillsPMC_USEC") end
+				end
 				TActivate("IfPlayerKillPMC")
 			else
 				if DEBUG == 1 then 
@@ -4644,6 +4652,8 @@
 				end
 
 				getObj("Sectanian_Die"):AddEvent("GE_OBJECT_DIE", "Sectanian_"..i.."_vehicle_0")
+				getObj("Sectanian_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "Sectanian_"..i.."_vehicle_0")
+				SetVar("Sectanian_"..i.."_vehicle_0_UnderAttack", 0)
 			end
 
 			if 3 >= random(100) then
@@ -4677,8 +4687,11 @@
 				sect_m_p:StackClose()
 			end
 
+			SetVar("SectanianMain_vehicle_0_UnderAttack", 0)
+
 			TActivate("SectanianMain_Die")
 			TActivate("Sectanian_Die")
+			TActivate("Sectanian_UnderAttack")
 			TActivate("CreateSectanianLeavesLoc_"..GetVar("SpawnSectanian").AsInt)
 			trigger:Deactivate()
 		</script>
@@ -4703,16 +4716,30 @@
 	</trigger>
 
 	<trigger Name="Sectanian_Die" active="0">
-		<event eventid="GE_OBJECT_DIE" ObjName="SectanianMain" />
+		<event eventid="GE_OBJECT_DIE" ObjName="SectanianMain_vehicle_0" />
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
+			local carName = trigger:GetCallObjName()
+			if GetVar(carName.."_UnderAttack").AsInt == 1100 then
+				if carName == "SectanianMain_vehicle_0" then
+					TActivate("IfPlayerKillSectanianMain")
+				else
+					TActivate("IfPlayerKillSectanian")
+				end
+			end
+
+			getObj("Sectanian_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", carName)
+			SetVar(carName.."_UnderAttack", 0)
+
 			if GetVar("CountSectanian").AsInt + 1 > count then
 			return
 			end
 
 			for s=1,GetVar("CountSectanian").AsInt do
 				trigger:DelEventObj("GE_OBJECT_DIE", "Sectanian_"..s.."_vehicle_0")
+				getObj("Sectanian_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Sectanian_"..s.."_vehicle_0")
+				SetVar("Sectanian_"..s.."_vehicle_0_UnderAttack", 0)
 			end
 
 			TDeactivate("CreateSectanianLeavesLoc_1")
@@ -4721,8 +4748,10 @@
 			TDeactivate("CreateSectanianEnterLoc_2")
 			TDeactivate("SectanianDist")
 			TDeactivate("SectanianMain_Die")
+			TDeactivate("Sectanian_UnderAttack")
 			SetVar("CountSectanian", 0)
 			SetVar("SpawnSectanian", 0)
+			SetVar("SectanianMain_vehicle_0_UnderAttack", 0)
 			trigger:Deactivate()
  		</script>
 	</trigger>
@@ -4740,15 +4769,19 @@
 			TDeactivate("CreateSectanianEnterLoc_1")
 			TDeactivate("CreateSectanianEnterLoc_2")
 			TDeactivate("SectanianDist")
+			TDeactivate("Sectanian_UnderAttack")
 
 			for s=1,GetVar("CountSectanian").AsInt do
 				local sect = GetEntityByName("Sectanian_"..s.."_vehicle_0")
 				if sect then sect:Remove() end
 				getObj("Sectanian_Die"):DelEventObj("GE_OBJECT_DIE", "Sectanian_"..s.."_vehicle_0")
+				getObj("Sectanian_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Sectanian_"..s.."_vehicle_0")
+				SetVar("Sectanian_"..s.."_vehicle_0_UnderAttack", 0)
 			end
 
 			SetVar("CountSectanian", 0)
 			SetVar("SpawnSectanian", 0)
+			SetVar("SectanianMain_vehicle_0_UnderAttack", 0)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4786,6 +4819,44 @@
 				TActivate("SectanianRemove")
 				trigger:Deactivate()
 			end
+		</script>
+	</trigger>
+
+	<trigger Name="Sectanian_UnderAttack" active="0">
+		<event eventid="GE_UNDER_ATTACK" ObjName="SectanianMain_vehicle_0" />
+		<script>
+			local car = trigger:GetCallObjName()
+			if car == "SectanianMain_vehicle_0" then
+				ObjUnderAttack(car, trigger:GetTriggeredObjectID(0), "IfPlayerKillSectanianMain")
+			else
+				ObjUnderAttack(car, trigger:GetTriggeredObjectID(0), "IfPlayerKillSectanian")
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="IfPlayerKillSectanian" active="0">
+	<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if DEBUG == 1 then println("PLAYER SECTARIAN KILL") LOG("PLAYER SECTARIAN KILL") end
+			if GetVar("PlayerBelong").AsString == "SCAV" then 
+				SetVar("ScavCarma", GetVar("ScavCarma").AsString + 0.2) 
+			else
+				TActivate("KillsSectanian") 
+			end
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="IfPlayerKillSectanianMain" active="0">
+	<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if DEBUG == 1 then println("PLAYER SECTARIAN MAIN KILL") LOG("PLAYER SECTARIAN MAIN KILL") end
+			if GetVar("PlayerBelong").AsString == "SCAV" then 
+				SetVar("ScavCarma", GetVar("ScavCarma").AsString + 0.2) 
+			else
+				TActivate("KillsSectanianMain") 
+			end
+			trigger:Deactivate() 
 		</script>
 	</trigger>
 
@@ -5095,6 +5166,14 @@
 				TDeactivate("q_fuel2_petrol_3")
 			end
 
+			if IsQuestTaken("q_sectarian1") and not(IsQuestComplete("q_sectarian1")) then
+				TDeactivate("q_sectarian1_1_EntersLoc")
+				TDeactivate("q_sectarian1_2_EntersLoc")
+				TDeactivate("q_sectarian1_LeavesLoc")
+				TDeactivate("q_sectarian1_TimerStart")
+				TDeactivate("q_sectarian1_Timer")
+			end
+
 			SetTolerance(1087, 1100, RS_ENEMY)
 
 			if DEBUG == 1 then
@@ -5147,9 +5226,31 @@
 	<trigger Name="KillsPMC" active="0">
 	<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-		
 			QuestsKillPMC()
+			trigger:Deactivate()
+		</script>
+	</trigger>
 
+	<trigger Name="KillsPMC_USEC" active="0">
+	<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			QuestsKillPMC_USEC()
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="KillsSectanian" active="0">
+	<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if IsQuestTaken("q_sectarian2_1") and not(IsQuestComplete("q_sectarian2_1")) then Q_Kills("q_sectarian2_1_kills", 2, "q_sectarian2_1", "fm_progress_quest_sectarian_kills", "q_sectarian2") end 
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="KillsSectanianMain" active="0">
+	<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if IsQuestTaken("q_sectarian2_2") and not(IsQuestComplete("q_sectarian2_2")) then CompleteSubtask("q_sectarian2_2") end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -5182,6 +5283,11 @@
 				if IsQuestTaken("q_fuel2_2") and not(IsQuestComplete("q_fuel2_2")) then TActivate("q_fuel2_petrol_2") end
 				if IsQuestTaken("q_fuel2_3") and not(IsQuestComplete("q_fuel2_3")) then TActivate("q_fuel2_petrol_3") end
 			end
+
+			if IsQuestTaken("q_sectarian1") and not(IsQuestComplete("q_sectarian1_2")) then
+				TActivate("q_sectarian1_1_EntersLoc")
+				TActivate("q_sectarian1_2_EntersLoc")
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -5200,6 +5306,10 @@
 			if IsQuestTaken("q_bitok3_22") and not(IsQuestComplete("q_bitok3_22")) and HasPlayerAmountOfItems("item_quest_box_videocard", 1) then
 				CompleteSubtask("q_bitok3_22")
 			end
+
+			if IsQuestTaken("q_sectarian1_3") and not(IsQuestComplete("q_sectarian1_3")) then
+				CompleteSubtask("q_sectarian1_3")
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -5217,6 +5327,14 @@
 				TDeactivate("q_base_scavs_LeavesBase")
 				TDeactivate("q_base_scavs_TimerStart")
 				TDeactivate("q_base_scavs_Timer")
+			end
+
+			if IsQuestTaken("q_sectarian1") and not(IsQuestComplete("q_sectarian1_2")) then
+				TDeactivate("q_sectarian1_1_EntersLoc")
+				TDeactivate("q_sectarian1_2_EntersLoc")
+				TDeactivate("q_sectarian1_LeavesLoc")
+				TDeactivate("q_sectarian1_TimerStart")
+				TDeactivate("q_sectarian1_Timer")
 			end
 			trigger:Deactivate()
 		</script>
@@ -5420,11 +5538,13 @@
 	<trigger Name="q_base_scavs_EntersBase" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BaseScavs_loc" />
 		<script>
-			if HasPlayerAmountOfItems("item_ms2000", 1) then
-				AddImportantFadingMsgByStrIdFormatted("fm_marker_target")
-				SoundFadingMsg()
-				TActivate("q_base_scavs_TimerStart")
-				TActivate("q_base_scavs_LeavesBase")
+			if IsQuestTaken("q_base_scavs") and not(IsQuestComplete("q_base_scavs_1")) then
+				if HasPlayerAmountOfItems("item_ms2000", 1) then
+					AddImportantFadingMsgByStrIdFormatted("fm_marker_target")
+					SoundFadingMsg()
+					TActivate("q_base_scavs_TimerStart")
+					TActivate("q_base_scavs_LeavesBase")
+				end
 			end
 		</script>
 	</trigger>
@@ -5528,6 +5648,79 @@
 		<script>
 			if IsQuestTaken("q_fuel2_3") and not(IsQuestComplete("q_fuel2_3")) then CompleteSubtask("q_fuel2_3") end
 			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Нашествие сектантов - Часть 1
+
+	<trigger Name="q_sectarian1_1_EntersLoc" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="q_sectarian1_1_loc" />
+		<script>
+			if IsQuestTaken("q_sectarian1_1") and not(IsQuestComplete("q_sectarian1_1")) then 
+				CompleteSubtask("q_sectarian1_1") 
+			else
+				if IsQuestTaken("q_sectarian1_2") and not(IsQuestComplete("q_sectarian1_2")) then
+					AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_sectarian1")
+					CreateEffectInsertedInRemove("ET_S_SUBTASK_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_sectarian1_2_EntersLoc" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="q_sectarian1_2_loc" />
+		<script>
+			if IsQuestTaken("q_sectarian1_2") and not(IsQuestComplete("q_sectarian1_2")) then
+				if HasPlayerAmountOfItems("item_ms2000", 1) then
+					AddImportantFadingMsgByStrIdFormatted("fm_marker_target")
+					SoundFadingMsg()
+					TActivate("q_sectarian1_TimerStart")
+					TActivate("q_sectarian1_LeavesLoc")
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_sectarian1_LeavesLoc" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="q_sectarian1_2_loc" />
+		<script>
+			TDeactivate("q_sectarian1_TimerStart")
+			AddImportantFadingMsgByStrIdFormatted("fm_marker_leaves_zone")
+			SoundFadingMsg()
+			TActivate("q_sectarian1_2_EntersLoc")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_sectarian1_TimerStart" active="0">
+		<event timeout="1.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			SetVar("DefenceTargetTimer", 10)
+			TActivate("q_sectarian1_Timer")
+			TDeactivate("q_sectarian1_LeavesLoc")
+			RemoveItemsFromPlayerRepository("item_ms2000", 1)
+			AddImportantFadingMsgByStrIdFormatted("fm_marker_install")
+			SoundFadingMsg()
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="q_sectarian1_Timer" active="0">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local t = GetVar("DefenceTargetTimer").AsInt - 1
+			SetVar("DefenceTargetTimer", t)
+		
+			if 0 >= t then
+				if IsQuestTaken("q_sectarian1") and not(IsQuestComplete("q_sectarian1_2")) then 
+					CompleteSubtask("q_sectarian1_2") 
+				end
+				trigger:Deactivate()
+			else
+				AddFadingMsgByStrIdFormatted("fm_target_defence_timer", t)
+			end
 		</script>
 	</trigger>
 

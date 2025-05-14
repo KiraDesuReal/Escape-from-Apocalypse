@@ -1884,4 +1884,134 @@
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_base_scavs")'
 			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
 	</quest>
+<!--Root/r0m0/Друг с запада-->
+	<quest
+		Name="q_kill_usec"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_clearing_r1m1"
+		OnComplete='AddVehicleToTownIfNotCompleteQuest("MolokovozForSale", "q_rebuild"); AddItemsToPlayerRepository("kord01", 1); AddItemsToPlayerRepository("ammo_chest_machinegun", 1); AddItemsToPlayerRepository("item_rolex", 1)'>
+		<quest
+			Name="q_kill_usec_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_kill_usec"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_kill_usec")' />
+
+		<quest
+			Name="q_kill_usec_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_kill_usec"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_kill_usec")' />
+
+		<quest
+			Name="q_kill_usec_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_kill_usec_1 q_kill_usec_2"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_kill_usec")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+	</quest>
+<!--Root/r0m0/Нашевствие сектантов - Часть 1-->
+	<quest
+		Name="q_sectarian1"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_base_scavs"
+		OnComplete='AddItemsToPlayerRepository("additional_durability", 1); AddItemsToPlayerRepository("machinery_use", 2); AddPlayerMoney(40000)'
+		OnTake='AddItemsToPlayerRepository("item_ms2000", 1); AddFadingMsgByStrIdFormatted("fm_player_add_thing", "item_ms2000")'>
+		<quest
+			Name="q_sectarian1_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_sectarian1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_sectarian1")' />
+
+		<quest
+			Name="q_sectarian1_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_sectarian1_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_sectarian1")' />
+
+		<quest
+			Name="q_sectarian1_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_sectarian1_2"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_sectarian1")' />
+
+		<quest
+			Name="q_sectarian1_4"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_sectarian1_3"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_sectarian1")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+	</quest>
+<!--Root/r0m0/Нашевствие сектантов - Часть 2-->
+	<quest
+		Name="q_sectarian2"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_sectarian1"
+		OnComplete='AddItemsToPlayerRepository("additional_stability", 1); AddItemsToPlayerRepository("maxim01", 1); AddItemsToPlayerRepository("ammo_ballon_lasergun", 1); AddPlayerMoney(50000)'>
+		<quest
+			Name="q_sectarian2_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_sectarian2"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_sectarian2")' />
+
+		<quest
+			Name="q_sectarian2_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_sectarian2"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_sectarian2")' />
+
+		<quest
+			Name="q_sectarian2_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_sectarian2"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_sectarian2")' />
+
+		<quest
+			Name="q_sectarian2_4"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_sectarian2_1 q_sectarian2_2 q_sectarian2_3"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_sectarian2")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+	</quest>
 </quests>

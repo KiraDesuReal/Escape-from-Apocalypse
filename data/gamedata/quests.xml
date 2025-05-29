@@ -2014,4 +2014,221 @@
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_sectarian2")'
 			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
 	</quest>
+<!--Root/r0m0/Первый в очереди-->
+	<quest
+		Name="q_first_in_line"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_testing_mission"
+		OnComplete='AddItemsToPlayerRepository("scrap_metal_use", 1); AddItemsToPlayerRepository("machinery_use", 1); AddPlayerMoney(15000)'>
+		<quest
+			Name="q_first_in_line_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_first_in_line"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_first_in_line")' />
+
+		<quest
+			Name="q_first_in_line_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_first_in_line"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_first_in_line")' />
+
+		<quest
+			Name="q_first_in_line_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_first_in_line_1 q_first_in_line_2"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_first_in_line")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+	</quest>
+<!--Root/r0m0/Дефицит-->
+	<quest
+		Name="q_shortage"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_first_in_line"
+		OnComplete='AddItemsToPlayerRepository("machinery_use", 2); AddPlayerMoney(20000)'>
+		<quest
+			Name="q_shortage_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_shortage"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_shortage")'/>
+	</quest>
+<!--Root/r0m0/Санэпиднадзор - Часть 1-->
+	<quest
+		Name="q_sanitary_standards1"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_shortage"
+		OnComplete='AddItemToTown("scrap_metal_use_ForSale", 1); AddItemsToPlayerRepository("scrap_metal_use", 1); AddPlayerMoney(14000)'>
+		<quest
+			Name="q_sanitary_standards1_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_sanitary_standards1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_sanitary_standards1")'/>
+	</quest>
+<!--Root/r0m0/Санэпиднадзор - Часть 2-->
+	<quest
+		Name="q_sanitary_standards2"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_sanitary_standards1"
+		OnComplete='AddItemToTown("machinery_use_ForSale", 1); AddItemsToPlayerRepository("machinery_use", 1); AddPlayerMoney(20000)'>
+		<quest
+			Name="q_sanitary_standards2_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_sanitary_standards2"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_sanitary_standards2")'/>
+	</quest>
+<!--Root/r0m0/Пейнкиллер-->
+	<quest
+		Name="q_painkiller"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_sanitary_standards2"
+		OnComplete='AddItemsToPlayerRepository("item_tube", 1); AddItemsToPlayerRepository("item_med", 1); AddItemsToPlayerRepository("item_analgin", 1); AddPlayerMoney(25000)'>
+		<quest
+			Name="q_painkiller_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_painkiller"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_painkiller")'/>
+	</quest>
+<!--Root/r0m0/Авторем-->
+	<quest
+		Name="q_autorem"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_painkiller"
+		OnComplete='AddItemToTown("electronics_use_ForSale", 1); AddItemsToPlayerRepository("electronics_use", 2); AddItemsToPlayerRepository("machinery_use", 2); AddItemsToPlayerRepository("item_grizzly", 1); AddPlayerMoney(40000)'>
+		<quest
+			Name="q_autorem_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_autorem"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_autorem")'/>
+
+		<quest
+			Name="q_autorem_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_autorem"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_autorem")'/>
+	</quest>
+<!--Root/r0m0/Частная клиника-->
+	<quest
+		Name="q_private_clinic"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_test_drive8"
+		OnComplete='AddItemToTown("electronics_use_ForSale", 1); AddItemsToPlayerRepository("electronics_use", 2); AddItemsToPlayerRepository("item_ex", 1); AddPlayerMoney(150000)'>
+		<quest
+			Name="q_private_clinic_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_private_clinic"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_private_clinic")'/>
+
+		<quest
+			Name="q_private_clinic_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_private_clinic"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_private_clinic")'/>
+	</quest>
+<!--Root/r0m0/Доктор «Айболит»-->
+	<quest
+		Name="q_crisis"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_private_clinic"
+		OnComplete='AddItemsToPlayerRepository("electronics_use", 4); AddItemsToPlayerRepository("item_chain_gold", 2); AddItemsToPlayerRepository("item_ananaga", 1); AddPlayerMoney(100000)'>
+		<quest
+			Name="q_crisis_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_crisis"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_crisis")'/>
+
+		<quest
+			Name="q_crisis_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_crisis"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_crisis")'/>
+
+		<quest
+			Name="q_crisis_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_crisis"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_crisis")'/>
+
+		<quest
+			Name="q_crisis_4"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_crisis"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_crisis")'/>
+
+		<quest
+			Name="q_crisis_5"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_crisis"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_crisis")'/>
+	</quest>
 </quests>

@@ -1474,8 +1474,10 @@
 				if sv then
 					sv:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
 					local biggunspawn = random(100)
-					if model == "Fighter2CarScav" or model == "Hunter2CarScav" and biggunspawn >= 70 then
-						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+					if model == "Fighter2CarScav" or model == "Hunter2CarScav" then
+						if biggunspawn >= 70  then
+							sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+						end
 					end
 					AddAmmoItemsForGuns(sv, random(0,1))
 				end
@@ -5174,6 +5176,10 @@
 				TDeactivate("q_sectarian1_Timer")
 			end
 
+			if IsQuestTaken("q_first_in_line_1") and not(IsQuestComplete("q_first_in_line_1")) then
+				TDeactivate("q_first_in_line_1_EntersLoc")
+			end
+
 			SetTolerance(1087, 1100, RS_ENEMY)
 
 			if DEBUG == 1 then
@@ -5287,6 +5293,10 @@
 			if IsQuestTaken("q_sectarian1") and not(IsQuestComplete("q_sectarian1_2")) then
 				TActivate("q_sectarian1_1_EntersLoc")
 				TActivate("q_sectarian1_2_EntersLoc")
+			end
+
+			if IsQuestTaken("q_first_in_line_1") and not(IsQuestComplete("q_first_in_line_1")) then
+				TActivate("q_first_in_line_1_EntersLoc")
 			end
 			trigger:Deactivate()
 		</script>
@@ -5721,6 +5731,16 @@
 			else
 				AddFadingMsgByStrIdFormatted("fm_target_defence_timer", t)
 			end
+		</script>
+	</trigger>
+
+-- Первый в очереди
+
+	<trigger Name="q_first_in_line_1_EntersLoc" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="q_first_in_line_1_loc" />
+		<script>
+			if IsQuestTaken("q_first_in_line_1") and not(IsQuestComplete("q_first_in_line_1")) then CompleteSubtask("q_first_in_line_1") end
+			trigger:Deactivate()
 		</script>
 	</trigger>
 

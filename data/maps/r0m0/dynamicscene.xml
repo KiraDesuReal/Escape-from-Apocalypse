@@ -391,6 +391,113 @@
 		Prototype="genericLocation"
 		Pos="868.488 255.000 870.900"
 		Radius="8.000" />
+	
+	<Object
+		Name="ScavDlg_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="0 0 0"
+		Radius="1.000">
+		<Object
+			Name="Scav_1_NPC"
+			Belong="1100"
+			Prototype="NPC"
+			ModelName="r1_man"
+			skin="0"
+			cfg="142"
+			helloReplyNames="Dlg_npc_Scav_1 Dlg_npc_Scav_follow_4"
+			SpokenCount="0" />
+
+		<Object
+			Name="Scav_2_NPC"
+			Belong="1100"
+			Prototype="NPC"
+			ModelName="r1_man"
+			skin="0"
+			cfg="182"
+			helloReplyNames="Dlg_npc_Scav_1 Dlg_npc_Scav_follow_4"
+			SpokenCount="0" />
+
+		<Object
+			Name="Scav_3_NPC"
+			Belong="1100"
+			Prototype="NPC"
+			ModelName="r1_man"
+			skin="0"
+			cfg="156"
+			helloReplyNames="Dlg_npc_Scav_1 Dlg_npc_Scav_follow_4"
+			SpokenCount="0" />
+
+		<Object
+			Name="Scav_4_NPC"
+			Belong="1100"
+			Prototype="NPC"
+			ModelName="r1_man"
+			skin="0"
+			cfg="38"
+			helloReplyNames="Dlg_npc_Scav_1 Dlg_npc_Scav_follow_4"
+			SpokenCount="0" />
+
+		<Object
+			Name="Scav_5_NPC"
+			Belong="1100"
+			Prototype="NPC"
+			ModelName="r1_man"
+			skin="2"
+			cfg="142"
+			helloReplyNames="Dlg_npc_Scav_1 Dlg_npc_Scav_follow_4"
+			SpokenCount="0" />
+
+		<Object
+			Name="Scav_6_NPC"
+			Belong="1100"
+			Prototype="NPC"
+			ModelName="r1_man"
+			skin="2"
+			cfg="76"
+			helloReplyNames="Dlg_npc_Scav_1 Dlg_npc_Scav_follow_4"
+			SpokenCount="0" />
+
+		<Object
+			Name="Scav_7_NPC"
+			Belong="1100"
+			Prototype="NPC"
+			ModelName="r1_man"
+			skin="2"
+			cfg="54"
+			helloReplyNames="Dlg_npc_Scav_1 Dlg_npc_Scav_follow_4"
+			SpokenCount="0" />
+
+		<Object
+			Name="Scav_8_NPC"
+			Belong="1100"
+			Prototype="NPC"
+			ModelName="r1_man"
+			skin="2"
+			cfg="46"
+			helloReplyNames="Dlg_npc_Scav_1 Dlg_npc_Scav_follow_4"
+			SpokenCount="0" />
+
+		<Object
+			Name="Scav_9_NPC"
+			Belong="1100"
+			Prototype="NPC"
+			ModelName="r1_man"
+			skin="2"
+			cfg="78"
+			helloReplyNames="Dlg_npc_Scav_1 Dlg_npc_Scav_follow_4"
+			SpokenCount="0" />
+
+		<Object
+			Name="Scav_10_NPC"
+			Belong="1100"
+			Prototype="NPC"
+			ModelName="r1_man"
+			skin="0"
+			cfg="44"
+			helloReplyNames="Dlg_npc_Scav_1 Dlg_npc_Scav_follow_4"
+			SpokenCount="0" />
+	</Object>
 
 	<Object
 		Name="Town_r0m0"
@@ -412,6 +519,16 @@
 				ModelName="r1_man"
 				cfg="4"
 				helloReplyNames="Dlg_npc_q_testing_mission_1 Dlg_npc_q_testing_mission_5 Dlg_npc_prapor_1"
+				SpokenCount="0" />
+
+			<Object
+				Name="Terapist_NPC"
+				Belong="1100"
+				Prototype="NPC"
+				ModelName="r1_woman"
+				skin="1"
+				cfg="28"
+				helloReplyNames="Dlg_npc_q_first_in_line_1 Dlg_npc_q_first_in_line_5 Dlg_npc_terapist_1"
 				SpokenCount="0" />
 
 			<Object

@@ -964,10 +964,9 @@ function CreateGunBox(name, pos)
 
 			local afflist = {}
 			if gun_item == "maxim01" or gun_item == "fagot01" or gun_item == "odin01" or gun_item == "elephant01" or gun_item == "hammer01" or gun_item == "bumblebee01" or gun_item == "omega01" or gun_item == "big_swingfire01" or gun_item == "hurricane01" or gun_item == "mrakSideGun" or gun_item == "hailSideGun" or gun_item == "marsSideGun" or gun_item == "zeusSideGun" or gun_item == "hunterSideGun" then
-				local damageAffixes = { "weak_gun", "deadly_gun", "destructive_gun" }
-				local i = random(1,4)
-				if i ~= 4 then
-					table.insert(afflist, damageAffixes[i])
+				local damageAffixes = {"weak_gun", "deadly_gun", "destructive_gun", "slow_gun", "assault_gun", "rapid_firing_gun", "without_cooling_gun", "with_nitro_cooling_gun", "with_truncated_barrel_gun", "with_enlarged_barrel_gun", "with_long_barrel_gun"}
+				if random(2) == 1 then
+					table.insert(afflist, damageAffixes[random(getn(damageAffixes))])
 				end
 			else
 				afflist = CreateRandomAffixesForGun(random(0,2))
@@ -1543,8 +1542,95 @@ function FixCrashVitaly(num)
 	end
 end
 
+-- Выполнить подзадачу, если var переменная равна определенному значению
+function CompleteSubtaskIfVarEqualValue(quest, var, num)
+	if 0 > GetVar(var).AsInt then SetVar(var, 0) end
 
+	SetVar(var, GetVar(var).AsInt + 1)
 
+	if GetVar(var).AsInt >= num then
+		CompleteSubtask(quest)
+		TActivate("SoundSubtaskComplete") 
+	end
+end
+
+-- Функция кладёт в кузов оружие со случайным аффиксом
+function AddGunWithRandomAffix(GunPrototype, ObjName)
+	if ObjName == nil then ObjName = GetPlayerVehicle() end
+
+	local id = CreateNewObject{prototypeName = GunPrototype, objName = "GunWithAffix_"..random(10000), belong = 1100}
+    local gun = GetEntityByID( id )
+
+	local ListOfAffixes = {}
+
+	if GunPrototype == "maxim01" or GunPrototype == "fagot01" or GunPrototype == "odin01" or GunPrototype == "elephant01" or GunPrototype == "hammer01" or GunPrototype == "bumblebee01" or GunPrototype == "omega01" or GunPrototype == "big_swingfire01" or GunPrototype == "hurricane01" or GunPrototype == "mrakSideGun" or GunPrototype == "hailSideGun" or GunPrototype == "marsSideGun" or GunPrototype == "zeusSideGun" or GunPrototype == "hunterSideGun" then
+		local damageAffixes = { "weak_gun", "deadly_gun", "destructive_gun", "slow_gun", "assault_gun", "rapid_firing_gun", "without_cooling_gun", "with_nitro_cooling_gun", "with_truncated_barrel_gun", "with_enlarged_barrel_gun", "with_long_barrel_gun"}
+		table.insert(ListOfAffixes, damageAffixes[random(getn(damageAffixes))])
+	else
+		ListOfAffixes = GenerateRandomAffixList(random(1,3))
+	end
+
+    if ListOfAffixes~=nil then
+	    if type(ListOfAffixes)=="table" then
+			local l=getn(ListOfAffixes)
+			for i=1,l do
+				if ListOfAffixes[i] then
+					gun:ApplyAffixByName( ListOfAffixes[i] )
+				end
+			end
+		elseif type(ListOfAffixes)=="string" then
+			gun:ApplyAffixByName( ListOfAffixes )
+		end
+    end
+    ObjName:AddObjectToRepository(gun)
+    return gun
+end
+
+-- Возвращает 1 с определенным шансом в зависимости от кармы дикого
+function RandomFromScavCarma()
+	local c = GetVar("ScavCarma").AsString
+	local carma
+	if strsub(c, 1, 1) == "-" then
+		carma = tonumber(strsub(c, 2, 5))
+	else
+		carma = tonumber(strsub(c, 1, 4))
+	end
+	local rand = random(100)
+	local l = 0
+	if not(carma == 0) then
+		local procent
+		procent = carma * 100
+		procent = math.floor(procent / 10)
+		if strsub(c, 1, 1) == "-" then
+			local pr = 35 - procent
+			if 5 >= pr then
+				if 5 >= rand then
+					l = 1
+				end
+			else
+				if pr >= rand then
+					l = 1
+				end
+			end
+		else
+			local pr = 35 + procent
+			if pr >= 75 then
+				if 75 >= rand then
+					l = 1
+				end
+			else
+				if pr >= rand then
+					l = 1
+				end
+			end
+		end
+	else
+		if 35 >= rand then
+			l = 1
+		end
+	end
+	return l
+end
 
 
 

@@ -544,6 +544,15 @@
 			SetVar("q_test_drive14_can_be_given", 0)
 			SetVar("q_kill_usec_item_jeton", 0)
 			SetVar("q_sectarian2_3_item_knife_sectarian", 0)
+			SetVar("q_first_in_line_item_medical", 0)
+			SetVar("q_shortage_item_salewa", 0)
+			SetVar("q_sanitary_standards2_item_gazan", 0)
+			SetVar("q_painkiller_item_morfie", 0)
+			SetVar("q_autorem_item_car_battery", 0)
+			SetVar("q_autorem_item_svech", 0)
+			SetVar("q_crisis_item_med", 0)
+			SetVar("q_crisis_item_naci", 0)
+			SetVar("q_crisis_item_h2o2", 0)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -929,6 +938,10 @@
 				if IsQuestComplete("q_test_drive13") then GunAndGadget:AddItems("firing_rate_guns_and_add_damage_guns", 1) GunAndGadget:AddItems("add_damage_guns_and_grouping_angle_guns", 1) GunAndGadget:AddItems("add_stability_and_speed", 1) end
 				if IsQuestComplete("q_test_drive15") then GunAndGadget:AddItems("additional_durability2", 1) end
 				if IsQuestComplete("q_turbo") then GunAndGadget:AddItems("someTurboAccelerationPusher", 1) GunAndGadget:AddItems("ammo_ballon_turboForSale", 1) end
+				if IsQuestComplete("q_sanitary_standards1") then GunAndGadget:AddItems("scrap_metal_use_ForSale", 1) end
+				if IsQuestComplete("q_sanitary_standards2") then GunAndGadget:AddItems("machinery_use_ForSale", 1) end
+				if IsQuestComplete("q_autorem") then GunAndGadget:AddItems("electronics_use_ForSale", 1) end
+				if IsQuestComplete("q_private_clinic") then GunAndGadget:AddItems("electronics_use_ForSale", 1) end
 			end
 
 		    trigger:Deactivate()
@@ -4076,6 +4089,24 @@
 				AddItemsToPlayerRepository("ammo_ballon_turbo", turbo)
 			end
 
+			local scrap = GetItemsAmount("scrap_metal_use_ForSale")
+			if HasPlayerAmountOfItems("scrap_metal_use_ForSale", scrap) and scrap > 0 then
+				RemoveItemsFromPlayerRepository("scrap_metal_use_ForSale", scrap)
+				AddItemsToPlayerRepository("scrap_metal_use", scrap)
+			end
+
+			local machinery = GetItemsAmount("machinery_use_ForSale")
+			if HasPlayerAmountOfItems("machinery_use_ForSale", machinery) and machinery > 0 then
+				RemoveItemsFromPlayerRepository("machinery_use_ForSale", machinery)
+				AddItemsToPlayerRepository("machinery_use", machinery)
+			end
+
+			local electronics = GetItemsAmount("electronics_use_ForSale")
+			if HasPlayerAmountOfItems("electronics_use_ForSale", electronics) and electronics > 0 then
+				RemoveItemsFromPlayerRepository("electronics_use_ForSale", electronics)
+				AddItemsToPlayerRepository("electronics_use", electronics)
+			end
+
 			if GetVar("WatchCredits").AsInt == 0 then
 				TActivate("trQuestsForCredits")
 			end
@@ -5348,6 +5379,163 @@
 			trigger:Deactivate()
 		</script>
 	</trigger>
+
+
+	<trigger Name="tr" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			TeamCreate("ScavCar_1", 1100, CVector(884.772, 255.614, 1052.876), {"Scout01"})
+			TeamCreate("ScavCar_2", 1100, CVector(859.277, 255.835, 1059.207), {"Scout01"})
+
+			SetVar("ScavCar_1_NPC", "Scav_"..random(10).."_NPC")
+			SetVar("ScavCar_2_NPC", "Scav_"..random(10).."_NPC")
+
+			SetVar("DlgMoney_ScavCar_1_vehicle_0", RandomFromScavCarma())
+			SetVar("DlgMoney_ScavCar_2_vehicle_0", RandomFromScavCarma())
+
+			SetVar("DlgFollow_ScavCar_1_vehicle_0", 1)
+			SetVar("DlgFollow_ScavCar_2_vehicle_0", RandomFromScavCarma())
+
+			SetVar("ScavCarFollowName", "0")
+			SetVar("ScavCarFollowNPC", "0")
+
+			TActivate("tr_dist")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="tr_dist" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			local len
+			local l, c = 0, 0
+			for i = 1, 2 do
+				local run = GetEntityByName("ScavCar_"..i.."_vehicle_0")
+				if run and run:IsAlive() then
+					len = Dist(pl, run)
+					if (8 >= len) then
+						l = l + 1
+						c = i
+					end
+				end
+			end
+
+			local runF = GetEntityByName(GetVar("ScavCarFollowName").AsString)
+			if runF and runF:IsAlive() then
+				len = Dist(pl, runF)
+				if (15 >= len) then
+					l = l + 1
+				end
+			end
+
+			if l ~= 0 and getObj("tr_horn"):IsActivated() == 0 then 
+				if c ~= 0 then
+					SetVar("ScavNPC", GetVar("ScavCar_"..c.."_NPC").AsString)
+					SetVar("ScavCarNPC", "ScavCar_"..c.."_vehicle_0")
+				else
+					SetVar("ScavNPC", GetVar("ScavCarFollowNPC").AsString)
+					SetVar("ScavCarNPC", GetVar("ScavCarFollowName").AsString)
+				end
+				TActivate("tr_horn")
+				AddFadingMsgByStrIdFormatted("fm_press_horn_to_speek_scav")
+				SoundFadingMsg()
+			elseif l == 0 and getObj("tr_horn"):IsActivated() == 1 then 
+				con("L 0")
+				SetVar("ScavNPC", "0")
+				SetVar("ScavCarNPC", "0")
+				TDeactivate("tr_horn") 
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="tr_horn" active="0">
+		<event eventid="GE_PLAYER_VEHICLE_HORN" ObjName="Player1" />
+		<script>
+			StartConversation(GetVar("ScavNPC").AsString)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="tr_follow" active="0">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local newControllerId = CreateNewObject {
+            prototypeName	= "someNPCMotionController",
+            objName		= "ScavCarFollow" }
+
+			local newController = GetEntityByID(newControllerId)
+			local FVehicle = GetEntityByName(GetVar("ScavCarFollowName").AsString)
+			if FVehicle then
+				newController:setVehicleUnderControl(FVehicle)
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="tr_del_follow" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local Controller = GetEntityByName("ScavCarFollow")
+			if Controller then Controller:Remove() end
+
+			local veh = GetEntityByName(GetVar("ScavCarFollowName").AsString)
+			if veh then 
+				veh:Remove()
+			end
+			
+			SetVar("ScavCarFollowName", "0")
+			SetVar("ScavCarFollowNPC", "0")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="tr2" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local veh = GetEntityByName(GetVar("ScavCarNPC").AsString)
+			if veh then
+				local prot = veh:GetProperty("Prototype").AsString
+				local smallgun = veh:GetPartByName("CABIN_SMALL_GUN")
+				if smallgun then
+					local smallgunprot = smallgun:GetProperty("Prototype").AsString
+				end
+				if prot == "Fighter2CarScav" or prot == "Hunter2CarScav" then
+					local biggun = veh:GetPartByName("CABIN_BIG_GUN_1")
+					if biggun then
+						local biggunprot = biggun:GetProperty("Prototype").AsString
+					end
+				end
+				local skin = veh:GetSkin()
+				local pos = veh:GetPosition()
+				local rot = veh:GetRotation()
+
+				veh:Remove()
+
+				local name = "ScavCarFollow_"..random(10000)
+				con(name)
+				SetVar("ScavCarFollowName", name.."_vehicle_0")
+			
+				TeamCreate(name, 1100, pos, {prot})
+
+				local newveh = GetEntityByName(name.."_vehicle_0")
+				if newveh then
+					newveh:SetSkin(skin)
+					newveh:SetRotation(rot)
+					if smallgun and smallgunprot then
+						newveh:SetNewPart("CABIN_SMALL_GUN", smallgunprot)
+					end
+					if biggun and biggunprot then
+						newveh:SetNewPart("CABIN_BIG_GUN_1", biggunprot)
+					end
+				end
+			end
+
+			TActivate("tr_follow")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 <!--
 **************************************************************************************************
 ** ÊÂÅÑÒÛ

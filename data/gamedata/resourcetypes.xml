@@ -99,6 +99,7 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 			<Type Name="DOSKI" />
 			<Type Name="DETAILS" />
 			<Type Name="SHKATULKA" />
+			<Type Name="USE_ITEM_FOR_SALE" />
 		</Type>
 
 		<Type Name="DIGGED" geomsize="2 2" >
@@ -205,6 +206,10 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 
 		<Type Name="SIZE_8X4" geomsize="8 4">
 			<Type Name="ITEM_SIZE_8X4" />
+		</Type>
+
+		<Type Name="AMMO_BALLON_TURBO_FOR_SALE" geomsize="2 2">
+			<Type Name="ITEM_AMMO_BALLON_TURBO_FOR_SALE" />
 		</Type>
 
 	</Type>

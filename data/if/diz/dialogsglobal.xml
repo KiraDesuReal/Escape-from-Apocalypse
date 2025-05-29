@@ -11365,7 +11365,7 @@
 
 	<Reply
 		name="Dlg_npc_q_kill_usec_1"
-		text="Здравия желаю, Наёмник! Как оно, готов к делам по серьёзней?"
+		text="Здравия желаю, наёмник! Как оно, готов к делам по серьёзней?"
 		role="NPC"
 		nextReplies="Dlg_npc_q_kill_usec_2" />
 
@@ -11509,7 +11509,7 @@
 		text="Передать Нож сектантов - x1"
 		role="PLAYER"
 		scriptCondition="HasPlayerAmountOfItems('item_knife_sectarian', 1) and GetVar('q_sectarian2_3_item_knife_sectarian').AsInt >= 2 and IsQuestTaken('q_sectarian2_3') and not(IsQuestComplete('q_sectarian2_3'))"
-		scriptResult="RemoveItemsFromPlayerRepository('item_knife_sectarian', 1); SetVar('q_sectarian2_3_item_knife_sectarian', 2); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_knife_sectarian'); CompleteSubtask('q_sectarian2_3'); TActivate('SoundSubtaskComplete')"
+		scriptResult="RemoveItemsFromPlayerRepository('item_knife_sectarian', 1); SetVar('q_sectarian2_3_item_knife_sectarian', 3); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_knife_sectarian'); CompleteSubtask('q_sectarian2_3'); TActivate('SoundSubtaskComplete')"
 		nextReplies="Dlg_npc_q_sectarian2_1" />
 
 	<Reply
@@ -11661,7 +11661,7 @@
 		text="Если хочешь застраховать свои вещи, то ты пришёл в нужное место. Я предоставляю одни из лучших услуг по страховке. Какое снаряжение хочешь застраховать?|@FF0000AA|@FF1D1D1D[Для страховки, положите необходимые предметы себе в кузов]"
 		role="NPC"
 		scriptCondition="getObj('ChestReturnInsureItems') == nil"
-		nextReplies="Dlg_pl_insure_1 Dlg_pl_insure_2 Dlg_pl_insure_3 Dlg_pl_insure_4 Dlg_pl_insure_5 Dlg_pl_insure_6 Dlg_pl_insure_7 Dlg_pl_insure_8 Dlg_pl_insure_9 Dlg_pl_insure_10 Dlg_pl_insure_11 Dlg_pl_insure_12 Dlg_pl_insure_13 Dlg_pl_insure_14 Dlg_pl_insure_15 Dlg_pl_insure_16 Dlg_pl_insure_17 Dlg_pl_insure_18 Dlg_pl_insure_19 Dlg_pl_insure_20 Dlg_pl_insure_21 Dlg_pl_insure_22 Dlg_pl_insure_23 Dlg_pl_insure_24 Dlg_pl_insure_25 Dlg_pl_insure_26 Dlg_pl_insure_27 Dlg_pl_insure_28 Dlg_pl_insure_29 Dlg_pl_insure_30 Dlg_pl_insure_31 Dlg_pl_insure_32 Dlg_pl_insure_33 Dlg_pl_insure_34 Dlg_pl_insure_35 Dlg_pl_insure_36 Dlg_pl_insure_37 Dlg_pl_insure_38 Dlg_pl_insure_39 Dlg_pl_insure_40 Dlg_pl_insure_41 Dlg_pl_insure_42 Dlg_pl_insure_43 Dlg_pl_npc_exit" />
+		nextReplies="Dlg_pl_insure_1 Dlg_pl_insure_2 Dlg_pl_insure_3 Dlg_pl_insure_4 Dlg_pl_insure_5 Dlg_pl_insure_6 Dlg_pl_insure_7 Dlg_pl_insure_8 Dlg_pl_insure_9 Dlg_pl_insure_10 Dlg_pl_insure_11 Dlg_pl_insure_12 Dlg_pl_insure_13 Dlg_pl_insure_14 Dlg_pl_insure_15 Dlg_pl_insure_16 Dlg_pl_insure_17 Dlg_pl_insure_18 Dlg_pl_insure_19 Dlg_pl_insure_20 Dlg_pl_insure_21 Dlg_pl_insure_22 Dlg_pl_insure_23 Dlg_pl_insure_23_ Dlg_pl_insure_24 Dlg_pl_insure_25 Dlg_pl_insure_26 Dlg_pl_insure_27 Dlg_pl_insure_28 Dlg_pl_insure_29 Dlg_pl_insure_30 Dlg_pl_insure_31 Dlg_pl_insure_32 Dlg_pl_insure_33 Dlg_pl_insure_34 Dlg_pl_insure_35 Dlg_pl_insure_36 Dlg_pl_insure_37 Dlg_pl_insure_38 Dlg_pl_insure_39 Dlg_pl_insure_40 Dlg_pl_insure_41 Dlg_pl_insure_42 Dlg_pl_insure_43 Dlg_pl_npc_exit" />
 
 	<Reply
 		name="Dlg_npc_prapor_insure_2"
@@ -11861,6 +11861,14 @@
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
 	<Reply
+		name="Dlg_pl_insure_23_"
+		text="Застраховать Спрут (Стоимость: 7.280 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('octopus01', 1) and GetPlayerMoney() >= 7280"
+		scriptResult="InsureItem('octopus01'); AddPlayerMoney(-7280)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
 		name="Dlg_pl_insure_24"
 		text="Застраховать Град (Стоимость: 30.000 монет)"
 		role="PLAYER"
@@ -12020,6 +12028,775 @@
 		scriptResult="InsureItem('fuel_nil_use'); AddPlayerMoney(-400)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
+<!--Root/r0m0/Терапевт: Первый в очереди-->
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_1"
+		text="Добрый день, молодой человек, вас случайно не интересует работа?"
+		role="NPC"
+		scriptCondition="CanQuestBeGiven('q_first_in_line')"
+		nextReplies="Dlg_npc_q_first_in_line_2" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_2"
+		text="Интересует."
+		role="PLAYER"
+		nextReplies="Dlg_npc_q_first_in_line_3" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_3"
+		text="Это хорошо. Мы с вами ещё не встречались. Все зовут меня Терапевт. Думаю, по имени понятно, чем я занимаюсь. Мне передали, что вы ищете работу. Выполните для меня короткое задание - будем сотрудничать."
+		role="NPC"
+		nextReplies="Dlg_npc_q_first_in_line_4" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_4"
+		text="Хорошо. Что я должен сделать?"
+		role="PLAYER"
+		nextReplies="Dlg_npc_q_first_in_line_5" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_5"
+		text="На локации Край находиться больница, после катастрофы здание осталось не тронутым, все оборудование должно быть в рабочем состоянии. Найдите это место и заберите с собой несколько медикаментов. После я отправлю своих людей проверить территорию.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Предмет: @FF1D1D1DКрепкий металл - x1|@FF404040- Предмет: @FF1D1D1DУлучшенное оборудование - x1|@FF404040- Деньги: @FF1D1D1D15.000 монет"
+		role="NPC"
+		scriptCondition="CanQuestBeGiven('q_first_in_line') or IsQuestTaken('q_first_in_line') and not(IsQuestComplete('q_first_in_line'))"
+		nextReplies="Dlg_npc_q_first_in_line_6 Dlg_npc_q_first_in_line_7 Dlg_npc_q_first_in_line_8 Dlg_npc_q_first_in_line_9 Dlg_npc_q_first_in_line_10 Dlg_npc_q_first_in_line_11 Dlg_npc_q_first_in_line_12 Dlg_npc_q_first_in_line_13 Dlg_npc_q_first_in_line_14 Dlg_npc_q_first_in_line_15 Dlg_npc_q_first_in_line_16 Dlg_npc_q_first_in_line_17 Dlg_npc_q_first_in_line_18 Dlg_npc_q_first_in_line_19 Dlg_npc_q_first_in_line_20 Dlg_npc_q_first_in_line_21 Dlg_npc_q_first_in_line_22 Dlg_npc_q_first_in_line_23 Dlg_npc_q_first_in_line_24 Dlg_npc_q_first_in_line_25 Dlg_npc_q_first_in_line_26 Dlg_npc_q_first_in_line_27" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_6"
+		text="Хорошо, будет сделано."
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_first_in_line'))"
+		scriptResult="TakeQuest('q_first_in_line'); TActivate('SoundQuestTaken'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_7"
+		text="Передать Аквапепс - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_aquapeps', 1) and not(GetVar('q_first_in_line_item_medical').AsInt == 3) and IsQuestTaken('q_first_in_line_2') and not(IsQuestComplete('q_first_in_line_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_aquapeps', 1); CompleteSubtaskIfVarEqualValue('q_first_in_line_2', 'q_first_in_line_item_medical', 3); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_aquapeps')"
+		nextReplies="Dlg_npc_q_first_in_line_5" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_8"
+		text="Передать Аскорбинку - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_c6h8o6', 1) and not(GetVar('q_first_in_line_item_medical').AsInt == 3) and IsQuestTaken('q_first_in_line_2') and not(IsQuestComplete('q_first_in_line_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_c6h8o6', 1); CompleteSubtaskIfVarEqualValue('q_first_in_line_2', 'q_first_in_line_item_medical', 3); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_c6h8o6')"
+		nextReplies="Dlg_npc_q_first_in_line_5" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_9"
+		text="Передать Бутылку перекиси водорода «H2O2» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_h2o2', 1) and not(GetVar('q_first_in_line_item_medical').AsInt == 3) and IsQuestTaken('q_first_in_line_2') and not(IsQuestComplete('q_first_in_line_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_h2o2', 1); CompleteSubtaskIfVarEqualValue('q_first_in_line_2', 'q_first_in_line_item_medical', 3); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_h2o2')"
+		nextReplies="Dlg_npc_q_first_in_line_5" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_10"
+		text="Передать LEDX - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_ledx', 1) and not(GetVar('q_first_in_line_item_medical').AsInt == 3) and IsQuestTaken('q_first_in_line_2') and not(IsQuestComplete('q_first_in_line_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_ledx', 1); CompleteSubtaskIfVarEqualValue('q_first_in_line_2', 'q_first_in_line_item_medical', 3); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_ledx')"
+		nextReplies="Dlg_npc_q_first_in_line_5" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_11"
+		text="Передать Медицинские инструменты - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_medical_tools', 1) and not(GetVar('q_first_in_line_item_medical').AsInt == 3) and IsQuestTaken('q_first_in_line_2') and not(IsQuestComplete('q_first_in_line_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_medical_tools', 1); CompleteSubtaskIfVarEqualValue('q_first_in_line_2', 'q_first_in_line_item_medical', 3); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_medical_tools')"
+		nextReplies="Dlg_npc_q_first_in_line_5" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_12"
+		text="Передать Бутылку физраствора «NaCI» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_naci', 1) and not(GetVar('q_first_in_line_item_medical').AsInt == 3) and IsQuestTaken('q_first_in_line_2') and not(IsQuestComplete('q_first_in_line_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_naci', 1); CompleteSubtaskIfVarEqualValue('q_first_in_line_2', 'q_first_in_line_item_medical', 3); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_naci')"
+		nextReplies="Dlg_npc_q_first_in_line_5" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_13"
+		text="Передать Офтальмоскоп - x1" 
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_oftalmaskop', 1) and not(GetVar('q_first_in_line_item_medical').AsInt == 3) and IsQuestTaken('q_first_in_line_2') and not(IsQuestComplete('q_first_in_line_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_oftalmaskop', 1); CompleteSubtaskIfVarEqualValue('q_first_in_line_2', 'q_first_in_line_item_medical', 3); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_oftalmaskop')"
+		nextReplies="Dlg_npc_q_first_in_line_5" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_14"
+		text="Передать Шприц - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_suringe', 1) and not(GetVar('q_first_in_line_item_medical').AsInt == 3) and IsQuestTaken('q_first_in_line_2') and not(IsQuestComplete('q_first_in_line_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_suringe', 1); CompleteSubtaskIfVarEqualValue('q_first_in_line_2', 'q_first_in_line_item_medical', 3); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_suringe')"
+		nextReplies="Dlg_npc_q_first_in_line_5" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_15"
+		text="Передать Аптечку «AFAK» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_afak', 1) and not(GetVar('q_first_in_line_item_medical').AsInt == 3) and IsQuestTaken('q_first_in_line_2') and not(IsQuestComplete('q_first_in_line_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_afak', 1); CompleteSubtaskIfVarEqualValue('q_first_in_line_2', 'q_first_in_line_item_medical', 3); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_afak')"
+		nextReplies="Dlg_npc_q_first_in_line_5" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_16"
+		text="Передать Аптечку «АИ-2» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_ai2', 1) and not(GetVar('q_first_in_line_item_medical').AsInt == 3) and IsQuestTaken('q_first_in_line_2') and not(IsQuestComplete('q_first_in_line_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_ai2', 1); CompleteSubtaskIfVarEqualValue('q_first_in_line_2', 'q_first_in_line_item_medical', 3); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_ai2')"
+		nextReplies="Dlg_npc_q_first_in_line_5" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_17"
+		text="Передать Таблетки «Анальгин» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_analgin', 1) and not(GetVar('q_first_in_line_item_medical').AsInt == 3) and IsQuestTaken('q_first_in_line_2') and not(IsQuestComplete('q_first_in_line_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_analgin', 1); CompleteSubtaskIfVarEqualValue('q_first_in_line_2', 'q_first_in_line_item_medical', 3); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_analgin')"
+		nextReplies="Dlg_npc_q_first_in_line_5" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_18"
+		text="Передать Автомобильную аптечку - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_carmed', 1) and not(GetVar('q_first_in_line_item_medical').AsInt == 3) and IsQuestTaken('q_first_in_line_2') and not(IsQuestComplete('q_first_in_line_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_carmed', 1); CompleteSubtaskIfVarEqualValue('q_first_in_line_2', 'q_first_in_line_item_medical', 3); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_carmed')" 
+		nextReplies="Dlg_npc_q_first_in_line_5" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_19"
+		text="Передать Аптечку «Grizzly» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_grizzly', 1) and not(GetVar('q_first_in_line_item_medical').AsInt == 3) and IsQuestTaken('q_first_in_line_2') and not(IsQuestComplete('q_first_in_line_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_grizzly', 1); CompleteSubtaskIfVarEqualValue('q_first_in_line_2', 'q_first_in_line_item_medical', 3); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_grizzly')" 
+		nextReplies="Dlg_npc_q_first_in_line_5" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_20"
+		text="Передать Аптечку «IFAK» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_ifak', 1) and not(GetVar('q_first_in_line_item_medical').AsInt == 3) and IsQuestTaken('q_first_in_line_2') and not(IsQuestComplete('q_first_in_line_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_ifak', 1); CompleteSubtaskIfVarEqualValue('q_first_in_line_2', 'q_first_in_line_item_medical', 3); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_ifak')"
+		nextReplies="Dlg_npc_q_first_in_line_5" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_21"
+		text="Передать Набор медикаментов - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_med', 1) and not(GetVar('q_first_in_line_item_medical').AsInt == 3) and IsQuestTaken('q_first_in_line_2') and not(IsQuestComplete('q_first_in_line_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_med', 1); CompleteSubtaskIfVarEqualValue('q_first_in_line_2', 'q_first_in_line_item_medical', 3); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_med')" 
+		nextReplies="Dlg_npc_q_first_in_line_5" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_22"
+		text="Передать Морфий - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_morfie', 1) and not(GetVar('q_first_in_line_item_medical').AsInt == 3) and IsQuestTaken('q_first_in_line_2') and not(IsQuestComplete('q_first_in_line_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_morfie', 1); CompleteSubtaskIfVarEqualValue('q_first_in_line_2', 'q_first_in_line_item_medical', 3); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_morfie')" 
+		nextReplies="Dlg_npc_q_first_in_line_5" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_23"
+		text="Передать Аптечку «Salewa» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_salewa', 1) and not(GetVar('q_first_in_line_item_medical').AsInt == 3) and IsQuestTaken('q_first_in_line_2') and not(IsQuestComplete('q_first_in_line_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_salewa', 1); CompleteSubtaskIfVarEqualValue('q_first_in_line_2', 'q_first_in_line_item_medical', 3); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_salewa')" 
+		nextReplies="Dlg_npc_q_first_in_line_5" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_24"
+		text="Передать Вазелин - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_vazelin', 1) and not(GetVar('q_first_in_line_item_medical').AsInt == 3) and IsQuestTaken('q_first_in_line_2') and not(IsQuestComplete('q_first_in_line_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_vazelin', 1); CompleteSubtaskIfVarEqualValue('q_first_in_line_2', 'q_first_in_line_item_medical', 3); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_vazelin')" 
+		nextReplies="Dlg_npc_q_first_in_line_5" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_25"
+		text="Передать Мазь звёздочку - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_zvezda', 1) and not(GetVar('q_first_in_line_item_medical').AsInt == 3) and IsQuestTaken('q_first_in_line_2') and not(IsQuestComplete('q_first_in_line_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_zvezda', 1); CompleteSubtaskIfVarEqualValue('q_first_in_line_2', 'q_first_in_line_item_medical', 3); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_zvezda')" 
+		nextReplies="Dlg_npc_q_first_in_line_5" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_26"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_first_in_line_3')"
+		scriptResult="CompleteQuest('q_first_in_line_3'); TActivate('SoundQuestFihished')"
+		nextReplies="Dlg_npc_q_first_in_line_28" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_27"
+		text="Выход."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_first_in_line') and not(IsQuestTaken('q_first_in_line_3'))"
+		scriptResult="EndConversation()"/>
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_28"
+		text="Отлично, ваше задание выполнено. Благодарю вас. Надеюсь что, наше дальнейшее сотрудничество будет таким же плодотворным."
+		role="NPC"
+		nextReplies="Dlg_npc_q_first_in_line_29" />
+
+	<Reply
+		name="Dlg_npc_q_first_in_line_29"
+		text="Взаимно."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Терапевт-->
+
+	<Reply
+		name="Dlg_npc_terapist_1"
+		text="Здравствуйте, молодой человек. Что вас интересует?"
+		role="NPC"
+		scriptCondition="IsQuestComplete('q_first_in_line')"
+		nextReplies="Dlg_pl_q_shortage Dlg_pl_to_q_shortage Dlg_pl_q_sanitary_standards1 Dlg_pl_to_q_sanitary_standards1 Dlg_pl_q_sanitary_standards2 Dlg_pl_to_q_sanitary_standards2 Dlg_pl_q_painkiller Dlg_pl_to_q_painkiller Dlg_pl_q_autorem Dlg_pl_to_q_autorem Dlg_pl_q_private_clinic Dlg_pl_to_q_private_clinic Dlg_pl_q_crisis Dlg_pl_to_q_crisis Dlg_pl_npc_exit" />
+
+<!--Дефицит-->
+	<Reply
+		name="Dlg_pl_q_shortage"
+		text="Есть ли для меня работа? (Принять задание: Дефицит)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_shortage')"
+		nextReplies="Dlg_npc_q_shortage_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_shortage"
+		text="На счёт задания Дефицит."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_shortage') and not(IsQuestComplete('q_shortage'))"
+		nextReplies="Dlg_npc_q_shortage_1" />
+
+<!--Санэпиднадзор - Часть 1-->
+	<Reply
+		name="Dlg_pl_q_sanitary_standards1"
+		text="Есть ли для меня работа? (Принять задание: Санэпиднадзор - Часть 1)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_sanitary_standards1')"
+		nextReplies="Dlg_npc_q_sanitary_standards1_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_sanitary_standards1"
+		text="На счёт задания Санэпиднадзор - Часть 1."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_sanitary_standards1') and not(IsQuestComplete('q_sanitary_standards1'))"
+		nextReplies="Dlg_npc_q_sanitary_standards1_5" />
+
+<!--Санэпиднадзор - Часть 2-->
+	<Reply
+		name="Dlg_pl_q_sanitary_standards2"
+		text="Есть ли для меня работа? (Принять задание: Санэпиднадзор - Часть 2)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_sanitary_standards2')"
+		nextReplies="Dlg_npc_q_sanitary_standards2_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_sanitary_standards2"
+		text="На счёт задания Санэпиднадзор - Часть 2."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_sanitary_standards2') and not(IsQuestComplete('q_sanitary_standards2'))"
+		nextReplies="Dlg_npc_q_sanitary_standards2_1" />
+
+<!--Пейнкиллер-->
+	<Reply
+		name="Dlg_pl_q_painkiller"
+		text="Есть ли для меня работа? (Принять задание: Пейнкиллер)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_painkiller')"
+		nextReplies="Dlg_npc_q_painkiller_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_painkiller"
+		text="На счёт задания Пейнкиллер."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_painkiller') and not(IsQuestComplete('q_painkiller'))"
+		nextReplies="Dlg_npc_q_painkiller_3" />
+
+<!--Авторем-->
+	<Reply
+		name="Dlg_pl_q_autorem"
+		text="Есть ли для меня работа? (Принять задание: Авторем)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_autorem')"
+		nextReplies="Dlg_npc_q_autorem_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_autorem"
+		text="На счёт задания Авторем."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_autorem') and not(IsQuestComplete('q_autorem'))"
+		nextReplies="Dlg_npc_q_autorem_1" />
+
+<!--Частная клиника-->
+	<Reply
+		name="Dlg_pl_q_private_clinic"
+		text="Есть ли для меня работа? (Принять задание: Частная клиника)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_private_clinic')"
+		nextReplies="Dlg_npc_q_private_clinic_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_private_clinic"
+		text="На счёт задания Частная клиника."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_private_clinic') and not(IsQuestComplete('q_private_clinic'))"
+		nextReplies="Dlg_npc_q_private_clinic_1" />
+
+<!--Доктор «Айболит»-->
+	<Reply
+		name="Dlg_pl_q_crisis"
+		text="Есть ли для меня работа? (Принять задание: Доктор «Айболит»)"
+		role="PLAYER"
+		scriptCondition="CanQuestBeGiven('q_crisis')"
+		nextReplies="Dlg_npc_q_crisis_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_crisis"
+		text="На счёт задания Доктор «Айболит»."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_crisis') and not(IsQuestComplete('q_crisis'))"
+		nextReplies="Dlg_npc_q_crisis_1" />
+
+<!--Root/r0m0/Дефицит-->
+
+	<Reply
+		name="Dlg_npc_q_shortage_1"
+		text="Здравствуйте, наёмник. Да, найдётся для вас несложная работа, внакладе не останетесь. У меня всегда можно приобрести провизию, напитки, и самое ценное – квалифицированную медицинскую помощь. Так вот, мне нужно раздобыть несколько комплектов экстренной медицинской помощи. «Salewa» называются – красные такие, западные. Вот они мне и нужны. И обязательно, чтобы они были добыты лично вашими руками, в доказательство того, что вы серьезный человек. Справитесь?|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Предмет: @FF1D1D1DУлучшенное оборудование - x2|@FF404040- Деньги: @FF1D1D1D20.000 монет"
+		role="NPC"
+		nextReplies="Dlg_npc_q_shortage_2 Dlg_npc_q_shortage_3 Dlg_npc_q_shortage_4 Dlg_npc_q_shortage_5" />
+
+	<Reply
+		name="Dlg_npc_q_shortage_2"
+		text="Да, я справлюсь."
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_shortage'))"
+		scriptResult="TakeQuest('q_shortage'); TActivate('SoundQuestTaken'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_q_shortage_3"
+		text="Передать Аптечку «Salewa» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_salewa', 1) and not(GetVar('q_shortage_item_salewa').AsInt >= 2) and IsQuestTaken('q_shortage') and not(IsQuestComplete('q_shortage'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_salewa', 1); SetVar('q_shortage_item_salewa', GetVar('q_shortage_item_salewa').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_salewa')"
+		nextReplies="Dlg_npc_q_shortage_1" />
+
+	<Reply
+		name="Dlg_npc_q_shortage_4"
+		text="Передать Аптечку «Salewa» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_salewa', 1) and GetVar('q_shortage_item_salewa').AsInt >= 2 and IsQuestTaken('q_shortage') and not(IsQuestComplete('q_shortage'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_salewa', 1); SetVar('q_shortage_item_salewa', 3); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_salewa'); CompleteQuest('q_shortage_1'); TActivate('SoundQuestFihished')"
+		nextReplies="Dlg_npc_q_shortage_6" />
+
+	<Reply
+		name="Dlg_npc_q_shortage_5"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_shortage') and not(IsQuestComplete('q_shortage'))"
+		nextReplies="Dlg_npc_terapist_1" />
+
+	<Reply
+		name="Dlg_npc_q_shortage_6"
+		text="Всегда приятно работать с человеком, на которого можно положиться. Спасибо большое. Не могу сказать, зачем они мне понадобились, но поверьте, это для доброго дела."
+		role="NPC"
+		nextReplies="Dlg_npc_q_shortage_7" />
+
+	<Reply
+		name="Dlg_npc_q_shortage_7"
+		text="Приятно делать добрые дела."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Санэпиднадзор - Часть 1-->
+
+	<Reply
+		name="Dlg_npc_q_sanitary_standards1_1"
+		text="Добрый день. У меня есть одна неотложная работа для вас. Это важно для всех, кто ещё живёт или, если точнее, существует в нашем несчастном мире. У меня есть серьёзные подозрения, что с территории завода в подземные воды попадает какая-то гадость. А из-за отсутствия снабжения извне, мы все вынуждены пить неочищенную воду. Понимаете?"
+		role="NPC"
+		nextReplies="Dlg_npc_q_sanitary_standards1_2" />
+
+	<Reply
+		name="Dlg_npc_q_sanitary_standards1_2"
+		text="Проблема действительно серьёзная. Чем я могу вам помочь?"
+		role="PLAYER"
+		nextReplies="Dlg_npc_q_sanitary_standards1_3" />
+
+	<Reply
+		name="Dlg_npc_q_sanitary_standards1_3"
+		text="Чтобы разобраться, мне нужны показания газоанализаторов. Поможете их найти?|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Предмет: @FF1D1D1DКрепкий металл в продаже - x1|@FF404040- Предмет: @FF1D1D1DКрепкий металл - x1|@FF404040- Деньги: @FF1D1D1D14.000 монет"
+		role="NPC"
+		nextReplies="Dlg_npc_q_sanitary_standards1_4" />
+
+	<Reply
+		name="Dlg_npc_q_sanitary_standards1_4"
+		text="Хорошо, попробую по искать."
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_sanitary_standards1'))"
+		scriptResult="TakeQuest('q_sanitary_standards1'); TActivate('SoundQuestTaken'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_q_sanitary_standards1_5"
+		text="Добрый день. У меня есть одна неотложная работа для вас. Это важно для всех, кто ещё живёт или, если точнее, существует в нашем несчастном мире. У меня есть серьёзные подозрения, что с территории завода в подземные воды попадает какая-то гадость. А из-за отсутствия снабжения извне, мы все вынуждены пить неочищенную воду. А чтобы разобраться, мне нужны показания газоанализаторов. Поможете их найти?|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Предмет: @FF1D1D1DКрепкий металл в продаже - x1|@FF404040- Предмет: @FF1D1D1DКрепкий металл - x1|@FF404040- Деньги: @FF1D1D1D14.000 монет"
+		role="NPC"
+		nextReplies="Dlg_npc_q_sanitary_standards1_6 Dlg_npc_q_sanitary_standards1_7" />
+
+	<Reply
+		name="Dlg_npc_q_sanitary_standards1_6"
+		text="Передать Газоанализатор - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_gazan', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_gazan', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_gazan'); CompleteQuest('q_sanitary_standards1_1'); TActivate('SoundQuestFihished')"
+		nextReplies="Dlg_npc_q_sanitary_standards1_8" />
+
+	<Reply
+		name="Dlg_npc_q_sanitary_standards1_7"
+		text="Назад."
+		role="PLAYER"
+		nextReplies="Dlg_npc_terapist_1" />
+
+	<Reply
+		name="Dlg_npc_q_sanitary_standards1_8"
+		text="Спасибо. Очень вовремя. Важное дело сделали для многих, если не для всех."
+		role="NPC"
+		nextReplies="Dlg_npc_q_sanitary_standards1_9" />
+
+	<Reply
+		name="Dlg_npc_q_sanitary_standards1_9"
+		text="Спасибо."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Санэпиднадзор - Часть 2-->
+
+	<Reply
+		name="Dlg_npc_q_sanitary_standards2_1"
+		text="Здравствуйте. Хорошо, что зашли. Именно для вас у меня есть работа, с которой вы уже знакомы. Наши инженеры успешно нейтрализовали утечку химикатов, но вода всё равно ещё не до конца очищена. Хотя там остались только примеси, характерные для нефтепродуктов. Раздобудьте ещё пару газоанализаторов, и тогда мы решим проблемы воды в регионе хотя бы на какое-то время.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Предмет: @FF1D1D1DУлучшенное оборудование в продаже - x1|@FF404040- Предмет: @FF1D1D1DУлучшенное оборудование - x1|@FF404040- Деньги: @FF1D1D1D20.000 монет"
+		role="NPC"
+		nextReplies="Dlg_npc_q_sanitary_standards2_2 Dlg_npc_q_sanitary_standards2_3 Dlg_npc_q_sanitary_standards2_4 Dlg_npc_q_sanitary_standards2_5" />
+
+	<Reply
+		name="Dlg_npc_q_sanitary_standards2_2"
+		text="Хорошо, чего не сделаешь для всеобщего блага."
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_sanitary_standards2'))"
+		scriptResult="TakeQuest('q_sanitary_standards2'); TActivate('SoundQuestTaken'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_q_sanitary_standards2_3"
+		text="Передать Газоанализатор - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_gazan', 1) and not(GetVar('q_sanitary_standards2_item_gazan').AsInt >= 1) and IsQuestTaken('q_sanitary_standards2_1') and not(IsQuestComplete('q_sanitary_standards2_1'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_gazan', 1); SetVar('q_sanitary_standards2_item_gazan', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_gazan')"
+		nextReplies="Dlg_npc_q_sanitary_standards2_1" />
+
+	<Reply
+		name="Dlg_npc_q_sanitary_standards2_4"
+		text="Передать Газоанализатор - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_gazan', 1) and GetVar('q_sanitary_standards2_item_gazan').AsInt >= 1 and IsQuestTaken('q_sanitary_standards2_1') and not(IsQuestComplete('q_sanitary_standards2_1'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_gazan', 1); SetVar('q_sanitary_standards2_item_gazan', 2); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_gazan'); CompleteQuest('q_sanitary_standards2_1'); TActivate('SoundQuestFihished')"
+		nextReplies="Dlg_npc_q_sanitary_standards2_6" />
+
+	<Reply
+		name="Dlg_npc_q_sanitary_standards2_5"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_sanitary_standards2') and not(IsQuestComplete('q_sanitary_standards2'))"
+		nextReplies="Dlg_npc_terapist_1" />
+
+	<Reply
+		name="Dlg_npc_q_sanitary_standards2_6"
+		text="Хорошо, что нашёлся ответственный человек, который готов рискнуть для общего блага."
+		role="NPC"
+		nextReplies="Dlg_npc_q_sanitary_standards2_7" />
+
+	<Reply
+		name="Dlg_npc_q_sanitary_standards2_7"
+		text="Спасибо. Надеюсь что это действительно поможет."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Пейнкиллер-->
+
+	<Reply
+		name="Dlg_npc_q_painkiller_1"
+		text="Добрый день, наёмник. У меня есть ещё работа, если вас конечно интересует."
+		role="NPC"
+		nextReplies="Dlg_npc_q_painkiller_2" />
+
+	<Reply
+		name="Dlg_npc_q_painkiller_2"
+		text="Я заинтересован. Говорите что нужно сделать."
+		role="PLAYER"
+		nextReplies="Dlg_npc_q_painkiller_3" />
+
+	<Reply
+		name="Dlg_npc_q_painkiller_3"
+		text="Думаю, вы уже поняли, что я поддерживаю оставшихся в убежищах гражданских, которые, к несчастью, пострадали от катастрофы. На самом деле, все ваши разборки для меня лишь средство в достижении цели. А цель одна – помочь ни в чём не повинным людям оправиться и встать на ноги. Я всё-таки врач, и давала клятву. Поэтому прошу вас, добудьте мне морфий, хотя бы несколько штук.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Предмет: @FF1D1D1DСиликоновая трубка - x1|@FF404040- Предмет: @FF1D1D1DНабор медикаментов - x1|@FF404040- Предмет: @FF1D1D1DТаблетки «Анальгин» - x1|@FF404040- Деньги: @FF1D1D1D25.000 монет"
+		role="NPC"
+		nextReplies="Dlg_npc_q_painkiller_4 Dlg_npc_q_painkiller_5 Dlg_npc_q_painkiller_6 Dlg_npc_q_painkiller_7" />
+
+	<Reply
+		name="Dlg_npc_q_painkiller_4"
+		text="Хорошо, попробую поискать. Если найду, то принесу вам."
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_painkiller'))"
+		scriptResult="TakeQuest('q_painkiller'); TActivate('SoundQuestTaken'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_q_painkiller_5"
+		text="Передать Морфий - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_morfie', 1) and not(GetVar('q_painkiller_item_morfie').AsInt >= 3) and IsQuestTaken('q_painkiller_1') and not(IsQuestComplete('q_painkiller_1'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_morfie', 1); SetVar('q_painkiller_item_morfie', GetVar('q_painkiller_item_morfie').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_morfie')"
+		nextReplies="Dlg_npc_q_painkiller_3" />
+
+	<Reply
+		name="Dlg_npc_q_painkiller_6"
+		text="Передать Морфий - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_morfie', 1) and GetVar('q_painkiller_item_morfie').AsInt >= 3 and IsQuestTaken('q_painkiller_1') and not(IsQuestComplete('q_painkiller_1'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_morfie', 1); SetVar('q_painkiller_item_morfie', 4); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_morfie'); CompleteQuest('q_painkiller_1'); TActivate('SoundQuestFihished')"
+		nextReplies="Dlg_npc_q_painkiller_8" />
+
+	<Reply
+		name="Dlg_npc_q_painkiller_7"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_painkiller') and not(IsQuestComplete('q_painkiller'))"
+		nextReplies="Dlg_npc_terapist_1" />
+
+	<Reply
+		name="Dlg_npc_q_painkiller_8"
+		text="Большое человеческое спасибо. Даже объяснять не буду, как это много и в тоже время критически мало в наших условиях. Большинство просто оставило бы себе, а вы отдали нуждающимся. Спасибо."
+		role="NPC"
+		nextReplies="Dlg_npc_q_painkiller_9" />
+
+	<Reply
+		name="Dlg_npc_q_painkiller_9"
+		text="Спасибо что доверили это поручение именно мне, а не кому-то другому."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Авторем-->
+
+	<Reply
+		name="Dlg_npc_q_autorem_1"
+		text="Здравствуйте, молодой человек. Нужна ваша помощь в благом деле. Вы наверняка уже знаете, что я собираю провиант, медицинские припасы и прочие необходимые вещи для того, чтобы эвакуировать людей. И запасов теперь им хватит на всю дорогу. А самое главное, мне по своим каналам удалось договориться на той стороне, чтобы людей встретили и пропустили! Так что почти всё уже готово, кроме одной маленькой детали – нужен транспорт. У нас есть несколько машин, в которые поместится вся первая партия, но они не на ходу. Слишком долго стояли без дела, и, как мне объяснили, нужны аккумуляторы и свечи зажигания. Даже топлива не надо. Я составлю конкретный список. Доставите?|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Предмет: @FF1D1D1DВысокотехнологичная электроника в продаже - x1|@FF404040- Предмет: @FF1D1D1DВысокотехнологичная электроника - x2|@FF404040- Предмет: @FF1D1D1DУлучшенное оборудование - x2|@FF404040- Предмет: @FF1D1D1DАптечка «Grizzly» - x1|@FF404040- Деньги: @FF1D1D1D40.000 монет"
+		role="NPC"
+		nextReplies="Dlg_npc_q_autorem_2 Dlg_npc_q_autorem_3 Dlg_npc_q_autorem_4 Dlg_npc_q_autorem_5 Dlg_npc_q_autorem_6 Dlg_npc_q_autorem_7 Dlg_npc_q_autorem_8" />
+
+	<Reply
+		name="Dlg_npc_q_autorem_2"
+		text="Без проблем. Доставлю вам аккумуляторы со свечами. Наверняка от подбитой техники удастся найти парочку."
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_autorem'))"
+		scriptResult="TakeQuest('q_autorem'); TActivate('SoundQuestTaken'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_q_autorem_3"
+		text="Передать Автомобильный аккумулятор - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_car_battery', 1) and not(GetVar('q_autorem_item_car_battery').AsInt >= 1) and IsQuestTaken('q_autorem_1') and not(IsQuestComplete('q_autorem_1'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_car_battery', 1); SetVar('q_autorem_item_car_battery', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_car_battery')"
+		nextReplies="Dlg_npc_q_autorem_1" />
+
+	<Reply
+		name="Dlg_npc_q_autorem_4"
+		text="Передать Автомобильный аккумулятор - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_car_battery', 1) and GetVar('q_autorem_item_car_battery').AsInt >= 1 and IsQuestTaken('q_autorem_1') and not(IsQuestComplete('q_autorem_1'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_car_battery', 1); SetVar('q_autorem_item_car_battery', 2); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_car_battery'); CompleteSubtask('q_autorem_1'); TActivate('SoundSubtaskComplete')"
+		nextReplies="Dlg_npc_q_autorem_1" />
+
+	<Reply
+		name="Dlg_npc_q_autorem_5"
+		text="Передать Свечу зажигания - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_svech', 1) and not(GetVar('q_autorem_item_svech').AsInt >= 3) and IsQuestTaken('q_autorem_2') and not(IsQuestComplete('q_autorem_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_svech', 1); SetVar('q_autorem_item_svech', GetVar('q_autorem_item_svech').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_svech')"
+		nextReplies="Dlg_npc_q_autorem_1" />
+
+	<Reply
+		name="Dlg_npc_q_autorem_6"
+		text="Передать Свечу зажигания - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_svech', 1) and GetVar('q_autorem_item_svech').AsInt >= 3 and IsQuestTaken('q_autorem_2') and not(IsQuestComplete('q_autorem_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_svech', 1); SetVar('q_autorem_item_svech', 4); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_svech'); CompleteSubtask('q_autorem_2'); TActivate('SoundSubtaskComplete')"
+		nextReplies="Dlg_npc_q_autorem_1" />
+
+	<Reply
+		name="Dlg_npc_q_autorem_7"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="IsQuestComplete('q_autorem')"
+		scriptResult="TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_autorem')"
+		nextReplies="Dlg_npc_q_autorem_9" />
+
+	<Reply
+		name="Dlg_npc_q_autorem_8"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_autorem') and not(IsQuestComplete('q_autorem'))"
+		nextReplies="Dlg_npc_terapist_1" />
+
+	<Reply
+		name="Dlg_npc_q_autorem_9"
+		text="Вы даже не представляете, что именно сделали для этих людей. Спасибо вам."
+		role="NPC"
+		nextReplies="Dlg_npc_q_autorem_10" />
+
+	<Reply
+		name="Dlg_npc_q_autorem_10"
+		text="Отлично. Мирное население нужно эвакуировать, им не место в зоне боевых действий."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Частная клиника-->
+
+	<Reply
+		name="Dlg_npc_q_private_clinic_1"
+		text="Здравствуйте. Я, как врач, считаю, что клятву Гиппократа надо блюсти даже в такое непростое время. Вот и появилась у меня идея частную клинику открыть, за здоровьем всегда надо следить, а уж в наших условиях и подавно. Но для этого мне необходимо некоторое оборудование. Я дам вам список того, что необходимо принести. Конкуренция мне ни к чему, чтобы не начались лишние разговоры, добыть приборы необходимо без лишнего шума и огласки, своими руками. Конечно же, я найду, чем вас отблагодарить за работу.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Предмет: @FF1D1D1DВысокотехнологичная электроника в продаже - x1|@FF404040- Предмет: @FF1D1D1DВысокотехнологичная электроника - x2|@FF404040- Предмет: @FF1D1D1DМонета EX - x1|@FF404040- Деньги: @FF1D1D1D150.000 монет"
+		role="NPC"
+		nextReplies="Dlg_npc_q_private_clinic_2 Dlg_npc_q_private_clinic_3 Dlg_npc_q_private_clinic_4 Dlg_npc_q_private_clinic_5 Dlg_npc_q_private_clinic_6" />
+
+	<Reply
+		name="Dlg_npc_q_private_clinic_2"
+		text="Хорошо, я поищу необходимое оборудование."
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_private_clinic'))"
+		scriptResult="TakeQuest('q_private_clinic'); TActivate('SoundQuestTaken'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_q_private_clinic_3"
+		text="Передать Офтальмоскоп - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_oftalmaskop', 1) and IsQuestTaken('q_private_clinic_1') and not(IsQuestComplete('q_private_clinic_1'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_oftalmaskop', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_oftalmaskop'); CompleteSubtask('q_private_clinic_1'); TActivate('SoundSubtaskComplete')"
+		nextReplies="Dlg_npc_q_private_clinic_1" />
+
+	<Reply
+		name="Dlg_npc_q_private_clinic_4"
+		text="Передать LEDX - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_ledx', 1) and IsQuestTaken('q_private_clinic_2') and not(IsQuestComplete('q_private_clinic_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_ledx', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_ledx'); CompleteSubtask('q_private_clinic_2'); TActivate('SoundSubtaskComplete')"
+		nextReplies="Dlg_npc_q_private_clinic_1" />
+
+	<Reply
+		name="Dlg_npc_q_private_clinic_5"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="IsQuestComplete('q_private_clinic')"
+		scriptResult="TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_private_clinic')"
+		nextReplies="Dlg_npc_q_private_clinic_7" />
+
+	<Reply
+		name="Dlg_npc_q_private_clinic_6"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_private_clinic') and not(IsQuestComplete('q_private_clinic'))"
+		nextReplies="Dlg_npc_terapist_1" />
+
+	<Reply
+		name="Dlg_npc_q_private_clinic_7"
+		text="Принесли? Отлично, положите всё мне на стол. Осторожно, оборудование очень хрупкое. Даже если не получится с клиникой, я знаю хороших людей, которых это заинтересует, между нами говоря. Зачем же пропадать зря такому дорогому оборудованию?"
+		role="NPC"
+		nextReplies="Dlg_npc_q_private_clinic_8" />
+
+	<Reply
+		name="Dlg_npc_q_private_clinic_8"
+		text="Я не совсем разбираюсь в медицинском оборудовании, но думаю, вы лучше знаете что с ним делать."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Доктор «Айболит»-->
+
+	<Reply
+		name="Dlg_npc_q_crisis_1"
+		text="Молодой человек, вы сейчас не заняты? У заинтересованных людей из-за границы, по ту сторону баррикад, есть интерес к большой партии ценного медицинского оборудования. Думаю они смогут найти им более достойное применение, чем этот сброд. Я была бы предельно благодарна, если бы вы нашли для меня нехватающие инструменты. Вот, держите. Это список всех необходимых предметов.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Предмет: @FF1D1D1DВысокотехнологичная электроника - x4|@FF404040- Предмет: @FF1D1D1DЗолотая цепочка - x2|@FF404040- Предмет: @FF1D1D1DАнанага - x1|@FF404040- Деньги: @FF1D1D1D100.000 монет"
+		role="NPC"
+		nextReplies="Dlg_npc_q_crisis_2 Dlg_npc_q_crisis_3 Dlg_npc_q_crisis_4 Dlg_npc_q_crisis_5 Dlg_npc_q_crisis_6 Dlg_npc_q_crisis_7 Dlg_npc_q_crisis_8 Dlg_npc_q_crisis_9" />
+
+	<Reply
+		name="Dlg_npc_q_crisis_2"
+		text="Список не маленький. Попробую поискать."
+		role="PLAYER"
+		scriptCondition="not(IsQuestTaken('q_crisis'))"
+		scriptResult="TakeQuest('q_crisis'); TActivate('SoundQuestTaken'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_q_crisis_3"
+		text="Передать Офтальмоскоп - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_oftalmaskop', 1) and IsQuestTaken('q_crisis_1') and not(IsQuestComplete('q_crisis_1'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_oftalmaskop', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_oftalmaskop'); CompleteSubtask('q_crisis_1'); TActivate('SoundSubtaskComplete')"
+		nextReplies="Dlg_npc_q_crisis_1" />
+
+	<Reply
+		name="Dlg_npc_q_crisis_4"
+		text="Передать LEDX - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_ledx', 1) and IsQuestTaken('q_crisis_2') and not(IsQuestComplete('q_crisis_2'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_ledx', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_ledx'); CompleteSubtask('q_crisis_2'); TActivate('SoundSubtaskComplete')"
+		nextReplies="Dlg_npc_q_crisis_1" />
+
+	<Reply
+		name="Dlg_npc_q_crisis_5"
+		text="Передать Набор медикаментов - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_med', 1) and not(GetVar('q_crisis_item_med').AsInt >= 5) and IsQuestTaken('q_crisis_3') and not(IsQuestComplete('q_crisis_3'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_med', 1); CompleteSubtaskIfVarEqualValue('q_crisis_3', 'q_crisis_item_med', 5); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_med')"
+		nextReplies="Dlg_npc_q_crisis_1" />
+
+	<Reply
+		name="Dlg_npc_q_crisis_6"
+		text="Передать Бутылку физраствора «NaCI» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_naci', 1) and not(GetVar('q_crisis_item_naci').AsInt >= 5) and IsQuestTaken('q_crisis_4') and not(IsQuestComplete('q_crisis_4'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_naci', 1); CompleteSubtaskIfVarEqualValue('q_crisis_4', 'q_crisis_item_naci', 5); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_naci')"
+		nextReplies="Dlg_npc_q_crisis_1" />
+
+	<Reply
+		name="Dlg_npc_q_crisis_7"
+		text="Передать Бутылку перекиси водорода «H2O2» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_h2o2', 1) and not(GetVar('q_crisis_item_h2o2').AsInt >= 5) and IsQuestTaken('q_crisis_5') and not(IsQuestComplete('q_crisis_5'))"
+		scriptResult="RemoveItemsFromPlayerRepository('item_h2o2', 1); CompleteSubtaskIfVarEqualValue('q_crisis_5', 'q_crisis_item_h2o2', 5); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_h2o2')"
+		nextReplies="Dlg_npc_q_crisis_1" />
+
+	<Reply
+		name="Dlg_npc_q_crisis_8"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="IsQuestComplete('q_crisis')"
+		scriptResult="TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_crisis')"
+		nextReplies="Dlg_npc_q_crisis_10" />
+
+	<Reply
+		name="Dlg_npc_q_crisis_9"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="IsQuestTaken('q_crisis') and not(IsQuestComplete('q_crisis'))"
+		nextReplies="Dlg_npc_terapist_1" />
+
+	<Reply
+		name="Dlg_npc_q_crisis_10"
+		text="Отлично, просто великолепно. Вы сделали доброе дело для всех нуждающихся."
+		role="NPC"
+		nextReplies="Dlg_npc_q_crisis_11" />
+
+	<Reply
+		name="Dlg_npc_q_crisis_11"
+		text="Надеюсь, эти поиски того стоили."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
 <!--Root/r0m0/Механик-->
 
 	<Reply
@@ -12027,6 +12804,26 @@
 		text="Приветствую тебя, друг! Чем я могу тебе помочь?"
 		role="NPC"
 		scriptCondition="IsQuestComplete('q_rebuild')"
+		nextReplies="Dlg_pl_mechanic_2 Dlg_pl_mechanic_3 Dlg_pl_npc_exit" />
+
+	<Reply
+		name="Dlg_pl_mechanic_2"
+		text="Задания."
+		role="PLAYER"
+		nextReplies="Dlg_npc_mechanic_quests" />
+
+	<Reply
+		name="Dlg_pl_mechanic_3"
+		text="Оружейная."
+		role="PLAYER"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+<!--Root/r0m0/Механик: Задания -->
+
+   <Reply
+		name="Dlg_npc_mechanic_quests"
+		text="Сейчас посмотрим, что можно тебе предложить."
+		role="NPC"
 		nextReplies="Dlg_pl_q_test_drive1 Dlg_pl_to_q_test_drive1 Dlg_pl_q_test_drive2 Dlg_pl_to_q_test_drive2 Dlg_pl_q_test_drive3 Dlg_pl_to_q_test_drive3 Dlg_pl_q_test_drive4 Dlg_pl_to_q_test_drive4 Dlg_pl_q_test_drive5 Dlg_pl_to_q_test_drive5 Dlg_pl_q_test_drive6 Dlg_pl_to_q_test_drive6 Dlg_pl_q_test_drive7 Dlg_pl_to_q_test_drive7 Dlg_pl_q_test_drive8 Dlg_pl_to_q_test_drive8 Dlg_pl_q_ural_or_belaz Dlg_pl_to_q_ural_or_belaz Dlg_pl_q_naturalist1 Dlg_pl_to_q_naturalist1 Dlg_pl_q_naturalist2 Dlg_pl_to_q_naturalist2 Dlg_pl_q_naturalist3 Dlg_pl_to_q_naturalist3 Dlg_pl_q_naturalist4 Dlg_pl_to_q_naturalist4 Dlg_pl_q_naturalist5 Dlg_pl_to_q_naturalist5 Dlg_pl_q_belazist1 Dlg_pl_to_q_belazist1 Dlg_pl_q_belazist2 Dlg_pl_to_q_belazist2 Dlg_pl_q_belazist3 Dlg_pl_to_q_belazist3 Dlg_pl_q_belazist4 Dlg_pl_to_q_belazist4 Dlg_pl_q_belazist5 Dlg_pl_to_q_belazist5 Dlg_pl_q_belazist6 Dlg_pl_to_q_belazist6 Dlg_pl_q_belazist7 Dlg_pl_to_q_belazist7 Dlg_pl_q_belazist8 Dlg_pl_to_q_belazist8 Dlg_pl_q_test_drive9 Dlg_pl_to_q_test_drive9 Dlg_pl_q_test_drive10 Dlg_pl_to_q_test_drive10 Dlg_pl_q_test_drive11 Dlg_pl_to_q_test_drive11 Dlg_pl_q_test_drive12 Dlg_pl_to_q_test_drive12 Dlg_pl_q_test_drive13 Dlg_pl_to_q_test_drive13 Dlg_pl_q_test_drive14 Dlg_pl_to_q_test_drive14 Dlg_pl_q_test_drive15 Dlg_pl_to_q_test_drive15 Dlg_pl_q_bitok1 Dlg_pl_to_q_bitok1 Dlg_pl_q_bitok2 Dlg_pl_to_q_bitok2 Dlg_pl_q_bitok3 Dlg_pl_to_q_bitok3 Dlg_pl_q_turbo Dlg_pl_to_q_turbo Dlg_pl_npc_exit" />
 
 <!--Тест драйв - Часть 1-->
@@ -12577,7 +13374,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive1') and not(IsQuestTaken('q_test_drive1_2'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_test_drive1_9"
@@ -12631,7 +13428,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive2') and not(IsQuestTaken('q_test_drive2_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_test_drive2_7"
@@ -12685,7 +13482,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive3') and not(IsQuestTaken('q_test_drive3_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_test_drive3_7"
@@ -12739,7 +13536,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive4') and not(IsQuestTaken('q_test_drive4_5'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_test_drive4_7"
@@ -12781,7 +13578,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive5') and not(IsQuestTaken('q_test_drive5_5'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_test_drive5_5"
@@ -12823,7 +13620,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive6') and not(IsQuestTaken('q_test_drive6_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_test_drive6_5"
@@ -12865,7 +13662,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive7') and not(IsQuestTaken('q_test_drive7_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_test_drive7_5"
@@ -12919,7 +13716,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive8') and not(IsQuestTaken('q_test_drive8_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_test_drive8_7"
@@ -12937,7 +13734,7 @@
 
 	<Reply
 		name="Dlg_pl_q_ural_or_belaz_1"
-		text="Привет Наёмник! Слушай, есть одно дело. Вообщем, нам хотят в ближайшее время привезти партию Белазов для тестов. Видел такие?"
+		text="Привет наёмник! Слушай, есть одно дело. Вообщем, нам хотят в ближайшее время привезти партию Белазов для тестов. Видел такие?"
 		role="NPC"
 		nextReplies="Dlg_pl_q_ural_or_belaz_2" />
 
@@ -13013,7 +13810,7 @@
 
 	<Reply
 		name="Dlg_npc_q_naturalist1_1"
-		text="Приветствую Наёмник! Я как раз закончил с делами, а значит можем приступить к заказам. Я как раз получил для тебя такой, с интересной сборкой Урала."
+		text="Приветствую наёмник! Я как раз закончил с делами, а значит можем приступить к заказам. Я как раз получил для тебя такой, с интересной сборкой Урала."
 		role="NPC"
 		nextReplies="Dlg_npc_q_naturalist1_2" />
 
@@ -13049,7 +13846,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_naturalist1') and not(IsQuestTaken('q_naturalist1_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_naturalist1_7"
@@ -13091,7 +13888,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_naturalist2') and not(IsQuestTaken('q_naturalist2_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_naturalist2_5"
@@ -13109,7 +13906,7 @@
 
 	<Reply
 		name="Dlg_npc_q_naturalist3_1"
-		text="Привет Наёмник! Думаю ты уже соскучился по классным и убойным сборкам, ведь так?"
+		text="Привет наёмник! Думаю ты уже соскучился по классным и убойным сборкам, ведь так?"
 		role="NPC"
 		nextReplies="Dlg_npc_q_naturalist3_2" />
 
@@ -13157,7 +13954,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_naturalist3') and not(IsQuestTaken('q_naturalist3_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_naturalist3_9"
@@ -13199,7 +13996,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_naturalist4') and not(IsQuestTaken('q_naturalist4_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_naturalist4_5"
@@ -13217,7 +14014,7 @@
 
 	<Reply
 		name="Dlg_npc_q_naturalist5_1"
-		text="Привет Наёмник. У меня остался для тебя последний заказ на сборку Урала, но очень интересный, думаю, он тебе понравиться."
+		text="Привет наёмник. У меня остался для тебя последний заказ на сборку Урала, но очень интересный, думаю, он тебе понравиться."
 		role="NPC"
 		nextReplies="Dlg_npc_q_naturalist5_2" />
 
@@ -13253,7 +14050,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_naturalist5') and not(IsQuestTaken('q_naturalist5_5'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_naturalist5_7"
@@ -13271,7 +14068,7 @@
 
 	<Reply
 		name="Dlg_npc_q_belazist1_1"
-		text="Здорова Наёмник! К нам как раз приехала первая партия Белазов, так что, мы можем начать работать уже сейчас. Ты готов?"
+		text="Здорова наёмник! К нам как раз приехала первая партия Белазов, так что, мы можем начать работать уже сейчас. Ты готов?"
 		role="NPC"
 		nextReplies="Dlg_npc_q_belazist1_2" />
 
@@ -13307,7 +14104,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_belazist1') and not(IsQuestTaken('q_belazist1_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_belazist1_7"
@@ -13349,7 +14146,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_belazist2') and not(IsQuestTaken('q_belazist2_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_belazist2_5"
@@ -13391,7 +14188,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_belazist3') and not(IsQuestTaken('q_belazist3_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_belazist3_5"
@@ -13409,7 +14206,7 @@
 
 	<Reply
 		name="Dlg_npc_q_belazist4_1"
-		text="Привет Наёмник. У меня есть для тебя один заказ, было бы не плохо сделать эту сборку и протестировать её в бою. Ты готов?"
+		text="Привет наёмник. У меня есть для тебя один заказ, было бы не плохо сделать эту сборку и протестировать её в бою. Ты готов?"
 		role="NPC"
 		nextReplies="Dlg_npc_q_belazist4_2" />
 
@@ -13445,7 +14242,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_belazist4') and not(IsQuestTaken('q_belazist4_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_belazist4_7"
@@ -13463,7 +14260,7 @@
 
 	<Reply
 		name="Dlg_npc_q_belazist5_1"
-		text="Приветствую тебя Наёмник! Хорошо что ты зашёл, у меня для тебя есть один заказ с достаточно не обычной сборкой, было бы не плохо её протестировать."
+		text="Приветствую тебя наёмник! Хорошо что ты зашёл, у меня для тебя есть один заказ с достаточно не обычной сборкой, было бы не плохо её протестировать."
 		role="NPC"
 		nextReplies="Dlg_npc_q_belazist5_2" />
 
@@ -13499,7 +14296,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_belazist5') and not(IsQuestTaken('q_belazist5_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_belazist5_7"
@@ -13517,7 +14314,7 @@
 
 	<Reply
 		name="Dlg_npc_q_belazist6_1"
-		text="Здравствуй Наёмник. Я вот всё думаю, хорошо что мы всё таки с тобой с работались. Ты и мне здорово помогаешь со сборками и сам опытней становишься."
+		text="Здравствуй наёмник. Я вот всё думаю, хорошо что мы всё таки с тобой с работались. Ты и мне здорово помогаешь со сборками и сам опытней становишься."
 		role="NPC"
 		nextReplies="Dlg_npc_q_belazist6_2" />
 
@@ -13565,7 +14362,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_belazist6') and not(IsQuestTaken('q_belazist6_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_belazist6_9"
@@ -13619,7 +14416,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_belazist7') and not(IsQuestTaken('q_belazist7_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_belazist7_7"
@@ -13637,7 +14434,7 @@
 
 	<Reply
 		name="Dlg_npc_q_belazist8_1"
-		text="Здравствуй Наёмник, есть одно дельце. Как я говорил, прошлый заказ на Белаз должен был быть последним, но не тут то было. Пришёл заказ на ещё одну сборку и она довольно необычная, давно я не видел ничего такого."
+		text="Здравствуй наёмник, есть одно дельце. Как я говорил, прошлый заказ на Белаз должен был быть последним, но не тут то было. Пришёл заказ на ещё одну сборку и она довольно необычная, давно я не видел ничего такого."
 		role="NPC"
 		nextReplies="Dlg_npc_q_belazist8_2" />
 
@@ -13673,7 +14470,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_belazist8') and not(IsQuestTaken('q_belazist8_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_belazist8_7"
@@ -13727,7 +14524,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive9') and not(IsQuestTaken('q_test_drive9_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_test_drive9_7"
@@ -13769,7 +14566,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive10') and not(IsQuestTaken('q_test_drive10_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_test_drive10_5"
@@ -13787,7 +14584,7 @@
 
 	<Reply
 		name="Dlg_npc_q_test_drive11_1"
-		text="Привет Наёмник. У меня для тебя есть классный заказ на сборку Миротворца. Интересует?"
+		text="Привет наёмник. У меня для тебя есть классный заказ на сборку Миротворца. Интересует?"
 		role="NPC"
 		nextReplies="Dlg_npc_q_test_drive11_2" />
 
@@ -13823,7 +14620,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive11') and not(IsQuestTaken('q_test_drive11_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_test_drive11_7"
@@ -13841,7 +14638,7 @@
 
 	<Reply
 		name="Dlg_npc_q_test_drive12_1"
-		text="Привет, есть работа. Сборка немного похожа на предыдущую, но с другим вооружением. Требуется установить на Миротворца три дробовика Флаг и одну пушку Циклоп. Вся мощность вооружения заключается в одном выстреле, так что промахи не допустимы. Но ты, Наёмник, боец уже с опытом, так что я в тебе не сомневаюсь. За дело!|@FF0000AA|Кабина: @FF1D1D1DБулат (Уровень IV)|Кузов: @FF1D1D1DЭкскалибур (Уровень V)|Вооружение: @FF1D1D1DФлаг - x3, Циклоп - x1|@FF0000AA|@FF1D1D1DНаграда:|- Кабина: @FF1D1D1DФантом (Миротворец, Уровень V) в продаже|- Гаджет: @FF1D1D1DКомплекс ''FireEye'' - x1|- Плазменная установка: @FF1D1D1DСлон - x1|- Дробовик: @FF1D1D1DФлаг в продаже - x1|- Предмет: @FF1D1D1DБаллон с жидкостью для Плазменной пушки - x1|- Предмет: @FF1D1D1DЯщик патронов для Дробовика - x1|- Деньги: @FF1D1D1D120.000 монет"
+		text="Привет, есть работа. Сборка немного похожа на предыдущую, но с другим вооружением. Требуется установить на Миротворца три дробовика Флаг и одну пушку Циклоп. Вся мощность вооружения заключается в одном выстреле, так что промахи не допустимы. Но ты, наёмник, боец уже с опытом, так что я в тебе не сомневаюсь. За дело!|@FF0000AA|Кабина: @FF1D1D1DБулат (Уровень IV)|Кузов: @FF1D1D1DЭкскалибур (Уровень V)|Вооружение: @FF1D1D1DФлаг - x3, Циклоп - x1|@FF0000AA|@FF1D1D1DНаграда:|- Кабина: @FF1D1D1DФантом (Миротворец, Уровень V) в продаже|- Гаджет: @FF1D1D1DКомплекс ''FireEye'' - x1|- Плазменная установка: @FF1D1D1DСлон - x1|- Дробовик: @FF1D1D1DФлаг в продаже - x1|- Предмет: @FF1D1D1DБаллон с жидкостью для Плазменной пушки - x1|- Предмет: @FF1D1D1DЯщик патронов для Дробовика - x1|- Деньги: @FF1D1D1D120.000 монет"
 		role="NPC"
 		nextReplies="Dlg_npc_q_test_drive12_2 Dlg_npc_q_test_drive12_3 Dlg_npc_q_test_drive12_4" />
 	
@@ -13865,7 +14662,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive12') and not(IsQuestTaken('q_test_drive12_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_test_drive12_5"
@@ -13925,7 +14722,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive13') and not(IsQuestTaken('q_test_drive13_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_test_drive13_7"
@@ -13950,7 +14747,7 @@
 
 	<Reply
 		name="Dlg_npc_q_test_drive14_1"
-		text="Привет Наёмник, у меня для тебя есть новый заказ."
+		text="Привет наёмник, у меня для тебя есть новый заказ."
 		role="NPC"
 		nextReplies="Dlg_npc_q_test_drive14_2" />
 
@@ -13986,7 +14783,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive14') and not(IsQuestTaken('q_test_drive14_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_test_drive14_7"
@@ -14004,7 +14801,7 @@
 
 	<Reply
 		name="Dlg_npc_q_test_drive15_1"
-		text="Здравствуй Наёмник. Пришёл заказ на новую сборку для Крейсера. Мне понадобиться твоя помощь."
+		text="Здравствуй наёмник. Пришёл заказ на новую сборку для Крейсера. Мне понадобиться твоя помощь."
 		role="NPC"
 		nextReplies="Dlg_npc_q_test_drive15_2" />
 
@@ -14040,7 +14837,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive15') and not(IsQuestTaken('q_test_drive15_4'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_test_drive15_7"
@@ -14166,7 +14963,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_bitok1') and not(IsQuestComplete('q_bitok1'))"
-		nextReplies="Dlg_npc_mechanic_1"/>
+		nextReplies="Dlg_npc_mechanic_quests"/>
 
 	<Reply
 		name="Dlg_npc_q_bitok1_15"
@@ -14256,7 +15053,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_bitok2') and not(IsQuestComplete('q_bitok2'))"
-		nextReplies="Dlg_npc_mechanic_1"/>
+		nextReplies="Dlg_npc_mechanic_quests"/>
 
 	<Reply
 		name="Dlg_npc_q_bitok2_11"
@@ -14286,7 +15083,7 @@
 
 	<Reply
 		name="Dlg_npc_q_bitok3_3"
-		text="Так как я уже тогда начинал заниматься биткоин фермой, я заранее заказал четыре партии видеокарт, но к сожалению дошли только две. Как ты видишь, недостающие видеокарты мне по прежнему нужны. Отслеживание товара прервалось в городе Южный, думаю, он все еще там. Если тебе удастся его найти, ты здорово мне поможешь.|@FF0000AA|@FF1D1D1DНаграда:|- Неизвестная награда"
+		text="Так как я уже тогда начинал заниматься биткоин фермой, я заранее заказал четыре партии видеокарт, но к сожалению дошли только две. Как ты видишь, недостающие видеокарты мне по прежнему нужны. Отслеживание товара прервалось в городе Южный, думаю, он всё ещё там. Если тебе удастся его найти, ты здорово мне поможешь.|@FF0000AA|@FF1D1D1DНаграда:|- Неизвестная награда"
 		role="NPC"
 		nextReplies="Dlg_npc_q_bitok3_4 Dlg_npc_q_bitok3_5 Dlg_npc_q_bitok3_6" />
 
@@ -14310,7 +15107,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_bitok3') and not(IsQuestComplete('q_bitok3'))"
-		nextReplies="Dlg_npc_mechanic_1"/>
+		nextReplies="Dlg_npc_mechanic_quests"/>
 
 	<Reply
 		name="Dlg_npc_q_bitok3_7"
@@ -14364,7 +15161,7 @@
 		text="Назад."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_turbo') and not(IsQuestTaken('q_turbo_3'))"
-		nextReplies="Dlg_npc_mechanic_1" />
+		nextReplies="Dlg_npc_mechanic_quests" />
 
 	<Reply
 		name="Dlg_npc_q_turbo_7"
@@ -14377,6 +15174,246 @@
 		text="Отличное устройство, я продолжу им пользоваться."
 		role="PLAYER"
 		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Механик: Оружейная-->
+
+	<Reply
+		name="Dlg_npc_mechanic_guns"
+		text="У меня ты можешь модифицировать своё вооружение. Я единственный опытный специалист в этой сфере, разбираюсь не только в технике, но и в пушках. Если заинтересован, то тащи своё вооружение ко мне.|@FF0000AA|@FF1D1D1D[Положите необходимое для модификации вооружение себе в кузов]"
+		role="NPC"
+		nextReplies="Dlg_pl_mod_guns_1 Dlg_pl_mod_guns_2 Dlg_pl_mod_guns_3 Dlg_pl_mod_guns_4 Dlg_pl_mod_guns_5 Dlg_pl_mod_guns_6 Dlg_pl_mod_guns_7 Dlg_pl_mod_guns_8 Dlg_pl_mod_guns_9 Dlg_pl_mod_guns_10 Dlg_pl_mod_guns_11 Dlg_pl_mod_guns_12 Dlg_pl_mod_guns_13 Dlg_pl_mod_guns_14 Dlg_pl_mod_guns_15 Dlg_pl_mod_guns_16 Dlg_pl_mod_guns_17 Dlg_pl_mod_guns_18 Dlg_pl_mod_guns_19 Dlg_pl_mod_guns_20 Dlg_pl_mod_guns_21 Dlg_pl_mod_guns_22 Dlg_pl_mod_guns_23 Dlg_pl_mod_guns_24 Dlg_pl_mod_guns_25 Dlg_pl_mod_guns_26 Dlg_pl_mod_guns_27 Dlg_pl_mod_guns_28 Dlg_pl_mod_guns_29 Dlg_pl_npc_exit" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_1"
+		text="Модифицировать Шершень (Стоимость: 200 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('hornet01', 1) and GetPlayerMoney() >= 200"
+		scriptResult="RemoveItemsFromPlayerRepository('hornet01', 1); AddGunWithRandomAffix('hornet01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'hornet01'); AddPlayerMoney(-200)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_2"
+		text="Модифицировать Американский шершень (Стоимость: 300 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('american_hornet01', 1) and GetPlayerMoney() >= 300"
+		scriptResult="RemoveItemsFromPlayerRepository('american_hornet01', 1); AddGunWithRandomAffix('american_hornet01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'american_hornet01'); AddPlayerMoney(-300)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_3"
+		text="Модифицировать Спектр (Стоимость: 800 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('specter01', 1) and GetPlayerMoney() >= 800"
+		scriptResult="RemoveItemsFromPlayerRepository('specter01', 1); AddGunWithRandomAffix('specter01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'specter01'); AddPlayerMoney(-800)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_4"
+		text="Модифицировать ПКТ (Стоимость: 1.100 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('pkt01', 1) and GetPlayerMoney() >= 1100"
+		scriptResult="RemoveItemsFromPlayerRepository('pkt01', 1); AddGunWithRandomAffix('pkt01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'pkt01'); AddPlayerMoney(-1100)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_5"
+		text="Модифицировать Корд (Стоимость: 1.600 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('kord01', 1) and GetPlayerMoney() >= 1600"
+		scriptResult="RemoveItemsFromPlayerRepository('kord01', 1); AddGunWithRandomAffix('kord01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'kord01'); AddPlayerMoney(-1600)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_6"
+		text="Модифицировать Шторм (Стоимость: 1.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('storm01', 1) and GetPlayerMoney() >= 1000"
+		scriptResult="RemoveItemsFromPlayerRepository('storm01', 1); AddGunWithRandomAffix('storm01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'storm01'); AddPlayerMoney(-1000)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_7"
+		text="Модифицировать Фагот (Стоимость: 3.500 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('fagot01', 1) and GetPlayerMoney() >= 3500"
+		scriptResult="RemoveItemsFromPlayerRepository('fagot01', 1); AddGunWithRandomAffix('fagot01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'fagot01'); AddPlayerMoney(-3500)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_8"
+		text="Модифицировать Максим (Стоимость: 3.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('maxim01', 1) and GetPlayerMoney() >= 3000"
+		scriptResult="RemoveItemsFromPlayerRepository('maxim01', 1); AddGunWithRandomAffix('maxim01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'maxim01'); AddPlayerMoney(-3000)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_9"
+		text="Модифицировать Вектор (Стоимость: 1.500 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('vector01', 1) and GetPlayerMoney() >= 1500"
+		scriptResult="RemoveItemsFromPlayerRepository('vector01', 1); AddGunWithRandomAffix('vector01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'vector01'); AddPlayerMoney(-1500)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_10"
+		text="Модифицировать Вулкан (Стоимость: 2.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('vulcan01', 1) and GetPlayerMoney() >= 2000"
+		scriptResult="RemoveItemsFromPlayerRepository('vulcan01', 1); AddGunWithRandomAffix('vulcan01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'vulcan01'); AddPlayerMoney(-2000)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_11"
+		text="Модифицировать КПВТ (Стоимость: 3.500 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('kpvt01', 1) and GetPlayerMoney() >= 3500"
+		scriptResult="RemoveItemsFromPlayerRepository('kpvt01', 1); AddGunWithRandomAffix('kpvt01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'kpvt01'); AddPlayerMoney(-3500)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_12"
+		text="Модифицировать Рапиру (Стоимость: 4.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('rapier01', 1) and GetPlayerMoney() >= 4000"
+		scriptResult="RemoveItemsFromPlayerRepository('rapier01', 1); AddGunWithRandomAffix('rapier01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'rapier01'); AddPlayerMoney(-4000)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_13"
+		text="Модифицировать Флаг (Стоимость: 6.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('flag01', 1) and GetPlayerMoney() >= 6000"
+		scriptResult="RemoveItemsFromPlayerRepository('flag01', 1); AddGunWithRandomAffix('flag01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'flag01'); AddPlayerMoney(-6000)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_14"
+		text="Модифицировать Рейнметалл (Стоимость: 10.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('rainmetal01', 1) and GetPlayerMoney() >= 10000"
+		scriptResult="RemoveItemsFromPlayerRepository('rainmetal01', 1); AddGunWithRandomAffix('rainmetal01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'rainmetal01'); AddPlayerMoney(-10000)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_15"
+		text="Модифицировать Слон (Стоимость: 8.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('elephant01', 1) and GetPlayerMoney() >= 8000"
+		scriptResult="RemoveItemsFromPlayerRepository('elephant01', 1); AddGunWithRandomAffix('elephant01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'elephant01'); AddPlayerMoney(-8000)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_16"
+		text="Модифицировать Один (Стоимость: 15.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('odin01', 1) and GetPlayerMoney() >= 15000"
+		scriptResult="RemoveItemsFromPlayerRepository('odin01', 1); AddGunWithRandomAffix('odin01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'odin01'); AddPlayerMoney(-15000)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_17"
+		text="Модифицировать Омегу (Стоимость: 3.500 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('omega01', 1) and GetPlayerMoney() >= 3500"
+		scriptResult="RemoveItemsFromPlayerRepository('omega01', 1); AddGunWithRandomAffix('omega01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'omega01'); AddPlayerMoney(-3500)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_18"
+		text="Модифицировать Шмель (Стоимость: 2.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('bumblebee01', 1) and GetPlayerMoney() >= 2000"
+		scriptResult="RemoveItemsFromPlayerRepository('bumblebee01', 1); AddGunWithRandomAffix('bumblebee01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'bumblebee01'); AddPlayerMoney(-2000)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_19"
+		text="Модифицировать Молот Тора (Стоимость: 20.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('hammer01', 1) and GetPlayerMoney() >= 20000"
+		scriptResult="RemoveItemsFromPlayerRepository('hammer01', 1); AddGunWithRandomAffix('hammer01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'hammer01'); AddPlayerMoney(-20000)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_20"
+		text="Модифицировать Охотник (Стоимость: 5.750 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('hunterSideGun', 1) and GetPlayerMoney() >= 5750"
+		scriptResult="RemoveItemsFromPlayerRepository('hunterSideGun', 1); AddGunWithRandomAffix('hunterSideGun'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'hunterSideGun'); AddPlayerMoney(-5750)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_21"
+		text="Модифицировать Мрак (Стоимость: 8.300 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('mrakSideGun', 1) and GetPlayerMoney() >= 8300"
+		scriptResult="RemoveItemsFromPlayerRepository('mrakSideGun', 1); AddGunWithRandomAffix('mrakSideGun'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'mrakSideGun'); AddPlayerMoney(-8300)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+	
+	<Reply
+		name="Dlg_pl_mod_guns_22"
+		text="Модифицировать Свингфайр (Стоимость: 4.200 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('big_swingfire01', 1) and GetPlayerMoney() >= 4200"
+		scriptResult="RemoveItemsFromPlayerRepository('big_swingfire01', 1); AddGunWithRandomAffix('big_swingfire01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'big_swingfire01'); AddPlayerMoney(-4200)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_23"
+		text="Модифицировать Циклоп (Стоимость: 4.500 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('cyclops01', 1) and GetPlayerMoney() >= 4500"
+		scriptResult="RemoveItemsFromPlayerRepository('cyclops01', 1); AddGunWithRandomAffix('cyclops01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'cyclops01'); AddPlayerMoney(-4500)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_24"
+		text="Модифицировать Спрут (Стоимость: 5.850 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('octopus01', 1) and GetPlayerMoney() >= 5850"
+		scriptResult="RemoveItemsFromPlayerRepository('octopus01', 1); AddGunWithRandomAffix('octopus01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'octopus01'); AddPlayerMoney(-5850)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_25"
+		text="Модифицировать Град (Стоимость: 15.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('hailSideGun', 1) and GetPlayerMoney() >= 15000"
+		scriptResult="RemoveItemsFromPlayerRepository('hailSideGun', 1); AddGunWithRandomAffix('hailSideGun'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'hailSideGun'); AddPlayerMoney(-15000)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_26"
+		text="Модифицировать Ураган (Стоимость: 5.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('hurricane01', 1) and GetPlayerMoney() >= 5000"
+		scriptResult="RemoveItemsFromPlayerRepository('hurricane01', 1); AddGunWithRandomAffix('hurricane01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'hurricane01'); AddPlayerMoney(-5000)"
+		nextReplies="Dlg_npc_mechanic_guns" /> 
+
+	<Reply
+		name="Dlg_pl_mod_guns_27"
+		text="Модифицировать Дракон (Стоимость: 6.400 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('rocketLauncher', 1) and GetPlayerMoney() >= 6400"
+		scriptResult="RemoveItemsFromPlayerRepository('rocketLauncher', 1); AddGunWithRandomAffix('rocketLauncher'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'rocketLauncher'); AddPlayerMoney(-6400)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_28"
+		text="Модифицировать Зевс (Стоимость: 18.000 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('zeusSideGun', 1) and GetPlayerMoney() >= 18000"
+		scriptResult="RemoveItemsFromPlayerRepository('zeusSideGun', 1); AddGunWithRandomAffix('zeusSideGun'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'zeusSideGun'); AddPlayerMoney(-18000)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_29"
+		text="Модифицировать Марс (Стоимость: 7.250 монет)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('marsSideGun', 1) and GetPlayerMoney() >= 7250"
+		scriptResult="RemoveItemsFromPlayerRepository('marsSideGun', 1); AddGunWithRandomAffix('marsSideGun'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'marsSideGun'); AddPlayerMoney(-7250)"
+		nextReplies="Dlg_npc_mechanic_guns" />
 
 <!--Root/r0m0/Скупщик-->
 
@@ -14439,5 +15476,147 @@
 		text="Выход."
 		role="PLAYER"
 		scriptResult="EndConversation()" />
+
+<!--Root/r0m0/Диалог с дикими-->
+
+	<Reply
+		name="Dlg_npc_Scav_1"
+		text="Здорова, брат! Чё как оно?"
+		role="NPC"
+		scriptCondition="GetVar('ScavCarNPC').AsString ~= GetVar('ScavCarFollowName').AsString"
+		nextReplies="Dlg_pl_Scav_give_money Dlg_pl_Scav_follow Dlg_pl_Scav_exit" />
+
+	<Reply
+		name="Dlg_pl_Scav_exit"
+		text="Ну, я поехал. Покеда."
+		role="PLAYER"
+		scriptResult="SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', 0); EndConversation()" />
+
+<!--Root/r0m0/Попросить у диких денег-->
+	<Reply
+		name="Dlg_pl_Scav_give_money"
+		text="Братуха, выручай. Не отсыпишь парочку монет?"
+		role="PLAYER"
+		nextReplies="Dlg_npc_Scav_give_money_1 Dlg_npc_Scav_give_money_2" />
+
+<!--Root/r0m0/Сопровождение-->
+	<Reply
+		name="Dlg_pl_Scav_follow"
+		text="Мы с бандой собираемся навести шухеру. Ты с нами?"
+		role="PLAYER"
+		scriptCondition="GetVar('ScavCarFollowName').AsString == '0'"
+		nextReplies="Dlg_npc_Scav_follow_1 Dlg_npc_Scav_follow_2" />
+
+<!--Root/r0m0/Отпустить дикого-->
+	<Reply
+		name="Dlg_pl_Scav_del_follow"
+		text="Отбой. Можешь ехать по своим делам."
+		role="PLAYER"
+		scriptCondition="GetVar('ScavCarFollowName').AsString ~= '0'"
+		scriptResult="TDeactivate('tr_horn'); TActivate('tr_del_follow'); SetVar('ScavNPC', '0'); EndConversation()" />
+
+<!--Root/r0m0/Попросить у диких денег: Дикий согласен-->
+
+	<Reply
+		name="Dlg_npc_Scav_give_money_1"
+		text="Если у тебя будет что-нибудь в замен, так и быть, можем договориться."
+		role="NPC"
+		scriptCondition="GetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString).AsInt == 1"
+		nextReplies="Dlg_pl_Scav_give_money_1 Dlg_pl_Scav_give_money_2" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_1"
+		text="Водочка интересует?"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_vodka', 1)"
+		nextReplies="Dlg_npc_Scav_give_money_3" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_2"
+		text="Я подумаю."
+		role="PLAYER"
+		scriptResult="TDeactivate('tr_horn'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_Scav_give_money_3"
+		text="Вот с этого и нужно было начинать разговор. Такое мне по душе. Давай её сюда!"
+		role="NPC"
+		nextReplies="Dlg_pl_Scav_give_money_4 Dlg_pl_Scav_give_money_5" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_4"
+		text="Передать Водку - x1"
+		role="PLAYER"
+		scriptResult="TDeactivate('tr_horn'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', 0); RemoveItemsFromPlayerRepository('item_vodka', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_vodka'); AddPlayerMoney(random(5000, 12000)); EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_5"
+		text="Я передумал."
+		role="PLAYER"
+		nextReplies="Dlg_npc_Scav_1" />
+
+<!--Root/r0m0/Попросить у диких денег: Дикий не согласен-->
+
+	<Reply
+		name="Dlg_npc_Scav_give_money_2"
+		text="Неа.. братуха, сам на мели. Ничем не могу помочь."
+		role="NPC"
+		scriptCondition="GetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString).AsInt ~= 1"
+		nextReplies="Dlg_pl_Scav_give_money_3" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_3"
+		text="Эх, ладно. Пойду по шуршу по схронам, может найду чего."
+		role="PLAYER"
+		scriptResult="TDeactivate('tr_horn'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', 0); EndConversation()" />
+
+<!--Root/r0m0/Сопровождение: Дикий согласен-->
+
+	<Reply
+		name="Dlg_npc_Scav_follow_1"
+		text="Ну капец вам залётные. Я вами! Только чур командование берешь на себя, идёт?"
+		role="NPC"
+		scriptCondition="GetVar('DlgFollow_'..GetVar('ScavCarNPC').AsString).AsInt == 1"
+		nextReplies="Dlg_pl_Scav_follow_2 Dlg_pl_Scav_follow_3" />
+
+	<Reply
+		name="Dlg_pl_Scav_follow_2"
+		text="Согласен! Поехали."
+		role="PLAYER"
+		scriptResult="TDeactivate('tr_horn'); TActivate('tr2'); SetVar('ScavCarFollowNPC', GetVar('ScavNPC').AsString); SetVar('ScavNPC', '0'); EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_Scav_follow_3"
+		text="Постой пока здесь, надо подумать, обсудить план."
+		role="PLAYER"
+		scriptResult="TDeactivate('tr_horn'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', 0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_Scav_follow_4"
+		text="Ну чё, каков план, куда едем?"
+		role="NPC"
+		scriptCondition="GetVar('ScavCarNPC').AsString == GetVar('ScavCarFollowName').AsString"
+		nextReplies="Dlg_pl_Scav_del_follow Dlg_pl_Scav_follow_5" />
+
+	<Reply
+		name="Dlg_pl_Scav_follow_5"
+		text="Продолжаем движение."
+		role="PLAYER"
+		scriptResult="TDeactivate('tr_horn'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', 0); EndConversation()" />
+
+<!--Root/r0m0/Сопровождение: Дикий не согласен-->
+
+	<Reply
+		name="Dlg_npc_Scav_follow_2"
+		text="Чёт как-то в падлу. Не хочется лишний раз рисковать, давайте без меня."
+		role="NPC"
+		scriptCondition="GetVar('DlgFollow_'..GetVar('ScavCarNPC').AsString).AsInt ~= 1"
+		nextReplies="Dlg_pl_Scav_follow_4" />
+
+	<Reply
+		name="Dlg_pl_Scav_follow_4"
+		text="Ну ладно, как скажешь. Бывай."
+		role="PLAYER"
+		scriptResult="TDeactivate('tr_horn'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', 0); EndConversation()" />
 
 </DialogsResource>

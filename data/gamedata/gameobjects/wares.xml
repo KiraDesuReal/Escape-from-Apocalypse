@@ -208,12 +208,12 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "scrap_metal_use_ForSale"
-		Price	= "5"
+		Price	= "11"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= "lom"
 		VisibleInEncyclopedia	= "false"
-		ResourceType= "SCRAP_METAL_USE" />
+		ResourceType= "USE_ITEM_FOR_SALE" />
 
 	<Prototype
 		Class		= "Ware"
@@ -237,12 +237,12 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "machinery_use_ForSale"
-		Price	= "12"
+		Price	= "24"
 		Durability	= "30"
 		PriceDispersion      = "5"
 		ModelFile	= "rabochee_oborudovanie"
 		VisibleInEncyclopedia	= "false"
-		ResourceType= "MACHINERY_USE" />
+		ResourceType= "USE_ITEM_FOR_SALE" />
 
 	<Prototype
 		Class		= "Ware"
@@ -266,12 +266,12 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "electronics_use_ForSale"
-		Price	= "18"
+		Price	= "35"
 		Durability	= "20"
 		PriceDispersion      = "5"
 		ModelFile	= "mikro"
 		VisibleInEncyclopedia	= "false"
-		ResourceType= "ELECTRONICS_USE" />
+		ResourceType= "USE_ITEM_FOR_SALE" />
 
 	<Prototype
 		Class		= "Ware"
@@ -374,7 +374,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "ammo_chest_artillerygunForSale"
-		Price	= "38"
+		Price	= "48"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= "ammo_chest_artillerygun"
@@ -403,7 +403,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "ammo_chest_heavygunForSale"
-		Price	= "27"
+		Price	= "30"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= "ammo_chest_heavygun"
@@ -432,7 +432,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "ammo_chest_machinegunForSale"
-		Price	= "14"
+		Price	= "18"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= "ammo_chest_machinegun"
@@ -461,7 +461,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "ammo_chest_rocketgunForSale"
-		Price	= "33"
+		Price	= "44"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= "ammo_chest_rocketgun"
@@ -490,7 +490,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "ammo_chest_shotgunForSale"
-		Price	= "10"
+		Price	= "12"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= "ammo_chest_shotgun"
@@ -557,12 +557,12 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "ammo_ballon_turboForSale"
-		Price	= "26"
+		Price	= "29"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= "ammo_ballon_turbo"
 		VisibleInEncyclopedia	= "false"
-		ResourceType= "ITEM_SIZE_2X2" />
+		ResourceType= "ITEM_AMMO_BALLON_TURBO_FOR_SALE" />
 
 	<Prototype
 		Class		= "Ware"

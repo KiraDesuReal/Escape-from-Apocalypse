@@ -5393,6 +5393,9 @@
 			SetVar("DlgMoney_ScavCar_1_vehicle_0", RandomFromScavCarma())
 			SetVar("DlgMoney_ScavCar_2_vehicle_0", RandomFromScavCarma())
 
+			SetVar("DlgMoneyAngry_ScavCar_1_vehicle_0", random(2))
+			SetVar("DlgMoneyAngry_ScavCar_2_vehicle_0", random(2))
+
 			SetVar("DlgFollow_ScavCar_1_vehicle_0", 1)
 			SetVar("DlgFollow_ScavCar_2_vehicle_0", RandomFromScavCarma())
 
@@ -5421,7 +5424,7 @@
 				end
 			end
 
-			local runF = GetEntityByName(GetVar("ScavCarFollowName").AsString)
+			local runF = GetEntityByName("ScavCarFollow_vehicle_0")
 			if runF and runF:IsAlive() then
 				len = Dist(pl, runF)
 				if (15 >= len) then
@@ -5429,27 +5432,27 @@
 				end
 			end
 
-			if l ~= 0 and getObj("tr_horn"):IsActivated() == 0 then 
+			if l ~= 0 and getObj("PressHornToSpeekScav"):IsActivated() == 0 then 
 				if c ~= 0 then
 					SetVar("ScavNPC", GetVar("ScavCar_"..c.."_NPC").AsString)
 					SetVar("ScavCarNPC", "ScavCar_"..c.."_vehicle_0")
 				else
 					SetVar("ScavNPC", GetVar("ScavCarFollowNPC").AsString)
-					SetVar("ScavCarNPC", GetVar("ScavCarFollowName").AsString)
+					SetVar("ScavCarNPC", "ScavCarFollow_vehicle_0")
 				end
-				TActivate("tr_horn")
+				TActivate("PressHornToSpeekScav")
 				AddFadingMsgByStrIdFormatted("fm_press_horn_to_speek_scav")
 				SoundFadingMsg()
-			elseif l == 0 and getObj("tr_horn"):IsActivated() == 1 then 
+			elseif l == 0 and getObj("PressHornToSpeekScav"):IsActivated() == 1 then 
 				con("L 0")
 				SetVar("ScavNPC", "0")
 				SetVar("ScavCarNPC", "0")
-				TDeactivate("tr_horn") 
+				TDeactivate("PressHornToSpeekScav") 
 			end
 		</script>
 	</trigger>
 
-	<trigger Name="tr_horn" active="0">
+	<trigger Name="PressHornToSpeekScav" active="0">
 		<event eventid="GE_PLAYER_VEHICLE_HORN" ObjName="Player1" />
 		<script>
 			StartConversation(GetVar("ScavNPC").AsString)
@@ -5465,7 +5468,7 @@
             objName		= "ScavCarFollow" }
 
 			local newController = GetEntityByID(newControllerId)
-			local FVehicle = GetEntityByName(GetVar("ScavCarFollowName").AsString)
+			local FVehicle = GetEntityByName("ScavCarFollow_vehicle_0")
 			if FVehicle then
 				newController:setVehicleUnderControl(FVehicle)
 			end
@@ -5473,13 +5476,13 @@
 		</script>
 	</trigger>
 
-	<trigger Name="tr_del_follow" active="0">
+	<trigger Name="RemoveScavCarForFollow" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 			local Controller = GetEntityByName("ScavCarFollow")
 			if Controller then Controller:Remove() end
 
-			local veh = GetEntityByName(GetVar("ScavCarFollowName").AsString)
+			local veh = GetEntityByName("ScavCarFollow_vehicle_0")
 			if veh then 
 				veh:Remove()
 			end
@@ -5490,35 +5493,32 @@
 		</script>
 	</trigger>
 
-	<trigger Name="tr2" active="0">
+	<trigger Name="CreateCopyScavCarForFollow" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 			local veh = GetEntityByName(GetVar("ScavCarNPC").AsString)
 			if veh then
 				local prot = veh:GetProperty("Prototype").AsString
+
 				local smallgun = veh:GetPartByName("CABIN_SMALL_GUN")
 				if smallgun then
 					local smallgunprot = smallgun:GetProperty("Prototype").AsString
 				end
-				if prot == "Fighter2CarScav" or prot == "Hunter2CarScav" then
-					local biggun = veh:GetPartByName("CABIN_BIG_GUN_1")
-					if biggun then
-						local biggunprot = biggun:GetProperty("Prototype").AsString
-					end
+
+				local biggun = veh:GetPartByName("CABIN_BIG_GUN_1")
+				if biggun then
+					local biggunprot = biggun:GetProperty("Prototype").AsString
 				end
+		
 				local skin = veh:GetSkin()
 				local pos = veh:GetPosition()
 				local rot = veh:GetRotation()
 
 				veh:Remove()
 
-				local name = "ScavCarFollow_"..random(10000)
-				con(name)
-				SetVar("ScavCarFollowName", name.."_vehicle_0")
-			
-				TeamCreate(name, 1100, pos, {prot})
+				TeamCreate("ScavCarFollow", 1100, pos, {prot})
 
-				local newveh = GetEntityByName(name.."_vehicle_0")
+				local newveh = GetEntityByName("ScavCarFollow_vehicle_0")
 				if newveh then
 					newveh:SetSkin(skin)
 					newveh:SetRotation(rot)
@@ -5535,7 +5535,7 @@
 			trigger:Deactivate()
 		</script>
 	</trigger>
-
+	
 <!--
 **************************************************************************************************
 ** ÊÂÅÑÒÛ

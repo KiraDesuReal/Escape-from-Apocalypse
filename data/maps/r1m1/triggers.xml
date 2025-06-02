@@ -57,6 +57,10 @@
 
 			SetVar("BossFrendly", 0)
 
+			SetVar("ScavCarFollowNPC", "0")
+			SetVar("ScavNPC", "0")
+			SetVar("ScavCarNPC", "0")
+
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1284,9 +1288,10 @@
 				local sv = GetEntityByName ("Scav"..j.."_loc1_vehicle_0")
 				if sv then
 					sv:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
-					local biggunspawn = random(100)
-					if model == "Fighter2CarScav" or model == "Hunter2CarScav" and biggunspawn >= 70 then
-						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+					if model == "Fighter2CarScav" or model == "Hunter2CarScav" then
+						if 30 >= random(100) then
+							sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+						end
 					end
 					AddAmmoItemsForGuns(sv, random(0,1))
 				end
@@ -1306,6 +1311,17 @@
 				getObj("ScavInLocation01_Die"):AddEvent("GE_OBJECT_DIE", "Scav"..k.."_loc1_vehicle_0")
 				getObj("ScavInLocation01_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "Scav"..k.."_loc1_vehicle_0")
 				SetVar("Scav"..k.."_loc1_vehicle_0_UnderAttack", 0)
+
+				if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+					SetVar("Scav"..k.."_loc1_NPC", "Scav_"..random(10).."_NPC")
+					SetVar("DlgMoney_Scav"..k.."_loc1_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgMoneyAngry_Scav"..k.."_loc1_vehicle_0", random(2))
+					SetVar("DlgUseItems_Scav"..k.."_loc1_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgUseItems_15000_Scav"..k.."_loc1_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgUseItems_20000_Scav"..k.."_loc1_vehicle_0", random(2))
+					SetVar("DlgUseItemsAngry_Scav"..k.."_loc1_vehicle_0", random(2))
+					SetVar("DlgFollow_Scav"..k.."_loc1_vehicle_0", RandomFromScavCarma())
+				end
 			end
 
 			SetVar("CountScav_1_loc", count_scav)
@@ -1313,6 +1329,10 @@
 			TActivate("ScavInLocation01_UnderAttack")
 		
 			TActivate("SpawnScavsInLocation01_Leaves")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				if getObj("ScavCarDist"):IsActivated() == 0 then TActivate("ScavCarDist") end
+			end
 
 			trigger:Deactivate()
 		</script>
@@ -1351,6 +1371,10 @@
 			TDeactivate("SpawnScavsInLocation01_Enters")
 			TDeactivate("SpawnScavsInLocation01_Leaves")
 			TDeactivate("ScavInLocation01_Dist")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				TActivate("trDeactivateScavCarDist")
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1386,6 +1410,10 @@
 			TDeactivate("ScavInLocation01_Dist")
 			TDeactivate("SpawnScavsInLocation01_Leaves")
 			TDeactivate("ScavInLocation01_UnderAttack")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				TActivate("trDeactivateScavCarDist")
+			end
 
 			for s1=1,GetVar("CountScav_1_loc").AsInt do
 				local sv1 = GetEntityByName("Scav"..s1.."_loc1_vehicle_0")
@@ -1473,9 +1501,8 @@
 				local sv = GetEntityByName ("Scav"..j.."_loc2_vehicle_0")
 				if sv then
 					sv:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
-					local biggunspawn = random(100)
 					if model == "Fighter2CarScav" or model == "Hunter2CarScav" then
-						if biggunspawn >= 70  then
+						if 30 >= random(100)  then
 							sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
 						end
 					end
@@ -1497,6 +1524,17 @@
 				getObj("ScavInLocation02_Die"):AddEvent("GE_OBJECT_DIE", "Scav"..k.."_loc2_vehicle_0")
 				getObj("ScavInLocation02_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "Scav"..k.."_loc2_vehicle_0")
 				SetVar("Scav"..k.."_loc2_vehicle_0_UnderAttack", 0)
+
+				if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+					SetVar("Scav"..k.."_loc2_NPC", "Scav_"..random(10).."_NPC")
+					SetVar("DlgMoney_Scav"..k.."_loc2_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgMoneyAngry_Scav"..k.."_loc2_vehicle_0", random(2))
+					SetVar("DlgUseItems_Scav"..k.."_loc2_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgUseItems_15000_Scav"..k.."_loc2_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgUseItems_20000_Scav"..k.."_loc2_vehicle_0", random(2))
+					SetVar("DlgUseItemsAngry_Scav"..k.."_loc2_vehicle_0", random(2))
+					SetVar("DlgFollow_Scav"..k.."_loc2_vehicle_0", RandomFromScavCarma())
+				end
 			end
 
 			SetVar("CountScav_2_loc", count_scav)
@@ -1504,6 +1542,10 @@
 			TActivate("ScavInLocation02_UnderAttack")
 
 			TActivate("SpawnScavsInLocation02_Leaves")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				if getObj("ScavCarDist"):IsActivated() == 0 then TActivate("ScavCarDist") end
+			end
 
 			trigger:Deactivate()
 		</script>
@@ -1542,6 +1584,10 @@
 			TDeactivate("SpawnScavsInLocation02_Enters")
 			TDeactivate("SpawnScavsInLocation02_Leaves")
 			TDeactivate("ScavInLocation02_Dist")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				TActivate("trDeactivateScavCarDist")
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1577,6 +1623,10 @@
 			TDeactivate("ScavInLocation02_Dist")
 			TDeactivate("SpawnScavsInLocation02_Leaves")
 			TDeactivate("ScavInLocation02_UnderAttack")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				TActivate("trDeactivateScavCarDist")
+			end
 
 			for s1=1,GetVar("CountScav_2_loc").AsInt do
 				local sv1 = GetEntityByName("Scav"..s1.."_loc2_vehicle_0")
@@ -1667,9 +1717,10 @@
 				local sv = GetEntityByName ("Scav"..j.."_loc3_vehicle_0")
 				if sv then
 					sv:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
-					local biggunspawn = random(100)
-					if model == "Fighter2CarScav" or model == "Hunter2CarScav" and biggunspawn >= 70 then
-						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+					if model == "Fighter2CarScav" or model == "Hunter2CarScav" then
+						if 30 >= random(100) then
+							sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+						end
 					end
 					AddAmmoItemsForGuns(sv, random(0,1))
 				end
@@ -1689,6 +1740,17 @@
 				getObj("ScavInLocation03_Die"):AddEvent("GE_OBJECT_DIE", "Scav"..k.."_loc3_vehicle_0")
 				getObj("ScavInLocation03_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "Scav"..k.."_loc3_vehicle_0")
 				SetVar("Scav"..k.."_loc3_vehicle_0_UnderAttack", 0)
+
+				if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+					SetVar("Scav"..k.."_loc3_NPC", "Scav_"..random(10).."_NPC")
+					SetVar("DlgMoney_Scav"..k.."_loc3_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgMoneyAngry_Scav"..k.."_loc3_vehicle_0", random(2))
+					SetVar("DlgUseItems_Scav"..k.."_loc3_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgUseItems_15000_Scav"..k.."_loc3_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgUseItems_20000_Scav"..k.."_loc3_vehicle_0", random(2))
+					SetVar("DlgUseItemsAngry_Scav"..k.."_loc3_vehicle_0", random(2))
+					SetVar("DlgFollow_Scav"..k.."_loc3_vehicle_0", RandomFromScavCarma())
+				end
 			end
 
 			SetVar("CountScav_3_loc", count_scav)
@@ -1696,6 +1758,10 @@
 			TActivate("ScavInLocation03_UnderAttack")
 		
 			TActivate("SpawnScavsInLocation03_Leaves")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				if getObj("ScavCarDist"):IsActivated() == 0 then TActivate("ScavCarDist") end
+			end
 
 			trigger:Deactivate()
 		</script>
@@ -1735,6 +1801,10 @@
 			TDeactivate("SpawnScavsInLocation03_Enters")
 			TDeactivate("SpawnScavsInLocation03_Leaves")
 			TDeactivate("ScavInLocation03_Dist")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				TActivate("trDeactivateScavCarDist")
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1770,6 +1840,10 @@
 			TDeactivate("ScavInLocation03_Dist")
 			TDeactivate("SpawnScavsInLocation03_Leaves")
 			TDeactivate("ScavInLocation03_UnderAttack")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				TActivate("trDeactivateScavCarDist")
+			end
 
 			for s1=1,GetVar("CountScav_3_loc").AsInt do
 				local sv1 = GetEntityByName("Scav"..s1.."_loc3_vehicle_0")
@@ -1856,9 +1930,10 @@
 				local sv = GetEntityByName ("Scav"..j.."_loc4_vehicle_0")
 				if sv then
 					sv:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
-					local biggunspawn = random(100)
-					if model == "Fighter2CarScav" or model == "Hunter2CarScav" and biggunspawn >= 70 then
-						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+					if model == "Fighter2CarScav" or model == "Hunter2CarScav" then
+						if 30 >= random(100) then
+							sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+						end
 					end
 					AddAmmoItemsForGuns(sv, random(0,1))
 				end
@@ -1878,6 +1953,17 @@
 				getObj("ScavInLocation04_Die"):AddEvent("GE_OBJECT_DIE", "Scav"..k.."_loc4_vehicle_0")
 				getObj("ScavInLocation04_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "Scav"..k.."_loc4_vehicle_0")
 				SetVar("Scav"..k.."_loc4_vehicle_0_UnderAttack", 0)
+
+				if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+					SetVar("Scav"..k.."_loc4_NPC", "Scav_"..random(10).."_NPC")
+					SetVar("DlgMoney_Scav"..k.."_loc4_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgMoneyAngry_Scav"..k.."_loc4_vehicle_0", random(2))
+					SetVar("DlgUseItems_Scav"..k.."_loc4_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgUseItems_15000_Scav"..k.."_loc4_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgUseItems_20000_Scav"..k.."_loc4_vehicle_0", random(2))
+					SetVar("DlgUseItemsAngry_Scav"..k.."_loc4_vehicle_0", random(2))
+					SetVar("DlgFollow_Scav"..k.."_loc4_vehicle_0", RandomFromScavCarma())
+				end
 			end
 
 			SetVar("CountScav_4_loc", count_scav)
@@ -1885,6 +1971,10 @@
 			TActivate("ScavInLocation04_UnderAttack")
 
 			TActivate("SpawnScavsInLocation04_Leaves")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				if getObj("ScavCarDist"):IsActivated() == 0 then TActivate("ScavCarDist") end
+			end
 
 			trigger:Deactivate()
 		</script>
@@ -1923,6 +2013,10 @@
 			TDeactivate("SpawnScavsInLocation04_Enters")
 			TDeactivate("SpawnScavsInLocation04_Leaves")
 			TDeactivate("ScavInLocation04_Dist")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				TActivate("trDeactivateScavCarDist")
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1958,6 +2052,10 @@
 			TDeactivate("ScavInLocation04_Dist")
 			TDeactivate("SpawnScavsInLocation04_Leaves")
 			TDeactivate("ScavInLocation04_UnderAttack")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				TActivate("trDeactivateScavCarDist")
+			end
 
 			for s1=1,GetVar("CountScav_4_loc").AsInt do
 				local sv1 = GetEntityByName("Scav"..s1.."_loc4_vehicle_0")
@@ -2046,9 +2144,10 @@
 				local sv = GetEntityByName ("Scav"..j.."_loc5_vehicle_0")
 				if sv then
 					sv:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
-					local biggunspawn = random(100)
-					if model == "Fighter2CarScav" or model == "Hunter2CarScav" and biggunspawn >= 70 then
-						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+					if model == "Fighter2CarScav" or model == "Hunter2CarScav"  then
+						if 30 >= random(100) then
+							sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+						end
 					end
 					AddAmmoItemsForGuns(sv, random(0,1))
 				end
@@ -2068,6 +2167,17 @@
 				getObj("ScavInLocation05_Die"):AddEvent("GE_OBJECT_DIE", "Scav"..k.."_loc5_vehicle_0")
 				getObj("ScavInLocation05_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "Scav"..k.."_loc5_vehicle_0")
 				SetVar("Scav"..k.."_loc5_vehicle_0_UnderAttack", 0)
+
+				if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+					SetVar("Scav"..k.."_loc5_NPC", "Scav_"..random(10).."_NPC")
+					SetVar("DlgMoney_Scav"..k.."_loc5_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgMoneyAngry_Scav"..k.."_loc5_vehicle_0", random(2))
+					SetVar("DlgUseItems_Scav"..k.."_loc5_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgUseItems_15000_Scav"..k.."_loc5_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgUseItems_20000_Scav"..k.."_loc5_vehicle_0", random(2))
+					SetVar("DlgUseItemsAngry_Scav"..k.."_loc5_vehicle_0", random(2))
+					SetVar("DlgFollow_Scav"..k.."_loc5_vehicle_0", RandomFromScavCarma())
+				end
 			end
 
 			SetVar("CountScav_5_loc", count_scav)
@@ -2075,6 +2185,10 @@
 			TActivate("ScavInLocation05_UnderAttack")
 
 			TActivate("SpawnScavsInLocation05_Leaves")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				if getObj("ScavCarDist"):IsActivated() == 0 then TActivate("ScavCarDist") end
+			end
 
 			trigger:Deactivate()
 		</script>
@@ -2113,6 +2227,10 @@
 			TDeactivate("SpawnScavsInLocation05_Enters")
 			TDeactivate("SpawnScavsInLocation05_Leaves")
 			TDeactivate("ScavInLocation05_Dist")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				TActivate("trDeactivateScavCarDist")
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -2148,6 +2266,10 @@
 			TDeactivate("ScavInLocation05_Dist")
 			TDeactivate("SpawnScavsInLocation05_Leaves")
 			TDeactivate("ScavInLocation05_UnderAttack")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				TActivate("trDeactivateScavCarDist")
+			end
 
 			for s1=1,GetVar("CountScav_5_loc").AsInt do
 				local sv1 = GetEntityByName("Scav"..s1.."_loc5_vehicle_0")
@@ -2246,9 +2368,10 @@
 				local sv = GetEntityByName ("Scav"..j.."_loc6_vehicle_0")
 				if sv then
 					sv:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
-					local biggunspawn = random(100)
-					if model == "Fighter2CarScav" or model == "Hunter2CarScav" and biggunspawn >= 70 then
-						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+					if model == "Fighter2CarScav" or model == "Hunter2CarScav" then
+						if 30 >= random(100) then
+							sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+						end
 					end
 					AddAmmoItemsForGuns(sv, random(0,1))
 				end
@@ -2268,6 +2391,17 @@
 				getObj("ScavInLocation06_Die"):AddEvent("GE_OBJECT_DIE", "Scav"..k.."_loc6_vehicle_0")
 				getObj("ScavInLocation06_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "Scav"..k.."_loc6_vehicle_0")
 				SetVar("Scav"..k.."_loc6_vehicle_0_UnderAttack", 0)
+
+				if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+					SetVar("Scav"..k.."_loc6_NPC", "Scav_"..random(10).."_NPC")
+					SetVar("DlgMoney_Scav"..k.."_loc6_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgMoneyAngry_Scav"..k.."_loc6_vehicle_0", random(2))
+					SetVar("DlgUseItems_Scav"..k.."_loc6_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgUseItems_15000_Scav"..k.."_loc6_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgUseItems_20000_Scav"..k.."_loc6_vehicle_0", random(2))
+					SetVar("DlgUseItemsAngry_Scav"..k.."_loc6_vehicle_0", random(2))
+					SetVar("DlgFollow_Scav"..k.."_loc6_vehicle_0", RandomFromScavCarma())
+				end
 			end
 
 			SetVar("CountScav_6_loc", count_scav)
@@ -2275,6 +2409,10 @@
 			TActivate("ScavInLocation06_UnderAttack")
 
 			TActivate("SpawnScavsInLocation06_Leaves")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				if getObj("ScavCarDist"):IsActivated() == 0 then TActivate("ScavCarDist") end
+			end
 
 			trigger:Deactivate()
 		</script>
@@ -2313,6 +2451,10 @@
 			TDeactivate("SpawnScavsInLocation06_Enters")
 			TDeactivate("SpawnScavsInLocation06_Leaves")
 			TDeactivate("ScavInLocation06_Dist")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				TActivate("trDeactivateScavCarDist")
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -2348,6 +2490,10 @@
 			TDeactivate("ScavInLocation06_Dist")
 			TDeactivate("SpawnScavsInLocation06_Leaves")
 			TDeactivate("ScavInLocation06_UnderAttack")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				TActivate("trDeactivateScavCarDist")
+			end
 
 			for s1=1,GetVar("CountScav_6_loc").AsInt do
 				local sv1 = GetEntityByName("Scav"..s1.."_loc6_vehicle_0")
@@ -2440,9 +2586,10 @@
 				local sv = GetEntityByName ("Scav"..j.."_loc7_vehicle_0")
 				if sv then
 					sv:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
-					local biggunspawn = random(100)
-					if model == "Fighter2CarScav" or model == "Hunter2CarScav" and biggunspawn >= 70 then
-						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+					if model == "Fighter2CarScav" or model == "Hunter2CarScav" then
+						if 30 >= random(100) then
+							sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+						end
 					end
 					AddAmmoItemsForGuns(sv, random(0,1))
 				end
@@ -2462,6 +2609,17 @@
 				getObj("ScavInLocation07_Die"):AddEvent("GE_OBJECT_DIE", "Scav"..k.."_loc7_vehicle_0")
 				getObj("ScavInLocation07_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "Scav"..k.."_loc7_vehicle_0")
 				SetVar("Scav"..k.."_loc7_vehicle_0_UnderAttack", 0)
+
+				if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+					SetVar("Scav"..k.."_loc7_NPC", "Scav_"..random(10).."_NPC")
+					SetVar("DlgMoney_Scav"..k.."_loc7_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgMoneyAngry_Scav"..k.."_loc7_vehicle_0", random(2))
+					SetVar("DlgUseItems_Scav"..k.."_loc7_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgUseItems_15000_Scav"..k.."_loc7_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgUseItems_20000_Scav"..k.."_loc7_vehicle_0", random(2))
+					SetVar("DlgUseItemsAngry_Scav"..k.."_loc7_vehicle_0", random(2))
+					SetVar("DlgFollow_Scav"..k.."_loc7_vehicle_0", RandomFromScavCarma())
+				end
 			end
 
 			SetVar("CountScav_7_loc", count_scav)
@@ -2469,6 +2627,10 @@
 			TActivate("ScavInLocation07_UnderAttack")
 
 			TActivate("SpawnScavsInLocation07_Leaves")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				if getObj("ScavCarDist"):IsActivated() == 0 then TActivate("ScavCarDist") end
+			end
 
 			trigger:Deactivate()
 		</script>
@@ -2507,6 +2669,10 @@
 			TDeactivate("SpawnScavsInLocation07_Enters")
 			TDeactivate("SpawnScavsInLocation07_Leaves")
 			TDeactivate("ScavInLocation07_Dist")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				TActivate("trDeactivateScavCarDist")
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -2542,6 +2708,10 @@
 			TDeactivate("ScavInLocation07_Dist")
 			TDeactivate("SpawnScavsInLocation07_Leaves")
 			TDeactivate("ScavInLocation07_UnderAttack")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				TActivate("trDeactivateScavCarDist")
+			end
 
 			for s1=1,GetVar("CountScav_7_loc").AsInt do
 				local sv1 = GetEntityByName("Scav"..s1.."_loc7_vehicle_0")
@@ -2638,9 +2808,10 @@
 				local sv = GetEntityByName ("Scav"..j.."_loc8_vehicle_0")
 				if sv then
 					sv:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
-					local biggunspawn = random(100)
-					if model == "Fighter2CarScav" or model == "Hunter2CarScav" and biggunspawn >= 70 then
-						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+					if model == "Fighter2CarScav" or model == "Hunter2CarScav" then
+						if 30 >= random(100) then
+							sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+						end
 					end
 					AddAmmoItemsForGuns(sv, random(0,1))
 				end
@@ -2660,6 +2831,17 @@
 				getObj("ScavInLocation08_Die"):AddEvent("GE_OBJECT_DIE", "Scav"..k.."_loc8_vehicle_0")
 				getObj("ScavInLocation08_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "Scav"..k.."_loc8_vehicle_0")
 				SetVar("Scav"..k.."_loc8_vehicle_0_UnderAttack", 0)
+
+				if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+					SetVar("Scav"..k.."_loc8_NPC", "Scav_"..random(10).."_NPC")
+					SetVar("DlgMoney_Scav"..k.."_loc8_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgMoneyAngry_Scav"..k.."_loc8_vehicle_0", random(2))
+					SetVar("DlgUseItems_Scav"..k.."_loc8_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgUseItems_15000_Scav"..k.."_loc8_vehicle_0", RandomFromScavCarma())
+					SetVar("DlgUseItems_20000_Scav"..k.."_loc8_vehicle_0", random(2))
+					SetVar("DlgUseItemsAngry_Scav"..k.."_loc8_vehicle_0", random(2))
+					SetVar("DlgFollow_Scav"..k.."_loc8_vehicle_0", RandomFromScavCarma())
+				end
 			end
 
 			SetVar("CountScav_8_loc", count_scav)
@@ -2667,6 +2849,10 @@
 			TActivate("ScavInLocation08_UnderAttack")
 		
 			TActivate("SpawnScavsInLocation08_Leaves")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				if getObj("ScavCarDist"):IsActivated() == 0 then TActivate("ScavCarDist") end
+			end
 
 			trigger:Deactivate()
 		</script>
@@ -2705,6 +2891,10 @@
 			TDeactivate("SpawnScavsInLocation08_Enters")
 			TDeactivate("SpawnScavsInLocation08_Leaves")
 			TDeactivate("ScavInLocation08_Dist")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				TActivate("trDeactivateScavCarDist")
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -2740,6 +2930,10 @@
 			TDeactivate("ScavInLocation08_Dist")
 			TDeactivate("SpawnScavsInLocation08_Leaves")
 			TDeactivate("ScavInLocation08_UnderAttack")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				TActivate("trDeactivateScavCarDist")
+			end
 
 			for s1=1,GetVar("CountScav_8_loc").AsInt do
 				local sv1 = GetEntityByName("Scav"..s1.."_loc8_vehicle_0")
@@ -4476,7 +4670,6 @@
 			TActivate("Scavs_Dead")
 			TActivate("Scavs_UnderAttack")
 			SetVar("CountScavs", scav_count)
-		
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4545,6 +4738,260 @@
 				TActivate("KillsScavs") 
 			end
 			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+<!-- Открыть диалог с дикими -->
+	<trigger Name="PressHornToSpeekScav" active="0">
+		<event eventid="GE_PLAYER_VEHICLE_HORN" ObjName="Player1" />
+		<script>
+			StartConversation(GetVar("ScavNPC").AsString)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Следование дикого за игроком -->
+	<trigger Name="CreateCopyScavCarForFollow" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local veh = GetEntityByName(GetVar("ScavCarNPC").AsString)
+			if veh then
+				local prot = veh:GetProperty("Prototype").AsString
+				local smallgunprot, biggunprot = 0, 0
+
+				local smallgun = veh:GetPartByName("CABIN_SMALL_GUN")
+				if smallgun then
+					smallgunprot = smallgun:GetProperty("Prototype").AsString
+				end
+
+				local biggun = veh:GetPartByName("CABIN_BIG_GUN_1")
+				if biggun then
+					biggunprot = biggun:GetProperty("Prototype").AsString
+				end
+
+				local skin = veh:GetSkin()
+				local pos = veh:GetPosition()
+				local rot = veh:GetRotation()
+
+				veh:Remove()
+
+				TeamCreate("ScavCarFollow", 1082, pos, {prot}, nil, 1)
+
+				local newveh = GetEntityByName("ScavCarFollow_vehicle_0")
+				if newveh then
+					newveh:SetSkin(skin)
+					newveh:SetRotation(rot)
+					if smallgun and smallgunprot then
+						newveh:SetNewPart("CABIN_SMALL_GUN", smallgunprot)
+					end
+					if biggun and biggunprot then
+						newveh:SetNewPart("CABIN_BIG_GUN_1", biggunprot)
+					end
+					AddAmmoItemsForGuns(newveh, random(0,1))
+				end
+			end
+
+			TActivate("trScavCarFollow")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="trScavCarFollow" active="0">
+		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>
+			local newControllerId = CreateNewObject {
+            prototypeName	= "someNPCMotionController",
+            objName		= "ControllerScavCarFollow" }
+
+			local newController = GetEntityByID(newControllerId)
+			local FVehicle = GetEntityByName("ScavCarFollow_vehicle_0")
+			if FVehicle then
+				newController:setVehicleUnderControl(FVehicle)
+			end
+
+			AddImportantFadingMsgByStrIdFormatted("fm_scav_follow_to_player")
+			SoundFadingMsg()
+
+			if getObj("ScavCarDist"):IsActivated() == 0 then TActivate("ScavCarDist") end
+			TActivate("ScavCarFollowDie")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="RemoveScavCarForFollow" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local Controller = GetEntityByName("ControllerScavCarFollow")
+			if Controller then Controller:Remove() end
+
+			local veh = GetEntityByName("ScavCarFollow_vehicle_0")
+			if veh then veh:Remove() end
+			
+			SetVar("ScavCarFollowNPC", "0")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				TActivate("trDeactivateScavCarDist")
+			end
+			TDeactivate("ScavCarFollowDie")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ScavCarFollowDie" active="0">
+		<event eventid="GE_OBJECT_DIE" ObjName="ScavCarFollow_vehicle_0" />
+		<script>
+			TActivate("RemoveScavCarForFollow")
+
+			AddImportantFadingMsgByStrIdFormatted("fm_scav_follow_die")
+			SoundFadingMsg()
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Создать копию вражевской машины дикого к игроку дикому -->
+	<trigger Name="CreateCopyEmenyScavCar" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local veh = GetEntityByName(GetVar("ScavCarNPC").AsString)
+			if veh then
+				local prot = veh:GetProperty("Prototype").AsString
+				local smallgunprot, biggunprot = 0, 0
+
+				local smallgun = veh:GetPartByName("CABIN_SMALL_GUN")
+				if smallgun then
+					smallgunprot = smallgun:GetProperty("Prototype").AsString
+				end
+
+				local biggun = veh:GetPartByName("CABIN_BIG_GUN_1")
+				if biggun then
+					biggunprot = biggun:GetProperty("Prototype").AsString
+				end
+
+				local skin = veh:GetSkin()
+				local pos = veh:GetPosition()
+				local rot = veh:GetRotation()
+
+				veh:Remove()
+
+				TeamCreate("ScavCarEnemy", 1083, pos, {prot}, nil, 1)
+
+				local ItemsUse = {"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use"}
+
+				local newveh = GetEntityByName("ScavCarEnemy_vehicle_0")
+				if newveh then
+					newveh:SetSkin(skin)
+					newveh:SetRotation(rot)
+					if smallgun and smallgunprot then
+						newveh:SetNewPart("CABIN_SMALL_GUN", smallgunprot)
+					end
+					if biggun and biggunprot then
+						newveh:SetNewPart("CABIN_BIG_GUN_1", biggunprot)
+					end
+					AddAmmoItemsForGuns(newveh, random(0,1))
+					newveh:AddItemsToRepository(ItemsUse[random(getn(ItemsUse))], 1)
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Отслеживание расстояния между игроком и дикими -->
+	<trigger Name="ScavCarDist" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			local len
+			local l, c, kk = 0, 0, 0
+			local name
+
+			for k = 1, 8 do
+				local count = GetVar("CountScav_"..k.."_loc").AsInt
+				if count > 0 then
+					for i = 1, count do
+						local run = GetEntityByName("Scav"..i.."_loc"..k.."_vehicle_0")
+						if run and run:IsAlive() then
+							len = Dist(pl, run)
+							if (10 >= len) then
+								l = l + 1
+								c = i
+								kk = k
+								name = run:GetName()
+							end
+						end
+					end
+				end
+			end
+
+			local runF = GetEntityByName("ScavCarFollow_vehicle_0")
+			if runF and runF:IsAlive() then
+				len = Dist(pl, runF)
+				if (15 >= len) then
+					l = l + 1
+					name = runF:GetName()
+				end
+			end
+
+			if l ~= 0 and getObj("PressHornToSpeekScav"):IsActivated() == 0 then
+				if GetVar("DlgMoney_"..name).AsInt ~= 3 and GetVar("DlgUseItems_"..name).AsInt ~= 3 then
+					if kk ~= 0 then SetVar("ScavNPC", GetVar("Scav"..c.."_loc"..kk.."_NPC").AsString) end
+					if name == "ScavCarFollow_vehicle_0" then SetVar("ScavNPC", GetVar("ScavCarFollowNPC").AsString) end
+					SetVar("ScavCarNPC", name)
+					TActivate("PressHornToSpeekScav")
+					AddFadingMsgByStrIdFormatted("fm_press_horn_to_speek_scav")
+				end
+			elseif l == 0 and getObj("PressHornToSpeekScav"):IsActivated() == 1 then
+				SetVar("ScavNPC", "0")
+				SetVar("ScavCarNPC", "0")
+				TDeactivate("PressHornToSpeekScav") 
+			end
+		
+			if 1.5 >= GetTolerance(1100, 1082) then
+				if runF then 
+					local Controller = GetEntityByName("ControllerScavCarFollow")
+					if Controller then Controller:Remove() end
+
+					AddImportantFadingMsgByStrIdFormatted("fm_scav_follow_if_enemy")
+					SoundFadingMsg()
+
+					SetVar("ScavCarFollowNPC", "0")
+
+					TDeactivate("ScavCarFollowDie")
+					TDeactivate("trScavCarFollow")
+				end
+				SetVar("ScavNPC", "0")
+				SetVar("ScavCarNPC", "0")
+				TDeactivate("PressHornToSpeekScav") 
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="trDeactivateScavCarDist" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local l = 0
+
+			for k = 1, 8 do
+				local count = GetVar("CountScav_"..k.."_loc").AsInt
+				if count > 0 then
+					for i = 1, count do
+						local veh = GetEntityByName("Scav"..i.."_loc"..k.."_vehicle_0")
+						if veh then
+							l = l + 1
+						end
+					end
+				end
+			end
+
+			local follow = GetEntityByName("ScavCarFollow_vehicle_0")
+			if follow then
+				l = l + 1
+			end
+
+			if l == 0 then
+				TDeactivate("ScavCarDist")
+			end
+			trigger:Deactivate()
 		</script>
 	</trigger>
 
@@ -5081,6 +5528,11 @@
 			TDeactivate("Scavs_Reached")
 			TDeactivate("Scavs_Dead")
 			TDeactivate("Scavs_UnderAttack")
+		
+			TDeactivate("PressHornToSpeekScav")
+			TDeactivate("trScavCarFollow")
+			TActivate("RemoveScavCarForFollow")
+			TDeactivate("ScavCarDist")
 
 			for s_count=1,GetVar("CountScavs").AsInt do
 				local scavs = GetEntityByName("Scav_"..s_count.."_vehicle_0")
@@ -5091,6 +5543,9 @@
 				getObj("Scavs_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav_"..s_count.."_vehicle_0")
 				SetVar("Scav_"..s_count.."_vehicle_0_UnderAttack", 0)
 			end
+
+			local scavEnemy = GetEntityByName("ScavCarEnemy_vehicle_0")
+			if scavEnemy then scavEnemy:Remove() end
 
 			TDeactivate("FakePlayerDead")
 			getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")

@@ -245,28 +245,18 @@ $Id: Relationship.xml,v 1.19 2005/11/24 09:45:17 anton Exp $
 			tolerance="enemy" />
 
 		<set
-			forwhom="1082"
-			who="1083 1084"
-			tolerance="ally" />
-
-		<set
-			forwhom="1083"
-			who="1084"
-			tolerance="ally" />
-
-		<set
 			forwhom="1085"
 			who="1100 1088 1089 1090 1091 1092 1093"
 			tolerance="ally" />
 
 		<set
 			forwhom="1086"
-			who="1082 1083 1084"
+			who="1082"
 			tolerance="ally" />
 
 		<set
 			forwhom="1087"
-			who="1082 1083 1084 1086"
+			who="1082 1086"
 			tolerance="ally" />
 
 		<set
@@ -299,4 +289,8 @@ $Id: Relationship.xml,v 1.19 2005/11/24 09:45:17 anton Exp $
 			who="1100"
 			tolerance="ally" />
 
+		<set
+			forwhom="1082"
+			who="1083"
+			tolerance="ally" />
 </relationship>

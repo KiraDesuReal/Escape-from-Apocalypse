@@ -12057,7 +12057,7 @@
 
 	<Reply
 		name="Dlg_npc_q_first_in_line_5"
-		text="На локации Край находиться больница, после катастрофы здание осталось не тронутым, все оборудование должно быть в рабочем состоянии. Найдите это место и заберите с собой несколько медикаментов. После я отправлю своих людей проверить территорию.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Предмет: @FF1D1D1DКрепкий металл - x1|@FF404040- Предмет: @FF1D1D1DУлучшенное оборудование - x1|@FF404040- Деньги: @FF1D1D1D15.000 монет"
+		text="На локации Край находится больница, после катастрофы здание осталось не тронутым, все оборудование должно быть в рабочем состоянии. Найдите это место и заберите с собой несколько медикаментов. После я отправлю своих людей проверить территорию.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Предмет: @FF1D1D1DКрепкий металл - x1|@FF404040- Предмет: @FF1D1D1DУлучшенное оборудование - x1|@FF404040- Деньги: @FF1D1D1D15.000 монет"
 		role="NPC"
 		scriptCondition="CanQuestBeGiven('q_first_in_line') or IsQuestTaken('q_first_in_line') and not(IsQuestComplete('q_first_in_line'))"
 		nextReplies="Dlg_npc_q_first_in_line_6 Dlg_npc_q_first_in_line_7 Dlg_npc_q_first_in_line_8 Dlg_npc_q_first_in_line_9 Dlg_npc_q_first_in_line_10 Dlg_npc_q_first_in_line_11 Dlg_npc_q_first_in_line_12 Dlg_npc_q_first_in_line_13 Dlg_npc_q_first_in_line_14 Dlg_npc_q_first_in_line_15 Dlg_npc_q_first_in_line_16 Dlg_npc_q_first_in_line_17 Dlg_npc_q_first_in_line_18 Dlg_npc_q_first_in_line_19 Dlg_npc_q_first_in_line_20 Dlg_npc_q_first_in_line_21 Dlg_npc_q_first_in_line_22 Dlg_npc_q_first_in_line_23 Dlg_npc_q_first_in_line_24 Dlg_npc_q_first_in_line_25 Dlg_npc_q_first_in_line_26 Dlg_npc_q_first_in_line_27" />
@@ -15483,28 +15483,37 @@
 		name="Dlg_npc_Scav_1"
 		text="Здорова, брат! Чё как оно?"
 		role="NPC"
-		scriptCondition="GetVar('ScavCarNPC').AsString ~= GetVar('ScavCarFollowName').AsString"
-		nextReplies="Dlg_pl_Scav_give_money Dlg_pl_Scav_follow Dlg_pl_Scav_exit" />
+		scriptCondition="GetVar('ScavCarNPC').AsString ~= 'ScavCarFollow_vehicle_0' and not(1.5 >= GetTolerance(1100, 1082))"
+		nextReplies="Dlg_pl_Scav_give_money Dlg_pl_Scav_give_use_items Dlg_pl_Scav_follow Dlg_pl_Scav_exit" />
 
 	<Reply
 		name="Dlg_pl_Scav_exit"
 		text="Ну, я поехал. Покеда."
 		role="PLAYER"
-		scriptResult="SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', 0); EndConversation()" />
+		scriptResult="TDeactivate('PressHornToSpeekScav'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); EndConversation()" />
 
 <!--Root/r0m0/Попросить у диких денег-->
 	<Reply
 		name="Dlg_pl_Scav_give_money"
-		text="Братуха, выручай. Не отсыпишь парочку монет?"
+		text="Братуха, выручай. Не отсыпешь парочку монет?"
 		role="PLAYER"
+		scriptCondition="GetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString).AsInt ~= 2"
 		nextReplies="Dlg_npc_Scav_give_money_1 Dlg_npc_Scav_give_money_2" />
+
+<!--Root/r0m0/Попросить у диких восполняющие предметы-->
+	<Reply
+		name="Dlg_pl_Scav_give_use_items"
+		text="У тебя не найдётся лишних запчастей, или канистр с топливом для машины?"
+		role="PLAYER"
+		scriptCondition="GetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString).AsInt ~= 2"
+		nextReplies="Dlg_npc_Scav_give_use_items_1 Dlg_npc_Scav_give_use_items_8" />
 
 <!--Root/r0m0/Сопровождение-->
 	<Reply
 		name="Dlg_pl_Scav_follow"
-		text="Мы с бандой собираемся навести шухеру. Ты с нами?"
+		text="Мы с бандой собираемся навести шухеру в округе. Ты с нами?"
 		role="PLAYER"
-		scriptCondition="GetVar('ScavCarFollowName').AsString == '0'"
+		scriptCondition="getObj('ScavCarFollow_vehicle_0') == nil"
 		nextReplies="Dlg_npc_Scav_follow_1 Dlg_npc_Scav_follow_2" />
 
 <!--Root/r0m0/Отпустить дикого-->
@@ -15512,17 +15521,16 @@
 		name="Dlg_pl_Scav_del_follow"
 		text="Отбой. Можешь ехать по своим делам."
 		role="PLAYER"
-		scriptCondition="GetVar('ScavCarFollowName').AsString ~= '0'"
-		scriptResult="TDeactivate('tr_horn'); TActivate('tr_del_follow'); SetVar('ScavNPC', '0'); EndConversation()" />
+		scriptResult="TDeactivate('PressHornToSpeekScav'); TActivate('FadeEffectIfScavCarFollowRemove'); AddImportantFadingMsgByStrIdFormatted('fm_scav_follow_remove'); SoundFadingMsg(); SetVar('ScavNPC', '0'); EndConversation()" />
 
 <!--Root/r0m0/Попросить у диких денег: Дикий согласен-->
 
 	<Reply
 		name="Dlg_npc_Scav_give_money_1"
-		text="Если у тебя будет что-нибудь в замен, так и быть, можем договориться."
+		text="Если у тебя будет что-нибудь в замен, например, выпить что-нибудь, так и быть, можем договориться."
 		role="NPC"
 		scriptCondition="GetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString).AsInt == 1"
-		nextReplies="Dlg_pl_Scav_give_money_1 Dlg_pl_Scav_give_money_2" />
+		nextReplies="Dlg_pl_Scav_give_money_1 Dlg_pl_Scav_give_money_1_1 Dlg_pl_Scav_give_money_2 Dlg_pl_Scav_give_money_3_1" />
 
 	<Reply
 		name="Dlg_pl_Scav_give_money_1"
@@ -15532,10 +15540,25 @@
 		nextReplies="Dlg_npc_Scav_give_money_3" />
 
 	<Reply
+		name="Dlg_pl_Scav_give_money_1_1"
+		text="А другие предметы интересуют?"
+		role="PLAYER"
+		nextReplies="Dlg_npc_Scav_give_money_6" />
+
+	<Reply
 		name="Dlg_pl_Scav_give_money_2"
+		text="Слушай, отдавай баблецо по хорошему, пока я добрый!"
+		role="PLAYER"
+		scriptCondition="0 > GetScavCarma() and getObj('ScavCarEnemy') == nil"
+		nextReplies="Dlg_npc_Scav_give_money_4 Dlg_npc_Scav_give_money_5" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_3_1"
 		text="Я подумаю."
 		role="PLAYER"
-		scriptResult="TDeactivate('tr_horn'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', 0); EndConversation()" />
+		scriptResult="TDeactivate('PressHornToSpeekScav'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); EndConversation()" />
+
+<!--Root/r0m0/Передаем водку-->
 
 	<Reply
 		name="Dlg_npc_Scav_give_money_3"
@@ -15547,13 +15570,557 @@
 		name="Dlg_pl_Scav_give_money_4"
 		text="Передать Водку - x1"
 		role="PLAYER"
-		scriptResult="TDeactivate('tr_horn'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', 0); RemoveItemsFromPlayerRepository('item_vodka', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_vodka'); AddPlayerMoney(random(5000, 12000)); EndConversation()" />
+		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.1'); SetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString, 2); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); RemoveItemsFromPlayerRepository('item_vodka', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_vodka'); AddPlayerMoney(random(5000, 12000)); EndConversation()" />
 
 	<Reply
 		name="Dlg_pl_Scav_give_money_5"
 		text="Я передумал."
 		role="PLAYER"
 		nextReplies="Dlg_npc_Scav_1" />
+
+<!--Root/r0m0/Передаем другие предметы-->
+
+	<Reply
+		name="Dlg_npc_Scav_give_money_6"
+		text="Да, я могу выкупить один из твоих предложенных предметов."
+		role="NPC"
+		nextReplies="Dlg_pl_Scav_give_money_6_1 Dlg_pl_Scav_give_money_6_2 Dlg_pl_Scav_give_money_6_3 Dlg_pl_Scav_give_money_6_4 Dlg_pl_Scav_give_money_6_5 Dlg_pl_Scav_give_money_6_6 Dlg_pl_Scav_give_money_6_7 Dlg_pl_Scav_give_money_6_8 Dlg_pl_Scav_give_money_6_9 Dlg_pl_Scav_give_money_6_10 Dlg_pl_Scav_give_money_6_11 Dlg_pl_Scav_give_money_6_12 Dlg_pl_Scav_give_money_6_13 Dlg_pl_Scav_give_money_6_14 Dlg_pl_Scav_give_money_6_15 Dlg_pl_Scav_give_money_6_16 Dlg_pl_Scav_give_money_6_17 Dlg_pl_Scav_give_money_6_18 Dlg_pl_Scav_give_money_6_19 Dlg_pl_Scav_give_money_6_20 Dlg_pl_Scav_give_money_6_21 Dlg_pl_Scav_give_money_6_22 Dlg_pl_Scav_give_money_6_23 Dlg_pl_Scav_give_money_6_24 Dlg_pl_Scav_give_money_6_25 Dlg_pl_Scav_give_money_6_26 Dlg_pl_Scav_give_money_6_27 Dlg_pl_Scav_give_money_6_28 Dlg_pl_Scav_give_money_6_29 Dlg_pl_Scav_give_money_6_30 Dlg_pl_Scav_give_money_6_31 Dlg_pl_Scav_give_money_6_32 Dlg_pl_Scav_give_money_6_33 Dlg_pl_Scav_give_money_6_34 Dlg_pl_Scav_give_money_6_35 Dlg_pl_Scav_give_money_6_36 Dlg_pl_Scav_give_money_6_37 Dlg_pl_Scav_give_money_6_38 Dlg_pl_Scav_give_money_6_39 Dlg_pl_Scav_give_money_6_40 Dlg_pl_Scav_give_money_6_41 Dlg_pl_Scav_give_money_6_42 Dlg_pl_Scav_give_money_6_43 Dlg_pl_Scav_give_money_6_44 Dlg_pl_Scav_give_money_6_45 Dlg_pl_Scav_give_money_6_46 Dlg_pl_Scav_give_money_6_47 Dlg_pl_Scav_give_money_6_48 Dlg_pl_Scav_give_money_6_49 Dlg_pl_Scav_give_money_6_50 Dlg_pl_Scav_give_money_6_51 Dlg_pl_Scav_give_money_6_52 Dlg_pl_Scav_give_money_6_53 Dlg_pl_Scav_give_money_6_54 Dlg_pl_Scav_give_money_6_55 Dlg_pl_Scav_give_money_6_56 Dlg_pl_Scav_give_money_6_57 Dlg_pl_Scav_give_money_6_58 Dlg_pl_Scav_give_money_6_59 Dlg_pl_Scav_give_money_6_60 Dlg_pl_Scav_give_money_6_61 Dlg_pl_Scav_give_money_5" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_1"
+		text="Передать Картошку - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('potato', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('potato', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'potato'); AddPlayerMoney(random(1800, 2000))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_2"
+		text="Передать Дрова - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('firewood', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('firewood', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'firewood'); AddPlayerMoney(random(1950, 2250))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_3"
+		text="Передать Табак - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('tobacco', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('tobacco', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'tobacco'); AddPlayerMoney(random(3000, 4000))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_4"
+		text="Передать Доски - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('doski', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('doski', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'doski'); AddPlayerMoney(random(2800, 3500))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_5"
+		text="Передать Болты - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_bolts', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_bolts', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_bolts'); AddPlayerMoney(random(4000, 4500))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_6"
+		text="Передать Гофрированный шланг - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_hose', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_hose', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_hose'); AddPlayerMoney(random(4250, 4500))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_7"
+		text="Передать Изоленту - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_insulation', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_insulation', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_insulation'); AddPlayerMoney(random(2500, 3000))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_8"
+		text="Передать Гвозди - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_nails', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_nails', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_nails'); AddPlayerMoney(random(2300, 2600))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_9"
+		text="Передать Гайки - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_nuts', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_nuts', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_nuts'); AddPlayerMoney(random(2700, 3200))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_10"
+		text="Передать Оргстекло - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_plex', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_plex', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_plex'); AddPlayerMoney(random(5000, 6500))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_11"
+		text="Передать Тюбик холодной сварки «Poheram» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_poheram', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_poheram', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_poheram'); AddPlayerMoney(random(4600, 6300))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_12"
+		text="Передать Скотч - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_scotch', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_scotch', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_scotch'); AddPlayerMoney(random(1800, 2100))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_13"
+		text="Передать Саморезы - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_screws', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_screws', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_screws'); AddPlayerMoney(random(2800, 3800))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_14"
+		text="Передать Силиконовую трубку - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_tube', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_tube', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_tube'); AddPlayerMoney(random(6500, 7500))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_15"
+		text="Передать Центральный процессор - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_cpu', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_cpu', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_cpu'); AddPlayerMoney(random(3000, 5000))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_16"
+		text="Передать DVD привод - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_dvd', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_dvd', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_dvd'); AddPlayerMoney(random(4000, 4500))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_17"
+		text="Передать Компоненты электроники - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_electronics_components', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_electronics_components', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_electronics_components'); AddPlayerMoney(random(6000, 6500))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_18"
+		text="Передать Энергосберегающую лампу - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_energo_lump', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_energo_lump', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_energo_lump'); AddPlayerMoney(random(5100, 6100))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_19"
+		text="Передать Счетчик Гейгера - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_geiger', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_geiger', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_geiger'); AddPlayerMoney(random(8000, 8500))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_20"
+		text="Передать Спираль накаливания - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_helix', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_helix', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_helix'); AddPlayerMoney(random(7000, 9000))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_21"
+		text="Передать Конденсаторы - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_kondesators', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_kondesators', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_kondesators'); AddPlayerMoney(random(5000, 5500))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_22"
+		text="Передать Лампу накаливания - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_lump', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_lump', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_lump'); AddPlayerMoney(random(3000, 4000))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_23"
+		text="Передать Магнит - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_magnet', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_magnet', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_magnet'); AddPlayerMoney(random(5000, 5500))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_24"
+		text="Передать Cмартфон - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_phone', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_phone', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_phone'); AddPlayerMoney(random(6000, 6500))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_25"
+		text="Передать Плату - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_plate', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_plate', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_plate'); AddPlayerMoney(random(8000, 8500))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_26"
+		text="Передать Оперативную память - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_ram', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_ram', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_ram'); AddPlayerMoney(random(4500, 5000))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_27"
+		text="Передать Реле - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_rele', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_rele', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_rele'); AddPlayerMoney(random(3000, 4500))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_28"
+		text="Передать Свечу зажигания - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_svech', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_svech', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_svech'); AddPlayerMoney(random(3350, 4850))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_29"
+		text="Передать Тройник - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_tplug', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_tplug', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_tplug'); AddPlayerMoney(random(2200, 3200))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_30"
+		text="Передать Ультрафиолетовую лампу - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_ultra_lump', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_ultra_lump', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_ultra_lump'); AddPlayerMoney(random(6250, 7250))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_31"
+		text="Передать USB Адаптер - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_usb', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_usb', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_usb'); AddPlayerMoney(random(2000, 2300))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_32"
+		text="Передать Провода - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_wires', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_wires', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_wires'); AddPlayerMoney(random(2500, 3000))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_33"
+		text="Передать Аккумулятор - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_accum', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_accum', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_accum'); AddPlayerMoney(random(5000, 6000))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_34"
+		text="Передать Батарейку типа «AA» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_battery_aa', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_battery_aa', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_battery_aa'); AddPlayerMoney(random(2000, 2500))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_35"
+		text="Передать Батарейку типа «D» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_battery_d', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_battery_d', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_battery_d'); AddPlayerMoney(random(1000, 1500))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_36"
+		text="Передать Повербанк - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_powerbank', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_powerbank', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_powerbank'); AddPlayerMoney(random(8800, 9800))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_37"
+		text="Передать Охотничьи спички - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_hunter_spich', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_hunter_spich', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_hunter_spich'); AddPlayerMoney(random(2000, 3000))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_38"
+		text="Передать Зажигалку - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_lighter', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_lighter', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_lighter'); AddPlayerMoney(random(2250, 3250))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_39"
+		text="Передать Спички - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_spich', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_spich', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_spich'); AddPlayerMoney(random(2000, 2500))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_40"
+		text="Передать Зажигалку выживальщика - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_survl', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_survl', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_survl'); AddPlayerMoney(random(6000, 6500))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_41"
+		text="Передать WD-40 100мл - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_wd40_100', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_wd40_100', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_wd40_100'); AddPlayerMoney(random(2000, 3000))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_42"
+		text="Передать WD-40 400мл - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_wd40_400', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_wd40_400', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_wd40_400'); AddPlayerMoney(random(6000, 7000))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_43"
+		text="Передать Бензиновую зажигалку - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_zibbo', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_zibbo', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_zibbo'); AddPlayerMoney(random(3000, 4000))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_44"
+		text="Передать Бумагу - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_paper', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_paper', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_paper'); AddPlayerMoney(random(4000, 5000))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_45"
+		text="Передать Туалетную бумагу - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_tb', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_tb', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_tb'); AddPlayerMoney(random(3000, 3700))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_46"
+		text="Передать Зубную пасту - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_toothpaste', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_toothpaste', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_toothpaste'); AddPlayerMoney(random(3000, 4000))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_47"
+		text="Передать Бутылку перекиси водорода «H2O2» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_h2o2', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_h2o2', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_h2o2'); AddPlayerMoney(random(5000, 5500))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_48"
+		text="Передать Медицинские инструменты - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_medical_tools', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_medical_tools', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_medical_tools'); AddPlayerMoney(random(2600, 3600))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_49"
+		text="Передать Бутылку физраствора «NaCI» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_naci', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_naci', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_naci'); AddPlayerMoney(random(3700, 4700))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_50"
+		text="Передать Шприц - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_suringe', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_suringe', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_suringe'); AddPlayerMoney(random(7000, 8000))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_51"
+		text="Передать Аптечку «АИ-2» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_ai2', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_ai2', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_ai2'); AddPlayerMoney(random(2800, 3800))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_52"
+		text="Передать Автомобильную аптечку - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_carmed', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_carmed', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_carmed'); AddPlayerMoney(random(6000, 7000))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_53"
+		text="Передать Набор медикаментов - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_med', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_med', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_med'); AddPlayerMoney(random(2000, 2950))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_54"
+		text="Передать Вазелин - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_vazelin', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_vazelin', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_vazelin'); AddPlayerMoney(random(4800, 5800))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_55"
+		text="Передать Запал «УЗРГМ» для гранат - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_zapal', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_zapal', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_zapal'); AddPlayerMoney(random(2800, 3800))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_56"
+		text="Передать Кусачки - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_nippers', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_nippers', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_nippers'); AddPlayerMoney(random(6000, 6500))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_57"
+		text="Передать Плоскогубцы - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_pliers', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_pliers', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_pliers'); AddPlayerMoney(random(2500, 3400))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_58"
+		text="Передать Рулетку - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_roulet', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_roulet', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_roulet'); AddPlayerMoney(random(1500, 2000))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_59"
+		text="Передать Отвертку - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_screw', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_screw', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_screw'); AddPlayerMoney(random(2000, 3000))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_60"
+		text="Передать Гаечный ключ - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_wrench', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_wrench', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_wrench'); AddPlayerMoney(random(1500, 2000))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_61"
+		text="Передать Ювелирную цепочку - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_chain', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_chain', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_chain'); AddPlayerMoney(random(6000, 6500))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_npc_Scav_give_money_7"
+		text="Отлично, мне это пригодится. Спасибо за сделку, братуха!"
+		role="NPC"
+		nextReplies="Dlg_pl_Scav_give_money_9" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_9"
+		text="Давай, бывай. Я пошуршал."
+		role="PLAYER"
+		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.1'); SetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString, 2); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); EndConversation()" />
+
+<!--Root/r0m0/Забираем деньги силой-->
+
+	<Reply
+		name="Dlg_npc_Scav_give_money_4"
+		text="Хорошо-хорошо. Забирай. Мне лишние проблемы не нужны."
+		role="NPC"
+		scriptCondition="GetVar('DlgMoneyAngry_'..GetVar('ScavCarNPC').AsString).AsInt == 1"
+		nextReplies="Dlg_pl_Scav_give_money_6 Dlg_pl_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6"
+		text="Вот и славно."
+		role="PLAYER"
+		scriptCondition="GetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString).AsInt == 1"
+		scriptResult="TDeactivate('PressHornToSpeekScav'); SetTolerance(1100, 1082, GetTolerance(1100, 1082) - 0.05); AddScavCarma('-', '0.05'); SetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString, 3); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddPlayerMoney(random(10000)); EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_7"
+		text="Вот и славно."
+		role="PLAYER"
+		scriptCondition="GetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString).AsInt == 0"
+		scriptResult="TDeactivate('PressHornToSpeekScav'); SetTolerance(1100, 1082, GetTolerance(1100, 1082) - 0.1); AddScavCarma('-', '0.1'); SetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString, 3); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddPlayerMoney(random(5000)); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_Scav_give_money_5"
+		text="Ты видимо что-то попутал, бродяга. Главным что-ли себя здесь возомнил? Звук пушек мне хорошо знаком. Придётся научить тебя правильным манерам!"
+		role="NPC"
+		scriptCondition="GetVar('DlgMoneyAngry_'..GetVar('ScavCarNPC').AsString).AsInt == 2"
+		nextReplies="Dlg_pl_Scav_give_money_8" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_8"
+		text="Ты меня напугал. Считай что, огонь я открыл с перепугу."
+		role="PLAYER"
+		scriptResult="TDeactivate('PressHornToSpeekScav'); TActivate('CreateCopyEmenyScavCar'); SetTolerance(1100, 1082, GetTolerance(1100, 1082) - 0.1); AddScavCarma('-', '0.1'); SetVar('ScavNPC', '0'); EndConversation()" />
 
 <!--Root/r0m0/Попросить у диких денег: Дикий не согласен-->
 
@@ -15562,53 +16129,208 @@
 		text="Неа.. братуха, сам на мели. Ничем не могу помочь."
 		role="NPC"
 		scriptCondition="GetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString).AsInt ~= 1"
-		nextReplies="Dlg_pl_Scav_give_money_3" />
+		nextReplies="Dlg_pl_Scav_give_money_2_1 Dlg_pl_Scav_give_money_3" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_2_1"
+		text="Отдавай всё что у тебя есть по хорошему, пока я добрый!"
+		role="PLAYER"
+		scriptCondition="0.5 >= GetScavCarma() and getObj('ScavCarEnemy') == nil"
+		nextReplies="Dlg_npc_Scav_give_money_4 Dlg_npc_Scav_give_money_5" />
 
 	<Reply
 		name="Dlg_pl_Scav_give_money_3"
-		text="Эх, ладно. Пойду по шуршу по схронам, может найду чего."
+		text="Эх, ладно. Пойду пошуршу по схронам, может найду чего."
 		role="PLAYER"
-		scriptResult="TDeactivate('tr_horn'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', 0); EndConversation()" />
+		scriptResult="TDeactivate('PressHornToSpeekScav'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); EndConversation()" />
+
+<!--Root/r0m0/Попросить у диких восполняющие предметы: Дикий согласен-->
+
+	<Reply
+		name="Dlg_npc_Scav_give_use_items_1"
+		text="Да, думаю, найдётся парочку. Я могу один из них продать тебе за 30.000 монет."
+		role="NPC"
+		scriptCondition="GetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString).AsInt == 1"
+		nextReplies="Dlg_pl_Scav_give_use_items_0 Dlg_pl_Scav_give_use_items_1 Dlg_pl_Scav_give_money_3_1" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_use_items_0"
+		text="Согласен купить за 15.000 монет, идёт?"
+		role="PLAYER"
+		scriptCondition="GetPlayerMoney() >= 15000"
+		nextReplies="Dlg_npc_Scav_give_use_items_2 Dlg_npc_Scav_give_use_items_3" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_use_items_1"
+		text="Хорошо, я согласен купить за 30.000 монет."
+		role="PLAYER"
+		scriptCondition="GetPlayerMoney() >= 30000"
+		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.05'); SetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString, 2); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddPlayerRandomItem({'scrap_metal_use', 'machinery_use', 'electronics_use', 'oil_use', 'fuel_full_use'}, random(1,2)); AddPlayerMoney(-30000); EndConversation()" />
+
+<!--Root/r0m0/Попросить у диких восполняющие предметы: Дикий согласен за 15000-->
+
+	<Reply
+		name="Dlg_npc_Scav_give_use_items_2"
+		text="Ладно, хрен с тобой, уговорил. Продам за 15.000 монет."
+		role="NPC"
+		scriptCondition="GetVar('DlgUseItems_15000_'..GetVar('ScavCarNPC').AsString).AsInt == 1"
+		nextReplies="Dlg_pl_Scav_give_use_items_2" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_use_items_2"
+		text="Вот и порешали. Удачи в дороге, братан!"
+		role="PLAYER"
+		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.1'); SetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString, 2); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddPlayerRandomItem({'scrap_metal_use', 'machinery_use', 'electronics_use', 'oil_use', 'fuel_full_use'}, 1); AddPlayerMoney(-15000); EndConversation()" />
+
+<!--Root/r0m0/Попросить у диких восполняющие предметы: Дикий не согласен за 15000-->
+
+	<Reply
+		name="Dlg_npc_Scav_give_use_items_3"
+		text="Нет, братуха, так не пойдёт. Я сказал 30.000 конечная цена."
+		role="NPC"
+		scriptCondition="GetVar('DlgUseItems_15000_'..GetVar('ScavCarNPC').AsString).AsInt == 0"
+		nextReplies="Dlg_pl_Scav_give_use_items_3 Dlg_pl_Scav_give_use_items_4 Dlg_pl_Scav_give_money_3_1" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_use_items_3"
+		text="Беру за 20.000, согласен?"
+		role="PLAYER"
+		scriptCondition="GetPlayerMoney() >= 20000"
+		nextReplies="Dlg_npc_Scav_give_use_items_4 Dlg_npc_Scav_give_use_items_5" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_use_items_4"
+		text="Ладно, покупаю за 30.000 монет."
+		role="PLAYER"
+		scriptCondition="GetPlayerMoney() >= 30000"
+		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.05'); SetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString, 2); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddPlayerRandomItem({'scrap_metal_use', 'machinery_use', 'electronics_use', 'oil_use', 'fuel_full_use'}, random(1,2)); AddPlayerMoney(-30000); EndConversation()" />
+
+<!--Root/r0m0/Попросить у диких восполняющие предметы: Дикий согласен за 20000-->
+
+	<Reply
+		name="Dlg_npc_Scav_give_use_items_4"
+		text="Ладно, хрен с тобой, уговорил. Продам за 20.000 монет."
+		role="NPC"
+		scriptCondition="GetVar('DlgUseItems_20000_'..GetVar('ScavCarNPC').AsString).AsInt == 1"
+		nextReplies="Dlg_pl_Scav_give_use_items_5" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_use_items_5"
+		text="Вот и отлично."
+		role="PLAYER"
+		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.1'); SetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString, 2); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddPlayerRandomItem({'scrap_metal_use', 'machinery_use', 'electronics_use', 'oil_use', 'fuel_full_use'}, 1); AddPlayerMoney(-20000); EndConversation()" />
+
+<!--Root/r0m0/Попросить у диких восполняющие предметы: Дикий не согласен за 20000-->
+
+	<Reply
+		name="Dlg_npc_Scav_give_use_items_5"
+		text="Чувак, либо ты берешь за 30.000, либо катишься отсюда подальше. Уяснил?"
+		role="NPC"
+		scriptCondition="GetVar('DlgUseItems_20000_'..GetVar('ScavCarNPC').AsString).AsInt == 2"
+		nextReplies="Dlg_pl_Scav_give_use_items_6 Dlg_pl_Scav_give_use_items_7 Dlg_pl_Scav_give_money_3_1" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_use_items_6"
+		text="Хорошо-хорошо, не мандражируй, беру за 30.000 монет."
+		role="PLAYER"
+		scriptCondition="GetPlayerMoney() >= 30000"
+		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.05'); SetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString, 2); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddPlayerRandomItem({'scrap_metal_use', 'machinery_use', 'electronics_use', 'oil_use', 'fuel_full_use'}, 1); AddPlayerMoney(-30000); EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_use_items_7"
+		text="Слушай, давай решим дело по доброму, либо продаешь за 15.000, либо мне придётся познакомить тебя с моей пушкой."
+		role="PLAYER"
+		scriptCondition="0 > GetScavCarma() and getObj('ScavCarEnemy') == nil and GetPlayerMoney() >= 15000"
+		nextReplies="Dlg_npc_Scav_give_use_items_6 Dlg_npc_Scav_give_use_items_7" />
+
+<!--Root/r0m0/Попросить у диких восполняющие предметы: Забираем силой-->
+
+	<Reply
+		name="Dlg_npc_Scav_give_use_items_6"
+		text="Хорошо-хорошо. Я согласен купить за 15.000 монет. Только не стреляй, мне лишние проблемы не нужны."
+		role="NPC"
+		scriptCondition="GetVar('DlgUseItemsAngry_'..GetVar('ScavCarNPC').AsString).AsInt == 1"
+		nextReplies="Dlg_pl_Scav_give_use_items_8" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_use_items_8"
+		text="Вот и славно."
+		role="PLAYER"
+		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('-', '0.05'); SetTolerance(1100, 1082, GetTolerance(1100, 1082) - 0.05); SetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString, 3); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddPlayerRandomItem({'scrap_metal_use', 'machinery_use', 'electronics_use', 'oil_use', 'fuel_full_use'}, 1); AddPlayerMoney(-15000); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_Scav_give_use_items_7"
+		text="Кого ты тут своими речами напугать собрался, а? Я даю тебе последнее предупреждение мирно разойтись. Считаю до 3-х и я открываю огонь. 1.. 2.."
+		role="NPC"
+		scriptCondition="GetVar('DlgUseItemsAngry_'..GetVar('ScavCarNPC').AsString).AsInt == 2"
+		nextReplies="Dlg_pl_Scav_give_use_items_9 Dlg_pl_Scav_give_use_items_10" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_use_items_9"
+		text="Ты меня напугал. Считай что, огонь я открыл с перепугу."
+		role="PLAYER"
+		scriptResult="TDeactivate('PressHornToSpeekScav'); TActivate('CreateCopyEmenyScavCar'); SetTolerance(1100, 1082, GetTolerance(1100, 1082) - 0.1); AddScavCarma('-', '0.1'); SetVar('ScavNPC', '0'); EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_use_items_10"
+		text="Хорошо, я уезжаю."
+		role="PLAYER"
+		scriptResult="TDeactivate('PressHornToSpeekScav'); SetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString, 3) SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); EndConversation()" />
+	
+<!--Root/r0m0/Попросить у диких восполняющие предметы: Дикий не согласен-->
+
+	<Reply
+		name="Dlg_npc_Scav_give_use_items_8"
+		text="Нет, лишних не найдётся, уж извиняй. У самого карыто на последних болтах держится, думаю как бы до базы доковылять."
+		role="NPC"
+		scriptCondition="GetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString).AsInt == 0"
+		nextReplies="Dlg_pl_Scav_give_use_items_11" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_use_items_11"
+		text="Ну ладно, братуха, давай удачи."
+		role="PLAYER"
+		scriptResult="TDeactivate('PressHornToSpeekScav'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); EndConversation()" />
 
 <!--Root/r0m0/Сопровождение: Дикий согласен-->
 
 	<Reply
 		name="Dlg_npc_Scav_follow_1"
-		text="Ну капец вам залётные. Я вами! Только чур командование берешь на себя, идёт?"
+		text="Я с вами! Ахрененно сейчас поживимся. Только чур командование берешь на себя, идёт?"
 		role="NPC"
 		scriptCondition="GetVar('DlgFollow_'..GetVar('ScavCarNPC').AsString).AsInt == 1"
 		nextReplies="Dlg_pl_Scav_follow_2 Dlg_pl_Scav_follow_3" />
 
 	<Reply
 		name="Dlg_pl_Scav_follow_2"
-		text="Согласен! Поехали."
+		text="Согласен! Ну пацанчики, ну-ка все сюда ко мне."
 		role="PLAYER"
-		scriptResult="TDeactivate('tr_horn'); TActivate('tr2'); SetVar('ScavCarFollowNPC', GetVar('ScavNPC').AsString); SetVar('ScavNPC', '0'); EndConversation()" />
+		scriptResult="TDeactivate('PressHornToSpeekScav'); TActivate('CreateCopyScavCarForFollow'); SetVar('ScavCarFollowNPC', GetVar('ScavNPC').AsString); SetVar('ScavNPC', '0'); EndConversation()" />
 
 	<Reply
 		name="Dlg_pl_Scav_follow_3"
 		text="Постой пока здесь, надо подумать, обсудить план."
 		role="PLAYER"
-		scriptResult="TDeactivate('tr_horn'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', 0); EndConversation()" />
+		scriptResult="TDeactivate('PressHornToSpeekScav'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); EndConversation()" />
 
 	<Reply
 		name="Dlg_npc_Scav_follow_4"
-		text="Ну чё, каков план, куда едем?"
+		text="Ну чё, куда путь держим?"
 		role="NPC"
-		scriptCondition="GetVar('ScavCarNPC').AsString == GetVar('ScavCarFollowName').AsString"
+		scriptCondition="GetVar('ScavCarNPC').AsString == 'ScavCarFollow_vehicle_0' and not(1.5 >= GetTolerance(1100, 1082))"
 		nextReplies="Dlg_pl_Scav_del_follow Dlg_pl_Scav_follow_5" />
 
 	<Reply
 		name="Dlg_pl_Scav_follow_5"
-		text="Продолжаем движение."
+		text="Все пучком. Продолжаем движение."
 		role="PLAYER"
-		scriptResult="TDeactivate('tr_horn'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', 0); EndConversation()" />
+		scriptResult="TDeactivate('PressHornToSpeekScav'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); EndConversation()" />
 
 <!--Root/r0m0/Сопровождение: Дикий не согласен-->
 
 	<Reply
 		name="Dlg_npc_Scav_follow_2"
-		text="Чёт как-то в падлу. Не хочется лишний раз рисковать, давайте без меня."
+		text="Чёт как-то в падлу. Не хочется лишний раз рисковать, давайте лучше без меня."
 		role="NPC"
 		scriptCondition="GetVar('DlgFollow_'..GetVar('ScavCarNPC').AsString).AsInt ~= 1"
 		nextReplies="Dlg_pl_Scav_follow_4" />
@@ -15617,6 +16339,6 @@
 		name="Dlg_pl_Scav_follow_4"
 		text="Ну ладно, как скажешь. Бывай."
 		role="PLAYER"
-		scriptResult="TDeactivate('tr_horn'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', 0); EndConversation()" />
+		scriptResult="TDeactivate('PressHornToSpeekScav'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', 0); EndConversation()" />
 
 </DialogsResource>

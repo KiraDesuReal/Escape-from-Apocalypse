@@ -78,7 +78,7 @@
 
 			TActivate("MessageRaid")
 			TActivate("TimerRaidStart")
-			TActivate("CreatePMC")
+			--TActivate("CreatePMC")
 			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("IfRaidCountForQuest") end
 			TActivate("ShowExits_Start")
 
@@ -378,6 +378,43 @@
 			end
 
 			SetCameraBehindPlayerVehicle()
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Затемнение если отпустили дикого -->
+	<trigger Name="FadeEffectIfScavCarFollowRemove" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			SaveAllToleranceStatus(RS_NEUTRAL)
+
+			Fly("start_game", CINEMATIC_NO_AIM, 0, 0.1, 0, 1)
+			StartCinematic()
+
+			AddCinematicMessage(77773, 0)
+	
+			local vehPlayer = GetPlayerVehicle()
+			if vehPlayer then
+				vehPlayer:SetThrottle(0)
+				vehPlayer:SetCustomLinearVelocity(0)
+			end
+			
+			TActivate("FadeEffectIfScavCarFollowRemove_End")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="FadeEffectIfScavCarFollowRemove_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+
+			RestoreAllToleranceStatus()
+			SetCameraBehindPlayerVehicle()
+
+			TActivate("RemoveScavCarForFollow")
 
 			trigger:Deactivate()
 		</script>

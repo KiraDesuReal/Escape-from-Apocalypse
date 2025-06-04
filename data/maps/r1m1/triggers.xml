@@ -211,15 +211,7 @@
 			end
 
 			if GetVar("PlayerBelong").AsString == "SCAV" then
-				local c = GetVar("ScavCarma").AsString
-				local carma
-				if strsub(c, 1, 1) == "-" then
-					carma = tonumber(strsub(c, 1, 5))
-				else
-					carma = tonumber(strsub(c, 1, 4))
-				end
-
-				if carma >= 6 then
+				if GetScavCarma() >= 6 then
 					SetTolerance(1100, 1086, RS_NEUTRAL)
 					SetTolerance(1100, 1087, RS_NEUTRAL)
 					SetVar("BossFrendly", 1)
@@ -836,7 +828,7 @@
 				user = GenerateRandomScavName()
 				Msg = "Рейд №"..count.."|День: "..TextTime.."|"..user.."|Край"
 			else
-				user = os.getenv("USERNAME")
+				user = GetProfileName()
 				Msg = "Рейд №"..count.."|День: "..TextTime.."|Оператор ЧВК "..user.."|Край"
 			end
 
@@ -1155,16 +1147,16 @@
 				if GetVar("PlayerBelong").AsString == "SCAV" then 
 					if GetVar("BossFrendly").AsInt == 1 then
 						if 1.5 >= GetTolerance(1100, 1086) then
-							SetVar("ScavCarma", GetVar("ScavCarma").AsString - 1.0)
+							AddScavCarma("-", "1.0")
 						end
 						if 1.5 >= GetTolerance(1100, 1087) then
-							SetVar("ScavCarma", GetVar("ScavCarma").AsString - 1.0)
+							AddScavCarma("-", "1.0")
 						end
 					end
 					if 1.5 >= GetTolerance(1100, 1082) then
-						SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.4)
+						AddScavCarma("-", "0.4")
 					end
-					SetVar("ScavCarma", GetVar("ScavCarma").AsString + 0.1)
+					AddScavCarma("+", "0.1")
 					TDeactivate("BaseScavs_exitScavInLoc")
 				else
 					TActivate("IfExitForQuest") 
@@ -1321,6 +1313,19 @@
 					SetVar("DlgUseItems_20000_Scav"..k.."_loc1_vehicle_0", random(2))
 					SetVar("DlgUseItemsAngry_Scav"..k.."_loc1_vehicle_0", random(2))
 					SetVar("DlgFollow_Scav"..k.."_loc1_vehicle_0", RandomFromScavCarma())
+		
+					local sv_a = GetEntityByName ("Scav"..k.."_loc1_vehicle_0")
+					if sv_a then
+						for i = 1, 5 do
+							local ammoItems = {"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun"}
+							if sv_a:HasAmountOfItemsInRepository(ammoItems[i], 1) then
+								SetVar("DlgAmmo_Scav"..k.."_loc1_vehicle_0", 1)
+								break
+							else
+								SetVar("DlgAmmo_Scav"..k.."_loc1_vehicle_0", 0)
+							end
+						end
+					end
 				end
 			end
 
@@ -1534,6 +1539,19 @@
 					SetVar("DlgUseItems_20000_Scav"..k.."_loc2_vehicle_0", random(2))
 					SetVar("DlgUseItemsAngry_Scav"..k.."_loc2_vehicle_0", random(2))
 					SetVar("DlgFollow_Scav"..k.."_loc2_vehicle_0", RandomFromScavCarma())
+
+					local sv_a = GetEntityByName ("Scav"..k.."_loc2_vehicle_0")
+					if sv_a then
+						for i = 1, 5 do
+							local ammoItems = {"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun"}
+							if sv_a:HasAmountOfItemsInRepository(ammoItems[i], 1) then
+								SetVar("DlgAmmo_Scav"..k.."_loc2_vehicle_0", 1)
+								break
+							else
+								SetVar("DlgAmmo_Scav"..k.."_loc2_vehicle_0", 0)
+							end
+						end
+					end
 				end
 			end
 
@@ -1750,6 +1768,19 @@
 					SetVar("DlgUseItems_20000_Scav"..k.."_loc3_vehicle_0", random(2))
 					SetVar("DlgUseItemsAngry_Scav"..k.."_loc3_vehicle_0", random(2))
 					SetVar("DlgFollow_Scav"..k.."_loc3_vehicle_0", RandomFromScavCarma())
+
+					local sv_a = GetEntityByName ("Scav"..k.."_loc3_vehicle_0")
+					if sv_a then
+						for i = 1, 5 do
+							local ammoItems = {"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun"}
+							if sv_a:HasAmountOfItemsInRepository(ammoItems[i], 1) then
+								SetVar("DlgAmmo_Scav"..k.."_loc3_vehicle_0", 1)
+								break
+							else
+								SetVar("DlgAmmo_Scav"..k.."_loc3_vehicle_0", 0)
+							end
+						end
+					end
 				end
 			end
 
@@ -1963,6 +1994,19 @@
 					SetVar("DlgUseItems_20000_Scav"..k.."_loc4_vehicle_0", random(2))
 					SetVar("DlgUseItemsAngry_Scav"..k.."_loc4_vehicle_0", random(2))
 					SetVar("DlgFollow_Scav"..k.."_loc4_vehicle_0", RandomFromScavCarma())
+
+					local sv_a = GetEntityByName ("Scav"..k.."_loc4_vehicle_0")
+					if sv_a then
+						for i = 1, 5 do
+							local ammoItems = {"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun"}
+							if sv_a:HasAmountOfItemsInRepository(ammoItems[i], 1) then
+								SetVar("DlgAmmo_Scav"..k.."_loc4_vehicle_0", 1)
+								break
+							else
+								SetVar("DlgAmmo_Scav"..k.."_loc4_vehicle_0", 0)
+							end
+						end
+					end
 				end
 			end
 
@@ -2177,6 +2221,19 @@
 					SetVar("DlgUseItems_20000_Scav"..k.."_loc5_vehicle_0", random(2))
 					SetVar("DlgUseItemsAngry_Scav"..k.."_loc5_vehicle_0", random(2))
 					SetVar("DlgFollow_Scav"..k.."_loc5_vehicle_0", RandomFromScavCarma())
+
+					local sv_a = GetEntityByName ("Scav"..k.."_loc5_vehicle_0")
+					if sv_a then
+						for i = 1, 5 do
+							local ammoItems = {"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun"}
+							if sv_a:HasAmountOfItemsInRepository(ammoItems[i], 1) then
+								SetVar("DlgAmmo_Scav"..k.."_loc5_vehicle_0", 1)
+								break
+							else
+								SetVar("DlgAmmo_Scav"..k.."_loc5_vehicle_0", 0)
+							end
+						end
+					end
 				end
 			end
 
@@ -2401,6 +2458,19 @@
 					SetVar("DlgUseItems_20000_Scav"..k.."_loc6_vehicle_0", random(2))
 					SetVar("DlgUseItemsAngry_Scav"..k.."_loc6_vehicle_0", random(2))
 					SetVar("DlgFollow_Scav"..k.."_loc6_vehicle_0", RandomFromScavCarma())
+
+					local sv_a = GetEntityByName ("Scav"..k.."_loc6_vehicle_0")
+					if sv_a then
+						for i = 1, 5 do
+							local ammoItems = {"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun"}
+							if sv_a:HasAmountOfItemsInRepository(ammoItems[i], 1) then
+								SetVar("DlgAmmo_Scav"..k.."_loc6_vehicle_0", 1)
+								break
+							else
+								SetVar("DlgAmmo_Scav"..k.."_loc6_vehicle_0", 0)
+							end
+						end
+					end
 				end
 			end
 
@@ -2619,6 +2689,19 @@
 					SetVar("DlgUseItems_20000_Scav"..k.."_loc7_vehicle_0", random(2))
 					SetVar("DlgUseItemsAngry_Scav"..k.."_loc7_vehicle_0", random(2))
 					SetVar("DlgFollow_Scav"..k.."_loc7_vehicle_0", RandomFromScavCarma())
+
+					local sv_a = GetEntityByName ("Scav"..k.."_loc7_vehicle_0")
+					if sv_a then
+						for i = 1, 5 do
+							local ammoItems = {"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun"}
+							if sv_a:HasAmountOfItemsInRepository(ammoItems[i], 1) then
+								SetVar("DlgAmmo_Scav"..k.."_loc7_vehicle_0", 1)
+								break
+							else
+								SetVar("DlgAmmo_Scav"..k.."_loc7_vehicle_0", 0)
+							end
+						end
+					end
 				end
 			end
 
@@ -2841,6 +2924,19 @@
 					SetVar("DlgUseItems_20000_Scav"..k.."_loc8_vehicle_0", random(2))
 					SetVar("DlgUseItemsAngry_Scav"..k.."_loc8_vehicle_0", random(2))
 					SetVar("DlgFollow_Scav"..k.."_loc8_vehicle_0", RandomFromScavCarma())
+
+					local sv_a = GetEntityByName ("Scav"..k.."_loc8_vehicle_0")
+					if sv_a then
+						for i = 1, 5 do
+							local ammoItems = {"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun"}
+							if sv_a:HasAmountOfItemsInRepository(ammoItems[i], 1) then
+								SetVar("DlgAmmo_Scav"..k.."_loc8_vehicle_0", 1)
+								break
+							else
+								SetVar("DlgAmmo_Scav"..k.."_loc8_vehicle_0", 0)
+							end
+						end
+					end
 				end
 			end
 
@@ -3367,7 +3463,9 @@
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 			for i=1,31 do
-				CreateBarrelLootBox("barrel"..i, CVector(getPos("barrelBox_"..i.."_loc")))
+				if random(2) == 1 then
+					CreateBarrelLootBox("barrel"..i, CVector(getPos("barrelBox_"..i.."_loc")))
+				end
 			end
 			trigger:Deactivate()
 		</script>
@@ -3394,9 +3492,15 @@
 				local ChestId = GetEntityByID(Chest)
 				ChestId:SetPosition(CVector(getPos("DeadScav_"..i.."_loc")))
 
-				local count = random(4)
+				if random(2) == 1 then
+					local ItemVodka = CreateNewObject{prototypeName = "item_vodka", objName = "ScavItemVodka_"..random(10000), belong = 1100}
+					local ItemVodkaId = GetEntityByID(ItemVodka)
+					if ChestId and ItemVodkaId then
+						ChestId:AddChild(ItemVodkaId)
+					end
+				end
 
-				for l=1,count do
+				for l=1, random(4) do
 					local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "ScavItem_"..random(10000), belong = 1100}
 					local ItemId = GetEntityByID(Item)
 					if ChestId and ItemId then
@@ -3412,7 +3516,9 @@
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 			for i=1,15 do
-				CreateGunBox("GunBox"..i, CVector(getPos("GunBox_"..i.."_loc")))
+				if random(2) == 1 then
+					CreateGunBox("GunBox"..i, CVector(getPos("GunBox_"..i.."_loc")))
+				end
 			end
 			trigger:Deactivate()
 		</script>
@@ -3472,40 +3578,42 @@
 							"item_cable", "item_drill", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_helix", "item_lump", "item_magnet", "item_rele", "item_svech", "item_tplug", "item_ultra_lump", "item_usb", "item_wires", "item_gyrotachometer", "item_military_plate"}
 			
 			for i=1,10 do
-				local Chest = CreateNewObject{prototypeName = "mainChest", objName = "TehnoBox"..i.."Chest"}	
-				local ChestId = GetEntityByID(Chest)
-				ChestId:SetPosition(CVector(getPos("TehnoBox_"..i.."_loc")))
-				ChestId:SetSkin(5)
-			
-				local ChestPos = ChestId:GetPosition()
-				ChestPos.y = ChestPos.y + 1
-				ChestId:SetPosition(ChestPos)
-			
-				local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityTehnoItem_"..i, belong = 1100}
-				local OpacityItemId = GetEntityByID(OpacityItem)
-			
-				if ChestId and OpacityItemId then
-					ChestId:AddChild(OpacityItemId)
-				end
-			
-				local notloot = random(100)
-				local count = random(4)
-				local useItem = random(2)
-			
-				if notloot > 10 then
-					if useItem == 1 then
-						local UseItem = CreateNewObject{prototypeName = use[exrandom(getn(use))], objName = "TehnoUseItem_"..random(10000), belong = 1100}
-						local UseItemId = GetEntityByID(UseItem)
-						if ChestId and UseItemId then
-							ChestId:AddChild(UseItemId)
-						end
+				if random(2) == 1 then
+					local Chest = CreateNewObject{prototypeName = "mainChest", objName = "TehnoBox"..i.."Chest"}	
+					local ChestId = GetEntityByID(Chest)
+					ChestId:SetPosition(CVector(getPos("TehnoBox_"..i.."_loc")))
+					ChestId:SetSkin(5)
+				
+					local ChestPos = ChestId:GetPosition()
+					ChestPos.y = ChestPos.y + 1
+					ChestId:SetPosition(ChestPos)
+				
+					local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityTehnoItem_"..i, belong = 1100}
+					local OpacityItemId = GetEntityByID(OpacityItem)
+				
+					if ChestId and OpacityItemId then
+						ChestId:AddChild(OpacityItemId)
 					end
-					
-					for l=1,count do
-						local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "TehnoItem_"..random(10000), belong = 1100}
-						local ItemId = GetEntityByID(Item)
-						if ChestId and ItemId then
-							ChestId:AddChild(ItemId)
+				
+					local notloot = random(100)
+					local count = random(4)
+					local useItem = random(2)
+				
+					if notloot > 10 then
+						if useItem == 1 then
+							local UseItem = CreateNewObject{prototypeName = use[exrandom(getn(use))], objName = "TehnoUseItem_"..random(10000), belong = 1100}
+							local UseItemId = GetEntityByID(UseItem)
+							if ChestId and UseItemId then
+								ChestId:AddChild(UseItemId)
+							end
+						end
+						
+						for l=1,count do
+							local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "TehnoItem_"..random(10000), belong = 1100}
+							local ItemId = GetEntityByID(Item)
+							if ChestId and ItemId then
+								ChestId:AddChild(ItemId)
+							end
 						end
 					end
 				end
@@ -3524,34 +3632,36 @@
 							"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench"}
 			
 			for i=1,9 do
-				local Chest = CreateNewObject{prototypeName = "mainChest", objName = "ToolsBox"..i.."Chest"}	
-				local ChestId = GetEntityByID(Chest)
-				ChestId:SetPosition(CVector(getPos("ToolsBox_"..i.."_loc")))
-				ChestId:SetSkin(6)
-			
-				local ChestPos = ChestId:GetPosition()
-				ChestPos.y = ChestPos.y + 1
-				ChestId:SetPosition(ChestPos)
-			
-				local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityToolsItem_"..i, belong = 1100}
-				local OpacityItemId = GetEntityByID(OpacityItem)
-			
-				if ChestId and OpacityItemId then
-					ChestId:AddChild(OpacityItemId)
-				end
-			
-				local notloot = random(100)
-				local count = random(3)
-			
-				if notloot > 10 then
-					for l=1,count do
-						local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "ToolsItem_"..random(10000), belong = 1100}
-						local ItemId = GetEntityByID(Item)
-						if ChestId and ItemId then
-							ChestId:AddChild(ItemId)
-						end
+				if random(2) == 1 then
+					local Chest = CreateNewObject{prototypeName = "mainChest", objName = "ToolsBox"..i.."Chest"}	
+					local ChestId = GetEntityByID(Chest)
+					ChestId:SetPosition(CVector(getPos("ToolsBox_"..i.."_loc")))
+					ChestId:SetSkin(6)
+				
+					local ChestPos = ChestId:GetPosition()
+					ChestPos.y = ChestPos.y + 1
+					ChestId:SetPosition(ChestPos)
+				
+					local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityToolsItem_"..i, belong = 1100}
+					local OpacityItemId = GetEntityByID(OpacityItem)
+				
+					if ChestId and OpacityItemId then
+						ChestId:AddChild(OpacityItemId)
 					end
-				end		
+				
+					local notloot = random(100)
+					local count = random(3)
+				
+					if notloot > 10 then
+						for l=1,count do
+							local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "ToolsItem_"..random(10000), belong = 1100}
+							local ItemId = GetEntityByID(Item)
+							if ChestId and ItemId then
+								ChestId:AddChild(ItemId)
+							end
+						end
+					end	
+				end	
 			end
 			trigger:Deactivate()
 		</script>
@@ -3563,32 +3673,34 @@
 			local items = {"book", "shkatulka", "item_key_gate_thetown", "item_key_gate_basefelix", "item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_emre_kara", "item_fitanyashka", "item_monolit", "item_kaktus", "item_keqing", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_carsen", "item_metallodetector", "item_ananaga", "item_silver_skull", "item_vaze", "item_kubok_kikiki"}
 
 			for i=1,7 do
-				local Chest = CreateNewObject{prototypeName = "mainChest", objName = "ValuablesBox"..i.."Chest"}	
-				local ChestId = GetEntityByID(Chest)
-				ChestId:SetPosition(CVector(getPos("ValuableBox_"..i.."_loc")))
-				ChestId:SetSkin(7)
+				if random(2) == 1 then
+					local Chest = CreateNewObject{prototypeName = "mainChest", objName = "ValuablesBox"..i.."Chest"}	
+					local ChestId = GetEntityByID(Chest)
+					ChestId:SetPosition(CVector(getPos("ValuableBox_"..i.."_loc")))
+					ChestId:SetSkin(7)
 
-				local ChestPos = ChestId:GetPosition()
-				ChestPos.y = ChestPos.y + 1
-				ChestId:SetPosition(ChestPos)
+					local ChestPos = ChestId:GetPosition()
+					ChestPos.y = ChestPos.y + 1
+					ChestId:SetPosition(ChestPos)
 
-				local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityValuableItem_"..i, belong = 1100}
-				local OpacityItemId = GetEntityByID(OpacityItem)
+					local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityValuableItem_"..i, belong = 1100}
+					local OpacityItemId = GetEntityByID(OpacityItem)
 
-				if ChestId and OpacityItemId then
-					ChestId:AddChild(OpacityItemId)
-				end
+					if ChestId and OpacityItemId then
+						ChestId:AddChild(OpacityItemId)
+					end
 
-				local notloot = random(100)
-				local count = random(1)
-				
-				if notloot > 10 then
-					for l=1,count do
-						local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "ValuableItem_"..random(10000), belong = 1100}
-						local ItemId = GetEntityByID(Item)
+					local notloot = random(100)
+					local count = random(1)
+					
+					if notloot > 10 then
+						for l=1,count do
+							local Item = CreateNewObject{prototypeName = items[random(getn(items))], objName = "ValuableItem_"..random(10000), belong = 1100}
+							local ItemId = GetEntityByID(Item)
 
-						if ChestId and ItemId then
-							ChestId:AddChild(ItemId)
+							if ChestId and ItemId then
+								ChestId:AddChild(ItemId)
+							end
 						end
 					end
 				end
@@ -3681,14 +3793,25 @@
 	<trigger Name="AddKeyGateBaseFelixInChests" active="0">
 		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
-			local ChestRandom = {"DeadScav2Chest", "GunBox"..random(4,6).."Chest", "GunBox12Chest", "TehnoBox5Chest", "ElectronicsBox2Chest"}
-			local Chest = GetEntityByName(ChestRandom[random(getn(ChestRandom))])
-			
-			local Item = CreateNewObject{prototypeName = "item_key_gate_basefelix", objName = "KeyGateBaseFelixItem_"..random(10000), belong = 1100}
-			local ItemId = GetEntityByID(Item)
+			local Chests = {"DeadScav2Chest", "GunBox4Chest", "GunBox5Chest", "GunBox6Chest", "GunBox12Chest", "TehnoBox5Chest", "ElectronicsBox2Chest"}
+			local ChestsRandom = {}
+			local l = 0
+			for i = 1, 7 do
+				local Chest = GetEntityByName(Chests[i])
+				if Chest then
+					l = l + 1
+					ChestsRandom[l] = Chests[i]
+				end
+			end
 
-			if Chest and ItemId then
-				Chest:AddChild(ItemId)
+			if l ~= 0 then
+				local ChRand = GetEntityByName(ChestsRandom[random(getn(ChestsRandom))])
+				local Item = CreateNewObject{prototypeName = "item_key_gate_basefelix", objName = "KeyGateBaseFelixItem_"..random(10000), belong = 1100}
+				local ItemId = GetEntityByID(Item)
+
+				if ChRand and ItemId then
+					ChRand:AddChild(ItemId)
+				end
 			end
 			trigger:Deactivate()
 		</script>
@@ -4596,7 +4719,7 @@
 			SetVar("PlayerKillPMC", GetVar("PlayerKillPMC").AsInt+1)
 			if DEBUG == 1 then println("PLAYER PMC KILL: "..GetVar("PlayerKillPMC").AsInt) LOG("PLAYER PMC KILL: "..GetVar("PlayerKillPMC").AsInt) end
 			if GetVar("PlayerBelong").AsString == "SCAV" then 
-				SetVar("ScavCarma", GetVar("ScavCarma").AsString + 0.1) 
+				AddScavCarma("+", "0.1")
 			else 
 				TActivate("KillsPMC") 
 			end
@@ -4733,7 +4856,7 @@
 			SetVar("PlayerKillScavs", GetVar("PlayerKillScavs").AsInt+1)
 			if DEBUG == 1 then println("PLAYER SCAV KILL: "..GetVar("PlayerKillScavs").AsInt) LOG("PLAYER SCAV KILL: "..GetVar("PlayerKillScavs").AsInt) end
 			if GetVar("PlayerBelong").AsString == "SCAV" then 
-				SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.2) 
+				AddScavCarma("-", "0.2")
 			else
 				TActivate("KillsScavs") 
 			end
@@ -4745,7 +4868,10 @@
 	<trigger Name="PressHornToSpeekScav" active="0">
 		<event eventid="GE_PLAYER_VEHICLE_HORN" ObjName="Player1" />
 		<script>
-			StartConversation(GetVar("ScavNPC").AsString)
+			local scav = GetEntityByName(GetVar("ScavCarNPC").AsString)
+			if scav and scav:IsAlive() then
+				StartConversation(GetVar("ScavNPC").AsString)
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4936,6 +5062,7 @@
 					if kk ~= 0 then SetVar("ScavNPC", GetVar("Scav"..c.."_loc"..kk.."_NPC").AsString) end
 					if name == "ScavCarFollow_vehicle_0" then SetVar("ScavNPC", GetVar("ScavCarFollowNPC").AsString) end
 					SetVar("ScavCarNPC", name)
+
 					TActivate("PressHornToSpeekScav")
 					AddFadingMsgByStrIdFormatted("fm_press_horn_to_speek_scav")
 				end
@@ -5288,7 +5415,7 @@
 		<script>
 			if DEBUG == 1 then println("PLAYER SECTARIAN KILL") LOG("PLAYER SECTARIAN KILL") end
 			if GetVar("PlayerBelong").AsString == "SCAV" then 
-				SetVar("ScavCarma", GetVar("ScavCarma").AsString + 0.2) 
+				AddScavCarma("+", "0.2")
 			else
 				TActivate("KillsSectanian") 
 			end
@@ -5301,7 +5428,7 @@
 		<script>
 			if DEBUG == 1 then println("PLAYER SECTARIAN MAIN KILL") LOG("PLAYER SECTARIAN MAIN KILL") end
 			if GetVar("PlayerBelong").AsString == "SCAV" then 
-				SetVar("ScavCarma", GetVar("ScavCarma").AsString + 0.2) 
+				AddScavCarma("+", "0.2")
 			else
 				TActivate("KillsSectanianMain") 
 			end
@@ -5575,7 +5702,7 @@
 			if SCAV_CAR_TIME_MINUTE then SCAV_CAR_TIME_MINUTE = GetVar("ScavCar_time_minute").AsInt end
 			if SCAV_CAR_TIME_SECOND then SCAV_CAR_TIME_SECOND = GetVar("ScavCar_time_second").AsInt end
 
-			if SCAV_CARMA_GLOBAL then SCAV_CARMA_GLOBAL = GetVar("ScavCarma").AsString end
+			if SCAV_CARMA_GLOBAL then SCAV_CARMA_GLOBAL = GetScavCarma() end
 
 			if PLAYER_BELONG_GLOBAL then PLAYER_BELONG_GLOBAL = GetVar("PlayerBelong").AsString end
 
@@ -5640,13 +5767,13 @@
 			if DEBUG == 1 then
 				println("=================== EXIT MAP: r1m1 ===================")
 				println("PLAYER BELONG: "..GetVar("PlayerBelong").AsString)
-				println("SCAV CARMA: "..GetVar("ScavCarma").AsString)
+				println("SCAV CARMA: "..GetScavCarma())
 				println("PLAYER SCAV KILL: "..GetVar("PlayerKillScavs").AsInt)
 				println("PLAYER PMC KILL: "..GetVar("PlayerKillPMC").AsInt)
 				println("OBJ CONTAINER: "..g_ObjCont:size())
 				LOG("=================== EXIT MAP: r1m1 ===================")
 				LOG("PLAYER BELONG: "..GetVar("PlayerBelong").AsString)
-				LOG("SCAV CARMA: "..GetVar("ScavCarma").AsString)
+				LOG("SCAV CARMA: "..GetScavCarma())
 				LOG("PLAYER SCAV KILL: "..GetVar("PlayerKillScavs").AsInt)
 				LOG("PLAYER PMC KILL: "..GetVar("PlayerKillPMC").AsInt)
 				LOG("OBJ CONTAINER: "..g_ObjCont:size())

@@ -78,7 +78,7 @@
 
 			TActivate("MessageRaid")
 			TActivate("TimerRaidStart")
-			--TActivate("CreatePMC")
+			TActivate("CreatePMC")
 			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("IfRaidCountForQuest") end
 			TActivate("ShowExits_Start")
 
@@ -278,7 +278,9 @@
 			elseif GetVar("PlayerCar").AsString == "Cruiser" then
 				AddPlayerNewVehicle("CruiserChassis")
 			else
-				AddPlayerNewVehicle("BugChassis")
+				if GetVar("PlayerBelong").AsString ~= "SCAV" then
+					AddPlayerNewVehicle("BugChassis")
+				end
 			end
 
 			if GetVar("PlayerBelong").AsString == "SCAV" then

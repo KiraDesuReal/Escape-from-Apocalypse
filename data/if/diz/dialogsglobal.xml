@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
-<DialogsResource><!--Root--><!--Root/r1m1--><!--Root/r1m2--><!--Root/r1m3--><!--Root/r1m4--><!--Root/r2m1--><!--Root/r2m2--><!--Root/r3m1--><!--Root/r3m2--><!--Root/r4m1--><!--Root/r4m2--><!--Root/r0m0--><!--Root/r0m0/Заправка-->
+<DialogsResource>
+<!--Root/r0m0--><!--Root/r0m0/Заправка-->
 	<Reply
 		name="Dlg_npc_001302"
 		text="С помощью заправки можно починиться и заправиться.|@FF0000AA|@FF1D1D1DДля постройки требуется:|На выбор: @FF1D1D1D[Горючее - x2, Канистра топлива - x2]|Болты - @FF1D1D1Dx2|Гайки - @FF1D1D1Dx2|Металлические запчасти - @FF1D1D1Dx1|Лампа накаливания - @FF1D1D1Dx2|Набор напильников «FullMaster» @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Возможность заправлять пустые канистры топливом|- Регенерация топлива: @FF1D1D1D1ед/10сек"
@@ -15477,14 +15478,14 @@
 		role="PLAYER"
 		scriptResult="EndConversation()" />
 
-<!--Root/r0m0/Диалог с дикими-->
+<!--Диалог с дикими-->
 
 	<Reply
 		name="Dlg_npc_Scav_1"
 		text="Здорова, брат! Чё как оно?"
 		role="NPC"
 		scriptCondition="GetVar('ScavCarNPC').AsString ~= 'ScavCarFollow_vehicle_0' and not(1.5 >= GetTolerance(1100, 1082))"
-		nextReplies="Dlg_pl_Scav_give_money Dlg_pl_Scav_give_use_items Dlg_pl_Scav_follow Dlg_pl_Scav_exit" />
+		nextReplies="Dlg_pl_Scav_give_money Dlg_pl_Scav_give_use_items Dlg_pl_Scav_give_ammo Dlg_pl_Scav_follow Dlg_pl_Scav_exit" />
 
 	<Reply
 		name="Dlg_pl_Scav_exit"
@@ -15492,7 +15493,7 @@
 		role="PLAYER"
 		scriptResult="TDeactivate('PressHornToSpeekScav'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); EndConversation()" />
 
-<!--Root/r0m0/Попросить у диких денег-->
+<!--Попросить у диких денег-->
 	<Reply
 		name="Dlg_pl_Scav_give_money"
 		text="Братуха, выручай. Не отсыпешь парочку монет?"
@@ -15500,7 +15501,7 @@
 		scriptCondition="GetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString).AsInt ~= 2"
 		nextReplies="Dlg_npc_Scav_give_money_1 Dlg_npc_Scav_give_money_2" />
 
-<!--Root/r0m0/Попросить у диких восполняющие предметы-->
+<!--Попросить у диких восполняющие предметы-->
 	<Reply
 		name="Dlg_pl_Scav_give_use_items"
 		text="У тебя не найдётся лишних запчастей, или канистр с топливом для машины?"
@@ -15508,7 +15509,15 @@
 		scriptCondition="GetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString).AsInt ~= 2"
 		nextReplies="Dlg_npc_Scav_give_use_items_1 Dlg_npc_Scav_give_use_items_8" />
 
-<!--Root/r0m0/Сопровождение-->
+<!--Попросить у диких патроны-->
+	<Reply
+		name="Dlg_pl_Scav_give_ammo"
+		text="Братан, нужны патроны! Вопрос жизни и смерти."
+		role="PLAYER"
+		scriptCondition="GetVar('DlgAmmo_'..GetVar('ScavCarNPC').AsString).AsInt ~= 2"
+		nextReplies="Dlg_npc_Scav_give_ammo_1 Dlg_npc_Scav_give_ammo_2" />
+
+<!--Сопровождение-->
 	<Reply
 		name="Dlg_pl_Scav_follow"
 		text="Мы с бандой собираемся навести шухеру в округе. Ты с нами?"
@@ -15516,14 +15525,14 @@
 		scriptCondition="getObj('ScavCarFollow_vehicle_0') == nil"
 		nextReplies="Dlg_npc_Scav_follow_1 Dlg_npc_Scav_follow_2" />
 
-<!--Root/r0m0/Отпустить дикого-->
+<!--Отпустить дикого-->
 	<Reply
 		name="Dlg_pl_Scav_del_follow"
 		text="Отбой. Можешь ехать по своим делам."
 		role="PLAYER"
 		scriptResult="TDeactivate('PressHornToSpeekScav'); TActivate('FadeEffectIfScavCarFollowRemove'); AddImportantFadingMsgByStrIdFormatted('fm_scav_follow_remove'); SoundFadingMsg(); SetVar('ScavNPC', '0'); EndConversation()" />
 
-<!--Root/r0m0/Попросить у диких денег: Дикий согласен-->
+<!--Попросить у диких денег: Дикий согласен-->
 
 	<Reply
 		name="Dlg_npc_Scav_give_money_1"
@@ -15558,7 +15567,7 @@
 		role="PLAYER"
 		scriptResult="TDeactivate('PressHornToSpeekScav'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); EndConversation()" />
 
-<!--Root/r0m0/Передаем водку-->
+<!--Попросить у диких денег: Передаем водку-->
 
 	<Reply
 		name="Dlg_npc_Scav_give_money_3"
@@ -15578,7 +15587,7 @@
 		role="PLAYER"
 		nextReplies="Dlg_npc_Scav_1" />
 
-<!--Root/r0m0/Передаем другие предметы-->
+<!--Попросить у диких денег: Передаем другие предметы-->
 
 	<Reply
 		name="Dlg_npc_Scav_give_money_6"
@@ -16086,7 +16095,7 @@
 		role="PLAYER"
 		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.1'); SetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString, 2); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); EndConversation()" />
 
-<!--Root/r0m0/Забираем деньги силой-->
+<!--Попросить у диких денег: Забираем деньги силой-->
 
 	<Reply
 		name="Dlg_npc_Scav_give_money_4"
@@ -16122,7 +16131,7 @@
 		role="PLAYER"
 		scriptResult="TDeactivate('PressHornToSpeekScav'); TActivate('CreateCopyEmenyScavCar'); SetTolerance(1100, 1082, GetTolerance(1100, 1082) - 0.1); AddScavCarma('-', '0.1'); SetVar('ScavNPC', '0'); EndConversation()" />
 
-<!--Root/r0m0/Попросить у диких денег: Дикий не согласен-->
+<!--Попросить у диких денег: Дикий не согласен-->
 
 	<Reply
 		name="Dlg_npc_Scav_give_money_2"
@@ -16135,7 +16144,7 @@
 		name="Dlg_pl_Scav_give_money_2_1"
 		text="Отдавай всё что у тебя есть по хорошему, пока я добрый!"
 		role="PLAYER"
-		scriptCondition="0.5 >= GetScavCarma() and getObj('ScavCarEnemy') == nil"
+		scriptCondition="0.5 > GetScavCarma() and getObj('ScavCarEnemy') == nil"
 		nextReplies="Dlg_npc_Scav_give_money_4 Dlg_npc_Scav_give_money_5" />
 
 	<Reply
@@ -16144,7 +16153,7 @@
 		role="PLAYER"
 		scriptResult="TDeactivate('PressHornToSpeekScav'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); EndConversation()" />
 
-<!--Root/r0m0/Попросить у диких восполняющие предметы: Дикий согласен-->
+<!--Попросить у диких восполняющие предметы: Дикий согласен-->
 
 	<Reply
 		name="Dlg_npc_Scav_give_use_items_1"
@@ -16165,9 +16174,9 @@
 		text="Хорошо, я согласен купить за 30.000 монет."
 		role="PLAYER"
 		scriptCondition="GetPlayerMoney() >= 30000"
-		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.05'); SetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString, 2); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddPlayerRandomItem({'scrap_metal_use', 'machinery_use', 'electronics_use', 'oil_use', 'fuel_full_use'}, random(1,2)); AddPlayerMoney(-30000); EndConversation()" />
+		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.05'); SetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString, 2); SetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString, 1); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddPlayerRandomItem({'scrap_metal_use', 'machinery_use', 'electronics_use', 'oil_use', 'fuel_full_use'}, random(1,2)); AddPlayerMoney(-30000); EndConversation()" />
 
-<!--Root/r0m0/Попросить у диких восполняющие предметы: Дикий согласен за 15000-->
+<!--Попросить у диких восполняющие предметы: Дикий согласен за 15000-->
 
 	<Reply
 		name="Dlg_npc_Scav_give_use_items_2"
@@ -16180,9 +16189,9 @@
 		name="Dlg_pl_Scav_give_use_items_2"
 		text="Вот и порешали. Удачи в дороге, братан!"
 		role="PLAYER"
-		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.1'); SetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString, 2); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddPlayerRandomItem({'scrap_metal_use', 'machinery_use', 'electronics_use', 'oil_use', 'fuel_full_use'}, 1); AddPlayerMoney(-15000); EndConversation()" />
+		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.1'); SetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString, 2); SetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString, 1); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddPlayerRandomItem({'scrap_metal_use', 'machinery_use', 'electronics_use', 'oil_use', 'fuel_full_use'}, 1); AddPlayerMoney(-15000); EndConversation()" />
 
-<!--Root/r0m0/Попросить у диких восполняющие предметы: Дикий не согласен за 15000-->
+<!--Попросить у диких восполняющие предметы: Дикий не согласен за 15000-->
 
 	<Reply
 		name="Dlg_npc_Scav_give_use_items_3"
@@ -16203,9 +16212,9 @@
 		text="Ладно, покупаю за 30.000 монет."
 		role="PLAYER"
 		scriptCondition="GetPlayerMoney() >= 30000"
-		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.05'); SetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString, 2); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddPlayerRandomItem({'scrap_metal_use', 'machinery_use', 'electronics_use', 'oil_use', 'fuel_full_use'}, random(1,2)); AddPlayerMoney(-30000); EndConversation()" />
+		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.05'); SetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString, 2); SetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString, 1); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddPlayerRandomItem({'scrap_metal_use', 'machinery_use', 'electronics_use', 'oil_use', 'fuel_full_use'}, random(1,2)); AddPlayerMoney(-30000); EndConversation()" />
 
-<!--Root/r0m0/Попросить у диких восполняющие предметы: Дикий согласен за 20000-->
+<!--Попросить у диких восполняющие предметы: Дикий согласен за 20000-->
 
 	<Reply
 		name="Dlg_npc_Scav_give_use_items_4"
@@ -16218,9 +16227,9 @@
 		name="Dlg_pl_Scav_give_use_items_5"
 		text="Вот и отлично."
 		role="PLAYER"
-		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.1'); SetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString, 2); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddPlayerRandomItem({'scrap_metal_use', 'machinery_use', 'electronics_use', 'oil_use', 'fuel_full_use'}, 1); AddPlayerMoney(-20000); EndConversation()" />
+		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.1'); SetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString, 2); SetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString, 1); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddPlayerRandomItem({'scrap_metal_use', 'machinery_use', 'electronics_use', 'oil_use', 'fuel_full_use'}, 1); AddPlayerMoney(-20000); EndConversation()" />
 
-<!--Root/r0m0/Попросить у диких восполняющие предметы: Дикий не согласен за 20000-->
+<!--Попросить у диких восполняющие предметы: Дикий не согласен за 20000-->
 
 	<Reply
 		name="Dlg_npc_Scav_give_use_items_5"
@@ -16234,20 +16243,20 @@
 		text="Хорошо-хорошо, не мандражируй, беру за 30.000 монет."
 		role="PLAYER"
 		scriptCondition="GetPlayerMoney() >= 30000"
-		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.05'); SetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString, 2); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddPlayerRandomItem({'scrap_metal_use', 'machinery_use', 'electronics_use', 'oil_use', 'fuel_full_use'}, 1); AddPlayerMoney(-30000); EndConversation()" />
+		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.05'); SetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString, 2); SetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString, 1); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddPlayerRandomItem({'scrap_metal_use', 'machinery_use', 'electronics_use', 'oil_use', 'fuel_full_use'}, 1); AddPlayerMoney(-30000); EndConversation()" />
 
 	<Reply
 		name="Dlg_pl_Scav_give_use_items_7"
-		text="Слушай, давай решим дело по доброму, либо продаешь за 15.000, либо мне придётся познакомить тебя с моей пушкой."
+		text="Слушай, давай решим дело по доброму, либо продаешь за 15.000, либо мне придётся применить силу."
 		role="PLAYER"
 		scriptCondition="0 > GetScavCarma() and getObj('ScavCarEnemy') == nil and GetPlayerMoney() >= 15000"
 		nextReplies="Dlg_npc_Scav_give_use_items_6 Dlg_npc_Scav_give_use_items_7" />
 
-<!--Root/r0m0/Попросить у диких восполняющие предметы: Забираем силой-->
+<!--Попросить у диких восполняющие предметы: Забираем силой-->
 
 	<Reply
 		name="Dlg_npc_Scav_give_use_items_6"
-		text="Хорошо-хорошо. Я согласен купить за 15.000 монет. Только не стреляй, мне лишние проблемы не нужны."
+		text="Хорошо-хорошо. Я согласен продать за 15.000 монет. Только не стреляй, мне лишние проблемы не нужны."
 		role="NPC"
 		scriptCondition="GetVar('DlgUseItemsAngry_'..GetVar('ScavCarNPC').AsString).AsInt == 1"
 		nextReplies="Dlg_pl_Scav_give_use_items_8" />
@@ -16275,9 +16284,9 @@
 		name="Dlg_pl_Scav_give_use_items_10"
 		text="Хорошо, я уезжаю."
 		role="PLAYER"
-		scriptResult="TDeactivate('PressHornToSpeekScav'); SetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString, 3) SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); EndConversation()" />
+		scriptResult="TDeactivate('PressHornToSpeekScav'); SetVar('DlgUseItems_'..GetVar('ScavCarNPC').AsString, 3); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); EndConversation()" />
 	
-<!--Root/r0m0/Попросить у диких восполняющие предметы: Дикий не согласен-->
+<!--Попросить у диких восполняющие предметы: Дикий не согласен-->
 
 	<Reply
 		name="Dlg_npc_Scav_give_use_items_8"
@@ -16292,7 +16301,66 @@
 		role="PLAYER"
 		scriptResult="TDeactivate('PressHornToSpeekScav'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); EndConversation()" />
 
-<!--Root/r0m0/Сопровождение: Дикий согласен-->
+<!--Попросить у диких патроны: Дикий согласен-->
+
+	<Reply
+		name="Dlg_npc_Scav_give_ammo_1"
+		text="Я могу продать тебе один из ящиков, выберай.|@FF0000AA|Ящик боеприпасов для Артиллерии: @FF1D1D1D55.000 монет|Ящик патронов для Пушки: @FF1D1D1D35.000 монет|Ящик патронов для Пулемёта: @FF1D1D1D20.000 монет|Ящик боеприпасов для Ракетной установки: @FF1D1D1D50.000 монет|Ящик дроби для Дробовика: @FF1D1D1D15.000 монет"
+		role="NPC"
+		scriptCondition="GetVar('DlgAmmo_'..GetVar('ScavCarNPC').AsString).AsInt == 1"
+		nextReplies="Dlg_pl_Scav_give_ammo_1 Dlg_pl_Scav_give_ammo_2 Dlg_pl_Scav_give_ammo_3 Dlg_pl_Scav_give_ammo_4 Dlg_pl_Scav_give_ammo_5 Dlg_pl_Scav_give_money_3_1" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_ammo_1"
+		text="Купить Ящик боеприпасов для Артиллерии - x1 (Стоимость: 55.000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPlayerMoney() >= 55000"
+		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.2'); SetVar('DlgAmmo_'..GetVar('ScavCarNPC').AsString, 2); SetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString, 1); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddItemsToPlayerRepository('ammo_chest_artillerygun', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'ammo_chest_artillerygun'); AddPlayerMoney(-55000); EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_ammo_2"
+		text="Купить Ящик патронов для Пушки - x1 (Стоимость: 35.000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPlayerMoney() >= 35000"
+		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.1'); SetVar('DlgAmmo_'..GetVar('ScavCarNPC').AsString, 2); SetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString, 1); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddItemsToPlayerRepository('ammo_chest_heavygun', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'ammo_chest_heavygun'); AddPlayerMoney(-35000); EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_ammo_3"
+		text="Купить Ящик патронов для Пулемёта - x1 (Стоимость: 20.000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPlayerMoney() >= 20000"
+		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.1'); SetVar('DlgAmmo_'..GetVar('ScavCarNPC').AsString, 2); SetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString, 1); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddItemsToPlayerRepository('ammo_chest_machinegun', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'ammo_chest_machinegun'); AddPlayerMoney(-20000); EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_ammo_4"
+		text="Купить Ящик боеприпасов для Ракетной установки - x1 (Стоимость: 50.000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPlayerMoney() >= 50000"
+		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.2'); SetVar('DlgAmmo_'..GetVar('ScavCarNPC').AsString, 2); SetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString, 1); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddItemsToPlayerRepository('ammo_chest_rocketgun', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'ammo_chest_rocketgun'); AddPlayerMoney(-50000); EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_ammo_5"
+		text="Купить Ящик дроби для Дробовика - x1 (Стоимость: 15.000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPlayerMoney() >= 15000"
+		scriptResult="TDeactivate('PressHornToSpeekScav'); AddScavCarma('+', '0.05'); SetVar('DlgAmmo_'..GetVar('ScavCarNPC').AsString, 2); SetVar('DlgMoney_'..GetVar('ScavCarNPC').AsString, 1); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); AddItemsToPlayerRepository('ammo_chest_shotgun', 1); AddFadingMsgByStrIdFormatted('fm_player_add_thing', 'ammo_chest_shotgun'); AddPlayerMoney(-15000); EndConversation()" />
+
+<!--Попросить у диких патроны: Дикий не согласен-->
+
+	<Reply
+		name="Dlg_npc_Scav_give_ammo_2"
+		text="А кому они сейчас не нужны? Нету патронов, сам на нуле."
+		role="NPC"
+		scriptCondition="GetVar('DlgAmmo_'..GetVar('ScavCarNPC').AsString).AsInt == 0"
+		nextReplies="Dlg_pl_Scav_give_ammo_6" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_ammo_6"
+		text="Очень жаль."
+		role="PLAYER"
+		scriptResult="TDeactivate('PressHornToSpeekScav'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); EndConversation()" />
+
+<!--Сопровождение: Дикий согласен-->
 
 	<Reply
 		name="Dlg_npc_Scav_follow_1"
@@ -16326,7 +16394,7 @@
 		role="PLAYER"
 		scriptResult="TDeactivate('PressHornToSpeekScav'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); EndConversation()" />
 
-<!--Root/r0m0/Сопровождение: Дикий не согласен-->
+<!--Сопровождение: Дикий не согласен-->
 
 	<Reply
 		name="Dlg_npc_Scav_follow_2"

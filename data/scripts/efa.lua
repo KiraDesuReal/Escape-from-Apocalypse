@@ -1258,6 +1258,16 @@ function AddItemsToRepositoryIfCanPlace(car, prototypeName, amount)
 	if veh then
 		if veh:CanPlaceItemsToRepository(prototypeName, amount) ~=nil then
 			veh:AddItemsToRepository(prototypeName, amount)
+			return 1
+		end
+	end
+end
+
+function AddItemsToRepositoryIfCanPlaceCycle(car, prototypeName, amount)
+	for i = 1, 100 do
+		local add = AddItemsToRepositoryIfCanPlace(car, prototypeName, amount)
+		if add == 1 then
+			break
 		end
 	end
 end
@@ -1655,6 +1665,25 @@ function AddScavCarma(s, count)
 		SetVar("ScavCarma", GetScavCarma() + count) 
 	end
 end
+
+-- Возвращает имя профиля игрока (Автор скрипта: E Jet)
+function GetProfileName()
+	local ProfileName
+	local LOGs = io.open("exmachina.log", "r+")
+	for logLine in LOGs:lines() do
+		local ProfileFND = string.find(logLine, 'Profile ')
+		if ProfileFND then
+			local ProfileFNDot = string.find(logLine, 'Profile "')
+			local ProfileFNDdo = string.find(logLine, '" set')
+			ProfileName = string.sub(logLine, ProfileFNDot+9, ProfileFNDdo-1)
+			ProfileName = tostring(ProfileName)
+		end
+	end
+	LOGs:close()
+	return ProfileName
+end
+
+
 
 
 

@@ -6,17 +6,7 @@
 		Name="Player1"
 		Belong="1100"
 		Prototype="player"
-		Money="100000">
-		<Object
-			Name="MyCar"
-			Belong="1100"
-			Prototype="Bug01ForStart"
-			Pos="893.077 255.493 987.899"
-			Rot="-0.009 -0.005 -0.000 1.000">
-			<Parts />
-			<Repository />
-		</Object>
-	</Object>
+		Money="100000"/>
 
 	<Object
 		Name="Gate_1_1_loc"
@@ -372,6 +362,29 @@
 	</Object>
 
 	<Object
+		Name="SelectFractions_NPC"
+		Belong="1100"
+		Prototype="NPC"
+		helloReplyNames="Dlg_npc_select_fractions"
+		SpokenCount="0" />
+
+	<Object
+		Name="SelectBEAR_NPC"
+		Belong="1100"
+		Prototype="NPC"
+		ModelName="mask_hero"
+		helloReplyNames="Dlg_npc_select_bear"
+		SpokenCount="0" />
+
+	<Object
+		Name="SelectUSEC_NPC"
+		Belong="1100"
+		Prototype="NPC"
+		ModelName="brodyaga_mask"
+		helloReplyNames="Dlg_npc_select_usec"
+		SpokenCount="0" />
+
+	<Object
 		Name="tp_1_loc"
 		Belong="1100"
 		Prototype="genericLocation"
@@ -409,8 +422,8 @@
 				Name="Traider_1_NPC"
 				Belong="1100"
 				Prototype="NPC"
-				ModelName="r1_man"
-				cfg="4"
+				ModelName="2d_mask"
+				skin="1"
 				helloReplyNames="Dlg_npc_q_testing_mission_1 Dlg_npc_q_testing_mission_5 Dlg_npc_prapor_1"
 				SpokenCount="0" />
 
@@ -426,9 +439,8 @@
 				Name="Mechanic_NPC"
 				Belong="1100"
 				Prototype="NPC"
-				ModelName="manmenu_mask"
-				skin="1"
-				cfg="148"
+				ModelName="2d_mask"
+				skin="2"
 				helloReplyNames="Dlg_npc_q_rebuild_1 Dlg_npc_q_rebuild_9 Dlg_npc_mechanic_1"
 				SpokenCount="0" />
 
@@ -436,9 +448,8 @@
 				Name="Buyer_NPC"
 				Belong="1100"
 				Prototype="NPC"
-				ModelName="manmenu_mask"
-				skin="0"
-				cfg="102"
+				ModelName="2d_mask"
+				skin="3"
 				helloReplyNames="Dlg_npc_buyer_1"
 				SpokenCount="0" />
 		</Object>

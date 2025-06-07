@@ -809,6 +809,16 @@ $Id: BreakableObjects.xml,v 1.62 2005/11/28 07:43:57 anton Exp $
 		MaxStandTime		= "5.0"
 		/>
 
+	<Prototype
+		Class				= "PhysicUnit"
+		Name				= "Human_brodyaga_slow"
+		ModelFile			= "dweller_brodyaga"
+		Mass				= "30.0"
+		WalkSpeed			= "1.0"
+		TurnSpeed			= "500"
+		MaxStandTime		= "5.0"
+		/>
+
 	
 	<Prototype
 		Class				= "JointedObj"

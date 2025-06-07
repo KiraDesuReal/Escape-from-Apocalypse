@@ -33,7 +33,7 @@
 
 	<Path Name = "credits_cam_player02">
 		<!--<Point  coord="-0.8 2.3 1.15" rotation="-0.198 -0.545 0.134 0.804" zoom="1.4"/>-->
-		<Point  coord="-0.8 2.3 1.5" rotation="-0.198 -0.545 0.134 0.804" zoom="1.4"/>
+		<Point  coord="-0.8 2.3 1.6" rotation="-0.198 -0.545 0.134 0.804" zoom="1.4"/>
 	</Path>
 
 	<Path Name = "credits_cam_player02_1">
@@ -77,6 +77,30 @@
 	<Path Name = "credits_cam03">
 		<Point  coord="1069.575 313.492 1413.845" rotation="-0.063 0.475 -0.034 0.877"/>
 		<Point  coord="1055.961 310.983 1422.644" rotation="-0.065 0.470 -0.035 0.879"/>
+	</Path>
+
+	<Path Name = "start_bg1">
+		<Point  coord="659.132 339.705 841.939" rotation="0 0.797 0 0.604"/>
+		<Point  coord="659.132 339.705 841.939" rotation="0 0 0 1"/>
+	</Path>
+
+	<Path Name = "start_bg2">
+		<Point  coord="659.132 339.705 841.939" rotation="0 -0.797 0 0.604"/>
+		<Point  coord="659.132 339.705 841.939" rotation="0 0 0 1"/>
+	</Path>
+
+	<Path Name = "start_bg3">
+		<Point  coord="659.132 339.705 841.939" rotation="0 0 0 1"/>
+	</Path>
+
+	<Path Name = "move_bear">
+		<Point  coord="658.000 338.000 845.500" rotation="0.0000 0.9455 0.0000 0.3256"/>
+		<Point  coord="659.057 337.900 843.100" rotation="0 1 0 0"/>
+	</Path>
+
+	<Path Name = "move_usec">
+		<Point  coord="660.000 338.000 845.500" rotation="0.0000 -0.9455 0.0000 0.3256"/>
+		<Point  coord="659.100 337.850 843.175" rotation="0 1 0 0"/>
 	</Path>
 
 </Paths>

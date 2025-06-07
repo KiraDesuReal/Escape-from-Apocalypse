@@ -176,6 +176,71 @@
 			if WINDGENERATOR_TIME_SECOND_GLOBAL > 0 then SetVar("WindGenerator_time_second", WINDGENERATOR_TIME_SECOND_GLOBAL) end
 			if WINDGENERATOR_STATUS_GLOBAL then SetVar("WindGenerator_status", WINDGENERATOR_STATUS_GLOBAL) end
 
+			if Q_TEST_DRIVE1_KILLSCAVS then SetVar("q_test_drive1_killscavs", Q_TEST_DRIVE1_KILLSCAVS) end
+			if Q_TEST_DRIVE2_KILLSCAVS then SetVar("q_test_drive2_killscavs", Q_TEST_DRIVE2_KILLSCAVS) end
+			if Q_TEST_DRIVE2_KILLPMC then SetVar("q_test_drive2_killPMC", Q_TEST_DRIVE2_KILLPMC) end
+			if Q_TEST_DRIVE3_KILLSCAVS then SetVar("q_test_drive3_killscavs", Q_TEST_DRIVE3_KILLSCAVS) end
+			if Q_TEST_DRIVE3_KILLPMC then SetVar("q_test_drive3_killPMC", Q_TEST_DRIVE3_KILLPMC) end
+			if Q_TEST_DRIVE4_KILLSCAVS then SetVar("q_test_drive4_killscavs", Q_TEST_DRIVE4_KILLSCAVS) end
+			if Q_TEST_DRIVE4_KILLPMC then SetVar("q_test_drive4_killPMC", Q_TEST_DRIVE4_KILLPMC) end
+			if Q_TEST_DRIVE5_KILLSCAVS then SetVar("q_test_drive5_killscavs", Q_TEST_DRIVE5_KILLSCAVS) end
+			if Q_TEST_DRIVE5_KILLPMC then SetVar("q_test_drive5_killPMC", Q_TEST_DRIVE5_KILLPMC) end
+			if Q_TEST_DRIVE6_KILLSCAVS then SetVar("q_test_drive6_killscavs", Q_TEST_DRIVE6_KILLSCAVS) end
+			if Q_TEST_DRIVE6_KILLPMC then SetVar("q_test_drive6_killPMC", Q_TEST_DRIVE6_KILLPMC) end
+			if Q_TEST_DRIVE7_KILLSCAVS then SetVar("q_test_drive7_killscavs", Q_TEST_DRIVE7_KILLSCAVS) end
+			if Q_TEST_DRIVE7_KILLPMC then SetVar("q_test_drive7_killPMC", Q_TEST_DRIVE7_KILLPMC) end
+			if Q_TEST_DRIVE8_KILLSCAVS then SetVar("q_test_drive8_killscavs", Q_TEST_DRIVE8_KILLSCAVS) end
+			if Q_TEST_DRIVE8_KILLPMC then SetVar("q_test_drive8_killPMC", Q_TEST_DRIVE8_KILLPMC) end
+			if Q_TEST_DRIVE9_KILLSCAVS then SetVar("q_test_drive9_killscavs", Q_TEST_DRIVE9_KILLSCAVS) end
+			if Q_TEST_DRIVE9_KILLPMC then SetVar("q_test_drive9_killPMC", Q_TEST_DRIVE9_KILLPMC) end
+			if Q_TEST_DRIVE10_KILLSCAVS then SetVar("q_test_drive10_killscavs", Q_TEST_DRIVE10_KILLSCAVS) end
+			if Q_TEST_DRIVE10_KILLPMC then SetVar("q_test_drive10_killPMC", Q_TEST_DRIVE10_KILLPMC) end
+			if Q_TEST_DRIVE11_KILLSCAVS then SetVar("q_test_drive11_killscavs", Q_TEST_DRIVE11_KILLSCAVS) end
+			if Q_TEST_DRIVE11_KILLPMC then SetVar("q_test_drive11_killPMC", Q_TEST_DRIVE11_KILLPMC) end
+			if Q_TEST_DRIVE12_KILLSCAVS then SetVar("q_test_drive12_killscavs", Q_TEST_DRIVE12_KILLSCAVS) end
+			if Q_TEST_DRIVE12_KILLPMC then SetVar("q_test_drive12_killPMC", Q_TEST_DRIVE12_KILLPMC) end
+			if Q_TEST_DRIVE13_KILLSCAVS then SetVar("q_test_drive13_killscavs", Q_TEST_DRIVE13_KILLSCAVS) end
+			if Q_TEST_DRIVE13_KILLPMC then SetVar("q_test_drive13_killPMC", Q_TEST_DRIVE13_KILLPMC) end
+			if Q_TEST_DRIVE14_KILLSCAVS then SetVar("q_test_drive14_killscavs", Q_TEST_DRIVE14_KILLSCAVS) end
+			if Q_TEST_DRIVE14_KILLPMC then SetVar("q_test_drive14_killPMC", Q_TEST_DRIVE14_KILLPMC) end
+			if Q_TEST_DRIVE15_KILLSCAVS then SetVar("q_test_drive15_killscavs", Q_TEST_DRIVE15_KILLSCAVS) end
+			if Q_TEST_DRIVE15_KILLPMC then SetVar("q_test_drive15_killPMC", Q_TEST_DRIVE15_KILLPMC) end
+
+			if Q_TEST_DRIVE4_RAID_COUNT then SetVar("q_test_drive4_raidcount", Q_TEST_DRIVE4_RAID_COUNT) end
+			if Q_TEST_DRIVE5_RAID_COUNT then SetVar("q_test_drive5_raidcount", Q_TEST_DRIVE5_RAID_COUNT) end
+
+			if Q_NATURALIST1_KILLSCAVS then SetVar("q_naturalist1_killscavs", Q_NATURALIST1_KILLSCAVS) end
+			if Q_NATURALIST1_KILLPMC then SetVar("q_naturalist1_killPMC", Q_NATURALIST1_KILLPMC) end
+			if Q_NATURALIST2_KILLSCAVS then SetVar("q_naturalist2_killscavs", Q_NATURALIST2_KILLSCAVS) end
+			if Q_NATURALIST2_KILLPMC then SetVar("q_naturalist2_killPMC", Q_NATURALIST2_KILLPMC) end
+			if Q_NATURALIST3_KILLSCAVS then SetVar("q_naturalist3_killscavs", Q_NATURALIST3_KILLSCAVS) end
+			if Q_NATURALIST3_KILLPMC then SetVar("q_naturalist3_killPMC", Q_NATURALIST3_KILLPMC) end
+			if Q_NATURALIST4_KILLSCAVS then SetVar("q_naturalist4_killscavs", Q_NATURALIST4_KILLSCAVS) end
+			if Q_NATURALIST4_KILLPMC then SetVar("q_naturalist4_killPMC", Q_NATURALIST4_KILLPMC) end
+			if Q_NATURALIST5_KILLSCAVS then SetVar("q_naturalist5_killscavs", Q_NATURALIST5_KILLSCAVS) end
+			if Q_NATURALIST5_KILLPMC then SetVar("q_naturalist5_killPMC", Q_NATURALIST5_KILLPMC) end
+
+			if Q_NATURALIST5_RAID_COUNT then SetVar("q_naturalist5_raidcount", Q_NATURALIST5_RAID_COUNT) end
+
+			if Q_BELAZIST1_KILLSCAVS then SetVar("q_belazist1_killscavs", Q_BELAZIST1_KILLSCAVS) end
+			if Q_BELAZIST1_KILLPMC then SetVar("q_belazist1_killPMC", Q_BELAZIST1_KILLPMC) end
+			if Q_BELAZIST2_KILLSCAVS then SetVar("q_belazist2_killscavs", Q_BELAZIST2_KILLSCAVS) end
+			if Q_BELAZIST2_KILLPMC then SetVar("q_belazist2_killPMC", Q_BELAZIST2_KILLPMC) end
+			if Q_BELAZIST3_KILLSCAVS then SetVar("q_belazist3_killscavs", Q_BELAZIST3_KILLSCAVS) end
+			if Q_BELAZIST3_KILLPMC then SetVar("q_belazist3_killPMC", Q_BELAZIST3_KILLPMC) end
+			if Q_BELAZIST4_KILLSCAVS then SetVar("q_belazist4_killscavs", Q_BELAZIST4_KILLSCAVS) end
+			if Q_BELAZIST4_KILLPMC then SetVar("q_belazist4_killPMC", Q_BELAZIST4_KILLPMC) end
+			if Q_BELAZIST5_KILLSCAVS then SetVar("q_belazist5_killscavs", Q_BELAZIST5_KILLSCAVS) end
+			if Q_BELAZIST5_KILLPMC then SetVar("q_belazist5_killPMC", Q_BELAZIST5_KILLPMC) end
+			if Q_BELAZIST6_KILLSCAVS then SetVar("q_belazist6_killscavs", Q_BELAZIST6_KILLSCAVS) end
+			if Q_BELAZIST6_KILLPMC then SetVar("q_belazist6_killPMC", Q_BELAZIST6_KILLPMC) end
+			if Q_BELAZIST7_KILLSCAVS then SetVar("q_belazist7_killscavs", Q_BELAZIST7_KILLSCAVS) end
+			if Q_BELAZIST7_KILLPMC then SetVar("q_belazist7_killPMC", Q_BELAZIST7_KILLPMC) end
+			if Q_BELAZIST8_KILLSCAVS then SetVar("q_belazist8_killscavs", Q_BELAZIST8_KILLSCAVS) end
+			if Q_BELAZIST8_KILLPMC then SetVar("q_belazist8_killPMC", Q_BELAZIST8_KILLPMC) end
+
+			if Q_KILL_USEC_KILLS then SetVar("q_kill_usec_kills", Q_KILL_USEC_KILLS) end
+
 			TActivate("GlobalVar")
 
 			TActivate("PetrolStations")
@@ -538,13 +603,14 @@
 		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
 			if GetVar("PlayerBelong").AsString == "SCAV" then
-				SetVar("TimeRaidMinute", 9)
+				SetVar("TimeRaidMinute", random(11, 13))
 			else
-				SetVar("TimeRaidMinute", 13)
+				SetVar("TimeRaidMinute", 15)
 			end
 			SetVar("TimeRaidSecond", 59)
 			SetVar("TimeRaidMsg", 0)
 			TActivate("TimerRaid")
+			TActivate("trShowRaidTimeMsg")
 			trigger:Deactivate() 
 		</script>
 	</trigger>
@@ -566,9 +632,7 @@
 
 			SetVar("TimeRaidMsg", Msg)
 		
-			if min == 13 and sec == 59 then
-				AddImportantFadingMsgByStrIdFormatted("fm_time_raid", Msg)
-			elseif min == 10 and sec == 1 then
+			if min == 10 and sec == 1 then
 				TActivate("AirDropProbability")
 			elseif min == 9 and sec == 59 then
 				AddImportantFadingMsgByStrIdFormatted("fm_time_raid", Msg)
@@ -624,6 +688,14 @@
 				trigger:Deactivate() 
 			end
 			
+		</script>
+	</trigger>
+
+	<trigger Name="trShowRaidTimeMsg" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			AddImportantFadingMsgByStrIdFormatted("fm_time_raid", GetVar("TimeRaidMsg").AsString)
+			trigger:Deactivate()
 		</script>
 	</trigger>
 
@@ -1189,14 +1261,6 @@
 	</trigger>
 
 <!-- ѕоказать выходы -->
-	<trigger Name="ShowExits_Start" active="0">
-		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
-		<script>
-			TActivate("ShowExits")
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
 	<trigger Name="ShowExits" active="0">
 		<event eventid="GE_PLAYER_VEHICLE_HORN" ObjName="Player1" />
 		<script>
@@ -5761,6 +5825,72 @@
 			if IsQuestTaken("q_first_in_line_1") and not(IsQuestComplete("q_first_in_line_1")) then
 				TDeactivate("q_first_in_line_1_EntersLoc")
 			end
+
+			--квестовые переменные
+			if Q_TEST_DRIVE1_KILLSCAVS then Q_TEST_DRIVE1_KILLSCAVS = GetVar("q_test_drive1_killscavs").AsInt end
+			if Q_TEST_DRIVE2_KILLSCAVS then Q_TEST_DRIVE2_KILLSCAVS = GetVar("q_test_drive2_killscavs").AsInt end
+			if Q_TEST_DRIVE2_KILLPMC then Q_TEST_DRIVE2_KILLPMC = GetVar("q_test_drive2_killPMC").AsInt end
+			if Q_TEST_DRIVE3_KILLSCAVS then Q_TEST_DRIVE3_KILLSCAVS = GetVar("q_test_drive3_killscavs").AsInt end
+			if Q_TEST_DRIVE3_KILLPMC then Q_TEST_DRIVE3_KILLPMC = GetVar("q_test_drive3_killPMC").AsInt end
+			if Q_TEST_DRIVE4_KILLSCAVS then Q_TEST_DRIVE4_KILLSCAVS = GetVar("q_test_drive4_killscavs").AsInt end
+			if Q_TEST_DRIVE4_KILLPMC then Q_TEST_DRIVE4_KILLPMC = GetVar("q_test_drive4_killPMC").AsInt end
+			if Q_TEST_DRIVE5_KILLSCAVS then Q_TEST_DRIVE5_KILLSCAVS = GetVar("q_test_drive5_killscavs").AsInt end
+			if Q_TEST_DRIVE5_KILLPMC then Q_TEST_DRIVE5_KILLPMC = GetVar("q_test_drive5_killPMC").AsInt end
+			if Q_TEST_DRIVE6_KILLSCAVS then Q_TEST_DRIVE6_KILLSCAVS = GetVar("q_test_drive6_killscavs").AsInt end
+			if Q_TEST_DRIVE6_KILLPMC then Q_TEST_DRIVE6_KILLPMC = GetVar("q_test_drive6_killPMC").AsInt end
+			if Q_TEST_DRIVE7_KILLSCAVS then Q_TEST_DRIVE7_KILLSCAVS = GetVar("q_test_drive7_killscavs").AsInt end
+			if Q_TEST_DRIVE7_KILLPMC then Q_TEST_DRIVE7_KILLPMC = GetVar("q_test_drive7_killPMC").AsInt end
+			if Q_TEST_DRIVE8_KILLSCAVS then Q_TEST_DRIVE8_KILLSCAVS = GetVar("q_test_drive8_killscavs").AsInt end
+			if Q_TEST_DRIVE8_KILLPMC then Q_TEST_DRIVE8_KILLPMC = GetVar("q_test_drive8_killPMC").AsInt end
+			if Q_TEST_DRIVE9_KILLSCAVS then Q_TEST_DRIVE9_KILLSCAVS = GetVar("q_test_drive9_killscavs").AsInt end
+			if Q_TEST_DRIVE9_KILLPMC then Q_TEST_DRIVE9_KILLPMC = GetVar("q_test_drive9_killPMC").AsInt end
+			if Q_TEST_DRIVE10_KILLSCAVS then Q_TEST_DRIVE10_KILLSCAVS = GetVar("q_test_drive10_killscavs").AsInt end
+			if Q_TEST_DRIVE10_KILLPMC then Q_TEST_DRIVE10_KILLPMC = GetVar("q_test_drive10_killPMC").AsInt end
+			if Q_TEST_DRIVE11_KILLSCAVS then Q_TEST_DRIVE11_KILLSCAVS = GetVar("q_test_drive11_killscavs").AsInt end
+			if Q_TEST_DRIVE11_KILLPMC then Q_TEST_DRIVE11_KILLPMC = GetVar("q_test_drive11_killPMC").AsInt end
+			if Q_TEST_DRIVE12_KILLSCAVS then Q_TEST_DRIVE12_KILLSCAVS = GetVar("q_test_drive12_killscavs").AsInt end
+			if Q_TEST_DRIVE12_KILLPMC then Q_TEST_DRIVE12_KILLPMC = GetVar("q_test_drive12_killPMC").AsInt end
+			if Q_TEST_DRIVE13_KILLSCAVS then Q_TEST_DRIVE13_KILLSCAVS = GetVar("q_test_drive13_killscavs").AsInt end
+			if Q_TEST_DRIVE13_KILLPMC then Q_TEST_DRIVE13_KILLPMC = GetVar("q_test_drive13_killPMC").AsInt end
+			if Q_TEST_DRIVE14_KILLSCAVS then Q_TEST_DRIVE14_KILLSCAVS = GetVar("q_test_drive14_killscavs").AsInt end
+			if Q_TEST_DRIVE14_KILLPMC then Q_TEST_DRIVE14_KILLPMC = GetVar("q_test_drive14_killPMC").AsInt end
+			if Q_TEST_DRIVE15_KILLSCAVS then Q_TEST_DRIVE15_KILLSCAVS = GetVar("q_test_drive15_killscavs").AsInt end
+			if Q_TEST_DRIVE15_KILLPMC then Q_TEST_DRIVE15_KILLPMC = GetVar("q_test_drive15_killPMC").AsInt end
+
+			if Q_TEST_DRIVE4_RAID_COUNT then Q_TEST_DRIVE4_RAID_COUNT = GetVar("q_test_drive4_raidcount").AsInt end
+			if Q_TEST_DRIVE5_RAID_COUNT then Q_TEST_DRIVE5_RAID_COUNT = GetVar("q_test_drive5_raidcount").AsInt end
+
+			if Q_NATURALIST1_KILLSCAVS then Q_NATURALIST1_KILLSCAVS = GetVar("q_naturalist1_killscavs").AsInt end
+			if Q_NATURALIST1_KILLPMC then Q_NATURALIST1_KILLPMC = GetVar("q_naturalist1_killPMC").AsInt end
+			if Q_NATURALIST2_KILLSCAVS then Q_NATURALIST2_KILLSCAVS = GetVar("q_naturalist2_killscavs").AsInt end
+			if Q_NATURALIST2_KILLPMC then Q_NATURALIST2_KILLPMC = GetVar("q_naturalist2_killPMC").AsInt end
+			if Q_NATURALIST3_KILLSCAVS then Q_NATURALIST3_KILLSCAVS = GetVar("q_naturalist3_killscavs").AsInt end
+			if Q_NATURALIST3_KILLPMC then Q_NATURALIST3_KILLPMC = GetVar("q_naturalist3_killPMC").AsInt end
+			if Q_NATURALIST4_KILLSCAVS then Q_NATURALIST4_KILLSCAVS = GetVar("q_naturalist4_killscavs").AsInt end
+			if Q_NATURALIST4_KILLPMC then Q_NATURALIST4_KILLPMC = GetVar("q_naturalist4_killPMC").AsInt end
+			if Q_NATURALIST5_KILLSCAVS then Q_NATURALIST5_KILLSCAVS = GetVar("q_naturalist5_killscavs").AsInt end
+			if Q_NATURALIST5_KILLPMC then Q_NATURALIST5_KILLPMC = GetVar("q_naturalist5_killPMC").AsInt end
+
+			if Q_NATURALIST5_RAID_COUNT then Q_NATURALIST5_RAID_COUNT = GetVar("q_naturalist5_raidcount").AsInt end
+
+			if Q_BELAZIST1_KILLSCAVS then Q_BELAZIST1_KILLSCAVS = GetVar("q_belazist1_killscavs").AsInt end
+			if Q_BELAZIST1_KILLPMC then Q_BELAZIST1_KILLPMC = GetVar("q_belazist1_killPMC").AsInt end
+			if Q_BELAZIST2_KILLSCAVS then Q_BELAZIST2_KILLSCAVS = GetVar("q_belazist2_killscavs").AsInt end
+			if Q_BELAZIST2_KILLPMC then Q_BELAZIST2_KILLPMC = GetVar("q_belazist2_killPMC").AsInt end
+			if Q_BELAZIST3_KILLSCAVS then Q_BELAZIST3_KILLSCAVS = GetVar("q_belazist3_killscavs").AsInt end
+			if Q_BELAZIST3_KILLPMC then Q_BELAZIST3_KILLPMC = GetVar("q_belazist3_killPMC").AsInt end
+			if Q_BELAZIST4_KILLSCAVS then Q_BELAZIST4_KILLSCAVS = GetVar("q_belazist4_killscavs").AsInt end
+			if Q_BELAZIST4_KILLPMC then Q_BELAZIST4_KILLPMC = GetVar("q_belazist4_killPMC").AsInt end
+			if Q_BELAZIST5_KILLSCAVS then Q_BELAZIST5_KILLSCAVS = GetVar("q_belazist5_killscavs").AsInt end
+			if Q_BELAZIST5_KILLPMC then Q_BELAZIST5_KILLPMC = GetVar("q_belazist5_killPMC").AsInt end
+			if Q_BELAZIST6_KILLSCAVS then Q_BELAZIST6_KILLSCAVS = GetVar("q_belazist6_killscavs").AsInt end
+			if Q_BELAZIST6_KILLPMC then Q_BELAZIST6_KILLPMC = GetVar("q_belazist6_killPMC").AsInt end
+			if Q_BELAZIST7_KILLSCAVS then Q_BELAZIST7_KILLSCAVS = GetVar("q_belazist7_killscavs").AsInt end
+			if Q_BELAZIST7_KILLPMC then Q_BELAZIST7_KILLPMC = GetVar("q_belazist7_killPMC").AsInt end
+			if Q_BELAZIST8_KILLSCAVS then Q_BELAZIST8_KILLSCAVS = GetVar("q_belazist8_killscavs").AsInt end
+			if Q_BELAZIST8_KILLPMC then Q_BELAZIST8_KILLPMC = GetVar("q_belazist8_killPMC").AsInt end
+
+			if Q_KILL_USEC_KILLS then Q_KILL_USEC_KILLS = GetVar("q_kill_usec_kills").AsInt end
 
 			SetTolerance(1087, 1100, RS_ENEMY)
 

@@ -1,7 +1,195 @@
 <?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
 <triggers>
+	<!-- Стартовый экран -->
+	<trigger Name="StartBackgroundCuts" active="1">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			IMPULSES = GET_GLOBAL_OBJECT "IMPULSES"
+            IMPULSES:UnbindKey1("GS_CINEMATIC", "KEY_ESCAPE", "IM_CINEMATIC_SKIP")
+
+			SetGameTime(15, 0)
+			SetWeather(0)
+
+			CreateNewDummyObject("background_forest", "forest_bg", -1, -1, CVector(659.046, 340.000, 842.639), Quaternion(0.0000, -0.1327, 0.0000, 0.9912), 0)
+			CreateNewSgNodeObject("logo_efa", "logo", -1, -1, CVector(659.057, 342.000, 850.364), Quaternion(0, 1, 0, 0), 1)
+
+			Fly("start_bg"..random(2), CINEMATIC_NO_AIM, 0, 1.5, 0, 0, 0)
+			Fly("start_bg3", CINEMATIC_NO_AIM, 0, 1, 0, 0, 0)
+			StartCinematic()
+
+			TActivate("BackgroundChangeSkin")
+			TActivate("StartBackgroundCuts_Message")
+			TActivate("StartBackgroundCuts_End")
+			
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	 <trigger Name="BackgroundChangeSkin" active="0">
+		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+            local bg = GetEntityByName("forest_bg")
+			if bg then
+				local skin = bg:GetSkin()
+				if skin == 4 then
+					bg:SetSkin(0)
+				else
+					bg:SetSkin(skin + 1)
+				end 
+			else
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="StartBackgroundCuts_Message" active="0">
+		<event timeout="2.2" eventid="GE_TIME_PERIOD" />
+		<script>
+			local b = SpawnMessageBox("90004")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Выбор фракции -->
+	<trigger Name="StartBackgroundCuts_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+			TDeactivate("StartBackgroundCuts_Message")
+			
+			CreateNewDummyObject("dweller_player", "bear", -1, -1, CVector(658.000, 338.000, 845.500), Quaternion(0.0000, 0.9455, 0.0000, 0.3256))
+			CreateNewDummyObject("dweller_brodyaga", "usec", -1, -1, CVector(660.000, 338.000, 845.500), Quaternion(0.0000, -0.9455, 0.0000, 0.3256))
+			CreateEffectInsertedInRemove("ET_PS_DRONE", CVector(658.000, 338.000, 845.500), Quaternion(0, 0, 0, 1), true)
+			CreateEffectInsertedInRemove("ET_PS_DRONE", CVector(660.000, 338.000, 845.500), Quaternion(0, 0, 0, 1), true)
+
+			Fly("start_bg3", CINEMATIC_NO_AIM, 0, 2, 0, 0, 0)
+			StartCinematic()
+
+			TActivate("SelectFractionsCuts_End")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SelectFractionsCuts_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+			StartConversation("SelectFractions_NPC")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Если выбрали BEAR -->
+	<trigger Name="SelectBEAR" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local usec = GetEntityByName("usec")
+			if usec then usec:SetPosition(CVector(0, 0, 0)) end
+
+			local moverBear = GetEntityByName("MoverBEAR")
+			if moverBear then moverBear:Remove() end
+
+			local moverUsec = GetEntityByName("MoverUSEC")
+			if moverUsec then moverUsec:Remove() end
+
+			local moverId = CreateNewObject { prototypeName	= "cinematicMover", objName  = "MoverBEAR" }
+			local mover = GetEntityByID( moverId ) 
+			local controlledObj = GetEntityByName("bear")
+			if controlledObj then
+				controlledObj:SetPosition(CVector(658.000, 338.000, 845.500))
+				controlledObj:SetRotation(Quaternion(0.0000, 0.9455, 0.0000, 0.3256))
+				mover:SetObjAndPath(controlledObj:GetId(), "move_bear", 1.25)
+			end
+
+			Fly("start_bg3", CINEMATIC_NO_AIM, 0, 2, 0, 0, 0)
+			StartCinematic()
+
+			TActivate("SelectBEAR_End")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SelectBEAR_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+			StartConversation("SelectBEAR_NPC")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Если выбрали USEC -->
+	<trigger Name="SelectUSEC" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local usec = GetEntityByName("bear")
+			if usec then usec:SetPosition(CVector(0, 0, 0)) end
+
+			local moverBear = GetEntityByName("MoverBEAR")
+			if moverBear then moverBear:Remove() end
+
+			local moverUsec = GetEntityByName("MoverUSEC")
+			if moverUsec then moverUsec:Remove() end
+
+			local moverId = CreateNewObject { prototypeName	= "cinematicMover", objName  = "MoverUSEC" }
+			local mover = GetEntityByID( moverId ) 
+			local controlledObj = GetEntityByName("usec")
+			if controlledObj then
+				controlledObj:SetPosition(CVector(660.000, 338.000, 845.500))
+				controlledObj:SetRotation(Quaternion(0.0000, -0.9455, 0.0000, 0.3256))
+				mover:SetObjAndPath(controlledObj:GetId(), "move_usec", 1.25)
+			end
+
+			Fly("start_bg3", CINEMATIC_NO_AIM, 0, 2, 0, 0, 0)
+			StartCinematic()
+
+			TActivate("SelectUSEC_End")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SelectUSEC_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+			StartConversation("SelectUSEC_NPC")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Выбор потвержден -->
+	<trigger Name="EndSelectFractionsCuts" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			Fly("start_bg3", CINEMATIC_NO_AIM, 0, 1, 0, 1, 0)
+			StartCinematic()
+			TActivate("EndSelectFractionsCuts_End")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="EndSelectFractionsCuts_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+			IMPULSES = GET_GLOBAL_OBJECT "IMPULSES"
+            IMPULSES:BindKey1("GS_CINEMATIC", "KEY_ESCAPE", "IM_CINEMATIC_SKIP")
+
+			TDeactivate("BackgroundChangeSkin")
+			
+			local objRemove = {"bear", "usec", "MoverBEAR", "MoverUSEC", "forest_bg", "logo"}
+			for i = 1, 6 do
+				local r = GetEntityByName(objRemove[i])
+				if r then r:Remove() end
+			end
+
+			TActivate("StartFadeEffect")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
     <!-- Стартовое затемнение -->
-    <trigger Name="StartFadeEffect" active="1">
+    <trigger Name="StartFadeEffect" active="0">
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
             g_ObjCont:SetGameTime( 10, 0, 21, 5, 2023 )
@@ -17,6 +205,7 @@
 			
 			AddCinematicMessage(77773, 0)
 
+			TActivate("trCreatePlayerStartVehicle")
 			TActivate("StartFadeEffect_End")
 			trigger:Deactivate()
 		</script>
@@ -28,6 +217,25 @@
 		<script>
 			SetCameraBehindPlayerVehicle()
 			map()
+
+			TActivate("Message")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="trCreatePlayerStartVehicle" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			AddPlayerVehicle("Bug01ForStart")
+
+			local vehPlayer = GetPlayerVehicle()
+			if vehPlayer then
+				vehPlayer:SetGamePositionOnGround(CVector(893.077, 255.493, 987.899))
+				vehPlayer:SetRotation(Quaternion(-0.009, -0.005, -0.000, 1.000))
+			end
+
+			AddItemsToPlayerRepository("machinery_use", 1)
+			AddItemsToPlayerRepository("ammo_chest_machinegun", 1)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -121,6 +329,9 @@
 	<trigger Name="cutCredits" active="0">
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
+			IMPULSES = GET_GLOBAL_OBJECT "IMPULSES"
+            IMPULSES:UnbindKey1("GS_CINEMATIC", "KEY_SPACE", "IM_CINEMATIC_SKIP_MSG")
+
 			SaveAllToleranceStatus(RS_NEUTRAL)
 
 			SetWeather(0)
@@ -128,7 +339,11 @@
 
 			PlayCustomMusic("Credits01")
 
-			CreateHuman("Human_player_slow", 1100, CVector(1045.535, 255.641, 1525.996), "HumanPlayer")
+			if GetVar("SelectBelong").AsString == "BEAR" then
+				CreateHuman("Human_player_slow", 1100, CVector(1045.535, 255.641, 1525.996), "HumanPlayer")
+			else
+				CreateHuman("Human_brodyaga_slow", 1100, CVector(1045.535, 255.641, 1525.996), "HumanPlayer")
+			end
 			
 			local hum = GetEntityByName("HumanPlayer")
 			local humID = hum:GetId()
@@ -153,7 +368,6 @@
 			TActivate("cutCreditsFadeIn")
 			TActivate("cutCreditsCamPlayer01")
 			TActivate("cutCreditsCamPlayer02")
-			TActivate("cutCreditsCamPlayer02_")
 			TActivate("cutCreditsCam_start_game")
 			TActivate("cutCreditsEnd")
 
@@ -196,15 +410,6 @@
 		<event flypath="credits_cam_player02" eventid="GE_START_CINEMATIC_FLY" ObjName="Player1" />
 		<script>
 			AddCinematicMessage(3, 0)
-			TActivate("cutCreditsCamPlayer02_")
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-	<trigger Name="cutCreditsCamPlayer02_" active="0">
-		<event flypath="credits_cam_player02" eventid="GE_START_CINEMATIC_FLY" ObjName="Player1" />
-		<script>
-			AddCinematicMessage(4, 0)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -222,6 +427,9 @@
 		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
 		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
 		<script>
+			IMPULSES = GET_GLOBAL_OBJECT "IMPULSES"
+            IMPULSES:BindKey1("GS_CINEMATIC", "KEY_SPACE", "IM_CINEMATIC_SKIP_MSG")
+
 			RestoreAllToleranceStatus()
 
 			local hum = GetEntityByName("HumanPlayer")
@@ -230,7 +438,6 @@
 			TDeactivate("cutCreditsFadeIn")
 			TDeactivate("cutCreditsCamPlayer01")
 			TDeactivate("cutCreditsCamPlayer02")
-			TDeactivate("cutCreditsCamPlayer02_")
 			TDeactivate("cutCreditsCam_start_game")
 			
 			TActivate("CloseGate1ForCredits")

@@ -10608,7 +10608,7 @@
 <!--Root/r0m0/Выход с карты-->
 	<Reply
 		name="Dlg_npc_0013108"
-		text="Выберите место дислокации."
+		text="@FF1D1D1D[Выберите место дислокации]"
 		role="NPC"
 		scriptCondition="GetPlayerHealth() >= 1 and GetVar('PetrolStation_Refill_Process').AsInt == 0 and GetVar('DialogSelectMap').AsInt == 0"
 		nextReplies="Dlg_pl_0013109 Dlg_pl_0013117" />
@@ -10628,7 +10628,7 @@
 
 	<Reply
 		name="Dlg_pl_0013118"
-		text="Выберите время дислокации."
+		text="Не богатая сельская местность, когда-то была излюбленным местом для фермеров. Находится не далеко от побережья высохшого черного моря, на месте которого образовалась «пустыня смерти».|@FF0000AA|@FF1D1D1D[Выберите время дислокации]"
 		role="NPC"
 		nextReplies="Dlg_pl_0013119 Dlg_pl_0013120 Dlg_pl_0013121" />
 
@@ -16408,5 +16408,59 @@
 		text="Ну ладно, как скажешь. Бывай."
 		role="PLAYER"
 		scriptResult="TDeactivate('PressHornToSpeekScav'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', 0); EndConversation()" />
+
+<!--Выбор фракции-->
+
+	<Reply
+		name="Dlg_npc_select_fractions"
+		text="@FF1D1D1D[Выберите фракцию]"
+		role="NPC"
+		nextReplies="Dlg_pl_select_fractions_1 Dlg_pl_select_fractions_2" />
+
+	<Reply
+		name="Dlg_pl_select_fractions_1"
+		text="BEAR."
+		role="PLAYER"
+		scriptResult="TActivate('SelectBEAR'); EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_select_fractions_2"
+		text="USEC."
+		role="PLAYER"
+		scriptResult="TActivate('SelectUSEC'); EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_select_back"
+		text="Назад."
+		role="PLAYER"
+		nextReplies="Dlg_npc_select_fractions" />
+
+<!--Если выбрали BEAR-->
+
+	<Reply
+		name="Dlg_npc_select_bear"
+		text="Battle Encounter Assault Regiment (BEAR) является частной военной компанией (ЧВК), используется правительственными органами для выявления любых доказательств незаконной деятельности группы Terra Group."
+		role="NPC"
+		nextReplies="Dlg_pl_select_bear_1 Dlg_pl_select_back" />
+
+	<Reply
+		name="Dlg_pl_select_bear_1"
+		text="Выбрать BEAR."
+		role="PLAYER"
+		scriptResult="TActivate('EndSelectFractionsCuts'); SetVar('PlayerBelong', 'BEAR'); SetVar('SelectBelong', 'BEAR'); EndConversation()" />
+
+<!--Если выбрали USEC-->
+
+	<Reply
+		name="Dlg_npc_select_usec"
+		text="United Security (USEC) является частной военной компанией (ЧВК), работает на международную корпорацию Terra Group, активно участвует в вооруженных столкновениях, препятствующих расследованию деятельности Terra Group, осуществляемой местными органами власти. Более того, по данным спецслужб, USEC обеспечивает вооруженным прикрытием незаконную работу и исследования иностранной компании."
+		role="NPC"
+		nextReplies="Dlg_pl_select_usec_1 Dlg_pl_select_back" />
+
+	<Reply
+		name="Dlg_pl_select_usec_1"
+		text="Выбрать USEC."
+		role="PLAYER"
+		scriptResult="TActivate('EndSelectFractionsCuts'); SetVar('PlayerBelong', 'USEC'); SetVar('SelectBelong', 'USEC'); EndConversation()" />
 
 </DialogsResource>

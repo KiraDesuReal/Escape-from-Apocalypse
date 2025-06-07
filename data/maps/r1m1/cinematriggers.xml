@@ -80,7 +80,7 @@
 			TActivate("TimerRaidStart")
 			TActivate("CreatePMC")
 			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("IfRaidCountForQuest") end
-			TActivate("ShowExits_Start")
+			TActivate("ShowExits_Activate")
 
 			AllowSave(false)
 

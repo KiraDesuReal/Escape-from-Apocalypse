@@ -218,6 +218,20 @@
 		windwavy="0"
 		trans="0" />
 
+	<model
+		id="background_forest"
+		file="data\models\buildings\region0\background\forest\forest_background.gam"
+		shadow="0"
+		windwavy="0"
+		trans="0" />
+
+	<model
+		id="logo_efa"
+		file="data\models\buildings\region0\background\logo.gam"
+		shadow="0"
+		windwavy="0"
+		trans="0" />
+
 <!-- Region 5 -->
 
 	<model
@@ -662,6 +676,15 @@
 	<model
 		id="dweller_white"
 		file="data\models\objects\dweller_white.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0"
+		composite="0" />
+
+	<model
+		id="dweller_brodyaga"
+		file="data\models\objects\brodyaga.gam"
 		shadow="1"
 		shadowVolume="1"
 		windwavy="0"
@@ -1129,8 +1152,16 @@
 
 	<model
 		id="2d_mask"
-		file="data\models\Masks\Region0\2d_mask.gam"
+		file="data\models\Masks\Region0\2d_masks\2d_mask.gam"
 		shadow="0"
+		windwavy="0"
+		trans="0"
+		composite="0" />
+
+	<model
+		id="brodyaga_mask"
+		file="data\models\Masks\Region0\brodyaga_mask.gam"
+		shadow="1"
 		windwavy="0"
 		trans="0"
 		composite="0" />

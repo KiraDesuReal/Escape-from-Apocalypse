@@ -11681,7 +11681,7 @@
 		name="Dlg_pl_insure_1"
 		text="Застраховать Шершень (Стоимость: 600 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('hornet01', 1) and GetPlayerMoney() >= 600"
+		scriptCondition="IfCanGunInSlot('hornet01') > 0 and GetPlayerMoney() >= 600 or HasPlayerAmountOfItems('hornet01', 1) and GetPlayerMoney() >= 600"
 		scriptResult="InsureItem('hornet01'); AddPlayerMoney(-600)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11689,7 +11689,7 @@
 		name="Dlg_pl_insure_2"
 		text="Застраховать Американский шершень (Стоимость: 850 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('american_hornet01', 1) and GetPlayerMoney() >= 850"
+		scriptCondition="IfCanGunInSlot('american_hornet01') > 0 and GetPlayerMoney() >= 850 or HasPlayerAmountOfItems('american_hornet01', 1) and GetPlayerMoney() >= 850"
 		scriptResult="InsureItem('american_hornet01'); AddPlayerMoney(-850)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11697,7 +11697,7 @@
 		name="Dlg_pl_insure_3"
 		text="Застраховать Спектр (Стоимость: 1.700 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('specter01', 1) and GetPlayerMoney() >= 1700"
+		scriptCondition="IfCanGunInSlot('specter01') > 0 and GetPlayerMoney() >= 1700 or HasPlayerAmountOfItems('specter01', 1) and GetPlayerMoney() >= 1700"
 		scriptResult="InsureItem('specter01'); AddPlayerMoney(-1700)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11705,7 +11705,7 @@
 		name="Dlg_pl_insure_4"
 		text="Застраховать ПКТ (Стоимость: 2.250 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('pkt01', 1) and GetPlayerMoney() >= 2250"
+		scriptCondition="IfCanGunInSlot('pkt01') > 0 and GetPlayerMoney() >= 2250 or HasPlayerAmountOfItems('pkt01', 1) and GetPlayerMoney() >= 2250"
 		scriptResult="InsureItem('pkt01'); AddPlayerMoney(-2250)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11713,7 +11713,7 @@
 		name="Dlg_pl_insure_5"
 		text="Застраховать Корд (Стоимость: 3.000 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('kord01', 1) and GetPlayerMoney() >= 3000"
+		scriptCondition="IfCanGunInSlot('kord01') > 0 and GetPlayerMoney() >= 3000 or HasPlayerAmountOfItems('kord01', 1) and GetPlayerMoney() >= 3000"
 		scriptResult="InsureItem('kord01'); AddPlayerMoney(-3000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11721,7 +11721,7 @@
 		name="Dlg_pl_insure_6"
 		text="Застраховать Шторм (Стоимость: 1.000 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('storm01', 1) and GetPlayerMoney() >= 1000"
+		scriptCondition="IfCanGunInSlot('storm01') > 0 and GetPlayerMoney() >= 1000 or HasPlayerAmountOfItems('storm01', 1) and GetPlayerMoney() >= 1000"
 		scriptResult="InsureItem('storm01'); AddPlayerMoney(-1000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11729,7 +11729,7 @@
 		name="Dlg_pl_insure_7"
 		text="Застраховать Фагот (Стоимость: 6.900 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('fagot01', 1) and GetPlayerMoney() >= 6900"
+		scriptCondition="IfCanGunInSlot('fagot01') > 0 and GetPlayerMoney() >= 6900 or HasPlayerAmountOfItems('fagot01', 1) and GetPlayerMoney() >= 6900"
 		scriptResult="InsureItem('fagot01'); AddPlayerMoney(-6900)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11737,7 +11737,7 @@
 		name="Dlg_pl_insure_8"
 		text="Застраховать Максим (Стоимость: 5.000 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('maxim01', 1) and GetPlayerMoney() >= 5000"
+		scriptCondition="IfCanGunInSlot('maxim01') > 0 and GetPlayerMoney() >= 5000 or HasPlayerAmountOfItems('maxim01', 1) and GetPlayerMoney() >= 5000"
 		scriptResult="InsureItem('maxim01'); AddPlayerMoney(-5000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11745,7 +11745,7 @@
 		name="Dlg_pl_insure_9"
 		text="Застраховать Вектор (Стоимость: 2.000 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('vector01', 1) and GetPlayerMoney() >= 2000"
+		scriptCondition="IfCanGunInSlot('vector01') > 0 and GetPlayerMoney() >= 2000 or HasPlayerAmountOfItems('vector01', 1) and GetPlayerMoney() >= 2000"
 		scriptResult="InsureItem('vector01'); AddPlayerMoney(-2000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11753,7 +11753,7 @@
 		name="Dlg_pl_insure_10"
 		text="Застраховать Вулкан (Стоимость: 2.600 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('vulcan01', 1) and GetPlayerMoney() >= 2600"
+		scriptCondition="IfCanGunInSlot('vulcan01') > 0 and GetPlayerMoney() >= 2600 or HasPlayerAmountOfItems('vulcan01', 1) and GetPlayerMoney() >= 2600"
 		scriptResult="InsureItem('vulcan01'); AddPlayerMoney(-2600)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11761,7 +11761,7 @@
 		name="Dlg_pl_insure_11"
 		text="Застраховать КПВТ (Стоимость: 3.700 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('kpvt01', 1) and GetPlayerMoney() >= 3700"
+		scriptCondition="IfCanGunInSlot('kpvt01') > 0 and GetPlayerMoney() >= 3700 or HasPlayerAmountOfItems('kpvt01', 1) and GetPlayerMoney() >= 3700"
 		scriptResult="InsureItem('kpvt01'); AddPlayerMoney(-3700)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11769,7 +11769,7 @@
 		name="Dlg_pl_insure_12"
 		text="Застраховать Рапиру (Стоимость: 4.500 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('rapier01', 1) and GetPlayerMoney() >= 4500"
+		scriptCondition="IfCanGunInSlot('rapier01') > 0 and GetPlayerMoney() >= 4500 or HasPlayerAmountOfItems('rapier01', 1) and GetPlayerMoney() >= 4500"
 		scriptResult="InsureItem('rapier01'); AddPlayerMoney(-4500)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11777,7 +11777,7 @@
 		name="Dlg_pl_insure_13"
 		text="Застраховать Флаг (Стоимость: 8.000 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('flag01', 1) and GetPlayerMoney() >= 8000"
+		scriptCondition="IfCanGunInSlot('flag01') > 0 and GetPlayerMoney() >= 8000 or HasPlayerAmountOfItems('flag01', 1) and GetPlayerMoney() >= 8000"
 		scriptResult="InsureItem('flag01'); AddPlayerMoney(-8000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11785,7 +11785,7 @@
 		name="Dlg_pl_insure_14"
 		text="Застраховать Рейнметалл (Стоимость: 12.000 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('rainmetal01', 1) and GetPlayerMoney() >= 12000"
+		scriptCondition="IfCanGunInSlot('rainmetal01') > 0 and GetPlayerMoney() >= 12000 or HasPlayerAmountOfItems('rainmetal01', 1) and GetPlayerMoney() >= 12000"
 		scriptResult="InsureItem('rainmetal01'); AddPlayerMoney(-12000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11793,7 +11793,7 @@
 		name="Dlg_pl_insure_15"
 		text="Застраховать Слон (Стоимость: 21.000 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('elephant01', 1) and GetPlayerMoney() >= 21000"
+		scriptCondition="IfCanGunInSlot('elephant01') > 0 and GetPlayerMoney() >= 21000 or HasPlayerAmountOfItems('elephant01', 1) and GetPlayerMoney() >= 21000"
 		scriptResult="InsureItem('elephant01'); AddPlayerMoney(-21000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11801,7 +11801,7 @@
 		name="Dlg_pl_insure_16"
 		text="Застраховать Один (Стоимость: 25.600 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('odin01', 1) and GetPlayerMoney() >= 25600"
+		scriptCondition="IfCanGunInSlot('odin01') > 0 and GetPlayerMoney() >= 25600 or HasPlayerAmountOfItems('odin01', 1) and GetPlayerMoney() >= 25600"
 		scriptResult="InsureItem('odin01'); AddPlayerMoney(-25600)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11809,7 +11809,7 @@
 		name="Dlg_pl_insure_17"
 		text="Застраховать Омегу (Стоимость: 7.250 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('omega01', 1) and GetPlayerMoney() >= 7250"
+		scriptCondition="IfCanGunInSlot('omega01') > 0 and GetPlayerMoney() >= 7250 or HasPlayerAmountOfItems('omega01', 1) and GetPlayerMoney() >= 7250"
 		scriptResult="InsureItem('omega01'); AddPlayerMoney(-7250)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11817,7 +11817,7 @@
 		name="Dlg_pl_insure_18"
 		text="Застраховать Шмель (Стоимость: 2.300 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('bumblebee01', 1) and GetPlayerMoney() >= 2300"
+		scriptCondition="IfCanGunInSlot('bumblebee01') > 0 and GetPlayerMoney() >= 2300 or HasPlayerAmountOfItems('bumblebee01', 1) and GetPlayerMoney() >= 2300"
 		scriptResult="InsureItem('bumblebee01'); AddPlayerMoney(-2300)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11825,7 +11825,7 @@
 		name="Dlg_pl_insure_19"
 		text="Застраховать Молот Тора (Стоимость: 24.000 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('hammer01', 1) and GetPlayerMoney() >= 24000"
+		scriptCondition="IfCanGunInSlot('hammer01') > 0 and GetPlayerMoney() >= 24000 or HasPlayerAmountOfItems('hammer01', 1) and GetPlayerMoney() >= 24000"
 		scriptResult="InsureItem('hammer01'); AddPlayerMoney(-24000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11833,7 +11833,7 @@
 		name="Dlg_pl_insure_20"
 		text="Застраховать Охотник (Стоимость: 9.200 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('hunterSideGun', 1) and GetPlayerMoney() >= 9200"
+		scriptCondition="IfCanGunInSlot('hunterSideGun') > 0 and GetPlayerMoney() >= 9200 or HasPlayerAmountOfItems('hunterSideGun', 1) and GetPlayerMoney() >= 9200"
 		scriptResult="InsureItem('hunterSideGun'); AddPlayerMoney(-9200)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11841,7 +11841,7 @@
 		name="Dlg_pl_insure_21"
 		text="Застраховать Мрак (Стоимость: 16.600 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('mrakSideGun', 1) and GetPlayerMoney() >= 16600"
+		scriptCondition="IfCanGunInSlot('mrakSideGun') > 0 and GetPlayerMoney() >= 16600 or HasPlayerAmountOfItems('mrakSideGun', 1) and GetPlayerMoney() >= 16600"
 		scriptResult="InsureItem('mrakSideGun'); AddPlayerMoney(-16600)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 	
@@ -11849,7 +11849,7 @@
 		name="Dlg_pl_insure_22"
 		text="Застраховать Свингфайр (Стоимость: 8.400 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('big_swingfire01', 1) and GetPlayerMoney() >= 8400"
+		scriptCondition="IfCanGunInSlot('big_swingfire01') > 0 and GetPlayerMoney() >= 8400 or HasPlayerAmountOfItems('big_swingfire01', 1) and GetPlayerMoney() >= 8400"
 		scriptResult="InsureItem('big_swingfire01'); AddPlayerMoney(-8400)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11857,7 +11857,7 @@
 		name="Dlg_pl_insure_23"
 		text="Застраховать Циклоп (Стоимость: 6.000 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('cyclops01', 1) and GetPlayerMoney() >= 6000"
+		scriptCondition="IfCanGunInSlot('cyclops01') > 0 and GetPlayerMoney() >= 6000 or HasPlayerAmountOfItems('cyclops01', 1) and GetPlayerMoney() >= 6000"
 		scriptResult="InsureItem('cyclops01'); AddPlayerMoney(-6000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11865,7 +11865,7 @@
 		name="Dlg_pl_insure_23_"
 		text="Застраховать Спрут (Стоимость: 7.280 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('octopus01', 1) and GetPlayerMoney() >= 7280"
+		scriptCondition="IfCanGunInSlot('octopus01') > 0 and GetPlayerMoney() >= 7280 or HasPlayerAmountOfItems('octopus01', 1) and GetPlayerMoney() >= 7280"
 		scriptResult="InsureItem('octopus01'); AddPlayerMoney(-7280)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11873,7 +11873,7 @@
 		name="Dlg_pl_insure_24"
 		text="Застраховать Град (Стоимость: 30.000 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('hailSideGun', 1) and GetPlayerMoney() >= 30000"
+		scriptCondition="IfCanGunInSlot('hailSideGun') > 0 and GetPlayerMoney() >= 30000 or HasPlayerAmountOfItems('hailSideGun', 1) and GetPlayerMoney() >= 30000"
 		scriptResult="InsureItem('hailSideGun'); AddPlayerMoney(-30000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11881,7 +11881,7 @@
 		name="Dlg_pl_insure_25"
 		text="Застраховать Ураган (Стоимость: 8.000 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('hurricane01', 1) and GetPlayerMoney() >= 8000"
+		scriptCondition="IfCanGunInSlot('hurricane01') > 0 and GetPlayerMoney() >= 8000 or HasPlayerAmountOfItems('hurricane01', 1) and GetPlayerMoney() >= 8000"
 		scriptResult="InsureItem('hurricane01'); AddPlayerMoney(-8000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11889,7 +11889,7 @@
 		name="Dlg_pl_insure_26"
 		text="Застраховать Дракон (Стоимость: 12.800 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('rocketLauncher', 1) and GetPlayerMoney() >= 12800"
+		scriptCondition="IfCanGunInSlot('rocketLauncher') > 0 and GetPlayerMoney() >= 12800 or HasPlayerAmountOfItems('rocketLauncher', 1) and GetPlayerMoney() >= 12800"
 		scriptResult="InsureItem('rocketLauncher'); AddPlayerMoney(-12800)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11897,7 +11897,7 @@
 		name="Dlg_pl_insure_27"
 		text="Застраховать Зевс (Стоимость: 35.000 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('zeusSideGun', 1) and GetPlayerMoney() >= 35000"
+		scriptCondition="IfCanGunInSlot('zeusSideGun') > 0 and GetPlayerMoney() >= 35000 or HasPlayerAmountOfItems('zeusSideGun', 1) and GetPlayerMoney() >= 35000"
 		scriptResult="InsureItem('zeusSideGun'); AddPlayerMoney(-35000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11905,7 +11905,7 @@
 		name="Dlg_pl_insure_28"
 		text="Застраховать Марс (Стоимость: 14.500 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('marsSideGun', 1) and GetPlayerMoney() >= 14500"
+		scriptCondition="IfCanGunInSlot('marsSideGun') > 0 and GetPlayerMoney() >= 14500 or HasPlayerAmountOfItems('marsSideGun', 1) and GetPlayerMoney() >= 14500"
 		scriptResult="InsureItem('marsSideGun'); AddPlayerMoney(-14500)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -11913,7 +11913,7 @@
 		name="Dlg_pl_insure_29"
 		text="Застраховать Турбо-ускорение (Стоимость: 6.500 монет)"
 		role="PLAYER"
-		scriptCondition="HasPlayerAmountOfItems('someTurboAccelerationPusher', 1) and GetPlayerMoney() >= 6500"
+		scriptCondition="IfCanGunInSlot('someTurboAccelerationPusher') > 0 and GetPlayerMoney() >= 6500 or HasPlayerAmountOfItems('someTurboAccelerationPusher', 1) and GetPlayerMoney() >= 6500"
 		scriptResult="InsureItem('someTurboAccelerationPusher'); AddPlayerMoney(-6500)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -15585,7 +15585,7 @@
 		name="Dlg_pl_Scav_give_money_5"
 		text="Я передумал."
 		role="PLAYER"
-		nextReplies="Dlg_npc_Scav_1" />
+		scriptResult="TDeactivate('PressHornToSpeekScav'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); EndConversation()" />
 
 <!--Попросить у диких денег: Передаем другие предметы-->
 
@@ -16144,7 +16144,7 @@
 		name="Dlg_pl_Scav_give_money_2_1"
 		text="Отдавай всё что у тебя есть по хорошему, пока я добрый!"
 		role="PLAYER"
-		scriptCondition="0.5 > GetScavCarma() and getObj('ScavCarEnemy') == nil"
+		scriptCondition="-0.5 > GetScavCarma() and getObj('ScavCarEnemy') == nil"
 		nextReplies="Dlg_npc_Scav_give_money_4 Dlg_npc_Scav_give_money_5" />
 
 	<Reply

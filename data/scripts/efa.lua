@@ -1,9 +1,9 @@
 -- Special for Escape from Apocalypse
 
 if EFA_VERSION == nil then
-	EFA_VERSION = "0.91 BETA"
-	EFA_BUILD = "250409"
-	WIPE = 0
+	EFA_VERSION = "0.95 BETA"
+	EFA_BUILD = "250609"
+	WIPE = 1
 
 	LOG("ESCAPE FROM APOCALYPSE VERSION: "..EFA_VERSION.." | BUILD: "..EFA_BUILD)
 end
@@ -230,7 +230,9 @@ function GiveGunsForPMC(vehicle)
 					end
 				end
 				if veh:CanPartBeAttached(slot) then
-					veh:SetNewPart(slot,gun)
+					if gun ~= "" then
+						AddGunToSlotWithRandomAffix(slot, gun, veh, random(0,2))
+					end
 				end
 				k=k+1
 			end
@@ -382,7 +384,7 @@ function UseRestoreItem(item)
 
 				vehP:AddModifier("hp", "+ "..procent ) 
 				CreateEffectTTLed(fx, PlfCoor, Quaternion(0, 0, 0, 1), 1000)
-				AddFadingMsgByStrIdFormatted(fm, procent, healthcar + procent, procent_d_cab, d_pr_cab, procent_d_bas, d_pr_bas)
+				AddFadingMsgByStrIdFormatted(fm, procent, healthcar + procent, procent_d_cab + procent_d_bas, d_pr_cab + d_pr_bas)
 				if HasPlayerAmountOfItems(item, 1) then 
 					RemoveItemsFromPlayerRepository(item, 1)
 				elseif HasPlayerAmountOfItems(item.."_insured", 1) then
@@ -1491,7 +1493,13 @@ end
 
 -- Застраховать предмет
 function InsureItem(item)
-	if HasPlayerAmountOfItems(item, 1) then
+	if IfCanGunInSlot(item) ~= 0 then
+		local pl = GetPlayerVehicle()
+		if pl then
+			pl:SetNewPart(GetSlotIfCanGun(item), item.."_insured")
+		end
+		AddFadingMsgByStrIdFormatted("fm_insure_item", item)
+	elseif HasPlayerAmountOfItems(item, 1) then
 		RemoveItemsFromPlayerRepository(item)
 		AddItemsToPlayerRepository(item.."_insured")
 		AddFadingMsgByStrIdFormatted("fm_insure_item", item)
@@ -1527,6 +1535,34 @@ function IfCanGunInSlot(gun)
 	end
 
 	return l
+end
+
+-- Возвращает слот в которое установлено оружие
+function GetSlotIfCanGun(gun)
+	local plf = GetPlayerVehicle()
+	local parts={"CABIN_","BASKET_","CHASSIS_"}
+	local slots={"SMALL_","BIG_","GIANT_","SIDE_","SPECIAL_"}
+	local guns={"GUN","GUN_0","GUN_1","GUN_2","WEAPON"}
+	local i,j,k=1,1,1
+	while parts[i] do
+		while slots[j] do
+			while guns[k] do
+				local slot = parts[i]..slots[j]..guns[k]
+				if plf:CanPartBeAttached(slot) then
+					local plfSlot = plf:GetPartByName(slot)
+					if plfSlot then 
+						local slotGun = plfSlot:GetProperty("Prototype").AsString 
+						if slotGun == gun then return slot end
+					end
+				end
+				k=k+1
+			end
+			k=1
+			j=j+1
+		end
+		j=1
+		i=i+1
+	end
 end
 
 -- Включить/выключить спавн дефолтных машин у босса Витали
@@ -1584,6 +1620,38 @@ function AddGunWithRandomAffix(GunPrototype, ObjName)
     end
     ObjName:AddObjectToRepository(gun)
     return gun
+end
+
+-- Установить оружие со случайным аффиксом в конкретный слот
+function AddGunToSlotWithRandomAffix(Slot, GunPrototype, ObjName, CountAffix)
+	if ObjName == nil then ObjName = GetPlayerVehicle() end
+	if CountAffix == nil then CountAffix = random(1,3) end
+
+	local id = CreateNewObject{prototypeName = GunPrototype, objName = "GunToSlotWithAffix_"..random(10000), belong = 1100}
+    local gun = GetEntityByID( id )
+
+	local ListOfAffixes = {}
+
+	if GunPrototype == "maxim01" or GunPrototype == "fagot01" or GunPrototype == "odin01" or GunPrototype == "elephant01" or GunPrototype == "hammer01" or GunPrototype == "bumblebee01" or GunPrototype == "omega01" or GunPrototype == "big_swingfire01" or GunPrototype == "hurricane01" or GunPrototype == "mrakSideGun" or GunPrototype == "hailSideGun" or GunPrototype == "marsSideGun" or GunPrototype == "zeusSideGun" or GunPrototype == "hunterSideGun" then
+		if ObjName ~= GetPlayerVehicle() then
+			if random(1,2) == 1 then
+				local damageAffixes = { "weak_gun", "deadly_gun", "destructive_gun", "slow_gun", "assault_gun", "rapid_firing_gun", "without_cooling_gun", "with_nitro_cooling_gun", "with_truncated_barrel_gun", "with_enlarged_barrel_gun", "with_long_barrel_gun"}
+				table.insert(ListOfAffixes, damageAffixes[random(getn(damageAffixes))])
+			end
+		end
+	else
+		ListOfAffixes = GenerateRandomAffixList(CountAffix)
+	end
+
+    if ListOfAffixes ~= nil then
+		for i=1,getn(ListOfAffixes) do
+			if ListOfAffixes[i] ~= 0 then
+				gun:ApplyAffixByName(ListOfAffixes[i])
+			end
+		end
+	end
+
+    ObjName:SetPartByName(Slot, gun)
 end
 
 -- Возвращает 1 с определенным шансом в зависимости от кармы дикого
@@ -1670,6 +1738,9 @@ function GetProfileName()
 	LOGs:close()
 	return ProfileName
 end
+
+
+
 
 
 

@@ -34,13 +34,13 @@ screenshots:
 
 no_base_content: false
 strict_requirements: true
-compatible_minor_versions: false
-compatible_patch_versions: false
+compatible_minor_versions: true
+compatible_patch_versions: true
 
 data_dirs:
   - data
 
-patcher_version_requirement: "2.2.1"
+patcher_version_requirement: ">=3.0"
 
 config_options:
   firstLevel: "r0m0"

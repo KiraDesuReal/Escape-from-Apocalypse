@@ -1,0 +1,61 @@
+
+name: escape_from_apocalypse
+language: ru
+installment: exmachina
+ 
+display_name: Escape from Apocalypse
+version: "0.91"
+build: "250409"
+description: |
+  Gameplay modification for the game Ex Machina, the purpose of which is to transfer the mechanics of transfer and gaming experience from Escape from Tarkov to Ex Machina.
+  
+  In this modification you will find a completely new gameplay, shelter construction, new items, mechanics, locations and quests. Everything that can repeat the gameplay from Escape from Tarkov is in this modification.
+authors: KiraDesu
+ 
+logo: assets/efa_logo.png
+install_banner: assets/efa_logo.png
+release_date: "01.04.2025"
+link: https://github.com/KiraDesuReal/Escape-from-Apocalypse
+trailer_url: https://www.youtube.com/watch?v=CpmWvSffXt8
+tags: [gameplay, visual]
+change_log: assets/change_list_en.md
+
+screenshots:
+  - img: assets/new_items.png
+    text: Over 150 new items to collect, from building materials to electronics.
+  - img: assets/new_loc.png
+    text: New Locations [Screenshot shows Shelter and Dungeon with challenge].
+  - img: assets/dialoge.png
+    text: Dialogue with NPC.
+  - img: assets/building.gif
+    text: Building modules in Shelter.
+  - img: assets/quests.gif
+    text: New quests inspired by Escape from Tarkov.
+
+no_base_content: false
+strict_requirements: true
+compatible_minor_versions: true
+compatible_patch_versions: true
+
+data_dirs:
+  - data
+
+patcher_version_requirement: ">=3.0"
+
+config_options:
+  firstLevel: "r0m0"
+
+prerequisites:
+  - name: [community_remaster]
+    versions: 
+     - "1.14.1"
+    optional_content:
+     - hd_gun_models
+     - hd_vehicle_models
+     - ost_remaster
+
+incompatible:
+  - name: community_remaster
+    versions: []
+    optional_content:
+    - english_localization

@@ -214,10 +214,10 @@ function AddPlayerVehicle(modelname)
 	local vehicle = GetEntityByID(id)
 	local pl=g_Player
 	if vehicle and pl then
-	    println("Car name: "..vehicle:GetName())
+	    --println("Car name: "..vehicle:GetName())
 		local hover = 1.5 * vehicle:GetSize().y
     	local pos, yaw, pitch, roll, lookAt = GetCameraPos()
-		println(pos)
+		--println(pos)
 		vehicle:SetPosition(pos)
 		pl:AddChild(vehicle)
     end

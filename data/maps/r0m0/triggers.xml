@@ -5302,14 +5302,12 @@
 						for i2 = 1, countItems do
 							l = l + 1
 							INSURED_ITEMS_GLOBAL[l] = items[i]
-							con(INSURED_ITEMS_GLOBAL[l])
 						end
 					end
 					if countGun > 0 then
 						for i3 = 1, countGun do
 							l = l + 1
 							INSURED_ITEMS_GLOBAL[l] = items[i]
-							con(INSURED_ITEMS_GLOBAL[l])
 						end
 					end
 				end
@@ -5332,7 +5330,6 @@
 						if random(2) == 1 then
 							l = l + 1
 							items[l] = insured[i]
-							con("Return_"..i.."_"..insured[i])
 						end
 					end
 				end

@@ -183,6 +183,15 @@
 				if r then r:Remove() end
 			end
 
+			local player = getObj("Player1")
+			if player then
+				if GetVar("SelectBelong").AsString == "BEAR" then
+					player:SetPropertyById("44", "mask_hero")
+				else
+					player:SetPropertyById("44", "brodyaga_mask")
+				end
+			end
+
 			TActivate("StartFadeEffect")
 			trigger:Deactivate()
 		</script>

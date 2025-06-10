@@ -1008,7 +1008,7 @@ function CreateGunBox(name, pos)
 
 		for l=1,count do
 			local gadget_rand = {gadget1[random(getn(gadget1))], gadget2[random(getn(gadget2))], gadget3[random(getn(gadget3))]}
-			local Gadgets = CreateNewObject{prototypeName = gadget_rand[random(getn(gadget_rand))], objName = "GadgetItem_"..random(10000).."_"..name, belong = 1100}
+			local Gadgets = CreateNewObject{prototypeName = gadget_rand[exrandom(getn(gadget_rand))], objName = "GadgetItem_"..random(10000).."_"..name, belong = 1100}
 			local GadgetsId = GetEntityByID(Gadgets)
 			if ChestId and GadgetsId then
 				ChestId:AddChild(GadgetsId)

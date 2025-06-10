@@ -1,6 +1,6 @@
 <div align="center">
     <img src="assets/efa_logo.png" alt="EFA_Logo" width="600"><br>
-    <a href="REAMDE.md"><img src="assets/git_assets/b_ru.png" alt="RU" width="170"></a>
+    <a href="README.md"><img src="assets/git_assets/b_ru.png" alt="RU" width="170"></a>
     <img src="assets/git_assets/b_en_select.png" alt="EN" width="170">
     <h2>Escape from Apocalypse</h2>
     <p>A modification aimed at transferring all possible mechanics and gaming experience from Escape from Tarkov to Ex Machina.</p>

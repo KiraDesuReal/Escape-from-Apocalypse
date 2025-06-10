@@ -4529,9 +4529,9 @@
 					if b == 1 then ShowDeathMenu() end
 					LOG("EFA VERSION: "..EFA_VERSION.." | BUILD: "..EFA_BUILD.." | SAVE VERSION: "..GetVar("EFA_Version").AsString.." | BUILD: "..GetVar("EFA_Build").AsString)
 				end
-			else
-				TActivate("clst")
 			end
+			TActivate("clst")
+			TActivate("IfPlayerFuel0")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -5367,6 +5367,18 @@
 
 			local msg = day.."."..mouth..".20"..year.." "..clock
 			SetVar("Date", msg)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="IfPlayerFuel0" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			local fuel = GetPlayerFuel()
+			if pl and fuel == 0 then
+				pl:AddModifier("fuel", "= 1")
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>

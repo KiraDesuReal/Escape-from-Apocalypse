@@ -5670,6 +5670,8 @@
 			TDeactivate("OracleSoundUpdate")
 			TDeactivate("OracleSoundRemove")
 			TDeactivate("OracleRemove")
+			getObj("Oracle_AirDrop"):SetPosition(CVector(440, 251, 3825))
+			getObj("Oracle_AirDrop"):SetRotation(Quaternion(0, 0, 0, 1))
 
 			for point=1,14 do
 				local airpoint = GetEntityByName("air_point"..point)
@@ -6205,8 +6207,9 @@
 
 			if loc == "q_clearing_r1m1_"..locnum.."_loc_0" then
 				SetVar("q_clearing_r1m1_EnemyInLoc", locnum)
+			else
+				SetVar("q_clearing_r1m1_EnemyInLoc", 0)
 			end
-		
 		</script>
 	</trigger>
 

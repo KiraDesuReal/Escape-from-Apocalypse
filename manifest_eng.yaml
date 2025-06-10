@@ -1,11 +1,11 @@
 
 name: escape_from_apocalypse
-language: ru
+language: eng
 installment: exmachina
  
 display_name: Escape from Apocalypse
-version: "0.91"
-build: "250409"
+version: "0.95"
+build: "250609"
 description: |
   Gameplay modification for the game Ex Machina, the purpose of which is to transfer the mechanics of transfer and gaming experience from Escape from Tarkov to Ex Machina.
   
@@ -53,9 +53,4 @@ prerequisites:
      - hd_gun_models
      - hd_vehicle_models
      - ost_remaster
-
-incompatible:
-  - name: community_remaster
-    versions: []
-    optional_content:
-    - english_localization
+     - english_localization

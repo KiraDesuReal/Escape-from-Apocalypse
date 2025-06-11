@@ -22,7 +22,7 @@
 ** ׁ‏זוע
 **************************************************************************************************
 -->
-	<trigger	Name="trStartMap"	active="1">
+	<trigger	Name="trStartMap"	active="0">
 		<event eventid="GE_GAME_START" ObjName="Player1" />
 		<script>
 			if QuestStatus("r4m1_FindNative")==Q_CANBEGIVEN then

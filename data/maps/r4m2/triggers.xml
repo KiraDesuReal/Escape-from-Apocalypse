@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
 <triggers>
-	<trigger	Name="GlobalVar"	active="1">
+	<trigger	Name="GlobalVar"	active="0">
 		<event	timeout="0.1"		eventid="GE_TIME_PERIOD" />
 		<script>
 --			println("Map Region 4 map 2: Initialised")
@@ -15,7 +15,7 @@
 		</script>
 	</trigger>
 
-	<trigger	Name="trStartMap"	active="1">
+	<trigger	Name="trStartMap"	active="0">
 		<event eventid="GE_GAME_START" ObjName="Player1" />
 		<script>
 			if QuestStatus("r4m2_FightWithCrazy")==Q_CANBEGIVEN then

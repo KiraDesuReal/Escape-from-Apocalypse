@@ -388,6 +388,7 @@ function UseRestoreItem(item)
 				if HasPlayerAmountOfItems(item, 1) then 
 					RemoveItemsFromPlayerRepository(item, 1)
 				elseif HasPlayerAmountOfItems(item.."_insured", 1) then
+					DeleteTableInsuredItems(item)
 					RemoveItemsFromPlayerRepository(item.."_insured", 1)
 				end
 			end
@@ -403,6 +404,7 @@ function UseRestoreItem(item)
 				if HasPlayerAmountOfItems(item, 1) then 
 					RemoveItemsFromPlayerRepository(item, 1)
 				elseif HasPlayerAmountOfItems(item.."_insured", 1) then
+					DeleteTableInsuredItems(item)
 					RemoveItemsFromPlayerRepository(item.."_insured", 1)
 				end
 			end
@@ -443,6 +445,7 @@ function UseAmmoItems(ammo_used)
 						if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) then 
 							RemoveItemsFromPlayerRepository("ammo_chest_machinegun", 1)
 						elseif HasPlayerAmountOfItems("ammo_chest_machinegun_insured", 1) then
+							DeleteTableInsuredItems("ammo_chest_machinegun")
 							RemoveItemsFromPlayerRepository("ammo_chest_machinegun_insured", 1)
 						end
 					end
@@ -455,6 +458,7 @@ function UseAmmoItems(ammo_used)
 						if HasPlayerAmountOfItems("ammo_chest_shotgun", 1) then 
 							RemoveItemsFromPlayerRepository("ammo_chest_shotgun", 1)
 						elseif HasPlayerAmountOfItems("ammo_chest_shotgun_insured", 1) then
+							DeleteTableInsuredItems("ammo_chest_shotgun")
 							RemoveItemsFromPlayerRepository("ammo_chest_shotgun_insured", 1)
 						end
 					end
@@ -467,6 +471,7 @@ function UseAmmoItems(ammo_used)
 						if HasPlayerAmountOfItems("ammo_ballon_lasergun", 1) then 
 							RemoveItemsFromPlayerRepository("ammo_ballon_lasergun", 1)
 						elseif HasPlayerAmountOfItems("ammo_ballon_lasergun_insured", 1) then
+							DeleteTableInsuredItems("ammo_ballon_lasergun")
 							RemoveItemsFromPlayerRepository("ammo_ballon_lasergun_insured", 1)
 						end
 					end
@@ -479,6 +484,7 @@ function UseAmmoItems(ammo_used)
 						if HasPlayerAmountOfItems("ammo_ballon_plasmagun", 1) then 
 							RemoveItemsFromPlayerRepository("ammo_ballon_plasmagun", 1)
 						elseif HasPlayerAmountOfItems("ammo_ballon_plasmagun_insured", 1) then
+							DeleteTableInsuredItems("ammo_ballon_plasmagun")
 							RemoveItemsFromPlayerRepository("ammo_ballon_plasmagun_insured", 1)
 						end
 					end
@@ -504,6 +510,7 @@ function UseAmmoItems(ammo_used)
 						if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) then 
 							RemoveItemsFromPlayerRepository("ammo_chest_heavygun", 1)
 						elseif HasPlayerAmountOfItems("ammo_chest_heavygun_insured", 1) then
+							DeleteTableInsuredItems("ammo_chest_heavygun")
 							RemoveItemsFromPlayerRepository("ammo_chest_heavygun_insured", 1)
 						end
 					end
@@ -518,6 +525,7 @@ function UseAmmoItems(ammo_used)
 						if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) then 
 							RemoveItemsFromPlayerRepository("ammo_chest_machinegun", 1)
 						elseif HasPlayerAmountOfItems("ammo_chest_machinegun_insured", 1) then
+							DeleteTableInsuredItems("ammo_chest_machinegun")
 							RemoveItemsFromPlayerRepository("ammo_chest_machinegun_insured", 1)
 						end
 					end
@@ -530,6 +538,7 @@ function UseAmmoItems(ammo_used)
 						if HasPlayerAmountOfItems("ammo_chest_shotgun", 1) then 
 							RemoveItemsFromPlayerRepository("ammo_chest_shotgun", 1)
 						elseif HasPlayerAmountOfItems("ammo_chest_shotgun_insured", 1) then
+							DeleteTableInsuredItems("ammo_chest_shotgun")
 							RemoveItemsFromPlayerRepository("ammo_chest_shotgun_insured", 1)
 						end
 					end
@@ -543,6 +552,7 @@ function UseAmmoItems(ammo_used)
 						if HasPlayerAmountOfItems("ammo_chest_artillerygun", 1) then 
 							RemoveItemsFromPlayerRepository("ammo_chest_artillerygun", 1)
 						elseif HasPlayerAmountOfItems("ammo_chest_artillerygun_insured", 1) then
+							DeleteTableInsuredItems("ammo_chest_artillerygun")
 							RemoveItemsFromPlayerRepository("ammo_chest_artillerygun_insured", 1)
 						end
 					end
@@ -555,6 +565,7 @@ function UseAmmoItems(ammo_used)
 						if HasPlayerAmountOfItems("ammo_chest_rocketgun", 1) then 
 							RemoveItemsFromPlayerRepository("ammo_chest_rocketgun", 1)
 						elseif HasPlayerAmountOfItems("ammo_chest_rocketgun_insured", 1) then
+							DeleteTableInsuredItems("ammo_chest_rocketgun")
 							RemoveItemsFromPlayerRepository("ammo_chest_rocketgun_insured", 1)
 						end
 					end
@@ -568,6 +579,7 @@ function UseAmmoItems(ammo_used)
 						if HasPlayerAmountOfItems("ammo_ballon_lasergun", 1) then 
 							RemoveItemsFromPlayerRepository("ammo_ballon_lasergun", 1)
 						elseif HasPlayerAmountOfItems("ammo_ballon_lasergun_insured", 1) then
+							DeleteTableInsuredItems("ammo_ballon_lasergun")
 							RemoveItemsFromPlayerRepository("ammo_ballon_lasergun_insured", 1)
 						end
 					end
@@ -580,6 +592,7 @@ function UseAmmoItems(ammo_used)
 						if HasPlayerAmountOfItems("ammo_ballon_plasmagun", 1) then 
 							RemoveItemsFromPlayerRepository("ammo_ballon_plasmagun", 1)
 						elseif HasPlayerAmountOfItems("ammo_ballon_plasmagun_insured", 1) then
+							DeleteTableInsuredItems("ammo_ballon_plasmagun")
 							RemoveItemsFromPlayerRepository("ammo_ballon_plasmagun_insured", 1)
 						end
 					end
@@ -604,6 +617,7 @@ function UseAmmoItems(ammo_used)
 						if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) then 
 							RemoveItemsFromPlayerRepository("ammo_chest_heavygun", 1)
 						elseif HasPlayerAmountOfItems("ammo_chest_heavygun_insured", 1) then
+							DeleteTableInsuredItems("ammo_chest_heavygun")
 							RemoveItemsFromPlayerRepository("ammo_chest_heavygun_insured", 1)
 						end
 					end
@@ -616,6 +630,7 @@ function UseAmmoItems(ammo_used)
 						if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) then 
 							RemoveItemsFromPlayerRepository("ammo_chest_machinegun", 1)
 						elseif HasPlayerAmountOfItems("ammo_chest_machinegun_insured", 1) then
+							DeleteTableInsuredItems("ammo_chest_machinegun")
 							RemoveItemsFromPlayerRepository("ammo_chest_machinegun_insured", 1)
 						end
 					end
@@ -629,6 +644,7 @@ function UseAmmoItems(ammo_used)
 						if HasPlayerAmountOfItems("ammo_chest_rocketgun", 1) then 
 							RemoveItemsFromPlayerRepository("ammo_chest_rocketgun", 1)
 						elseif HasPlayerAmountOfItems("ammo_chest_rocketgun_insured", 1) then
+							DeleteTableInsuredItems("ammo_chest_rocketgun")
 							RemoveItemsFromPlayerRepository("ammo_chest_rocketgun_insured", 1)
 						end
 					end
@@ -641,6 +657,7 @@ function UseAmmoItems(ammo_used)
 						if HasPlayerAmountOfItems("ammo_ballon_plasmagun", 1) then 
 							RemoveItemsFromPlayerRepository("ammo_ballon_plasmagun", 1)
 						elseif HasPlayerAmountOfItems("ammo_ballon_plasmagun_insured", 1) then
+							DeleteTableInsuredItems("ammo_ballon_plasmagun")
 							RemoveItemsFromPlayerRepository("ammo_ballon_plasmagun_insured", 1)
 						end
 					end
@@ -669,6 +686,7 @@ function UseAmmoItems(ammo_used)
 					if HasPlayerAmountOfItems("ammo_chest_rocketgun", 1) then 
 						RemoveItemsFromPlayerRepository("ammo_chest_rocketgun", 1)
 					elseif HasPlayerAmountOfItems("ammo_chest_rocketgun_insured", 1) then
+						DeleteTableInsuredItems("ammo_chest_rocketgun")
 						RemoveItemsFromPlayerRepository("ammo_chest_rocketgun_insured", 1)
 					end
 				end
@@ -681,6 +699,7 @@ function UseAmmoItems(ammo_used)
 					if HasPlayerAmountOfItems("ammo_chest_artillerygun", 1) then 
 						RemoveItemsFromPlayerRepository("ammo_chest_artillerygun", 1)
 					elseif HasPlayerAmountOfItems("ammo_chest_artillerygun_insured", 1) then
+						DeleteTableInsuredItems("ammo_chest_artillerygun")
 						RemoveItemsFromPlayerRepository("ammo_chest_artillerygun_insured", 1)
 					end
 				end
@@ -702,6 +721,7 @@ function UseAmmoItems(ammo_used)
 					if HasPlayerAmountOfItems("ammo_ballon_turbo", 1) then 
 						RemoveItemsFromPlayerRepository("ammo_ballon_turbo", 1)
 					elseif HasPlayerAmountOfItems("ammo_ballon_turbo_insured", 1) then
+						DeleteTableInsuredItems("ammo_ballon_turbo")
 						RemoveItemsFromPlayerRepository("ammo_ballon_turbo_insured", 1)
 					end
 				end
@@ -1737,6 +1757,31 @@ function GetProfileName()
 	end
 	LOGs:close()
 	return ProfileName
+end
+
+-- Функция удаляет объект из таблицы
+function DeleteTableInsuredItems(obj)
+	local var = INSURED_ITEMS_GLOBAL
+	local gvar = {}
+	local l, del = 0, 0
+	if type(var)=="table" then
+		local count = getn(var)
+		if count > 0 then
+			for i = 1, count do
+				if obj then
+					if var[i] ~= obj or del == 1 then
+						l = l + 1
+						gvar[l] = var[i]
+					else
+						del = 1
+					end
+				end
+			end
+		end
+	end
+	if getn(gvar) > 0 then
+		INSURED_ITEMS_GLOBAL = gvar
+	end
 end
 
 

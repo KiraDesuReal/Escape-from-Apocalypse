@@ -81,7 +81,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_fuel2_1 q_fuel2_2 q_fuel2_3 q_fuel2_6 q_fuel2_4"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_fuel2")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_fuel2")' />
 	</quest>
 <!--Root/r0m0/Ремонт-->
 	<quest
@@ -118,7 +118,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_rebuild_1 q_rebuild_2"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_rebuild")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_rebuild")' />
 	</quest>
 <!--Root/r0m0/Тест драйв Часть 1-->
 	<quest
@@ -155,7 +155,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_test_drive1_1"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive1")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_test_drive1")' />
 	</quest>
 <!--Root/r0m0/Тест драйв Часть 2-->
 	<quest
@@ -200,8 +200,8 @@
 			CheckAll="0"
 			ConditionToGive="all complete"
 			PrecedingQuests="q_test_drive2_2 q_test_drive2_3"
-			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive1")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive2")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_test_drive2")' />
 	</quest>
 <!--Root/r0m0/Тест драйв Часть 3-->
 	<quest
@@ -247,7 +247,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_test_drive3_2 q_test_drive3_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive3")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_test_drive3")' />
 	</quest>
 <!--Root/r0m0/Тест драйв Часть 4-->
 	<quest
@@ -302,7 +302,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_test_drive4_1 q_test_drive4_2 q_test_drive4_3 q_test_drive4_4"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive4")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_test_drive4")' />
 	</quest>
 <!--Root/r0m0/Тест драйв Часть 5-->
 	<quest
@@ -357,7 +357,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_test_drive5_2 q_test_drive5_3 q_test_drive5_4"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive5")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_test_drive5")' />
 	</quest>
 <!--Root/r0m0/Тест драйв Часть 6-->
 	<quest
@@ -403,7 +403,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_test_drive6_2 q_test_drive6_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive6")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_test_drive6")' />
 	</quest>
 <!--Root/r0m0/Биток Часть 1-->
 	<quest
@@ -512,7 +512,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_bitok3_22"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_bitok3")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_bitok3")' />
 	</quest>
 <!--Root/r0m0/Тест драйв Часть 7-->
 	<quest
@@ -558,7 +558,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_test_drive7_2 q_test_drive7_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive7")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_test_drive7")' />
 	</quest>
 <!--Root/r0m0/Тест драйв Часть 8-->
 	<quest
@@ -604,7 +604,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_test_drive8_2 q_test_drive8_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive8")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_test_drive8")' />
 	</quest>
 <!--Root/r0m0/Заманчивое предложение-->
 	<quest
@@ -677,7 +677,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_naturalist1_2 q_naturalist1_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_naturalist1")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_naturalist1")' />
 	</quest>
 <!--Root/r0m0/Натуралист Часть 2-->
 	<quest
@@ -723,7 +723,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_naturalist2_2 q_naturalist2_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_naturalist2")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_naturalist2")' />
 	</quest>
 <!--Root/r0m0/Натуралист Часть 3-->
 	<quest
@@ -769,7 +769,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_naturalist3_2 q_naturalist3_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_naturalist3")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_naturalist3")' />
 	</quest>
 <!--Root/r0m0/Натуралист Часть 4-->
 	<quest
@@ -815,7 +815,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_naturalist4_2 q_naturalist4_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_naturalist4")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_naturalist4")' />
 	</quest>
 <!--Root/r0m0/Натуралист Часть 5-->
 	<quest
@@ -870,7 +870,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_naturalist5_2 q_naturalist5_3 q_naturalist5_4"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_naturalist5")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_naturalist5")' />
 	</quest>
 <!--Root/r0m0/Белазист Часть 1-->
 	<quest
@@ -916,7 +916,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_belazist1_2 q_belazist1_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_belazist1")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_belazist1")' />
 	</quest>
 <!--Root/r0m0/Белазист Часть 2-->
 	<quest
@@ -962,7 +962,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_belazist2_2 q_belazist2_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_belazist2")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_belazist2")' />
 	</quest>
 <!--Root/r0m0/Белазист Часть 3-->
 	<quest
@@ -1008,7 +1008,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_belazist3_2 q_belazist3_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_belazist3")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_belazist3")' />
 	</quest>
 <!--Root/r0m0/Белазист Часть 4-->
 	<quest
@@ -1054,7 +1054,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_belazist4_2 q_belazist4_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_belazist4")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_belazist4")' />
 	</quest>
 <!--Root/r0m0/Белазист Часть 5-->
 	<quest
@@ -1100,7 +1100,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_belazist5_2 q_belazist5_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_belazist5")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_belazist5")' />
 	</quest>
 <!--Root/r0m0/Белазист Часть 6-->
 	<quest
@@ -1146,7 +1146,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_belazist6_2 q_belazist6_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_belazist6")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_belazist6")' />
 	</quest>
 <!--Root/r0m0/Белазист Часть 7-->
 	<quest
@@ -1192,7 +1192,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_belazist7_2 q_belazist7_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_belazist7")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_belazist7")' />
 	</quest>
 <!--Root/r0m0/Белазист Часть 8-->
 	<quest
@@ -1238,7 +1238,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_belazist8_2 q_belazist8_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_belazist8")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_belazist8")' />
 	</quest>
 <!--Root/r0m0/Тест драйв Часть 9-->
 	<quest
@@ -1284,7 +1284,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_test_drive9_2 q_test_drive9_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive9")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_test_drive9")' />
 	</quest>
 <!--Root/r0m0/Тест драйв Часть 10-->
 	<quest
@@ -1330,7 +1330,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_test_drive10_2 q_test_drive10_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive10")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_test_drive10")' />
 	</quest>
 <!--Root/r0m0/Тест драйв Часть 11-->
 	<quest
@@ -1376,7 +1376,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_test_drive11_2 q_test_drive11_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive11")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_test_drive11")' />
 	</quest>
 <!--Root/r0m0/Тест драйв Часть 12-->
 	<quest
@@ -1422,7 +1422,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_test_drive12_2 q_test_drive12_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive12")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_test_drive12")' />
 	</quest>
 <!--Root/r0m0/Тест драйв Часть 13-->
 	<quest
@@ -1468,7 +1468,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_test_drive13_2 q_test_drive13_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive13")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_test_drive13")' />
 	</quest>
 <!--Root/r0m0/Тест драйв Часть 14-->
 	<quest
@@ -1514,7 +1514,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_test_drive14_2 q_test_drive14_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive14")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_test_drive14")' />
 	</quest>
 <!--Root/r0m0/Тест драйв Часть 15-->
 	<quest
@@ -1560,7 +1560,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_test_drive15_2 q_test_drive15_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_test_drive15")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_test_drive15")' />
 	</quest>
 <!--Root/r0m0/Жажда скорости-->
 	<quest
@@ -1598,7 +1598,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_turbo_1 q_turbo_2"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_turbo")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_turbo")' />
 	</quest>
 <!--Root/r1m1/Сюжетные--><!--Root/r1m1/Сюжетные/Проба пера-->
 	<quest
@@ -1633,7 +1633,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_testing_mission_1 q_testing_mission_2"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_testing_mission")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_testing_mission")' />
 	</quest>
 <!--Root/r1m1/Сюжетные/Поисковая миссия-->
 	<quest
@@ -1679,7 +1679,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_search_data_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_search_data")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_search_data")' />
 	</quest>
 <!--Root/r1m1/Сюжетные/Разведка местности-->
 	<quest
@@ -1752,7 +1752,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_explore_r1m1_1 q_explore_r1m1_2 q_explore_r1m1_3 q_explore_r1m1_4 q_explore_r1m1_5 q_explore_r1m1_6"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_explore_r1m1")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_explore_r1m1")' />
 	</quest>
 <!--Root/r1m1/Сюжетные/Зачистка местности-->
 	<quest
@@ -1816,7 +1816,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_clearing_r1m1_1 q_clearing_r1m1_2 q_clearing_r1m1_3 q_clearing_r1m1_4 q_clearing_r1m1_5"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_clearing_r1m1")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_clearing_r1m1")' />
 	</quest>
 <!--Root/r1m1/Сюжетные/Огонь на поражение-->
 	<quest
@@ -1844,7 +1844,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_kill_scavs_1"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_kill_scavs")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_kill_scavs")' />
 	</quest>
 <!--Root/r1m1/Сюжетные/Это наша территория-->
 	<quest
@@ -1882,7 +1882,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_base_scavs_2"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_base_scavs")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_base_scavs")' />
 	</quest>
 <!--Root/r0m0/Друг с запада-->
 	<quest
@@ -1919,7 +1919,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_kill_usec_1 q_kill_usec_2"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_kill_usec")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_kill_usec")' />
 	</quest>
 <!--Root/r0m0/Нашевствие сектантов - Часть 1-->
 	<quest
@@ -1966,7 +1966,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_sectarian1_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_sectarian1")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_sectarian1")' />
 	</quest>
 <!--Root/r0m0/Нашевствие сектантов - Часть 2-->
 	<quest
@@ -2012,7 +2012,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_sectarian2_1 q_sectarian2_2 q_sectarian2_3"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_sectarian2")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_sectarian2")' />
 	</quest>
 <!--Root/r0m0/Первый в очереди-->
 	<quest
@@ -2049,7 +2049,7 @@
 			ConditionToGive="all complete"
 			PrecedingQuests="q_first_in_line_1 q_first_in_line_2"
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_first_in_line")'
-			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)' />
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_first_in_line")' />
 	</quest>
 <!--Root/r0m0/Дефицит-->
 	<quest

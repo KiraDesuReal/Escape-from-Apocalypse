@@ -126,6 +126,21 @@ if Q_BELAZIST8_KILLPMC == nil then Q_BELAZIST8_KILLPMC = 0 end
 
 if Q_KILL_USEC_KILLS == nil then Q_KILL_USEC_KILLS = 0 end
 
+if DAILY_UPDATED_GLOBAL == nil then DAILY_UPDATED_GLOBAL = "0" end
+
+if Q_DAILY_KILL_PMC_KILLS == nil then Q_DAILY_KILL_PMC_KILLS = 0 end
+if Q_DAILY_KILL_PMC_PROGRESS == nil then Q_DAILY_KILL_PMC_PROGRESS = 0 end
+if Q_DAILY_KILL_PMC_STATUS == nil then Q_DAILY_KILL_PMC_STATUS = "0" end
+
+if Q_DAILY_KILL_SCAV_KILLS == nil then Q_DAILY_KILL_SCAV_KILLS = 0 end
+if Q_DAILY_KILL_SCAV_PROGRESS == nil then Q_DAILY_KILL_SCAV_PROGRESS = 0 end
+if Q_DAILY_KILL_SCAV_STATUS == nil then Q_DAILY_KILL_SCAV_STATUS = "0" end
+
+if Q_DAILY_EXTRACT_LOC == nil then Q_DAILY_EXTRACT_LOC = "0" end
+if Q_DAILY_EXTRACT_COUNT == nil then Q_DAILY_EXTRACT_COUNT = 0 end
+if Q_DAILY_EXTRACT_STATUS == nil then Q_DAILY_EXTRACT_STATUS = "0" end
+if Q_DAILY_EXTRACT_PROGRESS == nil then Q_DAILY_EXTRACT_PROGRESS = 0 end
+
 -- Рандомизируем пушки ботам 
 function GiveGunsForVehicle(vehicle, side_random)
 	local veh=vehicle
@@ -1722,7 +1737,7 @@ end
 
 -- Возвращает карму дикого
 function GetScavCarma()
-	local c = GetVar("ScavCarma").AsString
+	local c = GetVar("ScavCarma").AsFloat
 	local carma
 	if strsub(c, 1, 1) == "-" then
 		carma = tonumber(strsub(c, 1, 5))
@@ -1782,6 +1797,93 @@ function DeleteTableInsuredItems(obj)
 	if getn(gvar) > 0 then
 		INSURED_ITEMS_GLOBAL = gvar
 	end
+end
+
+-- Обновление ежедневных заданий
+function UpdateDailyQuests()
+	local day = strsub(os.date(), 4, 5)
+	if not(GetVar("DailyUpdated").AsString == day) then
+		local quests = {"q_daily_kill_pmc", "q_daily_kill_scav", "q_daily_extract"}
+		local traiders = {"PRAPOR", "TERAPIST", "MECHANIK"}
+
+		for f = 1, 3 do
+			if GetVar(quests[f].."_Status").AsString == "TAKEN" or GetVar(quests[f].."_Status").AsString == "COMPLETE" then 
+				if getObj("SoundQuestFail"):IsActivated() == 0 then TActivate("SoundQuestFail") end 
+				AddImportantFadingMsgByStrIdFormatted("fm_fail_quest", quests[f])
+			end 
+			SetVar(quests[f].."_Status", "0")
+		end
+
+		local killPMC = math.floor(GetPlayerMoney() / 100 * 0.0045)
+		if killPMC > 20 then killPMC = 20 end
+		if 3 > killPMC then killPMC = 3 end
+
+		local killScav = math.floor(GetPlayerMoney() / 100 * 0.006)
+		if killScav > 30 then killScav = 30 end
+		if 3 > killScav then killScav = 3 end
+
+		local extractCount = math.floor(GetPlayerMoney() / 100 * 0.0025)
+		if extractCount > 10 then extractCount = 10 end
+		if 2 > extractCount then extractCount = 2 end
+
+		SetVar("q_daily_kill_pmc_Kills", random(math.floor(killPMC / 1.5), killPMC))
+		SetVar("q_daily_kill_pmc_Progress", 0)
+		SetVar("q_daily_kill_scav_Kills", random(math.floor(killScav / 1.5), killScav))
+		SetVar("q_daily_kill_scav_Progress", 0)
+		SetVar("q_daily_extract_Loc", "r1m1")
+		SetVar("q_daily_extract_Count", random(math.floor(extractCount / 1.5), extractCount))
+		SetVar("q_daily_extract_Progress", 0)
+
+		for q = 1, 3 do
+			SetVar(quests[q], traiders[random(3)])
+			SetVar(quests[q].."_Status", "CAN_BE_GIVEN")
+		end
+		SetVar("DailyUpdated", day)
+	end
+end
+
+-- Выдать награду за выполнения дейлика
+function RewardForDailyQuests()
+	local LifeItems = {"scrap_metal_use", "machinery_use", "electronics_use"}
+	local FuelItems = {"oil_use", "fuel_full_use"}
+	local AmmoItems = {"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo"}
+	local Guns = {"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun", "someTurboAccelerationPusher"}
+	local Gadgets = {"cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns", "cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "additional_fuel_tank2", "additional_torque2", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
+	local OtherItems = {"potato", "firewood", "bottle", "tobacco", "book",
+						"doski", "details", "shkatulka",
+						"item_key_gate_thetown", "item_key_gate_basefelix",
+						"item_bolts", "item_datchik", "item_hose", "item_insulation", "item_kek", "item_military_tube", "item_nails", "item_nuts", "item_parts", "item_pena", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_thermometer", "item_tube",
+						"item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid",
+						"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery",
+						"item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder",
+						"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
+						"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
+						"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
+						"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki",
+						"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
+						"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_silver_skull", "item_vaze"}
+	
+	local count = random(1, 3)
+	if GetPlayerMoney() >= 700000 then
+		count = random(5, 8)
+	elseif GetPlayerMoney() >= 500000 then
+		count = random(4, 7)
+	elseif GetPlayerMoney() >= 400000 then
+		count = random(3, 5)
+	elseif GetPlayerMoney() >= 300000 then
+		count = random(2, 4)
+	elseif GetPlayerMoney() >= 200000 then
+		count = random(2, 3)
+	elseif 100000 > GetPlayerMoney() then
+		count = random(1, 2)
+	end
+
+	for i = 1, count do
+		local AddItems = {LifeItems[random(3)], FuelItems[random(2)], AmmoItems[random(getn(AmmoItems))], Guns[random(getn(Guns))], Gadgets[random(getn(Gadgets))], OtherItems[random(getn(OtherItems))]}
+		local Item = AddItems[random(getn(AddItems))]
+		AddItemsToPlayerRepository(Item)
+		AddFadingMsgByStrIdFormatted("fm_player_add_thing", Item)
+	end				
 end
 
 

@@ -31,7 +31,9 @@ function QuestsKillScavs()
     if IsQuestTaken("q_belazist6_2") and not(IsQuestComplete("q_belazist6_2")) then Q_Belazist6("q_belazist6_killscavs", 15, "q_belazist6_2", "fm_progress_quest_scavs_kills") end
     if IsQuestTaken("q_belazist7_2") and not(IsQuestComplete("q_belazist7_2")) then Q_Belazist7("q_belazist7_killscavs", 20, "q_belazist7_2", "fm_progress_quest_scavs_kills") end
     if IsQuestTaken("q_belazist8_2") and not(IsQuestComplete("q_belazist8_2")) then Q_Belazist8("q_belazist8_killscavs", 50, "q_belazist8_2", "fm_progress_quest_scavs_kills") end
-end
+
+    if GetVar("q_daily_kill_scav_Status").AsString == "TAKEN" then Q_KillsForDaily("q_daily_kill_scav_Progress", "q_daily_kill_scav_Kills", "q_daily_kill_scav_Status", "fm_progress_quest_scavs_kills", "q_daily_kill_scav") end
+ end
 
 function QuestsKillPMC()
     if IsQuestTaken("q_test_drive2_3") and not(IsQuestComplete("q_test_drive2_3")) then Q_TestDrive2("q_test_drive2_killPMC", 10, "q_test_drive2_3", "fm_progress_quest_pmc_kills") end
@@ -63,6 +65,8 @@ function QuestsKillPMC()
     if IsQuestTaken("q_belazist6_3") and not(IsQuestComplete("q_belazist6_3")) then Q_Belazist6("q_belazist6_killPMC", 20, "q_belazist6_3", "fm_progress_quest_pmc_kills") end
     if IsQuestTaken("q_belazist7_3") and not(IsQuestComplete("q_belazist7_3")) then Q_Belazist7("q_belazist7_killPMC", 40, "q_belazist7_3", "fm_progress_quest_pmc_kills") end
     if IsQuestTaken("q_belazist8_3") and not(IsQuestComplete("q_belazist8_3")) then Q_Belazist8("q_belazist8_killPMC", 50, "q_belazist8_3", "fm_progress_quest_pmc_kills") end
+
+    if GetVar("q_daily_kill_pmc_Status").AsString == "TAKEN" then Q_KillsForDaily("q_daily_kill_pmc_Progress", "q_daily_kill_pmc_Kills", "q_daily_kill_pmc_Status", "fm_progress_quest_pmc_kills", "q_daily_kill_pmc") end
 end
 
 function QuestsKillPMC_USEC()
@@ -634,4 +638,29 @@ function Q_TurboUse()
         end
     end
 end
+
+-- Засчитывание убийств по дейликам
+
+function Q_KillsForDaily(varProgress, varKills, varStatus, fm, questName)
+    local q_var = GetVar(varProgress).AsInt
+    local q_varKills = GetVar(varKills).AsInt
+
+    if not(q_var == q_varKills) then
+        q_var = q_var + 1
+        SetVar(varProgress, q_var)
+        if q_var >= q_varKills then
+            SetVar(varProgress, q_varKills)
+            SetVar(varStatus, "COMPLETE")
+            CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+            AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", questName)
+            AddFadingMsgByStrIdFormatted(fm.."_complete", questName, q_varKills, q_varKills)
+            SoundFadingMsg()
+        else
+            AddFadingMsgByStrIdFormatted(fm, questName, q_var, q_varKills)
+            SoundFadingMsg()
+        end
+    end
+end
+
+
 

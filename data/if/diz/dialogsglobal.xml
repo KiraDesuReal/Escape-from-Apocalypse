@@ -1045,7 +1045,7 @@
 		name="Dlg_npc_garage_1"
 		text="Гараж - неотъемлемое место в жизни каждого махиниста, где из простых болтов и гаек создаются чудовищные бронемашины."
 		role="NPC"
-		scriptCondition="GetVar('Generator_lvl').AsInt >=1 and GetVar('Garage_Builden').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
+		scriptCondition="GetVar('Generator_lvl').AsInt >=1 and GetVar('Garage_Builden').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV') and not(GetVar('DialogSelectMap').AsInt == 2)"
 		nextReplies="Dlg_pl_garage_3 Dlg_pl_garage_4 Dlg_pl_garage_5 Dlg_npc_0013201" />
 	
 	<Reply
@@ -10788,7 +10788,7 @@
 		name="Dlg_npc_prapor_quests"
 		text="Думаю, найдётся что-нибудь для тебя."
 		role="NPC"
-		nextReplies="Dlg_pl_q_search_data Dlg_pl_to_q_search_data Dlg_pl_q_explore_r1m1 Dlg_pl_to_q_explore_r1m1 Dlg_pl_q_kill_scavs Dlg_pl_to_q_kill_scavs Dlg_pl_q_clearing_r1m1 Dlg_pl_to_q_clearing_r1m1 Dlg_pl_q_base_scavs Dlg_pl_to_q_base_scavs Dlg_pl_q_kill_usec Dlg_pl_to_q_kill_usec Dlg_pl_q_sectarian1 Dlg_pl_to_q_sectarian1 Dlg_pl_q_sectarian2 Dlg_pl_to_q_sectarian2 Dlg_pl_q_fuel1 Dlg_pl_to_q_fuel1 Dlg_pl_q_fuel2 Dlg_pl_to_q_fuel2 Dlg_pl_npc_exit" />
+		nextReplies="Dlg_pl_q_search_data Dlg_pl_to_q_search_data Dlg_pl_q_explore_r1m1 Dlg_pl_to_q_explore_r1m1 Dlg_pl_q_kill_scavs Dlg_pl_to_q_kill_scavs Dlg_pl_q_clearing_r1m1 Dlg_pl_to_q_clearing_r1m1 Dlg_pl_q_base_scavs Dlg_pl_to_q_base_scavs Dlg_pl_q_kill_usec Dlg_pl_to_q_kill_usec Dlg_pl_q_sectarian1 Dlg_pl_to_q_sectarian1 Dlg_pl_q_sectarian2 Dlg_pl_to_q_sectarian2 Dlg_pl_q_fuel1 Dlg_pl_to_q_fuel1 Dlg_pl_q_fuel2 Dlg_pl_to_q_fuel2 Dlg_pl_q_daily_kill_scav_prapor Dlg_pl_to_q_daily_kill_scav_prapor Dlg_pl_q_daily_kill_pmc_prapor Dlg_pl_to_q_daily_kill_pmc_prapor Dlg_pl_q_daily_extract_prapor Dlg_pl_to_q_daily_extract_prapor Dlg_pl_npc_exit" />
 
 <!--Поисковая миссия-->
 	<Reply
@@ -10939,6 +10939,51 @@
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_sectarian2') and not(IsQuestComplete('q_sectarian2'))"
 		nextReplies="Dlg_npc_q_sectarian2_1" />
+
+<!--Ежедневное задание: Устранить диких-->
+	<Reply
+		name="Dlg_pl_q_daily_kill_scav_prapor"
+		text="Есть ли для меня работа? (Принять оперативное задание: Устранить диких)"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_scav').AsString == 'PRAPOR' and GetVar('q_daily_kill_scav_Status').AsString == 'CAN_BE_GIVEN'"
+		nextReplies="Dlg_npc_q_daily_kill_scav_prapor_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_daily_kill_scav_prapor"
+		text="На счёт оперативного задания Устранить диких."
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_scav').AsString == 'PRAPOR' and GetVar('q_daily_kill_scav_Status').AsString == 'TAKEN' or GetVar('q_daily_kill_scav').AsString == 'PRAPOR' and GetVar('q_daily_kill_scav_Status').AsString == 'COMPLETE'"
+		nextReplies="Dlg_npc_q_daily_kill_scav_prapor_1" />
+
+<!--Ежедневное задание: Устранить ЧВК-->
+	<Reply
+		name="Dlg_pl_q_daily_kill_pmc_prapor"
+		text="Есть ли для меня работа? (Принять оперативное задание: Устранить ЧВК)"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_pmc').AsString == 'PRAPOR' and GetVar('q_daily_kill_pmc_Status').AsString == 'CAN_BE_GIVEN'"
+		nextReplies="Dlg_npc_q_daily_kill_pmc_prapor_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_daily_kill_pmc_prapor"
+		text="На счёт оперативного задания Устранить ЧВК."
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_pmc').AsString == 'PRAPOR' and GetVar('q_daily_kill_pmc_Status').AsString == 'TAKEN' or GetVar('q_daily_kill_pmc').AsString == 'PRAPOR' and GetVar('q_daily_kill_pmc_Status').AsString == 'COMPLETE'"
+		nextReplies="Dlg_npc_q_daily_kill_pmc_prapor_1" />
+
+<!--Ежедневное задание: Разведать локацию-->
+	<Reply
+		name="Dlg_pl_q_daily_extract_prapor"
+		text="Есть ли для меня работа? (Принять оперативное задание: Разведать локацию)"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_extract').AsString == 'PRAPOR' and GetVar('q_daily_extract_Status').AsString == 'CAN_BE_GIVEN'"
+		nextReplies="Dlg_npc_q_daily_extract_r1m1_prapor_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_daily_extract_prapor"
+		text="На счёт оперативного задания Разведать локацию."
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_extract').AsString == 'PRAPOR' and GetVar('q_daily_extract_Status').AsString == 'TAKEN' or GetVar('q_daily_extract').AsString == 'PRAPOR' and GetVar('q_daily_extract_Status').AsString == 'COMPLETE'"
+		nextReplies="Dlg_npc_q_daily_extract_r1m1_prapor_1" />
 
 <!--Root/r0m0/Поисковая миссия-->
 
@@ -11537,6 +11582,133 @@
 	<Reply
 		name="Dlg_npc_q_sectarian2_8"
 		text="Да, пришлось с ними повозиться."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Ежедневное задание: Устранить ЧВК-->
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_pmc_prapor_1"
+		text="Привет наёмник! Есть для тебя задание. Нужно очистить местность от нескольких ЧВКашек. Справишься? Награда будет, не переживай.|@FF0000AA|@FF1D1D1DЦели:|- Убить определённое количество бойцов ЧВК||@FF0000AA|@FF1D1D1DНаграда:|- Неизвестная награда"
+		role="NPC"
+		nextReplies="Dlg_npc_q_daily_kill_pmc_prapor_2 Dlg_npc_q_daily_kill_pmc_prapor_3 Dlg_npc_q_daily_kill_pmc_prapor_4" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_pmc_prapor_2"
+		text="По рукам!"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_pmc_Status').AsString == 'CAN_BE_GIVEN'"
+		scriptResult="SetVar('q_daily_kill_pmc_Status', 'TAKEN'); TActivate('SoundQuestTaken'); AddImportantFadingMsgByStrIdFormatted('fm_take_quest', 'q_daily_kill_pmc'); EndConversation()"/>
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_pmc_prapor_3"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_pmc_Status').AsString == 'COMPLETE'"
+		scriptResult="SetVar('q_daily_kill_pmc_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_kill_pmc'); RewardForDailyQuests()"
+		nextReplies="Dlg_npc_q_daily_kill_pmc_prapor_5" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_pmc_prapor_4"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_pmc_Status').AsString == 'TAKEN'"
+		nextReplies="Dlg_npc_prapor_quests" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_pmc_prapor_5"
+		text="С задачей справился, так держать. Забирай награду."
+		role="NPC"
+		nextReplies="Dlg_npc_q_daily_kill_pmc_prapor_6" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_pmc_prapor_6"
+		text="Отлично."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Ежедневное задание: Устранить диких-->
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_scav_prapor_1"
+		text="Привет наёмник! Есть одно дело для тебя. В последнее время местные совсем озверели, постоянно препятствуют выполнению наших заданий. Короче, бандюков надо немного покошмарить. Возьмёшься?|@FF0000AA|@FF1D1D1DЦели:|- Убить определённое количество диких||@FF0000AA|@FF1D1D1DНаграда:|- Неизвестная награда"
+		role="NPC"
+		nextReplies="Dlg_npc_q_daily_kill_scav_prapor_2 Dlg_npc_q_daily_kill_scav_prapor_3 Dlg_npc_q_daily_kill_scav_prapor_4" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_scav_prapor_2"
+		text="По рукам!"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_scav_Status').AsString == 'CAN_BE_GIVEN'"
+		scriptResult="SetVar('q_daily_kill_scav_Status', 'TAKEN'); TActivate('SoundQuestTaken'); AddImportantFadingMsgByStrIdFormatted('fm_take_quest', 'q_daily_kill_scav'); EndConversation()"/>
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_scav_prapor_3"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_scav_Status').AsString == 'COMPLETE'"
+		scriptResult="SetVar('q_daily_kill_scav_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_kill_scav'); RewardForDailyQuests()"
+		nextReplies="Dlg_npc_q_daily_kill_scav_prapor_5" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_scav_prapor_4"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_scav_Status').AsString == 'TAKEN'"
+		nextReplies="Dlg_npc_prapor_quests" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_scav_prapor_5"
+		text="Справился значит, отлично. Вот награда, возьми распишись."
+		role="NPC"
+		nextReplies="Dlg_npc_q_daily_kill_scav_prapor_6" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_scav_prapor_6"
+		text="Спасибо."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Ежедневное задание: Разведать локацию-->
+
+	<Reply
+		name="Dlg_npc_q_daily_extract_r1m1_prapor_1"
+		text="Привет вояка! Слушай, тут помощь с разведкой нужна - прогуляться по паре мест, прошерстить, как там обстановка, и как отойти в безопасное место в случае чего. Не за просто так, конечно, награда будет, а дельце-то плёвое. Давай, собирайся, будем ждать новостей.|@FF0000AA|@FF1D1D1DЦели:|- Выжить и выйти с локации Край, определённое количество раз||@FF0000AA|@FF1D1D1DНаграда:|- Неизвестная награда"
+		role="NPC"
+		scriptCondition="GetVar('q_daily_extract_Loc').AsString == 'r1m1'"
+		nextReplies="Dlg_npc_q_daily_extract_prapor_2 Dlg_npc_q_daily_extract_prapor_3 Dlg_npc_q_daily_extract_prapor_4" />
+
+	<Reply
+		name="Dlg_npc_q_daily_extract_prapor_2"
+		text="По рукам!"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_extract_Status').AsString == 'CAN_BE_GIVEN'"
+		scriptResult="SetVar('q_daily_extract_Status', 'TAKEN'); TActivate('SoundQuestTaken'); AddImportantFadingMsgByStrIdFormatted('fm_take_quest', 'q_daily_extract'); EndConversation()"/>
+
+	<Reply
+		name="Dlg_npc_q_daily_extract_prapor_3"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_extract_Status').AsString == 'COMPLETE'"
+		scriptResult="SetVar('q_daily_extract_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_extract'); RewardForDailyQuests()"
+		nextReplies="Dlg_npc_q_daily_extract_prapor_5" />
+
+	<Reply
+		name="Dlg_npc_q_daily_extract_prapor_4"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_extract_Status').AsString == 'TAKEN'"
+		nextReplies="Dlg_npc_prapor_quests" />
+
+	<Reply
+		name="Dlg_npc_q_daily_extract_prapor_5"
+		text="Отлично, теперь нам известна обстановка на локации. Я помечу на своей карте опасные места и пути к отступлению, спасибо. Твоя награда, как и обещал."
+		role="NPC"
+		nextReplies="Dlg_npc_q_daily_extract_prapor_6" />
+
+	<Reply
+		name="Dlg_npc_q_daily_extract_prapor_6"
+		text="Отлично."
 		role="PLAYER"
 		scriptResult="EndConversation()"/>
 
@@ -12256,7 +12428,7 @@
 		text="Здравствуйте, молодой человек. Что вас интересует?"
 		role="NPC"
 		scriptCondition="IsQuestComplete('q_first_in_line')"
-		nextReplies="Dlg_pl_q_shortage Dlg_pl_to_q_shortage Dlg_pl_q_sanitary_standards1 Dlg_pl_to_q_sanitary_standards1 Dlg_pl_q_sanitary_standards2 Dlg_pl_to_q_sanitary_standards2 Dlg_pl_q_painkiller Dlg_pl_to_q_painkiller Dlg_pl_q_autorem Dlg_pl_to_q_autorem Dlg_pl_q_private_clinic Dlg_pl_to_q_private_clinic Dlg_pl_q_crisis Dlg_pl_to_q_crisis Dlg_pl_npc_exit" />
+		nextReplies="Dlg_pl_q_shortage Dlg_pl_to_q_shortage Dlg_pl_q_sanitary_standards1 Dlg_pl_to_q_sanitary_standards1 Dlg_pl_q_sanitary_standards2 Dlg_pl_to_q_sanitary_standards2 Dlg_pl_q_painkiller Dlg_pl_to_q_painkiller Dlg_pl_q_autorem Dlg_pl_to_q_autorem Dlg_pl_q_private_clinic Dlg_pl_to_q_private_clinic Dlg_pl_q_crisis Dlg_pl_to_q_crisis Dlg_pl_q_daily_kill_scav_terapist Dlg_pl_to_q_daily_kill_scav_terapist Dlg_pl_q_daily_kill_pmc_terapist Dlg_pl_to_q_daily_kill_pmc_terapist Dlg_pl_q_daily_extract_terapist Dlg_pl_to_q_daily_extract_terapist Dlg_pl_npc_exit" />
 
 <!--Дефицит-->
 	<Reply
@@ -12362,6 +12534,51 @@
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_crisis') and not(IsQuestComplete('q_crisis'))"
 		nextReplies="Dlg_npc_q_crisis_1" />
+
+<!--Ежедневное задание: Устранить диких-->
+	<Reply
+		name="Dlg_pl_q_daily_kill_scav_terapist"
+		text="Есть ли для меня работа? (Принять оперативное задание: Устранить диких)"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_scav').AsString == 'TERAPIST' and GetVar('q_daily_kill_scav_Status').AsString == 'CAN_BE_GIVEN'"
+		nextReplies="Dlg_npc_q_daily_kill_scav_terapist_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_daily_kill_scav_terapist"
+		text="На счёт оперативного задания Устранить диких."
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_scav').AsString == 'TERAPIST' and GetVar('q_daily_kill_scav_Status').AsString == 'TAKEN' or GetVar('q_daily_kill_scav').AsString == 'TERAPIST' and GetVar('q_daily_kill_scav_Status').AsString == 'COMPLETE'"
+		nextReplies="Dlg_npc_q_daily_kill_scav_terapist_1" />
+
+<!--Ежедневное задание: Устранить ЧВК-->
+	<Reply
+		name="Dlg_pl_q_daily_kill_pmc_terapist"
+		text="Есть ли для меня работа? (Принять оперативное задание: Устранить ЧВК)"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_pmc').AsString == 'TERAPIST' and GetVar('q_daily_kill_pmc_Status').AsString == 'CAN_BE_GIVEN'"
+		nextReplies="Dlg_npc_q_daily_kill_pmc_terapist_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_daily_kill_pmc_terapist"
+		text="На счёт оперативного задания Устранить ЧВК."
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_pmc').AsString == 'TERAPIST' and GetVar('q_daily_kill_pmc_Status').AsString == 'TAKEN' or GetVar('q_daily_kill_pmc').AsString == 'TERAPIST' and GetVar('q_daily_kill_pmc_Status').AsString == 'COMPLETE'"
+		nextReplies="Dlg_npc_q_daily_kill_pmc_terapist_1" />
+
+<!--Ежедневное задание: Разведать локацию-->
+	<Reply
+		name="Dlg_pl_q_daily_extract_terapist"
+		text="Есть ли для меня работа? (Принять оперативное задание: Разведать локацию)"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_extract').AsString == 'TERAPIST' and GetVar('q_daily_extract_Status').AsString == 'CAN_BE_GIVEN'"
+		nextReplies="Dlg_npc_q_daily_extract_r1m1_terapist_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_daily_extract_terapist"
+		text="На счёт оперативного задания Разведать локацию."
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_extract').AsString == 'TERAPIST' and GetVar('q_daily_extract_Status').AsString == 'TAKEN' or GetVar('q_daily_extract').AsString == 'TERAPIST' and GetVar('q_daily_extract_Status').AsString == 'COMPLETE'"
+		nextReplies="Dlg_npc_q_daily_extract_r1m1_terapist_1" />
 
 <!--Root/r0m0/Дефицит-->
 
@@ -12798,6 +13015,132 @@
 		role="PLAYER"
 		scriptResult="EndConversation()"/>
 
+<!--Root/r0m0/Ежедневное задание: Устранить ЧВК-->
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_pmc_terapist_1"
+		text="Здравствуйте, наёмник. Нам нужна помощь в устранении группы целей, которые мешают проведению наших гуманитарных операций. Если вы не заняты, то поручу это вам. Все детали приложены.|@FF0000AA|@FF1D1D1DЦели:|- Убить определённое количество бойцов ЧВК||@FF0000AA|@FF1D1D1DНаграда:|- Неизвестная награда"
+		role="NPC"
+		nextReplies="Dlg_npc_q_daily_kill_pmc_terapist_2 Dlg_npc_q_daily_kill_pmc_terapist_3 Dlg_npc_q_daily_kill_pmc_terapist_4" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_pmc_terapist_2"
+		text="По рукам!"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_pmc_Status').AsString == 'CAN_BE_GIVEN'"
+		scriptResult="SetVar('q_daily_kill_pmc_Status', 'TAKEN'); TActivate('SoundQuestTaken'); AddImportantFadingMsgByStrIdFormatted('fm_take_quest', 'q_daily_kill_pmc'); EndConversation()"/>
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_pmc_terapist_3"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_pmc_Status').AsString == 'COMPLETE'"
+		scriptResult="SetVar('q_daily_kill_pmc_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_kill_pmc'); RewardForDailyQuests()"
+		nextReplies="Dlg_npc_q_daily_kill_pmc_terapist_5" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_pmc_terapist_4"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_pmc_Status').AsString == 'TAKEN'"
+		nextReplies="Dlg_npc_terapist_1" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_pmc_terapist_5"
+		text="Ваше задание выполнено, спасибо. Это вам в качестве награды."
+		role="NPC"
+		nextReplies="Dlg_npc_q_daily_kill_pmc_terapist_6" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_pmc_terapist_6"
+		text="Благодарю."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Ежедневное задание: Устранить диких-->
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_scav_terapist_1"
+		text="Добрый день, наёмник. У меня есть поручение для такого человека как вы. Локации, на которых мы часто проводим свои операции, кишат местным отребьем, препятствуя тем самым выполнению наших поставленных задач. Разберитесь с бандитами? У меня будет чем вам отплатить.|@FF0000AA|@FF1D1D1DЦели:|- Убить определённое количество диких||@FF0000AA|@FF1D1D1DНаграда:|- Неизвестная награда"
+		role="NPC"
+		nextReplies="Dlg_npc_q_daily_kill_scav_terapist_2 Dlg_npc_q_daily_kill_scav_terapist_3 Dlg_npc_q_daily_kill_scav_terapist_4" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_scav_terapist_2"
+		text="По рукам!"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_scav_Status').AsString == 'CAN_BE_GIVEN'"
+		scriptResult="SetVar('q_daily_kill_scav_Status', 'TAKEN'); TActivate('SoundQuestTaken'); AddImportantFadingMsgByStrIdFormatted('fm_take_quest', 'q_daily_kill_scav'); EndConversation()"/>
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_scav_terapist_3"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_scav_Status').AsString == 'COMPLETE'"
+		scriptResult="SetVar('q_daily_kill_scav_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_kill_scav'); RewardForDailyQuests()"
+		nextReplies="Dlg_npc_q_daily_kill_scav_terapist_5" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_scav_terapist_4"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_scav_Status').AsString == 'TAKEN'"
+		nextReplies="Dlg_npc_terapist_1" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_scav_terapist_5"
+		text="Отличная работа. Это вам в качестве награды за выполненное задание."
+		role="NPC"
+		nextReplies="Dlg_npc_q_daily_kill_scav_terapist_6" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_scav_terapist_6"
+		text="Спасибо."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Ежедневное задание: Разведать локацию-->
+
+	<Reply
+		name="Dlg_npc_q_daily_extract_r1m1_terapist_1"
+		text="Молодой человек, здравствуйте. Моим работникам необходимо доставить несколько партий ценных лекарств, но в одиночку отправить их я боюсь. Если у вас есть возможность, то прошу помочь нам, во благо мирного населения. От вас лишь нужно удостовериться в разведке и безопасности маршрута. Возьмётесь?|@FF0000AA|@FF1D1D1DЦели:|- Выжить и выйти с локации Край, определённое количество раз||@FF0000AA|@FF1D1D1DНаграда:|- Неизвестная награда"
+		role="NPC"
+		nextReplies="Dlg_npc_q_daily_extract_terapist_2 Dlg_npc_q_daily_extract_terapist_3 Dlg_npc_q_daily_extract_terapist_4" />
+
+	<Reply
+		name="Dlg_npc_q_daily_extract_terapist_2"
+		text="По рукам!"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_extract_Status').AsString == 'CAN_BE_GIVEN'"
+		scriptResult="SetVar('q_daily_extract_Status', 'TAKEN'); TActivate('SoundQuestTaken'); AddImportantFadingMsgByStrIdFormatted('fm_take_quest', 'q_daily_extract'); EndConversation()"/>
+
+	<Reply
+		name="Dlg_npc_q_daily_extract_terapist_3"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_extract_Status').AsString == 'COMPLETE'"
+		scriptResult="SetVar('q_daily_extract_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_extract'); RewardForDailyQuests()"
+		nextReplies="Dlg_npc_q_daily_extract_terapist_5" />
+
+	<Reply
+		name="Dlg_npc_q_daily_extract_terapist_4"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_extract_Status').AsString == 'TAKEN'"
+		nextReplies="Dlg_npc_terapist_1" />
+
+	<Reply
+		name="Dlg_npc_q_daily_extract_terapist_5"
+		text="Хорошо когда есть человек, на которого можно положиться. Спасибо вам."
+		role="NPC"
+		nextReplies="Dlg_npc_q_daily_extract_terapist_6" />
+
+	<Reply
+		name="Dlg_npc_q_daily_extract_terapist_6"
+		text="Отлично."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
 <!--Root/r0m0/Механик-->
 
 	<Reply
@@ -12825,7 +13168,7 @@
 		name="Dlg_npc_mechanic_quests"
 		text="Сейчас посмотрим, что можно тебе предложить."
 		role="NPC"
-		nextReplies="Dlg_pl_q_test_drive1 Dlg_pl_to_q_test_drive1 Dlg_pl_q_test_drive2 Dlg_pl_to_q_test_drive2 Dlg_pl_q_test_drive3 Dlg_pl_to_q_test_drive3 Dlg_pl_q_test_drive4 Dlg_pl_to_q_test_drive4 Dlg_pl_q_test_drive5 Dlg_pl_to_q_test_drive5 Dlg_pl_q_test_drive6 Dlg_pl_to_q_test_drive6 Dlg_pl_q_test_drive7 Dlg_pl_to_q_test_drive7 Dlg_pl_q_test_drive8 Dlg_pl_to_q_test_drive8 Dlg_pl_q_ural_or_belaz Dlg_pl_to_q_ural_or_belaz Dlg_pl_q_naturalist1 Dlg_pl_to_q_naturalist1 Dlg_pl_q_naturalist2 Dlg_pl_to_q_naturalist2 Dlg_pl_q_naturalist3 Dlg_pl_to_q_naturalist3 Dlg_pl_q_naturalist4 Dlg_pl_to_q_naturalist4 Dlg_pl_q_naturalist5 Dlg_pl_to_q_naturalist5 Dlg_pl_q_belazist1 Dlg_pl_to_q_belazist1 Dlg_pl_q_belazist2 Dlg_pl_to_q_belazist2 Dlg_pl_q_belazist3 Dlg_pl_to_q_belazist3 Dlg_pl_q_belazist4 Dlg_pl_to_q_belazist4 Dlg_pl_q_belazist5 Dlg_pl_to_q_belazist5 Dlg_pl_q_belazist6 Dlg_pl_to_q_belazist6 Dlg_pl_q_belazist7 Dlg_pl_to_q_belazist7 Dlg_pl_q_belazist8 Dlg_pl_to_q_belazist8 Dlg_pl_q_test_drive9 Dlg_pl_to_q_test_drive9 Dlg_pl_q_test_drive10 Dlg_pl_to_q_test_drive10 Dlg_pl_q_test_drive11 Dlg_pl_to_q_test_drive11 Dlg_pl_q_test_drive12 Dlg_pl_to_q_test_drive12 Dlg_pl_q_test_drive13 Dlg_pl_to_q_test_drive13 Dlg_pl_q_test_drive14 Dlg_pl_to_q_test_drive14 Dlg_pl_q_test_drive15 Dlg_pl_to_q_test_drive15 Dlg_pl_q_bitok1 Dlg_pl_to_q_bitok1 Dlg_pl_q_bitok2 Dlg_pl_to_q_bitok2 Dlg_pl_q_bitok3 Dlg_pl_to_q_bitok3 Dlg_pl_q_turbo Dlg_pl_to_q_turbo Dlg_pl_npc_exit" />
+		nextReplies="Dlg_pl_q_test_drive1 Dlg_pl_to_q_test_drive1 Dlg_pl_q_test_drive2 Dlg_pl_to_q_test_drive2 Dlg_pl_q_test_drive3 Dlg_pl_to_q_test_drive3 Dlg_pl_q_test_drive4 Dlg_pl_to_q_test_drive4 Dlg_pl_q_test_drive5 Dlg_pl_to_q_test_drive5 Dlg_pl_q_test_drive6 Dlg_pl_to_q_test_drive6 Dlg_pl_q_test_drive7 Dlg_pl_to_q_test_drive7 Dlg_pl_q_test_drive8 Dlg_pl_to_q_test_drive8 Dlg_pl_q_ural_or_belaz Dlg_pl_to_q_ural_or_belaz Dlg_pl_q_naturalist1 Dlg_pl_to_q_naturalist1 Dlg_pl_q_naturalist2 Dlg_pl_to_q_naturalist2 Dlg_pl_q_naturalist3 Dlg_pl_to_q_naturalist3 Dlg_pl_q_naturalist4 Dlg_pl_to_q_naturalist4 Dlg_pl_q_naturalist5 Dlg_pl_to_q_naturalist5 Dlg_pl_q_belazist1 Dlg_pl_to_q_belazist1 Dlg_pl_q_belazist2 Dlg_pl_to_q_belazist2 Dlg_pl_q_belazist3 Dlg_pl_to_q_belazist3 Dlg_pl_q_belazist4 Dlg_pl_to_q_belazist4 Dlg_pl_q_belazist5 Dlg_pl_to_q_belazist5 Dlg_pl_q_belazist6 Dlg_pl_to_q_belazist6 Dlg_pl_q_belazist7 Dlg_pl_to_q_belazist7 Dlg_pl_q_belazist8 Dlg_pl_to_q_belazist8 Dlg_pl_q_test_drive9 Dlg_pl_to_q_test_drive9 Dlg_pl_q_test_drive10 Dlg_pl_to_q_test_drive10 Dlg_pl_q_test_drive11 Dlg_pl_to_q_test_drive11 Dlg_pl_q_test_drive12 Dlg_pl_to_q_test_drive12 Dlg_pl_q_test_drive13 Dlg_pl_to_q_test_drive13 Dlg_pl_q_test_drive14 Dlg_pl_to_q_test_drive14 Dlg_pl_q_test_drive15 Dlg_pl_to_q_test_drive15 Dlg_pl_q_bitok1 Dlg_pl_to_q_bitok1 Dlg_pl_q_bitok2 Dlg_pl_to_q_bitok2 Dlg_pl_q_bitok3 Dlg_pl_to_q_bitok3 Dlg_pl_q_turbo Dlg_pl_to_q_turbo Dlg_pl_q_daily_kill_scav_mechanik Dlg_pl_to_q_daily_kill_scav_mechanik Dlg_pl_q_daily_kill_pmc_mechanik Dlg_pl_to_q_daily_kill_pmc_mechanik Dlg_pl_q_daily_extract_mechanik Dlg_pl_to_q_daily_extract_mechanik Dlg_pl_npc_exit" />
 
 <!--Тест драйв - Часть 1-->
 	<Reply
@@ -13322,6 +13665,51 @@
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_turbo') and not(IsQuestComplete('q_turbo'))"
 		nextReplies="Dlg_npc_q_turbo_3" />
+
+<!--Ежедневное задание: Устранить диких-->
+	<Reply
+		name="Dlg_pl_q_daily_kill_scav_mechanik"
+		text="Есть ли для меня работа? (Принять оперативное задание: Устранить диких)"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_scav').AsString == 'MECHANIK' and GetVar('q_daily_kill_scav_Status').AsString == 'CAN_BE_GIVEN'"
+		nextReplies="Dlg_npc_q_daily_kill_scav_mechanik_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_daily_kill_scav_mechanik"
+		text="На счёт оперативного задания Устранить диких."
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_scav').AsString == 'MECHANIK' and GetVar('q_daily_kill_scav_Status').AsString == 'TAKEN' or GetVar('q_daily_kill_scav').AsString == 'MECHANIK' and GetVar('q_daily_kill_scav_Status').AsString == 'COMPLETE'"
+		nextReplies="Dlg_npc_q_daily_kill_scav_mechanik_1" />
+
+<!--Ежедневное задание: Устранить ЧВК-->
+	<Reply
+		name="Dlg_pl_q_daily_kill_pmc_mechanik"
+		text="Есть ли для меня работа? (Принять оперативное задание: Устранить ЧВК)"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_pmc').AsString == 'MECHANIK' and GetVar('q_daily_kill_pmc_Status').AsString == 'CAN_BE_GIVEN'"
+		nextReplies="Dlg_npc_q_daily_kill_pmc_mechanik_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_daily_kill_pmc_mechanik"
+		text="На счёт оперативного задания Устранить ЧВК."
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_pmc').AsString == 'MECHANIK' and GetVar('q_daily_kill_pmc_Status').AsString == 'TAKEN' or GetVar('q_daily_kill_pmc').AsString == 'MECHANIK' and GetVar('q_daily_kill_pmc_Status').AsString == 'COMPLETE'"
+		nextReplies="Dlg_npc_q_daily_kill_pmc_mechanik_1" />
+
+<!--Ежедневное задание: Разведать локацию-->
+	<Reply
+		name="Dlg_pl_q_daily_extract_mechanik"
+		text="Есть ли для меня работа? (Принять оперативное задание: Разведать локацию)"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_extract').AsString == 'MECHANIK' and GetVar('q_daily_extract_Status').AsString == 'CAN_BE_GIVEN'"
+		nextReplies="Dlg_npc_q_daily_extract_r1m1_mechanik_1" />
+
+	<Reply
+		name="Dlg_pl_to_q_daily_extract_mechanik"
+		text="На счёт оперативного задания Разведать локацию."
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_extract').AsString == 'MECHANIK' and GetVar('q_daily_extract_Status').AsString == 'TAKEN' or GetVar('q_daily_extract').AsString == 'MECHANIK' and GetVar('q_daily_extract_Status').AsString == 'COMPLETE'"
+		nextReplies="Dlg_npc_q_daily_extract_r1m1_mechanik_1" />
 
 <!--Root/r0m0/Тест драйв - Часть 1-->
 
@@ -15173,6 +15561,132 @@
 	<Reply
 		name="Dlg_npc_q_turbo_8"
 		text="Отличное устройство, я продолжу им пользоваться."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Ежедневное задание: Устранить ЧВК-->
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_pmc_mechanik_1"
+		text="Привет наёмник. Мне нужна твоя помощь. Требуется устранить определённое количество целей. Работа как раз для тебя. Подсобишь?|@FF0000AA|@FF1D1D1DЦели:|- Убить определённое количество бойцов ЧВК||@FF0000AA|@FF1D1D1DНаграда:|- Неизвестная награда"
+		role="NPC"
+		nextReplies="Dlg_npc_q_daily_kill_pmc_mechanik_2 Dlg_npc_q_daily_kill_pmc_mechanik_3 Dlg_npc_q_daily_kill_pmc_mechanik_4" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_pmc_mechanik_2"
+		text="По рукам!"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_pmc_Status').AsString == 'CAN_BE_GIVEN'"
+		scriptResult="SetVar('q_daily_kill_pmc_Status', 'TAKEN'); TActivate('SoundQuestTaken'); AddImportantFadingMsgByStrIdFormatted('fm_take_quest', 'q_daily_kill_pmc'); EndConversation()"/>
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_pmc_mechanik_3"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_pmc_Status').AsString == 'COMPLETE'"
+		scriptResult="SetVar('q_daily_kill_pmc_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_kill_pmc'); RewardForDailyQuests()"
+		nextReplies="Dlg_npc_q_daily_kill_pmc_mechanik_5" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_pmc_mechanik_4"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_pmc_Status').AsString == 'TAKEN'"
+		nextReplies="Dlg_npc_mechanic_quests" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_pmc_mechanik_5"
+		text="Справился? Спасибо, выручил. Вот тебе награда."
+		role="NPC"
+		nextReplies="Dlg_npc_q_daily_kill_pmc_mechanik_6" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_pmc_mechanik_6"
+		text="Отлично."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Ежедневное задание: Устранить диких-->
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_scav_mechanik_1"
+		text="Приветствую, наёмник! Поможешь мне в одном деле? Я заказал себе необходимые запчасти, однако есть риск что, по пути транспорт может наткнуться засаду. Местность там далеко не безопасная, бандитов там хватает. Поможешь с ними разобраться? Я дам тебе наводку.|@FF0000AA|@FF1D1D1DЦели:|- Убить определённое количество диких||@FF0000AA|@FF1D1D1DНаграда:|- Неизвестная награда"
+		role="NPC"
+		nextReplies="Dlg_npc_q_daily_kill_scav_mechanik_2 Dlg_npc_q_daily_kill_scav_mechanik_3 Dlg_npc_q_daily_kill_scav_mechanik_4" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_scav_mechanik_2"
+		text="По рукам!"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_scav_Status').AsString == 'CAN_BE_GIVEN'"
+		scriptResult="SetVar('q_daily_kill_scav_Status', 'TAKEN'); TActivate('SoundQuestTaken'); AddImportantFadingMsgByStrIdFormatted('fm_take_quest', 'q_daily_kill_scav'); EndConversation()"/>
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_scav_mechanik_3"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_scav_Status').AsString == 'COMPLETE'"
+		scriptResult="SetVar('q_daily_kill_scav_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_kill_scav'); RewardForDailyQuests()"
+		nextReplies="Dlg_npc_q_daily_kill_scav_mechanik_5" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_scav_mechanik_4"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_kill_scav_Status').AsString == 'TAKEN'"
+		nextReplies="Dlg_npc_mechanic_quests" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_scav_mechanik_5"
+		text="Отлично. Благодаря тебе, я получил желаемый товар. А ты взамен получаешь награду."
+		role="NPC"
+		nextReplies="Dlg_npc_q_daily_kill_scav_mechanik_6" />
+
+	<Reply
+		name="Dlg_npc_q_daily_kill_scav_mechanik_6"
+		text="Спасибо."
+		role="PLAYER"
+		scriptResult="EndConversation()"/>
+
+<!--Root/r0m0/Ежедневное задание: Разведать локацию-->
+
+	<Reply
+		name="Dlg_npc_q_daily_extract_r1m1_mechanik_1"
+		text="Наёмник, удели мне пару минут. Я подготовил заказ для клиентов, но им требуется гарантия, что путь к месту встречи безопасен. Если ты не занят, то можешь присмотреть для них маршрут? Что и как по обстановке в округе и как отойти в случае чего, ну, ты понял. Я в долгу не останусь.|@FF0000AA|@FF1D1D1DЦели:|- Выжить и выйти с локации Край, определённое количество раз||@FF0000AA|@FF1D1D1DНаграда:|- Неизвестная награда"
+		role="NPC"
+		nextReplies="Dlg_npc_q_daily_extract_mechanik_2 Dlg_npc_q_daily_extract_mechanik_3 Dlg_npc_q_daily_extract_mechanik_4" />
+
+	<Reply
+		name="Dlg_npc_q_daily_extract_mechanik_2"
+		text="По рукам!"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_extract_Status').AsString == 'CAN_BE_GIVEN'"
+		scriptResult="SetVar('q_daily_extract_Status', 'TAKEN'); TActivate('SoundQuestTaken'); AddImportantFadingMsgByStrIdFormatted('fm_take_quest', 'q_daily_extract'); EndConversation()"/>
+
+	<Reply
+		name="Dlg_npc_q_daily_extract_mechanik_3"
+		text="Задача выполнена!"
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_extract_Status').AsString == 'COMPLETE'"
+		scriptResult="SetVar('q_daily_extract_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_extract'); RewardForDailyQuests()"
+		nextReplies="Dlg_npc_q_daily_extract_mechanik_5" />
+
+	<Reply
+		name="Dlg_npc_q_daily_extract_mechanik_4"
+		text="Назад."
+		role="PLAYER"
+		scriptCondition="GetVar('q_daily_extract_Status').AsString == 'TAKEN'"
+		nextReplies="Dlg_npc_mechanic_quests" />
+
+	<Reply
+		name="Dlg_npc_q_daily_extract_mechanik_5"
+		text="Вернулся? Отлично. Я отмечу на карте безопасный маршрут, спасибо. Забирай награду."
+		role="NPC"
+		nextReplies="Dlg_npc_q_daily_extract_mechanik_6" />
+
+	<Reply
+		name="Dlg_npc_q_daily_extract_mechanik_6"
+		text="Отлично."
 		role="PLAYER"
 		scriptResult="EndConversation()"/>
 

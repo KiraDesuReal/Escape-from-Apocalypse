@@ -50,7 +50,7 @@
 
 	<string
 		id="fm_progress_quest_scavs_kills"
-		value="Прогресс по квесту %1p:|Диких убито: %2d/%3d" />
+		value="Прогресс по квесту @fff3e5cb%1p:|@ffffffffДиких убито: @fff3e5cb%2d/%3d" />
 
 	<string
 		id="fm_progress_quest_scavs_kills_complete"
@@ -58,7 +58,7 @@
 
 	<string
 		id="fm_progress_quest_pmc_kills"
-		value="Прогресс по квесту %1p:|ЧВК убито: %2d/%3d" />
+		value="Прогресс по квесту @fff3e5cb%1p:|@ffffffffЧВК убито: @fff3e5cb%2d/%3d" />
 
 	<string
 		id="fm_progress_quest_pmc_kills_complete"
@@ -66,7 +66,7 @@
 
 	<string
 		id="fm_progress_quest_pmc_usec_kills"
-		value="Прогресс по квесту %1p:|ЧВК USEC убито: %2d/%3d" />
+		value="Прогресс по квесту @fff3e5cb%1p:|@ffffffffЧВК USEC убито: @fff3e5cb%2d/%3d" />
 
 	<string
 		id="fm_progress_quest_pmc_usec_kills_complete"
@@ -74,7 +74,7 @@
 
 	<string
 		id="fm_progress_quest_sectarian_kills"
-		value="Прогресс по квесту %1p:|Сектантов убито: %2d/%3d" />
+		value="Прогресс по квесту @fff3e5cb%1p:|@ffffffffСектантов убито: @fff3e5cb%2d/%3d" />
 
 	<string
 		id="fm_progress_quest_sectarian_kills_complete"
@@ -82,11 +82,19 @@
 
 	<string
 		id="fm_progress_quest_raidcount"
-		value="Прогресс по квесту %1p:|Проведено рейдов: %2d/%3d" />
+		value="Прогресс по квесту @fff3e5cb%1p:|@ffffffffПроведено рейдов: @fff3e5cb%2d/%3d" />
 
 	<string
 		id="fm_progress_quest_raidcount_complete"
 		value="@ff59db12Прогресс по квесту %1p:|Проведено рейдов: %2d/%3d" />
+
+	<string
+		id="fm_progress_quest_exit_loc"
+		value="Прогресс по квесту @fff3e5cb%1p:|@ffffffffУспешных выживаний: @fff3e5cb%2d/%3d" />
+
+	<string
+		id="fm_progress_quest_exit_loc_complete"
+		value="@ff59db12Прогресс по квесту %1p:|Успешных выживаний: %2d/%3d" />
 
 	<string
 		id="fm_cant_move"

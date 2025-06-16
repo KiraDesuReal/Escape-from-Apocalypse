@@ -517,6 +517,9 @@
 
 			SetVar("CarInGarage", 0)
 
+			SetVar("DateInsure", "0")
+			SetVar("DailyUpdated", "0")
+
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -579,6 +582,14 @@
 			end
 
 			SetVar("q_kill_usec_kills", 0)
+
+			SetVar("q_daily_kill_pmc_Kills", 0)
+			SetVar("q_daily_kill_pmc_Progress", 0)
+			SetVar("q_daily_kill_scav_Kills", 0)
+			SetVar("q_daily_kill_scav_Progress", 0)
+			SetVar("q_daily_extract_Loc", "0")
+			SetVar("q_daily_extract_Count", 0)
+			SetVar("q_daily_extract_Progress", 0)
 
 			trigger:Deactivate()
 		</script>
@@ -686,6 +697,21 @@
 			if Q_BELAZIST8_KILLPMC then Q_BELAZIST8_KILLPMC = 0 end
 
 			if Q_KILL_USEC_KILLS then Q_KILL_USEC_KILLS = 0 end
+
+			if DAILY_UPDATED_GLOBAL then DAILY_UPDATED_GLOBAL = "0" end
+
+			if Q_DAILY_KILL_PMC_KILLS then Q_DAILY_KILL_PMC_KILLS = 0 end
+			if Q_DAILY_KILL_PMC_PROGRESS then Q_DAILY_KILL_PMC_PROGRESS = 0 end
+			if Q_DAILY_KILL_PMC_STATUS then Q_DAILY_KILL_PMC_STATUS = "0" end
+
+			if Q_DAILY_KILL_SCAV_KILLS then Q_DAILY_KILL_SCAV_KILLS = 0 end
+			if Q_DAILY_KILL_SCAV_PROGRESS then Q_DAILY_KILL_SCAV_PROGRESS = 0 end
+			if Q_DAILY_KILL_SCAV_STATUS then Q_DAILY_KILL_SCAV_STATUS = "0" end
+
+			if Q_DAILY_EXTRACT_LOC then Q_DAILY_EXTRACT_LOC = "0" end
+			if Q_DAILY_EXTRACT_COUNT then Q_DAILY_EXTRACT_COUNT = 0 end
+			if Q_DAILY_EXTRACT_STATUS then Q_DAILY_EXTRACT_STATUS = "0" end
+			if Q_DAILY_EXTRACT_PROGRESS then Q_DAILY_EXTRACT_PROGRESS = 0 end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -828,8 +854,6 @@
 			if EFA_VERSION then SetVar("EFA_Version", EFA_VERSION) end
 			if EFA_BUILD then SetVar("EFA_Build", EFA_BUILD) end
 
-			TActivate("CheckLoadSaveTimer")
-
 		--таймер машины диких
 			if SCAV_CAR_TIME_HOUR then SetVar("ScavCar_time_hour", SCAV_CAR_TIME_HOUR) end
 			if SCAV_CAR_TIME_MINUTE then SetVar("ScavCar_time_minute", SCAV_CAR_TIME_MINUTE) end
@@ -854,7 +878,7 @@
 			if GetVar("WindGenerator_time_hour").AsInt > 0 or GetVar("WindGenerator_time_minute").AsInt > 0 or GetVar("WindGenerator_time_second").AsInt > 0 then
 				if GetVar("WindGenerator_status").AsString == "ON" then
 					TActivate("RotatePropeller")
-					TActivate("wgt")
+					TActivate("WindGenerator_timer")
 				end
 			else
 				if GetVar("WindGenerator_status").AsString == "DONE" then
@@ -976,6 +1000,31 @@
 			if Q_BELAZIST8_KILLPMC then SetVar("q_belazist8_killPMC", Q_BELAZIST8_KILLPMC) end
 
 			if Q_KILL_USEC_KILLS then SetVar("q_kill_usec_kills", Q_KILL_USEC_KILLS) end
+
+			if DAILY_UPDATED_GLOBAL then SetVar("DailyUpdated", DAILY_UPDATED_GLOBAL) end
+
+			if Q_DAILY_KILL_PMC_KILLS then SetVar("q_daily_kill_pmc_Kills", Q_DAILY_KILL_PMC_KILLS) end
+			if Q_DAILY_KILL_PMC_PROGRESS then SetVar("q_daily_kill_pmc_Progress", Q_DAILY_KILL_PMC_PROGRESS) end
+			if Q_DAILY_KILL_PMC_STATUS then SetVar("q_daily_kill_pmc_Status", Q_DAILY_KILL_PMC_STATUS) end
+
+			if Q_DAILY_KILL_SCAV_KILLS then SetVar("q_daily_kill_scav_Kills", Q_DAILY_KILL_SCAV_KILLS) end
+			if Q_DAILY_KILL_SCAV_PROGRESS then SetVar("q_daily_kill_scav_Progress", Q_DAILY_KILL_SCAV_PROGRESS) end
+			if Q_DAILY_KILL_SCAV_STATUS then SetVar("q_daily_kill_scav_Status", Q_DAILY_KILL_SCAV_STATUS) end
+
+			if Q_DAILY_EXTRACT_LOC then SetVar("q_daily_extract_Loc", Q_DAILY_EXTRACT_LOC) end
+			if Q_DAILY_EXTRACT_COUNT then SetVar("q_daily_extract_Count", Q_DAILY_EXTRACT_COUNT) end
+			if Q_DAILY_EXTRACT_STATUS then SetVar("q_daily_extract_Status", Q_DAILY_EXTRACT_STATUS) end
+			if Q_DAILY_EXTRACT_PROGRESS then SetVar("q_daily_extract_Progress", Q_DAILY_EXTRACT_PROGRESS) end
+		</script>
+	</trigger>
+
+	<trigger Name="Update" active="1">
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Timer_loc" />
+		<script>
+			TActivate("CheckLoadSaveTimer")
+			TActivate("IfPlayerFuel0")
+			TActivate("SetDate")
+			UpdateDailyQuests()
 		</script>
 	</trigger>
 
@@ -1326,7 +1375,7 @@
 	</trigger>
 
 	<trigger Name="PlayerFuel" active="0">
-		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Timer_loc" />
 		<script>
 			local fuel = math.floor(GetPlayerFuel() + 0.5)
 			local maxfuel = GetPlayerMaxFuel()
@@ -1339,7 +1388,7 @@
 	</trigger>
 
 	<trigger Name="RegenetationPlayerFuel_Timer" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Timer_loc" />
 		<script>
 			local t = GetVar("RegenPlayerFuel_Timer").AsInt - 1
 			SetVar("RegenPlayerFuel_Timer", t)
@@ -1347,21 +1396,11 @@
 				GetPlayerVehicle():AddModifier("fuel", "+ 1")
 				SetVar("RegenPlayerFuel_Timer", 0)
 				TActivate("PlayerFuel")
-			else
-				TActivate("rpft")
+				trigger:Deactivate()
 			end
-			trigger:Deactivate()
 		</script>
 	</trigger>
 
-	<trigger Name="rpft" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
-		<script>
-			TActivate("RegenetationPlayerFuel_Timer")
-			trigger:Deactivate()
-		</script>
-	</trigger>
-	
 <!-- Заправляем канистры -->
 	<trigger Name="UseFuelNil_InPetrolStation01" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation_loc" />
@@ -1414,25 +1453,15 @@
 	</trigger>
 
 	<trigger Name="FuelFull_Timer" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Timer_loc" />
 		<script>
 			local t = GetVar("PetrolStation_FuelTime").AsInt - 1
 			SetVar("PetrolStation_FuelTime", t)
 
 			if t == 0 then
 				TActivate("FuelFull_InPetrolStation01")
-			else
-				TActivate("fft")
+				trigger:Deactivate() 
 			end
-			trigger:Deactivate() 
-		</script>
-	</trigger>
-
-	<trigger Name="fft" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
-		<script>
-			TActivate("FuelFull_Timer")
-			trigger:Deactivate() 
 		</script>
 	</trigger>
 
@@ -1475,7 +1504,6 @@
 
 			TActivate("UseFuelNil_InPetrolStation01")
 			TDeactivate("FuelFull_Timer")
-			TDeactivate("fft")
 			SetVar("PetrolStation_Refill", 0)
 			SetVar("PetrolStation_Refill_Process", 0)
 			trigger:Deactivate() 
@@ -1736,7 +1764,7 @@
 	</trigger>
 
 	<trigger Name="ChestScavs_Timer" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Timer_loc" />
 		<script>
 			local hour = GetVar("ChestScavs_time_hour").AsInt
 			local min = GetVar("ChestScavs_time_minute").AsInt
@@ -1774,20 +1802,10 @@
 				TActivate("CreateScavMove")
 				TDeactivate("ChestScavs_Time")
 				TActivate("ChestScavs_RemoveTimer3D")
-			else
-				TActivate("cst")
+				trigger:Deactivate()
 			end
 
 			TActivate("ChestScavs_UpdateTimer3D")
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-	<trigger Name="cst" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
-		<script>
-			TActivate("ChestScavs_Timer")
-			trigger:Deactivate()
 		</script>
 	</trigger>
 
@@ -1971,7 +1989,6 @@
  
 			TActivate("ChestScavs_EntersLoc")
 			TDeactivate("ChestScavs_Timer")
-			TDeactivate("cst")
 			TDeactivate("ChestScavs_Time")
 			trigger:Deactivate()
 		</script>
@@ -2107,7 +2124,6 @@
 
 			TActivate("RemoveLootOrNot")
 			TDeactivate("ChestScavs_Timer")
-			TDeactivate("cst")
 			TDeactivate("ChestScavs_Time")
 			trigger:Deactivate()
 		</script>
@@ -2492,7 +2508,6 @@
 
 			TActivate("IfGenerator_Off")
 			TDeactivate("Generator_timer")
-			TDeactivate("gt")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -2541,7 +2556,7 @@
 	</trigger>
 
 	<trigger Name="Generator_timer" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Timer_loc" />
 		<script>
 			local hour = GetVar("Generator_time_work_hour").AsInt
 			local min = GetVar("Generator_time_work_minute").AsInt
@@ -2583,21 +2598,10 @@
 				SoundFadingMsg()
 				local t = GetEntityByName("gen_3D_text")
 				if t then t:SetSkin(1) end
-			else
-				TActivate("gt")
+				trigger:Deactivate()
 			end
 
 			TActivate("Generator_UpdateTimer3D")
-	
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-	<trigger Name="gt" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
-		<script>
-			TActivate("Generator_timer")
-			trigger:Deactivate()
 		</script>
 	</trigger>
 
@@ -2825,7 +2829,6 @@
 					SetVar("PetrolStation_Refill_Process", 0)
 
 					TDeactivate("FuelFull_Timer")
-					TDeactivate("fft")
 				else
 					local lw = GetEntityByName("LIGHTWORK01")
 					if lw then lw:Remove() end
@@ -2844,7 +2847,6 @@
 
 				if GetVar("GarageCrafting_time_hour").AsInt > 0 or GetVar("GarageCrafting_time_minute").AsInt > 0 or GetVar("GarageCrafting_time_second").AsInt > 0 then
 					TDeactivate("GarageCrafting_timer")
-					TDeactivate("gct")
 					AddFadingMsgByStrIdFormatted("fm_garage_crafting_stopped", GetVar("GarageCraftingName").AsString)
 					SoundFadingMsg()
 					local sound = GetEntityByName("GarageCraftingProcessSoundFX")
@@ -3145,7 +3147,7 @@
 	</trigger>
 
 	<trigger Name="PlayerHP" active="0">
-		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Timer_loc" />
 		<script>
 			local hp = math.floor(GetPlayerHealth() + 0.5)
 			local maxhp = GetPlayerMaxHealth()
@@ -3158,7 +3160,7 @@
 	</trigger>
 
 	<trigger Name="RegenetationPlayerHP_Timer" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Timer_loc" />
 		<script>
 			local t = GetVar("RegenPlayerHP_Timer").AsInt - 1
 			SetVar("RegenPlayerHP_Timer", t)
@@ -3166,18 +3168,8 @@
 				GetPlayerVehicle():AddModifier("hp", "+ 1")
 				SetVar("RegenPlayerHP_Timer", 0)
 				TActivate("PlayerHP")
-			else
-				TActivate("rphpt")
+				trigger:Deactivate()
 			end
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-	<trigger Name="rphpt" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
-		<script>
-			TActivate("RegenetationPlayerHP_Timer")
-			trigger:Deactivate()
 		</script>
 	</trigger>
 
@@ -3200,7 +3192,7 @@
 	</trigger>
 
 	<trigger Name="GarageCrafting_timer" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Timer_loc" />
 		<script>
 			local hour = GetVar("GarageCrafting_time_hour").AsInt
 			local min = GetVar("GarageCrafting_time_minute").AsInt
@@ -3232,21 +3224,10 @@
 
 			if hour == 0 and min == 0 and sec == 0 then
 				TActivate("IfCraftingDone")
-			else
-				TActivate("gct")
+				trigger:Deactivate()
 			end
 
 			TActivate("Garage_UpdateTimer3D")
-
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-	<trigger Name="gct" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
-		<script>
-			TActivate("GarageCrafting_timer")
-			trigger:Deactivate()
 		</script>
 	</trigger>
 
@@ -3415,7 +3396,6 @@
 			SetVar("GarageCraftingName", "0")
 
 			TDeactivate("GarageCrafting_timer")
-			TDeactivate("gct")
 			TDeactivate("GarageCraftingTimeMsgActivate")
 			TDeactivate("GarageCraftingTimeMsg")
 
@@ -3556,16 +3536,27 @@
 
 			local sh = getObj("OldCar")
 			if sh then sh:Remove() end
-				
-			GetPlayerVehicle():setGodMode(0)
-			GetPlayerVehicle():SetCustomControlEnabled( false )
-			GetPlayerVehicle():SetGamePositionOnGround(CVector(907.885, 255.468, 962.024))
-			GetPlayerVehicle():SetRotation(Quaternion(0.007, 0.704, 0.007, -0.710))
+
+			local playerVeh = GetPlayerVehicle()
+			local pos = CVector(902.498, 255.467, 957.345)
+			
+			if playerVeh then
+				local prot = playerVeh:GetProperty("Prototype").AsString
+				if prot == "BelazForSale" then pos = CVector(903.940, 257.355, 957.419) end
+				playerVeh:setGodMode(0)
+				playerVeh:SetCustomControlEnabled(false)
+				playerVeh:SetGamePositionOnGround(pos)
+				playerVeh:SetRotation(Quaternion(0.007, 0.704, 0.007, -0.710))
+			end
+	
 			RestoreWeaponGroups()
 
 			SetCameraBehindPlayerVehicle()
 
+			TActivate("ActivateDlgGarage")
+
 			SetVar("CarInGarage", 0)
+			SetVar("DialogSelectMap", 2)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -3595,6 +3586,14 @@
 				plfInGarage:SetGamePositionOnGround(pos)
 				plfInGarage:SetRotation(Quaternion(-0.007, -0.708, -0.007, 0.706))
 			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ActivateDlgGarage" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="GarageExit_loc" />
+		<script>
+			SetVar("DialogSelectMap", 0)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -3919,7 +3918,7 @@
 	</trigger>
 
 	<trigger Name="WindGenerator_timer" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Timer_loc" />
 		<script>
 			local hour = GetVar("WindGenerator_time_hour").AsInt
 			local min = GetVar("WindGenerator_time_minute").AsInt
@@ -3952,21 +3951,10 @@
 
 			if hour == 0 and min == 0 and sec == 0 then
 				TActivate("WindGenerator_Done")
-			else
-				TActivate("wgt")
+				trigger:Deactivate()
 			end
 
 			TActivate("WindGenerator_UpdateTimer3D")
-
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-	<trigger Name="wgt" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
-		<script>
-			TActivate("WindGeneratorTimeCalculating")
-			trigger:Deactivate()
 		</script>
 	</trigger>
 
@@ -4050,7 +4038,6 @@
 			TDeactivate("WindGeneratorTimeMsgActivate")
 			TDeactivate("WindGeneratorTimeCalculating")
 			TDeactivate("RotatePropeller")
-			TDeactivate("wgt")
 			TDeactivate("WindGenerator_timer")
 
 			TActivate("WindGenerator_UpdateTimer3D")
@@ -4081,7 +4068,6 @@
 		<script>
 			SetVar("WindGenerator_status", "PAUSE")
 
-			TDeactivate("wgt")
 			TDeactivate("WindGenerator_timer")
 			TDeactivate("RotatePropeller")
 			TDeactivate("WindGeneratorTimeCalculating")
@@ -4400,9 +4386,6 @@
 			local map = GetVar("ToMap").AsString
 
 			PassToMap(map, "FromR0M0")
-
-			TActivate("SetDate")
-
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4520,7 +4503,7 @@
 
 <!-- Таймер отслеживающий загрузку сейвов -->
 	<trigger Name="CheckLoadSaveTimer" active="0">
-		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 			if SAVE_ID then SAVE_ID = GetVar("SaveId").AsInt end
 			if not(GetVar("EFA_Version").AsString == EFA_VERSION) or not(GetVar("EFA_Build").AsString == EFA_BUILD) then
@@ -4530,16 +4513,6 @@
 					LOG("EFA VERSION: "..EFA_VERSION.." | BUILD: "..EFA_BUILD.." | SAVE VERSION: "..GetVar("EFA_Version").AsString.." | BUILD: "..GetVar("EFA_Build").AsString)
 				end
 			end
-			TActivate("clst")
-			TActivate("IfPlayerFuel0")
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-	<trigger Name="clst" active="0">
-		<event timeout="1" eventid="GE_TIME_PERIOD" />
-		<script>
-			TActivate("CheckLoadSaveTimer")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4935,14 +4908,21 @@
 		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
 		<script>
 			local carma = GetScavCarma()
-	
+			local carmaMsg = GetVar("ScavCarma").AsString
+			
+			if strsub(carmaMsg, 1, 1) == "-" then
+				carmaMsg = strsub(carmaMsg, 1, 5)
+			else
+				carmaMsg = strsub(carmaMsg, 1, 4)
+			end
+
 			local color = "@fff3e5cb"
 			if carma > 0 then 
 				color = "@ff7ac716" 
 			elseif 0 > carma then
 				color = "@ffa30d0d" 
 			end
-			local msg = ""..color..carma..""
+			local msg = ""..color..carmaMsg..""
 			AddFadingMsgByStrIdFormatted("fm_scav_carma", msg)
 			SoundFadingMsg()
 			trigger:Deactivate()
@@ -4980,7 +4960,7 @@
 	</trigger>
 	
 	<trigger Name="ScavCar_timer" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Timer_loc" />
 		<script>
 			local hour = GetVar("ScavCar_time_hour").AsInt
 			local min = GetVar("ScavCar_time_minute").AsInt
@@ -5014,21 +4994,10 @@
 				TActivate("trScavCar_timerStop")
 				AddFadingMsgByStrIdFormatted("fm_scav_car_for_player")
 				SoundFadingMsg()
-			else
-				TActivate("sct")
+				trigger:Deactivate()
 			end
 
 			TActivate("ScavCar_UpdateTimer3D")
-
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-	<trigger Name="sct" active="0">
-		<event	timeout="0.5"		eventid="GE_TIME_PERIOD" />
-		<script>
-			TActivate("ScavCar_timer")
-			trigger:Deactivate()
 		</script>
 	</trigger>
 
@@ -5312,6 +5281,7 @@
 					end
 				end
 			end
+			SetVar("DateInsure", GetVar("Date").AsString)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -5350,7 +5320,7 @@
 					end
 				end
 
-				AddFadingMsgByStrIdFormatted("fm_return_insure_items_"..random(1,8), GetVar("Date").AsString, GetVar("ToMap").AsString)
+				AddFadingMsgByStrIdFormatted("fm_return_insure_items_"..random(1,8), GetVar("DateInsure").AsString, GetVar("ToMap").AsString)
 				SoundFadingMsg()
 			end
 			trigger:Deactivate()
@@ -5415,7 +5385,6 @@
 				if GetVar("ChestScavs_Search").AsInt > 0 then
 					if GetVar("ChestScavs_time_hour").AsInt > 0 or GetVar("ChestScavs_time_minute").AsInt > 0 or GetVar("ChestScavs_time_second").AsInt > 0 then
 						TDeactivate("ChestScavs_Timer")
-						TDeactivate("cst")
 						TDeactivate("ChestScavs_Time")
 						TDeactivate("ChestScavsTimeMsgActivate")
 					end
@@ -5432,7 +5401,6 @@
 				if GetVar("Generator_time_work_second").AsInt > 0 or GetVar("Generator_time_work_minute").AsInt > 0 or GetVar("Generator_time_work_hour").AsInt > 0 then
 					if GetVar("Generator_on").AsInt == 1 then
 						TDeactivate("Generator_timer")
-						TDeactivate("gt")
 						TDeactivate("GeneratorTimeMsgActivate")
 						if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
 							TDeactivate("GeneratorTimeWork")
@@ -5459,12 +5427,10 @@
 		--гараж
 			if GetVar("Garage_Builden").AsInt == 1 then
 				TDeactivate("RegenetationPlayerHP_Timer")
-				TDeactivate("rphpt")
 				TDeactivate("PlayerHP")
 
 				if GetVar("GarageCrafting_time_hour").AsInt > 0 or GetVar("GarageCrafting_time_minute").AsInt > 0 or GetVar("GarageCrafting_time_second").AsInt > 0 then
 					TDeactivate("GarageCrafting_timer")
-					TDeactivate("gct")
 					if GetVar("GarageCraftPause").AsInt == 0 then
 						TDeactivate("GarageCraftingTimeMsgActivate")
 						TDeactivate("GarageCraftingTimeMsg")
@@ -5489,7 +5455,6 @@
 		--заправка
 			if GetVar("PetrolStationBuild_Builden").AsInt == 1 then
 				TDeactivate("RegenetationPlayerFuel_Timer")
-				TDeactivate("rpft")
 				TDeactivate("PlayerFuel")
 			end
 
@@ -5501,7 +5466,6 @@
 			if GetVar("ScavCar_timer").AsInt == 1 then
 				if GetVar("ScavCar_time_hour").AsInt > 0 or GetVar("ScavCar_time_minute").AsInt > 0 or GetVar("ScavCar_time_second").AsInt > 0 then
 					TDeactivate("ScavCar_timer")
-					TDeactivate("sct")
 					TDeactivate("ScavCarTimeMsgActivate")
 					TDeactivate("ScavCarTimeMsg")
 				end
@@ -5532,7 +5496,6 @@
 
 			if GetVar("WindGenerator_time_hour").AsInt > 0 or GetVar("WindGenerator_time_minute").AsInt > 0 or GetVar("WindGenerator_time_second").AsInt > 0 then
 				if GetVar("WindGenerator_status").AsString == "ON" then
-					TDeactivate("wgt")
 					TDeactivate("WindGenerator_timer")
 					TDeactivate("RotatePropeller")
 					TDeactivate("WindGeneratorTimeCalculating")
@@ -5541,9 +5504,6 @@
 			end
 
 		--другое
-			TDeactivate("CheckLoadSaveTimer")
-			TDeactivate("clst")
-
 			if PLAYER_BELONG_GLOBAL then PLAYER_BELONG_GLOBAL = GetVar("PlayerBelong").AsString end
 			if COUNT_RAIDS then COUNT_RAIDS = GetVar("CountRaids").AsInt end
 			if SCAV_CARMA_GLOBAL then SCAV_CARMA_GLOBAL = GetScavCarma() end
@@ -5624,6 +5584,21 @@
 			if Q_BELAZIST8_KILLPMC then Q_BELAZIST8_KILLPMC = GetVar("q_belazist8_killPMC").AsInt end
 
 			if Q_KILL_USEC_KILLS then Q_KILL_USEC_KILLS = GetVar("q_kill_usec_kills").AsInt end
+
+			if DAILY_UPDATED_GLOBAL then DAILY_UPDATED_GLOBAL = GetVar("DailyUpdated").AsString end
+
+			if Q_DAILY_KILL_PMC_KILLS then Q_DAILY_KILL_PMC_KILLS = GetVar("q_daily_kill_pmc_Kills").AsInt end
+			if Q_DAILY_KILL_PMC_PROGRESS then Q_DAILY_KILL_PMC_PROGRESS = GetVar("q_daily_kill_pmc_Progress").AsInt end
+			if Q_DAILY_KILL_PMC_STATUS then Q_DAILY_KILL_PMC_STATUS = GetVar("q_daily_kill_pmc_Status").AsString end
+
+			if Q_DAILY_KILL_SCAV_KILLS then Q_DAILY_KILL_SCAV_KILLS = GetVar("q_daily_kill_scav_Kills").AsInt end
+			if Q_DAILY_KILL_SCAV_PROGRESS then Q_DAILY_KILL_SCAV_PROGRESS = GetVar("q_daily_kill_scav_Progress").AsInt end
+			if Q_DAILY_KILL_SCAV_STATUS then Q_DAILY_KILL_SCAV_STATUS = GetVar("q_daily_kill_scav_Status").AsString end
+
+			if Q_DAILY_EXTRACT_LOC then Q_DAILY_EXTRACT_LOC = GetVar("q_daily_extract_Loc").AsString end
+			if Q_DAILY_EXTRACT_COUNT then Q_DAILY_EXTRACT_COUNT = GetVar("q_daily_extract_Count").AsInt end
+			if Q_DAILY_EXTRACT_STATUS then Q_DAILY_EXTRACT_STATUS = GetVar("q_daily_extract_Status").AsString end
+			if Q_DAILY_EXTRACT_PROGRESS then Q_DAILY_EXTRACT_PROGRESS = GetVar("q_daily_extract_Progress").AsString end
 
 			trigger:Deactivate()
 		</script>

@@ -296,6 +296,13 @@
 	</Object>
 
 	<Object
+		Name="GarageExit_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="897.676 255.000 959.084"
+		Radius="16.000" />
+
+	<Object
 		Name="Garage_Crafting_Timer_loc"
 		Belong="1100"
 		Prototype="genericLocation"
@@ -1173,6 +1180,13 @@
 		Prototype="genericLocation"
 		Pos="1973.817 255.025 1314.784"
 		Radius="10.000" />
+
+	<Object
+		Name="Timer_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="839.351 255.000 986.353"
+		Radius="150.000" />
 
 	<Object
 		Name="PetrolStationTown1"

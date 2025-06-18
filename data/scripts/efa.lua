@@ -1898,7 +1898,7 @@ function AddRandomAffixToPart(part)
 			local id = CreateNewObject{prototypeName = prot, objName = "CabWithAffix_"..random(10000), belong = 1100}
 			local cab = GetEntityByID( id )
 		
-			local cab_affix_ = {"useless_cabin", "rusty_cabin", "excellent_cabin", "advanced_cabin"}
+			local cab_affix = {"useless_cabin", "rusty_cabin", "excellent_cabin", "advanced_cabin"}
 			cab:ApplyAffixByName(cab_affix[random(4)])
 
 			playerVeh:SetPartByName("CABIN", cab)

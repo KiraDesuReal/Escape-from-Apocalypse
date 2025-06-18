@@ -3,7 +3,7 @@
     <a href="README.md"><img src="assets/git_assets/b_ru.png" alt="RU" width="170"></a>
     <img src="assets/git_assets/b_en_select.png" alt="EN" width="170">
     <h2>Escape from Apocalypse</h2>
-    <p>A modification aimed at transferring all possible mechanics and gaming experience from Escape from Tarkov to Ex Machina.</p>
+    <p>A modification aimed at transferring all possible mechanics and gaming experience from Escape from Tarkov to Hard Truck Apocalypse.</p>
     <h4>You can also find the modification on these resources:</h4>
     <p>
         <a href="https://discord.gg/jZHxYdF">
@@ -18,7 +18,7 @@
 
 # Description
 
-**Escape from Apocalypse** is a gameplay modification for the game **Ex Machina**, the purpose of which is to transfer possible mechanics and gaming experience from **Escape from Tarkov** to **Ex Machina**.
+**Escape from Apocalypse** is a gameplay modification for the game **Hard Truck Apocalypse**, the purpose of which is to transfer possible mechanics and gaming experience from **Escape from Tarkov** to **Hard Truck Apocalypse**.
 
 In this modification you will find a completely new gameplay, shelter construction, new items, mechanics, locations and quests. Everything that can repeat the gameplay from **Escape from Tarkov** is in this modification.
 

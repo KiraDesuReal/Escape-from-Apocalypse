@@ -308,6 +308,7 @@
 	<trigger Name="cutEntersToTunnel_Fade" active="0">
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
+			SetGameTime(10, 0)
 			Fly("tunel_cam01", CINEMATIC_NO_AIM, 0, 0.1, 0, 1)
 			StartCinematic()
 

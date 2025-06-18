@@ -1337,10 +1337,9 @@
 			TActivate("ChallengeComplete")
 			TActivate("RemoveEnemys")
 			TActivate("DeActivateKey")
+			TActivate("RestoreHPAndFuel")
 			TDeactivate("LeavesRestartChallenge")
 			TDeactivate("EntersRestartChallenge")
-			GetPlayerVehicle():AddModifier( "hp", "+ 10000" ) 
-			GetPlayerVehicle():AddModifier( "fuel", "+ 10000" ) 
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1387,8 +1386,6 @@
 			local basket = Plf:GetBasket()
 			local PlfCoor = Plf:GetPosition()
 			if Plf then
-				Plf:setGodMode(1)
-				Plf:setImmortalMode(0)
 				if GetVar("PlayerDie").AsInt == 2 then
 					CreateEffectInsertedInRemove("ET_S_DUNGEON_FAIL_CHALLENGE", PlfCoor, Quaternion(0, 0, 0, 1), true)
 				else
@@ -1418,11 +1415,12 @@
 			TActivate("RemoveGate")
 			TActivate("YourRecord")
 			TActivate("RemoveLoots")
+			TActivate("RestoreHPAndFuel")
 
 			TDeactivate("TimerStart")
 			TDeactivate("Timer")
 			TDeactivate("EntersRestartChallenge")
-
+			TDeactivate("IfPlayerWithoutHP")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1448,16 +1446,33 @@
 		<event eventid="GE_VEHICLE_WITHOUT_HEALTH" ObjName="PlayerCarForDead" />
 		<script>
 
-			GetPlayerVehicle():AddModifier( "hp", "+ 10000" ) 
-			GetPlayerVehicle():AddModifier( "fuel", "+ 10000" ) 
-
 			SetVar("PlayerDie",1)
 			TDeactivate("TimerStart")
 			TDeactivate("Timer")
 			TActivate("ChallengeComplete")
 			TActivate("RemoveEnemys")
 			TActivate("DeActivateKey")
+			TActivate("RestoreHPAndFuel")
 
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="RestoreHPAndFuel" active="0">
+		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			GetPlayerVehicle():AddModifier( "hp", "+ 10000" ) 
+			GetPlayerVehicle():AddModifier( "fuel", "+ 10000" ) 
+			TActivate("SetGodMode")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SetGodMode" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			GetPlayerVehicle():setImmortalMode(0)
+			GetPlayerVehicle():setGodMode()
 			trigger:Deactivate()
 		</script>
 	</trigger>

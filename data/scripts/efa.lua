@@ -1,8 +1,9 @@
 -- Special for Escape from Apocalypse
+-- Author KiraDesu
 
 if EFA_VERSION == nil then
 	EFA_VERSION = "0.95 BETA"
-	EFA_BUILD = "250609"
+	EFA_BUILD = "250618"
 	WIPE = 1
 
 	LOG("ESCAPE FROM APOCALYPSE VERSION: "..EFA_VERSION.." | BUILD: "..EFA_BUILD)
@@ -449,7 +450,7 @@ function UseAmmoItems(ammo_used)
 			local currentshells = small_gun:GetShellsInCurrentCharge()
 			if poolshells == 0 and currentshells == 0 then
 				if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) or HasPlayerAmountOfItems("ammo_chest_machinegun_insured", 1) then
-					if prot then
+					if prot == "hornet01" or prot == "hornet01_insured" or  prot == "american_hornet01" or prot == "american_hornet01_insured" or  prot == "specter01" or prot == "specter01_insured" or prot == "pkt01" or prot == "pkt01_insured" or prot == "kord01" or prot == "kord01_insured" then
 						if prot == "hornet01" or prot == "hornet01_insured" then small_gun:SetShellsInPool(350) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "hornet01") end
 						if prot == "american_hornet01" or prot == "american_hornet01_insured" then small_gun:SetShellsInPool(420) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "american_hornet01") end
 						if prot == "specter01" or prot == "specter01_insured" then small_gun:SetShellsInPool(350) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "specter01") end
@@ -466,7 +467,7 @@ function UseAmmoItems(ammo_used)
 					end
 				end
 				if HasPlayerAmountOfItems("ammo_chest_shotgun", 1) or HasPlayerAmountOfItems("ammo_chest_shotgun_insured", 1) then
-					if prot then
+					if prot == "storm01" or prot == "storm01_insured" then
 						if prot == "storm01" or prot == "storm01_insured" then small_gun:SetShellsInPool(26) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "storm01") end
 						CreateEffectTTLed("ET_S_USE_RELOAD_SHOTGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
 						if ammo_used == 1 then SetVar("Use_AmmoChestShotGun", GetVar("Use_AmmoChestShotGun").AsInt+1) end
@@ -479,7 +480,7 @@ function UseAmmoItems(ammo_used)
 					end
 				end
 				if HasPlayerAmountOfItems("ammo_ballon_lasergun", 1) or HasPlayerAmountOfItems("ammo_ballon_lasergun_insured", 1) then
-					if prot then
+					if prot == "maxim01" or prot == "maxim01_insured" then
 						if prot == "maxim01" or prot == "maxim01_insured" then small_gun:SetShellsInPool(105) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "maxim01") end
 						CreateEffectTTLed("ET_S_USE_RELOAD_BALLON", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1920)
 						if ammo_used == 1 then SetVar("Use_AmmoBallonLaserGun", GetVar("Use_AmmoBallonLaserGun").AsInt+1) end
@@ -492,7 +493,7 @@ function UseAmmoItems(ammo_used)
 					end
 				end
 				if HasPlayerAmountOfItems("ammo_ballon_plasmagun", 1) or HasPlayerAmountOfItems("ammo_ballon_plasmagun_insured", 1) then
-					if prot then
+					if prot == "fagot01" or prot == "fagot01_insured" then
 						if prot == "fagot01" or prot == "fagot01_insured" then small_gun:SetShellsInPool(15) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "fagot01") end
 						CreateEffectTTLed("ET_S_USE_RELOAD_BALLON", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1920)
 						if ammo_used == 1 then SetVar("Use_AmmoBallonPlasmaGun", GetVar("Use_AmmoBallonPlasmaGun").AsInt+1) end
@@ -517,7 +518,7 @@ function UseAmmoItems(ammo_used)
 			local currentshells = big_gun:GetShellsInCurrentCharge()
 			if poolshells == 0 and currentshells == 0 then
 				if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) or HasPlayerAmountOfItems("ammo_chest_heavygun_insured", 1) then
-					if prot then
+					if prot == "rapier01" or prot == "rapier01_insured" or prot == "rainmetal01" or prot == "rainmetal01_insured" then
 						if prot == "rapier01" or prot == "rapier01_insured" then big_gun:SetShellsInPool(45) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "rapier01") end
 						if prot == "rainmetal01" or prot == "rainmetal01_insured" then big_gun:SetShellsInPool(320) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "rainmetal01") end
 						CreateEffectTTLed("ET_S_USE_RELOAD_HEAVYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 2500)
@@ -531,7 +532,7 @@ function UseAmmoItems(ammo_used)
 					end
 				end
 				if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) or HasPlayerAmountOfItems("ammo_chest_machinegun_insured", 1) then
-					if prot then
+					if prot == "vector01" or prot == "vector01_insured" or prot == "vulcan01" or prot == "vulcan01_insured" or prot == "kpvt01" or prot == "kpvt01_insured" then
 						if prot == "vector01" or prot == "vector01_insured" then big_gun:SetShellsInPool(405) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "vector01") end
 						if prot == "vulcan01" or prot == "vulcan01_insured" then big_gun:SetShellsInPool(1050) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "vulcan01") end
 						if prot == "kpvt01" or prot == "kpvt01_insured" then big_gun:SetShellsInPool(780) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "kpvt01") end
@@ -546,7 +547,7 @@ function UseAmmoItems(ammo_used)
 					end
 				end
 				if HasPlayerAmountOfItems("ammo_chest_shotgun", 1) or HasPlayerAmountOfItems("ammo_chest_shotgun_insured", 1) then
-					if prot then
+					if prot == "flag01" or prot == "flag01_insured" then
 						if prot == "flag01" or prot == "flag01_insured" then big_gun:SetShellsInPool(22) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "flag01") end
 						CreateEffectTTLed("ET_S_USE_RELOAD_SHOTGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
 						if ammo_used == 1 then SetVar("Use_AmmoChestShotGun", GetVar("Use_AmmoChestShotGun").AsInt+1) end
@@ -559,7 +560,7 @@ function UseAmmoItems(ammo_used)
 					end
 				end
 				if HasPlayerAmountOfItems("ammo_chest_artillerygun", 1) or HasPlayerAmountOfItems("ammo_chest_artillerygun_insured", 1) then
-					if prot then
+					if prot == "bumblebee01" or prot == "bumblebee01_insured" or prot == "omega01" or prot == "omega01_insured" then
 						if prot == "bumblebee01" or prot == "bumblebee01_insured" then big_gun:SetShellsInPool(70) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "bumblebee01") end
 						if prot == "omega01" or prot == "omega01_insured" then big_gun:SetShellsInPool(54) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "omega01") end
 						CreateEffectTTLed("ET_S_USE_RELOAD_ARTILLERYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1055)
@@ -573,7 +574,7 @@ function UseAmmoItems(ammo_used)
 					end
 				end
 				if HasPlayerAmountOfItems("ammo_chest_rocketgun", 1) or HasPlayerAmountOfItems("ammo_chest_rocketgun_insured", 1) then
-					if prot then
+					if prot == "hurricane01" or prot == "hurricane01_insured" then
 						if prot == "hurricane01" or prot == "hurricane01_insured" then big_gun:SetShellsInPool(24) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "hurricane01") end
 						CreateEffectTTLed("ET_S_USE_RELOAD_ROCKETGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 732)
 						if ammo_used == 1 then SetVar("Use_AmmoChestRocketGun", GetVar("Use_AmmoChestRocketGun").AsInt+1) end
@@ -586,7 +587,7 @@ function UseAmmoItems(ammo_used)
 					end
 				end
 				if HasPlayerAmountOfItems("ammo_ballon_lasergun", 1) or HasPlayerAmountOfItems("ammo_ballon_lasergun_insured", 1) then
-					if prot then
+					if prot == "odin01" or prot == "odin01_insured" then
 						if prot == "odin01" or prot == "odin01_insured" then big_gun:SetShellsInPool(80) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "odin01") end
 						RemoveItemsFromPlayerRepository("ammo_ballon_lasergun", 1)
 						CreateEffectTTLed("ET_S_USE_RELOAD_BALLON", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1920)
@@ -600,7 +601,7 @@ function UseAmmoItems(ammo_used)
 					end
 				end
 				if HasPlayerAmountOfItems("ammo_ballon_plasmagun", 1) or HasPlayerAmountOfItems("ammo_ballon_plasmagun_insured", 1) then
-					if prot then
+					if prot == "elephant01" or prot == "elephant01_insured" then
 						if prot == "elephant01" or prot == "elephant01_insured" then big_gun:SetShellsInPool(19) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "elephant01") end
 						CreateEffectTTLed("ET_S_USE_RELOAD_BALLON", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1920)
 						if ammo_used == 1 then SetVar("Use_AmmoBallonPlasmaGun", GetVar("Use_AmmoBallonPlasmaGun").AsInt+1) end
@@ -625,7 +626,7 @@ function UseAmmoItems(ammo_used)
 			local currentshells = giant_gun:GetShellsInCurrentCharge()
 			if poolshells == 0 and currentshells == 0 then
 				if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) or HasPlayerAmountOfItems("ammo_chest_heavygun_insured", 1) then
-					if prot then
+					if prot == "cyclops01" or prot == "cyclops01_insured" then
 						if prot == "cyclops01" or prot == "cyclops01_insured" then giant_gun:SetShellsInPool(29) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "cyclops01") end
 						CreateEffectTTLed("ET_S_USE_RELOAD_HEAVYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 2500)
 						if ammo_used == 1 then SetVar("Use_AmmoChestHeavyGun", GetVar("Use_AmmoChestHeavyGun").AsInt+1) end
@@ -638,7 +639,7 @@ function UseAmmoItems(ammo_used)
 					end
 				end
 				if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) or HasPlayerAmountOfItems("ammo_chest_machinegun_insured", 1) then
-					if prot then
+					if prot == "octopus01" or prot == "octopus01_insured" then
 						if prot == "octopus01" or prot == "octopus01_insured" then giant_gun:SetShellsInPool(480) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "octopus01") end
 						CreateEffectTTLed("ET_S_USE_RELOAD_MACHINEGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1750)
 						if ammo_used == 1 then SetVar("Use_AmmoChestMachineGun", GetVar("Use_AmmoChestMachineGun").AsInt+1) end
@@ -651,7 +652,7 @@ function UseAmmoItems(ammo_used)
 					end
 				end
 				if HasPlayerAmountOfItems("ammo_chest_rocketgun", 1) or HasPlayerAmountOfItems("ammo_chest_rocketgun_insured", 1) then
-					if prot then
+					if prot == "rocketLauncher" or prot == "rocketLauncher_insured" or prot == "big_swingfire01" or prot == "big_swingfire01_insured" then
 						if prot == "rocketLauncher" or prot == "rocketLauncher_insured" then giant_gun:SetShellsInPool(24) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "rocketLauncher") end
 						if prot == "big_swingfire01" or prot == "big_swingfire01_insured" then giant_gun:SetShellsInPool(24) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "big_swingfire01") end
 						CreateEffectTTLed("ET_S_USE_RELOAD_ROCKETGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 732)
@@ -665,7 +666,7 @@ function UseAmmoItems(ammo_used)
 					end
 				end
 				if HasPlayerAmountOfItems("ammo_ballon_plasmagun", 1) or HasPlayerAmountOfItems("ammo_ballon_plasmagun_insured", 1) then
-					if prot then
+					if prot == "hammer01" or prot == "hammer01_insured" then
 						if prot == "hammer01" or prot == "hammer01_insured" then giant_gun:SetShellsInPool(15) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "hammer01") end
 						CreateEffectTTLed("ET_S_USE_RELOAD_BALLON", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1920)
 						if ammo_used == 1 then SetVar("Use_AmmoBallonPlasmaGun", GetVar("Use_AmmoBallonPlasmaGun").AsInt+1) end
@@ -692,7 +693,7 @@ function UseAmmoItems(ammo_used)
 		local currentshells_r = basket_side_r:GetShellsInCurrentCharge()
 		if poolshells_l == 0 and currentshells_l == 0 or poolshells_r == 0 and currentshells_r == 0 then
 			if HasPlayerAmountOfItems("ammo_chest_rocketgun", 1) or HasPlayerAmountOfItems("ammo_chest_rocketgun_insured", 1) then
-				if prot then
+				if prot == "hailSideGun" or prot == "hailSideGun_insured" or prot == "hunterSideGun" or prot == "hunterSideGun_insured" or prot == "mrakSideGun" or prot == "mrakSideGun_insured" then
 					if prot == "hailSideGun" or prot == "hailSideGun_insured" then basket_side_l:SetShellsInPool(18) basket_side_r:SetShellsInPool(18) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "hailSideGun") end
 					if prot == "hunterSideGun" or prot == "hunterSideGun_insured" then basket_side_l:SetShellsInPool(8) basket_side_r:SetShellsInPool(8) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "hunterSideGun") end
 					if prot == "mrakSideGun" or prot == "mrakSideGun_insured" then basket_side_l:SetShellsInPool(14) basket_side_r:SetShellsInPool(14) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "mrakSideGun") end
@@ -707,7 +708,7 @@ function UseAmmoItems(ammo_used)
 				end
 			end
 			if HasPlayerAmountOfItems("ammo_chest_artillerygun", 1) or HasPlayerAmountOfItems("ammo_chest_artillerygun_insured", 1) then
-				if prot then
+				if prot == "marsSideGun" or prot == "marsSideGun_insured" then
 					if prot == "marsSideGun" or prot == "marsSideGun_insured" then basket_side_l:SetShellsInPool(6) basket_side_r:SetShellsInPool(6) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "marsSideGun") end
 					CreateEffectTTLed("ET_S_USE_RELOAD_ARTILLERYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1055)
 					if ammo_used == 1 then SetVar("Use_AmmoChestArtilleryGun", GetVar("Use_AmmoChestArtilleryGun").AsInt+1) end
@@ -729,7 +730,7 @@ function UseAmmoItems(ammo_used)
 		local currentshells = basket_special_weapon:GetShellsInCurrentCharge()
 		if poolshells == 0 and currentshells == 0 then
 			if HasPlayerAmountOfItems("ammo_ballon_turbo", 1) or HasPlayerAmountOfItems("ammo_ballon_turbo_insured", 1) then
-				if prot then
+				if prot == "someTurboAccelerationPusher" or prot == "someTurboAccelerationPusher_insured" then
 					if prot == "someTurboAccelerationPusher" or prot == "someTurboAccelerationPusher_insured" then basket_special_weapon:SetShellsInPool(29) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "someTurboAccelerationPusher") end
 					CreateEffectTTLed("ET_S_USE_RELOAD_BALLON_TURBO", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1252)
 					if ammo_used == 1 then SetVar("Use_AmmoBallonTurbo", GetVar("Use_AmmoBallonTurbo").AsInt+1) end
@@ -1886,7 +1887,70 @@ function RewardForDailyQuests()
 	end				
 end
 
+-- Функция заменяет запчасть машины на новую со случайным аффиксом
+function AddRandomAffixToPart(part)
+	local playerVeh = GetPlayerVehicle()
+	if playerVeh then
+		local skin = playerVeh:GetSkin()
+		if part == "CABIN" then
+			local prot = playerVeh:GetCabin():GetProperty("Prototype").AsString
 
+			local id = CreateNewObject{prototypeName = prot, objName = "CabWithAffix_"..random(10000), belong = 1100}
+			local cab = GetEntityByID( id )
+		
+			local cab_affix_ = {"useless_cabin", "rusty_cabin", "excellent_cabin", "advanced_cabin"}
+			cab:ApplyAffixByName(cab_affix[random(4)])
+
+			playerVeh:SetPartByName("CABIN", cab)
+			playerVeh:SetSkin(skin)
+		elseif part == "BASKET" then
+			local prot = playerVeh:GetBasket():GetProperty("Prototype").AsString
+		
+			local id = CreateNewObject{prototypeName = prot, objName = "BasWithAffix_"..random(10000), belong = 1100}
+			local bas = GetEntityByID( id )
+			
+			local bas_affix = {"useless_basket", "rusty_basket", "excellent_basket", "advanced_basket"}
+			bas:ApplyAffixByName(bas_affix[random(4)])
+
+			local itemsInRepository = {}
+			local AllItems = AllItems()
+			local l = 0
+
+			for i = 1, getn(AllItems) do
+				if HasPlayerAmountOfItems(AllItems[i], 1) then
+					for count = 1, GetItemsAmount(AllItems[i]) do
+						l = l + 1
+						RemoveItemsFromPlayerRepository(AllItems[i], 1)
+						itemsInRepository[l] = AllItems[i]
+					end
+				end
+			end
+
+			playerVeh:SetPartByName("BASKET", bas)
+			playerVeh:SetSkin(skin)
+
+			if getn(itemsInRepository) > 0 then
+				for i2 = 1, getn(itemsInRepository) do
+					AddItemsToPlayerRepository(itemsInRepository[i2], 1)
+				end
+			end
+		end
+	end
+end
+
+-- Возвращает имя прототипа запчасти объекта
+function GetPartPrototypeByName(part, obj)
+	if obj == nil then obj = GetPlayerVehicle() end
+	if obj then
+		if part == "CABIN" then
+			local prot = obj:GetCabin():GetProperty("Prototype").AsString
+			return prot
+		elseif part == "BASKET" then
+			local prot = obj:GetBasket():GetProperty("Prototype").AsString
+			return prot
+		end
+	end
+end
 
 
 

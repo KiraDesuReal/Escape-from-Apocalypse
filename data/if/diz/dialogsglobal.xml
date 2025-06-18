@@ -13158,9 +13158,9 @@
 
 	<Reply
 		name="Dlg_pl_mechanic_3"
-		text="Оружейная."
+		text="Мастерская."
 		role="PLAYER"
-		nextReplies="Dlg_npc_mechanic_guns" />
+		nextReplies="Dlg_npc_mechanic_master" />
 
 <!--Root/r0m0/Механик: Задания -->
 
@@ -15690,13 +15690,424 @@
 		role="PLAYER"
 		scriptResult="EndConversation()"/>
 
-<!--Root/r0m0/Механик: Оружейная-->
+<!--Root/r0m0/Механик: Мастерская-->
+
+	<Reply
+		name="Dlg_npc_mechanic_master"
+		text="У меня ты можешь улучшить своё вооружение и запчасти для машины. Я единственный опытный специалист в этой сфере, разбираюсь и в технике, и в пушках. Если заинтересован, то показывай что надо модифицировать."
+		role="NPC"
+		nextReplies="Dlg_npc_mechanic_master_1 Dlg_npc_mechanic_master_2 Dlg_pl_npc_exit" />
+
+	<Reply
+		name="Dlg_npc_mechanic_master_1"
+		text="Хочу модифицировать часть машины."
+		role="PLAYER"
+		scriptCondition="GetPlayerMaxHealth() ~= 100 and GetPlayerMaxFuel() ~= 0"
+		nextReplies="Dlg_npc_mechanic_mod_part_0 Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_npc_mechanic_master_2"
+		text="Хочу модифицировать оружие."
+		role="PLAYER"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_mechanik_back"
+		text="Назад."
+		role="PLAYER"
+		nextReplies="Dlg_npc_mechanic_master" />
+
+<!--Root/r0m0/Механик: Модифицировать часть машины-->
+
+	<Reply
+		name="Dlg_npc_mechanic_mod_part_0"
+		text="У меня ты можешь улучшить своё вооружение и запчасти для машины. Я единственный опытный специалист в этой сфере, разбираюсь и в технике, и в пушках. Если заинтересован, то показывай что надо модифицировать.|@FF0000AA|@FF780a0a[У вас недостаточно места в кузове, чтобы разместить в нём возможные установленные @FF780a0aгаджеты на машине]"
+		role="NPC"
+		scriptCondition="IfCanPlaceForGadgets() == nil"
+		nextReplies="Dlg_pl_npc_exit" />
+
+	<Reply
+		name="Dlg_npc_mechanic_mod_part_1"
+		text="У меня ты можешь улучшить своё вооружение и запчасти для машины. Я единственный опытный специалист в этой сфере, разбираюсь и в технике, и в пушках. Если заинтересован, то показывай что надо модифицировать.|@FF0000AA|@FF1D1D1D[Выберите запчасть, которую хотите модифицировать]"
+		role="NPC"
+		scriptCondition="IfCanPlaceForGadgets() == 1"
+		nextReplies="Dlg_pl_mod_part_1 Dlg_pl_mod_part_2 Dlg_pl_mod_part_3 Dlg_pl_mod_part_4 Dlg_pl_mod_part_5 Dlg_pl_mod_part_6 Dlg_pl_mod_part_7 Dlg_pl_mod_part_8 Dlg_pl_mod_part_9 Dlg_pl_mod_part_10 Dlg_pl_mod_part_11 Dlg_pl_mod_part_12 Dlg_pl_mod_part_13 Dlg_pl_mod_part_14 Dlg_pl_mod_part_15 Dlg_pl_mod_part_16 Dlg_pl_mod_part_17 Dlg_pl_mod_part_18 Dlg_pl_mod_part_19 Dlg_pl_mod_part_20 Dlg_pl_mod_part_21 Dlg_pl_mod_part_22 Dlg_pl_mod_part_23 Dlg_pl_mod_part_24 Dlg_pl_mod_part_25 Dlg_pl_mod_part_26 Dlg_pl_mod_part_27 Dlg_pl_mod_part_28 Dlg_pl_mod_part_29 Dlg_pl_mod_part_30 Dlg_pl_mod_part_31 Dlg_pl_mod_part_32 Dlg_pl_mod_part_33 Dlg_pl_mod_part_34 Dlg_pl_mod_part_35 Dlg_pl_mod_part_36 Dlg_pl_mod_part_37 Dlg_pl_mod_part_38 Dlg_pl_mod_part_39 Dlg_pl_mod_part_40 Dlg_pl_mod_part_41 Dlg_pl_mod_part_42 Dlg_pl_mod_part_43 Dlg_pl_mod_part_44 Dlg_pl_mod_part_45 Dlg_pl_mod_part_46 Dlg_pl_mod_mechanik_back" />
+
+	<Reply
+		name="Dlg_pl_mod_part_1"
+		text="Модифицировать кабину Жук (Стоимость: 1000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'bugCab01' and GetPlayerMoney() >= 1000"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'bugCab01'); AddPlayerMoney(-1000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_2"
+		text="Модифицировать кабину Работяга (Стоимость: 2500 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'bugCab02' and GetPlayerMoney() >= 2500"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'bugCab02'); AddPlayerMoney(-2500)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_3"
+		text="Модифицировать кабину Скорпион (Стоимость: 3000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'bugCab03' and GetPlayerMoney() >= 3000"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'bugCab03'); AddPlayerMoney(-3000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_4"
+		text="Модифицировать кузов Газ (Стоимость: 800 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'bugCargo01_4x5' and GetPlayerMoney() >= 800"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'bugCargo01_4x5'); AddPlayerMoney(-800)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_5"
+		text="Модифицировать кузов Каскад (Стоимость: 2000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'bugCargo02_4x6' and GetPlayerMoney() >= 2000"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'bugCargo02_4x6'); AddPlayerMoney(-2000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_6"
+		text="Модифицировать кузов Борг (Стоимость: 2400 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'bugCargo03_5x7' and GetPlayerMoney() >= 2400"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'bugCargo03_5x7'); AddPlayerMoney(-2400)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_7"
+		text="Модифицировать кабину Болт (Стоимость: 5000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'molokovozCab01' and GetPlayerMoney() >= 5000"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'molokovozCab01'); AddPlayerMoney(-5000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_8"
+		text="Модифицировать кабину Вихрь (Стоимость: 5500 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'molokovozCab02' and GetPlayerMoney() >= 5500"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'molokovozCab02'); AddPlayerMoney(-5500)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_9"
+		text="Модифицировать кабину Шип (Стоимость: 8000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'molokovozCab03' and GetPlayerMoney() >= 8000"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'molokovozCab03'); AddPlayerMoney(-8000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_10"
+		text="Модифицировать кузов Тент (Стоимость: 3000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'molokovozCargo01_5x8' and GetPlayerMoney() >= 3000"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'molokovozCargo01_5x8'); AddPlayerMoney(-3000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_11"
+		text="Модифицировать кузов Генератор (Стоимость: 4500 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'molokovozCargo02_6x9' and GetPlayerMoney() >= 4500"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'molokovozCargo02_6x9'); AddPlayerMoney(-4500)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_12"
+		text="Модифицировать кузов Бокс (Стоимость: 6000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'molokovozCargo03_6x8' and GetPlayerMoney() >= 6000"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'molokovozCargo03_6x8'); AddPlayerMoney(-6000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_13"
+		text="Модифицировать кабину Хром (Стоимость: 10000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'uralCab01' and GetPlayerMoney() >= 10000"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'uralCab01'); AddPlayerMoney(-10000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_14"
+		text="Модифицировать кабину Штандарт (Стоимость: 14000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'uralCab02' and GetPlayerMoney() >= 14000"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'uralCab02'); AddPlayerMoney(-14000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_15"
+		text="Модифицировать кабину Лорд (Стоимость: 28000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'uralCab03' and GetPlayerMoney() >= 28000"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'uralCab03'); AddPlayerMoney(-28000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_16"
+		text="Модифицировать кабину Морион (Стоимость: 16000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'uralCab04' and GetPlayerMoney() >= 16000"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'uralCab04'); AddPlayerMoney(-16000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_17"
+		text="Модифицировать кабину Витязь (Стоимость: 34000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'uralCab05' and GetPlayerMoney() >= 34000"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'uralCab05'); AddPlayerMoney(-34000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_18"
+		text="Модифицировать кузов Холод (Стоимость: 6000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'uralCargo01_6x9' and GetPlayerMoney() >= 6000"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'uralCargo01_6x9'); AddPlayerMoney(-6000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_19"
+		text="Модифицировать кузов Фрахт (Стоимость: 8000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'uralCargo02_7x9' and GetPlayerMoney() >= 8000"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'uralCargo02_7x9'); AddPlayerMoney(-8000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_20"
+		text="Модифицировать кузов Крейсер (Стоимость: 18000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'uralCargo03_9x10' and GetPlayerMoney() >= 18000"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'uralCargo03_9x10'); AddPlayerMoney(-18000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_21"
+		text="Модифицировать кузов Панцирь (Стоимость: 9000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'uralCargo04_7x10' and GetPlayerMoney() >= 9000"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'uralCargo04_7x10'); AddPlayerMoney(-9000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_22"
+		text="Модифицировать кузов Тигр (Стоимость: 10000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'uralCargo05_8x9' and GetPlayerMoney() >= 10000"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'uralCargo05_8x9'); AddPlayerMoney(-10000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_23"
+		text="Модифицировать кабину Зод (Стоимость: 15000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'belazCab01' and GetPlayerMoney() >= 15000"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'belazCab01'); AddPlayerMoney(-15000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_24"
+		text="Модифицировать кабину Боливар (Стоимость: 21000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'belazCab02' and GetPlayerMoney() >= 21000"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'belazCab02'); AddPlayerMoney(-21000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_25"
+		text="Модифицировать кабину Рок (Стоимость: 35000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'belazCab03' and GetPlayerMoney() >= 35000"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'belazCab03'); AddPlayerMoney(-35000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_26"
+		text="Модифицировать кабину Терминатор (Стоимость: 38000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'belazCab04' and GetPlayerMoney() >= 38000"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'belazCab04'); AddPlayerMoney(-38000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_27"
+		text="Модифицировать кабину Щит (Стоимость: 46000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'belazCab05' and GetPlayerMoney() >= 46000"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'belazCab05'); AddPlayerMoney(-46000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_28"
+		text="Модифицировать кузов Хост (Стоимость: 17500 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'belazCargo01_6x12' and GetPlayerMoney() >= 17500"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'belazCargo01_6x12'); AddPlayerMoney(-17500)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_29"
+		text="Модифицировать кузов Конструктор (Стоимость: 19000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'belazCargo02_8x11' and GetPlayerMoney() >= 19000"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'belazCargo02_8x11'); AddPlayerMoney(-19000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_30"
+		text="Модифицировать кузов Колосс (Стоимость: 28000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'belazCargo03_11x12' and GetPlayerMoney() >= 28000"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'belazCargo03_11x12'); AddPlayerMoney(-28000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_31"
+		text="Модифицировать кузов Гром (Стоимость: 26000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'belazCargo04_6x10' and GetPlayerMoney() >= 26000"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'belazCargo04_6x10'); AddPlayerMoney(-26000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_32"
+		text="Модифицировать кузов Цилиндр (Стоимость: 20000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'belazCargo05_9x10' and GetPlayerMoney() >= 20000"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'belazCargo05_9x10'); AddPlayerMoney(-20000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_33"
+		text="Модифицировать кабину Гран (Стоимость: 18000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'mirotvorecCab01' and GetPlayerMoney() >= 18000"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'mirotvorecCab01'); AddPlayerMoney(-18000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_34"
+		text="Модифицировать кабину Череп (Стоимость: 20000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'mirotvorecCab02' and GetPlayerMoney() >= 20000"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'mirotvorecCab02'); AddPlayerMoney(-20000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_35"
+		text="Модифицировать кабину Метеор (Стоимость: 45000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'mirotvorecCab03' and GetPlayerMoney() >= 45000"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'mirotvorecCab03'); AddPlayerMoney(-45000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_36"
+		text="Модифицировать кабину Булат (Стоимость: 50000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'mirotvorecCab04' and GetPlayerMoney() >= 50000"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'mirotvorecCab04'); AddPlayerMoney(-50000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_37"
+		text="Модифицировать кабину Фантом (Стоимость: 64000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'mirotvorecCab05' and GetPlayerMoney() >= 64000"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'mirotvorecCab05'); AddPlayerMoney(-64000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_38"
+		text="Модифицировать кузов Клык (Стоимость: 19000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'mirotvorecCargo01_7x9' and GetPlayerMoney() >= 19000"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'mirotvorecCargo01_7x9'); AddPlayerMoney(-19000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_39"
+		text="Модифицировать кузов Центурион (Стоимость: 23000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'mirotvorecCargo02_7x10' and GetPlayerMoney() >= 23000"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'mirotvorecCargo02_7x10'); AddPlayerMoney(-23000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_40"
+		text="Модифицировать кузов Майа (Стоимость: 30000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'mirotvorecCargo03_8x10' and GetPlayerMoney() >= 30000"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'mirotvorecCargo03_8x10'); AddPlayerMoney(-30000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_41"
+		text="Модифицировать кузов Масамунэ (Стоимость: 25000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'mirotvorecCargo04_7x10' and GetPlayerMoney() >= 25000"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'mirotvorecCargo04_7x10'); AddPlayerMoney(-25000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_42"
+		text="Модифицировать кузов Экскалибур (Стоимость: 34000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'mirotvorecCargo05_9x11' and GetPlayerMoney() >= 34000"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'mirotvorecCargo05_9x11'); AddPlayerMoney(-34000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_43"
+		text="Модифицировать кабину Крейсера (Уровня I) (Стоимость: 16000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'cruiserCab01' and GetPlayerMoney() >= 16000"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'cruiserCab01'); AddPlayerMoney(-16000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_44"
+		text="Модифицировать кабину Крейсера (Уровня II) (Стоимость: 18000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('CABIN') == 'cruiserCab02' and GetPlayerMoney() >= 18000"
+		scriptResult="AddRandomAffixToPart('CABIN'); AddFadingMsgByStrIdFormatted('fm_mod_cab', 'cruiserCab02'); AddPlayerMoney(-18000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_45"
+		text="Модифицировать кузов Крейсера (Уровня I) (Стоимость: 21000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'cruiserCargo01_8x11' and GetPlayerMoney() >= 21000"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'cruiserCargo01_8x11'); AddPlayerMoney(-21000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+	<Reply
+		name="Dlg_pl_mod_part_46"
+		text="Модифицировать кузов Крейсера (Уровня II) (Стоимость: 24000 монет)"
+		role="PLAYER"
+		scriptCondition="GetPartPrototypeByName('BASKET') == 'cruiserCargo02_8x12' and GetPlayerMoney() >= 24000"
+		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'cruiserCargo02_8x12'); AddPlayerMoney(-24000)"
+		nextReplies="Dlg_npc_mechanic_mod_part_1" />
+
+<!--Root/r0m0/Механик: Модифицировать оружие-->
 
 	<Reply
 		name="Dlg_npc_mechanic_guns"
-		text="У меня ты можешь модифицировать своё вооружение. Я единственный опытный специалист в этой сфере, разбираюсь не только в технике, но и в пушках. Если заинтересован, то тащи своё вооружение ко мне.|@FF0000AA|@FF1D1D1D[Положите необходимое для модификации вооружение себе в кузов]"
+		text="У меня ты можешь модифицировать своё вооружение и запчасти для машины. Я единственный опытный специалист в этой сфере, разбираюсь и в технике, и в пушках. Если заинтересован, то показывай что надо модифицировать.|@FF0000AA|@FF1D1D1D[Положите необходимое для модификации вооружение себе в кузов]"
 		role="NPC"
-		nextReplies="Dlg_pl_mod_guns_1 Dlg_pl_mod_guns_2 Dlg_pl_mod_guns_3 Dlg_pl_mod_guns_4 Dlg_pl_mod_guns_5 Dlg_pl_mod_guns_6 Dlg_pl_mod_guns_7 Dlg_pl_mod_guns_8 Dlg_pl_mod_guns_9 Dlg_pl_mod_guns_10 Dlg_pl_mod_guns_11 Dlg_pl_mod_guns_12 Dlg_pl_mod_guns_13 Dlg_pl_mod_guns_14 Dlg_pl_mod_guns_15 Dlg_pl_mod_guns_16 Dlg_pl_mod_guns_17 Dlg_pl_mod_guns_18 Dlg_pl_mod_guns_19 Dlg_pl_mod_guns_20 Dlg_pl_mod_guns_21 Dlg_pl_mod_guns_22 Dlg_pl_mod_guns_23 Dlg_pl_mod_guns_24 Dlg_pl_mod_guns_25 Dlg_pl_mod_guns_26 Dlg_pl_mod_guns_27 Dlg_pl_mod_guns_28 Dlg_pl_mod_guns_29 Dlg_pl_npc_exit" />
+		nextReplies="Dlg_pl_mod_guns_1 Dlg_pl_mod_guns_2 Dlg_pl_mod_guns_3 Dlg_pl_mod_guns_4 Dlg_pl_mod_guns_5 Dlg_pl_mod_guns_6 Dlg_pl_mod_guns_7 Dlg_pl_mod_guns_8 Dlg_pl_mod_guns_9 Dlg_pl_mod_guns_10 Dlg_pl_mod_guns_11 Dlg_pl_mod_guns_12 Dlg_pl_mod_guns_13 Dlg_pl_mod_guns_14 Dlg_pl_mod_guns_15 Dlg_pl_mod_guns_16 Dlg_pl_mod_guns_17 Dlg_pl_mod_guns_18 Dlg_pl_mod_guns_19 Dlg_pl_mod_guns_20 Dlg_pl_mod_guns_21 Dlg_pl_mod_guns_22 Dlg_pl_mod_guns_23 Dlg_pl_mod_guns_24 Dlg_pl_mod_guns_25 Dlg_pl_mod_guns_26 Dlg_pl_mod_guns_27 Dlg_pl_mod_guns_28 Dlg_pl_mod_guns_29 Dlg_pl_mod_mechanik_back" />
 
 	<Reply
 		name="Dlg_pl_mod_guns_1"

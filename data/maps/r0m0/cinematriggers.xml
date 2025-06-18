@@ -75,6 +75,7 @@
 		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
 		<script>
 			StartConversation("SelectFractions_NPC")
+			TActivate("CheckLoadSaveTimer")
 			trigger:Deactivate()
 		</script>
 	</trigger>

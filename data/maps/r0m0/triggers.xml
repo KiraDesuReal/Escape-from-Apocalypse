@@ -4503,16 +4503,20 @@
 
 <!-- Таймер отслеживающий загрузку сейвов -->
 	<trigger Name="CheckLoadSaveTimer" active="0">
-		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
 			if SAVE_ID then SAVE_ID = GetVar("SaveId").AsInt end
 			if not(GetVar("EFA_Version").AsString == EFA_VERSION) or not(GetVar("EFA_Build").AsString == EFA_BUILD) then
 				if WIPE == 1 then
 					local b = SpawnMessageBox("90005")
-					if b == 1 then ShowDeathMenu() end
+					if b == 1 then 
+						TDeactivate("StartBackgroundCuts")
+						ShowDeathMenu() 
+					end
 					LOG("EFA VERSION: "..EFA_VERSION.." | BUILD: "..EFA_BUILD.." | SAVE VERSION: "..GetVar("EFA_Version").AsString.." | BUILD: "..GetVar("EFA_Build").AsString)
 				end
 			end
+			TDeactivate("Update")
 			trigger:Deactivate()
 		</script>
 	</trigger>

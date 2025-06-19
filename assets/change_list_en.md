@@ -21,9 +21,9 @@
 + New main menu and loading screen
 
 ### Prototypes:
-+ Added _Cruiser_ for sale
-+ Added special slot for body _Cruiser (LVL II)_
-+ _Scout_, _Fighter_ and _Hunter_ are now playable vehicles
++ Added *Cruiser* for sale
++ Added special slot for body *Cruiser (LVL II)*
++ *Scout*, *Fighter* and *Hunter* are now playable vehicles
 + Added more gadget slots to some cabin prototypes
 + Most bodies have had their weapon slots relocated, increasing their capacity
 + Many other changes in prototypes

@@ -43,4 +43,4 @@
 + New fractions
 + Many other changes and improvements
 
-**Installation instructions and other information can be found on the [main page](https://github.com/KiraDesuReal/Escape-from-Apocalypse/blob/main/README_EN.md) of the modification on GitHub.**
+**Installation instructions and other information can be found on the [main page](https://github.com/KiraDesuReal/Escape-from-Apocalypse/blob/main/README_EN.md#Installation) of the modification on GitHub.**

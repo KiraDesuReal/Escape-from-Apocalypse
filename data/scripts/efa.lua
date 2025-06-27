@@ -1508,21 +1508,19 @@ function UpdateCab(obj)
 		local cabin = veh:GetCabin()
 		local skin = veh:GetSkin()
 		if cabin then 
-			SetVar("CabDurability", cabin:GetPropertyById("19").AsString)
 			veh:SetNewPart("CABIN", cabin:GetProperty("Prototype").AsString) 
-			SetCabDurability(obj)
+			SetCabDurability(obj, math.floor(cabin:GetPropertyById(19).AsFloat + 0.5))
 		end
 		veh:SetSkin(skin)
 	end
 end
 
-function SetCabDurability(obj)
+function SetCabDurability(obj, durability)
 	local veh = getObj(obj)
 	if veh then
 		local cabin = veh:GetCabin()
 		if cabin then 
-			cabin:SetProperty("durability", GetVar("CabDurability").AsString) 
-			SetVar("CabDurability", 0)
+			cabin:SetProperty("durability", durability) 
 		end
 	end
 end
@@ -1895,22 +1893,26 @@ function AddRandomAffixToPart(part)
 		if part == "CABIN" then
 			local prot = playerVeh:GetCabin():GetProperty("Prototype").AsString
 
-			local id = CreateNewObject{prototypeName = prot, objName = "CabWithAffix_"..random(10000), belong = 1100}
+			local cab_affix_list = {"useless_cabin", "rusty_cabin", "excellent_cabin", "advanced_cabin"}
+			local cab_affix = cab_affix_list[random(4)]
+
+			local id = CreateNewObject{prototypeName = prot, objName = cab_affix.."_affix_"..random(10000), belong = 1100}
 			local cab = GetEntityByID( id )
 		
-			local cab_affix = {"useless_cabin", "rusty_cabin", "excellent_cabin", "advanced_cabin"}
-			cab:ApplyAffixByName(cab_affix[random(4)])
+			cab:ApplyAffixByName(cab_affix)
 
 			playerVeh:SetPartByName("CABIN", cab)
 			playerVeh:SetSkin(skin)
 		elseif part == "BASKET" then
 			local prot = playerVeh:GetBasket():GetProperty("Prototype").AsString
-		
-			local id = CreateNewObject{prototypeName = prot, objName = "BasWithAffix_"..random(10000), belong = 1100}
+
+			local bas_affix_list = {"useless_basket", "rusty_basket", "excellent_basket", "advanced_basket"}
+			local bas_affix = bas_affix_list[random(4)]
+
+			local id = CreateNewObject{prototypeName = prot, objName = bas_affix.."_affix_"..random(10000), belong = 1100}
 			local bas = GetEntityByID( id )
-			
-			local bas_affix = {"useless_basket", "rusty_basket", "excellent_basket", "advanced_basket"}
-			bas:ApplyAffixByName(bas_affix[random(4)])
+		
+			bas:ApplyAffixByName(bas_affix)
 
 			local itemsInRepository = {}
 			local AllItems = AllItems()
@@ -1938,6 +1940,72 @@ function AddRandomAffixToPart(part)
 	end
 end
 
+-- Функция заменяет конкретную запчасть машины с конкретным аффиксом
+function AddAffixToPart(obj, part, affix, prototype, saveDurability)
+	local playerVeh = getObj(obj)
+	if playerVeh then
+		local skin = playerVeh:GetSkin()
+		if part == "CABIN" then
+		 	if prototype == nil then prototype = playerVeh:GetCabin():GetProperty("Prototype").AsString end
+			local durabilityCab = math.floor(playerVeh:GetCabin():GetProperty("Durability").AsFloat + 0.5)
+
+			local id = CreateNewObject{prototypeName = prototype, objName = affix.."_affix_"..random(10000), belong = 1100}
+			local cab = GetEntityByID( id )
+
+			cab:ApplyAffixByName(affix)
+
+			if saveDurability == 1 then
+				local durabilityNewCab = cab:GetPropertyById(20).AsFloat
+				if durabilityCab > durabilityNewCab then durabilityCab = durabilityNewCab end
+				cab:SetProperty("Durability", durabilityCab)
+			end
+
+			playerVeh:SetPartByName("CABIN", cab)
+			playerVeh:SetSkin(skin)
+		elseif part == "BASKET" then
+			local basket = playerVeh:GetBasket()
+			if basket then
+				if prototype == nil then prototype = basket:GetProperty("Prototype").AsString end
+				local durabilityBas =  math.floor(basket:GetProperty("Durability").AsFloat + 0.5)
+
+				local id = CreateNewObject{prototypeName = prototype, objName = affix.."_affix_"..random(10000), belong = 1100}
+				local bas = GetEntityByID( id )
+				
+				bas:ApplyAffixByName(affix)
+
+				if saveDurability == 1 then
+					local durabilityNewBas = bas:GetPropertyById(20).AsFloat
+					if durabilityBas > durabilityNewBas then durabilityBas = durabilityNewBas end
+					bas:SetProperty("Durability", durabilityBas)
+				end
+
+				local itemsInRepository = {}
+				local AllItems = AllItems()
+				local l = 0
+
+				for i = 1, getn(AllItems) do
+					if HasPlayerAmountOfItems(AllItems[i], 1) then
+						for count = 1, GetItemsAmount(AllItems[i]) do
+							l = l + 1
+							RemoveItemsFromPlayerRepository(AllItems[i], 1)
+							itemsInRepository[l] = AllItems[i]
+						end
+					end
+				end
+
+				playerVeh:SetPartByName("BASKET", bas)
+				playerVeh:SetSkin(skin)
+
+				if getn(itemsInRepository) > 0 then
+					for i2 = 1, getn(itemsInRepository) do
+						AddItemsToPlayerRepository(itemsInRepository[i2], 1)
+					end
+				end
+			end
+		end
+	end
+end
+
 -- Возвращает имя прототипа запчасти объекта
 function GetPartPrototypeByName(part, obj)
 	if obj == nil then obj = GetPlayerVehicle() end
@@ -1952,10 +2020,36 @@ function GetPartPrototypeByName(part, obj)
 	end
 end
 
-
-
-
-
+-- Возвращает имя аффикса у части машины
+function GetAffixPartByName(part, obj)
+	if obj == nil then 
+		obj = GetPlayerVehicle() 
+	else 
+		obj = getObj(obj) 
+	end
+	if obj then
+		if part == "CABIN" then
+			local name = obj:GetCabin():GetName()
+			if name then
+				if strsub(name, 1, 7) == "useless" then return "useless_cabin" end
+				if strsub(name, 1, 5) == "rusty" then return "rusty_cabin" end
+				if strsub(name, 1, 9) == "excellent" then return "excellent_cabin" end
+				if strsub(name, 1, 8) == "advanced" then return "advanced_cabin" end
+			end
+		elseif part == "BASKET" then
+			local basket = obj:GetBasket()
+			if basket then
+				local name = basket:GetName()
+				if name then
+					if strsub(name, 1, 7) == "useless" then return "useless_basket" end
+					if strsub(name, 1, 5) == "rusty" then return "rusty_basket" end
+					if strsub(name, 1, 9) == "excellent" then return "excellent_basket" end
+					if strsub(name, 1, 8) == "advanced" then return "advanced_basket" end
+				end
+			end
+		end
+	end
+end
 
 
 

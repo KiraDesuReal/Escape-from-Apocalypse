@@ -8,7 +8,6 @@
 		
 			SetVar("PlayerCabin", "0")
 			SetVar("PlayerBasket", "0")
-			SetVar("PlayerSkin", 0)
 
 			SetVar("Cabin_Small_Gun", 0)
 			SetVar("Cabin_Small_Gun_1", 0)
@@ -5152,12 +5151,14 @@
 
 			if l ~= 0 and getObj("PressHornToSpeekScav"):IsActivated() == 0 then
 				if GetVar("DlgMoney_"..name).AsInt ~= 3 and GetVar("DlgUseItems_"..name).AsInt ~= 3 then
-					if kk ~= 0 then SetVar("ScavNPC", GetVar("Scav"..c.."_loc"..kk.."_NPC").AsString) end
-					if name == "ScavCarFollow_vehicle_0" then SetVar("ScavNPC", GetVar("ScavCarFollowNPC").AsString) end
-					SetVar("ScavCarNPC", name)
+					if GetVar("ScavCarNPC").AsString == "0" then
+						if kk ~= 0 then SetVar("ScavNPC", GetVar("Scav"..c.."_loc"..kk.."_NPC").AsString) end
+						if name == "ScavCarFollow_vehicle_0" then SetVar("ScavNPC", GetVar("ScavCarFollowNPC").AsString) end
+						SetVar("ScavCarNPC", name)
 
-					TActivate("PressHornToSpeekScav")
-					AddFadingMsgByStrIdFormatted("fm_press_horn_to_speek_scav")
+						TActivate("PressHornToSpeekScav")
+						AddFadingMsgByStrIdFormatted("fm_press_horn_to_speek_scav")
+					end
 				end
 			elseif l == 0 and getObj("PressHornToSpeekScav"):IsActivated() == 1 then
 				SetVar("ScavNPC", "0")

@@ -148,11 +148,8 @@
 
 			local pl = GetPlayerVehicle()
 			if not(GetVar("PlayerBelong").AsString == "SCAV") then
-				local plProt = pl:GetProperty("Prototype").AsString
-				local skin = pl:GetSkin()
-				SetVar("PlayerSkin", skin)
-				AddPlayerNewVehicle(plProt)
-				TActivate("UpdateCabinBasket")
+				pl:TakeOffAllGuns()
+				TActivate("trUpdateCabinAndBasket")
 			else
 				if pl then pl:SetSkin(-1) end
 				if 1.5 >= GetTolerance(1100, 1082) then
@@ -166,17 +163,41 @@
 		</script>
 	</trigger>
 
-	<trigger Name="UpdateCabinBasket" active="0">
-		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+	<trigger Name="trUpdateCabinAndBasket" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			local pl = GetPlayerVehicle()
-			if pl then
-				pl:SetNewPart("CABIN",GetVar("PlayerCabin").AsString)
-				pl:SetNewPart("BASKET",GetVar("PlayerBasket").AsString)
-				pl:SetSkin(GetVar("PlayerSkin").AsInt)
-				pl:TakeOffAllGuns()
+			local plf = GetPlayerVehicle()
+			local basket = plf:GetBasket()
+			local basDur = math.floor(basket:GetPropertyById(19).AsFloat + 0.5)
+			local skin = plf:GetSkin()
+			local cabAffix = GetAffixPartByName("CABIN")
+			if cabAffix then
+				AddAffixToPart(plf, "CABIN", cabAffix, nil, 1)
+			else
+				UpdateCab(plf)
 			end
-			trigger:Deactivate()
+
+			local basAffix = GetAffixPartByName("BASKET")
+			if basAffix then
+				AddAffixToPart(plf, "BASKET", basAffix, nil, 1)
+			else
+				if basket then
+					plf:SetNewPart("BASKET", basket:GetProperty("Prototype").AsString)
+					basket:SetProperty("Durability", basDur)
+				end
+			end
+
+			plf:SetSkin(skin)
+
+			local AllItems = AllItems()
+			for i = 1, getn(AllItems) do
+				if HasPlayerAmountOfItems(AllItems[i], 1) then
+					for count = 1, GetItemsAmount(AllItems[i]) do
+						RemoveItemsFromPlayerRepository(AllItems[i], 1)
+					end
+				end
+			end
+		    trigger:Deactivate()
 		</script>
 	</trigger>
 

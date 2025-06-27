@@ -1015,6 +1015,8 @@
 			if Q_DAILY_EXTRACT_COUNT then SetVar("q_daily_extract_Count", Q_DAILY_EXTRACT_COUNT) end
 			if Q_DAILY_EXTRACT_STATUS then SetVar("q_daily_extract_Status", Q_DAILY_EXTRACT_STATUS) end
 			if Q_DAILY_EXTRACT_PROGRESS then SetVar("q_daily_extract_Progress", Q_DAILY_EXTRACT_PROGRESS) end
+
+			if getObj("Update"):IsActivated() == 0 then TActivate("Update") end
 		</script>
 	</trigger>
 
@@ -2264,10 +2266,14 @@
 					if maxhp > hp then
 						SpawnMessageBox("90003")
 					else
-						local b = SpawnMessageBox("90002")
-						if b == 1 then
-							TActivate("ExitMap")
-							TActivate("cutEntersToTunnel")
+						if IfCanPlaceForGadgets() == 1 then
+							local b = SpawnMessageBox("90002")
+							if b == 1 then
+								TActivate("ExitMap")
+								TActivate("cutEntersToTunnel")
+							end
+						else
+							SpawnMessageBox("90012")
 						end
 					end
 				end
@@ -4255,6 +4261,7 @@
 			local plf = GetPlayerVehicle()
 			if plf then 
 				if GetVar("CarInGarage").AsInt == 1 then
+					TActivate("IfPlayerCarShassisAndCarInGarage")
 					plf:SetNameFromScript("PlayerNewCar") 
 				else
 					plf:SetNameFromScript("PlayerCar") 
@@ -4513,10 +4520,10 @@
 						TDeactivate("StartBackgroundCuts")
 						ShowDeathMenu() 
 					end
+					TDeactivate("Update")
 					LOG("EFA VERSION: "..EFA_VERSION.." | BUILD: "..EFA_BUILD.." | SAVE VERSION: "..GetVar("EFA_Version").AsString.." | BUILD: "..GetVar("EFA_Build").AsString)
 				end
 			end
-			TDeactivate("Update")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -5446,7 +5453,12 @@
 
 				if GetVar("CarInGarage").AsInt == 1 then 
 					TActivate("TpPlayerCarInGarage")
-					UpdateCab("PlayerCarInGarage") 
+					local cabAffix = GetAffixPartByName("CABIN", "PlayerCarInGarage")
+					if cabAffix then
+						AddAffixToPart("PlayerCarInGarage", "CABIN", cabAffix, nil, 1)
+					else
+						UpdateCab("PlayerCarInGarage") 
+					end
 				end
 
 				if GARAGE_CRAFTING_TIME_HOUR_GLOBAL then GARAGE_CRAFTING_TIME_HOUR_GLOBAL = GetVar("GarageCrafting_time_hour").AsInt end
@@ -5485,7 +5497,12 @@
 						TActivate("TpPlayerCarInPlayerZone")
 					else
 						TActivate("TpPlayerCarInScavZone")
-						UpdateCab("PlayerCarChange")
+						local cabAffix = GetAffixPartByName("CABIN", "PlayerCarChange")
+						if cabAffix then
+							AddAffixToPart("PlayerCarChange", "CABIN", cabAffix, nil, 1)
+						else
+							UpdateCab("PlayerCarChange")
+						end
 					end
 				end
 			else

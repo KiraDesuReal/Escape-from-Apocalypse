@@ -3843,7 +3843,7 @@
 		<script>
 			local items = {"machinery_use", "book", "electronics_use", "shkatulka", 
 							"ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_chest_artillerygun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo",
-							"item_datchik", "item_kek", "item_military_tube", "item_pena", "item_thermometer", "item_tube",
+							"item_datchik", "item_kek", "item_military_tube", "item_pena", "item_thermometer", "item_tube", "item_converter",
 							"item_bp", "item_drill", "item_engine", "item_hdd", "item_lcd", "item_military_cable", "item_tetris", "item_controller", "item_rfid", "item_military_plate", "item_gyrotachometer", "item_iridiym",
 							"item_car_battery", "item_cyclon", "item_green_battery",
 							"item_dry", "item_prisadka", "item_propan", "item_termit",
@@ -5151,7 +5151,7 @@
 
 			if l ~= 0 and getObj("PressHornToSpeekScav"):IsActivated() == 0 then
 				if GetVar("DlgMoney_"..name).AsInt ~= 3 and GetVar("DlgUseItems_"..name).AsInt ~= 3 then
-					if GetVar("ScavCarNPC").AsString == "0" then
+					if GetVar("ScavCarNPC").AsString == "0" or GetVar("ScavCarNPC").AsInt == 0 then
 						if kk ~= 0 then SetVar("ScavNPC", GetVar("Scav"..c.."_loc"..kk.."_NPC").AsString) end
 						if name == "ScavCarFollow_vehicle_0" then SetVar("ScavNPC", GetVar("ScavCarFollowNPC").AsString) end
 						SetVar("ScavCarNPC", name)

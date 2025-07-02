@@ -165,8 +165,8 @@
 		Name="Inventory_Build_lvl_2_loc"
 		Belong="1100"
 		Prototype="genericLocation"
-		Pos="940.773 255.000 979.820"
-		Radius="1.000">
+		Pos="927.950 255 988.440"
+		Radius="0.250">
 		<Object
 			Name="Inventory_lvl_2_Build_NPC"
 			Belong="1100"
@@ -349,22 +349,14 @@
 		Name="Shelf_Build_loc"
 		Belong="1100"
 		Prototype="genericLocation"
-		Pos="900.551 255.000 975.451"
-		Radius="0.200">
+		Pos="941.150 255 979.860"
+		Radius="0.700">
 		<Object
 			Name="Shelf_NPC"
 			Belong="1100"
 			Prototype="NPC"
 			ModelName=""
-			helloReplyNames="Dlg_npc_01 Dlg_npc_02 Dlg_npc_011 Dlg_npc_012"
-			SpokenCount="0" />
-
-		<Object
-			Name="Shelf2_NPC"
-			Belong="1100"
-			Prototype="NPC"
-			ModelName=""
-			helloReplyNames="Dlg_npc_01_2 Dlg_npc_02_2 Dlg_npc_011_2 Dlg_npc_012_2"
+			helloReplyNames="Dlg_npc_01 Dlg_npc_02 Dlg_npc_03 Dlg_npc_011 Dlg_npc_012"
 			SpokenCount="0" />
 	</Object>
 

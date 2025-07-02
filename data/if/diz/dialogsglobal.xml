@@ -88,14 +88,14 @@
 <!--Root/r0m0/Инвентарь 2 лвл-->
 	<Reply
 		name="Dlg_npc_001314"
-		text="Дополнительный ящик, в котором можно складировать свои вещи.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Дрель - @FF1D1D1Dx1|Саморезы - @FF1D1D1Dx2|Гвозди - @FF1D1D1Dx2|Отвертка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Возможность построить стенд с предметами"
+		text="Дополнительный ящик, в котором можно складировать свои вещи.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Дрель - @FF1D1D1Dx1|Саморезы - @FF1D1D1Dx2|Гвозди - @FF1D1D1Dx2|Отвертка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1"
 		role="NPC"
 		scriptCondition="GetVar('Inventory_lvl_2_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_pl_001315 Dlg_pl_001316 Dlg_pl_001317 Dlg_pl_001318 Dlg_pl_001319 Dlg_pl_001320 Dlg_pl_001321 Dlg_pl_001322" />
 	
 	<Reply
 		name="Dlg_npc_0013144"
-		text="Дополнительный ящик, в котором можно складировать свои вещи.|@FF0000AA|@FF780a0a[Дикие не могут передавать предметы для убежища]|@FF0000AA|@FF1D1D1DДля постройки требуется:|Дрель - @FF1D1D1Dx1|Саморезы - @FF1D1D1Dx2|Гвозди - @FF1D1D1Dx2|Отвертка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Возможность построить стенд с предметами"
+		text="Дополнительный ящик, в котором можно складировать свои вещи.|@FF0000AA|@FF780a0a[Дикие не могут передавать предметы для убежища]|@FF0000AA|@FF1D1D1DДля постройки требуется:|Дрель - @FF1D1D1Dx1|Саморезы - @FF1D1D1Dx2|Гвозди - @FF1D1D1Dx2|Отвертка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1"
 		role="NPC"
 		scriptCondition="GetVar('Inventory_lvl_2_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0 and GetVar('PlayerBelong').AsString == 'SCAV'"
 		nextReplies="Dlg_pl_001321" />
@@ -9557,31 +9557,24 @@
 <!--Root/r0m0/Стенд с предметами постройка-->
 	<Reply
 		name="Dlg_npc_01"
-		text="Ваш личный стеллаж, на который можно выставить свои предметы и ценности.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Доски - @FF1D1D1Dx3|Саморезы - @FF1D1D1Dx2|Дрель - @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Плоскогубцы @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Отвертка плоская длинная @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		text="Ваш личный стеллаж, на который можно выставить свои предметы и ценности.|@FF0000AA|@FF780a0a[Для передачи предметов, необходимо построить Хранилище уровня II]|@FF0000AA|@FF1D1D1DДля постройки требуется:|Доски - @FF1D1D1Dx3|Саморезы - @FF1D1D1Dx2|Дрель - @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Плоскогубцы @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Отвертка плоская длинная @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
 		role="NPC"
-		scriptCondition="GetVar('Garage_Builden').AsInt == 0 and GetVar('Shelf_Builden').AsInt == 0 and GetVar('Inventory_lvl_2_Builden').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
-		nextReplies="Dlg_pl_03 Dlg_pl_04 Dlg_pl_05 Dlg_pl_06 Dlg_pl_07 Dlg_pl_08 Dlg_pl_09 Dlg_pl_010" />
+		scriptCondition="GetVar('Inventory_lvl_2_Builden').AsInt == 0 and GetVar('Shelf_Builden').AsInt == 0"
+		nextReplies="Dlg_pl_09" />
 	
 	<Reply
 		name="Dlg_npc_02"
 		text="Ваш личный стеллаж, на который можно выставить свои предметы и ценности.|@FF0000AA|@FF780a0a[Дикие не могут передавать предметы для убежища]|@FF0000AA|@FF1D1D1DДля постройки требуется:|Доски - @FF1D1D1Dx3|Саморезы - @FF1D1D1Dx2|Дрель - @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Плоскогубцы @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Отвертка плоская длинная @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
 		role="NPC"
-		scriptCondition="GetVar('Garage_Builden').AsInt == 0 and GetVar('Shelf_Builden').AsInt == 0 and GetVar('Inventory_lvl_2_Builden').AsInt == 1 and GetVar('PlayerBelong').AsString == 'SCAV'"
+		scriptCondition="GetVar('Inventory_lvl_2_Builden').AsInt == 1 and GetVar('Shelf_Builden').AsInt == 0 and GetVar('PlayerBelong').AsString == 'SCAV'"
 		nextReplies="Dlg_pl_09" />
 
 	<Reply
-		name="Dlg_npc_01_2"
+		name="Dlg_npc_03"
 		text="Ваш личный стеллаж, на который можно выставить свои предметы и ценности.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Доски - @FF1D1D1Dx3|Саморезы - @FF1D1D1Dx2|Дрель - @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Плоскогубцы @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Отвертка плоская длинная @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
 		role="NPC"
-		scriptCondition="GetVar('Garage_Builden').AsInt == 1 and GetVar('Shelf_Builden').AsInt == 0 and GetVar('Inventory_lvl_2_Builden').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
+		scriptCondition="GetVar('Inventory_lvl_2_Builden').AsInt == 1 and GetVar('Shelf_Builden').AsInt == 0 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_pl_03 Dlg_pl_04 Dlg_pl_05 Dlg_pl_06 Dlg_pl_07 Dlg_pl_08 Dlg_pl_09 Dlg_pl_010" />
-	
-	<Reply
-		name="Dlg_npc_02_2"
-		text="Ваш личный стеллаж, на который можно выставить свои предметы и ценности.|@FF0000AA|@FF780a0a[Дикие не могут передавать предметы для убежища]|@FF0000AA|@FF1D1D1DДля постройки требуется:|Доски - @FF1D1D1Dx3|Саморезы - @FF1D1D1Dx2|Дрель - @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Плоскогубцы @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Отвертка плоская длинная @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
-		role="NPC"
-		scriptCondition="GetVar('Garage_Builden').AsInt == 1 and GetVar('Shelf_Builden').AsInt == 0 and GetVar('Inventory_lvl_2_Builden').AsInt == 1 and GetVar('PlayerBelong').AsString == 'SCAV'"
-		nextReplies="Dlg_pl_09" />
 
 	<Reply
 		name="Dlg_pl_03"
@@ -9650,28 +9643,14 @@
 		name="Dlg_npc_011"
 		text="Ваш личный стеллаж, на который можно выставить свои предметы и ценности.|@FF0000AA|@FF1D1D1D[Выберите слот]"
 		role="NPC"
-		scriptCondition="GetVar('Garage_Builden').AsInt == 0 and GetVar('Shelf_Builden').AsInt == 1 and GetVar('Inventory_lvl_2_Builden').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
+		scriptCondition="GetVar('Shelf_Builden').AsInt == 1 and GetVar('Inventory_lvl_2_Builden').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_pl_shelf_slot_1 Dlg_pl_shelf_slot_2 Dlg_pl_shelf_slot_3 Dlg_pl_shelf_slot_4 Dlg_pl_shelf_slot_5 Dlg_pl_shelf_slot_6 Dlg_pl_shelf_slot_7 Dlg_pl_shelf_slot_8 Dlg_pl_shelf_slot_9 Dlg_pl_shelf_slot_10 Dlg_pl_shelf_slot_11 Dlg_pl_shelf_slot_12 Dlg_pl_shelf_slot_13 Dlg_pl_shelf_slot_14 Dlg_pl_shelf_slot_15 Dlg_pl_shelf_slot_16 Dlg_pl_shelf_slot_17 Dlg_pl_shelf_slot_18 Dlg_pl_shelf_slot_19 Dlg_pl_shelf_slot_20 Dlg_pl_shelf_slot_21 Dlg_pl_shelf_slot_22 Dlg_pl_shelf_slot_23 Dlg_pl_shelf_slot_24 Dlg_pl_exit_shelf" />
 	
 	<Reply
 		name="Dlg_npc_012"
 		text="Ваш личный стеллаж, на который можно выставить свои предметы и ценности.|@FF0000AA|@FF780a0a[Дикие не могут управлять модулями убежища]"
 		role="NPC"
-		scriptCondition="GetVar('Garage_Builden').AsInt == 0 and GetVar('Shelf_Builden').AsInt == 1 and GetVar('Inventory_lvl_2_Builden').AsInt == 1 and GetVar('PlayerBelong').AsString == 'SCAV'"
-		nextReplies="Dlg_pl_exit_shelf" />
-
-	<Reply
-		name="Dlg_npc_011_2"
-		text="Ваш личный стеллаж, на который можно выставить свои предметы и ценности.|@FF0000AA|@FF1D1D1D[Выберите слот]"
-		role="NPC"
-		scriptCondition="GetVar('Garage_Builden').AsInt == 1 and GetVar('Shelf_Builden').AsInt == 1 and GetVar('Inventory_lvl_2_Builden').AsInt == 1 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
-		nextReplies="Dlg_pl_shelf_slot_1 Dlg_pl_shelf_slot_2 Dlg_pl_shelf_slot_3 Dlg_pl_shelf_slot_4 Dlg_pl_shelf_slot_5 Dlg_pl_shelf_slot_6 Dlg_pl_shelf_slot_7 Dlg_pl_shelf_slot_8 Dlg_pl_shelf_slot_9 Dlg_pl_shelf_slot_10 Dlg_pl_shelf_slot_11 Dlg_pl_shelf_slot_12 Dlg_pl_shelf_slot_13 Dlg_pl_shelf_slot_14 Dlg_pl_shelf_slot_15 Dlg_pl_shelf_slot_16 Dlg_pl_shelf_slot_17 Dlg_pl_shelf_slot_18 Dlg_pl_shelf_slot_19 Dlg_pl_shelf_slot_20 Dlg_pl_shelf_slot_21 Dlg_pl_shelf_slot_22 Dlg_pl_shelf_slot_23 Dlg_pl_shelf_slot_24 Dlg_pl_exit_shelf" />
-	
-	<Reply
-		name="Dlg_npc_012_2"
-		text="Ваш личный стеллаж, на который можно выставить свои предметы и ценности.|@FF0000AA|@FF780a0a[Дикие не могут управлять модулями убежища]"
-		role="NPC"
-		scriptCondition="GetVar('Garage_Builden').AsInt == 1 and GetVar('Shelf_Builden').AsInt == 1 and GetVar('Inventory_lvl_2_Builden').AsInt == 1 and GetVar('PlayerBelong').AsString == 'SCAV'"
+		scriptCondition="GetVar('Shelf_Builden').AsInt == 1 and GetVar('Inventory_lvl_2_Builden').AsInt == 1 and GetVar('PlayerBelong').AsString == 'SCAV'"
 		nextReplies="Dlg_pl_exit_shelf" />
 
 	<Reply
@@ -10679,7 +10658,7 @@
 
 	<Reply
 		name="Dlg_npc_q_testing_mission_5"
-		text="Вот и отлично. Значит слушай, твое первое задание: у нас тут бандитов развелось, по всей округе ездят, их зовут Дикими. Подстрели, допустим 5 штук этих дикарей, и притащи с них пулемёты Шершень, 3 штуки. Это и будет твоим первым заданием. За дело, наёмник!|@FF0000AA|@FF1D1D1DНаграда:|- Пулемёт: @FF1D1D1DСпектр - x1|- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x1|- Деньги: @FF1D1D1D20.000 монет"
+		text="Вот и отлично. Значит слушай, твоё первое задание: у нас тут бандитов развелось, по всей округе ездят, их зовут Дикими. Подстрели, допустим 5 штук этих дикарей, и притащи с них пулемёты Шершень, 3 штуки. Это и будет твоим первым заданием. За дело, наёмник!|@FF0000AA|@FF1D1D1DНаграда:|- Пулемёт: @FF1D1D1DСпектр - x1|- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x1|- Деньги: @FF1D1D1D20.000 монет"
 		role="NPC"
 		scriptCondition="not(IsQuestComplete('q_testing_mission_1')) or not(IsQuestComplete('q_testing_mission_2')) or not(IsQuestComplete('q_testing_mission_3'))"
 		nextReplies="Dlg_pl_q_testing_mission_6 Dlg_pl_q_testing_mission_7 Dlg_pl_q_testing_mission_8 Dlg_pl_q_testing_mission_9 Dlg_pl_q_testing_mission_10 Dlg_pl_q_testing_mission_11 Dlg_pl_q_testing_mission_12" />
@@ -10739,7 +10718,7 @@
 
 	<Reply
 		name="Dlg_npc_q_testing_mission_13"
-		text="Значит, с задачей ты справился, молодец. Небось, пулемёты где-нибудь по дешёвке надыбал? Ладно, неважно, мне они всё равно пригодятся. Пока делаешь все как надо, можем продолжать работать."
+		text="Значит, с задачей ты справился, молодец. Небось, пулемёты где-нибудь по дешёвке надыбал? Ладно, неважно, мне они всё равно пригодятся. Пока делаешь всё как надо, можем продолжать работать."
 		role="NPC"
 		scriptCondition="not(IsQuestComplete('q_testing_mission_3')) and GetVar('q_testing_mission_american_hornet').AsInt == 0"
 		nextReplies="Dlg_pl_q_testing_mission_14" />
@@ -10752,7 +10731,7 @@
 
 	<Reply
 		name="Dlg_npc_q_testing_mission_15"
-		text="Значит, с задачей ты справился, молодец. Вижу, ты хорошо постарался. Те пулеметы что ты притащил - импортные, несколько отличаются от наших, чуть больнее бьют и больше боезапас. Отличный трофей, заберу себе. Однако всерьез идти в бой с такой пушкой я не советую, хе-хе. Так и быть, с меня причитается более ценная награда. Пока делаешь все хорошо, значит можем продолжать работать."
+		text="Значит, с задачей ты справился, молодец. Вижу, ты хорошо постарался. Те пулемёты что ты притащил - импортные, несколько отличаются от наших, чуть больнее бьют и больше боезапас. Отличный трофей, заберу себе. Однако всерьез идти в бой с такой пушкой я не советую, хе-хе. Так и быть, с меня причитается более ценная награда. Пока делаешь всё хорошо, значит можем продолжать работать."
 		role="NPC"
 		scriptCondition="not(IsQuestComplete('q_testing_mission_3')) and GetVar('q_testing_mission_american_hornet').AsInt == 1"
 		nextReplies="Dlg_pl_q_testing_mission_16" />
@@ -11001,7 +10980,7 @@
 
 	<Reply
 		name="Dlg_npc_q_search_data_3"
-		text="В общем, слушай. Один из моих бойцов давно не выходит на связь, времени прошло уже достаточно, а он до сих пор не объявился. Скорее всего он погиб. Однако нёс он мне одну важную информацию, которая все еще мне нужна. Отправил я его в заброшенную больницу, та, которая в Краю находится. Выясни что с ним стряслось и по возможности забери информацию. В долгу не останусь.|@FF0000AA|@FF1D1D1DНаграда:|- Пулемёт: @FF1D1D1DКорд - x1|- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x1|- Деньги: @FF1D1D1D25.000 монет"
+		text="В общем, слушай. Один из моих бойцов давно не выходит на связь, времени прошло уже достаточно, а он до сих пор не объявился. Скорее всего он погиб. Однако нёс он мне одну важную информацию, которая всё ещё мне нужна. Отправил я его в заброшенную больницу, та, что Краю находится. Выясни что с ним стряслось и по возможности забери информацию. В долгу не останусь.|@FF0000AA|@FF1D1D1DНаграда:|- Пулемёт: @FF1D1D1DКорд - x1|- Предмет: @FF1D1D1DЯщик патронов для Пулемёта - x1|- Деньги: @FF1D1D1D25.000 монет"
 		role="NPC"
 		nextReplies="Dlg_pl_q_search_data_4 Dlg_pl_q_search_data_5 Dlg_pl_q_search_data_6" />
 
@@ -11029,7 +11008,7 @@
 
 	<Reply
 		name="Dlg_npc_q_search_data_7"
-		text="Значит все же он погиб. Говоришь, дикарей возле больницы было много? Не повезло ему. Молодец что справился. Вот моя доля как и обещал."
+		text="Значит всё же он погиб. Говоришь, дикарей возле больницы было много? Не повезло ему. Молодец что справился. Вот моя доля как и обещал."
 		role="NPC"
 		nextReplies="Dlg_pl_q_search_data_8" />
 
@@ -11071,7 +11050,7 @@
 
 	<Reply
 		name="Dlg_npc_q_explore_r1m1_5"
-		text="Как все прошло? Хотя можешь не говорить, и так знаю что успешно. Пожалуйста, награда за выполненное задание. И да, если нужна будет работёнка, ты знаешь к кому обратиться."
+		text="Как всё прошло? Хотя можешь не говорить, и так знаю что успешно. Пожалуйста, награда за выполненное задание. И да, если нужна будет работёнка, ты знаешь к кому обратиться."
 		role="NPC"
 		nextReplies="Dlg_pl_q_explore_r1m1_6" />
 
@@ -11097,7 +11076,7 @@
 
 	<Reply
 		name="Dlg_npc_q_clearing_r1m1_2"
-		text="Отлично. Тогда, слушай значит. По твоим координатам разведки нам теперь известно, что местность Края окружена бандитами. Территория сама по себе не богатая, так что мало кого привлекает. А это значит что, сильного сопротивления не будет."
+		text="Отлично. Тогда, слушай значит. По твоим координатам разведки нам теперь известно что, местность Края окружена бандитами. Территория сама по себе не богатая, так что мало кого привлекает. А это значит что, сильного сопротивления не будет."
 		role="NPC"
 		nextReplies="Dlg_pl_q_clearing_r1m1_3" />
 
@@ -17332,7 +17311,7 @@
 		name="Dlg_pl_Scav_follow_4"
 		text="Ну ладно, как скажешь. Бывай."
 		role="PLAYER"
-		scriptResult="TDeactivate('PressHornToSpeekScav'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', 0); EndConversation()" />
+		scriptResult="TDeactivate('PressHornToSpeekScav'); SetVar('ScavNPC', '0'); SetVar('ScavCarNPC', '0'); EndConversation()" />
 
 <!--Выбор фракции-->
 

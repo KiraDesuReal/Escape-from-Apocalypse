@@ -1428,12 +1428,12 @@ function AddListItemsToPlayer(item, amount)
 	end
 end
 
--- Разместить предмет на стеллаже
-function ShelfAddItemToSlot()
+-- Разместить предмет на стеллаже 
+function ShelfAddItemToSlot() 
 	local slot = GetVar("ShelfSelectSlot").AsInt
 	local item = GetVar("ShelfSelectItem_Slot_"..slot).AsString
 	local pos = CVector(0, 0, 0)
-	local rot = Quaternion(0, 0, 0, 1)
+	local rot = Quaternion(0.0000, 0.7071, 0.0000, 0.7071)
 	local model = "cargo"
 	local y, z = 0, 0
 	local scale = 0.35
@@ -1444,27 +1444,27 @@ function ShelfAddItemToSlot()
 	if item == "oil" or item == "oil_use" then model = "back_exp" y = 0.22 scale = 0.32 end
 	if item == "bottle" then model = "bottles" y = -0.06 end
 	if item == "fuel" or item == "fuel_full_use" or item == "fuel_nil_use" then model = "kanistr" y = 0.03 end
-	if item == "machinery" or item == "machinery_use" then model = "rabochee_oborudovanie" y = -0.24 end
+	if item == "machinery" or item == "machinery_use" then model = "rabochee_oborudovanie" y = -0.24 rot = Quaternion(0, 0, 0, 1) end
 	if item == "tobacco" then model = "tobacco" y = -0.2 end
 	if item == "book" then model = "books" y = -0.09 end
 	if item == "electronics" or item == "electronics_use" then model = "mikro" y = -0.29 end
 	if item == "doski" then model = "doski" scale = 0.28 end
-	if item == "details" then model = "detail" scale = 0.15 rot = Quaternion(-0.5010, 0.4989, -0.5011, 0.4989) y = -0.15 end
+	if item == "details" then model = "detail" scale = 0.15 rot = Quaternion(0, 0, -0.707, 0.707) y = -0.15 end
 	if item == "item_key_gate_thetown" or item == "item_key_gate_basefelix" then model = "key_1" scale = 0.15 rot = Quaternion(-0.7071, 0.0000, 0.0000, 0.7071) y = -0.27 end
-	if item == "item_disk" then model = "disk" scale = 0.05 rot = Quaternion(-0.7071, 0.0000, 0.0000, 0.7071) y = -0.29 end
-	if item == "item_disk_exmachina" then model = "disk_exmachina" scale = 0.05 rot = Quaternion(-0.7071, 0.0000, 0.0000, 0.7071) y = -0.29 end
-	if item == "item_emre_kara" then model = "dragon01gun" y = -0.11 rot = Quaternion(0.0567, 0.0000, 0.0000, 0.9984) end
-	if item == "item_fitanyashka" then model = "fitanyashka" scale = 0.3 rot = Quaternion(-0.2271, 0.0000, 0.0000, 0.9738) y = -0.32 end
-	if item == "item_monolit" then model = "monolit" scale = 0.3 y = -0.28 end
+	if item == "item_disk" then model = "disk" scale = 0.05 rot = Quaternion(-0.495, -0.505, -0.505, 0.495) y = -0.29 end
+	if item == "item_disk_exmachina" then model = "disk_exmachina" scale = 0.05 rot = Quaternion(-0.495, -0.505, -0.505, 0.495) y = -0.29 end
+	if item == "item_emre_kara" then model = "dragon01gun" y = -0.11 rot = Quaternion(0.0401, -0.7060, 0.0401, 0.7060) end
+	if item == "item_fitanyashka" then model = "fitanyashka" scale = 0.3 rot = Quaternion(0.1515, 0.6907, -0.1515, 0.6907) y = -0.32 end
+	if item == "item_monolit" then model = "monolit" scale = 0.3 y = -0.28 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
 	if item == "item_kaktus" then model = "kaktus" y = -0.28 end
 	if item == "someTurboAccelerationPusher" then model = "Turboakselerator" y = -0.17 end
-	if item == "item_phone" then model = "phone" y = -0.27 scale = 0.3 end
-	if item == "item_tb" then model = "tb" y = -0.05 scale = 0.3 rot = Quaternion(0.0000, -0.8671, 0.0000, 0.4981) end
+	if item == "item_phone" then model = "phone" y = -0.27 scale = 0.3 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
+	if item == "item_tb" then model = "tb" y = -0.05 scale = 0.3 rot = Quaternion(0.000, -0.970, 0.000, -0.242) end
 	if item == "item_stakanyash" then model = "stakanyash" y = -0.29 end
-	if item == "item_ananaga" then model = "ananaga" y = -0.29 scale = 0.15 rot = Quaternion(0.0000, -0.7716, 0.0000, 0.6361) end
-	if item == "item_vodka" then model = "vodka" y = -0.29 scale = 0.15 rot = Quaternion(0.0000, -0.7716, 0.0000, 0.6361) end
-	if item == "item_bitcoin" then model = "bitcoin" y = -0.28 scale = 0.15 rot = Quaternion(-0.7071, 0.0000, 0.0000, 0.7071) end
-	if item == "item_ex" then model = "ex" y = -0.27 scale = 0.15 rot = Quaternion(-0.7071, 0.0000, 0.0000, 0.7071) end
+	if item == "item_ananaga" then model = "ananaga" y = -0.29 scale = 0.15 rot = Quaternion(0, -1, 0, 0) end
+	if item == "item_vodka" then model = "vodka" y = -0.29 scale = 0.15 rot = Quaternion(0, -1, 0, 0) end
+	if item == "item_bitcoin" then model = "bitcoin" y = -0.28 scale = 0.15 rot = Quaternion(-0.495, -0.505, -0.505, 0.495) end
+	if item == "item_ex" then model = "ex" y = -0.27 scale = 0.15 rot = Quaternion(-0.495, -0.505, -0.505, 0.495) end
 	if item == "ammo_chest_artillerygun" then model = "ammo_chest_artillerygun" y = -0.29 end
 	if item == "ammo_chest_rocketgun" then model = "ammo_chest_rocketgun" y = -0.29 end
 	if item == "ammo_chest_machinegun" then model = "ammo_chest_machinegun" y = -0.29 end
@@ -1474,21 +1474,23 @@ function ShelfAddItemToSlot()
 	if item == "ammo_ballon_plasmagun" then model = "ammo_ballon_plasmagun" y = -0.29 end
 	if item == "ammo_ballon_turbo" then model = "ammo_ballon_turbo" y = -0.29 scale = 0.3 end
 	if item == "item_kubok_kikiki" then model = "kubok_cs_kikiki" y = -0.27 scale = 0.21 end
-	if item == "item_metallodetector" then model = "metallodetector" y = 0.26 z = -0.08 scale = 0.3 end
-	if item == "item_knife_sectarian" then model = "knife_sectarian" y = 0.21 rot = Quaternion(-0.7071, 0.0000, 0.0000, 0.7071) end
+	if item == "item_metallodetector" then model = "metallodetector" y = 0.26 z = 0.08 scale = 0.3 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
+	if item == "item_knife_sectarian" then model = "knife_sectarian" y = 0.21 rot = Quaternion(-0.495, -0.505, -0.505, 0.495) end
 
-	if slot == 1 then pos = CVector(903.327, 255.650 + y, 971.461 + z) end
-	if slot == 2 then pos = CVector(901.610, 255.650 + y, 971.461 + z) end
-	if slot == 3 then pos = CVector(899.450, 255.650 + y, 971.461 + z) end
-	if slot == 4 then pos = CVector(897.700, 255.650 + y, 971.461 + z) end
-	if slot == 5 then pos = CVector(903.327, 257.355 + y, 971.461 + z) end
-	if slot == 6 then pos = CVector(901.610, 257.355 + y, 971.461 + z) end
-	if slot == 7 then pos = CVector(899.450, 257.355 + y, 971.461 + z) end
-	if slot == 8 then pos = CVector(897.700, 257.355 + y, 971.461 + z) end
-	if slot == 9 then pos = CVector(903.327, 259.081 + y, 971.461 + z) end
-	if slot == 10 then pos = CVector(901.610, 259.081 + y, 971.461 + z) end
-	if slot == 11 then pos = CVector(899.450, 259.081 + y, 971.461 + z) end
-	if slot == 12 then pos = CVector(897.700, 259.081 + y, 971.461 + z) end
+	if slot == 1 then pos = CVector(949.643 + z, 255.650 + y, 982.831) end
+	if slot == 2 then pos = CVector(949.643 + z, 255.650 + y, 981.115) end
+	if slot == 3 then pos = CVector(949.643 + z, 255.650 + y, 978.954) end
+	if slot == 4 then pos = CVector(949.643 + z, 255.650 + y, 977.204) end
+
+	if slot == 5 then pos = CVector(949.643 + z, 257.355 + y, 982.831) end
+	if slot == 6 then pos = CVector(949.643 + z, 257.355 + y, 981.115) end
+	if slot == 7 then pos = CVector(949.643 + z, 257.355 + y, 978.954) end
+	if slot == 8 then pos = CVector(949.643 + z, 257.355 + y, 977.204) end
+
+	if slot == 9 then pos = CVector(949.643 + z, 259.081 + y, 982.831) end
+	if slot == 10 then pos = CVector(949.643 + z, 259.081 + y, 981.115) end
+	if slot == 11 then pos = CVector(949.643 + z, 259.081 + y, 978.954) end
+	if slot == 12 then pos = CVector(949.643 + z, 259.081 + y, 977.204) end
 
 	CreateNewSgNodeObject(model, "shelf_item_"..item.."_slot_"..slot, -1, -1, pos, rot, scale)
 end

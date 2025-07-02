@@ -1526,10 +1526,10 @@
 			CreateNewDummyObject("cargo", "cont_8_lvl_1", -1, -1, CVector(904.369, 258.173, 990.186), Quaternion(0, 0, 0, 0))
 			CreateNewDummyObject("cargo", "cont_9_lvl_1", -1, -1, CVector(907.147, 258.173, 990.186), Quaternion(0, 0, 0, 0))
 
-			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "cont_1_build_lvl_2", -1, -1, CVector(941.150, 254.691, 979.860), Quaternion(0, 0, 0, 0), 0.1)
-			CreateNewDummyObject("conteiner", "cont_2_build_lvl_2", -1, -1, CVector(948.677, 256.310, 979.316), Quaternion(0.000, 0.713, 0.000, 0.701))
-			CreateNewDummyObject("conteiner", "cont_3_build_lvl_2", -1, -1, CVector(951.873, 257.954, 979.066), Quaternion(0.246, 0.969, -0.002, -0.008))
-			CreateNewDummyObject("metal_plate1", "cont_4_build_lvl_2", -1, -1, CVector(946.321, 257.231, 980.476), Quaternion(-0.298, 0.644, 0.297, 0.639))
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "cont_1_build_lvl_2", -1, -1, CVector(927.950, 254.691, 988.440), Quaternion(0, 0, 0, 0), 0.1)
+			CreateNewDummyObject("conteiner", "cont_2_build_lvl_2", -1, -1, CVector(919.387, 256.310, 990.120), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("conteiner", "cont_3_build_lvl_2", -1, -1, CVector(919.581, 257.954, 993.320), Quaternion(0.1741, 0.6853, 0.1741, 0.6853))
+			CreateNewDummyObject("metal_plate1", "cont_4_build_lvl_2", -1, -1, CVector(918.269, 257.231, 987.745), Quaternion(-0.4208, -0.0040, -0.0038, 0.9071))
 
 			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "chestScavs_build_1", -1, -1, CVector(909.041, 254.586, 911.441), Quaternion(0, 0, 0, 0), 0.1)
 			CreateNewDummyObject("conteiner", "chestScavs_build_2", -1, -1, CVector(917.839, 256.382, 911.268), Quaternion(0.0000, 0.7040, 0.0000, 0.7102))
@@ -1541,6 +1541,8 @@
 			CreateNewDummyObject("cargo", "chestScavs_build_8", -1, -1, CVector(917.712, 258.197, 914.550), Quaternion(0, 0, 0, 0))
 			CreateNewDummyObject("cargo", "chestScavs_build_9", -1, -1, CVector(920.402, 258.253, 914.565), Quaternion(0, 0, 0, 0))
 			CreateNewDummyObject("cargo", "chestScavs_build_10", -1, -1, CVector(920.406, 258.248, 908.174), Quaternion(0, 0, 0, 0))
+
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "shelf_build_point", -1, -1, CVector(941.150, 254.691, 979.860), Quaternion(0, 0, 0, 0), 0.1)
 
 			local Chest = CreateNewObject{prototypeName = "opacityChest", objName = "PlayerInventory_Lvl_1"}	
 			local ChestId = GetEntityByID(Chest)
@@ -1559,6 +1561,7 @@
 
 			TActivate("Inventory_lvl_2_BuildInfo")
 			TActivate("ChestScavs_BuildInfo")
+			TActivate("Shelf_BuildInfo")
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1594,26 +1597,24 @@
 				if cont then cont:Remove() end
 			end
 
-			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(950, 255, 979), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(920, 255, 989), Quaternion(0, 0, 0, 1), 6000)
 			CreateEffectTTLed( "ET_S_BUILDING", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1800)
 
-			CreateNewDummyObject("conteiner", "cont_1_lvl_2", -1, -1, CVector(946.622, 256.310, 979.473), Quaternion(0.000, 0.707, 0.000, 0.707))
-			CreateNewDummyObject("conteiner", "cont_2_lvl_2", -1, -1, CVector(949.439, 256.310, 979.473), Quaternion(0.000, 0.707, 0.000, 0.707))
-			CreateNewDummyObject("conteiner", "cont_3_lvl_2", -1, -1, CVector(952.294, 256.310, 979.473), Quaternion(0.000, 0.707, 0.000, 0.707))
-			CreateNewDummyObject("conteiner", "cont_4_lvl_2", -1, -1, CVector(949.196, 258.963, 978.215), Quaternion(0.000, 1.000, 0.000, -0.000))
-			CreateNewDummyObject("conteiner", "cont_5_lvl_2", -1, -1, CVector(949.197, 258.963, 980.866), Quaternion(0.000, 1.000, 0.000, -0.000))
-			CreateNewDummyObject("cargo", "cont_6_lvl_2", -1, -1, CVector(946.731, 258.173, 976.227), Quaternion(0.000, 1.000, 0.000, -0.000))
-			CreateNewDummyObject("cargo", "cont_7_lvl_2", -1, -1, CVector(949.477, 258.173, 976.226), Quaternion(0.000, 1.000, 0.000, -0.000))
-			CreateNewDummyObject("cargo", "cont_8_lvl_2", -1, -1, CVector(952.280, 258.173, 976.227), Quaternion(0.000, 1.000, 0.000, -0.000))
-			CreateNewDummyObject("cargo", "cont_9_lvl_2", -1, -1, CVector(946.714, 258.173, 982.804), Quaternion(0.000, 1.000, 0.000, -0.000))
-			CreateNewDummyObject("cargo", "cont_10_lvl_2", -1, -1, CVector(949.460, 258.173, 982.804), Quaternion(0.000, 1.000, 0.000, -0.000))
-			CreateNewDummyObject("cargo", "cont_11_lvl_2", -1, -1, CVector(952.263, 258.173, 982.805), Quaternion(0.000, 1.000, 0.000, -0.000))
-
-			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "shelf_build_point", -1, -1, CVector(900.527, 254.700, 976.040), Quaternion(0, 0, 0, 0), 0.08)
+			CreateNewDummyObject("conteiner", "cont_1_lvl_2", -1, -1, CVector(919.893, 256.310, 985.711), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("conteiner", "cont_2_lvl_2", -1, -1, CVector(919.893, 256.310, 988.527), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("conteiner", "cont_3_lvl_2", -1, -1, CVector(919.893, 256.310, 991.383), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("conteiner", "cont_4_lvl_2", -1, -1, CVector(921.150, 258.963, 988.286), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("conteiner", "cont_5_lvl_2", -1, -1, CVector(918.500, 258.963, 988.286), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("cargo", "cont_6_lvl_2", -1, -1, CVector(923.139, 258.173, 985.820), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("cargo", "cont_7_lvl_2", -1, -1, CVector(923.139, 258.173, 988.566), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("cargo", "cont_8_lvl_2", -1, -1, CVector(923.139, 258.173, 991.369), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("cargo", "cont_9_lvl_2", -1, -1, CVector(916.561, 258.173, 985.803), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("cargo", "cont_10_lvl_2", -1, -1, CVector(916.561, 258.173, 988.549), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("cargo", "cont_11_lvl_2", -1, -1, CVector(916.561, 258.173, 991.352), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
 
 			local Chest = CreateNewObject{prototypeName = "opacityChest", objName = "PlayerInventory_Lvl_2"}	
 			local ChestId = GetEntityByID(Chest)
-			ChestId:SetPosition(CVector(947, 255, 979))
+			ChestId:SetPosition(CVector(919, 255, 987))
 
 			local Item = CreateNewObject{prototypeName = "item_opacity", objName = "ItemOpacity_PlayerInventory_Lvl_2", belong = 1100}
 			local ItemId = GetEntityByID(Item)
@@ -1623,7 +1624,6 @@
 			
 			SetVar("Inventory_lvl_2_Builden", 1)
 			TDeactivate("Inventory_lvl_2_BuildInfo")
-			TActivate("Shelf_BuildInfo")
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4130,10 +4130,10 @@
 			local p = GetEntityByName("shelf_build_point")
 			if p then p:Remove() end
 
-			CreateNewDummyObject("shelf", "shelf_1", -1, -1, CVector(900.562, 255, 971.283), Quaternion(0, 1, 0, 0))
-			CreateNewSgNodeObject("shelf_plant", "shelf_2", -1, -1, CVector(902.964, 260.691, 971.387), Quaternion(0, 0, 0, 1), 0.8)
+			CreateNewDummyObject("shelf", "shelf_1", -1, -1, CVector(949.797, 255, 980.065), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewSgNodeObject("shelf_plant", "shelf_2", -1, -1, CVector(949.713, 260.691, 982.468), Quaternion(0.0000, -0.7040, 0.0000, 0.7102), 0.8)
 
-			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(900, 255, 971), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(949, 255, 980), Quaternion(0, 0, 0, 1), 6000)
 			CreateEffectTTLed( "ET_S_BUILDING", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1800)
 
 			SetVar("Shelf_Builden", 1)
@@ -4897,7 +4897,7 @@
 		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
 		<script>
 			local chest = {"PlayerInventory_Lvl_1", "PlayerInventory_Lvl_2", "ChestScavsForLoot"}
-			local chestPos = {CVector(903.080, 255, 988.017), CVector(947, 255, 979), CVector(916, 255, 911)}
+			local chestPos = {CVector(903.080, 255, 988.017), CVector(919, 255, 987), CVector(916, 255, 911)}
 			for i2=1,3 do
 				local c = GetEntityByName(chest[i2])
 				if c then c:SetPosition(chestPos[i2]) end

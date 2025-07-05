@@ -1921,6 +1921,43 @@
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_kill_usec")'
 			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_kill_usec")' />
 	</quest>
+<!--Root/r0m0/Устранитель-->
+	<quest
+		Name="q_kill_pmc"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_clearing_r1m1"
+		OnComplete='AddVehicleToTownIfNotCompleteQuest("MolokovozForSale", "q_rebuild"); AddItemsToPlayerRepository("kord01", 1); AddItemsToPlayerRepository("ammo_chest_machinegun", 1); AddItemsToPlayerRepository("item_chain_gold", 1); AddPlayerMoney(10000)'>
+		<quest
+			Name="q_kill_pmc_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_kill_pmc"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_kill_pmc")' />
+
+		<quest
+			Name="q_kill_pmc_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_kill_pmc"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_kill_pmc")' />
+
+		<quest
+			Name="q_kill_pmc_3"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_kill_pmc_1 q_kill_pmc_2"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_kill_pmc")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_kill_pmc")' />
+	</quest>
 <!--Root/r0m0/Нашевствие сектантов - Часть 1-->
 	<quest
 		Name="q_sectarian1"
@@ -2158,7 +2195,7 @@
 		CheckAll="0"
 		ConditionToGive="all complete"
 		PrecedingQuests="q_test_drive8"
-		OnComplete='AddItemToTown("electronics_use_ForSale", 1); AddItemsToPlayerRepository("electronics_use", 2); AddItemsToPlayerRepository("item_ex", 1); AddPlayerMoney(150000)'>
+		OnComplete='AddItemToTown("electronics_use_ForSale", 1); AddItemsToPlayerRepository("electronics_use", 2); AddItemsToPlayerRepository("item_ex", 1); AddItemsToPlayerRepository("item_converter", 1)'>
 		<quest
 			Name="q_private_clinic_1"
 			Automatic="1"
@@ -2185,7 +2222,7 @@
 		CheckAll="0"
 		ConditionToGive="all complete"
 		PrecedingQuests="q_private_clinic"
-		OnComplete='AddItemsToPlayerRepository("electronics_use", 4); AddItemsToPlayerRepository("item_chain_gold", 2); AddItemsToPlayerRepository("item_ananaga", 1); AddPlayerMoney(100000)'>
+		OnComplete='AddItemsToPlayerRepository("electronics_use", 4); AddItemsToPlayerRepository("item_chain_gold", 2); AddItemsToPlayerRepository("item_ananaga", 1); AddPlayerMoney(50000)'>
 		<quest
 			Name="q_crisis_1"
 			Automatic="1"

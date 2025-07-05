@@ -101,6 +101,7 @@
 			end
 
 			SetVar("q_kill_usec_kills", 0)
+			SetVar("q_kill_pmc_kills", 0)
 			SetVar("q_sectarian2_1_kills", 0)
 
 			SetVar("q_daily_kill_pmc_Kills", 0)
@@ -248,6 +249,7 @@
 			if Q_BELAZIST8_KILLPMC then SetVar("q_belazist8_killPMC", Q_BELAZIST8_KILLPMC) end
 
 			if Q_KILL_USEC_KILLS then SetVar("q_kill_usec_kills", Q_KILL_USEC_KILLS) end
+			if Q_KILL_PMC_KILLS then SetVar("q_kill_pmc_kills", Q_KILL_PMC_KILLS) end
 
 			if DAILY_UPDATED_GLOBAL then SetVar("DailyUpdated", DAILY_UPDATED_GLOBAL) end
 
@@ -3843,10 +3845,11 @@
 		<script>
 			local items = {"machinery_use", "book", "electronics_use", "shkatulka", 
 							"ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_chest_artillerygun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo",
-							"item_datchik", "item_kek", "item_military_tube", "item_pena", "item_thermometer", "item_tube", "item_converter",
-							"item_bp", "item_drill", "item_engine", "item_hdd", "item_lcd", "item_military_cable", "item_tetris", "item_controller", "item_rfid", "item_military_plate", "item_gyrotachometer", "item_iridiym",
+							"item_datchik", "item_kek", "item_military_tube", "item_pena", "item_thermometer", "item_tube",
+							"item_bp", "item_drill", "item_engine", "item_hdd", "item_lcd", "item_military_cable", "item_tetris", "item_controller", "item_rfid", "item_military_plate", "item_gyrotachometer", "item_iridiym", "item_converter",
 							"item_car_battery", "item_cyclon", "item_green_battery",
 							"item_dry", "item_prisadka", "item_propan", "item_termit",
+							"item_oftalmaskop",
 							"item_disk", "item_disk_exmachina", "item_flashdrive", "item_sas", "item_ssd",
 							"item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_ananaga", "item_kubok_kikiki",
 							"item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_vaze",
@@ -5926,6 +5929,7 @@
 			if Q_BELAZIST8_KILLPMC then Q_BELAZIST8_KILLPMC = GetVar("q_belazist8_killPMC").AsInt end
 
 			if Q_KILL_USEC_KILLS then Q_KILL_USEC_KILLS = GetVar("q_kill_usec_kills").AsInt end
+			if Q_KILL_PMC_KILLS then Q_KILL_PMC_KILLS = GetVar("q_kill_pmc_kills").AsInt end
 
 			if DAILY_UPDATED_GLOBAL then DAILY_UPDATED_GLOBAL = GetVar("DailyUpdated").AsString end
 

@@ -66,6 +66,8 @@ function QuestsKillPMC()
     if IsQuestTaken("q_belazist7_3") and not(IsQuestComplete("q_belazist7_3")) then Q_Belazist7("q_belazist7_killPMC", 40, "q_belazist7_3", "fm_progress_quest_pmc_kills") end
     if IsQuestTaken("q_belazist8_3") and not(IsQuestComplete("q_belazist8_3")) then Q_Belazist8("q_belazist8_killPMC", 50, "q_belazist8_3", "fm_progress_quest_pmc_kills") end
 
+    if IsQuestTaken("q_kill_pmc") and not(IsQuestComplete("q_kill_pmc_1")) then Q_Kills("q_kill_pmc_kills", 10, "q_kill_pmc_1", "fm_progress_quest_pmc_kills", "q_kill_pmc") end
+
     if GetVar("q_daily_kill_pmc_Status").AsString == "TAKEN" then Q_KillsForDaily("q_daily_kill_pmc_Progress", "q_daily_kill_pmc_Kills", "q_daily_kill_pmc_Status", "fm_progress_quest_pmc_kills", "q_daily_kill_pmc") end
 end
 

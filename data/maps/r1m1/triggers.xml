@@ -925,10 +925,10 @@
 
 			if GetVar("PlayerBelong").AsString == "SCAV" then
 				user = GenerateRandomScavName()
-				Msg = "Рейд №"..count.."|День: "..TextTime.."|"..user.."|Край"
+				Msg = MSG_RAID..count.."|"..MSG_DAY..TextTime.."|"..user.."|"..MSG_MAP_R1M1
 			else
 				user = GetProfileName()
-				Msg = "Рейд №"..count.."|День: "..TextTime.."|Оператор ЧВК "..user.."|Край"
+				Msg = MSG_RAID..count.."|"..MSG_DAY..TextTime.."|"..MSG_PMC..user.."|"..MSG_MAP_R1M1
 			end
 
 			AddFadingMsgByStrIdFormatted("fm_raid_info", Msg)

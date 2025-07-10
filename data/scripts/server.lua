@@ -30,7 +30,8 @@ EXECUTE_SCRIPT "data\\scripts\\queststates.lua"
 
 -- efa
 EXECUTE_SCRIPT "data\\scripts\\efa.lua"
-EXECUTE_SCRIPT "data\\scripts\\QuestsFunctionsGlobal.lua"
+EXECUTE_SCRIPT "data\\scripts\\efa_quests.lua"
+EXECUTE_SCRIPT "data\\scripts\\efa_localization.lua"
 
 -- global object repository
 g_ObjCont = GET_GLOBAL_OBJECT "g_ObjContainer"

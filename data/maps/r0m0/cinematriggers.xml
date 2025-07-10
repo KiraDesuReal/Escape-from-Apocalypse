@@ -46,6 +46,34 @@
 		<event timeout="2.2" eventid="GE_TIME_PERIOD" />
 		<script>
 			local b = SpawnMessageBox("90004")
+			if b == 1 then
+				TActivate("StartBackgroundCuts_Message2")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="StartBackgroundCuts_Message2" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local b2 = SpawnMessageBox("90014")
+			if b2 == 1 then
+				TActivate("BumModeActivate")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="BumModeActivate" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			SetVar("BumMode", 1)
+			g_Player:AddMoney(-75000)
+
+			for i = 2, 22 do
+				local item = GetEntityByName("StartItem"..i)
+				if item then item:Remove() end
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -56,6 +84,7 @@
 		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
 		<script>
 			TDeactivate("StartBackgroundCuts_Message")
+			TDeactivate("StartBackgroundCuts_Message2")
 			
 			CreateNewDummyObject("dweller_player", "bear", -1, -1, CVector(658.000, 338.000, 845.500), Quaternion(0.0000, 0.9455, 0.0000, 0.3256))
 			CreateNewDummyObject("dweller_brodyaga", "usec", -1, -1, CVector(660.000, 338.000, 845.500), Quaternion(0.0000, -0.9455, 0.0000, 0.3256))
@@ -236,16 +265,19 @@
 	<trigger Name="trCreatePlayerStartVehicle" active="0">
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			AddPlayerVehicle("Bug01ForStart")
+			if GetVar("BumMode").AsInt == 0 then
+				AddPlayerVehicle("Bug01ForStart")
+				AddItemsToPlayerRepository("machinery_use", 1)
+				AddItemsToPlayerRepository("ammo_chest_machinegun", 1)
+			else
+				AddPlayerVehicle("BugForSale")
+			end
 
 			local vehPlayer = GetPlayerVehicle()
 			if vehPlayer then
 				vehPlayer:SetGamePositionOnGround(CVector(893.077, 255.493, 987.899))
 				vehPlayer:SetRotation(Quaternion(-0.009, -0.005, -0.000, 1.000))
 			end
-
-			AddItemsToPlayerRepository("machinery_use", 1)
-			AddItemsToPlayerRepository("ammo_chest_machinegun", 1)
 			trigger:Deactivate()
 		</script>
 	</trigger>

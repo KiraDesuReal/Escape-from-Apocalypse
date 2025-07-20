@@ -4935,7 +4935,7 @@
 
 <!-- Таймер машины дикого -->
 	<trigger Name="trScavCar_timerStart" active="0">
-		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Timer_loc" />
 		<script>
 			local carma = GetScavCarma()
 			local min = 10
@@ -4949,6 +4949,8 @@
 			elseif -1.5 >= carma then min = 14 
 			elseif -1 >= carma then min = 12 
 			end
+
+			if GetVar("BumMode").AsInt == 1 then min = min * 2 end
 			
 			SetVar("ScavCar_time_hour", 0)
 			SetVar("ScavCar_time_minute", min)

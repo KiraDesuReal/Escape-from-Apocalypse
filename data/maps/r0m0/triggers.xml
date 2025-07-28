@@ -751,7 +751,7 @@
 			if GENERATOR_TIMER_MINUTE_GLOBAL then SetVar("Generator_time_work_minute", GENERATOR_TIMER_MINUTE_GLOBAL) end
 			if GENERATOR_TIMER_SECOND_GLOBAL then SetVar("Generator_time_work_second", GENERATOR_TIMER_SECOND_GLOBAL) end
 
-			if GetVar("Generator_on").AsInt == 1 then
+			if GetVar("Generator_on").AsInt == 1 and not(GetVar("Generator_lvl").AsInt == 3) then
 				if GENERATOR_ON_GLOBAL then 
 					SetVar("Generator_on", GENERATOR_ON_GLOBAL) 
 					if GetVar("Generator_on").AsInt == 0 then
@@ -795,6 +795,10 @@
 					SetVar("Generator_time_work_msg", "0")
 					TActivate("Generator_UpdateTimer3D")
 				end
+			end
+
+			if GetVar("Generator_lvl").AsInt == 3 then
+				if GetVar("Generator_on").AsInt ~= 1 then SetVar("Generator_on", 1) end
 			end
 
 		--туннель
@@ -919,7 +923,10 @@
 					pl:setImmortalMode(1)
 				end
 				local car = GetEntityByName("ScavCarForPlayer")
-				if car then car:SetBelong(1093) end
+				if car then 
+					car:SetBelong(1093) 
+					car:setGodMode(1)
+				end
 				if GetVar("ScavCar_timer").AsInt == 0 and getObj("trChangeCarMessage"):IsActivated() == 0 then TActivate("trChangeCarMessage") end
 			end
 
@@ -4552,6 +4559,8 @@
 				car:SetNewPart("CABIN", cab[random(getn(cab))])
 				car:SetNewPart("BASKET", cargo[random(getn(cargo))])
 				car:SetRandomSkin()
+				car:setGodMode(1)
+				car:setImmortalMode(1)
 				GiveGunsForVehicle(car)
 
 				local smallgun = car:GetPartByName("CABIN_SMALL_GUN")
@@ -4570,6 +4579,9 @@
 					end
 				end
 			end
+
+			SetTolerance(1093, 1092, RS_ALLY)
+			SetTolerance(1093, 1091, RS_ALLY)
 
 			TActivate("trScavCar_timerStart")
 			TDeactivate("trChangeCarMessage")
@@ -4736,6 +4748,7 @@
 
 			TActivate("trShowCarmaScav")
 			TActivate("ClosedModules")
+			TActivate("ScavCarHealIfPlayerScav")
 
 			SetCameraBehindPlayerVehicle()
 
@@ -4768,6 +4781,7 @@
 			end
 				
 			GetPlayerVehicle():setGodMode(0)
+			GetPlayerVehicle():setImmortalMode(1)
 			GetPlayerVehicle():SetCustomControlEnabled( false )
 			RestoreWeaponGroups()
 
@@ -4830,16 +4844,49 @@
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ScavCarSpawn_loc" />
 		<script>
 			local veh = getObj("ScavCarForPlayer")
+			if veh then veh:setGodMode(0) end
+			TActivate("ScavCarHeal1")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ScavCarHealIfPlayerScav" active="0">
+		<event	timeout="0.1"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local veh = getObj("ScavCarForPlayer")
+			if veh then veh:setGodMode(0) end
+			TActivate("ScavCarHeal1")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ScavCarHeal1" active="0">
+		<event	timeout="0.1"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local veh = getObj("ScavCarForPlayer")
 			local cabin = veh:GetCabin()
 			local basket = veh:GetBasket()
 			local skin = veh:GetSkin()
+			local hp = math.floor(veh:GetHealth() + 0.5)
 			if veh then
-				veh:AddModifier("hp", "+ 10000")
 				veh:AddModifier("fuel", "+ 10000")
-				if not(cabin == nil) then veh:SetNewPart("CABIN", cabin:GetProperty("Prototype").AsString) end
-				if not(basket == nil) then basket:SetProperty("durability", basket:GetPropertyById("20").AsString) end
-				veh:SetSkin(skin)
+				if hp ~= veh:GetMaxHealth() then
+					veh:AddModifier("hp", "+ 10000")
+					if not(cabin == nil) then veh:SetNewPart("CABIN", cabin:GetProperty("Prototype").AsString) end
+					if not(basket == nil) then basket:SetProperty("durability", basket:GetPropertyById("20").AsString) end
+					veh:SetSkin(skin)
+				end
 			end
+			TActivate("ScavCarHealSetGodMode")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ScavCarHealSetGodMode" active="0">
+		<event	timeout="0.1"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local veh = getObj("ScavCarForPlayer")
+			if veh then veh:setGodMode(1) end
 			trigger:Deactivate()
 		</script>
 	</trigger>

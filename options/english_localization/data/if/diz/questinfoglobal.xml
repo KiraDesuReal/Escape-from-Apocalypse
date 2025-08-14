@@ -1,0 +1,2848 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<QuestInfoResource>
+	<QuestInfo
+		questName="Dynamic_Convoy_0"
+		briefDiz="Accompany the caravan up to %2n"
+		fullDiz="The town %1n asks you to accompany the caravan up to %2n and offered to pay %3d."
+		isMainQuest="0" />
+
+	<QuestInfo
+		questName="Dynamic_Convoy_1"
+		briefDiz="Defend the transport"
+		fullDiz="An inhabitant of %1n asked me to defend the transport on its way to %2n and offered to pay %3d."
+		isMainQuest="0" />
+
+	<QuestInfo
+		questName="Dynamic_Convoy_2"
+		briefDiz="Insure the transport safety"
+		fullDiz="%1n demands me to accompany the transport carrying an important cargo to %2n. If it arrives safely, I will get %3d."
+		isMainQuest="0" />
+
+	<QuestInfo
+		questName="Dynamic_Convoy_3"
+		briefDiz="Escort transport to %2n"
+		fullDiz="The transport from %1n goes to %2n. Some bandits often ambush traders coming that way, so I agreed to protect it for a mere %3d."
+		isMainQuest="0" />
+
+	<QuestInfo
+		questName="Dynamic_Destroy_0"
+		briefDiz="Destroy enemy"
+		fullDiz="The town %1n asks you to destroy the enemy for a reward of %3d coins."
+		isMainQuest="0" />
+
+	<QuestInfo
+		questName="Dynamic_Destroy_1"
+		briefDiz="Neutralize the treat"
+		fullDiz="The citizens of %1n are often being attacked by the cunning brigand who always escapes punishment. I agreed to get rid of him for %3d."
+		isMainQuest="0" />
+
+	<QuestInfo
+		questName="Dynamic_Destroy_2"
+		briefDiz="Track down the aggressor"
+		fullDiz="I will get %3d, when I get rid of an outlaw that threatens %1n."
+		isMainQuest="0" />
+
+	<QuestInfo
+		questName="Dynamic_Hunt_0"
+		briefDiz="The Hunt begins."
+		fullDiz="The town %1n will pay %3d coins for each enemy killed."
+		isMainQuest="0" />
+
+	<QuestInfo
+		questName="Dynamic_Hunt_1"
+		briefDiz="Teach bandits a lesson"
+		fullDiz="The bandits have lost all shame! We must teach them a good lesson. The people of %1n will pay %3d for every killed enemy."
+		isMainQuest="0" />
+
+	<QuestInfo
+		questName="Dynamic_Hunt_2"
+		briefDiz="Clear the neighborhood"
+		fullDiz="The authorities of %1n began to fight for the safety of the trade routes. I will be paid %3d for every hostile vehicle slain."
+		isMainQuest="0" />
+
+	<QuestInfo
+		questName="Dynamic_Peace_0"
+		briefDiz="Make peace with %2b."
+		fullDiz="For a modest percentage of my money, the faction %2b is willing to make peace with me."
+		isMainQuest="0" />
+
+	<QuestInfo
+		questName="Dynamic_Reach_0"
+		briefDiz="Deliver package to %2n"
+		fullDiz="The town %1n asked me to deliver package to %2n. Upon arrival, I will receive %3d."
+		isMainQuest="0" />
+
+	<QuestInfo
+		questName="Dynamic_Reach_1"
+		briefDiz="Deliver the packet to %2n"
+		fullDiz="I’ll get %3d, when I deliver the package to %2n. Somebody is waiting for it, but I am not going to hurry for such a modest reward."
+		isMainQuest="0" />
+
+	<QuestInfo
+		questName="Dynamic_Reach_2"
+		briefDiz="Reach %2n"
+		fullDiz="Some crank from %1n is will to pay me %3d, if I go and say hello to his friend living in %2n."
+		isMainQuest="0" />
+
+	<QuestInfo
+		questName="q_base_scavs"
+		briefDiz="This is our territory"
+		fullDiz="Remember how I once mentioned the military base that the Scavs built on the Krai location? Here comes an order to identify the exact location of this base. You can't trust this task to just anyone. And here - you. In short, here's a beacon, easy to use. Arrive at the marking site, press the button, install it, leave, that's it - the signal is transmitted. Just be careful not to lose it, you'll have to buy the rest for money. Is that clear? Then get to work, soldier!|@FF0000AA|@FF1D1D1DReward:|@FF404040- Machine gun: @FF1D1D1DPKT on sale - x1|@FF404040- Machine gun: @FF1D1D1DKord on sale - x1|@FF404040- Money: @FF1D1D1D35.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_base_scavs_1"
+		briefDiz="Mark the scavs base with the MS2000 marker"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_base_scavs_2"
+		briefDiz="Survive and escape from the location"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_base_scavs_3"
+		briefDiz="Report on completed work"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist1"
+		briefDiz="Belazist - Part 1"
+		fullDiz="The first order will be as follows: First, we just need to check the functionality of this machine, since we haven't received any upgrades yet, and since that's the case, your task is simply to test the Belaz in full stock, you can install the weapons to your taste.|@FF0000AA|@FF1D1D1DReward:|- Body: @FF1D1D1DTiger (Ural, Level V) on sale|- Cabin: @FF1D1D1DBolivar (Belaz, Level II) on sale|- Body: @FF1D1D1DConstructor (Belaz, Level II) on sale|- Unknown reward|- Money: @FF1D1D1D65.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist1_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist1_2"
+		briefDiz="Kill 10 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist1_3"
+		briefDiz="Kill 5 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist1_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist2"
+		briefDiz="Belazist - Part 2"
+		fullDiz="We've received the first improvements, so I'm giving you the next order right away. Here's the instruction, make such an assembly so that you can install two Kord machine guns on the cabin and one KPVT machine gun on the body, and then test it in battle.|@FF0000AA|Cabin: @FF1D1D1DBolivar (Level II)|Body: @FF1D1D1DConstructor (Level II)|Weapon: @FF1D1D1DKord - x2, KPVT - x1|@FF0000AA|@FF1D1D1DReward:|- Cabin: @FF1D1D1DLord (Ural, Level III) on sale|- Cabin: @FF1D1D1DTerminator (Belaz, Level IV) on sale|- Body: @FF1D1D1DCylinder (Belaz, Level V) on sale|- Cannon: @FF1D1D1DCyclops on sale - x1|- Gadget: @FF1D1D1DTurbocharger - x1|- Machine gun: @FF1D1D1DOctopus - x1|- Item: @FF1D1D1DAmmo box for Machine gun - x1|- Item: @FF1D1D1DAmmo box for Cannon - x1|- Money: @FF1D1D1D60.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist2_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist2_2"
+		briefDiz="Kill 15 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist2_3"
+		briefDiz="Kill 15 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist2_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist3"
+		briefDiz="Belazist - Part 3"
+		fullDiz="We need to assemble a Belaz and install two Rainmetal cannons on it, we have the necessary spare parts for this in stock, so there will be no problems with the assembly.|@FF0000AA|Cabin: @FF1D1D1DTerminator (Level IV)|Body: @FF1D1D1DCylinder (Level V)|Weapon: @FF1D1D1DRainmetal - x2|@FF0000AA|@FF1D1D1DReward:|- Body: @FF1D1D1DCruiser (Ural, Level III) on sale|- Cabin: @FF1D1D1DRock (Belaz, Level III) on sale|- Gadget: @FF1D1D1DOptical sight with anti-reflective coating on sale - x1|- Gadget: @FF1D1D1DTurbocharger - x1|- Machine gun: @FF1D1D1DOctopus - x1|- Machine gun: @FF1D1D1DRainmetal - x1|- Item: @FF1D1D1DAmmo box for Machine gun - x1|- Item: @FF1D1D1DAmmo box for Cannon - x1|- Money: @FF1D1D1D70.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist3_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist3_2"
+		briefDiz="Kill 15 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist3_3"
+		briefDiz="Kill 15 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist3_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist4"
+		briefDiz="Belazist - Part 4"
+		fullDiz="Look at the instructions. Assemble this Belaz, install an Octopus machine gun on the cabin, and Rainmetal on the body. By the way, you can choose any body, the main thing is to install Rainmetal on it.|@FF0000AA|Cabin: @FF1D1D1DRock (Level III)|Body: @FF1D1D1DAny|Weapon: @FF1D1D1DOctopus - x1, Rainmetal - x1|@FF0000AA|@FF1D1D1DReward:|- Cabin: @FF1D1D1DKnight (Ural, Level V) on sale|- Body: @FF1D1D1DThunder (Belaz, Level IV) on sale|- Gadget: @FF1D1D1DTurbocharger on sale - x1|- Machine gun: @FF1D1D1DOctopus on sale - x1|- Rocket launcher: @FF1D1D1DHunter on sale - x1|- Item: @FF1D1D1DAmmo box for Machine gun on sale - x1|- Item: @FF1D1D1DAmmunition box for Rocket launcher on sale - x1|- Money: @FF1D1D1D70.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist4_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist4_2"
+		briefDiz="Kill 10 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist4_3"
+		briefDiz="Kill 20 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist4_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist5"
+		briefDiz="Belazist - Part 5"
+		fullDiz="Look, Belaz needs to be fitted with giant guns, you've encountered them before, only here we need as many as 3 of them. Unusual build, it will be interesting to see its firepower in battle. I think you can help me with this.|@FF0000AA|Cabin: @FF1D1D1DRock (Level III)|Body: @FF1D1D1DThunder (Level IV)|Weapon: @FF1D1D1DAny|@FF0000AA|@FF1D1D1DReward:|- Body: @FF1D1D1DColossus (Belaz, Level III) on sale|- Gadget: @FF1D1D1DBig fuel canister on sale - x1|- Gadget: @FF1D1D1DTurbocharger - x1|- Cannon: @FF1D1D1DRainmetal on sale - x1|- Shotgun: @FF1D1D1DFlag - x1|- Item: @FF1D1D1DAmmo box for Cannon on sale - x1|- Item: @FF1D1D1DAmmo box for Shotgun - x1|- Money: @FF1D1D1D70.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist5_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist5_2"
+		briefDiz="Kill 5 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist5_3"
+		briefDiz="Kill 15 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist5_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist6"
+		briefDiz="Belazist - Part 6"
+		fullDiz="I see you're interested, here, look. Assemble the Belaz so that three Rainmetal cannons can be mounted on it. As for me, the assembly is excellent, so you can handle it. I'll wait for you with the results.|@FF0000AA|@FF1D1D1DReward:|- Cabin: @FF1D1D1DShield (Belaz, Level V) on sale|- Gadget: @FF1D1D1DBlowback system with floating coupling on sale - x1|- Gadget: @FF1D1D1D''Sagitta'' system - x1|- Cannon: @FF1D1D1DRainmetal - x1|- Item: @FF1D1D1DAmmo box for Cannon - x1|- Money: @FF1D1D1D75.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist6_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist6_2"
+		briefDiz="Kill 15 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist6_3"
+		briefDiz="Kill 20 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist6_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist7"
+		briefDiz="Belazist - Part 7"
+		fullDiz="The order calls for a Belaz to be assembled and equipped with one Cyclops, one Flag shotgun, and two Rainmetal cannons. As far as I understand, the whole point of this build is to deal massive damage in one hit. It'll be interesting to see if that's true. I'm waiting for your results.|@FF0000AA|Cabin: @FF1D1D1DShield (Level V)|Body: @FF1D1D1DColossus (Level III)|Weapon: @FF1D1D1DCyclops - x1, Flag - x1, Rainmetal - x2|@FF0000AA|@FF1D1D1DReward:|- Transport: @FF1D1D1DPeacekeeper on sale|- Gadget: @FF1D1D1DRolled armour plates with additional cementing on sale - x1|- Gadget: @FF1D1D1D''Sagitta'' system - x1|- Shotgun: @FF1D1D1DFlag on sale - x1|- Item: @FF1D1D1DAmmo box for Shotgun on sale - x1|- Money: @FF1D1D1D90.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist7_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist7_2"
+		briefDiz="Kill 20 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist7_3"
+		briefDiz="Kill 40 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist7_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist8"
+		briefDiz="Belazist - Part 8"
+		fullDiz="The customer has a rather unusual taste in technology, he asks to assemble a Belaz and install three Bumblebee on it. I will be grateful if you help me, here, take a look at the instructions.|@FF0000AA|Cabin: @FF1D1D1DShield (Level V)|Body: @FF1D1D1DColossus (Level III)|Weapon: @FF1D1D1DBumblebee - x3|@FF0000AA|@FF1D1D1DReward:|- Cabin: @FF1D1D1DMeteor (Peacekeeper, Level III) on sale @FF780a0a[If not received earlier]|- Body: @FF1D1D1DMaya (Peacekeeper, Level III) on sale @FF780a0a[If not received earlier]|- Gadget: @FF1D1D1D''Sagitta'' system - x1|- Gadget: @FF1D1D1D''Albatross'' system - x1|- Item: @FF1D1D1DAmmo box for Cannon - x1|- Item: @FF1D1D1DAmmo box for Shotgun - x1|- Item: @FF1D1D1DAmmunition box for Artillery on sale - x1|- Unknown reward - @FF1D1D1Dx3|- Money: @FF1D1D1D200.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist8_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist8_2"
+		briefDiz="Kill 50 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist8_3"
+		briefDiz="Kill 50 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_belazist8_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok1"
+		briefDiz="Bitcoin - Part 1"
+		fullDiz="I need some parts, bring me some cables, T-Shaped plug and power supplies. Don't worry about the reward, everything will be in full.|@FF0000AA|@FF1D1D1DReward:|- Machine gun: @FF1D1D1DKPVT - x1|- Item: @FF1D1D1DHigh-tech electronics - x2|- Money: @FF1D1D1D35.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok1_1"
+		briefDiz="Transfer 2 Power cables"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok1_2"
+		briefDiz="Transfer 2 T-Shaped plugs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok1_3"
+		briefDiz="Transfer 2 Power units"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok2"
+		briefDiz="Bitcoin - Part 2"
+		fullDiz="Now I need computer components: CPUs, coolers and boards. Bring them to me, and then almost everything will be ready.|@FF0000AA|@FF1D1D1DReward:|- Gadget: @FF1D1D1DAir cooling system for bullet weapons on sale - x1|- Money: @FF1D1D1D40.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok2_1"
+		briefDiz="Transfer 3 CPUs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok2_2"
+		briefDiz="Transfer 3 CPU Fans"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok2_3"
+		briefDiz="Transfer 3 Microboards"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok3"
+		briefDiz="Bitcoin - Part 3"
+		fullDiz="Since I was already starting to work on the Bitcoin farm, I ordered four batches of video cards in advance, but unfortunately only two arrived. As you can see, I still need the missing video cards. Tracking of the goods was interrupted in the city of South, I think it is still there. If you manage to find it, you will help me a lot.|@FF0000AA|@FF1D1D1DReward:|@FF404040- Unknown reward"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok3_1"
+		briefDiz="Find cargo with video cards"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok3_2"
+		briefDiz="Transfer the cargo with video cards to the Mechanic"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_bitok3_22"
+		briefDiz="Get out and survive from the location"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_clearing_r1m1"
+		briefDiz="Clearing the area"
+		fullDiz="Your task: to stir up trouble in these points of the location and clear them out. Considering your past successes, you can handle this too. And from me, as usual, a reward and something else, but what exactly, you will find out when you complete the task. Well, how about it? Ready?|@FF0000AA|@FF1D1D1DReward:|@FF404040- Body: @FF1D1D1DGrob (Van, Level III) on sale|@FF404040- Machine gun: @FF1D1D1DKord - x1|@FF404040- Item: @FF1D1D1DAmmo box for Machine gun on sale - x1|@FF404040- Quest item: @FF1D1D1DKrai map|@FF404040- Money: @FF1D1D1D40.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_clearing_r1m1_1"
+		briefDiz="Kill 3 Scavs on the way to South"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_clearing_r1m1_2"
+		briefDiz="Kill 5 Scavs in the abandoned hospital area"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_clearing_r1m1_3"
+		briefDiz="Kill 5 Scavs at the military base"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_clearing_r1m1_4"
+		briefDiz="Kill 5 Scavs near the village of Zaimka"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_clearing_r1m1_5"
+		briefDiz="Kill 5 Scavs near the villages of Gugulino and Troitsk"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_clearing_r1m1_6"
+		briefDiz="Report to the Prapor and get a reward"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_explore_r1m1"
+		briefDiz="Exploration of the area"
+		fullDiz="Okay fighter, here's your next task. Drive through these points on the Krai location and scout out the situation around them. I'm not asking you to clear them out, just scout them out. And then we'll see what to do. Well, can you handle it?|@FF0000AA|@FF1D1D1DReward:|@FF404040- Cabin: @FF1D1D1DMule (Van, Level II) on sale|@FF404040- Machine gun: @FF1D1D1DPKT - x1|@FF404040- Item: @FF1D1D1DAmmo box for Machine gun - x1|@FF404040- Money: @FF1D1D1D35.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_explore_r1m1_1"
+		briefDiz="Explore the area around the village of Glukhoe"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_explore_r1m1_2"
+		briefDiz="Explore the area around the village of South"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_explore_r1m1_3"
+		briefDiz="Explore the area at the Scav base"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_explore_r1m1_4"
+		briefDiz="Explore the area around the village of Zaimka"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_explore_r1m1_5"
+		briefDiz="Explore the area around the village of Troyitsk"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_explore_r1m1_6"
+		briefDiz="Explore the area on the way to the town of South"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_explore_r1m1_7"
+		briefDiz="Report to the Prapor"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_fuel1"
+		briefDiz="Fuel - Part 1"
+		fullDiz="First we'll need a few canisters of fuel, I think 3 will be enough for now. Get them, and then I'll tell you what to do next. Deal?|@FF0000AA|@FF1D1D1DReward:|@FF404040- Cabin: @FF1D1D1DScorpio (Van, Level III) on sale|@FF404040- Machine gun: @FF1D1D1DKord - x1|@FF404040- Item: @FF1D1D1DAmmo box for Machine gun - x1|@FF404040- Item: @FF1D1D1DImproved machinery - x2|@FF404040- Money: @FF1D1D1D40.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_fuel1_1"
+		briefDiz="Transfer 3 Canisters of fuel"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_fuel2"
+		briefDiz="Fuel - Part 2"
+		fullDiz="Listen then. I'm going to send my guys on an expedition to the Krai location in a few days, and I wouldn't want them to get stuck in the middle of the road, surrounded by Scavs due to a lack of fuel. So I ask the following from you: check the gas stations for functionality and bring more canisters of fuel. That way I'll be calmer, knowing that the guys will be able to get fuel if necessary. Is the task clear? Then let's get to work!|@FF0000AA|@FF1D1D1DReward:|@FF404040- Machine gun: @FF1D1D1DKord on sale - x1|@FF404040- Item: @FF1D1D1DStrong metal - x2|@FF404040- Item: @FF1D1D1DImproved machinery - x2|@FF404040- Money: @FF1D1D1D40.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_fuel2_1"
+		briefDiz="Check the functionality of gas station №1"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_fuel2_2"
+		briefDiz="Check the functionality of gas station №2"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_fuel2_3"
+		briefDiz="Check the functionality of gas station №3"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_fuel2_6"
+		briefDiz="Fill the canister with fuel at any gas station"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_fuel2_4"
+		briefDiz="Transfer 3 Canisters of fuel"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_fuel2_5"
+		briefDiz="Report on completed work"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_kill_scavs"
+		briefDiz="Fire to kill"
+		fullDiz="Here's a task for you. The location is Krai, my guys have their own business there, but these business are hampered by the local scum, who for some reason imagined themselves to be the masters of this territory, even built their base somewhere in the gorge. In general, there are enough bandits there, and we should deal with them. I think for someone like you, this will not cause problems. Get to work!|@FF0000AA|@FF1D1D1DReward:|@FF404040- Machine gun: @FF1D1D1DPKT on sale - x1|@FF404040- Random reward|@FF404040- Money: @FF1D1D1D20.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_kill_scavs_1"
+		briefDiz="Kill 15 Scavs on the Krai location"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_kill_scavs_2"
+		briefDiz="Get a reward"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist1"
+		briefDiz="Naturalist - Part 1"
+		fullDiz="Need to assemble Ural, with Morion cabin and Cold body, weapon Rainmetal and KPVT. Here, as always, is the instruction, you can read it.|@FF0000AA|Cabin: @FF1D1D1DMorion (Level IV)|Body: @FF1D1D1DCold (Level I)|Weapon: @FF1D1D1DRainmetal - x1, KPVT - x1|@FF0000AA|@FF1D1D1DReward:|- Body: @FF1D1D1DTiger (Ural, Level V) on sale|- Cabin: @FF1D1D1DBolivar (Belaz, Level II) on sale|- Body: @FF1D1D1DConstructor (Belaz, Level II) on sale|- Unknown reward|- Money: @FF1D1D1D65.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist1_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist1_2"
+		briefDiz="Kill 20 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist1_3"
+		briefDiz="Kill 10 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist1_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist2"
+		briefDiz="Naturalist - Part 2"
+		fullDiz="Listen, I need a Ural assembly with the ability to install two Vector machine guns, a cabin and a body of your choice, the main thing is that there are two machine guns. I know that Vectors are pretty mediocre in terms of killing power, but this is the requirement for the order. Can you handle it?|@FF0000AA|@FF1D1D1DReward:|- Cabin: @FF1D1D1DLord (Ural, Level III) on sale|- Body: @FF1D1D1DCylinder (Belaz, Level V) on sale|- Cannon: @FF1D1D1DCyclops on sale - x1|- Machine gun: @FF1D1D1DOctopus - x1|- Item: @FF1D1D1DAmmo box for Machine gun - x1|- Item: @FF1D1D1DAmmo box for Cannon - x1|- Money: @FF1D1D1D60.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist2_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist2_2"
+		briefDiz="Kill 15 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist2_3"
+		briefDiz="Kill 5 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist2_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist3"
+		briefDiz="Naturalist - Part 3"
+		fullDiz="Anyway, listen, we have to test the Ural build with Rainmetal and two Rapiers installed. Here, as always, is the full technical task, read it and get to work.|@FF0000AA|Cabin: @FF1D1D1DLord (Level III)|Body: @FF1D1D1DShell (Level IV)|Weapon: @FF1D1D1DRainmetal - x1, Rapier - x2|@FF0000AA|@FF1D1D1DReward:|- Body: @FF1D1D1DCruiser (Ural, Level III) on sale|- Cabin: @FF1D1D1DTerminator (Belaz, Level IV) on sale|- Gadget: @FF1D1D1DOptical sight with anti-reflective coating on sale - x1|- Machine gun: @FF1D1D1DOctopus - x1|- Item: @FF1D1D1DAmmo box for Machine gun - x1|- Money: @FF1D1D1D70.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist3_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist3_2"
+		briefDiz="Kill 5 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist3_3"
+		briefDiz="Kill 15 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist3_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist4"
+		briefDiz="Naturalist - Part 4"
+		fullDiz="Help me test the Ural build, with Cyclops and one Rainmetal installed, the rest of the weapons are your choice, the cabin too. Apparently the customer was interested in how the duet of these two guns would look. I think you can handle it.|@FF0000AA|Cabin: @FF1D1D1DAny|Body: @FF1D1D1DCruiser (Level III)|Weapon: @FF1D1D1DCyclops - x1, Rainmetal - x1|@FF0000AA|@FF1D1D1DReward:|- Cabin: @FF1D1D1DKnight (Ural, Level V) on sale|- Cabin: @FF1D1D1DRock (Belaz, Level III) on sale|- Gadget: @FF1D1D1DTurbocharger on sale - x1|- Machine gun: @FF1D1D1DOctopus on sale - x1|- Rocket launcher: @FF1D1D1DHunter on sale - x1|- Item: @FF1D1D1DAmmo box for Machine gun on sale - x1|- Item: @FF1D1D1DAmmunition box for Rocket launcher on sale - x1|- Money: @FF1D1D1D70.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist4_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist4_2"
+		briefDiz="Kill 10 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist4_3"
+		briefDiz="Kill 15 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist4_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist5"
+		briefDiz="Naturalist - Part 5"
+		fullDiz="We need to assemble a Ural truck with the ability to install an Octopus machine gun and three Rainmetal guns on it. Look at the instructions, everything is described here.|@FF0000AA|Cabin: @FF1D1D1DKnight (Level V)|Body: @FF1D1D1DCruiser (Level III)|Weapon: @FF1D1D1DRainmetal - x3, Octopus - x1|@FF0000AA|@FF1D1D1DReward:|- Transport: @FF1D1D1DPeacekeeper on sale|- Cabin: @FF1D1D1DScull (Peacekeeper, Level II) on sale|- Body: @FF1D1D1DCenturion (Peacekeeper, Level II) on sale|- Cabin: @FF1D1D1DShield (Belaz, Level V) on sale|- Body: @FF1D1D1DColossus (Belaz, Level III) on sale|- Body: @FF1D1D1DThunder (Belaz, Level IV) on sale|- Gadget: @FF1D1D1DBig fuel canister on sale - x1|- Cannon: @FF1D1D1DRainmetal on sale - x1|- Shotgun: @FF1D1D1DFlag - x1|- Item: @FF1D1D1DAmmo box for Cannon on sale - x1|- Item: @FF1D1D1DAmmo box for Shotgun - x1|- Money: @FF1D1D1D70.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist5_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist5_2"
+		briefDiz="Test the car in 3 raids"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist5_3"
+		briefDiz="Kill 15 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist5_4"
+		briefDiz="Kill 30 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_naturalist5_5"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_rebuild"
+		briefDiz="Repair"
+		fullDiz="So, to finish the job, I need just one thing: one car battery and 2 spark plugs. Bring them to me, and then I can finish the repair job.|@FF0000AA|@FF1D1D1DReward:|@FF404040- Transport: @FF1D1D1DLorry on sale @FF780a0a[If not received earlier]|@FF404040- Cabin: @FF1D1D1DWhirlpool (Lorry, Level II) on sale|@FF404040- Machine gun: @FF1D1D1DKord - x1|@FF404040- Item: @FF1D1D1DAmmo box for Machine gun - x1|@FF404040- Money: @FF1D1D1D50.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_rebuild_1"
+		briefDiz="Transfer Car battery"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_rebuild_2"
+		briefDiz="Transfer 2 Spark plugs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_rebuild_3"
+		briefDiz="Talk to the Mechanic"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_search_data"
+		briefDiz="Search Mission"
+		fullDiz="Anyway, listen. One of my fighters hasn't been in touch for a long time, enough time has passed, and he still hasn't shown up. Most likely, he died. However, he was carrying me some important information that I still need. I sent him to an abandoned hospital, the one that is on the Krai location. Find out what happened to him and, if possible, get the information. I will not remain in debt.|@FF0000AA|@FF1D1D1DReward:|@FF404040- Machine gun: @FF1D1D1DKord - x1|@FF404040- Item: @FF1D1D1DAmmo box for Machine gun - x1|@FF404040- Money: @FF1D1D1D25.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_search_data_1"
+		briefDiz="Find the messenger"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_search_data_2"
+		briefDiz="Take documents"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_search_data_3"
+		briefDiz="Survive and escape from the location"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_search_data_4"
+		briefDiz="Transfer the documents to Prapor"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive1"
+		briefDiz="Test drive - Part 1"
+		fullDiz="So, the customer needs a budget vehicle assembly, designed for cargo transportation, with average firepower and a larger body capacity. Simply put, the change should be as follows:|@FF0000AA|Car: @FF1D1D1DVan|Cabin: @FF1D1D1DBug (Level I)|Body: @FF1D1D1DGrob (Level III)|Weapon: @FF1D1D1DPKT - x1|@FF0000AA|@FF1D1D1DReward:|@FF404040- Unknown reward|- Random reward|- Money: @FF1D1D1D50.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive10"
+		briefDiz="Test drive - Part 10"
+		fullDiz="Hi, I have a job for you. I need a Peacekeeper that can mount 3 big guns, meaning with 3 big slots. Everything else is up to you.|@FF0000AA|@FF1D1D1DReward:|- Cabin: @FF1D1D1DMeteor (Peacekeeper, Level III) on sale @FF780a0a[If not received earlier]|- Body: @FF1D1D1DMaya (Peacekeeper, Level III) on sale @FF780a0a[If not received earlier]|- Gadget: @FF1D1D1DBlowback system with floating coupling on sale - x1|- Machine gun: @FF1D1D1DOctopus on sale - x1|- Cannon: @FF1D1D1DRainmetal on sale - x1|- Shotgun: @FF1D1D1DFlag on sale - x1|- Item: @FF1D1D1DAmmo box for Machine gun - x1|- Item: @FF1D1D1DAmmo box for Cannon - x1|- Item: @FF1D1D1DAmmo box for Shotgun - x1|- Money: @FF1D1D1D100.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive10_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive10_2"
+		briefDiz="Kill 10 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive10_3"
+		briefDiz="Kill 15 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive10_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive11"
+		briefDiz="Test drive - Part 11"
+		fullDiz="You need to assemble a Peacekeeper and install three Rainmetals and one Octopus on it. You know, the guns are pretty powerful, the assembly will be good. Here are the instructions, read them.|@FF0000AA|Cabin: @FF1D1D1DMeteor (Level III)|Body: @FF1D1D1DMaya (Level III)|Weapon: @FF1D1D1DRainmetal - x3, Octopus - x1|@FF0000AA|@FF1D1D1DReward:|- Transport: @FF1D1D1DCruiser on sale|- Body: @FF1D1D1DExcalibur (Peacekeeper, Level V) on sale|- Gadget: @FF1D1D1DElectromechanical complex ''Spheno'' - x1|- Laser launcher: @FF1D1D1DOdin - x1|- Item: @FF1D1D1DLiquid cylinder for Laser launcher - x1|- Item: @FF1D1D1DHigh-tech electronics - x4|- Money: @FF1D1D1D110.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive11_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive11_2"
+		briefDiz="Kill 15 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive11_3"
+		briefDiz="Kill 15 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive11_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive12"
+		briefDiz="Test drive - Part 12"
+		fullDiz="Hi, I have a job. The build is a bit similar to the previous one, but with different weapons. You need to install three Flag shotguns and one Cyclops cannon on the Peacekeeper. The entire power of the weapon is contained in one shot, so misses are not allowed. But you, a mercenary, are already an experienced fighter, so I have no doubt in you. Let's get to work!|@FF0000AA|Cabin: @FF1D1D1DBulat (Level IV)|Body: @FF1D1D1DExcalibur (Level V)|Weapon: @FF1D1D1DFlag - x3, Cyclops - x1|@FF0000AA|@FF1D1D1DReward:|- Cabin: @FF1D1D1DPhantom (Peacekeeper, Level V) on sale|- Gadget: @FF1D1D1D''FireEye'' complex - x1|- Plasma gun: @FF1D1D1DElephant - x1|- Shotgun: @FF1D1D1DFlag on sale - x1|- Item: @FF1D1D1DLiquid cylinder for Plasma gun - x1|- Item: @FF1D1D1DAmmo box for Shotgun - x1|- Money: @FF1D1D1D120.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive12_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive12_2"
+		briefDiz="Kill 15 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive12_3"
+		briefDiz="Kill 20 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive12_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive13"
+		briefDiz="Test drive - Part 13"
+		fullDiz="Anyway, listen. Assemble the Peacekeeper in its top configuration, and install two Octopus machine guns and two Rainmetal cannons as weapons. There is nothing complicated, so you can handle it. I will wait for your results.|@FF0000AA|@FF1D1D1DReward:|- Gadget: @FF1D1D1DElectromechanical complex ''Spheno'' on sale - x1|- Gadget: @FF1D1D1D''FireEye'' complex on sale - x1|- Gadget: @FF1D1D1D''Sagitta'' system on sale - x1|- Item: @FF1D1D1DHigh-tech electronics - x5|- Money: @FF1D1D1D100.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive13_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive13_2"
+		briefDiz="Kill 100 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive13_3"
+		briefDiz="Kill 100 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive13_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive14"
+		briefDiz="Test drive - Part 14"
+		fullDiz="The order requires assembling a Cruiser truck in the basic configuration, and installing Octopus and KPVT machine guns as weapons. The assembly is not the ultimate, but you will have no trouble testing it.|@FF0000AA|@FF1D1D1DReward:|- Cabin: @FF1D1D1DCruiser's cabin (Level II) on sale|- Body: @FF1D1D1DCruiser's cargo 8x12 (Level II) on sale|- Gadget: @FF1D1D1DElectronic injector system - x1|- Gadget: @FF1D1D1D''Doom-4'' system - x1|- Laser launcher: @FF1D1D1DOdin - x1|- Item: @FF1D1D1DLiquid cylinder for Laser launcher - x1|- Money: @FF1D1D1D130.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive14_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive14_2"
+		briefDiz="Kill 15 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive14_3"
+		briefDiz="Kill 15 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive14_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive15"
+		briefDiz="Test drive - Part 15"
+		fullDiz="Assemble a Cruiser in the top configuration, we have all the necessary spare parts for this. And also install two Odin laser launchers and any side gun, you have probably already met them, such weapons are installed in a special slot on the car body.|@FF0000AA|@FF1D1D1DReward:|- Gadget: @FF1D1D1DRolled armour plates with additional cementing on sale - x1|- Gadget: @FF1D1D1DMagnetic-optical system ''Quasar'' - x1|- Gadget: @FF1D1D1D''Doom-4'' system - x1|- Gadget: @FF1D1D1D''Albatross'' system - x1|- Item: @FF1D1D1DLiquid cylinder for Laser launcher - x1|- Item: @FF1D1D1DLiquid cylinder for Plasma gun - x1|- Item: @FF1D1D1DAmmunition box for Rocket launcher - x1|- Item: @FF1D1D1DAmmunition box for Artillery - x1|- Money: @FF1D1D1D130.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive15_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive15_2"
+		briefDiz="Kill 20 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive15_3"
+		briefDiz="Kill 15 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive15_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive1_1"
+		briefDiz="Kill 5 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive1_11"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive1_2"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive2"
+		briefDiz="Test drive - Part 2"
+		fullDiz="The customer asks to assemble a maneuverable truck, with the ability to install two guns, and leave the body capacity in stock. The configuration should be as follows:|@FF0000AA|Car: @FF1D1D1DLorry|Cabin: @FF1D1D1DThorn (Level III)|Body: @FF1D1D1DTent (Level I)|Weapon: @FF1D1D1DSpecter - x1, PKT - x1|@FF0000AA|@FF1D1D1DReward:|- Body: @FF1D1D1DGenerator (Lorry, Level II) on sale|- Machine gun: @FF1D1D1DKPVT on sale - x1|- Item: @FF1D1D1DImproved machinery - x2|- Money: @FF1D1D1D60.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive2_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive2_2"
+		briefDiz="Kill 10 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive2_3"
+		briefDiz="Kill 10 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive2_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive3"
+		briefDiz="Test drive - Part 3"
+		fullDiz="The customer asks to test the Van assembly in full stock, with the Hornet machine gun installed. He argues this topic by saying that he is really interested in the competitiveness of this old thing in the current conditions. I understand who, the assembly is terrible, but I do not know yet whether to offer this order.|@FF0000AA|@FF1D1D1DReward:|- Body: @FF1D1D1DBox (Lorry, Level III) on sale|- Item: @FF1D1D1DAmmo box for Shotgun on sale - x1|- Item: @FF1D1D1DHigh-tech electronics - x3|- Money: @FF1D1D1D60.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive3_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive3_2"
+		briefDiz="Kill 3 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive3_3"
+		briefDiz="Kill 3 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive3_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive4"
+		briefDiz="Test drive - Part 4"
+		fullDiz="You need to assemble a Lorry, with a KPVT machine gun mounted on the body, and leave the cabin stock. These are the main criteria. The assembly is not difficult, so I think you can handle it.|@FF0000AA|@FF1D1D1DReward:|- Cannon: @FF1D1D1DRapier on sale - x1|- Item: @FF1D1D1DAmmo box for Cannon on sale - x1|- Money: @FF1D1D1D50.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive4_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive4_2"
+		briefDiz="Test the car in 3 raids"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive4_3"
+		briefDiz="Kill 15 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive4_4"
+		briefDiz="Kill 10 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive4_5"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive5"
+		briefDiz="Test drive - Part 5"
+		fullDiz="I have a contract for you, need to assemble a Lorry, with a Rapier cannon and a Storm shotgun installed. The build looks interesting, what do you think? Deal?|@FF0000AA|@FF1D1D1DReward:|@FF404040- Transport: @FF1D1D1DUral on sale|@FF404040- Unknown reward|- Random reward|- Money: @FF1D1D1D50.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive5_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive5_2"
+		briefDiz="Test the car in 3 raids"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive5_3"
+		briefDiz="Kill 15 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive5_4"
+		briefDiz="Kill 10 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive5_5"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive6"
+		briefDiz="Test drive - Part 6"
+		fullDiz="I have one order, I need to make a Ural assembly with two Vulcan machine guns installed.|@FF0000AA|Cabin: @FF1D1D1DStandard (Level II)|Body: @FF1D1D1DCold (Level I)|@FF0000AA|@FF1D1D1DReward:|- Body: @FF1D1D1DFreight (Ural, Level II) on sale|- Machine gun: @FF1D1D1DKPVT on sale - x1|- Item: @FF1D1D1DAmmo box for Machine gun - x2|- Item: @FF1D1D1DAmmo box for Machine gun on sale - x1|- Money: @FF1D1D1D60.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive6_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive6_2"
+		briefDiz="Kill 20 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive6_3"
+		briefDiz="Kill 15 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive6_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive7"
+		briefDiz="Test drive - Part 7"
+		fullDiz="Hi, I'm just wondering what to do with this order, so I'll give it to you. Will you take it on? I need to test Lorry, here are the exact instructions.|@FF0000AA|Cabin: @FF1D1D1DBolt (Level I)|Body: @FF1D1D1DGenerator (Level II)|Weapon: @FF1D1D1DKord - x1|@FF0000AA|@FF1D1D1DReward:|- Body: @FF1D1D1DShell (Ural, Level IV) on sale|- Gadget: @FF1D1D1DBlowback system with floating coupling on sale - x1|- Cannon: @FF1D1D1DRapier on sale - x1|- Item: @FF1D1D1DAmmo box for Cannon on sale - x1|- Money: @FF1D1D1D50.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive7_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive7_2"
+		briefDiz="Kill 5 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive7_3"
+		briefDiz="Kill 5 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive7_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive8"
+		briefDiz="Test drive - Part 8"
+		fullDiz="I have an order, I think you will like it. It is necessary to assemble Ural, with two installed Rapier guns. Here are detailed instructions, read them.|@FF0000AA|Cabin: @FF1D1D1DStandard (Level II)|Body: @FF1D1D1DShell (Level IV)|Weapon: @FF1D1D1DRapier - x2|@FF0000AA|@FF1D1D1DReward:|- Cabin: @FF1D1D1DMorion (Ural, Level IV) on sale|- Gadget: @FF1D1D1DSolenoid actuator on sale - x1|- Cannon: @FF1D1D1DRainmetal on sale - x1|- Item: @FF1D1D1D Ammo box for Cannon - x1|- Money: @FF1D1D1D55.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive8_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive8_2"
+		briefDiz="Kill 20 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive8_3"
+		briefDiz="Kill 10 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive8_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive9"
+		briefDiz="Test drive - Part 9"
+		fullDiz="There is one order, the customer asks to assemble a Peacekeeper and install one Flag shotgun and one Cyclops cannon on it. There is nothing complicated, so there will be no difficulties.|@FF0000AA|Cabin: @FF1D1D1DScull (Level II)|Body: @FF1D1D1DCenturion (Level II)|Weapon: @FF1D1D1DFlag - x1, Cyclops - x1|@FF0000AA|@FF1D1D1DReward:|- Cabin: @FF1D1D1DBulat (Peacekeeper, Level IV) on sale|- Body: @FF1D1D1DMasamune (Peacekeeper, Level IV) on sale|- Gadget: @FF1D1D1DRolled armour plates with additional cementing on sale - x1|- Rocket launcher: @FF1D1D1DHail - x1|- Laser launcher: @FF1D1D1DOdin - x1|- Item: @FF1D1D1DAmmunition box for Rocket launcher - x1|- Item: @FF1D1D1DLiquid cylinder for Laser launcher - x1|- Money: @FF1D1D1D100.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive9_1"
+		briefDiz="Assemble a car of the required configuration"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive9_2"
+		briefDiz="Kill 10 Scavs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive9_3"
+		briefDiz="Kill 15 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_test_drive9_4"
+		briefDiz="Report the success of the test drive"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_testing_mission"
+		briefDiz="Debut"
+		fullDiz="So listen, your first task: we have a lot of bandits here, they're driving around all over the area, they're called the Scavs. Shoot, let's say, 5 of these scavs, and bring back 3 Hornet machine guns from them. That'll be your first task. Get to work, mercenary!|@FF0000AA|@FF1D1D1DReward:|@FF404040- Machine gun: @FF1D1D1DSpecter - x1|@FF404040- Item: @FF1D1D1DAmmo box for Machine gun - x1|@FF404040- Money: @FF1D1D1D20.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_testing_mission_1"
+		briefDiz="Kill 5 Scavs on the Krai location"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_testing_mission_2"
+		briefDiz="Transfer 3 Hornet machine guns"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_testing_mission_3"
+		briefDiz="Get a reward"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_turbo"
+		briefDiz="Need for speed"
+		fullDiz="Install the Turbo accelerator in a special slot under the car body, the system should immediately detect it. Then nothing complicated, press the button and the car accelerates. Just keep an eye on the amount of nitro, here is a can in case the supply runs out.|@FF0000AA|@FF1D1D1DReward:|- Item: @FF1D1D1DTurbo on sale - x1|- Item: @FF1D1D1DAir cylinder for Turbo on sale - x1|- Money: @FF1D1D1D30.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_turbo_1"
+		briefDiz="Install Turbo"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_turbo_2"
+		briefDiz="Use Turbo in raid"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_turbo_3"
+		briefDiz="Talk to the Mechanic"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_ural_or_belaz"
+		briefDiz="A tempting offer"
+		fullDiz="Listen, I have one thing to do. Basically, they want to bring us a batch of Belaz trucks for testing in the near future. This is a huge machine, with big wheels and excellent armor. Surely, you can make cool assemblies for testing from it. Because of this news, many candidates for testing these Belazs have appeared, so I will ask you directly as an experienced assembler and fighter. Are you interested in assembling and testing these Belazs, or would you prefer to cut through the wastelands on the already proven Ural? Otherwise, I will simply offer the job to another contractor.|@FF0000AA|@FF1D1D1DReward:|@FF404040- Transport: @FF1D1D1DBelaz on sale|@FF404040- Item: @FF1D1D1DHigh-tech electronics - x4"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_ural_or_belaz_1"
+		briefDiz="Select Ural"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_ural_or_belaz_2"
+		briefDiz="Select Belaz"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_kill_usec"
+		briefDiz="Friend from the West"
+		fullDiz="Lately, the USEC have started to annoy me. They're crawling everywhere they want and killing my people. I don't like it. Give them a good beating, and I'll give you some dough. Deal? And as proof, bring me their dog tags.|@FF0000AA|@FF1D1D1DReward:|@FF404040- Transport: @FF1D1D1DLorry on sale @FF780a0a[If not received earlier]|@FF404040- Machine gun: @FF1D1D1DKord - x1|@FF404040- Item: @FF1D1D1DAmmo box for Machine gun - x1|@FF404040- Item: @FF1D1D1DGolden clock - x1"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_kill_usec_1"
+		briefDiz="Kill 5 PMC USEC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_kill_usec_2"
+		briefDiz="Transfer 5 Tokens USEC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_kill_usec_3"
+		briefDiz="Report to the Prapor"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_kill_pmc"
+		briefDiz="Eliminator"
+		fullDiz="There's a group of PMCs that keeps trying to screw me over. I've had my eye on them for a while now, so it's time to get rid of them. Can you help them out? If you do, bring them their dog tags as proof. There will be a reward, don't worry.|@FF0000AA|@FF1D1D1DReward:|@FF404040- Transport: @FF1D1D1DLorry on sale @FF780a0a[If not received earlier]|@FF404040- Machine gun: @FF1D1D1DKord - x1|@FF404040- Item: @FF1D1D1DAmmo box for Machine gun - x1|@FF404040- Item: @FF1D1D1DGolden chain - x1|@FF404040- Money: @FF1D1D1D10.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_kill_pmc_1"
+		briefDiz="Kill 10 PMC"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_kill_pmc_2"
+		briefDiz="Transfer 10 PMC fighter tokens"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_kill_pmc_3"
+		briefDiz="Report to the Prapor"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_sectarian1"
+		briefDiz="Invasion of the sectarians - Part 1"
+		fullDiz="Recently my boys went on a night raid to the Krai location for loot and ran into some guys in hoods. Of course, not all of the guys survived, those who could, eventually ran away. Who these bastards were, no one knows. Anyway, the guys found something like a ritual circle nearby. Its approximate location is between the Road to Ridzin and the settlement of Zaimka. Here, take the beacon, your task is to mark this place and transfer us its exact location. Is the task clear? Then get to work, soldier!|@FF0000AA|@FF1D1D1DReward:|@FF404040- Gadget: @FF1D1D1DRolled armour plates for the cabin hull - x1|@FF404040- Item: @FF1D1D1DImproved machinery - x2|@FF404040- Money: @FF1D1D1D40.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_sectarian1_1"
+		briefDiz="Find the circle of sectarians"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_sectarian1_2"
+		briefDiz="Mark the circle of sectarians with the MS2000 marker"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_sectarian1_3"
+		briefDiz="Survive and escape from the location"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_sectarian1_4"
+		briefDiz="Report on completed work"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_sectarian2"
+		briefDiz="Invasion of the sectarians - Part 2"
+		fullDiz="So, I have a new job for you. Look what I have. This is the knife of those same psychos my boys ran into. During the brawl, they took out a couple of these bastards and found this very knife on one of them. The product, as you can see, is unusual, with strange signs. In short, there is clearly something wrong with these guys, it turns out that serious people are ready to fork out a fortune for such a product. If you happen to find a few more of these knives, bring them to me immediately.|@FF0000AA|@FF1D1D1DReward:|@FF404040- Gadget: @FF1D1D1DFuel system isolation - x1|@FF404040- Laser launcher: @FF1D1D1DMaxim - x1|@FF404040- Item: @FF1D1D1DLiquid cylinder for Laser launcher - x1|@FF404040- Money: @FF1D1D1D50.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_sectarian2_1"
+		briefDiz="Kill 2 Sectarians"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_sectarian2_2"
+		briefDiz="Kill the Priest"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_sectarian2_3"
+		briefDiz="Transfer 3 Sectarian knives"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_sectarian2_4"
+		briefDiz="Get a reward"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_first_in_line"
+		briefDiz="First in line"
+		fullDiz="There is a hospital at the Krai location, after the disaster the building remained untouched, all the equipment should be in working order. Find this place and take some medicine with you.|@FF0000AA|@FF1D1D1DReward:|@FF404040- Item: @FF1D1D1DStrong metal - x1|@FF404040- Item: @FF1D1D1DImproved machinery - x1|@FF404040- Money: @FF1D1D1D15.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_first_in_line_1"
+		briefDiz="Find an abandoned hospital in the Krai location"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_first_in_line_2"
+		briefDiz="Transfer any 3 items of medicine"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_first_in_line_3"
+		briefDiz="Report on task completion"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_shortage"
+		briefDiz="Shortage"
+		fullDiz="I need to get a few emergency medical kits. They are called «Salewa» - red ones, Western ones. That's what I need. And it is imperative that they be obtained by your own hands, as proof that you are a serious person.|@FF0000AA|@FF1D1D1DReward:|@FF404040- Item: @FF1D1D1DImproved machinery - x2|@FF404040- Money: @FF1D1D1D20.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_shortage_1"
+		briefDiz="Transfer 3 «Salewa» First Aid Kits"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_sanitary_standards1"
+		briefDiz="Sanitary standards - Part 1"
+		fullDiz="I have serious suspicions that some kind of nasty stuff is leaking into the groundwater from the plant. And due to the lack of outside supplies, we are all forced to drink untreated water. To figure this out, I need gas analyzer readings. Can you help me find them?|@FF0000AA|@FF1D1D1DReward:|@FF404040- Item: @FF1D1D1DStrong metal on sale - x1|@FF404040- Item: @FF1D1D1DStrong metal - x1|@FF404040- Money: @FF1D1D1D14.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_sanitary_standards1_1"
+		briefDiz="Transfer Gas analyzer"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_sanitary_standards2"
+		briefDiz="Sanitary standards - Part 2"
+		fullDiz="I have a job for you that you are already familiar with. Our engineers have successfully neutralized the chemical leak, but the water is still not completely purified. Get a couple more Gas analyzers, and then we will solve the water problems in the region at least for a while.|@FF0000AA|@FF1D1D1DReward:|@FF404040- Item: @FF1D1D1DImproved machinery on sale - x1|@FF404040- Item: @FF1D1D1DImproved machinery - x1|@FF404040- Money: @FF1D1D1D20.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_sanitary_standards2_1"
+		briefDiz="Transfer 2 Gas analyzers"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_painkiller"
+		briefDiz="Painkiller"
+		fullDiz="I think you already understood that I support the civilians who remained in the shelters, who unfortunately suffered from the disaster. In fact, all your showdowns are just a means to an end for me. And there is only one end - to help innocent people recover and get back on their feet. After all, I am a doctor, and I took an oath. Therefore, I ask you to get me some morphine, at least a few pieces.|@FF0000AA|@FF1D1D1DReward:|@FF404040- Item: @FF1D1D1DSilicone tube - x1|@FF404040- Item: @FF1D1D1DSet of medicines - x1|@FF404040- Item: @FF1D1D1DTablets «Analgin» - x1|@FF404040- Money: @FF1D1D1D25.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_painkiller_1"
+		briefDiz="Transfer 4 Syringes with morphine"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_autorem"
+		briefDiz="Car repair"
+		fullDiz="Your help is needed for a good cause. You probably already know that I am collecting provisions, medical supplies and other necessary things in order to evacuate people. So almost everything is ready, except for one small detail - we need transport. We have several cars that will fit the entire first batch, but they are not running. They have been idle for too long, and, as I was told, we need batteries and spark plugs. I will make a specific list. Will you deliver?|@FF0000AA|@FF1D1D1DReward:|@FF404040- Item: @FF1D1D1DHigh-tech electronics on sale - x1|@FF404040- Item: @FF1D1D1DHigh-tech electronics - x2|@FF404040- Item: @FF1D1D1DImproved machinery - x2|@FF404040- Item: @FF1D1D1DFirst aid kit «Grizzly» - x1|@FF404040- Money: @FF1D1D1D40.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_autorem_1"
+		briefDiz="Transfer 2 Car batteries"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_autorem_2"
+		briefDiz="Transfer 4 Spark plugs"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_private_clinic"
+		briefDiz="Private clinic"
+		fullDiz="As a doctor, I believe that the Hippocratic oath must be observed even in such difficult times. So I had an idea to open a private clinic, you always need to take care of your health, and in our conditions, even more so. But for this I need some equipment. I will give you a list of what you need to bring.|@FF0000AA|@FF1D1D1DReward:|@FF404040- Item: @FF1D1D1DHigh-tech electronics on sale - x1|@FF404040- Item: @FF1D1D1DHigh-tech electronics - x2|@FF404040- Item: @FF1D1D1DAdvanced current converter - x1|@FF404040- Item: @FF1D1D1DCoin EX - x1"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_private_clinic_1"
+		briefDiz="Transfer Ophthalmoscope"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_private_clinic_2"
+		briefDiz="Transfer LEDX"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_crisis"
+		briefDiz="Crisis"
+		fullDiz="Young man, are you busy right now? Interested people from abroad, on the other side of the barricades, are interested in a large consignment of valuable medical equipment. I think they will be able to find a better use for it than this rabble. I would be extremely grateful if you could find the missing instruments for me. Here, take it. This is a list of all the necessary items.|@FF0000AA|@FF1D1D1DReward:|@FF404040- Item: @FF1D1D1DHigh-tech electronics - x4|@FF404040- Item: @FF1D1D1DGolden chain - x2|@FF404040- Item: @FF1D1D1DAnanaga - x1|@FF404040- Money: @FF1D1D1D50.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_crisis_1"
+		briefDiz="Transfer Ophthalmoscope"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_crisis_2"
+		briefDiz="Transfer LEDX"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_crisis_3"
+		briefDiz="Transfer 5 Sets of medicines"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_crisis_4"
+		briefDiz="Transfer 5 Bottles of saline solution «NaCI»"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_crisis_5"
+		briefDiz="Transfer 5 Bottles of hydrogen peroxide «H2O2»"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+
+		<Map
+			name="r1m1" />
+	</QuestInfo>
+</QuestInfoResource>

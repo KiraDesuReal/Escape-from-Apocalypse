@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?><!-- edited with XML Spy v4.2 U (http://www.xmlspy.com) by Morgoth (Targem) -->
+<resource><!--Default buttons-->
+	<string
+		id="fm_relation_changed"
+		value="Reminder: one of the major groups of this area is hostile towards you. Somebody can help you to solve this problem. Ask around. " />
+
+	<string
+		id="fm_hunt_completed"
+		value=" Reminder: The hunt is over. You receive a reward for each killed enemy." />
+
+	<string
+		id="fm_dynamic_quest_completed"
+		value="You completed quest '%1s'" />
+
+	<string
+		id="fm_dynamic_quest_failed_because_hirer_becames_enemy"
+		value="You failed to complete the quest '%1s', because you are enemies with the customer now." />
+
+	<string
+		id="fm_convoy_failed"
+		value="Too bad! You failed to protect the caravan." />
+
+	<string
+		id="fm_history_got"
+		value="A new entry is added to the Story section of your journal." />
+
+	<string
+		id="fm_book_got"
+		value="A new book is added to the Books section of your journal." />
+
+	<string
+		id="fm_fail_quest"
+		value="Quest %1p failed!" />
+
+	<string
+		id="fm_complete_quest"
+		value="Quest %1p completed!" />
+
+	<string
+		id="fm_take_quest"
+		value="Quest %1p taken!" />
+
+	<string
+		id="fm_to_finish_quest"
+		value="Quest %1p is ready to be completed!" />
+
+	<string
+		id="fm_complete_subtask"
+		value="Subtask of quest %1p completed!" />
+
+	<string
+		id="fm_progress_quest_scavs_kills"
+		value="Quest progress @fff3e5cb%1p:|@ffffffffScavs killed: @fff3e5cb%2d/%3d" />
+
+	<string
+		id="fm_progress_quest_scavs_kills_complete"
+		value="@ff59db12Quest progress %1p:|Scavs killed: %2d/%3d" />
+
+	<string
+		id="fm_progress_quest_pmc_kills"
+		value="Quest progress @fff3e5cb%1p:|@ffffffffPMC killed: @fff3e5cb%2d/%3d" />
+
+	<string
+		id="fm_progress_quest_pmc_kills_complete"
+		value="@ff59db12Quest progress %1p:|PMC killed: %2d/%3d" />
+
+	<string
+		id="fm_progress_quest_pmc_usec_kills"
+		value="Quest progress @fff3e5cb%1p:|@ffffffffPMC USEC killed: @fff3e5cb%2d/%3d" />
+
+	<string
+		id="fm_progress_quest_pmc_usec_kills_complete"
+		value="@ff59db12Quest progress %1p:|PMC USEC killed: %2d/%3d" />
+
+	<string
+		id="fm_progress_quest_sectarian_kills"
+		value="Quest progress @fff3e5cb%1p:|@ffffffffSectarians killed: @fff3e5cb%2d/%3d" />
+
+	<string
+		id="fm_progress_quest_sectarian_kills_complete"
+		value="@ff59db12Quest progress %1p:|Sectarians killed: %2d/%3d" />
+
+	<string
+		id="fm_progress_quest_raidcount"
+		value="Quest progress @fff3e5cb%1p:|@ffffffffRaids conducted: @fff3e5cb%2d/%3d" />
+
+	<string
+		id="fm_progress_quest_raidcount_complete"
+		value="@ff59db12Quest progress %1p:|Raids conducted: %2d/%3d" />
+
+	<string
+		id="fm_progress_quest_exit_loc"
+		value="Quest progress @fff3e5cb%1p:|@ffffffffSuccessful survivals: @fff3e5cb%2d/%3d" />
+
+	<string
+		id="fm_progress_quest_exit_loc_complete"
+		value="@ff59db12Quest progress %1p:|Successful survivals: %2d/%3d" />
+
+	<string
+		id="fm_cant_move"
+		value="I do not know the road, so I'll stay here." />
+
+	<string
+		id="fm_not_suzet"
+		value="I do not know what’s out there, so I’ll stay here. " />
+
+	<string
+		id="fm_race_start_1"
+		value="Countdown: ...%1d..." />
+
+	<string
+		id="fm_race_start_0"
+		value="S T A R T" />
+
+	<string
+		id="fm_race_start_false"
+		value="False start!" />
+
+	<string
+		id="fm_race_chekpoint"
+		value="Checkpoint!" />
+
+	<string
+		id="fm_race_chekpoint_notright"
+		value="Wrong checkpoint!" />
+
+	<string
+		id="fm_race_firslap"
+		value="First lap finished!" />
+
+	<string
+		id="fm_race_finish"
+		value="G O A L" />
+
+	<string
+		id="fm_race_finish_1"
+		value="FIRST" />
+
+	<string
+		id="fm_race_finish_2"
+		value="SECOND" />
+
+	<string
+		id="fm_race_finish_3"
+		value="THIRD" />
+
+	<string
+		id="fm_race_finish_less"
+		value="Your place is %1d out of %2d" />
+
+	<string
+		id="fm_race_finish_lose"
+		value="You lose the race!" />
+
+	<string
+		id="fm_race_somedie"
+		value="One of the participants is out!" />
+
+	<string
+		id="fm_town_enter"
+		value="Press horn (%1m) to enter town" />
+
+	<string
+		id="fm_town_cant_enter_enemy"
+		value="You cannot enter this town. It belongs to the enemy faction." />
+
+	<string
+		id="fm_town_cant_enter_locked"
+		value="You cannot enter this town. It is closed." />
+
+	<string
+		id="fm_take_chest_hint"
+		value="Press %1m to pick up cargo." />
+
+	<string
+		id="fm_all_chests_taken"
+		value="The cargo is taken aboard." />
+
+	<string
+		id="fm_item_pickup"
+		value="You picked up: %1s" />
+
+	<string
+		id="fm_sunrise"
+		value="It’s morning." />
+
+	<string
+		id="fm_day"
+		value="It’s another hard day." />
+
+	<string
+		id="fm_sunset"
+		value="It’s evening." />
+
+	<string
+		id="fm_night"
+		value="It’s night." />
+
+	<string
+		id="fm_save_is_not_allowed"
+		value="You cannot save at this time." />
+
+	<string
+		id="fm_player_add_money"
+		value="You received %1d coins!" />
+
+	<string
+		id="fm_player_give_money"
+		value="You gave away %1d coins" />
+
+	<string
+		id="fm_player_add_thing"
+		value="You received an item: %1p" />
+
+	<string
+		id="fm_player_add_thing_count"
+		value="You received an item: %1p - x%2d" />
+
+	<string
+		id="fm_cheat_is_not_allowed"
+		value="@FF22FF22Please do not @FF2222FFCHEAT@FFFFFFFF" />
+
+	<string
+		id="fm_cheat_is_allowed"
+		value="@FF22FF22Remember, @FF2222FFusing cheats may cause errors!@FFFFFFFF" />
+
+	<string
+		id="fm_items_remained_on_ground"
+		value="The cargo hold is full. Press %1m to open the inventory screen." />
+
+	<string
+		id="fm_player_exit_location"
+		value="Extraction in: @fff3e5cb%1d" />
+
+	<string
+		id="fm_player_exit_enters_location"
+		value="Stay in the exit area|@ff6cff00%1p" />
+
+	<string
+		id="fm_player_exit_leaves_location"
+		value="You have left the exit zone!" />
+
+	<string
+		id="fm_player_search_exit_zone"
+		value="@ff6cff00Find the exit zone:|@FFFFFFFF%1p" />
+
+	<string
+		id="fm_use_scrap_metal"
+		value="Used: Strong metal||@ff00ff4eHP +%1d (%2d)|@ffffba00Armor +%3d (%4d)" />
+
+	<string
+		id="fm_use_machinery"
+		value="Used: Improved machinery||@ff00ff4eHP +%1d (%2d)|ffffba00Armor +%3d (%4d)" />
+
+	<string
+		id="fm_use_oil"
+		value="Used: Barrel of fuel||@ff0042ffFuel +%1d (%2d)" />
+
+	<string
+		id="fm_use_electronics"
+		value="Used: High-tech electronics||@ff00ff4eHP +%1d (%2d)|@ffffba00Armor +%3d (%4d)" />
+
+	<string
+		id="fm_use_fuel_full"
+		value="Used: Fuel canister||@ff0042ffFuel +%1d (%2d)" />
+
+	<string
+		id="fm_fuel_petrol_start"
+		value="Refueling has begun!" />
+
+	<string
+		id="fm_fuel_petrol_end"
+		value="Refueling complete!" />
+
+	<string
+		id="fm_player_not_money"
+		value="You don't have enough money!" />
+
+	<string
+		id="fm_petrol_notwork"
+		value="This gas station is not functioning!" />
+
+	<string
+		id="fm_petrol_need_generator"
+		value="Turn on the generator to fill the canister with fuel!" />
+
+	<string
+		id="fm_fuel_petrol_stopped"
+		value="@ff9d0a0a[No electricity]|@ffffffffRefueling stopped!" />
+
+	<string
+		id="fm_fuel_petrol_restart"
+		value="@ff7ac716[Electricity is supplied]|@ffffffffRefueling has resumed!" />
+
+	<string
+		id="fm_item_to_quest_items"
+		value="Item: %1p, moved to quest items." />
+
+	<string
+		id="fm_remove_quest_item"
+		value="Item: %1p, removed from quest items." />
+
+	<string
+		id="fm_used_key"
+		value="Remaining uses: @fff3e5cb%1d" />
+
+	<string
+		id="fm_airdrop_start"
+		value="Airspace is congested.|Expect arrival!" />
+
+	<string
+		id="fm_raid_info"
+		value="%1p" />
+
+	<string
+		id="fm_time_raid"
+		value="Left %1p" />
+
+	<string
+		id="fm_time_raid_red"
+		value="@ffc82323Left %1p" />
+
+	<string
+		id="fm_item_to_npc"
+		value="You transferred the item: %1p" />
+
+	<string
+		id="fm_item_to_shelf"
+		value="You placed the item: %1p" />
+
+	<string
+		id="fm_items_to_build"
+		value="@ffe1a531Required for construction:|@ffffffff%1p" />
+
+	<string
+		id="fm_generator_load_item"
+		value="You uploaded the item: %1p" />
+
+	<string
+		id="fm_generator_on"
+		value="Generator on!" />
+
+	<string
+		id="fm_generator_off"
+		value="Generator off!" />
+
+	<string
+		id="fm_generator_time_work"
+		value="Generator operating time: @fff3e5cb%1p" />
+
+	<string
+		id="fm_generator_fuel_nil"
+		value="The generator has run out of fuel!" />
+
+	<string
+		id="fm_chest_scavs_start"
+		value="The scavs have gone in search of prey!" />
+
+	<string
+		id="fm_chest_scavs_scav_move"
+		value="Expect the scavs to arrive with their prey." />
+
+	<string
+		id="fm_chest_scavs_loot"
+		value="The scavs brought the prey!" />
+
+	<string
+		id="fm_chest_scavs_timer"
+		value="Left: @fff3e5cb%1p" />
+
+	<string
+		id="fm_start_challenge"
+		value="Challenge has start!" />
+
+	<string
+		id="fm_challenge_score"
+		value="@ffffc600Score: %1d @ff72ff00+%2d" />
+
+	<string
+		id="fm_dungeon_timer"
+		value="Left @fff3e5cb%1d @ffffffffseconds" />
+
+	<string
+		id="fm_complete_challenge"
+		value="Challenge completed!" />
+
+	<string
+		id="fm_done_challenge"
+		value="Challenge finished!" />
+
+	<string
+		id="fm_challenge_your_record"
+		value="@ffffc600You record: %1d" />
+
+	<string
+		id="fm_challenge_your_score"
+		value="@ffffc600You score: %1d" />
+
+	<string
+		id="fm_challenge_kill_2"
+		value="x2" />
+
+	<string
+		id="fm_challenge_kill_3"
+		value="x3" />
+	
+	<string
+		id="fm_challenge_kill_4"
+		value="x4" />
+
+	<string
+		id="fm_challenge_restart"
+		value="Press the horn, to complete the challenge." />
+
+	<string
+		id="fm_use_ammo_chest"
+		value="Ammunition replenished for: @ffffba00%1p" />
+
+	<string
+		id="fm_marker_target"
+		value="Target marking..." />
+
+	<string
+		id="fm_target_defence_timer"
+		value="Defence target: @fff3e5cb%1d" />
+
+	<string
+		id="fm_marker_install"
+		value="Marker is installed!" />
+
+	<string
+		id="fm_marker_leaves_zone"
+		value="You have left the marking area!" />
+
+	<string
+		id="fm_get_special_community_item"
+		value="@ffffc000You have received your unique item!" />
+
+	<string
+		id="fm_not_key"
+		value="You don't have the required key!" />
+
+	<string
+		id="fm_player_take_item"
+		value="You took the item: %1p" />
+
+	<string
+		id="fm_garage_crafting_start"
+		value="@ffffc000Assembly of item %1p has begun!" />
+
+	<string
+		id="fm_garage_crafting_stop"
+		value="@ff960e0eAssembly of item %1p was interrupted!" />
+
+	<string
+		id="fm_garage_crafting_done"
+		value="@ff7ac716The garage produced an item: %1p!" />
+
+	<string
+		id="fm_garage_crafting_stopped"
+		value="@ff9d0a0a[No electricity]|@ffffffffAssembly of item %1p has been paused!" />
+
+	<string
+		id="fm_garage_crafting_restart"
+		value="@ff7ac716[Electricity is supplied]|@ffffffffAssembly of item %1p resumed!" />
+
+	<string
+		id="fm_garage_crafting_timer_pause"
+		value="@ff9d0a0a[Assembly is stopped]|@ffffffffLeft: @fff3e5cb%1p" />
+
+	<string
+		id="fm_scav_car_for_player"
+		value="The Scavs are ready to lend you their car!" />
+
+	<string
+		id="fm_player_scav_close_exit"
+		value="@ffa30d0d%1p|@ffffffffYou cannot use this exit because you have damaged your relationship with the scavs." />
+
+	<string
+		id="fm_scav_carma"
+		value="Scav karma: %1p" />
+
+	<string
+		id="fm_scav_give_loot"
+		value="The Scav raid has been successfully completed!|Pick up your items in the special box." />
+
+	<string
+		id="fm_mining_timer_pause"
+		value="@ff9d0a0a[Mining is stopped]|@ffffffffLeft: @fff3e5cb%1p" />
+
+	<string
+		id="fm_windgenerator_on"
+		value="Wind generator on!" />
+
+	<string
+		id="fm_windgenerator_off"
+		value="Wind generator off!" />
+
+	<string
+		id="fm_mining_done"
+		value="@ff7ac716Mining completed!" />
+
+	<string
+		id="fm_windgenerator_start_mining"
+		value="@ff7ac716[Mining has started]|@ffffffffCurrent wind speed: %1p m/s|@ffffffffLeft: @fff3e5cb%2p" />
+
+	<string
+		id="fm_insure_item"
+		value="You have insured the item: @ffffba00%1p" />
+
+	<string
+		id="fm_return_insure_items_1"
+		value="@fff3e5cb[Prapor]|@ffffffffWell, your raid %1p on %2p locations didn't work out? I know it didn't. Your goods are with me. Are you going to take them?" />
+
+	<string
+		id="fm_return_insure_items_2"
+		value="@fff3e5cb[Prapor]|@ffffffffWhat, did the soldier shoot? I had a feeling in my ass that it wouldn't go well when I was planning a raid %1p on location %2p. It's good that I got insurance. Take your stuff." />
+
+	<string
+		id="fm_return_insure_items_3"
+		value="@fff3e5cb[Prapor]|@ffffffffI see your raid %1p on location %2p didn't go well. I have your items. You can take them." />
+
+	<string
+		id="fm_return_insure_items_4"
+		value="@fff3e5cb[Prapor]|@ffffffffWell, mercenary, did you lose your stuff in the %1p raid on location %2p? My bloodhounds found your stuff. Will you take it?" />
+
+	<string
+		id="fm_return_insure_items_5"
+		value="@fff3e5cb[Prapor]|@ffffffffWell, soldier? Weren't you %1p the one who wasted all your stuff at location %2p? Take it while I'm still kind." />
+
+	<string
+		id="fm_return_insure_items_6"
+		value="@fff3e5cb[Prapor]|@ffffffffYou insured %1p at location %2p. Here, they brought your junk, take it." />
+
+	<string
+		id="fm_return_insure_items_7"
+		value="@fff3e5cb[Prapor]|@ffffffffMercenary! Don't be sad. Your insurance worked today, the one that %1p at location %2p. Take it, sign here." />
+
+	<string
+		id="fm_return_insure_items_8"
+		value="@fff3e5cb[Prapor]|@ffffffffWell, mercenary, we brought your things that %1p insured from location %2p. Take them." />
+
+	<string
+		id="fm_mod_gun"
+		value="You modified: @ffffba00%1p" />
+
+	<string
+		id="fm_mod_cab"
+		value="You modified cabin: @ffffba00%1p" />
+
+	<string
+		id="fm_mod_bas"
+		value="You modified body: @ffffba00%1p" />
+
+	<string
+		id="fm_press_horn_to_speek_scav"
+		value="Press the horn, to talk the scav." />
+
+	<string
+		id="fm_scav_follow_to_player"
+		value="The scav is now following you." />
+
+	<string
+		id="fm_scav_follow_remove"
+		value="You let the scav go." />
+
+	<string
+		id="fm_scav_follow_die"
+		value="The scav was killed." />
+
+	<string
+		id="fm_scav_follow_if_enemy"
+		value="You have ruined your relationship with the scavs!" />
+</resource>

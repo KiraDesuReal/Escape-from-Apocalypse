@@ -119,7 +119,7 @@ _New Locations [Screenshot shows **Shelter** and **Dungeon** with challenge]_.
 
 <br>
 
-> ![Dialoge](assets/dialoge.png)
+> ![Dialoge](assets/dialoge_eng.png)
 _Dialogue with NPC_.
 
 <br>

@@ -25,7 +25,7 @@ screenshots:
     text: Over 150 new items to collect, from building materials to electronics.
   - img: assets/new_loc.png
     text: New Locations [Screenshot shows Shelter and Dungeon with challenge].
-  - img: assets/dialoge.png
+  - img: assets/dialoge_eng.png
     text: Dialogue with NPC.
   - img: assets/building.gif
     text: Building modules in Shelter.
@@ -54,3 +54,14 @@ prerequisites:
      - hd_vehicle_models
      - ost_remaster
      - english_localization
+
+options_base_dir: options
+
+optional_content:
+  - name: english_localization
+    display_name: English Localization
+    forced_option: True
+    data_dirs: 
+      - "english_localization"
+    description: |
+      English localization for Escape from Apocalypse, via machine translation Google Translate.

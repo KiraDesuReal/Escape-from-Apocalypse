@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<resource>
+	<string
+		id="1"
+		value="||@FF0000ААААААААААААААААААААААAAAAА@ffb20b0bYOU ARE MISSING IN ACTION"
+		time="6.5"/>
+
+	<string
+		id="77773"
+		msgType="SCROLL"
+		image="data\if\ico\CinemaPanel\foreground_movie_shade_midle.dds"
+		upOverlay="data\if\ico\CinemaPanel\foreground_movie_shade_up.dds"
+		downOverlay="data\if\ico\CinemaPanel\foreground_movie_shade.dds"
+		time="0.1" />
+
+	<string
+		id="90001"
+		value="You have an empty fuel canister.|Want to fill it? It will cost 5.000 coins."
+		numButtons="2" />
+
+	<string
+		id="90002"
+		value="Do you wish to open the gate?"
+		numButtons="2" />
+
+	<string
+		id="90003"
+		value="You can't go into the desert of death because your car is not designed for it!"
+		numButtons="1" />
+
+</resource>

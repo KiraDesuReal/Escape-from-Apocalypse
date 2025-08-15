@@ -2,8 +2,8 @@
 -- Author KiraDesu
 
 if EFA_VERSION == nil then
-	EFA_VERSION = "0.95 BETA"
-	EFA_BUILD = "250618"
+	EFA_VERSION = "0.96 BETA"
+	EFA_BUILD = "250815"
 	WIPE = 1
 	DEL_SAVES = 1
 

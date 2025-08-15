@@ -88,14 +88,14 @@
 <!--Root/r0m0/Инвентарь 2 лвл-->
 	<Reply
 		name="Dlg_npc_001314"
-		text="Дополнительный ящик, в котором можно складировать свои вещи.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Дрель - @FF1D1D1Dx1|Саморезы - @FF1D1D1Dx2|Гвозди - @FF1D1D1Dx2|Отвертка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1"
+		text="Дополнительный ящик, в который можно складировать свои вещи.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Дрель - @FF1D1D1Dx1|Саморезы - @FF1D1D1Dx2|Гвозди - @FF1D1D1Dx2|Отвертка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1"
 		role="NPC"
 		scriptCondition="GetVar('Inventory_lvl_2_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_pl_001315 Dlg_pl_001316 Dlg_pl_001317 Dlg_pl_001318 Dlg_pl_001319 Dlg_pl_001320 Dlg_pl_001321 Dlg_pl_001322" />
 	
 	<Reply
 		name="Dlg_npc_0013144"
-		text="Дополнительный ящик, в котором можно складировать свои вещи.|@FF0000AA|@FF780a0a[Дикие не могут передавать предметы для убежища]|@FF0000AA|@FF1D1D1DДля постройки требуется:|Дрель - @FF1D1D1Dx1|Саморезы - @FF1D1D1Dx2|Гвозди - @FF1D1D1Dx2|Отвертка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1"
+		text="Дополнительный ящик, в который можно складировать свои вещи.|@FF0000AA|@FF780a0a[Дикие не могут передавать предметы для убежища]|@FF0000AA|@FF1D1D1DДля постройки требуется:|Дрель - @FF1D1D1Dx1|Саморезы - @FF1D1D1Dx2|Гвозди - @FF1D1D1Dx2|Отвертка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1"
 		role="NPC"
 		scriptCondition="GetVar('Inventory_lvl_2_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0 and GetVar('PlayerBelong').AsString == 'SCAV'"
 		nextReplies="Dlg_pl_001321" />
@@ -941,7 +941,7 @@
 
 	<Reply
 		name="Dlg_npc_0013118"
-		text="Гараж - неотъемлемое место в жизни каждого махиниста, где из простых болтов и гаек создаются чудовищные бронемашины.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Болты - @FF1D1D1Dx1|Гайки - @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1|Лампа накаливания - @FF1D1D1Dx3|Силовой кабель - @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Шарнирный ключ «КШС» @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Дакимакура FitaNyashka - @FF1D1D1Dx1|Кактус - @FF1D1D1Dx1|Деньги: @FF1D1D1D500.000 монет|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Возможность создавать предметы|- Регенерация HP: @FF1D1D1D1ед/3сек"
+		text="Гараж - неотъемлемое место в жизни каждого махиниста, где из простых болтов и гаек создаются чудовищные бронемашины.|@FF0000AA|@FF1D1D1DДля постройки требуется:|Болты - @FF1D1D1Dx1|Гайки - @FF1D1D1Dx1|Монтажная пена - @FF1D1D1Dx1|Лампа накаливания - @FF1D1D1Dx3|Силовой кабель - @FF1D1D1Dx1|Рулетка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Шарнирный ключ «КШС» @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1|Дакимакура FitaNyashka - @FF1D1D1Dx1|Кактус - @FF1D1D1Dx1|Деньги: @FF1D1D1D500.000 монет|@FF0000AA|@FF1D1D1DБонусы при постройке:|- Возможность создавать предметы|- Возможность оставить свою машину на хранение|- Регенерация HP: @FF1D1D1D1ед/3сек"
 		role="NPC"
 		scriptCondition="GetVar('Generator_lvl').AsInt >= 1 and GetVar('Garage_Builden').AsInt == 0 and GetCurNpc():GetSpokenCount() == 0 and not(GetVar('PlayerBelong').AsString == 'SCAV')"
 		nextReplies="Dlg_npc_0013119 Dlg_npc_0013120 Dlg_npc_0013121 Dlg_npc_0013123 Dlg_npc_0013124 Dlg_npc_0013126 Dlg_npc_0013127 Dlg_npc_0013129 Dlg_npc_00131230 Dlg_npc_0013131 Dlg_npc_0013132 Dlg_npc_0013133" />
@@ -2233,14 +2233,14 @@
 <!--Root/r0m0/Гараж: крафт - Детали-->
 	<Reply
 		name="Dlg_npc_garage_details_0"
-		text="Создание: @FF1D1D1DДетали|Количество: @FF1D1D1D1-2|@FF0000AA|Время создания: @FF1D1D1D00:01:00|@FF0000AA|@FF780a0a[Включите генератор]|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|На выбор: @FF1D1D1D[Шершень, Спектр, ПКТ, Корд, Шторм]|Мультитул «Leatherman» @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		text="Создание: @FF1D1D1DДетали|Количество: @FF1D1D1D1-2|@FF0000AA|Время создания: @FF1D1D1D00:01:00|@FF0000AA|@FF780a0a[Включите генератор]|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|На выбор: @FF1D1D1D[Шершень, Американский шершень, Спектр, ПКТ, Корд, Шторм]|Мультитул «Leatherman» @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
 		role="NPC"
 		scriptCondition="GetVar('Generator_on').AsInt == 0"
 		nextReplies="Dlg_npc_garage_details_3 Dlg_npc_garage_details_3_3 Dlg_npc_garage_details_5 Dlg_npc_garage_details_7 Dlg_npc_garage_details_9 Dlg_npc_garage_details_11 Dlg_npc_garage_details_13 Dlg_npc_garage_details_15 Dlg_npc_garage_details_16 Dlg_pl_garage_to_building_items" />
 
 	<Reply
 		name="Dlg_npc_garage_details_1"
-		text="Создание: @FF1D1D1DДетали|Количество: @FF1D1D1D1-2|@FF0000AA|Время создания: @FF1D1D1D00:01:00|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|На выбор: @FF1D1D1D[Шершень, Спектр, ПКТ, Корд, Шторм]|Мультитул «Leatherman» @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		text="Создание: @FF1D1D1DДетали|Количество: @FF1D1D1D1-2|@FF0000AA|Время создания: @FF1D1D1D00:01:00|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|На выбор: @FF1D1D1D[Шершень, Американский шершень, Спектр, ПКТ, Корд, Шторм]|Мультитул «Leatherman» @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
 		role="NPC"
 		scriptCondition="GetVar('Generator_on').AsInt == 1"
 		nextReplies="Dlg_npc_garage_details_2 Dlg_npc_garage_details_3 Dlg_npc_garage_details_2_2 Dlg_npc_garage_details_3_3 Dlg_npc_garage_details_4 Dlg_npc_garage_details_5 Dlg_npc_garage_details_6 Dlg_npc_garage_details_7 Dlg_npc_garage_details_8 Dlg_npc_garage_details_9 Dlg_npc_garage_details_10 Dlg_npc_garage_details_11 Dlg_npc_garage_details_12 Dlg_npc_garage_details_13 Dlg_npc_garage_details_14 Dlg_npc_garage_details_15 Dlg_npc_garage_details_16 Dlg_pl_garage_to_building_items" />
@@ -2263,7 +2263,7 @@
 
 	<Reply
 		name="Dlg_npc_garage_details_2_2"
-		text="Передать Американский Шершень - x1"
+		text="Передать Американский шершень - x1"
 		role="PLAYER"
 		scriptCondition="HasPlayerAmountOfItems('american_hornet01', 1) and GetVar('GarageCraft').AsInt == 0 and GetVar('GarageCraft_Details_gun').AsString == '0'"
 		scriptResult="RemoveItemsFromPlayerRepository('american_hornet01', 1); SetVar('GarageCraft_Details_gun', 'american_hornet01'); SetVar('GarageCraft_Details_count', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'american_hornet01')"
@@ -2271,7 +2271,7 @@
 
 	<Reply
 		name="Dlg_npc_garage_details_3_3"
-		text="Забрать Американский Шершень - x1"
+		text="Забрать Американский шершень - x1"
 		role="PLAYER"
 		scriptCondition="GetVar('GarageCraft_Details_gun').AsString=='american_hornet01' and GetVar('GarageCraft').AsInt == 0"
 		scriptResult="AddItemsToPlayerRepository('american_hornet01', 1); SetVar('GarageCraft_Details_gun', '0'); SetVar('GarageCraft_Details_count', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'american_hornet01')"
@@ -2382,14 +2382,14 @@
 <!--Root/r0m0/Гараж: крафт - Металлолом-->
 	<Reply
 		name="Dlg_npc_garage_metall_0"
-		text="Создание: @FF1D1D1DМеталлолом|Количество: @FF1D1D1D1-3|@FF0000AA|Время создания: @FF1D1D1D00:01:00|@FF0000AA|@FF780a0a[Включите генератор]|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|На выбор: @FF1D1D1D[Шершень, Спектр, ПКТ, Корд, Шторм, Вектор, Вулкан]|Ножницы для резки металла @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		text="Создание: @FF1D1D1DМеталлолом|Количество: @FF1D1D1D1-3|@FF0000AA|Время создания: @FF1D1D1D00:01:00|@FF0000AA|@FF780a0a[Включите генератор]|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|На выбор: @FF1D1D1D[Шершень, Американский шершень, Спектр, ПКТ, Корд, Шторм, Вектор, Вулкан]|Ножницы для резки металла @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
 		role="NPC"
 		scriptCondition="GetVar('Generator_on').AsInt == 0"
 		nextReplies="Dlg_npc_garage_metall_3 Dlg_npc_garage_metall_5 Dlg_npc_garage_metall_7 Dlg_npc_garage_metall_9 Dlg_npc_garage_metall_11 Dlg_npc_garage_metall_13 Dlg_npc_garage_metall_15 Dlg_npc_garage_metall_17 Dlg_npc_garage_metall_19 Dlg_npc_garage_metall_21 Dlg_npc_garage_metall_22 Dlg_pl_garage_to_building_items" />
 
 	<Reply
 		name="Dlg_npc_garage_metall_1"
-		text="Создание: @FF1D1D1DМеталлолом|Количество: @FF1D1D1D1-3|@FF0000AA|Время создания: @FF1D1D1D00:01:00|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|На выбор: @FF1D1D1D[Шершень, Спектр, ПКТ, Корд, Шторм, Вектор, Вулкан]|Ножницы для резки металла @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		text="Создание: @FF1D1D1DМеталлолом|Количество: @FF1D1D1D1-3|@FF0000AA|Время создания: @FF1D1D1D00:01:00|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|На выбор: @FF1D1D1D[Шершень, Американский шершень, Спектр, ПКТ, Корд, Шторм, Вектор, Вулкан]|Ножницы для резки металла @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
 		role="NPC"
 		scriptCondition="GetVar('Generator_on').AsInt == 1"
 		nextReplies="Dlg_npc_garage_metall_2 Dlg_npc_garage_metall_3 Dlg_npc_garage_metall_4 Dlg_npc_garage_metall_5 Dlg_npc_garage_metall_6 Dlg_npc_garage_metall_7 Dlg_npc_garage_metall_8 Dlg_npc_garage_metall_9 Dlg_npc_garage_metall_10 Dlg_npc_garage_metall_11 Dlg_npc_garage_metall_12 Dlg_npc_garage_metall_13 Dlg_npc_garage_metall_14 Dlg_npc_garage_metall_15 Dlg_npc_garage_metall_16 Dlg_npc_garage_metall_17 Dlg_npc_garage_metall_18 Dlg_npc_garage_metall_19 Dlg_npc_garage_metall_20 Dlg_npc_garage_metall_21 Dlg_npc_garage_metall_22 Dlg_pl_garage_to_building_items" />
@@ -2412,7 +2412,7 @@
 
 	<Reply
 		name="Dlg_npc_garage_metall_4"
-		text="Передать Американский Шершень - x1"
+		text="Передать Американский шершень - x1"
 		role="PLAYER"
 		scriptCondition="HasPlayerAmountOfItems('american_hornet01', 1) and GetVar('GarageCraft').AsInt == 0 and GetVar('GarageCraft_Metall_gun').AsString == '0'"
 		scriptResult="RemoveItemsFromPlayerRepository('american_hornet01', 1); SetVar('GarageCraft_Metall_gun', 'american_hornet01'); SetVar('GarageCraft_Metall_count', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'american_hornet01')"
@@ -2420,7 +2420,7 @@
 
 	<Reply
 		name="Dlg_npc_garage_metall_5"
-		text="Забрать Американский Шершень - x1"
+		text="Забрать Американский шершень - x1"
 		role="PLAYER"
 		scriptCondition="GetVar('GarageCraft_Metall_gun').AsString=='american_hornet01' and GetVar('GarageCraft').AsInt == 0"
 		scriptResult="AddItemsToPlayerRepository('american_hornet01', 1); SetVar('GarageCraft_Metall_gun', '0'); SetVar('GarageCraft_Metall_count', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'american_hornet01')"
@@ -3119,21 +3119,21 @@
 <!--Root/r0m0/Гараж: крафт - Магнит-->
 	<Reply
 		name="Dlg_npc_garage_magnet_0"
-		text="Создание: @FF1D1D1DМагнит|Количество: @FF1D1D1D1|@FF0000AA|Время создания: @FF1D1D1D00:01:00|@FF0000AA|@FF780a0a[Включите генератор]|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|Жесткий диск - @FF1D1D1Dx1|Отвертка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		text="Создание: @FF1D1D1DМагнит|Количество: @FF1D1D1D1|@FF0000AA|Время создания: @FF1D1D1D00:01:00|@FF0000AA|@FF780a0a[Включите генератор]|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|Жёсткий диск - @FF1D1D1Dx1|Отвертка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
 		role="NPC"
 		scriptCondition="GetVar('Generator_on').AsInt == 0"
 		nextReplies="Dlg_npc_garage_magnet_3 Dlg_npc_garage_magnet_5 Dlg_npc_garage_magnet_7 Dlg_npc_garage_magnet_8 Dlg_pl_garage_to_electronics_items" />
 
 	<Reply
 		name="Dlg_npc_garage_magnet_1"
-		text="Создание: @FF1D1D1DМагнит|Количество: @FF1D1D1D1|@FF0000AA|Время создания: @FF1D1D1D00:01:00|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|Жесткий диск - @FF1D1D1Dx1|Отвертка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
+		text="Создание: @FF1D1D1DМагнит|Количество: @FF1D1D1D1|@FF0000AA|Время создания: @FF1D1D1D00:01:00|@FF0000AA|@FF1D1D1DДля создания требуется:|@FF0000AA|Жёсткий диск - @FF1D1D1Dx1|Отвертка @FF093465(Вспомогательно) @FF404040- @FF1D1D1Dx1"
 		role="NPC"
 		scriptCondition="GetVar('Generator_on').AsInt == 1"
 		nextReplies="Dlg_npc_garage_magnet_2 Dlg_npc_garage_magnet_3 Dlg_npc_garage_magnet_4 Dlg_npc_garage_magnet_5 Dlg_npc_garage_magnet_6 Dlg_npc_garage_magnet_7 Dlg_npc_garage_magnet_8 Dlg_pl_garage_to_electronics_items" />
 
 	<Reply
 		name="Dlg_npc_garage_magnet_2"
-		text="Передать Жесткий диск - x1"
+		text="Передать Жёсткий диск - x1"
 		role="PLAYER"
 		scriptCondition="HasPlayerAmountOfItems('item_hdd', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_Manget_item_hdd').AsInt == 1)"
 		scriptResult="RemoveItemsFromPlayerRepository('item_hdd', 1); SetVar('GarageCraft_Manget_item_hdd', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_hdd')"
@@ -3141,7 +3141,7 @@
 
 	<Reply
 		name="Dlg_npc_garage_magnet_3"
-		text="Забрать Жесткий диск - x1"
+		text="Забрать Жёсткий диск - x1"
 		role="PLAYER"
 		scriptCondition="GetVar('GarageCraft_Manget_item_hdd').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
 		scriptResult="AddItemsToPlayerRepository('item_hdd', 1); SetVar('GarageCraft_Manget_item_hdd', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'item_hdd')"
@@ -4265,7 +4265,7 @@
 
 	<Reply
 		name="Dlg_npc_garage_american_hornet_2"
-		text="Передать Шерешень - x1"
+		text="Передать Шершень - x1"
 		role="PLAYER"
 		scriptCondition="HasPlayerAmountOfItems('hornet01', 1) and GetVar('GarageCraft').AsInt == 0 and not(GetVar('GarageCraft_AmericanHornet_hornet01').AsInt == 1)"
 		scriptResult="RemoveItemsFromPlayerRepository('hornet01', 1); SetVar('GarageCraft_AmericanHornet_hornet01', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'hornet01')"
@@ -4273,7 +4273,7 @@
 
 	<Reply
 		name="Dlg_npc_garage_american_hornet_3"
-		text="Забрать Шерешень - x1"
+		text="Забрать Шершень - x1"
 		role="PLAYER"
 		scriptCondition="GetVar('GarageCraft_AmericanHornet_hornet01').AsInt == 1 and GetVar('GarageCraft').AsInt == 0"
 		scriptResult="AddItemsToPlayerRepository('hornet01', 1); SetVar('GarageCraft_AmericanHornet_hornet01', 0); AddFadingMsgByStrIdFormatted('fm_player_take_item', 'hornet01')"
@@ -11355,7 +11355,7 @@
 
 	<Reply
 		name="Dlg_npc_q_base_scavs_3"
-		text="Отлично. Тут в общем пришёл заказ на выявление точного месторасположения этой базы. Кому попало не доверишь это поручение. И тут - ты. Короче, вот тебе маяк, пользоваться проще простого. Приехал на место маркировки, нажал на кнопку, установил, уехал, всё - сигнал идёт. Только смотри не потеряй, остальные будешь за бабло покупать. Все ясно? Тогда за дело, боец!|@FF0000AA|@FF1D1D1DНаграда:|- Пулемёт: @FF1D1D1DПКТ в продаже - x1|- Пулемёт: @FF1D1D1DКорд в продаже - x1|- Деньги: @FF1D1D1D35.000 монет"
+		text="Отлично. Тут в общем пришёл заказ на выявление точного месторасположения этой базы. Кому попало не доверишь это поручение. И тут - ты. Короче, вот тебе маяк, пользоваться проще простого. Приехал на место маркировки, нажал на кнопку, установил, уехал, всё - сигнал идёт. Только смотри не потеряй, остальные будешь за бабло покупать. Всё ясно? Тогда за дело, боец!|@FF0000AA|@FF1D1D1DНаграда:|- Пулемёт: @FF1D1D1DПКТ в продаже - x1|- Пулемёт: @FF1D1D1DКорд в продаже - x1|- Деньги: @FF1D1D1D35.000 монет"
 		role="NPC"
 		nextReplies="Dlg_npc_q_base_scavs_33 Dlg_npc_q_base_scavs_4 Dlg_npc_q_base_scavs_5 Dlg_npc_q_base_scavs_6" />
 
@@ -11391,7 +11391,7 @@
 
 	<Reply
 		name="Dlg_npc_q_base_scavs_7"
-		text="И снова здравствуй! Сигнал с месторасположением базы получен, работа выполнена. Не знаю, как у тебя это получается, но это моё дело. Главное что делаешь все чётко и по плану. Твоя награда."
+		text="И снова здравствуй! Сигнал с месторасположением базы получен, работа выполнена. Не знаю, как у тебя это получается, но это не моё дело. Главное что делаешь всё чётко и по плану. Твоя награда."
 		role="NPC"
 		nextReplies="Dlg_npc_q_base_scavs_8" />
 
@@ -11595,7 +11595,7 @@
 
 	<Reply
 		name="Dlg_npc_q_sectarian2_1"
-		text="Так, для тебя есть новая работёнка. Смотри что у меня есть. Этот нож тех самых психов, на которые нарвались мои пацаны. Во время заварушки вальнули парочку и у одного их них нашли этот самый нож. Изделие как видишь необычное, со странными знаками. Короче, с этими типами явно что-то не так, оказалось что серьёзные люди за такое изделие готовы целое состояние отвалить. Если подвернется тебе еще несколько таких ножей найти, сразу тащи их ко мне.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Гаджет: @FF1D1D1DИзоляция топливной системы - x1|@FF404040- Лазерная установка: @FF1D1D1DМаксим - x1|@FF404040- Предмет: @FF1D1D1DБаллон с жидкостью для Лазерной установки - x1|@FF404040- Деньги: @FF1D1D1D50.000 монет"
+		text="Так, для тебя есть новая работёнка. Смотри что у меня есть. Это нож тех самых психов, на которые нарвались мои пацаны. Во время заварушки вальнули парочку и у одного из них нашли этот самый нож. Изделие как видишь необычное, со странными знаками. Короче, с этими типами явно что-то не так, оказалось что серьёзные люди за такое изделие готовы целое состояние отвалить. Если подвернется тебе еще несколько таких ножей найти, сразу тащи их ко мне.|@FF0000AA|@FF1D1D1DНаграда:|@FF404040- Гаджет: @FF1D1D1DИзоляция топливной системы - x1|@FF404040- Лазерная установка: @FF1D1D1DМаксим - x1|@FF404040- Предмет: @FF1D1D1DБаллон с жидкостью для Лазерной установки - x1|@FF404040- Деньги: @FF1D1D1D50.000 монет"
 		role="NPC"
 		nextReplies="Dlg_npc_q_sectarian2_2 Dlg_npc_q_sectarian2_3 Dlg_npc_q_sectarian2_4 Dlg_npc_q_sectarian2_5 Dlg_npc_q_sectarian2_6" />
 
@@ -11829,7 +11829,7 @@
 
 	<Reply
 		name="Dlg_npc_q_rebuild_9"
-		text="И так, чтобы закончить работу, мне не хватает всего ничего: один Автомобильный аккумулятор и 2 штуки Свечей зажигания. Принеси мне их, и тогда я смогу закончить работу с ремонтом.|@FF0000AA|@FF1D1D1DНаграда:|- Транспорт: @FF1D1D1DМолоковоз в продаже @FF780a0a[Если не получен ранее]|- Кабина: @FF1D1D1DВихрь (Молоковоз, Уровень II) в продаже|- Пулёмет: @FF1D1D1DКорд - x1|- Предмет: @FF1D1D1DЯщик патронов для пулемёта - x1|- Деньги: @FF1D1D1D50.000 монет"
+		text="И так, чтобы закончить работу, мне не хватает всего ничего: один Автомобильный аккумулятор и 2 штуки Свечей зажигания. Принеси мне их, и тогда я смогу закончить работу с ремонтом.|@FF0000AA|@FF1D1D1DНаграда:|- Транспорт: @FF1D1D1DМолоковоз в продаже @FF780a0a[Если не получен ранее]|- Кабина: @FF1D1D1DВихрь (Молоковоз, Уровень II) в продаже|- Пулемёт: @FF1D1D1DКорд - x1|- Предмет: @FF1D1D1DЯщик патронов для пулемёта - x1|- Деньги: @FF1D1D1D50.000 монет"
 		role="NPC"
 		scriptCondition="CanQuestBeGiven('q_rebuild') or IsQuestTaken('q_rebuild') and not(IsQuestComplete('q_rebuild'))"
 		nextReplies="Dlg_npc_q_rebuild_10 Dlg_npc_q_rebuild_12 Dlg_npc_q_rebuild_13 Dlg_npc_q_rebuild_14 Dlg_npc_q_rebuild_15 Dlg_npc_q_rebuild_16" />
@@ -14411,7 +14411,7 @@
 
 	<Reply
 		name="Dlg_npc_q_naturalist3_9"
-		text="Вот это да! Настоящие комбо из пушек, но для большего баланса лучше устанавливать только один тип вооружения. В данном случае, либо Рейнметаллы, либо Рапиры, так сборка будет выглядеть намного лучше. Задание выполнено, можешь забирать награду."
+		text="Вот это да! Настоящее комбо из пушек, но для большего баланса лучше устанавливать только один тип вооружения. В данном случае, либо Рейнметаллы, либо Рапиры, так сборка будет выглядеть намного лучше. Задание выполнено, можешь забирать награду."
 		role="NPC"
 		nextReplies="Dlg_npc_q_naturalist3_10" />
 
@@ -14453,7 +14453,7 @@
 
 	<Reply
 		name="Dlg_npc_q_naturalist4_5"
-		text="Отлично, знал что ты справишься. Не знаю что заказчику пришло в голову, чтобы оснастить Урал только одним Рейнметаллом, но предположу лишь что, больше у него ничего и нет. Однако тебе это не помешало выполнить заказ, и это радует, вот твоя награда."
+		text="Отлично, знал что ты справишься. Не знаю что заказчику пришло в голову, чтобы оснастить Урал только одним Рейнметаллом, но предположу что больше ничего у него нет. Однако тебе это не помешало выполнить заказ, и это радует, вот твоя награда."
 		role="NPC"
 		nextReplies="Dlg_npc_q_naturalist4_6" />
 
@@ -14479,7 +14479,7 @@
 
 	<Reply
 		name="Dlg_npc_q_naturalist5_3"
-		text="И так, сборка должна быть следующей. Нам необходимо собрать грузовик Урал с возможностью установить на него пулемёт Спрут и три пушки Рейлметалл. Вот взгляни на инструкцию, здесь все расписано.|@FF0000AA|Кабина: @FF1D1D1DВитязь (Уровень V)|Кузов: @FF1D1D1DКрейсер (Уровень III)|Вооружение: @FF1D1D1DРейнметалл - x3, Спрут - x1|@FF0000AA|@FF1D1D1DНаграда:|- Транспорт: @FF1D1D1DМиротворец в продаже|- Кабина: @FF1D1D1DЧереп (Миротворец, Уровень II) в продаже|- Кузов: @FF1D1D1DЦентурион (Миротворец, Уровень II) в продаже|- Кабина: @FF1D1D1DЩит (Белаз, Уровень V) в продаже|- Кузов: @FF1D1D1DКолосс (Белаз, Уровень III) в продаже|- Кузов: @FF1D1D1DГром (Белаз, Уровень IV) в продаже|- Гаджет: @FF1D1D1DБольшая канистра в продаже - x1|- Пушка: @FF1D1D1DРейнметалл в продаже - x1|- Дробовик: @FF1D1D1DФлаг - x1|- Предмет: @FF1D1D1DЯщик патронов для Пушки в продаже - x1|- Предмет: @FF1D1D1DЯщик дроби для Дробовика - x1|- Деньги: @FF1D1D1D70.000 монет"
+		text="И так, сборка должна быть следующей. Нам необходимо собрать грузовик Урал с возможностью установить на него пулемёт Спрут и три пушки Рейнметалл. Вот взгляни на инструкцию, здесь все расписано.|@FF0000AA|Кабина: @FF1D1D1DВитязь (Уровень V)|Кузов: @FF1D1D1DКрейсер (Уровень III)|Вооружение: @FF1D1D1DРейнметалл - x3, Спрут - x1|@FF0000AA|@FF1D1D1DНаграда:|- Транспорт: @FF1D1D1DМиротворец в продаже|- Кабина: @FF1D1D1DЧереп (Миротворец, Уровень II) в продаже|- Кузов: @FF1D1D1DЦентурион (Миротворец, Уровень II) в продаже|- Кабина: @FF1D1D1DЩит (Белаз, Уровень V) в продаже|- Кузов: @FF1D1D1DКолосс (Белаз, Уровень III) в продаже|- Кузов: @FF1D1D1DГром (Белаз, Уровень IV) в продаже|- Гаджет: @FF1D1D1DБольшая канистра в продаже - x1|- Пушка: @FF1D1D1DРейнметалл в продаже - x1|- Дробовик: @FF1D1D1DФлаг - x1|- Предмет: @FF1D1D1DЯщик патронов для Пушки в продаже - x1|- Предмет: @FF1D1D1DЯщик дроби для Дробовика - x1|- Деньги: @FF1D1D1D70.000 монет"
 		role="NPC"
 		nextReplies="Dlg_npc_q_naturalist5_4 Dlg_npc_q_naturalist5_5 Dlg_npc_q_naturalist5_6" />
 
@@ -16151,7 +16151,7 @@
 
 	<Reply
 		name="Dlg_pl_mod_part_45"
-		text="Модифицировать кузов Крейсера (Уровня I) (Стоимость: 21000 монет)"
+		text="Модифицировать кузов Крейсера 8x11 (Уровня I) (Стоимость: 21000 монет)"
 		role="PLAYER"
 		scriptCondition="GetPartPrototypeByName('BASKET') == 'cruiserCargo01_8x11' and GetPlayerMoney() >= 21000"
 		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'cruiserCargo01_8x11'); AddPlayerMoney(-21000)"
@@ -16159,7 +16159,7 @@
 
 	<Reply
 		name="Dlg_pl_mod_part_46"
-		text="Модифицировать кузов Крейсера (Уровня II) (Стоимость: 24000 монет)"
+		text="Модифицировать кузов Крейсера 8x12 (Уровня II) (Стоимость: 24000 монет)"
 		role="PLAYER"
 		scriptCondition="GetPartPrototypeByName('BASKET') == 'cruiserCargo02_8x12' and GetPlayerMoney() >= 24000"
 		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'cruiserCargo02_8x12'); AddPlayerMoney(-24000)"

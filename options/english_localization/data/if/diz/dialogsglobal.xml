@@ -16151,7 +16151,7 @@
 
 	<Reply
 		name="Dlg_pl_mod_part_45"
-		text="Modify the Cruiser's cargo 8x11 (Price: 21000 coins)"
+		text="Modify the Cruiser's cargo 8x11 (Level I) (Price: 21000 coins)"
 		role="PLAYER"
 		scriptCondition="GetPartPrototypeByName('BASKET') == 'cruiserCargo01_8x11' and GetPlayerMoney() >= 21000"
 		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'cruiserCargo01_8x11'); AddPlayerMoney(-21000)"
@@ -16159,7 +16159,7 @@
 
 	<Reply
 		name="Dlg_pl_mod_part_46"
-		text="Modify the Cruiser's cargo 8x12 (Price: 24000 coins)"
+		text="Modify the Cruiser's cargo 8x12 (Level II) (Price: 24000 coins)"
 		role="PLAYER"
 		scriptCondition="GetPartPrototypeByName('BASKET') == 'cruiserCargo02_8x12' and GetPlayerMoney() >= 24000"
 		scriptResult="AddRandomAffixToPart('BASKET'); AddFadingMsgByStrIdFormatted('fm_mod_bas', 'cruiserCargo02_8x12'); AddPlayerMoney(-24000)"

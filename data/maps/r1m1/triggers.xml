@@ -3201,7 +3201,7 @@
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation01_loc" />
 		<script>
 			local box = GetEntityByName("FuelBox_1")
-			if HasPlayerAmountOfItems("fuel_nil_use", 1) and not(box) then
+			if HasPlayerAmountOfItems("fuel_nil_use", 1) and not(box) or HasPlayerAmountOfItems("fuel_nil_use_insured", 1) and not(box) then
 				local b = SpawnMessageBox( "90001" )
 				if b == 1 then
 					if GetPlayerMoney() >= 5000 then
@@ -3209,7 +3209,11 @@
 						CreateEffectTTLed( "ET_PS_FUEL_PETROL_START", CVector(2582, 348, 2269), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 800)
 						AddFadingMsgByStrIdFormatted("fm_fuel_petrol_start")
 						SoundFadingMsg()
-						RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
+						if HasPlayerAmountOfItems("fuel_nil_use", 1) then
+							RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
+						elseif HasPlayerAmountOfItems("fuel_nil_use_insured", 1) then
+							RemoveItemsFromPlayerRepository("fuel_nil_use_insured", 1)
+						end
 						TActivate("SoundPetrolProcess_InPertolStation01")
 						TActivate("FuelFull_InPetrolStation01")
 						GetPlayerVehicle():SetThrottle( 0 )
@@ -3280,7 +3284,7 @@
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation02_loc" />
 		<script>
 			local box = GetEntityByName("FuelBox_2")
-			if HasPlayerAmountOfItems("fuel_nil_use", 1) and not(box) then
+			if HasPlayerAmountOfItems("fuel_nil_use", 1) and not(box) or HasPlayerAmountOfItems("fuel_nil_use_insured", 1) and not(box) then
 				local b = SpawnMessageBox( "90001" )
 				if b == 1 then
 					if GetPlayerMoney() >= 5000 then
@@ -3288,7 +3292,11 @@
 						CreateEffectTTLed( "ET_PS_FUEL_PETROL_START", CVector(1312.274, 288.949, 1757.526), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 800)
 						AddFadingMsgByStrIdFormatted("fm_fuel_petrol_start")
 						SoundFadingMsg()
-						RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
+						if HasPlayerAmountOfItems("fuel_nil_use", 1) then
+							RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
+						elseif HasPlayerAmountOfItems("fuel_nil_use_insured", 1) then
+							RemoveItemsFromPlayerRepository("fuel_nil_use_insured", 1)
+						end
 						TActivate("SoundPetrolProcess_InPertolStation02")
 						TActivate("FuelFull_InPetrolStation02")
 						GetPlayerVehicle():SetThrottle( 0 )
@@ -3359,7 +3367,7 @@
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation03_loc" />
 		<script>
 			local box = GetEntityByName("FuelBox_3")
-			if HasPlayerAmountOfItems("fuel_nil_use", 1) and not(box) then
+			if HasPlayerAmountOfItems("fuel_nil_use", 1) and not(box) or HasPlayerAmountOfItems("fuel_nil_use_insured", 1) and not(box) then
 				local b = SpawnMessageBox( "90001" )
 				if b == 1 then
 					if GetPlayerMoney() >= 5000 then
@@ -3367,7 +3375,11 @@
 						CreateEffectTTLed( "ET_PS_FUEL_PETROL_START", CVector(917.057, 309.294, 872.621), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 800)
 						AddFadingMsgByStrIdFormatted("fm_fuel_petrol_start")
 						SoundFadingMsg()
-						RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
+						if HasPlayerAmountOfItems("fuel_nil_use", 1) then
+							RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
+						elseif HasPlayerAmountOfItems("fuel_nil_use_insured", 1) then
+							RemoveItemsFromPlayerRepository("fuel_nil_use_insured", 1)
+						end
 						TActivate("SoundPetrolProcess_InPertolStation03")
 						TActivate("FuelFull_InPetrolStation03")
 						GetPlayerVehicle():SetThrottle( 0 )

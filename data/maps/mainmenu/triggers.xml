@@ -14,6 +14,8 @@
 	<trigger Name="Trigger_start" active="1">
 		<event eventid="GE_GAME_START" ObjName="Player1" />
 		<script>
+			if STARTGAME then STARTGAME = STARTGAME + 1 end
+			if STARTGAME == 1 then UpdateUserInfoFile() end
 
 			PlayCustomMusic("mainmenu")
 			SetVar("Track", 175)

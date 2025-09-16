@@ -13,6 +13,8 @@ end
 if R4M1_exit == nil then R4M1_exit = 0 end
 if R0M1_exit == nil then R0M1_exit = 0 end
 
+if STARTGAME == nil then STARTGAME = 0 end
+
 -- Счетчик количества рейдов 
 if COUNT_RAIDS == nil then COUNT_RAIDS = 0 end
 
@@ -2046,8 +2048,93 @@ function GetAffixPartByName(part, obj)
 	end
 end
 
+-- Создает UserInfo.txt
+function CreateUserInfoFile()
+	con("CreateUserInfoFile")
+	local f = io.open("UserInfo.txt", "w")
+	if f then
+		f:write("Этот файл создан для возможности сохранять значения переменных после перезапуска игры.\nВсе ваши достижения будут сохранятся здесь и, при необходимости, переносится в последующие версии EFA.\nНе удаляйте и не изменяйте значения переменных без острой необходимости, так как это может привести к ошибкам!", "\n\n")
+		f:write("This file is designed to be able to save variable values after restarting the game.\nAll your achievements will be saved here and, if necessary, transferred to subsequent versions of EFA.\nDo not delete or change variable values unless absolutely necessary, as this may lead to errors!", "\n\n")
+		f:write("ESCAPE FROM APOCALYPSE VERSION: "..EFA_VERSION.." | BUILD: "..EFA_BUILD, "\n\n")
+		f:write("UserName: "..os.getenv("USERNAME"), "\n")
+		f:write("LastDate: "..os.date(), "\n")
+		f:write("LaunchDate: "..os.date(), "\n\n")
+		f:write("NewGame: 0", "\n")
+		f:close()
+	end
+end
 
+function UpdateUserInfoFile()
+	if FileExists("UserInfo.txt") ~= nil then 
+		con("UpdateUserInfoFile")
+		EditUserInfo("ESCAPE", "ESCAPE FROM APOCALYPSE VERSION: "..EFA_VERSION.." | BUILD: "..EFA_BUILD)
+		EditUserInfo("User", "UserName: "..os.getenv("USERNAME"))
+		EditUserInfo("Last", "LastDate: "..ReadUserInfo("LaunchDate: ", 12))
+		EditUserInfo("Launch", "LaunchDate: "..os.date())
+	else
+		CreateUserInfoFile()
+	end
+end
 
+function ReadUserInfo(l, s)
+	if s == nil then s = 0 end
+	local f = io.open("UserInfo.txt", "r+")
+	if f then
+		for logLine in f:lines() do
+			local find = string.find(logLine, l)
+			if find then
+				local line = tostring(string.sub(logLine, find+s))
+				return line
+			end
+		end	
+		f:close()
+	end
+end
+
+function EditUserInfo(l, s)
+    local file = io.open("UserInfo.txt", "r+")
+    local fileContent = {}
+	local str, len = 0, 0
+	if file then
+		for line in file:lines() do
+			str = str + 1
+			table.insert (fileContent, line)
+			local find = string.find(line, l)
+			if find then len = str end
+		end
+		file:close()
+	end
+	
+	if ReadUserInfo(l) ~= nil then
+		con("OLD: "..fileContent[len])
+		fileContent[len] = s
+		con("NEW: "..fileContent[len])
+		local file = io.open("UserInfo.txt", "w")
+		if file then
+			for index, value in ipairs(fileContent) do
+				file:write(value..'\n')
+			end
+			file:close()
+		end
+	else
+		con("ADD: "..s)
+		local file = io.open("UserInfo.txt", "a")
+		if file then
+			file:write(s.."\n")
+			file:close()
+		end
+	end
+end
+
+function FileExists(path)
+	local f = io.open(path, "r")
+	if f ~= nil then
+		f:close() 
+		return 1
+	else 
+		return nil
+	end
+end
 
 
 

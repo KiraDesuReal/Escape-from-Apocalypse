@@ -717,6 +717,10 @@
 			if Q_DAILY_EXTRACT_COUNT then Q_DAILY_EXTRACT_COUNT = 0 end
 			if Q_DAILY_EXTRACT_STATUS then Q_DAILY_EXTRACT_STATUS = "0" end
 			if Q_DAILY_EXTRACT_PROGRESS then Q_DAILY_EXTRACT_PROGRESS = 0 end
+
+			local newgame = tonumber(ReadUserInfo("NewGame: ", 9)) + 1
+			EditUserInfo("NewGame: ", "NewGame: "..newgame)
+
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1423,7 +1427,7 @@
 	<trigger Name="UseFuelNil_InPetrolStation01" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation_loc" />
 		<script>
-			if HasPlayerAmountOfItems("fuel_nil_use", 1) then
+			if HasPlayerAmountOfItems("fuel_nil_use", 1) or HasPlayerAmountOfItems("fuel_nil_use_insured", 1) then
 				if GetVar("Generator_on").AsInt == 1 then
 					local b = SpawnMessageBox("90001")
 					if b == 1 then
@@ -1432,7 +1436,11 @@
 							CreateEffectTTLed( "ET_PS_FUEL_PETROL_START", CVector(906.852, 255, 1040.380), Quaternion(0, 0, 0, 1), 800)
 							AddFadingMsgByStrIdFormatted("fm_fuel_petrol_start")
 							SoundFadingMsg()
-							RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
+							if HasPlayerAmountOfItems("fuel_nil_use", 1) then
+								RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
+							elseif HasPlayerAmountOfItems("fuel_nil_use_insured", 1) then
+								RemoveItemsFromPlayerRepository("fuel_nil_use_insured", 1)
+							end
 							TActivate("SoundPetrolProcess_InPertolStation01")
 							GetPlayerVehicle():SetThrottle( 0 )
 							GetPlayerVehicle():SetCustomLinearVelocity( 0 )

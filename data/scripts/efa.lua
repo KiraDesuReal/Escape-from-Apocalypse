@@ -2069,7 +2069,7 @@ function UpdateUserInfoFile()
 		con("UpdateUserInfoFile")
 		EditUserInfo("ESCAPE", "ESCAPE FROM APOCALYPSE VERSION: "..EFA_VERSION.." | BUILD: "..EFA_BUILD)
 		EditUserInfo("User", "UserName: "..os.getenv("USERNAME"))
-		EditUserInfo("Last", "LastDate: "..ReadUserInfo("LaunchDate: ", 12))
+		EditUserInfo("Last", "LastDate: "..ReadValueUserInfo("Launch"))
 		EditUserInfo("Launch", "LaunchDate: "..os.date())
 	else
 		CreateUserInfoFile()
@@ -2099,8 +2099,10 @@ function EditUserInfo(l, s)
 		for line in file:lines() do
 			str = str + 1
 			table.insert (fileContent, line)
-			local find = string.find(line, l)
-			if find then len = str end
+			if ReadUserInfo(l) ~= nil then
+				local find = string.find(line, l)
+				if find then len = str end
+			end
 		end
 		file:close()
 	end
@@ -2133,6 +2135,19 @@ function FileExists(path)
 		return 1
 	else 
 		return nil
+	end
+end
+
+function ReadValueUserInfo(l)
+	local line = ReadUserInfo(l)
+	if line ~= nil then
+		local sum = string.find(line, ":")
+		if sum then
+			local value = ReadUserInfo(l, sum + 1)
+			if value then 
+				return value
+			end
+		end
 	end
 end
 

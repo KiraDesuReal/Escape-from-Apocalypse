@@ -4400,11 +4400,19 @@
 	<trigger Name="OracleRemove" active="0">
 		<event timeout="100" eventid="GE_TIME_PERIOD" />
 		<script>
-			getObj("Oracle_AirDrop"):SetPosition(CVector(440, 251, 3825))
-			getObj("Oracle_AirDrop"):SetRotation(Quaternion(0, 0, 0, 1))
 			SetVar("AirType", 0)
 			local mover = GetEntityByName("MoverB")
 			if mover then mover:Remove() end
+			TActivate("OracleRemoveTp")
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="OracleRemoveTp" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			getObj("Oracle_AirDrop"):SetPosition(CVector(440, 251, 3825))
+			getObj("Oracle_AirDrop"):SetRotation(Quaternion(0, 0, 0, 1))
 			trigger:Deactivate() 
 		</script>
 	</trigger>
@@ -5718,9 +5726,7 @@
 			TDeactivate("OracleSoundUpdate")
 			TDeactivate("OracleSoundRemove")
 			TDeactivate("OracleRemove")
-			getObj("Oracle_AirDrop"):SetPosition(CVector(440, 251, 3825))
-			getObj("Oracle_AirDrop"):SetRotation(Quaternion(0, 0, 0, 1))
-
+	
 			for point=1,14 do
 				local airpoint = GetEntityByName("air_point"..point)
 				if airpoint then airpoint:Remove() end
@@ -5737,6 +5743,8 @@
 
 			local mover = GetEntityByName("MoverB")
 			if mover then mover:Remove() end
+
+			TActivate("OracleRemoveTp")
 
 			--удаление ЧВК
 			TDeactivate("TpBirge_1")

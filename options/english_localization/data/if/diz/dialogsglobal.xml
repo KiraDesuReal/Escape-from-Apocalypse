@@ -9582,7 +9582,7 @@
 		role="PLAYER"
 		scriptCondition="HasPlayerAmountOfItems('doski', 1) and not(GetVar('Shelf_doski').AsInt == 3)"
 		scriptResult="RemoveItemsFromPlayerRepository('doski', 1); SetVar('Shelf_doski', GetVar('Shelf_doski').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'doski')"
-		nextReplies="Dlg_npc_01 Dlg_npc_01_2" />
+		nextReplies="Dlg_npc_03" />
 
 	<Reply
 		name="Dlg_pl_04"
@@ -9590,7 +9590,7 @@
 		role="PLAYER"
 		scriptCondition="HasPlayerAmountOfItems('item_screws', 1) and not(GetVar('Shelf_item_screws').AsInt == 2)"
 		scriptResult="RemoveItemsFromPlayerRepository('item_screws', 1); SetVar('Shelf_item_screws', GetVar('Shelf_item_screws').AsInt + 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_screws')"
-		nextReplies="Dlg_npc_01 Dlg_npc_01_2" />
+		nextReplies="Dlg_npc_03" />
 
 	<Reply
 		name="Dlg_pl_05"
@@ -9598,7 +9598,7 @@
 		role="PLAYER"
 		scriptCondition="HasPlayerAmountOfItems('item_drill', 1) and not(GetVar('Shelf_item_drill').AsInt == 1)"
 		scriptResult="RemoveItemsFromPlayerRepository('item_drill', 1); SetVar('Shelf_item_drill', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_drill')"
-		nextReplies="Dlg_npc_01 Dlg_npc_01_2" />
+		nextReplies="Dlg_npc_03" />
 
 	<Reply
 		name="Dlg_pl_06"
@@ -9606,7 +9606,7 @@
 		role="PLAYER"
 		scriptCondition="HasPlayerAmountOfItems('item_roulet', 1) and not(GetVar('Shelf_item_roulet').AsInt == 1)"
 		scriptResult="RemoveItemsFromPlayerRepository('item_roulet', 1); SetVar('Shelf_item_roulet', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_roulet')"
-		nextReplies="Dlg_npc_01 Dlg_npc_01_2" />
+		nextReplies="Dlg_npc_03" />
 
 	<Reply
 		name="Dlg_pl_07"
@@ -9614,15 +9614,15 @@
 		role="PLAYER"
 		scriptCondition="HasPlayerAmountOfItems('item_pliers', 1) and not(GetVar('Shelf_item_pliers').AsInt == 1)"
 		scriptResult="RemoveItemsFromPlayerRepository('item_pliers', 1); SetVar('Shelf_item_pliers', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_pliers')"
-		nextReplies="Dlg_npc_01 Dlg_npc_01_2" />
+		nextReplies="Dlg_npc_03" />
 
 	<Reply
 		name="Dlg_pl_08"
 		text="Transfer Long flat screwdriver - x1"
 		role="PLAYER"
 		scriptCondition="HasPlayerAmountOfItems('item_screw_flat_long', 1) and not(GetVar('Shelf_item_screw_flat_long').AsInt == 1)"
-		scriptResult="RemoveItemsFromPlayerRepository('item_screw_flat_long', 1); SetVar('Shelf_item_screw_flat_long', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'Shelf_item_screw_flat_long')"
-		nextReplies="Dlg_npc_01 Dlg_npc_01_2" />
+		scriptResult="RemoveItemsFromPlayerRepository('item_screw_flat_long', 1); SetVar('Shelf_item_screw_flat_long', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_screw_flat_long')"
+		nextReplies="Dlg_npc_03" />
 
 	<Reply
 		name="Dlg_pl_09"

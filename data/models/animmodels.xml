@@ -722,6 +722,13 @@
 
 	<model
 		id="doski"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\doski.gam" />
+
+	<model
+		id="doski_r0m0"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
@@ -736,6 +743,13 @@
 
 	<model
 		id="koroldrov"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\koroldrov.gam" />
+
+	<model
+		id="koroldrov_r0m0"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
@@ -18497,7 +18511,7 @@
 		id="hoisting_structure_1"
 		file="data\models\buildings\region1\hoisting_structure_1.gam"
 		shadowVolume="0"
-		shadow="0"
+		shadow="1"
 		windwavy="0"
 		trans="0" />
 

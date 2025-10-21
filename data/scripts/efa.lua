@@ -1435,7 +1435,7 @@ function ShelfAddItemToSlot()
 
 	if item == "potato" then model = "potatoe" y = 0.13 end
 	if item == "scrap_metal" or item == "scrap_metal_use" then model = "lom" y = 0.03 end
-	if item == "firewood" then model = "koroldrov" y = -0.3 scale = 0.3 end
+	if item == "firewood" then model = "koroldrov_r0m0" y = -0.3 scale = 0.3 end
 	if item == "oil" or item == "oil_use" then model = "back_exp" y = 0.22 scale = 0.32 end
 	if item == "bottle" then model = "bottles" y = -0.06 end
 	if item == "fuel" or item == "fuel_full_use" or item == "fuel_nil_use" then model = "kanistr" y = 0.03 end
@@ -1443,7 +1443,7 @@ function ShelfAddItemToSlot()
 	if item == "tobacco" then model = "tobacco" y = -0.2 end
 	if item == "book" then model = "books" y = -0.09 end
 	if item == "electronics" or item == "electronics_use" then model = "mikro" y = -0.29 end
-	if item == "doski" then model = "doski" scale = 0.28 end
+	if item == "doski" then model = "doski_r0m0" scale = 0.28 end
 	if item == "details" then model = "detail" scale = 0.15 rot = Quaternion(0, 0, -0.707, 0.707) y = -0.15 end
 	if item == "item_key_gate_thetown" or item == "item_key_gate_basefelix" then model = "key_1" scale = 0.15 rot = Quaternion(-0.7071, 0.0000, 0.0000, 0.7071) y = -0.27 end
 	if item == "item_disk" then model = "disk" scale = 0.05 rot = Quaternion(-0.495, -0.505, -0.505, 0.495) y = -0.29 end

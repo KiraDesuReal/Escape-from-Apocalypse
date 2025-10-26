@@ -1438,7 +1438,7 @@ function ShelfAddItemToSlot()
 	if item == "firewood" then model = "koroldrov_r0m0" y = -0.3 scale = 0.3 end
 	if item == "oil" or item == "oil_use" then model = "back_exp" y = 0.22 scale = 0.32 end
 	if item == "bottle" then model = "bottles" y = -0.06 end
-	if item == "fuel" or item == "fuel_full_use" or item == "fuel_nil_use" then model = "kanistr" y = 0.03 end
+	if item == "fuel" or item == "fuel_full_use" or item == "fuel_nil_use" then model = "kanistr_r0m0" y = 0.03 end
 	if item == "machinery" or item == "machinery_use" then model = "rabochee_oborudovanie" y = -0.24 rot = Quaternion(0, 0, 0, 1) end
 	if item == "tobacco" then model = "tobacco" y = -0.2 end
 	if item == "book" then model = "books" y = -0.09 end

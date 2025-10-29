@@ -349,6 +349,14 @@
 		file="data\models\nature\region5\trees\listvenoe1snow.gam" />
 
 	<model
+		id="listvenoe1_r5_snow"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\listvenoe1_r5snow.gam" />
+
+	<model
 		id="listvenoe2_snow"
 		shadow="1"
 		trans="1"
@@ -388,6 +396,21 @@
 		useImpostors="1"
 		file="data\models\nature\region5\trees\sosna3snow.gam" />
 
+	<model
+		id="r1_dub_kust1_snow"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\r1_dub_kust1_snow.gam" />
+
+	<model
+		id="r1_dub_kust2_snow"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\r1_dub_kust2_snow.gam" />
 
 	<model
 		id="conteiner"
@@ -1474,6 +1497,30 @@
 		file="data\models\nature\region1\trees\dub3.gam" />
 
 	<model
+		id="dub1_NoImpostors"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors = "0"
+		file="data\models\nature\region1\trees\dub1.gam" />
+
+	<model
+		id="dub2_NoImpostors"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors = "0"
+		file="data\models\nature\region1\trees\dub2.gam" />
+
+	<model
+		id="dub3_NoImpostors"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors = "0"
+		file="data\models\nature\region1\trees\dub3.gam" />
+
+	<model
 		id="elka1"
 		shadow="1"
 		trans="1"
@@ -1495,6 +1542,30 @@
 		trans="1"
 		windwavy="0"
 		useImpostors = "1"
+		file="data\models\nature\region1\trees\elka3.gam" />
+
+	<model
+		id="elka1_NoImpostors"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors = "0"
+		file="data\models\nature\region1\trees\elka1.gam" />
+
+	<model
+		id="elka2_NoImpostors"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors = "0"
+		file="data\models\nature\region1\trees\elka2.gam" />
+
+	<model
+		id="elka3_NoImpostors"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors = "0"
 		file="data\models\nature\region1\trees\elka3.gam" />
 
 	<model
@@ -1575,6 +1646,54 @@
 		trans="1"
 		windwavy="0"
 		useImpostors = "1"
+		file="data\models\nature\region1\trees\sosna3.gam" />
+
+	<model
+		id="listvenoe1_NoImpostors"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors = "0"
+		file="data\models\nature\region1\trees\listvenoe1.gam" />
+
+	<model
+		id="listvenoe2_NoImpostors"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors = "0"
+		file="data\models\nature\region1\trees\listvenoe2.gam" />
+
+	<model
+		id="listvenoe3_NoImpostors"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors = "0"
+		file="data\models\nature\region1\trees\listvenoe3.gam" />
+
+	<model
+		id="sosna1_NoImpostors"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors = "0"
+		file="data\models\nature\region1\trees\sosna1.gam" />
+
+	<model
+		id="sosna2_NoImpostors"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors = "0"
+		file="data\models\nature\region1\trees\sosna2.gam" />
+
+	<model
+		id="sosna3_NoImpostors"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors = "0"
 		file="data\models\nature\region1\trees\sosna3.gam" />
 <!-- Gadgets -->
 	<model
@@ -17695,6 +17814,22 @@
 		windwavy="0"/>
 
 	<model
+		id="r1_Dub_Kust1_NoImpostors"
+		file="data\models\nature\region1\trees\r1_dub_kust1.gam"
+		useImpostors = "0"
+		trans="1"
+		shadow="1"
+		windwavy="0"/>
+
+	<model
+		id="r1_Dub_Kust2_NoImpostors"
+		file="data\models\nature\region1\trees\r1_dub_kust2.gam"
+		trans="1"
+		useImpostors = "0"
+		shadow="1"
+		windwavy="0"/>
+
+	<model
 		id="ikar2"
 		file="data\models\buildings\region1\ikar2.gam"
 		shadow="1"
@@ -19087,6 +19222,24 @@
 		id="dub_kust2_r2"
 		file="data\models\nature\region2\trees\dub_kust2_r2.gam"
 		useImpostors = "1"
+		shadow="1"
+		windwavy="0"
+		trans="1"
+		composite="0" />
+
+	<model
+		id="dub_kust1_r2_NoImpostors"
+		file="data\models\nature\region2\trees\dub_kust1_r2.gam"
+		useImpostors = "0"
+		shadow="1"
+		windwavy="0"
+		trans="1"
+		composite="0" />
+
+	<model
+		id="dub_kust2_r2_NoImpostors"
+		file="data\models\nature\region2\trees\dub_kust2_r2.gam"
+		useImpostors = "0"
 		shadow="1"
 		windwavy="0"
 		trans="1"

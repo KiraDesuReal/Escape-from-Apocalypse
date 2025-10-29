@@ -22,4 +22,73 @@
 			LightmapTexture="lightmap_Weather_Clear_sunriseTime.dds"
 			CloudsTexture="SkyRainy.dds" />
 	</WeatherItem>
+
+	<WeatherItem
+		name="main_menu_clear_winter">
+		<ColorType
+			name="sunrise"
+			LightmapTexture="lightmap_Weather_Clear_sunriseTime_snow.dds"
+			CloudsTexture="skyclear1.dds" />
+
+		<ColorType
+			name="day"
+			LightmapTexture="lightmap_Weather_Clear_dayTime_snow.dds"
+			CloudsTexture="skyclear1.dds" />
+
+		<ColorType
+			name="sunset"
+			LightmapTexture="lightmap_Weather_Clear_sunriseTime_snow.dds"
+			CloudsTexture="SkyCloudy1.dds" />
+
+		<ColorType
+			name="night"
+			LightmapTexture="lightmap_Weather_Clear_nighttime_snow.dds"
+			CloudsTexture="SkyRainy.dds" />
+	</WeatherItem>
+
+	<WeatherItem
+		name="main_menu_snow_winter">
+		<ColorType
+			name="sunrise"
+			LightmapTexture="lightmap_Weather_Clear_sunriseTime_snow.dds"
+			CloudsTexture="skyclear.dds" />
+
+		<ColorType
+			name="day"
+			LightmapTexture="lightmap_Weather_Clear_dayTime_snow.dds"
+			CloudsTexture="skyclear.dds" />
+
+		<ColorType
+			name="sunset"
+			LightmapTexture="lightmap_Weather_Clear_sunriseTime_snow.dds"
+			CloudsTexture="skycloudy1.dds" />
+
+		<ColorType
+			name="night"
+			LightmapTexture="lightmap_Weather_Clear_nighttime_snow.dds"
+			CloudsTexture="SkyRainy.dds" />
+	</WeatherItem>
+
+	<WeatherItem
+		name="main_menu_snow_winter2">
+		<ColorType
+			name="sunrise"
+			LightmapTexture="lightmap_Weather_Clear_sunriseTime_snow.dds"
+			CloudsTexture="skyovercast.dds" />
+
+		<ColorType
+			name="day"
+			LightmapTexture="lightmap_Weather_Clear_dayTime_snow.dds"
+			CloudsTexture="skyrainy.dds" />
+
+		<ColorType
+			name="sunset"
+			LightmapTexture="lightmap_Weather_Clear_sunriseTime_snow.dds"
+			CloudsTexture="skyblight2.dds" />
+
+		<ColorType
+			name="night"
+			LightmapTexture="lightmap_Weather_Clear_nighttime_snow.dds"
+			CloudsTexture="SkyRainy.dds" />
+	</WeatherItem>
 </Weather>

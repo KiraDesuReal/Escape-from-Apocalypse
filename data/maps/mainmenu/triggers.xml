@@ -384,4 +384,174 @@
 		</script>
 	</trigger>
 
+	<trigger Name="Events" active="1">
+		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local day = tonumber(strsub(os.date(), 4, 5))
+			local month = tonumber(strsub(os.date(), 1, 2))
+
+			if month == 12 or month == 1 or month == 2 then 
+				SEASON = "WINTER" 
+				if ReadValueUserInfo("Season") ~= "WINTER" then TActivate("WinterWeather") end
+			end
+
+			if month == 3 or month == 4 or month == 5 then 
+				SEASON = "SPRING" 
+				if ReadValueUserInfo("Season") ~= "SPRING" then TActivate("SummerWeather") end
+			end
+
+			if month == 6 or month == 7 or month == 8 then 
+				SEASON = "SUMMER" 
+				if ReadValueUserInfo("Season") ~= "SUMMER" then TActivate("SummerWeather") end
+			end
+
+			if month == 9 or month == 10 or month == 11 then 
+				SEASON = "AUTUMN" 
+				if ReadValueUserInfo("Season") ~= "AUTUMN" then TActivate("SummerWeather") end
+			end
+
+			EditUserInfo("Season", "Season: "..SEASON)
+
+			if month == 12 and day >= 25 or month == 1 and day >= 1 and 10 > day then EVENT = "NEW_YEAR" end
+
+			TActivate("WinterWeather")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SummerWeather" active="0">
+		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
+		<script>
+			SetWeather(0)
+			RuleConsole("testShadowRenderToGrass yes")
+
+			for i = 189, 380 do 
+				local tree = getObj("Object"..i)
+				if tree then tree:SetSkin(0) end
+			end
+
+			for t = 1, 39 do
+				local tree = getObj("tree"..t)
+				if tree then tree:SetSkin(0) end
+			end
+
+			for d = 1, 5 do
+				local dub = getObj("dub_"..d)
+				if dub then dub:Remove() end
+			end
+
+			CreateNewDummyObject("dub1_r2", "dub_r2_1", -1, -1, CVector(385.839, 230.000, 571.088), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
+			CreateNewDummyObject("dub3_r2", "dub_r2_2", -1, -1, CVector(246.259, 230.004, 597.568), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
+			CreateNewDummyObject("dub2_r2", "dub_r2_3", -1, -1, CVector(210.323, 260.000, 885.031), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
+			CreateNewDummyObject("dub1_r2", "dub_r2_4", -1, -1, CVector(378.060, 244.371, 967.355), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
+			CreateNewDummyObject("dub3_r2", "dub_r2_5", -1, -1, CVector(541.867, 259.926, 961.743), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="WinterWeather" active="0">
+		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
+		<script>
+			SetWeather(random(1,3))
+			RuleConsole("testShadowRenderToGrass no")
+
+			for i = 189, 380 do 
+				local tree = getObj("Object"..i)
+				if tree then tree:SetSkin(1) end
+			end
+
+			for t = 1, 39 do
+				local tree = getObj("tree"..t)
+				if tree then tree:SetSkin(1) end
+			end
+
+			for d = 1, 5 do
+				local dub = getObj("dub_r2_"..d)
+				if dub then dub:Remove() end
+			end
+
+			CreateNewDummyObject("dub1_NoImpostors", "dub_1", -1, -1, CVector(385.839, 230.000, 571.088), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1)
+			CreateNewDummyObject("dub3_NoImpostors", "dub_2", -1, -1, CVector(246.259, 230.004, 597.568), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1)
+			CreateNewDummyObject("dub2_NoImpostors", "dub_3", -1, -1, CVector(210.323, 260.000, 885.031), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1)
+			CreateNewDummyObject("dub1_NoImpostors", "dub_4", -1, -1, CVector(378.060, 244.371, 967.355), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1)
+			CreateNewDummyObject("dub3_NoImpostors", "dub_5", -1, -1, CVector(541.867, 259.926, 961.743), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Trees" active="1">
+		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewDummyObject("r1_Dub_Kust1_NoImpostors", "tree1", -1, -1, CVector(1729.346, 226.500, 1287.108), Quaternion(0.0000, 0.9990, 0.0000, 0.0436))
+			CreateNewDummyObject("r1_Dub_Kust1_NoImpostors", "tree2", -1, -1, CVector(1864.190, 227.324, 1154.851), Quaternion(0.0000, 0.3173, 0.0000, 0.9483))
+			CreateNewDummyObject("r1_Dub_Kust1_NoImpostors", "tree3", -1, -1, CVector(1785.396, 227.121, 1099.952), Quaternion(0.0000, 0.8949, 0.0000, -0.4462))
+			CreateNewDummyObject("r1_Dub_Kust1_NoImpostors", "tree4", -1, -1, CVector(1872.428, 230.000, 1013.712), Quaternion(0.0000, 0.8949, 0.0000, -0.4462))
+			CreateNewDummyObject("r1_Dub_Kust1_NoImpostors", "tree5", -1, -1, CVector(1883.577, 236.310, 977.607), Quaternion(0.0000, 0.8480, 0.0000, -0.5299))
+			CreateNewDummyObject("r1_Dub_Kust1_NoImpostors", "tree6", -1, -1, CVector(1761.459, 226.102, 1013.004), Quaternion(0.0000, 0.3338, 0.0000, 0.9426))
+			CreateNewDummyObject("r1_Dub_Kust1_NoImpostors", "tree7", -1, -1, CVector(1768.497, 229.877, 959.143), Quaternion(0.0000, 0.5000, 0.0000, 0.8660))
+			CreateNewDummyObject("r1_Dub_Kust1_NoImpostors", "tree8", -1, -1, CVector(1706.181, 221.273, 935.322), Quaternion(0.0000, 0.7880, 0.0000, 0.6157))
+			CreateNewDummyObject("r1_Dub_Kust1_NoImpostors", "tree9", -1, -1, CVector(1718.919, 228.130, 901.398), Quaternion(0.0000, 0.5948, 0.0000, -0.8039))
+			CreateNewDummyObject("r1_Dub_Kust1_NoImpostors", "tree10", -1, -1, CVector(1503.386, 219.360, 1587.787), Quaternion(0.0000, 0.7133, 0.0000, -0.7009))
+			CreateNewDummyObject("r1_Dub_Kust1_NoImpostors", "tree11", -1, -1, CVector(1364.559, 258.833, 1768.046), Quaternion(0.0000, 0.4384, 0.0000, 0.8988))
+			CreateNewDummyObject("r1_Dub_Kust1_NoImpostors", "tree12", -1, -1, CVector(1324.165, 259.375, 1792.766), Quaternion(0.0000, 0.3746, 0.0000, 0.9272))
+			CreateNewDummyObject("r1_Dub_Kust1_NoImpostors", "tree13", -1, -1, CVector(1308.031, 259.802, 1785.197), Quaternion(0.0000, 0.1392, 0.0000, -0.9903))
+			CreateNewDummyObject("dub_kust1_r2_NoImpostors", "tree14", -1, -1, CVector(1653.834, 230.582, 568.412), Quaternion(0.0000, 0.9205, 0.0000, 0.3907))
+			CreateNewDummyObject("dub_kust2_r2_NoImpostors", "tree15", -1, -1, CVector(1481.031, 230.000, 570.256), Quaternion(0.0000, 0.9799, 0.0000, -0.1994))
+			CreateNewDummyObject("dub_kust2_r2_NoImpostors", "tree16", -1, -1, CVector(1230.311, 221.389, 395.339), Quaternion(0.0000, 0.9272, 0.0000, 0.3746))
+			CreateNewDummyObject("dub_kust1_r2_NoImpostors", "tree17", -1, -1, CVector(814.126, 237.000, 436.553), Quaternion(0.0000, 0.4695, 0.0000, 0.8829))
+			CreateNewDummyObject("dub_kust2_r2_NoImpostors", "tree18", -1, -1, CVector(780.521, 234.620, 462.020), Quaternion(0.0000, 0.9969, 0.0000, -0.0785))
+			CreateNewDummyObject("dub_kust2_r2_NoImpostors", "tree19", -1, -1, CVector(689.041, 235.322, 411.884), Quaternion(0.0000, 0.3746, 0.0000, -0.9272))
+			CreateNewDummyObject("r1_Dub_Kust1_NoImpostors", "tree21", -1, -1, CVector(489.628, 230.060, 532.646), Quaternion(0.0000, 0.7716, 0.0000, -0.6361))
+			CreateNewDummyObject("r1_Dub_Kust1_NoImpostors", "tree22", -1, -1, CVector(487.097, 230.030, 542.435), Quaternion(0.0000, 0.8290, 0.0000, -0.5592))
+			CreateNewDummyObject("r1_Dub_Kust1_NoImpostors", "tree23", -1, -1, CVector(465.121, 230.000, 564.766), Quaternion(0.0000, 0.3907, 0.0000, 0.9205))
+			CreateNewDummyObject("r1_Dub_Kust1_NoImpostors", "tree24", -1, -1, CVector(452.308, 230.000, 577.959), Quaternion(0.0000, 0.9945, 0.0000, -0.1045))
+			CreateNewDummyObject("dub_kust2_r2_NoImpostors", "tree25", -1, -1, CVector(329.725, 226.743, 578.798), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
+			CreateNewDummyObject("dub_kust2_r2_NoImpostors", "tree26", -1, -1, CVector(175.141, 229.070, 548.873), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
+			CreateNewDummyObject("dub_kust1_r2_NoImpostors", "tree27", -1, -1, CVector(171.770, 228.350, 564.632), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
+			CreateNewDummyObject("dub_kust2_r2_NoImpostors", "tree28", -1, -1, CVector(354.305, 224.970, 647.377), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
+			CreateNewDummyObject("r1_Dub_Kust1_NoImpostors", "tree29", -1, -1, CVector(290.378, 260.000, 748.656), Quaternion(0.0000, 0.2756, 0.0000, -0.9613))
+			CreateNewDummyObject("r1_Dub_Kust1_NoImpostors", "tree30", -1, -1, CVector(263.510, 260.000, 785.874), Quaternion(0.0000, 0.9936, 0.0000, 0.1132))
+			CreateNewDummyObject("r1_Dub_Kust1_NoImpostors", "tree31", -1, -1, CVector(256.056, 260.000, 837.468), Quaternion(0.0000, 0.8988, 0.0000, 0.4384))
+			CreateNewDummyObject("r1_Dub_Kust1_NoImpostors", "tree32", -1, -1, CVector(209.811, 260.000, 835.485), Quaternion(0.0000, 0.9063, 0.0000, -0.4226))
+			CreateNewDummyObject("dub_kust2_r2_NoImpostors", "tree33", -1, -1, CVector(345.441, 244.872, 772.332), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
+			CreateNewDummyObject("dub_kust2_r2_NoImpostors", "tree34", -1, -1, CVector(353.997, 230.278, 870.815), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
+			CreateNewDummyObject("dub_kust2_r2_NoImpostors", "tree35", -1, -1, CVector(391.699, 244.994, 898.431), Quaternion(0.0000, 0.9744, 0.0000, -0.2250))
+			CreateNewDummyObject("dub_kust2_r2_NoImpostors", "tree36", -1, -1, CVector(294.340, 245.000, 961.767), Quaternion(0.0000, 0.8192, 0.0000, -0.5736))
+			CreateNewDummyObject("dub_kust1_r2_NoImpostors", "tree37", -1, -1, CVector(281.013, 244.998, 1052.340), Quaternion(0.0000, 0.9936, 0.0000, -0.1132))
+			CreateNewDummyObject("dub_kust1_r2_NoImpostors", "tree38", -1, -1, CVector(281.236, 245.000, 1080.174), Quaternion(0.0000, 0.9511, 0.0000, 0.3090))
+			CreateNewDummyObject("dub_kust1_r2_NoImpostors", "tree39", -1, -1, CVector(311.864, 244.741, 1085.999), Quaternion(0.0000, 0.9994, 0.0000, 0.0349))
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Tr" active="0">
+		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
+		<script>
+			for i = 189, 380 do 
+				local tree = getObj("Object"..i)
+				if tree then 
+					local prot = tree:GetPropertyById(1).AsString
+					local pos = tostring(tree:GetPosition())
+					local rot = tostring(tree:GetRotation())
+					local name = ""
+					if prot == "Breakable_Listvenoe1" then name = "listvenoe1" end
+					if prot == "Breakable_Listvenoe2" then name = "listvenoe2" end
+					if prot == "Breakable_Listvenoe3" then name = "listvenoe3" end
+					if prot == "Breakable_Dub1" then name = "dub1" end
+					if prot == "Breakable_Dub2" then name = "dub2" end
+					if prot == "Breakable_Dub3" then name = "dub3" end
+					if prot == "Breakable_Elka1" then name = "elka1" end
+					if prot == "Breakable_Elka2" then name = "elka2" end
+					if prot == "Breakable_Elka3" then name = "elka3" end
+					if prot == "Breakable_Sosna1" then name = "sosna1" end
+					if prot == "Breakable_Sosna2" then name = "sosna2" end
+					if prot == "Breakable_Sosna3" then name = "sosna3" end
+					
+					LOG("CreateNewDummyObject('"..name.."', '"..tree:GetName().."', -1, -1, CVector"..pos..", Quaternion"..rot..")")
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 </triggers>

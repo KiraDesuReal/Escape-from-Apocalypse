@@ -2059,6 +2059,7 @@ function CreateUserInfoFile()
 		f:write("UserName: "..os.getenv("USERNAME"), "\n")
 		f:write("LastDate: "..os.date(), "\n")
 		f:write("LaunchDate: "..os.date(), "\n\n")
+		f:write("Season: SUMMER")
 		f:write("NewGame: 0", "\n")
 		f:close()
 	end

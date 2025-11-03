@@ -65,6 +65,16 @@ if FIX_CRASH_VITALY_GLOBAL == nil then FIX_CRASH_VITALY_GLOBAL = 0 end
 if UNDER_ATTACK_DURABILITY == nil then UNDER_ATTACK_DURABILITY = 0 end
 
 --  вестовые глобал переменные
+if Q_TESTING_MISSION_DIESCAVS == nil then Q_TESTING_MISSION_DIESCAVS = 0 end
+
+if Q_CLEARING_R1M1_DIESCAVS_LOC_1 == nil then Q_CLEARING_R1M1_DIESCAVS_LOC_1 = 0 end
+if Q_CLEARING_R1M1_DIESCAVS_LOC_2 == nil then Q_CLEARING_R1M1_DIESCAVS_LOC_2 = 0 end
+if Q_CLEARING_R1M1_DIESCAVS_LOC_3 == nil then Q_CLEARING_R1M1_DIESCAVS_LOC_3 = 0 end
+if Q_CLEARING_R1M1_DIESCAVS_LOC_4 == nil then Q_CLEARING_R1M1_DIESCAVS_LOC_4 = 0 end
+if Q_CLEARING_R1M1_DIESCAVS_LOC_5 == nil then Q_CLEARING_R1M1_DIESCAVS_LOC_5 = 0 end
+
+if Q_KILL_SCAVS_DIE == nil then Q_KILL_SCAVS_DIE = 0 end
+
 if Q_TEST_DRIVE1_KILLSCAVS == nil then Q_TEST_DRIVE1_KILLSCAVS = 0 end
 if Q_TEST_DRIVE2_KILLSCAVS == nil then Q_TEST_DRIVE2_KILLSCAVS = 0 end
 if Q_TEST_DRIVE2_KILLPMC == nil then Q_TEST_DRIVE2_KILLPMC = 0 end
@@ -130,6 +140,8 @@ if Q_BELAZIST8_KILLPMC == nil then Q_BELAZIST8_KILLPMC = 0 end
 
 if Q_KILL_USEC_KILLS == nil then Q_KILL_USEC_KILLS = 0 end
 if Q_KILL_PMC_KILLS == nil then Q_KILL_PMC_KILLS = 0 end
+
+if Q_SECTARIAN2_1_KILLS == nil then Q_SECTARIAN2_1_KILLS = 0 end
 
 if DAILY_UPDATED_GLOBAL == nil then DAILY_UPDATED_GLOBAL = "0" end
 
@@ -2059,8 +2071,9 @@ function CreateUserInfoFile()
 		f:write("UserName: "..os.getenv("USERNAME"), "\n")
 		f:write("LastDate: "..os.date(), "\n")
 		f:write("LaunchDate: "..os.date(), "\n\n")
-		f:write("Season: SUMMER")
 		f:write("NewGame: 0", "\n")
+		f:write("Season: SUMMER", "\n")
+		f:write("UserTimeYear: 0", "\n")
 		f:close()
 	end
 end
@@ -2069,7 +2082,7 @@ function UpdateUserInfoFile()
 	if FileExists("UserInfo.txt") ~= nil then 
 		con("UpdateUserInfoFile")
 		EditUserInfo("ESCAPE", "ESCAPE FROM APOCALYPSE VERSION: "..EFA_VERSION.." | BUILD: "..EFA_BUILD)
-		EditUserInfo("User", "UserName: "..os.getenv("USERNAME"))
+		EditUserInfo("UserName", "UserName: "..os.getenv("USERNAME"))
 		EditUserInfo("Last", "LastDate: "..ReadValueUserInfo("Launch"))
 		EditUserInfo("Launch", "LaunchDate: "..os.date())
 	else

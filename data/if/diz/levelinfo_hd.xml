@@ -8,7 +8,7 @@
 		diz1=""
 		image0="data\if\map\r1m4.dds"
 		image1="data\if\ico_hd\GlobalMap\gmap_ico_2.dds"
-		splashes="data\if\ico_hd\Splashes\menu_1.dds data\if\ico_hd\Splashes\menu_2.dds data\if\ico_hd\Splashes\menu_3.dds data\if\ico_hd\Splashes\menu_4.dds data\if\ico_hd\Splashes\menu_5.dds data\if\ico_hd\Splashes\menu_6.dds data\if\ico_hd\Splashes\menu_7.dds data\if\ico_hd\Splashes\menu_8.dds data\if\ico_hd\Splashes\menu_9.dds data\if\ico_hd\Splashes\menu_10.dds data\if\ico_hd\Splashes\menu_11.dds"
+		splashes="data\if\ico_hd\Splashes\mainmenu\menu_1.dds data\if\ico_hd\Splashes\mainmenu\menu_2.dds data\if\ico_hd\Splashes\mainmenu\menu_3.dds data\if\ico_hd\Splashes\mainmenu\menu_4.dds data\if\ico_hd\Splashes\mainmenu\menu_5.dds data\if\ico_hd\Splashes\mainmenu\menu_6.dds data\if\ico_hd\Splashes\mainmenu\menu_7.dds data\if\ico_hd\Splashes\mainmenu\menu_8.dds data\if\ico_hd\Splashes\mainmenu\menu_9.dds data\if\ico_hd\Splashes\mainmenu\menu_10.dds data\if\ico_hd\Splashes\mainmenu\menu_11.dds data\if\ico_hd\Splashes\mainmenu\menu_12.dds data\if\ico_hd\Splashes\mainmenu\menu_13.dds"
 		musicBlocks="block_menu" />
 
 	<LevelInfo
@@ -43,7 +43,19 @@
 		north="0 0 1"
 		image0="data\if\map\r1m1.dds"
 		image1="data\if\ico_hd\GlobalMap\r1m1.dds"
-		splashes="data\if\ico_hd\Splashes\r1m1_1.dds data\if\ico_hd\Splashes\r1m1_2.dds data\if\ico_hd\Splashes\r1m1_3.dds data\if\ico_hd\Splashes\r1m1_5.dds data\if\ico_hd\Splashes\r1m1_6.dds data\if\ico_hd\Splashes\r1m1_7.dds"
+		splashes="data\if\ico_hd\Splashes\r1m1\r1m1_1.dds data\if\ico_hd\Splashes\r1m1\r1m1_2.dds data\if\ico_hd\Splashes\r1m1\r1m1_3.dds data\if\ico_hd\Splashes\r1m1\r1m1_5.dds data\if\ico_hd\Splashes\r1m1\r1m1_6.dds data\if\ico_hd\Splashes\r1m1\r1m1_7.dds"
+		musicBlocks="block0 block1" />
+
+	<LevelInfo
+		name="r1m1_winter"
+		file="data\maps\r1m1_winter.ssl"
+		fullName="Край"
+		diz0=""
+		diz1=""
+		north="0 0 1"
+		image0="data\if\map\r1m1.dds"
+		image1="data\if\ico_hd\GlobalMap\r1m1.dds"
+		splashes="data\if\ico_hd\Splashes\r1m1\r1m1_1_winter.dds data\if\ico_hd\Splashes\r1m1\r1m1_2_winter.dds data\if\ico_hd\Splashes\r1m1\r1m1_3_winter.dds data\if\ico_hd\Splashes\r1m1\r1m1_4_winter.dds data\if\ico_hd\Splashes\r1m1\r1m1_5_winter.dds data\if\ico_hd\Splashes\r1m1\r1m1_6_winter.dds data\if\ico_hd\Splashes\r1m1\r1m1_7_winter.dds"
 		musicBlocks="block0 block1" />
 
 	<LevelInfo

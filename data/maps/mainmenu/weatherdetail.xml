@@ -37,7 +37,7 @@
 
 		<ColorType
 			name="sunset"
-			LightmapTexture="lightmap_Weather_Clear_sunriseTime_snow.dds"
+			LightmapTexture="lightmap_Weather_Clear_sunsetTime_snow.dds"
 			CloudsTexture="SkyCloudy1.dds" />
 
 		<ColorType
@@ -60,7 +60,7 @@
 
 		<ColorType
 			name="sunset"
-			LightmapTexture="lightmap_Weather_Clear_sunriseTime_snow.dds"
+			LightmapTexture="lightmap_Weather_Clear_sunsetTime_snow.dds"
 			CloudsTexture="skycloudy1.dds" />
 
 		<ColorType
@@ -73,17 +73,17 @@
 		name="main_menu_snow_winter2">
 		<ColorType
 			name="sunrise"
-			LightmapTexture="lightmap_Weather_Clear_sunriseTime_snow.dds"
+			LightmapTexture="lightmap_Weather_snow_sunriseTime_snow.dds"
 			CloudsTexture="skyovercast.dds" />
 
 		<ColorType
 			name="day"
-			LightmapTexture="lightmap_Weather_Clear_dayTime_snow.dds"
+			LightmapTexture="lightmap_Weather_snow_dayTime_snow.dds"
 			CloudsTexture="skyrainy.dds" />
 
 		<ColorType
 			name="sunset"
-			LightmapTexture="lightmap_Weather_Clear_sunriseTime_snow.dds"
+			LightmapTexture="lightmap_Weather_snow_sunriseTime_snow.dds"
 			CloudsTexture="skyblight2.dds" />
 
 		<ColorType

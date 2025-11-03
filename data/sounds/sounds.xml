@@ -1597,6 +1597,11 @@
 		group="WEATHER"
 		/>
 
+	<model
+		id="S_SNOW" 
+		file="data\sounds\weather\snow.ogg"
+		group="WEATHER"
+		/>
 
 <!-- Starting -->
 
@@ -1828,6 +1833,12 @@
 		id="S_JUNGLE"
 		file="data\sounds\enveffects\jungle_day01.wav"
 		group="WEATHER"
+		/>
+
+		<model
+		id="S_WINTER_WIND"
+		file="data\sounds\enveffects\winter_wind.wav"
+		group="WINTER_WIND"
 		/>
 
 		<model

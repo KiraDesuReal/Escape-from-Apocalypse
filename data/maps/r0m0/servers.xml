@@ -464,15 +464,15 @@
 			file="data\models\AnimModels.xml" />
 
 		<Item
-			id="dub1"
+			id="dub1_NoImpostors"
 			file="data\models\AnimModels.xml" />
 
 		<Item
-			id="dub2"
+			id="dub2_NoImpostors"
 			file="data\models\AnimModels.xml" />
 
 		<Item
-			id="dub3"
+			id="dub3_NoImpostors"
 			file="data\models\AnimModels.xml" />
 
 		<Item
@@ -480,23 +480,27 @@
 			file="data\models\AnimModels.xml" />
 
 		<Item
-			id="elka2"
+			id="elka1_NoImpostors"
 			file="data\models\AnimModels.xml" />
 
 		<Item
-			id="elka3"
+			id="elka2_NoImpostors"
 			file="data\models\AnimModels.xml" />
 
 		<Item
-			id="listvenoe1"
+			id="elka3_NoImpostors"
 			file="data\models\AnimModels.xml" />
 
 		<Item
-			id="listvenoe2"
+			id="listvenoe1_NoImpostors"
 			file="data\models\AnimModels.xml" />
 
 		<Item
-			id="listvenoe3"
+			id="listvenoe2_NoImpostors"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="listvenoe3_NoImpostors"
 			file="data\models\AnimModels.xml" />
 
 		<Item
@@ -504,11 +508,15 @@
 			file="data\models\AnimModels.xml" />
 
 		<Item
-			id="sosna2"
+			id="sosna1_NoImpostors"
 			file="data\models\AnimModels.xml" />
 
 		<Item
-			id="sosna3"
+			id="sosna2_NoImpostors"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="sosna3_NoImpostors"
 			file="data\models\AnimModels.xml" />
 <!-- guns -->
 		<Item
@@ -2607,6 +2615,7 @@
 
 		<Item id="S_THUNDER" />
 		<Item id="S_RAIN" />
+		<Item id="S_SNOW" />
 
 		<!-- Starting -->
 
@@ -2714,6 +2723,7 @@
 		<Item id="S_FOREST" />
 		<Item id="S_DESERT" />
 		<Item id="S_JUNGLE" />
+		<Item id="S_WINTER_WIND" />
 
 		<Item id="S_FACTORY_SQUEAK" />
 		<Item id="S_FACTORY_WATER" />

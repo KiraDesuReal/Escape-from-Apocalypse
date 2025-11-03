@@ -503,6 +503,10 @@
 		<Node name="noise" class="SgSoundSourceNode" id="S_RAIN" looped="1" /> 
 	</Node>
 
+	<Node name="ET_S_SNOW" class="SgNode">
+		<Node name="noise" class="SgSoundSourceNode" id="S_SNOW" looped="1" /> 
+	</Node>
+
 	<Node name="ET_PS_LIGHT_WEATHER1" class="SgNode">
 		<Node name="Object2" class="SgParticlesNode" id="PS_LIGHT_WEATHER" psNumEmitterMesh="-1" />
  		<Node name="Sound3" class="SgSoundSourceNode" id="S_THUNDER" looped="0" />
@@ -897,6 +901,10 @@
 	</Node>
 	<Node name="ET_PS_JUNGLE" class="SgNode">
 		<Node name="noise" class="SgSoundSourceNode" id="S_JUNGLE" looped="1" /> 
+	</Node>
+
+	<Node name="ET_PS_WINTER_WIND" class="SgNode">
+		<Node name="noise" class="SgSoundSourceNode" id="S_WINTER_WIND" looped="1" /> 
 	</Node>
 
 	<Node name="ET_S_FACTORY_SQUEAK" class="SgNode">

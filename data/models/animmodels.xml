@@ -1593,6 +1593,30 @@
 		file="data\models\nature\region1\trees\kustarnik3.gam" />
 
 	<model
+		id="kustarnik1_snow"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors = "1"
+		file="data\models\nature\region5\trees\kustarnik1snow.gam" />
+
+	<model
+		id="kustarnik2_snow"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors = "1"
+		file="data\models\nature\region5\trees\kustarnik2snow.gam" />
+
+	<model
+		id="kustarnik3_snow"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors = "1"
+		file="data\models\nature\region5\trees\kustarnik3snow.gam" />
+
+	<model
 		id="listvenoe1"
 		shadow="1"
 		trans="1"
@@ -19222,24 +19246,6 @@
 		id="dub_kust2_r2"
 		file="data\models\nature\region2\trees\dub_kust2_r2.gam"
 		useImpostors = "1"
-		shadow="1"
-		windwavy="0"
-		trans="1"
-		composite="0" />
-
-	<model
-		id="dub_kust1_r2_NoImpostors"
-		file="data\models\nature\region2\trees\dub_kust1_r2.gam"
-		useImpostors = "0"
-		shadow="1"
-		windwavy="0"
-		trans="1"
-		composite="0" />
-
-	<model
-		id="dub_kust2_r2_NoImpostors"
-		file="data\models\nature\region2\trees\dub_kust2_r2.gam"
-		useImpostors = "0"
 		shadow="1"
 		windwavy="0"
 		trans="1"

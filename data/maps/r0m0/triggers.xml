@@ -522,6 +522,8 @@
 
 			SetVar("BumMode", 0)
 
+			SetVar("Season", SEASON)
+
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -529,6 +531,7 @@
 	<trigger Name="QuestGlobalVar" active="1">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
+			SetVar("q_testing_mission_DieScavs", 0)
 			SetVar("q_testing_mission_hornet", 0)
 			SetVar("q_testing_mission_american_hornet", 0)
 			SetVar("q_fuel1_item_fuel", 0)
@@ -562,6 +565,12 @@
 
 			SetVar("q_test_drive1_killscavs", 0)
 
+			for q_clr=1,5 do
+				SetVar("q_clearing_r1m1_DieScavs_loc_"..q_clr, 0)
+			end
+
+			SetVar("q_kill_scavs_Die", 0)
+
 			for q_td=2,15 do
 				SetVar("q_test_drive"..q_td.."_killscavs", 0)
 				SetVar("q_test_drive"..q_td.."_killPMC", 0)
@@ -586,6 +595,8 @@
 			SetVar("q_kill_usec_kills", 0)
 			SetVar("q_kill_pmc_kills", 0)
 			SetVar("q_kill_pmc_item_jeton", 0)
+
+			SetVar("q_sectarian2_1_kills", 0)
 
 			SetVar("q_daily_kill_pmc_Kills", 0)
 			SetVar("q_daily_kill_pmc_Progress", 0)
@@ -636,6 +647,16 @@
 			if WINDGENERATOR_TIME_MINUTE_GLOBAL then WINDGENERATOR_TIME_MINUTE_GLOBAL = 0 end
 			if WINDGENERATOR_TIME_SECOND_GLOBAL then WINDGENERATOR_TIME_SECOND_GLOBAL = 0 end
 			if WINDGENERATOR_STATUS_GLOBAL then WINDGENERATOR_STATUS_GLOBAL = "0" end
+
+			if Q_TESTING_MISSION_DIESCAVS then Q_TESTING_MISSION_DIESCAVS = 0 end
+
+			if Q_CLEARING_R1M1_DIESCAVS_LOC_1 then Q_CLEARING_R1M1_DIESCAVS_LOC_1 = 0 end
+			if Q_CLEARING_R1M1_DIESCAVS_LOC_2 then Q_CLEARING_R1M1_DIESCAVS_LOC_2 = 0 end
+			if Q_CLEARING_R1M1_DIESCAVS_LOC_3 then Q_CLEARING_R1M1_DIESCAVS_LOC_3 = 0 end
+			if Q_CLEARING_R1M1_DIESCAVS_LOC_4 then Q_CLEARING_R1M1_DIESCAVS_LOC_4 = 0 end
+			if Q_CLEARING_R1M1_DIESCAVS_LOC_5 then Q_CLEARING_R1M1_DIESCAVS_LOC_5 = 0 end
+
+			if Q_KILL_SCAVS_DIE then Q_KILL_SCAVS_DIE = 0 end
 
 			if Q_TEST_DRIVE1_KILLSCAVS then Q_TEST_DRIVE1_KILLSCAVS = 0 end
 			if Q_TEST_DRIVE2_KILLSCAVS then Q_TEST_DRIVE2_KILLSCAVS = 0 end
@@ -703,6 +724,8 @@
 			if Q_KILL_USEC_KILLS then Q_KILL_USEC_KILLS = 0 end
 			if Q_KILL_PMC_KILLS then Q_KILL_PMC_KILLS = 0 end
 
+			if Q_SECTARIAN2_1_KILLS then Q_SECTARIAN2_1_KILLS = 0 end
+
 			if DAILY_UPDATED_GLOBAL then DAILY_UPDATED_GLOBAL = "0" end
 
 			if Q_DAILY_KILL_PMC_KILLS then Q_DAILY_KILL_PMC_KILLS = 0 end
@@ -739,7 +762,6 @@
 	<trigger Name="StartMap" active="1">
 		<event eventid="GE_GAME_START" ObjName="Player1" />
 		<script>
-
 		--ящик диких
 			if CHESTSCAVS_TIMER_HOUR_GLOBAL then SetVar("ChestScavs_time_hour", CHESTSCAVS_TIMER_HOUR_GLOBAL) end
 			if CHESTSCAVS_TIMER_MINUTE_GLOBAL then SetVar("ChestScavs_time_minute", CHESTSCAVS_TIMER_MINUTE_GLOBAL) end
@@ -967,6 +989,16 @@
 			end
 
 		--квестовые переменные
+			if Q_TESTING_MISSION_DIESCAVS then SetVar("q_testing_mission_DieScavs", Q_TESTING_MISSION_DIESCAVS) end
+
+			if Q_CLEARING_R1M1_DIESCAVS_LOC_1 then SetVar("q_clearing_r1m1_DieScavs_loc_1", Q_CLEARING_R1M1_DIESCAVS_LOC_1) end
+			if Q_CLEARING_R1M1_DIESCAVS_LOC_2 then SetVar("q_clearing_r1m1_DieScavs_loc_2", Q_CLEARING_R1M1_DIESCAVS_LOC_2) end
+			if Q_CLEARING_R1M1_DIESCAVS_LOC_3 then SetVar("q_clearing_r1m1_DieScavs_loc_3", Q_CLEARING_R1M1_DIESCAVS_LOC_3) end
+			if Q_CLEARING_R1M1_DIESCAVS_LOC_4 then SetVar("q_clearing_r1m1_DieScavs_loc_4", Q_CLEARING_R1M1_DIESCAVS_LOC_4) end
+			if Q_CLEARING_R1M1_DIESCAVS_LOC_5 then SetVar("q_clearing_r1m1_DieScavs_loc_5", Q_CLEARING_R1M1_DIESCAVS_LOC_5) end
+
+			if Q_KILL_SCAVS_DIE then SetVar("q_kill_scavs_Die", Q_KILL_SCAVS_DIE) end
+
 			if Q_TEST_DRIVE1_KILLSCAVS then SetVar("q_test_drive1_killscavs", Q_TEST_DRIVE1_KILLSCAVS) end
 			if Q_TEST_DRIVE2_KILLSCAVS then SetVar("q_test_drive2_killscavs", Q_TEST_DRIVE2_KILLSCAVS) end
 			if Q_TEST_DRIVE2_KILLPMC then SetVar("q_test_drive2_killPMC", Q_TEST_DRIVE2_KILLPMC) end
@@ -1033,6 +1065,8 @@
 			if Q_KILL_USEC_KILLS then SetVar("q_kill_usec_kills", Q_KILL_USEC_KILLS) end
 			if Q_KILL_PMC_KILLS then SetVar("q_kill_pmc_kills", Q_KILL_PMC_KILLS) end
 
+			if Q_SECTARIAN2_1_KILLS then SetVar("q_sectarian2_1_kills", Q_SECTARIAN2_1_KILLS) end
+
 			if DAILY_UPDATED_GLOBAL then SetVar("DailyUpdated", DAILY_UPDATED_GLOBAL) end
 
 			if Q_DAILY_KILL_PMC_KILLS then SetVar("q_daily_kill_pmc_Kills", Q_DAILY_KILL_PMC_KILLS) end
@@ -1058,6 +1092,7 @@
 			TActivate("CheckLoadSaveTimer")
 			TActivate("IfPlayerFuel0")
 			TActivate("SetDate")
+			TActivate("Events")
 			UpdateDailyQuests()
 		</script>
 	</trigger>
@@ -3630,10 +3665,21 @@
 	<trigger Name="SetWeatherRandom" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			local r = random(0,2)
-			SetWeather(r)
-			SetVar("Weather", r)
-			TActivate("SetSpeedWind")
+			if ReadValueUserInfo("UserTimeYear") ~= "1" then
+				local day = tonumber(strsub(os.date(), 4, 5))
+				local month = tonumber(strsub(os.date(), 1, 2))
+
+				if month == 12 or month == 1 or month == 2 then SEASON = "WINTER" TActivate("WinterWeather") end
+				if month == 3 or month == 4 or month == 5 then SEASON = "SPRING" TActivate("SummerWeather") end
+				if month == 6 or month == 7 or month == 8 then SEASON = "SUMMER" TActivate("SummerWeather") end
+				if month == 9 or month == 10 or month == 11 then SEASON = "AUTUMN" TActivate("SummerWeather") end
+				if ReadValueUserInfo("Season") ~= SEASON then EditUserInfo("Season", "Season: "..SEASON) end 
+			else
+				if SEASON == "WINTER" then TActivate("WinterWeather") end
+				if SEASON == "SPRING" then TActivate("SummerWeather") end
+				if SEASON == "SUMMER" then TActivate("SummerWeather") end
+				if SEASON == "AUTUMN" then TActivate("SummerWeather") end
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -3643,15 +3689,6 @@
 		<script>
 			local time = g_ObjCont:GetGameTime().AsString
 			local hour = tonumber(strsub(time, 1, 2))
-			local weather = GetVar("Weather").AsInt
-
-			if weather == 0 then
-				SetVar("SpeedWind", random(4, 10))
-			elseif weather == 1 then
-				SetVar("SpeedWind", random(11, 25))
-			elseif weather == 2 then
-				SetVar("SpeedWind", random(5, 15))
-			end
 
 			if 6 > hour then
 				SetVar("SpeedWind", GetVar("SpeedWind").AsInt / 2)
@@ -5622,6 +5659,16 @@
 			end
 
 		--квестовые переменные
+			if Q_TESTING_MISSION_DIESCAVS then Q_TESTING_MISSION_DIESCAVS = GetVar("q_testing_mission_DieScavs").AsInt end
+
+			if Q_CLEARING_R1M1_DIESCAVS_LOC_1 then Q_CLEARING_R1M1_DIESCAVS_LOC_1 = GetVar("q_clearing_r1m1_DieScavs_loc_1").AsInt end
+			if Q_CLEARING_R1M1_DIESCAVS_LOC_2 then Q_CLEARING_R1M1_DIESCAVS_LOC_2 = GetVar("q_clearing_r1m1_DieScavs_loc_2").AsInt end
+			if Q_CLEARING_R1M1_DIESCAVS_LOC_3 then Q_CLEARING_R1M1_DIESCAVS_LOC_3 = GetVar("q_clearing_r1m1_DieScavs_loc_3").AsInt end
+			if Q_CLEARING_R1M1_DIESCAVS_LOC_4 then Q_CLEARING_R1M1_DIESCAVS_LOC_4 = GetVar("q_clearing_r1m1_DieScavs_loc_4").AsInt end
+			if Q_CLEARING_R1M1_DIESCAVS_LOC_5 then Q_CLEARING_R1M1_DIESCAVS_LOC_5 = GetVar("q_clearing_r1m1_DieScavs_loc_5").AsInt end
+
+			if Q_KILL_SCAVS_DIE then Q_KILL_SCAVS_DIE = GetVar("q_kill_scavs_Die").AsInt end
+
 			if Q_TEST_DRIVE1_KILLSCAVS then Q_TEST_DRIVE1_KILLSCAVS = GetVar("q_test_drive1_killscavs").AsInt end
 			if Q_TEST_DRIVE2_KILLSCAVS then Q_TEST_DRIVE2_KILLSCAVS = GetVar("q_test_drive2_killscavs").AsInt end
 			if Q_TEST_DRIVE2_KILLPMC then Q_TEST_DRIVE2_KILLPMC = GetVar("q_test_drive2_killPMC").AsInt end
@@ -5687,6 +5734,8 @@
 
 			if Q_KILL_USEC_KILLS then Q_KILL_USEC_KILLS = GetVar("q_kill_usec_kills").AsInt end
 			if Q_KILL_PMC_KILLS then Q_KILL_PMC_KILLS = GetVar("q_kill_pmc_kills").AsInt end
+
+			if Q_SECTARIAN2_1_KILLS then Q_SECTARIAN2_1_KILLS = GetVar("q_sectarian2_1_kills").AsInt end
 
 			if DAILY_UPDATED_GLOBAL then DAILY_UPDATED_GLOBAL = GetVar("DailyUpdated").AsString end
 
@@ -6796,5 +6845,158 @@
 			trigger:Deactivate()
 		</script>
 	</trigger>	
+
+<!--
+**************************************************************************************************
+** ИВЕНТЫ
+**************************************************************************************************
+-->
+
+	<trigger Name="Events" active="0">
+		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local day = tonumber(strsub(os.date(), 4, 5))
+			local month = tonumber(strsub(os.date(), 1, 2))
+
+			if ReadValueUserInfo("UserTimeYear") ~= "1" then
+				if month == 12 or month == 1 or month == 2 then SEASON = "WINTER" end
+				if month == 3 or month == 4 or month == 5 then SEASON = "SPRING" end
+				if month == 6 or month == 7 or month == 8 then SEASON = "SUMMER" end
+				if month == 9 or month == 10 or month == 11 then SEASON = "AUTUMN" end
+			else
+				SEASON = ReadValueUserInfo("Season")
+			end
+
+			if month == 12 and day >= 25 or month == 1 and day >= 1 and 10 > day then EVENT = "NEW_YEAR" end
+
+			if GetVar("Season").AsString ~= SEASON then TActivate("ChangeSeasonsFadeEffect") end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+-- Погода
+
+	<trigger Name="SummerWeather" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local r = random(0,2)
+			SetWeather(r)
+			SetVar("Weather", r)
+			if getObj("birds1") == nil then TActivate("BirdsSound") end
+			RuleConsole("testShadowRenderToGrass yes")
+			SetVar("Season", SEASON)
 		
+			if r == 0 then SetVar("SpeedWind", random(4, 10)) end
+			if r == 1 then SetVar("SpeedWind", random(11, 25)) end
+			if r == 2 then SetVar("SpeedWind", random(5, 15)) end
+
+			for w = 1, 12 do
+				local wind = getObj("wind"..w)
+				if wind then wind:Remove() end
+			end
+
+			for k = 1, 10 do
+				local kust = getObj("kust"..k)
+				if kust then kust:SetSkin(0) end
+			end
+
+			for t = 1, 2051 do
+				local tree = getObj("tree"..t)
+				if tree then tree:SetSkin(0) end
+			end
+
+			TActivate("SetSpeedWind")
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+
+	<trigger Name="WinterWeather" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local r = random(3,5)
+			SetWeather(r)
+			SetVar("Weather", r)
+			if getObj("wind1") == nil then TActivate("WindSound") end
+			RuleConsole("testShadowRenderToGrass no")
+			SetVar("Season", "WINTER")
+
+			if r == 3 then SetVar("SpeedWind", random(4, 8)) end
+			if r == 4 then SetVar("SpeedWind", random(3, 10)) end
+			if r == 5 then SetVar("SpeedWind", random(11, 25)) end
+
+			for b = 1, 12 do
+				local birds = getObj("birds"..b)
+				if birds then birds:Remove() end
+			end
+
+			for k = 1, 10 do
+				local kust = getObj("kust"..k)
+				if kust then kust:SetSkin(1) end
+			end
+
+			for t = 1, 2051 do
+				local tree = getObj("tree"..t)
+				if tree then tree:SetSkin(1) end
+			end
+
+			TActivate("SetSpeedWind")
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+
+	<trigger Name="BirdsSound" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewSgNodeObject("birbs", "birds1", -1, -1, CVector(976, 255, 1024), Quaternion(0, 0, 0, 0), 1)
+			CreateNewSgNodeObject("birbs", "birds2", -1, -1, CVector(1238, 255, 1171), Quaternion(0, 0, 0, 0), 1)
+			CreateNewSgNodeObject("birbs", "birds3", -1, -1, CVector(1313, 255, 1384), Quaternion(0, 0, 0, 0), 1)
+			CreateNewSgNodeObject("birbs", "birds4", -1, -1, CVector(1393, 255, 1522), Quaternion(0, 0, 0, 0), 1)
+			CreateNewSgNodeObject("birbs", "birds5", -1, -1, CVector(1227, 255, 1501), Quaternion(0, 0, 0, 0), 1)
+			CreateNewSgNodeObject("birbs", "birds6", -1, -1, CVector(1365, 255, 909), Quaternion(0, 0, 0, 0), 1)
+			CreateNewSgNodeObject("birbs", "birds7", -1, -1, CVector(609, 255, 1183), Quaternion(0, 0, 0, 0), 1)
+			CreateNewSgNodeObject("birbs", "birds8", -1, -1, CVector(433, 255, 1413), Quaternion(0, 0, 0, 0), 1)
+			CreateNewSgNodeObject("birbs", "birds9", -1, -1, CVector(540, 255, 761), Quaternion(0, 0, 0, 0), 1)
+			CreateNewSgNodeObject("birbs", "birds10", -1, -1, CVector(463, 255, 455), Quaternion(0, 0, 0, 0), 1)
+			CreateNewSgNodeObject("birbs", "birds11", -1, -1, CVector(741, 255, 279), Quaternion(0, 0, 0, 0), 1)
+			CreateNewSgNodeObject("birbs", "birds12", -1, -1, CVector(236, 255, 724), Quaternion(0, 0, 0, 0), 1)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="WindSound" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewSgNodeObject("ET_PS_WINTER_WIND", "wind1", -1, -1, CVector(976, 255, 1024), Quaternion(0, 0, 0, 0), 1)
+			CreateNewSgNodeObject("ET_PS_WINTER_WIND", "wind2", -1, -1, CVector(1238, 255, 1171), Quaternion(0, 0, 0, 0), 1)
+			CreateNewSgNodeObject("ET_PS_WINTER_WIND", "wind3", -1, -1, CVector(1313, 255, 1384), Quaternion(0, 0, 0, 0), 1)
+			CreateNewSgNodeObject("ET_PS_WINTER_WIND", "wind4", -1, -1, CVector(1393, 255, 1522), Quaternion(0, 0, 0, 0), 1)
+			CreateNewSgNodeObject("ET_PS_WINTER_WIND", "wind5", -1, -1, CVector(1227, 255, 1501), Quaternion(0, 0, 0, 0), 1)
+			CreateNewSgNodeObject("ET_PS_WINTER_WIND", "wind6", -1, -1, CVector(1365, 255, 909), Quaternion(0, 0, 0, 0), 1)
+			CreateNewSgNodeObject("ET_PS_WINTER_WIND", "wind7", -1, -1, CVector(609, 255, 1183), Quaternion(0, 0, 0, 0), 1)
+			CreateNewSgNodeObject("ET_PS_WINTER_WIND", "wind8", -1, -1, CVector(433, 255, 1413), Quaternion(0, 0, 0, 0), 1)
+			CreateNewSgNodeObject("ET_PS_WINTER_WIND", "wind9", -1, -1, CVector(540, 255, 761), Quaternion(0, 0, 0, 0), 1)
+			CreateNewSgNodeObject("ET_PS_WINTER_WIND", "wind10", -1, -1, CVector(463, 255, 455), Quaternion(0, 0, 0, 0), 1)
+			CreateNewSgNodeObject("ET_PS_WINTER_WIND", "wind11", -1, -1, CVector(741, 255, 279), Quaternion(0, 0, 0, 0), 1)
+			CreateNewSgNodeObject("ET_PS_WINTER_WIND", "wind12", -1, -1, CVector(236, 255, 724), Quaternion(0, 0, 0, 0), 1)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+	
+	<trigger Name="Trees" active="1">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewDummyObject("dub_kust1_r2", "kust1", -1, -1, CVector(1438.526, 255, 765.453), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("dub_kust2_r2", "kust2", -1, -1, CVector(1417.907, 255, 813.892), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("dub_kust1_r2", "kust3", -1, -1, CVector(1328.939, 255, 536.636), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("dub_kust1_r2", "kust4", -1, -1, CVector(1374.786, 255, 593.990), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("dub_kust1_r2", "kust5", -1, -1, CVector(1447.986, 255, 557.837), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("dub_kust2_r2", "kust6", -1, -1, CVector(1377.586, 255, 664.945), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("dub_kust2_r2", "kust7", -1, -1, CVector(1381.713, 255, 506.440), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("dub_kust2_r2", "kust8", -1, -1, CVector(1396.834, 255, 434.514), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("dub_kust2_r2", "kust9", -1, -1, CVector(1459.373, 255, 340.158), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("dub_kust2_r2", "kust10", -1, -1, CVector(1366.426, 255, 741.478), Quaternion(0, 0, 0, 0))
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+
 </triggers>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<Weather>
+	<WeatherItem
+		name="r1m1_clear_winter">
+		<ColorType
+			name="sunrise"
+			LightmapTexture="winter\lightmap_sunrisetime_r1m1_snow.dds"
+			CloudsTexture="skyclear1.dds" />
+
+		<ColorType
+			name="day"
+			LightmapTexture="winter\lightmap_daytime_r1m1_snow.dds"
+			CloudsTexture="skyclear1.dds" />
+
+		<ColorType
+			name="sunset"
+			LightmapTexture="winter\lightmap_sunsettime_r1m1_snow.dds"
+			CloudsTexture="skyclear.dds" />
+
+		<ColorType
+			name="night"
+			LightmapTexture="winter\lightmap_nighttime_r1m1_snow.dds"
+			CloudsTexture="skyclear1.dds" />
+	</WeatherItem>
+
+	<WeatherItem
+		name="r1m1_foggy_winter">
+		<ColorType
+			name="sunrise"
+			LightmapTexture="winter\lightmap_sunrisetime_r1m1_snow.dds"
+			CloudsTexture="skyovercast.dds" />
+
+		<ColorType
+			name="day"
+			LightmapTexture="winter\lightmap_daytime_r1m1_snow.dds"
+			CloudsTexture="skyovercast.dds" />
+
+		<ColorType
+			name="sunset"
+			LightmapTexture="winter\lightmap_sunsettime_r1m1_snow.dds"
+			CloudsTexture="skyblight1.dds" />
+
+		<ColorType
+			name="night"
+			LightmapTexture="winter\lightmap_nighttime_r1m1_snow.dds"
+			CloudsTexture="skyrainy.dds" />
+	</WeatherItem>
+
+	<WeatherItem
+		name="r1m1_cloudy_winter">
+		<ColorType
+			name="sunrise"
+			LightmapTexture="winter\lightmap_sunrisetime_r1m1_snow.dds"
+			CloudsTexture="skycloudy.dds" />
+
+		<ColorType
+			name="day"
+			LightmapTexture="winter\lightmap_daytime_r1m1_snow.dds"
+			CloudsTexture="skycloudy.dds" />
+
+		<ColorType
+			name="sunset"
+			LightmapTexture="winter\lightmap_sunsettime_r1m1_snow.dds"
+			CloudsTexture="skycloudy1.dds" />
+
+		<ColorType
+			name="night"
+			LightmapTexture="winter\lightmap_nighttime_r1m1_snow.dds"
+			CloudsTexture="skyrainy.dds" />
+	</WeatherItem>
+
+	<WeatherItem
+		name="r1m1_snow_winter">
+		<ColorType
+			name="sunrise"
+			LightmapTexture="winter\lightmap_sunrisetime_r1m1_snow.dds"
+			CloudsTexture="skyclear.dds" />
+
+		<ColorType
+			name="day"
+			LightmapTexture="winter\lightmap_daytime_r1m1_snow.dds"
+			CloudsTexture="skyclear.dds" />
+
+		<ColorType
+			name="sunset"
+			LightmapTexture="winter\lightmap_sunsettime_r1m1_snow.dds"
+			CloudsTexture="skyclear.dds" />
+
+		<ColorType
+			name="night"
+			LightmapTexture="winter\lightmap_nighttime_r1m1_snow.dds"
+			CloudsTexture="skyclear1.dds" />
+	</WeatherItem>
+
+	<WeatherItem
+		name="r1m1_snow_winter2">
+		<ColorType
+			name="sunrise"
+			LightmapTexture="winter\lightmap_sunrisetime_r1m1_snow.dds"
+			CloudsTexture="skyovercast.dds" />
+
+		<ColorType
+			name="day"
+			LightmapTexture="winter\lightmap_daytime_r1m1_snow.dds"
+			CloudsTexture="tx_sky_rainy.tga" />
+
+		<ColorType
+			name="sunset"
+			LightmapTexture="winter\lightmap_sunsettime_r1m1_snow.dds"
+			CloudsTexture="tx_sky_rainy.tga" />
+
+		<ColorType
+			name="night"
+			LightmapTexture="winter\lightmap_nighttime_r1m1_snow.dds"
+			CloudsTexture="tx_sky_rainy.tga" />
+	</WeatherItem>
+</Weather>

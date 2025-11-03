@@ -233,10 +233,36 @@
 		<script>
             g_ObjCont:SetGameTime( 10, 0, 21, 5, 2023 )
 			SetRadarUpgrade(1)
-			SetWeather(0)
-			SetVar("Weather", 0)
-            SetVar("SpeedWind", random(4, 10))
 			SetVar("GameTimeHour", "DAY")
+
+			if SEASON == "WINTER" then 
+				local r = random(3,4)
+				SetWeather(r)
+				SetVar("Weather", r)
+				SetVar("Season", "WINTER")
+				RuleConsole("testShadowRenderToGrass no")
+				TActivate("WindSound")
+			
+				if r == 3 then SetVar("SpeedWind", random(4, 8)) end
+				if r == 4 then SetVar("SpeedWind", random(3, 10)) end
+
+				for k = 1, 10 do
+					local kust = getObj("kust"..k)
+					if kust then kust:SetSkin(1) end
+				end
+
+				for t = 1, 2051 do
+					local tree = getObj("tree"..t)
+					if tree then tree:SetSkin(1) end
+				end
+			else
+				SetWeather(0)
+				SetVar("Weather", 0)
+				SetVar("SpeedWind", random(4, 10))
+				SetVar("Season", SEASON)
+				RuleConsole("testShadowRenderToGrass yes")
+				TActivate("BirdsSound")
+			end
 			
 			Fly("start_game", CINEMATIC_NO_AIM, 0, 0.1, 0, 1)
 			StartCinematic()
@@ -377,8 +403,22 @@
 
 			SaveAllToleranceStatus(RS_NEUTRAL)
 
-			SetWeather(0)
+			if SEASON == "WINTER" then
+				local r = random(3,4)
+				SetWeather(r)
+				SetVar("Weather", r)
+				SetVar("Season", "WINTER")
+				if r == 3 then SetVar("SpeedWind", random(4, 8)) end
+				if r == 4 then SetVar("SpeedWind", random(3, 10)) end
+			else
+				SetWeather(0)
+				SetVar("Weather", 0)
+				SetVar("SpeedWind", random(4, 10))
+				SetVar("Season", SEASON)
+			end
+
 			SetGameTime(20,0)
+			SetVar("GameTimeHour", "DAY")
 
 			PlayCustomMusic("Credits01")
 
@@ -491,6 +531,51 @@
 
 			TActivate("MessageEndGame")
 
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Смена сезонов через черный экран -->
+	<trigger Name="ChangeSeasonsFadeEffect" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			Fly("start_game", CINEMATIC_NO_AIM, 0, 0, 1, 1)
+			StartCinematic()
+		
+			AddCinematicMessage(77773, 0)
+
+			local vehPlayer = GetPlayerVehicle()
+			if vehPlayer then
+				vehPlayer:SetThrottle(0)
+				vehPlayer:SetCustomLinearVelocity(0)
+			end
+
+			TDeactivate("Update")
+			TActivate("ChangeSeasonsFadeEffect_End")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ChangeSeasonsFadeEffect_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+			if SEASON == "WINTER" then 
+				TActivate("WinterWeather")
+				AddImportantFadingMsgByStrIdFormatted("fm_season_winter")
+			else
+				TActivate("SummerWeather") 
+				AddImportantFadingMsgByStrIdFormatted("fm_season_summer")
+			end
+
+			if ReadValueUserInfo("UserTimeYear") ~= "1" then
+				if ReadValueUserInfo("Season") ~= SEASON then EditUserInfo("Season", "Season: "..SEASON) end 
+			end
+		
+			SetCameraBehindPlayerVehicle()
+
+			TActivate("Update")
 			trigger:Deactivate()
 		</script>
 	</trigger>

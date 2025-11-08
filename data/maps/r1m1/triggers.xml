@@ -3601,9 +3601,19 @@
 						"item_pants40grn", "item_vodka",
 						"item_ai2", "item_analgin", "item_carmed", "item_med",
 						"hornet01", "specter01", "pkt01", "kord01", "storm01", "vector01", "vulcan01"}	
-			
+
+			local protChest = "mainChest"
+
+			if EVENT == "NEW_YEAR" then 
+				local new_items = {"item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star"}
+				for i = 1, 4 do
+					table.insert(items, new_items[i])
+				end
+				protChest = "christmasChest"
+			end
+
 			for i=1,5 do
-				local Chest = CreateNewObject{prototypeName = "mainChest", objName = "DeadScav"..i.."Chest"}	
+				local Chest = CreateNewObject{prototypeName = protChest, objName = "DeadScav"..i.."Chest"}	
 				local ChestId = GetEntityByID(Chest)
 				ChestId:SetPosition(CVector(getPos("DeadScav_"..i.."_loc")))
 
@@ -3646,8 +3656,11 @@
 							"scrap_metal_use", "machinery_use",
 							"item_alkani", "item_hlor", "item_paper", "item_stakanyash", "item_salt", "item_soap", "item_tb", "item_toothpaste"}
 			
+			local protChest = "mainChest"
+			if EVENT == "NEW_YEAR" then protChest = "christmasChest" end
+			
 			for i=1,7 do
-				local Chest = CreateNewObject{prototypeName = "mainChest", objName = "MedicalBox"..i.."Chest"}	
+				local Chest = CreateNewObject{prototypeName = protChest, objName = "MedicalBox"..i.."Chest"}	
 				local ChestId = GetEntityByID(Chest)
 				ChestId:SetPosition(CVector(getPos("MedBox_"..i.."_loc")))
 				ChestId:SetSkin(4)
@@ -3692,9 +3705,12 @@
 							"item_awl", "item_leatherman", "item_metalscissors", "item_nippers", "item_pliers", "item_pliers_round", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_wrench",
 							"item_cable", "item_drill", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_helix", "item_lump", "item_magnet", "item_rele", "item_svech", "item_tplug", "item_ultra_lump", "item_usb", "item_wires", "item_gyrotachometer", "item_military_plate"}
 			
+			local protChest = "mainChest"
+			if EVENT == "NEW_YEAR" then protChest = "christmasChest" end
+
 			for i=1,10 do
 				if random(2) == 1 then
-					local Chest = CreateNewObject{prototypeName = "mainChest", objName = "TehnoBox"..i.."Chest"}	
+					local Chest = CreateNewObject{prototypeName = protChest, objName = "TehnoBox"..i.."Chest"}	
 					local ChestId = GetEntityByID(Chest)
 					ChestId:SetPosition(CVector(getPos("TehnoBox_"..i.."_loc")))
 					ChestId:SetSkin(5)
@@ -3746,9 +3762,12 @@
 							"item_filter", "item_vitalik", "item_waterfilter", "item_zapal",
 							"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench"}
 			
+			local protChest = "mainChest"
+			if EVENT == "NEW_YEAR" then protChest = "christmasChest" end
+
 			for i=1,9 do
 				if random(2) == 1 then
-					local Chest = CreateNewObject{prototypeName = "mainChest", objName = "ToolsBox"..i.."Chest"}	
+					local Chest = CreateNewObject{prototypeName = protChest, objName = "ToolsBox"..i.."Chest"}	
 					local ChestId = GetEntityByID(Chest)
 					ChestId:SetPosition(CVector(getPos("ToolsBox_"..i.."_loc")))
 					ChestId:SetSkin(6)
@@ -3787,9 +3806,19 @@
 		<script>
 			local items = {"book", "shkatulka", "item_key_gate_thetown", "item_key_gate_basefelix", "item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_emre_kara", "item_fitanyashka", "item_monolit", "item_kaktus", "item_keqing", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_carsen", "item_metallodetector", "item_ananaga", "item_silver_skull", "item_vaze", "item_kubok_kikiki"}
 
+			local protChest = "mainChest"
+
+			if EVENT == "NEW_YEAR" then 
+				local new_items = {"item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star"}
+				for i = 1, 4 do
+					table.insert(items, new_items[i])
+				end
+				protChest = "christmasChest"
+			end
+
 			for i=1,7 do
 				if random(2) == 1 then
-					local Chest = CreateNewObject{prototypeName = "mainChest", objName = "ValuablesBox"..i.."Chest"}	
+					local Chest = CreateNewObject{prototypeName = protChest, objName = "ValuablesBox"..i.."Chest"}	
 					local ChestId = GetEntityByID(Chest)
 					ChestId:SetPosition(CVector(getPos("ValuableBox_"..i.."_loc")))
 					ChestId:SetSkin(7)
@@ -3830,8 +3859,11 @@
 			local items = {"item_bp", "item_cable", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_hdd", "item_helix", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tplug", "item_ultra_lump", "item_usb", "item_wires", "item_gyrotachometer", "item_military_plate", "item_rfid",
 							"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank"}
 
+			local protChest = "mainChest"
+			if EVENT == "NEW_YEAR" then protChest = "christmasChest" end
+
 			for i=1,5 do
-				local Chest = CreateNewObject{prototypeName = "mainChest", objName = "ElectronicsBox"..i.."Chest"}	
+				local Chest = CreateNewObject{prototypeName = protChest, objName = "ElectronicsBox"..i.."Chest"}	
 				local ChestId = GetEntityByID(Chest)
 				ChestId:SetPosition(CVector(getPos("ElectronicsBox_"..i.."_loc")))
 				ChestId:SetSkin(1)
@@ -3879,8 +3911,18 @@
 							"item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_vaze",
 							"fagot01", "maxim01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "big_swingfire01", "cyclops01", "octopus01", "rocketLauncher", "someTurboAccelerationPusher"}
 
+			local protChest = "mainChest"
+
+			if EVENT == "NEW_YEAR" then 
+				local new_items = {"item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star"}
+				for i = 1, 4 do
+					table.insert(items, new_items[i])
+				end
+				protChest = "christmasChest"
+			end
+
 			for i=1,5 do
-				local Chest = CreateNewObject{prototypeName = "mainChest", objName = "TheTown_"..i.."_Chest"}	
+				local Chest = CreateNewObject{prototypeName = protChest, objName = "TheTown_"..i.."_Chest"}	
 				local ChestId = GetEntityByID(Chest)
 				ChestId:SetPosition(CVector(getPos("TheTownBox_"..i.."_loc")))
 				ChestId:SetSkin(2)
@@ -4360,6 +4402,13 @@
 						"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_waterfilter", "item_keqing", "item_metallodetector", "item_kubok_kikiki",
 						"item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_pipe_wrench", "item_ratchet_wrench", "item_toolset", "item_vitalik",
 						"item_bitcoin", "item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_silver_skull", "item_vaze"}
+				
+				if EVENT == "NEW_YEAR" then 
+					local new_items = {"item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star"}
+					for i = 1, 4 do
+						table.insert(items, new_items[i])
+					end
+				end
 			else
 				lootcount = random(3,6)
 				items = {"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo",

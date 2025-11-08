@@ -284,6 +284,7 @@
 			map()
 
 			TActivate("Message")
+			TActivate("AddEventQuestItems")
 			trigger:Deactivate()
 		</script>
 	</trigger>

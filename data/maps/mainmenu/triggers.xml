@@ -17,10 +17,6 @@
 			if STARTGAME then STARTGAME = STARTGAME + 1 end
 			if STARTGAME == 1 then UpdateUserInfoFile() end
 
-			PlayCustomMusic("mainmenu")
-			SetVar("Track", 175)
-			TActivate("MusicTimer")
-
 			RuleConsole("cinematic_spring_coeff 1.7")
 
 			local coordarr={
@@ -335,6 +331,63 @@
 			TActivate("Trigger_zone01")
 		</script>
 	</trigger>
+
+	<trigger Name="Events" active="1">
+		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local day = tonumber(strsub(os.date(), 4, 5))
+			local month = tonumber(strsub(os.date(), 1, 2))
+
+			if IsUserInfoLineExists("Season") and ReadValueUserInfo("UserTimeYear") == "1" then 
+				SEASON = ReadValueUserInfo("Season")
+				if SEASON == "WINTER" then TActivate("WinterWeather") end
+				if SEASON == "SPRING" then TActivate("SummerWeather") end
+				if SEASON == "SUMMER" then TActivate("SummerWeather") end
+				if SEASON == "AUTUMN" then TActivate("SummerWeather") end
+			else
+				if month == 12 or month == 1 or month == 2 then 
+					SEASON = "WINTER" 
+					TActivate("WinterWeather")
+				end
+
+				if month == 3 or month == 4 or month == 5 then 
+					SEASON = "SPRING" 
+					TActivate("SummerWeather")
+				end
+
+				if month == 6 or month == 7 or month == 8 then 
+					SEASON = "SUMMER" 
+					TActivate("SummerWeather")
+				end
+
+				if month == 9 or month == 10 or month == 11 then 
+					SEASON = "AUTUMN" 
+					TActivate("SummerWeather")
+				end
+
+				EditUserInfo("Season", "Season: "..SEASON)
+			end
+
+			if month == 12 and day >= 25 or month == 1 and day >= 1 and 10 >= day then EVENT = "NEW_YEAR" end
+			if month == 12 and day == 8 then EVENT = "BIRTHDAY_EXMACHINA" end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="MusicStart" active="1">
+		<event	timeout="0"	eventid="GE_TIME_PERIOD" />
+		<script>
+			if EVENT == "NEW_YEAR" then
+				PlayCustomMusic("christmas_music")
+				SetVar("Track", 180)
+			else
+				PlayCustomMusic("mainmenu")
+				SetVar("Track", 175)
+			end
+			TActivate("MusicTimer")
+			trigger:Deactivate()
+		</script>
+	</trigger>
 	
 	<trigger Name="Music" active="0">
 		<event	timeout="0"	eventid="GE_TIME_PERIOD" />
@@ -381,49 +434,6 @@
 				TActivate("Music")
 			end
 
-		</script>
-	</trigger>
-
-	<trigger Name="Events" active="1">
-		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
-		<script>
-			local day = tonumber(strsub(os.date(), 4, 5))
-			local month = tonumber(strsub(os.date(), 1, 2))
-
-			if ReadValueUserInfo("UserTimeYear") == nil or ReadUserInfo("UserTimeYear") == nil then EditUserInfo("UserTimeYear", "UserTimeYear: 0") end
-		
-			if ReadValueUserInfo("UserTimeYear") == "1" then 
-				SEASON = ReadValueUserInfo("Season")
-				if SEASON == "WINTER" then TActivate("WinterWeather") end
-				if SEASON == "SPRING" then TActivate("SummerWeather") end
-				if SEASON == "SUMMER" then TActivate("SummerWeather") end
-				if SEASON == "AUTUMN" then TActivate("SummerWeather") end
-			else
-				if month == 12 or month == 1 or month == 2 then 
-					SEASON = "WINTER" 
-					TActivate("WinterWeather")
-				end
-
-				if month == 3 or month == 4 or month == 5 then 
-					SEASON = "SPRING" 
-					TActivate("SummerWeather")
-				end
-
-				if month == 6 or month == 7 or month == 8 then 
-					SEASON = "SUMMER" 
-					TActivate("SummerWeather")
-				end
-
-				if month == 9 or month == 10 or month == 11 then 
-					SEASON = "AUTUMN" 
-					TActivate("SummerWeather")
-				end
-
-				EditUserInfo("Season", "Season: "..SEASON)
-			end
-
-			if month == 12 and day >= 25 or month == 1 and day >= 1 and 10 > day then EVENT = "NEW_YEAR" end
-			trigger:Deactivate()
 		</script>
 	</trigger>
 

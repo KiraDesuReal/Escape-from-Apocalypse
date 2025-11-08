@@ -159,4 +159,10 @@ $Id: QuestItems.xml,v 1.11 2005/10/18 06:12:48 anton Exp $
 		ModelFile	= "map_location"
 		ResourceType	= "QUEST_ITEMS" />
 
+	<Prototype
+		Class		= "QuestItem"
+		Name		= "quest_item_christmas_ball"
+		ModelFile	= "quest_christmas_ball"
+		ResourceType	= "QUEST_ITEMS" />
+
 </Prototypes>

@@ -156,6 +156,10 @@ data/if/ico_hd/inventorydlg/goods/new/special/item_ms20001.dds
 !data/models/goods/info/*.dds
 !data/models/goods/info/*.gam
 !options/english_localization/data/models/goods/other/*.dds
+!data/models/goods/other/christmas_star/*.gam
+!data/models/goods/other/christmas_star/*.dds
+!data/models/goods/other/christmas_balls/*.gam
+!data/models/goods/other/christmas_balls/*.dds
 !data/models/goods/other/*.dds
 !data/models/goods/other/*.tga
 !data/models/goods/other/*.gam
@@ -189,6 +193,8 @@ data/if/ico_hd/inventorydlg/goods/new/special/item_ms20001.dds
 !data/models/objects/box/insuredbox.dds
 !data/models/objects/box/box_videocard.dds
 !data/models/objects/box/box_videocard.gam
+!data/models/objects/box/christmas_box/*.gam
+!data/models/objects/box/christmas_box/*.dds
 !data/effects/lights/blink.psys
 !data/effects/lights/blink1.psys
 !data/models/vehicles/fighter/cab03/*.dds
@@ -235,6 +241,7 @@ data/if/ico_hd/inventorydlg/goods/new/special/item_ms20001.dds
 !data/models/objects/main_hero_1.dds
 !data/sounds/other/interface/fading_msg.wav
 !data/sounds/other/interface/building.wav
+!data/sounds/other/interface/christmas_building.wav
 !data/sounds/other/interface/buy.ogg
 !data/sounds/other/interface/death.wav
 !data/sounds/other/generator/*.wav
@@ -305,6 +312,7 @@ data/if/ico_hd/splashwnd/loading_up.dds
 !data/if/ico/talkwithnpcdlg/select_fractions_dlg.dds
 !data/if/ico/talkwithnpcdlg/select_bear_dlg.dds
 !data/if/ico/talkwithnpcdlg/select_usec_dlg.dds
+!data/if/ico/talkwithnpcdlg/christmas_tree_dlg.dds
 !data/if/ico/inventorydlg/cruizer/*.dds
 !data/if/ico/globalmap/gmap_line.dds
 !data/if/ico_hd/globalmap/*.dds
@@ -379,6 +387,7 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/music/item_music/*.ogg
 !data/music/cinematics/Credits01.ogg
 !data/music/mainmenu_remaster.ogg
+!data/music/christmas_music.ogg
 !data/if/ico_hd/inventorydlg/weapon/bumblebee_min.dds
 !data/if/ico_hd/inventorydlg/weapon/bumblebee_insured.dds
 !data/if/ico_hd/inventorydlg/weapon/dragon_min.dds
@@ -456,6 +465,8 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/if/ico_hd/inventorydlg/cell_busy.dds
 !data/models/questitems/map_location.gam
 !data/models/questitems/map_r1m1.dds
+!data/models/questitems/quest_christmas_ball/*.gam
+!data/models/questitems/quest_christmas_ball/*.dds
 !data/if/ico_hd/optionswnd/panel.dds
 !data/if/ico_hd/towndlg/city_mainscreen.dds
 !data/models/masks/region0/*.gam
@@ -532,6 +543,7 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/models/nature/region1/trees/dub2.gam
 !data/models/nature/region1/trees/dub3.gam
 !data/models/nature/region1/trees/elka1.gam
+!data/models/nature/region1/trees/elka1_r0m0.gam
 !data/models/nature/region1/trees/elka2.gam
 !data/models/nature/region1/trees/elka3.gam
 !data/models/nature/region1/trees/sosna1.gam
@@ -568,6 +580,7 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/models/textures/region1/envir_barricade2.dds
 !data/models/textures/goods/*.dds
 !data/models/lights/gen_lvl2_light.xml
+!data/models/lights/christmas_tree_light.xml
 !data/if/ico_hd/TownDlg/bar_char_bkg.dds
 !data/if/ico_hd/SmartCursorWnd/missile_lock.dds
 !assets/*.png

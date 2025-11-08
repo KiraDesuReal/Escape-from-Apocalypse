@@ -483,6 +483,14 @@
 			SetVar("Shelf_item_screw_flat_long", 0)
 			SetVar("Shelf_Builden", 0)
 
+			SetVar("ChristmasTree_item_firewood", 0)
+			SetVar("ChristmasTree_item_christmas_ball_blue", 0)
+			SetVar("ChristmasTree_item_christmas_ball_red", 0)
+			SetVar("ChristmasTree_item_christmas_ball_white", 0)
+			SetVar("ChristmasTree_item_christmas_star", 0)
+			SetVar("ChristmasTree_Builden", 0)
+			SetVar("GetChristmasGift", 0)
+
 			SetVar("ShelfSelectSlot", 0)
 
 			for i = 1, 12 do
@@ -783,11 +791,20 @@
 			end
 
 		--генератор
-			if GENERATOR_TIMER_HOUR_GLOBAL then SetVar("Generator_time_work_hour", GENERATOR_TIMER_HOUR_GLOBAL) end
-			if GENERATOR_TIMER_MINUTE_GLOBAL then SetVar("Generator_time_work_minute", GENERATOR_TIMER_MINUTE_GLOBAL) end
-			if GENERATOR_TIMER_SECOND_GLOBAL then SetVar("Generator_time_work_second", GENERATOR_TIMER_SECOND_GLOBAL) end
-
+			if GetVar("Generator_lvl").AsInt == 3 then
+				if GetVar("Generator_on").AsInt ~= 1 then 
+					SetVar("Generator_on", 1) 
+					SetVar("Generator_time_work_second", 1) 
+					SetVar("Generator_time_work_minute", 1)
+					SetVar("Generator_time_work_hour", 1)
+				end
+			end
+			
 			if GetVar("Generator_on").AsInt == 1 and not(GetVar("Generator_lvl").AsInt == 3) then
+				if GENERATOR_TIMER_HOUR_GLOBAL then SetVar("Generator_time_work_hour", GENERATOR_TIMER_HOUR_GLOBAL) end
+				if GENERATOR_TIMER_MINUTE_GLOBAL then SetVar("Generator_time_work_minute", GENERATOR_TIMER_MINUTE_GLOBAL) end
+				if GENERATOR_TIMER_SECOND_GLOBAL then SetVar("Generator_time_work_second", GENERATOR_TIMER_SECOND_GLOBAL) end
+
 				if GENERATOR_ON_GLOBAL then 
 					SetVar("Generator_on", GENERATOR_ON_GLOBAL) 
 					if GetVar("Generator_on").AsInt == 0 then
@@ -831,10 +848,6 @@
 					SetVar("Generator_time_work_msg", "0")
 					TActivate("Generator_UpdateTimer3D")
 				end
-			end
-
-			if GetVar("Generator_lvl").AsInt == 3 then
-				if GetVar("Generator_on").AsInt ~= 1 then SetVar("Generator_on", 1) end
 			end
 
 		--туннель
@@ -928,6 +941,15 @@
 			else
 				if GetVar("WindGenerator_status").AsString == "DONE" then
 					TActivate("WindGenerator_Done")
+				end
+			end
+
+		--новогодняя ёлка
+			if EVENT == "NEW_YEAR" then
+				if GetVar("ChristmasTree_Builden").AsInt == 2 then
+					if getObj("ChristmasGift") == nil and GetVar("GetChristmasGift").AsInt ~= tonumber(strsub(os.date(), 4, 5)) then
+						TActivate("CreateChristmasGift")
+					end
 				end
 			end
 
@@ -2165,7 +2187,16 @@
 				if GetVar("ChestScavs_Search").AsInt == 5 then loot_count = random(3,6) end 
 				if GetVar("ChestScavs_Search").AsInt == 6 then loot_count = random(4,6) end 
 			end
-	
+
+			if EVENT == "NEW_YEAR" then 
+				if GetVar("ChestScavs_Search").AsInt == 2 or GetVar("ChestScavs_Search").AsInt == 3 or GetVar("ChestScavs_Search").AsInt == 4 then
+					local new_items = {"item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star"}
+					for i = 1, 4 do
+						table.insert(lootlist, new_items[i])
+					end
+				end
+			end
+
 			local loot = getn(lootlist)
 
 			local Chest = CreateNewObject{prototypeName = "opacityChest", objName = "ChestScavsForLoot"}	
@@ -5253,7 +5284,8 @@
 			local AllItems = AllItems()
 			local items = {}
 			local count = {}
-			local l = 0
+			local l, y = 0, 0
+			local prot = "mainChest"
 
 			local plf = GetPlayerVehicle()
 			plf:SetNewPart("BASKET", "bigfakeCargo")
@@ -5278,9 +5310,14 @@
 				end
 			end
 
-			local Chest = CreateNewObject{prototypeName = "mainChest", objName = "ChestFromScavCar"}	
+			if EVENT == "NEW_YEAR" then 
+				prot = "christmasChest" 
+				y = 0.5
+			end
+
+			local Chest = CreateNewObject{prototypeName = prot, objName = "ChestFromScavCar"}	
 			local ChestId = GetEntityByID(Chest)
-			ChestId:SetPosition(CVector(898.134, 255, 988.361))
+			ChestId:SetPosition(CVector(898.134, 255.5 + y, 988.361))
 			ChestId:SetSkin(8)
 
 			for i2 = 1, l do
@@ -5400,7 +5437,8 @@
 			local insured = INSURED_ITEMS_GLOBAL
 			INSURED_ITEMS_GLOBAL = {}
 			local items = {}
-			local l = 0
+			local l, y = 0, 0
+			local prot = "mainChest"
 
 			if insured ~= nil and getn(insured) ~= 0 then
 				for i = 1, getn(insured) do
@@ -5414,9 +5452,14 @@
 			end
 			
 			if getn(items) ~= 0 then
-				local Chest = CreateNewObject{prototypeName = "mainChest", objName = "ChestReturnInsureItems"}	
+				if EVENT == "NEW_YEAR" then 
+					prot = "christmasChest" 
+					y = 0.5
+				end
+
+				local Chest = CreateNewObject{prototypeName = prot, objName = "ChestReturnInsureItems"}	
 				local ChestId = GetEntityByID(Chest)
-				ChestId:SetPosition(CVector(898.134, 255, 988.361))
+				ChestId:SetPosition(CVector(898.134, 255.5 + y, 988.361))
 				ChestId:SetSkin(9)
 
 				for i2 = 1, getn(items) do
@@ -5837,7 +5880,7 @@
 	<trigger Name="QuestsActivate" active="1">
 		<event	eventid="GE_LEAVE_TOWN"	ObjName="PetrolStationTown1" />
 		<event	eventid="GE_LEAVE_TOWN"	ObjName="Town_r0m0" />
-		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="tp_1_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Timer_loc" />
 		<script>
 			if IsQuestTaken("q_test_drive1") and not(IsQuestComplete("q_test_drive1_11")) then
 				TActivate("q_test_drive1_config")
@@ -6846,6 +6889,21 @@
 		</script>
 	</trigger>	
 
+-- Атмосфера праздника
+
+	<trigger Name="q_new_year_2026_reward" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			if IsQuestItemPresent("quest_item_christmas_ball") == nil then
+				EditUserInfo("QuestItemChristmasBall", "QuestItemChristmasBall: 1")
+				AddQuestItem("quest_item_christmas_ball")
+				AddFadingMsgByStrIdFormatted("fm_player_add_quest_item", "quest_item_christmas_ball")
+				SoundFadingMsg()
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 <!--
 **************************************************************************************************
 ** ИВЕНТЫ
@@ -6858,6 +6916,8 @@
 			local day = tonumber(strsub(os.date(), 4, 5))
 			local month = tonumber(strsub(os.date(), 1, 2))
 
+			EVENT = nil
+
 			if ReadValueUserInfo("UserTimeYear") ~= "1" then
 				if month == 12 or month == 1 or month == 2 then SEASON = "WINTER" end
 				if month == 3 or month == 4 or month == 5 then SEASON = "SPRING" end
@@ -6867,15 +6927,38 @@
 				SEASON = ReadValueUserInfo("Season")
 			end
 
-			if month == 12 and day >= 25 or month == 1 and day >= 1 and 10 > day then EVENT = "NEW_YEAR" end
+			if month == 12 and day >= 25 or month == 1 and day >= 1 and 10 >= day then EVENT = "NEW_YEAR" end
 
 			if GetVar("Season").AsString ~= SEASON then TActivate("ChangeSeasonsFadeEffect") end
+
+			if EVENT == "NEW_YEAR" then 
+				if GetVar("ChristmasTree_Builden").AsInt == 0 then TActivate("CreateBuildChistmasTreeLoc") end
+			else
+				if GetVar("ChristmasTree_Builden").AsInt > 0 then TActivate("RemoveChristmasTree") end
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
--- Погода
+	<trigger Name="AddEventQuestItems" active="0">
+		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local items = {"quest_item_christmas_ball"}
+			local param = {"QuestItemChristmasBall"}
+	
+			for i = 1, 1 do
+				if IsUserInfoLineExists(param[i]) and ReadValueUserInfo(param[i]) == "1" then
+					AddQuestItem(items[i])
+				end
+			end
 
+			AddFadingMsgByStrIdFormatted("fm_add_event_quest_item")
+			SoundFadingMsg()
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Погода -->
 	<trigger Name="SummerWeather" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -6885,6 +6968,10 @@
 			if getObj("birds1") == nil then TActivate("BirdsSound") end
 			RuleConsole("testShadowRenderToGrass yes")
 			SetVar("Season", SEASON)
+
+			if ReadValueUserInfo("UserTimeYear") ~= "1" then
+				if ReadValueUserInfo("Season") ~= SEASON then EditUserInfo("Season", "Season: "..SEASON) end 
+			end
 		
 			if r == 0 then SetVar("SpeedWind", random(4, 10)) end
 			if r == 1 then SetVar("SpeedWind", random(11, 25)) end
@@ -6919,6 +7006,10 @@
 			if getObj("wind1") == nil then TActivate("WindSound") end
 			RuleConsole("testShadowRenderToGrass no")
 			SetVar("Season", "WINTER")
+
+			if ReadValueUserInfo("UserTimeYear") ~= "1" then
+				if ReadValueUserInfo("Season") ~= SEASON then EditUserInfo("Season", "Season: "..SEASON) end 
+			end
 
 			if r == 3 then SetVar("SpeedWind", random(4, 8)) end
 			if r == 4 then SetVar("SpeedWind", random(3, 10)) end
@@ -6981,7 +7072,7 @@
 			trigger:Deactivate()
 		</script>
 	</trigger>
-	
+
 	<trigger Name="Trees" active="1">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -6998,5 +7089,191 @@
 			trigger:Deactivate()
 		</script>
 	</trigger>	
+
+<!-- Новогодняя ёлка -->
+	<trigger Name="CreateBuildChistmasTreeLoc" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "ch_tree_fx", -1, -1, CVector(896.585, 254.200, 1061.701), Quaternion(0, 0, 0, 1), 0.15)
+			SetVar("ChristmasTree_Builden", 1)
+			TActivate("ChistmasTree_BuildInfo")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ChistmasTree_BuildInfo" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ChistmasTree_Build_loc" />
+		<script>
+			if GetVar("ChristmasTree_item_firewood").AsInt ~= 2 or GetVar("ChristmasTree_item_christmas_ball_blue").AsInt ~= 1 or GetVar("ChristmasTree_item_christmas_ball_red").AsInt ~= 1 or GetVar("ChristmasTree_item_christmas_ball_white").AsInt ~= 1 or GetVar("ChristmasTree_item_christmas_star").AsInt ~= 1 then
+				local item_1, item_2, item_3, item_4, item_5 = "", "", "", "", ""
+			
+				if GetVar("ChristmasTree_item_firewood").AsInt ~= 2 then item_1 = ITEM_FIREWOOD.." - @fff3e5cbx"..(2 - GetVar("ChristmasTree_item_firewood").AsInt).."|" end
+				if GetVar("ChristmasTree_item_christmas_ball_blue").AsInt ~= 1 then item_2 = "@ffffffff"..ITEM_CHRISTMAS_BALL_BLUE.." - @fff3e5cbx1|" end
+				if GetVar("ChristmasTree_item_christmas_ball_red").AsInt ~= 1 then item_3 = "@ffffffff"..ITEM_CHRISTMAS_BALL_RED.." - @fff3e5cbx1|" end
+				if GetVar("ChristmasTree_item_christmas_ball_white").AsInt ~= 1 then item_4 = "@ffffffff"..ITEM_CHRISTMAS_BALL_WHITE.." - @fff3e5cbx1|" end
+				if GetVar("ChristmasTree_item_christmas_star").AsInt ~= 1 then item_5 = "@ffffffff"..ITEM_CHRISTMAS_STAR.." - @fff3e5cbx1" end
+			
+				local msg = item_1..""..item_2..""..item_3..""..item_4..""..item_5
+
+				if msg then AddFadingMsgByStrIdFormatted("fm_items_to_build", msg) end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="CreateChristmasTree" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local ch_tree_fx = getObj("ch_tree_fx")
+			if ch_tree_fx then ch_tree_fx:Remove() end
+
+			CreateNewDummyObject("elka1_r0m0", "ch_tree1", -1, -1, CVector(907.173, 254.500, 1062.605), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("christmas_star", "ch_tree2", -1, -1, CVector(906.840, 280.480, 1062.291), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("christmas_ball_red", "ch_tree3", -1, -1, CVector(906.667, 261.187, 1067.481), Quaternion(0.0000, 0.0218, -0.0022, 0.9998))
+			CreateNewDummyObject("christmas_ball_blue", "ch_tree4", -1, -1, CVector(908.077, 258.287, 1064.596), Quaternion(0.0000, 0.2945, 0.0000, 0.9557))
+			CreateNewDummyObject("christmas_ball_white", "ch_tree5", -1, -1, CVector(909.485, 260.258, 1057.008), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("christmas_ball_red", "ch_tree6", -1, -1, CVector(911.845, 261.412, 1063.453), Quaternion(0.0000, 0.6868, 0.0000, 0.7269))
+			CreateNewDummyObject("christmas_ball_red", "ch_tree7", -1, -1, CVector(902.398, 259.204, 1060.278), Quaternion(0.0000, 0.7163, 0.0000, 0.6978))
+			CreateNewDummyObject("christmas_ball_blue", "ch_tree8", -1, -1, CVector(902.504, 262.906, 1063.978), Quaternion(0.0000, 0.8457, 0.0000, 0.5336))
+			CreateNewDummyObject("christmas_ball_white", "ch_tree9", -1, -1, CVector(903.429, 265.384, 1060.856), Quaternion(0.0000, 0.5410, 0.0000, 0.8410))
+			CreateNewDummyObject("christmas_ball_blue", "ch_tree10", -1, -1, CVector(907.937, 262.686, 1057.913), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("christmas_ball_red", "ch_tree11", -1, -1, CVector(909.142, 264.479, 1065.892), Quaternion(0.0000, 0.3604, 0.0000, 0.9328))
+			CreateNewDummyObject("christmas_ball_white", "ch_tree12", -1, -1, CVector(907.686, 269.116, 1065.502), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("christmas_ball_red", "ch_tree13", -1, -1, CVector(904.389, 268.030, 1064.907), Quaternion(0.0000, -0.3726, 0.0000, 0.9280))
+			CreateNewDummyObject("christmas_ball_blue", "ch_tree14", -1, -1, CVector(910.553, 266.502, 1061.775), Quaternion(0.0030, 0.7328, 0.0032, 0.6804))
+			CreateNewDummyObject("christmas_ball_blue", "ch_tree15", -1, -1, CVector(904.500, 268.128, 1059.979), Quaternion(0.0030, 0.7328, 0.0032, 0.6804))
+			CreateNewDummyObject("christmas_ball_red", "ch_tree16", -1, -1, CVector(906.848, 270.344, 1059.641), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("christmas_ball_white", "ch_tree17", -1, -1, CVector(904.811, 271.141, 1062.814), Quaternion(0.0062, 0.7055, 0.0062, 0.7086))
+			CreateNewDummyObject("christmas_ball_blue", "ch_tree18", -1, -1, CVector(906.021, 272.867, 1060.410), Quaternion(0.0000, 0.2186, 0.0000, 0.9758))
+			CreateNewDummyObject("christmas_ball_red", "ch_tree19", -1, -1, CVector(907.409, 272.939, 1064.175), Quaternion(0, 0, 0, 0))
+			CreateNewDummyObject("christmas_ball_white", "ch_tree20", -1, -1, CVector(909.756, 271.652, 1062.571), Quaternion(0.0000, 0.6836, 0.0000, 0.7299))
+			CreateNewDummyObject("christmas_ball_red", "ch_tree21", -1, -1, CVector(908.150, 274.853, 1061.931), Quaternion(0.0000, 0.7343, 0.0000, 0.6788))
+			CreateNewDummyObject("christmas_ball_white", "ch_tree22", -1, -1, CVector(908.860, 266.727, 1058.326), Quaternion(0.0000, -0.2313, 0.0000, 0.9729))
+			CreateNewDummyObject("christmas_box", "ch_tree23", -1, -1, CVector(910.295, 256, 1062.390), Quaternion(0.0000, -0.4540, 0.0000, 0.8910))
+			CreateNewDummyObject("christmas_box", "ch_tree24", -1, -1, CVector(906.316, 256, 1065.967), Quaternion(0.0000, 0.1629, 0.0000, 0.9866), 2)
+			CreateNewDummyObject("christmas_box", "ch_tree25", -1, -1, CVector(905.461, 256, 1058.758), Quaternion(0.0000, 0.7269, 0.0000, 0.6868), 7)
+			CreateNewDummyObject("christmas_box", "ch_tree26", -1, -1, CVector(909.088, 256, 1058.251), Quaternion(0.0000, 0.3194, 0.0000, 0.9476), 4)
+			CreateNewDummyObject("christmas_box", "ch_tree27", -1, -1, CVector(909.613, 256, 1065.190), Quaternion(0.0000, -0.6788, 0.0000, 0.7343), 1)
+			CreateNewSgNodeObject("ET_PS_LENS_D1", "ch_tree28", -1, -1, CVector(903.961, 259.985, 1060.810), Quaternion(0, 0, 0, 1), 1)
+			CreateNewSgNodeObject("ET_PS_LENS_D8", "ch_tree29", -1, -1, CVector(907.612, 258.702, 1063.793), Quaternion(0, 0, 0, 1), 1)
+			CreateNewSgNodeObject("ET_PS_LENS_D6", "ch_tree30", -1, -1, CVector(907.318, 269.679, 1064.054), Quaternion(0, 0, 0, 1), 1)
+			CreateNewSgNodeObject("ET_PS_LENS_D5", "ch_tree31", -1, -1, CVector(903.745, 263.429, 1063.343), Quaternion(0, 0, 0, 1), 1)
+			CreateNewSgNodeObject("ET_PS_LENS_D6", "ch_tree32", -1, -1, CVector(909.260, 260.669, 1057.647), Quaternion(0, 0, 0, 1), 1)
+			CreateNewSgNodeObject("ET_PS_LENS_D1", "ch_tree33", -1, -1, CVector(906.673, 261.368, 1066.078), Quaternion(0, 0, 0, 1), 1)
+			CreateNewSgNodeObject("ET_PS_LENS_D8", "ch_tree34", -1, -1, CVector(910.993, 261.719, 1063.269), Quaternion(0, 0, 0, 1), 1)
+			CreateNewSgNodeObject("ET_PS_LENS_D5", "ch_tree35", -1, -1, CVector(907.826, 263.309, 1059.657), Quaternion(0, 0, 0, 1), 1)
+			CreateNewSgNodeObject("ET_PS_LENS_D6", "ch_tree36", -1, -1, CVector(908.312, 264.660, 1064.681), Quaternion(0, 0, 0, 1), 1)
+			CreateNewSgNodeObject("ET_PS_LENS_D1", "ch_tree37", -1, -1, CVector(905.104, 268.307, 1063.896), Quaternion(0, 0, 0, 1), 1)
+			CreateNewSgNodeObject("ET_PS_LENS_D8", "ch_tree38", -1, -1, CVector(908.343, 266.955, 1059.465), Quaternion(0, 0, 0, 1), 1)
+			CreateNewSgNodeObject("ET_PS_LENS_D1", "ch_tree39", -1, -1, CVector(904.915, 265.837, 1061.203), Quaternion(0, 0, 0, 1), 1)
+			CreateNewSgNodeObject("ET_PS_LENS_D5", "ch_tree40", -1, -1, CVector(905.709, 268.380, 1060.804), Quaternion(0, 0, 0, 1), 1)
+			CreateNewSgNodeObject("ET_PS_LENS_D6", "ch_tree41", -1, -1, CVector(909.313, 266.774, 1061.903), Quaternion(0, 0, 0, 1), 1)
+			CreateNewSgNodeObject("ET_PS_LENS_D8", "ch_tree42", -1, -1, CVector(906.090, 271.267, 1062.409), Quaternion(0, 0, 0, 1), 1)
+			CreateNewSgNodeObject("ET_PS_LENS_D1", "ch_tree43", -1, -1, CVector(906.953, 270.791, 1060.957), Quaternion(0, 0, 0, 1), 1)
+			CreateNewSgNodeObject("ET_PS_LENS_D1", "ch_tree44", -1, -1, CVector(907.117, 273.313, 1063.164), Quaternion(0, 0, 0, 1), 1)
+			CreateNewSgNodeObject("ET_PS_LENS_D5", "ch_tree45", -1, -1, CVector(906.448, 273.086, 1061.226), Quaternion(0, 0, 0, 1), 1)
+			CreateNewSgNodeObject("ET_PS_LENS_D6", "ch_tree46", -1, -1, CVector(908.390, 272.104, 1062.553), Quaternion(0, 0, 0, 1), 1)
+			CreateNewSgNodeObject("LS_LIGHT_CHRISTMAS_TREE", "ch_tree47", -1, -1, CVector(907.173, 258, 1062.605), Quaternion(0, 0, 0, 0))
+
+			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(907, 255, 1062), Quaternion(0, 0, 0, 1), 6000)
+			CreateEffectTTLed( "ET_S_CHRISTMAS_BUILDING", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 5000)
+			CreateEffectInsertedInRemove("ET_PS_DRONE", CVector(907.173, 255, 1062.605), Quaternion(0, 0, 0, 1), true)
+
+			SetVar("ChristmasTree_Builden", 2)
+
+			TDeactivate("ChistmasTree_BuildInfo")
+
+			if IsQuestTaken("q_new_year_2026") and not(IsQuestComplete("q_new_year_2026_1")) then CompleteSubtask("q_new_year_2026_1") end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateChristmasGift" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local lootlist = {"electronics_use", "fuel_full_use",
+					"item_key_gate_thetown",
+					"item_datchik", "item_military_tube", "item_thermometer", "item_tube",
+					"item_bp", "item_converter", "item_drill", "item_engine", "item_gazan", "item_gpu", "item_iridiym", "item_tetris", "item_virtex", "item_vpx", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid",
+					"item_car_battery", "item_cyclon", "item_tank_battery",
+					"item_prisadka", "item_propan", "item_termit",
+					"item_rozvidka", "item_sas",
+					"item_ledx", "item_oftalmaskop",
+					"item_emre_kara", "item_airfilter", "item_ananaga", "item_fitanyashka", "item_pants40grn", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star",
+					"item_buldex", "item_handrill", "item_pipe_wrench", "item_ratchet_wrench",
+					"item_bitcoin", "item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_silver_skull", "item_vaze",
+					"fagot01", "maxim01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "hammer01", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun",
+					"someTurboAccelerationPusher",
+					"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_fuel_tank2", "additional_torque2", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
+
+			local Chest = CreateNewObject{prototypeName = "christmasGift", objName = "ChristmasGift"}	
+			local ChestId = GetEntityByID(Chest)
+			ChestId:SetSkin(10)
+			ChestId:SetPosition(CVector(900.784, 256, 1063.162))
+
+			local Item = CreateNewObject{prototypeName = lootlist[random(getn(lootlist))], objName = "ChristmasGiftItem"..random(10000), belong = 1100}
+			local ItemId = GetEntityByID(Item)
+			if ChestId and ItemId then
+				ChestId:AddChild(ItemId)
+			end
+
+			CreateEffectInsertedInRemove("ET_PS_DRONE", CVector(900.784, 256, 1063.162), Quaternion(0, 0, 0, 1), true)
+
+			TActivate("IfGetChristmasGift")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="IfGetChristmasGift" active="0">
+		<event eventid="GE_OBJECT_DIE" ObjName="ChristmasGift" />
+		<script>
+			local gift = getObj("ChristmasGift")
+			if gift == nil then
+				local day = tonumber(strsub(os.date(), 4, 5))
+				local month = tonumber(strsub(os.date(), 1, 2))
+				SetVar("GetChristmasGift", day)
+				if month == 12 and day >= 25 or month == 1 and day >= 1 and 10 >= day then 
+					if month == 1 and day == 10 then
+						AddFadingMsgByStrIdFormatted("fm_get_christmas_gift2")
+					else
+						AddFadingMsgByStrIdFormatted("fm_get_christmas_gift1")
+					end
+					SoundFadingMsg()
+				end
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="RemoveChristmasTree" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("ChristmasTree_Builden").AsInt == 1 then
+				local ch_tree_fx = getObj("ch_tree_fx")
+				if ch_tree_fx then ch_tree_fx:Remove() end
+			elseif GetVar("ChristmasTree_Builden").AsInt == 2 then
+				for i = 1, 47 do
+					local ch_tree = getObj("ch_tree"..i)
+					if ch_tree then ch_tree:Remove() end
+				end
+				local gift = getObj("ChristmasGift")
+				if gift then gift:Remove() end
+				CreateEffectInsertedInRemove("ET_PS_DRONE", CVector(907.173, 255, 1062.605), Quaternion(0, 0, 0, 1), true)
+			end
+
+			if IsQuestTaken("q_new_year_2026") and not(IsQuestComplete("q_new_year_2026")) then FailQuest("q_new_year_2026") end
+
+			TDeactivate("ChistmasTree_BuildInfo")
+			TDeactivate("IfGetChristmasGift")
+
+			SetVar("ChristmasTree_item_firewood", 0)
+			SetVar("ChristmasTree_item_christmas_ball_blue", 0)
+			SetVar("ChristmasTree_item_christmas_ball_red", 0)
+			SetVar("ChristmasTree_item_christmas_ball_white", 0)
+			SetVar("ChristmasTree_item_christmas_star", 0)
+			SetVar("ChristmasTree_Builden", 0)
+			SetVar("GetChristmasGift", 0)
+			trigger:Deactivate()
+		</script>
+	</trigger>
 
 </triggers>

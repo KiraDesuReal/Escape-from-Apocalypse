@@ -92,6 +92,10 @@
 		<Node name="Sound3" class="SgSoundSourceNode" id="S_BUILDING" looped="0" />
 	</Node>
 
+	<Node name="ET_S_CHRISTMAS_BUILDING" class="SgNode">
+		<Node name="Sound3" class="SgSoundSourceNode" id="S_CHRISTMAS_BUILDING" looped="0" />
+	</Node>
+
 	<Node name="ET_S_GENERATOR_MOTOR_STAND" class="SgNode">
 		<Node name="Sound3" class="SgSoundSourceNode" id="S_GENERATOR_MOTOR_STAND" looped="1" />
 	</Node>
@@ -3456,6 +3460,10 @@
 		<Node name="Object1" class="SgPointLightSourceNode" id="LS_LIGHT_RED" psNumEmitterMesh="-1" />
 		<Node name="Object6" class="SgParticlesNode" id="PS_AIR_SMOKE" psNumEmitterMesh="-1" />
 		<Node name="Object2" class="SgSoundSourceNode" id="S_COLOR_FIER" looped="1" />
+	</Node>
+
+	<Node name="ET_PS_CHRISTMAS_GIFT" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_D1" psNumEmitterMesh="-1" />
 	</Node>
 
 	<Node name="ET_PS_GREEN_SMOKE" class="SgNode">

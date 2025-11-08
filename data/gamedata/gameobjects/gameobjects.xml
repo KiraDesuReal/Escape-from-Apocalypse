@@ -244,6 +244,22 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 			LifeTime	= "60"
 			
 			IntersectionRadius	= "1.7" />
+
+		<Prototype
+			Class		= "Chest"
+			Name		= "christmasChest"
+			ModelFile	= "christmas_box"
+			Mass		= "100"
+
+			IntersectionRadius	= "1.7" />
+
+		<Prototype
+			Class		= "Chest"
+			Name		= "christmasGift"
+			ModelFile	= "christmas_gift"
+			Mass		= "100"
+
+			IntersectionRadius	= "1.7" />
 	</Folder>
 
 	<Folder Name = "Bullets">

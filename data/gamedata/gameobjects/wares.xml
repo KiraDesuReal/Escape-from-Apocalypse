@@ -1779,6 +1779,42 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		ModelFile	= "knife_sectarian"
 		ResourceType= "ITEM_SIZE_3X2" />
 
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_christmas_ball_blue"
+		Price	= "6750"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= "christmas_ball_blue"
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_christmas_ball_red"
+		Price	= "9350"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= "christmas_ball_red"
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_christmas_ball_white"
+		Price	= "3500"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= "christmas_ball_white"
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_christmas_star"
+		Price	= "12450"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= "christmas_star"
+		ResourceType= "ITEM_SIZE_2X2" />
+
 <!-- Tools Items -->
 
 	<Prototype

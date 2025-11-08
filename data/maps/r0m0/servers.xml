@@ -27,6 +27,14 @@
 			file="data\models\AnimModels.xml" />
 
 		<Item
+			id="christmas_box"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="christmas_gift"
+			file="data\models\AnimModels.xml" />
+
+		<Item
 			id="conteiner"
 			file="data\models\AnimModels.xml" />
 
@@ -346,6 +354,22 @@
 			file="data\models\AnimModels.xml"/>
 
 		<Item 
+			id="christmas_ball_blue" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="christmas_ball_red" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="christmas_ball_white" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="christmas_star" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
 			id="screw" 
 			file="data\models\AnimModels.xml"/>
 
@@ -476,7 +500,7 @@
 			file="data\models\AnimModels.xml" />
 
 		<Item
-			id="elka1"
+			id="elka1_r0m0"
 			file="data\models\AnimModels.xml" />
 
 		<Item
@@ -2264,6 +2288,10 @@
 			id="map_location" 
 			file="data\models\AnimModels.xml"/>
 
+		<Item 
+			id="quest_christmas_ball" 
+			file="data\models\AnimModels.xml"/>
+
 		<Item
 			id="loadpoint"
 			file="data\models\AnimModels.xml" />
@@ -2408,6 +2436,7 @@
 		<Item id="S_BUY" />
 
 		<Item id="S_BUILDING" />
+		<Item id="S_CHRISTMAS_BUILDING" />
 
 		<Item id="S_GENERATOR_MOTOR_STAND" />
 		<Item id="S_GENERATOR_MOTOR" />

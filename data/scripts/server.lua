@@ -531,15 +531,19 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 				local gadget_rand = {gadget1[random(getn(gadget1))], gadget2[random(getn(gadget2))], gadget3[random(getn(gadget3))]}
 
 				local exlusive = {}
-				local loc
 				local mapName = GET_GLOBAL_OBJECT( "CurrentLevel" ):GetLevelName()
-				if mapName == "r1m1" then loc = "r1m1" end
-
-				if loc == "r1m1" then
+				if mapName == "r1m1" then
 					exlusive = {"potato", "firewood", "item_pants40grn"}
 					local items_array1 = getn(items1)
 					for i=1,getn(exlusive) do
 						items1[items_array1 + i] = exlusive[i]
+					end
+				end
+
+				if EVENT == "NEW_YEAR" then 
+					local new_items = {"item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star"}
+					for i = 1, 4 do
+						table.insert(items1, new_items[i])
 					end
 				end
 

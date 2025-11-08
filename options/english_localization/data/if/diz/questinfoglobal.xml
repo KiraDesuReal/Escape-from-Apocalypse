@@ -967,7 +967,7 @@
 
 	<QuestInfo
 		questName="q_clearing_r1m1_6"
-		briefDiz="Report to the Prapor and get a reward"
+		briefDiz="Report to the Prapor and get reward"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -1251,7 +1251,7 @@
 
 	<QuestInfo
 		questName="q_kill_scavs_2"
-		briefDiz="Get a reward"
+		briefDiz="Get reward"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -2884,7 +2884,7 @@
 
 	<QuestInfo
 		questName="q_testing_mission_3"
-		briefDiz="Get a reward"
+		briefDiz="Get reward"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -3222,7 +3222,7 @@
 
 	<QuestInfo
 		questName="q_sectarian2_4"
-		briefDiz="Get a reward"
+		briefDiz="Get reward"
 		isMainQuest="1">
 		<Map
 			name="r0m0" />
@@ -3232,6 +3232,31 @@
 
         <Map
 			name="r1m1_winter" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_new_year_2026"
+		briefDiz="Festive atmosphere"
+		fullDiz="Even in such difficult times, you need to be able to take a break from all the hustle and bustle and enjoy the holiday. I've seen a lot of fighters, and I'll tell you this: if your mind is full of battles and nothing but combat skills, you'll quickly lose it. So, put the battles away and start preparing for the holiday, and don't forget to decorate the christmas tree.|@FF0000AA|@FF1D1D1DReward:|@FF404040- Item: @FF1D1D1DVodka - x1|@FF404040- Quest item: @FF1D1D1DPurple christmas ball|@FF404040- Money: @FF1D1D1D30.000 coins"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_new_year_2026_1"
+		briefDiz="Build christmas tree"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
+	</QuestInfo>
+
+	<QuestInfo
+		questName="q_new_year_2026_2"
+		briefDiz="Get reward"
+		isMainQuest="1">
+		<Map
+			name="r0m0" />
 	</QuestInfo>
 
 	<QuestInfo

@@ -2051,6 +2051,35 @@
 			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_sectarian2")'
 			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_sectarian2")' />
 	</quest>
+<!--Root/r0m0/Атмосфера праздника -->
+	<quest
+		Name="q_new_year_2026"
+		Automatic="0"
+		SubQuestsCondition="and"
+		CheckAll="0"
+		ConditionToGive="all complete"
+		PrecedingQuests="q_testing_mission"
+		OnFail='CreateEffectInsertedInRemove("ET_S_QUEST_FAIL", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_fail_quest", "q_new_year_2026")'
+		OnComplete='TActivate("q_new_year_2026_reward"); AddItemsToPlayerRepository("item_vodka"); AddPlayerMoney(30000)'>
+		<quest
+			Name="q_new_year_2026_1"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all taken"
+			PrecedingQuests="q_new_year_2026"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_new_year_2026")' />
+
+		<quest
+			Name="q_new_year_2026_2"
+			Automatic="1"
+			SubQuestsCondition="and"
+			CheckAll="0"
+			ConditionToGive="all complete"
+			PrecedingQuests="q_new_year_2026_1"
+			OnComplete='AddImportantFadingMsgByStrIdFormatted("fm_complete_quest", "q_new_year_2026")'
+			OnTake='CreateEffectInsertedInRemove("ET_S_QUEST_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true); AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", "q_new_year_2026")' />
+	</quest>
 <!--Root/r0m0/Первый в очереди-->
 	<quest
 		Name="q_first_in_line"

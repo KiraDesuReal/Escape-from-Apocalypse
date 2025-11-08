@@ -917,12 +917,16 @@ function CreateBarrelLootBox(name, pos)
 	local gadget3 = {"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 
 	local exlusive = {}
-	local loc
 	local mapName = GET_GLOBAL_OBJECT( "CurrentLevel" ):GetLevelName()
-	if mapName == "r1m1" then loc = "r1m1" end
-
-	if loc == "r1m1" then
+	if mapName == "r1m1" then
 		exlusive = {"potato", "firewood", "item_pants40grn"}
+	end
+
+	if EVENT == "NEW_YEAR" then 
+		local new_items = {"item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star"}
+		for i = 1, 4 do
+			table.insert(other1, new_items[i])
+		end
 	end
 
 	CreateNewDummyObject("plastic_barrel", name, -1, -1, pos, Quaternion(0, 0, 0, 0),1)
@@ -977,7 +981,10 @@ function CreateGunBox(name, pos)
 	local gadget2 = {"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "additional_fuel_tank2", "additional_torque2", "additional_durability2"}
 	local gadget3 = {"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 
-	local Chest = CreateNewObject{prototypeName = "mainChest", objName = name.."Chest"}	
+	local protChest = "mainChest"
+	if EVENT == "NEW_YEAR" then protChest = "christmasChest" end
+
+	local Chest = CreateNewObject{prototypeName = protChest, objName = name.."Chest"}	
 	local ChestId = GetEntityByID(Chest)
 	ChestId:SetPosition(pos)
 	ChestId:SetSkin(3)
@@ -1107,7 +1114,7 @@ function AllItems()
 					"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 					"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 					"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
-					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_jeton_bear", "item_jeton_usec", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_knife_sectarian",
+					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_jeton_bear", "item_jeton_usec", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_knife_sectarian", "item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star",
 					"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
 					"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_vitaly", "item_silver_skull", "item_vaze",
 					"item_quest_search_data",
@@ -1137,6 +1144,14 @@ function AllItemsForScav()
 					"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun",
 					"someTurboAccelerationPusher",
 					"cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns", "cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "additional_fuel_tank2", "additional_torque2", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
+
+	if EVENT == "NEW_YEAR" then 
+		local new_items = {"item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star"}
+		for i = 1, 4 do
+			table.insert(Items, new_items[i])
+		end
+	end
+
 	return Items
 end
 
@@ -1483,6 +1498,10 @@ function ShelfAddItemToSlot()
 	if item == "item_kubok_kikiki" then model = "kubok_cs_kikiki" y = -0.27 scale = 0.21 end
 	if item == "item_metallodetector" then model = "metallodetector" y = 0.26 z = 0.08 scale = 0.3 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
 	if item == "item_knife_sectarian" then model = "knife_sectarian" y = 0.21 rot = Quaternion(-0.495, -0.505, -0.505, 0.495) end
+	if item == "item_christmas_ball_blue" then model = "christmas_ball_blue" y = -0.07 end
+	if item == "item_christmas_ball_red" then model = "christmas_ball_red" y = -0.07 end
+	if item == "item_christmas_ball_white" then model = "christmas_ball_white" y = -0.07 end
+	if item == "item_christmas_star" then model = "christmas_star" y = 0.14 end
 
 	if slot == 1 then pos = CVector(949.643 + z, 255.650 + y, 982.831) end
 	if slot == 2 then pos = CVector(949.643 + z, 255.650 + y, 981.115) end
@@ -1870,7 +1889,14 @@ function RewardForDailyQuests()
 						"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki",
 						"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
 						"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_silver_skull", "item_vaze"}
-	
+
+	if EVENT == "NEW_YEAR" then 
+		local new_items = {"item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star"}
+		for i = 1, 4 do
+			table.insert(OtherItems, new_items[i])
+		end
+	end
+
 	local count = random(1, 3)
 	if GetPlayerMoney() >= 700000 then
 		count = random(5, 8)
@@ -2074,6 +2100,7 @@ function CreateUserInfoFile()
 		f:write("NewGame: 0", "\n")
 		f:write("Season: SUMMER", "\n")
 		f:write("UserTimeYear: 0", "\n")
+		f:write("QuestItemChristmasBall: 0", "\n")
 		f:close()
 	end
 end
@@ -2085,6 +2112,10 @@ function UpdateUserInfoFile()
 		EditUserInfo("UserName", "UserName: "..os.getenv("USERNAME"))
 		EditUserInfo("Last", "LastDate: "..ReadValueUserInfo("Launch"))
 		EditUserInfo("Launch", "LaunchDate: "..os.date())
+		if IsUserInfoLineExists("NewGame") == nil then EditUserInfo("NewGame", "NewGame: 0") end
+		if IsUserInfoLineExists("Season") == nil then EditUserInfo("Season", "Season: SUMMER") end
+		if IsUserInfoLineExists("UserTimeYear") == nil then EditUserInfo("UserTimeYear", "UserTimeYear: 0") end
+		if IsUserInfoLineExists("QuestItemChristmasBall") == nil then EditUserInfo("QuestItemChristmasBall", "QuestItemChristmasBall: 0") end
 	else
 		CreateUserInfoFile()
 	end
@@ -2162,6 +2193,14 @@ function ReadValueUserInfo(l)
 				return value
 			end
 		end
+	end
+end
+
+function IsUserInfoLineExists(l)
+	if ReadValueUserInfo(l) == "" or ReadUserInfo(l) == nil then
+		return nil
+	else
+		return 1
 	end
 end
 

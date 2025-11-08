@@ -94,6 +94,29 @@
 	</model>
 
 	<model
+		id="christmas_box"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\objects\box\christmas_box\christmas_box.gam" />
+
+	<model
+		id="christmas_gift"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\objects\box\christmas_box\christmas_box.gam">
+		<action
+			name="STAND1">
+			<lp
+				id="LP_LIGHT1"
+				effect_id="ET_PS_CHRISTMAS_GIFT"
+				restartOnAnimationChange="1"
+				ImmediateRemove="1" />
+		</action>
+	</model>
+
+	<model
 		id="generator_motor"
 		shadow="1"
 		shadowVolume="1"
@@ -1052,6 +1075,34 @@
 		windwavy="0"
 		file="data\models\Goods\other\knife_sectarian.gam" />
 
+	<model
+		id="christmas_ball_blue"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\other\christmas_balls\christmas_ball_blue.gam" />
+
+	<model
+		id="christmas_ball_red"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\other\christmas_balls\christmas_ball_red.gam" />
+
+	<model
+		id="christmas_ball_white"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\other\christmas_balls\christmas_ball_white.gam" />
+
+	<model
+		id="christmas_star"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\other\christmas_star\star.gam" />
+
 <!-- tools items -->
 	<model
 		id="screw"
@@ -1567,6 +1618,14 @@
 		windwavy="0"
 		useImpostors = "0"
 		file="data\models\nature\region1\trees\elka3.gam" />
+
+	<model
+		id="elka1_r0m0"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors = "1"
+		file="data\models\nature\region1\trees\elka1_r0m0.gam" />
 
 	<model
 		id="kustarnik1"
@@ -20927,6 +20986,14 @@
 	<model
 		id="map_location"
 		file="data\models\questitems\map_location.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0"
+		composite="0" />
+
+	<model
+		id="quest_christmas_ball"
+		file="data\models\questitems\quest_christmas_ball\christmas_ball.gam"
 		shadow="1"
 		windwavy="0"
 		trans="0"

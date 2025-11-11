@@ -44,7 +44,6 @@
 			SetVar("ChestScavs_time_minute", 0)
 			SetVar("ChestScavs_time_second", 0)
 			SetVar("ChestScavs_time_msg", "0")
-			SetVar("Scav_Move", 0)
 			SetVar("ChestScavs_Loot", 0)
 
 			SetVar("Tunel_item_vitalik", 0)
@@ -456,6 +455,12 @@
 			SetVar("GarageCraft_Ledx_book", 0)
 			SetVar("GarageCraft_Ledx_item_toolset", 0)
 
+			SetVar("GarageCraft_WaterCanister_item_waterfilter", 0)
+
+			SetVar("GarageCraft_Ananaga_item_vodka", 0)
+			SetVar("GarageCraft_Ananaga_item_water_canister", 0)
+			SetVar("GarageCraft_Ananaga_item_sugar", 0)
+
 			SetVar("WindGenerator_item_engine", 0)
 			SetVar("WindGenerator_details", 0)
 			SetVar("WindGenerator_item_thermometer", 0)
@@ -749,6 +754,8 @@
 			if Q_DAILY_EXTRACT_STATUS then Q_DAILY_EXTRACT_STATUS = "0" end
 			if Q_DAILY_EXTRACT_PROGRESS then Q_DAILY_EXTRACT_PROGRESS = 0 end
 
+			if ITEM_KEY_GATE_THETOWN_USED then ITEM_KEY_GATE_THETOWN_USED = 0 end
+
 			local newgame = ReadUserInfo("New")
 			if newgame then
 				local newgamenum = tonumber(ReadValueUserInfo("New"))
@@ -1010,6 +1017,8 @@
 				LOG("=================== START MAP: r0m0 ===================")
 			end
 
+			TActivate("Update")
+
 		--квестовые переменные
 			if Q_TESTING_MISSION_DIESCAVS then SetVar("q_testing_mission_DieScavs", Q_TESTING_MISSION_DIESCAVS) end
 
@@ -1104,7 +1113,9 @@
 			if Q_DAILY_EXTRACT_STATUS then SetVar("q_daily_extract_Status", Q_DAILY_EXTRACT_STATUS) end
 			if Q_DAILY_EXTRACT_PROGRESS then SetVar("q_daily_extract_Progress", Q_DAILY_EXTRACT_PROGRESS) end
 
-			if getObj("Update"):IsActivated() == 0 then TActivate("Update") end
+		--переменные предметов
+			if ITEM_KEY_GATE_THETOWN_USED then SetVar("item_key_gate_thetown_used", ITEM_KEY_GATE_THETOWN_USED) end
+
 		</script>
 	</trigger>
 
@@ -1116,6 +1127,7 @@
 			TActivate("SetDate")
 			TActivate("Events")
 			UpdateDailyQuests()
+			AddKeysQuestItem()
 		</script>
 	</trigger>
 
@@ -1262,7 +1274,6 @@
 	<trigger Name="OpenGate_1" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Gate_1_1_loc" />
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Gate_1_2_loc" />
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Gate_1_3_loc" />
 		<script>
 			if GetVar("OpenGate_1").AsInt == 0 then
 				getObj("gate_1"):SetNodeAction(AT_RESERVED4)
@@ -1289,7 +1300,6 @@
 	<trigger Name="CloseGate_1" active="0">
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Gate_1_1_loc" />
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Gate_1_2_loc" />
-		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Gate_1_3_loc" />
 		<script>
 			local g = GetEntityByName("gate_1")
 			if GetVar("OpenGate_1").AsInt == 1 then
@@ -1318,7 +1328,6 @@
 	<trigger Name="OpenGate_2" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Gate_2_1_loc" />
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Gate_2_2_loc" />
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Gate_2_3_loc" />
 		<script>
 			if GetVar("OpenGate_2").AsInt == 0 then
 				getObj("gate_2"):SetNodeAction(AT_RESERVED4)
@@ -1345,7 +1354,6 @@
 	<trigger Name="CloseGate_2" active="0">
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Gate_2_1_loc" />
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Gate_2_2_loc" />
-		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Gate_2_3_loc" />
 		<script>
 			local g = GetEntityByName("gate_2")
 			if GetVar("OpenGate_2").AsInt == 1 then
@@ -1888,9 +1896,9 @@
 				SetVar("ChestScavs_time_minute", 0)
 				SetVar("ChestScavs_time_second", 0)
 				SetVar("ChestScavs_time_msg", "0")
-				TActivate("CreateScavMove")
 				TDeactivate("ChestScavs_Time")
 				TActivate("ChestScavs_RemoveTimer3D")
+				TActivate("ChestScavs_CreateLoot")
 				trigger:Deactivate()
 			end
 
@@ -2017,90 +2025,6 @@
 		</script>
 	</trigger>
 
-	<trigger Name="CreateScavMove" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
-		<script>
-			local pos = {CVector(1879, 255, 1370), CVector(200, 255, 388)}
-			local rot = {Quaternion(-0.014, -0.506, 0.003, 0.862), Quaternion(-0.009, 0.703, 0.005, 0.711)}
-			local r = random(2)
-			SetVar("Scav_Move", 1)
-
-			local list = {"Sml1CarScav", "Sml2CarScav", "Sml3CarScav", "Sml4CarScav", "Scout1CarScav", "Scout2CarScav", "Scout3CarScav", "Fighter2CarScav", "Hunter2CarScav"}
-			local model = list[random(getn(list))]
-
-			local veh0 = GetEntityByName("ScavMoveToChest_vehicle_0")
-			if veh0 then
-				veh0:Remove()
-				getObj("RemoveScavMoveToChest"):DelEvent("GE_OBJECT_ENTERS_LOCATION")
-				TDeactivate("RemoveScavMoveToChest")
-			end
-
-			TeamCreate("ScavMoveToChest", 1090, pos[r], {model}, nil, 0, rot[r])
-
-			local veh = GetEntityByName("ScavMoveToChest_vehicle_0")
-			if veh then
-				GiveGunsForVehicle(veh, 1)
-				veh:SetCruisingSpeed(20)
-				veh:SetRandomSkin()
-				veh:setGodMode(1)
-			end
-
-			local vehPath = GetEntityByName ("ScavMoveToChest")
-			if vehPath then
-				vehPath:StackOpen()
-				if r == 1 then
-					vehPath:SetDestination(CVector(868.396, 257.632, 1120.734))
-					vehPath:SetDestination(CVector(869.885, 255.829, 911.609))
-					vehPath:SetDestination(CVector(907.927, 255.445, 911.054))
-					vehPath:SetDestination(CVector(867.900, 257.692, 910.184))
-					vehPath:SetDestination(CVector(74.292, 257.713, 392.653))
-				else
-					vehPath:SetDestination(CVector(868.646, 257.418, 867.737))
-					vehPath:SetDestination(CVector(869.885, 255.829, 911.609))
-					vehPath:SetDestination(CVector(907.927, 255.445, 911.054))
-					vehPath:SetDestination(CVector(869.309, 257.687, 1073.623))
-					vehPath:SetDestination(CVector(1970.307, 257.748, 1314.416))
-				end
-				vehPath:StackClose()
-			end
-
-			local RemoveVehtr = getObj("RemoveScavMoveToChest")
-			if RemoveVehtr then
-				RemoveVehtr:AddEvent("GE_OBJECT_ENTERS_LOCATION", "RemoveVehMove_1090_loc_"..r)
-				TActivate("RemoveScavMoveToChest")
-			end
-
-			AddFadingMsgByStrIdFormatted("fm_chest_scavs_scav_move")
-			SoundFadingMsg()
-
-			local cs3dText = GetEntityByName("chestScavs_11")
-			if cs3dText then cs3dText:SetSkin(2) end
- 
-			TActivate("ChestScavs_EntersLoc")
-			TDeactivate("ChestScavs_Timer")
-			TDeactivate("ChestScavs_Time")
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-	<trigger Name="RemoveScavMoveToChest" active="0">
-		<script>
-			local veh = GetEntityByName("ScavMoveToChest_vehicle_0")
-			if veh then veh:Remove() end
-			getObj("RemoveScavMoveToChest"):DelEvent("GE_OBJECT_ENTERS_LOCATION")
-			SetVar("Scav_Move", 0)
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-	<trigger Name="ChestScavs_EntersLoc" active="0">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ChestScavs_loc" />
-		<script>
-			TActivate("ChestScavs_CreateLoot")
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
 	<trigger Name="ChestScavs_CreateLoot" active="0">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -2146,6 +2070,7 @@
 							"item_bp", "item_drill", "item_engine", "item_iridiym", "item_lcd", "item_military_cable", "item_tetris", "item_controller", "item_rfid", "item_gyrotachometer",
 							"item_car_battery", "item_cyclon", "item_green_battery",
 							"item_dry", "item_prisadka", "item_propan", "item_termit", "item_trotile", "item_gunpowder",
+							"item_sugar",
 							"item_diary", "item_diary_s", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_sas", "item_ssd",
 							"item_oftalmaskop", "item_aquapeps",
 							"item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_kubok_kikiki",
@@ -2163,6 +2088,7 @@
 							"item_cable", "item_cooler", "item_cpu", "item_dvd", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_kondesators", "item_magnet", "item_ram", "item_rele", "item_helix", "item_phone", "item_plate", "item_svech", "item_ultra_lump", "item_military_plate",
 							"item_accum",
 							"item_survl", "item_wd40_400", "item_zibbo", "item_gunpowder",
+							"item_sugar",
 							"item_alkani", "item_hlor", "item_paper", "item_soda", "item_toothpaste",
 							"item_h2o2", "item_naci", "item_suringe", "item_afak", "item_grizzly", "item_zvezda", "item_morfie", "item_ifak",
 							"item_vodka", "item_monolit", "item_carsen",
@@ -2177,6 +2103,7 @@
 							"item_converter", "item_engine", "item_iridiym", "item_tetris", "item_virtex", "item_vpx", "item_controller", "item_rfid",
 							"item_cyclon", "item_car_battery",
 							"item_prisadka", "item_termit", "item_gunpowder",
+							"item_sugar",
 							"item_disk_exmachina", "item_rozvidka", "item_sas", "item_ssd", "item_ananaga",
 							"item_oftalmaskop", 
 							"item_airfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_metallodetector", "item_kubok_kikiki",
@@ -2201,7 +2128,11 @@
 
 			local Chest = CreateNewObject{prototypeName = "opacityChest", objName = "ChestScavsForLoot"}	
 			local ChestId = GetEntityByID(Chest)
-			ChestId:SetPosition(CVector(916, 255, 911))
+			if GetVar("PlayerBelong").AsString == "SCAV" then
+				ChestId:SetPosition(CVector(0, 0, 0))
+			else
+				ChestId:SetPosition(CVector(916, 255, 911))
+			end
 
 			for i=1,loot_count do
 				local Item = CreateNewObject{prototypeName = lootlist[random(loot)], objName = "ChestScavsItem"..random(10000), belong = 1100}
@@ -2538,13 +2469,13 @@
 			CreateEffectTTLed( "ET_PS_SMOKE_BUILDING", CVector(800, 255, 1005), Quaternion(0, 0, 0, 1), 6000)
 			CreateEffectTTLed( "ET_S_BUILDING", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1800)
 
-		    CreateNewDummyObject("oracle_house_r0m0", "gen_1_lvl_3", -1, -1, CVector(790.884, 254.846, 1003.685), Quaternion(0.0000, 0.6899, 0.0000, 0.7239))
-			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN1", "gen_2_lvl_3", -1, -1, CVector(791.670, 268.329, 1000.515), Quaternion(0, 0, 0, 0), 0.5)
-			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN4", "gen_3_lvl_3", -1, -1, CVector(792.096, 256.066, 1000.610), Quaternion(0, 0, 0, 0), 0.6)
-			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "gen_4_lvl_3", -1, -1, CVector(791.051, 290.533, 1000.847), Quaternion(0, 0, 1, 0), 0.6)
-			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN7", "gen_5_lvl_3", -1, -1, CVector(790.739, 295.762, 1000.731), Quaternion(0, 0, 0, 0), 0.9)
-			CreateNewSgNodeObject("ET_PS_LENS_S3", "gen_6_lvl_3", -1, -1, CVector(791.451, 317.733, 1001.101), Quaternion(0, 0, 0, 0), 3)
-			CreateNewSgNodeObject("ET_PS_HLIGHT", "gen_7_lvl_3", -1, -1, CVector(791.049, 317.323, 1001.464), Quaternion(0, 0, 0, 0), 16.2)
+		    CreateNewDummyObject("oracle_house_r0m0", "gen_1_lvl_3", -1, -1, CVector(790.884, 254.805, 1004.685), Quaternion(0.0000, 0.6899, 0.0000, 0.7239))
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN1", "gen_2_lvl_3", -1, -1, CVector(791.670, 268.329, 1001.515), Quaternion(0, 0, 0, 0), 0.45)
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN4", "gen_3_lvl_3", -1, -1, CVector(790.445, 254.900, 1001.770), Quaternion(0, 0, 0, 0), 0.6)
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "gen_4_lvl_3", -1, -1, CVector(791.051, 290.533, 1001.847), Quaternion(0, 0, 1, 0), 0.55)
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN7", "gen_5_lvl_3", -1, -1, CVector(790.739, 291.900, 1001.731), Quaternion(0, 0, 0, 0), 0.85)
+			CreateNewSgNodeObject("ET_PS_LENS_S3", "gen_6_lvl_3", -1, -1, CVector(791.163, 309.876, 1002.735), Quaternion(0, 0, 0, 0), 3)
+			CreateNewSgNodeObject("ET_PS_HLIGHT", "gen_7_lvl_3", -1, -1, CVector(791.294, 309.517, 1002.687), Quaternion(0, 0, 0, 0), 16.2)
 			CreateNewSgNodeObject("ET_S_GENERATOR_ORACLE", "gen_8_lvl_3", -1, -1, CVector(792, 270, 1000), Quaternion(0, 0, 0, 0))
 
 			if GetVar("Lampposts_Builden").AsInt == 1 then
@@ -3461,11 +3392,11 @@
 				TActivate("GarageCraftingUpdateTimeMsg")
 
 				if GetVar("GarageCraftPause").AsInt == 0 then
-					AddFadingMsgByStrIdFormatted("fm_chest_scavs_timer", GetVar("GarageCrafting_time_msg").AsString)
+					AddFadingMsgByStrIdFormatted("fm_garage_crafting_timer", GetVar("GarageCraftingName").AsString, GetVar("GarageCrafting_time_msg").AsString)
 				end
 
 				if GetVar("GarageCraftPause").AsInt == 1 then
-					AddFadingMsgByStrIdFormatted("fm_garage_crafting_timer_pause", GetVar("GarageCrafting_time_msg").AsString)
+					AddFadingMsgByStrIdFormatted("fm_garage_crafting_timer_pause", GetVar("GarageCraftingName").AsString, GetVar("GarageCrafting_time_msg").AsString)
 				end
 			end
 		</script>
@@ -3705,6 +3636,13 @@
 				if month == 6 or month == 7 or month == 8 then SEASON = "SUMMER" TActivate("SummerWeather") end
 				if month == 9 or month == 10 or month == 11 then SEASON = "AUTUMN" TActivate("SummerWeather") end
 				if ReadValueUserInfo("Season") ~= SEASON then EditUserInfo("Season", "Season: "..SEASON) end 
+				if GetVar("Season").AsString ~= SEASON then
+					if SEASON == "WINTER" then
+						AddImportantFadingMsgByStrIdFormatted("fm_season_winter")
+					else
+						AddImportantFadingMsgByStrIdFormatted("fm_season_summer")
+					end
+				end
 			else
 				if SEASON == "WINTER" then TActivate("WinterWeather") end
 				if SEASON == "SPRING" then TActivate("SummerWeather") end
@@ -4464,12 +4402,6 @@
 	<trigger Name="PassingToMap" active="0">
 		<event timeout="0.05" eventid="GE_TIME_PERIOD" />
 		<script>
-			local vehPlayer = GetPlayerVehicle()
-			if vehPlayer then
-				vehPlayer:SetThrottle(0)
-				vehPlayer:SetCustomLinearVelocity(0)
-			end
-
 			if GetVar("PlayerBelong").AsString == "SCAV" then
 				TActivate("RemoveAllItemsFromScavCar")
 			else
@@ -4498,6 +4430,18 @@
 			
 			TActivate("PassingToMap")
 
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="StopPlayerVehicle" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local vehPlayer = GetPlayerVehicle()
+			if vehPlayer then
+				vehPlayer:SetThrottle(0)
+				vehPlayer:SetCustomLinearVelocity(0)
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4606,6 +4550,8 @@
 						TDeactivate("StartBackgroundCuts")
 						ShowDeathMenu() 
 					end
+					TDeactivate("ChangeSeasonsFadeEffect")
+					TDeactivate("Events")
 					TDeactivate("Update")
 					LOG("EFA VERSION: "..EFA_VERSION.." | BUILD: "..EFA_BUILD.." | SAVE VERSION: "..GetVar("EFA_Version").AsString.." | BUILD: "..GetVar("EFA_Build").AsString)
 				end
@@ -4699,14 +4645,12 @@
 			local basket = car:GetBasket():GetProperty("Prototype").AsString
 			if car then
 				local smallgun = car:GetPartByName("CABIN_SMALL_GUN")
-				if smallgun then smallgun = smallgun:GetProperty("Prototype").AsString end 
-				if smallgun ~= scavSmallGun then
+				if smallgun and scavSmallGun ~= "0" then
 					car:SetNewPart("CABIN_SMALL_GUN", scavSmallGun)
 				end
 
 				local biggun = car:GetPartByName("CABIN_BIG_GUN_1")
-				if biggun then biggun = biggun:GetProperty("Prototype").AsString end 
-				if biggun ~= scavBigGun then
+				if biggun and scavBigGun ~= "0" then
 					car:SetNewPart("CABIN_BIG_GUN_1", scavBigGun)
 				end
 			end
@@ -4757,14 +4701,10 @@
 			if GetVar("PlayerBelong").AsString == "SCAV" then 
 				msg = "90008" 
 			else 
-				if getObj("ChestFromScavCar") then 
-					msg = "90011" 
+				if IfCanPlaceForGadgets() == 1 then
+					msg = "90007"
 				else
-					if IfCanPlaceForGadgets() == 1 then
-						msg = "90007"
-					else
-						msg = "90012" 
-					end
+					msg = "90012" 
 				end
 			end
 			
@@ -5284,9 +5224,8 @@
 			local AllItems = AllItems()
 			local items = {}
 			local count = {}
-			local l, y = 0, 0
-			local prot = "mainChest"
-
+			local l = 0
+		
 			local plf = GetPlayerVehicle()
 			plf:SetNewPart("BASKET", "bigfakeCargo")
 			plf:SetNewPart("CABIN", plf:GetCabin():GetProperty("Prototype").AsString)
@@ -5310,15 +5249,7 @@
 				end
 			end
 
-			if EVENT == "NEW_YEAR" then 
-				prot = "christmasChest" 
-				y = 0.5
-			end
-
-			local Chest = CreateNewObject{prototypeName = prot, objName = "ChestFromScavCar"}	
-			local ChestId = GetEntityByID(Chest)
-			ChestId:SetPosition(CVector(898.134, 255.5 + y, 988.361))
-			ChestId:SetSkin(8)
+			local ChestId = getObj("PlayerInventory_Lvl_1")
 
 			for i2 = 1, l do
 				if count[i2] > 1 then
@@ -5459,8 +5390,8 @@
 
 				local Chest = CreateNewObject{prototypeName = prot, objName = "ChestReturnInsureItems"}	
 				local ChestId = GetEntityByID(Chest)
-				ChestId:SetPosition(CVector(898.134, 255.5 + y, 988.361))
-				ChestId:SetSkin(9)
+				ChestId:SetPosition(CVector(887.692, 255.5 + y, 988.799))
+				ChestId:SetSkin(8)
 
 				for i2 = 1, getn(items) do
 					local Item = CreateNewObject{prototypeName = items[i2], objName = "ReturnInsureItem_"..random(100000), belong = 1100}
@@ -5545,15 +5476,6 @@
 
 		--ящик диких
 			if GetVar("ChestScavs_Builden").AsInt == 1 then
-				if GetVar("Scav_Move").AsInt > 0 then
-					local sv = GetEntityByName("ScavMoveToChest_vehicle_0")
-					if sv then sv:Remove() end
-
-					SetVar("Scav_Move", 0)
-					TDeactivate("RemoveScavMoveToChest")
-					TDeactivate("ChestScavs_EntersLoc")
-				end
-	
 				if GetVar("ChestScavs_Search").AsInt > 0 then
 					if GetVar("ChestScavs_time_hour").AsInt > 0 or GetVar("ChestScavs_time_minute").AsInt > 0 or GetVar("ChestScavs_time_second").AsInt > 0 then
 						TDeactivate("ChestScavs_Timer")
@@ -5701,6 +5623,8 @@
 				LOG("SCAV CARMA: "..GetScavCarma())
 			end
 
+			TDeactivate("Update")
+
 		--квестовые переменные
 			if Q_TESTING_MISSION_DIESCAVS then Q_TESTING_MISSION_DIESCAVS = GetVar("q_testing_mission_DieScavs").AsInt end
 
@@ -5794,6 +5718,11 @@
 			if Q_DAILY_EXTRACT_COUNT then Q_DAILY_EXTRACT_COUNT = GetVar("q_daily_extract_Count").AsInt end
 			if Q_DAILY_EXTRACT_STATUS then Q_DAILY_EXTRACT_STATUS = GetVar("q_daily_extract_Status").AsString end
 			if Q_DAILY_EXTRACT_PROGRESS then Q_DAILY_EXTRACT_PROGRESS = GetVar("q_daily_extract_Progress").AsString end
+
+		--переменные предметов
+			if ITEM_KEY_GATE_THETOWN_USED and IsQuestItemPresent("quest_item_key_gate_thetown") then 
+				ITEM_KEY_GATE_THETOWN_USED = GetVar("item_key_gate_thetown_used").AsInt 
+			end
 
 			trigger:Deactivate()
 		</script>
@@ -6945,15 +6874,19 @@
 		<script>
 			local items = {"quest_item_christmas_ball"}
 			local param = {"QuestItemChristmasBall"}
+			local msg = 0
 	
 			for i = 1, 1 do
 				if IsUserInfoLineExists(param[i]) and ReadValueUserInfo(param[i]) == "1" then
 					AddQuestItem(items[i])
+					msg = 1
 				end
 			end
 
-			AddFadingMsgByStrIdFormatted("fm_add_event_quest_item")
-			SoundFadingMsg()
+			if msg == 1 then
+				AddFadingMsgByStrIdFormatted("fm_add_event_quest_item")
+				SoundFadingMsg()
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -7207,7 +7140,7 @@
 
 			local Chest = CreateNewObject{prototypeName = "christmasGift", objName = "ChristmasGift"}	
 			local ChestId = GetEntityByID(Chest)
-			ChestId:SetSkin(10)
+			ChestId:SetSkin(9)
 			ChestId:SetPosition(CVector(900.784, 256, 1063.162))
 
 			local Item = CreateNewObject{prototypeName = lootlist[random(getn(lootlist))], objName = "ChristmasGiftItem"..random(10000), belong = 1100}

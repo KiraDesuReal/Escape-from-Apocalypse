@@ -302,7 +302,7 @@
 
 	<string
 		id="fm_used_key"
-		value="Осталось использований: @fff3e5cb%1d" />
+		value="Использован предмет: %1p|Осталось использований: @fff3e5cb%2d" />
 
 	<string
 		id="fm_airdrop_start"
@@ -466,7 +466,11 @@
 
 	<string
 		id="fm_garage_crafting_timer_pause"
-		value="@ff9d0a0a[Сборка приостановлена]|@ffffffffОсталось: @fff3e5cb%1p" />
+		value="@ff9d0a0a[Сборка приостановлена]|@ffffffffТекущее производство: %1p|@ffffffffОсталось: @fff3e5cb%2p" />
+
+	<string
+		id="fm_garage_crafting_timer"
+		value="Текущее производство: %1p|@ffffffffОсталось: @fff3e5cb%2p" />
 
 	<string
 		id="fm_scav_car_for_player"
@@ -482,7 +486,7 @@
 
 	<string
 		id="fm_scav_give_loot"
-		value="Рейд за дикого успешно завершён!|Заберите свои предметы в специальном ящике." />
+		value="Рейд за дикого успешно завершён!|Предметы были сложены в ваше хранилище." />
 
 	<string
 		id="fm_mining_timer_pause"

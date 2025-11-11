@@ -158,6 +158,9 @@ if Q_DAILY_EXTRACT_COUNT == nil then Q_DAILY_EXTRACT_COUNT = 0 end
 if Q_DAILY_EXTRACT_STATUS == nil then Q_DAILY_EXTRACT_STATUS = "0" end
 if Q_DAILY_EXTRACT_PROGRESS == nil then Q_DAILY_EXTRACT_PROGRESS = 0 end
 
+-- Предметы
+if ITEM_KEY_GATE_THETOWN_USED == nil then ITEM_KEY_GATE_THETOWN_USED = 0 end
+
 -- Рандомизируем пушки ботам 
 function GiveGunsForVehicle(vehicle, side_random)
 	local veh=vehicle
@@ -891,11 +894,13 @@ function CreateBarrelLootBox(name, pos)
 	local energy1 = {"item_accum", "item_battery_aa", "item_battery_d", "item_powerbank"}
 	local energy2 = {"item_powerbank", "item_green_battery", "item_cyclon", "item_car_battery", "item_tank_battery"}
 
+	local food1 = {"item_sugar"}
+
 	local flammable1 = {"item_hunter_spich", "item_lighter", "item_spich", "item_survl", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder"}
 	local flammable2 = {"item_trotile", "item_dry", "item_gunpowder", "item_propan", "item_prisadka", "item_termit"}
 
 	local household1 = {"item_paper", "item_stakanyash", "item_salt", "item_soap", "item_tb", "item_toothpaste"}
-	local household2 = {"item_soap", "item_salt", "item_alkani", "item_hlor"}
+	local household2 = {"item_soap", "item_salt", "item_alkani", "item_hlor", "item_sugar"}
 
 	local info1 = {"item_disk", "item_manual", "item_diary_s", "item_hdd", "item_flashdrive", "item_diary", "item_disk_exmachina", "item_ssd", "item_sas", "item_rozvidka"}
 
@@ -955,7 +960,7 @@ function CreateBarrelLootBox(name, pos)
 		local gun_rand = {gun1[random(getn(gun1))], gun1[random(getn(gun1))], gun2[exrandom(getn(gun2))]}
 		local gadget_rand = {gadget1[random(getn(gadget1))], gadget2[random(getn(gadget2))], gadget3[random(getn(gadget3))]}
 
-		local items = {ex_rand[exrandom(getn(ex_rand))], use_rand[exrandom(getn(use_rand))], ammo_rand[exrandom(getn(ammo_rand))], building_rand[exrandom(getn(building_rand))], electronics_rand[exrandom(getn(electronics_rand))], energy_rand[exrandom(getn(energy_rand))], flammable_rand[exrandom(getn(flammable_rand))], household_rand[exrandom(getn(household_rand))], info1[exrandom(getn(info1))], medical_rand[exrandom(getn(medical_rand))], other1[exrandom(getn(other1))], tools_rand[exrandom(getn(tools_rand))], valuables1[exrandom(getn(valuables1))], gun_rand[exrandom(getn(gun_rand))], gadget_rand[exrandom(getn(gadget_rand))]}
+		local items = {ex_rand[exrandom(getn(ex_rand))], use_rand[exrandom(getn(use_rand))], ammo_rand[exrandom(getn(ammo_rand))], building_rand[exrandom(getn(building_rand))], electronics_rand[exrandom(getn(electronics_rand))], energy_rand[exrandom(getn(energy_rand))], flammable_rand[exrandom(getn(flammable_rand))], food1[random(getn(food1))], household_rand[exrandom(getn(household_rand))], info1[exrandom(getn(info1))], medical_rand[exrandom(getn(medical_rand))], other1[exrandom(getn(other1))], tools_rand[exrandom(getn(tools_rand))], valuables1[exrandom(getn(valuables1))], gun_rand[exrandom(getn(gun_rand))], gadget_rand[exrandom(getn(gadget_rand))]}
 		
 		if getn(exlusive) > 0 then
 			local items_get = getn(items)
@@ -976,41 +981,45 @@ function CreateGunBox(name, pos)
 	local gun1 = {"hornet01", "specter01", "pkt01", "storm01", "vector01", "vulcan01", "kpvt01", "rapier01", "bumblebee01"} 
 	local gun2 = {"pkt01", "kord01", "maxim01", "fagot01", "someTurboAccelerationPusher", "omega01", "elephant01", "flag01", "odin01", "rainmetal01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun"}
 	local gun_rand = {gun1[random(getn(gun1))], gun2[exrandom(getn(gun2))]}
+	con("1")
 
 	local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
 	local gadget2 = {"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "additional_fuel_tank2", "additional_torque2", "additional_durability2"}
 	local gadget3 = {"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
-
+	con("2")
 	local protChest = "mainChest"
 	if EVENT == "NEW_YEAR" then protChest = "christmasChest" end
-
+	con("3")
 	local Chest = CreateNewObject{prototypeName = protChest, objName = name.."Chest"}	
 	local ChestId = GetEntityByID(Chest)
 	ChestId:SetPosition(pos)
 	ChestId:SetSkin(3)
-
+	con("4")
 	local ChestPos = ChestId:GetPosition()
 	ChestPos.y = ChestPos.y + 1
 	ChestId:SetPosition(ChestPos)
-
+	con("5")
 	local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityGunItem_"..name, belong = 1100}
 	local OpacityItemId = GetEntityByID(OpacityItem)
-
+	con("6")
 	if ChestId and OpacityItemId then
 		ChestId:AddChild(OpacityItemId)
 	end
-
+	con("7")
 	local notloot = random(100)
 	local count = random(2)
 	local gun_r = random(2)
 	local ammo_r = random(2)
 	local ammo_item
 	if notloot > 10 then
+		con("8")
 		if gun_r == 1 then
+			con("9")
 			local gun_item = gun_rand[random(getn(gun_rand))]		
+			con(gun_item)
 			local Gun = CreateNewObject{prototypeName = gun_item, objName = "GunItem_"..random(10000).."_"..name, belong = 1100}
 			local GunId = GetEntityByID(Gun)
-
+			con("10")
 			local afflist = {}
 			if gun_item == "maxim01" or gun_item == "fagot01" or gun_item == "odin01" or gun_item == "elephant01" or gun_item == "hammer01" or gun_item == "bumblebee01" or gun_item == "omega01" or gun_item == "big_swingfire01" or gun_item == "hurricane01" or gun_item == "mrakSideGun" or gun_item == "hailSideGun" or gun_item == "marsSideGun" or gun_item == "zeusSideGun" or gun_item == "hunterSideGun" then
 				local damageAffixes = {"weak_gun", "deadly_gun", "destructive_gun", "slow_gun", "assault_gun", "rapid_firing_gun", "without_cooling_gun", "with_nitro_cooling_gun", "with_truncated_barrel_gun", "with_enlarged_barrel_gun", "with_long_barrel_gun"}
@@ -1020,17 +1029,17 @@ function CreateGunBox(name, pos)
 			else
 				afflist = CreateRandomAffixesForGun(random(0,2))
 			end
-	
+			con("11")
 			if afflist ~= nil then
 				for i=1,getn(afflist) do
 					GunId:ApplyAffixByName(afflist[i])
 				end
 			end
-		
+			con("12")
 			if ChestId and GunId then
 				ChestId:AddChild(GunId)
 			end
-
+			con("13")
 			if ammo_r == 1 then
 				if gun_item == "hornet01" or gun_item == "specter01" or gun_item == "pkt01" or gun_item == "kord01" or gun_item == "vector01" or gun_item == "vulcan01" or gun_item == "kpvt01" or gun_item == "octopus01" then
 					ammo_item = "ammo_chest_machinegun"
@@ -1055,6 +1064,8 @@ function CreateGunBox(name, pos)
 						ammo_item = "ammo_ballon_turbo"
 					end
 				end
+				con("14")
+				con(ammo_item)
 				if ammo_item then
 					local Ammo = CreateNewObject{prototypeName = ammo_item, objName = "AmmoItem_"..random(10000).."_"..name, belong = 1100}
 					local AmmoId = GetEntityByID(Ammo)
@@ -1064,15 +1075,18 @@ function CreateGunBox(name, pos)
 				end
 			end
 		end
-
+		con("15")
 		for l=1,count do
 			local gadget_rand = {gadget1[random(getn(gadget1))], gadget2[random(getn(gadget2))], gadget3[random(getn(gadget3))]}
-			local Gadgets = CreateNewObject{prototypeName = gadget_rand[exrandom(getn(gadget_rand))], objName = "GadgetItem_"..random(10000).."_"..name, belong = 1100}
+			con("16")
+			local Gadgets = CreateNewObject{prototypeName = gadget_rand[random(getn(gadget_rand))], objName = "GadgetItem_"..random(10000).."_"..name, belong = 1100}
 			local GadgetsId = GetEntityByID(Gadgets)
+			con("17")
 			if ChestId and GadgetsId then
 				ChestId:AddChild(GadgetsId)
 			end
 		end
+		con("GUUU")
 	end
 end
 
@@ -1111,10 +1125,11 @@ function AllItems()
 					"item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid",
 					"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery",
 					"item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder",
+					"item_sugar",
 					"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 					"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 					"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
-					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_jeton_bear", "item_jeton_usec", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_knife_sectarian", "item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star",
+					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_jeton_bear", "item_jeton_usec", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_knife_sectarian", "item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star", "item_water_canister",
 					"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
 					"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_vitaly", "item_silver_skull", "item_vaze",
 					"item_quest_search_data",
@@ -1135,6 +1150,7 @@ function AllItemsForScav()
 					"item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid",
 					"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery",
 					"item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder",
+					"item_sugar",
 					"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 					"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 					"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
@@ -1883,6 +1899,7 @@ function RewardForDailyQuests()
 						"item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid",
 						"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery",
 						"item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder",
+						"item_sugar",
 						"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 						"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 						"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
@@ -2094,7 +2111,6 @@ function CreateUserInfoFile()
 		f:write("Этот файл создан для возможности сохранять значения переменных после перезапуска игры.\nВсе ваши достижения будут сохранятся здесь и, при необходимости, переносится в последующие версии EFA.\nНе удаляйте и не изменяйте значения переменных без острой необходимости, так как это может привести к ошибкам!", "\n\n")
 		f:write("This file is designed to be able to save variable values after restarting the game.\nAll your achievements will be saved here and, if necessary, transferred to subsequent versions of EFA.\nDo not delete or change variable values unless absolutely necessary, as this may lead to errors!", "\n\n")
 		f:write("ESCAPE FROM APOCALYPSE VERSION: "..EFA_VERSION.." | BUILD: "..EFA_BUILD, "\n\n")
-		f:write("UserName: "..os.getenv("USERNAME"), "\n")
 		f:write("LastDate: "..os.date(), "\n")
 		f:write("LaunchDate: "..os.date(), "\n\n")
 		f:write("NewGame: 0", "\n")
@@ -2109,7 +2125,6 @@ function UpdateUserInfoFile()
 	if FileExists("UserInfo.txt") ~= nil then 
 		con("UpdateUserInfoFile")
 		EditUserInfo("ESCAPE", "ESCAPE FROM APOCALYPSE VERSION: "..EFA_VERSION.." | BUILD: "..EFA_BUILD)
-		EditUserInfo("UserName", "UserName: "..os.getenv("USERNAME"))
 		EditUserInfo("Last", "LastDate: "..ReadValueUserInfo("Launch"))
 		EditUserInfo("Launch", "LaunchDate: "..os.date())
 		if IsUserInfoLineExists("NewGame") == nil then EditUserInfo("NewGame", "NewGame: 0") end

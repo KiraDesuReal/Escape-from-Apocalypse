@@ -278,6 +278,8 @@
 			if Q_DAILY_EXTRACT_STATUS then SetVar("q_daily_extract_Status", Q_DAILY_EXTRACT_STATUS) end
 			if Q_DAILY_EXTRACT_PROGRESS then SetVar("q_daily_extract_Progress", Q_DAILY_EXTRACT_PROGRESS) end
 
+			if ITEM_KEY_GATE_THETOWN_USED then SetVar("item_key_gate_thetown_used", ITEM_KEY_GATE_THETOWN_USED) end
+
 			TActivate("GlobalVar")
 
 			TActivate("PetrolStations")
@@ -3504,12 +3506,14 @@
 					if GetVar("item_key_gate_thetown_used").AsInt > 0 then 
 						SetVar("item_key_gate_thetown_used", GetVar("item_key_gate_thetown_used").AsInt - 1) 
 						if GetVar("item_key_gate_thetown_used").AsInt > 0 then 
-							AddFadingMsgByStrIdFormatted("fm_used_key", GetVar("item_key_gate_thetown_used").AsInt)
+							AddFadingMsgByStrIdFormatted("fm_used_key", "item_key_gate_thetown", GetVar("item_key_gate_thetown_used").AsInt)
 							SoundFadingMsg()
 						end
 					end
-					if GetVar("item_key_gate_thetown_used").AsInt == 0 then
+					if 0 >= GetVar("item_key_gate_thetown_used").AsInt then
+						SetVar("item_key_gate_thetown_used", 0) 
 						RemoveQuestItem("quest_item_key_gate_thetown")
+						AddFadingMsgByStrIdFormatted("fm_used_key", "item_key_gate_thetown", 0)
 						AddFadingMsgByStrIdFormatted("fm_remove_quest_item", "quest_item_key_gate_thetown")
 						SoundFadingMsg()
 					end
@@ -3529,47 +3533,7 @@
 			GetEntityByName("gate_thetown2"):SetRotation(Quaternion(0.0000, 0.7210, 0.0000, 0.6930))
 
 			CreateEffectTTLed( "ET_PS_OPENING_GATE_END", CVector(1235.100, 311.700, 2969.336), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1500)
-
-			TActivate("ClosedGate_TheTown")
 			trigger:Deactivate() 
-		</script>
-	</trigger>
-
-	<trigger Name="ClosedGate_TheTown" active="0">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="InTheTown_loc" />
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ClosedGateTheTown_loc" />
-		<script>
-			CreateNewDummyObject( "big_gate01", "gate_thetown", -1, -1, CVector(1262.195, 300, 2995.386), Quaternion(-0.004, 0.019, 0.000, 1.000))
-			getObj("gate_thetown"):SetNodeAction(AT_STAND1)
-			TActivate("ClosedGate_TheTown_Process")
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-	<trigger Name="ClosedGate_TheTown_Process" active="0">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ClosedGateTheTown_loc" />
-		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="ClosedGateTheTown_loc" />
-		<script>											
-			local g = GetEntityByName("gate_thetown2")
-			if g then g:Remove() end
-
-			GetEntityByName("gate_thetown"):SetPosition(CVector(1235.100, 311.700, 2969.336))
-			GetEntityByName("gate_thetown"):SetRotation(Quaternion(0.0000, 0.7210, 0.0000, 0.6930))
-			getObj("gate_thetown"):SetNodeAction(AT_RESERVED3)
-
-			CreateEffectTTLed( "ET_PS_CLOSED_GATE", CVector(1235.100, 311.700, 2969.336), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 900)
-			TActivate("ClosedGate_TheTown_End")
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-	<trigger Name="ClosedGate_TheTown_End" active="0">
-		<event timeout="0.9" eventid="GE_TIME_PERIOD" />
-		<script>
-			CreateEffectTTLed( "ET_PS_OPENING_GATE_END", CVector(1235.100, 311.700, 2969.336), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1500)
-			CreateNewSgNodeObject( "big_gate01", "gate_thetown2", -1, -1, CVector(1262.195, 300, 2995.386), Quaternion(-0.004, 0.019, 0.000, 1.000), 1)
-			TActivate("OpenGate_TheTown")
-			trigger:Deactivate()
 		</script>
 	</trigger>
 
@@ -3654,7 +3618,7 @@
 		<script>
 			local items = {"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_medical_tools", "item_naci", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
 							"scrap_metal_use", "machinery_use",
-							"item_alkani", "item_hlor", "item_paper", "item_stakanyash", "item_salt", "item_soap", "item_tb", "item_toothpaste"}
+							"item_alkani", "item_hlor", "item_paper", "item_stakanyash", "item_salt", "item_soap", "item_tb", "item_toothpaste", "item_sugar"}
 			
 			local protChest = "mainChest"
 			if EVENT == "NEW_YEAR" then protChest = "christmasChest" end
@@ -3905,6 +3869,7 @@
 							"item_bp", "item_drill", "item_engine", "item_hdd", "item_lcd", "item_military_cable", "item_tetris", "item_controller", "item_rfid", "item_military_plate", "item_gyrotachometer", "item_iridiym", "item_converter",
 							"item_car_battery", "item_cyclon", "item_green_battery",
 							"item_dry", "item_prisadka", "item_propan", "item_termit",
+							"item_sugar",
 							"item_oftalmaskop",
 							"item_disk", "item_disk_exmachina", "item_flashdrive", "item_sas", "item_ssd",
 							"item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_ananaga", "item_kubok_kikiki",
@@ -3980,7 +3945,7 @@
 		<event timeout="40" eventid="GE_TIME_PERIOD" />
 		<script>
 			local boss_random = random(100)
-			if (30 >= boss_random) then
+			if (40 >= boss_random) then
 				TActivate("CreateBossEntersLoc")
 			end
 			trigger:Deactivate()
@@ -4397,6 +4362,7 @@
 						"item_bp", "item_converter", "item_drill", "item_energo_lump", "item_engine", "item_gazan", "item_gpu", "item_hdd", "item_iridiym", "item_military_cable", "item_tetris", "item_ultra_lump", "item_virtex", "item_vpx", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid",
 						"item_accum", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery",
 						"item_dry", "item_prisadka", "item_propan", "item_survl", "item_termit", "item_trotile", "item_gunpowder",
+						"item_sugar",
 						"item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 						"item_aquapeps", "item_c6h8o6", "item_ledx", "item_oftalmaskop", "item_afak", "item_grizzly",
 						"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_waterfilter", "item_keqing", "item_metallodetector", "item_kubok_kikiki",
@@ -4560,7 +4526,7 @@
 				if pl_pos1 >= 1 then
 					pos1_count_pmc = random(2,3)
 				else
-					pos1_count_pmc = random(2)
+					pos1_count_pmc = random(2,4)
 				end
 
 				if GetVar("PlayerBelong").AsString == "SCAV" then
@@ -4568,7 +4534,7 @@
 					pos2_count_pmc = random(2,3)
 				else
 					paths_pos1 = shuffled_range_take (pos1_count_pmc, 1, 9)
-					pos2_count_pmc = random(2,4)
+					pos2_count_pmc = random(3,5)
 				end
 
 				pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2289.344, 303.686, 993.879),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
@@ -4602,7 +4568,7 @@
 				if pl_pos2 >= 1 then
 					pos2_count_pmc = random(2,3)
 				else
-					pos2_count_pmc = random(2)
+					pos2_count_pmc = random(2,4)
 				end
 
 				if GetVar("PlayerBelong").AsString == "SCAV" then
@@ -4610,7 +4576,7 @@
 					pos1_count_pmc = random(2,3)
 				else
 					paths_pos2 = shuffled_range_take (pos2_count_pmc, 1, 9)
-					pos1_count_pmc = random(2,4)
+					pos1_count_pmc = random(3,5)
 				end
 
 				pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1724.581, 287.790, 2807.061),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
@@ -4934,7 +4900,7 @@
 				CVector(2624.907, 320.488, 1791.771),
 				CVector(3241.614, 314.720, 835.171)}
 
-			local scav_count = random(3,6)
+			local scav_count = random(3,5)
 			local paths_pos = shuffled_range_take(scav_count, 1, 14)
 			
 			local path = {CVector(1223.477, 295.339, 2869.511), CVector(2070.956, 341.750, 2849.030), CVector(513.808, 303.971, 1821.339), CVector(1974.261, 301.978, 809.417), CVector(3138.543, 316.540, 662.453), CVector(3182.412, 320.890, 1239.882), CVector(2997.474, 315.629, 999.674), CVector(2604.547, 322.758, 1662.702), CVector(957.419, 289.513, 2904.316)}
@@ -5307,7 +5273,7 @@
 			local time = g_ObjCont:GetGameTime().AsString
 			local hour = tonumber(strsub(time, 1, 2))
 			if 6 > hour then
-				if 30 >= random(100) then
+				if random(2) == 1 then
 					local r = random(2)
 					TActivate("CreateSectanianEnterLoc_"..r)
 					TDeactivate("CreateBossProbability")
@@ -5377,6 +5343,7 @@
 			local gun = {"fagot01", "maxim01", "elephant01", "odin01"}
 			local gunBig = {"elephant01", "odin01"}
 			local ItemsLifeUse = {"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use"}
+			local loot = {"item_key_gate_basefelix", "item_chain", "item_manual", "item_disk", "item_flashdrive", "item_key_gate_thetown", "item_ex", "item_teapon", "item_ssd", "item_silver_skull", "item_sas", "item_disk_exmachina", "item_cat", "item_rolex", "item_chain_gold", "item_vaze", "item_chiken", "item_skullring", "item_lion"}
 
 			local count = random(2,4)
 			SetVar("CountSectanian", count)
@@ -5391,6 +5358,11 @@
 					sect:AddItemsToRepository("item_knife_sectarian", 1)
 					for life=1,random(2,4) do
 						sect:AddItemsToRepository(ItemsLifeUse[random(getn(ItemsLifeUse))], 1)
+					end
+					if random(2) == 1 then
+						for it = 1, random(2) do
+							sect:AddItemsToRepository(loot[exrandom(getn(loot))], 1)
+						end
 					end
 					AddAmmoItemsForGuns(sect)
 				end
@@ -5428,6 +5400,7 @@
 				for life=1,random(2,4) do
 					sect_m:AddItemsToRepository(ItemsLifeUse[random(getn(ItemsLifeUse))], 1)
 				end
+				sect_m:AddItemsToRepository(loot[exrandom(getn(loot))], 1)
 				AddAmmoItemsForGuns(sect_m)
 			end
 
@@ -5657,7 +5630,7 @@
 			CreateNewSgNodeObject(kust1, "kust32", -1, -1, CVector(1308.132, 292.517, 1913.186), Quaternion(0.000, 0.937, 0.000, 0.350), 1.257)
 			CreateNewSgNodeObject(kust2, "kust33", -1, -1, CVector(1292.502, 311.714, 2057.489), Quaternion(0.000, 0.096, 0.000, 0.995), 1.490)
 			CreateNewSgNodeObject(kust1, "kust34", -1, -1, CVector(1239.318, 295.485, 2037.240), Quaternion(0.000, 0.946, 0.000, -0.326), 1.279)
-			CreateNewSgNodeObject(kust1, "kust35", -1, -1, CVector(1263.042, 288.912, 1726.508), Quaternion(0.000, 0.595, 0.000, 0.804), 1.457)
+			CreateNewSgNodeObject(kust1, "kust35", -1, -1, CVector(1269.389, 288.912, 1721.557), Quaternion(0.000, 0.595, 0.000, 0.804), 1.000)
 			CreateNewSgNodeObject(kust1, "kust36", -1, -1, CVector(1380.113, 302.364, 1807.464), Quaternion(0.000, 0.982, 0.000, -0.191), 1.098)
 			CreateNewSgNodeObject(kust2, "kust37", -1, -1, CVector(1368.689, 300.436, 1785.255), Quaternion(0.000, 0.105, 0.000, -0.995), 1.360)
 			CreateNewSgNodeObject(kust1, "kust38", -1, -1, CVector(1336.407, 295.373, 1827.247), Quaternion(0.000, 0.663, 0.000, 0.749), 1.500)
@@ -6555,6 +6528,11 @@
 			if Q_DAILY_EXTRACT_COUNT then Q_DAILY_EXTRACT_COUNT = GetVar("q_daily_extract_Count").AsInt end
 			if Q_DAILY_EXTRACT_STATUS then Q_DAILY_EXTRACT_STATUS = GetVar("q_daily_extract_Status").AsString end
 			if Q_DAILY_EXTRACT_PROGRESS then Q_DAILY_EXTRACT_PROGRESS = GetVar("q_daily_extract_Progress").AsString end
+
+			--переменные предметов
+			if ITEM_KEY_GATE_THETOWN_USED and IsQuestItemPresent("quest_item_key_gate_thetown") then 
+				ITEM_KEY_GATE_THETOWN_USED = GetVar("item_key_gate_thetown_used").AsInt 
+			end
 
 			SetTolerance(1087, 1100, RS_ENEMY)
 

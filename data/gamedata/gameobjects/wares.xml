@@ -1249,6 +1249,17 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_2X3" />
 
+<!-- Food Items -->
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_sugar"
+		Price	= "15670"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
 <!-- Household Items -->
 
 	<Prototype
@@ -1773,7 +1784,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_knife_sectarian"
-		Price	= "28235"
+		Price	= "34235"
 		Durability	= "10"
 		PriceDispersion      = "5"
 		ModelFile	= "knife_sectarian"
@@ -1814,6 +1825,15 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		PriceDispersion      = "5"
 		ModelFile	= "christmas_star"
 		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_water_canister"
+		Price	= "20650"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= "water_canister"
+		ResourceType= "ITEM_SIZE_3X3" />
 
 <!-- Tools Items -->
 

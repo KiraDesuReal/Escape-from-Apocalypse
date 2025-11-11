@@ -302,7 +302,7 @@
 
 	<string
 		id="fm_used_key"
-		value="Remaining uses: @fff3e5cb%1d" />
+		value="Item used: %1p|Remaining uses: @fff3e5cb%2d" />
 
 	<string
 		id="fm_airdrop_start"
@@ -466,7 +466,11 @@
 
 	<string
 		id="fm_garage_crafting_timer_pause"
-		value="@ff9d0a0a[Assembly is stopped]|@ffffffffLeft: @fff3e5cb%1p" />
+		value="@ff9d0a0a[Assembly is stopped]|@ffffffffCurrent production: %1p|@ffffffffLeft: @fff3e5cb%2p" />
+
+	<string
+		id="fm_garage_crafting_timer"
+		value="Current production: %1p|@ffffffffLeft: @fff3e5cb%2p" />
 
 	<string
 		id="fm_scav_car_for_player"
@@ -482,7 +486,7 @@
 
 	<string
 		id="fm_scav_give_loot"
-		value="The Scav raid has been successfully completed!|Pick up your items in the special box." />
+		value="The Scav raid has been successfully completed!|The items have been placed in your storage." />
 
 	<string
 		id="fm_mining_timer_pause"

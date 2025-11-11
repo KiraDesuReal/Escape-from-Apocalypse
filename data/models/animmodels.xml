@@ -986,7 +986,7 @@
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\household\tb.gam" />
+		file="data\models\Goods\household\tb\tb.gam" />
 
 <!-- info items -->
 	<model
@@ -1102,6 +1102,13 @@
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\other\christmas_star\star.gam" />
+
+	<model
+		id="water_canister"
+		shadow="0"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\other\water_canister\water_canister.gam" />
 
 <!-- tools items -->
 	<model

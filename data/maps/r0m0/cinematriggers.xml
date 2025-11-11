@@ -540,20 +540,21 @@
 	<trigger Name="ChangeSeasonsFadeEffect" active="0">
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
+			if GetVar("EFA_Version").AsString == EFA_VERSION and GetVar("EFA_Build").AsString == EFA_BUILD then
+				Fly("start_game", CINEMATIC_NO_AIM, 0, 0, 1, 1)
+				StartCinematic()
+			
+				AddCinematicMessage(77773, 0)
 
-			Fly("start_game", CINEMATIC_NO_AIM, 0, 0, 1, 1)
-			StartCinematic()
-		
-			AddCinematicMessage(77773, 0)
+				local vehPlayer = GetPlayerVehicle()
+				if vehPlayer then
+					vehPlayer:SetThrottle(0)
+					vehPlayer:SetCustomLinearVelocity(0)
+				end
 
-			local vehPlayer = GetPlayerVehicle()
-			if vehPlayer then
-				vehPlayer:SetThrottle(0)
-				vehPlayer:SetCustomLinearVelocity(0)
+				TDeactivate("Update")
+				TActivate("ChangeSeasonsFadeEffect_End")
 			end
-
-			TDeactivate("Update")
-			TActivate("ChangeSeasonsFadeEffect_End")
 			trigger:Deactivate()
 		</script>
 	</trigger>

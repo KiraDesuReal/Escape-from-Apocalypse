@@ -187,20 +187,6 @@
 		Radius="7.000" />
 
 	<Object
-		Name="InTheTown_loc"
-		Belong="1100"
-		Prototype="genericLocation"
-		Pos="1250.525 308.409 2967.576"
-		Radius="10.000" />
-
-	<Object
-		Name="ClosedGateTheTown_loc"
-		Belong="1100"
-		Prototype="genericLocation"
-		Pos="1189.042 303.473 2961.393"
-		Radius="30.000" />
-
-	<Object
 		Name="barrelBox_1_loc"
 		Belong="1001"
 		Prototype="genericLocation"
@@ -498,7 +484,7 @@
 		Name="GunBox_7_loc"
 		Belong="1001"
 		Prototype="genericLocation"
-		Pos="1360.086 327.750 785.584"
+		Pos="1360.179 328.001 783.934"
 		Radius="10.000" />
 
 	<Object
@@ -603,7 +589,7 @@
 		Name="MedBox_7_loc"
 		Belong="1001"
 		Prototype="genericLocation"
-		Pos="1336.455 328.247 758.658"
+		Pos="1334.434 328.001 763.725"
 		Radius="10.000" />
 
 	<Object
@@ -708,7 +694,7 @@
 		Name="ToolsBox_5_loc"
 		Belong="1001"
 		Prototype="genericLocation"
-		Pos="1335.052 328.247 782.723"
+		Pos="1334.244 328.001 784.326"
 		Radius="10.000" />
 
 	<Object
@@ -750,7 +736,7 @@
 		Name="ValuableBox_2_loc"
 		Belong="1001"
 		Prototype="genericLocation"
-		Pos="1335.212 327.987 788.196"
+		Pos="1334.404 328.001 789.799"
 		Radius="10.000" />
 
 	<Object
@@ -806,7 +792,7 @@
 		Name="ElectronicsBox_3_loc"
 		Belong="1001"
 		Prototype="genericLocation"
-		Pos="1309.956 328.177 785.131"
+		Pos="1309.560 328.001 787.715"
 		Radius="10.000" />
 
 	<Object
@@ -1566,8 +1552,8 @@
 		Name="q_clearing_r1m1_3_loc_0"
 		Belong="1100"
 		Prototype="genericLocation"
-		Pos="494.477 303.831 1813.425"
-		Radius="350.000" />
+		Pos="642.199 305.550 1811.700"
+		Radius="425.000" />
 
 	<Object
 		Name="q_clearing_r1m1_4_loc_0"
@@ -16137,73 +16123,52 @@
 		Rot="0.000 -0.930 0.000 0.367" />
 
 	<Object
-		Name="elka12076"
-		Belong="-1"
-		Prototype="Breakable_Elka1"
-		Pos="428.472 310.610 1724.833"
-		Rot="0.000 0.182 0.000 0.983" />
-
-	<Object
 		Name="elka22077"
 		Belong="-1"
 		Prototype="Breakable_Elka2"
-		Pos="424.856 310.740 1742.344"
+		Pos="425.491 310.703 1740.541"
 		Rot="0.000 0.276 0.000 0.961" />
-
-	<Object
-		Name="elka12078"
-		Belong="-1"
-		Prototype="Breakable_Elka1"
-		Pos="426.883 311.000 1687.857"
-		Rot="0.000 -0.731 0.000 0.682" />
 
 	<Object
 		Name="elka12079"
 		Belong="-1"
 		Prototype="Breakable_Elka1"
-		Pos="418.377 311.000 1700.644"
+		Pos="420.934 311.000 1701.514"
 		Rot="0.000 0.070 0.000 0.998" />
 
 	<Object
 		Name="elka22080"
 		Belong="-1"
 		Prototype="Breakable_Elka2"
-		Pos="418.646 311.000 1690.299"
-		Rot="0.000 0.663 0.000 0.749" />
+		Pos="421.821 311.000 1690.405"
+		Rot="0.000 0.997 0.000 0.076" />
 
 	<Object
 		Name="elka12081"
 		Belong="-1"
 		Prototype="Breakable_Elka1"
-		Pos="438.577 306.202 1860.964"
+		Pos="432.780 305.773 1863.187"
 		Rot="0.000 0.999 0.000 0.044" />
-
-	<Object
-		Name="elka12082"
-		Belong="-1"
-		Prototype="Breakable_Elka1"
-		Pos="475.072 303.457 1748.677"
-		Rot="0.000 -0.070 0.000 0.998" />
 
 	<Object
 		Name="elka12083"
 		Belong="-1"
 		Prototype="Breakable_Elka1"
-		Pos="477.228 304.646 1773.631"
+		Pos="475.857 304.646 1771.612"
 		Rot="0.000 -0.934 0.000 0.358" />
 
 	<Object
 		Name="elka22084"
 		Belong="-1"
 		Prototype="Breakable_Elka2"
-		Pos="487.520 303.080 1750.571"
-		Rot="0.000 0.122 0.000 0.993" />
+		Pos="486.887 303.065 1748.121"
+		Rot="0.000 0.998 0.000 0.063" />
 
 	<Object
 		Name="elka12085"
 		Belong="-1"
 		Prototype="Breakable_Elka1"
-		Pos="476.256 303.929 1715.081"
+		Pos="477.568 303.840 1713.360"
 		Rot="0.000 -0.994 0.000 0.113" />
 
 	<Object
@@ -16266,7 +16231,7 @@
 		Name="elka12094"
 		Belong="-1"
 		Prototype="Breakable_Elka1"
-		Pos="557.376 307.952 1797.004"
+		Pos="557.353 307.961 1797.297"
 		Rot="0.000 0.061 0.000 0.998" />
 
 	<Object
@@ -16280,56 +16245,42 @@
 		Name="elka12096"
 		Belong="-1"
 		Prototype="Breakable_Elka1"
-		Pos="555.964 305.777 1751.666"
+		Pos="553.046 304.525 1751.148"
 		Rot="0.000 0.469 0.000 0.883" />
-
-	<Object
-		Name="elka22097"
-		Belong="-1"
-		Prototype="Breakable_Elka2"
-		Pos="544.629 303.282 1749.672"
-		Rot="0.000 0.993 0.000 0.122" />
 
 	<Object
 		Name="elka12098"
 		Belong="-1"
 		Prototype="Breakable_Elka1"
-		Pos="497.723 308.018 1958.949"
-		Rot="0.000 -0.334 0.000 0.943" />
+		Pos="500.242 308.085 1959.071"
+		Rot="0.000 -0.624 0.000 0.781" />
 
 	<Object
 		Name="elka22099"
 		Belong="-1"
 		Prototype="Breakable_Elka2"
-		Pos="518.380 308.307 1944.219"
-		Rot="0.000 -0.862 0.000 0.508" />
-
-	<Object
-		Name="elka12100"
-		Belong="-1"
-		Prototype="Breakable_Elka1"
-		Pos="530.009 308.596 1946.261"
-		Rot="0.000 0.250 0.000 0.968" />
+		Pos="525.310 308.421 1941.523"
+		Rot="0.000 -0.964 0.000 0.267" />
 
 	<Object
 		Name="elka12101"
 		Belong="-1"
 		Prototype="Breakable_Elka1"
-		Pos="542.981 308.596 1965.233"
+		Pos="544.275 308.425 1968.191"
 		Rot="0.000 0.649 0.000 0.760" />
 
 	<Object
 		Name="elka22102"
 		Belong="-1"
 		Prototype="Breakable_Elka2"
-		Pos="550.904 308.596 1958.059"
+		Pos="553.444 307.734 1957.749"
 		Rot="0.000 0.469 0.000 0.883" />
 
 	<Object
 		Name="elka12103"
 		Belong="-1"
 		Prototype="Breakable_Elka1"
-		Pos="552.474 308.596 1911.598"
+		Pos="550.620 308.596 1914.341"
 		Rot="0.000 -0.948 0.000 0.317" />
 
 	<Object
@@ -16338,13 +16289,6 @@
 		Prototype="Breakable_Elka1"
 		Pos="531.914 308.286 1913.092"
 		Rot="0.000 -0.970 0.000 0.242" />
-
-	<Object
-		Name="elka22105"
-		Belong="-1"
-		Prototype="Breakable_Elka2"
-		Pos="542.526 308.596 1914.863"
-		Rot="0.000 0.809 0.000 0.588" />
 
 	<Object
 		Name="sosna12106"
@@ -16541,13 +16485,6 @@
 		Prototype="Breakable_Sosna3"
 		Pos="510.912 308.596 1986.405"
 		Rot="0.000 0.824 0.000 0.566" />
-
-	<Object
-		Name="sosna12134"
-		Belong="-1"
-		Prototype="Breakable_Sosna1"
-		Pos="550.759 304.302 1970.412"
-		Rot="0.000 -0.566 0.000 0.824" />
 
 	<Object
 		Name="sosna22135"
@@ -16865,17 +16802,10 @@
 		Rot="0.000 -0.242 0.000 0.970" />
 
 	<Object
-		Name="listvenoe32190"
-		Belong="-1"
-		Prototype="Breakable_Listvenoe3"
-		Pos="433.579 309.983 1743.097"
-		Rot="0.000 0.959 0.000 0.284" />
-
-	<Object
 		Name="listvenoe32191"
 		Belong="-1"
 		Prototype="Breakable_Listvenoe3"
-		Pos="432.981 311.000 1680.263"
+		Pos="432.236 311.000 1681.410"
 		Rot="0.000 0.044 0.000 0.999" />
 
 	<Object
@@ -19023,29 +18953,22 @@
 		Name="elka22548"
 		Belong="-1"
 		Prototype="Breakable_Elka2"
-		Pos="545.657 308.087 1863.435"
-		Rot="0.000 0.383 0.000 0.924" />
+		Pos="545.897 308.125 1865.169"
+		Rot="0.000 -0.206 0.000 0.979" />
 
 	<Object
 		Name="elka12549"
 		Belong="-1"
 		Prototype="Breakable_Elka1"
-		Pos="571.342 308.596 1831.234"
+		Pos="572.007 308.596 1828.732"
 		Rot="0.000 -0.902 0.000 0.431" />
 
 	<Object
 		Name="elka12550"
 		Belong="-1"
 		Prototype="Breakable_Elka1"
-		Pos="567.670 308.580 1822.538"
+		Pos="568.121 308.596 1817.799"
 		Rot="0.000 -0.156 0.000 0.988" />
-
-	<Object
-		Name="elka22551"
-		Belong="-1"
-		Prototype="Breakable_Elka2"
-		Pos="574.033 308.596 1808.169"
-		Rot="0.000 0.970 0.000 0.242" />
 
 	<Object
 		Name="elka12552"
@@ -21860,7 +21783,13 @@
 		Belong="-1"
 		Prototype="lamppost1"
 		Pos="1112.472 291.144 1242.587"
-		Rot="0.000 -0.603 0.000 0.798" />
+		Rot="0.000 -0.603 0.000 0.798">
+		<Object
+			Belong="-1"
+			Prototype="LightObject2"
+			Pos="1109.427 301.336 1243.451"
+			Rot="0.000 -0.603 0.000 0.798" />
+	</Object>
 
 	<Object
 		Name="lamppost12968"
@@ -21906,7 +21835,13 @@
 		Belong="-1"
 		Prototype="lamppost1"
 		Pos="1198.770 288.945 1333.784"
-		Rot="0.000 0.466 0.000 0.885" />
+		Rot="0.000 0.466 0.000 0.885">
+		<Object
+			Belong="-1"
+			Prototype="LightObject2"
+			Pos="1201.380 299.137 1335.575"
+			Rot="0.000 0.466 0.000 0.885" />
+	</Object>
 
 	<Object
 		Name="lamppost12972"
@@ -21926,77 +21861,143 @@
 		Belong="-1"
 		Prototype="lamppost1"
 		Pos="1207.324 292.421 1637.081"
-		Rot="0.000 -0.574 0.000 0.819" />
+		Rot="0.000 -0.574 0.000 0.819">
+		<Object
+			Belong="-1"
+			Prototype="LightObject2"
+			Pos="1204.349 302.613 1638.161"
+			Rot="0.000 -0.574 0.000 0.819" />
+	</Object>
 
 	<Object
 		Name="lamppost12974"
 		Belong="-1"
 		Prototype="lamppost1"
 		Pos="1224.508 289.541 1684.468"
-		Rot="0.000 -0.574 0.000 0.819" />
+		Rot="0.000 -0.574 0.000 0.819">
+		<Object
+			Belong="-1"
+			Prototype="LightObject2"
+			Pos="1221.533 299.733 1685.548"
+			Rot="0.000 -0.574 0.000 0.819" />
+	</Object>
 
 	<Object
 		Name="lamppost12975"
 		Belong="-1"
 		Prototype="lamppost1"
 		Pos="1241.692 286.823 1731.854"
-		Rot="0.000 -0.574 0.000 0.819" />
+		Rot="0.000 -0.574 0.000 0.819">
+		<Object
+			Belong="-1"
+			Prototype="LightObject2"
+			Pos="1238.717 297.015 1732.934"
+			Rot="0.000 -0.574 0.000 0.819" />
+	</Object>
 
 	<Object
 		Name="lamppost12976"
 		Belong="-1"
 		Prototype="lamppost1"
 		Pos="1258.876 288.574 1779.241"
-		Rot="0.000 -0.574 0.000 0.819" />
+		Rot="0.000 -0.574 0.000 0.819">
+		<Object
+			Belong="-1"
+			Prototype="LightObject2"
+			Pos="1255.901 298.766 1780.321"
+			Rot="0.000 -0.574 0.000 0.819" />
+	</Object>
 
 	<Object
 		Name="lamppost12977"
 		Belong="-1"
 		Prototype="lamppost1"
 		Pos="1293.851 290.716 2742.518"
-		Rot="0.000 -0.581 0.000 0.814" />
+		Rot="0.000 -0.581 0.000 0.814">
+		<Object
+			Belong="-1"
+			Prototype="LightObject2"
+			Pos="1290.858 300.908 2743.547"
+			Rot="0.000 -0.581 0.000 0.814" />
+	</Object>
 
 	<Object
 		Name="lamppost12978"
 		Belong="-1"
 		Prototype="lamppost1"
 		Pos="1310.241 289.249 2790.182"
-		Rot="0.000 -0.581 0.000 0.814" />
+		Rot="0.000 -0.581 0.000 0.814">
+		<Object
+			Belong="-1"
+			Prototype="LightObject2"
+			Pos="1307.248 299.441 2791.210"
+			Rot="0.000 -0.581 0.000 0.814" />
+	</Object>
 
 	<Object
 		Name="lamppost12979"
 		Belong="-1"
 		Prototype="lamppost1"
 		Pos="1348.367 288.805 2854.641"
-		Rot="0.000 -0.501 0.000 0.866" />
+		Rot="0.000 -0.501 0.000 0.866">
+		<Object
+			Belong="-1"
+			Prototype="LightObject2"
+			Pos="1345.623 298.997 2856.219"
+			Rot="0.000 -0.501 0.000 0.866" />
+	</Object>
 
 	<Object
 		Name="lamppost12980"
 		Belong="-1"
 		Prototype="lamppost1"
 		Pos="1373.511 288.530 2898.345"
-		Rot="0.000 -0.501 0.000 0.866" />
+		Rot="0.000 -0.501 0.000 0.866">
+		<Object
+			Belong="-1"
+			Prototype="LightObject2"
+			Pos="1370.767 298.722 2899.923"
+			Rot="0.000 -0.501 0.000 0.866" />
+	</Object>
 
 	<Object
 		Name="lamppost12981"
 		Belong="-1"
 		Prototype="lamppost1"
 		Pos="1389.239 287.809 2925.955"
-		Rot="0.000 -0.642 0.000 0.767" />
+		Rot="0.000 -0.642 0.000 0.767">
+		<Object
+			Belong="-1"
+			Prototype="LightObject2"
+			Pos="1386.123 298.001 2926.512"
+			Rot="0.000 -0.642 0.000 0.767" />
+	</Object>
 
 	<Object
 		Name="lamppost12982"
 		Belong="-1"
 		Prototype="lamppost1"
 		Pos="1398.156 287.408 2975.582"
-		Rot="0.000 -0.642 0.000 0.767" />
+		Rot="0.000 -0.642 0.000 0.767">
+		<Object
+			Belong="-1"
+			Prototype="LightObject2"
+			Pos="1395.040 297.600 2976.139"
+			Rot="0.000 -0.642 0.000 0.767" />
+	</Object>
 
 	<Object
 		Name="lamppost12983"
 		Belong="-1"
 		Prototype="lamppost1"
 		Pos="1407.074 286.864 3025.210"
-		Rot="0.000 -0.642 0.000 0.767" />
+		Rot="0.000 -0.642 0.000 0.767">
+		<Object
+			Belong="-1"
+			Prototype="LightObject2"
+			Pos="1403.958 297.056 3025.767"
+			Rot="0.000 -0.642 0.000 0.767" />
+	</Object>
 
 	<Object
 		Name="lamppost12984"
@@ -22016,7 +22017,13 @@
 		Belong="-1"
 		Prototype="lamppost1"
 		Pos="1239.228 294.317 2872.445"
-		Rot="0.000 -0.915 0.000 0.403" />
+		Rot="0.000 -0.915 0.000 0.403">
+		<Object
+			Belong="-1"
+			Prototype="LightObject2"
+			Pos="1236.893 304.509 2870.308"
+			Rot="0.000 0.915 0.000 -0.403" />
+	</Object>
 
 	<Object
 		Name="lamppost12986"

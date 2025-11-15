@@ -343,22 +343,22 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 <!-- Keys -->		
 	
 	<Prototype
-		Class		= "Ware"
+		Class		= "Basket"
 		Name		= "item_key_gate_thetown"
 		Price	= "14000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= "key_1"
-		ResourceType= "ITEM_KEY" />
+		ResourceType= "SPEC_ITEM" />
 
 	<Prototype
-		Class		= "Ware"
+		Class		= "Basket"
 		Name		= "item_key_gate_basefelix"
 		Price	= "6000"
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= "key_1"
-		ResourceType= "ITEM_KEY" />
+		ResourceType= "SPEC_ITEM" />
 
 <!-- Ammo -->
 
@@ -2130,35 +2130,35 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 <!-- Quest Items -->
 
 	<Prototype
-		Class		= "Ware"
+		Class		= "Basket"
 		Name		= "item_quest_search_data"
 		Price	= "1"
 		Durability	= "1"
 		PriceDispersion      = "0"
-		ModelFile	= ""
+		ModelFile	= "point"
 		VisibleInEncyclopedia	= "false"
-		ResourceType= "ITEM_SIZE_2X2" />
+		ResourceType= "SPEC_ITEM" />
 
 	<Prototype
-		Class		= "Ware"
+		Class		= "Basket"
 		Name		= "item_quest_box_videocard"
 		Price	= "1"
 		Durability	= "1"
 		PriceDispersion      = "0"
 		ModelFile	= "quest_box_videocard"
 		VisibleInEncyclopedia	= "false"
-		ResourceType= "ITEM_SIZE_2X2" />
+		ResourceType= "SPEC_ITEM" />
 
 <!-- Special Items -->
 
 	<Prototype
-		Class		= "Ware"
+		Class		= "Basket"
 		Name		= "item_ms2000"
 		Price	= "4500"
 		Durability	= "10"
 		PriceDispersion      = "5"
-		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_2X2" />
+		ModelFile	= "point"
+		ResourceType= "SPEC_ITEM" />
 
 
 <!-- Opacity Item -->

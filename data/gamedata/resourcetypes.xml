@@ -70,7 +70,7 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 			<Type Name="FAKE_BASKET" />
 			<Type Name="FAKE_BIGBASKET" />
 		</Type>
-		
+
 		<Type Name="STATIC_AUTO_GUN_DOT" />
 	</Type>
 	
@@ -85,7 +85,7 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 		<Type Name="BOSS03_GUN" />
 		<Type Name="BOSS04_DRONE_GUN" />
 	</Type>
-	
+
 	<Type Name="GOLD" geomsize="2 2" />
 	
 	<Type Name="GOODS">
@@ -212,6 +212,9 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 			<Type Name="ITEM_AMMO_BALLON_TURBO_FOR_SALE" />
 		</Type>
 
+		<Type Name="SPECIAL_ITEMS" geomsize="2 2">
+			<Type Name="SPEC_ITEM" />
+		</Type>
 	</Type>
 
 	<Type Name="GADGET" geomsize="1 1" >

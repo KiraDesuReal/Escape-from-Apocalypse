@@ -120,24 +120,6 @@
 		</script>
 	</trigger>
 
-	<trigger Name="cutTimeRaidFade" active="0">
-		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
-		<script>
-
-			SaveAllToleranceStatus(RS_NEUTRAL)
-			EnableGodMode()
-
-			Fly("start_game", CINEMATIC_NO_AIM, 0, 0.5, 1, 0)
-			StartCinematic()
-		
-			AddCinematicMessage(77773, 0)
-
-			TActivate("cutTimeRaid_End")
-
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
 	<trigger Name="cutTimeRaid_End" active="0">
 		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
 		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
@@ -148,7 +130,9 @@
 
 			local pl = GetPlayerVehicle()
 			if not(GetVar("PlayerBelong").AsString == "SCAV") then
+				local spec = pl:GetPartByName("BASKET_SPECIAL_ITEMS")
 				pl:TakeOffAllGuns()
+				if spec then spec:Remove() end
 				TActivate("trUpdateCabinAndBasket")
 			else
 				if pl then pl:SetSkin(-1) end
@@ -219,47 +203,25 @@
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 			
-			local pl = GetPlayerVehicle()
-			local plProt = pl:GetProperty("Prototype").AsString
-			local plPos = pl:GetPosition()
-			local plPos2 = pl:GetPosition()
-			local plRot = pl:GetRotation()
-
-			plPos2.x = plPos2.x + 150
-			plPos2.z = plPos2.z + 150
-
-			GetPlayerVehicle():setGodMode(1)
-			GetPlayerVehicle():SetPosition(CVector(plPos2)) 
-			GetPlayerVehicle():SetThrottle(0)                       
-			GetPlayerVehicle():SetCustomLinearVelocity(0)
-
 			SaveAllToleranceStatus(RS_NEUTRAL)
-			
-			CreateVehicleEx(plProt,"fakePlayerCar",(plPos), 1100)
-
-			CreateEffectInsertedInRemove("ET_S_DEATH", plPos, Quaternion(0, 0, 0, 1), true)
-
-			local fakePlayer = GetEntityByName("fakePlayerCar")
-			local objid = fakePlayer:GetId()
-			local objPos = fakePlayer:GetPosition()
-			if fakePlayer then
-				fakePlayer:SetRotation(plRot)
-				fakePlayer:TakeOffAllGuns()
-				if not(GetVar("PlayerCabin").AsString == "0") and not(GetVar("PlayerBasket").AsString == "0") then
-					fakePlayer:SetNewPart("CABIN", GetVar("PlayerCabin").AsString)
-					fakePlayer:SetNewPart("BASKET", GetVar("PlayerBasket").AsString)
-				end
-				fakePlayer:SetSkin(-1)
-				fakePlayer:setGodMode(1)
+		
+			local pl = GetPlayerVehicle()
+			local plPos = pl:GetPosition()
+			local objid = pl:GetId()
+			if pl then
+				pl:TakeOffAllGuns()
+				pl:SetSkin(-1)
+				pl:setGodMode(1)
+				pl:SetThrottle(0) 
+				pl:SetCustomLinearVelocity(0)
 				CreateNewSgNodeObject("ET_PS_VEH_EXP2_MED", "exp01", -1, -1, plPos, Quaternion(0, 0, 0, 1), 1)
 				CreateNewSgNodeObject("ET_PS_VEH_EXP_CAB", "exp02", -1, -1, plPos, Quaternion(0, 0, 0, 1), 1)
-				fakePlayer:SetThrottle(0)                      
-				fakePlayer:SetCustomLinearVelocity(0) 
+				CreateEffectInsertedInRemove("ET_S_DEATH", plPos, Quaternion(0, 0, 0, 1), true)
 			end
 
-			objPos.y = objPos.y + 20
-			objPos.z = objPos.z + 15
-			FlyAround(5, 0.5, 15, 10, objPos, objid, 0, 1, "", 0)
+			plPos.y = plPos.y + 20
+			plPos.z = plPos.z + 15
+			FlyAround(5, 0.5, 15, 10, plPos, objid, 0, 1, "", 0)
 			StartCinematic()
 			UpdateCinematic(1)
 
@@ -277,17 +239,11 @@
 
 			RestoreAllToleranceStatus()
 	
-			local obj = getObj("yashik")
-			if obj then obj:Remove() end
-
 			for i=1,2 do
 				local fx = getObj("exp0"..i)
 				if fx then fx:Remove() end
 			end
 			
-			local veh = getObj("fakePlayerCar")
-			if veh then veh:Remove() end
-	
 			if GetVar("PlayerCar").AsString == "Molokovoz" then
 				AddPlayerNewVehicle("MolokovozChassis")
 			elseif GetVar("PlayerCar").AsString == "Ural" then

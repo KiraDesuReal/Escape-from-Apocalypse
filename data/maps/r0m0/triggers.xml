@@ -5239,7 +5239,7 @@
 				end
 			end
 
-			local slots = {"CABIN_SMALL_GUN", "CABIN_BIG_GUN_1"}
+			local slots = {"CABIN_SMALL_GUN", "CABIN_BIG_GUN_1", "BASKET_SPECIAL_ITEMS"}
 			
 			for g = 1, getn(slots) do
 				if plf:GetPartByName(slots[g]) then
@@ -6844,9 +6844,10 @@
 		<script>
 			local day = tonumber(strsub(os.date(), 4, 5))
 			local month = tonumber(strsub(os.date(), 1, 2))
+			local year = tonumber(strsub(os.date(), 7, 8))
 
 			EVENT = nil
-
+	
 			if ReadValueUserInfo("UserTimeYear") ~= "1" then
 				if month == 12 or month == 1 or month == 2 then SEASON = "WINTER" end
 				if month == 3 or month == 4 or month == 5 then SEASON = "SPRING" end
@@ -6857,6 +6858,7 @@
 			end
 
 			if month == 12 and day >= 25 or month == 1 and day >= 1 and 10 >= day then EVENT = "NEW_YEAR" end
+			if month == 12 and day == 8 and year == 25 then EVENT = "BIRTHDAY_EXMACHINA" end
 
 			if GetVar("Season").AsString ~= SEASON then TActivate("ChangeSeasonsFadeEffect") end
 
@@ -6865,6 +6867,14 @@
 			else
 				if GetVar("ChristmasTree_Builden").AsInt > 0 then TActivate("RemoveChristmasTree") end
 			end
+
+			if EVENT == "BIRTHDAY_EXMACHINA" and year == 25 then
+				if IsQuestItemPresent("quest_item_disk_exmachina") == nil then
+					AddQuestItem("quest_item_disk_exmachina")
+					AddFadingMsgByStrIdFormatted("fm_player_add_quest_item", "quest_item_disk_exmachina")
+					SoundFadingMsg()
+				end
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -6872,18 +6882,31 @@
 	<trigger Name="AddEventQuestItems" active="0">
 		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
 		<script>
-			local items = {"quest_item_christmas_ball"}
-			local param = {"QuestItemChristmasBall"}
-			local msg = 0
+			local items = {"quest_item_disk_exmachina", "quest_item_christmas_ball"}
+			local param = {"QuestItemDiskExMachina", "QuestItemChristmasBall"}
 	
-			for i = 1, 1 do
+			for i = 1, 2 do
 				if IsUserInfoLineExists(param[i]) and ReadValueUserInfo(param[i]) == "1" then
 					AddQuestItem(items[i])
-					msg = 1
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="AddMsgQuestItems" active="0">
+		<event	timeout="0.1"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local items = {"quest_item_disk_exmachina", "quest_item_christmas_ball"}
+			local msg = 0
+	
+			for i = 1, 2 do
+				if IsQuestItemPresent(items[i]) then
+					msg = msg + 1
 				end
 			end
 
-			if msg == 1 then
+			if msg > 0 then
 				AddFadingMsgByStrIdFormatted("fm_add_event_quest_item")
 				SoundFadingMsg()
 			end

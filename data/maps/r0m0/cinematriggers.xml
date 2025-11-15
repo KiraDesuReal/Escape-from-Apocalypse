@@ -20,7 +20,7 @@
 			TActivate("BackgroundChangeSkin")
 			TActivate("StartBackgroundCuts_Message")
 			TActivate("StartBackgroundCuts_End")
-			
+
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -270,6 +270,7 @@
 			
 			AddCinematicMessage(77773, 0)
 
+			TActivate("AddEventQuestItems")
 			TActivate("trCreatePlayerStartVehicle")
 			TActivate("StartFadeEffect_End")
 			trigger:Deactivate()
@@ -284,7 +285,7 @@
 			map()
 
 			TActivate("Message")
-			TActivate("AddEventQuestItems")
+			TActivate("AddMsgQuestItems")
 			trigger:Deactivate()
 		</script>
 	</trigger>

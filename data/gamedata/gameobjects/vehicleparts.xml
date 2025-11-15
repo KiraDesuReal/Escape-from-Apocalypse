@@ -2845,9 +2845,15 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "0"
 			RepairCoef			= "0"
 
-			Mass				= "1.0" >
+			Mass				= "1.0"
+			LoadPoints			= "NO_LP" >
 			<RepositoryDescription
-				RepositorySize		= "4 4"/>
+				RepositorySize		= "4 4">
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-3 0"
+				/>
+			</RepositoryDescription>
 		</Prototype>
 
 		<Prototype
@@ -2866,9 +2872,15 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "0"
 			RepairCoef			= "0"
 
-			Mass				= "1.0" >
+			Mass				= "1.0"
+			LoadPoints			= "NO_LP" >
 			<RepositoryDescription
-				RepositorySize		= "5 4"/>
+				RepositorySize		= "5 4">
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-2 0"
+				/>
+			</RepositoryDescription>
 		</Prototype>
 
 		<Prototype
@@ -2887,9 +2899,15 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "0"
 			RepairCoef			= "0"
 
-			Mass				= "1.0" >
+			Mass				= "1.0"
+			LoadPoints			= "NO_LP" >
 			<RepositoryDescription
-				RepositorySize		= "7 4"/>
+				RepositorySize		= "7 4">
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-2 0"
+				/>
+			</RepositoryDescription>
 		</Prototype>
 
 		<Prototype
@@ -2908,9 +2926,15 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "0"
 			RepairCoef			= "0"
 
-			Mass				= "1.0" >
+			Mass				= "1.0"
+			LoadPoints			= "NO_LP" >
 			<RepositoryDescription
-				RepositorySize		= "4 6"/>
+				RepositorySize		= "4 6">
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-3 0"
+				/>
+			</RepositoryDescription>
 		</Prototype>
 
 		<Prototype
@@ -2929,9 +2953,15 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "0"
 			RepairCoef			= "0"
 
-			Mass				= "1.0" >
+			Mass				= "1.0"
+			LoadPoints			= "NO_LP" >
 			<RepositoryDescription
-				RepositorySize		= "4 5"/>
+				RepositorySize		= "4 5">
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-3 0"
+				/>
+			</RepositoryDescription>
 		</Prototype>
 
 		<Prototype
@@ -2950,9 +2980,15 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "0"
 			RepairCoef			= "0"
 
-			Mass				= "1.0" >
+			Mass				= "1.0"
+			LoadPoints			= "NO_LP" >
 			<RepositoryDescription
-				RepositorySize		= "4 7"/>
+				RepositorySize		= "4 7">
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-3 0"
+				/>
+			</RepositoryDescription>
 		</Prototype>
 
 		<Prototype
@@ -2971,9 +3007,15 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "0"
 			RepairCoef			= "0"
 
-			Mass				= "1.0" >
+			Mass				= "1.0"
+			LoadPoints			= "NO_LP" >
 			<RepositoryDescription
-				RepositorySize		= "5 5"/>
+				RepositorySize		= "5 5">
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-2 0"
+				/>
+			</RepositoryDescription>
 		</Prototype>
 
 		<Prototype
@@ -2992,9 +3034,15 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "0"
 			RepairCoef			= "0"
 
-			Mass				= "1.0" >
+			Mass				= "1.0"
+			LoadPoints			= "NO_LP" >
 			<RepositoryDescription
-				RepositorySize		= "6 4"/>
+				RepositorySize		= "6 4">
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-3 0"
+				/>
+			</RepositoryDescription>
 		</Prototype>
 
 		<Prototype
@@ -3183,9 +3231,15 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "8000"
 			RepairCoef			= "0.2"
 
-			Mass				= "15.0" >
+			Mass				= "15.0"
+			LoadPoints			= "NO_LP" >
 			<RepositoryDescription
-				RepositorySize		= "4 5"/>
+				RepositorySize		= "4 5">
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-3 0"
+				/>
+			</RepositoryDescription>
 			<GroupsHealth
 				Main   = "0"	
 				Breakable1   = "0.6"	
@@ -3221,6 +3275,11 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 					Name		= "BASKET_SPECIAL_WEAPON"
 					Pos		= "10 10"
 				/>
+
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-3 0"
+				/>
 			</RepositoryDescription>
 
 			<GroupsHealth
@@ -3253,9 +3312,15 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "12000"
 			RepairCoef			= "0.2"
 
-			Mass				= "40.0" >
+			Mass				= "40.0"
+			LoadPoints			= "NO_LP" >
 			<RepositoryDescription
-				RepositorySize		= "5 7"/>
+				RepositorySize		= "5 7">
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-2 0"
+				/>
+			</RepositoryDescription>
 			<GroupsHealth
 				Main   = "0"	
 				Breakable1   = "0.7"	
@@ -3495,13 +3560,18 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0.2"
 
 			Mass				= "20.0"
-			LoadPoints			= "LP_SML01" >
+			LoadPoints			= "LP_SML01 NO_LP" >
 			<RepositoryDescription
 				RepositorySize		= "5 8">
 
 				<Slot
 					Name		= "BASKET_SMALL_GUN_0"
 					Pos		= "10 1"
+				/>
+
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-2 0"
 				/>
 
 			</RepositoryDescription>
@@ -3541,6 +3611,10 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 					Name		= "BASKET_SPECIAL_WEAPON"
 					Pos		= "10 10"
 				/>
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-2 0"
+				/>
 
 			</RepositoryDescription>
 			<GroupsHealth
@@ -3568,7 +3642,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0.2"
 
 			Mass				= "55.0" 
-			LoadPoints			= "LP_BIG01" >
+			LoadPoints			= "LP_BIG01 NO_LP" >
 	
 			<RepositoryDescription
 				RepositorySize		= "6 8">
@@ -3576,6 +3650,10 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 				<Slot
 					Name		= "BASKET_BIG_GUN_0"
 					Pos		= "10 1"
+				/>
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-2 0"
 				/>
 
 			</RepositoryDescription>
@@ -3911,13 +3989,17 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CARGO"
 			Mass				= "30.0"
-			LoadPoints			= "LP_BIG01" >
+			LoadPoints			= "LP_BIG01 NO_LP" >
 			<RepositoryDescription
 				RepositorySize		= "6 9">
 
 				<Slot
 					Name		= "BASKET_BIG_GUN_0"
 					Pos		= "10 1"
+				/>
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-3 0"
 				/>
 
 			</RepositoryDescription>
@@ -3950,12 +4032,17 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 				<Slot
 					Name		= "BASKET_SIDE_GUN_0"
-					Pos		= "-1 2"
+					Pos		= "-1 8"
 				/>
 
 				<Slot
 					Name		= "BASKET_SPECIAL_WEAPON"
 					Pos		= "11 10"
+				/>
+
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-2 0"
 				/>
 			</RepositoryDescription>
 			<GroupsHealth
@@ -4001,6 +4088,11 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 					Name		= "BASKET_SPECIAL_WEAPON"
 					Pos		= "11 1"
 				/>
+
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-2 0"
+				/>
 			</RepositoryDescription>
 			<GroupsHealth
 				Main   = "0"	
@@ -4026,14 +4118,17 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CARGO"
 			Mass				= "50.0"
-			LoadPoints			= "LP_BIG01" >
+			LoadPoints			= "LP_BIG01 NO_LP" >
 			<RepositoryDescription
 				RepositorySize		= "7 10">
 				<Slot
 					Name		= "BASKET_BIG_GUN_0"
 					Pos		= "11 1"
 				/>
-			
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-2 0"
+				/>
 			</RepositoryDescription>
 			<GroupsHealth
 				Main   = "0"	
@@ -4062,7 +4157,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0.3"
 
 			Mass				= "60.0"
-			LoadPoints			= "LP_BIG01 LP_SIDE01L LP_SIDE01R" >
+			LoadPoints			= "LP_BIG01 LP_SIDE01L LP_SIDE01R NO_LP" >
 			<RepositoryDescription
 				RepositorySize		= "8 9">
 				<Slot
@@ -4072,6 +4167,10 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 				<Slot
 					Name		= "BASKET_SIDE_GUN_0"
 					Pos		= "11 8"
+				/>
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-3 0"
 				/>
 			</RepositoryDescription>
 			<GroupsHealth
@@ -4316,16 +4415,19 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "70000"
 			RepairCoef			= "0.4"
 
-			LoadPoints			= "LP_BIG01" >
+			LoadPoints			= "LP_BIG01 NO_LP" >
 
 			<RepositoryDescription
 				RepositorySize		= "6 12">
 
 				<Slot
 					Name		= "BASKET_BIG_GUN_0"
-					Pos		= "0 1"
+					Pos		= "0 3"
 				/>
-
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-3 0"
+				/>
 				
 			</RepositoryDescription>
 			<GroupsHealth
@@ -4363,7 +4465,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 				<Slot
 					Name		= "BASKET_BIG_GUN_0"
-					Pos		= "-1 1"
+					Pos		= "-1 3"
 				/>
 
 				<Slot
@@ -4371,6 +4473,10 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 					Pos		= "11 10"
 				/>
 				
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-3 0"
+				/>
 			</RepositoryDescription>
 			<GroupsHealth
 				Main   = "0"	
@@ -4416,6 +4522,10 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 					Name		= "BASKET_SPECIAL_WEAPON"
 					Pos		= "13 10"
 				/>
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-2 0"
+				/>
 			</RepositoryDescription>
 			<GroupsHealth
 				Main   = "0"	
@@ -4444,7 +4554,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "110000"
 			RepairCoef			= "0.4"
 
-			LoadPoints			= "LP_GIANT01 LP_GIANT02" >
+			LoadPoints			= "LP_GIANT01 LP_GIANT02 NO_LP" >
 
 			<RepositoryDescription
 				RepositorySize		= "6 10">
@@ -4456,6 +4566,10 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 				<Slot
 					Name		= "BASKET_GIANT_GUN_0"
 					Pos		= "10 7"
+				/>
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-3 0"
 				/>
 			</RepositoryDescription>
 			<GroupsHealth
@@ -4484,7 +4598,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "100000"
 			RepairCoef			= "0.4"
 
-			LoadPoints			= "LP_BIG01 LP_SIDE01L LP_SIDE01R" >
+			LoadPoints			= "LP_BIG01 LP_SIDE01L LP_SIDE01R NO_LP" >
 
 			<RepositoryDescription
 				RepositorySize		= "9 10">
@@ -4495,6 +4609,10 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 				<Slot
 					Name		= "BASKET_SIDE_GUN_0"
 					Pos		= "-2 9"
+				/>
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-2 0"
 				/>
 			</RepositoryDescription>
 			<GroupsHealth
@@ -4723,13 +4841,17 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Mass				= "60.0" 
 			Durability				= "160"
 			DurCoeffsForDamageTypes		= "10 10 15"
-			LoadPoints			= "LP_BIG01" >
+			LoadPoints			= "LP_BIG01 NO_LP" >
 
 			<RepositoryDescription
 				RepositorySize		= "7 9">
 				<Slot
 					Name		= "BASKET_BIG_GUN_0"
 					Pos		= "11 1"
+				/>
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-2 0"
 				/>
 			</RepositoryDescription> 
 			<GroupsHealth
@@ -4769,6 +4891,10 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 				<Slot
 					Name		= "BASKET_SPECIAL_WEAPON"
 					Pos		= "11 9"
+				/>
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-2 0"
 				/>
 			</RepositoryDescription> 
 			<GroupsHealth
@@ -4811,6 +4937,10 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 					Name		= "BASKET_SPECIAL_WEAPON"
 					Pos		= "-1 10"
 				/>
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-3 0"
+				/>
 			</RepositoryDescription>
 			<GroupsHealth
 				Main   = "0"	
@@ -4838,17 +4968,21 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			Durability			= "170"
 			DurCoeffsForDamageTypes		= "20 20 20"
-			LoadPoints			= "LP_BIG01 LP_SIDE01L LP_SIDE01R" >
+			LoadPoints			= "LP_BIG01 LP_SIDE01L LP_SIDE01R NO_LP" >
 
 			<RepositoryDescription
 				RepositorySize		= "7 10">
 				<Slot
 					Name		= "BASKET_BIG_GUN_0"
-					Pos		= "11 1"
+					Pos		= "11 4"
 				/>
 				<Slot
 					Name		= "BASKET_SIDE_GUN_0"
-					Pos		= "-1 1"
+					Pos		= "-1 4"
+				/>
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-2 0"
 				/>
 			</RepositoryDescription> 
 			<GroupsHealth
@@ -4876,7 +5010,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Mass				= "100.0" 
 			Durability			= "180"
 			DurCoeffsForDamageTypes		= "22 22 22"
-			LoadPoints			= "LP_BIG01 LP_GIANT01 LP_SIDE01L LP_SIDE01R" >
+			LoadPoints			= "LP_BIG01 LP_GIANT01 LP_SIDE01L LP_SIDE01R NO_LP" >
 
 			<RepositoryDescription
 				RepositorySize		= "9 11">
@@ -4886,11 +5020,15 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 				/>
 				<Slot
 					Name		= "BASKET_SIDE_GUN_0"
-					Pos		= "-2 1"
+					Pos		= "-2 3"
 				/>
 				<Slot
 					Name		= "BASKET_GIANT_GUN"
-					Pos		= "12 1"
+					Pos		= "12 2"
+				/>
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-2 0"
 				/>
 			</RepositoryDescription> 
 			<GroupsHealth
@@ -5003,6 +5141,10 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 					Name		= "BASKET_SPECIAL_WEAPON"
 					Pos		= "-1 10"
 				/>
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-3 0"
+				/>
 			</RepositoryDescription>
 			<GroupsHealth
 				Main   = "0"	
@@ -5042,6 +5184,10 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 				<Slot
 					Name		= "BASKET_SPECIAL_WEAPON"
 					Pos		= "-1 11"
+				/>
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-3 0"
 				/>
 			</RepositoryDescription>
 			<GroupsHealth

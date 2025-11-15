@@ -337,6 +337,7 @@
 		<script>
 			local day = tonumber(strsub(os.date(), 4, 5))
 			local month = tonumber(strsub(os.date(), 1, 2))
+			local year = tonumber(strsub(os.date(), 7, 8))
 
 			if IsUserInfoLineExists("Season") and ReadValueUserInfo("UserTimeYear") == "1" then 
 				SEASON = ReadValueUserInfo("Season")
@@ -369,7 +370,12 @@
 			end
 
 			if month == 12 and day >= 25 or month == 1 and day >= 1 and 10 >= day then EVENT = "NEW_YEAR" end
-			if month == 12 and day == 8 then EVENT = "BIRTHDAY_EXMACHINA" end
+			if month == 12 and day == 8 and year == 25 then EVENT = "BIRTHDAY_EXMACHINA" end
+
+			if EVENT == "BIRTHDAY_EXMACHINA" and year == 25 then
+				EditUserInfo("QuestItemDiskExMachina", "QuestItemDiskExMachina: 1")
+			end
+
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -380,8 +386,11 @@
 			if EVENT == "NEW_YEAR" then
 				PlayCustomMusic("christmas_music")
 				SetVar("Track", 180)
-			else
+			elseif EVENT == "BIRTHDAY_EXMACHINA" then
 				PlayCustomMusic("mainmenu")
+				SetVar("Track", 174)
+			else
+				PlayCustomMusic("mainmenu_remaster")
 				SetVar("Track", 175)
 			end
 			TActivate("MusicTimer")

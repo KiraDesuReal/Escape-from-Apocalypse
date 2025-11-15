@@ -34,6 +34,19 @@
 			SetVar("Use_AmmoBallonLaserGun", 0)
 			SetVar("Use_AmmoBallonPlasmaGun", 0)
 			SetVar("Use_AmmoBallonTurbo", 0)
+			SetVar("Use_AmmoChestArtilleryGun_Insured", 0)
+			SetVar("Use_AmmoChestHeavyGun_Insured", 0)
+			SetVar("Use_AmmoChestMachineGun_Insured", 0)
+			SetVar("Use_AmmoChestRocketGun_Insured", 0)
+			SetVar("Use_AmmoChestShotGun_Insured", 0)
+			SetVar("Use_AmmoBallonLaserGun_Insured", 0)
+			SetVar("Use_AmmoBallonPlasmaGun_Insured", 0)
+			SetVar("Use_AmmoBallonTurbo_Insured", 0)
+			SetVar("Use_scrap_metal_use_Insured", 0)
+			SetVar("Use_machinery_use_Insured", 0)
+			SetVar("Use_electronics_use_Insured", 0)
+			SetVar("Use_oil_use_Insured", 0)
+			SetVar("Use_fuel_full_use_Insured", 0)
 			SetVar("PlayerSkin", 0)
 
 			SetVar("Generator_time_work_hour", 0)
@@ -1146,7 +1159,7 @@
 			local pl = GetPlayerVehicle()
 			local hp = GetPlayerHealth() 
 			if pl and hp >= 1 then 
-				ItemUse(1) 
+				ItemUse(1, 1)
 			else 
 				trigger:Deactivate() 
 			end
@@ -1414,14 +1427,29 @@
 				Plf:SetSkin(GetVar("PlayerSkin").AsInt)
 			end
 
-			if GetVar("Use_AmmoChestArtilleryGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_artillerygun", GetVar("Use_AmmoChestArtilleryGun").AsInt) end
-			if GetVar("Use_AmmoChestHeavyGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_heavygun", GetVar("Use_AmmoChestHeavyGun").AsInt) end
-			if GetVar("Use_AmmoChestMachineGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_machinegun", GetVar("Use_AmmoChestMachineGun").AsInt) end
-			if GetVar("Use_AmmoChestRocketGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_rocketgun", GetVar("Use_AmmoChestRocketGun").AsInt) end
-			if GetVar("Use_AmmoChestShotGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_shotgun", GetVar("Use_AmmoChestShotGun").AsInt) end
-			if GetVar("Use_AmmoBallonLaserGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_ballon_lasergun", GetVar("Use_AmmoBallonLaserGun").AsInt) end
-			if GetVar("Use_AmmoBallonPlasmaGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_ballon_plasmagun", GetVar("Use_AmmoBallonPlasmaGun").AsInt) end
-			if GetVar("Use_AmmoBallonTurbo").AsInt > 0 then AddItemsToPlayerRepository("ammo_ballon_turbo", GetVar("Use_AmmoBallonTurbo").AsInt) end
+			if GetVar("Use_AmmoChestArtilleryGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_artillerygun", GetVar("Use_AmmoChestArtilleryGun").AsInt) SetVar("Use_AmmoChestArtilleryGun", 0) end
+			if GetVar("Use_AmmoChestHeavyGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_heavygun", GetVar("Use_AmmoChestHeavyGun").AsInt) SetVar("Use_AmmoChestHeavyGun", 0) end
+			if GetVar("Use_AmmoChestMachineGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_machinegun", GetVar("Use_AmmoChestMachineGun").AsInt) SetVar("Use_AmmoChestMachineGun", 0) end
+			if GetVar("Use_AmmoChestRocketGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_rocketgun", GetVar("Use_AmmoChestRocketGun").AsInt) SetVar("Use_AmmoChestRocketGun", 0) end
+			if GetVar("Use_AmmoChestShotGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_shotgun", GetVar("Use_AmmoChestShotGun").AsInt) SetVar("Use_AmmoChestShotGun", 0) end
+			if GetVar("Use_AmmoBallonLaserGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_ballon_lasergun", GetVar("Use_AmmoBallonLaserGun").AsInt) SetVar("Use_AmmoBallonLaserGun", 0) end
+			if GetVar("Use_AmmoBallonPlasmaGun").AsInt > 0 then AddItemsToPlayerRepository("ammo_ballon_plasmagun", GetVar("Use_AmmoBallonPlasmaGun").AsInt) SetVar("Use_AmmoBallonPlasmaGun", 0) end
+			if GetVar("Use_AmmoBallonTurbo").AsInt > 0 then AddItemsToPlayerRepository("ammo_ballon_turbo", GetVar("Use_AmmoBallonTurbo").AsInt) SetVar("Use_AmmoBallonTurbo", 0) end
+
+			if GetVar("Use_AmmoChestArtilleryGun_Insured").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_artillerygun_insured", GetVar("Use_AmmoChestArtilleryGun_Insured").AsInt) SetVar("Use_AmmoChestArtilleryGun_Insured", 0) end
+			if GetVar("Use_AmmoChestHeavyGun_Insured").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_heavygun_insured", GetVar("Use_AmmoChestHeavyGun_Insured").AsInt) SetVar("Use_AmmoChestHeavyGun_Insured", 0) end
+			if GetVar("Use_AmmoChestMachineGun_Insured").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_machinegun_insured", GetVar("Use_AmmoChestMachineGun_Insured").AsInt) SetVar("Use_AmmoChestMachineGun_Insured", 0) end
+			if GetVar("Use_AmmoChestRocketGun_Insured").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_rocketgun_insured", GetVar("Use_AmmoChestRocketGun_Insured").AsInt) SetVar("Use_AmmoChestRocketGun_Insured", 0) end
+			if GetVar("Use_AmmoChestShotGun_Insured").AsInt > 0 then AddItemsToPlayerRepository("ammo_chest_shotgun_insured", GetVar("Use_AmmoChestShotGun_Insured").AsInt) SetVar("Use_AmmoChestShotGun_Insured", 0) end
+			if GetVar("Use_AmmoBallonLaserGun_Insured").AsInt > 0 then AddItemsToPlayerRepository("ammo_ballon_lasergun_insured", GetVar("Use_AmmoBallonLaserGun_Insured").AsInt) SetVar("Use_AmmoBallonLaserGun_Insured", 0) end
+			if GetVar("Use_AmmoBallonPlasmaGun_Insured").AsInt > 0 then AddItemsToPlayerRepository("ammo_ballon_plasmagun_insured", GetVar("Use_AmmoBallonPlasmaGun_Insured").AsInt) SetVar("Use_AmmoBallonPlasmaGun_Insured", 0) end
+			if GetVar("Use_AmmoBallonTurbo_Insured").AsInt > 0 then AddItemsToPlayerRepository("ammo_ballon_turbo_insured", GetVar("Use_AmmoBallonTurbo_Insured").AsInt) SetVar("Use_AmmoBallonTurbo_Insured", 0) end
+
+			if GetVar("Use_scrap_metal_use_Insured").AsInt > 0 then AddItemsToPlayerRepository("scrap_metal_use_insured", GetVar("Use_scrap_metal_use_Insured").AsInt) SetVar("Use_scrap_metal_use_Insured", 0) end
+			if GetVar("Use_machinery_use_Insured").AsInt > 0 then AddItemsToPlayerRepository("machinery_use_insured", GetVar("Use_machinery_use_Insured").AsInt) SetVar("Use_machinery_use_Insured", 0) end
+			if GetVar("Use_electronics_use_Insured").AsInt > 0 then AddItemsToPlayerRepository("electronics_use_insured", GetVar("Use_electronics_use_Insured").AsInt) SetVar("Use_electronics_use_Insured", 0) end
+			if GetVar("Use_oil_use_Insured").AsInt > 0 then AddItemsToPlayerRepository("oil_use_insured", GetVar("Use_oil_use_Insured").AsInt) SetVar("Use_oil_use_Insured", 0) end
+			if GetVar("Use_fuel_full_use_Insured").AsInt > 0 then AddItemsToPlayerRepository("fuel_full_use_insured", GetVar("Use_fuel_full_use_Insured").AsInt) SetVar("Use_fuel_full_use_Insured", 0) end
 
 			SetVar("PlayerDie", 0)
 

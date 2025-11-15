@@ -9,19 +9,6 @@
 			SetVar("PlayerCabin", "0")
 			SetVar("PlayerBasket", "0")
 
-			SetVar("Cabin_Small_Gun", 0)
-			SetVar("Cabin_Small_Gun_1", 0)
-			SetVar("Cabin_Big_Gun_1", 0) 
-			SetVar("Cabin_Big_Gun_2", 0)
-			SetVar("Cabin_Giant_Gun", 0)
-
-			SetVar("Basket_Small_Gun_0", 0) 
-			SetVar("Basket_Big_Gun_0", 0)
-			SetVar("Basket_Big_Gun_1", 0) 
-			SetVar("Basket_Giant_Gun", 0) 
-			SetVar("Basket_Giant_Gun_0", 0)
-			SetVar("Basket_Side_Gun_0", 0)
-
 			SetVar("PlayerCar", 0)
 
 			SetVar("PosPlayer1",0)
@@ -463,32 +450,6 @@
 	
 			if not(cabin == nil) then SetVar("PlayerCabin", cabin:GetProperty("Prototype")) else SetVar("PlayerCabin", "0") end
 			if not(basket == nil) then SetVar("PlayerBasket", basket:GetProperty("Prototype")) else SetVar("PlayerBasket", "0") end
-
-			local cab_small = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
-			local cab_small_1 = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN_1")
-			local cab_big_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
-			local cab_big_2 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_2")
-			local cab_giant = GetPlayerVehicle():GetPartByName("CABIN_GIANT_GUN")
-
-			local basket_small_0 = GetPlayerVehicle():GetPartByName("BASKET_SMALL_GUN_0")
-			local basket_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
-			local basket_big_1 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_1")
-			local basket_giant = GetPlayerVehicle():GetPartByName("BASKET_GIANT_GUN")
-			local basket_giant_0 = GetPlayerVehicle():GetPartByName("BASKET_GIANT_GUN_0")
-			local basket_side_0 = GetPlayerVehicle():GetPartByName("BASKET_SIDE_GUN_0")
-
-			if not(cab_small == nil) then SetVar("Cabin_Small_Gun",cab_small:GetProperty("Prototype")) else SetVar("Cabin_Small_Gun", 0) end
-			if not(cab_small_1 == nil) then SetVar("Cabin_Small_Gun_1",cab_small_1:GetProperty("Prototype")) else SetVar("Cabin_Small_Gun_1", 0) end
-			if not(cab_big_1 == nil) then SetVar("Cabin_Big_Gun_1",cab_big_1:GetProperty("Prototype")) else SetVar("Cabin_Big_Gun_1", 0) end
-			if not(cab_big_2 == nil) then SetVar("Cabin_Big_Gun_2",cab_big_2:GetProperty("Prototype")) else SetVar("Cabin_Big_Gun_2", 0) end
-			if not(cab_giant == nil) then SetVar("Cabin_Giant_Gun",cab_giant:GetProperty("Prototype")) else SetVar("Cabin_Giant_Gun", 0) end
-
-			if not(basket_small_0 == nil) then SetVar("Basket_Small_Gun_0",basket_small_0:GetProperty("Prototype")) else SetVar("Basket_Small_Gun_0", 0) end
-			if not(basket_big_0 == nil) then SetVar("Basket_Big_Gun_0",basket_big_0:GetProperty("Prototype")) else SetVar("Basket_Big_Gun_0", 0) end
-			if not(basket_big_1 == nil) then SetVar("Basket_Big_Gun_1",basket_big_1:GetProperty("Prototype")) else SetVar("Basket_Big_Gun_1", 0) end
-			if not(basket_giant == nil) then SetVar("Basket_Giant_Gun",basket_giant:GetProperty("Prototype")) else SetVar("Basket_Giant_Gun", 0) end
-			if not(basket_giant_0 == nil) then SetVar("Basket_Giant_Gun_0",basket_giant_0:GetProperty("Prototype")) else SetVar("Basket_Giant_Gun_0", 0) end
-			if not(basket_side_0 == nil) then SetVar("Basket_Side_Gun_0",basket_side_0:GetProperty("Prototype")) else SetVar("Basket_Side_Gun_0", 0) end
 
 			if strsub(chassis, 1, 10) == "bugChassis" then
 				SetVar("PlayerCar", "Bug")
@@ -1134,11 +1095,11 @@
 	<trigger Name="BaseFelix" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BaseFelix_Exit" />
 		<script>
-			if HasPlayerAmountOfItems("item_key_gate_basefelix", 1) and GetVar("ExitBaseFelixOpen").AsInt == 0 then
+			if GetVar("ExitBaseFelixOpen").AsInt == 0 and IsHasPlayerAmountOfSpecItems("item_key_gate_basefelix") then
 				local b = SpawnMessageBox("90002")
 				if b == 1 then
 					if GetVar("PetrolStation_Refill_Process").AsInt == 0 then
-						RemoveItemsFromPlayerRepository("item_key_gate_basefelix", 1)
+						RemoveSpecItemsFromSlot("item_key_gate_basefelix")
 						AddFadingMsgByStrIdFormatted("fm_item_to_npc", "item_key_gate_basefelix")
 						SetVar("ExitBaseFelixOpen", 1)
 						TActivate("BaseFelixExtract")
@@ -1146,13 +1107,15 @@
 				end
 				GetPlayerVehicle():SetThrottle(0)
 				GetPlayerVehicle():SetCustomLinearVelocity(0)
-			else
-				AddFadingMsgByStrIdFormatted("fm_not_key")
-				SoundFadingMsg()
 			end
 
 			if GetVar("ExitBaseFelixOpen").AsInt == 1 then
 				TActivate("BaseFelixExtract")
+			else
+				if IsHasPlayerAmountOfSpecItems("item_key_gate_basefelix") == nil then
+					AddFadingMsgByStrIdFormatted("fm_not_key")
+					SoundFadingMsg()
+				end
 			end
  		</script>
 	</trigger>
@@ -3555,7 +3518,7 @@
 		<script>
 			local items = {"potato", "scrap_metal", "firewood", "oil", "bottle", "doski", "details",
 						"scrap_metal_use", "oil_use", "fuel_nil_use",
-						"item_key_gate_thetown",
+						"item_key_gate_thetown", "item_key_gate_basefelix",
 						"ammo_chest_machinegun", "ammo_chest_shotgun",
 						"item_bolts", "item_hose", "item_insulation", "item_nails", "item_nuts", "item_parts", "item_plex", "item_poheram", "item_scotch", "item_screws",
 						"item_cooler", "item_cpu", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_kondesators", "item_lump", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tplug", "item_usb", "item_wires",
@@ -4449,17 +4412,15 @@
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 
-			local number = 0
 			local player_car = GetVar("PlayerCar").AsString
+			local modellist = {"Bug01PMC", "Molokovoz01PMC"}
 
-			if player_car == "Bug" then number = 0 end
-			if player_car == "Molokovoz" then number = 1 end
-			if player_car == "Ural" or player_car == "Cruiser" then number = 2 end
-			if player_car == "Belaz" then number = 3 end
-			if player_car == "Mirotvorec" then number = 4 end
+			if player_car == "Bug" then modellist = {"Bug01PMC", "Molokovoz01PMC"} end
+			if player_car == "Molokovoz" then modellist = {"Bug01PMC", "Molokovoz01PMC", "Ural01PMC"} end
+			if player_car == "Ural" or player_car == "Cruiser" then modellist = {"Molokovoz01PMC", "Ural01PMC", "Cruiser01PMC", "Belaz01PMC"} end
+			if player_car == "Belaz" then modellist = {"Ural01PMC", "Belaz01PMC", "Mirotvorec01PMC"} end
+			if player_car == "Mirotvorec" then modellist = {"Belaz01PMC", "Mirotvorec01PMC"} end
 
-			local modellist = {"Bug01PMC", "Molokovoz01PMC", "Ural01PMC", "Cruiser01PMC", "Belaz01PMC", "Mirotvorec01PMC"}
-	
 			local bug_cab = {"bugCab01", "bugCab02", "bugCab03"}
 			local bug_cargo = {"bugCargo01_PMC", "bugCargo02_PMC", "bugCargo03_PMC"}
 
@@ -4480,6 +4441,14 @@
 
 			local mir_cab = {"mirotvorecCab01", "mirotvorecCab02", "mirotvorecCab04", "mirotvorecCab03", "mirotvorecCab05"}
 			local mir_cargo = {"mirotvorecCargo01_PMC", "mirotvorecCargo02_PMC", "mirotvorecCargo03_PMC", "mirotvorecCargo04_PMC", "mirotvorecCargo05_PMC"}
+
+			if player_car == "Mirotvorec" then
+				bel_cab = {"belazCab04", "belazCab03", "belazCab05"}
+				bel_cargo = {"belazCargo04_PMC", "belazCargo05_PMC", "belazCargo03_PMC"}
+
+				mir_cab = {"mirotvorecCab04", "mirotvorecCab03", "mirotvorecCab05"}
+				mir_cargo = {"mirotvorecCargo03_PMC", "mirotvorecCargo04_PMC", "mirotvorecCargo05_PMC"}
+			end
 
 			local cru_cab = {"cruiserCab01", "cruiserCab02"}
 			local cru_cargo = {"cruiserCargo01_PMC", "cruiserCargo02_PMC"}
@@ -4524,9 +4493,9 @@
 				end
 
 				if pl_pos1 >= 1 then
-					pos1_count_pmc = random(2,3)
-				else
 					pos1_count_pmc = random(2,4)
+				else
+					pos1_count_pmc = random(2,5)
 				end
 
 				if GetVar("PlayerBelong").AsString == "SCAV" then
@@ -4534,7 +4503,7 @@
 					pos2_count_pmc = random(2,3)
 				else
 					paths_pos1 = shuffled_range_take (pos1_count_pmc, 1, 9)
-					pos2_count_pmc = random(3,5)
+					pos2_count_pmc = random(3,6)
 				end
 
 				pos2_pmc = {CVector(2615.098, 320.599, 2020.458),CVector(2970.576, 353.945, 1370.649),CVector(1564.693, 307.840, 1808.458),CVector(474.234, 314.937, 1476.468),CVector(837.313, 281.698, 631.074),CVector(1803.762, 303.403, 489.376),CVector(2289.344, 303.686, 993.879),CVector(2634.281, 320.436, 907.682),CVector(3487.845, 324.339, 748.105),CVector(3225.707, 320.430, 1334.481)}
@@ -4566,9 +4535,9 @@
 				end
 
 				if pl_pos2 >= 1 then
-					pos2_count_pmc = random(2,3)
-				else
 					pos2_count_pmc = random(2,4)
+				else
+					pos2_count_pmc = random(2,5)
 				end
 
 				if GetVar("PlayerBelong").AsString == "SCAV" then
@@ -4576,7 +4545,7 @@
 					pos1_count_pmc = random(2,3)
 				else
 					paths_pos2 = shuffled_range_take (pos2_count_pmc, 1, 9)
-					pos1_count_pmc = random(3,5)
+					pos1_count_pmc = random(3,6)
 				end
 
 				pos1_pmc = {CVector(1111.746, 303.447, 3529.309),CVector(855.773, 303.874, 3299.838),CVector(1682.261, 298.439, 3438.135),CVector(1123.300, 291.430, 3159.539),CVector(2152.141, 315.074, 3580.439),CVector(1724.581, 287.790, 2807.061),CVector(2331.947, 337.677, 2469.048),CVector(1625.450, 318.769, 2383.752),CVector(3139.961, 356.520, 3144.354),CVector(3075.630, 357.404, 3489.001)}
@@ -4587,7 +4556,7 @@
 			local way_r = getn(way)
 
 			for p1=1,pos1_count_pmc do
-				local model = modellist[random(2 + number)]
+				local model = modellist[random(getn(modellist))]
 				local num = paths_pos1[p1]
 
 				TeamCreate("PMC_"..p1.."_Spawn1", belong[random(2)], pos1_pmc[num], {model}, nil, 1)
@@ -4615,6 +4584,15 @@
 					end
 					GiveGunsForPMC(pmc)
 					AddAmmoItemsForGuns(pmc)
+
+					if player_car == "Belaz" or player_car == "Mirotvorec" then
+						local maxHp = pmc:GetMaxHealth()
+						local newHp = maxHp
+						if player_car == "Belaz" then newHp = maxHp + random(500, 1000) end
+						if player_car == "Mirotvorec" then newHp = maxHp + random(1000, 2000) end
+						pmc:AddModifier("maxhp", "= "..newHp)
+						pmc:AddModifier("hp", "= "..newHp)
+					end
 				end
 
 				local pmc_way = GetEntityByName ("PMC_"..p1.."_Spawn1")
@@ -4648,7 +4626,7 @@
 			end
 			
 			for p2=1,pos2_count_pmc do
-				local model = modellist[random(2 + number)]
+				local model = modellist[random(getn(modellist))]
 				local num = paths_pos2[p2]
 			
 				TeamCreate("PMC_"..p2.."_Spawn2", belong[random(2)], pos2_pmc[num], {model}, nil, 1)
@@ -4676,6 +4654,15 @@
 					end
 					GiveGunsForPMC(pmc)
 					AddAmmoItemsForGuns(pmc)
+
+					if player_car == "Belaz" or player_car == "Mirotvorec" then
+						local maxHp = pmc:GetMaxHealth()
+						local newHp = maxHp
+						if player_car == "Belaz" then newHp = maxHp + random(500, 1000) end
+						if player_car == "Mirotvorec" then newHp = maxHp + random(1000, 2000) end
+						pmc:AddModifier("maxhp", "= "..newHp)
+						pmc:AddModifier("hp", "= "..newHp)
+					end
 				end
 
 				local pmc_way2 = GetEntityByName ("PMC_"..p2.."_Spawn2")
@@ -6414,7 +6401,7 @@
 			if IsQuestTaken("q_bitok3") and not(IsQuestComplete("q_bitok3")) then
 				local chestboxvideocard = GetEntityByName("BoxVideocard")
 				if chestboxvideocard then chestboxvideocard:Remove() end
-				TDeactivate("q_bitok3_1")
+				TDeactivate("tr_q_bitok3_1")
 			end
 
 			if IsQuestTaken("q_fuel2") and not(IsQuestComplete("q_fuel2_5")) then
@@ -6659,7 +6646,7 @@
 	<trigger Name="IfExitForQuest" active="0">
 	<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
-			if IsQuestTaken("q_search_data_3") and not(IsQuestComplete("q_search_data_3")) and HasPlayerAmountOfItems("item_quest_search_data", 1) then
+			if IsQuestTaken("q_search_data_3") and not(IsQuestComplete("q_search_data_3")) and IsHasPlayerAmountOfSpecItems("item_quest_search_data") then
 				CompleteSubtask("q_search_data_3")
 			end
 
@@ -6667,7 +6654,7 @@
 				CompleteSubtask("q_base_scavs_2")
 			end
 
-			if IsQuestTaken("q_bitok3_22") and not(IsQuestComplete("q_bitok3_22")) and HasPlayerAmountOfItems("item_quest_box_videocard", 1) then
+			if IsQuestTaken("q_bitok3_22") and not(IsQuestComplete("q_bitok3_22")) and IsHasPlayerAmountOfSpecItems("item_quest_box_videocard") then
 				CompleteSubtask("q_bitok3_22")
 			end
 
@@ -6809,7 +6796,7 @@
 			local chest = GetEntityByName("destr_bug_12")
 			local pl = GetPlayerVehicle()
 			if pl then
-				if HasPlayerAmountOfItems("item_quest_search_data", 1) or not(chest) then
+				if IsHasPlayerAmountOfSpecItems("item_quest_search_data") or not(chest) then
 					if IsQuestTaken("q_search_data_2") and not(IsQuestComplete("q_search_data_2")) then
 						CompleteSubtask("q_search_data_2")
 					else
@@ -6916,7 +6903,7 @@
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BaseScavs_loc" />
 		<script>
 			if IsQuestTaken("q_base_scavs") and not(IsQuestComplete("q_base_scavs_1")) then
-				if HasPlayerAmountOfItems("item_ms2000", 1) then
+				if IsHasPlayerAmountOfSpecItems("item_ms2000") then
 					AddImportantFadingMsgByStrIdFormatted("fm_marker_target")
 					SoundFadingMsg()
 					TActivate("q_base_scavs_TimerStart")
@@ -6942,7 +6929,7 @@
 			SetVar("DefenceTargetTimer", 10)
 			TActivate("q_base_scavs_Timer")
 			TDeactivate("q_base_scavs_LeavesBase")
-			RemoveItemsFromPlayerRepository("item_ms2000", 1)
+			RemoveSpecItemsFromSlot("item_ms2000")
 			AddImportantFadingMsgByStrIdFormatted("fm_marker_install")
 			SoundFadingMsg()
 			trigger:Deactivate()
@@ -6973,32 +6960,41 @@
 		<script>
 			local Chest = CreateNewObject{prototypeName = "boxvideocardChest", objName = "BoxVideocard"}	
 			local ChestId = GetEntityByID(Chest)
-			ChestId:SetPosition(CVector(getPos("SpawnBoxVideocard_"..random(1,3).."_loc")))
+			local loc = random(1, 3)
+			ChestId:SetPosition(CVector(getPos("SpawnBoxVideocard_"..loc.."_loc")))
 
 			local ChestPos = ChestId:GetPosition()
 			ChestPos.y = ChestPos.y + 1
 			ChestId:SetPosition(ChestPos)
+			ChestId:SetPropertyById(7, 2.000)
 
 			local Item = CreateNewObject{prototypeName = "item_quest_box_videocard", objName = "ItemQuestBoxVideocard", belong = 1100}
 			local ItemId = GetEntityByID(Item)
 			if ChestId and ItemId then
 				ChestId:AddChild(ItemId)
 			end
-			TActivate("q_bitok3_1")
+
+			getObj("tr_q_bitok3_1"):AddEvent("GE_OBJECT_IN_LOCATION", "SpawnBoxVideocard_"..loc.."_loc")
+			getObj("tr_q_bitok3_1"):AddEvent("GE_OBJECT_LEAVES_LOCATION", "SpawnBoxVideocard_"..loc.."_loc")
+			TActivate("tr_q_bitok3_1")
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
-	<trigger Name="q_bitok3_1" active="0">
+	<trigger Name="tr_q_bitok3_1" active="0">
 		<event eventid="GE_OBJECT_DIE" ObjName="BoxVideocard" />
 		<script>
-			if IsQuestTaken("q_bitok3_1") and not(IsQuestComplete("q_bitok3_1")) then
-				CompleteSubtask("q_bitok3_1")
-			else
-				AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_bitok3")
-				CreateEffectInsertedInRemove("ET_S_SUBTASK_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+			if IsHasPlayerAmountOfSpecItems("item_quest_box_videocard") or getObj("ItemQuestBoxVideocard") == nil then
+				if IsQuestTaken("q_bitok3_1") and not(IsQuestComplete("q_bitok3_1")) then
+					CompleteSubtask("q_bitok3_1")
+				else
+					AddImportantFadingMsgByStrIdFormatted("fm_complete_subtask", "q_bitok3")
+					CreateEffectInsertedInRemove("ET_S_SUBTASK_COMPLETE", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+				end
+				trigger:DelEvent("GE_OBJECT_IN_LOCATION")
+				trigger:DelEvent("GE_OBJECT_LEAVES_LOCATION")
+				trigger:Deactivate()
 			end
-			trigger:Deactivate()
 		</script>
 	</trigger>
 	
@@ -7049,7 +7045,7 @@
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="q_sectarian1_2_loc" />
 		<script>
 			if IsQuestTaken("q_sectarian1_2") and not(IsQuestComplete("q_sectarian1_2")) then
-				if HasPlayerAmountOfItems("item_ms2000", 1) then
+				if IsHasPlayerAmountOfSpecItems("item_ms2000") then
 					AddImportantFadingMsgByStrIdFormatted("fm_marker_target")
 					SoundFadingMsg()
 					TActivate("q_sectarian1_TimerStart")
@@ -7077,7 +7073,7 @@
 			SetVar("DefenceTargetTimer", 10)
 			TActivate("q_sectarian1_Timer")
 			TDeactivate("q_sectarian1_LeavesLoc")
-			RemoveItemsFromPlayerRepository("item_ms2000", 1)
+			RemoveSpecItemsFromSlot("item_ms2000")
 			AddImportantFadingMsgByStrIdFormatted("fm_marker_install")
 			SoundFadingMsg()
 			trigger:Deactivate()
@@ -7111,9 +7107,4 @@
 		</script>
 	</trigger>
 
-<!--
-**************************************************************************************************
-** ÈÂÅÍÒÛ
-**************************************************************************************************
--->
 </triggers>

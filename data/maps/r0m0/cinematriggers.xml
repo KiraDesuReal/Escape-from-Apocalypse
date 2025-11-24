@@ -552,7 +552,7 @@
 					vehPlayer:SetThrottle(0)
 					vehPlayer:SetCustomLinearVelocity(0)
 				end
-
+				TDeactivate("Events")
 				TDeactivate("Update")
 				TActivate("ChangeSeasonsFadeEffect_End")
 			end

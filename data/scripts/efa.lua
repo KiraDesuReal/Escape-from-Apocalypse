@@ -2249,12 +2249,14 @@ function IsHasPlayerAmountOfSpecItems(item)
 	local pl = GetPlayerVehicle()
 	if pl then
 		local specSlot = pl:GetPartByName("BASKET_SPECIAL_ITEMS")
+		local prot
 		if specSlot then
-			local prot = specSlot:GetProperty("Prototype").AsString
+			prot = specSlot:GetProperty("Prototype").AsString
 			if prot == item then
 				return 1
 			end
-		elseif HasPlayerAmountOfItems(item, 1) then
+		end
+		if HasPlayerAmountOfItems(item, 1) and prot ~= item then
 			return 2
 		end
 	end
@@ -2265,12 +2267,14 @@ function RemoveSpecItemsFromSlot(item)
 	local pl = GetPlayerVehicle()
 	if pl then
 		local specSlot = pl:GetPartByName("BASKET_SPECIAL_ITEMS")
+		local prot
 		if specSlot then
-			local prot = specSlot:GetProperty("Prototype").AsString
+			prot = specSlot:GetProperty("Prototype").AsString
 			if prot == item then
 				specSlot:Remove()
 			end
-		elseif HasPlayerAmountOfItems(item, 1) then
+		end
+		if HasPlayerAmountOfItems(item, 1) and prot ~= item then
 			RemoveItemsFromPlayerRepository(item, 1)
 		end
 	end

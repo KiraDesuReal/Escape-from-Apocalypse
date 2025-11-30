@@ -10,6 +10,7 @@
 7. Replenish HP, armor, and fuel with replenishing items
 8. Limited ammunition for weapons and its replenishment with the help of special items
 9. Many other mechanics and interactions with the world
+10. Seasons
 
 ## Other changes
 
@@ -20,11 +21,12 @@
 + Changed global map
 + New main menu and loading screen
 
-### Prototypes:
+### Transport:
 + Added *Cruiser* for sale
 + Added special slot for body *Cruiser (LVL II)*
 + *Scout*, *Fighter* and *Hunter* are now playable vehicles
 + Added more gadget slots to some cabin prototypes
++ Special slot for certain items has been added to the bodies
 + Most bodies have had their weapon slots relocated, increasing their capacity
 + Many other changes in prototypes
 

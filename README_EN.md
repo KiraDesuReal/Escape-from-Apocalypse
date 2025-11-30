@@ -33,6 +33,7 @@ In this modification you will find a completely new gameplay, shelter constructi
 7. Replenish HP, armor, and fuel with replenishing items
 8. Limited ammunition for weapons and its replenishment with the help of special items
 9. Many other mechanics and interactions with the world
+10. Seasons
 
 ## Other changes
 
@@ -43,11 +44,12 @@ In this modification you will find a completely new gameplay, shelter constructi
     + Changed global map
     + New main menu and loading screen
 
-+ **Prototypes:**
++ **Transport:**
     + Added _Cruiser_ for sale
     + Added special slot for body _Cruiser (LVL II)_
     + _Scout_, _Fighter_ and _Hunter_ are now playable vehicles
     + Added more gadget slots to some cabin prototypes
+    + Special slot for certain items has been added to the bodies
     + Most bodies have had their weapon slots relocated, increasing their capacity
     + Many other changes in prototypes
 

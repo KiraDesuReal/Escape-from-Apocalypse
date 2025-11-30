@@ -2832,7 +2832,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 		<Prototype
 			Class				= "Basket"
 			Name				= "ScavfakeCargo_1"
-			ModelFile			= "cub"
+			ModelFile			= "fakeCargo"
 			CanBeUsedInAutogenerating  =  "0"
 			VisibleInEncyclopedia   = "false"
 			ResourceType		= "FAKE_BIGBASKET"
@@ -2846,7 +2846,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0"
 
 			Mass				= "1.0"
-			LoadPoints			= "NO_LP" >
+			LoadPoints			= "LP_SPEC" >
 			<RepositoryDescription
 				RepositorySize		= "4 4">
 				<Slot
@@ -2859,7 +2859,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 		<Prototype
 			Class				= "Basket"
 			Name				= "ScavfakeCargo_2"
-			ModelFile			= "cub"
+			ModelFile			= "fakeCargo"
 			CanBeUsedInAutogenerating  =  "0"
 			VisibleInEncyclopedia   = "false"
 			ResourceType		= "FAKE_BIGBASKET"
@@ -2873,7 +2873,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0"
 
 			Mass				= "1.0"
-			LoadPoints			= "NO_LP" >
+			LoadPoints			= "LP_SPEC" >
 			<RepositoryDescription
 				RepositorySize		= "5 4">
 				<Slot
@@ -2886,7 +2886,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 		<Prototype
 			Class				= "Basket"
 			Name				= "ScavfakeCargo_3"
-			ModelFile			= "cub"
+			ModelFile			= "fakeCargo"
 			CanBeUsedInAutogenerating  =  "0"
 			VisibleInEncyclopedia   = "false"
 			ResourceType		= "FAKE_BIGBASKET"
@@ -2900,7 +2900,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0"
 
 			Mass				= "1.0"
-			LoadPoints			= "NO_LP" >
+			LoadPoints			= "LP_SPEC" >
 			<RepositoryDescription
 				RepositorySize		= "7 4">
 				<Slot
@@ -2913,7 +2913,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 		<Prototype
 			Class				= "Basket"
 			Name				= "ScavfakeCargo_4"
-			ModelFile			= "cub"
+			ModelFile			= "fakeCargo"
 			CanBeUsedInAutogenerating  =  "0"
 			VisibleInEncyclopedia   = "false"
 			ResourceType		= "FAKE_BIGBASKET"
@@ -2927,7 +2927,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0"
 
 			Mass				= "1.0"
-			LoadPoints			= "NO_LP" >
+			LoadPoints			= "LP_SPEC" >
 			<RepositoryDescription
 				RepositorySize		= "4 6">
 				<Slot
@@ -2940,7 +2940,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 		<Prototype
 			Class				= "Basket"
 			Name				= "ScavfakeCargo_5"
-			ModelFile			= "cub"
+			ModelFile			= "fakeCargo"
 			CanBeUsedInAutogenerating  =  "0"
 			VisibleInEncyclopedia   = "false"
 			ResourceType		= "FAKE_BIGBASKET"
@@ -2954,7 +2954,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0"
 
 			Mass				= "1.0"
-			LoadPoints			= "NO_LP" >
+			LoadPoints			= "LP_SPEC" >
 			<RepositoryDescription
 				RepositorySize		= "4 5">
 				<Slot
@@ -2967,7 +2967,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 		<Prototype
 			Class				= "Basket"
 			Name				= "ScavfakeCargo_6"
-			ModelFile			= "cub"
+			ModelFile			= "fakeCargo"
 			CanBeUsedInAutogenerating  =  "0"
 			VisibleInEncyclopedia   = "false"
 			ResourceType		= "FAKE_BIGBASKET"
@@ -2981,7 +2981,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0"
 
 			Mass				= "1.0"
-			LoadPoints			= "NO_LP" >
+			LoadPoints			= "LP_SPEC" >
 			<RepositoryDescription
 				RepositorySize		= "4 7">
 				<Slot
@@ -2994,7 +2994,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 		<Prototype
 			Class				= "Basket"
 			Name				= "ScavfakeCargo_7"
-			ModelFile			= "cub"
+			ModelFile			= "fakeCargo"
 			CanBeUsedInAutogenerating  =  "0"
 			VisibleInEncyclopedia   = "false"
 			ResourceType		= "FAKE_BIGBASKET"
@@ -3008,7 +3008,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0"
 
 			Mass				= "1.0"
-			LoadPoints			= "NO_LP" >
+			LoadPoints			= "LP_SPEC" >
 			<RepositoryDescription
 				RepositorySize		= "5 5">
 				<Slot
@@ -3021,7 +3021,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 		<Prototype
 			Class				= "Basket"
 			Name				= "ScavfakeCargo_8"
-			ModelFile			= "cub"
+			ModelFile			= "fakeCargo"
 			CanBeUsedInAutogenerating  =  "0"
 			VisibleInEncyclopedia   = "false"
 			ResourceType		= "FAKE_BIGBASKET"
@@ -3035,7 +3035,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0"
 
 			Mass				= "1.0"
-			LoadPoints			= "NO_LP" >
+			LoadPoints			= "LP_SPEC" >
 			<RepositoryDescription
 				RepositorySize		= "6 4">
 				<Slot
@@ -3232,7 +3232,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0.2"
 
 			Mass				= "15.0"
-			LoadPoints			= "NO_LP" >
+			LoadPoints			= "LP_SPEC" >
 			<RepositoryDescription
 				RepositorySize		= "4 5">
 				<Slot
@@ -3267,7 +3267,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0.2"
 
 			Mass				= "30.0" 
-			LoadPoints			= "NO_LP" >
+			LoadPoints			= "NO_LP LP_SPEC" >
 
 			<RepositoryDescription
 				RepositorySize		= "4 6">
@@ -3313,7 +3313,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0.2"
 
 			Mass				= "40.0"
-			LoadPoints			= "NO_LP" >
+			LoadPoints			= "LP_SPEC" >
 			<RepositoryDescription
 				RepositorySize		= "5 7">
 				<Slot
@@ -3560,7 +3560,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0.2"
 
 			Mass				= "20.0"
-			LoadPoints			= "LP_SML01 NO_LP" >
+			LoadPoints			= "LP_SML01 LP_SPEC" >
 			<RepositoryDescription
 				RepositorySize		= "5 8">
 
@@ -3598,7 +3598,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0.2"
 
 			Mass				= "45.0"
-			LoadPoints			= "LP_SML01 NO_LP" >
+			LoadPoints			= "LP_SML01 NO_LP LP_SPEC" >
 
 			<RepositoryDescription
 				RepositorySize		= "6 9">
@@ -3642,7 +3642,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0.2"
 
 			Mass				= "55.0" 
-			LoadPoints			= "LP_BIG01 NO_LP" >
+			LoadPoints			= "LP_BIG01 LP_SPEC" >
 	
 			<RepositoryDescription
 				RepositorySize		= "6 8">
@@ -3989,7 +3989,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CARGO"
 			Mass				= "30.0"
-			LoadPoints			= "LP_BIG01 NO_LP" >
+			LoadPoints			= "LP_BIG01 LP_SPEC" >
 			<RepositoryDescription
 				RepositorySize		= "6 9">
 
@@ -4026,7 +4026,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CARGO"
 			Mass				= "55.0"
-			LoadPoints			= "LP_SIDE01L LP_SIDE01R NO_LP" >
+			LoadPoints			= "LP_SIDE01L LP_SIDE01R NO_LP LP_SPEC" >
 			<RepositoryDescription
 				RepositorySize		= "7 9">
 
@@ -4070,7 +4070,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "60000"
 
 			Mass				= "45.0" 
-			LoadPoints			= "LP_BIG01 LP_GIANT01 NO_LP" >
+			LoadPoints			= "LP_BIG01 LP_GIANT01 NO_LP LP_SPEC" >
 
 			<RepositoryDescription
 				RepositorySize		= "9 10">
@@ -4118,7 +4118,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CARGO"
 			Mass				= "50.0"
-			LoadPoints			= "LP_BIG01 NO_LP" >
+			LoadPoints			= "LP_BIG01 LP_SPEC" >
 			<RepositoryDescription
 				RepositorySize		= "7 10">
 				<Slot
@@ -4157,7 +4157,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0.3"
 
 			Mass				= "60.0"
-			LoadPoints			= "LP_BIG01 LP_SIDE01L LP_SIDE01R NO_LP" >
+			LoadPoints			= "LP_BIG01 LP_SIDE01L LP_SIDE01R LP_SPEC" >
 			<RepositoryDescription
 				RepositorySize		= "8 9">
 				<Slot
@@ -4415,7 +4415,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "70000"
 			RepairCoef			= "0.4"
 
-			LoadPoints			= "LP_BIG01 NO_LP" >
+			LoadPoints			= "LP_BIG01 LP_SPEC" >
 
 			<RepositoryDescription
 				RepositorySize		= "6 12">
@@ -4457,7 +4457,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "80000"
 			RepairCoef			= "0.4"
 
-			LoadPoints			= "LP_BIG01 NO_LP" >
+			LoadPoints			= "LP_BIG01 NO_LP LP_SPEC" >
 
 			<RepositoryDescription
 				RepositorySize		= "8 11">
@@ -4506,7 +4506,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "120000"
 			RepairCoef			= "0.4"
 
-			LoadPoints			= "LP_BIG01 LP_BIG02 NO_LP" >
+			LoadPoints			= "LP_BIG01 LP_BIG02 NO_LP LP_SPEC" >
 
 			<RepositoryDescription
 				RepositorySize		= "11 12">
@@ -4554,7 +4554,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "110000"
 			RepairCoef			= "0.4"
 
-			LoadPoints			= "LP_GIANT01 LP_GIANT02 NO_LP" >
+			LoadPoints			= "LP_GIANT01 LP_GIANT02 LP_SPEC" >
 
 			<RepositoryDescription
 				RepositorySize		= "6 10">
@@ -4598,7 +4598,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "100000"
 			RepairCoef			= "0.4"
 
-			LoadPoints			= "LP_BIG01 LP_SIDE01L LP_SIDE01R NO_LP" >
+			LoadPoints			= "LP_BIG01 LP_SIDE01L LP_SIDE01R LP_SPEC" >
 
 			<RepositoryDescription
 				RepositorySize		= "9 10">
@@ -4841,7 +4841,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Mass				= "60.0" 
 			Durability				= "160"
 			DurCoeffsForDamageTypes		= "10 10 15"
-			LoadPoints			= "LP_BIG01 NO_LP" >
+			LoadPoints			= "LP_BIG01 LP_SPEC" >
 
 			<RepositoryDescription
 				RepositorySize		= "7 9">
@@ -4880,7 +4880,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			Durability			= "160"
 			DurCoeffsForDamageTypes		= "12 12 17"
-			LoadPoints			= "LP_GIANT01 NO_LP" >
+			LoadPoints			= "LP_GIANT01 NO_LP LP_SPEC" >
 
 			<RepositoryDescription
 				RepositorySize		= "7 10">
@@ -4921,7 +4921,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Mass				= "80.0" 
 			Durability			= "165"
 			DurCoeffsForDamageTypes		= "13 13 17"
-			LoadPoints			= "LP_BIG01 LP_GIANT01 NO_LP" >
+			LoadPoints			= "LP_BIG01 LP_GIANT01 NO_LP LP_SPEC" >
 
 			<RepositoryDescription
 				RepositorySize		= "8 10">
@@ -4968,7 +4968,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 			Durability			= "170"
 			DurCoeffsForDamageTypes		= "20 20 20"
-			LoadPoints			= "LP_BIG01 LP_SIDE01L LP_SIDE01R NO_LP" >
+			LoadPoints			= "LP_BIG01 LP_SIDE01L LP_SIDE01R LP_SPEC" >
 
 			<RepositoryDescription
 				RepositorySize		= "7 10">
@@ -5010,7 +5010,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Mass				= "100.0" 
 			Durability			= "180"
 			DurCoeffsForDamageTypes		= "22 22 22"
-			LoadPoints			= "LP_BIG01 LP_GIANT01 LP_SIDE01L LP_SIDE01R NO_LP" >
+			LoadPoints			= "LP_BIG01 LP_GIANT01 LP_SIDE01L LP_SIDE01R LP_SPEC" >
 
 			<RepositoryDescription
 				RepositorySize		= "9 11">
@@ -5130,7 +5130,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0.2"
 
 			Mass				= "15.0"
-			LoadPoints			= "LP_GIANT01 NO_LP" >
+			LoadPoints			= "LP_GIANT01 NO_LP LP_SPEC" >
 			<RepositoryDescription
 				RepositorySize		= "8 11">
 				<Slot
@@ -5170,7 +5170,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			RepairCoef			= "0.2"
 
 			Mass				= "20.0"
-			LoadPoints			= "LP_BIG01 LP_SIDE01L LP_SIDE01R NO_LP" >
+			LoadPoints			= "LP_BIG01 LP_SIDE01L LP_SIDE01R NO_LP LP_SPEC" >
 			<RepositoryDescription
 				RepositorySize		= "8 12">
 				<Slot

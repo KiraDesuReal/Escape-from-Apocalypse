@@ -1012,41 +1012,45 @@ function CreateGunBox(name, pos)
 	local gun1 = {"hornet01", "specter01", "pkt01", "storm01", "vector01", "vulcan01", "kpvt01", "rapier01", "bumblebee01"} 
 	local gun2 = {"pkt01", "kord01", "maxim01", "fagot01", "someTurboAccelerationPusher", "omega01", "elephant01", "flag01", "odin01", "rainmetal01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun"}
 	local gun_rand = {gun1[random(getn(gun1))], gun2[exrandom(getn(gun2))]}
-
+	con("1")
 	local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
 	local gadget2 = {"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "additional_fuel_tank2", "additional_torque2", "additional_durability2"}
 	local gadget3 = {"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
-
+	con("2")
 	local protChest = "mainChest"
 	if EVENT == "NEW_YEAR" then protChest = "christmasChest" end
-
+	con("3")
 	local Chest = CreateNewObject{prototypeName = protChest, objName = name.."Chest"}	
 	local ChestId = GetEntityByID(Chest)
 	ChestId:SetPosition(pos)
 	ChestId:SetSkin(3)
-
+	con("4")
 	local ChestPos = ChestId:GetPosition()
 	ChestPos.y = ChestPos.y + 1
 	ChestId:SetPosition(ChestPos)
-
+	con("5")
 	local OpacityItem = CreateNewObject{prototypeName = "item_opacity", objName = "OpacityGunItem_"..name, belong = 1100}
 	local OpacityItemId = GetEntityByID(OpacityItem)
 
 	if ChestId and OpacityItemId then
 		ChestId:AddChild(OpacityItemId)
 	end
-
+	con("6")
 	local notloot = random(100)
 	local count = random(2)
 	local gun_r = random(2)
 	local ammo_r = random(2)
 	local ammo_item = nil
+	con("7")
 	if notloot > 10 then
 		if gun_r == 1 then
-			local gun_item = gun_rand[random(getn(gun_rand))]		
+			local gun_item = gun_rand[random(getn(gun_rand))]	
+			con("8")	
 			local Gun = CreateNewObject{prototypeName = gun_item, objName = "GunItem_"..random(10000).."_"..name, belong = 1100}
 			local GunId = GetEntityByID(Gun)
 			local afflist = {}
+			con("9")
+			con(gun_item)
 			if gun_item == "maxim01" or gun_item == "fagot01" or gun_item == "odin01" or gun_item == "elephant01" or gun_item == "hammer01" or gun_item == "bumblebee01" or gun_item == "omega01" or gun_item == "big_swingfire01" or gun_item == "hurricane01" or gun_item == "mrakSideGun" or gun_item == "hailSideGun" or gun_item == "marsSideGun" or gun_item == "zeusSideGun" or gun_item == "hunterSideGun" then
 				local damageAffixes = {"weak_gun", "deadly_gun", "destructive_gun", "slow_gun", "assault_gun", "rapid_firing_gun", "without_cooling_gun", "with_nitro_cooling_gun", "with_truncated_barrel_gun", "with_enlarged_barrel_gun", "with_long_barrel_gun"}
 				if random(2) == 1 then
@@ -1055,18 +1059,21 @@ function CreateGunBox(name, pos)
 			else
 				afflist = CreateRandomAffixesForGun(random(0,2))
 			end
-
+			con("10")
+			con(afflist[1])
+			con(afflist[2])
 			if afflist ~= nil then
 				for i=1,getn(afflist) do
 					GunId:ApplyAffixByName(afflist[i])
 				end
 			end
-
+			con("11")
 			if ChestId and GunId then
 				ChestId:AddChild(GunId)
 			end
 
 			if ammo_r == 1 then
+				con("12")
 				if gun_item == "hornet01" or gun_item == "specter01" or gun_item == "pkt01" or gun_item == "kord01" or gun_item == "vector01" or gun_item == "vulcan01" or gun_item == "kpvt01" or gun_item == "octopus01" then
 					ammo_item = "ammo_chest_machinegun"
 				elseif gun_item == "storm01" or gun_item == "flag01" then
@@ -1090,7 +1097,8 @@ function CreateGunBox(name, pos)
 						ammo_item = "ammo_ballon_turbo"
 					end
 				end
-
+				con("12")
+				con(ammo_item)
 				if ammo_item then
 					local Ammo = CreateNewObject{prototypeName = ammo_item, objName = "AmmoItem_"..random(10000).."_"..name, belong = 1100}
 					local AmmoId = GetEntityByID(Ammo)
@@ -1098,17 +1106,22 @@ function CreateGunBox(name, pos)
 						ChestId:AddChild(AmmoId)
 					end
 				end
+				con("13")
 			end
 		end
+		con("14")
 		for l=1,count do
 			local gadget_rand = {gadget1[random(getn(gadget1))], gadget2[random(getn(gadget2))], gadget3[random(getn(gadget3))]}
+			con("15")
 			local Gadgets = CreateNewObject{prototypeName = gadget_rand[random(getn(gadget_rand))], objName = "GadgetItem_"..random(10000).."_"..name, belong = 1100}
 			local GadgetsId = GetEntityByID(Gadgets)
 			if ChestId and GadgetsId then
 				ChestId:AddChild(GadgetsId)
 			end
+			con("16")
 		end
 	end
+	con("END")
 end
 
 function shuffle (arr)

@@ -312,7 +312,7 @@
 		CheckAll="0"
 		ConditionToGive="all complete"
 		PrecedingQuests="q_test_drive4"
-		OnComplete='AddVehicleToTown("UralForSale"); AddCabinsOrBasketsToTown("uralCab02"); AddPlayerRandomItem({"ammo_chest_machinegun", "ammo_chest_heavygun", "machinery_use", "electronics_use"}, random(1, 3)); AddPlayerMoney(50000)'>
+		OnComplete='AddVehicleToTown("UralForSale"); AddPlayerRandomItem({"ammo_chest_machinegun", "ammo_chest_heavygun", "machinery_use", "electronics_use"}, random(1, 3)); AddPlayerMoney(50000)'>
 		<quest
 			Name="q_test_drive5_1"
 			Automatic="1"

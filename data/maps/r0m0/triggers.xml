@@ -2034,7 +2034,7 @@
 			if GetVar("ChestScavs_Search").AsInt == 0 then SetVar("ChestScavs_Search", 1) end
 			
 			if GetVar("ChestScavs_Search").AsInt == 1 then
-				lootlist = {"potato", "wirewood", 
+				lootlist = {"potato", "firewood", 
 							"fuel_nil_use", 
 							"item_insulation", "item_nails", "item_nuts", "item_scotch", 
 							"item_tplug", "item_usb", "item_wires",

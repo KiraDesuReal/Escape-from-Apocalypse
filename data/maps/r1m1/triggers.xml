@@ -877,27 +877,25 @@
 			local minute
 			local day
 
-			local nulH = ""
 			local nulM = ""
 
 			if 10 > hour then 
-				nulH = 0
 				minute = tonumber(strsub(time, 3, 4)) 
 				day = tonumber(strsub(time, 5, 7))
 			else
 				minute = tonumber(strsub(time, 4, 5)) 
 				day = tonumber(strsub(time, 6, 8))
 			end
-
+	
 			if 10 > minute then nulM = 0 end
-
 			if 10 > minute and 10 > hour then day = tonumber(strsub(time, 5, 6)) end
-
-			local TextTime = day.." "..nulH..hour..":"..nulM..minute
+			if day == nil then day = tonumber(strsub(time, 5, 7)) end
+			
+			local TextTime = day.." "..hour..":"..nulM..minute
 
 			local user = ""
 			local Msg = ""
-
+			
 			if GetVar("PlayerBelong").AsString == "SCAV" then
 				user = GenerateRandomScavName()
 				Msg = MSG_RAID..count.."|"..MSG_DAY..TextTime.."|"..user.."|"..MSG_MAP_R1M1

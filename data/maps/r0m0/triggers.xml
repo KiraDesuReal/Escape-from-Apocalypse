@@ -2047,7 +2047,7 @@
 							"cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_explosion", "firing_range_guns", "additional_fuel_tank", "additional_torque", "additional_stability"}
 				loot_count = random(3)
 			elseif GetVar("ChestScavs_Search").AsInt == 2 then
-				lootlist = {"scrap_metal", "oil", "bottle", "fuel", "machinery", "book", "tobacco", "doski", "details", "shkatulka",
+				lootlist = {"firewood", "scrap_metal", "oil", "bottle", "fuel", "machinery", "book", "tobacco", "doski", "details", "shkatulka",
 							"scrap_metal_use", "machinery_use", "oil_use", "fuel_full_use",
 							"item_key_gate_thetown",
 							"item_bolts", "item_hose", "item_kek", "item_parts", "item_poheram", "item_tube", "item_plex",
@@ -2105,7 +2105,7 @@
 							"item_prisadka", "item_termit", "item_gunpowder",
 							"item_sugar",
 							"item_disk_exmachina", "item_rozvidka", "item_sas", "item_ssd", "item_ananaga",
-							"item_oftalmaskop", 
+							"item_oftalmaskop", "item_ledx",
 							"item_airfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_metallodetector", "item_kubok_kikiki",
 							"item_buldex", "item_handrill", "item_pipe_wrench", "item_ratchet_wrench", 
 							"item_cat", "item_chain_gold", "item_chiken", "item_lion", "item_rolex", "item_skullring", "item_woodclock", "item_silver_skull", "item_vaze",

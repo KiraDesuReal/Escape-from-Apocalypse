@@ -3625,7 +3625,7 @@
 			local items = {"item_bolts", "item_hose", "item_datchik", "item_insulation", "item_kek", "item_nails", "item_nuts", "item_parts", "item_pena", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_thermometer", "item_tube",
 							"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_green_battery", "item_powerbank",
 							"item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder",
-							"scrap_metal", "oil", "bottle", "fuel", "machinery", "tobacco", "doski", "details",
+							"firewood", "scrap_metal", "oil", "bottle", "fuel", "machinery", "tobacco", "doski", "details",
 							"item_filter", "item_paracord", "item_waterfilter", "item_zapal",
 							"item_awl", "item_leatherman", "item_metalscissors", "item_nippers", "item_pliers", "item_pliers_round", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_wrench",
 							"item_cable", "item_drill", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_helix", "item_lump", "item_magnet", "item_rele", "item_svech", "item_tplug", "item_ultra_lump", "item_usb", "item_wires", "item_gyrotachometer", "item_military_plate"}
@@ -3682,7 +3682,7 @@
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local items = {"item_bolts", "item_hose", "item_insulation", "item_kek", "item_nails", "item_nuts", "item_parts", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_tube",
-							"scrap_metal", "oil", "bottle", "fuel", "machinery", "doski", "details",
+							"firewood", "scrap_metal", "oil", "bottle", "fuel", "machinery", "doski", "details",
 							"item_dry", "item_hunter_spich", "item_lighter", "item_spich", "item_survl", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder",
 							"item_filter", "item_vitalik", "item_waterfilter", "item_zapal",
 							"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench"}
@@ -3729,7 +3729,7 @@
 	<trigger Name="CreateValuablesLootBox" active="0">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-			local items = {"book", "shkatulka", "item_key_gate_thetown", "item_key_gate_basefelix", "item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_emre_kara", "item_fitanyashka", "item_monolit", "item_kaktus", "item_keqing", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_carsen", "item_metallodetector", "item_ananaga", "item_silver_skull", "item_vaze", "item_kubok_kikiki"}
+			local items = {"book", "shkatulka", "item_key_gate_thetown", "item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_emre_kara", "item_fitanyashka", "item_monolit", "item_kaktus", "item_keqing", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_carsen", "item_metallodetector", "item_ananaga", "item_silver_skull", "item_vaze", "item_kubok_kikiki"}
 
 			local protChest = "mainChest"
 
@@ -3831,7 +3831,7 @@
 							"item_car_battery", "item_cyclon", "item_green_battery",
 							"item_dry", "item_prisadka", "item_propan", "item_termit",
 							"item_sugar",
-							"item_oftalmaskop",
+							"item_oftalmaskop", "item_ledx",
 							"item_disk", "item_disk_exmachina", "item_flashdrive", "item_sas", "item_ssd",
 							"item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_ananaga", "item_kubok_kikiki",
 							"item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_vaze",
@@ -4318,7 +4318,7 @@
 				lootcount = random(5,8)
 				items = {"oil", "bottle", "fuel", "machinery", "tobacco", "book", "electronics",
 						"details", "shkatulka",
-						"item_key_gate_thetown", "item_key_gate_basefelix",
+						"item_key_gate_thetown",
 						"item_datchik", "item_hose", "item_kek", "item_military_tube", "item_pena", "item_thermometer", "item_tube",
 						"item_bp", "item_converter", "item_drill", "item_energo_lump", "item_engine", "item_gazan", "item_gpu", "item_hdd", "item_iridiym", "item_military_cable", "item_tetris", "item_ultra_lump", "item_virtex", "item_vpx", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid",
 						"item_accum", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery",
@@ -5328,7 +5328,7 @@
 			local gun = {"fagot01", "maxim01", "elephant01", "odin01"}
 			local gunBig = {"elephant01", "odin01"}
 			local ItemsLifeUse = {"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use"}
-			local loot = {"item_key_gate_basefelix", "item_chain", "item_manual", "item_disk", "item_flashdrive", "item_key_gate_thetown", "item_ex", "item_teapon", "item_ssd", "item_silver_skull", "item_sas", "item_disk_exmachina", "item_cat", "item_rolex", "item_chain_gold", "item_vaze", "item_chiken", "item_skullring", "item_lion"}
+			local loot = {"item_chain", "item_manual", "item_disk", "item_flashdrive", "item_key_gate_thetown", "item_ex", "item_teapon", "item_ssd", "item_silver_skull", "item_sas", "item_disk_exmachina", "item_cat", "item_rolex", "item_chain_gold", "item_vaze", "item_chiken", "item_skullring", "item_lion"}
 
 			local count = random(2,4)
 			SetVar("CountSectanian", count)
@@ -6027,9 +6027,9 @@
 			CreateNewSgNodeObject(kust2, "kust444", -1, -1, CVector(2899.029, 349.951, 3724.216), Quaternion(0.000, 0.970, 0.000, 0.242), 1.000)
 			CreateNewSgNodeObject(kust2, "kust445", -1, -1, CVector(2784.258, 348.146, 3872.765), Quaternion(0.000, 0.970, 0.000, 0.242), 1.000)
 			CreateNewSgNodeObject(kust1, "kust446", -1, -1, CVector(2833.072, 349.805, 3673.108), Quaternion(0.000, 0.462, 0.000, -0.887), 1.000)
-			CreateNewSgNodeObject(k3, "kustarnik_1", -1, -1, CVector(3606.000, 380.776, 3506.000), Quaternion(0.0000, 0.5446, 0.0000, -0.8387), 0.810)
-			CreateNewSgNodeObject(k3, "kustarnik_2", -1, -1, CVector(3460.000, 354.406, 3619.000), Quaternion(0.0000, 0.3173, 0.0000, -0.9483), 0.813)
-			CreateNewSgNodeObject(k3, "kustarnik_3", -1, -1, CVector(3193.000, 343.664, 3516.000), Quaternion(0.0000, 0.9763, 0.0000, 0.2164), 0.900)
+			CreateNewSgNodeObject(k3, "kustarnik_1", -1, -1, CVector(3326.206, 381.000, 3515.609), Quaternion(0.0000, 0.5446, 0.0000, -0.8387), 0.810)
+			CreateNewSgNodeObject(k3, "kustarnik_2", -1, -1, CVector(3051.661, 354.390, 3425.307), Quaternion(0.0000, 0.3173, 0.0000, -0.9483), 0.813)
+			CreateNewSgNodeObject(k3, "kustarnik_3", -1, -1, CVector(3222.656, 343.740, 2506.956), Quaternion(0.0000, 0.9763, 0.0000, 0.2164), 0.900)
 			CreateNewSgNodeObject(k2, "kustarnik_4", -1, -1, CVector(3139.064, 319.000, 390.220), Quaternion(0.0000, 0.5188, 0.0000, 0.8549), 1)
 			CreateNewSgNodeObject(k3, "kustarnik_5", -1, -1, CVector(3148.795, 317.610, 414.339), Quaternion(0.0000, 0.5057, 0.0000, 0.8627), 1)
 			CreateNewSgNodeObject(k1, "kustarnik_6", -1, -1, CVector(3125.360, 319.000, 404.931), Quaternion(0.0000, 0.5410, 0.0000, 0.8410), 1)

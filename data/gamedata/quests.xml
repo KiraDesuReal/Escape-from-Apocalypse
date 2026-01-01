@@ -1201,7 +1201,7 @@
 		SubQuestsCondition="and"
 		CheckAll="0"
 		ConditionToGive="all taken"
-		PrecedingQuests="q_test_drive9"
+		PrecedingQuests="q_test_drive9 q_belazist7"
 		OnComplete='AddCabinsOrBasketsToTownIfNotCompleteQuest("mirotvorecCab03", "q_test_drive10"); AddCabinsOrBasketsToTownIfNotCompleteQuest("mirotvorecCargo03_8x10", "q_test_drive10"); AddItemToTown("octopus01"); AddItemToTown("rainmetal01"); AddItemToTown("flag01"); AddItemToTown("ammo_chest_artillerygunForSale"); AddItemsToPlayerRepository("add_stability_and_speed"); AddItemsToPlayerRepository("add_torque_and_stability"); AddItemsToPlayerRepository("ammo_chest_heavygun"); AddItemsToPlayerRepository("ammo_chest_shotgun"); AddPlayerMoney(200000)'>
 		<quest
 			Name="q_belazist8_1"

@@ -349,19 +349,20 @@ end
 
 function Q_TestDrive15(var, kills, quest, fm)
     if GetVar("PlayerCar").AsString == "Cruiser" and GetVar("PlayerCabin").AsString == "cruiserCab02" and GetVar("PlayerBasket").AsString == "cruiserCargo02_8x12" then
-        local cab_big_gun_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
-        local bas_big_gun_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
         local bas_side_gun_0 = GetPlayerVehicle():GetPartByName("BASKET_SIDE_GUN_0")
+		local big_gun = {"CABIN_BIG_GUN_1", "BASKET_BIG_GUN_0"}
         local l = 0
 
-        if cab_big_gun_1 and bas_big_gun_0 and bas_side_gun_0 then
-            cab_big_gun_1 = cab_big_gun_1:GetProperty("Prototype").AsString
-            bas_big_gun_0 = bas_big_gun_0:GetProperty("Prototype").AsString
-            bas_side_gun_0 = bas_side_gun_0:GetProperty("Prototype").AsString
-            if cab_big_gun_1 == "odin01" or cab_big_gun_1 == "odin01_insured" and bas_big_gun_0 == "odin01" or bas_big_gun_0 == "odin01_insured" and bas_side_gun_0 then l = l + 1 end
-        end
+        for i=1,2 do
+			if GetPlayerVehicle():GetPartByName(big_gun[i]) then
+			    local protbiggun = GetPlayerVehicle():GetPartByName(big_gun[i]):GetProperty("Prototype").AsString
+				if protbiggun == "odin01" or protbiggun == "odin01_insured" then l = l + 1 end
+			end
+		end
 
-        if l == 1 then Q_Kills(var, kills, quest, fm, "q_test_drive15") end
+        if bas_side_gun_0 then l = l + 1 end
+
+        if l == 3 then Q_Kills(var, kills, quest, fm, "q_test_drive15") end
     end
 end
 
@@ -490,20 +491,24 @@ end
 
 function Q_Belazist2(var, kills, quest, fm)
     if GetVar("PlayerCar").AsString == "Belaz" and GetVar("PlayerCabin").AsString == "belazCab02" and GetVar("PlayerBasket").AsString == "belazCargo02_8x11" then
-        local cab_sml_gun = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
-        local cab_sml_gun_1 = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN_1")
         local bas_big_gun_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+		local slots = {"CABIN_SMALL_GUN", "CABIN_SMALL_GUN_1"}
 
         local l = 0
 
-        if cab_sml_gun and cab_sml_gun_1 and bas_big_gun_0 then
-            cab_sml_gun = cab_sml_gun:GetProperty("Prototype").AsString 
-            cab_sml_gun_1 = cab_sml_gun_1:GetProperty("Prototype").AsString 
-            bas_big_gun_0 = bas_big_gun_0:GetProperty("Prototype").AsString 
-            if cab_sml_gun == "kord01" or cab_sml_gun == "kord01_insured" and cab_sml_gun_1 == "kord01" or cab_sml_gun_1 == "kord01_insured" and bas_big_gun_0 == "kpvt01" or bas_big_gun_0 == "kpvt01_insured" then l = l + 1 end
-        end
+        for i = 1, 2 do
+			if GetPlayerVehicle():GetPartByName(slots[i]) then
+                local protgun = GetPlayerVehicle():GetPartByName(slots[i]):GetProperty("Prototype").AsString
+                if protgun == "kord01" or protgun == "kord01_insured" then l = l + 1 end
+			end
+		end
 
-        if l == 1 then Q_Kills(var, kills, quest, fm, "q_belazist2") end
+        if bas_big_gun_0 then
+			local prot = bas_big_gun_0:GetProperty("Prototype").AsString
+			if prot == "kpvt01" or prot == "kpvt01_insured" then l = l + 1 end
+		end
+
+        if l == 3 then Q_Kills(var, kills, quest, fm, "q_belazist2") end
     end
 end
 
@@ -511,18 +516,17 @@ end
 
 function Q_Belazist3(var, kills, quest, fm)
     if GetVar("PlayerCar").AsString == "Belaz" and GetVar("PlayerCabin").AsString == "belazCab04" and GetVar("PlayerBasket").AsString == "belazCargo05_9x10" then
-        local cab_big_gun_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
-        local bas_big_gun_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
-
+        local slots = {"CABIN_BIG_GUN_1", "BASKET_BIG_GUN_0"}
         local l = 0
 
-        if cab_big_gun_1 and bas_big_gun_0 then
-            cab_big_gun_1 = cab_big_gun_1:GetProperty("Prototype").AsString 
-            bas_big_gun_0 = bas_big_gun_0:GetProperty("Prototype").AsString 
-            if cab_big_gun_1 == "rainmetal01" or cab_big_gun_1 == "rainmetal01_insured" and bas_big_gun_0 == "rainmetal01" or bas_big_gun_0 == "rainmetal01_insured" then l = l + 1 end
-        end
+        for i = 1, 2 do
+			if GetPlayerVehicle():GetPartByName(slots[i]) then
+				local protgun = GetPlayerVehicle():GetPartByName(slots[i]):GetProperty("Prototype").AsString
+				if protgun == "rainmetal01" or protgun == "rainmetal01_insured" then l = l + 1 end
+			end
+		end
 
-        if l == 1 then Q_Kills(var, kills, quest, fm, "q_belazist3") end
+        if l == 2 then Q_Kills(var, kills, quest, fm, "q_belazist3") end
     end
 end
 

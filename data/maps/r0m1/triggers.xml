@@ -135,15 +135,11 @@
 			if WINDGENERATOR_TIME_SECOND_GLOBAL > 0 then SetVar("WindGenerator_time_second", WINDGENERATOR_TIME_SECOND_GLOBAL) end
 			if WINDGENERATOR_STATUS_GLOBAL then SetVar("WindGenerator_status", WINDGENERATOR_STATUS_GLOBAL) end
 
-			if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
-				if GetVar("Generator_time_work_second").AsInt > 0 or GetVar("Generator_time_work_minute").AsInt > 0 or GetVar("Generator_time_work_hour").AsInt > 0 then
-					if GetVar("Generator_on").AsInt == 1 then
-						if getObj("TimerGlobal"):IsActivated() == 0 then TActivate("TimerGlobal") end
+			if GetVar("Generator_on").AsInt == 1 then
+				if getObj("TimerGlobal"):IsActivated() == 0 then TActivate("TimerGlobal") end
 
-						if GetVar("GarageCrafting_time_hour").AsInt > 0 or GetVar("GarageCrafting_time_minute").AsInt > 0 or GetVar("GarageCrafting_time_second").AsInt > 0 then
-							SetVar("GarageCraft_timer", 1)
-						end
-					end
+				if GetVar("GarageCrafting_time_hour").AsInt > 0 or GetVar("GarageCrafting_time_minute").AsInt > 0 or GetVar("GarageCrafting_time_second").AsInt > 0 then
+					SetVar("GarageCraft_timer", 1)
 				end
 			end
 

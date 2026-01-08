@@ -255,15 +255,18 @@
 			if Q_DAILY_KILL_PMC_KILLS then SetVar("q_daily_kill_pmc_Kills", Q_DAILY_KILL_PMC_KILLS) end
 			if Q_DAILY_KILL_PMC_PROGRESS then SetVar("q_daily_kill_pmc_Progress", Q_DAILY_KILL_PMC_PROGRESS) end
 			if Q_DAILY_KILL_PMC_STATUS then SetVar("q_daily_kill_pmc_Status", Q_DAILY_KILL_PMC_STATUS) end
+			if Q_DAILY_KILL_PMC_TRAIDER then SetVar("q_daily_kill_pmc", Q_DAILY_KILL_PMC_TRAIDER) end
 
 			if Q_DAILY_KILL_SCAV_KILLS then SetVar("q_daily_kill_scav_Kills", Q_DAILY_KILL_SCAV_KILLS) end
 			if Q_DAILY_KILL_SCAV_PROGRESS then SetVar("q_daily_kill_scav_Progress", Q_DAILY_KILL_SCAV_PROGRESS) end
 			if Q_DAILY_KILL_SCAV_STATUS then SetVar("q_daily_kill_scav_Status", Q_DAILY_KILL_SCAV_STATUS) end
+			if Q_DAILY_KILL_SCAV_TRAIDER then SetVar("q_daily_kill_scav", Q_DAILY_KILL_SCAV_TRAIDER) end
 
 			if Q_DAILY_EXTRACT_LOC then SetVar("q_daily_extract_Loc", Q_DAILY_EXTRACT_LOC) end
 			if Q_DAILY_EXTRACT_COUNT then SetVar("q_daily_extract_Count", Q_DAILY_EXTRACT_COUNT) end
 			if Q_DAILY_EXTRACT_STATUS then SetVar("q_daily_extract_Status", Q_DAILY_EXTRACT_STATUS) end
 			if Q_DAILY_EXTRACT_PROGRESS then SetVar("q_daily_extract_Progress", Q_DAILY_EXTRACT_PROGRESS) end
+			if Q_DAILY_EXTRACT_TRAIDER then SetVar("q_daily_extract", Q_DAILY_EXTRACT_TRAIDER) end
 
 			if ITEM_KEY_GATE_THETOWN_USED then SetVar("item_key_gate_thetown_used", ITEM_KEY_GATE_THETOWN_USED) end
 
@@ -6504,15 +6507,18 @@
 			if Q_DAILY_KILL_PMC_KILLS then Q_DAILY_KILL_PMC_KILLS = GetVar("q_daily_kill_pmc_Kills").AsInt end
 			if Q_DAILY_KILL_PMC_PROGRESS then Q_DAILY_KILL_PMC_PROGRESS = GetVar("q_daily_kill_pmc_Progress").AsInt end
 			if Q_DAILY_KILL_PMC_STATUS then Q_DAILY_KILL_PMC_STATUS = GetVar("q_daily_kill_pmc_Status").AsString end
+			if Q_DAILY_KILL_PMC_TRAIDER then Q_DAILY_KILL_PMC_TRAIDER = GetVar("q_daily_kill_pmc").AsString end
 
 			if Q_DAILY_KILL_SCAV_KILLS then Q_DAILY_KILL_SCAV_KILLS = GetVar("q_daily_kill_scav_Kills").AsInt end
 			if Q_DAILY_KILL_SCAV_PROGRESS then Q_DAILY_KILL_SCAV_PROGRESS = GetVar("q_daily_kill_scav_Progress").AsInt end
 			if Q_DAILY_KILL_SCAV_STATUS then Q_DAILY_KILL_SCAV_STATUS = GetVar("q_daily_kill_scav_Status").AsString end
+			if Q_DAILY_KILL_SCAV_TRAIDER then Q_DAILY_KILL_SCAV_TRAIDER = GetVar("q_daily_kill_scav").AsString end
 
 			if Q_DAILY_EXTRACT_LOC then Q_DAILY_EXTRACT_LOC = GetVar("q_daily_extract_Loc").AsString end
 			if Q_DAILY_EXTRACT_COUNT then Q_DAILY_EXTRACT_COUNT = GetVar("q_daily_extract_Count").AsInt end
 			if Q_DAILY_EXTRACT_STATUS then Q_DAILY_EXTRACT_STATUS = GetVar("q_daily_extract_Status").AsString end
 			if Q_DAILY_EXTRACT_PROGRESS then Q_DAILY_EXTRACT_PROGRESS = GetVar("q_daily_extract_Progress").AsString end
+			if Q_DAILY_EXTRACT_TRAIDER then Q_DAILY_EXTRACT_TRAIDER = GetVar("q_daily_extract").AsString end
 
 			--переменные предметов
 			if ITEM_KEY_GATE_THETOWN_USED and IsQuestItemPresent("quest_item_key_gate_thetown") then 

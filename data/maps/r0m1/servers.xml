@@ -661,6 +661,10 @@
 			file="data\models\AnimModels.xml" />
 
 		<Item
+			id="fakeCargo"
+			file="data\models\AnimModels.xml" />
+
+		<Item
 			id="fighterChassis"
 			file="data\models\AnimModels.xml" />
 
@@ -671,6 +675,11 @@
 		<Item
 			id="fighterCab02"
 			file="data\models\AnimModels.xml" />
+
+		<Item 
+			id="fighterCab03" 
+			file="data\models\AnimModels.xml"   
+			/>
 
 		<Item
 			id="fighterSusp01l"
@@ -716,6 +725,11 @@
 			id="hunterCab02"
 			file="data\models\AnimModels.xml" />
 
+		<Item 
+			id="hunterCab03" 
+			file="data\models\AnimModels.xml"   
+			/>
+
 		<Item
 			id="hunterSusp01"
 			file="data\models\AnimModels.xml" />
@@ -727,6 +741,26 @@
 		<Item
 			id="hunterWheel01r"
 			file="data\models\AnimModels.xml" />
+
+		<Item 
+			id="ChevroleChassis" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="ChevroleSusp01" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="ChevroleCab" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="ChevroleCarWheel_L_01" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="ChevroleCarWheel_R_01" 
+			file="data\models\AnimModels.xml"/>
 
 		<Item
 			id="cruiserChassis"

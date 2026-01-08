@@ -744,15 +744,18 @@
 			if Q_DAILY_KILL_PMC_KILLS then Q_DAILY_KILL_PMC_KILLS = 0 end
 			if Q_DAILY_KILL_PMC_PROGRESS then Q_DAILY_KILL_PMC_PROGRESS = 0 end
 			if Q_DAILY_KILL_PMC_STATUS then Q_DAILY_KILL_PMC_STATUS = "0" end
+			if Q_DAILY_KILL_PMC_TRAIDER then Q_DAILY_KILL_PMC_TRAIDER = "0" end
 
 			if Q_DAILY_KILL_SCAV_KILLS then Q_DAILY_KILL_SCAV_KILLS = 0 end
 			if Q_DAILY_KILL_SCAV_PROGRESS then Q_DAILY_KILL_SCAV_PROGRESS = 0 end
 			if Q_DAILY_KILL_SCAV_STATUS then Q_DAILY_KILL_SCAV_STATUS = "0" end
+			if Q_DAILY_KILL_SCAV_TRAIDER then Q_DAILY_KILL_SCAV_TRAIDER = "0" end
 
 			if Q_DAILY_EXTRACT_LOC then Q_DAILY_EXTRACT_LOC = "0" end
 			if Q_DAILY_EXTRACT_COUNT then Q_DAILY_EXTRACT_COUNT = 0 end
 			if Q_DAILY_EXTRACT_STATUS then Q_DAILY_EXTRACT_STATUS = "0" end
 			if Q_DAILY_EXTRACT_PROGRESS then Q_DAILY_EXTRACT_PROGRESS = 0 end
+			if Q_DAILY_EXTRACT_TRAIDER then Q_DAILY_EXTRACT_TRAIDER = "0" end
 
 			if ITEM_KEY_GATE_THETOWN_USED then ITEM_KEY_GATE_THETOWN_USED = 0 end
 
@@ -805,6 +808,7 @@
 					SetVar("Generator_time_work_minute", 1)
 					SetVar("Generator_time_work_hour", 1)
 				end
+				TActivate("IfGenerator_On")
 			end
 			
 			if GetVar("Generator_on").AsInt == 1 and not(GetVar("Generator_lvl").AsInt == 3) then
@@ -1103,15 +1107,18 @@
 			if Q_DAILY_KILL_PMC_KILLS then SetVar("q_daily_kill_pmc_Kills", Q_DAILY_KILL_PMC_KILLS) end
 			if Q_DAILY_KILL_PMC_PROGRESS then SetVar("q_daily_kill_pmc_Progress", Q_DAILY_KILL_PMC_PROGRESS) end
 			if Q_DAILY_KILL_PMC_STATUS then SetVar("q_daily_kill_pmc_Status", Q_DAILY_KILL_PMC_STATUS) end
+			if Q_DAILY_KILL_PMC_TRAIDER then SetVar("q_daily_kill_pmc", Q_DAILY_KILL_PMC_TRAIDER) end
 
 			if Q_DAILY_KILL_SCAV_KILLS then SetVar("q_daily_kill_scav_Kills", Q_DAILY_KILL_SCAV_KILLS) end
 			if Q_DAILY_KILL_SCAV_PROGRESS then SetVar("q_daily_kill_scav_Progress", Q_DAILY_KILL_SCAV_PROGRESS) end
 			if Q_DAILY_KILL_SCAV_STATUS then SetVar("q_daily_kill_scav_Status", Q_DAILY_KILL_SCAV_STATUS) end
+			if Q_DAILY_KILL_SCAV_TRAIDER then SetVar("q_daily_kill_scav", Q_DAILY_KILL_SCAV_TRAIDER) end
 
 			if Q_DAILY_EXTRACT_LOC then SetVar("q_daily_extract_Loc", Q_DAILY_EXTRACT_LOC) end
 			if Q_DAILY_EXTRACT_COUNT then SetVar("q_daily_extract_Count", Q_DAILY_EXTRACT_COUNT) end
 			if Q_DAILY_EXTRACT_STATUS then SetVar("q_daily_extract_Status", Q_DAILY_EXTRACT_STATUS) end
 			if Q_DAILY_EXTRACT_PROGRESS then SetVar("q_daily_extract_Progress", Q_DAILY_EXTRACT_PROGRESS) end
+			if Q_DAILY_EXTRACT_TRAIDER then SetVar("q_daily_extract", Q_DAILY_EXTRACT_TRAIDER) end
 
 		--переменные предметов
 			if ITEM_KEY_GATE_THETOWN_USED then SetVar("item_key_gate_thetown_used", ITEM_KEY_GATE_THETOWN_USED) end
@@ -4923,18 +4930,15 @@
 			local t = GetEntityByName("Town_r0m0_enter")
 			if t then t:SetPosition(CVector(0, 0, 0)) end
 
-			local t1 = GetEntityByName("Town_r0m0")
-			if t1 then t1:SetOpenGateToPlayer(false) end
-		
 			if GetVar("PetrolStationBuild_Builden").AsInt == 1 then
-				local p = GetEntityByName("PetrolStationTown1")
-				if p then p:SetOpenGateToPlayer(false) end
+				local p = GetEntityByName("PetrolStationTown98_enter")
+				if p then p:SetPosition(CVector(0, 0, 0)) end
 			end
-		
+
 			local chest = {"PlayerInventory_Lvl_1", "PlayerInventory_Lvl_2", "ChestScavsForLoot"}
 			for i2=1,3 do
 				local c = GetEntityByName(chest[i2])
-				if c then c:SetPosition(CVector(0, 0, 0)) end
+				if c then c:SetPosition(CVector(49.593, 257.709, 997.930)) end
 			end
 			trigger:Deactivate()
 		</script>
@@ -4946,12 +4950,9 @@
 			local t = GetEntityByName("Town_r0m0_enter")
 			if t then t:SetPosition(CVector(858.564, 255.000, 985.160)) end
 
-			local t1 = GetEntityByName("Town_r0m0")
-			if t1 then t1:SetOpenGateToPlayer(true) end
-
 			if GetVar("PetrolStationBuild_Builden").AsInt == 1 then
-				local p = GetEntityByName("PetrolStationTown1")
-				if p then p:SetOpenGateToPlayer(true) end
+				local p = GetEntityByName("PetrolStationTown98_enter")
+				if p then p:SetPosition(CVector(906.852, 255.000, 1040.380))end
 			end
 
 			TActivate("trTpPlayerInventory")
@@ -5505,9 +5506,10 @@
 				if GENERATOR_TIMER_HOUR_GLOBAL then GENERATOR_TIMER_HOUR_GLOBAL = GetVar("Generator_time_work_hour").AsInt end
 				if GENERATOR_TIMER_MINUTE_GLOBAL then GENERATOR_TIMER_MINUTE_GLOBAL = GetVar("Generator_time_work_minute").AsInt end
 				if GENERATOR_TIMER_SECOND_GLOBAL then GENERATOR_TIMER_SECOND_GLOBAL = GetVar("Generator_time_work_second").AsInt end
-				if GENERATOR_LVL_GLOBAL then GENERATOR_LVL_GLOBAL = GetVar("Generator_lvl").AsInt end
-				if GENERATOR_ON_GLOBAL then GENERATOR_ON_GLOBAL = GetVar("Generator_on").AsInt end
 			end
+
+			if GENERATOR_LVL_GLOBAL then GENERATOR_LVL_GLOBAL = GetVar("Generator_lvl").AsInt end
+			if GENERATOR_ON_GLOBAL then GENERATOR_ON_GLOBAL = GetVar("Generator_on").AsInt end
 
 		--удаление VehicleMove
 			TDeactivate("trCreateVehicleMove")
@@ -5709,15 +5711,18 @@
 			if Q_DAILY_KILL_PMC_KILLS then Q_DAILY_KILL_PMC_KILLS = GetVar("q_daily_kill_pmc_Kills").AsInt end
 			if Q_DAILY_KILL_PMC_PROGRESS then Q_DAILY_KILL_PMC_PROGRESS = GetVar("q_daily_kill_pmc_Progress").AsInt end
 			if Q_DAILY_KILL_PMC_STATUS then Q_DAILY_KILL_PMC_STATUS = GetVar("q_daily_kill_pmc_Status").AsString end
+			if Q_DAILY_KILL_PMC_TRAIDER then Q_DAILY_KILL_PMC_TRAIDER = GetVar("q_daily_kill_pmc").AsString end
 
 			if Q_DAILY_KILL_SCAV_KILLS then Q_DAILY_KILL_SCAV_KILLS = GetVar("q_daily_kill_scav_Kills").AsInt end
 			if Q_DAILY_KILL_SCAV_PROGRESS then Q_DAILY_KILL_SCAV_PROGRESS = GetVar("q_daily_kill_scav_Progress").AsInt end
 			if Q_DAILY_KILL_SCAV_STATUS then Q_DAILY_KILL_SCAV_STATUS = GetVar("q_daily_kill_scav_Status").AsString end
+			if Q_DAILY_KILL_SCAV_TRAIDER then Q_DAILY_KILL_SCAV_TRAIDER = GetVar("q_daily_kill_scav").AsString end
 
 			if Q_DAILY_EXTRACT_LOC then Q_DAILY_EXTRACT_LOC = GetVar("q_daily_extract_Loc").AsString end
 			if Q_DAILY_EXTRACT_COUNT then Q_DAILY_EXTRACT_COUNT = GetVar("q_daily_extract_Count").AsInt end
 			if Q_DAILY_EXTRACT_STATUS then Q_DAILY_EXTRACT_STATUS = GetVar("q_daily_extract_Status").AsString end
 			if Q_DAILY_EXTRACT_PROGRESS then Q_DAILY_EXTRACT_PROGRESS = GetVar("q_daily_extract_Progress").AsString end
+			if Q_DAILY_EXTRACT_TRAIDER then Q_DAILY_EXTRACT_TRAIDER = GetVar("q_daily_extract").AsString end
 
 		--переменные предметов
 			if ITEM_KEY_GATE_THETOWN_USED and IsQuestItemPresent("quest_item_key_gate_thetown") then 
@@ -6325,9 +6330,8 @@
 			local cabin = GetPlayerVehicle():GetCabin()
 			local basket = GetPlayerVehicle():GetBasket()
 			
-			local cab_sml_gun = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
-			local cab_sml_gun_1 = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN_1")
 			local bas_big_gun_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
+			local slots = {"CABIN_SMALL_GUN", "CABIN_SMALL_GUN_1"}
 			
 			local l = 0
 
@@ -6338,15 +6342,20 @@
 					if cabin == "belazCab02" and basket == "belazCargo02_8x11" then l = l + 1 end
 				end
 
-				if cab_sml_gun and cab_sml_gun_1 and bas_big_gun_0 then
-					cab_sml_gun = cab_sml_gun:GetProperty("Prototype").AsString 
-					cab_sml_gun_1 = cab_sml_gun_1:GetProperty("Prototype").AsString
-					bas_big_gun_0 = bas_big_gun_0:GetProperty("Prototype").AsString 
-					if cab_sml_gun == "kord01" or cab_sml_gun == "kord01_insured" and cab_sml_gun_1 == "kord01" or cab_sml_gun_1 == "kord01_insured" and bas_big_gun_0 == "kpvt01" or bas_big_gun_0 == "kpvt01_insured" then l = l + 1 end
+				for i = 1, 2 do
+					if GetPlayerVehicle():GetPartByName(slots[i]) then
+						local protgun = GetPlayerVehicle():GetPartByName(slots[i]):GetProperty("Prototype").AsString
+						if protgun == "kord01" or protgun == "kord01_insured" then l = l + 1 end
+					end
+				end
+
+				if bas_big_gun_0 then
+					local prot = bas_big_gun_0:GetProperty("Prototype").AsString
+					if prot == "kpvt01" or prot == "kpvt01_insured" then l = l + 1 end
 				end
 			end
 
-			if l == 2 then CompleteSubtask("q_belazist2_1") end
+			if l == 4 then CompleteSubtask("q_belazist2_1") end
 			trigger:Deactivate()
 		</script>
 	</trigger>	
@@ -6360,9 +6369,7 @@
 			local cabin = GetPlayerVehicle():GetCabin()
 			local basket = GetPlayerVehicle():GetBasket()
 			
-			local cab_big_gun_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
-			local bas_big_gun_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
-			
+			local slots = {"CABIN_BIG_GUN_1", "BASKET_BIG_GUN_0"}
 			local l = 0
 
 			if prot == "BelazForSale" then 
@@ -6372,14 +6379,15 @@
 					if cabin == "belazCab04" and basket == "belazCargo05_9x10" then l = l + 1 end
 				end
 
-				if cab_big_gun_1 and bas_big_gun_0 then
-					cab_big_gun_1 = cab_big_gun_1:GetProperty("Prototype").AsString 
-					bas_big_gun_0 = bas_big_gun_0:GetProperty("Prototype").AsString 
-					if cab_big_gun_1 == "rainmetal01" or cab_big_gun_1 == "rainmetal01_insured" and bas_big_gun_0 == "rainmetal01" or bas_big_gun_0 == "rainmetal01_insured" then l = l + 1 end
+				for i = 1, 2 do
+					if GetPlayerVehicle():GetPartByName(slots[i]) then
+						local protgun = GetPlayerVehicle():GetPartByName(slots[i]):GetProperty("Prototype").AsString
+						if protgun == "rainmetal01" or protgun == "rainmetal01_insured" then l = l + 1 end
+					end
 				end
 			end
 
-			if l == 2 then CompleteSubtask("q_belazist3_1") end
+			if l == 3 then CompleteSubtask("q_belazist3_1") end
 			trigger:Deactivate()
 		</script>
 	</trigger>	
@@ -6776,9 +6784,8 @@
 			local cabin = GetPlayerVehicle():GetCabin()
 			local basket = GetPlayerVehicle():GetBasket()
 
-			local cab_big_gun_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
-			local bas_big_gun_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
 			local bas_side_gun_0 = GetPlayerVehicle():GetPartByName("BASKET_SIDE_GUN_0")
+			local big_gun = {"CABIN_BIG_GUN_1", "BASKET_BIG_GUN_0"}
 			
 			local l = 0
 
@@ -6789,15 +6796,17 @@
 					if cabin == "cruiserCab02" and basket == "cruiserCargo02_8x12" then l = l + 1 end
 				end
 
-				if cab_big_gun_1 and bas_big_gun_0 and bas_side_gun_0 then
-					cab_big_gun_1 = cab_big_gun_1:GetProperty("Prototype").AsString
-					bas_big_gun_0 = bas_big_gun_0:GetProperty("Prototype").AsString
-					bas_side_gun_0 = bas_side_gun_0:GetProperty("Prototype").AsString
-					if cab_big_gun_1 == "odin01" or cab_big_gun_1 == "odin01_insured" and bas_big_gun_0 == "odin01" or bas_big_gun_0 == "odin01_insured" and bas_side_gun_0 then l = l + 1 end
+				for i=1,2 do
+					if GetPlayerVehicle():GetPartByName(big_gun[i]) then
+						local protbiggun = GetPlayerVehicle():GetPartByName(big_gun[i]):GetProperty("Prototype").AsString
+						if protbiggun == "odin01" or protbiggun == "odin01_insured" then l = l + 1 end
+					end
 				end
+
+				if bas_side_gun_0 then l = l + 1 end
 			end
 
-			if l == 2 then CompleteSubtask("q_test_drive15_1") end
+			if l == 4 then CompleteSubtask("q_test_drive15_1") end
 			trigger:Deactivate()
 		</script>
 	</trigger>

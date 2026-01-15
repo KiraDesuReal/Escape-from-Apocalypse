@@ -542,7 +542,11 @@ function Q_Belazist4(var, kills, quest, fm)
         if cab_giant_gun and bas_big_gun_0 then
             cab_giant_gun = cab_giant_gun:GetProperty("Prototype").AsString 
             bas_big_gun_0 = bas_big_gun_0:GetProperty("Prototype").AsString 
-            if cab_giant_gun == "octopus01" or cab_giant_gun == "octopus01_insured" and bas_big_gun_0 == "rainmetal01" or bas_big_gun_0 == "rainmetal01_insured" then l = l + 1 end
+            if cab_giant_gun == "octopus01" or cab_giant_gun == "octopus01_insured" then
+                if bas_big_gun_0 == "rainmetal01" or bas_big_gun_0 == "rainmetal01_insured" then 
+                    l = l + 1 
+                end
+            end
         end
 
         if l == 1 then Q_Kills(var, kills, quest, fm, "q_belazist4") end
@@ -574,20 +578,17 @@ end
 
 function Q_Belazist6(var, kills, quest, fm)
     if GetVar("PlayerCar").AsString == "Belaz" and GetVar("PlayerCabin").AsString == "belazCab04" and GetVar("PlayerBasket").AsString == "belazCargo03_11x12" then
-        local cab_big_gun_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
-        local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
-        local bas_big_1 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_1")
+        local slots = {"CABIN_BIG_GUN_1", "BASKET_BIG_GUN_0", "BASKET_BIG_GUN_1"}
+		local l = 0
 
-        local l = 0
+        for i = 1, 3 do
+			if GetPlayerVehicle():GetPartByName(slots[i]) then
+				local protgun = GetPlayerVehicle():GetPartByName(slots[i]):GetProperty("Prototype").AsString
+				if protgun == "rainmetal01" or protgun == "rainmetal01_insured" then l = l + 1 end
+			end
+		end
 
-        if cab_big_gun_1 and bas_big_0 and bas_big_1 then
-            cab_big_gun_1 = cab_big_gun_1:GetProperty("Prototype").AsString 
-            bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
-            bas_big_1 = bas_big_1:GetProperty("Prototype").AsString
-            if cab_big_gun_1 == "rainmetal01" or cab_big_gun_1 == "rainmetal01_insured" and bas_big_0 == "rainmetal01" or bas_big_0 == "rainmetal01_insured" and bas_big_1 == "rainmetal01" or bas_big_1 == "rainmetal01_insured" then l = l + 1 end
-        end
-
-        if l == 1 then Q_Kills(var, kills, quest, fm, "q_belazist6") end
+        if l == 3 then Q_Kills(var, kills, quest, fm, "q_belazist6") end
     end
 end
 

@@ -6414,7 +6414,11 @@
 				if cab_giant_gun and bas_big_gun_0 then
 					cab_giant_gun = cab_giant_gun:GetProperty("Prototype").AsString 
 					bas_big_gun_0 = bas_big_gun_0:GetProperty("Prototype").AsString 
-					if cab_giant_gun == "octopus01" or cab_giant_gun == "octopus01_insured" and bas_big_gun_0 == "rainmetal01" or bas_big_gun_0 == "rainmetal01_insured" then l = l + 1 end
+					if cab_giant_gun == "octopus01" or cab_giant_gun == "octopus01_insured" then
+						if bas_big_gun_0 == "rainmetal01" or bas_big_gun_0 == "rainmetal01_insured" then 
+							l = l + 1 
+						end
+					end
 				end
 			end
 
@@ -6467,10 +6471,7 @@
 			local cabin = GetPlayerVehicle():GetCabin()
 			local basket = GetPlayerVehicle():GetBasket()
 
-			local cab_big_gun_1 = GetPlayerVehicle():GetPartByName("CABIN_BIG_GUN_1")
-			local bas_big_0 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_0")
-			local bas_big_1 = GetPlayerVehicle():GetPartByName("BASKET_BIG_GUN_1")
-			
+			local slots = {"CABIN_BIG_GUN_1", "BASKET_BIG_GUN_0", "BASKET_BIG_GUN_1"}
 			local l = 0
 
 			if prot == "BelazForSale" then 
@@ -6480,15 +6481,15 @@
 					if cabin == "belazCab04" and basket == "belazCargo03_11x12" then l = l + 1 end
 				end
 
-				if cab_big_gun_1 and bas_big_0 and bas_big_1 then
-					cab_big_gun_1 = cab_big_gun_1:GetProperty("Prototype").AsString 
-					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
-					bas_big_1 = bas_big_1:GetProperty("Prototype").AsString
-					if cab_big_gun_1 == "rainmetal01" or cab_big_gun_1 == "rainmetal01_insured" and bas_big_0 == "rainmetal01" or bas_big_0 == "rainmetal01_insured" and bas_big_1 == "rainmetal01" or bas_big_1 == "rainmetal01_insured" then l = l + 1 end
+				for i = 1, 3 do
+					if GetPlayerVehicle():GetPartByName(slots[i]) then
+						local protgun = GetPlayerVehicle():GetPartByName(slots[i]):GetProperty("Prototype").AsString
+						if protgun == "rainmetal01" or protgun == "rainmetal01_insured" then l = l + 1 end
+					end
 				end
 			end
 
-			if l == 2 then CompleteSubtask("q_belazist6_1") end
+			if l == 4 then CompleteSubtask("q_belazist6_1") end
 			trigger:Deactivate()
 		</script>
 	</trigger>	

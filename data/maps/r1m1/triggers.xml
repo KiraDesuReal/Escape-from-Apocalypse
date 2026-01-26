@@ -373,6 +373,7 @@
 			TActivate("UseFuelNil_InPetrolStation01")
 			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK01", -1, -1, CVector(2575.530, 360.200, 2266.788), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
 			CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "ps_1_sound", -1, -1, CVector(2582.988, 348, 2267.327), Quaternion(0, 0, 0, 1))
+			SetVar("PetrolStation_1_Work", 1)
 		else
 			TActivate ("NotWork_PetrolStation01")
 		end
@@ -381,6 +382,7 @@
 			TActivate("UseFuelNil_InPetrolStation02")
 			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK02", -1, -1, CVector(1317.154, 300.550, 1748.705), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
 			CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "ps_2_sound", -1, -1, CVector(1318.114, 288, 1756.060), Quaternion(0, 0, 0, 1))
+			SetVar("PetrolStation_2_Work", 1)
 		else
 			TActivate ("NotWork_PetrolStation02")
 		end
@@ -389,6 +391,7 @@
 			TActivate("UseFuelNil_InPetrolStation03")
 			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK03", -1, -1, CVector(916.784, 320.600, 884.400), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
 			CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "ps_3_sound", -1, -1, CVector(912.397, 308, 878.329), Quaternion(0, 0, 0, 1))
+			SetVar("PetrolStation_3_Work", 1)
 		else
 			TActivate ("NotWork_PetrolStation03")
 		end
@@ -401,16 +404,19 @@
 				CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "ps_1_sound", -1, -1, CVector(2582.988, 348, 2267.327), Quaternion(0, 0, 0, 1))
 				TActivate("UseFuelNil_InPetrolStation01")
 				TDeactivate ("NotWork_PetrolStation01")
+				SetVar("PetrolStation_1_Work", 1)
 			elseif tr_prs_r == 2 then
 				CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK02", -1, -1, CVector(1317.154, 300.550, 1748.705), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
 				CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "ps_2_sound", -1, -1, CVector(1318.114, 288, 1756.060), Quaternion(0, 0, 0, 1))
 				TActivate("UseFuelNil_InPetrolStation02")
 				TDeactivate ("NotWork_PetrolStation02")
+				SetVar("PetrolStation_2_Work", 1)
 			elseif tr_prs_r == 3 then	
 				CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK03", -1, -1, CVector(916.784, 320.600, 884.400), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
 				CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "ps_3_sound", -1, -1, CVector(912.397, 308, 878.329), Quaternion(0, 0, 0, 1))
 				TActivate("UseFuelNil_InPetrolStation03")
 				TDeactivate ("NotWork_PetrolStation03")
+				SetVar("PetrolStation_3_Work", 1)
 			end
 		end
 
@@ -1097,17 +1103,17 @@
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BaseFelix_Exit" />
 		<script>
 			if GetVar("ExitBaseFelixOpen").AsInt == 0 and IsHasPlayerAmountOfSpecItems("item_key_gate_basefelix") then
-				local b = SpawnMessageBox("90002")
-				if b == 1 then
-					if GetVar("PetrolStation_Refill_Process").AsInt == 0 then
+				if GetVar("PetrolStation_Refill_Process").AsInt == 0 then
+					local b = SpawnMessageBox("90002")
+					if b == 1 then
 						RemoveSpecItemsFromSlot("item_key_gate_basefelix")
 						AddFadingMsgByStrIdFormatted("fm_item_to_npc", "item_key_gate_basefelix")
 						SetVar("ExitBaseFelixOpen", 1)
 						TActivate("BaseFelixExtract")
 					end
+					GetPlayerVehicle():SetThrottle(0)
+					GetPlayerVehicle():SetCustomLinearVelocity(0)
 				end
-				GetPlayerVehicle():SetThrottle(0)
-				GetPlayerVehicle():SetCustomLinearVelocity(0)
 			end
 
 			if GetVar("ExitBaseFelixOpen").AsInt == 1 then
@@ -3176,34 +3182,32 @@
 
 <!-- Заправки (Заправляем канистры) -->
 	<trigger Name="UseFuelNil_InPetrolStation01" active="0">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation01_loc" />
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 			local box = GetEntityByName("FuelBox_1")
-			if HasPlayerAmountOfItems("fuel_nil_use", 1) and not(box) or HasPlayerAmountOfItems("fuel_nil_use_insured", 1) and not(box) then
-				local b = SpawnMessageBox( "90001" )
-				if b == 1 then
-					if GetPlayerMoney() >= 5000 then
-						AddPlayerMoney(- 5000)
-						CreateEffectTTLed( "ET_PS_FUEL_PETROL_START", CVector(2582, 348, 2269), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 800)
-						AddFadingMsgByStrIdFormatted("fm_fuel_petrol_start")
-						SoundFadingMsg()
-						if HasPlayerAmountOfItems("fuel_nil_use", 1) then
-							RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
-						elseif HasPlayerAmountOfItems("fuel_nil_use_insured", 1) then
-							RemoveItemsFromPlayerRepository("fuel_nil_use_insured", 1)
-						end
-						TActivate("SoundPetrolProcess_InPertolStation01")
-						TActivate("FuelFull_InPetrolStation01")
-						GetPlayerVehicle():SetThrottle( 0 )
-						GetPlayerVehicle():SetCustomLinearVelocity( 0 )
-						SetVar("PetrolStation_Refill_Process", 1)
-						trigger:Deactivate()
-					else
-						AddFadingMsgByStrIdFormatted("fm_player_not_money")
-						SoundFadingMsg()
+			GetPlayerVehicle():SetThrottle(0)
+			GetPlayerVehicle():SetCustomLinearVelocity(0)
+			if (HasPlayerAmountOfItems("fuel_nil_use", 1) and not(box)) or (HasPlayerAmountOfItems("fuel_nil_use_insured", 1) and not(box)) then
+				if GetPlayerMoney() >= 5000 then
+					AddPlayerMoney(- 5000)
+					CreateEffectTTLed( "ET_PS_FUEL_PETROL_START", CVector(2582, 348, 2269), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 800)
+					AddFadingMsgByStrIdFormatted("fm_fuel_petrol_start")
+					SoundFadingMsg()
+					if HasPlayerAmountOfItems("fuel_nil_use", 1) then
+						RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
+					elseif HasPlayerAmountOfItems("fuel_nil_use_insured", 1) then
+						RemoveItemsFromPlayerRepository("fuel_nil_use_insured", 1)
 					end
+					TActivate("SoundPetrolProcess_InPertolStation01")
+					TActivate("FuelFull_InPetrolStation01")
+					SetVar("PetrolStation_Refill_Process", 1)
+					SetVar("PetrolStation_1_Work", 2)
+				else
+					AddFadingMsgByStrIdFormatted("fm_player_not_money")
+					SoundFadingMsg()
 				end
 			end
+			trigger:Deactivate()
 		</script>
 	</trigger>
 
@@ -3248,9 +3252,8 @@
 			AddFadingMsgByStrIdFormatted("fm_fuel_petrol_end")
 			SoundFadingMsg()
 
-			TActivate ("UseFuelNil_InPetrolStation01")
-
 			SetVar("PetrolStation_Refill_Process", 0)
+			SetVar("PetrolStation_1_Work", 1)
 
 			if IsQuestTaken("q_fuel2_6") and not(IsQuestComplete("q_fuel2_6")) then CompleteSubtask("q_fuel2_6") end
 		
@@ -3259,34 +3262,32 @@
 	</trigger>
 
 	<trigger Name="UseFuelNil_InPetrolStation02" active="0">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation02_loc" />
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 			local box = GetEntityByName("FuelBox_2")
-			if HasPlayerAmountOfItems("fuel_nil_use", 1) and not(box) or HasPlayerAmountOfItems("fuel_nil_use_insured", 1) and not(box) then
-				local b = SpawnMessageBox( "90001" )
-				if b == 1 then
-					if GetPlayerMoney() >= 5000 then
-						AddPlayerMoney(- 5000)
-						CreateEffectTTLed( "ET_PS_FUEL_PETROL_START", CVector(1312.274, 288.949, 1757.526), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 800)
-						AddFadingMsgByStrIdFormatted("fm_fuel_petrol_start")
-						SoundFadingMsg()
-						if HasPlayerAmountOfItems("fuel_nil_use", 1) then
-							RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
-						elseif HasPlayerAmountOfItems("fuel_nil_use_insured", 1) then
-							RemoveItemsFromPlayerRepository("fuel_nil_use_insured", 1)
-						end
-						TActivate("SoundPetrolProcess_InPertolStation02")
-						TActivate("FuelFull_InPetrolStation02")
-						GetPlayerVehicle():SetThrottle( 0 )
-						GetPlayerVehicle():SetCustomLinearVelocity( 0 )
-						SetVar("PetrolStation_Refill_Process", 1)
-						trigger:Deactivate() 
-					else
-						AddFadingMsgByStrIdFormatted("fm_player_not_money")
-						SoundFadingMsg()
+			GetPlayerVehicle():SetThrottle(0)
+			GetPlayerVehicle():SetCustomLinearVelocity(0)
+			if (HasPlayerAmountOfItems("fuel_nil_use", 1) and not(box)) or (HasPlayerAmountOfItems("fuel_nil_use_insured", 1) and not(box)) then
+				if GetPlayerMoney() >= 5000 then
+					AddPlayerMoney(- 5000)
+					CreateEffectTTLed( "ET_PS_FUEL_PETROL_START", CVector(1312.274, 288.949, 1757.526), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 800)
+					AddFadingMsgByStrIdFormatted("fm_fuel_petrol_start")
+					SoundFadingMsg()
+					if HasPlayerAmountOfItems("fuel_nil_use", 1) then
+						RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
+					elseif HasPlayerAmountOfItems("fuel_nil_use_insured", 1) then
+						RemoveItemsFromPlayerRepository("fuel_nil_use_insured", 1)
 					end
+					TActivate("SoundPetrolProcess_InPertolStation02")
+					TActivate("FuelFull_InPetrolStation02")
+					SetVar("PetrolStation_Refill_Process", 1)
+					SetVar("PetrolStation_2_Work", 2)
+				else
+					AddFadingMsgByStrIdFormatted("fm_player_not_money")
+					SoundFadingMsg()
 				end
 			end
+			trigger:Deactivate() 
 		</script>
 	</trigger>
 
@@ -3331,9 +3332,8 @@
 			AddFadingMsgByStrIdFormatted("fm_fuel_petrol_end")
 			SoundFadingMsg()
 
-			TActivate ("UseFuelNil_InPetrolStation02")
-
 			SetVar("PetrolStation_Refill_Process", 0)
+			SetVar("PetrolStation_2_Work", 1)
 		
 			if IsQuestTaken("q_fuel2_6") and not(IsQuestComplete("q_fuel2_6")) then CompleteSubtask("q_fuel2_6") end
 
@@ -3342,35 +3342,32 @@
 	</trigger>
 
 	<trigger Name="UseFuelNil_InPetrolStation03" active="0">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation03_loc" />
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 			local box = GetEntityByName("FuelBox_3")
-			if HasPlayerAmountOfItems("fuel_nil_use", 1) and not(box) or HasPlayerAmountOfItems("fuel_nil_use_insured", 1) and not(box) then
-				local b = SpawnMessageBox( "90001" )
-				if b == 1 then
-					if GetPlayerMoney() >= 5000 then
-						AddPlayerMoney(- 5000)
-						CreateEffectTTLed( "ET_PS_FUEL_PETROL_START", CVector(917.057, 309.294, 872.621), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 800)
-						AddFadingMsgByStrIdFormatted("fm_fuel_petrol_start")
-						SoundFadingMsg()
-						if HasPlayerAmountOfItems("fuel_nil_use", 1) then
-							RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
-						elseif HasPlayerAmountOfItems("fuel_nil_use_insured", 1) then
-							RemoveItemsFromPlayerRepository("fuel_nil_use_insured", 1)
-						end
-						TActivate("SoundPetrolProcess_InPertolStation03")
-						TActivate("FuelFull_InPetrolStation03")
-						GetPlayerVehicle():SetThrottle( 0 )
-						GetPlayerVehicle():SetCustomLinearVelocity( 0 )
-						SetVar("PetrolStation_Refill_Process", 1)
-						trigger:Deactivate() 
-					else
-						AddFadingMsgByStrIdFormatted("fm_player_not_money")
-						SoundFadingMsg()
+			GetPlayerVehicle():SetThrottle(0)
+			GetPlayerVehicle():SetCustomLinearVelocity(0)
+			if (HasPlayerAmountOfItems("fuel_nil_use", 1) and not(box)) or (HasPlayerAmountOfItems("fuel_nil_use_insured", 1) and not(box)) then
+				if GetPlayerMoney() >= 5000 then
+					AddPlayerMoney(- 5000)
+					CreateEffectTTLed( "ET_PS_FUEL_PETROL_START", CVector(917.057, 309.294, 872.621), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 800)
+					AddFadingMsgByStrIdFormatted("fm_fuel_petrol_start")
+					SoundFadingMsg()
+					if HasPlayerAmountOfItems("fuel_nil_use", 1) then
+						RemoveItemsFromPlayerRepository("fuel_nil_use", 1)
+					elseif HasPlayerAmountOfItems("fuel_nil_use_insured", 1) then
+						RemoveItemsFromPlayerRepository("fuel_nil_use_insured", 1)
 					end
+					TActivate("SoundPetrolProcess_InPertolStation03")
+					TActivate("FuelFull_InPetrolStation03")
+					SetVar("PetrolStation_Refill_Process", 1)
+					SetVar("PetrolStation_3_Work", 2)
+				else
+					AddFadingMsgByStrIdFormatted("fm_player_not_money")
+					SoundFadingMsg()
 				end
 			end
-
+			trigger:Deactivate() 
 		</script>
 	</trigger>
 
@@ -3415,9 +3412,8 @@
 			AddFadingMsgByStrIdFormatted("fm_fuel_petrol_end")
 			SoundFadingMsg()
 
-			TActivate ("UseFuelNil_InPetrolStation03")
-
 			SetVar("PetrolStation_Refill_Process", 0)
+			SetVar("PetrolStation_3_Work", 1)
 
 			if IsQuestTaken("q_fuel2_6") and not(IsQuestComplete("q_fuel2_6")) then CompleteSubtask("q_fuel2_6") end
 		
@@ -3429,30 +3425,280 @@
 	<trigger Name="NotWork_PetrolStation01" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation01_loc" />
 		<script>
-			if HasPlayerAmountOfItems("fuel_nil_use", 1) then
-				AddFadingMsgByStrIdFormatted("fm_petrol_notwork")
-				SoundFadingMsg()
-			end
+			AddFadingMsgByStrIdFormatted("fm_petrol_notwork")
+			SoundFadingMsg()
 		</script>
 	</trigger>
 
 	<trigger Name="NotWork_PetrolStation02" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation02_loc" />
 		<script>
-			if HasPlayerAmountOfItems("fuel_nil_use", 1) then
-				AddFadingMsgByStrIdFormatted("fm_petrol_notwork")
-				SoundFadingMsg()
-			end
+			AddFadingMsgByStrIdFormatted("fm_petrol_notwork")
+			SoundFadingMsg()
 		</script>
 	</trigger>
 
 	<trigger Name="NotWork_PetrolStation03" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="PetrolStation03_loc" />
 		<script>
-			if HasPlayerAmountOfItems("fuel_nil_use", 1) then
-				AddFadingMsgByStrIdFormatted("fm_petrol_notwork")
+			AddFadingMsgByStrIdFormatted("fm_petrol_notwork")
+			SoundFadingMsg()
+		</script>
+	</trigger>
+
+<!-- Заправка машины -->
+	<trigger Name="RefuelPlayerCar_InPetrolStation01" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			GetPlayerVehicle():SetThrottle(0)
+			GetPlayerVehicle():SetCustomLinearVelocity(0)
+			if GetPlayerMoney() >= 50 then
+				CreateEffectTTLed( "ET_PS_FUEL_PETROL_START", CVector(2582, 348, 2269), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 800)
+				AddFadingMsgByStrIdFormatted("fm_fuel_petrol_start")
+				SoundFadingMsg()
+				TActivate("SoundPetrolProcess_InPertolStation01")
+				SetVar("PetrolStation_1_Work", 2)
+				TActivate("RefuelPlayerCar_InPetrolStation01_Progress")
+			else
+				AddFadingMsgByStrIdFormatted("fm_player_not_money")
 				SoundFadingMsg()
 			end
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="RefuelPlayerCar_InPetrolStation01_Progress" active="0">
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="PetrolStation01_loc" />
+		<script>
+			local pl = GetPlayerVehicle()
+			local fuel = GetPlayerMaxFuel() - math.floor(GetPlayerFuel() + 0.5)
+			if pl then
+				if math.floor(GetPlayerFuel() + 0.5) ~= GetPlayerMaxFuel() then
+					TActivate("RefuelPlayerCar_InPetrolStation01_LeaveLoc")
+					if GetPlayerMoney() >= 500 then
+						if fuel >= 10 then 
+							pl:AddModifier("fuel", "+ 10")
+							g_Player:AddMoney(- 500)
+							AddFadingMsgByStrIdFormatted("fm_refuel_player_car", 10, math.floor(GetPlayerFuel() + 0.5), 500, GetPlayerMoney())
+						else
+							local money = fuel * 50
+							pl:AddModifier("fuel", "+ "..fuel)
+							g_Player:AddMoney(- money)
+							AddFadingMsgByStrIdFormatted("fm_refuel_player_car", fuel, math.floor(GetPlayerFuel() + 0.5), money, GetPlayerMoney())
+						end
+					elseif GetPlayerMoney() >= 50 then
+						pl:AddModifier("fuel", "+ 1")
+						g_Player:AddMoney(- 50)
+						AddFadingMsgByStrIdFormatted("fm_refuel_player_car", 1, math.floor(GetPlayerFuel() + 0.5), 50, GetPlayerMoney())
+					else
+						TActivate("RefuelPlayerCar_InPetrolStation01_Stop")
+						AddFadingMsgByStrIdFormatted("fm_player_not_money")
+						SoundFadingMsg()
+						trigger:Deactivate() 
+					end
+				else
+					TActivate("RefuelPlayerCar_InPetrolStation01_Stop")
+					trigger:Deactivate()
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="RefuelPlayerCar_InPetrolStation01_LeaveLoc" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="PetrolStation01_loc" />
+		<script>
+			TActivate("RefuelPlayerCar_InPetrolStation01_Stop")
+			TDeactivate("RefuelPlayerCar_InPetrolStation01_Progress")
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="RefuelPlayerCar_InPetrolStation01_Stop" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local sd01 = GetEntityByName("SFPP_01")
+			if sd01 then sd01:Remove() end
+
+			local pl01 = GetEntityByName("PetrolLightProcess01")
+			if pl01 then pl01:Remove() end
+
+			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK01", -1, -1, CVector(2575.530, 360.200, 2266.788), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
+			CreateEffectTTLed( "ET_PS_FUEL_PETROL_END", CVector(2582, 348, 2269), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+			AddFadingMsgByStrIdFormatted("fm_fuel_petrol_end")
+			SoundFadingMsg()
+			SetVar("PetrolStation_1_Work", 1)
+			TDeactivate("RefuelPlayerCar_InPetrolStation01_LeaveLoc")
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="RefuelPlayerCar_InPetrolStation02" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			GetPlayerVehicle():SetThrottle(0)
+			GetPlayerVehicle():SetCustomLinearVelocity(0)
+			if GetPlayerMoney() >= 50 then
+				CreateEffectTTLed( "ET_PS_FUEL_PETROL_START", CVector(1312.274, 288.949, 1757.526), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 800)
+				AddFadingMsgByStrIdFormatted("fm_fuel_petrol_start")
+				SoundFadingMsg()
+				TActivate("SoundPetrolProcess_InPertolStation02")
+				SetVar("PetrolStation_2_Work", 2)
+				TActivate("RefuelPlayerCar_InPetrolStation02_Progress")
+			else
+				AddFadingMsgByStrIdFormatted("fm_player_not_money")
+				SoundFadingMsg()
+			end
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="RefuelPlayerCar_InPetrolStation02_Progress" active="0">
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="PetrolStation02_loc" />
+		<script>
+			local pl = GetPlayerVehicle()
+			local fuel = GetPlayerMaxFuel() - math.floor(GetPlayerFuel() + 0.5)
+			if pl then
+				if math.floor(GetPlayerFuel() + 0.5) ~= GetPlayerMaxFuel() then
+					TActivate("RefuelPlayerCar_InPetrolStation02_LeaveLoc")
+					if GetPlayerMoney() >= 500 then
+						if fuel >= 10 then 
+							pl:AddModifier("fuel", "+ 10")
+							g_Player:AddMoney(- 500)
+							AddFadingMsgByStrIdFormatted("fm_refuel_player_car", 10, math.floor(GetPlayerFuel() + 0.5), 500, GetPlayerMoney())
+						else
+							local money = fuel * 50
+							pl:AddModifier("fuel", "+ "..fuel)
+							g_Player:AddMoney(- money)
+							AddFadingMsgByStrIdFormatted("fm_refuel_player_car", fuel, math.floor(GetPlayerFuel() + 0.5), money, GetPlayerMoney())
+						end
+					elseif GetPlayerMoney() >= 50 then
+						pl:AddModifier("fuel", "+ 1")
+						g_Player:AddMoney(- 50)
+						AddFadingMsgByStrIdFormatted("fm_refuel_player_car", 1, math.floor(GetPlayerFuel() + 0.5), 50, GetPlayerMoney())
+					else
+						TActivate("RefuelPlayerCar_InPetrolStation02_Stop")
+						AddFadingMsgByStrIdFormatted("fm_player_not_money")
+						SoundFadingMsg()
+						trigger:Deactivate() 
+					end
+				else
+					TActivate("RefuelPlayerCar_InPetrolStation02_Stop")
+					trigger:Deactivate()
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="RefuelPlayerCar_InPetrolStation02_LeaveLoc" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="PetrolStation02_loc" />
+		<script>
+			TActivate("RefuelPlayerCar_InPetrolStation02_Stop")
+			TDeactivate("RefuelPlayerCar_InPetrolStation02_Progress")
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="RefuelPlayerCar_InPetrolStation02_Stop" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local sd01 = GetEntityByName("SFPP_02")
+			if sd01 then sd01:Remove() end
+
+			local pl01 = GetEntityByName("PetrolLightProcess02")
+			if pl01 then pl01:Remove() end
+
+			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK02", -1, -1, CVector(1317.154, 300.550, 1748.705), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
+			CreateEffectTTLed( "ET_PS_FUEL_PETROL_END", CVector(1312.274, 288.949, 1757.526), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+			AddFadingMsgByStrIdFormatted("fm_fuel_petrol_end")
+			SoundFadingMsg()
+			SetVar("PetrolStation_2_Work", 1)
+			TDeactivate("RefuelPlayerCar_InPetrolStation02_LeaveLoc")
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="RefuelPlayerCar_InPetrolStation03" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			GetPlayerVehicle():SetThrottle(0)
+			GetPlayerVehicle():SetCustomLinearVelocity(0)
+			if GetPlayerMoney() >= 50 then
+				CreateEffectTTLed( "ET_PS_FUEL_PETROL_START", CVector(917.057, 309.294, 872.621), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 800)
+				AddFadingMsgByStrIdFormatted("fm_fuel_petrol_start")
+				SoundFadingMsg()
+				TActivate("SoundPetrolProcess_InPertolStation03")
+				SetVar("PetrolStation_3_Work", 2)
+				TActivate("RefuelPlayerCar_InPetrolStation03_Progress")
+			else
+				AddFadingMsgByStrIdFormatted("fm_player_not_money")
+				SoundFadingMsg()
+			end
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="RefuelPlayerCar_InPetrolStation03_Progress" active="0">
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="PetrolStation03_loc" />
+		<script>
+			local pl = GetPlayerVehicle()
+			local fuel = GetPlayerMaxFuel() - math.floor(GetPlayerFuel() + 0.5)
+			if pl then
+				if math.floor(GetPlayerFuel() + 0.5) ~= GetPlayerMaxFuel() then
+					TActivate("RefuelPlayerCar_InPetrolStation03_LeaveLoc")
+					if GetPlayerMoney() >= 500 then
+						if fuel >= 10 then 
+							pl:AddModifier("fuel", "+ 10")
+							g_Player:AddMoney(- 500)
+							AddFadingMsgByStrIdFormatted("fm_refuel_player_car", 10, math.floor(GetPlayerFuel() + 0.5), 500, GetPlayerMoney())
+						else
+							local money = fuel * 50
+							pl:AddModifier("fuel", "+ "..fuel)
+							g_Player:AddMoney(- money)
+							AddFadingMsgByStrIdFormatted("fm_refuel_player_car", fuel, math.floor(GetPlayerFuel() + 0.5), money, GetPlayerMoney())
+						end
+					elseif GetPlayerMoney() >= 50 then
+						pl:AddModifier("fuel", "+ 1")
+						g_Player:AddMoney(- 50)
+						AddFadingMsgByStrIdFormatted("fm_refuel_player_car", 1, math.floor(GetPlayerFuel() + 0.5), 50, GetPlayerMoney())
+					else
+						TActivate("RefuelPlayerCar_InPetrolStation03_Stop")
+						AddFadingMsgByStrIdFormatted("fm_player_not_money")
+						SoundFadingMsg()
+						trigger:Deactivate() 
+					end
+				else
+					TActivate("RefuelPlayerCar_InPetrolStation03_Stop")
+					trigger:Deactivate()
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="RefuelPlayerCar_InPetrolStation03_LeaveLoc" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="PetrolStation03_loc" />
+		<script>
+			TActivate("RefuelPlayerCar_InPetrolStation03_Stop")
+			TDeactivate("RefuelPlayerCar_InPetrolStation03_Progress")
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="RefuelPlayerCar_InPetrolStation03_Stop" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local sd01 = GetEntityByName("SFPP_03")
+			if sd01 then sd01:Remove() end
+
+			local pl01 = GetEntityByName("PetrolLightProcess03")
+			if pl01 then pl01:Remove() end
+
+			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK03", -1, -1, CVector(916.784, 320.600, 884.400), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
+			CreateEffectTTLed( "ET_PS_FUEL_PETROL_END", CVector(917.057, 309.294, 872.621), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1000)
+			AddFadingMsgByStrIdFormatted("fm_fuel_petrol_end")
+			SoundFadingMsg()
+			SetVar("PetrolStation_3_Work", 1)
+			TDeactivate("RefuelPlayerCar_InPetrolStation03_LeaveLoc")
+			trigger:Deactivate() 
 		</script>
 	</trigger>
 
@@ -5872,14 +6118,14 @@
 			CreateNewSgNodeObject(kust1, "kust286", -1, -1, CVector(461.070, 306.128, 1852.989), Quaternion(0.000, 0.636, 0.000, 0.772), 0.939)
 			CreateNewSgNodeObject(kust1, "kust287", -1, -1, CVector(442.701, 306.209, 1862.954), Quaternion(0.000, 0.636, 0.000, 0.772), 0.939)
 			CreateNewSgNodeObject(kust1, "kust288", -1, -1, CVector(455.073, 309.102, 1705.961), Quaternion(0.000, 0.636, 0.000, 0.772), 0.939)
-			CreateNewSgNodeObject(kust1, "kust289", -1, -1, CVector(442.380, 359.338, 1635.677), Quaternion(0.000, 0.636, 0.000, 0.772), 0.939)
+			CreateNewSgNodeObject(kust1, "kust289", -1, -1, CVector(430.632, 311.000, 1639.325), Quaternion(0.000, 0.636, 0.000, 0.772), 0.939)
 			CreateNewSgNodeObject(kust1, "kust290", -1, -1, CVector(462.272, 310.999, 1654.511), Quaternion(0.000, 0.636, 0.000, 0.772), 0.939)
 			CreateNewSgNodeObject(kust1, "kust291", -1, -1, CVector(448.929, 311.000, 1659.573), Quaternion(0.000, 0.636, 0.000, 0.772), 0.939)
 			CreateNewSgNodeObject(kust1, "kust292", -1, -1, CVector(469.886, 309.476, 1681.833), Quaternion(0.000, 0.636, 0.000, 0.772), 0.939)
 			CreateNewSgNodeObject(kust1, "kust293", -1, -1, CVector(460.325, 306.419, 1874.670), Quaternion(0.000, 0.636, 0.000, 0.772), 0.957)
 			CreateNewSgNodeObject(kust1, "kust294", -1, -1, CVector(490.580, 334.645, 2086.429), Quaternion(0.000, 0.636, 0.000, 0.772), 0.801)
 			CreateNewSgNodeObject(kust1, "kust295", -1, -1, CVector(489.923, 335.059, 2104.595), Quaternion(0.000, 0.636, 0.000, 0.772), 1.106)
-			CreateNewSgNodeObject(kust2, "kust296", -1, -1, CVector(528.000, 387.849, 2349.729), Quaternion(0.000, 0.891, 0.000, 0.454), 1.457)
+			CreateNewSgNodeObject(kust2, "kust296", -1, -1, CVector(528.000, 344.900, 2349.729), Quaternion(0.000, 0.891, 0.000, 0.454), 1.457)
 			CreateNewSgNodeObject(kust1, "kust297", -1, -1, CVector(650.477, 344.584, 2604.598), Quaternion(0.000, 0.523, 0.000, 0.853), 0.996)
 			CreateNewSgNodeObject(kust1, "kust298", -1, -1, CVector(701.464, 320.683, 2805.405), Quaternion(0.000, 0.182, 0.000, -0.983), 0.888)
 			CreateNewSgNodeObject(kust2, "kust299", -1, -1, CVector(702.778, 320.654, 2828.118), Quaternion(0.000, 0.934, 0.000, -0.358), 1.226)
@@ -5894,7 +6140,7 @@
 			CreateNewSgNodeObject(kust1, "kust308", -1, -1, CVector(1069.422, 342.200, 3663.019), Quaternion(0.000, 0.165, 0.000, -0.986), 0.959)
 			CreateNewSgNodeObject(kust1, "kust309", -1, -1, CVector(1137.011, 342.339, 3860.987), Quaternion(0.000, 0.875, 0.000, 0.485), 0.825)
 			CreateNewSgNodeObject(kust1, "kust310", -1, -1, CVector(1724.078, 295.461, 810.942), Quaternion(0.000, 0.999, 0.000, -0.044), 1.487)
-			CreateNewSgNodeObject(kust2, "kust311", -1, -1, CVector(1739.709, 342.871, 769.951), Quaternion(0.000, 0.824, 0.000, 0.566), 0.857)
+			CreateNewSgNodeObject(kust2, "kust311", -1, -1, CVector(1760.070, 301.500, 760.255), Quaternion(0.000, 0.824, 0.000, 0.566), 0.959)
 			CreateNewSgNodeObject(kust2, "kust312", -1, -1, CVector(1769.601, 297.683, 778.219), Quaternion(0.000, 0.649, 0.000, 0.760), 0.978)
 			CreateNewSgNodeObject(kust1, "kust313", -1, -1, CVector(1765.598, 295.870, 798.142), Quaternion(0.000, 0.595, 0.000, 0.804), 1.267)
 			CreateNewSgNodeObject(kust2, "kust314", -1, -1, CVector(1936.721, 301.083, 731.022), Quaternion(0.000, 0.267, 0.000, -0.964), 1.188)
@@ -6092,6 +6338,23 @@
 		</script>
 	</trigger>
 
+	<trigger Name="UnKeyBind_O" active="1">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="DisableKeyBind_O_loc" />
+		<script>
+			KEY_O_GLOBAL = GetKeyBind("IM_CAR_GET_OUT_OF_DIFFICULT_PLACE")
+			IMPULSES = GET_GLOBAL_OBJECT "IMPULSES"
+            IMPULSES:UnbindKey1("GS_GAME", KEY_O_GLOBAL, "IM_CAR_GET_OUT_OF_DIFFICULT_PLACE")
+		</script>
+	</trigger>
+
+	<trigger Name="KeyBind_O" active="1">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="DisableKeyBind_O_loc" />
+		<script>
+			IMPULSES = GET_GLOBAL_OBJECT "IMPULSES"
+            IMPULSES:BindKey1("GS_GAME", KEY_O_GLOBAL, "IM_CAR_GET_OUT_OF_DIFFICULT_PLACE")
+		</script>
+	</trigger>
+
 <!-- Выход с локации/Очистка карты для следующего запуска -->
 	<trigger Name="ExitToMap" active="0">
 		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
@@ -6115,6 +6378,8 @@
 				TDeactivate ("NotWork_PetrolStation0"..i)
 				TDeactivate("FuelFull_InPetrolStation0"..i)
 				TDeactivate("SoundPetrolProcess_InPertolStation0"..i)
+				TDeactivate("RefuelPlayerCar_InPetrolStation0"..i.."_LeaveLoc")
+				TDeactivate("RefuelPlayerCar_InPetrolStation0"..i.."_Progress")
 				local ps_s_work = GetEntityByName("SFPP_0"..i)
 				if ps_s_work then ps_s_work:Remove() end
 				local light_work = GetEntityByName("PetrolLightProcess0"..i)
@@ -6123,6 +6388,7 @@
 				if ps_s then ps_s:Remove() end
 				local fuelbox = GetEntityByName("FuelBox_"..i)
 				if fuelbox then fuelbox:Remove() end
+				SetVar("PetrolStation_"..i.."_Work", 0)
 			end
 
 			TDeactivate("TimerRaid")
@@ -6390,6 +6656,9 @@
 
 			if IsQuestTaken("q_clearing_r1m1") and not(IsQuestComplete("q_clearing_r1m1")) then
 				TDeactivate("q_clearing_r1m1_InLoc")
+				TDeactivate("q_clearing_r1m1_LeaveLoc")
+				getObj("q_clearing_r1m1_LeaveLoc"):DelEvent("GE_OBJECT_LEAVES_LOCATION")
+				SetVar("q_clearing_r1m1_EnemyInLoc", 0)
 			end
 
 			if IsQuestTaken("q_base_scavs") and not(IsQuestComplete("q_base_scavs")) then
@@ -6526,6 +6795,11 @@
 			end
 
 			SetTolerance(1087, 1100, RS_ENEMY)
+
+			if KEY_O_GLOBAL then
+				IMPULSES = GET_GLOBAL_OBJECT "IMPULSES"
+           		IMPULSES:BindKey1("GS_GAME", KEY_O_GLOBAL, "IM_CAR_GET_OUT_OF_DIFFICULT_PLACE")
+			end
 
 			if DEBUG == 1 then
 				println("=================== EXIT MAP: r1m1 ===================")
@@ -6848,11 +7122,19 @@
 			local loc = trigger:GetCallObjName()
 			local locnum = tonumber(strsub(loc,17,17))
 
-			if loc == "q_clearing_r1m1_"..locnum.."_loc_0" then
+			if GetVar("q_clearing_r1m1_EnemyInLoc").AsInt ~= locnum then
 				SetVar("q_clearing_r1m1_EnemyInLoc", locnum)
-			else
-				SetVar("q_clearing_r1m1_EnemyInLoc", 0)
+				getObj("q_clearing_r1m1_LeaveLoc"):AddEvent("GE_OBJECT_LEAVES_LOCATION", "q_clearing_r1m1_"..locnum.."_loc_0")
+				TActivate("q_clearing_r1m1_LeaveLoc")
 			end
+		</script>
+	</trigger>
+
+	<trigger Name="q_clearing_r1m1_LeaveLoc" active="0">
+		<script>
+			SetVar("q_clearing_r1m1_EnemyInLoc", 0)
+			trigger:DelEvent("GE_OBJECT_LEAVES_LOCATION")
+			trigger:Deactivate()
 		</script>
 	</trigger>
 
@@ -6873,7 +7155,6 @@
 							AddFadingMsgByStrIdFormatted("fm_progress_quest_scavs_kills", "q_clearing_r1m1", GetVar("q_clearing_r1m1_DieScavs_loc_"..i).AsInt, kills[i])
 							SoundFadingMsg()
 						end
-						SetVar("q_clearing_r1m1_EnemyInLoc", 0)
 					end
 				end
 			end

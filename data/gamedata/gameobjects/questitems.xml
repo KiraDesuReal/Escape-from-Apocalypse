@@ -182,7 +182,21 @@ $Id: QuestItems.xml,v 1.11 2005/10/18 06:12:48 anton Exp $
 
 	<Prototype
 		Class		= "QuestItem"
+		Name		= "q_daily_kill_pmc_PRAPOR_complete"
+		ModelFile	= "quest_board"
+		VisibleInEncyclopedia	= "false"
+		ResourceType	= "QUEST_ITEMS" />
+
+	<Prototype
+		Class		= "QuestItem"
 		Name		= "q_daily_kill_scav_PRAPOR"
+		ModelFile	= "quest_board"
+		VisibleInEncyclopedia	= "false"
+		ResourceType	= "QUEST_ITEMS" />
+
+	<Prototype
+		Class		= "QuestItem"
+		Name		= "q_daily_kill_scav_PRAPOR_complete"
 		ModelFile	= "quest_board"
 		VisibleInEncyclopedia	= "false"
 		ResourceType	= "QUEST_ITEMS" />
@@ -196,7 +210,22 @@ $Id: QuestItems.xml,v 1.11 2005/10/18 06:12:48 anton Exp $
 
 	<Prototype
 		Class		= "QuestItem"
+		Name		= "q_daily_extract_PRAPOR_complete"
+		ModelFile	= "quest_board"
+		VisibleInEncyclopedia	= "false"
+		ResourceType	= "QUEST_ITEMS" />
+
+
+	<Prototype
+		Class		= "QuestItem"
 		Name		= "q_daily_kill_pmc_TERAPIST"
+		ModelFile	= "quest_board"
+		VisibleInEncyclopedia	= "false"
+		ResourceType	= "QUEST_ITEMS" />
+
+	<Prototype
+		Class		= "QuestItem"
+		Name		= "q_daily_kill_pmc_TERAPIST_complete"
 		ModelFile	= "quest_board"
 		VisibleInEncyclopedia	= "false"
 		ResourceType	= "QUEST_ITEMS" />
@@ -210,6 +239,13 @@ $Id: QuestItems.xml,v 1.11 2005/10/18 06:12:48 anton Exp $
 
 	<Prototype
 		Class		= "QuestItem"
+		Name		= "q_daily_kill_scav_TERAPIST_complete"
+		ModelFile	= "quest_board"
+		VisibleInEncyclopedia	= "false"
+		ResourceType	= "QUEST_ITEMS" />
+
+	<Prototype
+		Class		= "QuestItem"
 		Name		= "q_daily_extract_TERAPIST"
 		ModelFile	= "quest_board"
 		VisibleInEncyclopedia	= "false"
@@ -217,7 +253,22 @@ $Id: QuestItems.xml,v 1.11 2005/10/18 06:12:48 anton Exp $
 
 	<Prototype
 		Class		= "QuestItem"
+		Name		= "q_daily_extract_TERAPIST_complete"
+		ModelFile	= "quest_board"
+		VisibleInEncyclopedia	= "false"
+		ResourceType	= "QUEST_ITEMS" />
+
+
+	<Prototype
+		Class		= "QuestItem"
 		Name		= "q_daily_kill_pmc_MECHANIK"
+		ModelFile	= "quest_board"
+		VisibleInEncyclopedia	= "false"
+		ResourceType	= "QUEST_ITEMS" />
+
+	<Prototype
+		Class		= "QuestItem"
+		Name		= "q_daily_kill_pmc_MECHANIK_complete"
 		ModelFile	= "quest_board"
 		VisibleInEncyclopedia	= "false"
 		ResourceType	= "QUEST_ITEMS" />
@@ -231,7 +282,21 @@ $Id: QuestItems.xml,v 1.11 2005/10/18 06:12:48 anton Exp $
 
 	<Prototype
 		Class		= "QuestItem"
+		Name		= "q_daily_kill_scav_MECHANIK_complete"
+		ModelFile	= "quest_board"
+		VisibleInEncyclopedia	= "false"
+		ResourceType	= "QUEST_ITEMS" />
+
+	<Prototype
+		Class		= "QuestItem"
 		Name		= "q_daily_extract_MECHANIK"
+		ModelFile	= "quest_board"
+		VisibleInEncyclopedia	= "false"
+		ResourceType	= "QUEST_ITEMS" />
+
+	<Prototype
+		Class		= "QuestItem"
+		Name		= "q_daily_extract_MECHANIK_complete"
 		ModelFile	= "quest_board"
 		VisibleInEncyclopedia	= "false"
 		ResourceType	= "QUEST_ITEMS" />

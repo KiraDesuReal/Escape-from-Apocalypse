@@ -5942,8 +5942,12 @@
 				if cab_small and bas_small_0 then
 					cab_small = cab_small:GetProperty("Prototype").AsString 
 					bas_small_0 = bas_small_0:GetProperty("Prototype").AsString 
-					if cab_small == "specter01" or cab_small == "specter01_insured" and bas_small_0 == "pkt01" or bas_small_0 == "pkt01_insured" then l = l + 1 end
-					if cab_small == "pkt01" or cab_small == "pkt01_insured" and bas_small_0 == "specter01" or bas_small_0 == "specter01_insured" then l = l + 1 end
+					if cab_small == "specter01" or cab_small == "specter01_insured" then
+						if bas_small_0 == "pkt01" or bas_small_0 == "pkt01_insured" then l = l + 1 end
+					end
+					if cab_small == "pkt01" or cab_small == "pkt01_insured" then
+						if bas_small_0 == "specter01" or bas_small_0 == "specter01_insured" then l = l + 1 end
+					end
 				end
 			end
 	
@@ -6029,7 +6033,9 @@
 				if bas_big_0 and cab_small then
 					cab_small = cab_small:GetProperty("Prototype").AsString 
 					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
-					if cab_small == "storm01" or cab_small == "storm01_insured" and bas_big_0 == "rapier01" or bas_big_0 == "rapier01_insured" then l = l + 1 end
+					if cab_small == "storm01" or cab_small == "storm01_insured" then
+						if bas_big_0 == "rapier01" or bas_big_0 == "rapier01_insured" then l = l + 1 end
+					end
 				end
 			end
 			
@@ -6059,7 +6065,9 @@
 				if bas_big_0 and cab_big_1 then
 					cab_big_1 = cab_big_1:GetProperty("Prototype").AsString 
 					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
-					if cab_big_1 == "vulcan01" or cab_big_1 == "vulcan01_insured" and bas_big_0 == "vulcan01" or bas_big_0 == "vulcan01_insured" then l = l + 1 end
+					if cab_big_1 == "vulcan01" or cab_big_1 == "vulcan01_insured" then
+						if bas_big_0 == "vulcan01" or bas_big_0 == "vulcan01_insured" then l = l + 1 end
+					end
 				end
 			end
 
@@ -6117,7 +6125,9 @@
 				if cab_big_1 and bas_big_0 then
 					cab_big_1 = cab_big_1:GetProperty("Prototype").AsString 
 					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
-					if cab_big_1 == "rapier01" or cab_big_1 == "rapier01_insured" and bas_big_0 == "rapier01" or bas_big_0 == "rapier01_insured" then l = l + 1 end
+					if cab_big_1 == "rapier01" or cab_big_1 == "rapier01_insured" then
+						if bas_big_0 == "rapier01" or bas_big_0 == "rapier01_insured" then l = l + 1 end
+					end
 				end
 			end
 
@@ -6147,8 +6157,12 @@
 				if cab_big_1 and bas_big_0 then
 					cab_big_1 = cab_big_1:GetProperty("Prototype").AsString 
 					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
-					if cab_big_1 == "rainmetal01" or cab_big_1 == "rainmetal01_insured" and bas_big_0 == "kpvt01" or bas_big_0 == "kpvt01_insured" then l = l + 1 end
-					if cab_big_1 == "kpvt01" or cab_big_1 == "kpvt01_insured" and bas_big_0 == "rainmetal01" or bas_big_0 == "rainmetal01_insured" then l = l + 1 end
+					if cab_big_1 == "rainmetal01" or cab_big_1 == "rainmetal01_insured" then
+						if bas_big_0 == "kpvt01" or bas_big_0 == "kpvt01_insured" then l = l + 1 end
+					end
+					if cab_big_1 == "kpvt01" or cab_big_1 == "kpvt01_insured" then
+						if bas_big_0 == "rainmetal01" or bas_big_0 == "rainmetal01_insured" then l = l + 1 end
+					end
 				end
 			end
 		
@@ -6171,7 +6185,9 @@
 				if cab_big_1 and bas_big_0 then
 					cab_big_1 = cab_big_1:GetProperty("Prototype").AsString 
 					bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
-					if cab_big_1 == "vector01" or cab_big_1 == "vector01_insured" and bas_big_0 == "vector01" or bas_big_0 == "vector01_insured" then l = l + 1 end
+					if cab_big_1 == "vector01" or cab_big_1 == "vector01_insured" then
+						if bas_big_0 == "vector01" or bas_big_0 == "vector01_insured" then l = l + 1 end
+					end
 				end
 			end
 
@@ -6370,6 +6386,7 @@
 			local basket = GetPlayerVehicle():GetBasket()
 			
 			local slots = {"CABIN_BIG_GUN_1", "BASKET_BIG_GUN_0"}
+			local sml_slot = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
 			local l = 0
 
 			if prot == "BelazForSale" then 
@@ -6385,9 +6402,11 @@
 						if protgun == "rainmetal01" or protgun == "rainmetal01_insured" then l = l + 1 end
 					end
 				end
+
+				if sml_slot == nil then l = l + 1 then
 			end
 
-			if l == 3 then CompleteSubtask("q_belazist3_1") end
+			if l == 4 then CompleteSubtask("q_belazist3_1") end
 			trigger:Deactivate()
 		</script>
 	</trigger>	
@@ -6472,6 +6491,7 @@
 			local basket = GetPlayerVehicle():GetBasket()
 
 			local slots = {"CABIN_BIG_GUN_1", "BASKET_BIG_GUN_0", "BASKET_BIG_GUN_1"}
+			local sml_slot = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
 			local l = 0
 
 			if prot == "BelazForSale" then 
@@ -6487,9 +6507,11 @@
 						if protgun == "rainmetal01" or protgun == "rainmetal01_insured" then l = l + 1 end
 					end
 				end
+
+				if sml_slot == nil then l = l + 1 end
 			end
 
-			if l == 4 then CompleteSubtask("q_belazist6_1") end
+			if l == 5 then CompleteSubtask("q_belazist6_1") end
 			trigger:Deactivate()
 		</script>
 	</trigger>	
@@ -6544,7 +6566,7 @@
 			local basket = GetPlayerVehicle():GetBasket()
 
 			local slots = {"CABIN_BIG_GUN_1", "BASKET_BIG_GUN_0", "BASKET_BIG_GUN_1"}
-
+			local cab_giant_gun = GetPlayerVehicle():GetPartByName("CABIN_GIANT_GUN")
 			local l = 0
 
 			if prot == "BelazForSale" then 
@@ -6560,9 +6582,11 @@
 						if protgun == "bumblebee01" or protgun == "bumblebee01_insured" then l = l + 1 end
 					end
 				end
+
+				if cab_giant_gun == nil then l = l + 1 end
 			end
 
-			if l == 4 then CompleteSubtask("q_belazist8_1") end
+			if l == 5 then CompleteSubtask("q_belazist8_1") end
 			trigger:Deactivate()
 		</script>
 	</trigger>	
@@ -6591,7 +6615,9 @@
 				if cab_big_gun_1 and bas_giant_gun then
 					cab_big_gun_1 = cab_big_gun_1:GetProperty("Prototype").AsString 
 					bas_giant_gun = bas_giant_gun:GetProperty("Prototype").AsString 
-					if cab_big_gun_1 == "flag01" or cab_big_gun_1 == "flag01_insured" and bas_giant_gun == "cyclops01" or bas_giant_gun == "cyclops01_insured" then l = l + 1 end
+					if cab_big_gun_1 == "flag01" or cab_big_gun_1 == "flag01_insured" then
+						if bas_giant_gun == "cyclops01" or bas_giant_gun == "cyclops01_insured" then l = l + 1 end
+					end
 				end
 			end
 
@@ -6767,7 +6793,9 @@
 				if cab_big_gun_1 and bas_giant_gun then
 					cab_big_gun_1 = cab_big_gun_1:GetProperty("Prototype").AsString
 					bas_giant_gun = bas_giant_gun:GetProperty("Prototype").AsString
-					if cab_big_gun_1 == "kpvt01" or cab_big_gun_1 == "kpvt01_insured" and bas_giant_gun == "octopus01" or bas_giant_gun == "octopus01_insured" then l = l + 1 end
+					if cab_big_gun_1 == "kpvt01" or cab_big_gun_1 == "kpvt01_insured" then
+						if bas_giant_gun == "octopus01" or bas_giant_gun == "octopus01_insured" then l = l + 1 end
+					end
 				end
 			end
 

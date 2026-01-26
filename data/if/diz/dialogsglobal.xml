@@ -12032,7 +12032,7 @@
 		text="Задача выполнена!"
 		role="PLAYER"
 		scriptCondition="GetVar('q_daily_kill_pmc_Status').AsString == 'COMPLETE'"
-		scriptResult="RemoveQuestItem('q_daily_kill_pmc_PRAPOR'); SetVar('q_daily_kill_pmc_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_kill_pmc'); RewardForDailyQuests()"
+		scriptResult="RemoveQuestItem('q_daily_kill_pmc_PRAPOR_complete'); SetVar('q_daily_kill_pmc_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_kill_pmc'); RewardForDailyQuests()"
 		nextReplies="Dlg_npc_q_daily_kill_pmc_prapor_5" />
 
 	<Reply
@@ -12074,7 +12074,7 @@
 		text="Задача выполнена!"
 		role="PLAYER"
 		scriptCondition="GetVar('q_daily_kill_scav_Status').AsString == 'COMPLETE'"
-		scriptResult="RemoveQuestItem('q_daily_kill_scav_PRAPOR'); SetVar('q_daily_kill_scav_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_kill_scav'); RewardForDailyQuests()"
+		scriptResult="RemoveQuestItem('q_daily_kill_scav_PRAPOR_complete'); SetVar('q_daily_kill_scav_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_kill_scav'); RewardForDailyQuests()"
 		nextReplies="Dlg_npc_q_daily_kill_scav_prapor_5" />
 
 	<Reply
@@ -12117,7 +12117,7 @@
 		text="Задача выполнена!"
 		role="PLAYER"
 		scriptCondition="GetVar('q_daily_extract_Status').AsString == 'COMPLETE'"
-		scriptResult="RemoveQuestItem('q_daily_extract_PRAPOR'); SetVar('q_daily_extract_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_extract'); RewardForDailyQuests()"
+		scriptResult="RemoveQuestItem('q_daily_extract_PRAPOR_complete'); SetVar('q_daily_extract_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_extract'); RewardForDailyQuests()"
 		nextReplies="Dlg_npc_q_daily_extract_prapor_5" />
 
 	<Reply
@@ -13462,7 +13462,7 @@
 		text="Задача выполнена!"
 		role="PLAYER"
 		scriptCondition="GetVar('q_daily_kill_pmc_Status').AsString == 'COMPLETE'"
-		scriptResult="RemoveQuestItem('q_daily_kill_pmc_TERAPIST'); SetVar('q_daily_kill_pmc_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_kill_pmc'); RewardForDailyQuests()"
+		scriptResult="RemoveQuestItem('q_daily_kill_pmc_TERAPIST_complete'); SetVar('q_daily_kill_pmc_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_kill_pmc'); RewardForDailyQuests()"
 		nextReplies="Dlg_npc_q_daily_kill_pmc_terapist_5" />
 
 	<Reply
@@ -13504,7 +13504,7 @@
 		text="Задача выполнена!"
 		role="PLAYER"
 		scriptCondition="GetVar('q_daily_kill_scav_Status').AsString == 'COMPLETE'"
-		scriptResult="RemoveQuestItem('q_daily_kill_scav_TERAPIST'); SetVar('q_daily_kill_scav_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_kill_scav'); RewardForDailyQuests()"
+		scriptResult="RemoveQuestItem('q_daily_kill_scav_TERAPIST_complete'); SetVar('q_daily_kill_scav_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_kill_scav'); RewardForDailyQuests()"
 		nextReplies="Dlg_npc_q_daily_kill_scav_terapist_5" />
 
 	<Reply
@@ -13546,7 +13546,7 @@
 		text="Задача выполнена!"
 		role="PLAYER"
 		scriptCondition="GetVar('q_daily_extract_Status').AsString == 'COMPLETE'"
-		scriptResult="RemoveQuestItem('q_daily_extract_TERAPIST'); SetVar('q_daily_extract_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_extract'); RewardForDailyQuests()"
+		scriptResult="RemoveQuestItem('q_daily_extract_TERAPIST_complete'); SetVar('q_daily_extract_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_extract'); RewardForDailyQuests()"
 		nextReplies="Dlg_npc_q_daily_extract_terapist_5" />
 
 	<Reply
@@ -16011,7 +16011,7 @@
 		text="Задача выполнена!"
 		role="PLAYER"
 		scriptCondition="GetVar('q_daily_kill_pmc_Status').AsString == 'COMPLETE'"
-		scriptResult="RemoveQuestItem('q_daily_kill_pmc_MECHANIK'); SetVar('q_daily_kill_pmc_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_kill_pmc'); RewardForDailyQuests()"
+		scriptResult="RemoveQuestItem('q_daily_kill_pmc_MECHANIK_complete'); SetVar('q_daily_kill_pmc_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_kill_pmc'); RewardForDailyQuests()"
 		nextReplies="Dlg_npc_q_daily_kill_pmc_mechanik_5" />
 
 	<Reply
@@ -16053,7 +16053,7 @@
 		text="Задача выполнена!"
 		role="PLAYER"
 		scriptCondition="GetVar('q_daily_kill_scav_Status').AsString == 'COMPLETE'"
-		scriptResult="RemoveQuestItem('q_daily_kill_scav_MECHANIK'); SetVar('q_daily_kill_scav_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_kill_scav'); RewardForDailyQuests()"
+		scriptResult="RemoveQuestItem('q_daily_kill_scav_MECHANIK_complete'); SetVar('q_daily_kill_scav_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_kill_scav'); RewardForDailyQuests()"
 		nextReplies="Dlg_npc_q_daily_kill_scav_mechanik_5" />
 
 	<Reply
@@ -16095,7 +16095,7 @@
 		text="Задача выполнена!"
 		role="PLAYER"
 		scriptCondition="GetVar('q_daily_extract_Status').AsString == 'COMPLETE'"
-		scriptResult="RemoveQuestItem('q_daily_extract_MECHANIK'); SetVar('q_daily_extract_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_extract'); RewardForDailyQuests()"
+		scriptResult="RemoveQuestItem('q_daily_extract_MECHANIK_complete'); SetVar('q_daily_extract_Status', 'FINISHED'); TActivate('SoundQuestFihished'); AddImportantFadingMsgByStrIdFormatted('fm_complete_quest', 'q_daily_extract'); RewardForDailyQuests()"
 		nextReplies="Dlg_npc_q_daily_extract_mechanik_5" />
 
 	<Reply
@@ -17814,5 +17814,76 @@
 		text="Выбрать USEC."
 		role="PLAYER"
 		scriptResult="TActivate('EndSelectFractionsCuts'); SetVar('PlayerBelong', 'USEC'); SetVar('SelectBelong', 'USEC'); EndConversation()" />
+
+<!--Заправка в рейде-->
+
+	<Reply
+		name="Dlg_npc_petrolstation01_1"
+		text="С помощью заправки можно заправиться топливом."
+		role="NPC"
+		scriptCondition="GetVar('PetrolStation_1_Work').AsInt == 1"
+		nextReplies="Dlg_npc_petrolstation01_2 Dlg_npc_petrolstation01_3 Dlg_npc_petrolstation_4" />
+
+	<Reply
+		name="Dlg_npc_petrolstation02_1"
+		text="С помощью заправки можно заправиться топливом."
+		role="NPC"
+		scriptCondition="GetVar('PetrolStation_2_Work').AsInt == 1"
+		nextReplies="Dlg_npc_petrolstation02_2 Dlg_npc_petrolstation02_3 Dlg_npc_petrolstation_4" />
+
+	<Reply
+		name="Dlg_npc_petrolstation03_1"
+		text="С помощью заправки можно заправиться топливом."
+		role="NPC"
+		scriptCondition="GetVar('PetrolStation_3_Work').AsInt == 1"
+		nextReplies="Dlg_npc_petrolstation03_2 Dlg_npc_petrolstation03_3 Dlg_npc_petrolstation_4" />
+
+	<Reply
+		name="Dlg_npc_petrolstation01_2"
+		text="Заправить канистру (Стоимость: 5.000 монет)"
+		role="PLAYER"
+		scriptCondition="(HasPlayerAmountOfItems('fuel_nil_use', 1) and getObj('FuelBox_1') == nil) or (HasPlayerAmountOfItems('fuel_nil_use_insured', 1) and getObj('FuelBox_1') == nil)"
+		scriptResult="TActivate('UseFuelNil_InPetrolStation01'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_petrolstation02_2"
+		text="Заправить канистру (Стоимость: 5.000 монет)"
+		role="PLAYER"
+		scriptCondition="(HasPlayerAmountOfItems('fuel_nil_use', 1) and getObj('FuelBox_2') == nil) or (HasPlayerAmountOfItems('fuel_nil_use_insured', 1) and getObj('FuelBox_2') == nil)"
+		scriptResult="TActivate('UseFuelNil_InPetrolStation02'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_petrolstation03_2"
+		text="Заправить канистру (Стоимость: 5.000 монет)"
+		role="PLAYER"
+		scriptCondition="(HasPlayerAmountOfItems('fuel_nil_use', 1) and getObj('FuelBox_3') == nil) or (HasPlayerAmountOfItems('fuel_nil_use_insured', 1) and getObj('FuelBox_3') == nil)"
+		scriptResult="TActivate('UseFuelNil_InPetrolStation03'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_petrolstation01_3"
+		text="Заправить машину (Стоимость: 1л - 50 монет)"
+		role="PLAYER"
+		scriptCondition="math.floor(GetPlayerFuel() + 0.5) ~= GetPlayerMaxFuel()"
+		scriptResult="TActivate('RefuelPlayerCar_InPetrolStation01'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_petrolstation02_3"
+		text="Заправить машину (Стоимость: 1л - 50 монет)"
+		role="PLAYER"
+		scriptCondition="math.floor(GetPlayerFuel() + 0.5) ~= GetPlayerMaxFuel()"
+		scriptResult="TActivate('RefuelPlayerCar_InPetrolStation02'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_petrolstation03_3"
+		text="Заправить машину (Стоимость: 1л - 50 монет)"
+		role="PLAYER"
+		scriptCondition="math.floor(GetPlayerFuel() + 0.5) ~= GetPlayerMaxFuel()"
+		scriptResult="TActivate('RefuelPlayerCar_InPetrolStation03'); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_petrolstation_4"
+		text="Выход."
+		role="PLAYER"
+		scriptResult="GetPlayerVehicle():SetThrottle(0); GetPlayerVehicle():SetCustomLinearVelocity(0); EndConversation()" />
 
 </DialogsResource>

@@ -281,6 +281,10 @@
 		value="Данная заправка не функционирует!" />
 
 	<string
+		id="fm_refuel_player_car"
+		value="@ff0042ffТопливо +%1d (%2d)|@ffffffffДеньги -%3d (%4d)" />
+
+	<string
 		id="fm_petrol_need_generator"
 		value="Включите генератор, чтобы заправить канистру топливом!" />
 
@@ -599,4 +603,8 @@
 	<string
 		id="fm_add_event_quest_item"
 		value="Получены квестовые предметы." />
+
+	<string
+		id="fm_daily_quest_loot"
+		value="Награда за задание находится в вашем хранилище." />
 </resource>

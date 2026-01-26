@@ -23,7 +23,7 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 		RecoilForce		= "5000"
 		DamageType	= "BLAST"
 		Decal				= "DC_GUN"
-		ShellsPoolSize  = "44"
+		ShellsPoolSize  = "54"
 		WithShellsPoolLimit	= "true"
 
 		ChargeSize     = "1"
@@ -54,7 +54,7 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 		RecoilForce		= "5000"
 		DamageType	= "BLAST"
 		Decal				= "DC_GUN"
-		ShellsPoolSize  = "44"
+		ShellsPoolSize  = "54"
 		WithShellsPoolLimit	= "true"
 
 		ChargeSize     = "1"
@@ -263,9 +263,9 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 		NumBulletsInShot	= "10"
 		FiringRate		= "14"
 		GroupingAngle		= "3"
-		FiringRange		= "300"
+		FiringRange		= "500"
 		RecoilForce		= "3000"
-		ShellsPoolSize  = "21"
+		ShellsPoolSize  = "35"
 		WithShellsPoolLimit	= "true"
 
 		Decal			= "DC_BIG_MACHINEGUN"
@@ -293,9 +293,9 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 		NumBulletsInShot	= "10"
 		FiringRate		= "14"
 		GroupingAngle		= "3"
-		FiringRange		= "300"
+		FiringRange		= "500"
 		RecoilForce		= "3000"
-		ShellsPoolSize  = "21"
+		ShellsPoolSize  = "35"
 		WithShellsPoolLimit	= "true"
 
 		Decal			= "DC_BIG_MACHINEGUN"
@@ -500,7 +500,7 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 		GroupingAngle		= "0.3"
 		FiringRange		= "800"
 		RecoilForce		= "500"
-		ShellsPoolSize  = "60"
+		ShellsPoolSize  = "100"
 		WithShellsPoolLimit	= "true"
 
 		ChargeSize     		= "20"
@@ -528,7 +528,7 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 		GroupingAngle		= "0.3"
 		FiringRange		= "800"
 		RecoilForce		= "500"
-		ShellsPoolSize  = "60"
+		ShellsPoolSize  = "100"
 		WithShellsPoolLimit	= "true"
 
 		ChargeSize     		= "20"
@@ -557,7 +557,7 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 		GroupingAngle		= "2.1"
 		FiringRange		= "600"
 		RecoilForce		= "700"
-		ShellsPoolSize  = "48"
+		ShellsPoolSize  = "96"
 		WithShellsPoolLimit	= "true"
 
 		ActionDist		= "1000"		
@@ -591,7 +591,7 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 		GroupingAngle		= "2.1"
 		FiringRange		= "600"
 		RecoilForce		= "700"
-		ShellsPoolSize  = "48"
+		ShellsPoolSize  = "96"
 		WithShellsPoolLimit	= "true"
 
 		ActionDist		= "1000"		

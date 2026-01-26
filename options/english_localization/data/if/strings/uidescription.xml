@@ -412,19 +412,19 @@
 
 	<string
 		id="oil_use_diz"
-		value="A barrel with a small amount of fuel.||@ff904040Used when the vehicle's fuel level is 25%.||@ff0042ffRestores +15% Fuel" />
+		value="A barrel with a small amount of fuel.||@ff904040Used when the vehicle's fuel level is 5%.||@ff0042ffRestores +15% Fuel" />
 
 	<string
 		id="oil_use_insured_diz"
-		value="A barrel with a small amount of fuel.||@ff904040Used when the vehicle's fuel level is 25%.||@ff0042ffRestores +15% Fuel" />
+		value="A barrel with a small amount of fuel.||@ff904040Used when the vehicle's fuel level is 5%.||@ff0042ffRestores +15% Fuel" />
 
 	<string
 		id="fuel_full_use_diz"
-		value="High-octane fuel is very rare and comes at a considerable premium.||@ff904040Used when the vehicle's fuel level is 25%.||@ff0042ffRestores +30% Fuel" />
+		value="High-octane fuel is very rare and comes at a considerable premium.||@ff904040Used when the vehicle's fuel level is 5%.||@ff0042ffRestores +30% Fuel" />
 
 	<string
 		id="fuel_full_use_insured_diz"
-		value="High-octane fuel is very rare and comes at a considerable premium.||@ff904040Used when the vehicle's fuel level is 25%.||@ff0042ffRestores +30% Fuel" />
+		value="High-octane fuel is very rare and comes at a considerable premium.||@ff904040Used when the vehicle's fuel level is 5%.||@ff0042ffRestores +30% Fuel" />
 
 	<string
 		id="fuel_nil_use_diz"
@@ -1953,9 +1953,19 @@
 		value="I have a task for you. We need to clear the area of several PMCs. Can you handle it? There will be a reward, don't worry.|@FF0000AA|@FF1D1D1DObjectives:|- Kill a certain number of PMC fighters||@FF0000AA|@FF1D1D1DReward:|- Unknown reward" />
 
 	<string
+		id="q_daily_kill_pmc_PRAPOR_complete_diz"
+		locForm="0"
+		value="@ff23961b[Available for completion]|I have a task for you. We need to clear the area of several PMCs. Can you handle it? There will be a reward, don't worry.|@FF0000AA|@FF1D1D1DObjectives:|- Kill a certain number of PMC fighters||@FF0000AA|@FF1D1D1DReward:|- Unknown reward" />
+
+	<string
 		id="q_daily_kill_scav_PRAPOR_diz"
 		locForm="0"
 		value="I have one job for you. Lately, the locals have gone completely wild, constantly preventing us from completing our tasks. In short, we need to scare the bandits a little. Will you take it?|@FF0000AA|@FF1D1D1DObjectives:|- Kill a certain number of scavs||@FF0000AA|@FF1D1D1DReward:|- Unknown reward" />
+
+	<string
+		id="q_daily_kill_scav_PRAPOR_complete_diz"
+		locForm="0"
+		value="@ff23961b[Available for completion]|I have one job for you. Lately, the locals have gone completely wild, constantly preventing us from completing our tasks. In short, we need to scare the bandits a little. Will you take it?|@FF0000AA|@FF1D1D1DObjectives:|- Kill a certain number of scavs||@FF0000AA|@FF1D1D1DReward:|- Unknown reward" />
 
 	<string
 		id="q_daily_extract_PRAPOR_diz"
@@ -1963,9 +1973,19 @@
 		value="Listen, we need help with reconnaissance - to walk around a couple of places, comb through the situation there, and how to retreat to a safe place if necessary. Not for nothing, of course, there will be a reward, and the matter is a piece of cake. Come on, get ready, we'll wait for news.|@FF0000AA|@FF1D1D1DObjectives:|- Survive and exit the Krai location a certain number of times||@FF0000AA|@FF1D1D1DReward:|- Unknown reward" />
 
 	<string
+		id="q_daily_extract_PRAPOR_complete_diz"
+		locForm="0"
+		value="@ff23961b[Available for completion]|Listen, we need help with reconnaissance - to walk around a couple of places, comb through the situation there, and how to retreat to a safe place if necessary. Not for nothing, of course, there will be a reward, and the matter is a piece of cake. Come on, get ready, we'll wait for news.|@FF0000AA|@FF1D1D1DObjectives:|- Survive and exit the Krai location a certain number of times||@FF0000AA|@FF1D1D1DReward:|- Unknown reward" />
+
+	<string
 		id="q_daily_kill_pmc_TERAPIST_diz"
 		locForm="0"
 		value="We need help eliminating a group of targets that are interfering with our humanitarian operations. If you are not busy, I will assign this to you. Full details are attached.|@FF0000AA|@FF1D1D1DObjectives:|- Kill a certain number of PMC fighters||@FF0000AA|@FF1D1D1DReward:|- Unknown reward" />
+
+	<string
+		id="q_daily_kill_pmc_TERAPIST_complete_diz"
+		locForm="0"
+		value="@ff23961b[Available for completion]|We need help eliminating a group of targets that are interfering with our humanitarian operations. If you are not busy, I will assign this to you. Full details are attached.|@FF0000AA|@FF1D1D1DObjectives:|- Kill a certain number of PMC fighters||@FF0000AA|@FF1D1D1DReward:|- Unknown reward" />
 
 	<string
 		id="q_daily_kill_scav_TERAPIST_diz"
@@ -1973,9 +1993,19 @@
 		value="The locations where we often conduct our operations are teeming with local scum, thus preventing us from completing our assigned tasks. Deal with the bandits? I will have something to repay you with.|@FF0000AA|@FF1D1D1DObjectives:|- Kill a certain number of scavs||@FF0000AA|@FF1D1D1DReward:|- Unknown reward" />
 
 	<string
+		id="q_daily_kill_scav_TERAPIST_complete_diz"
+		locForm="0"
+		value="@ff23961b[Available for completion]|The locations where we often conduct our operations are teeming with local scum, thus preventing us from completing our assigned tasks. Deal with the bandits? I will have something to repay you with.|@FF0000AA|@FF1D1D1DObjectives:|- Kill a certain number of scavs||@FF0000AA|@FF1D1D1DReward:|- Unknown reward" />
+
+	<string
 		id="q_daily_extract_TERAPIST_diz"
 		locForm="0"
 		value="My workers need to deliver several batches of valuable medicines, but I'm afraid to send them alone. If you have the opportunity, I ask you to help us, for the benefit of the civilian population. All we need from you is to make sure of the reconnaissance and safety of the route. Will you take it on?|@FF0000AA|@FF1D1D1DObjectives:|- Survive and exit the Krai location a certain number of times||@FF0000AA|@FF1D1D1DReward:|- Unknown reward" />
+
+	<string
+		id="q_daily_extract_TERAPIST_complete_diz"
+		locForm="0"
+		value="@ff23961b[Available for completion]|My workers need to deliver several batches of valuable medicines, but I'm afraid to send them alone. If you have the opportunity, I ask you to help us, for the benefit of the civilian population. All we need from you is to make sure of the reconnaissance and safety of the route. Will you take it on?|@FF0000AA|@FF1D1D1DObjectives:|- Survive and exit the Krai location a certain number of times||@FF0000AA|@FF1D1D1DReward:|- Unknown reward" />
 
 	<string
 		id="q_daily_kill_pmc_MECHANIK_diz"
@@ -1983,14 +2013,29 @@
 		value="I need your help. I need to eliminate a certain number of targets. The job is just right for you. Will you help?|@FF0000AA|@FF1D1D1DObjectives:|- Kill a certain number of PMC fighters||@FF0000AA|@FF1D1D1DReward:|- Unknown reward" />
 
 	<string
+		id="q_daily_kill_pmc_MECHANIK_complete_diz"
+		locForm="0"
+		value="@ff23961b[Available for completion]|I need your help. I need to eliminate a certain number of targets. The job is just right for you. Will you help?|@FF0000AA|@FF1D1D1DObjectives:|- Kill a certain number of PMC fighters||@FF0000AA|@FF1D1D1DReward:|- Unknown reward" />
+
+	<string
 		id="q_daily_kill_scav_MECHANIK_diz"
 		locForm="0"
 		value="I ordered the necessary spare parts, but there is a risk that the transport may run into an ambush along the way. The area there is far from safe, there are plenty of bandits there. Will you help me deal with them? I'll give you a tip.|@FF0000AA|@FF1D1D1DObjectives:|- Kill a certain number of scavs||@FF0000AA|@FF1D1D1DReward:|- Unknown reward" />
 
 	<string
+		id="q_daily_kill_scav_MECHANIK_complete_diz"
+		locForm="0"
+		value="@ff23961b[Available for completion]|I ordered the necessary spare parts, but there is a risk that the transport may run into an ambush along the way. The area there is far from safe, there are plenty of bandits there. Will you help me deal with them? I'll give you a tip.|@FF0000AA|@FF1D1D1DObjectives:|- Kill a certain number of scavs||@FF0000AA|@FF1D1D1DReward:|- Unknown reward" />
+
+	<string
 		id="q_daily_extract_MECHANIK_diz"
 		locForm="0"
 		value="I have prepared an order for the clients, but they require a guarantee that the route to the meeting place is safe. If you are not busy, can you look for a route for them? What and how according to the situation in the area and how to retreat if necessary, well, you get the idea. I will not remain in debt.|@FF0000AA|@FF1D1D1DObjectives:|- Survive and exit the Krai location a certain number of times||@FF0000AA|@FF1D1D1DReward:|- Unknown reward" />
+
+	<string
+		id="q_daily_extract_MECHANIK_complete_diz"
+		locForm="0"
+		value="@ff23961b[Available for completion]|I have prepared an order for the clients, but they require a guarantee that the route to the meeting place is safe. If you are not busy, can you look for a route for them? What and how according to the situation in the area and how to retreat if necessary, well, you get the idea. I will not remain in debt.|@FF0000AA|@FF1D1D1DObjectives:|- Survive and exit the Krai location a certain number of times||@FF0000AA|@FF1D1D1DReward:|- Unknown reward" />
 
 
 	<string

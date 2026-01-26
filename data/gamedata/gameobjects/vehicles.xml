@@ -1234,8 +1234,8 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		DecisionMatrix		= "vehiclemain.lua"
 
 		LookRadius		= "200.0"
-		IntersectionRadius	= "7.0"
-		TakingRadius		= "7.0"
+		IntersectionRadius	= "4.0"
+		TakingRadius		= "10.0"
 
 		DriftCoeff		= "0.08"
 
@@ -1305,8 +1305,8 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		DecisionMatrix		= "vehiclemain.lua"
 
 		LookRadius		= "200.0"
-		IntersectionRadius	= "9.0"
-		TakingRadius		= "7.0"
+		IntersectionRadius	= "4.0"
+		TakingRadius		= "16.0"
 
 		DriftCoeff		= "0.04"
 
@@ -1369,8 +1369,8 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		DecisionMatrix		= "vehiclemain.lua"
 
 		LookRadius			= "200.0"
-		IntersectionRadius	= "9.0"
-		TakingRadius		= "7.0"
+		IntersectionRadius	= "4.0"
+		TakingRadius		= "15.0"
 
 		DriftCoeff		= "0.01"
 
@@ -1432,8 +1432,8 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		DecisionMatrix		= "vehiclemain.lua"
 
 		LookRadius		= "200.0"
-		IntersectionRadius	= "5.5"
-		TakingRadius		= "7.0"
+		IntersectionRadius	= "4.0"
+		TakingRadius		= "10.0"
 
 		MassSize		= "10 1 5"
 		MassTranslation		= "0 -1.6 0"
@@ -1442,7 +1442,8 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		DestroyEffectEnergy	= "ET_PS_VEH_EXP3_MED"
 		DestroyEffectWater	= "ET_PS_VEH_EXP2_MED"
 
-		Abstract 		= "true"	>
+		Abstract 		= "true"
+		AdditionalWheelsHover = "0.2"	>
 
 		<MainPartDescription id = "CHASSIS" partResourceType = "CRUISER_CHASSIS">
 			<PartDescription id = "CABIN" partResourceType = "CRUISER_CABIN" lpName = "LP_CAB01" >

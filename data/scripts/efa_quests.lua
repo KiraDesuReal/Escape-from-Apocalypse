@@ -4,9 +4,9 @@ function QuestsKillScavs()
     if IsQuestTaken("q_test_drive1_1") and not(IsQuestComplete("q_test_drive1_1")) then Q_TestDrive1("q_test_drive1_killscavs", 5, "q_test_drive1_1", "fm_progress_quest_scavs_kills") end
     if IsQuestTaken("q_test_drive2_2") and not(IsQuestComplete("q_test_drive2_2")) then Q_TestDrive2("q_test_drive2_killscavs", 10, "q_test_drive2_2", "fm_progress_quest_scavs_kills") end
     if IsQuestTaken("q_test_drive3_2") and not(IsQuestComplete("q_test_drive3_2")) then Q_TestDrive3("q_test_drive3_killscavs", 3, "q_test_drive3_2", "fm_progress_quest_scavs_kills") end
-    if IsQuestTaken("q_test_drive4_3") and not(IsQuestComplete("q_test_drive4_3")) then Q_TestDrive4("q_test_drive4_killscavs", 12, "q_test_drive4_3", "fm_progress_quest_scavs_kills") end
+    if IsQuestTaken("q_test_drive4_3") and not(IsQuestComplete("q_test_drive4_3")) then Q_TestDrive4("q_test_drive4_killscavs", 8, "q_test_drive4_3", "fm_progress_quest_scavs_kills") end
     if IsQuestTaken("q_test_drive5_3") and not(IsQuestComplete("q_test_drive5_3")) then Q_TestDrive5("q_test_drive5_killscavs", 10, "q_test_drive5_3", "fm_progress_quest_scavs_kills") end
-    if IsQuestTaken("q_test_drive6_2") and not(IsQuestComplete("q_test_drive6_2")) then Q_TestDrive6("q_test_drive6_killscavs", 15, "q_test_drive6_2", "fm_progress_quest_scavs_kills") end
+    if IsQuestTaken("q_test_drive6_2") and not(IsQuestComplete("q_test_drive6_2")) then Q_TestDrive6("q_test_drive6_killscavs", 12, "q_test_drive6_2", "fm_progress_quest_scavs_kills") end
     if IsQuestTaken("q_test_drive7_2") and not(IsQuestComplete("q_test_drive7_2")) then Q_TestDrive7("q_test_drive7_killscavs", 5, "q_test_drive7_2", "fm_progress_quest_scavs_kills") end
     if IsQuestTaken("q_test_drive8_2") and not(IsQuestComplete("q_test_drive8_2")) then Q_TestDrive8("q_test_drive8_killscavs", 15, "q_test_drive8_2", "fm_progress_quest_scavs_kills") end
     if IsQuestTaken("q_test_drive9_2") and not(IsQuestComplete("q_test_drive9_2")) then Q_TestDrive9("q_test_drive9_killscavs", 10, "q_test_drive9_2", "fm_progress_quest_scavs_kills") end
@@ -37,16 +37,16 @@ function QuestsKillScavs()
 
 function QuestsKillPMC()
     if IsQuestTaken("q_test_drive2_3") and not(IsQuestComplete("q_test_drive2_3")) then Q_TestDrive2("q_test_drive2_killPMC", 5, "q_test_drive2_3", "fm_progress_quest_pmc_kills") end
-    if IsQuestTaken("q_test_drive3_3") and not(IsQuestComplete("q_test_drive3_3")) then Q_TestDrive3("q_test_drive3_killPMC", 3, "q_test_drive3_3", "fm_progress_quest_pmc_kills") end
-    if IsQuestTaken("q_test_drive4_4") and not(IsQuestComplete("q_test_drive4_4")) then Q_TestDrive4("q_test_drive4_killPMC", 8, "q_test_drive4_4", "fm_progress_quest_pmc_kills") end
-    if IsQuestTaken("q_test_drive5_4") and not(IsQuestComplete("q_test_drive5_4")) then Q_TestDrive5("q_test_drive5_killPMC", 10, "q_test_drive5_4", "fm_progress_quest_pmc_kills") end
-    if IsQuestTaken("q_test_drive6_3") and not(IsQuestComplete("q_test_drive6_3")) then Q_TestDrive6("q_test_drive6_killPMC", 12, "q_test_drive6_3", "fm_progress_quest_pmc_kills") end
-    if IsQuestTaken("q_test_drive7_3") and not(IsQuestComplete("q_test_drive7_3")) then Q_TestDrive7("q_test_drive7_killPMC", 5, "q_test_drive7_3", "fm_progress_quest_pmc_kills") end
+    if IsQuestTaken("q_test_drive3_3") and not(IsQuestComplete("q_test_drive3_3")) then Q_TestDrive3("q_test_drive3_killPMC", 1, "q_test_drive3_3", "fm_progress_quest_pmc_kills") end
+    if IsQuestTaken("q_test_drive4_4") and not(IsQuestComplete("q_test_drive4_4")) then Q_TestDrive4("q_test_drive4_killPMC", 5, "q_test_drive4_4", "fm_progress_quest_pmc_kills") end
+    if IsQuestTaken("q_test_drive5_4") and not(IsQuestComplete("q_test_drive5_4")) then Q_TestDrive5("q_test_drive5_killPMC", 8, "q_test_drive5_4", "fm_progress_quest_pmc_kills") end
+    if IsQuestTaken("q_test_drive6_3") and not(IsQuestComplete("q_test_drive6_3")) then Q_TestDrive6("q_test_drive6_killPMC", 10, "q_test_drive6_3", "fm_progress_quest_pmc_kills") end
+    if IsQuestTaken("q_test_drive7_3") and not(IsQuestComplete("q_test_drive7_3")) then Q_TestDrive7("q_test_drive7_killPMC", 3, "q_test_drive7_3", "fm_progress_quest_pmc_kills") end
     if IsQuestTaken("q_test_drive8_3") and not(IsQuestComplete("q_test_drive8_3")) then Q_TestDrive8("q_test_drive8_killPMC", 10, "q_test_drive8_3", "fm_progress_quest_pmc_kills") end
-    if IsQuestTaken("q_test_drive9_3") and not(IsQuestComplete("q_test_drive9_3")) then Q_TestDrive9("q_test_drive9_killPMC", 12, "q_test_drive9_3", "fm_progress_quest_pmc_kills") end
+    if IsQuestTaken("q_test_drive9_3") and not(IsQuestComplete("q_test_drive9_3")) then Q_TestDrive9("q_test_drive9_killPMC", 8, "q_test_drive9_3", "fm_progress_quest_pmc_kills") end
     if IsQuestTaken("q_test_drive10_3") and not(IsQuestComplete("q_test_drive10_3")) then Q_TestDrive10("q_test_drive10_killPMC", 15, "q_test_drive10_3", "fm_progress_quest_pmc_kills") end
     if IsQuestTaken("q_test_drive11_3") and not(IsQuestComplete("q_test_drive11_3")) then Q_TestDrive11("q_test_drive11_killPMC", 12, "q_test_drive11_3", "fm_progress_quest_pmc_kills") end
-    if IsQuestTaken("q_test_drive12_3") and not(IsQuestComplete("q_test_drive12_3")) then Q_TestDrive12("q_test_drive12_killPMC", 15, "q_test_drive12_3", "fm_progress_quest_pmc_kills") end
+    if IsQuestTaken("q_test_drive12_3") and not(IsQuestComplete("q_test_drive12_3")) then Q_TestDrive12("q_test_drive12_killPMC", 10, "q_test_drive12_3", "fm_progress_quest_pmc_kills") end
     if IsQuestTaken("q_test_drive13_3") and not(IsQuestComplete("q_test_drive13_3")) then Q_TestDrive13("q_test_drive13_killPMC", 50, "q_test_drive13_3", "fm_progress_quest_pmc_kills") end
     if IsQuestTaken("q_test_drive14_3") and not(IsQuestComplete("q_test_drive14_3")) then Q_TestDrive14("q_test_drive14_killPMC", 8, "q_test_drive14_3", "fm_progress_quest_pmc_kills") end
     if IsQuestTaken("q_test_drive15_3") and not(IsQuestComplete("q_test_drive15_3")) then Q_TestDrive15("q_test_drive15_killPMC", 10, "q_test_drive15_3", "fm_progress_quest_pmc_kills") end
@@ -58,9 +58,9 @@ function QuestsKillPMC()
     if IsQuestTaken("q_naturalist5_4") and not(IsQuestComplete("q_naturalist5_4")) then Q_Naturalist5("q_naturalist5_killPMC", 15, "q_naturalist5_4", "fm_progress_quest_pmc_kills") end
 
     if IsQuestTaken("q_belazist1_3") and not(IsQuestComplete("q_belazist1_3")) then Q_Belazist1("q_belazist1_killPMC", 5, "q_belazist1_3", "fm_progress_quest_pmc_kills") end
-    if IsQuestTaken("q_belazist2_3") and not(IsQuestComplete("q_belazist2_3")) then Q_Belazist2("q_belazist2_killPMC", 8, "q_belazist2_3", "fm_progress_quest_pmc_kills") end
+    if IsQuestTaken("q_belazist2_3") and not(IsQuestComplete("q_belazist2_3")) then Q_Belazist2("q_belazist2_killPMC", 5, "q_belazist2_3", "fm_progress_quest_pmc_kills") end
     if IsQuestTaken("q_belazist3_3") and not(IsQuestComplete("q_belazist3_3")) then Q_Belazist3("q_belazist3_killPMC", 10, "q_belazist3_3", "fm_progress_quest_pmc_kills") end
-    if IsQuestTaken("q_belazist4_3") and not(IsQuestComplete("q_belazist4_3")) then Q_Belazist4("q_belazist4_killPMC", 12, "q_belazist4_3", "fm_progress_quest_pmc_kills") end
+    if IsQuestTaken("q_belazist4_3") and not(IsQuestComplete("q_belazist4_3")) then Q_Belazist4("q_belazist4_killPMC", 10, "q_belazist4_3", "fm_progress_quest_pmc_kills") end
     if IsQuestTaken("q_belazist5_3") and not(IsQuestComplete("q_belazist5_3")) then Q_Belazist5("q_belazist5_killPMC", 10, "q_belazist5_3", "fm_progress_quest_pmc_kills") end
     if IsQuestTaken("q_belazist6_3") and not(IsQuestComplete("q_belazist6_3")) then Q_Belazist6("q_belazist6_killPMC", 15, "q_belazist6_3", "fm_progress_quest_pmc_kills") end
     if IsQuestTaken("q_belazist7_3") and not(IsQuestComplete("q_belazist7_3")) then Q_Belazist7("q_belazist7_killPMC", 18, "q_belazist7_3", "fm_progress_quest_pmc_kills") end
@@ -130,8 +130,12 @@ function Q_TestDrive2(var, kills, quest, fm)
             bas_small_0 = bas_small_0:GetProperty("Prototype").AsString 
         end
 
-        if cab_small == "specter01" or cab_small == "specter01_insured" and bas_small_0 == "pkt01" or bas_small_0 == "pkt01_insured" then l = l + 1 end
-        if cab_small == "pkt01" or cab_small == "pkt01_insured" and bas_small_0 == "specter01" or bas_small_0 == "specter01_insured" then l = l + 1 end
+        if cab_small == "specter01" or cab_small == "specter01_insured" then
+            if bas_small_0 == "pkt01" or bas_small_0 == "pkt01_insured" then l = l + 1 end
+        end
+        if cab_small == "pkt01" or cab_small == "pkt01_insured" then
+            if bas_small_0 == "specter01" or bas_small_0 == "specter01_insured" then l = l + 1 end
+        end
         if l == 1 then Q_Kills(var, kills, quest, fm, "q_test_drive2") end
     end
 end
@@ -169,7 +173,9 @@ function Q_TestDrive5(var, kills, quest, fm)
             bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
         end
 
-        if cab_small == "storm01" or cab_small == "storm01_insured" and bas_big_0 == "rapier01" or bas_big_0 == "rapier01_insured" then Q_Kills(var, kills, quest, fm, "q_test_drive5") end
+        if cab_small == "storm01" or cab_small == "storm01_insured" then 
+            if bas_big_0 == "rapier01" or bas_big_0 == "rapier01_insured" then Q_Kills(var, kills, quest, fm, "q_test_drive5") end
+        end
     end
 end
 
@@ -184,7 +190,9 @@ function Q_TestDrive6(var, kills, quest, fm)
             bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
         end
 
-        if cab_big_1 == "vulcan01" or cab_big_1 == "vulcan01_insured" and bas_big_0 == "vulcan01" or bas_big_0 == "vulcan01_insured" then Q_Kills(var, kills, quest, fm, "q_test_drive6") end
+        if cab_big_1 == "vulcan01" or cab_big_1 == "vulcan01_insured" then 
+            if bas_big_0 == "vulcan01" or bas_big_0 == "vulcan01_insured" then Q_Kills(var, kills, quest, fm, "q_test_drive6") end
+        end
     end
 end
 
@@ -212,7 +220,9 @@ function Q_TestDrive8(var, kills, quest, fm)
             bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
         end
 
-        if cab_big_1 == "rapier01" or cab_big_1 == "rapier01_insured" and bas_big_0 == "rapier01" or bas_big_0 == "rapier01_insured" then Q_Kills(var, kills, quest, fm, "q_test_drive8") end
+        if cab_big_1 == "rapier01" or cab_big_1 == "rapier01_insured" then
+            if bas_big_0 == "rapier01" or bas_big_0 == "rapier01_insured" then Q_Kills(var, kills, quest, fm, "q_test_drive8") end
+        end
     end
 end
 
@@ -228,7 +238,9 @@ function Q_TestDrive9(var, kills, quest, fm)
         if cab_big_gun_1 and bas_giant_gun then
             cab_big_gun_1 = cab_big_gun_1:GetProperty("Prototype").AsString 
             bas_giant_gun = bas_giant_gun:GetProperty("Prototype").AsString 
-            if cab_big_gun_1 == "flag01" or cab_big_gun_1 == "flag01_insured" and bas_giant_gun == "cyclops01" or bas_giant_gun == "cyclops01_insured" then l = l + 1 end
+            if cab_big_gun_1 == "flag01" or cab_big_gun_1 == "flag01_insured" then
+                if bas_giant_gun == "cyclops01" or bas_giant_gun == "cyclops01_insured" then l = l + 1 end
+            end
         end
 
         if l == 1 then Q_Kills(var, kills, quest, fm, "q_test_drive9") end
@@ -338,7 +350,9 @@ function Q_TestDrive14(var, kills, quest, fm)
         if cab_big_gun_1 and bas_giant_gun then
             cab_big_gun_1 = cab_big_gun_1:GetProperty("Prototype").AsString
             bas_giant_gun = bas_giant_gun:GetProperty("Prototype").AsString
-            if cab_big_gun_1 == "kpvt01" or cab_big_gun_1 == "kpvt01_insured" and bas_giant_gun == "octopus01" or bas_giant_gun == "octopus01_insured" then l = l + 1 end
+            if cab_big_gun_1 == "kpvt01" or cab_big_gun_1 == "kpvt01_insured" then
+                if bas_giant_gun == "octopus01" or bas_giant_gun == "octopus01_insured" then l = l + 1 end
+            end
         end
 
         if l == 1 then Q_Kills(var, kills, quest, fm, "q_test_drive14") end
@@ -378,8 +392,12 @@ function Q_Naturalist1(var, kills, quest, fm)
             bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
         end
 
-        if cab_big_1 == "rainmetal01" or cab_big_1 == "rainmetal01_insured" and bas_big_0 == "kpvt01" or bas_big_0 == "kpvt01_insured" then l = l + 1 end
-	    if cab_big_1 == "kpvt01" or cab_big_1 == "kpvt01_insured" and bas_big_0 == "rainmetal01" or bas_big_0 == "rainmetal01_insured" then l = l + 1 end
+        if cab_big_1 == "rainmetal01" or cab_big_1 == "rainmetal01_insured" then
+            if bas_big_0 == "kpvt01" or bas_big_0 == "kpvt01_insured" then l = l + 1 end
+        end
+	    if cab_big_1 == "kpvt01" or cab_big_1 == "kpvt01_insured" then
+            if bas_big_0 == "rainmetal01" or bas_big_0 == "rainmetal01_insured" then l = l + 1 end
+        end
         if l == 1 then Q_Kills(var, kills, quest, fm, "q_naturalist1") end
     end
 end
@@ -395,7 +413,9 @@ function Q_Naturalist2(var, kills, quest, fm)
             bas_big_0 = bas_big_0:GetProperty("Prototype").AsString 
         end
 
-        if cab_big_1 == "vector01" or cab_big_1 == "vector01_insured" and bas_big_0 == "vector01" or bas_big_0 == "vector01_insured" then Q_Kills(var, kills, quest, fm, "q_naturalist2") end
+        if cab_big_1 == "vector01" or cab_big_1 == "vector01_insured" then
+            if bas_big_0 == "vector01" or bas_big_0 == "vector01_insured" then Q_Kills(var, kills, quest, fm, "q_naturalist2") end
+        end
     end
 end
 
@@ -517,6 +537,7 @@ end
 function Q_Belazist3(var, kills, quest, fm)
     if GetVar("PlayerCar").AsString == "Belaz" and GetVar("PlayerCabin").AsString == "belazCab04" and GetVar("PlayerBasket").AsString == "belazCargo05_9x10" then
         local slots = {"CABIN_BIG_GUN_1", "BASKET_BIG_GUN_0"}
+        local sml_slot = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
         local l = 0
 
         for i = 1, 2 do
@@ -526,7 +547,9 @@ function Q_Belazist3(var, kills, quest, fm)
 			end
 		end
 
-        if l == 2 then Q_Kills(var, kills, quest, fm, "q_belazist3") end
+        if sml_slot == nil then l = l + 1 end
+
+        if l == 3 then Q_Kills(var, kills, quest, fm, "q_belazist3") end
     end
 end
 
@@ -579,6 +602,7 @@ end
 function Q_Belazist6(var, kills, quest, fm)
     if GetVar("PlayerCar").AsString == "Belaz" and GetVar("PlayerCabin").AsString == "belazCab04" and GetVar("PlayerBasket").AsString == "belazCargo03_11x12" then
         local slots = {"CABIN_BIG_GUN_1", "BASKET_BIG_GUN_0", "BASKET_BIG_GUN_1"}
+        local sml_slot = GetPlayerVehicle():GetPartByName("CABIN_SMALL_GUN")
 		local l = 0
 
         for i = 1, 3 do
@@ -588,7 +612,9 @@ function Q_Belazist6(var, kills, quest, fm)
 			end
 		end
 
-        if l == 3 then Q_Kills(var, kills, quest, fm, "q_belazist6") end
+        if sml_slot == nil then l = l + 1 end
+
+        if l == 4 then Q_Kills(var, kills, quest, fm, "q_belazist6") end
     end
 end
 
@@ -623,6 +649,7 @@ end
 function Q_Belazist8(var, kills, quest, fm)
     if GetVar("PlayerCar").AsString == "Belaz" and GetVar("PlayerCabin").AsString == "belazCab05" and GetVar("PlayerBasket").AsString == "belazCargo03_11x12" then
         local slots = {"CABIN_BIG_GUN_1", "BASKET_BIG_GUN_0", "BASKET_BIG_GUN_1"}
+        local cab_giant_gun = GetPlayerVehicle():GetPartByName("CABIN_GIANT_GUN")
 
         local l = 0
 
@@ -633,7 +660,9 @@ function Q_Belazist8(var, kills, quest, fm)
             end
         end
 
-        if l == 3 then Q_Kills(var, kills, quest, fm, "q_belazist8") end
+        if cab_giant_gun == nil then l = l + 1 end
+
+        if l == 4 then Q_Kills(var, kills, quest, fm, "q_belazist8") end
     end
 end
 
@@ -668,6 +697,11 @@ function Q_KillsForDaily(varProgress, varKills, varStatus, fm, questName)
             AddImportantFadingMsgByStrIdFormatted("fm_to_finish_quest", questName)
             AddFadingMsgByStrIdFormatted(fm.."_complete", questName, q_varKills, q_varKills)
             SoundFadingMsg()
+            local traider = GetVar(questName).AsString
+            if IsQuestItemPresent(questName.."_"..traider) then 
+                RemoveQuestItem(questName.."_"..traider)
+                AddQuestItem(questName.."_"..traider.."_complete") 
+            end
         else
             AddFadingMsgByStrIdFormatted(fm, questName, q_var, q_varKills)
             SoundFadingMsg()

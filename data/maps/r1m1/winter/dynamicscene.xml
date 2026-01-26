@@ -163,21 +163,45 @@
 		Belong="1100"
 		Prototype="genericLocation"
 		Pos="2582.042 347.266 2271.936"
-		Radius="5.000" />
+		Radius="5.000">
+		<Object
+			Name="PetrolStation01_NPC"
+			Belong="1100"
+			Prototype="NPC"
+			ModelName=""
+			helloReplyNames="Dlg_npc_petrolstation01_1"
+			SpokenCount="0" />
+	</Object>
 
 	<Object
 		Name="PetrolStation02_loc"
 		Belong="1100"
 		Prototype="genericLocation"
 		Pos="1312.274 288.365 1757.526"
-		Radius="5.000" />
+		Radius="5.000">
+		<Object
+			Name="PetrolStation02_NPC"
+			Belong="1100"
+			Prototype="NPC"
+			ModelName=""
+			helloReplyNames="Dlg_npc_petrolstation02_1"
+			SpokenCount="0" />
+	</Object>
 
 	<Object
 		Name="PetrolStation03_loc"
 		Belong="1100"
 		Prototype="genericLocation"
 		Pos="917.057 308.750 872.621"
-		Radius="5.000" />
+		Radius="5.000">
+		<Object
+			Name="PetrolStation03_NPC"
+			Belong="1100"
+			Prototype="NPC"
+			ModelName=""
+			helloReplyNames="Dlg_npc_petrolstation03_1"
+			SpokenCount="0" />
+	</Object>
 
 	<Object
 		Name="OpenGateTheTown_loc"
@@ -295,7 +319,7 @@
 		Name="barrelBox_16_loc"
 		Belong="1001"
 		Prototype="genericLocation"
-		Pos="3185.958 320.661 1302.362"
+		Pos="3188.507 320.551 1309.315"
 		Radius="10.000" />
 
 	<Object
@@ -498,7 +522,7 @@
 		Name="GunBox_9_loc"
 		Belong="1001"
 		Prototype="genericLocation"
-		Pos="3136.336 320.000 1195.883"
+		Pos="3140.499 320.000 1192.303"
 		Radius="10.000" />
 
 	<Object
@@ -750,14 +774,14 @@
 		Name="ValuableBox_4_loc"
 		Belong="1001"
 		Prototype="genericLocation"
-		Pos="3136.594 319.998 1212.294"
+		Pos="3140.899 319.984 1209.510"
 		Radius="10.000" />
 
 	<Object
 		Name="ValuableBox_5_loc"
 		Belong="1001"
 		Prototype="genericLocation"
-		Pos="3136.145 320.000 1225.132"
+		Pos="3140.458 319.986 1226.559"
 		Radius="10.000" />
 
 	<Object
@@ -892,6 +916,13 @@
 		Prototype="genericLocation"
 		Pos="2621.913 321.732 1660.756"
 		Radius="70.000" />
+
+	<Object
+		Name="DisableKeyBind_O_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="1331.384 328.247 743.891"
+		Radius="60.000" />
 
 	<Object
 		Name="hospital_barricade1"
@@ -16144,13 +16175,6 @@
 		Rot="0.000 0.997 0.000 0.076" />
 
 	<Object
-		Name="elka12081"
-		Belong="-1"
-		Prototype="Breakable_Elka1_Snow"
-		Pos="432.780 305.773 1863.187"
-		Rot="0.000 0.999 0.000 0.044" />
-
-	<Object
 		Name="elka12083"
 		Belong="-1"
 		Prototype="Breakable_Elka1_Snow"
@@ -16494,13 +16518,6 @@
 		Rot="0.000 0.492 0.000 0.870" />
 
 	<Object
-		Name="sosna22136"
-		Belong="-1"
-		Prototype="Breakable_Sosna2_Snow"
-		Pos="458.557 315.321 1631.021"
-		Rot="0.000 -0.656 0.000 0.755" />
-
-	<Object
 		Name="sosna12137"
 		Belong="-1"
 		Prototype="Breakable_Sosna1_Snow"
@@ -16800,13 +16817,6 @@
 		Prototype="Breakable_Elka3_Snow"
 		Pos="3370.147 398.458 3807.666"
 		Rot="0.000 -0.242 0.000 0.970" />
-
-	<Object
-		Name="listvenoe32191"
-		Belong="-1"
-		Prototype="Breakable_Listvenoe3_Snow"
-		Pos="432.236 311.000 1681.410"
-		Rot="0.000 0.044 0.000 0.999" />
 
 	<Object
 		Name="elka12192"

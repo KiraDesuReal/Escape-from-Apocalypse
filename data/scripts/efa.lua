@@ -439,7 +439,7 @@ function UseRestoreItem(item, heal_used)
 		end
 	else
 		procent = fuelmax / 100 * procent_fuel_item
-		hp_pr = fuelmax / 100 * 25
+		hp_pr = fuelmax / 100 * 5
 		if vehP then 
 			if hp_pr >= fuelcar then
 				vehP:AddModifier("fuel", "+ "..procent ) 
@@ -452,6 +452,7 @@ function UseRestoreItem(item, heal_used)
 					RemoveItemsFromPlayerRepository(item.."_insured", 1)
 					if heal_used == 1 then SetVar("Use_"..item.."_Insured", GetVar("Use_"..item.."_Insured").AsInt+1) end
 				end
+				if item == "fuel_full_use" then AddItemsToPlayerRepository("fuel_nil_use") end
 			end
 		end
 	end
@@ -485,7 +486,7 @@ function UseAmmoItems(ammo_used)
 						if prot == "american_hornet01" or prot == "american_hornet01_insured" then small_gun:SetShellsInPool(420) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "american_hornet01") end
 						if prot == "specter01" or prot == "specter01_insured" then small_gun:SetShellsInPool(350) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "specter01") end
 						if prot == "pkt01" or prot == "pkt01_insured" then small_gun:SetShellsInPool(480) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "pkt01") end
-						if prot == "kord01" or prot == "kord01_insured" then small_gun:SetShellsInPool(275) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "kord01") end
+						if prot == "kord01" or prot == "kord01_insured" then small_gun:SetShellsInPool(380) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "kord01") end
 						CreateEffectTTLed("ET_S_USE_RELOAD_MACHINEGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1750)
 						if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) then 
 							RemoveItemsFromPlayerRepository("ammo_chest_machinegun", 1)
@@ -499,7 +500,7 @@ function UseAmmoItems(ammo_used)
 				end
 				if HasPlayerAmountOfItems("ammo_chest_shotgun", 1) or HasPlayerAmountOfItems("ammo_chest_shotgun_insured", 1) then
 					if prot == "storm01" or prot == "storm01_insured" then
-						if prot == "storm01" or prot == "storm01_insured" then small_gun:SetShellsInPool(26) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "storm01") end
+						if prot == "storm01" or prot == "storm01_insured" then small_gun:SetShellsInPool(30) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "storm01") end
 						CreateEffectTTLed("ET_S_USE_RELOAD_SHOTGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
 						if HasPlayerAmountOfItems("ammo_chest_shotgun", 1) then 
 							RemoveItemsFromPlayerRepository("ammo_chest_shotgun", 1)
@@ -554,7 +555,7 @@ function UseAmmoItems(ammo_used)
 			if poolshells == 0 and currentshells == 0 and dur ~= 0 then
 				if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) or HasPlayerAmountOfItems("ammo_chest_heavygun_insured", 1) then
 					if prot == "rapier01" or prot == "rapier01_insured" or prot == "rainmetal01" or prot == "rainmetal01_insured" then
-						if prot == "rapier01" or prot == "rapier01_insured" then big_gun:SetShellsInPool(45) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "rapier01") end
+						if prot == "rapier01" or prot == "rapier01_insured" then big_gun:SetShellsInPool(55) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "rapier01") end
 						if prot == "rainmetal01" or prot == "rainmetal01_insured" then big_gun:SetShellsInPool(320) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "rainmetal01") end
 						CreateEffectTTLed("ET_S_USE_RELOAD_HEAVYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 2500)
 						if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) then 
@@ -585,7 +586,7 @@ function UseAmmoItems(ammo_used)
 				end
 				if HasPlayerAmountOfItems("ammo_chest_shotgun", 1) or HasPlayerAmountOfItems("ammo_chest_shotgun_insured", 1) then
 					if prot == "flag01" or prot == "flag01_insured" then
-						if prot == "flag01" or prot == "flag01_insured" then big_gun:SetShellsInPool(22) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "flag01") end
+						if prot == "flag01" or prot == "flag01_insured" then big_gun:SetShellsInPool(36) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "flag01") end
 						CreateEffectTTLed("ET_S_USE_RELOAD_SHOTGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1200)
 						if HasPlayerAmountOfItems("ammo_chest_shotgun", 1) then 
 							RemoveItemsFromPlayerRepository("ammo_chest_shotgun", 1)
@@ -599,7 +600,7 @@ function UseAmmoItems(ammo_used)
 				end
 				if HasPlayerAmountOfItems("ammo_chest_artillerygun", 1) or HasPlayerAmountOfItems("ammo_chest_artillerygun_insured", 1) then
 					if prot == "bumblebee01" or prot == "bumblebee01_insured" or prot == "omega01" or prot == "omega01_insured" then
-						if prot == "bumblebee01" or prot == "bumblebee01_insured" then big_gun:SetShellsInPool(70) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "bumblebee01") end
+						if prot == "bumblebee01" or prot == "bumblebee01_insured" then big_gun:SetShellsInPool(118) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "bumblebee01") end
 						if prot == "omega01" or prot == "omega01_insured" then big_gun:SetShellsInPool(54) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "omega01") end
 						CreateEffectTTLed("ET_S_USE_RELOAD_ARTILLERYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1055)
 						if HasPlayerAmountOfItems("ammo_chest_artillerygun", 1) then 
@@ -628,7 +629,7 @@ function UseAmmoItems(ammo_used)
 				end
 				if HasPlayerAmountOfItems("ammo_ballon_lasergun", 1) or HasPlayerAmountOfItems("ammo_ballon_lasergun_insured", 1) then
 					if prot == "odin01" or prot == "odin01_insured" then
-						if prot == "odin01" or prot == "odin01_insured" then big_gun:SetShellsInPool(80) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "odin01") end
+						if prot == "odin01" or prot == "odin01_insured" then big_gun:SetShellsInPool(120) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "odin01") end
 						RemoveItemsFromPlayerRepository("ammo_ballon_lasergun", 1)
 						CreateEffectTTLed("ET_S_USE_RELOAD_BALLON", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1920)
 						if HasPlayerAmountOfItems("ammo_ballon_lasergun", 1) then 
@@ -670,7 +671,7 @@ function UseAmmoItems(ammo_used)
 			if poolshells == 0 and currentshells == 0 and dur ~= 0 then
 				if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) or HasPlayerAmountOfItems("ammo_chest_heavygun_insured", 1) then
 					if prot == "cyclops01" or prot == "cyclops01_insured" then
-						if prot == "cyclops01" or prot == "cyclops01_insured" then giant_gun:SetShellsInPool(29) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "cyclops01") end
+						if prot == "cyclops01" or prot == "cyclops01_insured" then giant_gun:SetShellsInPool(56) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "cyclops01") end
 						CreateEffectTTLed("ET_S_USE_RELOAD_HEAVYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 2500)
 						if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) then 
 							RemoveItemsFromPlayerRepository("ammo_chest_heavygun", 1)
@@ -1877,20 +1878,21 @@ function UpdateDailyQuests()
 				AddImportantFadingMsgByStrIdFormatted("fm_fail_quest", quests[f])
 				local questItem = quests[f].."_"..GetVar(quests[f]).AsString
 				if IsQuestItemPresent(questItem) then RemoveQuestItem(questItem) end
+				if IsQuestItemPresent(questItem.."_complete") then RemoveQuestItem(questItem.."_complete") end
 			end 
 			SetVar(quests[f].."_Status", "0")
 		end
 
-		local killPMC = math.floor(GetPlayerMoney() / 100 * 0.0045)
-		if killPMC > 20 then killPMC = 20 end
+		local killPMC = math.floor(GetPlayerMoney() / 100 * 0.0020)
+		if killPMC > 10 then killPMC = 10 end
 		if 3 > killPMC then killPMC = 3 end
 
-		local killScav = math.floor(GetPlayerMoney() / 100 * 0.006)
-		if killScav > 30 then killScav = 30 end
+		local killScav = math.floor(GetPlayerMoney() / 100 * 0.002)
+		if killScav > 20 then killScav = 20 end
 		if 3 > killScav then killScav = 3 end
 
-		local extractCount = math.floor(GetPlayerMoney() / 100 * 0.0025)
-		if extractCount > 10 then extractCount = 10 end
+		local extractCount = math.floor(GetPlayerMoney() / 100 * 0.001)
+		if extractCount > 5 then extractCount = 5 end
 		if 2 > extractCount then extractCount = 2 end
 
 		SetVar("q_daily_kill_pmc_Kills", random(math.floor(killPMC / 1.5), killPMC))
@@ -1953,12 +1955,20 @@ function RewardForDailyQuests()
 		count = random(1, 2)
 	end
 
+	local ChestId = getObj("PlayerInventory_Lvl_1")
 	for i = 1, count do
 		local AddItems = {LifeItems[random(3)], FuelItems[random(2)], AmmoItems[random(getn(AmmoItems))], Guns[random(getn(Guns))], Gadgets[random(getn(Gadgets))], OtherItems[random(getn(OtherItems))]}
-		local Item = AddItems[random(getn(AddItems))]
-		AddItemsToPlayerRepository(Item)
-		AddFadingMsgByStrIdFormatted("fm_player_add_thing", Item)
-	end				
+		local Items = AddItems[random(getn(AddItems))]
+		local Item = CreateNewObject{prototypeName = Items, objName = "ItemDaily_"..random(100000), belong = 1100}
+		local ItemId = GetEntityByID(Item)
+
+		if ChestId and ItemId then
+			ChestId:AddChild(ItemId)
+		end
+		AddFadingMsgByStrIdFormatted("fm_player_add_thing", Items)
+	end		
+	
+	AddFadingMsgByStrIdFormatted("fm_daily_quest_loot")
 end
 
 -- Функция заменяет запчасть машины на новую со случайным аффиксом
@@ -2279,6 +2289,27 @@ function RemoveSpecItemsFromSlot(item)
 			RemoveItemsFromPlayerRepository(item, 1)
 		end
 	end
+end
+
+-- Возвращает бинды из keybindings.lua в профиле игрока
+function GetKeyBind(name)
+	local Key
+	local file = io.open("data/profiles/"..GetProfileName().."/keybindings.lua", "r+")
+	for logLine in file:lines() do
+		local find = string.find(logLine, name)
+		if find then
+			local s1 = string.find(logLine, 'KEY_')
+			if s1 then
+				s1 = tostring(string.sub(logLine, s1))
+				local s2 = string.find(s1, '"')
+				if s2 then
+					Key = tostring(string.sub(s1, 1, s2-1))
+				end
+			end
+		end
+	end
+	file:close()
+	return Key
 end
 
 

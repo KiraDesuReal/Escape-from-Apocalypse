@@ -281,6 +281,10 @@
 		value="This gas station is not functioning!" />
 
 	<string
+		id="fm_refuel_player_car"
+		value="@ff0042ffFuel +%1d (%2d)|@ffffffffMoney -%3d (%4d)" />
+
+	<string
 		id="fm_petrol_need_generator"
 		value="Turn on the generator to fill the canister with fuel!" />
 
@@ -599,4 +603,8 @@
 	<string
 		id="fm_add_event_quest_item"
 		value="Quest items received." />
+
+	<string
+		id="fm_daily_quest_loot"
+		value="The reward for the quest is in your storage." />
 </resource>

@@ -408,7 +408,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		PriceDispersion      = "5"
 		ModelFile	= "ammo_chest_heavygun"
 		VisibleInEncyclopedia	= "false"
-		ResourceType= "ITEM_SIZE_2X2" />
+		ResourceType= "ITEM_AMMO_CHEST_HEAVYGUN_FOR_SALE" />
 
 	<Prototype
 		Class		= "Ware"
@@ -437,7 +437,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		PriceDispersion      = "5"
 		ModelFile	= "ammo_chest_machinegun"
 		VisibleInEncyclopedia	= "false"
-		ResourceType= "ITEM_SIZE_2X2" />
+		ResourceType= "ITEM_AMMO_CHEST_MACHINEGUN_FOR_SALE" />
 
 	<Prototype
 		Class		= "Ware"
@@ -495,7 +495,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		PriceDispersion      = "5"
 		ModelFile	= "ammo_chest_shotgun"
 		VisibleInEncyclopedia	= "false"
-		ResourceType= "ITEM_SIZE_2X2" />
+		ResourceType= "ITEM_AMMO_CHEST_SHOTGUN_FOR_SALE" />
 
 	<Prototype
 		Class		= "Ware"

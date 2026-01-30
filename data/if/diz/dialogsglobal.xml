@@ -1109,19 +1109,25 @@
 <!--Root/r0m0/Гараж: вернуть машину -->
 	<Reply
 		name="Dlg_npc_return_player_car_in_garage"
-		text="Вы действительно хотите забрать свою машину из гаража?|@FF0000AA|@FF780a0a[Ваша текущая сборка будет уничтожена]"
+		text="Вы действительно хотите забрать свою машину из гаража?"
 		role="NPC"
-		nextReplies="Dlg_npc_return_player_car_in_garagе_1 Dlg_npc_return_player_car_in_garagе_2" />
+		nextReplies="Dlg_npc_return_player_car_in_garagе_1_2 Dlg_npc_return_player_car_in_garagе_1 Dlg_npc_return_player_car_in_garagе_2" />
 
 	<Reply
 		name="Dlg_npc_return_player_car_in_garagе_1"
-		text="Да."
+		text="Забрать машину. (Текущая сборка будет уничтожена)"
 		role="PLAYER"
 		scriptResult="TActivate('ReturnPlayerCarFromGarage'); EndConversation()" />
 
 	<Reply
+		name="Dlg_npc_return_player_car_in_garagе_1_2"
+		text="Забрать машину. (Текущая сборка будет оставлена в гараже)"
+		role="PLAYER"
+		scriptResult="TActivate('ReturnPlayerCarFromGarage_2'); EndConversation()" />
+
+	<Reply
 		name="Dlg_npc_return_player_car_in_garagе_2"
-		text="Нет."
+		text="Выход."
 		role="PLAYER"
 		scriptResult="TActivate('StopPlayerVehicle'); EndConversation()" />
 
@@ -10907,13 +10913,13 @@
 		name="Dlg_pl_0013119"
 		text="Отправиться сейчас."
 		role="PLAYER"
-		scriptResult="TActivate('StopPlayerVehicle'); TActivate('PassingToMap'); TActivate('ExitMap'); EndConversation()" />
+		scriptResult="TActivate('StopPlayerVehicle'); TActivate('PassingToMap'); EndConversation()" />
 
 	<Reply
 		name="Dlg_pl_0013120"
 		text="Отправиться через 12 часов."
 		role="PLAYER"
-		scriptResult="TActivate('StopPlayerVehicle'); TActivate('In12Hour'); TActivate('ExitMap'); EndConversation()" />
+		scriptResult="TActivate('StopPlayerVehicle'); TActivate('In12Hour'); EndConversation()" />
 
 	<Reply
 		name="Dlg_pl_0013121"
@@ -11059,7 +11065,7 @@
 		name="Dlg_npc_prapor_quests"
 		text="Думаю, найдётся что-нибудь для тебя."
 		role="NPC"
-		nextReplies="Dlg_pl_q_search_data Dlg_pl_to_q_search_data Dlg_pl_q_explore_r1m1 Dlg_pl_to_q_explore_r1m1 Dlg_pl_q_kill_scavs Dlg_pl_to_q_kill_scavs Dlg_pl_q_clearing_r1m1 Dlg_pl_to_q_clearing_r1m1 Dlg_pl_q_fuel1 Dlg_pl_to_q_fuel1 Dlg_pl_q_fuel2 Dlg_pl_to_q_fuel2 Dlg_pl_q_base_scavs Dlg_pl_to_q_base_scavs Dlg_pl_q_kill_usec Dlg_pl_to_q_kill_usec Dlg_pl_q_kill_pmc Dlg_pl_to_q_kill_pmc Dlg_pl_q_sectarian1 Dlg_pl_to_q_sectarian1 Dlg_pl_q_sectarian2 Dlg_pl_to_q_sectarian2 Dlg_pl_q_new_year_2026 Dlg_pl_to_q_new_year_2026 Dlg_pl_q_daily_kill_scav_prapor Dlg_pl_to_q_daily_kill_scav_prapor Dlg_pl_q_daily_kill_pmc_prapor Dlg_pl_to_q_daily_kill_pmc_prapor Dlg_pl_q_daily_extract_prapor Dlg_pl_to_q_daily_extract_prapor Dlg_pl_npc_exit" />
+		nextReplies="Dlg_pl_q_search_data Dlg_pl_to_q_search_data Dlg_pl_q_explore_r1m1 Dlg_pl_to_q_explore_r1m1 Dlg_pl_q_kill_scavs Dlg_pl_to_q_kill_scavs Dlg_pl_q_clearing_r1m1 Dlg_pl_to_q_clearing_r1m1 Dlg_pl_q_fuel1 Dlg_pl_to_q_fuel1 Dlg_pl_q_fuel2 Dlg_pl_to_q_fuel2 Dlg_pl_q_base_scavs Dlg_pl_to_q_base_scavs Dlg_pl_q_kill_usec Dlg_pl_to_q_kill_usec Dlg_pl_q_kill_pmc Dlg_pl_to_q_kill_pmc Dlg_pl_q_sectarian1 Dlg_pl_to_q_sectarian1 Dlg_pl_q_sectarian2 Dlg_pl_to_q_sectarian2 Dlg_pl_q_daily_kill_scav_prapor Dlg_pl_to_q_daily_kill_scav_prapor Dlg_pl_q_daily_kill_pmc_prapor Dlg_pl_to_q_daily_kill_pmc_prapor Dlg_pl_q_daily_extract_prapor Dlg_pl_to_q_daily_extract_prapor Dlg_pl_npc_exit" />
 
 <!--Поисковая миссия-->
 	<Reply
@@ -12280,7 +12286,7 @@
 		name="Dlg_pl_insure_1"
 		text="Застраховать Шершень (Стоимость: 600 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('hornet01') > 0 and GetPlayerMoney() >= 600 or HasPlayerAmountOfItems('hornet01', 1) and GetPlayerMoney() >= 600"
+		scriptCondition="IfCanGunInSlot('hornet01', 1) > 0 and GetPlayerMoney() >= 600"
 		scriptResult="InsureItem('hornet01'); AddPlayerMoney(-600)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12288,7 +12294,7 @@
 		name="Dlg_pl_insure_2"
 		text="Застраховать Американский шершень (Стоимость: 850 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('american_hornet01') > 0 and GetPlayerMoney() >= 850 or HasPlayerAmountOfItems('american_hornet01', 1) and GetPlayerMoney() >= 850"
+		scriptCondition="IfCanGunInSlot('american_hornet01', 1) > 0 and GetPlayerMoney() >= 850"
 		scriptResult="InsureItem('american_hornet01'); AddPlayerMoney(-850)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12296,7 +12302,7 @@
 		name="Dlg_pl_insure_3"
 		text="Застраховать Спектр (Стоимость: 1.700 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('specter01') > 0 and GetPlayerMoney() >= 1700 or HasPlayerAmountOfItems('specter01', 1) and GetPlayerMoney() >= 1700"
+		scriptCondition="IfCanGunInSlot('specter01', 1) > 0 and GetPlayerMoney() >= 1700"
 		scriptResult="InsureItem('specter01'); AddPlayerMoney(-1700)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12304,7 +12310,7 @@
 		name="Dlg_pl_insure_4"
 		text="Застраховать ПКТ (Стоимость: 2.250 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('pkt01') > 0 and GetPlayerMoney() >= 2250 or HasPlayerAmountOfItems('pkt01', 1) and GetPlayerMoney() >= 2250"
+		scriptCondition="IfCanGunInSlot('pkt01', 1) > 0 and GetPlayerMoney() >= 2250"
 		scriptResult="InsureItem('pkt01'); AddPlayerMoney(-2250)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12312,7 +12318,7 @@
 		name="Dlg_pl_insure_5"
 		text="Застраховать Корд (Стоимость: 3.000 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('kord01') > 0 and GetPlayerMoney() >= 3000 or HasPlayerAmountOfItems('kord01', 1) and GetPlayerMoney() >= 3000"
+		scriptCondition="IfCanGunInSlot('kord01', 1) > 0 and GetPlayerMoney() >= 3000"
 		scriptResult="InsureItem('kord01'); AddPlayerMoney(-3000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12320,7 +12326,7 @@
 		name="Dlg_pl_insure_6"
 		text="Застраховать Шторм (Стоимость: 1.000 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('storm01') > 0 and GetPlayerMoney() >= 1000 or HasPlayerAmountOfItems('storm01', 1) and GetPlayerMoney() >= 1000"
+		scriptCondition="IfCanGunInSlot('storm01', 1) > 0 and GetPlayerMoney() >= 1000"
 		scriptResult="InsureItem('storm01'); AddPlayerMoney(-1000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12328,7 +12334,7 @@
 		name="Dlg_pl_insure_7"
 		text="Застраховать Фагот (Стоимость: 6.900 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('fagot01') > 0 and GetPlayerMoney() >= 6900 or HasPlayerAmountOfItems('fagot01', 1) and GetPlayerMoney() >= 6900"
+		scriptCondition="IfCanGunInSlot('fagot01', 1) > 0 and GetPlayerMoney() >= 6900"
 		scriptResult="InsureItem('fagot01'); AddPlayerMoney(-6900)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12336,7 +12342,7 @@
 		name="Dlg_pl_insure_8"
 		text="Застраховать Максим (Стоимость: 5.000 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('maxim01') > 0 and GetPlayerMoney() >= 5000 or HasPlayerAmountOfItems('maxim01', 1) and GetPlayerMoney() >= 5000"
+		scriptCondition="IfCanGunInSlot('maxim01', 1) > 0 and GetPlayerMoney() >= 5000"
 		scriptResult="InsureItem('maxim01'); AddPlayerMoney(-5000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12344,7 +12350,7 @@
 		name="Dlg_pl_insure_9"
 		text="Застраховать Вектор (Стоимость: 2.000 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('vector01') > 0 and GetPlayerMoney() >= 2000 or HasPlayerAmountOfItems('vector01', 1) and GetPlayerMoney() >= 2000"
+		scriptCondition="IfCanGunInSlot('vector01', 1) > 0 and GetPlayerMoney() >= 2000"
 		scriptResult="InsureItem('vector01'); AddPlayerMoney(-2000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12352,7 +12358,7 @@
 		name="Dlg_pl_insure_10"
 		text="Застраховать Вулкан (Стоимость: 2.600 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('vulcan01') > 0 and GetPlayerMoney() >= 2600 or HasPlayerAmountOfItems('vulcan01', 1) and GetPlayerMoney() >= 2600"
+		scriptCondition="IfCanGunInSlot('vulcan01', 1) > 0 and GetPlayerMoney() >= 2600"
 		scriptResult="InsureItem('vulcan01'); AddPlayerMoney(-2600)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12360,7 +12366,7 @@
 		name="Dlg_pl_insure_11"
 		text="Застраховать КПВТ (Стоимость: 3.700 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('kpvt01') > 0 and GetPlayerMoney() >= 3700 or HasPlayerAmountOfItems('kpvt01', 1) and GetPlayerMoney() >= 3700"
+		scriptCondition="IfCanGunInSlot('kpvt01', 1) > 0 and GetPlayerMoney() >= 3700"
 		scriptResult="InsureItem('kpvt01'); AddPlayerMoney(-3700)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12368,7 +12374,7 @@
 		name="Dlg_pl_insure_12"
 		text="Застраховать Рапиру (Стоимость: 4.500 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('rapier01') > 0 and GetPlayerMoney() >= 4500 or HasPlayerAmountOfItems('rapier01', 1) and GetPlayerMoney() >= 4500"
+		scriptCondition="IfCanGunInSlot('rapier01', 1) > 0 and GetPlayerMoney() >= 4500"
 		scriptResult="InsureItem('rapier01'); AddPlayerMoney(-4500)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12376,7 +12382,7 @@
 		name="Dlg_pl_insure_13"
 		text="Застраховать Флаг (Стоимость: 8.000 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('flag01') > 0 and GetPlayerMoney() >= 8000 or HasPlayerAmountOfItems('flag01', 1) and GetPlayerMoney() >= 8000"
+		scriptCondition="IfCanGunInSlot('flag01', 1) > 0 and GetPlayerMoney() >= 8000"
 		scriptResult="InsureItem('flag01'); AddPlayerMoney(-8000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12384,7 +12390,7 @@
 		name="Dlg_pl_insure_14"
 		text="Застраховать Рейнметалл (Стоимость: 12.000 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('rainmetal01') > 0 and GetPlayerMoney() >= 12000 or HasPlayerAmountOfItems('rainmetal01', 1) and GetPlayerMoney() >= 12000"
+		scriptCondition="IfCanGunInSlot('rainmetal01', 1) > 0 and GetPlayerMoney() >= 12000"
 		scriptResult="InsureItem('rainmetal01'); AddPlayerMoney(-12000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12392,7 +12398,7 @@
 		name="Dlg_pl_insure_15"
 		text="Застраховать Слон (Стоимость: 21.000 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('elephant01') > 0 and GetPlayerMoney() >= 21000 or HasPlayerAmountOfItems('elephant01', 1) and GetPlayerMoney() >= 21000"
+		scriptCondition="IfCanGunInSlot('elephant01', 1) > 0 and GetPlayerMoney() >= 21000"
 		scriptResult="InsureItem('elephant01'); AddPlayerMoney(-21000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12400,7 +12406,7 @@
 		name="Dlg_pl_insure_16"
 		text="Застраховать Один (Стоимость: 25.600 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('odin01') > 0 and GetPlayerMoney() >= 25600 or HasPlayerAmountOfItems('odin01', 1) and GetPlayerMoney() >= 25600"
+		scriptCondition="IfCanGunInSlot('odin01', 1) > 0 and GetPlayerMoney() >= 25600"
 		scriptResult="InsureItem('odin01'); AddPlayerMoney(-25600)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12408,7 +12414,7 @@
 		name="Dlg_pl_insure_17"
 		text="Застраховать Омегу (Стоимость: 7.250 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('omega01') > 0 and GetPlayerMoney() >= 7250 or HasPlayerAmountOfItems('omega01', 1) and GetPlayerMoney() >= 7250"
+		scriptCondition="IfCanGunInSlot('omega01', 1) > 0 and GetPlayerMoney() >= 7250"
 		scriptResult="InsureItem('omega01'); AddPlayerMoney(-7250)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12416,7 +12422,7 @@
 		name="Dlg_pl_insure_18"
 		text="Застраховать Шмель (Стоимость: 2.300 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('bumblebee01') > 0 and GetPlayerMoney() >= 2300 or HasPlayerAmountOfItems('bumblebee01', 1) and GetPlayerMoney() >= 2300"
+		scriptCondition="IfCanGunInSlot('bumblebee01', 1) > 0 and GetPlayerMoney() >= 2300"
 		scriptResult="InsureItem('bumblebee01'); AddPlayerMoney(-2300)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12424,7 +12430,7 @@
 		name="Dlg_pl_insure_19"
 		text="Застраховать Молот Тора (Стоимость: 24.000 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('hammer01') > 0 and GetPlayerMoney() >= 24000 or HasPlayerAmountOfItems('hammer01', 1) and GetPlayerMoney() >= 24000"
+		scriptCondition="IfCanGunInSlot('hammer01', 1) > 0 and GetPlayerMoney() >= 24000"
 		scriptResult="InsureItem('hammer01'); AddPlayerMoney(-24000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12432,7 +12438,7 @@
 		name="Dlg_pl_insure_20"
 		text="Застраховать Охотник (Стоимость: 9.200 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('hunterSideGun') > 0 and GetPlayerMoney() >= 9200 or HasPlayerAmountOfItems('hunterSideGun', 1) and GetPlayerMoney() >= 9200"
+		scriptCondition="IfCanGunInSlot('hunterSideGun', 1) > 0 and GetPlayerMoney() >= 9200"
 		scriptResult="InsureItem('hunterSideGun'); AddPlayerMoney(-9200)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12440,7 +12446,7 @@
 		name="Dlg_pl_insure_21"
 		text="Застраховать Мрак (Стоимость: 16.600 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('mrakSideGun') > 0 and GetPlayerMoney() >= 16600 or HasPlayerAmountOfItems('mrakSideGun', 1) and GetPlayerMoney() >= 16600"
+		scriptCondition="IfCanGunInSlot('mrakSideGun', 1) > 0 and GetPlayerMoney() >= 16600"
 		scriptResult="InsureItem('mrakSideGun'); AddPlayerMoney(-16600)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 	
@@ -12448,7 +12454,7 @@
 		name="Dlg_pl_insure_22"
 		text="Застраховать Свингфайр (Стоимость: 8.400 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('big_swingfire01') > 0 and GetPlayerMoney() >= 8400 or HasPlayerAmountOfItems('big_swingfire01', 1) and GetPlayerMoney() >= 8400"
+		scriptCondition="IfCanGunInSlot('big_swingfire01', 1) > 0 and GetPlayerMoney() >= 8400"
 		scriptResult="InsureItem('big_swingfire01'); AddPlayerMoney(-8400)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12456,7 +12462,7 @@
 		name="Dlg_pl_insure_23"
 		text="Застраховать Циклоп (Стоимость: 6.000 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('cyclops01') > 0 and GetPlayerMoney() >= 6000 or HasPlayerAmountOfItems('cyclops01', 1) and GetPlayerMoney() >= 6000"
+		scriptCondition="IfCanGunInSlot('cyclops01', 1) > 0 and GetPlayerMoney() >= 6000"
 		scriptResult="InsureItem('cyclops01'); AddPlayerMoney(-6000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12464,7 +12470,7 @@
 		name="Dlg_pl_insure_23_"
 		text="Застраховать Спрут (Стоимость: 7.280 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('octopus01') > 0 and GetPlayerMoney() >= 7280 or HasPlayerAmountOfItems('octopus01', 1) and GetPlayerMoney() >= 7280"
+		scriptCondition="IfCanGunInSlot('octopus01', 1) > 0 and GetPlayerMoney() >= 7280"
 		scriptResult="InsureItem('octopus01'); AddPlayerMoney(-7280)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12472,7 +12478,7 @@
 		name="Dlg_pl_insure_24"
 		text="Застраховать Град (Стоимость: 30.000 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('hailSideGun') > 0 and GetPlayerMoney() >= 30000 or HasPlayerAmountOfItems('hailSideGun', 1) and GetPlayerMoney() >= 30000"
+		scriptCondition="IfCanGunInSlot('hailSideGun', 1) > 0 and GetPlayerMoney() >= 30000"
 		scriptResult="InsureItem('hailSideGun'); AddPlayerMoney(-30000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12480,7 +12486,7 @@
 		name="Dlg_pl_insure_25"
 		text="Застраховать Ураган (Стоимость: 8.000 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('hurricane01') > 0 and GetPlayerMoney() >= 8000 or HasPlayerAmountOfItems('hurricane01', 1) and GetPlayerMoney() >= 8000"
+		scriptCondition="IfCanGunInSlot('hurricane01', 1) > 0 and GetPlayerMoney() >= 8000"
 		scriptResult="InsureItem('hurricane01'); AddPlayerMoney(-8000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12488,7 +12494,7 @@
 		name="Dlg_pl_insure_26"
 		text="Застраховать Дракон (Стоимость: 12.800 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('rocketLauncher') > 0 and GetPlayerMoney() >= 12800 or HasPlayerAmountOfItems('rocketLauncher', 1) and GetPlayerMoney() >= 12800"
+		scriptCondition="IfCanGunInSlot('rocketLauncher', 1) > 0 and GetPlayerMoney() >= 12800"
 		scriptResult="InsureItem('rocketLauncher'); AddPlayerMoney(-12800)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12496,7 +12502,7 @@
 		name="Dlg_pl_insure_27"
 		text="Застраховать Зевс (Стоимость: 35.000 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('zeusSideGun') > 0 and GetPlayerMoney() >= 35000 or HasPlayerAmountOfItems('zeusSideGun', 1) and GetPlayerMoney() >= 35000"
+		scriptCondition="IfCanGunInSlot('zeusSideGun', 1) > 0 and GetPlayerMoney() >= 35000"
 		scriptResult="InsureItem('zeusSideGun'); AddPlayerMoney(-35000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12504,7 +12510,7 @@
 		name="Dlg_pl_insure_28"
 		text="Застраховать Марс (Стоимость: 14.500 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('marsSideGun') > 0 and GetPlayerMoney() >= 14500 or HasPlayerAmountOfItems('marsSideGun', 1) and GetPlayerMoney() >= 14500"
+		scriptCondition="IfCanGunInSlot('marsSideGun', 1) > 0 and GetPlayerMoney() >= 14500"
 		scriptResult="InsureItem('marsSideGun'); AddPlayerMoney(-14500)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12512,7 +12518,7 @@
 		name="Dlg_pl_insure_29"
 		text="Застраховать Турбо-ускорение (Стоимость: 6.500 монет)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('someTurboAccelerationPusher') > 0 and GetPlayerMoney() >= 6500 or HasPlayerAmountOfItems('someTurboAccelerationPusher', 1) and GetPlayerMoney() >= 6500"
+		scriptCondition="IfCanGunInSlot('someTurboAccelerationPusher', 1) > 0 and GetPlayerMoney() >= 6500"
 		scriptResult="InsureItem('someTurboAccelerationPusher'); AddPlayerMoney(-6500)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -15022,7 +15028,7 @@
 
 	<Reply
 		name="Dlg_npc_q_belazist4_1"
-		text="Привет наёмник. У меня есть для тебя один заказ, было бы не плохо сделать эту сборку и протестировать её в бою. Ты готов?"
+		text="Привет наёмник. У меня есть для тебя один заказ, было бы неплохо протестировать эту сборку в бою. Ты готов?"
 		role="NPC"
 		nextReplies="Dlg_npc_q_belazist4_2" />
 
@@ -15154,7 +15160,7 @@
 
 	<Reply
 		name="Dlg_npc_q_belazist6_5"
-		text="Вижу ты заинтересовался, вот, смотри. Собери сборку Белаза так, чтобы на него можно было установить три Рейнметалла. Как по мне, сборка отличная, так что ты справишься. Буду ждать тебя с результатами.|@FF0000AA|@FF1D1D1DНаграда:|- Кабина: @FF1D1D1DЩит (Белаз, Уровень V) в продаже|- Гаджет: @FF1D1D1DСвободный затвор с плавающей муфтой в продаже - x1|- Гаджет: @FF1D1D1DСистема ''Sagitta'' - x1|- Пушка: @FF1D1D1DРейнметалл - x1|- Предмет: @FF1D1D1DЯщик патронов для Пушки - x1|- Деньги: @FF1D1D1D75.000 монет"
+		text="Вижу ты заинтересовался, вот, смотри. Собери Белаз так, чтобы на него можно было установить три Рейнметалла. Как по мне, сборка отличная, так что ты справишься. Буду ждать тебя с результатами.|@FF0000AA|@FF1D1D1DНаграда:|- Кабина: @FF1D1D1DЩит (Белаз, Уровень V) в продаже|- Гаджет: @FF1D1D1DСвободный затвор с плавающей муфтой в продаже - x1|- Гаджет: @FF1D1D1DСистема ''Sagitta'' - x1|- Пушка: @FF1D1D1DРейнметалл - x1|- Предмет: @FF1D1D1DЯщик патронов для Пушки - x1|- Деньги: @FF1D1D1D75.000 монет"
 		role="NPC"
 		nextReplies="Dlg_npc_q_belazist6_6 Dlg_npc_q_belazist6_7 Dlg_npc_q_belazist6_8" />
 
@@ -15196,7 +15202,7 @@
 
 	<Reply
 		name="Dlg_npc_q_belazist7_1"
-		text="Привет. Ты как нельзя вовремя, у меня как раз для тебя один остался заказ, этот будет последним на сборку Белаза."
+		text="Привет. Ты как нельзя вовремя, у меня как раз остался для тебя один заказ, этот будет последним на сборку Белаза."
 		role="NPC"
 		nextReplies="Dlg_npc_q_belazist7_2" />
 
@@ -15290,7 +15296,7 @@
 
 	<Reply
 		name="Dlg_npc_q_belazist8_7"
-		text="Мда.. Неутешительный результат. Думаю, по поводу сборки тебе и самому всё понятно. Того кто заказал эту сборку, пожалуй, мы не станем его осуждать. У каждого свои вкусы, а мы люди приличные, поэтому мы не будем в это вмешиваться. Ты конечно удивил, выполнил такой заказ, не ожидал. Я считаю тебе полагается ценная награда, такое должно быть хорошо оплачено."
+		text="Мда.. Неутешительный результат. Думаю, по поводу сборки тебе и самому всё понятно. Пожалуй, того кто заказал эту сборку, мы не станем осуждать. У каждого свои вкусы, а мы люди приличные, поэтому не будем в это вмешиваться. Ты конечно удивил, выполнил такой заказ, не ожидал. Я считаю тебе полагается ценная награда, такое должно быть хорошо оплачено."
 		role="NPC"
 		nextReplies="Dlg_npc_q_belazist8_8" />
 
@@ -15657,7 +15663,7 @@
 
 	<Reply
 		name="Dlg_npc_q_test_drive15_7"
-		text="Очень хорошо. В этой сборке не плохо показали себя лазер-пушки. Достаточно смертоносное устройство, способное буквально выжигать броню противника. А что по поводу боковых установок, то тут ситуация не однозначная. Все они похожие и с одинаковыми проблемами, долгая перезарядка и малый боезапас, вообщем, как так. Но как и всегда, работа выполнена безупречно, так что, можешь забирать награду."
+		text="Очень хорошо. В этой сборке не плохо показали себя лазер-пушки. Достаточно смертоносное устройство, способное буквально выжигать броню противника. А что по поводу боковых установок, то тут ситуация не однозначная. Все они похожи и с одинаковыми проблемами, долгая перезарядка и малый боезапас. Но как и всегда, работа выполнена безупречно, так что, можешь забирать награду."
 		role="NPC"
 		nextReplies="Dlg_npc_q_test_drive15_8" />
 
@@ -16121,7 +16127,7 @@
 
 	<Reply
 		name="Dlg_npc_mechanic_master"
-		text="У меня ты можешь улучшить своё вооружение и запчасти для машины. Я единственный опытный специалист в этой сфере, разбираюсь и в технике, и в пушках. Если заинтересован, то показывай что надо модифицировать."
+		text="У меня ты можешь улучшить своё вооружение и части машины. Я единственный опытный специалист в этой сфере, разбираюсь и в технике, и в пушках. Если заинтересован, то показывай что надо модифицировать."
 		role="NPC"
 		nextReplies="Dlg_npc_mechanic_master_1 Dlg_npc_mechanic_master_2 Dlg_pl_npc_exit" />
 
@@ -16148,14 +16154,14 @@
 
 	<Reply
 		name="Dlg_npc_mechanic_mod_part_0"
-		text="У меня ты можешь улучшить своё вооружение и запчасти для машины. Я единственный опытный специалист в этой сфере, разбираюсь и в технике, и в пушках. Если заинтересован, то показывай что надо модифицировать.|@FF0000AA|@FF780a0a[У вас недостаточно места в кузове, чтобы разместить в нём возможные установленные @FF780a0aгаджеты на машине]"
+		text="У меня ты можешь улучшить своё вооружение и части машины. Я единственный опытный специалист в этой сфере, разбираюсь и в технике, и в пушках. Если заинтересован, то показывай что надо модифицировать.|@FF0000AA|@FF780a0a[У вас недостаточно места в кузове, чтобы разместить в нём возможные установленные @FF780a0aгаджеты на машине]"
 		role="NPC"
 		scriptCondition="IfCanPlaceForGadgets() == nil"
 		nextReplies="Dlg_pl_npc_exit" />
 
 	<Reply
 		name="Dlg_npc_mechanic_mod_part_1"
-		text="У меня ты можешь улучшить своё вооружение и запчасти для машины. Я единственный опытный специалист в этой сфере, разбираюсь и в технике, и в пушках. Если заинтересован, то показывай что надо модифицировать.|@FF0000AA|@FF1D1D1D[Выберите запчасть, которую хотите модифицировать]"
+		text="У меня ты можешь улучшить своё вооружение и части машины. Я единственный опытный специалист в этой сфере, разбираюсь и в технике, и в пушках. Если заинтересован, то показывай что надо модифицировать.|@FF0000AA|@FF1D1D1DСистема гаранта:|Если первые 2 попытки оказались с отрицательным аффиксом (Бесполезный или Ржавый), то|на 3 попытку вы гарантированно получите аффикс с положительными характеристиками|(Отличный или Продвинутый).|@FF0000AA|@FF1D1D1D[Выберите часть машины, которую хотите модифицировать]"
 		role="NPC"
 		scriptCondition="IfCanPlaceForGadgets() == 1"
 		nextReplies="Dlg_pl_mod_part_1 Dlg_pl_mod_part_2 Dlg_pl_mod_part_3 Dlg_pl_mod_part_4 Dlg_pl_mod_part_5 Dlg_pl_mod_part_6 Dlg_pl_mod_part_7 Dlg_pl_mod_part_8 Dlg_pl_mod_part_9 Dlg_pl_mod_part_10 Dlg_pl_mod_part_11 Dlg_pl_mod_part_12 Dlg_pl_mod_part_13 Dlg_pl_mod_part_14 Dlg_pl_mod_part_15 Dlg_pl_mod_part_16 Dlg_pl_mod_part_17 Dlg_pl_mod_part_18 Dlg_pl_mod_part_19 Dlg_pl_mod_part_20 Dlg_pl_mod_part_21 Dlg_pl_mod_part_22 Dlg_pl_mod_part_23 Dlg_pl_mod_part_24 Dlg_pl_mod_part_25 Dlg_pl_mod_part_26 Dlg_pl_mod_part_27 Dlg_pl_mod_part_28 Dlg_pl_mod_part_29 Dlg_pl_mod_part_30 Dlg_pl_mod_part_31 Dlg_pl_mod_part_32 Dlg_pl_mod_part_33 Dlg_pl_mod_part_34 Dlg_pl_mod_part_35 Dlg_pl_mod_part_36 Dlg_pl_mod_part_37 Dlg_pl_mod_part_38 Dlg_pl_mod_part_39 Dlg_pl_mod_part_40 Dlg_pl_mod_part_41 Dlg_pl_mod_part_42 Dlg_pl_mod_part_43 Dlg_pl_mod_part_44 Dlg_pl_mod_part_45 Dlg_pl_mod_part_46 Dlg_pl_mod_mechanik_back" />
@@ -16532,7 +16538,7 @@
 
 	<Reply
 		name="Dlg_npc_mechanic_guns"
-		text="У меня ты можешь модифицировать своё вооружение и запчасти для машины. Я единственный опытный специалист в этой сфере, разбираюсь и в технике, и в пушках. Если заинтересован, то показывай что надо модифицировать.|@FF0000AA|@FF1D1D1D[Положите необходимое для модификации вооружение себе в кузов]"
+		text="У меня ты можешь улучшить своё вооружение и части машины. Я единственный опытный специалист в этой сфере, разбираюсь и в технике, и в пушках. Если заинтересован, то показывай что надо модифицировать.|@FF0000AA|@FF1D1D1D[Положите необходимое для модификации вооружение себе в кузов]"
 		role="NPC"
 		nextReplies="Dlg_pl_mod_guns_1 Dlg_pl_mod_guns_2 Dlg_pl_mod_guns_3 Dlg_pl_mod_guns_4 Dlg_pl_mod_guns_5 Dlg_pl_mod_guns_6 Dlg_pl_mod_guns_7 Dlg_pl_mod_guns_8 Dlg_pl_mod_guns_9 Dlg_pl_mod_guns_10 Dlg_pl_mod_guns_11 Dlg_pl_mod_guns_12 Dlg_pl_mod_guns_13 Dlg_pl_mod_guns_14 Dlg_pl_mod_guns_15 Dlg_pl_mod_guns_16 Dlg_pl_mod_guns_17 Dlg_pl_mod_guns_18 Dlg_pl_mod_guns_19 Dlg_pl_mod_guns_20 Dlg_pl_mod_guns_21 Dlg_pl_mod_guns_22 Dlg_pl_mod_guns_23 Dlg_pl_mod_guns_24 Dlg_pl_mod_guns_25 Dlg_pl_mod_guns_26 Dlg_pl_mod_guns_27 Dlg_pl_mod_guns_28 Dlg_pl_mod_guns_29 Dlg_pl_mod_mechanik_back" />
 

@@ -208,6 +208,18 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 			<Type Name="ITEM_SIZE_8X4" />
 		</Type>
 
+		<Type Name="AMMO_CHEST_MACHINEGUN_FOR_SALE" geomsize="2 2">
+			<Type Name="ITEM_AMMO_CHEST_MACHINEGUN_FOR_SALE" />
+		</Type>
+
+		<Type Name="AMMO_CHEST_HEAVYGUN_FOR_SALE" geomsize="2 2">
+			<Type Name="ITEM_AMMO_CHEST_HEAVYGUN_FOR_SALE" />
+		</Type>
+
+		<Type Name="AMMO_CHEST_SHOTGUN_FOR_SALE" geomsize="2 2">
+			<Type Name="ITEM_AMMO_CHEST_SHOTGUN_FOR_SALE" />
+		</Type>
+
 		<Type Name="AMMO_BALLON_TURBO_FOR_SALE" geomsize="2 2">
 			<Type Name="ITEM_AMMO_BALLON_TURBO_FOR_SALE" />
 		</Type>

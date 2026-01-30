@@ -1150,7 +1150,7 @@
 	</trigger>
 
 	<trigger Name="UseItems" active="0">
-		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<event eventid="GE_FRAMES_PASSED" ObjName="Player1" />
 		<script>
 			local pl = GetPlayerVehicle()
 			local hp = GetPlayerHealth() 

@@ -3166,7 +3166,7 @@
 
 <!-- Использование предметов -->
 	<trigger Name="ItemsUse" active="0">
-		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<event eventid="GE_FRAMES_PASSED" ObjName="Player1" />
 		<script>
 			local pl = GetPlayerVehicle()
 			local hp = GetPlayerHealth() 
@@ -3709,6 +3709,8 @@
 			if IsQuestItemPresent("quest_item_key_gate_thetown") then
 				local b = SpawnMessageBox("90002")
 				if b == 1 then
+					GetPlayerVehicle():SetCustomLinearVelocity(0)
+					GetPlayerVehicle():SetThrottle(0)
 					getObj("gate_thetown"):SetNodeAction(AT_RESERVED4)
 					CreateEffectTTLed( "ET_PS_OPENING_GATE", CVector(1235.100, 311.700, 2969.336), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 900)
 					TActivate("OpenGate_TheTown_End")
@@ -4220,6 +4222,9 @@
 					end
 					en:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
 					en:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])
+					if FIX_CRASH_VITALY_GLOBAL ~= 1 then
+						en:setImmortalMode(1)
+					end
 					for life=1,random(3) do
 						en:AddItemsToRepository(ItemsLifeUse[random(getn(ItemsLifeUse))], 1)
 					end
@@ -4253,6 +4258,9 @@
 				boss:SetRotation(rotarr[Z])
 				boss:setGodMode(1)
 				boss:AddItemsToRepository(ItemsLifeUse[random(getn(ItemsLifeUse))], 1)
+				if FIX_CRASH_VITALY_GLOBAL ~= 1 then
+					boss:setImmortalMode(1)
+				end
 				AddAmmoItemsForGuns(boss)
 				for i=1,3 do
 					if loot[i] >= random(100) then
@@ -4266,6 +4274,9 @@
 
 			TActivate("BossEnemy_Die")
 			TActivate("BossEnemy_LeavesLoc")
+			if FIX_CRASH_VITALY_GLOBAL ~= 1 then
+				TActivate("BossEnemy_HP_0")
+			end
 
 			SetTolerance(1087, 1100, RS_NEUTRAL)
 			SetTolerance(1087, 1088, RS_NEUTRAL)
@@ -4275,11 +4286,110 @@
 		</script>
 	</trigger>
 
+	<trigger Name="BossEnemy_HP_0" active="0">
+		<event eventid="GE_VEHICLE_WITHOUT_HEALTH" ObjName="EnemyBoss1_vehicle_0" />
+		<event eventid="GE_VEHICLE_WITHOUT_HEALTH" ObjName="EnemyBoss2_vehicle_0" />
+		<event eventid="GE_VEHICLE_WITHOUT_HEALTH" ObjName="EnemyBoss3_vehicle_0" />
+		<event eventid="GE_VEHICLE_WITHOUT_HEALTH" ObjName="EnemyBoss4_vehicle_0" />
+		<script>
+			local car = getObj(trigger:GetCallObjName())
+			local AllItems = AllItems()
+			local items = {}
+			if car then
+				local small_gun = car:GetPartByName("CABIN_SMALL_GUN")
+				if small_gun then small_gun = small_gun:GetProperty("Prototype").AsString table.insert(items, small_gun) end
+				local big_gun = car:GetPartByName("CABIN_BIG_GUN_1")
+				if big_gun then big_gun = big_gun:GetProperty("Prototype").AsString table.insert(items, big_gun) end
+				for i = 1, getn(AllItems) do
+					if car:HasAmountOfItemsInRepository(AllItems[i], 1) then
+						local a = 0
+	   					while car:HasAmountOfItemsInRepository(AllItems[i], a+1 ) == 1 do
+	   						a = a + 1
+	  					end
+						if a > 1 then
+							for c = 1, a do
+								table.insert(items, AllItems[i])
+							end
+						else
+							table.insert(items, AllItems[i])
+						end
+					end
+				end
+
+				CreateEffectInsertedInRemove("ET_PS_VEH_EXP2_MED1", car:GetPosition(), Quaternion(0, 0, 0, 1), true)
+
+				local Chest = CreateNewObject{prototypeName = "vanishingChest", objName = "ChestEnemyBoss_"..random(10000)}	
+				local ChestId = GetEntityByID(Chest)
+				ChestId:SetPosition(car:GetPosition())
+
+				for it = 1, getn(items) do
+					local Item = CreateNewObject{prototypeName = items[it], objName = "ItemsEnemyBoss_"..random(10000), belong = 1100}
+					local ItemId = GetEntityByID(Item)
+					if ChestId and ItemId then
+						ChestId:AddChild(ItemId)
+					end
+				end
+
+				car:Remove()
+			end
+
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			if 4>count then
+			return
+			end
+			trigger:Deactivate()
+ 		</script>
+	</trigger>
+
+	<trigger Name="Boss_HP_0" active="0">
+		<event eventid="GE_VEHICLE_WITHOUT_HEALTH" ObjName="Boss_vehicle_0" />
+		<script>
+			local car = getObj("Boss_vehicle_0")
+			local AllItems = AllItems()
+			local items = {"vector01", "bumblebee01"}
+			if car then
+				for i = 1, getn(AllItems) do
+					if car:HasAmountOfItemsInRepository(AllItems[i], 1) then
+						local a = 0
+	   					while car:HasAmountOfItemsInRepository(AllItems[i], a+1 ) == 1 do
+	   						a = a + 1
+	  					end
+						if a > 1 then
+							for c = 1, a do
+								table.insert(items, AllItems[i])
+							end
+						else
+							table.insert(items, AllItems[i])
+						end
+					end
+				end
+
+				CreateEffectInsertedInRemove("ET_PS_VEH_EXP2_MED1", car:GetPosition(), Quaternion(0, 0, 0, 1), true)
+
+				local Chest = CreateNewObject{prototypeName = "vanishingChest", objName = "ChestBoss_"..random(10000)}	
+				local ChestId = GetEntityByID(Chest)
+				ChestId:SetPosition(car:GetPosition())
+
+				for it = 1, getn(items) do
+					local Item = CreateNewObject{prototypeName = items[it], objName = "ItemsBoss_"..random(10000), belong = 1100}
+					local ItemId = GetEntityByID(Item)
+					if ChestId and ItemId then
+						ChestId:AddChild(ItemId)
+					end
+				end
+
+				car:Remove()
+			end
+			trigger:Deactivate()
+ 		</script>
+	</trigger>
+
 	<trigger Name="BossEnemy_Die" active="0">
-		<event eventid="GE_OBJECT_DIE" ObjName="EnemyBoss1" />
-		<event eventid="GE_OBJECT_DIE" ObjName="EnemyBoss2" />
-		<event eventid="GE_OBJECT_DIE" ObjName="EnemyBoss3" />
-		<event eventid="GE_OBJECT_DIE" ObjName="EnemyBoss4" />
+		<event eventid="GE_OBJECT_DIE" ObjName="EnemyBoss1_vehicle_0" />
+		<event eventid="GE_OBJECT_DIE" ObjName="EnemyBoss2_vehicle_0" />
+		<event eventid="GE_OBJECT_DIE" ObjName="EnemyBoss3_vehicle_0" />
+		<event eventid="GE_OBJECT_DIE" ObjName="EnemyBoss4_vehicle_0" />
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
@@ -4294,6 +4404,9 @@
 
 			TDeactivate("BossEnemy_LeavesLoc")
 			TDeactivate("BossEnemy_Dist")
+			if FIX_CRASH_VITALY_GLOBAL ~= 1 then
+				TActivate("Boss_HP_0")
+			end
 
 			SetTolerance(1087, 1100, RS_ENEMY)
 			SetTolerance(1087, 1088, RS_ENEMY)
@@ -4333,6 +4446,8 @@
 			if Boss1 then Boss1:Remove() end
 
 			TDeactivate("BossEnemy_Die")
+			TDeactivate("Boss_HP_0")
+			TDeactivate("BossEnemy_HP_0")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -5590,6 +5705,7 @@
 					sect:SetNewPart("CABIN_SMALL_GUN", gun[random(getn(gun))])
 					sect:SetRotation(rotarr[random(getn(rotarr))])
 					sect:AddItemsToRepository("item_knife_sectarian", 1)
+					sect:setImmortalMode(1)
 					for life=1,random(2,4) do
 						sect:AddItemsToRepository(ItemsLifeUse[random(getn(ItemsLifeUse))], 1)
 					end
@@ -5613,6 +5729,7 @@
 
 				getObj("Sectanian_Die"):AddEvent("GE_OBJECT_DIE", "Sectanian_"..i.."_vehicle_0")
 				getObj("Sectanian_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "Sectanian_"..i.."_vehicle_0")
+				getObj("Sectanian_HP_0"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "Sectanian_"..i.."_vehicle_0")
 				SetVar("Sectanian_"..i.."_vehicle_0_UnderAttack", 0)
 			end
 
@@ -5653,6 +5770,7 @@
 			TActivate("SectanianMain_Die")
 			TActivate("Sectanian_Die")
 			TActivate("Sectanian_UnderAttack")
+			TActivate("Sectanian_HP_0")
 			TActivate("CreateSectanianLeavesLoc_"..GetVar("SpawnSectanian").AsInt)
 			trigger:Deactivate()
 		</script>
@@ -5700,6 +5818,7 @@
 			for s=1,GetVar("CountSectanian").AsInt do
 				trigger:DelEventObj("GE_OBJECT_DIE", "Sectanian_"..s.."_vehicle_0")
 				getObj("Sectanian_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Sectanian_"..s.."_vehicle_0")
+				getObj("Sectanian_HP_0"):DelEventObj("GE_VEHICLE_WITHOUT_HEALTH", "Sectanian_"..s.."_vehicle_0")
 				SetVar("Sectanian_"..s.."_vehicle_0_UnderAttack", 0)
 			end
 
@@ -5710,6 +5829,7 @@
 			TDeactivate("SectanianDist")
 			TDeactivate("SectanianMain_Die")
 			TDeactivate("Sectanian_UnderAttack")
+			TDeactivate("Sectanian_HP_0")
 			SetVar("CountSectanian", 0)
 			SetVar("SpawnSectanian", 0)
 			SetVar("SectanianMain_vehicle_0_UnderAttack", 0)
@@ -5731,12 +5851,14 @@
 			TDeactivate("CreateSectanianEnterLoc_2")
 			TDeactivate("SectanianDist")
 			TDeactivate("Sectanian_UnderAttack")
+			TDeactivate("Sectanian_HP_0")
 
 			for s=1,GetVar("CountSectanian").AsInt do
 				local sect = GetEntityByName("Sectanian_"..s.."_vehicle_0")
 				if sect then sect:Remove() end
 				getObj("Sectanian_Die"):DelEventObj("GE_OBJECT_DIE", "Sectanian_"..s.."_vehicle_0")
 				getObj("Sectanian_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Sectanian_"..s.."_vehicle_0")
+				getObj("Sectanian_HP_0"):DelEventObj("GE_VEHICLE_WITHOUT_HEALTH", "Sectanian_"..s.."_vehicle_0")
 				SetVar("Sectanian_"..s.."_vehicle_0_UnderAttack", 0)
 			end
 
@@ -5745,6 +5867,56 @@
 			SetVar("SectanianMain_vehicle_0_UnderAttack", 0)
 			trigger:Deactivate()
 		</script>
+	</trigger>
+
+	<trigger Name="Sectanian_HP_0" active="0">
+		<script>
+			local car = getObj(trigger:GetCallObjName())
+			local AllItems = AllItems()
+			local items = {}
+			if car then
+				local small_gun = car:GetPartByName("CABIN_SMALL_GUN")
+				if small_gun then small_gun = small_gun:GetProperty("Prototype").AsString table.insert(items, small_gun) end
+				for i = 1, getn(AllItems) do
+					if car:HasAmountOfItemsInRepository(AllItems[i], 1) then
+						local a = 0
+	   					while car:HasAmountOfItemsInRepository(AllItems[i], a+1 ) == 1 do
+	   						a = a + 1
+	  					end
+						if a > 1 then
+							for c = 1, a do
+								table.insert(items, AllItems[i])
+							end
+						else
+							table.insert(items, AllItems[i])
+						end
+					end
+				end
+
+				CreateEffectInsertedInRemove("ET_PS_SECTARIANS_EXP", car:GetPosition(), Quaternion(0, 0, 0, 1), true)
+
+				local Chest = CreateNewObject{prototypeName = "vanishingChest", objName = "ChestSectarian_"..random(10000)}	
+				local ChestId = GetEntityByID(Chest)
+				ChestId:SetPosition(car:GetPosition())
+
+				for it = 1, getn(items) do
+					local Item = CreateNewObject{prototypeName = items[it], objName = "ItemsSectarian_"..random(10000), belong = 1100}
+					local ItemId = GetEntityByID(Item)
+					if ChestId and ItemId then
+						ChestId:AddChild(ItemId)
+					end
+				end
+
+				car:Remove()
+			end
+
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			if GetVar("CountSectanian").AsInt > count then
+			return
+			end
+			trigger:Deactivate()
+ 		</script>
 	</trigger>
 
 	<trigger Name="SectanianDist" active="0">
@@ -6516,6 +6688,8 @@
 			TDeactivate("BossEnemy_Dist")
 			TDeactivate("BossEnemy_LeavesLoc")
 			TDeactivate("CreateBossEntersLoc")
+			TDeactivate("BossEnemy_HP_0")
+			TDeactivate("Boss_HP_0")
 
 			SetVar("BossFrendly", 0)
 

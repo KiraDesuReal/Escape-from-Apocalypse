@@ -421,6 +421,11 @@
 		<Node name="Object2" class="SgPointLightSourceNode" id="LS_LIGHT_RED" psNumEmitterMesh="-1" />
 	</Node>
 
+	<Node name="ET_LS_LIGHT_LAMPPOSTS" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_S2" psNumEmitterMesh="-1" />
+		<Node name="Object2" class="SgPointLightSourceNode" id="LS_LIGHT_TEST" psNumEmitterMesh="-1" />
+	</Node>
+
 	<Node name="ET_PS_ORACUL_MAIN9" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_ORACUL_MAIN9" psNumEmitterMesh="-1" />
 	</Node>
@@ -1659,6 +1664,14 @@
 		<Node name="14" class="SgParticlesNode" id="PS_CHASSIS_FIRE_SMALL_SMOKE1" psNumEmitterMesh="-1" />
 		<Node name="15" class="SgParticlesNode" id="PS_CHASSIS_FIRE_SMALL_SMOKE2" psNumEmitterMesh="-1" />
 		<Node name="151" class="SgParticlesNode" id="PS_CHASSIS_FIRE_SMALL_SMOKE2" psNumEmitterMesh="-1" />
+	</Node>
+
+	<Node name="ET_PS_SECTARIANS_EXP" class="SgNode">
+		<Node name="1" class="SgParticlesNode" id="PS_AIRWAVE2_MAIN" psNumEmitterMesh="-1" />
+		<Node name="2" class="SgParticlesNode" id="PS_BARREL_GREEN_SPOT" psNumEmitterMesh="-1" />
+		<Node name="3" class="SgParticlesNode" id="PS_BARREL_GREEN_TRAIL" psNumEmitterMesh="-1" />
+		<Node name="4" class="SgParticlesNode" id="PS_BARREL_GREEN_SMOKE" psNumEmitterMesh="-1" />
+		<Node name="Explosion1"	 class="SgSoundSourceNode" id="S_EXPLOSION04" looped="0" /> 
 	</Node>
 
 <!-- //////////////////////////////////// Искры и Машина в воде //////////////////////////////////// -->

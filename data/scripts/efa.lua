@@ -234,22 +234,26 @@ function GiveGunsForPMC(vehicle)
 
 	local smallgun={hornet,"specter01","pkt01","kord01","storm01"}
 	local biggun={"rapier01","vector01","vulcan01","kpvt01","elephant01","odin01","bumblebee01","omega01"}
-	local giantgun={"cyclops01","octopus01","hammer01"}
+	local giantgun={"cyclops01","octopus01"}
 	local sidegun={"hunterSideGun","marsSideGun","mrakSideGun"}
 	local side_random = 0
 
 	local player = GetVar("PlayerCar").AsString
 	if player == "Molokovoz" then
 		side_random = 0
-		biggun[getn(biggun) + 1] = "rainmetal01"
+		table.insert(biggun, "rainmetal01")
 	elseif player == "Ural" or player == "Belaz" or player == "Mirotvorec" or player == "Cruiser" then
-		biggun={"rapier01","vector01","vulcan01","kpvt01","elephant01","odin01","bumblebee01","omega01","flag01","rainmetal01","hurricane01"}
-		giantgun={"cyclops01","octopus01","rocketLauncher","big_swingfire01","hammer01"}
+		table.insert(biggun, "flag01")
+		table.insert(biggun, "rainmetal01")
+		if random(3) == 1 then table.insert(biggun, "hurricane01") end
+		if random(3) == 1 then table.insert(giantgun, "rocketLauncher") end
+		if random(3) == 1 then table.insert(giantgun, "big_swingfire01") end
+		table.insert(giantgun, "hammer01")
 		side_random = random(4) 
 	end
 
-	if random(2) == 1 then table.insert(smallgun, "maxim01") end
-	if random(3) == 1 then table.insert(smallgun, "fagot01") end
+	if random(3) == 1 then table.insert(smallgun, "maxim01") end
+	if random(4) == 1 then table.insert(smallgun, "fagot01") end
 
 	local i,j,k=1,1,1
 	while parts[i] do
@@ -1608,7 +1612,8 @@ function InsureItem(item)
 end
 
 -- Проверка, установлено ли конкретное вооружение
-function IfCanGunInSlot(gun)
+function IfCanGunInSlot(gun, param)
+	if param == nil then param = 0 end
 	local plf = GetPlayerVehicle()
 	local parts={"CABIN_","BASKET_","CHASSIS_"}
 	local slots={"SMALL_","BIG_","GIANT_","SIDE_","SPECIAL_"}
@@ -1623,7 +1628,32 @@ function IfCanGunInSlot(gun)
 					local plfSlot = plf:GetPartByName(slot)
 					if plfSlot then 
 						local slotGun = plfSlot:GetProperty("Prototype").AsString 
-						if slotGun == gun then l = l + 1 end
+						if slotGun == gun then 
+							if param == 0 then
+								l = l + 1 
+							else
+								if slot == "BASKET_SIDE_GUN_0" then
+									local basket_side_l = GetPlayerVehicle():GetPartByName("BASKET_SIDE_GUN_L")
+									local basket_side_r = GetPlayerVehicle():GetPartByName("BASKET_SIDE_GUN_R")
+									local durGun_l = basket_side_l:GetProperty("Durability").AsInt
+									local durGun_r = basket_side_r:GetProperty("Durability").AsInt
+									local poolshells_l = basket_side_l:GetShellsInPool()
+									local poolshells_r = basket_side_r:GetShellsInPool()
+									local currentshells_l = basket_side_l:GetShellsInCurrentCharge()
+									local currentshells_r = basket_side_r:GetShellsInCurrentCharge()
+									if durGun_l ~= 0 and poolshells_l ~= 0 and currentshells_l ~= 0 and durGun_r ~= 0 and poolshells_r ~= 0 and currentshells_r ~= 0 then
+										l = l + 1
+									end
+								else
+									local durGun = plfSlot:GetProperty("Durability").AsInt
+									local poolshells = plfSlot:GetShellsInPool()
+									local currentshells = plfSlot:GetShellsInCurrentCharge()
+									if durGun ~= 0 and poolshells ~= 0 and currentshells ~= 0 then
+										l = l + 1
+									end
+								end 
+							end
+						end
 					end
 				end
 				k=k+1
@@ -1979,8 +2009,21 @@ function AddRandomAffixToPart(part)
 		if part == "CABIN" then
 			local prot = playerVeh:GetCabin():GetProperty("Prototype").AsString
 
-			local cab_affix_list = {"useless_cabin", "rusty_cabin", "excellent_cabin", "advanced_cabin"}
-			local cab_affix = cab_affix_list[random(4)]
+			local cab_affix_list1 = {"useless_cabin", "rusty_cabin"}
+			local cab_affix_list2 = {"excellent_cabin", "advanced_cabin"}
+			local cab_affix_list = {cab_affix_list1[random(2)], cab_affix_list2[random(2)]}
+			local cab_affix = cab_affix_list[random(2)]
+
+			if GetVar("AffixToPart_Garant").AsInt == 2 then
+				cab_affix = cab_affix_list2[random(2)]
+				SetVar("AffixToPart_Garant", 0)
+			end
+
+			if cab_affix == "useless_cabin" or cab_affix == "rusty_cabin" then
+				SetVar("AffixToPart_Garant", GetVar("AffixToPart_Garant").AsInt + 1)
+			else
+				SetVar("AffixToPart_Garant", 0)
+			end
 
 			local id = CreateNewObject{prototypeName = prot, objName = cab_affix.."_affix_"..random(10000), belong = 1100}
 			local cab = GetEntityByID( id )
@@ -1992,8 +2035,21 @@ function AddRandomAffixToPart(part)
 		elseif part == "BASKET" then
 			local prot = playerVeh:GetBasket():GetProperty("Prototype").AsString
 
-			local bas_affix_list = {"useless_basket", "rusty_basket", "excellent_basket", "advanced_basket"}
-			local bas_affix = bas_affix_list[random(4)]
+			local bas_affix_list1 = {"useless_basket", "rusty_basket"}
+			local bas_affix_list2 = {"excellent_basket", "advanced_basket"}
+			local bas_affix_list = {bas_affix_list1[random(2)], bas_affix_list2[random(2)]}
+			local bas_affix = bas_affix_list[random(2)]
+
+			if GetVar("AffixToPart_Garant").AsInt == 2 then
+				bas_affix = bas_affix_list2[random(2)]
+				SetVar("AffixToPart_Garant", 0)
+			end
+
+			if bas_affix == "useless_basket" or bas_affix == "rusty_basket" then
+				SetVar("AffixToPart_Garant", GetVar("AffixToPart_Garant").AsInt + 1)
+			else
+				SetVar("AffixToPart_Garant", 0)
+			end
 
 			local id = CreateNewObject{prototypeName = prot, objName = bas_affix.."_affix_"..random(10000), belong = 1100}
 			local bas = GetEntityByID( id )
@@ -2312,6 +2368,14 @@ function GetKeyBind(name)
 	return Key
 end
 
+-- Активация триггеров при загрузке сохранения
+function IfLoadSave()
+	local mapName = GET_GLOBAL_OBJECT( "CurrentLevel" ):GetLevelName()
+	if mapName == "r0m0" then
+		TActivate("CheckLoadSaveTimer")
+	end
+	con("LOAD")
+end
 
 
 

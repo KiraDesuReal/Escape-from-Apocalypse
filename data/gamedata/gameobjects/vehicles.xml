@@ -846,6 +846,8 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 		HornSound		= "ET_S_HORN01"
 
+		BlastWave		= "bigBlastWave"
+
 		DecisionMatrix		= "vehiclemain.lua"
 		DriftCoeff		= "0.5"
 		LookRadius			= "250.0"
@@ -854,10 +856,10 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 		MassSize		= "6 1 3"
 		MassTranslation		= "0 -2.0 -0.2" 
-		DestroyEffectPiercing	= "ET_PS_VEH_EXP1_MED"
-		DestroyEffectBlast	= "ET_PS_VEH_EXP2_MED"
-		DestroyEffectEnergy	= "ET_PS_VEH_EXP3_MED"
-		DestroyEffectWater	= "ET_PS_VEH_EXP2_MED"
+		DestroyEffectPiercing	= "ET_PS_SECTARIANS_EXP"
+		DestroyEffectBlast	= "ET_PS_SECTARIANS_EXP"
+		DestroyEffectEnergy	= "ET_PS_SECTARIANS_EXP"
+		DestroyEffectWater	= "ET_PS_SECTARIANS_EXP"
 
 		Abstract 		= "true"	>
 
@@ -1054,16 +1056,18 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 		DecisionMatrix		= "vehiclemain.lua"
 
+		BlastWave		= "bigBlastWave"
+
 		LookRadius			= "250.0"
 		IntersectionRadius	= "4.5"
 		TakingRadius		= "30.0"
 
 		MassSize		= "10 1 5"
 		MassTranslation		= "0 -1.6 0"
-		DestroyEffectPiercing	= "ET_PS_VEH_EXP1_MED"
-		DestroyEffectBlast	= "ET_PS_VEH_EXP2_MED"
-		DestroyEffectEnergy	= "ET_PS_VEH_EXP3_MED"
-		DestroyEffectWater	= "ET_PS_VEH_EXP2_MED"
+		DestroyEffectPiercing	= "ET_PS_SECTARIANS_EXP"
+		DestroyEffectBlast	= "ET_PS_SECTARIANS_EXP"
+		DestroyEffectEnergy	= "ET_PS_SECTARIANS_EXP"
+		DestroyEffectWater	= "ET_PS_SECTARIANS_EXP"
 
 		Abstract 		= "true"	>
 
@@ -2833,6 +2837,8 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		
 		HornSound		= "ET_S_HORN01"
 
+		BlastWave		= "bigBlastWave"
+
 		DecisionMatrix		= "vehiclemain.lua"
 		LookRadius		= "250.0"
 		IntersectionRadius	= "3.0"
@@ -2840,10 +2846,10 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		DriftCoeff		= "0.05"
 		MassSize		= "4 1 2"
 		MassTranslation		= "0 -1.4 0"
-		DestroyEffectPiercing	= "ET_PS_VEH_EXP1_SMALL"
-		DestroyEffectBlast	= "ET_PS_VEH_EXP2_SMALL"
-		DestroyEffectEnergy	= "ET_PS_VEH_EXP3_SMALL"
-		DestroyEffectWater	= "ET_PS_VEH_EXP2_SMALL"
+		DestroyEffectPiercing	= "ET_PS_SECTARIANS_EXP"
+		DestroyEffectBlast	= "ET_PS_SECTARIANS_EXP"
+		DestroyEffectEnergy	= "ET_PS_SECTARIANS_EXP"
+		DestroyEffectWater	= "ET_PS_SECTARIANS_EXP"
 
 		AdditionalWheelsHover = "0.2"
 

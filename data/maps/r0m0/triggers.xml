@@ -537,6 +537,8 @@
 
 			SetVar("Season", SEASON)
 
+			SetVar("AffixToPart_Garant", 0)
+
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1126,10 +1128,9 @@
 		</script>
 	</trigger>
 
-	<trigger Name="Update" active="1">
+	<trigger Name="Update" active="0">
 		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Timer_loc" />
 		<script>
-			TActivate("CheckLoadSaveTimer")
 			TActivate("IfPlayerFuel0")
 			TActivate("SetDate")
 			TActivate("Events")
@@ -1795,6 +1796,9 @@
 			if GetVar("ChestScavs_Search").AsInt == 5 then SetVar("ChestScavs_time_hour", 0) SetVar("ChestScavs_time_minute", 50) SetVar("ChestScavs_time_second", 0) end
 			if GetVar("ChestScavs_Search").AsInt == 6 then SetVar("ChestScavs_time_hour", 1) SetVar("ChestScavs_time_minute", 0) SetVar("ChestScavs_time_second", 0) end
 
+			local cs = getObj("chestScavs_10")
+			if cs then cs:Remove() end
+
 			TActivate("ChestScavs_CalculatingTime")
 
 			AddFadingMsgByStrIdFormatted("fm_chest_scavs_start")
@@ -2136,7 +2140,7 @@
 			local Chest = CreateNewObject{prototypeName = "opacityChest", objName = "ChestScavsForLoot"}	
 			local ChestId = GetEntityByID(Chest)
 			if GetVar("PlayerBelong").AsString == "SCAV" then
-				ChestId:SetPosition(CVector(0, 0, 0))
+				ChestId:SetPosition(CVector(49.593, 257.709, 997.930))
 			else
 				ChestId:SetPosition(CVector(916, 255, 911))
 			end
@@ -2173,6 +2177,8 @@
 
 			local cs3dText = GetEntityByName("chestScavs_11")
 			if cs3dText then cs3dText:SetSkin(0) end
+
+			CreateNewSgNodeObject("ET_PS_ORACUL_MAIN9", "chestScavs_10", -1, -1, CVector(getPos("ChestScavs_Build_loc")), Quaternion(0, 0, 0, 0), 0.1)
 
 			trigger:Deactivate()
 		</script>
@@ -2768,7 +2774,7 @@
 				if 6 > hour then
 					local ps = GetEntityByName("ps_9")
 					if not(ps) then
-						CreateNewSgNodeObject("LS_LIGHT_TEST", "ps_9", -1, -1, CVector(913.649, 257, 1021.364), Quaternion(0, 0, 0, 0), 0.3)
+						CreateNewSgNodeObject("ET_LS_LIGHT_LAMPPOSTS", "ps_9", -1, -1, CVector(913.649, 263, 1021.364), Quaternion(0, 0, 0, 0), 2)
 					end
 				end
 				
@@ -2802,10 +2808,10 @@
 					for i=1,12 do
 						local l = GetEntityByName("lp_"..i)
 						local lPos = l:GetPosition()
-						lPos.y = lPos.y + 1
+						lPos.y = lPos.y + 8
 						local lp = GetEntityByName("lp_light_"..i)
 						if not(lp) then
-							CreateNewSgNodeObject("LS_LIGHT_TEST", "lp_light_"..i, -1, -1, lPos, Quaternion(0, 0, 0, 0))
+							CreateNewSgNodeObject("ET_LS_LIGHT_LAMPPOSTS", "lp_light_"..i, -1, -1, lPos, Quaternion(0, 0, 0, 0), 2)
 						end
 					end 
 				end	
@@ -2956,9 +2962,9 @@
 			CreateNewDummyObject("lamppost3", "lp_7", -1, -1, CVector(835.719, 255, 1064.065), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
 			CreateNewDummyObject("lamppost3", "lp_8", -1, -1, CVector(851.026, 255, 1078.285), Quaternion(0.0000, 0.7071, 0.0000, 0.7071))
 			CreateNewDummyObject("lamppost3", "lp_9", -1, -1, CVector(888.206, 255, 1078.285), Quaternion(0.0000, -0.7071, 0.0000, 0.7071))
-			CreateNewDummyObject("lamppost3", "lp_10", -1, -1, CVector(888.206, 255, 1000.687), Quaternion(0.0000, -0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("lamppost3", "lp_10", -1, -1, CVector(896.855, 255, 1004.000), Quaternion(0.0000, -0.7071, 0.0000, 0.7071))
 			CreateNewDummyObject("lamppost3", "lp_11", -1, -1, CVector(951.144, 255, 974.805), Quaternion(0.0000, -0.7071, 0.0000, 0.7071))
-			CreateNewDummyObject("lamppost3", "lp_12", -1, -1, CVector(888.206, 255, 900.668), Quaternion(0.0000, -0.7071, 0.0000, 0.7071))
+			CreateNewDummyObject("lamppost3", "lp_12", -1, -1, CVector(885.682, 255, 893.908), Quaternion(0.0000, -0.7071, 0.0000, 0.7071))
 		
 			for i=1,12 do
 				local l = GetEntityByName("lp_"..i)
@@ -3559,11 +3565,14 @@
 		<script>
 			GetPlayerVehicle():setGodMode(1)
 			GetPlayerVehicle():SetNameFromScript("OldCar") 
-		
-			local veh = getObj("PlayerCarInGarage")
-			if veh then
-				CapturePlayerVehicle(0, "ChCar4")
-				g_Player:AddChild(veh)
+	
+			local names = {"PlayerCarInGarage", "PlayerCarInGarage_2"}
+			for i = 1, 2 do
+				local veh = getObj(names[i])
+				if veh then
+					CapturePlayerVehicle(0, "ChCar4")
+					g_Player:AddChild(veh)
+				end
 			end
 
 			local sh = getObj("OldCar")
@@ -3585,9 +3594,52 @@
 
 			SetCameraBehindPlayerVehicle()
 
-			TActivate("ActivateDlgGarage")
+			TActivate("ActivateDlgGarage1")
 
 			SetVar("CarInGarage", 0)
+			SetVar("DialogSelectMap", 2)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ReturnPlayerCarFromGarage_2" active="0">
+		<event	timeout="0.1"		eventid="GE_TIME_PERIOD" />
+		<script>
+			GetPlayerVehicle():setGodMode(1)
+			GetPlayerVehicle():SetGamePositionOnGround(CVector(721.684, 255.480, 965.123))
+			local veh = getObj("PlayerCarInGarage")
+			if veh then
+				GetPlayerVehicle():SetNameFromScript("PlayerCarInGarage_2") 
+				CapturePlayerVehicle(0, "ChCar5")
+				g_Player:AddChild(veh)
+			else
+				GetPlayerVehicle():SetNameFromScript("PlayerCarInGarage") 
+				local veh2 = getObj("PlayerCarInGarage_2")
+				if veh2 then
+					CapturePlayerVehicle(0, "ChCar5")
+					g_Player:AddChild(veh2)
+				end
+			end
+
+			local playerVeh = GetPlayerVehicle()
+			local pos = CVector(902.498, 255.467, 957.345)
+			if playerVeh then
+				local prot = playerVeh:GetProperty("Prototype").AsString
+				if prot == "BelazForSale" then pos = CVector(903.940, 257.355, 957.419) end
+				playerVeh:setGodMode(0)
+				playerVeh:SetCustomControlEnabled(false)
+				playerVeh:SetGamePositionOnGround(pos)
+				playerVeh:SetRotation(Quaternion(0.007, 0.704, 0.007, -0.710))
+				playerVeh:SetNameFromScript("PlayerCarInGarage_3") 
+			end
+	
+			RestoreWeaponGroups()
+
+			SetCameraBehindPlayerVehicle()
+
+			TActivate("ActivateDlgGarage")
+
+			SetVar("CarInGarage", 1)
 			SetVar("DialogSelectMap", 2)
 			trigger:Deactivate()
 		</script>
@@ -3610,22 +3662,36 @@
 	<trigger Name="TpPlayerCarInGarage" active="0">
 		<event	timeout="0.5"		eventid="GE_TIME_PERIOD" />
 		<script>
+			local names = {"PlayerCarInGarage", "PlayerCarInGarage_2"}
 			local pos = CVector(902.498, 255.467, 957.345)
-			local plfInGarage = GetEntityByName("PlayerCarInGarage")
-			if plfInGarage then
-				local prot = plfInGarage:GetProperty("Prototype").AsString
-				if prot == "BelazForSale" then pos = CVector(903.940, 257.355, 957.419) end
-				plfInGarage:SetGamePositionOnGround(pos)
-				plfInGarage:SetRotation(Quaternion(-0.007, -0.708, -0.007, 0.706))
+			for i = 1, 2 do
+				local plfInGarage = GetEntityByName(names[i])
+				if plfInGarage then
+					local prot = plfInGarage:GetProperty("Prototype").AsString
+					if prot == "BelazForSale" then pos = CVector(903.940, 257.355, 957.419) end
+					plfInGarage:SetGamePositionOnGround(pos)
+					plfInGarage:SetRotation(Quaternion(-0.007, -0.708, -0.007, 0.706))
+				end
 			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
 	<trigger Name="ActivateDlgGarage" active="0">
+		<event timeout="1.0" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("ActivateDlgGarage1")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ActivateDlgGarage1" active="0">
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="GarageExit_loc" />
 		<script>
 			SetVar("DialogSelectMap", 0)
+			if GetVar("CarInGarage").AsInt == 1 then
+				TActivate("TpPlayerCarInGarage")
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4418,6 +4484,8 @@
 			local map = GetVar("ToMap").AsString
 
 			PassToMap(map, "FromR0M0")
+
+			TActivate("ExitMap")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -5538,11 +5606,14 @@
 
 				if GetVar("CarInGarage").AsInt == 1 then 
 					TActivate("TpPlayerCarInGarage")
-					local cabAffix = GetAffixPartByName("CABIN", "PlayerCarInGarage")
-					if cabAffix then
-						AddAffixToPart("PlayerCarInGarage", "CABIN", cabAffix, nil, 1)
-					else
-						UpdateCab("PlayerCarInGarage") 
+					local names = {"PlayerCarInGarage", "PlayerCarInGarage_2"}
+					for ca = 1, 2 do
+						local cabAffix = GetAffixPartByName("CABIN", names[ca])
+						if cabAffix then
+							AddAffixToPart(names[ca], "CABIN", cabAffix, nil, 1)
+						else
+							UpdateCab(names[ca]) 
+						end
 					end
 				end
 
@@ -5626,6 +5697,38 @@
 			end
 
 			TDeactivate("Update")
+
+			if GetVar("Generator_on").AsInt == 1 then
+				TActivate("IfGenerator_On")
+			end
+
+			local time = g_ObjCont:GetGameTime().AsString
+			local hour = tonumber(strsub(time, 1, 2))
+
+			if hour >= 6 then
+				if GetVar("PetrolStationBuild_Builden").AsInt == 1 then
+					local ps_9 = GetEntityByName("ps_9")
+					if ps_9 then ps_9:Remove() end
+				end
+
+				if GetVar("Lampposts_Builden").AsInt == 1 then
+					for i_pl=1,12 do
+						local lpl = GetEntityByName("lp_light_"..i_pl)
+						if lpl then lpl:Remove() end
+					end 	
+				end
+
+				for l_lp=1,92 do
+					local lp = GetEntityByName("lp_1_light_"..l_lp)
+					if lp then lp:Remove() end
+				end
+
+				if GetVar("Garage_Builden").AsInt == 1 then
+					if not(GetVar("GarageCraft").AsInt == 1) then
+						TActivate("GarageRemoveLamppost")
+					end
+				end
+			end
 
 		--квестовые переменные
 			if Q_TESTING_MISSION_DIESCAVS then Q_TESTING_MISSION_DIESCAVS = GetVar("q_testing_mission_DieScavs").AsInt end
@@ -6403,7 +6506,7 @@
 					end
 				end
 
-				if sml_slot == nil then l = l + 1 then
+				if sml_slot == nil then l = l + 1 end
 			end
 
 			if l == 4 then CompleteSubtask("q_belazist3_1") end
@@ -7182,37 +7285,39 @@
 	</trigger>
 
 	<trigger Name="CreateChristmasGift" active="0">
-		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
-			local lootlist = {"electronics_use", "fuel_full_use",
-					"item_key_gate_thetown",
-					"item_datchik", "item_military_tube", "item_thermometer", "item_tube",
-					"item_bp", "item_converter", "item_drill", "item_engine", "item_gazan", "item_gpu", "item_iridiym", "item_tetris", "item_virtex", "item_vpx", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid",
-					"item_car_battery", "item_cyclon", "item_tank_battery",
-					"item_prisadka", "item_propan", "item_termit",
-					"item_rozvidka", "item_sas",
-					"item_ledx", "item_oftalmaskop",
-					"item_emre_kara", "item_airfilter", "item_ananaga", "item_fitanyashka", "item_pants40grn", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star",
-					"item_buldex", "item_handrill", "item_pipe_wrench", "item_ratchet_wrench",
-					"item_bitcoin", "item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_silver_skull", "item_vaze",
-					"fagot01", "maxim01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "hammer01", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun",
-					"someTurboAccelerationPusher",
-					"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_fuel_tank2", "additional_torque2", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
+			if EVENT == "NEW_YEAR" then
+				local lootlist = {"electronics_use", "fuel_full_use",
+						"item_key_gate_thetown",
+						"item_datchik", "item_military_tube", "item_thermometer", "item_tube",
+						"item_bp", "item_converter", "item_drill", "item_engine", "item_gazan", "item_gpu", "item_iridiym", "item_tetris", "item_virtex", "item_vpx", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid",
+						"item_car_battery", "item_cyclon", "item_tank_battery",
+						"item_prisadka", "item_propan", "item_termit",
+						"item_rozvidka", "item_sas",
+						"item_ledx", "item_oftalmaskop",
+						"item_emre_kara", "item_airfilter", "item_ananaga", "item_fitanyashka", "item_pants40grn", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star",
+						"item_buldex", "item_handrill", "item_pipe_wrench", "item_ratchet_wrench",
+						"item_bitcoin", "item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_silver_skull", "item_vaze",
+						"fagot01", "maxim01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "hammer01", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun",
+						"someTurboAccelerationPusher",
+						"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_fuel_tank2", "additional_torque2", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 
-			local Chest = CreateNewObject{prototypeName = "christmasGift", objName = "ChristmasGift"}	
-			local ChestId = GetEntityByID(Chest)
-			ChestId:SetSkin(9)
-			ChestId:SetPosition(CVector(900.784, 256, 1063.162))
+				local Chest = CreateNewObject{prototypeName = "christmasGift", objName = "ChristmasGift"}	
+				local ChestId = GetEntityByID(Chest)
+				ChestId:SetSkin(9)
+				ChestId:SetPosition(CVector(900.784, 256, 1063.162))
 
-			local Item = CreateNewObject{prototypeName = lootlist[random(getn(lootlist))], objName = "ChristmasGiftItem"..random(10000), belong = 1100}
-			local ItemId = GetEntityByID(Item)
-			if ChestId and ItemId then
-				ChestId:AddChild(ItemId)
+				local Item = CreateNewObject{prototypeName = lootlist[random(getn(lootlist))], objName = "ChristmasGiftItem"..random(10000), belong = 1100}
+				local ItemId = GetEntityByID(Item)
+				if ChestId and ItemId then
+					ChestId:AddChild(ItemId)
+				end
+
+				CreateEffectInsertedInRemove("ET_PS_DRONE", CVector(900.784, 256, 1063.162), Quaternion(0, 0, 0, 1), true)
+
+				TActivate("IfGetChristmasGift")
 			end
-
-			CreateEffectInsertedInRemove("ET_PS_DRONE", CVector(900.784, 256, 1063.162), Quaternion(0, 0, 0, 1), true)
-
-			TActivate("IfGetChristmasGift")
 			trigger:Deactivate()
 		</script>
 	</trigger>

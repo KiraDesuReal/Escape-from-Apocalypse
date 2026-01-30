@@ -1403,3 +1403,6 @@ function RestoreAllToleranceStatus()
     	end
     end
 end
+
+-- Активация триггеров при загрузке сохранения
+IfLoadSave()

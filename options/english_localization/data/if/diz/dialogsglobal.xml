@@ -1109,19 +1109,25 @@
 <!--Root/r0m0/Ãàðàæ: âåðíóòü ìàøèíó -->
 	<Reply
 		name="Dlg_npc_return_player_car_in_garage"
-		text="Are you sure you want to pick up your car from the garage?|@FF0000AA|@FF780a0a[Your current car will be destroyed]"
+		text="Are you sure you want to pick up your car from the garage?"
 		role="NPC"
-		nextReplies="Dlg_npc_return_player_car_in_garagå_1 Dlg_npc_return_player_car_in_garagå_2" />
+		nextReplies="Dlg_npc_return_player_car_in_garagå_1_2 Dlg_npc_return_player_car_in_garagå_1 Dlg_npc_return_player_car_in_garagå_2" />
 
 	<Reply
 		name="Dlg_npc_return_player_car_in_garagå_1"
-		text="Yes."
+		text="Pick up the car. (The current build will be destroyed)"
 		role="PLAYER"
 		scriptResult="TActivate('ReturnPlayerCarFromGarage'); EndConversation()" />
 
 	<Reply
+		name="Dlg_npc_return_player_car_in_garagå_1_2"
+		text="Pick up the car. (The current build will be left in the garage)"
+		role="PLAYER"
+		scriptResult="TActivate('ReturnPlayerCarFromGarage_2'); EndConversation()" />
+
+	<Reply
 		name="Dlg_npc_return_player_car_in_garagå_2"
-		text="No."
+		text="Exit."
 		role="PLAYER"
 		scriptResult="TActivate('StopPlayerVehicle'); EndConversation()" />
 
@@ -10907,13 +10913,13 @@
 		name="Dlg_pl_0013119"
 		text="Go now."
 		role="PLAYER"
-		scriptResult="TActivate('PassingToMap'); TActivate('ExitMap'); TActivate('StopPlayerVehicle'); EndConversation()" />
+		scriptResult="TActivate('PassingToMap'); TActivate('StopPlayerVehicle'); EndConversation()" />
 
 	<Reply
 		name="Dlg_pl_0013120"
 		text="Go in 12 hours."
 		role="PLAYER"
-		scriptResult="TActivate('In12Hour'); TActivate('ExitMap'); TActivate('StopPlayerVehicle'); EndConversation()" />
+		scriptResult="TActivate('In12Hour'); TActivate('StopPlayerVehicle'); EndConversation()" />
 
 	<Reply
 		name="Dlg_pl_0013121"
@@ -11059,7 +11065,7 @@
 		name="Dlg_npc_prapor_quests"
 		text="I think there's something for you."
 		role="NPC"
-		nextReplies="Dlg_pl_q_search_data Dlg_pl_to_q_search_data Dlg_pl_q_explore_r1m1 Dlg_pl_to_q_explore_r1m1 Dlg_pl_q_kill_scavs Dlg_pl_to_q_kill_scavs Dlg_pl_q_clearing_r1m1 Dlg_pl_to_q_clearing_r1m1 Dlg_pl_q_fuel1 Dlg_pl_to_q_fuel1 Dlg_pl_q_fuel2 Dlg_pl_to_q_fuel2 Dlg_pl_q_base_scavs Dlg_pl_to_q_base_scavs Dlg_pl_q_kill_usec Dlg_pl_to_q_kill_usec Dlg_pl_q_kill_pmc Dlg_pl_to_q_kill_pmc Dlg_pl_q_sectarian1 Dlg_pl_to_q_sectarian1 Dlg_pl_q_sectarian2 Dlg_pl_to_q_sectarian2 Dlg_pl_q_new_year_2026 Dlg_pl_to_q_new_year_2026 Dlg_pl_q_daily_kill_scav_prapor Dlg_pl_to_q_daily_kill_scav_prapor Dlg_pl_q_daily_kill_pmc_prapor Dlg_pl_to_q_daily_kill_pmc_prapor Dlg_pl_q_daily_extract_prapor Dlg_pl_to_q_daily_extract_prapor Dlg_pl_npc_exit" />
+		nextReplies="Dlg_pl_q_search_data Dlg_pl_to_q_search_data Dlg_pl_q_explore_r1m1 Dlg_pl_to_q_explore_r1m1 Dlg_pl_q_kill_scavs Dlg_pl_to_q_kill_scavs Dlg_pl_q_clearing_r1m1 Dlg_pl_to_q_clearing_r1m1 Dlg_pl_q_fuel1 Dlg_pl_to_q_fuel1 Dlg_pl_q_fuel2 Dlg_pl_to_q_fuel2 Dlg_pl_q_base_scavs Dlg_pl_to_q_base_scavs Dlg_pl_q_kill_usec Dlg_pl_to_q_kill_usec Dlg_pl_q_kill_pmc Dlg_pl_to_q_kill_pmc Dlg_pl_q_sectarian1 Dlg_pl_to_q_sectarian1 Dlg_pl_q_sectarian2 Dlg_pl_to_q_sectarian2 Dlg_pl_q_daily_kill_scav_prapor Dlg_pl_to_q_daily_kill_scav_prapor Dlg_pl_q_daily_kill_pmc_prapor Dlg_pl_to_q_daily_kill_pmc_prapor Dlg_pl_q_daily_extract_prapor Dlg_pl_to_q_daily_extract_prapor Dlg_pl_npc_exit" />
 
 <!--Ïîèñêîâàÿ ìèññèÿ-->
 	<Reply
@@ -12280,7 +12286,7 @@
 		name="Dlg_pl_insure_1"
 		text="Insure Hornet (Price: 600 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('hornet01') > 0 and GetPlayerMoney() >= 600 or HasPlayerAmountOfItems('hornet01', 1) and GetPlayerMoney() >= 600"
+		scriptCondition="IfCanGunInSlot('hornet01', 1) > 0 and GetPlayerMoney() >= 600"
 		scriptResult="InsureItem('hornet01'); AddPlayerMoney(-600)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12288,7 +12294,7 @@
 		name="Dlg_pl_insure_2"
 		text="Insure American hornet (Price: 850 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('american_hornet01') > 0 and GetPlayerMoney() >= 850 or HasPlayerAmountOfItems('american_hornet01', 1) and GetPlayerMoney() >= 850"
+		scriptCondition="IfCanGunInSlot('american_hornet01', 1) > 0 and GetPlayerMoney() >= 850"
 		scriptResult="InsureItem('american_hornet01'); AddPlayerMoney(-850)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12296,7 +12302,7 @@
 		name="Dlg_pl_insure_3"
 		text="Insure Specter (Price: 1.700 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('specter01') > 0 and GetPlayerMoney() >= 1700 or HasPlayerAmountOfItems('specter01', 1) and GetPlayerMoney() >= 1700"
+		scriptCondition="IfCanGunInSlot('specter01', 1) > 0 and GetPlayerMoney() >= 1700"
 		scriptResult="InsureItem('specter01'); AddPlayerMoney(-1700)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12304,7 +12310,7 @@
 		name="Dlg_pl_insure_4"
 		text="Insure PKT (Price: 2.250 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('pkt01') > 0 and GetPlayerMoney() >= 2250 or HasPlayerAmountOfItems('pkt01', 1) and GetPlayerMoney() >= 2250"
+		scriptCondition="IfCanGunInSlot('pkt01', 1) > 0 and GetPlayerMoney() >= 2250"
 		scriptResult="InsureItem('pkt01'); AddPlayerMoney(-2250)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12312,7 +12318,7 @@
 		name="Dlg_pl_insure_5"
 		text="Insure Kord (Price: 3.000 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('kord01') > 0 and GetPlayerMoney() >= 3000 or HasPlayerAmountOfItems('kord01', 1) and GetPlayerMoney() >= 3000"
+		scriptCondition="IfCanGunInSlot('kord01', 1) > 0 and GetPlayerMoney() >= 3000"
 		scriptResult="InsureItem('kord01'); AddPlayerMoney(-3000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12320,7 +12326,7 @@
 		name="Dlg_pl_insure_6"
 		text="Insure Storm (Price: 1.000 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('storm01') > 0 and GetPlayerMoney() >= 1000 or HasPlayerAmountOfItems('storm01', 1) and GetPlayerMoney() >= 1000"
+		scriptCondition="IfCanGunInSlot('storm01', 1) > 0 and GetPlayerMoney() >= 1000"
 		scriptResult="InsureItem('storm01'); AddPlayerMoney(-1000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12328,7 +12334,7 @@
 		name="Dlg_pl_insure_7"
 		text="Insure Fagotto (Price: 6.900 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('fagot01') > 0 and GetPlayerMoney() >= 6900 or HasPlayerAmountOfItems('fagot01', 1) and GetPlayerMoney() >= 6900"
+		scriptCondition="IfCanGunInSlot('fagot01', 1) > 0 and GetPlayerMoney() >= 6900"
 		scriptResult="InsureItem('fagot01'); AddPlayerMoney(-6900)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12336,7 +12342,7 @@
 		name="Dlg_pl_insure_8"
 		text="Insure Maxim (Price: 5.000 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('maxim01') > 0 and GetPlayerMoney() >= 5000 or HasPlayerAmountOfItems('maxim01', 1) and GetPlayerMoney() >= 5000"
+		scriptCondition="IfCanGunInSlot('maxim01', 1) > 0 and GetPlayerMoney() >= 5000"
 		scriptResult="InsureItem('maxim01'); AddPlayerMoney(-5000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12344,7 +12350,7 @@
 		name="Dlg_pl_insure_9"
 		text="Insure Vector (Price: 2.000 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('vector01') > 0 and GetPlayerMoney() >= 2000 or HasPlayerAmountOfItems('vector01', 1) and GetPlayerMoney() >= 2000"
+		scriptCondition="IfCanGunInSlot('vector01', 1) > 0 and GetPlayerMoney() >= 2000"
 		scriptResult="InsureItem('vector01'); AddPlayerMoney(-2000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12352,7 +12358,7 @@
 		name="Dlg_pl_insure_10"
 		text="Insure Vulcan (Price: 2.600 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('vulcan01') > 0 and GetPlayerMoney() >= 2600 or HasPlayerAmountOfItems('vulcan01', 1) and GetPlayerMoney() >= 2600"
+		scriptCondition="IfCanGunInSlot('vulcan01', 1) > 0 and GetPlayerMoney() >= 2600"
 		scriptResult="InsureItem('vulcan01'); AddPlayerMoney(-2600)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12360,7 +12366,7 @@
 		name="Dlg_pl_insure_11"
 		text="Insure KPVT (Price: 3.700 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('kpvt01') > 0 and GetPlayerMoney() >= 3700 or HasPlayerAmountOfItems('kpvt01', 1) and GetPlayerMoney() >= 3700"
+		scriptCondition="IfCanGunInSlot('kpvt01', 1) > 0 and GetPlayerMoney() >= 3700"
 		scriptResult="InsureItem('kpvt01'); AddPlayerMoney(-3700)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12368,7 +12374,7 @@
 		name="Dlg_pl_insure_12"
 		text="Insure Rapier (Price: 4.500 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('rapier01') > 0 and GetPlayerMoney() >= 4500 or HasPlayerAmountOfItems('rapier01', 1) and GetPlayerMoney() >= 4500"
+		scriptCondition="IfCanGunInSlot('rapier01', 1) > 0 and GetPlayerMoney() >= 4500"
 		scriptResult="InsureItem('rapier01'); AddPlayerMoney(-4500)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12376,7 +12382,7 @@
 		name="Dlg_pl_insure_13"
 		text="Insure Flag (Price: 8.000 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('flag01') > 0 and GetPlayerMoney() >= 8000 or HasPlayerAmountOfItems('flag01', 1) and GetPlayerMoney() >= 8000"
+		scriptCondition="IfCanGunInSlot('flag01', 1) > 0 and GetPlayerMoney() >= 8000"
 		scriptResult="InsureItem('flag01'); AddPlayerMoney(-8000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12384,7 +12390,7 @@
 		name="Dlg_pl_insure_14"
 		text="Insure Rainmetal (Price: 12.000 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('rainmetal01') > 0 and GetPlayerMoney() >= 12000 or HasPlayerAmountOfItems('rainmetal01', 1) and GetPlayerMoney() >= 12000"
+		scriptCondition="IfCanGunInSlot('rainmetal01', 1) > 0 and GetPlayerMoney() >= 12000"
 		scriptResult="InsureItem('rainmetal01'); AddPlayerMoney(-12000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12392,7 +12398,7 @@
 		name="Dlg_pl_insure_15"
 		text="Insure Elephant (Price: 21.000 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('elephant01') > 0 and GetPlayerMoney() >= 21000 or HasPlayerAmountOfItems('elephant01', 1) and GetPlayerMoney() >= 21000"
+		scriptCondition="IfCanGunInSlot('elephant01', 1) > 0 and GetPlayerMoney() >= 21000"
 		scriptResult="InsureItem('elephant01'); AddPlayerMoney(-21000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12400,7 +12406,7 @@
 		name="Dlg_pl_insure_16"
 		text="Insure Odin (Price: 25.600 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('odin01') > 0 and GetPlayerMoney() >= 25600 or HasPlayerAmountOfItems('odin01', 1) and GetPlayerMoney() >= 25600"
+		scriptCondition="IfCanGunInSlot('odin01', 1) > 0 and GetPlayerMoney() >= 25600"
 		scriptResult="InsureItem('odin01'); AddPlayerMoney(-25600)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12408,7 +12414,7 @@
 		name="Dlg_pl_insure_17"
 		text="Insure Omega (Price: 7.250 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('omega01') > 0 and GetPlayerMoney() >= 7250 or HasPlayerAmountOfItems('omega01', 1) and GetPlayerMoney() >= 7250"
+		scriptCondition="IfCanGunInSlot('omega01', 1) > 0 and GetPlayerMoney() >= 7250"
 		scriptResult="InsureItem('omega01'); AddPlayerMoney(-7250)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12416,7 +12422,7 @@
 		name="Dlg_pl_insure_18"
 		text="Insure Bumblebee (Price: 2.300 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('bumblebee01') > 0 and GetPlayerMoney() >= 2300 or HasPlayerAmountOfItems('bumblebee01', 1) and GetPlayerMoney() >= 2300"
+		scriptCondition="IfCanGunInSlot('bumblebee01', 1) > 0 and GetPlayerMoney() >= 2300"
 		scriptResult="InsureItem('bumblebee01'); AddPlayerMoney(-2300)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12424,7 +12430,7 @@
 		name="Dlg_pl_insure_19"
 		text="Insure Hammer (Price: 24.000 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('hammer01') > 0 and GetPlayerMoney() >= 24000 or HasPlayerAmountOfItems('hammer01', 1) and GetPlayerMoney() >= 24000"
+		scriptCondition="IfCanGunInSlot('hammer01', 1) > 0 and GetPlayerMoney() >= 24000"
 		scriptResult="InsureItem('hammer01'); AddPlayerMoney(-24000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12432,7 +12438,7 @@
 		name="Dlg_pl_insure_20"
 		text="Insure Hunter (Price: 9.200 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('hunterSideGun') > 0 and GetPlayerMoney() >= 9200 or HasPlayerAmountOfItems('hunterSideGun', 1) and GetPlayerMoney() >= 9200"
+		scriptCondition="IfCanGunInSlot('hunterSideGun', 1) > 0 and GetPlayerMoney() >= 9200"
 		scriptResult="InsureItem('hunterSideGun'); AddPlayerMoney(-9200)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12440,7 +12446,7 @@
 		name="Dlg_pl_insure_21"
 		text="Insure Mrak (Price: 16.600 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('mrakSideGun') > 0 and GetPlayerMoney() >= 16600 or HasPlayerAmountOfItems('mrakSideGun', 1) and GetPlayerMoney() >= 16600"
+		scriptCondition="IfCanGunInSlot('mrakSideGun', 1) > 0 and GetPlayerMoney() >= 16600"
 		scriptResult="InsureItem('mrakSideGun'); AddPlayerMoney(-16600)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 	
@@ -12448,7 +12454,7 @@
 		name="Dlg_pl_insure_22"
 		text="Insure Swingfire (Price: 8.400 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('big_swingfire01') > 0 and GetPlayerMoney() >= 8400 or HasPlayerAmountOfItems('big_swingfire01', 1) and GetPlayerMoney() >= 8400"
+		scriptCondition="IfCanGunInSlot('big_swingfire01', 1) > 0 and GetPlayerMoney() >= 8400"
 		scriptResult="InsureItem('big_swingfire01'); AddPlayerMoney(-8400)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12456,7 +12462,7 @@
 		name="Dlg_pl_insure_23"
 		text="Insure Cyclops (Price: 6.000 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('cyclops01') > 0 and GetPlayerMoney() >= 6000 or HasPlayerAmountOfItems('cyclops01', 1) and GetPlayerMoney() >= 6000"
+		scriptCondition="IfCanGunInSlot('cyclops01', 1) > 0 and GetPlayerMoney() >= 6000"
 		scriptResult="InsureItem('cyclops01'); AddPlayerMoney(-6000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12464,7 +12470,7 @@
 		name="Dlg_pl_insure_23_"
 		text="Insure Octopus (Price: 7.280 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('octopus01') > 0 and GetPlayerMoney() >= 7280 or HasPlayerAmountOfItems('octopus01', 1) and GetPlayerMoney() >= 7280"
+		scriptCondition="IfCanGunInSlot('octopus01', 1) > 0 and GetPlayerMoney() >= 7280"
 		scriptResult="InsureItem('octopus01'); AddPlayerMoney(-7280)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12472,7 +12478,7 @@
 		name="Dlg_pl_insure_24"
 		text="Insure Hail (Price: 30.000 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('hailSideGun') > 0 and GetPlayerMoney() >= 30000 or HasPlayerAmountOfItems('hailSideGun', 1) and GetPlayerMoney() >= 30000"
+		scriptCondition="IfCanGunInSlot('hailSideGun', 1) > 0 and GetPlayerMoney() >= 30000"
 		scriptResult="InsureItem('hailSideGun'); AddPlayerMoney(-30000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12480,7 +12486,7 @@
 		name="Dlg_pl_insure_25"
 		text="Insure Hurricane (Price: 8.000 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('hurricane01') > 0 and GetPlayerMoney() >= 8000 or HasPlayerAmountOfItems('hurricane01', 1) and GetPlayerMoney() >= 8000"
+		scriptCondition="IfCanGunInSlot('hurricane01', 1) > 0 and GetPlayerMoney() >= 8000"
 		scriptResult="InsureItem('hurricane01'); AddPlayerMoney(-8000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12488,7 +12494,7 @@
 		name="Dlg_pl_insure_26"
 		text="Insure Dragon (Price: 12.800 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('rocketLauncher') > 0 and GetPlayerMoney() >= 12800 or HasPlayerAmountOfItems('rocketLauncher', 1) and GetPlayerMoney() >= 12800"
+		scriptCondition="IfCanGunInSlot('rocketLauncher', 1) > 0 and GetPlayerMoney() >= 12800"
 		scriptResult="InsureItem('rocketLauncher'); AddPlayerMoney(-12800)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12496,7 +12502,7 @@
 		name="Dlg_pl_insure_27"
 		text="Insure Zeus (Price: 35.000 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('zeusSideGun') > 0 and GetPlayerMoney() >= 35000 or HasPlayerAmountOfItems('zeusSideGun', 1) and GetPlayerMoney() >= 35000"
+		scriptCondition="IfCanGunInSlot('zeusSideGun', 1) > 0 and GetPlayerMoney() >= 35000"
 		scriptResult="InsureItem('zeusSideGun'); AddPlayerMoney(-35000)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12504,7 +12510,7 @@
 		name="Dlg_pl_insure_28"
 		text="Insure Mars (Price: 14.500 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('marsSideGun') > 0 and GetPlayerMoney() >= 14500 or HasPlayerAmountOfItems('marsSideGun', 1) and GetPlayerMoney() >= 14500"
+		scriptCondition="IfCanGunInSlot('marsSideGun', 1) > 0 and GetPlayerMoney() >= 14500"
 		scriptResult="InsureItem('marsSideGun'); AddPlayerMoney(-14500)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -12512,7 +12518,7 @@
 		name="Dlg_pl_insure_29"
 		text="Insure Turbo (Price: 6.500 coins)"
 		role="PLAYER"
-		scriptCondition="IfCanGunInSlot('someTurboAccelerationPusher') > 0 and GetPlayerMoney() >= 6500 or HasPlayerAmountOfItems('someTurboAccelerationPusher', 1) and GetPlayerMoney() >= 6500"
+		scriptCondition="IfCanGunInSlot('someTurboAccelerationPusher', 1) > 0 and GetPlayerMoney() >= 6500"
 		scriptResult="InsureItem('someTurboAccelerationPusher'); AddPlayerMoney(-6500)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
@@ -16155,7 +16161,7 @@
 
 	<Reply
 		name="Dlg_npc_mechanic_mod_part_1"
-		text="With me you can improve your weapons and spare parts for your car. I am the only experienced specialist in this field, I understand both technology and guns. If you are interested, then show me what needs to be modified.|@FF0000AA|@FF1D1D1D[Select the part you want to modify]"
+		text="With me you can improve your weapons and spare parts for your car. I am the only experienced specialist in this field, I understand both technology and guns. If you are interested, then show me what needs to be modified.|@FF0000AA|@FF1D1D1DGuarantor system:|If your first 2 attempts resulted in a negative affix (Useless or Rusty), then on your 3rd attempt you are guaranteed to receive an affix with positive characteristics (Excellent or Advanced).|@FF0000AA|@FF1D1D1D[Select the part you want to modify]"
 		role="NPC"
 		scriptCondition="IfCanPlaceForGadgets() == 1"
 		nextReplies="Dlg_pl_mod_part_1 Dlg_pl_mod_part_2 Dlg_pl_mod_part_3 Dlg_pl_mod_part_4 Dlg_pl_mod_part_5 Dlg_pl_mod_part_6 Dlg_pl_mod_part_7 Dlg_pl_mod_part_8 Dlg_pl_mod_part_9 Dlg_pl_mod_part_10 Dlg_pl_mod_part_11 Dlg_pl_mod_part_12 Dlg_pl_mod_part_13 Dlg_pl_mod_part_14 Dlg_pl_mod_part_15 Dlg_pl_mod_part_16 Dlg_pl_mod_part_17 Dlg_pl_mod_part_18 Dlg_pl_mod_part_19 Dlg_pl_mod_part_20 Dlg_pl_mod_part_21 Dlg_pl_mod_part_22 Dlg_pl_mod_part_23 Dlg_pl_mod_part_24 Dlg_pl_mod_part_25 Dlg_pl_mod_part_26 Dlg_pl_mod_part_27 Dlg_pl_mod_part_28 Dlg_pl_mod_part_29 Dlg_pl_mod_part_30 Dlg_pl_mod_part_31 Dlg_pl_mod_part_32 Dlg_pl_mod_part_33 Dlg_pl_mod_part_34 Dlg_pl_mod_part_35 Dlg_pl_mod_part_36 Dlg_pl_mod_part_37 Dlg_pl_mod_part_38 Dlg_pl_mod_part_39 Dlg_pl_mod_part_40 Dlg_pl_mod_part_41 Dlg_pl_mod_part_42 Dlg_pl_mod_part_43 Dlg_pl_mod_part_44 Dlg_pl_mod_part_45 Dlg_pl_mod_part_46 Dlg_pl_mod_mechanik_back" />

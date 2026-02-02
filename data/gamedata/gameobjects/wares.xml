@@ -1742,7 +1742,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "20110"
 		Durability	= "10"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "keqing_box"
 		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
@@ -1834,6 +1834,15 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		PriceDispersion      = "5"
 		ModelFile	= "water_canister"
 		ResourceType= "ITEM_SIZE_3X3" />
+	
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_chizuru"
+		Price	= "18500"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= "chizuru_box"
+		ResourceType= "ITEM_SIZE_2X4" />
 
 <!-- Tools Items -->
 
@@ -2126,6 +2135,15 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		PriceDispersion      = "5"
 		ModelFile	= ""
 		ResourceType= "ITEM_SIZE_4X4" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_duck"
+		Price	= "6570"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= "duck"
+		ResourceType= "ITEM_SIZE_2X2" />
 
 <!-- Quest Items -->
 

@@ -3980,7 +3980,7 @@
 	<trigger Name="CreateValuablesLootBox" active="0">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-			local items = {"book", "shkatulka", "item_key_gate_thetown", "item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_emre_kara", "item_fitanyashka", "item_monolit", "item_kaktus", "item_keqing", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_carsen", "item_metallodetector", "item_ananaga", "item_silver_skull", "item_vaze", "item_kubok_kikiki"}
+			local items = {"book", "shkatulka", "item_key_gate_thetown", "item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_emre_kara", "item_fitanyashka", "item_monolit", "item_kaktus", "item_keqing", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_carsen", "item_metallodetector", "item_ananaga", "item_silver_skull", "item_vaze", "item_kubok_kikiki", "item_duck", "item_chizuru"}
 
 			local protChest = "mainChest"
 
@@ -4084,7 +4084,7 @@
 							"item_sugar",
 							"item_oftalmaskop", "item_ledx",
 							"item_disk", "item_disk_exmachina", "item_flashdrive", "item_sas", "item_ssd",
-							"item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_ananaga", "item_kubok_kikiki",
+							"item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_ananaga", "item_kubok_kikiki", "item_chizuru",
 							"item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_vaze",
 							"fagot01", "maxim01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "big_swingfire01", "cyclops01", "octopus01", "rocketLauncher", "someTurboAccelerationPusher"}
 
@@ -4690,7 +4690,7 @@
 						"item_sugar",
 						"item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 						"item_aquapeps", "item_c6h8o6", "item_ledx", "item_oftalmaskop", "item_afak", "item_grizzly",
-						"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_waterfilter", "item_keqing", "item_metallodetector", "item_kubok_kikiki",
+						"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_waterfilter", "item_keqing", "item_metallodetector", "item_kubok_kikiki", "item_chizuru",
 						"item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_pipe_wrench", "item_ratchet_wrench", "item_toolset", "item_vitalik",
 						"item_bitcoin", "item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_silver_skull", "item_vaze"}
 				
@@ -5692,7 +5692,7 @@
 			local gun = {"fagot01", "maxim01", "elephant01", "odin01"}
 			local gunBig = {"elephant01", "odin01"}
 			local ItemsLifeUse = {"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use"}
-			local loot = {"item_chain", "item_manual", "item_disk", "item_flashdrive", "item_key_gate_thetown", "item_ex", "item_teapon", "item_ssd", "item_silver_skull", "item_sas", "item_disk_exmachina", "item_cat", "item_rolex", "item_chain_gold", "item_vaze", "item_chiken", "item_skullring", "item_lion"}
+			local loot = {"item_chain", "item_duck", "item_manual", "item_disk", "item_flashdrive", "item_key_gate_thetown", "item_ex", "item_teapon", "item_ssd", "item_chizuru", "item_silver_skull", "item_keqing", "item_sas", "item_disk_exmachina", "item_cat", "item_rolex", "item_chain_gold", "item_vaze", "item_chiken", "item_skullring", "item_lion"}
 
 			local count = random(2,4)
 			SetVar("CountSectanian", count)

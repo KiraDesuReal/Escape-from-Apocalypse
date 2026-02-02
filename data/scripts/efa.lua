@@ -470,6 +470,14 @@ function AddKeysQuestItem()
 		SetVar("item_key_gate_thetown_used", 10)
 		SoundFadingMsg()
 	end
+
+	if HasPlayerAmountOfItems("item_chizuru", 1) then
+		if GetPlayerMoney() > 0 then
+			g_Player:AddMoney(- 1)
+		else
+			RemoveItemsFromPlayerRepository("item_chizuru", 1)
+		end
+	end
 end
 
 function UseAmmoItems(ammo_used)
@@ -946,12 +954,12 @@ function CreateBarrelLootBox(name, pos)
 	local medical1 = {"item_h2o2", "item_analgin", "item_med", "item_medical_tools", "item_ai2", "item_naci", "item_vazelin", "item_carmed", "item_suringe", "item_salewa", "item_morfie"}
 	local medical2 = {"item_medical_tools", "item_med", "item_ai2", "item_naci", "item_vazelin", "item_h2o2", "item_carmed", "item_suringe", "item_salewa", "item_ifak", "item_morfie", "item_c6h8o6", "item_zvezda", "item_aquapeps", "item_afak", "item_grizzly", "item_oftalmaskop", "item_ledx"}
 
-	local other1 = {"item_zapal", "item_stakanyash", "item_carsen", "item_vodka", "item_monolit", "item_kaktus", "item_filter", "item_emre_kara", "item_waterfilter", "item_keqing", "item_metallodetector", "item_kubok_kikiki", "item_fitanyashka", "item_paracord", "item_vitalik", "item_airfilter", "item_ananaga"}
+	local other1 = {"item_zapal", "item_stakanyash", "item_carsen", "item_vodka", "item_monolit", "item_kaktus", "item_filter", "item_emre_kara", "item_chizuru", "item_waterfilter", "item_keqing", "item_metallodetector", "item_kubok_kikiki", "item_fitanyashka", "item_paracord", "item_vitalik", "item_airfilter", "item_ananaga"}
 
 	local tools1 = {"item_metalscissors", "item_nippers", "item_pliers", "item_pliers_round", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_wrench"}
 	local tools2 = {"item_screw_flat_long", "item_leatherman", "item_toolset", "item_fullmaster", "item_awl", "item_sewing_kit", "item_handrill", "item_buldex", "item_pipe_wrench", "item_ratchet_wrench", "item_vitalik"}
 	
-	local valuables1 = {"item_chain", "item_carsen", "item_monolit", "book", "item_kaktus", "shkatulka", "item_ex", "item_teapon", "item_emre_kara", "item_keqing", "item_silver_skull", "item_metallodetector", "item_cat", "item_kubok_kikiki", "item_vaze", "item_rolex", "item_chain_gold", "item_fitanyashka", "item_chiken", "item_skullring", "item_vitalik", "item_ananaga", "item_lion", "item_bitcoin"}
+	local valuables1 = {"item_chain", "item_duck",  "item_carsen", "item_monolit", "book", "item_kaktus", "shkatulka", "item_ex", "item_teapon", "item_emre_kara", "item_chizuru", "item_keqing", "item_silver_skull", "item_metallodetector", "item_cat", "item_kubok_kikiki", "item_vaze", "item_rolex", "item_chain_gold", "item_fitanyashka", "item_chiken", "item_skullring", "item_vitalik", "item_ananaga", "item_lion", "item_bitcoin"}
 
 	local gun1 = {"hornet01", "specter01", "pkt01", "storm01", "vector01", "vulcan01", "kpvt01", "rapier01", "bumblebee01"} 
 	local gun2 = {"pkt01", "kord01", "maxim01", "fagot01", "someTurboAccelerationPusher", "omega01", "elephant01", "flag01", "odin01", "rainmetal01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun"}
@@ -1156,9 +1164,9 @@ function AllItems()
 					"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 					"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 					"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
-					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_jeton_bear", "item_jeton_usec", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_knife_sectarian", "item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star", "item_water_canister",
+					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_jeton_bear", "item_jeton_usec", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_knife_sectarian", "item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star", "item_water_canister", "item_chizuru",
 					"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
-					"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_vitaly", "item_silver_skull", "item_vaze",
+					"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_vitaly", "item_silver_skull", "item_vaze", "item_duck",
 					"item_quest_search_data",
 					"item_ms2000",
 					"hornet01", "hornet01_insured", "american_hornet01", "american_hornet01_insured", "specter01", "specter01_insured", "pkt01", "pkt01_insured", "kord01", "kord01_insured", "storm01", "storm01_insured", "fagot01", "fagot01_insured", "maxim01", "maxim01_insured", "vector01", "vector01_insured", "vulcan01", "vulcan01_insured", "kpvt01", "kpvt01_insured", "rapier01", "rapier01_insured", "flag01", "flag01_insured", "rainmetal01", "rainmetal01_insured", "elephant01", "elephant01_insured", "odin01", "odin01_insured", "omega01", "omega01_insured", "bumblebee01", "bumblebee01_insured", "hammer01", "hammer01_insured", "hunterSideGun", "hunterSideGun_insured", "mrakSideGun", "mrakSideGun_insured", "big_swingfire01", "big_swingfire01_insured", "cyclops01", "cyclops01_insured", "octopus01", "octopus01_insured", "hailSideGun", "hailSideGun_insured", "hurricane01", "hurricane01_insured", "rocketLauncher", "rocketLauncher_insured", "zeusSideGun", "zeusSideGun_insured", "marsSideGun", "marsSideGun_insured",
@@ -1181,9 +1189,9 @@ function AllItemsForScav()
 					"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 					"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 					"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
-					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki",
+					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_chizuru",
 					"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
-					"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_silver_skull", "item_vaze",
+					"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_silver_skull", "item_vaze", "item_duck",
 					"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun",
 					"someTurboAccelerationPusher",
 					"cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns", "cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "additional_fuel_tank2", "additional_torque2", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
@@ -1545,6 +1553,9 @@ function ShelfAddItemToSlot()
 	if item == "item_christmas_ball_red" then model = "christmas_ball_red" y = -0.07 end
 	if item == "item_christmas_ball_white" then model = "christmas_ball_white" y = -0.07 end
 	if item == "item_christmas_star" then model = "christmas_star" y = 0.14 end
+	if item == "item_duck" then model = "duck" y = -0.195 scale = 0.5 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
+	if item == "item_keqing" then model = "keqing_box" y = 0.15 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
+	if item == "item_chizuru" then model = "chizuru_box" y = 0.25 scale = 0.27 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
 
 	if slot == 1 then pos = CVector(949.643 + z, 255.650 + y, 982.831) end
 	if slot == 2 then pos = CVector(949.643 + z, 255.650 + y, 981.115) end
@@ -1959,9 +1970,9 @@ function RewardForDailyQuests()
 						"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 						"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 						"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
-						"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki",
+						"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_chizuru",
 						"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
-						"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_silver_skull", "item_vaze"}
+						"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_silver_skull", "item_vaze", "item_duck"}
 
 	if EVENT == "NEW_YEAR" then 
 		local new_items = {"item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star"}
@@ -2374,7 +2385,6 @@ function IfLoadSave()
 	if mapName == "r0m0" then
 		TActivate("CheckLoadSaveTimer")
 	end
-	con("LOAD")
 end
 
 

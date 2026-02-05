@@ -869,6 +869,62 @@
 		Radius="10.000" />
 
 	<Object
+		Name="Poster_1_loc"
+		Belong="1001"
+		Prototype="genericLocation"
+		Pos="1268.695 310.082 2984.273"
+		Rot="0.0022 0.9998 -0.0000 -0.0218"
+		Radius="10.000" />
+
+	<Object
+		Name="Poster_2_loc"
+		Belong="1001"
+		Prototype="genericLocation"
+		Pos="1271.619 310.082 2941.499"
+		Rot="0.0000 -0.0196 0.0022 -0.9998"
+		Radius="10.000" />
+
+	<Object
+		Name="Poster_3_loc"
+		Belong="1001"
+		Prototype="genericLocation"
+		Pos="1273.328 2.082 2870.485"
+		Rot="0.0408 0.7225 0.0030 -0.6901"
+		Radius="10.000" />
+
+	<Object
+		Name="Poster_4_loc"
+		Belong="1001"
+		Prototype="genericLocation"
+		Pos="2056.546 2.430 3664.623"
+		Rot="0.0066 0.9979 0.0016 -0.0648"
+		Radius="10.000" />
+
+	<Object
+		Name="Poster_5_loc"
+		Belong="1001"
+		Prototype="genericLocation"
+		Pos="2183.979 2.430 2723.195"
+		Rot="-0.0043 0.9993 0.0017 -0.0364"
+		Radius="10.000" />
+
+	<Object
+		Name="Poster_6_loc"
+		Belong="1001"
+		Prototype="genericLocation"
+		Pos="1319.337 2.430 749.856"
+		Rot="0.0020 0.0661 0.0005 -0.9978"
+		Radius="10.000" />
+
+	<Object
+		Name="Poster_7_loc"
+		Belong="1001"
+		Prototype="genericLocation"
+		Pos="3160.342 2.430 1179.887"
+		Rot="-0.0018 -0.0037 0.0001 -1.0000"
+		Radius="10.000" />
+
+	<Object
 		Name="SpawnBoxVideocard_1_loc"
 		Belong="1100"
 		Prototype="genericLocation"
@@ -918,11 +974,18 @@
 		Radius="70.000" />
 
 	<Object
-		Name="DisableKeyBind_O_loc"
+		Name="DisableKeyBind_O_1_loc"
 		Belong="1100"
 		Prototype="genericLocation"
 		Pos="1331.384 328.247 743.891"
 		Radius="60.000" />
+
+	<Object
+		Name="DisableKeyBind_O_2_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="1272.419 308.000 2965.745"
+		Radius="50.000" />
 
 	<Object
 		Name="hospital_barricade1"

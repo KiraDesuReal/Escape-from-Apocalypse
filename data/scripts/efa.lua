@@ -927,7 +927,7 @@ function CreateBarrelLootBox(name, pos)
 	local ex2 = {"book", "shkatulka", "machinery", "electronics"}
 
 	local use1 = {"scrap_metal_use", "machinery_use", "oil_use", "fuel_nil_use"}
-	local use2 = {"fuel_full_use", "machinery_use", "electronics_use", "item_key_gate_basefelix", "item_key_gate_thetown"}
+	local use2 = {"fuel_full_use", "machinery_use", "electronics_use", "item_key_gate_basefelix", "item_key_gate_thetown", "item_key_gate_vaterland"}
 
 	local ammo1 = {"ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_shotgun"}
 	local ammo2 = {"ammo_chest_heavygun", "ammo_chest_rocketgun", "ammo_chest_artillerygun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo"}
@@ -1149,12 +1149,33 @@ function shuffled_range_take (n, a, b)
 	return cropped_numbers
 end
 
+function CreatePoster(name, pos, rot)
+	local posters = {"poster_keqing", "poster_exception", "poster_buyanov", "poster_pavlik"}
+	local poster = posters[random(getn(posters))]
+
+	local model = CreateNewSgNodeObject(poster, "Model"..name, -1, -1, pos, rot)
+	local ModelPos = model:GetPosition()
+	ModelPos.y = ModelPos.y + 2.25
+	model:SetPosition(ModelPos)
+
+	local Chest = CreateNewObject{prototypeName = "opacityChest", objName = "Chest"..name}	
+	local ChestId = GetEntityByID(Chest)
+	ChestId:SetPosition(ModelPos)
+
+	local Item = CreateNewObject{prototypeName = "item_"..poster, objName = "PosterItem_"..random(10000), belong = 1100}
+	local ItemId = GetEntityByID(Item)
+
+	if ChestId and ItemId then
+		ChestId:AddChild(ItemId)
+	end
+end
+
 -- Все предметы
 function AllItems()
 	local Items = {"potato", "scrap_metal", "firewood", "oil", "bottle", "fuel", "machinery", "tobacco", "book", "electronics",
 					"doski", "details", "shkatulka",
 					"scrap_metal_use", "scrap_metal_use_insured", "machinery_use", "machinery_use_insured", "electronics_use", "electronics_use_insured", "oil_use", "oil_use_insured", "fuel_full_use", "fuel_full_use_insured", "fuel_nil_use", "fuel_nil_use_insured",
-					"item_key_gate_thetown", "item_key_gate_basefelix",
+					"item_key_gate_thetown", "item_key_gate_basefelix", "item_key_gate_vaterland",
 					"ammo_chest_artillerygun", "ammo_chest_artillerygunForSale", "ammo_chest_artillerygun_insured", "ammo_chest_heavygun", "ammo_chest_heavygunForSale", "ammo_chest_heavygun_insured", "ammo_chest_machinegun", "ammo_chest_machinegunForSale", "ammo_chest_machinegun_insured", "ammo_chest_rocketgun", "ammo_chest_rocketgunForSale", "ammo_chest_rocketgun_insured", "ammo_chest_shotgun", "ammo_chest_shotgunForSale", "ammo_chest_shotgun_insured", "ammo_ballon_lasergun", "ammo_ballon_lasergun_insured", "ammo_ballon_plasmagun", "ammo_ballon_plasmagun_insured", "ammo_ballon_turbo", "ammo_ballon_turbo_insured",
 					"item_bolts", "item_datchik", "item_hose", "item_insulation", "item_kek", "item_military_tube", "item_nails", "item_nuts", "item_parts", "item_pena", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_thermometer", "item_tube",
 					"item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid",
@@ -1164,7 +1185,7 @@ function AllItems()
 					"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 					"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 					"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
-					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_jeton_bear", "item_jeton_usec", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_knife_sectarian", "item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star", "item_water_canister", "item_chizuru",
+					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_jeton_bear", "item_jeton_usec", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_knife_sectarian", "item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star", "item_water_canister", "item_chizuru", "item_poster_keqing", "item_poster_exception", "item_poster_buyanov", "item_poster_pavlik",
 					"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
 					"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_vitaly", "item_silver_skull", "item_vaze", "item_duck",
 					"item_quest_search_data",
@@ -1179,7 +1200,7 @@ function AllItemsForScav()
 	local Items = {"potato", "scrap_metal", "firewood", "oil", "bottle", "fuel", "machinery", "tobacco", "book", "electronics",
 					"doski", "details", "shkatulka",
 					"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use", "fuel_nil_use",
-					"item_key_gate_thetown", "item_key_gate_basefelix",
+					"item_key_gate_thetown", "item_key_gate_basefelix", "item_key_gate_vaterland",
 					"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo",
 					"item_bolts", "item_datchik", "item_hose", "item_insulation", "item_kek", "item_military_tube", "item_nails", "item_nuts", "item_parts", "item_pena", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_thermometer", "item_tube",
 					"item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid",
@@ -1523,7 +1544,7 @@ function ShelfAddItemToSlot()
 	if item == "electronics" or item == "electronics_use" then model = "mikro" y = -0.29 end
 	if item == "doski" then model = "doski_r0m0" scale = 0.28 end
 	if item == "details" then model = "detail" scale = 0.15 rot = Quaternion(0, 0, -0.707, 0.707) y = -0.15 end
-	if item == "item_key_gate_thetown" or item == "item_key_gate_basefelix" then model = "key_1" scale = 0.5 rot = Quaternion(-0.7071, 0.0000, 0.0000, 0.7071) y = -0.27 end
+	if strsub(item, 1, 8) == "item_key" then model = "key_1" scale = 0.5 rot = Quaternion(-0.7071, 0.0000, 0.0000, 0.7071) y = -0.27 end
 	if item == "item_disk" then model = "disk" scale = 0.05 rot = Quaternion(-0.495, -0.505, -0.505, 0.495) y = -0.29 end
 	if item == "item_disk_exmachina" then model = "disk_exmachina" scale = 0.05 rot = Quaternion(-0.495, -0.505, -0.505, 0.495) y = -0.29 end
 	if item == "item_emre_kara" then model = "dragon01gun" y = -0.11 rot = Quaternion(0.0401, -0.7060, 0.0401, 0.7060) end
@@ -1556,6 +1577,10 @@ function ShelfAddItemToSlot()
 	if item == "item_duck" then model = "duck" y = -0.195 scale = 0.5 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
 	if item == "item_keqing" then model = "keqing_box" y = 0.15 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
 	if item == "item_chizuru" then model = "chizuru_box" y = 0.25 scale = 0.27 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
+	if item == "item_poster_keqing" then model = "poster_keqing" y = 0.05 z = 0.75 scale = 0.5 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
+	if item == "item_poster_exception" then model = "poster_exception" y = 0.05 z = 0.75 scale = 0.5 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
+	if item == "item_poster_buyanov" then model = "poster_buyanov" y = 0.05 z = 0.75 scale = 0.5 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
+	if item == "item_poster_pavlik" then model = "poster_pavlik" y = 0.05 z = 0.75 scale = 0.5 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
 
 	if slot == 1 then pos = CVector(949.643 + z, 255.650 + y, 982.831) end
 	if slot == 2 then pos = CVector(949.643 + z, 255.650 + y, 981.115) end
@@ -1961,7 +1986,7 @@ function RewardForDailyQuests()
 	local Gadgets = {"cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns", "cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "additional_fuel_tank2", "additional_torque2", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 	local OtherItems = {"potato", "firewood", "bottle", "tobacco", "book",
 						"doski", "details", "shkatulka",
-						"item_key_gate_thetown",
+						"item_key_gate_thetown", "item_key_gate_vaterland",
 						"item_bolts", "item_datchik", "item_hose", "item_insulation", "item_kek", "item_military_tube", "item_nails", "item_nuts", "item_parts", "item_pena", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_thermometer", "item_tube",
 						"item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid",
 						"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery",

@@ -45,6 +45,8 @@
 			SetVar("ScavNPC", "0")
 			SetVar("ScavCarNPC", "0")
 
+			SetVar("PostersCreated", 0)
+
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -293,6 +295,7 @@
 			TActivate("CreateElectronicsLootBox")
 			TActivate("CreateTheTownLootBox")
 			TActivate("AddKeyGateBaseFelixInChests")
+			TActivate("CreatePosters")
 
 			TActivate("CreateBossProbability")
 			TActivate("CreateSectanianProbability")
@@ -313,6 +316,11 @@
 			else
 				SetTolerance(1100, 1082, RS_ENEMY)
 				TActivate("QuestsActivate")
+			end
+
+			if KEY_O_GLOBAL then
+				IMPULSES = GET_GLOBAL_OBJECT "IMPULSES"
+           		IMPULSES:BindKey1("GS_GAME", KEY_O_GLOBAL, "IM_CAR_GET_OUT_OF_DIFFICULT_PLACE")
 			end
 
 			if DEBUG == 1 then
@@ -924,19 +932,17 @@
 		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 
-			local RoadToFaterRandom = random  (2)
-			if RoadToFaterRandom == 1 then
-				TActivate ("RoadToFater")
+			if random(2) == 1 then
 				SetVar("ExitRoadToFater",1)
 				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE", "SmokeRoadToFater1", -1, -1, CVector(2085.447, 312.800, 3646.448), Quaternion(0, 0, 0, 0), 2)
 				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE", "SmokeRoadToFater2", -1, -1, CVector(2064.941, 330.600, 3664.033), Quaternion(0, 0, 0, 0), 2)
 			end
 
+			TActivate ("RoadToFater")
 			TActivate ("ZaTheGloohoe")
 			TActivate ("BaseFelix")
 
-			local ExitZaTheTroiskoeRandom = random (2)
-			if ExitZaTheTroiskoeRandom == 1 then
+			if random(2) == 1 then
 				CreateNewSgNodeObject("ET_PS_LENS_D4", "LightZaTheTroiskoeExit1", -1, -1, CVector(3055.050, 356.400, 1447.950), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.3)
 				CreateNewSgNodeObject("ET_PS_LENS_D4", "LightZaTheTroiskoeExit2", -1, -1, CVector(3055.150, 356.400, 1445.900), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.3)
 				CreateNewSgNodeObject("ET_LS_LIGHT_TEST", "LightZaTheTroiskoeExit3", -1, -1, CVector(3056.365, 358.100, 1446.900), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.1)
@@ -956,8 +962,7 @@
 			TActivate ("RoadToRidzin")
 			TActivate ("BaseFelix")
 
-			local ExitZaTheTroiskoeRandom = random (2)
-			if ExitZaTheTroiskoeRandom == 1 then
+			if random(2) == 1 then
 				TActivate ("ZaTheTroiskoe")
 				CreateNewSgNodeObject("ET_PS_LENS_D4", "LightZaTheTroiskoeExit1", -1, -1, CVector(3055.050, 356.400, 1447.950), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.3)
 				CreateNewSgNodeObject("ET_PS_LENS_D4", "LightZaTheTroiskoeExit2", -1, -1, CVector(3055.150, 356.400, 1445.900), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.3)
@@ -966,8 +971,7 @@
 				SetVar("ExitZaTheTroiskoe",1)
 			end
 
-			local RoadToFaterRandom = random  (2)
-			if RoadToFaterRandom == 1 then
+			if random(2) == 1 then
 				SetVar("ExitRoadToFater",1)
 				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE", "SmokeRoadToFater1", -1, -1, CVector(2085.447, 312.800, 3646.448), Quaternion(0, 0, 0, 0), 2)
 				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE", "SmokeRoadToFater2", -1, -1, CVector(2064.941, 330.600, 3664.033), Quaternion(0, 0, 0, 0), 2)
@@ -982,19 +986,17 @@
 		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 
-			local RoadToFaterRandom = random  (2)
-			if RoadToFaterRandom == 1 then
-				TActivate ("RoadToFater")
+			if random(2) == 1 then
 				SetVar("ExitRoadToFater",1)
 				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE", "SmokeRoadToFater1", -1, -1, CVector(2085.447, 312.800, 3646.448), Quaternion(0, 0, 0, 0), 2)
 				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE", "SmokeRoadToFater2", -1, -1, CVector(2064.941, 330.600, 3664.033), Quaternion(0, 0, 0, 0), 2)
 			end
 
+			TActivate ("RoadToFater")
 			TActivate ("ZaTheGloohoe")
 			TActivate ("ZaTheTown_exitScav")
 
-			local ExitZaTheTroiskoeRandom = random (2)
-			if ExitZaTheTroiskoeRandom == 1 then
+			if random (2) == 1 then
 				CreateNewSgNodeObject("ET_PS_LENS_D4", "LightZaTheTroiskoeExit1", -1, -1, CVector(3055.050, 356.400, 1447.950), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.3)
 				CreateNewSgNodeObject("ET_PS_LENS_D4", "LightZaTheTroiskoeExit2", -1, -1, CVector(3055.150, 356.400, 1445.900), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.3)
 				CreateNewSgNodeObject("ET_LS_LIGHT_TEST", "LightZaTheTroiskoeExit3", -1, -1, CVector(3056.365, 358.100, 1446.900), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.1)
@@ -1014,8 +1016,7 @@
 			TActivate ("RoadToRidzin")
 			TActivate("BaseScavs_exitScav")
 			
-			local ExitZaTheTroiskoeRandom = random (2)
-			if ExitZaTheTroiskoeRandom == 1 then
+			if random(2) == 1 then
 				TActivate ("ZaTheTroiskoe")
 				CreateNewSgNodeObject("ET_PS_LENS_D4", "LightZaTheTroiskoeExit1", -1, -1, CVector(3055.050, 356.400, 1447.950), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.3)
 				CreateNewSgNodeObject("ET_PS_LENS_D4", "LightZaTheTroiskoeExit2", -1, -1, CVector(3055.150, 356.400, 1445.900), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.3)
@@ -1024,8 +1025,7 @@
 				SetVar("ExitZaTheTroiskoe",1)
 			end
 
-			local RoadToFaterRandom = random  (2)
-			if RoadToFaterRandom == 1 then
+			if random(2) == 1 then
 				SetVar("ExitRoadToFater",1)
 				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE", "SmokeRoadToFater1", -1, -1, CVector(2085.447, 312.800, 3646.448), Quaternion(0, 0, 0, 0), 2)
 				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE", "SmokeRoadToFater2", -1, -1, CVector(2064.941, 330.600, 3664.033), Quaternion(0, 0, 0, 0), 2)
@@ -1052,6 +1052,36 @@
 	<trigger Name="RoadToFater" active="0">
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ToR1M3_Exit" />
 		<script>
+			if GetVar("ExitRoadToFater").AsInt == 0 and IsHasPlayerAmountOfSpecItems("item_key_gate_vaterland") then
+				if GetVar("PetrolStation_Refill_Process").AsInt == 0 then
+					local b = SpawnMessageBox("90002")
+					if b == 1 then
+						RemoveSpecItemsFromSlot("item_key_gate_vaterland")
+						AddFadingMsgByStrIdFormatted("fm_used_item", "item_key_gate_vaterland")
+						SetVar("ExitRoadToFater", 1)
+						TActivate("RoadToFaterExtract")
+						CreateNewSgNodeObject("ET_PS_GREEN_SMOKE", "SmokeRoadToFater1", -1, -1, CVector(2085.447, 312.800, 3646.448), Quaternion(0, 0, 0, 0), 2)
+						CreateNewSgNodeObject("ET_PS_GREEN_SMOKE", "SmokeRoadToFater2", -1, -1, CVector(2064.941, 330.600, 3664.033), Quaternion(0, 0, 0, 0), 2)
+					end
+					GetPlayerVehicle():SetThrottle(0)
+					GetPlayerVehicle():SetCustomLinearVelocity(0)
+				end
+			end
+
+			if GetVar("ExitRoadToFater").AsInt == 1 then
+				TActivate("RoadToFaterExtract")
+			else
+				if IsHasPlayerAmountOfSpecItems("item_key_gate_vaterland") == nil then
+					AddFadingMsgByStrIdFormatted("fm_not_key")
+					SoundFadingMsg()
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="RoadToFaterExtract" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
 			if GetVar("PetrolStation_Refill_Process").AsInt == 0 then
 				SetVar("ExitTimer",6)
 				AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "ExitRoadToFater")
@@ -1059,6 +1089,7 @@
 				TActivate ("LeaveZoneExit")
 				TActivate ("ExitTimer")
 			end
+			trigger:Deactivate()
 		</script>
 	</trigger>
 
@@ -1107,7 +1138,7 @@
 					local b = SpawnMessageBox("90002")
 					if b == 1 then
 						RemoveSpecItemsFromSlot("item_key_gate_basefelix")
-						AddFadingMsgByStrIdFormatted("fm_item_to_npc", "item_key_gate_basefelix")
+						AddFadingMsgByStrIdFormatted("fm_used_item", "item_key_gate_basefelix")
 						SetVar("ExitBaseFelixOpen", 1)
 						TActivate("BaseFelixExtract")
 					end
@@ -1257,6 +1288,7 @@
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 			TDeactivate("RoadToFater")
+			TDeactivate("RoadToFaterExtract")
 			TDeactivate("ZaTheGloohoe")
 			TDeactivate("RoadToRidzin")
 			TDeactivate("BaseFelix")
@@ -3767,7 +3799,7 @@
 		<script>
 			local items = {"potato", "scrap_metal", "firewood", "oil", "bottle", "doski", "details",
 						"scrap_metal_use", "oil_use", "fuel_nil_use",
-						"item_key_gate_thetown", "item_key_gate_basefelix",
+						"item_key_gate_thetown", "item_key_gate_basefelix", "item_key_gate_vaterland",
 						"ammo_chest_machinegun", "ammo_chest_shotgun",
 						"item_bolts", "item_hose", "item_insulation", "item_nails", "item_nuts", "item_parts", "item_plex", "item_poheram", "item_scotch", "item_screws",
 						"item_cooler", "item_cpu", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_kondesators", "item_lump", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tplug", "item_usb", "item_wires",
@@ -3980,7 +4012,7 @@
 	<trigger Name="CreateValuablesLootBox" active="0">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-			local items = {"book", "shkatulka", "item_key_gate_thetown", "item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_emre_kara", "item_fitanyashka", "item_monolit", "item_kaktus", "item_keqing", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_carsen", "item_metallodetector", "item_ananaga", "item_silver_skull", "item_vaze", "item_kubok_kikiki", "item_duck", "item_chizuru"}
+			local items = {"book", "shkatulka", "item_key_gate_thetown", "item_key_gate_vaterland", "item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_emre_kara", "item_fitanyashka", "item_monolit", "item_kaktus", "item_keqing", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_carsen", "item_metallodetector", "item_ananaga", "item_silver_skull", "item_vaze", "item_kubok_kikiki", "item_duck", "item_chizuru"}
 
 			local protChest = "mainChest"
 
@@ -4147,6 +4179,40 @@
 				if ChRand and ItemId then
 					ChRand:AddChild(ItemId)
 				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreatePosters" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i=1,7 do
+				if random(3) == 1 then
+					CreatePoster("Poster"..i, CVector(getPos("Poster_"..i.."_loc")), Quaternion(getObj("Poster_"..i.."_loc"):GetRotation()))
+					SetVar("PostersCreated", GetVar("PostersCreated").AsInt + 1)
+					getObj("PosterDel"):AddEvent("GE_OBJECT_DIE", "ChestPoster"..i)
+				end
+			end
+
+			if GetVar("PostersCreated").AsInt ~= 0 then
+				TActivate("PosterDel")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="PosterDel" active="0">
+		<script>
+			local name = trigger:GetCallObjName()
+			local num = tonumber(strsub(name, 12, 13))
+			local model = getObj("ModelPoster"..num)
+			if model then model:Remove() end
+			
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			if GetVar("PostersCreated").AsInt > count then
+			return
 			end
 			trigger:Deactivate()
 		</script>
@@ -4682,7 +4748,7 @@
 				lootcount = random(5,8)
 				items = {"oil", "bottle", "fuel", "machinery", "tobacco", "book", "electronics",
 						"details", "shkatulka",
-						"item_key_gate_thetown",
+						"item_key_gate_thetown", "item_key_gate_vaterland",
 						"item_datchik", "item_hose", "item_kek", "item_military_tube", "item_pena", "item_thermometer", "item_tube",
 						"item_bp", "item_converter", "item_drill", "item_energo_lump", "item_engine", "item_gazan", "item_gpu", "item_hdd", "item_iridiym", "item_military_cable", "item_tetris", "item_ultra_lump", "item_virtex", "item_vpx", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid",
 						"item_accum", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery",
@@ -5692,7 +5758,7 @@
 			local gun = {"fagot01", "maxim01", "elephant01", "odin01"}
 			local gunBig = {"elephant01", "odin01"}
 			local ItemsLifeUse = {"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use"}
-			local loot = {"item_chain", "item_duck", "item_manual", "item_disk", "item_flashdrive", "item_key_gate_thetown", "item_ex", "item_teapon", "item_ssd", "item_chizuru", "item_silver_skull", "item_keqing", "item_sas", "item_disk_exmachina", "item_cat", "item_rolex", "item_chain_gold", "item_vaze", "item_chiken", "item_skullring", "item_lion"}
+			local loot = {"item_chain", "item_duck", "item_manual", "item_disk", "item_flashdrive", "item_key_gate_vaterland", "item_key_gate_thetown", "item_ex", "item_teapon", "item_ssd", "item_chizuru", "item_silver_skull", "item_keqing", "item_sas", "item_disk_exmachina", "item_cat", "item_rolex", "item_chain_gold", "item_vaze", "item_chiken", "item_skullring", "item_lion"}
 
 			local count = random(2,4)
 			SetVar("CountSectanian", count)
@@ -6511,7 +6577,8 @@
 	</trigger>
 
 	<trigger Name="UnKeyBind_O" active="1">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="DisableKeyBind_O_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="DisableKeyBind_O_1_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="DisableKeyBind_O_2_loc" />
 		<script>
 			KEY_O_GLOBAL = GetKeyBind("IM_CAR_GET_OUT_OF_DIFFICULT_PLACE")
 			IMPULSES = GET_GLOBAL_OBJECT "IMPULSES"
@@ -6520,7 +6587,8 @@
 	</trigger>
 
 	<trigger Name="KeyBind_O" active="1">
-		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="DisableKeyBind_O_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="DisableKeyBind_O_1_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="DisableKeyBind_O_2_loc" />
 		<script>
 			IMPULSES = GET_GLOBAL_OBJECT "IMPULSES"
             IMPULSES:BindKey1("GS_GAME", KEY_O_GLOBAL, "IM_CAR_GET_OUT_OF_DIFFICULT_PLACE")
@@ -6593,6 +6661,7 @@
 			TDeactivate("ZaTheTown_exitScav")
 			TDeactivate("BaseScavs_exitScav")
 			TDeactivate("BaseScavs_exitScavInLoc")
+			TActivate("DeactivateAllExits")
 
 			--удаление диких на локациях
 			for loc=1,8 do
@@ -6669,6 +6738,16 @@
 				local townChestOpacityItem = GetEntityByName("OpacityTheTownItem_"..town)
 				if townChestOpacityItem then townChestOpacityItem:Remove() end
 			end
+
+			for post = 1, GetVar("PostersCreated").AsInt do
+				local postChest = GetEntityByName("ChestPoster"..post)
+				if postChest then postChest:Remove() end
+				local postModel = GetEntityByName("ModelPoster"..post)
+				if postModel then postModel:Remove() end
+				getObj("PosterDel"):DelEventObj("GE_OBJECT_DIE", "ChestPoster"..post)
+			end
+
+			TDeactivate("PosterDel")
 
 			--удаление босса
 			for boss1=1,4 do

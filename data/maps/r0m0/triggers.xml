@@ -2060,7 +2060,7 @@
 			elseif GetVar("ChestScavs_Search").AsInt == 2 then
 				lootlist = {"firewood", "scrap_metal", "oil", "bottle", "fuel", "machinery", "book", "tobacco", "doski", "details", "shkatulka",
 							"scrap_metal_use", "machinery_use", "oil_use", "fuel_full_use",
-							"item_key_gate_thetown",
+							"item_key_gate_thetown", "item_key_gate_vaterland",
 							"item_bolts", "item_hose", "item_kek", "item_parts", "item_poheram", "item_tube", "item_plex",
 							"item_cable", "item_cooler", "item_cpu", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_hdd", "item_helix", "item_phone", "item_plate", "item_svech", "item_ultra_lump",
 							"item_accum", "item_powerbank",
@@ -2094,7 +2094,7 @@
 			elseif GetVar("ChestScavs_Search").AsInt == 4 then
 				lootlist = {"scrap_metal", "oil", "bottle", "fuel", "tobacco", "doski", "details",
 							"scrap_metal_use", "oil_use",
-							"item_key_gate_thetown",
+							"item_key_gate_thetown", "item_key_gate_vaterland",
 							"item_bolts", "item_hose", "item_kek", "item_parts", "item_poheram", "item_tube", "item_plex",
 							"item_cable", "item_cooler", "item_cpu", "item_dvd", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_kondesators", "item_magnet", "item_ram", "item_rele", "item_helix", "item_phone", "item_plate", "item_svech", "item_ultra_lump", "item_military_plate",
 							"item_accum",
@@ -7289,7 +7289,7 @@
 		<script>
 			if EVENT == "NEW_YEAR" then
 				local lootlist = {"electronics_use", "fuel_full_use",
-						"item_key_gate_thetown",
+						"item_key_gate_thetown", "item_key_gate_vaterland",
 						"item_datchik", "item_military_tube", "item_thermometer", "item_tube",
 						"item_bp", "item_converter", "item_drill", "item_engine", "item_gazan", "item_gpu", "item_iridiym", "item_tetris", "item_virtex", "item_vpx", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid",
 						"item_car_battery", "item_cyclon", "item_tank_battery",

@@ -360,6 +360,15 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		ModelFile	= "key_1"
 		ResourceType= "SPEC_ITEM" />
 
+	<Prototype
+		Class		= "Basket"
+		Name		= "item_key_gate_vaterland"
+		Price	= "10000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "key_1"
+		ResourceType= "SPEC_ITEM" />
+
 <!-- Ammo -->
 
 	<Prototype
@@ -1843,6 +1852,42 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		PriceDispersion      = "5"
 		ModelFile	= "chizuru_box"
 		ResourceType= "ITEM_SIZE_2X4" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_poster_keqing"
+		Price	= "20112"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= "poster_keqing"
+		ResourceType= "ITEM_SIZE_3X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_poster_exception"
+		Price	= "6006"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= "poster_exception"
+		ResourceType= "ITEM_SIZE_3X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_poster_buyanov"
+		Price	= "13500"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= "poster_buyanov"
+		ResourceType= "ITEM_SIZE_3X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_poster_pavlik"
+		Price	= "24450"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= "poster_pavlik"
+		ResourceType= "ITEM_SIZE_3X3" />
 
 <!-- Tools Items -->
 

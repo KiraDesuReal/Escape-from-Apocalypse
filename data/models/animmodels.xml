@@ -316,6 +316,22 @@
 		file="data\models\nature\region5\trees\dub_kust2_r2snow.gam" />
 
 	<model
+		id="dub_kust1_r2_spring"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\spring\dub_kust1_r2spring.gam" />
+
+	<model
+		id="dub_kust2_r2_spring"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\spring\dub_kust2_r2spring.gam" />
+
+	<model
 		id="dub1_snow"
 		shadow="1"
 		trans="1"
@@ -338,6 +354,30 @@
 		windwavy="0"
 		useImpostors="1"
 		file="data\models\nature\region5\trees\dub3snow.gam" />
+
+	<model
+		id="dub1_spring"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\spring\dub1spring.gam" />
+
+	<model
+		id="dub2_spring"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\spring\dub2spring.gam" />
+
+	<model
+		id="dub3_spring"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\spring\dub3spring.gam" />
 
 	<model
 		id="elka1_snow"
@@ -396,6 +436,38 @@
 		file="data\models\nature\region5\trees\listvenoe3snow.gam" />
 
 	<model
+		id="listvenoe1_spring"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\spring\listvenoe1spring.gam" />
+
+	<model
+		id="listvenoe1_r5_spring"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\spring\listvenoe1_r5spring.gam" />
+
+	<model
+		id="listvenoe2_spring"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\spring\listvenoe2spring.gam" />
+
+	<model
+		id="listvenoe3_spring"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\spring\listvenoe3spring.gam" />
+
+	<model
 		id="sosna1_snow"
 		shadow="1"
 		trans="1"
@@ -434,6 +506,22 @@
 		windwavy="0"
 		useImpostors="1"
 		file="data\models\nature\region5\trees\r1_dub_kust2_snow.gam" />
+
+	<model
+		id="r1_dub_kust1_spring"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\spring\r1_dub_kust1spring.gam" />
+
+	<model
+		id="r1_dub_kust2_spring"
+		shadow="1"
+		trans="1"
+		windwavy="0"
+		useImpostors="1"
+		file="data\models\nature\region5\trees\spring\r1_dub_kust2spring.gam" />
 
 	<model
 		id="conteiner"
@@ -1706,30 +1794,6 @@
 		windwavy="0"
 		useImpostors = "1"
 		file="data\models\nature\region1\trees\kustarnik3.gam" />
-
-	<model
-		id="kustarnik1_snow"
-		shadow="1"
-		trans="1"
-		windwavy="0"
-		useImpostors = "1"
-		file="data\models\nature\region5\trees\kustarnik1snow.gam" />
-
-	<model
-		id="kustarnik2_snow"
-		shadow="1"
-		trans="1"
-		windwavy="0"
-		useImpostors = "1"
-		file="data\models\nature\region5\trees\kustarnik2snow.gam" />
-
-	<model
-		id="kustarnik3_snow"
-		shadow="1"
-		trans="1"
-		windwavy="0"
-		useImpostors = "1"
-		file="data\models\nature\region5\trees\kustarnik3snow.gam" />
 
 	<model
 		id="listvenoe1"

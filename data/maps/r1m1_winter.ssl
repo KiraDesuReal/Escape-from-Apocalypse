@@ -3,7 +3,7 @@
 	<Section
 		name="LEVEL">
 		<Key
-			name="WEATHERDETAIL">winter\WeatherDetail.xml</Key>
+			name="WEATHERDETAIL">WeatherDetail.xml</Key>
 
 		<Key
 			name="WEATHERTYPE">r1m1_clear_winter</Key>
@@ -12,34 +12,34 @@
 			name="CURRENTDAYTIME">1</Key>
 
 		<Key
-			name="PATH">data\maps\r1m1</Key>
+			name="PATH">data\maps\r1m1\winter</Key>
 
 		<Key
 			name="LEVELNAME">r1m1_winter</Key>
 
 		<Key
-			name="HIGHMAP">displace.bin</Key>
+			name="HIGHMAP">spring\summer\autumn\main\displace.bin</Key>
 
 		<Key
-			name="DETMAP">water.raw</Key>
+			name="DETMAP">spring\summer\autumn\main\water.raw</Key>
 
 		<Key
-			name="CAMERAMAP">cameramap.raw</Key>
+			name="CAMERAMAP">spring\summer\autumn\main\cameramap.raw</Key>
 
 		<Key
-			name="COLORMAP">colormap.raw</Key>
+			name="COLORMAP">spring\summer\autumn\main\colormap.raw</Key>
 
 		<Key
-			name="CLIFFMAP">level.cliff</Key>
+			name="CLIFFMAP">spring\summer\autumn\main\level.cliff</Key>
 
 		<Key
-			name="CLIFFSET">Cliffs.xml</Key>
+			name="CLIFFSET">spring\summer\autumn\main\Cliffs.xml</Key>
 
 		<Key
-			name="ROADMAP">LevelRoads.xml</Key>
+			name="ROADMAP">spring\summer\autumn\main\LevelRoads.xml</Key>
 
 		<Key
-			name="ROADSET">Roads.xml</Key>
+			name="ROADSET">spring\summer\autumn\main\Roads.xml</Key>
 
 		<Key
 			name="WAYPOINTS">ways.xml</Key>
@@ -48,10 +48,10 @@
 			name="BEACHSETS">Beachsets.xml</Key>
 
 		<Key
-			name="SHORELINE">ShoreLine.xml</Key>
+			name="SHORELINE">spring\summer\autumn\main\ShoreLine.xml</Key>
 
 		<Key
-			name="NORMALMAP">NormalMap.xml</Key>
+			name="NORMALMAP">spring\summer\autumn\main\NormalMap.xml</Key>
 
 		<Key
 			name="CUBEMAP">data/models/textures/cube/lobbycube_r1m1.dds</Key>
@@ -105,49 +105,49 @@
 			name="MAXSAFEY">4056.000</Key>
 
 		<Key
-			name="SERVERDYN">winter\DynamicScene.xml</Key>
+			name="SERVERDYN">DynamicScene.xml</Key>
 
 		<Key
-			name="SERVERQUESTSTATES">QuestStates.xml</Key>
+			name="SERVERQUESTSTATES">spring\summer\autumn\main\QuestStates.xml</Key>
 
 		<Key
 			name="MODELNAMES">data\if\diz\model_names.xml</Key>
 
 		<Key
-			name="OBJECTNAMES">object_names.xml</Key>
+			name="OBJECTNAMES">spring\summer\autumn\main\object_names.xml</Key>
 
 		<Key
-			name="SERVEREXTERNALPATHS">external_paths.xml</Key>
+			name="SERVEREXTERNALPATHS">spring\summer\autumn\main\external_paths.xml</Key>
 
 		<Key
-			name="STATICOBSTACLES">static_obstacles.xml</Key>
+			name="STATICOBSTACLES">spring\summer\autumn\main\static_obstacles.xml</Key>
 
 		<Key
-			name="PLAYERPASSMAP">player_passmap.bin</Key>
+			name="PLAYERPASSMAP">spring\summer\autumn\main\player_passmap.bin</Key>
 
 		<Key
-			name="SERVERS">data\maps\r1m1\servers.xml</Key>
+			name="SERVERS">data\maps\r1m1\winter\spring\summer\autumn\main\servers.xml</Key>
 
 		<Key
 			name="STATICSERVERS">data\models\commonservers.xml</Key>
 
 		<Key
-			name="PASSMAP">passmap.raw</Key>
+			name="PASSMAP">spring\summer\autumn\main\passmap.raw</Key>
 
 		<Key
 			name="PASSMAPCELLSIZE">16</Key>
 
 		<Key
-			name="TRIGGERSNAME">triggers.xml</Key>
+			name="TRIGGERSNAME">spring\summer\autumn\main\triggers.xml</Key>
 
 		<Key
-			name="CINEMATRIGGERSNAME">cinemaTriggers.xml</Key>
+			name="CINEMATRIGGERSNAME">spring\summer\autumn\main\cinemaTriggers.xml</Key>
 
 		<Key
-			name="DLGSTRINGS">strings.xml</Key>
+			name="DLGSTRINGS">spring\summer\autumn\main\strings.xml</Key>
 
 		<Key
-			name="ICONS">icons.xml</Key>
+			name="ICONS">spring\summer\autumn\main\icons.xml</Key>
 
 		<Key
 			name="SKYTYPE">1</Key>
@@ -201,7 +201,7 @@
 			name="SUN_SET_ASCENTION">145.000</Key>
 
 		<Key
-			name="TILES">level.tile</Key>
+			name="TILES">spring\summer\autumn\main\level.tile</Key>
 	</Section>
 
 	<Section

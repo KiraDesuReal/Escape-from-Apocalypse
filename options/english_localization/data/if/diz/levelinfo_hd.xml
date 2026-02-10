@@ -20,7 +20,7 @@
 		north="0 0 1"
 		image0="data\if\map\r0m0.dds"
 		image1="data\if\ico_hd\GlobalMap\r0m0.dds"
-		splashes="data\if\ico_hd\Splashes\r0m0.dds data\if\ico_hd\Splashes\r0m0_winter.dds"
+		splashes="data\if\ico_hd\Splashes\r0m0.dds data\if\ico_hd\Splashes\r0m0_winter.dds data\if\ico_hd\Splashes\r0m0_spring.dds"
 		musicBlocks="block_music01 block_music02 block_music03 block_music04 block_music05 block_music06 block_music07 block_music08 block_music09 block_music10 block_music11 block_music12" />
 
 	<LevelInfo
@@ -56,6 +56,18 @@
 		image0="data\if\map\r1m1.dds"
 		image1="data\if\ico_hd\GlobalMap\r1m1.dds"
 		splashes="data\if\ico_hd\Splashes\r1m1\r1m1_1_winter.dds data\if\ico_hd\Splashes\r1m1\r1m1_2_winter.dds data\if\ico_hd\Splashes\r1m1\r1m1_3_winter.dds data\if\ico_hd\Splashes\r1m1\r1m1_4_winter.dds data\if\ico_hd\Splashes\r1m1\r1m1_5_winter.dds data\if\ico_hd\Splashes\r1m1\r1m1_6_winter.dds data\if\ico_hd\Splashes\r1m1\r1m1_7_winter.dds"
+		musicBlocks="block0 block1" />
+
+	<LevelInfo
+		name="r1m1_spring"
+		file="data\maps\r1m1_spring.ssl"
+		fullName="Krai"
+		diz0=""
+		diz1=""
+		north="0 0 1"
+		image0="data\if\map\r1m1.dds"
+		image1="data\if\ico_hd\GlobalMap\r1m1.dds"
+		splashes="data\if\ico_hd\Splashes\r1m1\r1m1_1_spring.dds data\if\ico_hd\Splashes\r1m1\r1m1_2_spring.dds data\if\ico_hd\Splashes\r1m1\r1m1_3_spring.dds data\if\ico_hd\Splashes\r1m1\r1m1_4_spring.dds data\if\ico_hd\Splashes\r1m1\r1m1_5_spring.dds data\if\ico_hd\Splashes\r1m1\r1m1_6_spring.dds data\if\ico_hd\Splashes\r1m1\r1m1_7_spring.dds"
 		musicBlocks="block0 block1" />
 
 	<LevelInfo

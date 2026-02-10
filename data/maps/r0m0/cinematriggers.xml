@@ -255,6 +255,30 @@
 					local tree = getObj("tree"..t)
 					if tree then tree:SetSkin(1) end
 				end
+			elseif SEASON == "SPRING" then
+				SetWeather(6)
+				SetVar("Weather", 6)
+				SetVar("SpeedWind", random(4, 10))
+				SetVar("Season", "SPRING")
+				RuleConsole("testShadowRenderToGrass yes")
+				TActivate("BirdsSound")
+
+				for k = 1, 10 do
+					local kust = getObj("kust"..k)
+					if kust then kust:SetSkin(2) end
+				end
+
+				for t = 1, 2051 do
+					local tree = getObj("tree"..t)
+					if tree then 
+						local prot = tree:GetProperty("Prototype").AsString
+						if strsub(prot, 1, 14) == "Breakable_Elka" or strsub(prot, 1, 15) == "Breakable_Sosna" then
+							tree:SetSkin(0) 
+						else
+							tree:SetSkin(2) 
+						end
+					end
+				end
 			else
 				SetWeather(0)
 				SetVar("Weather", 0)
@@ -412,6 +436,11 @@
 				SetVar("Season", "WINTER")
 				if r == 3 then SetVar("SpeedWind", random(4, 8)) end
 				if r == 4 then SetVar("SpeedWind", random(3, 10)) end
+			elseif SEASON == "SPRING" then
+				SetWeather(6)
+				SetVar("Weather", 6)
+				SetVar("SpeedWind", random(4, 10))
+				SetVar("Season", "SPRING")
 			else
 				SetWeather(0)
 				SetVar("Weather", 0)
@@ -567,6 +596,9 @@
 			if SEASON == "WINTER" then 
 				TActivate("WinterWeather")
 				AddImportantFadingMsgByStrIdFormatted("fm_season_winter")
+			elseif SEASON == "SPRING" then
+				TActivate("SpringWeather")
+				AddImportantFadingMsgByStrIdFormatted("fm_season_spring")
 			else
 				TActivate("SummerWeather") 
 				AddImportantFadingMsgByStrIdFormatted("fm_season_summer")

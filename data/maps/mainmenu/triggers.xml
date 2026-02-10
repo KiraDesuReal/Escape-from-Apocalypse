@@ -17,6 +17,8 @@
 			if STARTGAME then STARTGAME = STARTGAME + 1 end
 			if STARTGAME == 1 then UpdateUserInfoFile() end
 
+			SetGameTime(os.date("*t").hour, os.date("*t").min)
+
 			RuleConsole("cinematic_spring_coeff 1.7")
 
 			local coordarr={
@@ -342,7 +344,7 @@
 			if IsUserInfoLineExists("Season") and ReadValueUserInfo("UserTimeYear") == "1" then 
 				SEASON = ReadValueUserInfo("Season")
 				if SEASON == "WINTER" then TActivate("WinterWeather") end
-				if SEASON == "SPRING" then TActivate("SummerWeather") end
+				if SEASON == "SPRING" then TActivate("SpringWeather") end
 				if SEASON == "SUMMER" then TActivate("SummerWeather") end
 				if SEASON == "AUTUMN" then TActivate("SummerWeather") end
 			else
@@ -353,7 +355,7 @@
 
 				if month == 3 or month == 4 or month == 5 then 
 					SEASON = "SPRING" 
-					TActivate("SummerWeather")
+					TActivate("SpringWeather")
 				end
 
 				if month == 6 or month == 7 or month == 8 then 
@@ -462,11 +464,7 @@
 				if dub then dub:Remove() end
 			end
 
-			CreateNewDummyObject("dub1_r2", "dub_r2_1", -1, -1, CVector(385.839, 230.000, 571.088), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
-			CreateNewDummyObject("dub3_r2", "dub_r2_2", -1, -1, CVector(246.259, 230.004, 597.568), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
-			CreateNewDummyObject("dub2_r2", "dub_r2_3", -1, -1, CVector(210.323, 260.000, 885.031), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
-			CreateNewDummyObject("dub1_r2", "dub_r2_4", -1, -1, CVector(378.060, 244.371, 967.355), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
-			CreateNewDummyObject("dub3_r2", "dub_r2_5", -1, -1, CVector(541.867, 259.926, 961.743), Quaternion(0.0000, 0.0000, 0.0000, 1.0000))
+			TActivate("CreateDubs")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -483,15 +481,55 @@
 			end
 
 			for d = 1, 5 do
-				local dub = getObj("dub_r2_"..d)
+				local dub = getObj("dub_"..d)
 				if dub then dub:Remove() end
 			end
 
-			CreateNewDummyObject("dub1_snow", "dub_1", -1, -1, CVector(385.839, 230.000, 571.088), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1)
-			CreateNewDummyObject("dub3_snow", "dub_2", -1, -1, CVector(246.259, 230.004, 597.568), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1)
-			CreateNewDummyObject("dub2_snow", "dub_3", -1, -1, CVector(210.323, 260.000, 885.031), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1)
-			CreateNewDummyObject("dub1_snow", "dub_4", -1, -1, CVector(378.060, 244.371, 967.355), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1)
-			CreateNewDummyObject("dub3_snow", "dub_5", -1, -1, CVector(541.867, 259.926, 961.743), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1)
+			TActivate("CreateDubs")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SpringWeather" active="0">
+		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
+		<script>
+			SetWeather(random(4,5))
+			RuleConsole("testShadowRenderToGrass yes")
+
+			for i = 189, 380 do 
+				local tree = getObj("Object"..i)
+				if tree then 
+					local prot = tree:GetProperty("Prototype").AsString
+					if strsub(prot, 1, 14) == "Breakable_Elka" or strsub(prot, 1, 15) == "Breakable_Sosna" then
+						tree:SetSkin(0) 
+					else
+						tree:SetSkin(2) 
+					end
+				end
+			end
+
+			for d = 1, 5 do
+				local dub = getObj("dub_"..d)
+				if dub then dub:Remove() end
+			end
+
+			TActivate("CreateDubs")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateDubs" active="0">
+		<event	timeout="0.1"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local dub = "r2"
+			if SEASON == "WINTER" then dub = "snow" end
+			if SEASON == "SPRING" then dub = "spring" end
+
+			CreateNewDummyObject("dub1_"..dub, "dub_1", -1, -1, CVector(385.839, 230.000, 571.088), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1)
+			CreateNewDummyObject("dub3_"..dub, "dub_2", -1, -1, CVector(246.259, 230.004, 597.568), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1)
+			CreateNewDummyObject("dub2_"..dub, "dub_3", -1, -1, CVector(210.323, 260.000, 885.031), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1)
+			CreateNewDummyObject("dub1_"..dub, "dub_4", -1, -1, CVector(378.060, 244.371, 967.355), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1)
+			CreateNewDummyObject("dub3_"..dub, "dub_5", -1, -1, CVector(541.867, 259.926, 961.743), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -499,57 +537,48 @@
 	<trigger Name="Trees" active="1">
 		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
 		<script>
-			local r1_kust1, r1_kust2, r2_kust1, r2_kust2
-			if SEASON == "WINTER" then 
-				r1_kust1 = "r1_Dub_Kust1_snow" 
-				r1_kust2 = "r1_Dub_Kust2_snow" 
-				r2_kust1 = "dub_kust1_r2_snow" 
-				r2_kust2 = "dub_kust2_r2_snow" 
-			else
-				r1_kust1 = "r1_Dub_Kust1"
-				r1_kust2 = "r1_Dub_Kust2" 
-				r2_kust1 = "dub_kust1_r2" 
-				r2_kust2 = "dub_kust2_r2" 
-			end
-
-			CreateNewSgNodeObject(r1_kust1, "kust1", -1, -1, CVector(465.121, 230.000, 564.766), Quaternion(0.000, 0.391, 0.000, 0.921), 1.399)
-			CreateNewSgNodeObject(r1_kust1, "kust2", -1, -1, CVector(487.097, 230.006, 542.435), Quaternion(0.000, 0.829, 0.000, -0.559), 0.898)
-			CreateNewSgNodeObject(r1_kust2, "kust3", -1, -1, CVector(489.628, 230.094, 532.646), Quaternion(0.000, 0.772, 0.000, -0.636), 1.207)
-			CreateNewSgNodeObject(r1_kust1, "kust4", -1, -1, CVector(452.308, 230.000, 577.959), Quaternion(0.000, 0.995, 0.000, -0.105), 1.326)
-			CreateNewSgNodeObject(r1_kust1, "kust5", -1, -1, CVector(263.510, 260.000, 785.874), Quaternion(0.000, 0.994, 0.000, 0.113), 1.027)
-			CreateNewSgNodeObject(r1_kust1, "kust6", -1, -1, CVector(290.378, 260.000, 748.656), Quaternion(0.000, 0.276, 0.000, -0.961), 0.811)
-			CreateNewSgNodeObject(r1_kust2, "kust7", -1, -1, CVector(256.056, 260.000, 837.468), Quaternion(0.000, 0.899, 0.000, 0.438), 0.997)
-			CreateNewSgNodeObject(r1_kust1, "kust8", -1, -1, CVector(209.811, 260.000, 835.485), Quaternion(0.000, 0.906, 0.000, -0.423), 0.915)
-			CreateNewSgNodeObject(r2_kust1, "kust9", -1, -1, CVector(171.770, 228.393, 564.632), Quaternion(0.000, 0.000, 0.000, 1.000), 0.940)
-			CreateNewSgNodeObject(r2_kust2, "kust10", -1, -1, CVector(175.141, 229.021, 548.873), Quaternion(0.000, 0.000, 0.000, 1.000), 1.120)
-			CreateNewSgNodeObject(r2_kust2, "kust11", -1, -1, CVector(329.725, 226.873, 578.798), Quaternion(0.000, 0.000, 0.000, 1.000), 1.160)
-			CreateNewSgNodeObject(r2_kust2, "kust12", -1, -1, CVector(354.305, 244.986, 647.377), Quaternion(0.000, 0.000, 0.000, 1.000), 1.030)
-			CreateNewSgNodeObject(r2_kust2, "kust13", -1, -1, CVector(345.441, 244.788, 772.332), Quaternion(0.000, 0.000, 0.000, 1.000), 1.100)
-			CreateNewSgNodeObject(r2_kust2, "kust14", -1, -1, CVector(353.997, 230.419, 870.815), Quaternion(0.000, 0.000, 0.000, 1.000), 0.860)
-			CreateNewSgNodeObject(r2_kust2, "kust15", -1, -1, CVector(294.340, 245.000, 961.767), Quaternion(0.000, 0.819, 0.000, -0.574), 1.030)
-			CreateNewSgNodeObject(r2_kust2, "kust16", -1, -1, CVector(391.699, 244.994, 898.431), Quaternion(0.000, 0.974, 0.000, -0.225), 1.190)
-			CreateNewSgNodeObject(r2_kust1, "kust17", -1, -1, CVector(281.236, 245.000, 1080.174), Quaternion(0.000, 0.951, 0.000, 0.309), 1.040)
-			CreateNewSgNodeObject(r2_kust1, "kust18", -1, -1, CVector(281.013, 244.990, 1052.340), Quaternion(0.000, 0.994, 0.000, -0.113), 1.150)
-			CreateNewSgNodeObject(r2_kust1, "kust19", -1, -1, CVector(311.864, 244.750, 1085.999), Quaternion(0.000, 0.999, 0.000, 0.035), 1.160)
-			CreateNewSgNodeObject(r2_kust2, "kust20", -1, -1, CVector(689.041, 235.247, 411.884), Quaternion(0.000, 0.375, 0.000, -0.927), 1.207)
-			CreateNewSgNodeObject(r2_kust2, "kust21", -1, -1, CVector(780.521, 234.587, 462.020), Quaternion(0.000, 0.997, 0.000, -0.079), 1.397)
-			CreateNewSgNodeObject(r2_kust1, "kust22", -1, -1, CVector(814.126, 236.861, 436.553), Quaternion(0.000, 0.470, 0.000, 0.883), 0.925)
-			CreateNewSgNodeObject(r2_kust2, "kust23", -1, -1, CVector(1230.311, 221.392, 395.339), Quaternion(0.000, 0.927, 0.000, 0.375), 0.790)
-			CreateNewSgNodeObject(r2_kust1, "kust24", -1, -1, CVector(1653.834, 230.592, 568.412), Quaternion(0.000, 0.921, 0.000, 0.391), 1.427)
-			CreateNewSgNodeObject(r2_kust2, "kust25", -1, -1, CVector(1481.031, 230.000, 570.256), Quaternion(0.000, 0.980, 0.000, -0.199), 1.249)
-			CreateNewSgNodeObject(r1_kust1, "kust26", -1, -1, CVector(1872.428, 229.967, 1013.712), Quaternion(0.000, 0.749, 0.000, 0.663), 1.456)
-			CreateNewSgNodeObject(r1_kust2, "kust27", -1, -1, CVector(1883.577, 236.285, 977.607), Quaternion(0.000, 0.848, 0.000, -0.530), 1.208)
-			CreateNewSgNodeObject(r1_kust2, "kust28", -1, -1, CVector(1864.190, 227.390, 1154.851), Quaternion(0.000, 0.317, 0.000, 0.948), 1.500)
-			CreateNewSgNodeObject(r1_kust1, "kust29", -1, -1, CVector(1785.396, 227.139, 1099.952), Quaternion(0.000, 0.895, 0.000, -0.446), 1.060)
-			CreateNewSgNodeObject(r1_kust2, "kust30", -1, -1, CVector(1761.459, 226.181, 1013.004), Quaternion(0.000, 0.334, 0.000, 0.943), 1.238)
-			CreateNewSgNodeObject(r1_kust2, "kust31", -1, -1, CVector(1706.181, 221.305, 935.322), Quaternion(0.000, 0.788, 0.000, 0.616), 0.890)
-			CreateNewSgNodeObject(r1_kust2, "kust32", -1, -1, CVector(1768.497, 229.878, 959.143), Quaternion(0.000, 0.500, 0.000, 0.866), 0.997)
-			CreateNewSgNodeObject(r1_kust2, "kust33", -1, -1, CVector(1718.919, 227.718, 901.398), Quaternion(0.000, 0.595, 0.000, -0.804), 1)
-			CreateNewSgNodeObject(r1_kust1, "kust34", -1, -1, CVector(1729.346, 226.869, 1287.108), Quaternion(0.000, 0.999, 0.000, 0.044), 1)
-			CreateNewSgNodeObject(r1_kust1, "kust35", -1, -1, CVector(1503.386, 219.223, 1587.787), Quaternion(0.000, 0.713, 0.000, -0.701), 1)
-			CreateNewSgNodeObject(r1_kust2, "kust36", -1, -1, CVector(1364.559, 258.774, 1768.046), Quaternion(0.000, 0.438, 0.000, 0.899), 1)
-			CreateNewSgNodeObject(r1_kust1, "kust37", -1, -1, CVector(1308.031, 259.807, 1785.197), Quaternion(0.000, 0.139, 0.000, -0.990), 1)
-			CreateNewSgNodeObject(r1_kust2, "kust38", -1, -1, CVector(1324.165, 259.364, 1792.766), Quaternion(0.000, 0.375, 0.000, 0.927), 1)
+			local kust = ""
+			if SEASON == "WINTER" then kust = "_snow" end
+			if SEASON == "SPRING" then kust = "_spring" end
+		
+			CreateNewSgNodeObject("r1_Dub_Kust1"..kust, "kust1", -1, -1, CVector(465.121, 230.000, 564.766), Quaternion(0.000, 0.391, 0.000, 0.921), 1.399)
+			CreateNewSgNodeObject("r1_Dub_Kust1"..kust, "kust2", -1, -1, CVector(487.097, 230.006, 542.435), Quaternion(0.000, 0.829, 0.000, -0.559), 0.898)
+			CreateNewSgNodeObject("r1_Dub_Kust2"..kust, "kust3", -1, -1, CVector(489.628, 230.094, 532.646), Quaternion(0.000, 0.772, 0.000, -0.636), 1.207)
+			CreateNewSgNodeObject("r1_Dub_Kust1"..kust, "kust4", -1, -1, CVector(452.308, 230.000, 577.959), Quaternion(0.000, 0.995, 0.000, -0.105), 1.326)
+			CreateNewSgNodeObject("r1_Dub_Kust1"..kust, "kust5", -1, -1, CVector(263.510, 260.000, 785.874), Quaternion(0.000, 0.994, 0.000, 0.113), 1.027)
+			CreateNewSgNodeObject("r1_Dub_Kust1"..kust, "kust6", -1, -1, CVector(290.378, 260.000, 748.656), Quaternion(0.000, 0.276, 0.000, -0.961), 0.811)
+			CreateNewSgNodeObject("r1_Dub_Kust2"..kust, "kust7", -1, -1, CVector(256.056, 260.000, 837.468), Quaternion(0.000, 0.899, 0.000, 0.438), 0.997)
+			CreateNewSgNodeObject("r1_Dub_Kust1"..kust, "kust8", -1, -1, CVector(209.811, 260.000, 835.485), Quaternion(0.000, 0.906, 0.000, -0.423), 0.915)
+			CreateNewSgNodeObject("dub_kust1_r2"..kust, "kust9", -1, -1, CVector(171.770, 228.393, 564.632), Quaternion(0.000, 0.000, 0.000, 1.000), 0.940)
+			CreateNewSgNodeObject("dub_kust2_r2"..kust, "kust10", -1, -1, CVector(175.141, 229.021, 548.873), Quaternion(0.000, 0.000, 0.000, 1.000), 1.120)
+			CreateNewSgNodeObject("dub_kust2_r2"..kust, "kust11", -1, -1, CVector(329.725, 226.873, 578.798), Quaternion(0.000, 0.000, 0.000, 1.000), 1.160)
+			CreateNewSgNodeObject("dub_kust2_r2"..kust, "kust12", -1, -1, CVector(354.305, 244.986, 647.377), Quaternion(0.000, 0.000, 0.000, 1.000), 1.030)
+			CreateNewSgNodeObject("dub_kust2_r2"..kust, "kust13", -1, -1, CVector(345.441, 244.788, 772.332), Quaternion(0.000, 0.000, 0.000, 1.000), 1.100)
+			CreateNewSgNodeObject("dub_kust2_r2"..kust, "kust14", -1, -1, CVector(353.997, 230.419, 870.815), Quaternion(0.000, 0.000, 0.000, 1.000), 0.860)
+			CreateNewSgNodeObject("dub_kust2_r2"..kust, "kust15", -1, -1, CVector(294.340, 245.000, 961.767), Quaternion(0.000, 0.819, 0.000, -0.574), 1.030)
+			CreateNewSgNodeObject("dub_kust2_r2"..kust, "kust16", -1, -1, CVector(391.699, 244.994, 898.431), Quaternion(0.000, 0.974, 0.000, -0.225), 1.190)
+			CreateNewSgNodeObject("dub_kust1_r2"..kust, "kust17", -1, -1, CVector(281.236, 245.000, 1080.174), Quaternion(0.000, 0.951, 0.000, 0.309), 1.040)
+			CreateNewSgNodeObject("dub_kust1_r2"..kust, "kust18", -1, -1, CVector(281.013, 244.990, 1052.340), Quaternion(0.000, 0.994, 0.000, -0.113), 1.150)
+			CreateNewSgNodeObject("dub_kust1_r2"..kust, "kust19", -1, -1, CVector(311.864, 244.750, 1085.999), Quaternion(0.000, 0.999, 0.000, 0.035), 1.160)
+			CreateNewSgNodeObject("dub_kust2_r2"..kust, "kust20", -1, -1, CVector(689.041, 235.247, 411.884), Quaternion(0.000, 0.375, 0.000, -0.927), 1.207)
+			CreateNewSgNodeObject("dub_kust2_r2"..kust, "kust21", -1, -1, CVector(780.521, 234.587, 462.020), Quaternion(0.000, 0.997, 0.000, -0.079), 1.397)
+			CreateNewSgNodeObject("dub_kust1_r2"..kust, "kust22", -1, -1, CVector(814.126, 236.861, 436.553), Quaternion(0.000, 0.470, 0.000, 0.883), 0.925)
+			CreateNewSgNodeObject("dub_kust2_r2"..kust, "kust23", -1, -1, CVector(1230.311, 221.392, 395.339), Quaternion(0.000, 0.927, 0.000, 0.375), 0.790)
+			CreateNewSgNodeObject("dub_kust1_r2"..kust, "kust24", -1, -1, CVector(1653.834, 230.592, 568.412), Quaternion(0.000, 0.921, 0.000, 0.391), 1.427)
+			CreateNewSgNodeObject("dub_kust2_r2"..kust, "kust25", -1, -1, CVector(1481.031, 230.000, 570.256), Quaternion(0.000, 0.980, 0.000, -0.199), 1.249)
+			CreateNewSgNodeObject("r1_Dub_Kust1"..kust, "kust26", -1, -1, CVector(1872.428, 229.967, 1013.712), Quaternion(0.000, 0.749, 0.000, 0.663), 1.456)
+			CreateNewSgNodeObject("r1_Dub_Kust2"..kust, "kust27", -1, -1, CVector(1883.577, 236.285, 977.607), Quaternion(0.000, 0.848, 0.000, -0.530), 1.208)
+			CreateNewSgNodeObject("r1_Dub_Kust2"..kust, "kust28", -1, -1, CVector(1864.190, 227.390, 1154.851), Quaternion(0.000, 0.317, 0.000, 0.948), 1.500)
+			CreateNewSgNodeObject("r1_Dub_Kust1"..kust, "kust29", -1, -1, CVector(1785.396, 227.139, 1099.952), Quaternion(0.000, 0.895, 0.000, -0.446), 1.060)
+			CreateNewSgNodeObject("r1_Dub_Kust2"..kust, "kust30", -1, -1, CVector(1761.459, 226.181, 1013.004), Quaternion(0.000, 0.334, 0.000, 0.943), 1.238)
+			CreateNewSgNodeObject("r1_Dub_Kust2"..kust, "kust31", -1, -1, CVector(1706.181, 221.305, 935.322), Quaternion(0.000, 0.788, 0.000, 0.616), 0.890)
+			CreateNewSgNodeObject("r1_Dub_Kust2"..kust, "kust32", -1, -1, CVector(1768.497, 229.878, 959.143), Quaternion(0.000, 0.500, 0.000, 0.866), 0.997)
+			CreateNewSgNodeObject("r1_Dub_Kust2"..kust, "kust33", -1, -1, CVector(1718.919, 227.718, 901.398), Quaternion(0.000, 0.595, 0.000, -0.804), 1)
+			CreateNewSgNodeObject("r1_Dub_Kust1"..kust, "kust34", -1, -1, CVector(1729.346, 226.869, 1287.108), Quaternion(0.000, 0.999, 0.000, 0.044), 1)
+			CreateNewSgNodeObject("r1_Dub_Kust1"..kust, "kust35", -1, -1, CVector(1503.386, 219.223, 1587.787), Quaternion(0.000, 0.713, 0.000, -0.701), 1)
+			CreateNewSgNodeObject("r1_Dub_Kust2"..kust, "kust36", -1, -1, CVector(1364.559, 258.774, 1768.046), Quaternion(0.000, 0.438, 0.000, 0.899), 1)
+			CreateNewSgNodeObject("r1_Dub_Kust1"..kust, "kust37", -1, -1, CVector(1308.031, 259.807, 1785.197), Quaternion(0.000, 0.139, 0.000, -0.990), 1)
+			CreateNewSgNodeObject("r1_Dub_Kust2"..kust, "kust38", -1, -1, CVector(1324.165, 259.364, 1792.766), Quaternion(0.000, 0.375, 0.000, 0.927), 1)
 			trigger:Deactivate()
 		</script>
 	</trigger>

@@ -279,6 +279,7 @@ data/if/ico_hd/splashwnd/loading_up.dds
 !data/if/ico_hd/splashes/druids.dds
 !data/if/ico_hd/splashes/r0m0.dds
 !data/if/ico_hd/splashes/r0m0_winter.dds
+!data/if/ico_hd/splashes/r0m0_spring.dds
 !data/if/ico_hd/splashes/dungeon.dds
 !data/if/ico_hd/splashes/r1m1/*.dds
 !data/if/ico_hd/splashes/mainmenu/*.dds
@@ -293,6 +294,10 @@ data/if/ico_hd/splashwnd/loading_up.dds
 !data/maps/r0m0/lightmap_nighttime_r0m0_snow.dds
 !data/maps/r0m0/lightmap_sunrisetime_r0m0_snow.dds
 !data/maps/r0m0/lightmap_sunsettime_r0m0_snow.dds
+!data/maps/r0m0/lightmap_daytime_r0m0_spring.dds
+!data/maps/r0m0/lightmap_nighttime_r0m0_spring.dds
+!data/maps/r0m0/lightmap_sunrisetime_r0m0_spring.dds
+!data/maps/r0m0/lightmap_sunsettime_r0m0_spring.dds
 !data/maps/r0m0/NormalMap.bin
 !data/maps/r0m0/passmap.raw
 !data/maps/r0m0/player_passmap.bin
@@ -556,6 +561,8 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/models/buildings/region5/garage/*.gam
 !data/models/nature/region5/trees/*.gam
 !data/models/nature/region5/trees/*.dds
+!data/models/nature/region5/trees/spring/*.gam
+!data/models/nature/region5/trees/spring/*.dds
 !data/models/nature/region1/trees/listvenoe1_r5.gam
 !data/models/nature/region1/trees/listvenoe1.gam
 !data/models/nature/region1/trees/listvenoe2.gam
@@ -591,6 +598,7 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/maps/r5m1/winter/*.dds
 !data/maps/r5m1.ssl
 !data/maps/r1m1_winter.ssl
+!data/maps/r1m1_spring.ssl
 !data/models/dynamic/region1/barrel_1.gam
 !data/models/dynamic/region1/barrel_2.gam
 !data/models/dynamic/region1/barrel_3.gam
@@ -698,6 +706,8 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/maps/mainmenu/lightmap_weather_clear_sunsettime_snow.dds
 !data/maps/mainmenu/lightmap_weather_snow_daytime_snow.dds
 !data/maps/mainmenu/lightmap_weather_snow_sunrisetime_snow.dds
+!data/maps/mainmenu/lightmap_weather_clear_daytime_spring.dds
+!data/maps/mainmenu/lightmap_weather_clear_sunrisetime_spring.dds
 !data/maps/r0m0/*.xml
 !data/maps/r0m1/*.xml
 !data/maps/r1m1/camera_paths.xml
@@ -716,6 +726,17 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/maps/r4m1/triggers.xml
 !data/maps/r4m2/strings.xml
 !data/maps/r4m2/triggers.xml
+!data/maps/r1m1/winter/spring/*.xml
+!data/maps/r1m1/winter/spring/*.dds
+!data/maps/r1m1/winter/spring/summer/*.xml
+!data/maps/r1m1/winter/spring/summer/*.dds
+!data/maps/r1m1/winter/spring/summer/autumn/*.xml
+!data/maps/r1m1/winter/spring/summer/autumn/*.dds
+!data/maps/r1m1/winter/spring/summer/autumn/main/*.xml
+!data/maps/r1m1/winter/spring/summer/autumn/main/*.raw
+!data/maps/r1m1/winter/spring/summer/autumn/main/*.bin
+!data/maps/r1m1/winter/spring/summer/autumn/main/level.cliff
+!data/maps/r1m1/winter/spring/summer/autumn/main/level.tile
 !data/models/animmodels.xml
 !data/models/belongstologos.xml
 !data/models/commonservers.xml

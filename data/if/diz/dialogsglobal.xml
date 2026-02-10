@@ -11007,22 +11007,13 @@
 		text="@FF1D1D1D[Выберите место дислокации]"
 		role="NPC"
 		scriptCondition="GetPlayerHealth() >= 1 and GetPlayerFuel() >= 1 and GetVar('PetrolStation_Refill_Process').AsInt == 0 and GetVar('DialogSelectMap').AsInt == 0"
-		nextReplies="Dlg_pl_0013109 Dlg_pl_00131090 Dlg_pl_0013117" />
+		nextReplies="Dlg_pl_0013109 Dlg_pl_0013117" />
 
 	<Reply
 		name="Dlg_pl_0013109"
 		text="Край."
 		role="PLAYER"
-		scriptCondition="GetVar('Season').AsString ~= 'WINTER'"
 		scriptResult="SetVar('ToMap', 'r1m1')"
-		nextReplies="Dlg_pl_0013118" />
-
-	<Reply
-		name="Dlg_pl_00131090"
-		text="Край."
-		role="PLAYER"
-		scriptCondition="GetVar('Season').AsString == 'WINTER'"
-		scriptResult="SetVar('ToMap', 'r1m1_winter')"
 		nextReplies="Dlg_pl_0013118" />
 
 	<Reply
@@ -11033,7 +11024,7 @@
 
 	<Reply
 		name="Dlg_pl_0013118"
-		text="Не богатая сельская местность, когда-то была излюбленным местом для фермеров. Находится не далеко от побережья высохшого черного моря, на месте которого образовалась «пустыня смерти».|@FF0000AA|@FF1D1D1D[Выберите время дислокации]"
+		text="Небогатая сельская местность, когда-то была излюбленным местом для фермеров. Находится не далеко от побережья высохшого черного моря, на месте которого образовалась «пустыня смерти».|@FF0000AA|@FF1D1D1D[Выберите время дислокации]"
 		role="NPC"
 		nextReplies="Dlg_pl_0013119 Dlg_pl_0013120 Dlg_pl_0013121" />
 

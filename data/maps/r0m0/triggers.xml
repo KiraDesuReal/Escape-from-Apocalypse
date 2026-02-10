@@ -3705,20 +3705,22 @@
 				local month = tonumber(strsub(os.date(), 1, 2))
 
 				if month == 12 or month == 1 or month == 2 then SEASON = "WINTER" TActivate("WinterWeather") end
-				if month == 3 or month == 4 or month == 5 then SEASON = "SPRING" TActivate("SummerWeather") end
+				if month == 3 or month == 4 or month == 5 then SEASON = "SPRING" TActivate("SpringWeather") end
 				if month == 6 or month == 7 or month == 8 then SEASON = "SUMMER" TActivate("SummerWeather") end
 				if month == 9 or month == 10 or month == 11 then SEASON = "AUTUMN" TActivate("SummerWeather") end
 				if ReadValueUserInfo("Season") ~= SEASON then EditUserInfo("Season", "Season: "..SEASON) end 
 				if GetVar("Season").AsString ~= SEASON then
 					if SEASON == "WINTER" then
 						AddImportantFadingMsgByStrIdFormatted("fm_season_winter")
+					elseif SEASON == "SPRING" then
+						AddImportantFadingMsgByStrIdFormatted("fm_season_spring")
 					else
 						AddImportantFadingMsgByStrIdFormatted("fm_season_summer")
 					end
 				end
 			else
 				if SEASON == "WINTER" then TActivate("WinterWeather") end
-				if SEASON == "SPRING" then TActivate("SummerWeather") end
+				if SEASON == "SPRING" then TActivate("SpringWeather") end
 				if SEASON == "SUMMER" then TActivate("SummerWeather") end
 				if SEASON == "AUTUMN" then TActivate("SummerWeather") end
 			end
@@ -4482,8 +4484,11 @@
 			end
 
 			local map = GetVar("ToMap").AsString
+			local s = ""
+			if GetVar("Season").AsString == "WINTER" then s = "_winter" end
+			if GetVar("Season").AsString == "SPRING" then s = "_spring" end
 
-			PassToMap(map, "FromR0M0")
+			PassToMap(map..s, "FromR0M0")
 
 			TActivate("ExitMap")
 			trigger:Deactivate()
@@ -7131,6 +7136,51 @@
 			trigger:Deactivate()
 		</script>
 	</trigger>	
+
+	<trigger Name="SpringWeather" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local r = random(6,8)
+			SetWeather(r)
+			SetVar("Weather", r)
+			if getObj("birds1") == nil then TActivate("BirdsSound") end
+			RuleConsole("testShadowRenderToGrass yes")
+			SetVar("Season", "SPRING")
+
+			if ReadValueUserInfo("UserTimeYear") ~= "1" then
+				if ReadValueUserInfo("Season") ~= SEASON then EditUserInfo("Season", "Season: "..SEASON) end 
+			end
+
+			if r == 6 then SetVar("SpeedWind", random(4, 10)) end
+			if r == 7 then SetVar("SpeedWind", random(11, 25)) end
+			if r == 8 then SetVar("SpeedWind", random(5, 15)) end
+
+			for w = 1, 12 do
+				local wind = getObj("wind"..w)
+				if wind then wind:Remove() end
+			end
+
+			for k = 1, 10 do
+				local kust = getObj("kust"..k)
+				if kust then kust:SetSkin(2) end
+			end
+
+			for t = 1, 2051 do
+				local tree = getObj("tree"..t)
+				if tree then 
+					local prot = tree:GetProperty("Prototype").AsString
+					if strsub(prot, 1, 14) == "Breakable_Elka" or strsub(prot, 1, 15) == "Breakable_Sosna" then
+						tree:SetSkin(0) 
+					else
+						tree:SetSkin(2) 
+					end
+				end
+			end
+
+			TActivate("SetSpeedWind")
+			trigger:Deactivate()
+		</script>
+	</trigger>
 
 	<trigger Name="BirdsSound" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />

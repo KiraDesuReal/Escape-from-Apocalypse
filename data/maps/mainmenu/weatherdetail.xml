@@ -91,4 +91,50 @@
 			LightmapTexture="lightmap_Weather_Clear_nighttime_snow.dds"
 			CloudsTexture="SkyRainy.dds" />
 	</WeatherItem>
+
+	<WeatherItem
+		name="main_menu_clear_spring">
+		<ColorType
+			name="sunrise"
+			LightmapTexture="lightmap_weather_clear_sunrisetime_spring.dds"
+			CloudsTexture="skyclear1.dds" />
+
+		<ColorType
+			name="day"
+			LightmapTexture="lightmap_Weather_Clear_dayTime_spring.dds"
+			CloudsTexture="skyclear1.dds" />
+
+		<ColorType
+			name="sunset"
+			LightmapTexture="lightmap_Weather_Clear_sunrisetime_spring.dds"
+			CloudsTexture="SkyCloudy1.dds" />
+
+		<ColorType
+			name="night"
+			LightmapTexture="lightmap_weather_clear_nighttime_spring.dds"
+			CloudsTexture="SkyRainy.dds" />
+	</WeatherItem>
+
+	<WeatherItem
+		name="main_menu_cloudy_spring">
+		<ColorType
+			name="sunrise"
+			LightmapTexture="lightmap_weather_clear_sunrisetime_spring.dds"
+			CloudsTexture="skyclear2.dds" />
+
+		<ColorType
+			name="day"
+			LightmapTexture="lightmap_weather_clear_daytime_spring.dds"
+			CloudsTexture="skyclear2.dds" />
+
+		<ColorType
+			name="sunset"
+			LightmapTexture="lightmap_Weather_Clear_sunrisetime_spring.dds"
+			CloudsTexture="skyblight3.dds" />
+
+		<ColorType
+			name="night"
+			LightmapTexture="lightmap_weather_clear_nighttime_spring.dds"
+			CloudsTexture="SkyRainy.dds" />
+	</WeatherItem>
 </Weather>

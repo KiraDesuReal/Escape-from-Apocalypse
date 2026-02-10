@@ -11007,22 +11007,13 @@
 		text="@FF1D1D1D[Select a location]"
 		role="NPC"
 		scriptCondition="GetPlayerHealth() >= 1 and GetPlayerFuel() >= 1 and GetVar('PetrolStation_Refill_Process').AsInt == 0 and GetVar('DialogSelectMap').AsInt == 0"
-		nextReplies="Dlg_pl_0013109 Dlg_pl_00131090 Dlg_pl_0013117" />
+		nextReplies="Dlg_pl_0013109 Dlg_pl_0013117" />
 
 	<Reply
 		name="Dlg_pl_0013109"
 		text="Krai."
 		role="PLAYER"
-		scriptCondition="GetVar('Season').AsString ~= 'WINTER'"
 		scriptResult="SetVar('ToMap', 'r1m1')"
-		nextReplies="Dlg_pl_0013118" />
-
-	<Reply
-		name="Dlg_pl_00131090"
-		text="Krai."
-		role="PLAYER"
-		scriptCondition="GetVar('Season').AsString == 'WINTER'"
-		scriptResult="SetVar('ToMap', 'r1m1_winter')"
 		nextReplies="Dlg_pl_0013118" />
 
 	<Reply

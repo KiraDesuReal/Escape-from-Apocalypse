@@ -171,6 +171,12 @@ $Id: QuestItems.xml,v 1.11 2005/10/18 06:12:48 anton Exp $
 		ModelFile	= "disk_exmachina"
 		ResourceType	= "QUEST_ITEMS" />
 
+	<Prototype
+		Class		= "QuestItem"
+		Name		= "quest_item_1_year"
+		ModelFile	= "1_year"
+		ResourceType	= "QUEST_ITEMS" />
+
 <!-- ≈жедневные задани€ -->
 
 	<Prototype

@@ -14,6 +14,7 @@ if R4M1_exit == nil then R4M1_exit = 0 end
 if R0M1_exit == nil then R0M1_exit = 0 end
 
 if STARTGAME == nil then STARTGAME = 0 end
+if LOAD_MAP == nil then LOAD_MAP = 0 end
 
 -- —четчик количества рейдов 
 if COUNT_RAIDS == nil then COUNT_RAIDS = 0 end
@@ -235,7 +236,7 @@ function GiveGunsForPMC(vehicle)
 	local smallgun={hornet,"specter01","pkt01","kord01","storm01"}
 	local biggun={"rapier01","vector01","vulcan01","kpvt01","elephant01","odin01","bumblebee01","omega01"}
 	local giantgun={"cyclops01","octopus01"}
-	local sidegun={"hunterSideGun","marsSideGun","mrakSideGun"}
+	local sidegun={"hunterSideGun","mrakSideGun"}
 	local side_random = 0
 
 	local player = GetVar("PlayerCar").AsString
@@ -269,7 +270,7 @@ function GiveGunsForPMC(vehicle)
 					gun=giantgun[exrandom(getn(giantgun))]
 				elseif j==4 then
 					if side_random == 1 then		
-						gun=sidegun[exrandom(3)]
+						gun=sidegun[random(2)]
 					else
 						gun=""
 					end
@@ -962,7 +963,7 @@ function CreateBarrelLootBox(name, pos)
 	local valuables1 = {"item_chain", "item_duck",  "item_carsen", "item_monolit", "book", "item_kaktus", "shkatulka", "item_ex", "item_teapon", "item_emre_kara", "item_chizuru", "item_keqing", "item_silver_skull", "item_metallodetector", "item_cat", "item_kubok_kikiki", "item_vaze", "item_rolex", "item_chain_gold", "item_fitanyashka", "item_chiken", "item_skullring", "item_vitalik", "item_ananaga", "item_lion", "item_bitcoin"}
 
 	local gun1 = {"hornet01", "specter01", "pkt01", "storm01", "vector01", "vulcan01", "kpvt01", "rapier01", "bumblebee01"} 
-	local gun2 = {"pkt01", "kord01", "maxim01", "fagot01", "someTurboAccelerationPusher", "omega01", "elephant01", "flag01", "odin01", "rainmetal01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun"}
+	local gun2 = {"pkt01", "kord01", "maxim01", "fagot01", "someTurboAccelerationPusher", "omega01", "elephant01", "flag01", "odin01", "rainmetal01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun"}
 	
 	local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
 	local gadget2 = {"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "additional_fuel_tank2", "additional_torque2", "additional_durability2"}
@@ -1026,7 +1027,7 @@ end
 function CreateGunBox(name, pos)
 
 	local gun1 = {"hornet01", "specter01", "pkt01", "storm01", "vector01", "vulcan01", "kpvt01", "rapier01", "bumblebee01"} 
-	local gun2 = {"pkt01", "kord01", "maxim01", "fagot01", "someTurboAccelerationPusher", "omega01", "elephant01", "flag01", "odin01", "rainmetal01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun"}
+	local gun2 = {"pkt01", "kord01", "maxim01", "fagot01", "someTurboAccelerationPusher", "omega01", "elephant01", "flag01", "odin01", "rainmetal01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun"}
 	local gun_rand = {gun1[random(getn(gun1))], gun2[exrandom(getn(gun2))]}
 
 	local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
@@ -1213,7 +1214,7 @@ function AllItemsForScav()
 					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_chizuru",
 					"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
 					"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_silver_skull", "item_vaze", "item_duck",
-					"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun",
+					"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun",
 					"someTurboAccelerationPusher",
 					"cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns", "cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "additional_fuel_tank2", "additional_torque2", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 
@@ -1982,7 +1983,7 @@ function RewardForDailyQuests()
 	local LifeItems = {"scrap_metal_use", "machinery_use", "electronics_use"}
 	local FuelItems = {"oil_use", "fuel_full_use"}
 	local AmmoItems = {"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo"}
-	local Guns = {"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun", "someTurboAccelerationPusher"}
+	local Guns = {"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "someTurboAccelerationPusher"}
 	local Gadgets = {"cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns", "cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "additional_fuel_tank2", "additional_torque2", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 	local OtherItems = {"potato", "firewood", "bottle", "tobacco", "book",
 						"doski", "details", "shkatulka",
@@ -2244,6 +2245,7 @@ function CreateUserInfoFile()
 		f:write("UserTimeYear: 0", "\n")
 		f:write("QuestItemChristmasBall: 0", "\n")
 		f:write("QuestItemDiskExMachina: 0", "\n")
+		f:write("QuestItem1Year: 0", "\n")
 		f:close()
 	end
 end
@@ -2259,6 +2261,7 @@ function UpdateUserInfoFile()
 		if IsUserInfoLineExists("UserTimeYear") == nil then EditUserInfo("UserTimeYear", "UserTimeYear: 0") end
 		if IsUserInfoLineExists("QuestItemChristmasBall") == nil then EditUserInfo("QuestItemChristmasBall", "QuestItemChristmasBall: 0") end
 		if IsUserInfoLineExists("QuestItemDiskExMachina") == nil then EditUserInfo("QuestItemDiskExMachina", "QuestItemDiskExMachina: 0") end
+		if IsUserInfoLineExists("QuestItem1Year") == nil then EditUserInfo("QuestItem1Year", "QuestItem1Year: 0") end
 	else
 		CreateUserInfoFile()
 	end
@@ -2408,9 +2411,13 @@ end
 function IfLoadSave()
 	local mapName = GET_GLOBAL_OBJECT( "CurrentLevel" ):GetLevelName()
 	if mapName == "r0m0" then
-		TActivate("CheckLoadSaveTimer")
+		LOAD_MAP = 1
 	end
 end
+
+
+
+
 
 
 

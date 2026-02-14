@@ -373,9 +373,15 @@
 
 			if month == 12 and day >= 25 or month == 1 and day >= 1 and 10 >= day then EVENT = "NEW_YEAR" end
 			if month == 12 and day == 8 and year == 25 then EVENT = "BIRTHDAY_EXMACHINA" end
+			if month == 4 and day == 1 then EVENT = "1_APRIL" end
+			if month == 4 and day >= 2 and not(10 > day) then EVENT = "1_APRIL_MULTIPLAYER" end
 
 			if EVENT == "BIRTHDAY_EXMACHINA" and year == 25 then
 				EditUserInfo("QuestItemDiskExMachina", "QuestItemDiskExMachina: 1")
+			end
+
+			if EVENT == "1_APRIL" and year == 26 then
+				EditUserInfo("QuestItem1Year", "QuestItem1Year: 1")
 			end
 
 			trigger:Deactivate()
@@ -391,6 +397,8 @@
 			elseif EVENT == "BIRTHDAY_EXMACHINA" then
 				PlayCustomMusic("mainmenu")
 				SetVar("Track", 174)
+			elseif EVENT == "1_APRIL" then
+				SetVar("Track", 0)
 			else
 				PlayCustomMusic("mainmenu_remaster")
 				SetVar("Track", 175)
@@ -404,9 +412,14 @@
 		<event	timeout="0"	eventid="GE_TIME_PERIOD" />
 		<script>
 	
-			local list = {"music01", "music02", "music03", "music04", "music05", "music06", "music07", "music08", "music09", "music10", "music11", "music12"}
-			local music = list[random(12)]
+			local list 
+			if EVENT == "1_APRIL" then
+				list = {"music04_gachi", "music06_gachi", "music07_gachi", "music08_gachi", "music09_gachi", "music12_gachi"}
+			else
+				list = {"music01", "music02", "music03", "music04", "music05", "music06", "music07", "music08", "music09", "music10", "music11", "music12"}
+			end
 
+			local music = list[random(getn(list))]
 			if music == GetVar("LastTrack").AsString then
 				return
 			end
@@ -416,15 +429,15 @@
 			if music == "music01" then SetVar("Track", 257) end
 			if music == "music02" then SetVar("Track", 358) end
 			if music == "music03" then SetVar("Track", 232) end
-			if music == "music04" then SetVar("Track", 244) end
+			if music == "music04" or music == "music04_gachi" then SetVar("Track", 244) end
 			if music == "music05" then SetVar("Track", 228) end
-			if music == "music06" then SetVar("Track", 218) end
-			if music == "music07" then SetVar("Track", 329) end
-			if music == "music08" then SetVar("Track", 177) end
-			if music == "music09" then SetVar("Track", 203) end
+			if music == "music06" or music == "music06_gachi" then SetVar("Track", 218) end
+			if music == "music07" or music == "music07_gachi" then SetVar("Track", 329) end
+			if music == "music08" or music == "music08_gachi" then SetVar("Track", 177) end
+			if music == "music09" or music == "music09_gachi" then SetVar("Track", 203) end
 			if music == "music10" then SetVar("Track", 236) end
 			if music == "music11" then SetVar("Track", 230) end
-			if music == "music12" then SetVar("Track", 262) end
+			if music == "music12" or music == "music12_gachi" then SetVar("Track", 262) end
 
 			PlayCustomMusic(music)
 

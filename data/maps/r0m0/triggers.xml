@@ -1025,6 +1025,12 @@
 
 			TActivate("Update")
 
+			if EVENT == "1_APRIL" then
+				TActivate("GachiMusic")
+			end
+
+			LOAD_MAP = 0
+
 		--квестовые переменные
 			if Q_TESTING_MISSION_DIESCAVS then SetVar("q_testing_mission_DieScavs", Q_TESTING_MISSION_DIESCAVS) end
 
@@ -1136,6 +1142,11 @@
 			TActivate("Events")
 			UpdateDailyQuests()
 			AddKeysQuestItem()
+			if LOAD_MAP == 1 then
+				TActivate("CheckLoadSaveTimer")
+				if EVENT == "1_APRIL" then TActivate("GachiMusic") end
+				LOAD_MAP = 0
+			end
 		</script>
 	</trigger>
 
@@ -2087,7 +2098,7 @@
 							"item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_kubok_kikiki", "item_chizuru",
 							"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_pipe_wrench", "item_ratchet_wrench", "item_sewing_kit", 
 							"item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_vaze",
-							"someTurboAccelerationPusher", "maxim01", "fagot01", "flag01", "rainmetal01", "elephant01", "omega01", "cyclops01", "octopus01", "marsSideGun", "hunterSideGun", "hammer01",
+							"someTurboAccelerationPusher", "maxim01", "fagot01", "flag01", "rainmetal01", "elephant01", "omega01", "cyclops01", "octopus01", "hunterSideGun", "hammer01",
 							"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo",
 							"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 				loot_count = random(3,5)
@@ -2120,7 +2131,7 @@
 							"item_airfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_metallodetector", "item_kubok_kikiki", "item_chizuru",
 							"item_buldex", "item_handrill", "item_pipe_wrench", "item_ratchet_wrench", 
 							"item_cat", "item_chain_gold", "item_chiken", "item_lion", "item_rolex", "item_skullring", "item_woodclock", "item_silver_skull", "item_vaze",
-							"fagot01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "cyclops01", "octopus01", "marsSideGun", "hunterSideGun", "hammer01", "hailSideGun", "zeusSideGun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo",
+							"fagot01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "cyclops01", "octopus01", "hunterSideGun", "hammer01", "hailSideGun", "zeusSideGun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo",
 							"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 				if GetVar("ChestScavs_Search").AsInt == 5 then loot_count = random(3,6) end 
 				if GetVar("ChestScavs_Search").AsInt == 6 then loot_count = random(4,6) end 
@@ -4378,6 +4389,10 @@
 			TActivate("RestoreRotationWindGeneratorPropeller")
 			
 			SetCameraBehindPlayerVehicle()
+
+			if EVENT == "1_APRIL" then
+				TActivate("GachiMusic")
+			end
 		</script>
 	</trigger>
 
@@ -4744,7 +4759,7 @@
 		<script>
 			local use = {"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use", "fuel_nil_use"}
 			local ammo = {"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo"}
-			local gun = {"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun"}
+			local gun = {"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun"}
 			local gadget = {"someTurboAccelerationPusher", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns", "cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "additional_fuel_tank2", "additional_torque2", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 			local AllItems = AllItemsForScav()
 
@@ -7005,6 +7020,8 @@
 
 			if month == 12 and day >= 25 or month == 1 and day >= 1 and 10 >= day then EVENT = "NEW_YEAR" end
 			if month == 12 and day == 8 and year == 25 then EVENT = "BIRTHDAY_EXMACHINA" end
+			if month == 4 and day == 1 then EVENT = "1_APRIL" end
+			if month == 4 and day >= 2 and not(10 > day) then EVENT = "1_APRIL_MULTIPLAYER" end
 
 			if GetVar("Season").AsString ~= SEASON then TActivate("ChangeSeasonsFadeEffect") end
 
@@ -7021,6 +7038,14 @@
 					SoundFadingMsg()
 				end
 			end
+
+			if EVENT == "1_APRIL" and year == 26 then
+				if IsQuestItemPresent("quest_item_1_year") == nil then
+					AddQuestItem("quest_item_1_year")
+					AddFadingMsgByStrIdFormatted("fm_player_add_quest_item", "quest_item_1_year")
+					SoundFadingMsg()
+				end
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -7028,10 +7053,10 @@
 	<trigger Name="AddEventQuestItems" active="0">
 		<event	timeout="0"		eventid="GE_TIME_PERIOD" />
 		<script>
-			local items = {"quest_item_disk_exmachina", "quest_item_christmas_ball"}
-			local param = {"QuestItemDiskExMachina", "QuestItemChristmasBall"}
+			local items = {"quest_item_disk_exmachina", "quest_item_christmas_ball", "quest_item_1_year"}
+			local param = {"QuestItemDiskExMachina", "QuestItemChristmasBall", "QuestItem1Year"}
 	
-			for i = 1, 2 do
+			for i = 1, 3 do
 				if IsUserInfoLineExists(param[i]) and ReadValueUserInfo(param[i]) == "1" then
 					AddQuestItem(items[i])
 				end
@@ -7043,10 +7068,10 @@
 	<trigger Name="AddMsgQuestItems" active="0">
 		<event	timeout="0.1"		eventid="GE_TIME_PERIOD" />
 		<script>
-			local items = {"quest_item_disk_exmachina", "quest_item_christmas_ball"}
+			local items = {"quest_item_disk_exmachina", "quest_item_christmas_ball", "quest_item_1_year"}
 			local msg = 0
 	
-			for i = 1, 2 do
+			for i = 1, 3 do
 				if IsQuestItemPresent(items[i]) then
 					msg = msg + 1
 				end
@@ -7349,7 +7374,7 @@
 						"item_emre_kara", "item_airfilter", "item_ananaga", "item_fitanyashka", "item_pants40grn", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star", "item_chizuru",
 						"item_buldex", "item_handrill", "item_pipe_wrench", "item_ratchet_wrench",
 						"item_bitcoin", "item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_silver_skull", "item_vaze",
-						"fagot01", "maxim01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "hammer01", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun",
+						"fagot01", "maxim01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "hammer01", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun",
 						"someTurboAccelerationPusher",
 						"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_fuel_tank2", "additional_torque2", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 
@@ -7421,6 +7446,16 @@
 			SetVar("ChristmasTree_item_christmas_star", 0)
 			SetVar("ChristmasTree_Builden", 0)
 			SetVar("GetChristmasGift", 0)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Музыка для настоящих мужчин -->
+	<trigger Name="GachiMusic" active="0">
+		<event timeout="0.05" eventid="GE_TIME_PERIOD" />
+		<script>
+			local list = {"music04_gachi", "music06_gachi", "music07_gachi", "music08_gachi", "music09_gachi", "music12_gachi"}
+			PlayCustomMusic(list[random(6)])
 			trigger:Deactivate()
 		</script>
 	</trigger>

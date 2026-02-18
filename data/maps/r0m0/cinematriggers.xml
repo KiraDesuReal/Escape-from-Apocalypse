@@ -615,4 +615,106 @@
 		</script>
 	</trigger>
 
+<!-- Мультиплеер: катсцена -->
+	<trigger Name="StartMatchmaking" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			IMPULSES = GET_GLOBAL_OBJECT "IMPULSES"
+            IMPULSES:UnbindKey1("GS_CINEMATIC", "KEY_SPACE", "IM_CINEMATIC_SKIP_MSG")
+			IMPULSES:UnbindKey1("GS_CINEMATIC", "KEY_ESCAPE", "IM_CINEMATIC_SKIP")
+
+			PlayCustomMusic("matchmaking0"..random(1, 3))
+
+			local time1 = random(8, 16)
+			local time2 = random(15, 40) + time1
+
+			Fly("start_matchmaking_cam01", CINEMATIC_NO_AIM, 0, 3, 1, 0, 0)
+			Fly("start_matchmaking_cam02", CINEMATIC_NO_AIM, 0, time2 - 1, 0, 0, 0)
+			StartCinematic()
+
+			TActivate("StartMatchmakingFadeIn")
+			TActivate("StartMatchmaking_End")
+
+			getObj("SpawnPlayer_2"):AddEvent("GE_TIME_PERIOD", tostring(time1))
+			getObj("SearchGame_Done"):AddEvent("GE_TIME_PERIOD", tostring(time2))
+
+			local vehPlayer = GetPlayerVehicle()
+			if vehPlayer then
+				vehPlayer:SetThrottle(0)
+				vehPlayer:SetCustomLinearVelocity(0)
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="StartMatchmakingFadeIn" active="0">
+		<event eventid="GE_CINEMATIC_ENTER_FADE_IN" ObjName="Player1" />
+		<script>
+			TActivate("SearchGame_CreateTimer3D")
+
+			TActivate("SpawnPlayer_1")
+			TActivate("SpawnPlayer_2")
+			TActivate("SearchGame_Done")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="StartMatchmaking_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+			for i = 1, 6 do
+				local t = getObj("sg_3D_timer_"..i)
+				if t then t:Remove() end
+			end
+
+			for dw = 1, 3 do
+				local d = getObj("dw_player"..dw)
+				if d then d:Remove() end
+			end
+
+			SetVar("SearchGame_time_minute", 0)
+			SetVar("SearchGame_time_second", 0)
+
+			getObj("SearchGame_Done"):DelEvent("GE_TIME_PERIOD")
+			getObj("SpawnPlayer_2"):DelEvent("GE_TIME_PERIOD")
+
+			TDeactivate("Update_3D_text_SearchGame")
+			TDeactivate("SearchGame_timer")
+
+			CreateEffectInsertedInRemove("ET_S_DUNGEON_ENTERS", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+			TDeactivate("StartMatchmakingFadeIn")
+			TActivate("StartMatchmakingFade")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="StartMatchmakingFade" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			Fly("start_matchmaking_cam02", CINEMATIC_NO_AIM, 0, 0.1, 0, 1)
+			StartCinematic()
+
+			AddCinematicMessage(77773, 0)
+
+			TActivate("FollowPlayerCarToPlayer")
+			TActivate("StartMatchmaking_FadeEnd")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="StartMatchmaking_FadeEnd" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+			IMPULSES = GET_GLOBAL_OBJECT "IMPULSES"
+            IMPULSES:BindKey1("GS_CINEMATIC", "KEY_SPACE", "IM_CINEMATIC_SKIP_MSG")
+			IMPULSES:BindKey1("GS_CINEMATIC", "KEY_ESCAPE", "IM_CINEMATIC_SKIP")
+
+			TActivate("PassingToMap1")
+			TActivate("ExitMap")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 </triggers>

@@ -11026,7 +11026,7 @@
 		name="Dlg_pl_0013118"
 		text="A poor rural area, once a favorite place for farmers. It is located not far from the coast of the dried-up Black Sea, in the place of which a «desert of death» was formed.|@FF0000AA|@FF1D1D1D[Select time]"
 		role="NPC"
-		nextReplies="Dlg_pl_0013119 Dlg_pl_0013120 Dlg_pl_0013121" />
+		nextReplies="Dlg_pl_0013119 Dlg_pl_0013120 Dlg_pl_00131201 Dlg_pl_00131202 Dlg_pl_0013121" />
 
 	<Reply
 		name="Dlg_pl_0013119"
@@ -11039,6 +11039,22 @@
 		text="Go in 12 hours."
 		role="PLAYER"
 		scriptResult="TActivate('In12Hour'); TActivate('StopPlayerVehicle'); EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_00131201"
+		text="Matchmaking: OFF."
+		role="PLAYER"
+		scriptCondition="GetVar('Multiplayer').AsInt == 0 and GetVar('PlayerBelong').AsString ~= 'SCAV' and EVENT == '1_APRIL' or GetVar('Multiplayer').AsInt == 0 and GetVar('PlayerBelong').AsString ~= 'SCAV' and EVENT == '1_APRIL_MULTIPLAYER'"
+		scriptResult="SetVar('Multiplayer', 1)"
+		nextReplies="Dlg_pl_0013118" />
+
+	<Reply
+		name="Dlg_pl_00131202"
+		text="Matchmaking: ON."
+		role="PLAYER"
+		scriptCondition="GetVar('Multiplayer').AsInt == 1 and GetVar('PlayerBelong').AsString ~= 'SCAV' and EVENT == '1_APRIL' or GetVar('Multiplayer').AsInt == 1 and GetVar('PlayerBelong').AsString ~= 'SCAV' and EVENT == '1_APRIL_MULTIPLAYER'"
+		scriptResult="SetVar('Multiplayer', 0)"
+		nextReplies="Dlg_pl_0013118" />
 
 	<Reply
 		name="Dlg_pl_0013121"

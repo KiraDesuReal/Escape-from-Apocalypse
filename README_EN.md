@@ -78,7 +78,7 @@ In this modification you will find a completely new gameplay, shelter constructi
     <br>
     <b>Latest version:</b>
     <br><br/>
-    <a href="https://github.com/KiraDesuReal/Escape-from-Apocalypse/releases/tag/v0.97-251115">
+    <a href="https://github.com/KiraDesuReal/Escape-from-Apocalypse/releases/tag/v0.98-260218">
         <img src="assets/git_assets/b_download_en.png" alt="download" width="250">
     </a>
 </div>
@@ -88,7 +88,7 @@ In this modification you will find a completely new gameplay, shelter constructi
 **Installation description:**
 
 1. Install `Community Remaster` with `all optional content` according to the instructions on [this](https://github.com/DeusExMachinaTeam/EM-CommunityPatch/blob/main/README_EN.md) page
-2. In `DEM Community Mod Manager` on the `Local mods` tab press `Add mod` and specify the archive you downloaded from [here](https://github.com/KiraDesuReal/Escape-from-Apocalypse/releases/tag/v0.97-251115)
+2. In `DEM Community Mod Manager` on the `Local mods` tab press `Add mod` and specify the archive you downloaded from [here](https://github.com/KiraDesuReal/Escape-from-Apocalypse/releases/tag/v0.98-260218)
 3. After it appears in the list of mods, click `Extract`
 4. After unpacking, click `Install` and follow the instructions of the mod manager
 5. Enjoy the game

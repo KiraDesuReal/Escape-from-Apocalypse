@@ -1076,6 +1076,14 @@
 		windwavy="0"
 		file="data\models\Goods\household\tb\tb.gam" />
 
+<!-- food items -->
+	<model
+		id="sausage"
+		shadow="0"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\food\sausage.gam" />
+
 <!-- info items -->
 	<model
 		id="disk"
@@ -1210,7 +1218,16 @@
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\other\chizuru_box.gam" />
+		file="data\models\Goods\other\chizuru_box.gam">
+		<action
+			name="STAND1">
+			<lp
+				id="sound"
+				effect_id="ET_S_ITEM_MUSIC01"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+	</model>
 
 	<model
 		id="poster_keqing"

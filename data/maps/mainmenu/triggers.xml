@@ -374,7 +374,7 @@
 			if month == 12 and day >= 25 or month == 1 and day >= 1 and 10 >= day then EVENT = "NEW_YEAR" end
 			if month == 12 and day == 8 and year == 25 then EVENT = "BIRTHDAY_EXMACHINA" end
 			if month == 4 and day == 1 then EVENT = "1_APRIL" end
-			if month == 4 and day >= 2 and not(10 > day) then EVENT = "1_APRIL_MULTIPLAYER" end
+			if month == 4 and day >= 2 and 10 >= day then EVENT = "1_APRIL_MULTIPLAYER" end
 
 			if EVENT == "BIRTHDAY_EXMACHINA" and year == 25 then
 				EditUserInfo("QuestItemDiskExMachina", "QuestItemDiskExMachina: 1")

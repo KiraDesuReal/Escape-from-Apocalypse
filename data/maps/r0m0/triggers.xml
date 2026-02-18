@@ -539,6 +539,8 @@
 
 			SetVar("AffixToPart_Garant", 0)
 
+			SetVar("Multiplayer", 0)
+
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1024,6 +1026,7 @@
 			end
 
 			TActivate("Update")
+			TActivate("Events")
 
 			if EVENT == "1_APRIL" then
 				TActivate("GachiMusic")
@@ -1130,7 +1133,6 @@
 
 		--переменные предметов
 			if ITEM_KEY_GATE_THETOWN_USED then SetVar("item_key_gate_thetown_used", ITEM_KEY_GATE_THETOWN_USED) end
-
 		</script>
 	</trigger>
 
@@ -2092,7 +2094,7 @@
 							"item_bp", "item_drill", "item_engine", "item_iridiym", "item_lcd", "item_military_cable", "item_tetris", "item_controller", "item_rfid", "item_gyrotachometer",
 							"item_car_battery", "item_cyclon", "item_green_battery",
 							"item_dry", "item_prisadka", "item_propan", "item_termit", "item_trotile", "item_gunpowder",
-							"item_sugar",
+							"item_sugar", "item_sausage",
 							"item_diary", "item_diary_s", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_sas", "item_ssd",
 							"item_oftalmaskop", "item_aquapeps",
 							"item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_kubok_kikiki", "item_chizuru",
@@ -2110,7 +2112,7 @@
 							"item_cable", "item_cooler", "item_cpu", "item_dvd", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_kondesators", "item_magnet", "item_ram", "item_rele", "item_helix", "item_phone", "item_plate", "item_svech", "item_ultra_lump", "item_military_plate",
 							"item_accum",
 							"item_survl", "item_wd40_400", "item_zibbo", "item_gunpowder",
-							"item_sugar",
+							"item_sugar", "item_sausage",
 							"item_alkani", "item_hlor", "item_paper", "item_soda", "item_toothpaste",
 							"item_h2o2", "item_naci", "item_suringe", "item_afak", "item_grizzly", "item_zvezda", "item_morfie", "item_ifak",
 							"item_vodka", "item_monolit", "item_carsen",
@@ -2125,7 +2127,7 @@
 							"item_converter", "item_engine", "item_iridiym", "item_tetris", "item_virtex", "item_vpx", "item_controller", "item_rfid",
 							"item_cyclon", "item_car_battery",
 							"item_prisadka", "item_termit", "item_gunpowder",
-							"item_sugar",
+							"item_sugar", "item_sausage",
 							"item_disk_exmachina", "item_rozvidka", "item_sas", "item_ssd", "item_ananaga",
 							"item_oftalmaskop", "item_ledx",
 							"item_airfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_metallodetector", "item_kubok_kikiki", "item_chizuru",
@@ -4492,6 +4494,24 @@
 	<trigger Name="PassingToMap" active="0">
 		<event timeout="0.05" eventid="GE_TIME_PERIOD" />
 		<script>
+			if GetVar("Multiplayer").AsInt == 0 then
+				TActivate("PassingToMap1")
+				TActivate("ExitMap")
+			else
+				if GetVar("PlayerBelong").AsString == "SCAV" then
+					TActivate("PassingToMap1")
+					TActivate("ExitMap")
+				else
+					TActivate("StartMatchmaking")
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="PassingToMap1" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
 			if GetVar("PlayerBelong").AsString == "SCAV" then
 				TActivate("RemoveAllItemsFromScavCar")
 			else
@@ -4503,9 +4523,15 @@
 			if GetVar("Season").AsString == "WINTER" then s = "_winter" end
 			if GetVar("Season").AsString == "SPRING" then s = "_spring" end
 
-			PassToMap(map..s, "FromR0M0")
-
-			TActivate("ExitMap")
+			if GetVar("Multiplayer").AsInt == 0 then
+				PassToMap(map..s, "FromR0M0")
+			else
+				if GetVar("PlayerBelong").AsString == "SCAV" then
+					PassToMap(map..s, "FromR0M0")
+				else
+					PassToMap(map..s, "FromR0M0", -1, 1)
+				end
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4523,7 +4549,15 @@
 
 			SetGameTime(hour,0)
 			
-			TActivate("PassingToMap")
+			if GetVar("Multiplayer").AsInt == 0 then
+				TActivate("PassingToMap")
+			else
+				if GetVar("PlayerBelong").AsString == "SCAV" then
+					TActivate("PassingToMap")
+				else
+					TActivate("StartMatchmaking")
+				end
+			end
 
 			trigger:Deactivate()
 		</script>
@@ -7021,7 +7055,7 @@
 			if month == 12 and day >= 25 or month == 1 and day >= 1 and 10 >= day then EVENT = "NEW_YEAR" end
 			if month == 12 and day == 8 and year == 25 then EVENT = "BIRTHDAY_EXMACHINA" end
 			if month == 4 and day == 1 then EVENT = "1_APRIL" end
-			if month == 4 and day >= 2 and not(10 > day) then EVENT = "1_APRIL_MULTIPLAYER" end
+			if month == 4 and day >= 2 and 10 >= day then EVENT = "1_APRIL_MULTIPLAYER" end
 
 			if GetVar("Season").AsString ~= SEASON then TActivate("ChangeSeasonsFadeEffect") end
 
@@ -7045,6 +7079,10 @@
 					AddFadingMsgByStrIdFormatted("fm_player_add_quest_item", "quest_item_1_year")
 					SoundFadingMsg()
 				end
+			end
+
+			if EVENT ~= "1_APRIL" and EVENT ~= "1_APRIL_MULTIPLAYER" then
+				if GetVar("Multiplayer").AsInt == 1 then SetVar("Multiplayer", 0) end
 			end
 			trigger:Deactivate()
 		</script>
@@ -7456,6 +7494,247 @@
 		<script>
 			local list = {"music04_gachi", "music06_gachi", "music07_gachi", "music08_gachi", "music09_gachi", "music12_gachi"}
 			PlayCustomMusic(list[random(6)])
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Мультиплеер: матчмейкинг -->
+	<trigger Name="SpawnPlayer_1" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("SelectBelong").AsString == "BEAR" then
+				CreateNewDummyObject("dweller_player", "dw_player1", -1, -1, CVector(869.496, 255.375, 1015.413), Quaternion(0.0000, 0.0022, 0.0000, 1.0000))
+			else
+				CreateNewDummyObject("dweller_brodyaga", "dw_player1", -1, -1, CVector(869.496, 255.375, 1015.413), Quaternion(0.0000, 0.0022, 0.0000, 1.0000))
+			end
+
+			local veh = GetPlayerVehicle()
+			if veh then
+				veh:SetGamePositionOnGround(CVector(869.276, 257.743, 1000.888))
+				veh:SetRotation(Quaternion(-0.000, -0.013, -0.000, 1.000))
+				veh:SetThrottle(0)
+				veh:SetCustomLinearVelocity(0)
+			end
+
+			TDeactivate("trCreateVehicleMove")
+			TDeactivate("CreateVehicleMove")
+			local veh = GetEntityByName("VehicleMove_vehicle_0")
+			if veh then veh:Remove() end
+			getObj("CreateVehicleMove"):DelEvent("GE_TIME_PERIOD")
+			getObj("RemoveVeh"):DelEvent("GE_OBJECT_ENTERS_LOCATION")
+			TDeactivate("RemoveVeh")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SpawnPlayer_2" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local pos_dw = {CVector(875.745, 255.375, 1018.208), CVector(864.153, 255.375, 1017.784)}
+			local rot_dw = {Quaternion(0.0000, -0.2882, 0.0000, 0.9576), Quaternion(0.0000, 0.2882, 0.0000, 0.9576)}
+
+			local pos_car = {CVector(880.704, 257.661, 1010.134), CVector(857.569, 257.666, 1011.608)}
+			local rot_car = {Quaternion(-0.003, -0.250, -0.007, 0.968), Quaternion(-0.002, 0.407, 0.007, 0.914)}
+
+			SetTolerance(1091, 1092, RS_ALLY)
+
+			for i = 1, 2 do
+				local belong = random(1091, 1092)
+
+				local playerChassis = GetPlayerVehicle():GetChassis():GetProperty("Prototype").AsString
+
+				local modellist = {"Bug01PMC", "Molokovoz01PMC"}
+				if strsub(playerChassis, 1, 10) == "bugChassis" then modellist = {"Bug01PMC", "Molokovoz01PMC"} end
+				if strsub(playerChassis, 1, 16) == "molokovozChassis" then modellist = {"Bug01PMC", "Molokovoz01PMC", "Ural01PMC"} end
+				if strsub(playerChassis, 1, 11) == "uralChassis" or strsub(playerChassis, 1, 14) == "cruiserChassis" then modellist = {"Molokovoz01PMC", "Ural01PMC", "Cruiser01PMC", "Belaz01PMC"} end
+				if strsub(playerChassis, 1, 12) == "belazChassis" then modellist = {"Ural01PMC", "Belaz01PMC", "Mirotvorec01PMC"} end
+				if strsub(playerChassis, 1, 17) == "mirotvorecChassis" then modellist = {"Belaz01PMC", "Mirotvorec01PMC"} end
+				
+				local model = modellist[random(getn(modellist))]
+
+				local cab 
+				local cargo
+
+				if model == "Bug01PMC" then
+					cab = {"bugCab01", "bugCab02", "bugCab03"}
+					cargo = {"bugCargo01_PMC", "bugCargo02_PMC", "bugCargo03_PMC"}
+				elseif model == "Molokovoz01PMC" then
+					cab = {"molokovozCab01", "molokovozCab02" ,"molokovozCab03"}
+					cargo = {"molokovozCargo01_PMC", "molokovozCargo02_PMC", "molokovozCargo03_PMC"}
+				elseif model == "Ural01PMC" then
+					cab = {"uralCab01", "uralCab02", "uralCab04", "uralCab03", "uralCab05"}
+					cargo = {"uralCargo01_PMC", "uralCargo02_PMC", "uralCargo04_PMC", "uralCargo05_PMC", "uralCargo03_PMC"}
+				elseif model == "Belaz01PMC" then
+					cab = {"belazCab01", "belazCab02", "belazCab04", "belazCab03", "belazCab05"}
+					cargo = {"belazCargo01_PMC", "belazCargo02_PMC", "belazCargo04_PMC", "belazCargo05_PMC", "belazCargo03_PMC"}
+				elseif model == "Mirotvorec01PMC" then
+					cab = {"mirotvorecCab01", "mirotvorecCab02", "mirotvorecCab04", "mirotvorecCab03", "mirotvorecCab05"}
+					cargo = {"mirotvorecCargo01_PMC", "mirotvorecCargo02_PMC", "mirotvorecCargo03_PMC", "mirotvorecCargo04_PMC", "mirotvorecCargo05_PMC"}
+				elseif model == "Cruiser01PMC" then
+					cab = {"cruiserCab01", "cruiserCab02"}
+					cargo = {"cruiserCargo01_PMC", "cruiserCargo02_PMC"}
+				end
+
+				if belong == 1091 then
+					CreateNewDummyObject("dweller_player", "dw_player"..i+1, -1, -1, pos_dw[i], rot_dw[i])
+				else
+					CreateNewDummyObject("dweller_brodyaga", "dw_player"..i+1, -1, -1, pos_dw[i], rot_dw[i])
+				end
+
+				local name = "car_player"..i+1
+				TeamCreate(name, belong, pos_car[i], {model}, nil, 1)
+				
+				local car = GetEntityByName(name.."_vehicle_0")
+				if car then
+					car:SetRotation(rot_car[i])
+					car:SetNewPart("CABIN",cab[random(getn(cab))])
+					car:SetNewPart("BASKET",cargo[random(getn(cargo))])
+					car:SetRandomSkin()
+					GiveGunsForPMC(car)
+				end
+			end
+			
+			trigger:DelEvent("GE_TIME_PERIOD")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SearchGame_CreateTimer3D" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewDummyObject("3D_timer", "sg_3D_timer_1", -1, -1, CVector(879.092, 257.585, 1031.748), Quaternion(0.0000, -0.3522, 0.0000, 0.9359), 0)
+			CreateNewDummyObject("3D_timer", "sg_3D_timer_2", -1, -1, CVector(878.161, 257.585, 1030.969), Quaternion(0.0000, -0.3522, 0.0000, 0.9359), 0)
+			CreateNewDummyObject("3D_timer", "sg_3D_timer_3", -1, -1, CVector(877.453, 257.585, 1030.370), Quaternion(0.0000, -0.3522, 0.0000, 0.9359), 10)
+			CreateNewDummyObject("3D_timer", "sg_3D_timer_4", -1, -1, CVector(876.788, 257.585, 1029.809), Quaternion(0.0000, -0.3522, 0.0000, 0.9359), 0)
+			CreateNewDummyObject("3D_timer", "sg_3D_timer_5", -1, -1, CVector(875.858, 257.585, 1029.032), Quaternion(0.0000, -0.3522, 0.0000, 0.9359), 0)
+			CreateNewDummyObject("3D_text", "sg_3D_timer_6", -1, -1, CVector(877.544, 256.125, 1030.480), Quaternion(0.0000, -0.3522, 0.0000, 0.9359), 11)
+
+			for i = 1, 5 do
+				local t = getObj("sg_3D_timer_"..i)
+				if t then t:SetPropertyById(7, 0.6) end
+			end
+
+			SetVar("SearchGame_time_minute", 0)
+			SetVar("SearchGame_time_second", 0)
+			TActivate("Update_3D_text_SearchGame")
+			TActivate("SearchGame_UpdateTimer3D")
+			TActivate("SearchGame_timer")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Update_3D_text_SearchGame" active="0">
+		<event timeout="0.75" eventid="GE_TIME_PERIOD" />
+		<script>
+			local t = getObj("sg_3D_timer_6")
+			if t then
+				local skin = t:GetSkin()
+				if skin ~= 13 then
+					t:SetSkin(skin + 1)
+				else
+					t:SetSkin(11)
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="SearchGame_UpdateTimer3D" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local min1, min2, sec1, sec2 = 0, 0, 0, 0
+
+			min1 = tonumber(strsub(GetVar("SearchGame_time_minute").AsInt, 1, 1))
+
+			if GetVar("SearchGame_time_minute").AsInt >= 10 then
+				min2 = tonumber(strsub(GetVar("SearchGame_time_minute").AsInt, 2, 2))
+			end
+
+			sec1 = tonumber(strsub(GetVar("SearchGame_time_second").AsInt, 1, 1))
+
+			if GetVar("SearchGame_time_second").AsInt >= 10 then
+				sec2 = tonumber(strsub(GetVar("SearchGame_time_second").AsInt, 2, 2))
+			end
+
+			if GetVar("SearchGame_time_minute").AsInt >= 10 then
+				local g4 = GetEntityByName("sg_3D_timer_1")
+				if g4 then g4:SetSkin(min1) end
+
+				local g5 = GetEntityByName("sg_3D_timer_2")
+				if g5 then g5:SetSkin(min2) end
+			else
+				local g4 = GetEntityByName("sg_3D_timer_1")
+				if g4 then g4:SetSkin(0) end
+
+				local g5 = GetEntityByName("sg_3D_timer_2")
+				if g5 then g5:SetSkin(min1) end
+			end
+
+			if GetVar("SearchGame_time_second").AsInt >= 10 then
+				local g7 = GetEntityByName("sg_3D_timer_4")
+				if g7 then g7:SetSkin(sec1) end
+
+				local g8 = GetEntityByName("sg_3D_timer_5")
+				if g8 then g8:SetSkin(sec2) end
+			else
+				local g7 = GetEntityByName("sg_3D_timer_4")
+				if g7 then g7:SetSkin(0) end
+
+				local g8 = GetEntityByName("sg_3D_timer_5")
+				if g8 then g8:SetSkin(sec1) end
+			end
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SearchGame_timer" active="0">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local min = GetVar("SearchGame_time_minute").AsInt
+			local sec = GetVar("SearchGame_time_second").AsInt
+			
+			sec = sec + 1
+			SetVar("SearchGame_time_second", sec)
+
+			if sec > 59 then
+				SetVar("SearchGame_time_second", 0)
+				min = min + 1
+				SetVar("SearchGame_time_minute", min)
+			end
+
+			TActivate("SearchGame_UpdateTimer3D")
+		</script>
+	</trigger>
+
+	<trigger Name="SearchGame_Done" active="0">
+		<script>
+			local t = getObj("sg_3D_timer_6")
+			if t then t:SetSkin(14) end
+	
+			TDeactivate("Update_3D_text_SearchGame")
+			TDeactivate("SearchGame_timer")
+			SoundFadingMsg()
+			trigger:DelEvent("GE_TIME_PERIOD")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="FollowPlayerCarToPlayer" active="0">
+		<event 	timeout="0.01"		eventid="GE_TIME_PERIOD" />
+		<script>
+			for i = 2, 3 do
+				local newControllerId = CreateNewObject {
+					prototypeName	= "someNPCMotionController",
+					objName		= "followPlayerCarController"..i
+				}
+
+				local newController = GetEntityByID(newControllerId)
+				local FVehicle = GetEntityByName("car_player"..i.."_vehicle_0")
+				if FVehicle then
+					newController:setVehicleUnderControl(FVehicle)
+				end
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>

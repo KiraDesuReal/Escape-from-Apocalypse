@@ -11026,7 +11026,7 @@
 		name="Dlg_pl_0013118"
 		text="Небогатая сельская местность, когда-то была излюбленным местом для фермеров. Находится не далеко от побережья высохшого черного моря, на месте которого образовалась «пустыня смерти».|@FF0000AA|@FF1D1D1D[Выберите время дислокации]"
 		role="NPC"
-		nextReplies="Dlg_pl_0013119 Dlg_pl_0013120 Dlg_pl_0013121" />
+		nextReplies="Dlg_pl_0013119 Dlg_pl_0013120 Dlg_pl_00131201 Dlg_pl_00131202 Dlg_pl_0013121" />
 
 	<Reply
 		name="Dlg_pl_0013119"
@@ -11039,6 +11039,22 @@
 		text="Отправиться через 12 часов."
 		role="PLAYER"
 		scriptResult="TActivate('StopPlayerVehicle'); TActivate('In12Hour'); EndConversation()" />
+
+	<Reply
+		name="Dlg_pl_00131201"
+		text="Подбор игроков: Выкл."
+		role="PLAYER"
+		scriptCondition="GetVar('Multiplayer').AsInt == 0 and GetVar('PlayerBelong').AsString ~= 'SCAV' and EVENT == '1_APRIL' or GetVar('Multiplayer').AsInt == 0 and GetVar('PlayerBelong').AsString ~= 'SCAV' and EVENT == '1_APRIL_MULTIPLAYER'"
+		scriptResult="SetVar('Multiplayer', 1)"
+		nextReplies="Dlg_pl_0013118" />
+
+	<Reply
+		name="Dlg_pl_00131202"
+		text="Подбор игроков: Вкл."
+		role="PLAYER"
+		scriptCondition="GetVar('Multiplayer').AsInt == 1 and GetVar('PlayerBelong').AsString ~= 'SCAV' and EVENT == '1_APRIL' or GetVar('Multiplayer').AsInt == 1 and GetVar('PlayerBelong').AsString ~= 'SCAV' and EVENT == '1_APRIL_MULTIPLAYER'"
+		scriptResult="SetVar('Multiplayer', 0)"
+		nextReplies="Dlg_pl_0013118" />
 
 	<Reply
 		name="Dlg_pl_0013121"

@@ -380,7 +380,6 @@
 		local pr3 = random(2)
 
 		if pr1 ==  2 then
-			TActivate("UseFuelNil_InPetrolStation01")
 			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK01", -1, -1, CVector(2575.530, 360.200, 2266.788), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
 			CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "ps_1_sound", -1, -1, CVector(2582.988, 348, 2267.327), Quaternion(0, 0, 0, 1))
 			SetVar("PetrolStation_1_Work", 1)
@@ -389,7 +388,6 @@
 		end
 
 		if pr2 ==  2 then
-			TActivate("UseFuelNil_InPetrolStation02")
 			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK02", -1, -1, CVector(1317.154, 300.550, 1748.705), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
 			CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "ps_2_sound", -1, -1, CVector(1318.114, 288, 1756.060), Quaternion(0, 0, 0, 1))
 			SetVar("PetrolStation_2_Work", 1)
@@ -398,7 +396,6 @@
 		end
 
 		if pr3 ==  2 then
-			TActivate("UseFuelNil_InPetrolStation03")
 			CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK03", -1, -1, CVector(916.784, 320.600, 884.400), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
 			CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "ps_3_sound", -1, -1, CVector(912.397, 308, 878.329), Quaternion(0, 0, 0, 1))
 			SetVar("PetrolStation_3_Work", 1)
@@ -412,19 +409,16 @@
 			if tr_prs_r == 1 then
 				CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK01", -1, -1, CVector(2575.530, 360.200, 2266.788), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
 				CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "ps_1_sound", -1, -1, CVector(2582.988, 348, 2267.327), Quaternion(0, 0, 0, 1))
-				TActivate("UseFuelNil_InPetrolStation01")
 				TDeactivate ("NotWork_PetrolStation01")
 				SetVar("PetrolStation_1_Work", 1)
 			elseif tr_prs_r == 2 then
 				CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK02", -1, -1, CVector(1317.154, 300.550, 1748.705), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
 				CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "ps_2_sound", -1, -1, CVector(1318.114, 288, 1756.060), Quaternion(0, 0, 0, 1))
-				TActivate("UseFuelNil_InPetrolStation02")
 				TDeactivate ("NotWork_PetrolStation02")
 				SetVar("PetrolStation_2_Work", 1)
 			elseif tr_prs_r == 3 then	
 				CreateNewSgNodeObject("ET_PS_LENS_D4", "LIGHTWORK03", -1, -1, CVector(916.784, 320.600, 884.400), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.6)
 				CreateNewSgNodeObject("ET_PS_S_VILLAGE01", "ps_3_sound", -1, -1, CVector(912.397, 308, 878.329), Quaternion(0, 0, 0, 1))
-				TActivate("UseFuelNil_InPetrolStation03")
 				TDeactivate ("NotWork_PetrolStation03")
 				SetVar("PetrolStation_3_Work", 1)
 			end
@@ -606,6 +600,12 @@
 			TActivate("SpawnsScavs")
 			TActivate("FakePlayerDead")
 			TActivate("PlayerUnderAttack")
+
+			if GetVar("PlayerBelong").AsString ~= "SCAV" then
+				if EVENT == "1_APRIL" or EVENT == "1_APRIL_MULTIPLAYER" then
+					TActivate("TpFollowPlayerCarsToPlayer")
+				end
+			end
 
 			trigger:Deactivate() 
 		</script>
@@ -3200,7 +3200,7 @@
 
 <!-- Использование предметов -->
 	<trigger Name="ItemsUse" active="0">
-		<event eventid="GE_FRAMES_PASSED" ObjName="Player1" />
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local pl = GetPlayerVehicle()
 			local hp = GetPlayerHealth() 
@@ -4115,7 +4115,7 @@
 							"item_bp", "item_drill", "item_engine", "item_hdd", "item_lcd", "item_military_cable", "item_tetris", "item_controller", "item_rfid", "item_military_plate", "item_gyrotachometer", "item_iridiym", "item_converter",
 							"item_car_battery", "item_cyclon", "item_green_battery",
 							"item_dry", "item_prisadka", "item_propan", "item_termit",
-							"item_sugar",
+							"item_sugar", "item_sausage",
 							"item_oftalmaskop", "item_ledx",
 							"item_disk", "item_disk_exmachina", "item_flashdrive", "item_sas", "item_ssd",
 							"item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_ananaga", "item_kubok_kikiki", "item_chizuru",
@@ -4755,7 +4755,7 @@
 						"item_bp", "item_converter", "item_drill", "item_energo_lump", "item_engine", "item_gazan", "item_gpu", "item_hdd", "item_iridiym", "item_military_cable", "item_tetris", "item_ultra_lump", "item_virtex", "item_vpx", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid",
 						"item_accum", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery",
 						"item_dry", "item_prisadka", "item_propan", "item_survl", "item_termit", "item_trotile", "item_gunpowder",
-						"item_sugar",
+						"item_sugar", "item_sausage",
 						"item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 						"item_aquapeps", "item_c6h8o6", "item_ledx", "item_oftalmaskop", "item_afak", "item_grizzly",
 						"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_waterfilter", "item_keqing", "item_metallodetector", "item_kubok_kikiki", "item_chizuru",
@@ -6343,6 +6343,14 @@
 			getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
 			TDeactivate("PlayerUnderAttack")
 			getObj("PlayerUnderAttack"):DelEvent("GE_UNDER_ATTACK")
+
+			--удаление игроков
+			for pl = 2, 3 do
+				local contrl = getObj("followPlayerCarController"..pl)
+				if contrl then contrl:Remove() end
+				local pl_veh = getObj("car_player"..pl.."_vehicle_0")
+				if pl_veh then pl_veh:Remove() end
+			end
 			
 			--глобал переменные
 			if COUNT_RAIDS then COUNT_RAIDS = GetVar("CountRaids").AsInt end
@@ -7126,6 +7134,32 @@
 		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="q_first_in_line_1_loc" />
 		<script>
 			if IsQuestTaken("q_first_in_line_1") and not(IsQuestComplete("q_first_in_line_1")) then CompleteSubtask("q_first_in_line_1") end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!--
+**************************************************************************************************
+** ИВЕНТЫ
+**************************************************************************************************
+-->
+
+-- Следование "игроков" за игроком
+	<trigger Name="TpFollowPlayerCarsToPlayer" active="0">
+		<event 	timeout="0"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local pos = GetPlayerVehicle():GetPosition()
+			for i = 2, 3 do
+				local veh = getObj("car_player"..i.."_vehicle_0")
+				if veh then
+					local vh_length=1.5 * veh:GetSize().z
+					pos.x=pos.x+vh_length
+					veh:setGodMode(1)
+					veh:SetGamePositionOnGround(pos)
+					veh:SetRotation(GetPlayerVehicle():GetRotation())
+					veh:setGodMode(0)
+				end
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>

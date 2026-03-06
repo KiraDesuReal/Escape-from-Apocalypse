@@ -347,8 +347,9 @@ end
 -- Исчезающие сообщения------------------------------------------------------------------------
 function SoundFadingMsg()
 	local pl = GetPlayerVehicle()
-	local plPos = pl:GetPosition()
-	CreateEffectTTLed("ET_PS_FADING_MSG", plPos, Quaternion(0, 0, 0, 0), 600)
+	if pl then
+		CreateEffectTTLed("ET_PS_FADING_MSG", pl:GetPosition(), Quaternion(0, 0, 0, 0), 600)
+	end
 end
 
 -- Добавить сообщение, параметр - текст сообщения.

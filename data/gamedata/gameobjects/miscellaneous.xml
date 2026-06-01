@@ -137,6 +137,15 @@
 		Name			= "Projector_80" 
 		ModelFile		= "LS_LIGHT_RED"/>
 
+	<Prototype
+		Class			= "LightObj"
+		Name			= "Light_Campfire" 
+		ModelFile		= "LS_LIGHT_CAMPFIRE"/>
+
+	<Prototype
+		Class			= "LightObj"
+		Name			= "LightLamppost" 
+		ModelFile		= "ET_PS_LIGHT_LENS"/>
 
 	<Prototype
 		Class="AffixGenerator"

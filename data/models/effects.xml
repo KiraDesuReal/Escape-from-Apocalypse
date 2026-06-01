@@ -421,6 +421,11 @@
 		<Node name="Object2" class="SgPointLightSourceNode" id="LS_LIGHT_RED" psNumEmitterMesh="-1" />
 	</Node>
 
+	<Node name="ET_PS_LIGHT_CAMPFIRE" class="SgNode">
+		<Node name="Object3" class="SgParticlesNode" id="PS_WHEEL_FIRE_SMALL_MAIN2" psNumEmitterMesh="-1" />
+		<Node name="Sound1" class="SgSoundSourceNode" id="S_CAR_BURNING_SMALL" looped="1"/>
+	</Node>
+
 	<Node name="ET_LS_LIGHT_LAMPPOSTS" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_S2" psNumEmitterMesh="-1" />
 		<Node name="Object2" class="SgPointLightSourceNode" id="LS_LIGHT_TEST" psNumEmitterMesh="-1" />
@@ -452,6 +457,11 @@
 
 	<Node name="ET_LS_LIGHT_YELLOW" class="SgNode">
 		<Node name="Object2" class="SgPointLightSourceNode" id="LS_LIGHT_YELLOW" psNumEmitterMesh="-1" />
+	</Node>
+
+	<Node name="ET_PS_LIGHT_LENS" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_S1" psNumEmitterMesh="-1" /> 
+		<Node name="Object2" class="SgPointLightSourceNode" id="LS_LIGHT_TEST2" psNumEmitterMesh="-1" />
 	</Node>
 
 	<Node name="ET_PS_SNOW_WEATHER" class="SgNode">
@@ -534,6 +544,14 @@
 
 	<Node name="ET_PS_BRIDGE_EXP_MAIN" class="SgNode">
 		<Node name="Object3" class="SgParticlesNode" id="PS_BRIDGE_EXP_MAIN" psNumEmitterMesh="-1" />
+	</Node>
+
+	<Node name="ET_S_R5M1_SUMMER_1" class="SgNode">
+		<Node name="noise" class="SgSoundSourceNode" id="S_R5M1_SUMMER_1" looped="1" /> 
+	</Node>
+
+	<Node name="ET_S_R5M1_SUMMER_2" class="SgNode">
+		<Node name="noise" class="SgSoundSourceNode" id="S_R5M1_SUMMER_2" looped="1" /> 
 	</Node>
 
 <!-- //////////////////////////////////// Ракеты //////////////////////////////////// -->
@@ -631,6 +649,18 @@
 		<Node name="Object0" class="SgParticlesNode" id="PS_SWCV" psNumEmitterMesh="-1" />
   		<Node name="Object1" class="SgParticlesNode" id="PS_WS" psNumEmitterMesh="-1" />  
   		<Node name="S1"	 class="SgSoundSourceNode" id="S_SACKVEHICLEHIT" looped="0" /> 
+	</Node>
+
+	<Node name="ET_PS_CRASH_SANDBAG1" class="SgNode">
+		<Node name="Object0" class="SgParticlesNode" id="PS_SB1_CV" psNumEmitterMesh="-1" />
+  		<Node name="Object1" class="SgParticlesNode" id="PS_WS" psNumEmitterMesh="-1" />  
+  		<Node name="S1"	 class="SgSoundSourceNode" id="S_SACKVEHICLEHIT02" looped="0" /> 
+	</Node>
+
+	<Node name="ET_PS_CRASH_SANDBAG2" class="SgNode">
+		<Node name="Object0" class="SgParticlesNode" id="PS_SB2_CV" psNumEmitterMesh="-1" />
+  		<Node name="Object1" class="SgParticlesNode" id="PS_WS" psNumEmitterMesh="-1" />  
+  		<Node name="S1"	 class="SgSoundSourceNode" id="S_SACKVEHICLEHIT02" looped="0" /> 
 	</Node>
 
 	<Node name="ET_PS_BRICKWALL_CRASH_SMOKE" class="SgNode">
@@ -756,6 +786,14 @@
 
 	<Node name="ET_PS_PROJECTOR_TANK" class="SgNode">
 		<Node name="Object1" class="SgProjectorNode" id="PS_PROJECTOR" psNumEmitterMesh="-1" />
+	</Node>
+
+	<Node name="ET_PS_PROJECTOR_SPOTLIGHT1" class="SgNode">
+		<Node name="Object1" class="SgProjectorNode" id="PS_PROJECTOR_SPOTLIGHT1" psNumEmitterMesh="-1" />
+	</Node>
+
+	<Node name="ET_PS_PROJECTOR_SPOTLIGHT2" class="SgNode">
+		<Node name="Object1" class="SgProjectorNode" id="PS_PROJECTOR_SPOTLIGHT2" psNumEmitterMesh="-1" />
 	</Node>
 
 <!-- //////////////////////////////////// Боссы //////////////////////////////////// -->
@@ -3480,8 +3518,10 @@
 	</Node>
 
 	<Node name="ET_PS_GREEN_SMOKE" class="SgNode">
+		<Node name="Object5" class="SgParticlesNode" id="PS_LENS_D8" psNumEmitterMesh="-1" />
 		<Node name="Object6" class="SgParticlesNode" id="PS_GREEN_SMOKE" psNumEmitterMesh="-1" />
 		<Node name="Object1" class="SgSoundSourceNode" id="S_COLOR_FIER" looped="1" />
+		<Node name="Object2" class="SgPointLightSourceNode" id="LS_LIGHT_GREEN_FIER" looped="1" />
 	</Node>
 
     <Node name="ET_PS_LENS_D5" class="SgNode">
@@ -3532,6 +3572,10 @@
 
         <Node name="ET_PS_LENS_S9" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_S9" psNumEmitterMesh="-1" /> 
+	</Node>
+
+	<Node name="ET_PS_LENS_S10" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_S10" psNumEmitterMesh="-1" /> 
 	</Node>
 
         <Node name="ET_PS_ORACUL_MAIN5" class="SgNode">

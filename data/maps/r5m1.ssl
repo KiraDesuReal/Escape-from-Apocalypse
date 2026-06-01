@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<Ini>
+	<Section
+		name="LEVEL">
+		<Key
+			name="WEATHERDETAIL">WeatherDetail.xml</Key>
+
+		<Key
+			name="WEATHERTYPE">r5m1_clear</Key>
+
+		<Key
+			name="CURRENTDAYTIME">1</Key>
+
+		<Key
+			name="PATH">data\maps\r5m1\winter\spring\summer</Key>
+
+		<Key
+			name="LEVELNAME">r5m1</Key>
+
+		<Key
+			name="HIGHMAP">autumn\main\displace.bin</Key>
+
+		<Key
+			name="DETMAP">autumn\main\water.raw</Key>
+
+		<Key
+			name="CAMERAMAP">autumn\main\cameramap.raw</Key>
+
+		<Key
+			name="COLORMAP">autumn\main\colormap.raw</Key>
+
+		<Key
+			name="CLIFFMAP">autumn\main\level.cliff</Key>
+
+		<Key
+			name="CLIFFSET">autumn\main\Cliffs.xml</Key>
+
+		<Key
+			name="ROADMAP">autumn\main\LevelRoads.xml</Key>
+
+		<Key
+			name="ROADSET">autumn\main\Roads.xml</Key>
+
+		<Key
+			name="WAYPOINTS">ways.xml</Key>
+
+		<Key
+			name="BEACHSETS">Beachsets.xml</Key>
+
+		<Key
+			name="SHORELINE">autumn\main\ShoreLine.bin</Key>
+
+		<Key
+			name="NORMALMAP">autumn\main\NormalMap.bin</Key>
+
+		<Key
+			name="CUBEMAP">data/models/textures/lobbycube.dds</Key>
+
+		<Key
+			name="LEVELSIZE">64</Key>
+
+		<Key
+			name="MAXHEIGHT">2500.000</Key>
+
+		<Key
+			name="WATERLEVEL">203.640</Key>
+
+		<Key
+			name="BASEWATERLEVEL">1711.000</Key>
+
+		<Key
+			name="REFLECTIONTINT">255 255 255</Key>
+
+		<Key
+			name="REFRACTIONTINT">255 255 255</Key>
+
+		<Key
+			name="SKYDOMEDIVIDER">11.000</Key>
+
+		<Key
+			name="WATERSMALLTEX">WaterSm.tga</Key>
+
+		<Key
+			name="WATERBIGTEX">Water.tga</Key>
+
+		<Key
+			name="WATERABSRED">0.039</Key>
+
+		<Key
+			name="WATERABSGREEN">0.023</Key>
+
+		<Key
+			name="WATERABSBLUE">0.012</Key>
+
+		<Key
+			name="MINSAFEX">40.000</Key>
+
+		<Key
+			name="MINSAFEY">40.000</Key>
+
+		<Key
+			name="MAXSAFEX">8152.000</Key>
+
+		<Key
+			name="MAXSAFEY">8152.000</Key>
+
+		<Key
+			name="SERVERDYN">DynamicScene.xml</Key>
+
+		<Key
+			name="SERVERQUESTSTATES">autumn\main\QuestStates.xml</Key>
+
+		<Key
+			name="MODELNAMES">data\if\diz\model_names.xml</Key>
+
+		<Key
+			name="OBJECTNAMES">autumn\main\object_names.xml</Key>
+
+		<Key
+			name="SERVEREXTERNALPATHS">autumn\main\external_paths.xml</Key>
+
+		<Key
+			name="STATICOBSTACLES">autumn\main\static_obstacles.xml</Key>
+
+		<Key
+			name="PLAYERPASSMAP">autumn\main\player_passmap.bin</Key>
+
+		<Key
+			name="SERVERS">data\maps\r5m1\winter\spring\summer\autumn\main\servers.xml</Key>
+
+		<Key
+			name="STATICSERVERS">data\models\commonservers.xml</Key>
+
+		<Key
+			name="PASSMAP">autumn\main\passmap.raw</Key>
+
+		<Key
+			name="PASSMAPCELLSIZE">16</Key>
+
+		<Key
+			name="TRIGGERSNAME">autumn\main\triggers.xml</Key>
+
+		<Key
+			name="CINEMATRIGGERSNAME">autumn\main\cinemaTriggers.xml</Key>
+
+		<Key
+			name="DLGSTRINGS">autumn\main\strings.xml</Key>
+
+		<Key
+			name="SKYTYPE">1</Key>
+
+		<Key
+			name="ENV_SKY_Z_POS">data\env\day4.front.tga</Key>
+
+		<Key
+			name="ENV_SKY_Z_NEG">data\env\day4.back.tga</Key>
+
+		<Key
+			name="ENV_SKY_Y_POS">data\env\day4.up.tga</Key>
+
+		<Key
+			name="ENV_SKY_Y_NEG"></Key>
+
+		<Key
+			name="ENV_SKY_X_POS">data\env\day4.right.tga</Key>
+
+		<Key
+			name="ENV_SKY_X_NEG">data\env\day4.left.tga</Key>
+
+		<Key
+			name="ENV_SKY_SCALE_S">0.800</Key>
+
+		<Key
+			name="ENV_SKY_SCALE_T">0.400</Key>
+
+		<Key
+			name="ENV_SKY_SCROLL_SPEED">1.000</Key>
+
+		<Key
+			name="ENV_SKY_ROTATE_SPEED">2.000</Key>
+
+		<Key
+			name="ENV_SKY_CLOUDS_ENABLE">1</Key>
+
+		<Key
+			name="SUN_AZIMUTH_SPEED">0.000</Key>
+
+		<Key
+			name="SUN_AZIMUTH">45.000</Key>
+
+		<Key
+			name="SUN_DAY_ASCENTION">55.000</Key>
+
+		<Key
+			name="SUN_RISE_ASCENTION">45.000</Key>
+
+		<Key
+			name="SUN_SET_ASCENTION">127.000</Key>
+
+		<Key
+			name="TILES">autumn\main\level.tile</Key>
+	</Section>
+
+	<Section
+		name="CAMERA">
+		<Key
+			name="X">5773.040</Key>
+
+		<Key
+			name="Y">275.024</Key>
+
+		<Key
+			name="Z">710.670</Key>
+
+		<Key
+			name="A">1092.823</Key>
+
+		<Key
+			name="B">-0.194</Key>
+
+		<Key
+			name="G">0.000</Key>
+	</Section>
+
+	<Section
+		name="DEMO">
+		<Key
+			name="STARTUP">0</Key>
+
+		<Key
+			name="FILE">demo.rec</Key>
+	</Section>
+
+	<Section
+		name="ILLUMINATION">
+		<Key
+			name="MODEL_AMBIENT">101 116 44</Key>
+
+		<Key
+			name="MODEL_DIFFUSE">40 68 50</Key>
+
+		<Key
+			name="LS_COLOR">97 83 101</Key>
+
+		<Key
+			name="LS_DIFFUSE">101 108 112</Key>
+
+		<Key
+			name="LS_TFACTOR">18605364804791530000000000000000000.000</Key>
+
+		<Key
+			name="SKY_COLOR">0 0 0</Key>
+
+		<Key
+			name="FOG_COLOR">0 0 0</Key>
+	</Section>
+</Ini>

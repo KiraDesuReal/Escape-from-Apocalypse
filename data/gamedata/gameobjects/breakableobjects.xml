@@ -336,6 +336,36 @@ $Id: BreakableObjects.xml,v 1.62 2005/11/28 07:43:57 anton Exp $
 		Mass				= "300"
 		/>
 
+		<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_Sandbag1"	
+		EffectType			= "SACK"
+		DestroyEffectType		= "CRASHSACK"
+		ModelFile			= "sandbag_1"
+		BrokenModel			= ""
+		DestroyedModel			= ""
+		Size				= "6.17 2.46 1.87"
+		CriticalHitEnergy 		= "3000"
+   		Destroyable 			= "1"
+		BreakEffect			= "ET_PS_CRASH_SANDBAG1"
+		Mass				= "300"
+		/>
+
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_Sandbag2"	
+		EffectType			= "SACK"
+		DestroyEffectType		= "CRASHSACK"
+		ModelFile			= "sandbag_2"
+		BrokenModel			= ""
+		DestroyedModel			= ""
+		Size				= "6.17 2.46 1.87"
+		CriticalHitEnergy 		= "3000"
+   		Destroyable 			= "1"
+		BreakEffect			= "ET_PS_CRASH_SANDBAG2"
+		Mass				= "300"
+		/>
+
 	<Prototype
 		Class				= "BreakableObject"
 		Name				= "Breakable_DeadTree1"
@@ -1647,4 +1677,100 @@ $Id: BreakableObjects.xml,v 1.62 2005/11/28 07:43:57 anton Exp $
 		BreakEffect			= "ET_PS_BREAKTREE"
 		/>
 
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_road_sign_bus_stop"	
+		EffectType			= "BRICK"
+		DestroyEffectType		= "CRASHBARREL2"	
+		ModelFile			= "road_sign_bus_stop"
+		BrokenModel			= "road_sign_bus_stop"
+		DestroyedModel		= "road_sign_bus_stop"
+		Size				= "1.97 8.56 0.26"
+		CriticalHitEnergy		= "5000"
+		Destroyable 		= "0"
+		Mass				= "150"
+		IntersectionRadius	= "0.7"
+		BreakEffect			= "ET_PS_BREAKROADSIGN"
+		/>
+
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_road_sign_mines"	
+		EffectType			= "BRICK"
+		DestroyEffectType		= "CRASHBARREL2"	
+		ModelFile			= "road_sign_mines"
+		Size				= "2.03 4.85 0.13"
+		CriticalHitEnergy		= "5000"
+		Destroyable 		= "0"
+		Mass				= "150"
+		IntersectionRadius	= "0.7"
+		BreakEffect			= "ET_PS_BREAKROADSIGN"
+		/>
+
+
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_old_fence"	
+		EffectType			= "WOOD"
+		DestroyEffectType	      = "CRASHWOOD"
+		ModelFile			= "old_fence"
+		Size				= "10.34 3.23 0.46"
+		CriticalHitEnergy		= "2000"
+		Destroyable 			= "0"
+		Mass				= "100"
+		BreakEffect			= "ET_PS_WOODVFANCEBREAKE"
+		/>
+
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_corrugated_fence"	
+		EffectType			= "BRICK"
+		DestroyEffectType	      = "CRASHMETAL"
+		ModelFile			= "corrugated_fence"
+		Size				= "3.87 3.99 0.07"
+		CriticalHitEnergy		= "1000"
+		Destroyable 			= "0"
+		Mass				= "100"
+		BreakEffect			= "ET_PS_BREAKSTOLBSTONE"
+		/>
+
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_wood_fence_3_with_pole"	
+		EffectType			= "WOOD"
+		DestroyEffectType	      = "CRASHWOOD"
+		ModelFile			= "wood_fence_3_with_pole"
+		Size				= "0.26 3.33 5.32"
+		CriticalHitEnergy		= "1000"
+		Destroyable 			= "0"
+		Mass				= "120"
+		BreakEffect			= "ET_PS_WOODVFANCEBREAKE"
+		/>
+
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_wood_fence_3_only_pole"	
+		EffectType			= "WOOD"
+		DestroyEffectType	      = "CRASHWOOD"
+		ModelFile			= "wood_fence_3_only_pole"
+		Size				= "0.20 3.33 0.20"
+		CriticalHitEnergy		= "1000"
+		Destroyable 			= "0"
+		Mass				= "60"
+		BreakEffect			= "ET_PS_WOODVFANCEBREAKE"
+		/>
+
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_umbrella"
+		EffectType			= "BRICK"
+		DestroyEffectType		= "CRASHSACK"
+		ModelFile			= "umbrella"
+		CriticalHitEnergy 		= "10"
+		Size				= "4.44 4.16 4.44"
+		Destroyable			= "0"
+		Mass				= "20"
+		BreakEffect			= "ET_PS_BREAKSTOLBSTONE"
+		IntersectionRadius  = "1.0"
+		/>
 </Prototypes>

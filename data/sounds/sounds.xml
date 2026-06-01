@@ -1609,6 +1609,18 @@
 		group="WEATHER"
 		/>
 
+	<model
+		id="S_R5M1_SUMMER_1"
+		file="data\sounds\weather\r5m1_summer_1.ogg"
+		group="WEATHER"
+		/>
+
+	<model
+		id="S_R5M1_SUMMER_2"
+		file="data\sounds\weather\r5m1_summer_2.ogg"
+		group="WEATHER"
+		/>
+
 <!-- Starting -->
 
 
@@ -1863,6 +1875,12 @@
 		id="S_FACTORY_WIND"
 		file="data\sounds\enveffects\factory\wind_factory.wav"
 		group="FACTORY"
+		/>
+
+		<model
+		id="S_SAWMILL"
+		file="data\sounds\enveffects\sawmill.wav"
+		group="SAWMILL"
 		/>
 <!-- Смерть человечиков-->
 

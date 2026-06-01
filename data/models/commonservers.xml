@@ -4,6 +4,8 @@
 
 	<ProjectorsServer>
 		<Item id="PS_PROJECTOR" file="data/models/projectors/test.xml"/>
+		<Item id="PS_PROJECTOR_SPOTLIGHT1" file="data/models/projectors/spotlight1.xml"/>
+		<Item id="PS_PROJECTOR_SPOTLIGHT2" file="data/models/projectors/spotlight2.xml"/>
 	</ProjectorsServer>
 
 	<LightsServer>
@@ -13,6 +15,8 @@
 		<Item id="LS_LIGHT_RED" file="data/models/lights/red.xml"/>
 		<Item id="LS_LIGHT_GEN_LVL2" file="data/models/lights/gen_lvl2_light.xml"/>
 		<Item id="LS_LIGHT_CHRISTMAS_TREE" file="data/models/lights/christmas_tree_light.xml"/>
+		<Item id="LS_LIGHT_CAMPFIRE" file="data/models/lights/campfire.xml"/>
+		<Item id="LS_LIGHT_GREEN_FIER" file="data/models/lights/green_fier.xml"/>
 	</LightsServer>
 
 	<DecalsServer>
@@ -201,6 +205,8 @@
 		<Item id="PS_B1WCV" 		file="data\Effects\Breakable\brick1wallcrash_veh.psys"/>
 		<Item id="PS_B2WCV" 		file="data\Effects\Breakable\brick2wallcrash_veh.psys"/>
 		<Item id="PS_SWCV" 		file="data\Effects\Breakable\sackwallcrash_veh.psys"/>
+		<Item id="PS_SB1_CV" 		file="data\Effects\Breakable\sandbag1_crash_veh.psys"/>
+		<Item id="PS_SB2_CV" 		file="data\Effects\Breakable\sandbag2_crash_veh.psys"/>
 		<Item id="PS_WWCV" 		file="data\Effects\Breakable\woodwallcrash_veh.psys"/>
 
 		<Item id="PS_WWV" 		file="data\Effects\Breakable\woodwallconflict_veh.psys"/>
@@ -694,6 +700,14 @@
 		<Item id="r4_2_driving" />
 		<Item id="r4_2_alarm" />
 		<Item id="r4_2_battle" />
+
+		<Item id="r5m1_alarm" />
+		<Item id="r5m1_battle" />
+		<Item id="r5m1_battle2" />
+		<Item id="r5m1_driving1" />
+		<Item id="r5m1_driving2" />
+		<Item id="r5m1_driving3" />
+		<Item id="r5m1_driving4" />
 			
 <!-- 		cinematics music		 -->
 

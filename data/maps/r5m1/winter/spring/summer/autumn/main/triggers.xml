@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
 <triggers>
-<!-- ’гв ваЁЈЈҐа  -->
 	<trigger Name="GlobalVar" active="1">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -8,4 +7,788 @@
 		</script>
 	</trigger>
 
+	<trigger Name="World" active="1">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			-- ворота бункеров
+			local ftg_scale = {0.8, 0.5, 0.35, 0.9}
+			CreateNewDummyObject("factorytunnelgate", "ftg1", -1, -1, CVector(6641.438, 241.830, 1446.560), Quaternion(0.0000, -0.9999, 0.0000, 0.0131), 0)
+			CreateNewDummyObject("factorytunnelgate", "ftg2", -1, -1, CVector(3971.777, 253.527, 1854.443), Quaternion(0.0172, 0.9998, -0.0043, 0.0022), 0)
+			CreateNewDummyObject("factorytunnelgate", "ftg3", -1, -1, CVector(5102.422, 272.734, 4890.220), Quaternion(0.0027, -0.6770, 0.0082, 0.7359), 0)
+			CreateNewDummyObject("factorytunnelgate", "ftg4", -1, -1, CVector(3269.178, 260.205, 7921.500), Quaternion(0.0000, 0.7071, 0.0000, 0.7071), 0)
+
+			for ftg_i = 1, 4 do 
+				local ftg = getObj("ftg"..ftg_i)
+				if ftg then 
+					ftg:SetPropertyById(7, ftg_scale[ftg_i])
+					ftg:SetNodeAction(AT_STAND2)
+				end
+			end
+
+			-- Прожектор выход ВС РФ
+			CreateNewDummyObject("spotlight", "projectorToR1M1_1", -1, -1, CVector(5544.620, 263.039, 500.639), Quaternion(0.0977, 0.7258, -0.0707, 0.6773), 0)
+			getObj("projectorToR1M1_1"):SetPropertyById(7, 0.6)
+			--CreateNewSgNodeObject("ET_PS_LENS_S10", "projectorToR1M1_2", -1, -1, CVector(5546.408, 265.327, 500.500), Quaternion(0, 0, 0, 1), 2.6)
+			--CreateNewSgNodeObject("ET_PS_LENS_S10", "projectorToR1M1_3", -1, -1, CVector(5546.408, 265.327, 500.500), Quaternion(0, 0, 0, 1), 2.6)
+			--CreateNewSgNodeObject("ET_PS_HLIGHT", "projectorToR1M1_4", -1, -1, CVector(5544.514, 265.494, 500.718), Quaternion(0.5011, 0.5206, -0.5106, 0.4660), 8)
+			--CreateNewSgNodeObject("ET_PS_PROJECTOR_SPOTLIGHT1", "5", -1, -1, CVector(5545.953, 265.509, 500.624), Quaternion(0.6283, 0.3252, 0.5895, -0.3899), 1)
+			--CreateNewSgNodeObject("ET_PS_PROJECTOR_SPOTLIGHT1", "5", -1, -1, CVector(5545.953, 265.509, 500.624), Quaternion(0.6283, 0.3252, 0.5895, -0.3899), 1)
+
+			-- Фаер выход ВС РФ
+			--CreateNewSgNodeObject("ET_PS_GREEN_SMOKE1", "fierToR1M1_1", -1, -1, CVector(5580.169, 253.070, 506.949), Quaternion(0, 0, 0, 1), 1)
+			--CreateNewSgNodeObject("ET_PS_LENS_D8", "fierToR1M1_2", -1, -1, CVector(5580.169, 253.470, 506.949), Quaternion(0, 0, 0, 1), 0.5)
+			--CreateNewSgNodeObject("ET_PS_LENS_D8", "fierToR1M1_3", -1, -1, CVector(5580.169, 253.470, 506.949), Quaternion(0, 0, 0, 1), 0.5)
+
+			-- Фаер ЗБ016
+			--CreateNewSgNodeObject("ET_PS_GREEN_SMOKE2", "fierB016_1", -1, -1, CVector(6653.333, 237.600, 1470.102), Quaternion(0, 0, 0, 1), 1)
+			--CreateNewSgNodeObject("LS_LIGHT_GREEN_FIER", "fierB016_2", -1, -1, CVector(6653.333, 237.600, 1470.102), Quaternion(0, 0, 0, 1), 1)
+			--CreateNewSgNodeObject("ET_PS_GREEN_SMOKE3", "fierB016_3", -1, -1, CVector(1671.402, 254.200, 7747.266), Quaternion(0, 0, 0, 1), 1)
+
+			-- Фаер ЗБ014
+			--CreateNewSgNodeObject("ET_PS_GREEN_SMOKE2", "fierB014_1", -1, -1, CVector(3962.713, 251.915, 1872.657), Quaternion(0, 0, 0, 1), 1)
+			--CreateNewSgNodeObject("LS_LIGHT_GREEN_FIER", "fierB014_2", -1, -1, CVector(3962.713, 251.915, 1872.657), Quaternion(0, 0, 0, 1), 1)
+			--CreateNewSgNodeObject("ET_PS_GREEN_SMOKE3", "fierB014_3", -1, -1, CVector(3307.326, 255, 7910.127), Quaternion(0, 0, 0, 1), 1)
+
+			-- Телепорт
+			CreateNewDummyObject("teleport", "tp1", -1, -1, CVector(1054.990, 127.350, 803.991), Quaternion(0, 0, 0, 1), 0)
+			--getObj("tp1"):SetPropertyById(7, 5.0)
+			--CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6", "tp2", -1, -1, CVector(1055.035, 130.935, 804.059), Quaternion(0, 0, 0, 1), 0.04)
+			--CreateNewSgNodeObject("ET_PS_LENS_S10", "tp3", -1, -1, CVector(1055.022, 132.153, 804.053), Quaternion(0, 0, 0, 1), 0.8)
+
+			-- Лунокул
+			CreateNewSgNodeObject("lunoculus", "lunocul1", -1, -1, CVector(731.051, 121.531, 1415.867), Quaternion(0, 0, 0, 1), 1)
+			CreateNewSgNodeObject("ET_PS_LENS_S10", "lunocul2", -1, -1, CVector(731.051, 121.531, 1415.867), Quaternion(0, 0, 0, 1), 1.5)
+			CreateNewSgNodeObject("ET_PS_LENS_S10", "lunocul3", -1, -1, CVector(731.051, 121.531, 1415.867), Quaternion(0, 0, 0, 1), 1.5)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateBreakebleObj" active="1">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i = 1, 480 do
+				local obj = getObj("breakebleObj"..i)
+				if obj then obj:Remove() end
+			end 
+			CreateNewBreakableObject("Breakable_road_sign_bus_stop", "breakebleObj1", 1001, CVector(5994.752, 250.347, 544.959), Quaternion(0.000, 0.713, 0.000, 0.701), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence1", "breakebleObj2", 1001, CVector(7730.245, 214.921, 3034.768), Quaternion(-0.032, 0.747, 0.013, 0.664), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence1", "breakebleObj3", 1001, CVector(7730.731, 215.216, 3045.250), Quaternion(0.006, 0.718, -0.016, 0.696), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence1", "breakebleObj4", 1001, CVector(7731.282, 215.314, 3055.492), Quaternion(-0.023, 0.740, 0.018, 0.672), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence1", "breakebleObj5", 1001, CVector(7732.267, 215.307, 3075.494), Quaternion(0.000, 0.728, 0.000, 0.685), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence1", "breakebleObj6", 1001, CVector(7731.984, 215.327, 3065.479), Quaternion(0.000, 0.730, 0.000, 0.684), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence1", "breakebleObj7", 1001, CVector(7732.006, 215.526, 3085.748), Quaternion(0.000, 0.710, 0.000, 0.704), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence1", "breakebleObj8", 1001, CVector(7694.605, 216.606, 2987.604), Quaternion(-0.012, -0.993, -0.100, 0.056), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence1", "breakebleObj9", 1001, CVector(7704.306, 216.254, 2988.317), Quaternion(-0.011, 0.989, 0.115, 0.091), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence1", "breakebleObj10", 1001, CVector(7657.605, 216.528, 3070.664), Quaternion(-0.127, -0.248, -0.064, 0.958), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence1", "breakebleObj11", 1001, CVector(7666.817, 216.035, 3075.373), Quaternion(-0.134, -0.177, -0.067, 0.973), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence1", "breakebleObj12", 1001, CVector(7641.461, 215.640, 3033.741), Quaternion(-0.096, -0.708, -0.120, 0.690), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence1", "breakebleObj13", 1001, CVector(7642.112, 215.168, 3044.163), Quaternion(-0.121, -0.635, -0.118, 0.754), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj14", 1001, CVector(7522.542, 229.158, 2945.708), Quaternion(0.000, 0.687, 0.000, 0.727), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj15", 1001, CVector(7527.880, 229.152, 2945.862), Quaternion(0.000, 0.692, 0.000, 0.722), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj16", 1001, CVector(7533.152, 229.137, 2946.057), Quaternion(0.003, 0.695, -0.003, 0.719), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj17", 1001, CVector(7538.522, 229.118, 2946.282), Quaternion(-0.003, 0.690, 0.003, 0.724), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj18", 1001, CVector(7520.224, 228.878, 2974.740), Quaternion(0.000, -1.000, -0.004, -0.005), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj19", 1001, CVector(7520.223, 228.691, 2985.285), Quaternion(0.000, -1.000, -0.011, -0.016), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj20", 1001, CVector(7520.271, 228.786, 2979.985), Quaternion(0.000, -1.000, -0.007, -0.005), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj21", 1001, CVector(7520.354, 228.515, 2995.729), Quaternion(0.000, -1.000, -0.007, 0.004), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj22", 1001, CVector(7520.209, 228.603, 2990.529), Quaternion(0.000, -1.000, 0.002, 0.004), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj23", 1001, CVector(7520.500, 228.282, 3011.390), Quaternion(0.000, -1.000, -0.004, 0.004), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj24", 1001, CVector(7520.479, 228.352, 3006.193), Quaternion(0.000, -1.000, 0.004, 0.004), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj25", 1001, CVector(7520.450, 228.430, 3000.963), Quaternion(0.000, -1.000, 0.000, 0.004), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj26", 1001, CVector(7520.177, 228.954, 2969.401), Quaternion(0.001, -1.000, -0.011, 0.002), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj27", 1001, CVector(7520.064, 229.021, 2964.165), Quaternion(0.000, -1.000, 0.002, 0.004), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj28", 1001, CVector(7520.144, 229.082, 2958.682), Quaternion(0.000, -1.000, -0.009, -0.007), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj29", 1001, CVector(7520.067, 229.126, 2953.453), Quaternion(0.000, -1.000, -0.002, 0.008), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj30", 1001, CVector(7519.984, 229.157, 2948.090), Quaternion(0.000, -1.000, -0.020, 0.015), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_only_pole", "breakebleObj31", 1001, CVector(7520.485, 228.121, 3022.719), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj32", 1001, CVector(7520.504, 228.053, 3025.365), Quaternion(0.000, -1.000, 0.000, -0.004), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj33", 1001, CVector(7520.633, 227.783, 3030.608), Quaternion(0.000, -1.000, 0.004, 0.004), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj34", 1001, CVector(7522.454, 228.205, 3012.389), Quaternion(-0.006, -0.423, -0.003, 0.906), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj35", 1001, CVector(7522.379, 228.044, 3024.640), Quaternion(0.000, -0.921, 0.000, 0.389), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj36", 1001, CVector(7520.796, 227.730, 3035.898), Quaternion(0.000, -1.000, 0.011, 0.013), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj37", 1001, CVector(7539.852, 227.448, 3060.913), Quaternion(-0.016, -0.704, -0.017, 0.710), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj38", 1001, CVector(7550.277, 226.804, 3060.605), Quaternion(-0.017, -0.699, -0.025, 0.714), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj39", 1001, CVector(7555.549, 226.522, 3060.372), Quaternion(-0.016, -0.696, -0.018, 0.718), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj40", 1001, CVector(7575.016, 225.414, 3060.070), Quaternion(-0.017, -0.707, -0.020, 0.707), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj41", 1001, CVector(7534.734, 227.640, 3061.088), Quaternion(-0.009, -0.710, 0.009, 0.704), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj42", 1001, CVector(7545.095, 227.085, 3060.793), Quaternion(-0.013, -0.704, -0.017, 0.710), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj43", 1001, CVector(7521.055, 227.814, 3041.039), Quaternion(0.000, -1.000, 0.000, 0.011), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj44", 1001, CVector(7577.493, 225.122, 3052.136), Quaternion(0.007, 0.009, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj45", 1001, CVector(7577.233, 225.169, 3046.926), Quaternion(0.000, 0.017, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj46", 1001, CVector(7577.619, 225.120, 3057.474), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj47", 1001, CVector(7576.991, 225.280, 3041.558), Quaternion(0.011, 0.013, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj48", 1001, CVector(7576.480, 225.612, 3031.039), Quaternion(0.015, 0.022, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj49", 1001, CVector(7576.751, 225.429, 3036.326), Quaternion(0.011, 0.009, -0.002, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj50", 1001, CVector(7576.239, 226.216, 3015.107), Quaternion(0.011, 0.004, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj51", 1001, CVector(7576.103, 226.397, 3009.821), Quaternion(0.020, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj52", 1001, CVector(7578.271, 225.815, 3021.460), Quaternion(-0.010, -0.446, -0.005, 0.895), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj53", 1001, CVector(7576.290, 226.026, 3020.331), Quaternion(0.017, -0.009, -0.004, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj54", 1001, CVector(7575.984, 226.570, 3004.580), Quaternion(0.015, -0.002, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_only_pole", "breakebleObj55", 1001, CVector(7576.345, 225.924, 3022.990), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj56", 1001, CVector(7575.657, 227.134, 2988.738), Quaternion(0.009, 0.004, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj57", 1001, CVector(7575.770, 226.927, 2994.014), Quaternion(0.013, 0.011, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj58", 1001, CVector(7575.154, 227.818, 2972.820), Quaternion(0.015, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj59", 1001, CVector(7572.373, 228.771, 2949.004), Quaternion(0.000, 0.712, 0.000, 0.702), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj60", 1001, CVector(7567.106, 228.962, 2949.129), Quaternion(0.000, 0.702, 0.000, 0.712), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj61", 1001, CVector(7575.091, 228.213, 2962.250), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj62", 1001, CVector(7575.916, 226.738, 2999.298), Quaternion(0.015, 0.004, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj63", 1001, CVector(7575.475, 227.363, 2983.427), Quaternion(0.013, 0.013, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj64", 1001, CVector(7575.297, 227.599, 2978.140), Quaternion(0.013, 0.011, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj65", 1001, CVector(7575.131, 228.014, 2967.583), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj66", 1001, CVector(7575.130, 228.397, 2956.885), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj67", 1001, CVector(7575.050, 228.566, 2951.592), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj68", 1001, CVector(7572.935, 227.130, 2991.572), Quaternion(0.011, 0.712, -0.011, 0.702), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj69", 1001, CVector(7447.513, 229.178, 2863.446), Quaternion(0.000, 0.713, 0.000, 0.701), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj70", 1001, CVector(7447.448, 229.178, 2859.630), Quaternion(0.000, 0.713, 0.000, 0.701), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj71", 1001, CVector(7447.686, 229.178, 2874.930), Quaternion(0.000, 0.713, 0.000, 0.701), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj72", 1001, CVector(7447.636, 229.178, 2871.100), Quaternion(0.000, 0.713, 0.000, 0.701), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj73", 1001, CVector(7447.574, 229.178, 2867.286), Quaternion(0.000, 0.713, 0.000, 0.701), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj74", 1001, CVector(7447.346, 229.178, 2852.003), Quaternion(0.000, 0.713, 0.000, 0.701), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj75", 1001, CVector(7447.288, 229.178, 2848.197), Quaternion(0.000, 0.713, 0.000, 0.701), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj76", 1001, CVector(7447.159, 229.178, 2840.541), Quaternion(0.000, 0.713, 0.000, 0.701), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj77", 1001, CVector(7447.220, 229.178, 2844.362), Quaternion(0.000, 0.713, 0.000, 0.701), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj78", 1001, CVector(7447.085, 229.178, 2836.683), Quaternion(0.000, 0.713, 0.000, 0.701), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj79", 1001, CVector(7447.404, 229.178, 2855.831), Quaternion(0.000, 0.713, 0.000, 0.701), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj80", 1001, CVector(7447.736, 229.178, 2878.747), Quaternion(0.000, 0.713, 0.000, 0.701), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj81", 1001, CVector(7447.769, 229.178, 2882.567), Quaternion(0.000, 0.709, 0.000, 0.706), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj82", 1001, CVector(7447.755, 229.178, 2886.338), Quaternion(0.000, 0.709, 0.000, 0.706), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj83", 1001, CVector(7447.708, 229.178, 2890.940), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj84", 1001, CVector(7447.802, 229.178, 2896.255), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj85", 1001, CVector(7448.230, 229.178, 2914.202), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj86", 1001, CVector(7450.257, 229.178, 2897.395), Quaternion(0.000, 0.879, 0.000, 0.477), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj87", 1001, CVector(7448.198, 229.178, 2908.900), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj88", 1001, CVector(7448.257, 229.178, 2919.489), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj89", 1001, CVector(7448.324, 229.178, 2924.811), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj90", 1001, CVector(7429.710, 229.178, 2928.267), Quaternion(0.000, -0.698, 0.000, 0.716), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj91", 1001, CVector(7445.672, 229.178, 2927.558), Quaternion(0.000, -0.698, 0.000, 0.716), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj92", 1001, CVector(7435.051, 229.178, 2928.013), Quaternion(0.000, -0.698, 0.000, 0.716), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj93", 1001, CVector(7440.364, 229.178, 2927.801), Quaternion(0.000, -0.698, 0.000, 0.716), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj94", 1001, CVector(7424.357, 229.178, 2928.554), Quaternion(-0.002, -0.692, -0.002, 0.722), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj95", 1001, CVector(7419.048, 229.178, 2928.771), Quaternion(0.000, -0.702, 0.000, 0.712), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj96", 1001, CVector(7397.356, 229.202, 2929.408), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj97", 1001, CVector(7390.963, 229.281, 2919.837), Quaternion(0.000, -0.682, 0.000, 0.731), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj98", 1001, CVector(7401.097, 229.178, 2929.358), Quaternion(0.000, 0.020, -0.007, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj99", 1001, CVector(7391.197, 229.276, 2923.661), Quaternion(0.000, -0.685, 0.000, 0.728), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj100", 1001, CVector(7391.453, 229.270, 2927.474), Quaternion(0.000, -0.680, 0.000, 0.733), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj101", 1001, CVector(7393.509, 229.237, 2929.444), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj102", 1001, CVector(7390.503, 229.253, 2912.211), Quaternion(0.000, -0.684, 0.000, 0.730), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj103", 1001, CVector(7390.263, 229.237, 2908.402), Quaternion(0.000, -0.684, 0.000, 0.730), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj104", 1001, CVector(7390.741, 229.267, 2916.026), Quaternion(0.000, -0.687, 0.000, 0.727), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj105", 1001, CVector(7389.205, 229.178, 2893.181), Quaternion(0.000, -0.682, 0.000, 0.731), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj106", 1001, CVector(7389.450, 229.206, 2897.003), Quaternion(0.000, -0.684, 0.000, 0.730), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj107", 1001, CVector(7389.963, 229.234, 2904.589), Quaternion(0.000, -0.679, 0.000, 0.734), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj108", 1001, CVector(7389.688, 229.203, 2900.795), Quaternion(0.000, -0.679, 0.000, 0.734), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj109", 1001, CVector(7387.854, 229.178, 2868.287), Quaternion(0.000, -0.999, -0.004, 0.033), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj110", 1001, CVector(7388.184, 229.178, 2873.597), Quaternion(0.000, -1.000, -0.004, 0.026), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj111", 1001, CVector(7387.059, 229.178, 2857.708), Quaternion(0.000, -0.999, -0.004, 0.035), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj112", 1001, CVector(7387.473, 229.178, 2863.001), Quaternion(0.000, -0.999, -0.004, 0.033), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj113", 1001, CVector(7386.485, 229.178, 2847.113), Quaternion(0.000, -1.000, -0.004, 0.024), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj114", 1001, CVector(7386.735, 229.178, 2852.445), Quaternion(0.000, -1.000, 0.000, 0.020), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj115", 1001, CVector(7386.096, 229.178, 2841.790), Quaternion(0.000, -1.000, -0.004, 0.024), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj116", 1001, CVector(7397.903, 229.178, 2831.833), Quaternion(0.000, -0.710, 0.000, -0.704), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj117", 1001, CVector(7392.749, 229.178, 2832.020), Quaternion(0.000, -0.721, 0.000, -0.693), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj118", 1001, CVector(7385.775, 229.178, 2836.560), Quaternion(0.000, -1.000, 0.000, 0.026), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj119", 1001, CVector(7408.418, 229.178, 2831.492), Quaternion(0.000, 0.716, 0.000, 0.698), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj120", 1001, CVector(7403.183, 229.178, 2831.740), Quaternion(0.000, 0.709, 0.000, 0.706), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj121", 1001, CVector(7413.657, 229.178, 2831.340), Quaternion(-0.005, 0.707, -0.001, 0.707), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj122", 1001, CVector(7416.461, 229.178, 2864.255), Quaternion(0.000, -0.666, 0.000, 0.746), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj123", 1001, CVector(7415.904, 229.178, 2854.970), Quaternion(0.031, -0.708, 0.031, 0.705), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj124", 1001, CVector(7415.403, 229.178, 2845.506), Quaternion(-0.006, -0.713, 0.006, 0.701), 0, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj125", 1001, CVector(7445.089, 228.223, 3004.002), Quaternion(0.000, 0.000, 0.000, 1.000), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj126", 1001, CVector(7445.477, 228.577, 3030.430), Quaternion(0.000, 0.000, 0.000, 1.000), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj127", 1001, CVector(7445.296, 228.347, 3019.844), Quaternion(0.000, 0.000, 0.000, 1.000), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj128", 1001, CVector(7445.369, 228.451, 3025.126), Quaternion(0.000, 0.000, 0.000, 1.000), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj129", 1001, CVector(7445.111, 228.222, 3009.249), Quaternion(0.000, 0.000, 0.000, 1.000), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj130", 1001, CVector(7445.188, 228.252, 3014.543), Quaternion(0.000, 0.000, 0.000, 1.000), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj131", 1001, CVector(7445.512, 228.692, 3035.710), Quaternion(0.000, 0.000, 0.000, 1.000), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj132", 1001, CVector(7445.684, 228.975, 3051.664), Quaternion(0.000, 0.000, 0.000, 1.000), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj133", 1001, CVector(7423.718, 228.092, 2988.011), Quaternion(0.000, 0.702, 0.000, 0.712), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj134", 1001, CVector(7445.720, 229.043, 3056.966), Quaternion(0.000, 0.000, 0.000, 1.000), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj135", 1001, CVector(7445.610, 228.895, 3046.396), Quaternion(0.000, 0.000, 0.000, 1.000), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_only_pole", "breakebleObj136", 1001, CVector(7445.688, 228.749, 3038.358), Quaternion(0.000, 0.000, 0.000, 1.000), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj137", 1001, CVector(7402.672, 228.165, 2988.347), Quaternion(0.000, 0.702, 0.000, 0.712), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj138", 1001, CVector(7392.192, 228.301, 2988.431), Quaternion(0.000, 0.701, 0.000, 0.713), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj139", 1001, CVector(7397.423, 228.219, 2988.383), Quaternion(0.000, 0.710, 0.000, 0.704), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj140", 1001, CVector(7383.364, 228.622, 3027.985), Quaternion(0.026, 1.000, 0.006, 0.002), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj141", 1001, CVector(7407.901, 228.128, 2988.296), Quaternion(-0.002, 0.707, 0.001, 0.707), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj142", 1001, CVector(7386.852, 228.435, 2988.374), Quaternion(0.001, 0.692, -0.002, 0.722), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj143", 1001, CVector(7418.383, 228.091, 2988.183), Quaternion(0.007, 0.709, -0.008, 0.706), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj144", 1001, CVector(7413.131, 228.100, 2988.257), Quaternion(0.000, 0.706, 0.000, 0.709), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj145", 1001, CVector(7412.042, 229.138, 3072.878), Quaternion(0.000, -0.704, 0.000, 0.710), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj146", 1001, CVector(7406.718, 229.125, 3072.898), Quaternion(0.000, -0.704, 0.000, 0.710), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj147", 1001, CVector(7401.396, 229.106, 3072.978), Quaternion(0.000, -0.704, 0.000, 0.710), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj148", 1001, CVector(7417.347, 229.148, 3072.798), Quaternion(0.000, -0.704, 0.000, 0.710), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj149", 1001, CVector(7396.094, 229.085, 3073.019), Quaternion(0.000, -0.704, 0.000, 0.710), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj150", 1001, CVector(7422.637, 229.147, 3072.703), Quaternion(0.000, -0.704, 0.000, 0.710), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj151", 1001, CVector(7427.942, 229.141, 3072.620), Quaternion(0.000, -0.704, 0.000, 0.710), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj152", 1001, CVector(7383.510, 228.686, 3038.568), Quaternion(0.000, -1.000, -0.004, -0.007), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj153", 1001, CVector(7383.393, 228.739, 3043.849), Quaternion(0.000, -1.000, 0.000, -0.026), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj154", 1001, CVector(7383.543, 228.653, 3033.253), Quaternion(0.000, -1.000, -0.009, 0.000), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj155", 1001, CVector(7381.895, 228.678, 2990.883), Quaternion(0.000, -1.000, 0.000, 0.020), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj156", 1001, CVector(7382.129, 228.660, 2996.204), Quaternion(0.000, -1.000, 0.000, 0.015), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj157", 1001, CVector(7383.254, 228.558, 3017.406), Quaternion(0.000, -1.000, 0.000, 0.013), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj158", 1001, CVector(7383.432, 228.587, 3022.716), Quaternion(0.000, -1.000, 0.000, 0.002), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj159", 1001, CVector(7383.003, 228.573, 3012.095), Quaternion(0.000, -1.000, 0.000, 0.022), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj160", 1001, CVector(7382.403, 228.633, 3001.519), Quaternion(0.000, -1.000, 0.000, 0.017), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_with_pole", "breakebleObj161", 1001, CVector(7382.700, 228.611, 3006.802), Quaternion(0.000, -1.000, 0.000, 0.015), 1, 1.000)
+			CreateNewBreakableObject("Breakable_wood_fence_3_only_pole", "breakebleObj162", 1001, CVector(7381.875, 228.665, 2988.210), Quaternion(0.000, 0.000, 0.000, 1.000), 1, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj163", 1001, CVector(7441.369, 229.178, 3148.707), Quaternion(0.000, -1.000, 0.000, 0.007), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj164", 1001, CVector(7437.537, 229.178, 3148.794), Quaternion(0.000, -1.000, 0.000, 0.007), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj165", 1001, CVector(7435.517, 229.178, 3146.869), Quaternion(0.000, -0.701, 0.000, 0.713), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj166", 1001, CVector(7435.394, 229.178, 3135.733), Quaternion(0.000, -0.701, 0.000, 0.713), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj167", 1001, CVector(7435.425, 229.178, 3139.442), Quaternion(0.000, -0.701, 0.000, 0.713), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj168", 1001, CVector(7435.483, 229.178, 3143.187), Quaternion(0.000, -0.701, 0.000, 0.713), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_bus_stop", "breakebleObj169", 1001, CVector(7510.988, 227.738, 3166.215), Quaternion(0.000, -1.000, 0.000, -0.002), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj170", 1001, CVector(7541.510, 226.360, 3160.495), Quaternion(0.002, 0.707, 0.002, 0.707), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj171", 1001, CVector(7541.587, 226.360, 3156.773), Quaternion(0.006, 0.696, 0.006, 0.718), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_bus_stop", "breakebleObj172", 1001, CVector(7508.583, 228.144, 3102.200), Quaternion(0.000, -1.000, 0.000, -0.002), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_bus_stop", "breakebleObj173", 1001, CVector(7508.608, 228.145, 3102.388), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj174", 1001, CVector(7527.503, 227.201, 3102.962), Quaternion(-0.007, 0.007, -0.024, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj175", 1001, CVector(7519.903, 227.595, 3102.998), Quaternion(0.000, 0.000, -0.028, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj176", 1001, CVector(7523.748, 227.396, 3102.987), Quaternion(0.000, 0.000, -0.020, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj177", 1001, CVector(7538.819, 227.169, 3103.029), Quaternion(0.000, 0.000, -0.009, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj178", 1001, CVector(7535.134, 227.174, 3102.969), Quaternion(0.000, -0.017, 0.007, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj179", 1001, CVector(7531.382, 227.175, 3102.921), Quaternion(0.000, 0.000, -0.013, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj180", 1001, CVector(7516.129, 227.781, 3103.004), Quaternion(0.000, 0.000, -0.022, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj181", 1001, CVector(7512.558, 227.960, 3102.908), Quaternion(0.000, -1.000, 0.000, -0.007), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj182", 1001, CVector(7512.489, 227.967, 3101.957), Quaternion(0.118, 0.000, 0.000, 0.993), 0, 1.000)
+			CreateNewBreakableObject("Breakable_umbrella", "breakebleObj183", 1001, CVector(7661.709, 205.312, 3260.968), Quaternion(0.050, 0.000, 0.000, 0.999), 0, 1.000)
+			CreateNewBreakableObject("Breakable_umbrella", "breakebleObj184", 1001, CVector(7675.039, 208.187, 3234.790), Quaternion(0.111, -0.006, 0.037, 0.993), 0, 1.000)
+			CreateNewBreakableObject("Breakable_umbrella", "breakebleObj185", 1001, CVector(7618.204, 207.593, 3274.624), Quaternion(0.000, 0.000, -0.015, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj186", 1001, CVector(6315.000, 230.561, 3397.068), Quaternion(0.000, -0.381, 0.000, 0.925), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj187", 1001, CVector(6309.459, 230.365, 3391.781), Quaternion(0.000, -0.367, 0.000, 0.930), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj188", 1001, CVector(6312.271, 230.438, 3394.413), Quaternion(0.000, -0.367, 0.000, 0.930), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj189", 1001, CVector(7541.430, 226.360, 3164.292), Quaternion(0.000, 0.695, 0.000, 0.719), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj190", 1001, CVector(3487.703, 256.187, 2337.052), Quaternion(0.000, 0.745, 0.000, 0.667), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj191", 1001, CVector(4181.169, 231.061, 1287.449), Quaternion(0.000, -0.921, 0.000, 0.389), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj192", 1001, CVector(4148.843, 230.845, 1283.934), Quaternion(-0.004, 0.997, 0.000, 0.076), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj193", 1001, CVector(4138.673, 230.564, 1282.388), Quaternion(0.017, 0.997, 0.001, 0.070), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj194", 1001, CVector(4187.451, 231.273, 1266.381), Quaternion(0.000, -0.699, 0.000, 0.715), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj195", 1001, CVector(4172.324, 231.038, 1290.086), Quaternion(0.000, 0.997, 0.000, 0.083), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj196", 1001, CVector(4187.147, 231.327, 1256.099), Quaternion(0.000, -0.696, 0.000, 0.718), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj197", 1001, CVector(4190.374, 231.302, 1238.013), Quaternion(0.214, -0.758, 0.286, 0.546), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj198", 1001, CVector(4192.095, 230.264, 1217.847), Quaternion(-0.019, -0.682, 0.021, 0.731), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj199", 1001, CVector(4191.616, 229.659, 1207.705), Quaternion(-0.019, -0.670, 0.024, 0.741), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj200", 1001, CVector(4192.102, 230.858, 1228.079), Quaternion(-0.105, -0.732, -0.077, 0.669), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj201", 1001, CVector(4190.612, 229.128, 1188.639), Quaternion(-0.007, -0.680, 0.008, 0.733), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj202", 1001, CVector(4189.484, 229.656, 1178.443), Quaternion(0.000, -0.649, 0.000, 0.760), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj203", 1001, CVector(4187.879, 230.553, 1168.324), Quaternion(0.012, -0.649, -0.015, 0.760), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj204", 1001, CVector(4185.096, 231.095, 1158.772), Quaternion(0.000, -0.552, 0.000, 0.834), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj205", 1001, CVector(4180.982, 231.440, 1149.574), Quaternion(0.000, -0.535, 0.000, 0.845), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj206", 1001, CVector(4175.277, 231.717, 1141.542), Quaternion(-0.088, -0.370, -0.040, 0.924), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj207", 1001, CVector(4156.190, 231.503, 1138.545), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj208", 1001, CVector(4166.539, 231.701, 1138.448), Quaternion(0.000, 0.015, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj209", 1001, CVector(4136.059, 231.235, 1140.642), Quaternion(0.016, 0.100, -0.006, 0.995), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj210", 1001, CVector(4146.042, 231.367, 1139.089), Quaternion(0.000, 0.055, 0.000, 0.998), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj211", 1001, CVector(4116.119, 231.095, 1144.524), Quaternion(0.000, 0.100, 0.000, 0.995), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj212", 1001, CVector(4126.095, 231.140, 1142.611), Quaternion(0.000, 0.092, 0.000, 0.996), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj213", 1001, CVector(4123.844, 231.161, 1141.954), Quaternion(-0.003, 0.028, -0.026, 0.999), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj214", 1001, CVector(4127.546, 231.242, 1146.320), Quaternion(0.000, -0.695, 0.000, 0.719), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj215", 1001, CVector(4106.232, 231.251, 1146.803), Quaternion(0.000, 0.133, 0.000, 0.991), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj216", 1001, CVector(4096.257, 231.695, 1148.804), Quaternion(0.195, 0.063, -0.017, 0.979), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj217", 1001, CVector(5165.169, 228.647, 2020.116), Quaternion(0.000, 0.628, 0.000, 0.779), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj218", 1001, CVector(5166.632, 228.562, 2012.207), Quaternion(0.000, 0.557, 0.000, 0.830), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj219", 1001, CVector(5446.126, 228.469, 1808.414), Quaternion(0.000, -0.534, 0.000, 0.846), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj220", 1001, CVector(5444.509, 228.387, 1802.275), Quaternion(0.000, -0.725, 0.000, 0.688), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj221", 1001, CVector(5418.065, 228.074, 1788.946), Quaternion(0.000, 0.695, 0.000, 0.719), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj222", 1001, CVector(5414.581, 226.619, 1757.897), Quaternion(0.000, -0.059, 0.000, 0.998), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj223", 1001, CVector(5444.527, 227.086, 1760.540), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj224", 1001, CVector(5408.285, 226.634, 1758.803), Quaternion(0.000, 0.126, 0.000, 0.992), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj225", 1001, CVector(5442.269, 227.181, 1764.306), Quaternion(0.000, 0.712, 0.000, 0.702), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj226", 1001, CVector(4142.578, 233.127, 1212.609), Quaternion(-0.014, 0.387, -0.027, 0.922), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj227", 1001, CVector(4144.711, 232.890, 1206.750), Quaternion(0.000, 0.639, 0.000, 0.769), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj228", 1001, CVector(4118.243, 230.790, 1279.015), Quaternion(0.000, 0.997, 0.000, 0.072), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj229", 1001, CVector(4108.193, 231.147, 1277.215), Quaternion(0.000, 0.997, 0.000, 0.074), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj230", 1001, CVector(4098.106, 231.555, 1275.505), Quaternion(0.000, 0.996, 0.000, 0.085), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj231", 1001, CVector(4088.046, 231.975, 1273.811), Quaternion(0.000, 0.996, 0.000, 0.085), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj232", 1001, CVector(5971.727, 237.269, 3423.584), Quaternion(0.000, 0.690, 0.000, 0.724), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj233", 1001, CVector(5971.458, 237.545, 3417.167), Quaternion(0.000, -0.721, 0.000, 0.693), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj234", 1001, CVector(5917.328, 240.647, 3363.143), Quaternion(0.031, 0.562, 0.021, 0.826), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj235", 1001, CVector(5921.736, 240.852, 3360.698), Quaternion(0.000, -0.078, 0.000, 0.997), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj236", 1001, CVector(5974.529, 238.669, 3377.907), Quaternion(-0.003, -0.382, 0.013, 0.924), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj237", 1001, CVector(7509.298, 227.811, 3164.626), Quaternion(0.000, 0.695, 0.000, 0.719), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj238", 1001, CVector(7511.768, 227.696, 3168.486), Quaternion(-0.006, -0.089, -0.068, 0.994), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj239", 1001, CVector(7513.503, 227.812, 3123.094), Quaternion(0.000, 0.535, 0.000, 0.845), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj240", 1001, CVector(7517.888, 227.610, 3119.394), Quaternion(0.000, 0.000, -0.015, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj241", 1001, CVector(4244.420, 242.701, 698.010), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj242", 1001, CVector(4508.659, 204.203, 690.581), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj243", 1001, CVector(4436.906, 217.339, 690.284), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj244", 1001, CVector(4376.753, 226.542, 694.572), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj245", 1001, CVector(4294.281, 239.344, 700.188), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj246", 1001, CVector(4190.112, 242.251, 696.235), Quaternion(0.000, 0.044, -0.011, 0.999), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj247", 1001, CVector(4127.843, 240.759, 695.955), Quaternion(0.000, 0.039, 0.000, 0.999), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj248", 1001, CVector(4051.470, 244.967, 697.708), Quaternion(0.000, 0.013, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj249", 1001, CVector(3945.709, 243.150, 691.934), Quaternion(0.000, 0.048, 0.000, 0.999), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj250", 1001, CVector(3862.700, 235.019, 680.484), Quaternion(0.000, 0.050, 0.000, 0.999), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj251", 1001, CVector(3763.552, 230.613, 679.677), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj252", 1001, CVector(3638.025, 237.094, 676.549), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj253", 1001, CVector(3543.539, 237.572, 695.707), Quaternion(0.000, 0.624, 0.000, 0.781), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj254", 1001, CVector(3535.460, 238.784, 772.611), Quaternion(0.000, 0.718, 0.000, 0.696), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj255", 1001, CVector(3535.510, 239.005, 871.564), Quaternion(0.000, 0.715, 0.000, 0.699), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj256", 1001, CVector(3529.681, 241.595, 958.841), Quaternion(0.000, 0.745, 0.000, 0.668), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj257", 1001, CVector(3478.229, 254.818, 2214.806), Quaternion(0.000, 0.767, 0.000, 0.641), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj258", 1001, CVector(3474.932, 250.256, 2074.117), Quaternion(0.000, 0.695, 0.000, 0.719), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj259", 1001, CVector(3488.580, 258.289, 1954.495), Quaternion(0.000, 0.733, 0.000, 0.680), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj260", 1001, CVector(3494.253, 265.290, 1855.189), Quaternion(0.000, 0.706, 0.000, 0.709), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj261", 1001, CVector(3491.173, 257.116, 1729.774), Quaternion(0.000, 0.706, 0.000, 0.709), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj262", 1001, CVector(3513.553, 255.528, 1248.685), Quaternion(0.006, 0.689, 0.006, 0.725), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj263", 1001, CVector(3509.929, 257.659, 1326.680), Quaternion(0.006, 0.689, 0.006, 0.725), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj264", 1001, CVector(3501.407, 251.906, 1543.461), Quaternion(0.000, 0.658, 0.000, 0.753), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj265", 1001, CVector(3491.373, 247.864, 1617.719), Quaternion(0.006, 0.689, 0.006, 0.725), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj266", 1001, CVector(3513.281, 240.475, 1141.799), Quaternion(0.006, 0.689, 0.006, 0.725), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj267", 1001, CVector(3520.969, 240.110, 1032.579), Quaternion(0.006, 0.689, 0.006, 0.725), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj268", 1001, CVector(3512.111, 266.556, 1463.687), Quaternion(0.006, 0.689, 0.006, 0.725), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj269", 1001, CVector(3511.355, 257.005, 1390.708), Quaternion(0.006, 0.689, 0.006, 0.725), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj270", 1001, CVector(3549.809, 255.674, 2764.354), Quaternion(0.000, 0.785, 0.000, 0.619), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj271", 1001, CVector(3770.143, 267.594, 3284.501), Quaternion(0.000, 0.917, 0.000, 0.399), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj272", 1001, CVector(3655.241, 258.790, 2989.542), Quaternion(0.000, 0.841, 0.000, 0.541), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj273", 1001, CVector(3489.723, 244.538, 2572.265), Quaternion(0.000, 0.795, 0.000, 0.607), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj274", 1001, CVector(3489.312, 250.454, 2446.305), Quaternion(0.000, 0.709, 0.000, 0.706), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj275", 1001, CVector(3855.119, 279.084, 3384.109), Quaternion(0.000, 0.847, 0.000, 0.532), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj276", 1001, CVector(3608.997, 260.229, 2878.510), Quaternion(0.000, 0.841, 0.000, 0.541), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj277", 1001, CVector(3704.530, 270.389, 3130.491), Quaternion(0.000, 0.750, 0.000, 0.661), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj278", 1001, CVector(3938.619, 287.208, 3505.341), Quaternion(0.000, 0.846, 0.000, 0.534), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj279", 1001, CVector(4131.197, 254.166, 4145.296), Quaternion(0.000, 0.727, 0.000, 0.687), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj280", 1001, CVector(4103.043, 259.587, 3977.718), Quaternion(0.000, 0.742, 0.000, 0.671), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj281", 1001, CVector(4138.943, 251.009, 4345.462), Quaternion(0.000, 0.752, 0.000, 0.659), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj282", 1001, CVector(4006.791, 275.287, 3688.164), Quaternion(0.000, 0.865, 0.000, 0.502), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj283", 1001, CVector(4081.095, 263.281, 3836.102), Quaternion(0.000, 0.880, 0.000, 0.475), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj284", 1001, CVector(4798.754, 280.652, 4300.263), Quaternion(0.000, 0.326, 0.000, 0.945), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj285", 1001, CVector(4786.939, 280.652, 4327.429), Quaternion(0.000, -0.429, 0.000, 0.903), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj286", 1001, CVector(4792.087, 280.652, 4339.557), Quaternion(0.000, -0.227, 0.000, 0.974), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj287", 1001, CVector(4788.884, 280.652, 4333.269), Quaternion(0.000, 0.600, 0.000, 0.800), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj288", 1001, CVector(4824.485, 280.652, 4327.194), Quaternion(0.000, 0.382, 0.000, 0.924), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj289", 1001, CVector(4824.355, 280.652, 4334.246), Quaternion(0.000, -0.409, 0.000, 0.913), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj290", 1001, CVector(4811.282, 280.652, 4351.909), Quaternion(0.000, -0.446, 0.000, 0.895), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj291", 1001, CVector(4816.115, 280.652, 4356.529), Quaternion(0.000, -0.367, 0.000, 0.930), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj292", 1001, CVector(4852.972, 280.652, 4353.917), Quaternion(0.000, 0.336, 0.000, 0.942), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj293", 1001, CVector(4857.296, 280.652, 4349.223), Quaternion(0.000, 0.342, 0.000, 0.940), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj294", 1001, CVector(4861.821, 280.652, 4344.591), Quaternion(0.000, 0.342, 0.000, 0.940), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj295", 1001, CVector(4828.499, 280.652, 4354.970), Quaternion(0.000, -0.524, 0.000, 0.852), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj296", 1001, CVector(4838.301, 280.652, 4362.336), Quaternion(0.000, -0.154, 0.000, 0.988), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj297", 1001, CVector(4832.683, 280.652, 4359.592), Quaternion(0.003, -0.352, -0.004, 0.936), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj298", 1001, CVector(4894.600, 278.646, 4277.083), Quaternion(-0.029, -0.124, -0.029, 0.991), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj299", 1001, CVector(4888.510, 278.843, 4276.181), Quaternion(0.004, -0.094, -0.026, 0.995), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj300", 1001, CVector(4882.199, 279.042, 4275.713), Quaternion(0.000, -0.126, -0.030, 0.992), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj301", 1001, CVector(4897.030, 278.688, 4281.431), Quaternion(-0.009, 0.659, -0.012, 0.752), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj302", 1001, CVector(4150.778, 244.732, 4498.748), Quaternion(0.008, 0.765, 0.008, 0.644), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj303", 1001, CVector(4174.211, 237.812, 4805.076), Quaternion(0.000, 0.797, 0.000, 0.604), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj304", 1001, CVector(4168.208, 240.146, 4650.921), Quaternion(0.000, 0.750, 0.000, 0.661), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj305", 1001, CVector(4217.486, 233.345, 4949.577), Quaternion(0.002, 0.866, 0.001, 0.500), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj306", 1001, CVector(4314.662, 236.087, 5065.961), Quaternion(-0.013, 0.961, -0.019, 0.276), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj307", 1001, CVector(5205.937, 264.965, 4871.713), Quaternion(0.004, -0.117, -0.030, 0.993), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj308", 1001, CVector(5201.276, 265.286, 4873.783), Quaternion(-0.017, 0.595, -0.023, 0.803), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj309", 1001, CVector(5210.609, 265.124, 4921.581), Quaternion(0.009, -0.231, -0.038, 0.972), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj310", 1001, CVector(5137.071, 270.231, 4915.259), Quaternion(-0.010, 0.635, -0.017, 0.772), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj311", 1001, CVector(5130.181, 270.352, 4881.319), Quaternion(-0.002, 0.756, -0.002, 0.654), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj312", 1001, CVector(5106.016, 270.689, 4870.037), Quaternion(-0.006, -0.141, 0.016, 0.990), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj313", 1001, CVector(5081.073, 269.643, 4891.880), Quaternion(-0.002, 0.068, 0.028, 0.997), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj314", 1001, CVector(5076.690, 269.340, 4895.692), Quaternion(-0.017, 0.539, -0.010, 0.842), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj315", 1001, CVector(5090.426, 270.715, 4932.978), Quaternion(-0.012, 0.961, -0.006, 0.276), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj316", 1001, CVector(5109.598, 271.519, 4940.527), Quaternion(-0.012, 0.882, -0.005, 0.471), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj317", 1001, CVector(5115.502, 271.569, 4942.506), Quaternion(0.000, 0.000, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj318", 1001, CVector(5237.011, 264.333, 4925.176), Quaternion(0.000, 0.745, 0.000, 0.668), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj319", 1001, CVector(5240.667, 264.401, 4920.806), Quaternion(0.000, 0.068, 0.000, 0.998), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj320", 1001, CVector(5338.728, 264.331, 4948.956), Quaternion(0.000, -0.712, 0.000, 0.703), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj321", 1001, CVector(5338.675, 264.257, 4952.806), Quaternion(0.000, -0.711, 0.000, 0.704), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj322", 1001, CVector(5338.806, 264.402, 4945.126), Quaternion(0.000, -0.715, 0.000, 0.700), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj323", 1001, CVector(5338.927, 264.776, 4932.666), Quaternion(-0.002, 0.700, -0.001, 0.715), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj324", 1001, CVector(5338.934, 264.493, 4941.371), Quaternion(0.000, 0.701, 0.000, 0.714), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj325", 1001, CVector(5340.785, 264.815, 4930.762), Quaternion(0.000, -0.026, -0.004, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj326", 1001, CVector(5344.637, 264.725, 4930.932), Quaternion(0.000, -0.019, 0.000, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj327", 1001, CVector(5383.970, 264.349, 5002.705), Quaternion(0.000, 0.707, 0.000, 0.707), 0, 1.000)
+			CreateNewBreakableObject("Breakable_corrugated_fence", "breakebleObj328", 1001, CVector(5383.974, 264.338, 4998.921), Quaternion(0.000, 0.707, 0.000, 0.707), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj329", 1001, CVector(4605.409, 234.220, 5197.554), Quaternion(0.000, 0.961, 0.000, 0.278), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj330", 1001, CVector(4745.111, 232.881, 5310.019), Quaternion(0.000, 0.961, 0.000, 0.278), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj331", 1001, CVector(4873.438, 234.171, 5356.108), Quaternion(0.006, 0.993, 0.001, 0.122), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj332", 1001, CVector(4455.829, 237.155, 5106.275), Quaternion(0.000, 0.993, 0.000, 0.120), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj333", 1001, CVector(5274.199, 229.307, 5495.551), Quaternion(0.000, 0.995, 0.000, 0.100), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj334", 1001, CVector(5022.789, 234.324, 5405.223), Quaternion(0.000, 0.987, 0.000, 0.163), 0, 1.000)
+			CreateNewBreakableObject("Breakable_road_sign_mines", "breakebleObj335", 1001, CVector(5144.641, 234.405, 5453.591), Quaternion(0.000, 0.992, 0.000, 0.128), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj336", 1001, CVector(5399.803, 248.748, 5392.333), Quaternion(0.000, 0.111, 0.000, 0.994), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj337", 1001, CVector(5394.501, 248.799, 5395.298), Quaternion(0.000, 0.311, 0.000, 0.950), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj338", 1001, CVector(5380.179, 248.700, 5412.713), Quaternion(0.000, 0.289, 0.000, 0.957), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj339", 1001, CVector(5371.240, 248.700, 5414.883), Quaternion(0.000, -0.133, 0.000, 0.991), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj340", 1001, CVector(5366.969, 248.700, 5417.528), Quaternion(0.000, 0.563, 0.000, 0.826), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj341", 1001, CVector(5371.092, 248.700, 5440.322), Quaternion(-0.011, -0.524, 0.019, 0.851), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj342", 1001, CVector(5778.385, 214.835, 4768.530), Quaternion(0.022, -0.128, 0.001, 0.992), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj343", 1001, CVector(5788.637, 214.835, 4770.996), Quaternion(0.000, -0.100, 0.000, 0.995), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj344", 1001, CVector(5799.125, 214.835, 4773.099), Quaternion(0.000, -0.109, 0.000, 0.994), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj345", 1001, CVector(5814.941, 214.835, 4776.311), Quaternion(0.000, -0.096, 0.000, 0.995), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj346", 1001, CVector(5836.868, 214.835, 4779.421), Quaternion(0.000, -0.083, 0.000, 0.997), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj347", 1001, CVector(5825.676, 214.835, 4778.161), Quaternion(0.000, -0.085, 0.000, 0.996), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj348", 1001, CVector(5816.606, 214.060, 4654.567), Quaternion(0.002, -0.113, -0.020, 0.993), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj349", 1001, CVector(5827.484, 213.751, 4656.830), Quaternion(0.002, -0.113, -0.015, 0.993), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj350", 1001, CVector(5838.280, 213.595, 4659.267), Quaternion(0.001, -0.118, -0.011, 0.993), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj351", 1001, CVector(5848.835, 213.457, 4661.635), Quaternion(0.001, -0.107, -0.009, 0.994), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj352", 1001, CVector(5859.282, 213.535, 4664.126), Quaternion(0.000, -0.115, -0.002, 0.993), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj353", 1001, CVector(5805.639, 214.313, 4651.876), Quaternion(-0.003, -0.120, -0.026, 0.992), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj354", 1001, CVector(5874.298, 211.474, 4508.943), Quaternion(-0.145, 0.497, 0.089, 0.851), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj355", 1001, CVector(5880.034, 211.270, 4500.470), Quaternion(-0.161, 0.431, 0.071, 0.885), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj356", 1001, CVector(5896.855, 212.406, 4490.671), Quaternion(-0.104, 0.000, 0.063, 0.993), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj357", 1001, CVector(5887.380, 211.207, 4493.540), Quaternion(-0.023, 0.295, 0.044, 0.954), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj358", 1001, CVector(5924.231, 213.274, 4493.913), Quaternion(-0.002, -0.182, 0.013, 0.983), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj359", 1001, CVector(5933.472, 213.520, 4497.867), Quaternion(-0.003, -0.214, 0.013, 0.977), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj360", 1001, CVector(5951.968, 214.478, 4505.997), Quaternion(0.103, -0.231, 0.019, 0.967), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj361", 1001, CVector(5939.481, 206.925, 4376.550), Quaternion(-0.075, 0.564, 0.052, 0.821), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj362", 1001, CVector(5941.481, 206.925, 4385.383), Quaternion(-0.004, 0.986, -0.001, 0.165), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj363", 1001, CVector(5951.417, 206.925, 4388.435), Quaternion(-0.014, 0.986, 0.104, 0.132), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj364", 1001, CVector(5961.146, 206.994, 4391.491), Quaternion(-0.009, 0.980, -0.123, 0.159), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj365", 1001, CVector(5970.966, 207.788, 4394.626), Quaternion(-0.022, 0.989, -0.038, 0.144), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj366", 1001, CVector(5987.643, 206.489, 4244.678), Quaternion(0.000, 0.885, 0.000, -0.466), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj367", 1001, CVector(5989.007, 206.560, 4252.026), Quaternion(0.000, -0.290, 0.000, 0.957), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj368", 1001, CVector(5997.799, 206.687, 4257.596), Quaternion(0.000, -0.269, 0.000, 0.963), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj369", 1001, CVector(6006.712, 206.809, 4262.677), Quaternion(0.000, -0.244, 0.000, 0.970), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj370", 1001, CVector(6015.855, 206.902, 4267.559), Quaternion(0.000, -0.248, 0.000, 0.969), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj371", 1001, CVector(6024.843, 206.918, 4272.483), Quaternion(0.000, -0.248, 0.000, 0.969), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj372", 1001, CVector(5999.316, 206.422, 4225.780), Quaternion(0.000, -0.876, 0.000, 0.483), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj373", 1001, CVector(6069.129, 206.476, 4223.185), Quaternion(0.002, 0.444, 0.004, 0.896), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj374", 1001, CVector(6062.392, 206.385, 4232.502), Quaternion(0.000, 0.456, 0.000, 0.890), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj375", 1001, CVector(6055.965, 206.782, 4241.666), Quaternion(0.000, 0.458, 0.000, 0.889), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj376", 1001, CVector(6049.552, 206.778, 4250.886), Quaternion(0.000, 0.473, 0.000, 0.881), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj377", 1001, CVector(6034.815, 206.837, 4272.690), Quaternion(0.001, 0.506, 0.002, 0.863), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj378", 1001, CVector(6029.715, 206.881, 4282.346), Quaternion(0.000, 0.517, 0.000, 0.856), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj379", 1001, CVector(6024.969, 206.918, 4291.606), Quaternion(0.000, 0.521, 0.000, 0.854), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj380", 1001, CVector(6024.217, 206.953, 4324.866), Quaternion(-0.046, -0.807, -0.063, 0.586), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj381", 1001, CVector(6021.080, 207.008, 4334.816), Quaternion(0.047, -0.816, 0.071, 0.572), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj382", 1001, CVector(6017.425, 207.109, 4345.126), Quaternion(-0.027, -0.806, -0.037, 0.591), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj383", 1001, CVector(5896.087, 204.995, 4366.458), Quaternion(0.002, 0.883, -0.001, -0.469), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj384", 1001, CVector(5885.048, 205.033, 4383.654), Quaternion(-0.011, -0.876, 0.006, 0.483), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj385", 1001, CVector(5890.514, 204.938, 4375.013), Quaternion(-0.002, -0.876, 0.001, 0.483), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj386", 1001, CVector(5857.842, 204.677, 4385.053), Quaternion(0.004, -0.952, 0.001, -0.305), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj387", 1001, CVector(5866.178, 205.065, 4391.228), Quaternion(0.010, -0.958, 0.003, -0.288), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj388", 1001, CVector(5839.377, 204.406, 4351.914), Quaternion(0.008, 0.485, 0.015, 0.874), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj389", 1001, CVector(5833.669, 204.211, 4360.650), Quaternion(0.007, 0.491, 0.013, 0.871), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj390", 1001, CVector(5835.125, 204.526, 4367.936), Quaternion(-0.010, 0.954, -0.003, 0.299), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj391", 1001, CVector(5858.962, 204.583, 4335.880), Quaternion(0.001, -0.286, -0.002, 0.958), 0, 1.000)
+			CreateNewBreakableObject("Breakable_old_fence", "breakebleObj392", 1001, CVector(5894.477, 204.802, 4359.007), Quaternion(-0.006, -0.280, 0.021, 0.960), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj393", 1001, CVector(5842.469, 209.818, 4254.423), Quaternion(0.000, 0.515, 0.000, 0.857), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj394", 1001, CVector(5849.409, 210.212, 4241.144), Quaternion(0.000, 0.524, 0.000, 0.852), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj395", 1001, CVector(5855.674, 210.787, 4228.266), Quaternion(0.000, 0.541, 0.000, 0.841), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj396", 1001, CVector(5867.628, 212.398, 4201.070), Quaternion(0.092, 0.543, -0.009, 0.834), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj397", 1001, CVector(5872.402, 213.626, 4190.407), Quaternion(0.093, 0.539, 0.012, 0.837), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj398", 1001, CVector(5870.788, 214.931, 4182.666), Quaternion(0.055, 0.964, 0.026, 0.260), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj399", 1001, CVector(5781.282, 208.717, 4227.326), Quaternion(-0.001, -0.859, -0.010, 0.511), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj400", 1001, CVector(5791.815, 209.173, 4208.923), Quaternion(-0.015, 0.867, 0.009, -0.498), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj401", 1001, CVector(5786.485, 208.925, 4217.889), Quaternion(0.013, -0.867, -0.008, 0.498), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj402", 1001, CVector(5760.307, 208.438, 4247.699), Quaternion(0.000, 0.959, 0.000, -0.284), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj403", 1001, CVector(5810.287, 210.945, 4177.486), Quaternion(0.037, -0.858, -0.012, 0.513), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj404", 1001, CVector(5815.730, 212.077, 4167.751), Quaternion(0.056, -0.861, -0.018, 0.505), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj405", 1001, CVector(5821.419, 213.054, 4158.178), Quaternion(0.080, -0.867, 0.030, 0.491), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj406", 1001, CVector(5721.672, 208.457, 4270.011), Quaternion(0.000, 0.792, 0.000, 0.610), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj407", 1001, CVector(5718.792, 208.437, 4260.048), Quaternion(0.000, 0.804, 0.000, 0.595), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj408", 1001, CVector(5690.375, 208.475, 4250.607), Quaternion(0.000, 0.987, 0.000, -0.161), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj409", 1001, CVector(5715.548, 208.170, 4250.155), Quaternion(-0.014, 0.801, -0.010, 0.598), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj410", 1001, CVector(5680.105, 209.580, 4273.133), Quaternion(0.000, -0.597, 0.000, 0.803), 0, 1.000)
+			CreateNewBreakableObject("Breakable_WoodFence2", "breakebleObj411", 1001, CVector(5677.281, 209.204, 4262.927), Quaternion(0.000, -0.609, 0.000, 0.793), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj412", 1001, CVector(5713.105, 251.377, 515.139), Quaternion(0.000, -0.755, 0.000, 0.656), 0, 1.400)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj413", 1001, CVector(5708.548, 251.432, 519.890), Quaternion(0.000, -0.061, 0.000, 0.998), 0, 1.400)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj414", 1001, CVector(5695.021, 251.010, 540.443), Quaternion(0.000, -0.753, 0.000, 0.658), 0, 1.400)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj415", 1001, CVector(5596.955, 252.629, 487.818), Quaternion(0.025, 0.624, 0.038, 0.780), 0, 1.500)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj416", 1001, CVector(5716.795, 230.139, 1011.097), Quaternion(-0.033, 0.875, 0.017, 0.483), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj417", 1001, CVector(5717.931, 230.080, 1038.041), Quaternion(-0.015, 1.000, 0.001, -0.007), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj418", 1001, CVector(5715.108, 229.975, 1034.571), Quaternion(0.000, 0.698, 0.000, -0.716), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj419", 1001, CVector(5800.825, 237.086, 1030.654), Quaternion(-0.034, 0.997, 0.037, 0.050), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj420", 1001, CVector(5803.730, 237.285, 1013.576), Quaternion(-0.015, 0.996, 0.038, 0.078), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj421", 1001, CVector(5910.830, 236.443, 1018.627), Quaternion(-0.038, 0.906, -0.005, 0.422), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj422", 1001, CVector(7452.527, 229.178, 3157.422), Quaternion(0.000, 0.489, 0.000, 0.872), 0, 1.200)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj423", 1001, CVector(7447.105, 229.178, 3161.523), Quaternion(0.000, 0.055, 0.000, 0.998), 0, 1.200)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj424", 1001, CVector(7464.312, 229.167, 3188.339), Quaternion(0.000, 0.896, 0.000, 0.444), 0, 1.200)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj425", 1001, CVector(7457.216, 229.178, 3185.639), Quaternion(0.000, 0.055, 0.000, 0.998), 0, 1.200)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj426", 1001, CVector(7506.100, 227.143, 3197.807), Quaternion(0.000, 0.377, 0.000, 0.926), 0, 1.200)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj427", 1001, CVector(7512.563, 226.955, 3194.681), Quaternion(0.000, 0.004, -0.065, 0.998), 0, 1.200)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj428", 1001, CVector(5449.723, 228.378, 1915.455), Quaternion(0.000, 0.653, 0.000, 0.757), 0, 1.500)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj429", 1001, CVector(5473.840, 238.462, 1963.425), Quaternion(0.000, 0.682, 0.000, 0.731), 0, 1.400)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj430", 1001, CVector(5361.360, 244.317, 2293.203), Quaternion(0.000, -0.054, 0.000, 0.999), 0, 1.400)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj431", 1001, CVector(5353.124, 244.373, 2295.167), Quaternion(0.000, 0.257, 0.000, 0.966), 0, 1.400)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj432", 1001, CVector(4961.944, 224.502, 1920.731), Quaternion(-0.039, 0.146, -0.085, 0.985), 0, 1.400)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj433", 1001, CVector(4967.231, 224.349, 1913.155), Quaternion(0.062, 0.656, -0.049, 0.751), 0, 1.400)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj434", 1001, CVector(4685.821, 252.058, 2304.818), Quaternion(-0.003, 0.659, -0.003, 0.752), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj435", 1001, CVector(4682.490, 252.240, 2309.235), Quaternion(0.000, 0.989, 0.000, -0.146), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj436", 1001, CVector(4676.249, 251.547, 2272.377), Quaternion(-0.011, 0.997, 0.000, 0.070), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj437", 1001, CVector(4631.018, 251.373, 2272.808), Quaternion(0.000, 0.666, 0.000, 0.746), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj438", 1001, CVector(4628.634, 251.303, 2269.229), Quaternion(0.000, 1.000, 0.000, 0.031), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj439", 1001, CVector(4616.778, 251.408, 2269.495), Quaternion(0.000, 1.000, 0.000, 0.022), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj440", 1001, CVector(4613.250, 251.480, 2271.900), Quaternion(0.000, 0.685, 0.000, 0.728), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj441", 1001, CVector(4615.534, 253.034, 2317.013), Quaternion(-0.023, 0.662, -0.023, 0.749), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj442", 1001, CVector(4623.004, 253.962, 2330.973), Quaternion(0.000, 0.996, 0.000, 0.087), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj443", 1001, CVector(4575.768, 251.013, 1758.616), Quaternion(0.000, 0.002, -0.011, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj444", 1001, CVector(4571.506, 251.526, 1762.101), Quaternion(-0.037, 0.485, -0.030, 0.873), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj445", 1001, CVector(4596.578, 250.399, 1756.963), Quaternion(-0.004, -0.022, -0.010, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj446", 1001, CVector(4594.990, 252.907, 1781.026), Quaternion(-0.004, -0.022, -0.010, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj447", 1001, CVector(4619.010, 253.135, 1790.622), Quaternion(-0.052, 0.226, -0.047, 0.972), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj448", 1001, CVector(4624.042, 253.270, 1816.780), Quaternion(-0.022, 0.416, -0.018, 0.909), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj449", 1001, CVector(3623.530, 254.322, 2276.232), Quaternion(0.000, 0.017, 0.002, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj450", 1001, CVector(3623.901, 254.148, 2260.381), Quaternion(-0.003, -0.022, -0.012, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj451", 1001, CVector(4211.117, 232.113, 1315.242), Quaternion(-0.001, -0.013, 0.009, 1.000), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj452", 1001, CVector(4206.396, 232.182, 1318.188), Quaternion(0.006, 0.530, -0.009, 0.848), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj453", 1001, CVector(4251.053, 228.768, 1195.843), Quaternion(0.000, -0.075, -0.006, 0.997), 0, 1.200)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj454", 1001, CVector(4213.166, 243.103, 767.296), Quaternion(0.000, 0.399, 0.000, 0.917), 0, 1.200)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj455", 1001, CVector(4219.831, 243.500, 764.234), Quaternion(0.000, -0.004, 0.000, 1.000), 0, 1.200)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj456", 1001, CVector(4252.229, 243.088, 763.466), Quaternion(-0.003, -0.037, -0.030, 0.999), 0, 1.200)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj457", 1001, CVector(4649.276, 281.000, 3856.020), Quaternion(0.000, 0.496, 0.000, 0.868), 0, 1.500)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj458", 1001, CVector(4644.869, 281.000, 3883.377), Quaternion(0.000, 0.387, 0.000, 0.922), 0, 1.500)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj459", 1001, CVector(4607.538, 279.158, 4133.042), Quaternion(0.020, 0.831, 0.013, 0.555), 0, 1.500)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj460", 1001, CVector(4613.337, 278.863, 4139.993), Quaternion(-0.019, 0.901, 0.010, 0.433), 0, 1.500)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj461", 1001, CVector(5714.999, 230.032, 1005.155), Quaternion(-0.025, 0.665, 0.027, 0.746), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj462", 1001, CVector(5799.792, 237.208, 1010.793), Quaternion(-0.031, 0.693, 0.004, -0.721), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj463", 1001, CVector(5798.969, 237.327, 1004.846), Quaternion(-0.032, 0.647, 0.002, -0.761), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj464", 1001, CVector(5913.880, 236.912, 1023.969), Quaternion(-0.030, 0.803, -0.003, 0.596), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj465", 1001, CVector(5927.380, 237.556, 1028.546), Quaternion(0.008, 0.997, -0.013, 0.076), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj466", 1001, CVector(5690.167, 250.477, 545.005), Quaternion(0.005, -0.061, 0.015, 0.998), 0, 1.400)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj467", 1001, CVector(5822.916, 237.674, 1006.807), Quaternion(-0.004, -0.568, 0.010, 0.823), 0, 0.800)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj468", 1001, CVector(5797.217, 237.442, 999.008), Quaternion(0.000, -0.614, 0.000, 0.789), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj469", 1001, CVector(5792.861, 237.336, 996.156), Quaternion(0.000, -0.115, 0.000, 0.993), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj470", 1001, CVector(4876.228, 279.193, 4274.451), Quaternion(0.000, -0.210, 0.000, 0.978), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj471", 1001, CVector(4627.345, 253.194, 1811.356), Quaternion(0.000, 0.477, 0.000, 0.879), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj472", 1001, CVector(5595.470, 251.766, 495.117), Quaternion(0.037, 0.590, 0.046, 0.805), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj473", 1001, CVector(5448.226, 227.281, 1763.441), Quaternion(0.020, -0.698, 0.020, 0.716), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj474", 1001, CVector(5476.675, 239.048, 1969.297), Quaternion(0.057, -0.326, 0.137, 0.934), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag2", "breakebleObj475", 1001, CVector(5476.837, 238.454, 1957.575), Quaternion(-0.089, 0.228, 0.062, 0.968), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj476", 1001, CVector(5969.111, 238.792, 3374.632), Quaternion(0.000, -0.246, 0.000, 0.969), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj477", 1001, CVector(5972.048, 237.086, 3429.917), Quaternion(0.000, 0.656, 0.000, 0.755), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj478", 1001, CVector(5971.144, 237.084, 3436.000), Quaternion(0.000, 0.593, 0.000, 0.805), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj479", 1001, CVector(3631.665, 254.014, 2261.640), Quaternion(0.001, -0.236, -0.002, 0.972), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj480", 1001, CVector(5589.090, 254.810, 460.169), Quaternion(0.038, 0.573, 0.042, 0.818), 0, 1.000)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateWeatherSound" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local plf = GetPlayerVehicle()
+			if plf then
+				local obj = getObj("weather_sound")
+				if obj then obj:Remove() end
+				local sound = "ET_S_R5M1_SUMMER_"..random(1,2)
+				CreateNewSgNodeObject(sound, "weather_sound", -1, -1, plf:GetPosition(), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1)
+				TActivate("WeatherSoundMove")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="WeatherSoundMove" active="0">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local obj = getObj("weather_sound")
+			local plf = GetPlayerVehicle()
+			if plf and obj then
+				obj:SetPosition(plf:GetPosition())
+			end
+		</script>
+	</trigger>
+
+
+	<trigger Name="tr" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local names = {'Name="Breakable', 'Name="Object322493'}
+			local num = 0
+			local f = io.open("data/maps/r5m1/winter/spring/summer/dynamicscene.xml", "r+")
+			if f then
+				for logLine in f:lines() do
+					for i=1,2 do
+						local find = string.find(logLine, names[i])
+						if find then
+							local line = tostring(string.sub(logLine, find+6))
+							local l = string.find(line, '"')
+							local l2 = tostring(string.sub(line, 1, l-1))
+							num = num + 1
+							local obj = getObj(l2)
+							if obj then
+								local prot = obj:GetProperty("Prototype").AsString
+								local pos = tostring(obj:GetPosition())
+								local rot = tostring(obj:GetRotation())
+								local scale = obj:GetPropertyById(7).AsString
+								LOG('CreateNewBreakableObject("'..prot..'", "breakebleObj'..num..'", 1001, CVector'..pos..', Quaternion'..rot..', 0, '..scale..')')
+							end
+						end
+					end
+				end	
+				f:close()
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="tr1" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local f = io.open("data/maps/r5m1/winter/spring/summer/world.xml", "r+")
+			local fileContent = {}
+			local str, len = 0, 0
+			local num = 0
+			if f then
+				for logLine in f:lines() do
+					str = str + 1
+					table.insert (fileContent, logLine)
+					local find = string.find(logLine, 'id="sosna1"')
+					if find then
+						if random(2) == 1 then
+							local names = {'		id="sosna2"', '		id="sosna3"'}
+							len = str
+							num = num + 1
+							con(num)
+							con("OLD: "..fileContent[len])
+							fileContent[len] = names[random(2)]
+							con("NEW: "..fileContent[len])
+						end
+					end
+				end	
+				f:close()
+			end
+
+			local file = io.open("data/maps/r5m1/winter/spring/summer/world.xml", "w")
+			if file then
+				for index, value in ipairs(fileContent) do
+					file:write(value..'\n')
+				end
+				file:close()
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="tr2" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local trees = {'id="elka1"', 'id="elka2"', 'id="elka3"', 'id="sosna1"', 'id="sosna2"', 'id="sosna3"', 'id="dub1"', 'id="dub2"', 'id="dub3"', 'id="listvenoe2"', 'id="listvenoe3"'}
+			local f = io.open("data/maps/r5m1/winter/spring/summer/world.xml", "r+")
+			local fileContent = {}
+			local str = 0
+			local num = 0
+			if f then
+				for logLine in f:lines() do
+					str = str + 1
+					table.insert (fileContent, logLine)
+					for i=1,11 do
+						local find = string.find(logLine, trees[i])
+						if find then
+							num = num + 1
+
+							local name 
+							if tostring(string.sub(logLine, find)) == 'id="elka1"' then name = "Breakable_Elka1" end
+							if tostring(string.sub(logLine, find)) == 'id="elka2"' then name = "Breakable_Elka2" end
+							if tostring(string.sub(logLine, find)) == 'id="elka3"' then name = "Breakable_Elka3" end
+							if tostring(string.sub(logLine, find)) == 'id="sosna1"' then name = "Breakable_Sosna1" end
+							if tostring(string.sub(logLine, find)) == 'id="sosna2"' then name = "Breakable_Sosna2" end
+							if tostring(string.sub(logLine, find)) == 'id="sosna3"' then name = "Breakable_Sosna3" end
+							if tostring(string.sub(logLine, find)) == 'id="dub1"' then name = "Breakable_Dub1" end
+							if tostring(string.sub(logLine, find)) == 'id="dub2"' then name = "Breakable_Dub2" end
+							if tostring(string.sub(logLine, find)) == 'id="dub3"' then name = "Breakable_Dub3" end
+							if tostring(string.sub(logLine, find)) == 'id="listvenoe2"' then name = "Breakable_Listvenoe2" end
+							if tostring(string.sub(logLine, find)) == 'id="listvenoe3"' then name = "Breakable_Listvenoe3" end
+	
+							local lines = tostring(fileContent[str-5]..fileContent[str-4]..fileContent[str-3]..fileContent[str-2]..fileContent[str-1])
+							local pos_find = string.find(lines, 'org="')
+							if pos_find then
+								pos_find = tostring(string.sub(lines, pos_find+5))
+								local pos_find1 = string.find(pos_find, '"')
+								pos_find = tostring(string.sub(pos_find, 1, pos_find1-1))
+							end
+							local rot_find = string.find(lines, 'rot="')
+							if rot_find then
+								rot_find = tostring(string.sub(lines, rot_find+5))
+								local rot_find1 = string.find(rot_find, '"')
+								rot_find = tostring(string.sub(rot_find, 1, rot_find1-1))
+							else
+								rot_find = "0.000 0.000 0.000 1.000"
+							end
+							local scale_find = string.find(lines, 'scale="')
+							if scale_find then
+								scale_find = tostring(string.sub(lines, scale_find+7))
+								scale_find = tostring(string.sub(scale_find, 1, 5))
+							else
+								scale_find = "1.000"
+							end
+
+							LOG('\n     Objec1\n	Name="BreakebleTree'..num..'"\n	Belong="1001"\n	Prototype="'..name..'"\n 	Pos="'..pos_find..'"\n	Rot="'..rot_find..'"\n 	NodeScale="'..scale_find..'" strel')
+
+						end
+					end
+				end	
+				f:close()
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="tr3" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local trees = {'id="elka1"', 'id="elka2"', 'id="elka3"', 'id="sosna1"', 'id="sosna2"', 'id="sosna3"', 'id="dub1"', 'id="dub2"', 'id="dub3"', 'id="listvenoe2"', 'id="listvenoe3"'}
+			local f = io.open("data/maps/r5m1/winter/spring/summer/world.xml", "r+")
+			local fileContent = {}
+			local linesRemove = {}
+			local str = 0
+			local len = 0
+			if f then
+				for logLine in f:lines() do
+					str = str + 1
+					table.insert (fileContent, logLine)
+				end	
+				f:close()
+			end
+
+			for i = 1, str do
+				for t=1,11 do
+					local find = string.find(fileContent[i], trees[t])
+					if find then
+					
+						if tostring(string.sub(fileContent[i-7], 3, 6)) == "Node" then
+							table.insert(linesRemove, i-7)
+							table.insert(linesRemove, i-6)
+							table.insert(linesRemove, i-5)
+							table.insert(linesRemove, i-4)
+							table.insert(linesRemove, i-3)
+							table.insert(linesRemove, i-2)
+							table.insert(linesRemove, i-1)
+							table.insert(linesRemove, i)
+							table.insert(linesRemove, i+1)	
+						end
+
+						if tostring(string.sub(fileContent[i-6], 3, 6)) == "Node" then
+							table.insert(linesRemove, i-6)
+							table.insert(linesRemove, i-5)
+							table.insert(linesRemove, i-4)
+							table.insert(linesRemove, i-3)
+							table.insert(linesRemove, i-2)
+							table.insert(linesRemove, i-1)
+							table.insert(linesRemove, i)
+							table.insert(linesRemove, i+1)		
+						end
+
+						if tostring(string.sub(fileContent[i-5], 3, 6)) == "Node" then
+							table.insert(linesRemove, i-5)
+							table.insert(linesRemove, i-4)
+							table.insert(linesRemove, i-3)
+							table.insert(linesRemove, i-2)
+							table.insert(linesRemove, i-1)
+							table.insert(linesRemove, i)
+							table.insert(linesRemove, i+1)	
+						end
+					end 
+				end
+			end
+
+			for r = 1, getn(linesRemove) do
+				local l = linesRemove[r]
+			
+				fileContent[l] = ""
+				con(fileContent[l])
+			end
+
+			local file = io.open("data/maps/r5m1/winter/spring/summer/world.xml", "w")
+			if file then
+				for index, value in ipairs(fileContent) do
+					file:write(value..'\n')
+				end
+				file:close()
+			end
+			
+			trigger:Deactivate()
+		</script>
+	</trigger>
 </triggers>

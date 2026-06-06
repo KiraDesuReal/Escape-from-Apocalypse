@@ -461,7 +461,11 @@
 
 	<Node name="ET_PS_LIGHT_LENS" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_S1" psNumEmitterMesh="-1" /> 
-		<Node name="Object2" class="SgPointLightSourceNode" id="LS_LIGHT_TEST2" psNumEmitterMesh="-1" />
+		<Node name="Object2" class="SgPointLightSourceNode" id="LS_LIGHT_LAMPPOST" psNumEmitterMesh="-1" />
+	</Node>
+
+	<Node name="ET_LS_LIGHT_LAMPPOST2" class="SgNode">
+		<Node name="Object2" class="SgPointLightSourceNode" id="LS_LIGHT_LAMPPOST2" psNumEmitterMesh="-1" />
 	</Node>
 
 	<Node name="ET_PS_SNOW_WEATHER" class="SgNode">
@@ -3517,11 +3521,28 @@
 		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_D1" psNumEmitterMesh="-1" />
 	</Node>
 
-	<Node name="ET_PS_GREEN_SMOKE" class="SgNode">
-		<Node name="Object5" class="SgParticlesNode" id="PS_LENS_D8" psNumEmitterMesh="-1" />
+	<Node name="ET_PS_GREEN_SMOKE1" class="SgNode">
 		<Node name="Object6" class="SgParticlesNode" id="PS_GREEN_SMOKE" psNumEmitterMesh="-1" />
 		<Node name="Object1" class="SgSoundSourceNode" id="S_COLOR_FIER" looped="1" />
-		<Node name="Object2" class="SgPointLightSourceNode" id="LS_LIGHT_GREEN_FIER" looped="1" />
+		<Node name="Object2" class="SgPointLightSourceNode" id="LS_LIGHT_GREEN_FIER" psNumEmitterMesh="-1" />
+	</Node>
+
+	<Node name="ET_PS_GREEN_SMOKE2" class="SgNode">
+		<Node name="Object6" class="SgParticlesNode" id="PS_GREEN_SMOKE" psNumEmitterMesh="-1" />
+		<Node name="Object1" class="SgSoundSourceNode" id="S_COLOR_FIER" looped="1" />
+		<Node name="Object2" class="SgPointLightSourceNode" id="LS_LIGHT_GREEN_FIER" psNumEmitterMesh="-1" />
+		<Node name="Object5" class="SgParticlesNode" id="PS_LENS_D8" psNumEmitterMesh="-1" />
+		<Node name="Object7" class="SgParticlesNode" id="PS_LENS_D8" psNumEmitterMesh="-1" />
+	</Node>
+
+	<Node name="ET_PS_GREEN_SMOKE3" class="SgNode">
+		<Node name="Object6" class="SgParticlesNode" id="PS_GREEN_SMOKE" psNumEmitterMesh="-1" />
+		<Node name="Object1" class="SgSoundSourceNode" id="S_COLOR_FIER" looped="1" />
+		<Node name="Object2" class="SgPointLightSourceNode" id="LS_LIGHT_GREEN_FIER" psNumEmitterMesh="-1" />
+		<Node name="Object3" class="SgPointLightSourceNode" id="LS_LIGHT_GREEN_FIER" psNumEmitterMesh="-1" />
+		<Node name="Object5" class="SgParticlesNode" id="PS_LENS_D8" psNumEmitterMesh="-1" />
+		<Node name="Object7" class="SgParticlesNode" id="PS_LENS_D8" psNumEmitterMesh="-1" />
+		<Node name="Object8" class="SgParticlesNode" id="PS_LENS_D8" psNumEmitterMesh="-1" />
 	</Node>
 
     <Node name="ET_PS_LENS_D5" class="SgNode">

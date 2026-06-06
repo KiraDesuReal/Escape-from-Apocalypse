@@ -69,6 +69,37 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 
 	<Prototype
 		Class			= "BulletLauncher"
+		Name			= "rapier01_unlimited"
+		ModelFile		= "rapier01"
+		ResourceType	= "BIG_GUN"
+		NodeScale		= "1 1 1"
+		Mass			= "1.0"
+		
+		BulletPrototype	= "raybullet_rapier01"
+		ExplosionType	= "CANNON"
+		FiringEffect	= "none"
+		Damage		= "160"
+		FiringRate		= "24"
+		GroupingAngle	= "0.6"
+		FiringRange		= "1200"
+		RecoilForce		= "5000"
+		DamageType	= "BLAST"
+		Decal				= "DC_GUN"
+		ShellsPoolSize  = "54"
+		WithShellsPoolLimit	= "false"
+
+		ChargeSize     = "1"
+		RechargingTime = "2.5"
+
+		Durability		= "70"
+		
+		BlastWavePrototype      = "smallBlastWave_rapier"
+		Price			= "12100"
+		FiringType		= "Cannon"
+		VisibleInEncyclopedia	= "false" />
+
+	<Prototype
+		Class			= "BulletLauncher"
 		Name			= "vector01"
 		ModelFile		= "vector01"
 		ResourceType		= "BIG_GUN"

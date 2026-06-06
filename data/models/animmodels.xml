@@ -1365,16 +1365,7 @@
 		shadow="1"
 		shadowVolume="1"
 		windwavy="0"
-		file="data\models\buildings\ndkI\lunoculus\lunoculus.gam">
-		<action
-			name="STAND1">
-			<lp
-				id="fx1"
-				effect_id="ET_PS_LENS_S10"
-				restartOnAnimationChange="0"
-				ImmediateRemove="0" />
-		</action>
-	</model>
+		file="data\models\buildings\ndkI\lunoculus\lunoculus.gam"/>
 
 	<model
 		id="moon_a"

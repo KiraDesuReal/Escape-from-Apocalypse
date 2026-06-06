@@ -920,18 +920,19 @@ function CreateNewDummyObject(modelName, objName, parentId, belong, pos, rot,ski
 end
 
 -- Функция создает Breakable обжект с заданной моделью
-function CreateNewBreakableObject(prototypeName, objName, belong, pos, rot,skin)
+function CreateNewBreakableObject(prototypeName, objName, belong, pos, rot, skin, scale)
 	local parentId = -1
 	local dObj		=	_CreateNewObject( prototypeName, objName, parentId, belong )
 	local obj		=	GetEntityByID (dObj)
 
 	if skin == nil then skin = 0 end
+	if scale == nil then scale = 1 end
 	
 	obj:SetRotation ( rot )
 	obj:SetPosition ( pos )
 	obj:SetSkin ( skin )
+	obj:SetPropertyById(7, scale)
 end
-
 
 -- Функция создает SgNodeObject с заданной моделью
 function CreateNewSgNodeObject( modelName, objName, parentId, belong, pos, rot , scale)

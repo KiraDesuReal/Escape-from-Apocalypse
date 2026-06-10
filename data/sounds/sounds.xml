@@ -333,6 +333,23 @@
 		group="COLOR_FIER"
 	/>
 
+<!-- Bardwire --> 
+
+	<model
+		id="S_BARDWIRE1"
+		file="data\sounds\other\bardwire\bardwire1.ogg"
+		group="SOUND2D" />
+
+	<model
+		id="S_BARDWIRE2"
+		file="data\sounds\other\bardwire\bardwire2.ogg"
+		group="SOUND2D" />
+
+	<model
+		id="S_BARDWIRE3"
+		file="data\sounds\other\bardwire\bardwire3.ogg"
+	 	group="SOUND2D"/>
+
 <!-- Crash --> 
 
 	<model
@@ -1589,7 +1606,7 @@
 		group="HORNS"
 		/>
 
-<!-- Гром -->
+<!-- Погода -->
 
 	<model
 		id="S_THUNDER"
@@ -1619,6 +1636,30 @@
 		id="S_R5M1_SUMMER_2"
 		file="data\sounds\weather\r5m1_summer_2.ogg"
 		group="WEATHER"
+		/>
+
+	<model
+		id="S_WIND_LIGHT_1"
+		file="data\sounds\weather\wind_light1.ogg"
+		group="WEATHER"
+		/>
+
+	<model
+		id="S_WIND_LIGHT_2"
+		file="data\sounds\weather\wind_light2.ogg"
+		group="WEATHER"
+		/>
+
+	<model
+		id="S_NIGHT_AMBIENT"
+		file="data\sounds\weather\ambient_night.ogg"
+		group="WEATHER"
+		/>
+
+	<model
+		id="S_WINTER_WIND"
+		file="data\sounds\weather\winter_wind.wav"
+		group="WINTER_WIND"
 		/>
 
 <!-- Starting -->
@@ -1851,12 +1892,6 @@
 		id="S_JUNGLE"
 		file="data\sounds\enveffects\jungle_day01.wav"
 		group="WEATHER"
-		/>
-
-		<model
-		id="S_WINTER_WIND"
-		file="data\sounds\enveffects\winter_wind.wav"
-		group="WINTER_WIND"
 		/>
 
 		<model

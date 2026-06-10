@@ -11,6 +11,10 @@
 			file="data\models\AnimModels.xml" />
 
 		<Item
+			id="cub"
+			file="data\models\AnimModels.xml" />
+
+		<Item
 			id="marker_circle"
 			file="data\models\AnimModels.xml" />
 
@@ -2818,6 +2822,9 @@
 		<Item id="S_FADING_MSG" />
 		<Item id="S_DEATH" />
 
+		<Item id="S_BARDWIRE1" />
+		<Item id="S_BARDWIRE2" />
+		<Item id="S_BARDWIRE3" />
 
 		<Item id="S_CRASH_METAL01" />
 		<Item id="S_CRASH_METAL02" />
@@ -2995,13 +3002,16 @@
 		<Item id="S_HORN07" />
 		<Item id="S_HORN08" />
 
-		<!-- пїЅпїЅпїЅпїЅ -->
+		<!-- Погода -->
 
 		<Item id="S_THUNDER" />
 		<Item id="S_RAIN" />
 		<Item id="S_SNOW" />
 		<Item id="S_R5M1_SUMMER_1" />
 		<Item id="S_R5M1_SUMMER_2" />
+		<Item id="S_WIND_LIGHT_1" />
+		<Item id="S_WIND_LIGHT_2" />
+		<Item id="S_NIGHT_AMBIENT" />
 
 		<!-- Starting -->
 

@@ -1,12 +1,280 @@
 <?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
 <triggers>
-	<trigger Name="GlobalVar" active="1">
+
+<!-- Назначение дефолтных значений переменных -->
+	<trigger Name="GlobalVar" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
+
+			SetVar("PlayerCabin", "0")
+			SetVar("PlayerBasket", "0")
+
+			SetVar("PlayerCar", 0)
+
+			SetVar("PosPlayer1",0)
+			SetVar("PosPlayer2",0)
+			SetVar("SpawnPlayer",0)
+
+			SetVar("Air",0)
+			SetVar("NoAir",0)
+			SetVar("AirPoints",0)
+			SetVar("AirType", 0)
+
+			SetVar("CountPMC_Spawn1", 0)
+			SetVar("CountPMC_Spawn2", 0)
+
+			SetVar("CountScavs", 0)
+
+			SetVar("PlayerKillScavs", 0)
+			SetVar("PlayerKillPMC", 0)
+
+			SetVar("SpawnSectanian", 0)
+			SetVar("CountSectanian", 0)
+
+			SetVar("ScavCarFollowNPC", "0")
+			SetVar("ScavNPC", "0")
+			SetVar("ScavCarNPC", "0")
+
+			SetVar("PostersCreated", 0)
+
+			SetVar("Weather", 0)
+
+			SetVar("MineCountExp", 0)
+			SetVar("MineInSafeZone", 0)
+			SetVar("InMine", 0)
+
+			SetVar("InBardWare", 0)
+
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
+	<trigger Name="QuestGlobalVar" active="1">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			SetVar("q_kill_scavs_Die", 0)
+
+			SetVar("q_test_drive1_killscavs", 0)
+
+			for q_td=2,15 do
+				SetVar("q_test_drive"..q_td.."_killscavs", 0)
+				SetVar("q_test_drive"..q_td.."_killPMC", 0)
+			end
+
+			for q_td_rc=4,5 do
+				SetVar("q_test_drive"..q_td_rc.."_raidcount", 0)
+			end
+
+			for q_n=1,5 do
+				SetVar("q_naturalist"..q_n.."_killscavs", 0)
+				SetVar("q_naturalist"..q_n.."_killPMC", 0)
+			end
+
+			SetVar("q_naturalist5_raidcount", 0)
+
+			for q_b=1,8 do
+				SetVar("q_belazist"..q_b.."_killscavs", 0)
+				SetVar("q_belazist"..q_b.."_killPMC", 0)
+			end
+
+			SetVar("q_kill_usec_kills", 0)
+			SetVar("q_kill_pmc_kills", 0)
+			
+			SetVar("q_daily_kill_pmc_Kills", 0)
+			SetVar("q_daily_kill_pmc_Progress", 0)
+			SetVar("q_daily_kill_pmc_Status", "0")
+			SetVar("q_daily_kill_scav_Kills", 0)
+			SetVar("q_daily_kill_scav_Progress", 0)
+			SetVar("q_daily_kill_scav_Status", "0")
+			SetVar("q_daily_extract_Loc", "0")
+			SetVar("q_daily_extract_Count", 0)
+			SetVar("q_daily_extract_Status", "0")
+			SetVar("q_daily_extract_Progress", 0)
+
+			if COUNT_RAIDS == 0 or COUNT_RAIDS == 1 then 
+				SetVar("Weather", 0)
+				SetWeather(0) 
+			end
+
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Активация триггеров при старте локации -->
+	<trigger Name="StartMap" active="1">
+		<event eventid="GE_GAME_START" ObjName="Player1" />
+		<script>
+
+			SetVar("ChestScavs_time_hour", 0)
+			SetVar("ChestScavs_time_minute", 0)
+			SetVar("ChestScavs_time_second", 0)
+			SetVar("ChestScavs_Search", 0)
+
+			SetVar("Generator_time_work_hour", 0)
+			SetVar("Generator_time_work_minute", 0)
+			SetVar("Generator_time_work_second", 0)
+			SetVar("Generator_lvl", 0)
+			SetVar("Generator_on", 0)
+
+			SetVar("GarageCrafting_time_hour", 0)
+			SetVar("GarageCrafting_time_minute", 0)
+			SetVar("GarageCrafting_time_second", 0)
+			SetVar("GarageCraft", 0)
+			SetVar("GarageCraftPause", 0)
+
+			SetVar("ScavCar_time_hour", 0)
+			SetVar("ScavCar_time_minute", 0)
+			SetVar("ScavCar_time_second", 0)
+
+			SetVar("WindGenerator_time_hour", 0)
+			SetVar("WindGenerator_time_minute", 0)
+			SetVar("WindGenerator_time_second", 0)
+			SetVar("WindGenerator_status", "0")
+
+			if COUNT_RAIDS then SetVar("CountRaids", COUNT_RAIDS) end 
+			SetVar("CountRaids", GetVar("CountRaids").AsInt + 1)
+
+			if CHESTSCAVS_TIMER_HOUR_GLOBAL > 0 then SetVar("ChestScavs_time_hour", CHESTSCAVS_TIMER_HOUR_GLOBAL) end
+			if CHESTSCAVS_TIMER_MINUTE_GLOBAL > 0 then SetVar("ChestScavs_time_minute", CHESTSCAVS_TIMER_MINUTE_GLOBAL) end
+			if CHESTSCAVS_TIMER_SECOND_GLOBAL > 0 then SetVar("ChestScavs_time_second", CHESTSCAVS_TIMER_SECOND_GLOBAL) end
+			if CHESTSCAVS_SEARCH_GLOBAL > 0 then SetVar("ChestScavs_Search", CHESTSCAVS_SEARCH_GLOBAL) end
+
+			if GENERATOR_TIMER_HOUR_GLOBAL > 0 then SetVar("Generator_time_work_hour", GENERATOR_TIMER_HOUR_GLOBAL) end
+			if GENERATOR_TIMER_MINUTE_GLOBAL > 0 then SetVar("Generator_time_work_minute", GENERATOR_TIMER_MINUTE_GLOBAL) end
+			if GENERATOR_TIMER_SECOND_GLOBAL > 0 then SetVar("Generator_time_work_second", GENERATOR_TIMER_SECOND_GLOBAL) end
+			if GENERATOR_LVL_GLOBAL then SetVar("Generator_lvl", GENERATOR_LVL_GLOBAL) end
+			if GENERATOR_ON_GLOBAL then SetVar("Generator_on", GENERATOR_ON_GLOBAL) end
+
+			if GARAGE_CRAFTING_TIME_HOUR_GLOBAL > 0 then SetVar("GarageCrafting_time_hour", GARAGE_CRAFTING_TIME_HOUR_GLOBAL) end
+			if GARAGE_CRAFTING_TIME_MINUTE_GLOBAL > 0 then SetVar("GarageCrafting_time_minute", GARAGE_CRAFTING_TIME_MINUTE_GLOBAL) end
+			if GARAGE_CRAFTING_TIME_SECOND_GLOBAL > 0 then SetVar("GarageCrafting_time_second", GARAGE_CRAFTING_TIME_SECOND_GLOBAL) end
+			if GARAGE_CRAFT_GLOBAL > 0 then SetVar("GarageCraft", GARAGE_CRAFT_GLOBAL) end
+			if GARAGE_CRAFT_PAUSE_GLOBAL then SetVar("GarageCraftPause", GARAGE_CRAFT_PAUSE_GLOBAL) end
+
+			if SCAV_CAR_TIME_HOUR > 0 then SetVar("ScavCar_time_hour", SCAV_CAR_TIME_HOUR) end
+			if SCAV_CAR_TIME_MINUTE > 0 then SetVar("ScavCar_time_minute", SCAV_CAR_TIME_MINUTE) end
+			if SCAV_CAR_TIME_SECOND > 0 then SetVar("ScavCar_time_second", SCAV_CAR_TIME_SECOND) end
+
+			if SCAV_CARMA_GLOBAL then SetVar("ScavCarma", SCAV_CARMA_GLOBAL) end
+
+			if PLAYER_BELONG_GLOBAL then SetVar("PlayerBelong", PLAYER_BELONG_GLOBAL) end
+
+			if WINDGENERATOR_TIME_HOUR_GLOBAL > 0 then SetVar("WindGenerator_time_hour", WINDGENERATOR_TIME_HOUR_GLOBAL) end
+			if WINDGENERATOR_TIME_MINUTE_GLOBAL > 0 then SetVar("WindGenerator_time_minute", WINDGENERATOR_TIME_MINUTE_GLOBAL) end
+			if WINDGENERATOR_TIME_SECOND_GLOBAL > 0 then SetVar("WindGenerator_time_second", WINDGENERATOR_TIME_SECOND_GLOBAL) end
+			if WINDGENERATOR_STATUS_GLOBAL then SetVar("WindGenerator_status", WINDGENERATOR_STATUS_GLOBAL) end
+
+			if Q_KILL_SCAVS_DIE then SetVar("q_kill_scavs_Die", Q_KILL_SCAVS_DIE) end
+
+			if Q_TEST_DRIVE1_KILLSCAVS then SetVar("q_test_drive1_killscavs", Q_TEST_DRIVE1_KILLSCAVS) end
+			if Q_TEST_DRIVE2_KILLSCAVS then SetVar("q_test_drive2_killscavs", Q_TEST_DRIVE2_KILLSCAVS) end
+			if Q_TEST_DRIVE2_KILLPMC then SetVar("q_test_drive2_killPMC", Q_TEST_DRIVE2_KILLPMC) end
+			if Q_TEST_DRIVE3_KILLSCAVS then SetVar("q_test_drive3_killscavs", Q_TEST_DRIVE3_KILLSCAVS) end
+			if Q_TEST_DRIVE3_KILLPMC then SetVar("q_test_drive3_killPMC", Q_TEST_DRIVE3_KILLPMC) end
+			if Q_TEST_DRIVE4_KILLSCAVS then SetVar("q_test_drive4_killscavs", Q_TEST_DRIVE4_KILLSCAVS) end
+			if Q_TEST_DRIVE4_KILLPMC then SetVar("q_test_drive4_killPMC", Q_TEST_DRIVE4_KILLPMC) end
+			if Q_TEST_DRIVE5_KILLSCAVS then SetVar("q_test_drive5_killscavs", Q_TEST_DRIVE5_KILLSCAVS) end
+			if Q_TEST_DRIVE5_KILLPMC then SetVar("q_test_drive5_killPMC", Q_TEST_DRIVE5_KILLPMC) end
+			if Q_TEST_DRIVE6_KILLSCAVS then SetVar("q_test_drive6_killscavs", Q_TEST_DRIVE6_KILLSCAVS) end
+			if Q_TEST_DRIVE6_KILLPMC then SetVar("q_test_drive6_killPMC", Q_TEST_DRIVE6_KILLPMC) end
+			if Q_TEST_DRIVE7_KILLSCAVS then SetVar("q_test_drive7_killscavs", Q_TEST_DRIVE7_KILLSCAVS) end
+			if Q_TEST_DRIVE7_KILLPMC then SetVar("q_test_drive7_killPMC", Q_TEST_DRIVE7_KILLPMC) end
+			if Q_TEST_DRIVE8_KILLSCAVS then SetVar("q_test_drive8_killscavs", Q_TEST_DRIVE8_KILLSCAVS) end
+			if Q_TEST_DRIVE8_KILLPMC then SetVar("q_test_drive8_killPMC", Q_TEST_DRIVE8_KILLPMC) end
+			if Q_TEST_DRIVE9_KILLSCAVS then SetVar("q_test_drive9_killscavs", Q_TEST_DRIVE9_KILLSCAVS) end
+			if Q_TEST_DRIVE9_KILLPMC then SetVar("q_test_drive9_killPMC", Q_TEST_DRIVE9_KILLPMC) end
+			if Q_TEST_DRIVE10_KILLSCAVS then SetVar("q_test_drive10_killscavs", Q_TEST_DRIVE10_KILLSCAVS) end
+			if Q_TEST_DRIVE10_KILLPMC then SetVar("q_test_drive10_killPMC", Q_TEST_DRIVE10_KILLPMC) end
+			if Q_TEST_DRIVE11_KILLSCAVS then SetVar("q_test_drive11_killscavs", Q_TEST_DRIVE11_KILLSCAVS) end
+			if Q_TEST_DRIVE11_KILLPMC then SetVar("q_test_drive11_killPMC", Q_TEST_DRIVE11_KILLPMC) end
+			if Q_TEST_DRIVE12_KILLSCAVS then SetVar("q_test_drive12_killscavs", Q_TEST_DRIVE12_KILLSCAVS) end
+			if Q_TEST_DRIVE12_KILLPMC then SetVar("q_test_drive12_killPMC", Q_TEST_DRIVE12_KILLPMC) end
+			if Q_TEST_DRIVE13_KILLSCAVS then SetVar("q_test_drive13_killscavs", Q_TEST_DRIVE13_KILLSCAVS) end
+			if Q_TEST_DRIVE13_KILLPMC then SetVar("q_test_drive13_killPMC", Q_TEST_DRIVE13_KILLPMC) end
+			if Q_TEST_DRIVE14_KILLSCAVS then SetVar("q_test_drive14_killscavs", Q_TEST_DRIVE14_KILLSCAVS) end
+			if Q_TEST_DRIVE14_KILLPMC then SetVar("q_test_drive14_killPMC", Q_TEST_DRIVE14_KILLPMC) end
+			if Q_TEST_DRIVE15_KILLSCAVS then SetVar("q_test_drive15_killscavs", Q_TEST_DRIVE15_KILLSCAVS) end
+			if Q_TEST_DRIVE15_KILLPMC then SetVar("q_test_drive15_killPMC", Q_TEST_DRIVE15_KILLPMC) end
+
+			if Q_TEST_DRIVE4_RAID_COUNT then SetVar("q_test_drive4_raidcount", Q_TEST_DRIVE4_RAID_COUNT) end
+			if Q_TEST_DRIVE5_RAID_COUNT then SetVar("q_test_drive5_raidcount", Q_TEST_DRIVE5_RAID_COUNT) end
+
+			if Q_NATURALIST1_KILLSCAVS then SetVar("q_naturalist1_killscavs", Q_NATURALIST1_KILLSCAVS) end
+			if Q_NATURALIST1_KILLPMC then SetVar("q_naturalist1_killPMC", Q_NATURALIST1_KILLPMC) end
+			if Q_NATURALIST2_KILLSCAVS then SetVar("q_naturalist2_killscavs", Q_NATURALIST2_KILLSCAVS) end
+			if Q_NATURALIST2_KILLPMC then SetVar("q_naturalist2_killPMC", Q_NATURALIST2_KILLPMC) end
+			if Q_NATURALIST3_KILLSCAVS then SetVar("q_naturalist3_killscavs", Q_NATURALIST3_KILLSCAVS) end
+			if Q_NATURALIST3_KILLPMC then SetVar("q_naturalist3_killPMC", Q_NATURALIST3_KILLPMC) end
+			if Q_NATURALIST4_KILLSCAVS then SetVar("q_naturalist4_killscavs", Q_NATURALIST4_KILLSCAVS) end
+			if Q_NATURALIST4_KILLPMC then SetVar("q_naturalist4_killPMC", Q_NATURALIST4_KILLPMC) end
+			if Q_NATURALIST5_KILLSCAVS then SetVar("q_naturalist5_killscavs", Q_NATURALIST5_KILLSCAVS) end
+			if Q_NATURALIST5_KILLPMC then SetVar("q_naturalist5_killPMC", Q_NATURALIST5_KILLPMC) end
+
+			if Q_NATURALIST5_RAID_COUNT then SetVar("q_naturalist5_raidcount", Q_NATURALIST5_RAID_COUNT) end
+
+			if Q_BELAZIST1_KILLSCAVS then SetVar("q_belazist1_killscavs", Q_BELAZIST1_KILLSCAVS) end
+			if Q_BELAZIST1_KILLPMC then SetVar("q_belazist1_killPMC", Q_BELAZIST1_KILLPMC) end
+			if Q_BELAZIST2_KILLSCAVS then SetVar("q_belazist2_killscavs", Q_BELAZIST2_KILLSCAVS) end
+			if Q_BELAZIST2_KILLPMC then SetVar("q_belazist2_killPMC", Q_BELAZIST2_KILLPMC) end
+			if Q_BELAZIST3_KILLSCAVS then SetVar("q_belazist3_killscavs", Q_BELAZIST3_KILLSCAVS) end
+			if Q_BELAZIST3_KILLPMC then SetVar("q_belazist3_killPMC", Q_BELAZIST3_KILLPMC) end
+			if Q_BELAZIST4_KILLSCAVS then SetVar("q_belazist4_killscavs", Q_BELAZIST4_KILLSCAVS) end
+			if Q_BELAZIST4_KILLPMC then SetVar("q_belazist4_killPMC", Q_BELAZIST4_KILLPMC) end
+			if Q_BELAZIST5_KILLSCAVS then SetVar("q_belazist5_killscavs", Q_BELAZIST5_KILLSCAVS) end
+			if Q_BELAZIST5_KILLPMC then SetVar("q_belazist5_killPMC", Q_BELAZIST5_KILLPMC) end
+			if Q_BELAZIST6_KILLSCAVS then SetVar("q_belazist6_killscavs", Q_BELAZIST6_KILLSCAVS) end
+			if Q_BELAZIST6_KILLPMC then SetVar("q_belazist6_killPMC", Q_BELAZIST6_KILLPMC) end
+			if Q_BELAZIST7_KILLSCAVS then SetVar("q_belazist7_killscavs", Q_BELAZIST7_KILLSCAVS) end
+			if Q_BELAZIST7_KILLPMC then SetVar("q_belazist7_killPMC", Q_BELAZIST7_KILLPMC) end
+			if Q_BELAZIST8_KILLSCAVS then SetVar("q_belazist8_killscavs", Q_BELAZIST8_KILLSCAVS) end
+			if Q_BELAZIST8_KILLPMC then SetVar("q_belazist8_killPMC", Q_BELAZIST8_KILLPMC) end
+
+			if Q_KILL_USEC_KILLS then SetVar("q_kill_usec_kills", Q_KILL_USEC_KILLS) end
+			if Q_KILL_PMC_KILLS then SetVar("q_kill_pmc_kills", Q_KILL_PMC_KILLS) end
+
+			if DAILY_UPDATED_GLOBAL then SetVar("DailyUpdated", DAILY_UPDATED_GLOBAL) end
+
+			if Q_DAILY_KILL_PMC_KILLS then SetVar("q_daily_kill_pmc_Kills", Q_DAILY_KILL_PMC_KILLS) end
+			if Q_DAILY_KILL_PMC_PROGRESS then SetVar("q_daily_kill_pmc_Progress", Q_DAILY_KILL_PMC_PROGRESS) end
+			if Q_DAILY_KILL_PMC_STATUS then SetVar("q_daily_kill_pmc_Status", Q_DAILY_KILL_PMC_STATUS) end
+			if Q_DAILY_KILL_PMC_TRAIDER then SetVar("q_daily_kill_pmc", Q_DAILY_KILL_PMC_TRAIDER) end
+
+			if Q_DAILY_KILL_SCAV_KILLS then SetVar("q_daily_kill_scav_Kills", Q_DAILY_KILL_SCAV_KILLS) end
+			if Q_DAILY_KILL_SCAV_PROGRESS then SetVar("q_daily_kill_scav_Progress", Q_DAILY_KILL_SCAV_PROGRESS) end
+			if Q_DAILY_KILL_SCAV_STATUS then SetVar("q_daily_kill_scav_Status", Q_DAILY_KILL_SCAV_STATUS) end
+			if Q_DAILY_KILL_SCAV_TRAIDER then SetVar("q_daily_kill_scav", Q_DAILY_KILL_SCAV_TRAIDER) end
+
+			if Q_DAILY_EXTRACT_LOC then SetVar("q_daily_extract_Loc", Q_DAILY_EXTRACT_LOC) end
+			if Q_DAILY_EXTRACT_COUNT then SetVar("q_daily_extract_Count", Q_DAILY_EXTRACT_COUNT) end
+			if Q_DAILY_EXTRACT_STATUS then SetVar("q_daily_extract_Status", Q_DAILY_EXTRACT_STATUS) end
+			if Q_DAILY_EXTRACT_PROGRESS then SetVar("q_daily_extract_Progress", Q_DAILY_EXTRACT_PROGRESS) end
+			if Q_DAILY_EXTRACT_TRAIDER then SetVar("q_daily_extract", Q_DAILY_EXTRACT_TRAIDER) end
+
+			if ITEM_KEY_GATE_THETOWN_USED then SetVar("item_key_gate_thetown_used", ITEM_KEY_GATE_THETOWN_USED) end
+
+			TActivate("GlobalVar")
+			TActivate("CreateBreakebleObj")
+			TActivate("CreateWeatherSound")
+
+			if COUNT_RAIDS > 1 then TActivate("SetWeather") end
+
+			if KEY_O_GLOBAL then
+				IMPULSES = GET_GLOBAL_OBJECT "IMPULSES"
+           		IMPULSES:BindKey1("GS_GAME", KEY_O_GLOBAL, "IM_CAR_GET_OUT_OF_DIFFICULT_PLACE")
+			end
+
+			local time = g_ObjCont:GetGameTime().AsString
+			local hour = tonumber(strsub(time, 1, 2))
+			if 6 > hour then 
+				SetVar("GameTime", "NIGHT") 
+			else
+				SetVar("GameTime", "DAY") 
+			end
+		</script>
+	</trigger>
+
+<!-- Раставление объектов -->
 	<trigger Name="World" active="1">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -63,7 +331,8 @@
 		</script>
 	</trigger>
 
-	<trigger Name="CreateBreakebleObj" active="1">
+<!-- Создание разрушаемых объектов -->
+	<trigger Name="CreateBreakebleObj" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 			for i = 1, 480 do
@@ -554,14 +823,43 @@
 		</script>
 	</trigger>
 
+<!-- Звук погоды -->
 	<trigger Name="CreateWeatherSound" active="0">
-		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local obj = getObj("weather_sound")
+			if obj then obj:Remove() end
+			TDeactivate("WeatherSoundMove")
+			TActivate("CreateWeatherSound1")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateWeatherSound1" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local plf = GetPlayerVehicle()
 			if plf then
-				local obj = getObj("weather_sound")
-				if obj then obj:Remove() end
-				local sound = "ET_S_R5M1_SUMMER_"..random(1,2)
+				local sound
+
+				if GetVar("GameTime").AsString == "DAY" then
+					if GetVar("Weather").AsInt == 2 then
+						sound = "ET_S_WIND_LIGHT_1"
+					elseif GetVar("Weather").AsInt == 3 then
+						sound = "ET_S_WIND_LIGHT_2"
+					else
+						sound = "ET_S_R5M1_SUMMER_"..random(1,2)
+					end
+				else
+					if GetVar("Weather").AsInt == 2 then
+						sound = "ET_S_WIND_LIGHT_1"
+					elseif GetVar("Weather").AsInt == 3 then
+						sound = "ET_S_WIND_LIGHT_2"
+					else
+						sound = "ET_S_NIGHT_AMBIENT"
+					end
+				end
+
 				CreateNewSgNodeObject(sound, "weather_sound", -1, -1, plf:GetPosition(), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1)
 				TActivate("WeatherSoundMove")
 			end
@@ -577,6 +875,314 @@
 			if plf and obj then
 				obj:SetPosition(plf:GetPosition())
 			end
+		</script>
+	</trigger>
+
+<!-- Установка погоды -->
+	<trigger Name="SetWeather" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local r = random(0, 3)
+			SetVar("Weather", r)
+			SetWeather(r)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Мины -->
+	<trigger Name="IfMinesEnter" active="1">
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_1_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_2_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_3_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_4_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_5_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_6_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_7_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_8_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_9_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_10_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_11_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_12_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_13_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_14_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_15_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_16_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_17_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_18_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_19_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_20_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_21_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_22_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_23_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_24_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_25_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_26_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_27_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_28_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_29_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_30_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_31_loc" /> 
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_32_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_33_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_34_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_35_loc" />
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Mines_36_loc" />
+		<script>
+			SetVar("InMine", 1)
+			if GetVar("MineInSafeZone").AsInt == 0 then
+				local loc = trigger:GetCallObjName()
+				local type_mine = "heavy"
+				if loc == "Mines_33_loc" or loc == "Mines_34_loc" or loc == "Mines_35_loc" or loc == "Mines_36_loc" then
+					type_mine = "light"
+				end
+
+				SetVar("MineCountExp", GetVar("MineCountExp").AsInt + 1)
+				RuleConsole("g_postEffect DamageStatic")
+
+				local plf = GetPlayerVehicle()
+				local health = GetPlayerHealth()
+				if plf then
+					local cabin = plf:GetCabin()
+					local basket = plf:GetBasket()
+					local durabilityCab = cabin:GetPropertyById(19).AsInt 
+					local durabilityBas = basket:GetPropertyById(19).AsInt
+
+					plf:SetCustomLinearVelocity(0)
+					plf:SetThrottle(0)
+
+					getObj("MinesSafeZone_loc"):SetPosition(plf:GetPosition())
+					if type_mine == "heavy" then
+						CreateEffectInsertedInRemove("ET_PS_VEH_EXP2_MED", plf:GetPosition(), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), true)
+						if GetVar("MineCountExp").AsInt == 1 then
+							if 1 >= health then
+								plf:AddModifier("hp", "= 1")
+							else
+								plf:AddModifier("hp", "- "..health / 2)
+								TActivate("PlayerHealth1")
+							end
+							if random(3) == 1 then
+								if cabin then cabin:SetProperty("durability", durabilityCab - durabilityCab / 2) end 
+							elseif random(3) == 2 then
+								if basket then basket:SetProperty("durability", durabilityBas - durabilityBas / 2) end
+							else
+								if cabin then cabin:SetProperty("durability", durabilityCab - durabilityCab / 2.5) end 
+								if basket then basket:SetProperty("durability", durabilityBas - durabilityBas / 2.5) end
+							end
+						elseif GetVar("MineCountExp").AsInt > 1 then
+							plf:AddModifier("hp", "- 10000")
+						end
+					else
+						CreateEffectInsertedInRemove("ET_PS_VEH_EXP1_SMALL1", plf:GetPosition(), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), true)
+						if GetVar("MineCountExp").AsInt == 1 then
+							if 1 >= health then
+								plf:AddModifier("hp", "= 1")
+							else
+								plf:AddModifier("hp", "- "..health / 3.33)
+								TActivate("PlayerHealth1")
+							end
+							if random(3) == 1 then
+								if cabin then cabin:SetProperty("durability", durabilityCab - durabilityCab / 3.33) end 
+							elseif random(3) == 2 then
+								if basket then basket:SetProperty("durability", durabilityBas - durabilityBas / 3.33) end
+							else
+								if cabin then cabin:SetProperty("durability", durabilityCab - durabilityCab / 4) end 
+								if basket then basket:SetProperty("durability", durabilityBas - durabilityBas / 4) end
+							end
+						elseif GetVar("MineCountExp").AsInt == 2 then
+							if 1 >= health then
+								plf:AddModifier("hp", "- 10000")
+							else
+								plf:AddModifier("hp", "- "..health / 2)
+								TActivate("PlayerHealth1")
+							end
+							if random(3) == 1 then
+								if cabin then cabin:SetProperty("durability", durabilityCab - durabilityCab / 2) end 
+							elseif random(3) == 2 then
+								if basket then basket:SetProperty("durability", durabilityBas - durabilityBas / 2) end
+							else
+								if cabin then cabin:SetProperty("durability", durabilityCab - durabilityCab / 2.5) end 
+								if basket then basket:SetProperty("durability", durabilityBas - durabilityBas / 2.5) end
+							end
+						elseif GetVar("MineCountExp").AsInt > 2 then
+							plf:AddModifier("hp", "- 10000")
+						end
+					end
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="PlayerHealth1" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local plf = GetPlayerVehicle()
+			local health = GetPlayerHealth()
+			if plf then
+				if 1 > health then
+					plf:AddModifier("hp", "= 1")
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="IfMinesSafeZone" active="1">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="MinesSafeZone_loc" />
+		<script>
+			SetVar("MineInSafeZone", 1)
+			TActivate("IfMinesLeaveSafeZone")
+		</script>
+	</trigger>
+
+	<trigger Name="IfMinesLeaveSafeZone" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="MinesSafeZone_loc" />
+		<script>
+			SetVar("MineInSafeZone", 0)
+			getObj("MinesSafeZone_loc"):SetPosition(CVector(0.000, 127.000, 0.000))
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="IfMinesLeave" active="1">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_1_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_2_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_3_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_4_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_5_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_6_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_7_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_8_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_9_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_10_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_11_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_12_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_13_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_14_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_15_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_16_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_17_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_18_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_19_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_20_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_21_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_22_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_23_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_24_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_25_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_26_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_27_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_28_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_29_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_30_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_31_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_32_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_33_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_34_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_35_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Mines_36_loc" />
+		<script>
+			SetVar("InMine", 0)
+			TActivate("IfMinesLeave1")
+		</script>
+	</trigger>
+
+	<trigger Name="IfMinesLeave1" active="0">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("InMine").AsInt == 0 then
+				SetVar("MineCountExp", 0)
+				SetVar("MineInSafeZone", 0)
+				getObj("MinesSafeZone_loc"):SetPosition(CVector(0.000, 127.000, 0.000))
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Колючка -->
+	<trigger Name="IfBardwireEnter" active="1">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BardedWire_1_loc" /> 
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BardedWire_2_loc" /> 
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BardedWire_3_loc" /> 
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BardedWire_4_loc" /> 
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BardedWire_5_loc" /> 
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BardedWire_6_loc" /> 
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BardedWire_7_loc" /> 
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BardedWire_8_loc" /> 
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BardedWire_9_loc" /> 
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BardedWire_10_loc" /> 
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BardedWire_11_loc" />
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="BardedWire_12_loc" />
+		<script>
+			SetVar("InBardWare", 1)
+			if getObj("TickBardwireDamage"):IsActivated() == 0 then TActivate("TickBardwireDamage") end
+			TActivate("BardwireDamage")
+		</script>
+	</trigger>
+
+	<trigger Name="TickBardwireDamage" active="0">
+		<event timeout="0.3" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("InBardWare").AsInt == 1 then
+				TActivate("BardwireDamage")
+			else
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="BardwireDamage" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local plf = GetPlayerVehicle()
+			if plf then
+				local cabin = plf:GetCabin()
+				local basket = plf:GetBasket()
+				if plf:GetThrottle() ~= 0 then
+					CreateEffectInsertedInRemove("ET_S_BARDWIRE", plf:GetPosition(), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), true)
+					RuleConsole("g_postEffect DamageWater")
+					plf:AddModifier("hp", "- 1")
+					plf:SetCustomLinearVelocity(0)
+					plf:SetThrottle(0)
+					if cabin then
+						if random(cabin:GetPropertyById(20).AsInt) == 1 then
+							cabin:SetProperty("durability", cabin:GetPropertyById(19).AsInt - 1)
+							if 0 >= cabin:GetPropertyById(19).AsInt then cabin:SetProperty("durability", 0) end
+						end
+					end
+					if basket then
+						local prot = basket:GetProperty("Prototype").AsString
+						if prot ~= "fakePlayerCargo" then
+							if random(basket:GetPropertyById(20).AsInt) == 1 then
+								basket:SetProperty("durability", basket:GetPropertyById(19).AsInt - 1)
+								if 0 >= basket:GetPropertyById(19).AsInt then basket:SetProperty("durability", 0) end
+							end
+						end
+					end
+				else
+					plf:SetCustomLinearVelocity(0)
+					plf:SetThrottle(0)
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="IfBardwireLeave" active="1">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="BardedWire_1_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="BardedWire_2_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="BardedWire_3_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="BardedWire_4_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="BardedWire_5_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="BardedWire_6_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="BardedWire_7_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="BardedWire_8_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="BardedWire_9_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="BardedWire_10_loc" /> 
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="BardedWire_11_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="BardedWire_12_loc" />
+		<script>
+			SetVar("InBardWare", 0)
+			TDeactivate("TickBardwireDamage")
 		</script>
 	</trigger>
 

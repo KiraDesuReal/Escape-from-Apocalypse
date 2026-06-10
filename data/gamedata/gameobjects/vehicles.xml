@@ -1118,7 +1118,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 		LookRadius			= "200.0"
 		IntersectionRadius	= "4.0"
-		TakingRadius		= "7.0"
+		TakingRadius		= "1.0"
 		DestroyEffectPiercing	= "ET_PS_VEH_EXP1_MED"
 		DestroyEffectBlast	= "ET_PS_VEH_EXP2_MED"
 		DestroyEffectEnergy	= "ET_PS_VEH_EXP3_MED"
@@ -1177,7 +1177,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 		LookRadius		= "200.0"
 		IntersectionRadius	= "4.0"
-		TakingRadius		= "7.0"
+		TakingRadius		= "1.0"
 
         DriftCoeff		= "0.07"
 
@@ -1437,7 +1437,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 		LookRadius		= "200.0"
 		IntersectionRadius	= "4.0"
-		TakingRadius		= "10.0"
+		TakingRadius		= "1.0"
 
 		MassSize		= "10 1 5"
 		MassTranslation		= "0 -1.6 0"

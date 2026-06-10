@@ -249,6 +249,20 @@
 		<Node name="1"	 class="SgSoundSourceNode" id="S_ITEM_MUSIC01" looped="1" /> 
 	</Node>
 
+	<Node name="ET_S_BARDWIRE" multi="true">
+		<Node name="ET_S_BARDWIRE1" class="SgNode">
+	        <Node name="Sound3" class="SgSoundSourceNode" id="S_BARDWIRE1" looped="0" />	
+		</Node>
+
+		<Node name="ET_S_BARDWIRE2" class="SgNode">
+	        <Node name="Sound3" class="SgSoundSourceNode" id="S_BARDWIRE2" looped="0" />
+		</Node>
+
+		<Node name="ET_S_BARDWIRE3" class="SgNode">
+	         <Node name="Sound3" class="SgSoundSourceNode" id="S_BARDWIRE3" looped="0" />	
+		</Node>
+	</Node>
+
 	<Node name="ET_PS_ROCKSFAKE1" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_SPECIAL01_FIRE_MAIN_1" psNumEmitterMesh="-1" />
 	</Node>
@@ -556,6 +570,18 @@
 
 	<Node name="ET_S_R5M1_SUMMER_2" class="SgNode">
 		<Node name="noise" class="SgSoundSourceNode" id="S_R5M1_SUMMER_2" looped="1" /> 
+	</Node>
+
+	<Node name="ET_S_WIND_LIGHT_1" class="SgNode">
+		<Node name="noise" class="SgSoundSourceNode" id="S_WIND_LIGHT_1" looped="1" /> 
+	</Node>
+
+	<Node name="ET_S_WIND_LIGHT_2" class="SgNode">
+		<Node name="noise" class="SgSoundSourceNode" id="S_WIND_LIGHT_2" looped="1" /> 
+	</Node>
+
+	<Node name="ET_S_NIGHT_AMBIENT" class="SgNode">
+		<Node name="noise" class="SgSoundSourceNode" id="S_NIGHT_AMBIENT" looped="1" /> 
 	</Node>
 
 <!-- //////////////////////////////////// Ракеты //////////////////////////////////// -->

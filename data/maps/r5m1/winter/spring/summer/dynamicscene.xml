@@ -5588,7 +5588,7 @@
 		Belong="1100"
 		Prototype="genericLocation"
 		Pos="0.000 127.000 0.000"
-		Radius="10.000" />
+		Radius="50.000" />
 
 	<Object
 		Name="BardedWire_1_loc"
@@ -5651,6 +5651,27 @@
 		Belong="1100"
 		Prototype="genericLocation"
 		Pos="5887.195 234.427 1002.412"
+		Radius="2.000" />
+
+	<Object
+		Name="BardedWire10_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="4587.895 253.039 1781.423"
+		Radius="2.000" />
+
+	<Object
+		Name="BardedWire11_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="4590.358 253.204 1783.472"
+		Radius="2.000" />
+
+	<Object
+		Name="BardedWire12_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="4592.623 253.197 1783.742"
 		Radius="2.000" />
 
 	<Object

@@ -45,6 +45,14 @@
 
 			SetVar("InBardWare", 0)
 
+			SetVar("ToMap", "0")
+			SetVar("PassingToMap", 0)
+			SetVar("PassingToMap_time_msg", "00:00:00")
+
+			SetVar("Exit_ToR1M1", 0)
+			SetVar("Exit_Bunker016", 0)
+			SetVar("InBunker", "0")
+
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -257,6 +265,13 @@
 			TActivate("CreateBreakebleObj")
 			TActivate("CreateWeatherSound")
 
+			TActivate("PlayerCarConfiguration")
+			TActivate("IfChargeCar")
+			TActivate("SpawnPlayer")
+			TActivate("StartFadeEffect")
+
+			TActivate("ItemsUse")
+
 			if COUNT_RAIDS > 1 then TActivate("SetWeather") end
 
 			if KEY_O_GLOBAL then
@@ -266,6 +281,7 @@
 
 			local time = g_ObjCont:GetGameTime().AsString
 			local hour = tonumber(strsub(time, 1, 2))
+			SetVar("GameTimeHour", hour) 
 			if 6 > hour then 
 				SetVar("GameTime", "NIGHT") 
 			else
@@ -878,6 +894,17 @@
 		</script>
 	</trigger>
 
+	<trigger Name="WeatherSoundMove1" active="0">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local obj = getObj("weather_sound1")
+			local plf = GetPlayerVehicle()
+			if plf and obj then
+				obj:SetPosition(plf:GetPosition())
+			end
+		</script>
+	</trigger>
+
 <!-- Установка погоды -->
 	<trigger Name="SetWeather" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
@@ -1186,6 +1213,741 @@
 		</script>
 	</trigger>
 
+<!-- Узнаем конфигурацию машины игрока -->
+	<trigger Name="IfChargeCar" active="1">
+	<event eventid="GE_PLAYER_VEHICLE_CHANGED" ObjName="Player1" />
+		<script>
+			local vehPlayer = GetPlayerVehicle()
+			if vehPlayer then
+				vehPlayer:setImmortalMode(1)
+				if GetVar("PlayerBelong").AsString == "SCAV" then
+					vehPlayer:SetNameFromScript("ScavCarForPlayer")
+					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
+					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "ScavCarForPlayer")
+				else
+					vehPlayer:SetNameFromScript("PlayerCar")
+					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
+					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "PlayerCar")
+				end
+			end
+			TActivate("FakePlayerDead")
+			TActivate("PlayerCarConfiguration")
+		</script>
+	</trigger>
+
+	<trigger Name="PlayerCarConfiguration" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			local chassis = GetPlayerVehicle():GetChassis():GetProperty("Prototype").AsString
+			local cabin = GetPlayerVehicle():GetCabin()
+			local basket = GetPlayerVehicle():GetBasket()
+	
+			if not(cabin == nil) then SetVar("PlayerCabin", cabin:GetProperty("Prototype")) else SetVar("PlayerCabin", "0") end
+			if not(basket == nil) then SetVar("PlayerBasket", basket:GetProperty("Prototype")) else SetVar("PlayerBasket", "0") end
+
+			if strsub(chassis, 1, 10) == "bugChassis" then
+				SetVar("PlayerCar", "Bug")
+			elseif strsub(chassis, 1, 16) == "molokovozChassis" then
+				SetVar("PlayerCar", "Molokovoz")
+			elseif strsub(chassis, 1, 11) == "uralChassis" then
+				SetVar("PlayerCar", "Ural")
+			elseif strsub(chassis, 1, 12) == "belazChassis" then
+				SetVar("PlayerCar", "Belaz")
+			elseif strsub(chassis, 1, 17) == "mirotvorecChassis" then
+				SetVar("PlayerCar", "Mirotvorec")
+			elseif strsub(chassis, 1, 14) == "cruiserChassis" then
+				SetVar("PlayerCar", "Cruiser")
+			else
+				SetVar("PlayerCar", chassis)
+			end
+
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+<!-- Спавн игрока -->
+	<trigger Name="SpawnPlayer" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			
+			local posr1 = random(10)
+			local posrr1={
+				CVector(7096.887, 251.511, 524.762),
+				CVector(6494.388, 256.065, 791.483),
+				CVector(5533.235, 247.101, 646.046),
+				CVector(6999.741, 246.419, 859.777),
+				CVector(7135.897, 270.999, 1594.224),
+				CVector(6546.896, 256.152, 2260.690),
+				CVector(6117.170, 270.138, 2561.633),
+				CVector(7371.443, 223.531, 1960.418),
+				CVector(7999.273, 226.466, 2746.604),
+				CVector(6879.807, 226.949, 3461.883)} 
+			
+			local posr2 = random(10)
+			local posrr2={
+				CVector(5770.631, 208.864, 4243.322),
+				CVector(5666.647, 212.885, 4777.477),
+				CVector(4900.090, 233.795, 4973.739),
+				CVector(4514.838, 242.744, 4715.496),
+				CVector(4201.402, 261.296, 3874.374),
+				CVector(4605.746, 265.409, 3405.248),
+				CVector(4304.126, 247.700, 2415.274),
+				CVector(3975.037, 244.840, 769.116),
+				CVector(4399.409, 214.824, 928.731),
+				CVector(4479.127, 212.037, 1279.993)}
+			
+			local posr_scav1={
+				CVector(5613.020, 216.573, 1084.168),
+				CVector(5852.572, 238.424, 1135.578),
+				CVector(5987.480, 245.991, 871.976),
+				CVector(7355.271, 249.227, 2411.834),
+				CVector(7345.678, 226.972, 2850.049),
+				CVector(7237.014, 219.630, 3166.718),
+				CVector(6792.051, 250.218, 3013.096),
+				CVector(5412.767, 228.956, 2206.780)}
+
+			local posr_scav2={
+				CVector(5277.207, 237.487, 5201.297),
+				CVector(5233.958, 263.437, 4815.378),
+				CVector(5007.909, 234.721, 5327.070),
+				CVector(4705.930, 280.920, 4204.618),
+				CVector(4606.604, 280.868, 3953.746),
+				CVector(3964.326, 251.492, 1790.708),
+				CVector(4611.425, 247.476, 2544.672)}
+	
+			local rotarr={
+				Quaternion(-0.029, 0.679, -0.021, 0.734),
+				Quaternion(0.001, 0.626, 0.002, 0.780),
+				Quaternion(-0.001, 0.558, -0.001, 0.830),
+				Quaternion(-0.029, -0.025, 0.005, 0.999),
+				Quaternion(-0.001, -0.346, 0.001, 0.938),
+				Quaternion(-0.001, -0.724, -0.000, 0.690),
+				Quaternion(-0.025, -0.992, -0.005, 0.125),
+				Quaternion(0.002, -0.914, -0.001, 0.405),
+				Quaternion(-0.003, -1.000, -0.006, -0.015)}
+			
+			local spawns = random(2)
+			if spawns == 1 then 
+				SetVar("SpawnPlayer", 1)
+				if not(GetVar("PlayerBelong").AsString == "SCAV") then
+					SetVar("PosPlayer1", posr1)
+					--TActivate("Exits_RidzinBaseTroiskoe")
+				else
+					--TActivate("ExitsForScav_RidzinBaseScavTroiskoe")
+				end
+			else
+				SetVar("SpawnPlayer", 2)
+				if not(GetVar("PlayerBelong").AsString == "SCAV") then
+					SetVar("PosPlayer2", posr2)
+					--TActivate("Exits_FaterTownGloohoe")
+				else
+					--TActivate("ExitsForScav_FaterGloohoeTheTown")
+				end
+			end
+
+			local vehPlayer = GetPlayerVehicle()
+			if vehPlayer then
+				vehPlayer:SetRotation(rotarr[random(getn(rotarr))])
+				vehPlayer:setImmortalMode(1)
+				if spawns == 1 then
+					if not(GetVar("PlayerBelong").AsString == "SCAV") then
+						vehPlayer:SetGamePositionOnGround(posrr1[posr1])
+					else
+						vehPlayer:SetGamePositionOnGround(posr_scav1[random(getn(posr_scav1))])
+					end
+				else
+					if not(GetVar("PlayerBelong").AsString == "SCAV") then
+						vehPlayer:SetGamePositionOnGround(posrr2[posr2])
+					else
+						vehPlayer:SetGamePositionOnGround(posr_scav2[random(getn(posr_scav2))])
+					end
+				end
+				if GetVar("PlayerBelong").AsString == "SCAV" then
+					vehPlayer:SetNameFromScript("ScavCarForPlayer")
+					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
+					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "ScavCarForPlayer")
+				else
+					vehPlayer:SetNameFromScript("PlayerCar")
+					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
+					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "PlayerCar")
+				end
+				vehPlayer:SetThrottle(0)
+				vehPlayer:SetCustomLinearVelocity(0)
+			end
+
+			TActivate("SpawnsScavs")
+			TActivate("FakePlayerDead")
+
+			if GetVar("PlayerBelong").AsString ~= "SCAV" then
+				if EVENT == "1_APRIL" or EVENT == "1_APRIL_MULTIPLAYER" then
+					TActivate("TpFollowPlayerCarsToPlayer")
+				end
+			end
+
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+<!-- Таймер рейда -->
+	<trigger Name="TimerRaidStart" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("PlayerBelong").AsString == "SCAV" then
+				SetVar("TimeRaidMinute", random(11, 15))
+			else
+				SetVar("TimeRaidMinute", 19)
+			end
+			SetVar("TimeRaidSecond", 59)
+			SetVar("TimeRaidMsg", 0)
+			TActivate("TimerRaid")
+			TActivate("trShowRaidTimeMsg")
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="TimerRaid" active="0">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			
+			local min = GetVar("TimeRaidMinute").AsInt
+			local sec = GetVar("TimeRaidSecond").AsInt
+
+			local nulM = ""
+			local nulS = ""
+
+			if 10 > min then nulM = 0 end
+			if 10 > sec then nulS = 0 end
+
+			local Msg = nulM..min..":"..nulS..sec
+
+			SetVar("TimeRaidMsg", Msg)
+		
+			if min == 15 and sec == 1 then
+				TActivate("AirDropProbability")
+			elseif min == 14 and sec == 59 then
+				AddImportantFadingMsgByStrIdFormatted("fm_time_raid", Msg)
+			elseif min == 9 and sec == 59 then
+				AddImportantFadingMsgByStrIdFormatted("fm_time_raid", Msg)
+			elseif min == 8 and sec == 59 then
+				if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("CreateScavs") end
+			elseif min == 4 and sec == 59 or min == 2 and sec == 59 or min == 1 and sec == 59 then
+				AddImportantFadingMsgByStrIdFormatted("fm_time_raid_red", Msg)
+			elseif min == 0 and sec == 59 or min == 0 and sec == 30 or min == 0 and sec == 10  or min == 0 and 5 >= sec and not(sec == 0) then
+				AddImportantFadingMsgByStrIdFormatted("fm_time_raid_red", Msg)
+			end
+
+			if GetVar("ChestScavs_time_hour").AsInt > 0 or GetVar("ChestScavs_time_minute").AsInt > 0 or GetVar("ChestScavs_time_second").AsInt > 0 then
+				if GetVar("ChestScavs_Search").AsInt > 0 then
+					TActivate("ChestScav_Timer")
+				end
+			end
+
+			if GetVar("Generator_on").AsInt == 1 then
+				if GetVar("Generator_lvl").AsInt == 1 or GetVar("Generator_lvl").AsInt == 2 then
+					TActivate("Generator_Timer")
+				end
+
+				if GetVar("GarageCrafting_time_hour").AsInt > 0 or GetVar("GarageCrafting_time_minute").AsInt > 0 or GetVar("GarageCrafting_time_second").AsInt > 0 then
+					if GetVar("GarageCraftPause").AsInt == 0 then
+						TActivate("GarageCrafting_Timer")
+					end
+				end
+			end
+
+			if GetVar("ScavCar_time_hour").AsInt > 0 or GetVar("ScavCar_time_minute").AsInt > 0 or GetVar("ScavCar_time_second").AsInt > 0 then
+				TActivate("ScavCar_Timer")
+			end
+
+			if GetVar("WindGenerator_time_hour").AsInt > 0 or GetVar("WindGenerator_time_minute").AsInt > 0 or GetVar("WindGenerator_time_second").AsInt > 0 then
+				if GetVar("WindGenerator_status").AsString == "ON" then
+					TActivate("WindGenerator_Timer")
+				end
+			end
+
+			UpdateDailyQuests()
+
+			if not(0 > min) then
+				sec = sec - 1
+				SetVar("TimeRaidSecond",sec)
+				if 0 > sec then 
+					SetVar("TimeRaidSecond",59)
+					min = min - 1
+					SetVar("TimeRaidMinute",min)
+				end
+			end
+
+			if 0 > min and 0 >= sec then
+				TActivate("cutTimeRaid")
+				TActivate("DeactivateAllExits")
+				trigger:Deactivate() 
+			end
+			
+		</script>
+	</trigger>
+
+	<trigger Name="trShowRaidTimeMsg" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			AddImportantFadingMsgByStrIdFormatted("fm_time_raid", GetVar("TimeRaidMsg").AsString)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Таймеры в убежище -->
+	<trigger Name="ChestScav_Timer" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local hourC = GetVar("ChestScavs_time_hour").AsInt
+			local minC = GetVar("ChestScavs_time_minute").AsInt
+			local secC = GetVar("ChestScavs_time_second").AsInt
+			if not(0 > hourC) and not(0 > minC) then
+				secC = secC - 1
+				SetVar("ChestScavs_time_second", secC)
+				if 0 > secC then
+					SetVar("ChestScavs_time_second", 59)
+					minC = minC - 1
+					SetVar("ChestScavs_time_minute", minC)
+				end
+				if 0 > minC then
+					SetVar("ChestScavs_time_minute", 59)
+					hourC = hourC - 1
+					SetVar("ChestScavs_time_hour", hourC)
+				end
+			end
+
+			if hourC == 0 and minC == 0 and secC == 0 then
+				SetVar("ChestScavs_time_hour", 0)
+				SetVar("ChestScavs_time_minute", 0)
+				SetVar("ChestScavs_time_second", 0)
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Generator_Timer" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local hourG = GetVar("Generator_time_work_hour").AsInt
+			local minG = GetVar("Generator_time_work_minute").AsInt
+			local secG = GetVar("Generator_time_work_second").AsInt
+			if not(0 > hourG) and not(0 > minG) then
+				secG = secG - 1
+				SetVar("Generator_time_work_second", secG)
+				if 0 > secG then
+					SetVar("Generator_time_work_second", 59)
+					minG = minG - 1
+					SetVar("Generator_time_work_minute", minG)
+				end
+				if 0 > minG then
+					SetVar("Generator_time_work_minute", 59)
+					hourG = hourG - 1
+					SetVar("Generator_time_work_hour", hourG)
+				end
+			end
+
+			if hourG == 0 and minG == 0 and secG == 0 then
+				SetVar("Generator_time_work_second", 0)
+				SetVar("Generator_time_work_minute", 0)
+				SetVar("Generator_time_work_hour", 0)
+				SetVar("Generator_on", 0)
+				if GetVar("GarageCrafting_time_hour").AsInt > 0 or GetVar("GarageCrafting_time_minute").AsInt > 0 or GetVar("GarageCrafting_time_second").AsInt > 0 then
+					SetVar("GarageCraftPause", 1)
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="GarageCrafting_Timer" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local hourGC = GetVar("GarageCrafting_time_hour").AsInt
+			local minGC = GetVar("GarageCrafting_time_minute").AsInt
+			local secGC = GetVar("GarageCrafting_time_second").AsInt
+			if not(0 > hourGC) and not(0 > minGC) then
+				secGC = secGC - 1
+				SetVar("GarageCrafting_time_second", secGC)
+				if 0 > secGC then
+					SetVar("GarageCrafting_time_second", 59)
+					minGC = minGC - 1
+					SetVar("GarageCrafting_time_minute", minGC)
+				end
+				if 0 > minGC then
+					SetVar("GarageCrafting_time_minute", 59)
+					hourGC = hourGC - 1
+					SetVar("GarageCrafting_time_hour", hourGC)
+				end
+			end
+
+			if hourGC == 0 and minGC == 0 and secGC == 0 then
+				SetVar("GarageCrafting_time_second", 0)
+				SetVar("GarageCrafting_time_minute", 0)
+				SetVar("GarageCrafting_time_hour", 0)
+				SetVar("GarageCraftPause", 0)
+				SetVar("GarageCraft", 2)
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ScavCar_Timer" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local hourSC = GetVar("ScavCar_time_hour").AsInt
+			local minSC = GetVar("ScavCar_time_minute").AsInt
+			local secSC = GetVar("ScavCar_time_second").AsInt
+			if not(0 > hourSC) and not(0 > minSC) then
+				secSC = secSC - 1
+				SetVar("ScavCar_time_second", secSC)
+				if 0 > secSC then
+					SetVar("ScavCar_time_second", 59)
+					minSC = minSC - 1
+					SetVar("ScavCar_time_minute", minSC)
+				end
+				if 0 > minSC then
+					SetVar("ScavCar_time_minute", 59)
+					hourSC = hourSC - 1
+					SetVar("ScavCar_time_hour", hourSC)
+				end
+			end
+
+			if hourSC == 0 and minSC == 0 and secSC == 0 then
+				SetVar("ScavCar_time_hour", 0)
+				SetVar("ScavCar_time_minute", 0)
+				SetVar("ScavCar_time_second", 0)
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="WindGenerator_Timer" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local hourWG = GetVar("WindGenerator_time_hour").AsInt
+			local minWG = GetVar("WindGenerator_time_minute").AsInt
+			local secWG = GetVar("WindGenerator_time_second").AsInt
+			if not(0 > hourWG) and not(0 > minWG) then
+				secWG = secWG - 1
+				SetVar("WindGenerator_time_second", secWG)
+				if 0 > secWG then
+					SetVar("WindGenerator_time_second", 59)
+					minWG = minWG - 1
+					SetVar("WindGenerator_time_minute", minWG)
+				end
+				if 0 > minWG then
+					SetVar("WindGenerator_time_minute", 59)
+					hourWG = hourWG - 1
+					SetVar("WindGenerator_time_hour", hourWG)
+				end
+			end
+
+			if hourWG == 0 and minWG == 0 and secWG == 0 then
+				SetVar("WindGenerator_time_hour", 0)
+				SetVar("WindGenerator_time_minute", 0)
+				SetVar("WindGenerator_time_second", 0)
+				SetVar("WindGenerator_status", "DONE")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Всплывающее сообщение с информацией о рейде -->
+	<trigger Name="MessageRaid" active="0">
+		<event timeout="7" eventid="GE_TIME_PERIOD" />
+		<script>
+		
+			local count = GetVar("CountRaids").AsInt
+			
+			local time = g_ObjCont:GetGameTime().AsString
+			
+			local hour = tonumber(strsub(time, 1, 2))
+			local minute
+			local day
+
+			local nulM = ""
+
+			if 10 > hour then 
+				minute = tonumber(strsub(time, 3, 4)) 
+				day = tonumber(strsub(time, 5, 7))
+			else
+				minute = tonumber(strsub(time, 4, 5)) 
+				day = tonumber(strsub(time, 6, 8))
+			end
+	
+			if 10 > minute then nulM = 0 end
+			if 10 > minute and 10 > hour then day = tonumber(strsub(time, 5, 6)) end
+			if day == nil then day = tonumber(strsub(time, 5, 7)) end
+			
+			local TextTime = day.." "..hour..":"..nulM..minute
+
+			local user = ""
+			local Msg = ""
+			
+			if GetVar("PlayerBelong").AsString == "SCAV" then
+				user = GenerateRandomScavName()
+				Msg = MSG_RAID..count.."|"..MSG_DAY..TextTime.."|"..user.."|"..MSG_MAP_R5M1
+			else
+				user = GetProfileName()
+				Msg = MSG_RAID..count.."|"..MSG_DAY..TextTime.."|"..MSG_PMC..user.."|"..MSG_MAP_R5M1
+			end
+
+			AddFadingMsgByStrIdFormatted("fm_raid_info", Msg)
+
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+<!-- Активация выходов -->
+	<trigger Name="ExitsForPMC_1" active="0">
+		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			if random(2) == 1 then
+				SetVar("Exit_ToR1M1", 1)
+				getObj("projectorToR1M1_1"):SetSkin(1)
+				CreateNewSgNodeObject("ET_PS_LENS_S10", "projectorToR1M1_2", -1, -1, CVector(5546.408, 265.327, 500.500), Quaternion(0, 0, 0, 1), 2.6)
+				CreateNewSgNodeObject("ET_PS_LENS_S10", "projectorToR1M1_3", -1, -1, CVector(5546.408, 265.327, 500.500), Quaternion(0, 0, 0, 1), 2.6)
+				CreateNewSgNodeObject("ET_PS_HLIGHT", "projectorToR1M1_4", -1, -1, CVector(5544.514, 265.494, 500.718), Quaternion(0.5011, 0.5206, -0.5106, 0.4660), 8)
+				CreateNewSgNodeObject("ET_PS_PROJECTOR_SPOTLIGHT1", "projectorToR1M1_5", -1, -1, CVector(5545.953, 265.509, 500.624), Quaternion(0.6283, 0.3252, 0.5895, -0.3899), 1)
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE1", "projectorToR1M1_6", -1, -1, CVector(5580.169, 253.070, 506.949), Quaternion(0, 0, 0, 1), 1)
+				CreateNewSgNodeObject("ET_PS_LENS_D8", "projectorToR1M1_7", -1, -1, CVector(5580.169, 253.470, 506.949), Quaternion(0, 0, 0, 1), 0.5)
+				CreateNewSgNodeObject("ET_PS_LENS_D8", "projectorToR1M1_8", -1, -1, CVector(5580.169, 253.470, 506.949), Quaternion(0, 0, 0, 1), 0.5)
+				if GetVar("GameTime").AsString == "NIGHT" then
+					CreateNewSgNodeObject("ET_PS_PROJECTOR_SPOTLIGHT1", "projectorToR1M1_9", -1, -1, CVector(5545.953, 265.509, 500.624), Quaternion(0.6283, 0.3252, 0.5895, -0.3899), 1)
+					CreateNewSgNodeObject("LS_LIGHT_GREEN_FIER", "projectorToR1M1_10", -1, -1, CVector(5580.169, 253.470, 506.949), Quaternion(0, 0, 0, 1), 1)
+				end
+			end
+
+			if random(2) == 1 then
+				SetVar("Exit_Bunker016", 1)
+				TActivate("Bunker016_Extract")
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE2", "fierB016_1", -1, -1, CVector(6653.333, 237.600, 1470.102), Quaternion(0, 0, 0, 1), 1)
+				if GetVar("GameTime").AsString == "NIGHT" then
+					CreateNewSgNodeObject("LS_LIGHT_GREEN_FIER", "fierB016_2", -1, -1, CVector(6653.333, 237.600, 1470.102), Quaternion(0, 0, 0, 1), 1)
+				end
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE3", "fierB016_3", -1, -1, CVector(1671.402, 254.200, 7747.266), Quaternion(0, 0, 0, 1), 1)
+			end
+
+			TActivate("Bunker016_Enter")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Ворота ВС РФ -->
+	<trigger Name="ProjectorToR1M1_Activate" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			getObj("projectorToR1M1_1"):SetSkin(1)
+			CreateNewSgNodeObject("ET_PS_LENS_S10", "projectorToR1M1_2", -1, -1, CVector(5546.408, 265.327, 500.500), Quaternion(0, 0, 0, 1), 2.6)
+			CreateNewSgNodeObject("ET_PS_LENS_S10", "projectorToR1M1_3", -1, -1, CVector(5546.408, 265.327, 500.500), Quaternion(0, 0, 0, 1), 2.6)
+			CreateNewSgNodeObject("ET_PS_HLIGHT", "projectorToR1M1_4", -1, -1, CVector(5544.514, 265.494, 500.718), Quaternion(0.5011, 0.5206, -0.5106, 0.4660), 8)
+			CreateNewSgNodeObject("ET_PS_PROJECTOR_SPOTLIGHT1", "projectorToR1M1_5", -1, -1, CVector(5545.953, 265.509, 500.624), Quaternion(0.6283, 0.3252, 0.5895, -0.3899), 1)
+			if GetVar("GameTime").AsString == "NIGHT" then
+				CreateNewSgNodeObject("ET_PS_PROJECTOR_SPOTLIGHT1", "projectorToR1M1_6", -1, -1, CVector(5545.953, 265.509, 500.624), Quaternion(0.6283, 0.3252, 0.5895, -0.3899), 1)
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ToR1M1_Extract" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			SetVar("ExitTimer", 6)
+			SetVar("ToMap", "r0m0")
+			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "Exit_ToR1M1")
+			SoundFadingMsg()
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ToR1M1_Passing" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			SetVar("ExitTimer", 6)
+			SetVar("ToMap", "r1m1")
+			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "PassToMap_ToR1M1")
+			SoundFadingMsg()
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- ЗБ 016 -->
+	<trigger Name="Bunker016_EnterActivate" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Bunker016_Enter_loc" />
+		<script>
+			TActivate("Bunker016_Enter")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Bunker016_Enter" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Bunker016_Enter_loc" />
+		<script>
+			local b = SpawnMessageBox(2)
+			if b == 1 then
+				SetVar("InBunker", "Enter_016")
+				TActivate("FadeEffectForBunkers")
+			end
+			GetPlayerVehicle():SetThrottle(0)
+			GetPlayerVehicle():SetCustomLinearVelocity(0)
+		</script>
+	</trigger>
+
+	<trigger Name="Bunker016_LeaveActivate" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Bunker016_ExitFrom_loc" />
+		<script>
+			TActivate("Bunker016_Leave")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Bunker016_Leave" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Bunker016_ExitFrom_loc" />
+		<script>
+			local b = SpawnMessageBox(3)
+			if b == 1 then
+				SetVar("InBunker", "Leave_016")
+				TActivate("FadeEffectForBunkers")
+			end
+			GetPlayerVehicle():SetThrottle(0)
+			GetPlayerVehicle():SetCustomLinearVelocity(0)
+		</script>
+	</trigger>
+
+	<trigger Name="Bunker016_Extract" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Bunker016_Exit_loc" />
+		<script>
+			SetVar("ExitTimer", 6)
+			SetVar("ToMap", "r0m0")
+			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "Exit_Bunker016")
+			SoundFadingMsg()
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+		</script>
+	</trigger>
+
+<!-- Игрок покидает зону выхода -->
+	<trigger Name="LeaveZoneExit" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ToR1M1_Exit_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Bunker016_Exit_loc" />
+		<script>
+			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_leaves_location")
+			SoundFadingMsg()
+			TDeactivate("ExitTimer")
+			SetVar("ToMap", "0")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Таймер выхода -->
+	<trigger Name="ExitTimer" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local timer = GetVar("ExitTimer").AsInt - 1
+			SetVar("ExitTimer", timer)
+	
+			if timer == 0 then
+				TDeactivate("LeaveZoneExit")
+				PassToMap(GetVar("ToMap").AsString, "FromLocation")
+				if GetVar("PlayerBelong").AsString == "SCAV" then 
+					if 1.5 >= GetTolerance(1100, 1082) then
+						AddScavCarma("-", "0.4")
+					end
+					AddScavCarma("+", "0.1")
+				else
+					TActivate("IfExitForQuest") 
+				end
+				TActivate("ExitToMap")
+				trigger:Deactivate()
+			else
+				if GetVar("ToMap").AsString == "r0m0" then
+					AddFadingMsgByStrIdFormatted("fm_player_exit_location", timer)
+				else
+					AddFadingMsgByStrIdFormatted("fm_player_pass_location", timer)
+				end
+			end
+
+		</script>
+	</trigger>
+
+	<trigger Name="PassingToMap_TimerStart" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			SetVar("PassingToMap_time_msg", "00:00:59")
+			SetVar("PassingToMap_time_minute", 0)
+			SetVar("PassingToMap_time_second", 59)
+			TActivate("PassingToMap_Timer")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="PassingToMap_Timer" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local min = GetVar("PassingToMap_time_minute").AsInt
+			local sec = GetVar("PassingToMap_time_second").AsInt
+			local msg
+
+			if min > 9 then
+				if sec > 9 then
+					msg = "00:"..min..":"..sec
+				else
+					msg = "00:"..min..":0"..sec
+				end
+			else
+				if sec > 9 then
+					msg = "00:0"..min..":"..sec
+				else
+					msg = "00:0"..min..":0"..sec
+				end
+			end
+
+			if not(0 > min) then
+				sec = sec - 1
+				SetVar("PassingToMap_time_second", sec)
+				if 0 > sec then
+					SetVar("PassingToMap_time_second", 59)
+					min = min - 1
+					SetVar("PassingToMap_time_minute", min)
+				end
+			end
+
+			SetVar("PassingToMap_time_msg", msg)	
+
+			if min == 0 and sec == 0 then
+				SetVar("PassingToMap_time_msg", "00:00:00")
+				SetVar("PassingToMap_time_minute", 0)
+				SetVar("PassingToMap_time_second", 0)
+				SetVar("PassingToMap", 1)
+				if GetVar("Exit_ToR1M1").AsInt == 0 then TActivate("ProjectorToR1M1_Activate") end
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="DeactivateAllExits" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			TDeactivate("ToR1M1_Extract")
+			TDeactivate("ToR1M1_Passing")
+			TDeactivate("Bunker016_EnterActivate")
+			TDeactivate("Bunker016_Enter")
+			TDeactivate("Bunker016_LeaveActivate")
+			TDeactivate("Bunker016_Leave")
+			TDeactivate("Bunker016_Extract")
+			TDeactivate("LeaveZoneExit")
+			TDeactivate("ExitTimer")
+			TDeactivate("PassingToMap_Timer")
+			TDeactivate("PassingToMap_TimerStart")
+			trigger:Deactivate()
+		</script>
+	</trigger>
 
 	<trigger Name="tr" active="0">
 		<event timeout="0" eventid="GE_TIME_PERIOD" />

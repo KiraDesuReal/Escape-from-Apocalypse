@@ -18027,4 +18027,40 @@
 		role="PLAYER"
 		scriptResult="GetPlayerVehicle():SetThrottle(0); GetPlayerVehicle():SetCustomLinearVelocity(0); EndConversation()" />
 
+<!--Ворота ВС РФ-->
+
+	<Reply
+		name="Dlg_npc_ToR1M1_Exit_1"
+		text="Выберите куда хотите отправиться."
+		role="NPC"
+		scriptCondition="GetVar('Exit_ToR1M1').AsInt == 0 and GetVar('PassingToMap').AsInt == 1"
+		nextReplies="Dlg_npc_ToR1M1_Exit_3 Dlg_npc_ToR1M1_Exit_4" />
+
+	<Reply
+		name="Dlg_npc_ToR1M1_Exit_1_2"
+		text="Выберите куда хотите отправиться."
+		role="NPC"
+		scriptCondition="GetVar('Exit_ToR1M1').AsInt == 1"
+		nextReplies="Dlg_npc_ToR1M1_Exit_2 Dlg_npc_ToR1M1_Exit_3 Dlg_npc_ToR1M1_Exit_4" />
+
+	<Reply
+		name="Dlg_npc_ToR1M1_Exit_2"
+		text="Отправиться в убежище."
+		role="PLAYER"
+		scriptCondition="GetVar('Exit_ToR1M1').AsInt == 1"
+		scriptResult="TActivate('ToR1M1_Extract'); GetPlayerVehicle():SetThrottle(0); GetPlayerVehicle():SetCustomLinearVelocity(0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_ToR1M1_Exit_3"
+		text="Перейти на локацию Край."
+		role="PLAYER"
+		scriptCondition="GetVar('PassingToMap').AsInt == 1"
+		scriptResult="TActivate('ToR1M1_Passing'); GetPlayerVehicle():SetThrottle(0); GetPlayerVehicle():SetCustomLinearVelocity(0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_ToR1M1_Exit_4"
+		text="Выход."
+		role="PLAYER"
+		scriptResult="GetPlayerVehicle():SetThrottle(0); GetPlayerVehicle():SetCustomLinearVelocity(0); EndConversation()" />
+
 </DialogsResource>

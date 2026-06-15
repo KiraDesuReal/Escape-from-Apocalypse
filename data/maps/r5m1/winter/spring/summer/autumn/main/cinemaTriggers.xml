@@ -1,8 +1,438 @@
 <?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
-<!--
-‡¤Ґбм б®¤Ґа¦ вбп бЄаЁЇвл бЄаЁЇв®ўле а®«ЁЄ®ў =)
--->
-
 <triggers>
 
+<!-- Стартовое затемнение -->
+    <trigger Name="StartFadeEffect" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			SaveAllToleranceStatus(RS_NEUTRAL)
+
+			EnableGodMode()
+
+			Fly("start_game", CINEMATIC_NO_AIM, 0, 0.1, 0, 1)
+			StartCinematic()
+			UpdateCinematic( 1 )
+			
+			AddCinematicMessage(77773, 0)
+
+			TActivate("trSilenceMusic")
+			TActivate("StartFadeEffect_End")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="trSilenceMusic" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			PlayCustomMusic("silence")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="StartFadeEffect_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+
+			RestoreAllToleranceStatus()
+			DisableGodMode()
+			StopPlayingCustomMusic()
+
+			local player_car = GetVar("PlayerCar").AsString
+
+			local vehP = GetPlayerVehicle()
+			if vehP then 
+                local PlfCoor = vehP:GetPosition()
+				if player_car == "Bug" then
+					CreateEffectTTLed("ET_S_ENGINE_BUG_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 1538)
+				elseif player_car == "Molokovoz" then
+					CreateEffectTTLed("ET_S_ENGINE_MOLOKOVOZ_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 1142)
+				elseif player_car == "Ural" then
+					CreateEffectTTLed("ET_S_ENGINE_URAL_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 1272)
+				elseif player_car == "Belaz" then
+					CreateEffectTTLed("ET_S_ENGINE_BELAZ"..random(2).."_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 3200)
+				elseif player_car == "Mirotvorec" or player_car == "hunterChassis_Scav" then
+					CreateEffectTTLed("ET_S_ENGINE_MIROTVOREC_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 923)
+				elseif player_car == "Cruiser" or player_car == "scoutChassis_Scav" then
+					CreateEffectTTLed("ET_S_ENGINE_CRUISER_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 930)
+				elseif player_car == "fighterChassis_Scav" then
+					CreateEffectTTLed("ET_S_ENGINE_FIGHTER_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 1601)
+				end
+			end
+
+			TActivate("MessageRaid")
+			TActivate("TimerRaidStart")
+			TActivate("PassingToMap_TimerStart")
+			TActivate("CreatePMC")
+			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("IfRaidCountForQuest") end
+			TActivate("ShowExits_Activate")
+			TActivate("trShowExits")
+
+			AllowSave(false)
+
+			SetCameraBehindPlayerVehicle()
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="trShowExits" active="0">
+		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			if GetVar("SpawnPlayer").AsInt == 1 then
+				if GetVar("PlayerBelong").AsString == "SCAV" then
+					--AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits2LocationR1M1_ForScav")
+				else
+					AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits2LocationR5M1", GetVar("PassingToMap_time_msg").AsString)
+				end
+			else
+				if GetVar("PlayerBelong").AsString == "SCAV" then
+					--AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits1LocationR1M1_ForScav")
+				else
+					AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits1LocationR5M1", GetVar("PassingToMap_time_msg").AsString)
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Время рейда закончилось -->
+	<trigger Name="cutTimeRaid" active="0">
+		<event 	timeout="1"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local Plf = GetPlayerVehicle()
+			local PlfID = GetPlayerVehicleId()
+			local PlfCoor = Plf:GetPosition()
+			PlfCoor.y = PlfCoor.y + 25*0.74
+			PlfCoor.z = PlfCoor.z + 25*0.74
+
+			SaveAllToleranceStatus(RS_NEUTRAL)
+			EnableGodMode()
+
+			Plf:SetCustomLinearVelocity(0)
+			Plf:SetThrottle(0)
+	
+			FlyAround(1, 0, 15, 7, PlfCoor, PlfID, 1, 1)
+			StartCinematic()
+			UpdateCinematic(1)
+
+			AddCinematicMessage(1,0)
+
+			TActivate("cutTimeRaid_End")
+			TDeactivate("IfChargeCar")
+			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("IfPlayerDieForQuest") end 
+	
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="cutTimeRaid_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+
+			RestoreAllToleranceStatus()
+			DisableGodMode()
+
+			local pl = GetPlayerVehicle()
+			if not(GetVar("PlayerBelong").AsString == "SCAV") then
+				local spec = pl:GetPartByName("BASKET_SPECIAL_ITEMS")
+				pl:TakeOffAllGuns()
+				if spec then spec:Remove() end
+				TActivate("trUpdateCabinAndBasket")
+			else
+				if pl then pl:SetSkin(-1) end
+				if 1.5 >= GetTolerance(1100, 1082) then
+					SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.4)
+				end
+			end
+
+			TActivate("ExitFadeEffect")
+		
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="trUpdateCabinAndBasket" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local plf = GetPlayerVehicle()
+			local basket = plf:GetBasket()
+			local basDur = math.floor(basket:GetPropertyById(19).AsFloat + 0.5)
+			local skin = plf:GetSkin()
+			local cabAffix = GetAffixPartByName("CABIN")
+			if cabAffix then
+				AddAffixToPart(plf, "CABIN", cabAffix, nil, 1)
+			else
+				UpdateCab(plf)
+			end
+
+			local basAffix = GetAffixPartByName("BASKET")
+			if basAffix then
+				AddAffixToPart(plf, "BASKET", basAffix, nil, 1)
+			else
+				if basket then
+					plf:SetNewPart("BASKET", basket:GetProperty("Prototype").AsString)
+					basket:SetProperty("Durability", basDur)
+				end
+			end
+
+			plf:SetSkin(skin)
+
+			local AllItems = AllItems()
+			for i = 1, getn(AllItems) do
+				if HasPlayerAmountOfItems(AllItems[i], 1) then
+					for count = 1, GetItemsAmount(AllItems[i]) do
+						RemoveItemsFromPlayerRepository(AllItems[i], 1)
+					end
+				end
+			end
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Фейк смерть игрока -->
+	<trigger Name="FakePlayerDead" active="0">
+		<script>
+			TActivate("PlayerCarConfiguration")
+			TActivate("cutPlayerDead")
+			TActivate("DeactivateAllExits")
+			TDeactivate("TimerRaid")
+			TDeactivate("AirDropProbability")
+			TDeactivate("IfChargeCar")
+			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("IfPlayerDieForQuest") end 
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="cutPlayerDead" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			
+			SaveAllToleranceStatus(RS_NEUTRAL)
+		
+			local pl = GetPlayerVehicle()
+			local plPos = pl:GetPosition()
+			local objid = pl:GetId()
+			if pl then
+				pl:TakeOffAllGuns()
+				pl:SetSkin(-1)
+				pl:setGodMode(1)
+				pl:SetThrottle(0) 
+				pl:SetCustomLinearVelocity(0)
+				CreateNewSgNodeObject("ET_PS_VEH_EXP2_MED", "exp01", -1, -1, plPos, Quaternion(0, 0, 0, 1), 1)
+				CreateNewSgNodeObject("ET_PS_VEH_EXP_CAB", "exp02", -1, -1, plPos, Quaternion(0, 0, 0, 1), 1)
+				CreateEffectInsertedInRemove("ET_S_DEATH", plPos, Quaternion(0, 0, 0, 1), true)
+			end
+
+			plPos.y = plPos.y + 20
+			plPos.z = plPos.z + 15
+			FlyAround(5, 0.5, 15, 10, plPos, objid, 0, 1, "", 0)
+			StartCinematic()
+			UpdateCinematic(1)
+
+			RuleConsole("g_postEffect Dead")
+			TActivate("cutPlayerDead_End")
+
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="cutPlayerDead_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+
+			RestoreAllToleranceStatus()
+	
+			for i=1,2 do
+				local fx = getObj("exp0"..i)
+				if fx then fx:Remove() end
+			end
+			
+			if GetVar("PlayerCar").AsString == "Molokovoz" then
+				AddPlayerNewVehicle("MolokovozChassis")
+			elseif GetVar("PlayerCar").AsString == "Ural" then
+				AddPlayerNewVehicle("UralChassis")
+			elseif GetVar("PlayerCar").AsString == "Belaz" then
+				AddPlayerNewVehicle("BelazChassis")
+			elseif GetVar("PlayerCar").AsString == "Mirotvorec" then
+				AddPlayerNewVehicle("MirotvorecChassis")
+			elseif GetVar("PlayerCar").AsString == "Cruiser" then
+				AddPlayerNewVehicle("CruiserChassis")
+			else
+				if GetVar("PlayerBelong").AsString ~= "SCAV" then
+					AddPlayerNewVehicle("BugChassis")
+				end
+			end
+
+			if GetVar("PlayerBelong").AsString == "SCAV" then
+				local plf = GetPlayerVehicle()
+				if plf then plf:SetSkin(-1) end
+				if 1.5 >= GetTolerance(1100, 1082) then
+					SetVar("ScavCarma", GetVar("ScavCarma").AsString - 0.4)
+				end
+			end
+
+			GetPlayerVehicle():setGodMode(1)
+
+			RuleConsole("g_postEffect DeadOff")
+			UpdateWeather()
+
+			TActivate("ExitFadeEffect")
+
+		    trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Затемнение при выходе -->
+	<trigger Name="ExitFadeEffect" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			SaveAllToleranceStatus(RS_NEUTRAL)
+			EnableGodMode()
+
+			Fly("start_game", CINEMATIC_NO_AIM, 0, 0.1, 0, 1)
+			StartCinematic()
+	
+			AddCinematicMessage(77773, 0)
+
+			TActivate("ExitFadeEffect_End")
+			TActivate("ExitToMap")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ExitFadeEffect_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+
+			RestoreAllToleranceStatus()
+			DisableGodMode()
+
+			PassToMap("r0m0", "FromLocation", -1, true)
+		
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Затемнение если отпустили дикого -->
+	<trigger Name="FadeEffectIfScavCarFollowRemove" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			SaveAllToleranceStatus(RS_NEUTRAL)
+
+			Fly("start_game", CINEMATIC_NO_AIM, 0, 0.1, 0, 1)
+			StartCinematic()
+
+			AddCinematicMessage(77773, 0)
+	
+			local vehPlayer = GetPlayerVehicle()
+			if vehPlayer then
+				vehPlayer:SetThrottle(0)
+				vehPlayer:SetCustomLinearVelocity(0)
+			end
+			
+			TActivate("FadeEffectIfScavCarFollowRemove_End")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="FadeEffectIfScavCarFollowRemove_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+
+			RestoreAllToleranceStatus()
+			SetCameraBehindPlayerVehicle()
+
+			TActivate("RemoveScavCarForFollow")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Затемнение при въезде/покидании бункера -->
+	<trigger Name="FadeEffectForBunkers" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			EnableGodMode()
+			SaveAllToleranceStatus(RS_NEUTRAL)
+
+			Fly("start_game", CINEMATIC_NO_AIM, 0, 0.1, 1, 1)
+			StartCinematic()
+
+			AddCinematicMessage(77773, 0)
+	
+			TActivate("FadeEffectForBunkers_End")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="FadeEffectForBunkers_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+
+			local vehPlayer = GetPlayerVehicle()
+			if vehPlayer then
+				vehPlayer:SetThrottle(0)
+				vehPlayer:SetCustomLinearVelocity(0)
+				if GetVar("InBunker").AsString == "Enter_016" then
+					vehPlayer:SetPosition(CVector(1585.993, 260.815, 7701.069))
+					vehPlayer:SetRotation(Quaternion(-0.010, -0.008, -0.000, 1.000))
+					TActivate("Bunker016_LeaveActivate")
+					TDeactivate("Bunker016_Enter")
+				elseif GetVar("InBunker").AsString == "Leave_016" then
+					vehPlayer:SetGamePositionOnGround(CVector(6641.839, 239.004, 1469.077))
+					vehPlayer:SetRotation(Quaternion(0.014, 0.014, -0.000, 1.000))
+					TActivate("Bunker016_EnterActivate")
+					TDeactivate("Bunker016_Leave")
+				end
+			end
+
+			if strsub(GetVar("InBunker").AsString, 1, 5) == "Enter" then
+				SetWeather(4)
+				SetGameTime(0, 0)
+
+				local obj = getObj("weather_sound")
+				if obj then obj:Remove() end
+
+				TDeactivate("WeatherSoundMove")
+
+				KEY_O_GLOBAL = GetKeyBind("IM_CAR_GET_OUT_OF_DIFFICULT_PLACE")
+				IMPULSES = GET_GLOBAL_OBJECT "IMPULSES"
+				IMPULSES:UnbindKey1("GS_GAME", KEY_O_GLOBAL, "IM_CAR_GET_OUT_OF_DIFFICULT_PLACE")
+
+				CreateNewSgNodeObject("ET_S_BUNKER_AMBIENT", "weather_sound1", -1, -1, GetPlayerVehicle():GetPosition(), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1)
+				TActivate("WeatherSoundMove1")
+			elseif strsub(GetVar("InBunker").AsString, 1, 5) == "Leave" then
+				SetWeather(GetVar("Weather").AsInt)
+				SetGameTime(GetVar("GameTimeHour").AsInt, 0)
+
+				TActivate("CreateWeatherSound")
+
+				local obj = getObj("weather_sound1")
+				if obj then obj:Remove() end
+				TDeactivate("WeatherSoundMove1")
+
+				IMPULSES = GET_GLOBAL_OBJECT "IMPULSES"
+           		IMPULSES:BindKey1("GS_GAME", KEY_O_GLOBAL, "IM_CAR_GET_OUT_OF_DIFFICULT_PLACE")
+			end
+
+			SetVar("InBunker", "0")
+			DisableGodMode()
+			RestoreAllToleranceStatus()
+			SetCameraBehindPlayerVehicle()
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
 </triggers>

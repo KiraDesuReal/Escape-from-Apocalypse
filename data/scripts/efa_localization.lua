@@ -70,6 +70,7 @@ MSG_RAID = "Рейд №"
 MSG_DAY = "День: "
 MSG_PMC = "Оператор ЧВК "
 MSG_MAP_R1M1 = "Край"
+MSG_MAP_R5M1 = "Лес"
 
 -- Генерация случайного имени для дикого
 function GenerateRandomScavName()

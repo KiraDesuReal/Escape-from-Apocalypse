@@ -997,6 +997,10 @@
 		<Node name="noise" class="SgSoundSourceNode" id="S_FACTORY_WIND" looped="1" /> 
 	</Node>
 
+	<Node name="ET_S_BUNKER_AMBIENT" class="SgNode">
+		<Node name="noise" class="SgSoundSourceNode" id="S_BUNKER_AMBIENT" looped="1" /> 
+	</Node>
+
 <!-- //////////////////////////////////// Ролики //////////////////////////////////// -->
 
 	<Node name="ET_S_OIL_FIELD" class="SgNode">

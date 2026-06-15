@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
-<!--
-‘ва®Є®ўлҐ Є®­бв ­¤л ¤«п ўлў®¤  б®®ЎйҐ­Ё Ё ®аЈ ­Ё§ жЁЁ а®«ЁЄ®ў.
-ЏаЁ¬Ґа:
-‘ г­ЁЄ «м­®© ¬ бЄ®©:
+<resource>
 	<string
 		id="1"
-		modelName="mask_hero"
-		value="|џ ЇҐаҐбҐЄ Їгбвл­о б¬ҐавЁ! € ¤ ¦Ґ §¤Ґбм - б«Ґ¤л зҐ«®ўҐЄ . ѓ¤Ґ в®«мЄ® «о¤Ё ­Ґ бҐ«пвбп!"
-		sound="data\sounds\Speech\r4m1\r4m1_1_hero.ogg"
-		time="1" />
+		value="||@FF0000ААААААААААААААААААААААAAAAAAAA@ffb20b0bПРОПАЛ БЕЗ ВЕСТИ!"
+		time="6.5"/>
 
-‘ Є®­дЁЈга жЁҐ© ¬ бЄЁ:
 	<string
-		id="15"
-		modelName="r4_man"
-		modelSkin="0"
-		modelCfg="135"
-		modelSlot="1"
-		value="‘’Ђђ€Љ|‘­ з «  п ­Ґ е®вҐ« вҐЎҐ нв®Ј® Ј®ў®аЁвм, ­® в®в зҐ«®ўҐЄ, ® Є®в®а®¬ вл бЇа иЁў «, ¤Ґ©бвўЁвҐ«м­® Ўл« ў ­ иҐ© ¤ҐаҐў­Ґ. Ћ­ ®вЇа ўЁ«бп ¤ «миҐ ­  ў®бв®Є. ‡ Є«Ё­ о вҐЎп - ­Ґ б«Ґ¤г© §  ­Ё¬! ’ ¬ вҐЎп ¦¤Ґв в®«мЄ® б¬Ґавм. €«Ё в®, зв® ег¦Ґ б¬ҐавЁ."
-		sound="data\sounds\Speech\r4m1\r4m1_15_oldman.ogg"
-		time="5" />
+		id="2"
+		value="Вы желаете посетить бункер?"
+		numButtons="2" />
 
--->
-<resource>
+	<string
+		id="3"
+		value="Вы желаете покинуть бункер?"
+		numButtons="2" />
 
+	<string
+		id="77773"
+		msgType="SCROLL"
+		image="data\if\ico\CinemaPanel\foreground_movie_shade_midle.dds"
+		upOverlay="data\if\ico\CinemaPanel\foreground_movie_shade_up.dds"
+		downOverlay="data\if\ico\CinemaPanel\foreground_movie_shade.dds"
+		time="0.1" />
 
 </resource>

@@ -237,12 +237,24 @@
 		value="Stay in the exit area|@ff6cff00%1p" />
 
 	<string
+		id="fm_player_exit_enters_location2"
+		value="Stay in the exit area|@ff6cff00EXIT0%1d %2p" />
+
+	<string
 		id="fm_player_exit_leaves_location"
 		value="You have left the exit zone!" />
 
 	<string
 		id="fm_player_search_exit_zone"
 		value="@ff6cff00Find the exit zone:|@FFFFFFFF%1p" />
+
+	<string
+		id="fm_player_search_exit_zone2"
+		value="@ff6cff00Find the exit zone:|@FFFFFFFF%1p" />
+
+	<string
+		id="fm_player_search_exit_zone3"
+		value="@ff6cff00Find the exit zone:|@FFFFFFFF%1p @FFFFFFFF%2p @FFFFFFFF%3p" />
 
 	<string
 		id="fm_use_scrap_metal"
@@ -615,4 +627,20 @@
 	<string
 		id="fm_used_item"
 		value="You used the item: %1p" />
+
+	<string
+		id="fm_exit_enter_signal_zone"
+		value="Signal transmission zone." />
+
+	<string
+		id="fm_exit_leave_signal_zone"
+		value="You have left the signal transmission area." />
+
+	<string
+		id="fm_exit_coridor_open"
+		value="The corridor is open." />
+
+	<string
+		id="fm_exit_coridor_close"
+		value="The corridor is closed." />
 </resource>

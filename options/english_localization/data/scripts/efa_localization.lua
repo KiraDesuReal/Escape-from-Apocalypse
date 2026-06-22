@@ -70,6 +70,24 @@ MSG_RAID = "Raid №"
 MSG_DAY = "Day: "
 MSG_PMC = "PMC operator "
 MSG_MAP_R1M1 = "Krai"
+MSG_MAP_R5M1 = "Woods"
+
+MSG_EXIT1 = "@ffffffffEXIT01 "
+MSG_EXIT2 = "@ffffffffEXIT02 "
+MSG_EXIT3 = "@ffffffffEXIT03 "
+
+EXITSCAV_FACTORYGATE = "@ffd1d3d4Factory gates"
+EXITSCAV_OLDDEPO = "@ffd1d3d4Old Railway Depot"
+EXITSCAV_SOUTHPOST = "@ffd1d3d4UN Roadblock"
+EXITSCAV_TOR1M1 = "@ffd1d3d4RUAF Roadblock"
+EXITSCAV_EASTERNCLIFFS = "@ffd1d3d4Eastern Rocks"
+EXITSCAV_MOUNTAINCACHE = "@ffd1d3d4Mountain Stash"
+EXITSCAV_SCAVBRIGE = "@ffd1d3d4Scav Bridge"
+EXITSCAV_BOAT = "@ffd1d3d4Boat"
+EXITSCAV_SHELTER = "@ffd1d3d4Dead Man's Place"
+EXITSCAV_SCAVHOME = "@ffd1d3d4Scav House"
+EXITSCAV_OUTSKIRTS = "@ffd1d3d4Outskirts"
+EXITSCAV_SCAVBUNKER = "@ffd1d3d4Scav Bunker"
 
 -- Генерация случайного имени для дикого
 function GenerateRandomScavName()

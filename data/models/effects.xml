@@ -3575,6 +3575,20 @@
 		<Node name="Object8" class="SgParticlesNode" id="PS_LENS_D8" psNumEmitterMesh="-1" />
 	</Node>
 
+	<Node name="ET_PS_GREEN_FIER1" class="SgNode">
+		<Node name="Object3" class="SgPointLightSourceNode" id="LS_LIGHT_GREEN_FIER" psNumEmitterMesh="-1" />
+		<Node name="Object7" class="SgParticlesNode" id="PS_LENS_D8" psNumEmitterMesh="-1" />
+		<Node name="Object1" class="SgSoundSourceNode" id="S_FLARE_SHOOT" looped="0" />
+	</Node>
+
+	<Node name="ET_PS_GREEN_FIER2" class="SgNode">
+		<Node name="Object3" class="SgPointLightSourceNode" id="LS_LIGHT_GREEN_FIER" psNumEmitterMesh="-1" />
+		<Node name="Object7" class="SgParticlesNode" id="PS_LENS_D8" psNumEmitterMesh="-1" />
+		<Node name="Object8" class="SgParticlesNode" id="PS_LENS_D8" psNumEmitterMesh="-1" />
+		<Node name="Object9" class="SgParticlesNode" id="PS_LENS_D8" psNumEmitterMesh="-1" />
+		<Node name="Object1" class="SgSoundSourceNode" id="S_FLARE_SHOOT" looped="0" />
+	</Node>
+
     <Node name="ET_PS_LENS_D5" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_D5" psNumEmitterMesh="-1" /> 
 	</Node>

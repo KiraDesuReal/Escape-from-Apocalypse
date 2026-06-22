@@ -2161,62 +2161,207 @@
 	<Item
 		id="ExitRoadToFater"
 		locForm="0"
-		value="EXIT03 - Road to Vaterland" />
+		value="EXIT03 Road to Vaterland" />
 
 	<Item
 		id="ExitZaTheGloohoe"
 		locForm="0"
-		value="EXIT01 - Road to Customs" />
+		value="EXIT01 Road to Customs" />
 
 	<Item
 		id="ExitRoadToRidzin"
 		locForm="0"
-		value="EXIT01 - Road to Ridzin" />
+		value="EXIT01 Road to Ridzin" />
 
 	<Item
 		id="ExitBaseFelix"
 		locForm="0"
-		value="EXIT02 - Scavs base gorge" />
+		value="EXIT02 Scavs base gorge" />
 
 	<Item
 		id="ExitZaTheTroiskoe"
 		locForm="0"
-		value="EXIT03 - The Troitsk trail" />
+		value="EXIT03 The Troitsk trail" />
 
 	<Item
 		id="ExitScav_ZaTheTown"
 		locForm="0"
-		value="EXIT02 - Mountains South" />
+		value="EXIT02 Mountains South" />
 
 	<Item
 		id="ExitScav_BaseScavs"
 		locForm="0"
-		value="EXIT02 - Scavs base" />
+		value="EXIT02 Scavs base" />
 
 	<Item
 		id="Exits1LocationR1M1"
 		locForm="0"
-		value="EXIT01 - Road to Customs|EXIT02 - Scavs base gorge|EXIT03 - Road to Vaterland ??:??:??" />
+		value="EXIT01 @ffd1d3d4Road to Customs|@ffffffffEXIT02 @ffd1d3d4Scavs base gorge|@ffffffffEXIT03 @ffd1d3d4Road to Vaterland @ffffffff??:??:??" />
 
 	<Item
 		id="Exits2LocationR1M1"
 		locForm="0"
-		value="EXIT01 - Road to Ridzin|EXIT02 - Scavs base gorge|EXIT03 - The Troitsk trail ??:??:??" />
+		value="EXIT01 @ffd1d3d4Road to Ridzin|@ffffffffEXIT02 @ffd1d3d4Scavs base gorge|@ffffffffEXIT03 @ffd1d3d4The Troitsk trail @ffffffff??:??:??" />
 
 	<Item
 		id="Exits1LocationR1M1_ForScav"
 		locForm="0"
-		value="EXIT01 - Road to Customs|EXIT02 - Mountains South|EXIT03 - Road to Vaterland ??:??:??" />
+		value="EXIT01 @ffd1d3d4Road to Customs|@ffffffffEXIT02 @ffd1d3d4Mountains South|@ffffffffEXIT03 @ffd1d3d4Road to Vaterland @ffffffff??:??:??" />
 
 	<Item
 		id="Exits2LocationR1M1_ForScav"
 		locForm="0"
-		value="EXIT01 - Road to Ridzin|EXIT02 - Scavs base|EXIT03 - The Troitsk trail ??:??:??" />
+		value="EXIT01 @ffd1d3d4Road to Ridzin|@ffffffffEXIT02 @ffd1d3d4Scavs base|@ffffffffEXIT03 @ffd1d3d4The Troitsk trail @ffffffff??:??:??" />
 
 	<Item
 		id="Exits2LocationR1M1_ForScav_2"
 		locForm="0"
-		value="EXIT01 - Road to Ridzin|@ffa30d0dEXIT02 - Scavs base|@ffffffffEXIT03 - The Troitsk trail ??:??:??" />
+		value="EXIT01 @ffd1d3d4Road to Ridzin|@ffa30d0dEXIT02 @ffd1d3d4Scavs base|@ffffffffEXIT03 @ffd1d3d4The Troitsk trail @ffffffff??:??:??" />
+
+	<Item
+		id="Exits1LocationR5M1"
+		locForm="0"
+		value="EXIT01 @ffd1d3d4RUAF Gate @ffffffff??:??:??|EXIT02 @ffd1d3d4ZB-016 @ffffffff??:??:??|EXIT03 @ffd1d3d4UN Roadblock|@ffffffffEXIT04 @ffd1d3d4Exit on the bridge|@ffffffffEXIT05 @ffd1d3d4Northern UN Roadblock|@ffffffffEXIT06 @ffd1d3d4Power Line Passage (Flare)|@ffbb0c07TRANSITION01 @ffd1d3d4Transit to Krai" />
+
+	<Item
+		id="Exits1LocationR5M1_2"
+		locForm="0"
+		value="EXIT01 @ffd1d3d4RUAF Gate @ffffffff??:??:??|EXIT02 @ffd1d3d4ZB-016 @ffffffff??:??:??|EXIT03 @ffd1d3d4UN Roadblock|@ffffffffEXIT04 @ffd1d3d4Exit on the bridge|@ffffffffEXIT05 @ffd1d3d4Northern UN Roadblock|@ffffffffEXIT06 @ffd1d3d4Power Line Passage (Flare)|@ffff852bTRANSITION01 @ffd1d3d4Transit to Krai" />
+
+	<Item
+		id="Exits2LocationR5M1"
+		locForm="0"
+		value="EXIT01 @ffd1d3d4ZB-014 @ffffffff??:??:??|EXIT02 @ffd1d3d4Exit on the bridge|@ffffffffEXIT03 @ffd1d3d4Outskirts|@ffffffffEXIT04 @ffd1d3d4Power Line Passage (Flare)|@ffbb0c07TRANSITION01 @ffd1d3d4Transit to Krai" />
+	
+	<Item
+		id="Exits2LocationR5M1_2"
+		locForm="0"
+		value="EXIT01 @ffd1d3d4ZZB-014 @ffffffff??:??:??|EXIT02 @ffd1d3d4Exit on the bridge|@ffffffffEXIT03 @ffd1d3d4Outskirts|@ffffffffEXIT04 @ffd1d3d4Power Line Passage (Flare)|@ffff852bTRANSITION01 @ffd1d3d4Transit to Krai" />
+
+	<Item
+		id="Passing_ToR1M1_1"
+		locForm="0"
+		value="|@ffbb0c07TRANSITION01 @ffd1d3d4Transit to Krai" />
+	
+	<Item
+		id="Passing_ToR1M1_2"
+		locForm="0"
+		value="|@ffff852bTRANSITION01 @ffd1d3d4Transit to Krai" />
+
+	<Item
+		id="Exit_ToR1M1"
+		locForm="0"
+		value="EXIT01 RUAF Gate" />
+
+	<Item
+		id="Exit_Bunker016"
+		locForm="0"
+		value="EXIT02 ZB-016" />
+
+	<Item
+		id="Exit_SouthPost"
+		locForm="0"
+		value="EXIT03 UN Roadblock" />
+
+	<Item
+		id="Exit_A_Brige"
+		locForm="0"
+		value="EXIT04 Exit on the bridge" />
+
+	<Item
+		id="Exit_NorthPost"
+		locForm="0"
+		value="EXIT05 Northern UN Roadblock" />
+
+	<Item
+		id="Exit_LEP"
+		locForm="0"
+		value="EXIT06 Power Line Passage" />
+
+	<Item
+		id="Exit_Bunker014"
+		locForm="0"
+		value="EXIT01 ZB-014" />
+
+	<Item
+		id="Exit_A_Brige2"
+		locForm="0"
+		value="EXIT02 Exit on the bridge" />
+
+	<Item
+		id="Exit_Outskirts"
+		locForm="0"
+		value="EXIT03 Outskirts" />
+
+	<Item
+		id="Exit_LEP2"
+		locForm="0"
+		value="EXIT04 Power Line Passage" />
+
+	<Item
+		id="PassToMap_ToR1M1"
+		locForm="0"
+		value="@ffff852bTRANSITION01 Transit to Krai" />
+
+	<Item
+		id="ExitScav_FactoryGate"
+		locForm="0"
+		value="Factory gates" />
+
+	<Item
+		id="ExitScav_OldDepo"
+		locForm="0"
+		value="Old Railway Depot" />
+
+	<Item
+		id="ExitScav_SouthPost"
+		locForm="0"
+		value="UN Roadblock" />
+
+	<Item
+		id="ExitScav_ToR1M1"
+		locForm="0"
+		value="RUAF Roadblock" />
+
+	<Item
+		id="ExitScav_EasternCliffs"
+		locForm="0"
+		value="Eastern Rocks" />
+
+	<Item
+		id="ExitScav_MountainCache"
+		locForm="0"
+		value="Mountain Stash" />
+
+	<Item
+		id="ExitScav_ScavBrige"
+		locForm="0"
+		value="Scav Bridge" />
+
+	<Item
+		id="ExitScav_Boat"
+		locForm="0"
+		value="Boat" />
+
+	<Item
+		id="ExitScav_Shelter"
+		locForm="0"
+		value="Dead Man's Place" />
+
+	<Item
+		id="ExitScav_ScavHome"
+		locForm="0"
+		value="Scav House" />
+
+	<Item
+		id="ExitScav_Outskirts"
+		locForm="0"
+		value="Outskirts" />
+
+	<Item
+		id="ExitScav_ScavBunker"
+		locForm="0"
+		value="Scav Bunker" />
 
 	<Item
 		id="Sml1CarScav"
@@ -2499,6 +2644,16 @@
 		id="item_key_gate_vaterland"
 		locForm="0"
 		value="Key to the Road to Vaterland" />
+
+	<Item
+		id="item_key_gate_bunker014"
+		locForm="0"
+		value="Key ZB-014" />
+
+	<Item
+		id="quest_item_key_gate_bunker014"
+		locForm="0"
+		value="Key ZB-014" />
 
 
 	<Item
@@ -3628,6 +3783,11 @@
 		id="item_ms2000"
 		locForm="0"
 		value="Marker MS2000" />
+
+	<Item
+		id="item_green_fier"
+		locForm="0"
+		value="RSP-30 (Green)" />
 
 
 	<Item

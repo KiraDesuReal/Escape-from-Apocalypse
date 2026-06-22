@@ -271,6 +271,7 @@
 			if Q_DAILY_EXTRACT_TRAIDER then SetVar("q_daily_extract", Q_DAILY_EXTRACT_TRAIDER) end
 
 			if ITEM_KEY_GATE_THETOWN_USED then SetVar("item_key_gate_thetown_used", ITEM_KEY_GATE_THETOWN_USED) end
+			if ITEM_KEY_GATE_BUNKER014_USED then SetVar("item_key_gate_bunker014_used", ITEM_KEY_GATE_BUNKER014_USED) end
 
 			TActivate("GlobalVar")
 
@@ -3743,8 +3744,6 @@
 			if IsQuestItemPresent("quest_item_key_gate_thetown") then
 				local b = SpawnMessageBox("90002")
 				if b == 1 then
-					GetPlayerVehicle():SetCustomLinearVelocity(0)
-					GetPlayerVehicle():SetThrottle(0)
 					getObj("gate_thetown"):SetNodeAction(AT_RESERVED4)
 					CreateEffectTTLed( "ET_PS_OPENING_GATE", CVector(1235.100, 311.700, 2969.336), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 900)
 					TActivate("OpenGate_TheTown_End")
@@ -3765,6 +3764,8 @@
 					end
 					trigger:Deactivate() 
 				end
+				GetPlayerVehicle():SetCustomLinearVelocity(0)
+				GetPlayerVehicle():SetThrottle(0)
 			end
 		</script>
 	</trigger>
@@ -6538,6 +6539,10 @@
 			--переменные предметов
 			if ITEM_KEY_GATE_THETOWN_USED and IsQuestItemPresent("quest_item_key_gate_thetown") then 
 				ITEM_KEY_GATE_THETOWN_USED = GetVar("item_key_gate_thetown_used").AsInt 
+			end
+
+			if ITEM_KEY_GATE_BUNKER014_USED and IsQuestItemPresent("quest_item_key_gate_bunker014") then 
+				ITEM_KEY_GATE_BUNKER014_USED = GetVar("item_key_gate_bunker014_used").AsInt 
 			end
 
 			SetTolerance(1087, 1100, RS_ENEMY)

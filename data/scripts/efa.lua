@@ -164,6 +164,7 @@ if Q_DAILY_EXTRACT_TRAIDER == nil then Q_DAILY_EXTRACT_TRAIDER = "0" end
 
 -- Предметы
 if ITEM_KEY_GATE_THETOWN_USED == nil then ITEM_KEY_GATE_THETOWN_USED = 0 end
+if ITEM_KEY_GATE_BUNKER014_USED == nil then ITEM_KEY_GATE_BUNKER014_USED = 0 end
 
 -- Рандомизируем пушки ботам 
 function GiveGunsForVehicle(vehicle, side_random)
@@ -464,12 +465,17 @@ function UseRestoreItem(item, heal_used)
 end
 
 function AddKeysQuestItem()
-	if IsHasPlayerAmountOfSpecItems("item_key_gate_thetown") and not(IsQuestItemPresent("quest_item_key_gate_thetown")) then
-		AddQuestItem("quest_item_key_gate_thetown")
-		AddFadingMsgByStrIdFormatted("fm_item_to_quest_items", "item_key_gate_thetown")
-		RemoveSpecItemsFromSlot("item_key_gate_thetown")
-		SetVar("item_key_gate_thetown_used", 10)
-		SoundFadingMsg()
+	local keys = {"item_key_gate_thetown", "item_key_gate_bunker014"}
+	local used = {10, 3}
+
+	for i = 1, 2 do
+		if IsHasPlayerAmountOfSpecItems(keys[i]) and not(IsQuestItemPresent("quest_"..keys[i])) then
+			AddQuestItem("quest_"..keys[i])
+			AddFadingMsgByStrIdFormatted("fm_item_to_quest_items", keys[i])
+			RemoveSpecItemsFromSlot(keys[i])
+			SetVar(keys[i].."_used", used[i])
+			SoundFadingMsg()
+		end
 	end
 
 	if HasPlayerAmountOfItems("item_chizuru", 1) then

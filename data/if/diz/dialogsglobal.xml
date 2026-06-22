@@ -18031,14 +18031,14 @@
 
 	<Reply
 		name="Dlg_npc_ToR1M1_Exit_1"
-		text="Выберите куда хотите отправиться."
+		text="Выберите, куда хотите отправиться."
 		role="NPC"
 		scriptCondition="GetVar('Exit_ToR1M1').AsInt == 0 and GetVar('PassingToMap').AsInt == 1"
 		nextReplies="Dlg_npc_ToR1M1_Exit_3 Dlg_npc_ToR1M1_Exit_4" />
 
 	<Reply
 		name="Dlg_npc_ToR1M1_Exit_1_2"
-		text="Выберите куда хотите отправиться."
+		text="Выберите, куда хотите отправиться."
 		role="NPC"
 		scriptCondition="GetVar('Exit_ToR1M1').AsInt == 1"
 		nextReplies="Dlg_npc_ToR1M1_Exit_2 Dlg_npc_ToR1M1_Exit_3 Dlg_npc_ToR1M1_Exit_4" />

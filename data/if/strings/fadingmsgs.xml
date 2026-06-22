@@ -241,6 +241,10 @@
 		value="Оставайтесь в зоне выхода|@ff6cff00%1p" />
 
 	<string
+		id="fm_player_exit_enters_location2"
+		value="Оставайтесь в зоне выхода|@ff6cff00ВЫХОД0%1d %2p" />
+
+	<string
 		id="fm_player_exit_leaves_location"
 		value="Вы покинули зону выхода!" />
 
@@ -251,6 +255,10 @@
 	<string
 		id="fm_player_search_exit_zone2"
 		value="@ff6cff00Найдите зону выхода:|@FFFFFFFF%1p" />
+
+	<string
+		id="fm_player_search_exit_zone3"
+		value="@ff6cff00Найдите зону выхода:|@FFFFFFFF%1p @FFFFFFFF%2p @FFFFFFFF%3p" />
 
 	<string
 		id="fm_use_scrap_metal"
@@ -623,4 +631,20 @@
 	<string
 		id="fm_used_item"
 		value="Вы использовали предмет: %1p" />
+
+	<string
+		id="fm_exit_enter_signal_zone"
+		value="Зона подачи сигнала." />
+
+	<string
+		id="fm_exit_leave_signal_zone"
+		value="Вы покинули зону подачи сигнала." />
+
+	<string
+		id="fm_exit_coridor_open"
+		value="Коридор открыт." />
+
+	<string
+		id="fm_exit_coridor_close"
+		value="Коридор закрыт." />
 </resource>

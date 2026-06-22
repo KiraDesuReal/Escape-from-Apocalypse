@@ -369,6 +369,15 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		ModelFile	= "key_1"
 		ResourceType= "SPEC_ITEM" />
 
+	<Prototype
+		Class		= "Basket"
+		Name		= "item_key_gate_bunker014"
+		Price	= "9000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "key_1"
+		ResourceType= "SPEC_ITEM" />
+
 <!-- Ammo -->
 
 	<Prototype
@@ -2232,6 +2241,14 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		ModelFile	= "point"
 		ResourceType= "SPEC_ITEM" />
 
+	<Prototype
+		Class		= "Basket"
+		Name		= "item_green_fier"
+		Price	= "5800"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= "point"
+		ResourceType= "SPEC_ITEM" />
 
 <!-- Opacity Item -->
 

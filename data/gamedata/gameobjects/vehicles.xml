@@ -646,7 +646,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 		DecisionMatrix		= "vehiclemain.lua"
 		LookRadius			= "200.0"
-		IntersectionRadius	= "4.0"
+		IntersectionRadius	= "3.0"
 		TakingRadius		= "7.0"
 		DriftCoeff		= "0.2"
 		MassSize		= "4 1 2"
@@ -749,7 +749,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		DecisionMatrix		= "vehiclemain.lua"
 		DriftCoeff		= "0.1"
 		LookRadius			= "200.0"
-		IntersectionRadius	= "4.0"
+		IntersectionRadius	= "3.5"
 		TakingRadius		= "7.0"
 
 		MassSize		= "6 1 3"
@@ -953,7 +953,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		DecisionMatrix		= "vehiclemain.lua"
 
 		LookRadius			= "200.0"
-		IntersectionRadius	= "4"
+		IntersectionRadius	= "3.5"
 		TakingRadius		= "7.0"
 		DriftCoeff		= "0.2"
 
@@ -1117,8 +1117,8 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		DecisionMatrix		= "vehiclemain.lua"
 
 		LookRadius			= "200.0"
-		IntersectionRadius	= "4.0"
-		TakingRadius		= "1.0"
+		IntersectionRadius	= "3.7"
+		TakingRadius		= "7.0"
 		DestroyEffectPiercing	= "ET_PS_VEH_EXP1_MED"
 		DestroyEffectBlast	= "ET_PS_VEH_EXP2_MED"
 		DestroyEffectEnergy	= "ET_PS_VEH_EXP3_MED"
@@ -1176,8 +1176,8 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		DecisionMatrix		= "vehiclemain.lua"
 
 		LookRadius		= "200.0"
-		IntersectionRadius	= "4.0"
-		TakingRadius		= "1.0"
+		IntersectionRadius	= "3.7"
+		TakingRadius		= "7.0"
 
         DriftCoeff		= "0.07"
 
@@ -1238,7 +1238,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		DecisionMatrix		= "vehiclemain.lua"
 
 		LookRadius		= "200.0"
-		IntersectionRadius	= "4.0"
+		IntersectionRadius	= "5.7"
 		TakingRadius		= "10.0"
 
 		DriftCoeff		= "0.08"
@@ -1309,7 +1309,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		DecisionMatrix		= "vehiclemain.lua"
 
 		LookRadius		= "200.0"
-		IntersectionRadius	= "4.0"
+		IntersectionRadius	= "5.7"
 		TakingRadius		= "16.0"
 
 		DriftCoeff		= "0.04"
@@ -1373,7 +1373,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		DecisionMatrix		= "vehiclemain.lua"
 
 		LookRadius			= "200.0"
-		IntersectionRadius	= "4.0"
+		IntersectionRadius	= "5.7"
 		TakingRadius		= "15.0"
 
 		DriftCoeff		= "0.01"
@@ -1436,8 +1436,8 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		DecisionMatrix		= "vehiclemain.lua"
 
 		LookRadius		= "200.0"
-		IntersectionRadius	= "4.0"
-		TakingRadius		= "1.0"
+		IntersectionRadius	= "3.7"
+		TakingRadius		= "10.0"
 
 		MassSize		= "10 1 5"
 		MassTranslation		= "0 -1.6 0"
@@ -2380,7 +2380,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		ParentPrototype 	= "Bug_PL">
 		<Parts>
 			<Part id = "CABIN"			Prototype = "bugCab01" />
-			<Part id = "BASKET"			Prototype = "bugCargo01" />
+			<Part id = "BASKET"			Prototype = "bugCargo01_4x5" />
 			<Part id = "CABIN_SMALL_GUN"		Prototype = "hornet01" />
 		</Parts>
 	</Prototype>

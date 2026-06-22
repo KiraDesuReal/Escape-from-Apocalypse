@@ -11,7 +11,7 @@
 		<Object
 			Name="MyCar"
 			Belong="1100"
-			Prototype="Bug01"
+			Prototype="Bug01PL"
 			Pos="7020.496 255.000 524.594"
 			Rot="-0.005 -0.702 0.005 0.712">
 			<Parts />
@@ -5138,7 +5138,7 @@
 		Radius="35.000" />
 
 	<Object
-		Name="ScavBunker_Enter"
+		Name="ScavBunker_Enter_loc"
 		Belong="1100"
 		Prototype="genericLocation"
 		Pos="5114.463 270.686 4889.021"

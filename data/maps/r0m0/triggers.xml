@@ -763,6 +763,7 @@
 			if Q_DAILY_EXTRACT_TRAIDER then Q_DAILY_EXTRACT_TRAIDER = "0" end
 
 			if ITEM_KEY_GATE_THETOWN_USED then ITEM_KEY_GATE_THETOWN_USED = 0 end
+			if ITEM_KEY_GATE_BUNKER014_USED then ITEM_KEY_GATE_BUNKER014_USED = 0 end
 
 			local newgame = ReadUserInfo("New")
 			if newgame then
@@ -1138,6 +1139,7 @@
 
 		--переменные предметов
 			if ITEM_KEY_GATE_THETOWN_USED then SetVar("item_key_gate_thetown_used", ITEM_KEY_GATE_THETOWN_USED) end
+			if ITEM_KEY_GATE_BUNKER014_USED then SetVar("item_key_gate_bunker014_used", ITEM_KEY_GATE_BUNKER014_USED) end
 		</script>
 	</trigger>
 
@@ -5896,6 +5898,10 @@
 		--переменные предметов
 			if ITEM_KEY_GATE_THETOWN_USED and IsQuestItemPresent("quest_item_key_gate_thetown") then 
 				ITEM_KEY_GATE_THETOWN_USED = GetVar("item_key_gate_thetown_used").AsInt 
+			end
+
+			if ITEM_KEY_GATE_BUNKER014_USED and IsQuestItemPresent("quest_item_key_gate_bunker014") then 
+				ITEM_KEY_GATE_BUNKER014_USED = GetVar("item_key_gate_bunker014_used").AsInt 
 			end
 
 			trigger:Deactivate()

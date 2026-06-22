@@ -81,15 +81,11 @@
 	<trigger Name="trShowExits" active="0">
 		<event timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
-			if GetVar("SpawnPlayer").AsInt == 1 then
-				if GetVar("PlayerBelong").AsString == "SCAV" then
-					--AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits2LocationR1M1_ForScav")
-				else
-					AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits2LocationR5M1", GetVar("PassingToMap_time_msg").AsString)
-				end
+			if GetVar("PlayerBelong").AsString == "SCAV" then
+				AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone3", GetVar("ScavExitsMsg").AsString, "Passing_ToR1M1_1", GetVar("PassingToMap_time_msg").AsString)
 			else
-				if GetVar("PlayerBelong").AsString == "SCAV" then
-					--AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits1LocationR1M1_ForScav")
+				if GetVar("SpawnPlayer").AsInt == 1 then
+					AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits2LocationR5M1", GetVar("PassingToMap_time_msg").AsString)
 				else
 					AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits1LocationR5M1", GetVar("PassingToMap_time_msg").AsString)
 				end
@@ -203,6 +199,8 @@
 			TDeactivate("AirDropProbability")
 			TDeactivate("IfChargeCar")
 			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("IfPlayerDieForQuest") end 
+			TDeactivate("DotShoot")
+			getObj("DotShoot"):DelEvent("GE_UNDER_ATTACK")
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -251,7 +249,7 @@
 				local fx = getObj("exp0"..i)
 				if fx then fx:Remove() end
 			end
-			
+
 			if GetVar("PlayerCar").AsString == "Molokovoz" then
 				AddPlayerNewVehicle("MolokovozChassis")
 			elseif GetVar("PlayerCar").AsString == "Ural" then
@@ -316,7 +314,7 @@
 			DisableGodMode()
 
 			PassToMap("r0m0", "FromLocation", -1, true)
-		
+
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -395,6 +393,26 @@
 					vehPlayer:SetRotation(Quaternion(0.014, 0.014, -0.000, 1.000))
 					TActivate("Bunker016_EnterActivate")
 					TDeactivate("Bunker016_Leave")
+				elseif GetVar("InBunker").AsString == "Enter_014" then
+					vehPlayer:SetPosition(CVector(3220.315, 261.437, 7865.384))
+					vehPlayer:SetRotation(Quaternion(-0.000, 0.013, 0.000, 1.000))
+					TActivate("Bunker014_LeaveActivate")
+					TDeactivate("Bunker014_Enter")
+				elseif GetVar("InBunker").AsString == "Leave_014" then
+					vehPlayer:SetGamePositionOnGround(CVector(3972.259, 253.099, 1879.890))
+					vehPlayer:SetRotation(Quaternion(-0.005, -0.011, -0.028, 1.000))
+					TActivate("Bunker014_EnterActivate")
+					TDeactivate("Bunker014_Leave")
+				elseif GetVar("InBunker").AsString == "Enter_ScavBunker" then
+					vehPlayer:SetPosition(CVector(2555.880, 260.807, 7769.581))
+					vehPlayer:SetRotation(Quaternion(0.000, -0.006, -0.000, -1.000))
+					TActivate("ScavBunker_LeaveActivate")
+					TDeactivate("ScavBunker_Enter")
+				elseif GetVar("InBunker").AsString == "Leave_ScavBunker" then
+					vehPlayer:SetGamePositionOnGround(CVector(5121.008, 272.917, 4888.573))
+					vehPlayer:SetRotation(Quaternion(-0.007, -0.739, 0.010, -0.673))
+					TActivate("ScavBunker_EnterActivate")
+					TDeactivate("ScavBunker_Leave")
 				end
 			end
 

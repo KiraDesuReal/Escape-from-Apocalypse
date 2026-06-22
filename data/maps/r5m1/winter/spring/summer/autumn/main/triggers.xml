@@ -52,6 +52,16 @@
 			SetVar("Exit_ToR1M1", 0)
 			SetVar("Exit_Bunker016", 0)
 			SetVar("InBunker", "0")
+			SetVar("A_BrigeActivate", 0)
+			SetVar("InSignalZone", 0)
+			SetVar("ExitCoridor", "CLOSE")
+			SetVar("DotShootCount", 0)
+			SetVar("LEP_InExitZone", 0)
+
+			SetVar("GreenFierActive", 0)
+			SetVar("GreenFierPosY", 0)
+
+			SetVar("ScavExitsMsg", "0")
 
 			trigger:Deactivate()
 		</script>
@@ -260,10 +270,12 @@
 			if Q_DAILY_EXTRACT_TRAIDER then SetVar("q_daily_extract", Q_DAILY_EXTRACT_TRAIDER) end
 
 			if ITEM_KEY_GATE_THETOWN_USED then SetVar("item_key_gate_thetown_used", ITEM_KEY_GATE_THETOWN_USED) end
+			if ITEM_KEY_GATE_BUNKER014_USED then SetVar("item_key_gate_bunker014_used", ITEM_KEY_GATE_BUNKER014_USED) end
 
 			TActivate("GlobalVar")
 			TActivate("CreateBreakebleObj")
 			TActivate("CreateWeatherSound")
+			TActivate("CreateGateBunker014")
 
 			TActivate("PlayerCarConfiguration")
 			TActivate("IfChargeCar")
@@ -287,6 +299,8 @@
 			else
 				SetVar("GameTime", "DAY") 
 			end
+
+			SetTolerance(1100, 1085, RS_ALLY)
 		</script>
 	</trigger>
 
@@ -295,13 +309,12 @@
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 			-- ворота бункеров
-			local ftg_scale = {0.8, 0.5, 0.35, 0.9}
+			local ftg_scale = {0.8, 0.5, 0.35}
 			CreateNewDummyObject("factorytunnelgate", "ftg1", -1, -1, CVector(6641.438, 241.830, 1446.560), Quaternion(0.0000, -0.9999, 0.0000, 0.0131), 0)
 			CreateNewDummyObject("factorytunnelgate", "ftg2", -1, -1, CVector(3971.777, 253.527, 1854.443), Quaternion(0.0172, 0.9998, -0.0043, 0.0022), 0)
 			CreateNewDummyObject("factorytunnelgate", "ftg3", -1, -1, CVector(5102.422, 272.734, 4890.220), Quaternion(0.0027, -0.6770, 0.0082, 0.7359), 0)
-			CreateNewDummyObject("factorytunnelgate", "ftg4", -1, -1, CVector(3269.178, 260.205, 7921.500), Quaternion(0.0000, 0.7071, 0.0000, 0.7071), 0)
 
-			for ftg_i = 1, 4 do 
+			for ftg_i = 1, 3 do 
 				local ftg = getObj("ftg"..ftg_i)
 				if ftg then 
 					ftg:SetPropertyById(7, ftg_scale[ftg_i])
@@ -312,26 +325,6 @@
 			-- Прожектор выход ВС РФ
 			CreateNewDummyObject("spotlight", "projectorToR1M1_1", -1, -1, CVector(5544.620, 263.039, 500.639), Quaternion(0.0977, 0.7258, -0.0707, 0.6773), 0)
 			getObj("projectorToR1M1_1"):SetPropertyById(7, 0.6)
-			--CreateNewSgNodeObject("ET_PS_LENS_S10", "projectorToR1M1_2", -1, -1, CVector(5546.408, 265.327, 500.500), Quaternion(0, 0, 0, 1), 2.6)
-			--CreateNewSgNodeObject("ET_PS_LENS_S10", "projectorToR1M1_3", -1, -1, CVector(5546.408, 265.327, 500.500), Quaternion(0, 0, 0, 1), 2.6)
-			--CreateNewSgNodeObject("ET_PS_HLIGHT", "projectorToR1M1_4", -1, -1, CVector(5544.514, 265.494, 500.718), Quaternion(0.5011, 0.5206, -0.5106, 0.4660), 8)
-			--CreateNewSgNodeObject("ET_PS_PROJECTOR_SPOTLIGHT1", "5", -1, -1, CVector(5545.953, 265.509, 500.624), Quaternion(0.6283, 0.3252, 0.5895, -0.3899), 1)
-			--CreateNewSgNodeObject("ET_PS_PROJECTOR_SPOTLIGHT1", "5", -1, -1, CVector(5545.953, 265.509, 500.624), Quaternion(0.6283, 0.3252, 0.5895, -0.3899), 1)
-
-			-- Фаер выход ВС РФ
-			--CreateNewSgNodeObject("ET_PS_GREEN_SMOKE1", "fierToR1M1_1", -1, -1, CVector(5580.169, 253.070, 506.949), Quaternion(0, 0, 0, 1), 1)
-			--CreateNewSgNodeObject("ET_PS_LENS_D8", "fierToR1M1_2", -1, -1, CVector(5580.169, 253.470, 506.949), Quaternion(0, 0, 0, 1), 0.5)
-			--CreateNewSgNodeObject("ET_PS_LENS_D8", "fierToR1M1_3", -1, -1, CVector(5580.169, 253.470, 506.949), Quaternion(0, 0, 0, 1), 0.5)
-
-			-- Фаер ЗБ016
-			--CreateNewSgNodeObject("ET_PS_GREEN_SMOKE2", "fierB016_1", -1, -1, CVector(6653.333, 237.600, 1470.102), Quaternion(0, 0, 0, 1), 1)
-			--CreateNewSgNodeObject("LS_LIGHT_GREEN_FIER", "fierB016_2", -1, -1, CVector(6653.333, 237.600, 1470.102), Quaternion(0, 0, 0, 1), 1)
-			--CreateNewSgNodeObject("ET_PS_GREEN_SMOKE3", "fierB016_3", -1, -1, CVector(1671.402, 254.200, 7747.266), Quaternion(0, 0, 0, 1), 1)
-
-			-- Фаер ЗБ014
-			--CreateNewSgNodeObject("ET_PS_GREEN_SMOKE2", "fierB014_1", -1, -1, CVector(3962.713, 251.915, 1872.657), Quaternion(0, 0, 0, 1), 1)
-			--CreateNewSgNodeObject("LS_LIGHT_GREEN_FIER", "fierB014_2", -1, -1, CVector(3962.713, 251.915, 1872.657), Quaternion(0, 0, 0, 1), 1)
-			--CreateNewSgNodeObject("ET_PS_GREEN_SMOKE3", "fierB014_3", -1, -1, CVector(3307.326, 255, 7910.127), Quaternion(0, 0, 0, 1), 1)
 
 			-- Телепорт
 			CreateNewDummyObject("teleport", "tp1", -1, -1, CVector(1054.990, 127.350, 803.991), Quaternion(0, 0, 0, 1), 0)
@@ -343,6 +336,18 @@
 			CreateNewSgNodeObject("lunoculus", "lunocul1", -1, -1, CVector(731.051, 121.531, 1415.867), Quaternion(0, 0, 0, 1), 1)
 			CreateNewSgNodeObject("ET_PS_LENS_S10", "lunocul2", -1, -1, CVector(731.051, 121.531, 1415.867), Quaternion(0, 0, 0, 1), 1.5)
 			CreateNewSgNodeObject("ET_PS_LENS_S10", "lunocul3", -1, -1, CVector(731.051, 121.531, 1415.867), Quaternion(0, 0, 0, 1), 1.5)
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateGateBunker014" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateNewDummyObject("factorytunnelgate", "ftg_bunker014_1", -1, -1, CVector(3269.178, 260.205, 7921.500), Quaternion(0.0000, 0.7071, 0.0000, 0.7071), 0)
+			CreateNewSgNodeObject("factorytunnelgate", "ftg_bunker014_2", -1, -1, CVector(3233.745, 254.497, 7958.014), Quaternion(0.0000, 0.7071, 0.0000, 0.7071), 0.9)
+			getObj("ftg_bunker014_1"):SetPropertyById(7, 0.9)
+			getObj("ftg_bunker014_1"):SetNodeAction(AT_STAND2)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -968,11 +973,13 @@
 
 				local plf = GetPlayerVehicle()
 				local health = GetPlayerHealth()
+				local maxHealth = GetPlayerMaxHealth()
 				if plf then
 					local cabin = plf:GetCabin()
 					local basket = plf:GetBasket()
 					local durabilityCab = cabin:GetPropertyById(19).AsInt 
 					local durabilityBas = basket:GetPropertyById(19).AsInt
+					local procent = maxHealth / 100 * 25
 
 					plf:SetCustomLinearVelocity(0)
 					plf:SetThrottle(0)
@@ -981,8 +988,8 @@
 					if type_mine == "heavy" then
 						CreateEffectInsertedInRemove("ET_PS_VEH_EXP2_MED", plf:GetPosition(), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), true)
 						if GetVar("MineCountExp").AsInt == 1 then
-							if 1 >= health then
-								plf:AddModifier("hp", "= 1")
+							if procent >= health then
+								plf:AddModifier("hp", "- 10000")
 							else
 								plf:AddModifier("hp", "- "..health / 2)
 								TActivate("PlayerHealth1")
@@ -1001,8 +1008,8 @@
 					else
 						CreateEffectInsertedInRemove("ET_PS_VEH_EXP1_SMALL1", plf:GetPosition(), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), true)
 						if GetVar("MineCountExp").AsInt == 1 then
-							if 1 >= health then
-								plf:AddModifier("hp", "= 1")
+							if procent >= health then
+								plf:AddModifier("hp", "- 10000")
 							else
 								plf:AddModifier("hp", "- "..health / 3.33)
 								TActivate("PlayerHealth1")
@@ -1016,7 +1023,7 @@
 								if basket then basket:SetProperty("durability", durabilityBas - durabilityBas / 4) end
 							end
 						elseif GetVar("MineCountExp").AsInt == 2 then
-							if 1 >= health then
+							if procent >= health then
 								plf:AddModifier("hp", "- 10000")
 							else
 								plf:AddModifier("hp", "- "..health / 2)
@@ -1224,10 +1231,14 @@
 					vehPlayer:SetNameFromScript("ScavCarForPlayer")
 					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
 					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "ScavCarForPlayer")
+					getObj("DotShoot"):DelEvent("GE_UNDER_ATTACK")
+					getObj("DotShoot"):AddEvent("GE_UNDER_ATTACK", "ScavCarForPlayer")
 				else
 					vehPlayer:SetNameFromScript("PlayerCar")
 					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
 					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "PlayerCar")
+					getObj("DotShoot"):DelEvent("GE_UNDER_ATTACK")
+					getObj("DotShoot"):AddEvent("GE_UNDER_ATTACK", "PlayerCar")
 				end
 			end
 			TActivate("FakePlayerDead")
@@ -1332,17 +1343,13 @@
 				SetVar("SpawnPlayer", 1)
 				if not(GetVar("PlayerBelong").AsString == "SCAV") then
 					SetVar("PosPlayer1", posr1)
-					--TActivate("Exits_RidzinBaseTroiskoe")
-				else
-					--TActivate("ExitsForScav_RidzinBaseScavTroiskoe")
+					TActivate("ExitsForPMC_2")
 				end
 			else
 				SetVar("SpawnPlayer", 2)
 				if not(GetVar("PlayerBelong").AsString == "SCAV") then
 					SetVar("PosPlayer2", posr2)
-					--TActivate("Exits_FaterTownGloohoe")
-				else
-					--TActivate("ExitsForScav_FaterGloohoeTheTown")
+					TActivate("ExitsForPMC_1")
 				end
 			end
 
@@ -1367,10 +1374,15 @@
 					vehPlayer:SetNameFromScript("ScavCarForPlayer")
 					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
 					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "ScavCarForPlayer")
+					getObj("DotShoot"):DelEvent("GE_UNDER_ATTACK")
+					getObj("DotShoot"):AddEvent("GE_UNDER_ATTACK", "ScavCarForPlayer")
+					TActivate("ExitsForScavs")
 				else
 					vehPlayer:SetNameFromScript("PlayerCar")
 					getObj("FakePlayerDead"):DelEvent("GE_VEHICLE_WITHOUT_HEALTH")
 					getObj("FakePlayerDead"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "PlayerCar")
+					getObj("DotShoot"):DelEvent("GE_UNDER_ATTACK")
+					getObj("DotShoot"):AddEvent("GE_UNDER_ATTACK", "PlayerCar")
 				end
 				vehPlayer:SetThrottle(0)
 				vehPlayer:SetCustomLinearVelocity(0)
@@ -1712,10 +1724,10 @@
 				CreateNewSgNodeObject("ET_PS_PROJECTOR_SPOTLIGHT1", "projectorToR1M1_5", -1, -1, CVector(5545.953, 265.509, 500.624), Quaternion(0.6283, 0.3252, 0.5895, -0.3899), 1)
 				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE1", "projectorToR1M1_6", -1, -1, CVector(5580.169, 253.070, 506.949), Quaternion(0, 0, 0, 1), 1)
 				CreateNewSgNodeObject("ET_PS_LENS_D8", "projectorToR1M1_7", -1, -1, CVector(5580.169, 253.470, 506.949), Quaternion(0, 0, 0, 1), 0.5)
-				CreateNewSgNodeObject("ET_PS_LENS_D8", "projectorToR1M1_8", -1, -1, CVector(5580.169, 253.470, 506.949), Quaternion(0, 0, 0, 1), 0.5)
 				if GetVar("GameTime").AsString == "NIGHT" then
-					CreateNewSgNodeObject("ET_PS_PROJECTOR_SPOTLIGHT1", "projectorToR1M1_9", -1, -1, CVector(5545.953, 265.509, 500.624), Quaternion(0.6283, 0.3252, 0.5895, -0.3899), 1)
-					CreateNewSgNodeObject("LS_LIGHT_GREEN_FIER", "projectorToR1M1_10", -1, -1, CVector(5580.169, 253.470, 506.949), Quaternion(0, 0, 0, 1), 1)
+					CreateNewSgNodeObject("ET_PS_LENS_D8", "projectorToR1M1_8", -1, -1, CVector(5580.169, 253.470, 506.949), Quaternion(0, 0, 0, 1), 0.5)
+					CreateNewSgNodeObject("ET_PS_LENS_D8", "projectorToR1M1_9", -1, -1, CVector(5580.169, 253.470, 506.949), Quaternion(0, 0, 0, 1), 0.5)
+					CreateNewSgNodeObject("ET_PS_PROJECTOR_SPOTLIGHT1", "projectorToR1M1_10", -1, -1, CVector(5545.953, 265.509, 500.624), Quaternion(0.6283, 0.3252, 0.5895, -0.3899), 1)
 				end
 			end
 
@@ -1729,8 +1741,176 @@
 				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE3", "fierB016_3", -1, -1, CVector(1671.402, 254.200, 7747.266), Quaternion(0, 0, 0, 1), 1)
 			end
 
-			TActivate("Bunker016_Enter")
+			if random(2) == 1 then
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE2", "fierB014_1", -1, -1, CVector(3962.713, 251.915, 1872.657), Quaternion(0, 0, 0, 1), 1)
+				if GetVar("GameTime").AsString == "NIGHT" then
+					CreateNewSgNodeObject("LS_LIGHT_GREEN_FIER", "fierB014_2", -1, -1, CVector(3962.713, 251.915, 1872.657), Quaternion(0, 0, 0, 1), 1)
+				end
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE3", "fierB014_3", -1, -1, CVector(3307.326, 255, 7910.127), Quaternion(0, 0, 0, 1), 1)
+			end
 
+			TActivate("Bunker016_Enter")
+			TActivate("Bunker014_Enter")
+			TActivate("Bunker014_OpenGate")
+			TActivate("SouthPost_Extract")
+			TActivate("A_Brige_Enter")
+			TActivate("NorthPost_Extract")
+			TActivate("LEP_EnterSignalZone")
+			TActivate("LEP_EnterExitZone")
+			TActivate("ScavBunker_Enter")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ExitsForPMC_2" active="0">
+		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			if random(2) == 1 then
+				SetVar("Exit_ToR1M1", 2)
+				getObj("projectorToR1M1_1"):SetSkin(1)
+				CreateNewSgNodeObject("ET_PS_LENS_S10", "projectorToR1M1_2", -1, -1, CVector(5546.408, 265.327, 500.500), Quaternion(0, 0, 0, 1), 2.6)
+				CreateNewSgNodeObject("ET_PS_LENS_S10", "projectorToR1M1_3", -1, -1, CVector(5546.408, 265.327, 500.500), Quaternion(0, 0, 0, 1), 2.6)
+				CreateNewSgNodeObject("ET_PS_HLIGHT", "projectorToR1M1_4", -1, -1, CVector(5544.514, 265.494, 500.718), Quaternion(0.5011, 0.5206, -0.5106, 0.4660), 8)
+				CreateNewSgNodeObject("ET_PS_PROJECTOR_SPOTLIGHT1", "projectorToR1M1_5", -1, -1, CVector(5545.953, 265.509, 500.624), Quaternion(0.6283, 0.3252, 0.5895, -0.3899), 1)
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE1", "projectorToR1M1_6", -1, -1, CVector(5580.169, 253.070, 506.949), Quaternion(0, 0, 0, 1), 1)
+				CreateNewSgNodeObject("ET_PS_LENS_D8", "projectorToR1M1_7", -1, -1, CVector(5580.169, 253.470, 506.949), Quaternion(0, 0, 0, 1), 0.5)
+				if GetVar("GameTime").AsString == "NIGHT" then
+					CreateNewSgNodeObject("ET_PS_LENS_D8", "projectorToR1M1_8", -1, -1, CVector(5580.169, 253.470, 506.949), Quaternion(0, 0, 0, 1), 0.5)
+					CreateNewSgNodeObject("ET_PS_LENS_D8", "projectorToR1M1_9", -1, -1, CVector(5580.169, 253.470, 506.949), Quaternion(0, 0, 0, 1), 0.5)
+					CreateNewSgNodeObject("ET_PS_PROJECTOR_SPOTLIGHT1", "projectorToR1M1_10", -1, -1, CVector(5545.953, 265.509, 500.624), Quaternion(0.6283, 0.3252, 0.5895, -0.3899), 1)
+				end
+			end
+
+			if random(2) == 1 then
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE2", "fierB016_1", -1, -1, CVector(6653.333, 237.600, 1470.102), Quaternion(0, 0, 0, 1), 1)
+				if GetVar("GameTime").AsString == "NIGHT" then
+					CreateNewSgNodeObject("LS_LIGHT_GREEN_FIER", "fierB016_2", -1, -1, CVector(6653.333, 237.600, 1470.102), Quaternion(0, 0, 0, 1), 1)
+				end
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE3", "fierB016_3", -1, -1, CVector(1671.402, 254.200, 7747.266), Quaternion(0, 0, 0, 1), 1)
+			end
+
+			if random(2) == 1 then
+				SetVar("Exit_Bunker014", 1)
+				TActivate("Bunker014_Extract")
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE2", "fierB014_1", -1, -1, CVector(3962.713, 251.915, 1872.657), Quaternion(0, 0, 0, 1), 1)
+				if GetVar("GameTime").AsString == "NIGHT" then
+					CreateNewSgNodeObject("LS_LIGHT_GREEN_FIER", "fierB014_2", -1, -1, CVector(3962.713, 251.915, 1872.657), Quaternion(0, 0, 0, 1), 1)
+				end
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE3", "fierB014_3", -1, -1, CVector(3307.326, 255, 7910.127), Quaternion(0, 0, 0, 1), 1)
+			end
+
+			TActivate("Bunker016_Enter")
+			TActivate("Bunker014_Enter")
+			TActivate("Bunker014_OpenGate")
+			TActivate("A_Brige_Enter")
+			TActivate("LEP_EnterSignalZone")
+			TActivate("LEP_EnterExitZone")
+			TActivate("Outskirts_Extract")
+			TActivate("ScavBunker_Enter")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ExitsForScavs" active="0">
+		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+
+			if random(2) == 1 then
+				SetVar("Exit_ToR1M1", 2)
+				getObj("projectorToR1M1_1"):SetSkin(1)
+				CreateNewSgNodeObject("ET_PS_LENS_S10", "projectorToR1M1_2", -1, -1, CVector(5546.408, 265.327, 500.500), Quaternion(0, 0, 0, 1), 2.6)
+				CreateNewSgNodeObject("ET_PS_LENS_S10", "projectorToR1M1_3", -1, -1, CVector(5546.408, 265.327, 500.500), Quaternion(0, 0, 0, 1), 2.6)
+				CreateNewSgNodeObject("ET_PS_HLIGHT", "projectorToR1M1_4", -1, -1, CVector(5544.514, 265.494, 500.718), Quaternion(0.5011, 0.5206, -0.5106, 0.4660), 8)
+				CreateNewSgNodeObject("ET_PS_PROJECTOR_SPOTLIGHT1", "projectorToR1M1_5", -1, -1, CVector(5545.953, 265.509, 500.624), Quaternion(0.6283, 0.3252, 0.5895, -0.3899), 1)
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE1", "projectorToR1M1_6", -1, -1, CVector(5580.169, 253.070, 506.949), Quaternion(0, 0, 0, 1), 1)
+				CreateNewSgNodeObject("ET_PS_LENS_D8", "projectorToR1M1_7", -1, -1, CVector(5580.169, 253.470, 506.949), Quaternion(0, 0, 0, 1), 0.5)
+				if GetVar("GameTime").AsString == "NIGHT" then
+					CreateNewSgNodeObject("ET_PS_LENS_D8", "projectorToR1M1_8", -1, -1, CVector(5580.169, 253.470, 506.949), Quaternion(0, 0, 0, 1), 0.5)
+					CreateNewSgNodeObject("ET_PS_LENS_D8", "projectorToR1M1_9", -1, -1, CVector(5580.169, 253.470, 506.949), Quaternion(0, 0, 0, 1), 0.5)
+					CreateNewSgNodeObject("ET_PS_PROJECTOR_SPOTLIGHT1", "projectorToR1M1_10", -1, -1, CVector(5545.953, 265.509, 500.624), Quaternion(0.6283, 0.3252, 0.5895, -0.3899), 1)
+				end
+			end
+
+			if random(2) == 1 then
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE2", "fierB016_1", -1, -1, CVector(6653.333, 237.600, 1470.102), Quaternion(0, 0, 0, 1), 1)
+				if GetVar("GameTime").AsString == "NIGHT" then
+					CreateNewSgNodeObject("LS_LIGHT_GREEN_FIER", "fierB016_2", -1, -1, CVector(6653.333, 237.600, 1470.102), Quaternion(0, 0, 0, 1), 1)
+				end
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE3", "fierB016_3", -1, -1, CVector(1671.402, 254.200, 7747.266), Quaternion(0, 0, 0, 1), 1)
+			end
+
+			if random(2) == 1 then
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE2", "fierB014_1", -1, -1, CVector(3962.713, 251.915, 1872.657), Quaternion(0, 0, 0, 1), 1)
+				if GetVar("GameTime").AsString == "NIGHT" then
+					CreateNewSgNodeObject("LS_LIGHT_GREEN_FIER", "fierB014_2", -1, -1, CVector(3962.713, 251.915, 1872.657), Quaternion(0, 0, 0, 1), 1)
+				end
+				CreateNewSgNodeObject("ET_PS_GREEN_SMOKE3", "fierB014_3", -1, -1, CVector(3307.326, 255, 7910.127), Quaternion(0, 0, 0, 1), 1)
+			end
+
+			TActivate("Bunker016_Enter")
+			TActivate("Bunker014_Enter")
+			TActivate("Bunker014_OpenGate")
+			TActivate("ScavBunker_Enter")
+
+			if GetVar("SpawnPlayer").AsInt == 1 then
+				TActivate("ExitsForScavs_2_Rand")
+			else
+				TActivate("ExitsForScavs_1_Rand")
+			end
+	
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ExitsForScavs_1_Rand" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local exits_main = {"FactoryGate", "OldDepo", "SouthPost", "ToR1M1", "EasternCliffs", "MountainCache"}
+			local exits_p = {EXITSCAV_FACTORYGATE, EXITSCAV_OLDDEPO, EXITSCAV_SOUTHPOST, EXITSCAV_TOR1M1, EXITSCAV_EASTERNCLIFFS, EXITSCAV_MOUNTAINCACHE}
+			local rand = shuffled_range_take (3, 1, 6)
+			local exits = {}
+			SCAVEXITS_GLOBAL = {}
+
+			for i = 1, 3 do
+				local num = rand[i]
+				table.insert(exits, exits_p[num])
+				table.insert(SCAVEXITS_GLOBAL, exits_main[num])
+				if exits_main[num] == "ToR1M1" then
+					SetVar("Exit_ToR1M1", 1)
+				else
+					TActivate(exits_main[num].."_Extract")
+				end
+			end
+			
+			local msg = MSG_EXIT1..exits[1].."|"..MSG_EXIT2..exits[2].."|"..MSG_EXIT3..exits[3]
+			SetVar("ScavExitsMsg", msg)
+		
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ExitsForScavs_2_Rand" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local exits_main = {"ScavBrige", "Boat", "Shelter", "ScavHome", "Outskirts", "ScavBunker"}
+			local exits_p = {EXITSCAV_SCAVBRIGE, EXITSCAV_BOAT, EXITSCAV_SHELTER, EXITSCAV_SCAVHOME, EXITSCAV_OUTSKIRTS, EXITSCAV_SCAVBUNKER}
+			local rand = shuffled_range_take (3, 1, 6)
+			local exits = {}
+			SCAVEXITS_GLOBAL = {}
+
+			for i = 1, 3 do
+				local num = rand[i]
+				table.insert(exits, exits_p[num])
+				table.insert(SCAVEXITS_GLOBAL, exits_main[num])
+				TActivate(exits_main[num].."_Extract")
+			end
+			
+			local msg = MSG_EXIT1..exits[1].."|"..MSG_EXIT2..exits[2].."|"..MSG_EXIT3..exits[3]
+			SetVar("ScavExitsMsg", msg)
+			
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -1756,7 +1936,17 @@
 		<script>
 			SetVar("ExitTimer", 6)
 			SetVar("ToMap", "r0m0")
-			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "Exit_ToR1M1")
+			if GetVar("PlayerBelong").AsString == "SCAV" then
+				local exits = SCAVEXITS_GLOBAL
+				for i = 1, 3 do
+					if exits[i] == "ToR1M1" then
+						AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location2", i, "ExitScav_ToR1M1")
+						SoundFadingMsg()
+					end
+				end
+			else
+				AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "Exit_ToR1M1")
+			end
 			SoundFadingMsg()
 			TActivate ("LeaveZoneExit")
 			TActivate ("ExitTimer")
@@ -1832,10 +2022,605 @@
 		</script>
 	</trigger>
 
+<!-- Южный пост ООН -->
+	<trigger Name="SouthPost_Extract" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="SouthPost_Exit_loc" />
+		<script>
+			SetVar("ExitTimer", 6)
+			SetVar("ToMap", "r0m0")
+			if GetVar("PlayerBelong").AsString == "SCAV" then
+				local exits = SCAVEXITS_GLOBAL
+				for i = 1, 3 do
+					if exits[i] == "SouthPost" then
+						AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location2", i, "ExitScav_SouthPost")
+						SoundFadingMsg()
+					end
+				end
+			else
+				AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "Exit_SouthPost")
+			end
+			SoundFadingMsg()
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+		</script>
+	</trigger>
+
+<!-- Выход на мосту -->
+	<trigger Name="A_Brige_Enter" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="A_Brige_Exit_loc" />
+		<script>
+			if GetVar("A_BrigeActivate").AsInt == 0 then
+				local b = SpawnMessageBox(4)
+				if b == 1 then
+					if GetPlayerMoney() >= 20000 then
+						AddPlayerMoney(-20000)
+						SetVar("A_BrigeActivate", 1)
+						TActivate("A_Brige_Extract")
+					else
+						AddFadingMsgByStrIdFormatted("fm_player_not_money")
+					end
+				end
+				GetPlayerVehicle():SetThrottle(0)
+				GetPlayerVehicle():SetCustomLinearVelocity(0)
+			else
+				TActivate("A_Brige_Extract")
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="A_Brige_Extract" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			SetVar("ExitTimer", 6)
+			SetVar("ToMap", "r0m0")
+			if GetVar("SpawnPlayer").AsInt == 2 then
+				AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "Exit_A_Brige")
+			elseif GetVar("SpawnPlayer").AsInt == 1 then
+				AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "Exit_A_Brige2")
+			end
+			SoundFadingMsg()
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Северный пост ООН -->
+	<trigger Name="NorthPost_Extract" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="NorthPost_Exit_loc" />
+		<script>
+			SetVar("ExitTimer", 6)
+			SetVar("ToMap", "r0m0")
+			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "Exit_NorthPost")
+			SoundFadingMsg()
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+		</script>
+	</trigger>
+
+<!-- Проход у ЛЭП -->
+	<trigger Name="LEP_EnterSignalZone" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="LEP_Signalzone_loc" />
+		<script>
+			if GetVar("ExitCoridor").AsString == "CLOSE" then
+				AddFadingMsgByStrIdFormatted("fm_exit_enter_signal_zone")
+				SoundFadingMsg()
+			end
+			SetVar("InSignalZone", 1)
+			TActivate("LEP_LeaveSignalZone")
+			if IsHasPlayerAmountOfSpecItems("item_green_fier") and GetVar("GreenFierActive").AsInt == 0 then
+				local b = SpawnMessageBox(5)
+				if b == 1 then
+					TActivate("UseGreenFier")
+					RemoveSpecItemsFromSlot("item_green_fier")
+				end
+				GetPlayerVehicle():SetThrottle(0)
+				GetPlayerVehicle():SetCustomLinearVelocity(0)
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="LEP_LeaveSignalZone" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="LEP_Signalzone_loc" />
+		<script>
+			if GetVar("ExitCoridor").AsString == "CLOSE" then
+				AddFadingMsgByStrIdFormatted("fm_exit_leave_signal_zone")
+				SoundFadingMsg()
+			end
+			SetVar("InSignalZone", 0)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="LEP_EnterExitZone" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="LEP_Exit_loc" />
+		<script>
+			TActivate("LEP_LeaveExitZone")
+			if GetVar("ExitCoridor").AsString == "CLOSE" then
+				SetTolerance(1100, 1085, RS_ENEMY)
+				TActivate("DotShootStart")
+				SetVar("LEP_InExitZone", 1)
+			else
+				SetVar("ExitTimer", 6)
+				SetVar("ToMap", "r0m0")
+				if GetVar("SpawnPlayer").AsInt == 2 then
+					AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "Exit_LEP")
+				else
+					AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "Exit_LEP2")
+				end
+				SoundFadingMsg()
+				TActivate ("LeaveZoneExit")
+				TActivate ("ExitTimer")
+				SetVar("LEP_InExitZone", 2)
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="DotShootStart" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			SetVar("DotShootCount", 0)
+			for i = 1, 2 do
+				getObj("LEP_Exit_Dot"..i):AddModifier("hp", "= 10000")
+				getObj("LEP_Exit_Dot"..i):GetPartByName("CANNON"):SetPropertyById(28, 50)
+			end
+			TActivate("DotShoot")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="DotShoot" active="0">
+		<script>
+			local belongAttack = getObj(trigger:GetTriggeredObjectID(0)):GetBelong()
+			if belongAttack == 1085 then
+				SetVar("DotShootCount", GetVar("DotShootCount").AsInt+1)
+				con(GetVar("DotShootCount").AsInt)
+				for i = 1, 2 do
+					getObj("LEP_Exit_Dot"..i):AddModifier("hp", "= 10000")
+					if GetVar("DotShootCount").AsInt > 8 then
+						getObj("LEP_Exit_Dot"..i):GetPartByName("CANNON"):SetPropertyById(28, 10000)
+					elseif GetVar("DotShootCount").AsInt > 4 then
+						getObj("LEP_Exit_Dot"..i):GetPartByName("CANNON"):SetPropertyById(28, 150)
+					end
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="LEP_LeaveExitZone" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="LEP_Exit_loc" />
+		<script>
+			if GetVar("ExitCoridor").AsString == "CLOSE" then
+				SetTolerance(1100, 1085, RS_ALLY)
+				getObj("LEP_Exit_Dot1"):AddModifier("hp", "= 10000")
+				getObj("LEP_Exit_Dot2"):AddModifier("hp", "= 10000")
+				SetVar("DotShootCount", 0)
+				TDeactivate("DotShoot")
+			end
+			SetVar("LEP_InExitZone", 0)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Иcпользование РСП-30 (Зеленый) -->
+	<trigger Name="UseGreenFier" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local plf = GetPlayerVehicle()
+			if plf then
+				if GetVar("InSignalZone").AsInt == 1 then
+					SetVar("GreenFierActive", 1)
+				end
+				if GetVar("GameTime").AsString == "NIGHT" then
+					CreateNewSgNodeObject("ET_PS_GREEN_FIER2", "green_fier_obj", -1, -1, plf:GetPosition(), Quaternion(0, 0, 0, 1), 1)
+				else
+					CreateNewSgNodeObject("ET_PS_GREEN_FIER1", "green_fier_obj", -1, -1, plf:GetPosition(), Quaternion(0, 0, 0, 1), 1)
+				end
+				local pos = getObj("green_fier_obj"):GetPosition()
+				SetVar("GreenFierPosY", pos.y + 100)
+				TActivate("GreenFierUp")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="GreenFierUp" active="0">
+		<event 	timeout="0.025" eventid="GE_TIME_PERIOD" />
+		<script>
+			local obj = getObj("green_fier_obj")
+			if obj then
+				local pos = obj:GetPosition()
+				pos.y = pos.y + 1
+				obj:SetPosition(pos)
+				if pos.y >= GetVar("GreenFierPosY").AsInt then
+					TActivate("GreenFierRemove")
+					SetVar("GreenFierActive", GetVar("GreenFierActive").AsInt+1)
+					if GetVar("GreenFierActive").AsInt == 2 then
+						SetVar("ExitCoridor", "OPEN")
+						AddFadingMsgByStrIdFormatted("fm_exit_coridor_open")
+						SoundFadingMsg()
+					end
+					trigger:Deactivate()
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="GreenFierRemove" active="0">
+		<event 	timeout="60" eventid="GE_TIME_PERIOD" />
+		<script>
+			local obj = getObj("green_fier_obj")
+			if obj then
+				obj:Remove()
+				if GetVar("GreenFierActive").AsInt == 2 then
+					SetVar("ExitCoridor", "CLOSE")
+					AddFadingMsgByStrIdFormatted("fm_exit_coridor_close")
+					SoundFadingMsg()
+				end
+				if GetVar("LEP_InExitZone").AsInt == 2 then
+					SetTolerance(1100, 1085, RS_ENEMY)
+					TActivate("LEP_LeaveExitZone")
+					TActivate("DotShootStart")
+					TDeactivate("LeaveZoneExit")
+					TDeactivate("ExitTimer")
+					SetVar("ToMap", "0")
+				end
+				SetVar("GreenFierActive", 0)
+				SetVar("GreenFierPosY", 0)
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- ЗБ 014 -->
+	<trigger Name="Bunker014_EnterActivate" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Bunker014_Enter_loc" />
+		<script>
+			TActivate("Bunker014_Enter")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Bunker014_Enter" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Bunker014_Enter_loc" />
+		<script>
+			local b = SpawnMessageBox(2)
+			if b == 1 then
+				SetVar("InBunker", "Enter_014")
+				TActivate("FadeEffectForBunkers")
+			end
+			GetPlayerVehicle():SetThrottle(0)
+			GetPlayerVehicle():SetCustomLinearVelocity(0)
+		</script>
+	</trigger>
+
+	<trigger Name="Bunker014_LeaveActivate" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Bunker014_ExitFrom_loc" />
+		<script>
+			TActivate("Bunker014_Leave")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Bunker014_Leave" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Bunker014_ExitFrom_loc" />
+		<script>
+			local b = SpawnMessageBox(3)
+			if b == 1 then
+				SetVar("InBunker", "Leave_014")
+				TActivate("FadeEffectForBunkers")
+			end
+			GetPlayerVehicle():SetThrottle(0)
+			GetPlayerVehicle():SetCustomLinearVelocity(0)
+		</script>
+	</trigger>
+
+	<trigger Name="Bunker014_Extract" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Bunker014_Exit_loc" />
+		<script>
+			SetVar("ExitTimer", 6)
+			SetVar("ToMap", "r0m0")
+			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "Exit_Bunker014")
+			SoundFadingMsg()
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+		</script>
+	</trigger>
+
+	<trigger Name="Bunker014_OpenGate" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Bunker014_OpenGate_loc" />
+		<script>
+			if IsQuestItemPresent("quest_item_key_gate_bunker014") then
+				local b = SpawnMessageBox("90002")
+				if b == 1 then
+					local g = getObj("ftg_bunker014_1")
+					if g then g:SetNodeAction(AT_RESERVED4) end
+
+					CreateEffectTTLed( "ET_PS_OPENING_GATE", CVector(3269.178, 260.205, 7921.500), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1900)
+					TActivate("Bunker014_OpenGate_End")
+
+					if GetVar("item_key_gate_bunker014_used").AsInt > 0 then 
+						SetVar("item_key_gate_bunker014_used", GetVar("item_key_gate_bunker014_used").AsInt - 1) 
+						if GetVar("item_key_gate_bunker014_used").AsInt > 0 then 
+							AddFadingMsgByStrIdFormatted("fm_used_key", "item_key_gate_bunker014", GetVar("item_key_gate_bunker014_used").AsInt)
+							SoundFadingMsg()
+						end
+					end
+					if 0 >= GetVar("item_key_gate_bunker014_used").AsInt then
+						SetVar("item_key_gate_bunker014_used", 0) 
+						RemoveQuestItem("quest_item_key_gate_bunker014")
+						AddFadingMsgByStrIdFormatted("fm_used_key", "item_key_gate_bunker014", 0)
+						AddFadingMsgByStrIdFormatted("fm_remove_quest_item", "quest_item_key_gate_bunker014")
+						SoundFadingMsg()
+					end
+					trigger:Deactivate() 
+				end
+				GetPlayerVehicle():SetCustomLinearVelocity(0)
+				GetPlayerVehicle():SetThrottle(0)
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="Bunker014_OpenGate_End" active="0">
+		<event timeout="1.9" eventid="GE_TIME_PERIOD" />
+		<script>
+			local g = GetEntityByName("ftg_bunker014_1")
+			if g then g:Remove() end
+
+			local g1 = GetEntityByName("ftg_bunker014_2")
+			if g1 then g1:SetPosition(CVector(3269.178, 260.205, 7921.500)) end
+
+			CreateEffectTTLed( "ET_PS_OPENING_GATE_END", CVector(3269.178, 260.205, 7921.500), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1500)
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+<!-- Окраины -->
+	<trigger Name="Outskirts_Extract" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Outskirts_Exit_loc" />
+		<script>
+			SetVar("ExitTimer", 6)
+			SetVar("ToMap", "r0m0")
+			if GetVar("PlayerBelong").AsString == "SCAV" then
+				local exits = SCAVEXITS_GLOBAL
+				for i = 1, 3 do
+					if exits[i] == "Outskirts" then
+						AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location2", i, "ExitScav_Outskirts")
+						SoundFadingMsg()
+					end
+				end
+			else
+				AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location", "Exit_Outskirts")
+			end
+			SoundFadingMsg()
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+		</script>
+	</trigger>
+
+<!-- Ворота завода -->
+	<trigger Name="FactoryGate_Extract" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="FactoryGate_Exit_loc" />
+		<script>
+			SetVar("ExitTimer", 6)
+			SetVar("ToMap", "r0m0")
+			local exits = SCAVEXITS_GLOBAL
+			for i = 1, 3 do
+				if exits[i] == "FactoryGate" then
+					AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location2", i, "ExitScav_FactoryGate")
+					SoundFadingMsg()
+				end
+			end
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+		</script>
+	</trigger>
+
+<!-- Старое депо -->
+	<trigger Name="OldDepo_Extract" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="OldDepo_Exit_loc" />
+		<script>
+			SetVar("ExitTimer", 6)
+			SetVar("ToMap", "r0m0")
+			local exits = SCAVEXITS_GLOBAL
+			for i = 1, 3 do
+				if exits[i] == "OldDepo" then
+					AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location2", i, "ExitScav_OldDepo")
+					SoundFadingMsg()
+				end
+			end
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+		</script>
+	</trigger>
+
+<!-- Восточные скалы -->
+	<trigger Name="EasternCliffs_Extract" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="EasternCliffs_Exit_loc" />
+		<script>
+			SetVar("ExitTimer", 6)
+			SetVar("ToMap", "r0m0")
+			local exits = SCAVEXITS_GLOBAL
+			for i = 1, 3 do
+				if exits[i] == "EasternCliffs" then
+					AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location2", i, "ExitScav_EasternCliffs")
+					SoundFadingMsg()
+				end
+			end
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+		</script>
+	</trigger>
+
+<!-- Горный тайник -->
+	<trigger Name="MountainCache_Extract" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="MountainCache_Exit_loc" />
+		<script>
+			SetVar("ExitTimer", 6)
+			SetVar("ToMap", "r0m0")
+			local exits = SCAVEXITS_GLOBAL
+			for i = 1, 3 do
+				if exits[i] == "MountainCache" then
+					AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location2", i, "ExitScav_MountainCache")
+					SoundFadingMsg()
+				end
+			end
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+		</script>
+	</trigger>
+
+<!-- Дикий мост -->
+	<trigger Name="ScavBrige_Extract" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ScavBrige_Exit_loc" />
+		<script>
+			SetVar("ExitTimer", 6)
+			SetVar("ToMap", "r0m0")
+			local exits = SCAVEXITS_GLOBAL
+			for i = 1, 3 do
+				if exits[i] == "ScavBrige" then
+					AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location2", i, "ExitScav_ScavBrige")
+					SoundFadingMsg()
+				end
+			end
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+		</script>
+	</trigger>
+
+<!-- Лодка -->
+	<trigger Name="Boat_Extract" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Boat_Exit_loc" />
+		<script>
+			SetVar("ExitTimer", 6)
+			SetVar("ToMap", "r0m0")
+			local exits = SCAVEXITS_GLOBAL
+			for i = 1, 3 do
+				if exits[i] == "Boat" then
+					AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location2", i, "ExitScav_Boat")
+					SoundFadingMsg()
+				end
+			end
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+		</script>
+	</trigger>
+
+<!-- Убежище мертвеца -->
+	<trigger Name="Shelter_Extract" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Shelter_Exit_loc" />
+		<script>
+			SetVar("ExitTimer", 6)
+			SetVar("ToMap", "r0m0")
+			local exits = SCAVEXITS_GLOBAL
+			for i = 1, 3 do
+				if exits[i] == "Shelter" then
+					AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location2", i, "ExitScav_Shelter")
+					SoundFadingMsg()
+				end
+			end
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+		</script>
+	</trigger>
+
+<!-- Изба Диких -->
+	<trigger Name="ScavHome_Extract" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ScavHome_Exit_loc" />
+		<script>
+			SetVar("ExitTimer", 6)
+			SetVar("ToMap", "r0m0")
+			local exits = SCAVEXITS_GLOBAL
+			for i = 1, 3 do
+				if exits[i] == "ScavHome" then
+					AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location2", i, "ExitScav_ScavHome")
+					SoundFadingMsg()
+				end
+			end
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+		</script>
+	</trigger>
+
+<!-- Бункер Диких -->
+	<trigger Name="ScavBunker_EnterActivate" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ScavBunker_Enter_loc" />
+		<script>
+			TActivate("ScavBunker_Enter")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ScavBunker_Enter" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ScavBunker_Enter_loc" />
+		<script>
+			local b = SpawnMessageBox(2)
+			if b == 1 then
+				SetVar("InBunker", "Enter_ScavBunker")
+				TActivate("FadeEffectForBunkers")
+			end
+			GetPlayerVehicle():SetThrottle(0)
+			GetPlayerVehicle():SetCustomLinearVelocity(0)
+		</script>
+	</trigger>
+
+	<trigger Name="ScavBunker_LeaveActivate" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ScavBunker_ExitFrom_loc" />
+		<script>
+			TActivate("ScavBunker_Leave")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ScavBunker_Leave" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ScavBunker_ExitFrom_loc" />
+		<script>
+			local b = SpawnMessageBox(3)
+			if b == 1 then
+				SetVar("InBunker", "Leave_ScavBunker")
+				TActivate("FadeEffectForBunkers")
+			end
+			GetPlayerVehicle():SetThrottle(0)
+			GetPlayerVehicle():SetCustomLinearVelocity(0)
+		</script>
+	</trigger>
+
+	<trigger Name="ScavBunker_Extract" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="ScavBunker_Exit_loc" />
+		<script>
+			SetVar("ExitTimer", 6)
+			SetVar("ToMap", "r0m0")
+			local exits = SCAVEXITS_GLOBAL
+			for i = 1, 3 do
+				if exits[i] == "ScavBunker" then
+					AddImportantFadingMsgByStrIdFormatted("fm_player_exit_enters_location2", i, "ExitScav_ScavBunker")
+					SoundFadingMsg()
+				end
+			end
+			TActivate ("LeaveZoneExit")
+			TActivate ("ExitTimer")
+		</script>
+	</trigger>
+
 <!-- Игрок покидает зону выхода -->
 	<trigger Name="LeaveZoneExit" active="0">
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ToR1M1_Exit_loc" />
 		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Bunker016_Exit_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="SouthPost_Exit_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="A_Brige_Exit_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="NorthPost_Exit_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="LEP_Exit_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Bunker014_Exit_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Outskirts_Exit_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="FactoryGate_Exit_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="OldDepo_Exit_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="EasternCliffs_Exit_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="MountainCache_Exit_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ScavBrige_Exit_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Boat_Exit_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Shelter_Exit_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ScavHome_Exit_loc" />
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="ScavBunker_Exit_loc" />
 		<script>
 			AddImportantFadingMsgByStrIdFormatted("fm_player_exit_leaves_location")
 			SoundFadingMsg()
@@ -1941,10 +2726,89 @@
 			TDeactivate("Bunker016_LeaveActivate")
 			TDeactivate("Bunker016_Leave")
 			TDeactivate("Bunker016_Extract")
+			TDeactivate("SouthPost_Extract")
+			TDeactivate("A_Brige_Enter")
+			TDeactivate("A_Brige_Extract")
+			TDeactivate("NorthPost_Extract")
+			TDeactivate("LEP_EnterSignalZone")
+			TDeactivate("LEP_LeaveSignalZone")
+			TDeactivate("LEP_EnterExitZone")
+			TDeactivate("LEP_LeaveExitZone")
+			TDeactivate("DotShoot")
+			TDeactivate("GreenFierUp")
+			TDeactivate("GreenFierRemove")
+			TDeactivate("Bunker014_EnterActivate")
+			TDeactivate("Bunker014_Enter")
+			TDeactivate("Bunker014_LeaveActivate")
+			TDeactivate("Bunker014_Leave")
+			TDeactivate("Bunker014_Extract")
+			TDeactivate("Bunker014_OpenGate")
+			TDeactivate("Outskirts_Extract")
+			TDeactivate("FactoryGate_Extract")
+			TDeactivate("OldDepo_Extract")
+			TDeactivate("EasternCliffs_Extract")
+			TDeactivate("MountainCache_Extract")
+			TDeactivate("ScavBrige_Extract")
+			TDeactivate("Boat_Extract")
+			TDeactivate("Shelter_Extract")
+			TDeactivate("ScavHome_Extract")
+			TDeactivate("ScavBunker_EnterActivate")
+			TDeactivate("ScavBunker_Enter")
+			TDeactivate("ScavBunker_LeaveActivate")
+			TDeactivate("ScavBunker_Leave")
+			TDeactivate("ScavBunker_Extract")
 			TDeactivate("LeaveZoneExit")
 			TDeactivate("ExitTimer")
 			TDeactivate("PassingToMap_Timer")
 			TDeactivate("PassingToMap_TimerStart")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Показать выходы -->
+	<trigger Name="ShowExits" active="0">
+		<event eventid="GE_PLAYER_VEHICLE_HORN" ObjName="Player1" />
+		<script>
+
+			if 5 > GetVar("TimeRaidMinute").AsInt and not(0 > GetVar("TimeRaidMinute").AsInt) then
+				AddImportantFadingMsgByStrIdFormatted("fm_time_raid_red", GetVar("TimeRaidMsg").AsString)
+			elseif 0 >= GetVar("TimeRaidMinute").AsInt and GetVar("TimeRaidSecond").AsInt == 59 then
+				AddImportantFadingMsgByStrIdFormatted("fm_time_raid_red", GetVar("TimeRaidMsg").AsString)
+			else
+				AddImportantFadingMsgByStrIdFormatted("fm_time_raid", GetVar("TimeRaidMsg").AsString)
+			end
+
+			if GetVar("PlayerBelong").AsString == "SCAV" then
+				if GetVar("PassingToMap").AsInt == 1 then
+					AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", GetVar("ScavExitsMsg").AsString, "Passing_ToR1M1_2")
+				else
+					AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone3", GetVar("ScavExitsMsg").AsString, "Passing_ToR1M1_1", GetVar("PassingToMap_time_msg").AsString)
+				end
+			else
+				if GetVar("SpawnPlayer").AsInt == 1 then
+					if GetVar("PassingToMap").AsInt == 1 then
+						AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone2", "Exits2LocationR5M1_2")
+					else
+						AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits2LocationR5M1", GetVar("PassingToMap_time_msg").AsString)
+					end
+				else
+					if GetVar("PassingToMap").AsInt == 1 then
+						AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone2", "Exits1LocationR5M1_2")
+					else
+						AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits1LocationR5M1", GetVar("PassingToMap_time_msg").AsString)
+					end
+				end
+			end
+
+			TActivate("ShowExits_Activate")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ShowExits_Activate" active="0">
+		<event 	timeout="7" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("ShowExits")
 			trigger:Deactivate()
 		</script>
 	</trigger>

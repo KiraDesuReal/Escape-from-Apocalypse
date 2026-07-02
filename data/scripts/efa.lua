@@ -40,7 +40,7 @@ if GARAGE_CRAFT_GLOBAL == nil then GARAGE_CRAFT_GLOBAL = 0 end
 if GARAGE_CRAFT_PAUSE_GLOBAL == nil then GARAGE_CRAFT_PAUSE_GLOBAL = 0 end
 
 -- Белонг игрока
-if PLAYER_BELONG_GLOBAL == nil then PLAYER_BELONG_GLOBAL = "0" end
+if PLAYER_BELONG_GLOBAL == nil then PLAYER_BELONG_GLOBAL = "BEAR" end
 
 -- Таймер машины диких
 if SCAV_CAR_TIME_HOUR == nil then SCAV_CAR_TIME_HOUR = 0 end
@@ -2420,6 +2420,83 @@ function IfLoadSave()
 		LOAD_MAP = 1
 	end
 end
+
+-- Создание дикого
+function CreateScavVehicle(name, pos, path)
+	local enemylist = {"Sml1CarScav", "Sml2CarScav", "Sml3CarScav", "Sml4CarScav", "Scout1CarScav", "Scout2CarScav", "Scout3CarScav", "Fighter1CarScav", "Fighter2CarScav", "Hunter2CarScav"}
+	local smallgunlist = {"hornet01","specter01","storm01","pkt01","kord01"}
+	local biggunlist = {"vector01","vulcan01","rapier01"}
+
+	local rotarr={
+		Quaternion(-0.029, 0.679, -0.021, 0.734),
+		Quaternion(0.001, 0.626, 0.002, 0.780),
+		Quaternion(-0.001, 0.558, -0.001, 0.830),
+		Quaternion(-0.029, -0.025, 0.005, 0.999),
+		Quaternion(-0.001, -0.346, 0.001, 0.938),
+		Quaternion(-0.001, -0.724, -0.000, 0.690),
+		Quaternion(-0.025, -0.992, -0.005, 0.125),
+		Quaternion(0.002, -0.914, -0.001, 0.405),
+		Quaternion(-0.003, -1.000, -0.006, -0.015)}
+
+	local model = enemylist[random(getn(enemylist))]
+	TeamCreate(name, 1082, pos, {model}, nil, 1)
+
+	local sv = GetEntityByName (name.."_vehicle_0")
+	if sv then
+		sv:SetNewPart("CABIN_SMALL_GUN", smallgunlist[exrandom(getn(smallgunlist))])
+		if model == "Fighter2CarScav" or model == "Hunter2CarScav" then
+			if 30 >= random(100) then
+				sv:SetNewPart("CABIN_BIG_GUN_1", biggunlist[exrandom(getn(biggunlist))])
+			end
+		end
+		AddAmmoItemsForGuns(sv, random(0,1))
+		sv:SetRotation(rotarr[random(getn(rotarr))])
+	end
+	if path then
+		local sv_p = GetEntityByName (name)
+		local count_path = getn(path)
+		if sv_p then
+			sv_p:StackOpen()
+			for d=1, count_path do
+				sv_p:SetDestination(path[random(count_path)])
+			end
+			sv_p:StackLoop()
+			sv_p:StackClose()
+		end
+	end
+
+	SetVar(name.."_vehicle_0_UnderAttack", 0)
+
+	if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+		SetVar(name.."_NPC", "Scav_"..random(10).."_NPC")
+		SetVar("DlgMoney_"..name.."_vehicle_0", RandomFromScavCarma())
+		SetVar("DlgMoneyAngry_"..name.."_vehicle_0", random(2))
+		SetVar("DlgUseItems_"..name.."_vehicle_0", RandomFromScavCarma())
+		SetVar("DlgUseItems_15000_"..name.."_vehicle_0", RandomFromScavCarma())
+		SetVar("DlgUseItems_20000_"..name.."_vehicle_0", random(2))
+		SetVar("DlgUseItemsAngry_"..name.."_vehicle_0", random(2))
+		SetVar("DlgFollow_"..name.."_vehicle_0", RandomFromScavCarma())
+		local sv_a = GetEntityByName (name.."_vehicle_0")
+		if sv_a then
+			for i = 1, 5 do
+				local ammoItems = {"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun"}
+				if sv_a:HasAmountOfItemsInRepository(ammoItems[i], 1) then
+					SetVar("DlgAmmo_"..name.."_vehicle_0", 1)
+					break
+				else
+					SetVar("DlgAmmo_"..name.."_vehicle_0", 0)
+				end
+			end
+		end
+	end
+	
+	if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+		local tr = getObj("ScavCarDist")
+		if tr and tr:IsActivated() == 0 then TActivate("ScavCarDist") end
+	end
+end
+
+
 
 
 

@@ -68,7 +68,7 @@ ITEM_CHRISTMAS_STAR = "Christmas star"
 
 MSG_RAID = "Raid ¹"
 MSG_DAY = "Day: "
-MSG_PMC = "PMC operator "
+MSG_PMC = "Operator "
 MSG_MAP_R1M1 = "Krai"
 MSG_MAP_R5M1 = "Woods"
 

@@ -68,7 +68,7 @@ ITEM_CHRISTMAS_STAR = "Рождественская звезда"
 
 MSG_RAID = "Рейд №"
 MSG_DAY = "День: "
-MSG_PMC = "Оператор ЧВК "
+MSG_PMC = "Оператор "
 MSG_MAP_R1M1 = "Край"
 MSG_MAP_R5M1 = "Лес"
 

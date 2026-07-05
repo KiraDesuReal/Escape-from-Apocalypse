@@ -3949,4 +3949,342 @@
 			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0), "IfPlayerKillScav")
 		</script>
 	</trigger>
+
+	<trigger Name="SpawnScavsInLocation08" active="0">
+		<event 	timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>										
+			local pos = {CVector(4573.059, 253.926, 1784.151), CVector(4675.652, 244.522, 1707.413), CVector(4622.878, 253.352, 1834.125), CVector(4552.870, 259.627, 1870.848), CVector(4606.951, 233.044, 1622.682), CVector(4606.713, 252.696, 1895.413), CVector(4125.411, 232.702, 1175.483), CVector(4150.218, 234.526, 1111.031), CVector(4050.181, 231.909, 1225.144), CVector(4301.647, 227.979, 1185.005), CVector(4210.899, 231.712, 1280.052), CVector(4148.822, 230.497, 1266.943)}
+			local path = {CVector(4567.594, 206.032, 1461.571), CVector(4531.252, 256.781, 1792.104), CVector(4420.397, 252.447, 1950.276), CVector(4153.807, 243.791, 1925.190), CVector(4279.302, 231.711, 1409.164), CVector(4228.956, 233.461, 1120.631), CVector(4336.229, 227.259, 1107.832), CVector(4138.741, 232.521, 1166.821), CVector(4061.890, 232.267, 1239.307), CVector(4134.729, 232.530, 1124.759), CVector(4673.914, 245.219, 1719.076), CVector(4573.725, 252.791, 1910.978)}
+			local count_scav = random(3, 8)
+
+			if GetVar("AliveScav_8_loc").AsInt > 0 then
+				count_scav = GetVar("AliveScav_8_loc").AsInt
+			end
+	
+			for k = 1, count_scav do
+				CreateScavVehicle("Scav"..k.."_loc8", pos[random(getn(pos))], path)
+
+				getObj("ScavInLocation08_Die"):AddEvent("GE_OBJECT_DIE", "Scav"..k.."_loc8_vehicle_0")
+				getObj("ScavInLocation08_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "Scav"..k.."_loc8_vehicle_0")
+			end
+
+			SetVar("CountScav_8_loc", count_scav)
+			SetVar("AliveScav_8_loc", count_scav)
+			TActivate("ScavInLocation08_Die")
+			TActivate("ScavInLocation08_UnderAttack")
+			TActivate("SpawnScavsInLocation08_Leaves")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ScavInLocation08_Die" active="0">
+		<script>
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			local carName = trigger:GetCallObjName()
+
+			if GetVar(carName.."_UnderAttack").AsInt == 1100 then
+				TActivate("IfPlayerKillScav")
+			else
+				if DEBUG == 1 then 
+					println("SCAV KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+					LOG("SCAV KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+				end
+			end
+
+			getObj("ScavInLocation08_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", carName)
+			SetVar(carName.."_UnderAttack", 0)
+			SetVar("AliveScav_8_loc", GetVar("AliveScav_8_loc").AsInt-1)
+	
+			if GetVar("CountScav_8_loc").AsInt > count then
+			return
+			end
+
+			for s1=1,GetVar("CountScav_8_loc").AsInt do
+				trigger:DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc8_vehicle_0")
+				getObj("ScavInLocation08_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc8_vehicle_0")
+			end
+
+			if DEBUG == 1 then println("ALL SCAVS IN LOC 8 DIE") LOG("ALL SCAVS IN LOC 8 DIE") end
+
+			TActivate("SpawnScavsInLocation08_Restart")
+			TDeactivate("SpawnScavsInLocation08_Enters")
+			TDeactivate("SpawnScavsInLocation08_Leaves")
+			TDeactivate("ScavInLocation08_Dist")
+			SetVar("CountScav_8_loc", 0)
+			SetVar("AliveScav_8_loc", 0)
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				TActivate("trDeactivateScavCarDist")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SpawnScavsInLocation08_Restart" active="0">
+		<event 	timeout="150" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("SpawnScavsInLocation08_Enters")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SpawnScavsInLocation08_Enters" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="SpawnScavs_8_loc" />
+		<script>
+			TActivate("SpawnScavsInLocation08")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SpawnScavsInLocation08_Leaves" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="SpawnScavs_8_loc" />
+		<script>
+			TActivate("ScavInLocation08_Dist")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ScavInLocation08_Remove" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			TDeactivate("ScavInLocation08_Die")
+			TDeactivate("ScavInLocation08_Dist")
+			TDeactivate("SpawnScavsInLocation08_Leaves")
+			TDeactivate("ScavInLocation08_UnderAttack")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				TActivate("trDeactivateScavCarDist")
+			end
+
+			for s1=1,GetVar("CountScav_8_loc").AsInt do
+				local sv1 = GetEntityByName("Scav"..s1.."_loc8_vehicle_0")
+				if sv1 then sv1:Remove() end
+
+				getObj("ScavInLocation08_Die"):DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc8_vehicle_0")
+				getObj("ScavInLocation08_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc8_vehicle_0")
+				SetVar("Scav"..s1.."_loc8_vehicle_0_UnderAttack", 0)
+			end
+
+			SetVar("CountScav_8_loc", 0)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ScavInLocation08_Dist" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			local len
+			local l = 0
+			local count = GetVar("CountScav_8_loc").AsInt
+
+			for i = 1, GetVar("CountScav_8_loc").AsInt do
+				local run = GetEntityByName("Scav"..i.."_loc8_vehicle_0")
+				if run and run:IsAlive() then
+					len = Dist(pl, run)
+					if (len > 500) then
+						l = l + 1
+					end
+				else
+					count = count - 1
+				end
+			end
+
+			if l == count then
+				TActivate("ScavInLocation08_Remove")
+				TActivate("SpawnScavsInLocation08_Enters")
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="ScavInLocation08_UnderAttack" active="0">
+		<script>
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0), "IfPlayerKillScav")
+		</script>
+	</trigger>
+
+	 <trigger Name="SpawnScavsInLocation09" active="0">
+		<event 	timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<script>										
+			local pos = {CVector(5415.154, 228.979, 2145.461), CVector(5123.519, 229.699, 2108.647), CVector(5366.921, 228.799, 2072.036), CVector(5311.308, 228.311, 1944.169), CVector(5272.063, 227.591, 1980.896), CVector(5430.833, 228.901, 1852.155), CVector(5173.111, 229.297, 1929.849), CVector(5103.251, 217.854, 1808.612)}
+			local path = {CVector(5252.433, 199.152, 1580.286), CVector(5430.501, 226.220, 1704.305), CVector(5571.857, 246.784, 1818.493), CVector(5531.848, 249.947, 2107.490), CVector(5379.425, 244.863, 2294.193), CVector(5260.895, 229.154, 2075.503), CVector(5185.383, 218.856, 1732.964), CVector(5411.321, 228.474, 1958.931)}
+			local count_scav = random(3, 6)
+
+			if GetVar("AliveScav_9_loc").AsInt > 0 then
+				count_scav = GetVar("AliveScav_9_loc").AsInt
+			end
+	
+			for k = 1, count_scav do
+				CreateScavVehicle("Scav"..k.."_loc9", pos[random(getn(pos))], path)
+
+				getObj("ScavInLocation09_Die"):AddEvent("GE_OBJECT_DIE", "Scav"..k.."_loc9_vehicle_0")
+				getObj("ScavInLocation09_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "Scav"..k.."_loc9_vehicle_0")
+			end
+
+			SetVar("CountScav_9_loc", count_scav)
+			SetVar("AliveScav_9_loc", count_scav)
+			TActivate("ScavInLocation09_Die")
+			TActivate("ScavInLocation09_UnderAttack")
+			TActivate("SpawnScavsInLocation09_Leaves")
+
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ScavInLocation09_Die" active="0">
+		<script>
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			local carName = trigger:GetCallObjName()
+
+			if GetVar(carName.."_UnderAttack").AsInt == 1100 then
+				TActivate("IfPlayerKillScav")
+			else
+				if DEBUG == 1 then 
+					println("SCAV KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+					LOG("SCAV KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+				end
+			end
+
+			getObj("ScavInLocation09_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", carName)
+			SetVar(carName.."_UnderAttack", 0)
+			SetVar("AliveScav_9_loc", GetVar("AliveScav_9_loc").AsInt-1)
+	
+			if GetVar("CountScav_9_loc").AsInt > count then
+			return
+			end
+
+			for s1=1,GetVar("CountScav_9_loc").AsInt do
+				trigger:DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc9_vehicle_0")
+				getObj("ScavInLocation09_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc9_vehicle_0")
+			end
+
+			if DEBUG == 1 then println("ALL SCAVS IN LOC 9 DIE") LOG("ALL SCAVS IN LOC 9 DIE") end
+
+			TActivate("SpawnScavsInLocation09_Restart")
+			TDeactivate("SpawnScavsInLocation09_Enters")
+			TDeactivate("SpawnScavsInLocation09_Leaves")
+			TDeactivate("ScavInLocation09_Dist")
+			SetVar("CountScav_9_loc", 0)
+			SetVar("AliveScav_9_loc", 0)
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				TActivate("trDeactivateScavCarDist")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SpawnScavsInLocation09_Restart" active="0">
+		<event 	timeout="150" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("SpawnScavsInLocation09_Enters")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SpawnScavsInLocation09_Enters" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="Boss_loc" />
+		<script>
+			TActivate("SpawnScavsInLocation09")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SpawnScavsInLocation09_Leaves" active="0">
+		<event eventid="GE_OBJECT_LEAVES_LOCATION" ObjName="Boss_loc" />
+		<script>
+			TActivate("ScavInLocation09_Dist")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ScavInLocation09_Remove" active="0">
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<script>
+			TDeactivate("ScavInLocation09_Die")
+			TDeactivate("ScavInLocation09_Dist")
+			TDeactivate("SpawnScavsInLocation09_Leaves")
+			TDeactivate("ScavInLocation09_UnderAttack")
+
+			if GetVar("PlayerBelong").AsString == "SCAV" and not(1.5 >= GetTolerance(1100, 1082)) then
+				TActivate("trDeactivateScavCarDist")
+			end
+
+			for s1=1,GetVar("CountScav_9_loc").AsInt do
+				local sv1 = GetEntityByName("Scav"..s1.."_loc9_vehicle_0")
+				if sv1 then sv1:Remove() end
+
+				getObj("ScavInLocation09_Die"):DelEventObj("GE_OBJECT_DIE", "Scav"..s1.."_loc9_vehicle_0")
+				getObj("ScavInLocation09_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "Scav"..s1.."_loc9_vehicle_0")
+				SetVar("Scav"..s1.."_loc9_vehicle_0_UnderAttack", 0)
+			end
+
+			SetVar("CountScav_9_loc", 0)
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ScavInLocation09_Dist" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			local len
+			local l = 0
+			local count = GetVar("CountScav_9_loc").AsInt
+
+			for i = 1, GetVar("CountScav_9_loc").AsInt do
+				local run = GetEntityByName("Scav"..i.."_loc9_vehicle_0")
+				if run and run:IsAlive() then
+					len = Dist(pl, run)
+					if (len > 500) then
+						l = l + 1
+					end
+				else
+					count = count - 1
+				end
+			end
+
+			if l == count then
+				TActivate("ScavInLocation09_Remove")
+				TActivate("SpawnScavsInLocation09_Enters")
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="ScavInLocation09_UnderAttack" active="0">
+		<script>
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0), "IfPlayerKillScav")
+		</script>
+	</trigger>
+
+	<trigger Name="SpawnsScavs" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i=1,9 do
+				TActivate("SpawnScavsInLocation0"..i.."_Enters")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Использование предметов -->
+	<trigger Name="ItemsUse" active="0">
+		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			local hp = GetPlayerHealth() 
+			if pl and hp >= 1 then 
+				ItemUse() 
+				UseItemsForQuest()
+			else 
+				trigger:Deactivate() 
+			end
+		</script>
+	</trigger>
 </triggers>
+

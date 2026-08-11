@@ -59,7 +59,7 @@
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\objects\box\plastic_barrel_box.gam" />
+		file="data\models\objects\box\plastic_barrel\plastic_barrel_box.gam" />
 
 	<model
 		id="airbox1"
@@ -115,6 +115,83 @@
 				ImmediateRemove="1" />
 		</action>
 	</model>
+
+	<model
+		id="documents_box"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\objects\box\documents_box\documents_box.gam" />
+
+	<model
+		id="gun_box1"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\objects\box\gun_box1\gun_box1.gam" />
+
+	<model
+		id="gun_box2"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\objects\box\gun_box2\gun_box2.gam" />
+
+	<model
+		id="medical_bag"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\objects\box\medical_bag\medical_bag.gam" />
+
+	<model
+		id="medical_box"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\objects\box\medical_box\medical_box.gam" />
+
+	<model
+		id="safe_box"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\objects\box\safe_box\safe_box.gam" />
+
+	<model
+		id="sports_bag"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\objects\box\sports_bag\sports_bag.gam" />
+
+	<model
+		id="tool_box1"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\objects\box\tool_box\tool_box.gam" />
+
+	<model
+		id="tool_box2"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\objects\box\tool_box\tools_box.gam" />
+
+	<model
+		id="wood_box"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\objects\box\wood_box\wood_box.gam" />
+
+	<model
+		id="wooden_box"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\objects\box\wooden_box\wooden_box.gam" />
 
 	<model
 		id="generator_motor"
@@ -1994,6 +2071,35 @@
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\keys\key_1.gam" />
+
+	<model
+		id="key_2"
+		shadow="0"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\keys\key_2.gam" />
+
+	<model
+		id="key_3"
+		shadow="0"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\keys\key_3.gam" />
+
+<!-- medical items -->
+	<model
+		id="ai2"
+		shadow="0"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\medical\ai2.gam" />
+
+	<model
+		id="h2o2"
+		shadow="0"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\medical\h2o2.gam" />
 
 <!-- other items -->
 	<model
@@ -22005,7 +22111,7 @@
 
 	<model
 		id="quest_box_videocard"
-		file="data\models\objects\box\box_videocard.gam"
+		file="data\models\objects\box\box_videocard\box_videocard.gam"
 		shadow="1"
 		windwavy="0"
 		trans="0"

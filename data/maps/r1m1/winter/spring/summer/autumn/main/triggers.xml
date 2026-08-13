@@ -5343,7 +5343,7 @@
 			end
 
 			for i=1,scav_count do
-				getObj("Scavs_Reached"):AddEvent("GE_TARGET_REACHED", "Scav_"..i.."_vehicle_0")
+				getObj("Scavs_Reached"):AddEvent("GE_TARGET_REACHED", "Scav_"..i)
 				getObj("Scavs_Dead"):AddEvent("GE_OBJECT_DIE", "Scav_"..i.."_vehicle_0")
 				getObj("Scavs_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "Scav_"..i.."_vehicle_0")
 				SetVar("Scav_"..i.."_vehicle_0_UnderAttack", 0)
@@ -5360,7 +5360,6 @@
 	<trigger Name="Scavs_Reached" active="0">
 		<script>
 			local path = {CVector(1223.477, 295.339, 2869.511), CVector(2070.956, 341.750, 2849.030), CVector(513.808, 303.971, 1821.339), CVector(1974.261, 301.978, 809.417), CVector(3138.543, 316.540, 662.453), CVector(3182.412, 320.890, 1239.882), CVector(2997.474, 315.629, 999.674), CVector(2604.547, 322.758, 1662.702), CVector(957.419, 289.513, 2904.316)}
-			
 			local amount=trigger:GetTriggeredObjectAmount()
 			for i=0,amount - 1 do 
 				local car_Scav = getObj(trigger:GetTriggeredObjectID(i)) 

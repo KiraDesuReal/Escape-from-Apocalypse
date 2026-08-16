@@ -159,11 +159,18 @@
 		file="data\models\objects\box\medical_box\medical_box.gam" />
 
 	<model
-		id="safe_box"
+		id="safe_box1"
 		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\objects\box\safe_box\safe_box.gam" />
+		file="data\models\objects\box\safe_box1\safe_box1.gam" />
+
+	<model
+		id="safe_box2"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\objects\box\safe_box2\safe_box2.gam" />
 
 	<model
 		id="sports_bag"

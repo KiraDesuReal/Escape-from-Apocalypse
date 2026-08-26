@@ -513,6 +513,7 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 				local ItemsOilUse = {"oil_use", "fuel_nil_use", "fuel_full_use"}
 
 				local items1 = {"scrap_metal", "oil", "bottle", "fuel", "machinery", "tobacco", "book", "electronics", "doski", "details", "shkatulka",
+								"item_green_fier",
 								"item_bolts", "item_hose", "item_insulation", "item_kek", "item_nails", "item_nuts", "item_parts", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_tube",
 								"item_cable", "item_cooler", "item_cpu", "item_dvd", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_hdd", "item_helix", "item_kondesators", "item_lump", "item_magnet", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tplug", "item_ultra_lump", "item_usb", "item_wires",
 								"item_accum", "item_battery_aa", "item_battery_d", "item_powerbank",
@@ -523,7 +524,7 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 								"item_vodka", "item_zapal", "item_carsen", "item_duck",
 								"item_metalscissors", "item_nippers", "item_pliers", "item_pliers_round", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_wrench"}
 				
-				local items2 = {"item_monolit", "item_leatherman", "item_toolset", "item_kaktus", "item_fullmaster", "item_awl", "item_afak", "item_military_tube", "someTurboAccelerationPusher", "ammo_ballon_turbo", "item_diary_s", "item_bp", "item_grizzly", "item_gyrotachometer", "item_lcd", "item_drill", "item_filter", "item_sewing_kit", "item_gunpowder", "item_pena", "item_green_battery", "item_diary", "item_dry", "item_sugar", "item_military_cable", "item_military_plate", "item_ex", "item_thermometer", "item_propan", "item_handrill", "item_teapon", "item_emre_kara", "item_chizuru", "item_waterfilter", "item_keqing", "item_datchik", "item_metallodetector", "item_sausage", "item_silver_skull", "item_kubok_kikiki", "item_ssd", "item_key_gate_vaterland", "item_key_gate_thetown", "item_key_gate_basefelix", "item_disk_exmachina", "item_cyclon", "item_vaze", "item_buldex", "item_cat", "item_prisadka", "item_sas", "item_rolex", "item_chain_gold", "item_car_battery", "item_pipe_wrench", "item_engine", "item_rfid", "item_controller", "item_fitanyashka", "item_paracord", "item_chiken", "item_termit", "item_ratchet_wrench", "item_skullring", "item_oftalmaskop", "item_vitalik", "item_iridiym", "item_tetris", "item_vpx", "item_virtex", "item_airfilter", "item_ananaga", "item_lion", "item_converter", "item_rozvidka", "item_gpu", "item_bitcoin", "item_ledx", "item_tank_battery"}
+				local items2 = {"item_monolit", "item_leatherman", "item_toolset", "item_kaktus", "item_fullmaster", "item_awl", "item_afak", "item_military_tube", "someTurboAccelerationPusher", "ammo_ballon_turbo", "item_diary_s", "item_bp", "item_grizzly", "item_gyrotachometer", "item_lcd", "item_drill", "item_filter", "item_sewing_kit", "item_gunpowder", "item_pena", "item_green_battery", "item_diary", "item_dry", "item_sugar", "item_military_cable", "item_military_plate", "item_ex", "item_thermometer", "item_propan", "item_handrill", "item_teapon", "item_emre_kara", "item_chizuru", "item_waterfilter", "item_keqing", "item_datchik", "item_metallodetector", "item_sausage", "item_silver_skull", "item_kubok_kikiki", "item_ssd", "item_key_gate_vaterland", "item_key_gate_thetown", "item_key_gate_basefelix", "item_key_gate_bunker014", "item_disk_exmachina", "item_cyclon", "item_vaze", "item_buldex", "item_cat", "item_prisadka", "item_sas", "item_rolex", "item_chain_gold", "item_car_battery", "item_pipe_wrench", "item_engine", "item_rfid", "item_controller", "item_fitanyashka", "item_paracord", "item_chiken", "item_termit", "item_ratchet_wrench", "item_skullring", "item_oftalmaskop", "item_vitalik", "item_iridiym", "item_tetris", "item_vpx", "item_virtex", "item_airfilter", "item_ananaga", "item_lion", "item_converter", "item_rozvidka", "item_gpu", "item_bitcoin", "item_ledx", "item_tank_battery"}
 				
 				local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
 				local gadget2 = {"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "additional_fuel_tank2", "additional_torque2", "additional_durability2"}
@@ -533,7 +534,13 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 				local exlusive = {}
 				local mapName = GET_GLOBAL_OBJECT( "CurrentLevel" ):GetLevelName()
 				if mapName == "r1m1" then
-					exlusive = {"potato", "firewood", "item_pants40grn"}
+					exlusive = {"potato", "firewood", "item_pants40grn", "item_key_gate_thetown", "item_key_gate_basefelix", "item_key_gate_vaterland"}
+					local items_array1 = getn(items1)
+					for i=1,getn(exlusive) do
+						items1[items_array1 + i] = exlusive[i]
+					end
+				elseif mapName == "r5m1" then
+					exlusive = {"potato", "firewood", "item_woodclock", "item_key_gate_bunker014"}
 					local items_array1 = getn(items1)
 					for i=1,getn(exlusive) do
 						items1[items_array1 + i] = exlusive[i]

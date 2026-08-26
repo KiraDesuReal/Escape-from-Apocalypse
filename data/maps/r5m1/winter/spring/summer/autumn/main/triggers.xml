@@ -289,6 +289,13 @@
 
 			TActivate("ItemsUse")
 
+			TActivate("CreateBarrelBox")
+			TActivate("CreateBoxForDeadScav")
+			TActivate("CreateGunLootBox")
+			TActivate("CreateMedicalBox")
+			TActivate("CreateTehnoBox")
+			TActivate("CreateToolsBox")
+
 			if COUNT_RAIDS > 1 then TActivate("SetWeather") end
 
 			if KEY_O_GLOBAL then
@@ -652,7 +659,7 @@
 			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj284", 1001, CVector(4798.754, 280.652, 4300.263), Quaternion(0.000, 0.326, 0.000, 0.945), 0, 1.000)
 			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj285", 1001, CVector(4786.939, 280.652, 4327.429), Quaternion(0.000, -0.429, 0.000, 0.903), 0, 1.000)
 			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj286", 1001, CVector(4792.087, 280.652, 4339.557), Quaternion(0.000, -0.227, 0.000, 0.974), 0, 1.000)
-			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj287", 1001, CVector(4788.884, 280.652, 4333.269), Quaternion(0.000, 0.600, 0.000, 0.800), 0, 1.000)
+			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj287", 1001, CVector(4788.359, 280.652, 4333.074), Quaternion(0.000, 0.626, 0.000, 0.780), 0, 1.000)
 			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj288", 1001, CVector(4824.485, 280.652, 4327.194), Quaternion(0.000, 0.382, 0.000, 0.924), 0, 1.000)
 			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj289", 1001, CVector(4824.355, 280.652, 4334.246), Quaternion(0.000, -0.409, 0.000, 0.913), 0, 1.000)
 			CreateNewBreakableObject("Breakable_Sandbag1", "breakebleObj290", 1001, CVector(4811.282, 280.652, 4351.909), Quaternion(0.000, -0.446, 0.000, 0.895), 0, 1.000)
@@ -4695,6 +4702,320 @@
 
 			if l == 0 then
 				TDeactivate("ScavCarDist")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Расстановка лута на карте -->
+	<trigger Name="CreateBarrelBox" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local barrel = {"BarrelBox_1_loc", "BarrelBox_2_loc", "BarrelBox_3_loc", "BarrelBox_5_loc", "BarrelBox_7_loc", "BarrelBox_8_loc", "BarrelBox_10_loc", "BarrelBox_14_loc", "BarrelBox_15_loc", "BarrelBox_16_loc", "BarrelBox_19_loc", "BarrelBox_21_loc", "BarrelBox_25_loc", "BarrelBox_27_loc", "BarrelBox_30_loc", "BarrelBox_32_loc", "BarrelBox_33_loc", "BarrelBox_34_loc", "BarrelBox_35_loc", "BarrelBox_36_loc", "BarrelBox_41_loc"}
+			local cache = {"BarrelBox_4_loc", "BarrelBox_6_loc", "BarrelBox_9_loc", "BarrelBox_11_loc", "BarrelBox_12_loc", "BarrelBox_13_loc", "BarrelBox_17_loc", "BarrelBox_18_loc", "BarrelBox_20_loc", "BarrelBox_22_loc", "BarrelBox_23_loc", "BarrelBox_24_loc", "BarrelBox_26_loc", "BarrelBox_28_loc", "BarrelBox_29_loc", "BarrelBox_31_loc", "BarrelBox_37_loc", "BarrelBox_38_loc", "BarrelBox_39_loc", "BarrelBox_40_loc"}
+
+			for b = 1, 21 do
+				if random(2) == 1 then
+					CreateBarrelLootBox("barrel"..b, getPos(barrel[b]))
+				end
+			end
+
+			for c = 1, 20 do
+				if random(2) == 1 then
+					CreateBarrelLootBox("cache"..c, getPos(cache[c]), getObj(cache[c]):GetRotation(), 2)
+					local BarrelPos = getObj("cache"..c):GetPosition()
+					if c == 5 or c == 20 then
+						BarrelPos.y = BarrelPos.y + 0.060
+						getObj("cache"..c):SetPosition(BarrelPos)
+					elseif c == 4 then
+						BarrelPos.y = BarrelPos.y - 0.060
+						getObj("cache"..c):SetPosition(BarrelPos)
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateBoxForDeadScav" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local items = {"potato", "scrap_metal", "firewood", "oil", "bottle", "fuel", "machinery", "tobacco", "book", "electronics",
+							"doski", "details", "shkatulka",
+							"scrap_metal_use", "machinery_use", "oil_use", "fuel_nil_use",
+							"item_key_gate_bunker014",
+							"item_green_fier",
+							"ammo_chest_machinegun", "ammo_chest_shotgun",
+							"item_bolts", "item_datchik", "item_hose", "item_insulation", "item_nails", "item_nuts", "item_parts", "item_pena", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_thermometer", "item_tube",
+							"item_cable", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_hdd", "item_helix", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tplug", "item_ultra_lump", "item_usb", "item_wires",
+							"item_accum", "item_battery_aa", "item_battery_d", "item_cyclon", "item_green_battery", "item_powerbank",
+							"item_dry", "item_hunter_spich", "item_lighter", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder",
+							"item_sugar", "item_sausage",
+							"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
+							"item_diary", "item_diary_s", "item_disk", "item_flashdrive", "item_manual", "item_sas", "item_ssd",
+							"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_medical_tools", "item_naci", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
+							"item_filter", "item_paracord", "item_vodka", "item_waterfilter", "item_zapal", "item_carsen", "item_stakanyash",
+							"item_awl", "item_fullmaster", "item_leatherman", "item_metalscissors", "item_nippers", "item_pliers", "item_pliers_round", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
+							"item_chain", "item_chain_gold", "item_ex", "item_rolex", "item_teapon", "item_woodclock", "item_silver_skull", "item_duck"}
+			local gun = {"hornet01", "specter01", "pkt01", "kord01", "storm01", "vector01", "vulcan01", "kpvt01", "rapier01", "omega01", "bumblebee01"}
+			local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
+			local gadget2 = {"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "additional_fuel_tank2", "additional_torque2", "additional_durability2"}
+
+			local protChest = "mainChest"
+			if EVENT == "NEW_YEAR" then 
+				local new_items = {"item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star"}
+				for i = 1, 4 do
+					table.insert(items, new_items[i])
+				end
+				protChest = "christmasChest"
+			end
+
+			for i=1,12 do
+				local Chest = CreateNewObject{prototypeName = protChest, objName = "DeadScav"..i.."Chest"}	
+				local ChestId = GetEntityByID(Chest)
+				ChestId:SetPosition(CVector(getPos("DeadScavBox_"..i.."_loc")))
+				ChestId:SetRotation(getObj("DeadScavBox_"..i.."_loc"):GetRotation())
+
+				if random(3) == 1 then
+					AddGunRandomAmmoToChestObj(ChestId, gun[random(getn(gun))], "ScavItemGun_"..random(10000))
+				end
+
+				if random(5) == 1 then
+					local gadget_rand = {gadget1[random(getn(gadget1))], gadget2[random(getn(gadget2))]}
+					AddItemsToChestObj(ChestId, gadget_rand[random(2)], "ScavItemGadget_"..random(10000))
+				end
+
+				for i = 1, random(4) do
+					local item = GetRandomWeightedItem(items)
+					AddItemsToChestObj(ChestId, item, "ScavItem_"..random(10000))
+				end
+		
+				if i == 9 then
+					if random(3) == 1 then
+						AddItemsToChestObj(ChestId, "item_green_fier", "ScavItemGreenFier_"..random(10000))
+					end
+				end
+
+				if random(2) == 1 then
+					AddItemsToChestObj(ChestId, "item_vodka", "ScavItemVodka_"..random(10000))
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateGunLootBox" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local small_gun_box = {"GunBox_1_loc", "GunBox_3_loc", "GunBox_9_loc", "GunBox_10_loc", "GunBox_14_loc", "GunBox_17_loc", "GunBox_20_loc", "GunBox_24_loc", "GunBox_26_loc", "GunBox_27_loc", "GunBox_28_loc", "GunBox_33_loc", "GunBox_39_loc", "GunBox_40_loc"}
+			local big_gun_box_black = {"GunBox_11_loc", "GunBox_12_loc", "GunBox_25_loc", "GunBox_30_loc", "GunBox_36_loc"}
+			local big_gun_box_green = {"GunBox_2_loc", "GunBox_38_loc"}
+			local flat_gun_box = {"GunBox_4_loc", "GunBox_5_loc", "GunBox_6_loc", "GunBox_7_loc", "GunBox_8_loc", "GunBox_13_loc", "GunBox_15_loc", "GunBox_16_loc", "GunBox_18_loc", "GunBox_19_loc", "GunBox_21_loc", "GunBox_22_loc", "GunBox_23_loc", "GunBox_29_loc", "GunBox_31_loc", "GunBox_32_loc", "GunBox_34_loc", "GunBox_35_loc", "GunBox_37_loc"}
+
+			for s=1,14 do
+				if random(2) == 1 then
+					CreateSmallGunBox("SmallGunBox"..s, getPos(small_gun_box[s]), getObj(small_gun_box[s]):GetRotation())
+					if s == 12 then
+						getObj("SmallGunBox12"):SetPropertyById(7, 0.4)
+					end
+				end
+			end
+
+			for b=1,5 do
+				if random(2) == 1 then
+					CreateBigGunBoxBlack("BigGunBoxBlack"..b, getPos(big_gun_box_black[b]), getObj(big_gun_box_black[b]):GetRotation())
+				end
+			end
+
+			for g=1,2 do
+				CreateBigGunBoxGreen("BigGunBoxGreen"..g, getPos(big_gun_box_green[g]), getObj(big_gun_box_green[g]):GetRotation())
+			end
+
+			for f=1,19 do
+				if random(2) == 1 then
+					CreateFlatGunBox("FlatGunBox"..f, getPos(flat_gun_box[f]), getObj(flat_gun_box[f]):GetRotation())
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="tr" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local small_gun_box = {"GunBox_1_loc", "GunBox_3_loc", "GunBox_9_loc", "GunBox_10_loc", "GunBox_14_loc", "GunBox_17_loc", "GunBox_20_loc", "GunBox_24_loc", "GunBox_26_loc", "GunBox_27_loc", "GunBox_28_loc", "GunBox_33_loc", "GunBox_39_loc", "GunBox_40_loc"}
+			local big_gun_box_black = {"GunBox_11_loc", "GunBox_12_loc", "GunBox_25_loc", "GunBox_30_loc", "GunBox_36_loc"}
+			local big_gun_box_green = {"GunBox_2_loc", "GunBox_38_loc"}
+			local flat_gun_box = {"GunBox_4_loc", "GunBox_5_loc", "GunBox_6_loc", "GunBox_7_loc", "GunBox_8_loc", "GunBox_13_loc", "GunBox_15_loc", "GunBox_16_loc", "GunBox_18_loc", "GunBox_19_loc", "GunBox_21_loc", "GunBox_22_loc", "GunBox_23_loc", "GunBox_29_loc", "GunBox_31_loc", "GunBox_32_loc", "GunBox_34_loc", "GunBox_35_loc", "GunBox_37_loc"}
+
+			for s=1,14 do
+				LOG(small_gun_box[s].." "..tostring(getObj("SmallGunBox"..s):GetPosition()))
+			end
+
+			for b=1,5 do
+				LOG(big_gun_box_black[b].." "..tostring(getObj("BigGunBoxBlack"..b):GetPosition()))
+			end
+
+			for g=1,2 do
+				LOG(big_gun_box_green[g].." "..tostring(getObj("BigGunBoxGreen"..g):GetPosition()))
+			end
+
+			for f=1,19 do
+				LOG(flat_gun_box[f].." "..tostring(getObj("FlatGunBox"..f):GetPosition()))
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateMedicalBox" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local med_box = {"MedBox_2_loc", "MedBox_3_loc", "MedBox_6_loc", "MedBox_7_loc", "MedBox_11_loc", "MedBox_12_loc"}
+			local med_bag = {"MedBox_1_loc", "MedBox_4_loc", "MedBox_5_loc", "MedBox_8_loc", "MedBox_9_loc", "MedBox_10_loc", "MedBox_13_loc", "MedBox_14_loc"}
+			local podkrutka = random(0, 5)
+
+			for w = 1, 6 do
+				if random(100) >= 20 then
+					CreateMedWoodBox("MedWoodBox"..w, getPos(med_box[w]), getObj(med_box[w]):GetRotation())
+				end
+			end
+
+			for b = 1, 8 do
+				if random(100) >= 20 then
+					CreateMedBag("MedBag"..b, getPos(med_bag[b]), getObj(med_bag[b]):GetRotation(), podkrutka)
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateTehnoBox" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local other = {"item_waterfilter", "book", "item_airfilter", "item_filter", "item_paracord", "item_vitalik", "item_zapal"}
+			local energo = {"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery"}
+			local building = {"details", "doski", "bottle", "scrap_metal", "item_bolts", "item_datchik", "item_hose", "item_insulation", "item_kek", "item_military_tube", "item_nails", "item_nuts", "item_parts", "item_pena", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_thermometer", "item_tube"}
+			local electro = {"electronics", "machinery", "item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid"}
+			local flammable = {"firewood", "tobacco", "oil", "fuel", "item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder"}
+			local tools = {"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench"}
+			local use = {"scrap_metal_use", "oil_use", "machinery_use", "fuel_full_use", "electronics_use"}
+
+			for i=1,13 do
+				if random(100) >= 15 then
+					local Chest = CreateNewObject{prototypeName = "woodChest", objName = "TehnoBox"..i}	
+					local ChestId = GetEntityByID(Chest)
+					ChestId:SetPosition(CVector(getPos("TehnoBox_"..i.."_loc")))
+					ChestId:SetRotation(getObj("TehnoBox_"..i.."_loc"):GetRotation())
+					ChestId:SetSkin(3)
+					ChestId:SetPropertyById(7, 1.8)
+				
+					local ChestPos = ChestId:GetPosition()
+					ChestPos.y = ChestPos.y + 3
+					ChestId:SetPosition(ChestPos)
+
+					AddItemsToChestObj(ChestId, "item_opacity", "OpacityItem_TehnoBox"..i)
+			
+					if random(100) > 10 then
+						if random(2) == 1 then
+							local item = GetRandomWeightedItem(other)
+							AddItemsToChestObj(ChestId, item, "OtherItem_"..random(10000).."_TehnoBox")
+						end
+						
+						local typeI = {energo, building, electro, flammable, tools}
+						for c = 1, random(10) do
+							if random(2) == 1 then
+								local t = typeI[random(5)] 
+								local item = GetRandomWeightedItem(t)
+								AddItemsToChestObj(ChestId, item, "Item_"..random(10000).."_TehnoBox")
+							end
+						end
+
+						if random(2) == 1 then
+							for u = 1, random(2) do
+								local item = GetRandomWeightedItem(use)
+								AddItemsToChestObj(ChestId, item, "UseItem_"..random(10000).."_TehnoBox")
+							end
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateToolsBox" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local building = {"details", "doski", "bottle", "scrap_metal", "item_bolts", "item_datchik", "item_hose", "item_insulation", "item_kek", "item_military_tube", "item_nails", "item_nuts", "item_parts", "item_pena", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_thermometer", "item_tube"}
+			local tools = {"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench"}
+		
+			for i=1,30 do
+				if i == 10 then
+					local other = {"item_gunpowder", "book", "item_airfilter", "item_filter", "item_paracord", "item_vitalik", "item_zapal"}
+					local energo = {"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery"}
+					local electro = {"electronics", "machinery", "item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid"}
+					local flammable = {"firewood", "tobacco", "oil", "fuel", "item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder"}
+
+					local Chest = CreateNewObject{prototypeName = "woodChest", objName = "ToolBox"..i}	
+					local ChestId = GetEntityByID(Chest)
+					ChestId:SetPosition(CVector(getPos("ToolsBox_"..i.."_loc")))
+					ChestId:SetRotation(getObj("ToolsBox_"..i.."_loc"):GetRotation())
+					ChestId:SetSkin(1)
+					ChestId:SetPropertyById(7, 1.8)
+				
+					local ChestPos = ChestId:GetPosition()
+					ChestPos.y = ChestPos.y + 2
+					ChestId:SetPosition(ChestPos)
+
+					AddItemsToChestObj(ChestId, "item_opacity", "OpacityItem_ToolBox"..i)
+			
+					if random(100) > 10 then
+						if random(5) == 1 then
+							local item = GetRandomWeightedItem(other)
+							AddItemsToChestObj(ChestId, item, "OtherItem_"..random(10000).."_ToolBox")
+						end
+
+						local typeI = {energo, building, electro, flammable, tools}
+						local typeW = {35, 70, 20, 40, 100}
+						for c = 1, random(8) do
+							local t = weighted_random(typeI, typeW)
+							local item = GetRandomWeightedItem(t)
+							AddItemsToChestObj(ChestId, item, "Item_"..random(10000).."_ToolBox")
+						end
+					end
+				else
+					local other = {"item_waterfilter", "book", "item_filter", "item_paracord", "item_vitalik", "item_zapal"}
+					local energo = {"item_accum", "item_battery_aa", "item_battery_d", "item_cyclon", "item_green_battery", "item_powerbank"}
+					local electro = {"electronics", "machinery", "item_bp", "item_cable", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_hdd", "item_helix", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_wires", "item_military_plate"}
+					local flammable = {"tobacco", "oil", "fuel", "item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder"}
+
+					local Chest = CreateNewObject{prototypeName = "toolChest1", objName = "ToolBox"..i}	
+					local ChestId = GetEntityByID(Chest)
+					ChestId:SetPosition(CVector(getPos("ToolsBox_"..i.."_loc")))
+					ChestId:SetRotation(getObj("ToolsBox_"..i.."_loc"):GetRotation())
+					ChestId:SetSkin(1)
+				
+					local ChestPos = ChestId:GetPosition()
+					ChestPos.y = ChestPos.y + 2
+					ChestId:SetPosition(ChestPos)
+
+					AddItemsToChestObj(ChestId, "item_opacity", "OpacityItem_ToolBox"..i)
+			
+					if random(100) > 10 then
+						if random(7) == 1 then
+							local item = GetRandomWeightedItem(other)
+							AddItemsToChestObj(ChestId, item, "OtherItem_"..random(10000).."_ToolBox")
+						end
+
+						local typeI = {energo, building, electro, flammable, tools}
+						local typeW = {20, 70, 15, 30, 150}
+						for c = 1, random(5) do
+							local t = weighted_random(typeI, typeW)
+							local item = GetRandomWeightedItem(t)
+							AddItemsToChestObj(ChestId, item, "Item_"..random(10000).."_ToolBox")
+						end
+					end
+				end
 			end
 			trigger:Deactivate()
 		</script>

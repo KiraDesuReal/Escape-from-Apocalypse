@@ -199,7 +199,7 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 			Class		= "Chest"
 			Name		= "opacityChest"
 			ModelFile	= "point"
-			Mass		= "1000"
+			Mass		= "100"
 			
 			IntersectionRadius	= "1.7" />
 
@@ -273,7 +273,7 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 			Class		= "Chest"
 			Name		= "gunChest1"
 			ModelFile	= "gun_box1"
-			Mass		= "40"
+			Mass		= "400"
 
 			IntersectionRadius	= "1.7" />
 
@@ -281,7 +281,15 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 			Class		= "Chest"
 			Name		= "gunChest2"
 			ModelFile	= "gun_box2"
-			Mass		= "100"
+			Mass		= "400"
+
+			IntersectionRadius	= "1.7" />
+
+		<Prototype
+			Class		= "Chest"
+			Name		= "gunChest3"
+			ModelFile	= "gun_box3"
+			Mass		= "600"
 
 			IntersectionRadius	= "1.7" />
 
@@ -289,7 +297,7 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 			Class		= "Chest"
 			Name		= "medicalbagChest"
 			ModelFile	= "medical_bag"
-			Mass		= "15"
+			Mass		= "100"
 
 			IntersectionRadius	= "1.7" />
 
@@ -321,7 +329,7 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 			Class		= "Chest"
 			Name		= "toolChest1"
 			ModelFile	= "tool_box1"
-			Mass		= "25"
+			Mass		= "200"
 
 			IntersectionRadius	= "1.7" />
 
@@ -329,7 +337,7 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 			Class		= "Chest"
 			Name		= "toolChest2"
 			ModelFile	= "tool_box2"
-			Mass		= "25"
+			Mass		= "200"
 
 			IntersectionRadius	= "1.7" />
 
@@ -337,7 +345,7 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 			Class		= "Chest"
 			Name		= "woodChest"
 			ModelFile	= "wood_box"
-			Mass		= "50"
+			Mass		= "400"
 
 			IntersectionRadius	= "1.7" />
 

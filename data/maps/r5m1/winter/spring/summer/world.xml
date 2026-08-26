@@ -20270,7 +20270,7 @@
 	<Node
 		name="Object322495519"
 		class="SgAnimatedModelNode"
-		org="5919.362 0.534 1074.341"
+		org="5919.362 0.741 1074.341"
 		orgRel="1"
 		rot="0.0047 -0.5354 0.0074 0.8445"
 		id="hunterChassis"
@@ -20319,12 +20319,12 @@
 	<Node
 		name="Object322495525"
 		class="SgAnimatedModelNode"
-		org="5919.285 1.367 1074.519"
+		org="5919.285 1.257 1074.519"
 		orgRel="1"
 		rot="-0.0082 -0.5355 -0.0008 0.8445"
 		id="hunterCab02Fake"
 		ndmAction="0"
-		skin="2" />
+		skin="3" />
 
 	<Node
 		name="Object322495533"
@@ -42662,8 +42662,9 @@
 	<Node
 		name="Object322499509"
 		class="SgAnimatedModelNode"
-		org="7388.122 -0.423 3078.545"
+		org="7388.125 -0.423 3080.238"
 		orgRel="1"
+		rot="0.0000 -0.3482 0.0000 0.9374"
 		id="elka1"
 		ndmAction="0" />
 
@@ -69999,7 +70000,7 @@
 	<Node
 		name="Object322503575"
 		class="SgAnimatedModelNode"
-		org="5137.747 0.534 2134.594"
+		org="5137.747 0.888 2134.594"
 		orgRel="1"
 		rot="-0.0057 -0.9642 0.0067 -0.2651"
 		id="hunterChassis"
@@ -70038,12 +70039,11 @@
 	<Node
 		name="Object322503579"
 		class="SgAnimatedModelNode"
-		org="5137.716 1.384 2134.399"
+		org="5137.716 1.494 2134.399"
 		orgRel="1"
 		rot="-0.0005 -0.9641 -0.0123 -0.2652"
 		id="hunterCab02Fake"
-		ndmAction="0"
-		skin="6" />
+		ndmAction="0" />
 
 	<Node
 		name="Object322503580"
@@ -111557,7 +111557,7 @@
 	<Node
 		name="Object322508557"
 		class="SgAnimatedModelNode"
-		org="4631.335 0.543 3936.505"
+		org="4631.335 0.814 3936.505"
 		orgRel="1"
 		rot="-0.0020 -0.7269 0.0039 -0.6867"
 		id="hunterChassis"
@@ -111596,10 +111596,11 @@
 	<Node
 		name="Object322508561"
 		class="SgAnimatedModelNode"
-		org="4631.475 1.132 3936.368"
+		org="4631.475 1.245 3936.368"
 		orgRel="1"
 		rot="0.0115 -0.7268 -0.0105 -0.6867"
 		id="hunterCab02Fake"
+		skin="6"
 		ndmAction="0" />
 
 	<Node
@@ -156769,7 +156770,7 @@
 	<Node
 		name="Object322516702"
 		class="SgAnimatedModelNode"
-		org="3536.289 0.521 2334.600"
+		org="3578.162 0.521 2324.409"
 		orgRel="1"
 		rot="-0.0073 0.6602 -0.0227 -0.7507"
 		id="fighterChassis"
@@ -156779,7 +156780,7 @@
 	<Node
 		name="Object322516705"
 		class="SgAnimatedModelNode"
-		org="3536.188 0.610 2334.600"
+		org="3578.061 0.610 2324.409"
 		orgRel="1"
 		rot="-0.0082 0.6923 -0.0224 -0.7212"
 		id="fighterCab02Fake"
@@ -164362,7 +164363,7 @@
 	<Node
 		name="Object322568975"
 		class="SgAnimatedModelNode"
-		org="4645.790 0.000 3891.070"
+		org="4645.642 0.000 3891.474"
 		orgRel="1"
 		rot="0.0000 -0.4007 0.0000 0.9162"
 		scale="1.400 1.400 1.400"
@@ -170413,7 +170414,7 @@
 	<Node
 		name="Object322585673"
 		class="SgAnimatedModelNode"
-		org="4647.619 -0.011 3890.142"
+		org="4647.762 -0.011 3889.858"
 		orgRel="1"
 		rot="0.0000 0.9476 0.0000 0.3194"
 		scale="2.000 2.000 2.000"
@@ -170896,4 +170897,144 @@
 		scale="1.400 1.400 1.400"
 		id="transporter"
 		ndmAction="0" />
+
+	<Node
+		name="Object322602579"
+		class="SgAnimatedModelNode"
+		org="7616.837 0.040 2204.517"
+		orgRel="1"
+		rot="-0.0022 0.0000 -0.0284 0.9996"
+		scale="1.200 1.200 1.200"
+		id="metall_barrel"
+		ndmAction="0"
+		skin="1" />
+
+	<Node
+		name="Object322602580"
+		class="SgAnimatedModelNode"
+		org="7595.457 -0.096 2218.064"
+		orgRel="1"
+		rot="-0.0065 0.0001 -0.0087 0.9999"
+		scale="1.200 1.200 1.200"
+		id="metall_barrel"
+		ndmAction="0"
+		skin="1" />
+
+	<Node
+		name="Object322602581"
+		class="SgAnimatedModelNode"
+		org="7618.205 0.654 2204.175"
+		orgRel="1"
+		rot="0.0133 0.8024 -0.0257 0.5961"
+		scale="0.600 0.600 0.600"
+		id="kanistr"
+		ndmAction="0" />
+
+	<Node
+		name="Object322602583"
+		class="SgAnimatedModelNode"
+		org="7522.202 0.488 3059.377"
+		orgRel="1"
+		rot="0.0000 0.4481 0.0000 0.8940"
+		scale="0.600 0.600 0.600"
+		id="kanistr"
+		ndmAction="0" />
+
+	<Node
+		name="Object322602584"
+		class="SgAnimatedModelNode"
+		org="7522.151 0.144 3058.130"
+		orgRel="1"
+		rot="0.6558 0.6566 0.2649 0.2620"
+		scale="0.600 0.600 0.600"
+		id="kanistr"
+		ndmAction="0" />
+
+	<Node
+		name="Object322602586"
+		class="SgAnimatedModelNode"
+		org="7524.833 -0.068 3060.242"
+		orgRel="1"
+		scale="1.400 1.400 1.400"
+		id="table_office"
+		ndmAction="0" />
+
+	<Node
+		name="Object322602587"
+		class="SgAnimatedModelNode"
+		org="7524.259 0.328 3059.926"
+		orgRel="1"
+		rot="0.0000 0.8616 0.0000 0.5075"
+		scale="0.400 0.400 0.400"
+		id="water_canister"
+		ndmAction="0" />
+
+	<Node
+		name="Object322602588"
+		class="SgAnimatedModelNode"
+		org="7525.353 0.328 3060.058"
+		orgRel="1"
+		rot="0.0000 0.9455 0.0000 -0.3256"
+		scale="0.400 0.400 0.400"
+		id="water_canister"
+		ndmAction="0" />
+
+	<Node
+		name="Object322602589"
+		class="SgAnimatedModelNode"
+		org="7523.903 1.179 3060.565"
+		orgRel="1"
+		scale="0.200 0.200 0.200"
+		id="kaktus"
+		ndmAction="0" />
+
+	<Node
+		name="Object322602590"
+		class="SgAnimatedModelNode"
+		org="7522.563 -0.063 3060.434"
+		orgRel="1"
+		id="garbage_3"
+		ndmAction="0" />
+		
+	<Node
+		name="Object322602592"
+		class="SgAnimatedModelNode"
+		org="7521.791 1.289 3052.976"
+		orgRel="1"
+		rot="0.0000 0.0000 -0.6036 0.7973"
+		scale="0.600 0.600 0.600"
+		id="poddon"
+		ndmAction="0" />
+
+	<Node
+		name="Object322602593"
+		class="SgAnimatedModelNode"
+		org="7531.102 0.153 3051.857"
+		orgRel="1"
+		rot="-0.0000 0.7025 -0.0000 0.7117"
+		scale="1.400 1.400 1.400"
+		id="table_office"
+		ndmAction="0" />
+
+	<Node
+		name="Object322602594"
+		class="SgAnimatedModelNode"
+		org="7531.268 0.209 3051.356"
+		orgRel="1"
+		rot="0.0342 0.8932 -0.0002 0.4484"
+		scale="0.400 0.400 0.400"
+		id="pack"
+		ndmAction="0" />
+
+	<Node
+		name="Object322602597"
+		class="SgAnimatedModelNode"
+		org="7531.035 0.212 3052.513"
+		orgRel="1"
+		rot="0.0000 0.3420 0.0000 0.9397"
+		scale="0.400 0.400 0.400"
+		id="pack"
+		ndmAction="0" />
 </World>
+
+

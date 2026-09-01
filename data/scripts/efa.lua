@@ -940,7 +940,7 @@ function CreateBarrelLootBox(name, pos, rot, model)
 	local electro = {"electronics", "item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid"}
 	local energo = {"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery"}				
 	local flam = {"firewood", "oil", "fuel", "tobacco", "item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder"}			
-	local food = {"item_sugar", "item_sausage"}		
+	local food = {"item_vodka", "item_ananaga", "item_sugar", "item_sausage", "item_anechka", "item_apocola", "item_bear_rations", "item_beer", "item_coffeecan", "item_cookies", "item_crackers", "item_ebelya", "item_energycan", "item_gorbusha", "item_grechka", "item_juice_apple", "item_juice_orange", "item_kirieshki", "item_kvas", "item_marrow", "item_meat", "item_milkcan", "item_noodles", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_snickers", "item_teabox", "item_tushonka", "item_tushonka_small", "item_usec_rations", "item_water_bottle", "item_water_metal_bottle", "item_whiskey"}		
 	local household = {"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_tb", "item_toothpaste", "item_sugar"}		
 	local info = {"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd"}
 	local med = {"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda"}
@@ -958,6 +958,7 @@ function CreateBarrelLootBox(name, pos, rot, model)
 
 	local mapName = GET_GLOBAL_OBJECT( "CurrentLevel" ):GetLevelName()
 	if mapName == "r1m1" then
+		table.insert(food, "item_nash_juice")
 		table.insert(other, "item_pants40grn")
 	elseif mapName == "r5m1" then
 		table.insert(valuables, "item_woodclock")
@@ -1444,7 +1445,7 @@ function AddGunAfficsToChestObj(chest, gun_item, name)
 	local Gun = CreateNewObject{prototypeName = gun_item, objName = name, belong = 1100}
 	local GunId = GetEntityByID(Gun)
 	local afflist = {}
-	if gun_item == "maxim01" or gun_item == "fagot01" or gun_item == "odin01" or gun_item == "elephant01" or gun_item == "hammer01" or gun_item == "bumblebee01" or gun_item == "omega01" or gun_item == "big_swingfire01" or gun_item == "hurricane01" or gun_item == "mrakSideGun" or gun_item == "hailSideGun" or gun_item == "marsSideGun" or gun_item == "zeusSideGun" or gun_item == "hunterSideGun" then
+	if gun_item == "maxim01" or gun_item == "fagot01" or gun_item == "odin01" or gun_item == "elephant01" or gun_item == "hammer01" or gun_item == "bumblebee01" or gun_item == "omega01" or gun_item == "big_swingfire01" or gun_item == "hurricane01" or gun_item == "mrakSideGun" or gun_item == "hailSideGun" or gun_item == "marsSideGun" or gun_item == "zeusSideGun" or gun_item == "hunterSideGun" or gun_item == "rocketLauncher" then
 		local damageAffixes = {"weak_gun", "deadly_gun", "destructive_gun", "slow_gun", "assault_gun", "rapid_firing_gun", "without_cooling_gun", "with_nitro_cooling_gun", "with_truncated_barrel_gun", "with_enlarged_barrel_gun", "with_long_barrel_gun"}
 		if random(2) == 1 then
 			table.insert(afflist, damageAffixes[random(getn(damageAffixes))])
@@ -1588,7 +1589,39 @@ function GetItemWeight(item)
 
 	if item == "item_sugar" then r = 35 end
 	if item == "item_sausage" then r = 15 end
-
+	if item == "item_anechka" then r = 25 end
+	if item == "item_apocola" then r = 40 end
+	if item == "item_bear_rations" then r = 30 end
+	if item == "item_beer" then r = 20 end
+	if item == "item_coffeecan" then r = 40 end
+	if item == "item_cookies" then r = 100 end
+	if item == "item_crackers" then r = 80 end
+	if item == "item_ebelya" then r = 40 end
+	if item == "item_energycan" then r = 50 end
+	if item == "item_gorbusha" then r = 100 end
+	if item == "item_grechka" then r = 50 end
+	if item == "item_juice_apple" then r = 80 end
+	if item == "item_juice_orange" then r = 80 end
+	if item == "item_kirieshki" then r = 100 end
+	if item == "item_kvas" then r = 80 end
+	if item == "item_marrow" then r = 70 end
+	if item == "item_meat" then r = 60 end
+	if item == "item_milkcan" then r = 35 end
+	if item == "item_nash_juice" then r = 40 end
+	if item == "item_noodles" then r = 50 end
+	if item == "item_pashtet" then r = 65 end
+	if item == "item_peas" then r = 100 end
+	if item == "item_saira" then r = 100 end
+	if item == "item_seld" then r = 100 end
+	if item == "item_snickers" then r = 80 end
+	if item == "item_teabox" then r = 30 end
+	if item == "item_tushonka" then r = 40 end
+	if item == "item_tushonka_small" then r = 40 end
+	if item == "item_usec_rations" then r = 30 end
+	if item == "item_water_bottle" then r = 50 end
+	if item == "item_water_metal_bottle" then r = 20 end
+	if item == "item_whiskey" then r = 15 end
+	
 	if item == "item_alkani" then r = 100 end
 	if item == "item_hlor" then r = 100 end
 	if item == "item_paper" then r = 100 end
@@ -1655,6 +1688,7 @@ function GetItemWeight(item)
 	if item == "item_christmas_ball_white" then r = 60 end
 	if item == "item_christmas_star" then r = 35 end
 	if item == "item_chizuru" then r = 30 end
+	if item == "item_water_canister" then r = 5 end
 
 	if item == "item_awl" then r = 50 end
 	if item == "item_buldex" then r = 25 end
@@ -1772,7 +1806,7 @@ function AllItems()
 					"item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid",
 					"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery",
 					"item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder",
-					"item_sugar", "item_sausage",
+					"item_sugar", "item_sausage", "item_anechka", "item_apocola", "item_bear_rations", "item_beer", "item_coffeecan", "item_cookies", "item_crackers", "item_ebelya", "item_energycan", "item_gorbusha", "item_grechka", "item_juice_apple", "item_juice_orange", "item_kirieshki", "item_kvas", "item_marrow", "item_meat", "item_milkcan", "item_nash_juice", "item_noodles", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_snickers", "item_teabox", "item_tushonka", "item_tushonka_small", "item_usec_rations", "item_water_bottle", "item_water_metal_bottle", "item_whiskey",
 					"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 					"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 					"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
@@ -1798,7 +1832,7 @@ function AllItemsForScav()
 					"item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid",
 					"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery",
 					"item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder",
-					"item_sugar", "item_sausage",
+					"item_sugar", "item_sausage", "item_anechka", "item_apocola", "item_bear_rations", "item_beer", "item_coffeecan", "item_cookies", "item_crackers", "item_ebelya", "item_energycan", "item_gorbusha", "item_grechka", "item_juice_apple", "item_juice_orange", "item_kirieshki", "item_kvas", "item_marrow", "item_meat", "item_milkcan", "item_nash_juice", "item_noodles", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_snickers", "item_teabox", "item_tushonka", "item_tushonka_small", "item_usec_rations", "item_water_bottle", "item_water_metal_bottle", "item_whiskey",
 					"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 					"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 					"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
@@ -2145,7 +2179,7 @@ function ShelfAddItemToSlot()
 	if item == "item_kaktus" then model = "kaktus" y = -0.28 end
 	if item == "someTurboAccelerationPusher" then model = "Turboakselerator" y = -0.17 end
 	if item == "item_phone" then model = "phone" y = -0.27 scale = 0.3 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
-	if item == "item_tb" then model = "tb" y = -0.05 scale = 0.3 rot = Quaternion(0.000, -0.970, 0.000, -0.242) end
+	if item == "item_tb" then model = "tb" y = -0.05 scale = 0.3 rot = Quaternion(0.000, -0.970, 0.000, -0.242) end --scale: 1.0 -> 0.5
 	if item == "item_stakanyash" then model = "stakanyash" y = -0.29 end
 	if item == "item_ananaga" then model = "ananaga" y = -0.29 scale = 0.15 rot = Quaternion(0, -1, 0, 0) end
 	if item == "item_vodka" then model = "vodka" y = -0.29 scale = 0.15 rot = Quaternion(0, -1, 0, 0) end

@@ -1287,6 +1287,294 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		ModelFile	= "sausage"
 		ResourceType= "SPEC_ITEM" />
 
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_anechka"
+		Price	= "15105"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_apocola"
+		Price	= "10888"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "apocola"
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_bear_rations"
+		Price	= "8140"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_beer"
+		Price	= "15000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "beer"
+		ResourceType= "ITEM_SIZE_2X4" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_coffeecan"
+		Price	= "11000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "coffeecan"
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_cookies"
+		Price	= "5368"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_3X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_crackers"
+		Price	= "3225"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_ebelya"
+		Price	= "6254"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_energycan"
+		Price	= "10530"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "energycan"
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_gorbusha"
+		Price	= "5530"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "gorbushacan"
+		ResourceType= "ITEM_SIZE_2X1" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_grechka"
+		Price	= "8460"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_juice_apple"
+		Price	= "6760"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_juice_orange"
+		Price	= "6250"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_kirieshki"
+		Price	= "5800"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_kvas"
+		Price	= "7300"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_marrow"
+		Price	= "7250"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "marrowcan"
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_meat"
+		Price	= "6900"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_milkcan"
+		Price	= "9720"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "milkcan"
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_nash_juice"
+		Price	= "8550"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "nash_juice"
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_noodles"
+		Price	= "6450"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_pashtet"
+		Price	= "6750"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "pashtetcan"
+		ResourceType= "ITEM_SIZE_2X1" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_peas"
+		Price	= "5325"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "peascan"
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_saira"
+		Price	= "5640"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "sairacan"
+		ResourceType= "ITEM_SIZE_2X1" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_seld"
+		Price	= "6630"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "seldcan"
+		ResourceType= "ITEM_SIZE_2X1" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_snickers"
+		Price	= "7850"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "snickers"
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_teabox"
+		Price	= "11100"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_tushonka"
+		Price	= "6360"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "tushonkacan"
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_tushonka_small"
+		Price	= "5000"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "tushonkasmall"
+		ResourceType= "ITEM_SIZE_2X1" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_usec_rations"
+		Price	= "8740"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_water_bottle"
+		Price	= "9100"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "water_bottle"
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_water_metal_bottle"
+		Price	= "9900"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= ""
+		ResourceType= "ITEM_SIZE_2X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_whiskey"
+		Price	= "17250"
+		Durability	= "100"
+		PriceDispersion      = "5"
+		ModelFile	= "whiskey"
+		ResourceType= "ITEM_SIZE_2X3" />
+
 <!-- Household Items -->
 
 	<Prototype

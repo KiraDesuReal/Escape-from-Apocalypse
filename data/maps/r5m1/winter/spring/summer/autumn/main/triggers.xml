@@ -295,6 +295,7 @@
 			TActivate("CreateMedicalBox")
 			TActivate("CreateTehnoBox")
 			TActivate("CreateToolsBox")
+			TActivate("CreateFoodBox")
 
 			if COUNT_RAIDS > 1 then TActivate("SetWeather") end
 
@@ -4750,11 +4751,11 @@
 							"item_cable", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_hdd", "item_helix", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tplug", "item_ultra_lump", "item_usb", "item_wires",
 							"item_accum", "item_battery_aa", "item_battery_d", "item_cyclon", "item_green_battery", "item_powerbank",
 							"item_dry", "item_hunter_spich", "item_lighter", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder",
-							"item_sugar", "item_sausage",
+							"item_sugar", "item_sausage", "item_anechka", "item_apocola", "item_bear_rations", "item_beer", "item_coffeecan", "item_cookies", "item_crackers", "item_ebelya", "item_energycan", "item_gorbusha", "item_grechka", "item_juice_apple", "item_juice_orange", "item_kirieshki", "item_kvas", "item_marrow", "item_meat", "item_milkcan", "item_noodles", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_snickers", "item_teabox", "item_tushonka", "item_tushonka_small", "item_usec_rations", "item_water_bottle", "item_water_metal_bottle", "item_whiskey",
 							"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 							"item_diary", "item_diary_s", "item_disk", "item_flashdrive", "item_manual", "item_sas", "item_ssd",
 							"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_medical_tools", "item_naci", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
-							"item_filter", "item_paracord", "item_vodka", "item_waterfilter", "item_zapal", "item_carsen", "item_stakanyash",
+							"item_filter", "item_paracord", "item_vodka", "item_waterfilter", "item_zapal", "item_carsen", "item_stakanyash", "item_ananaga",
 							"item_awl", "item_fullmaster", "item_leatherman", "item_metalscissors", "item_nippers", "item_pliers", "item_pliers_round", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
 							"item_chain", "item_chain_gold", "item_ex", "item_rolex", "item_teapon", "item_woodclock", "item_silver_skull", "item_duck"}
 			local gun = {"hornet01", "specter01", "pkt01", "kord01", "storm01", "vector01", "vulcan01", "kpvt01", "rapier01", "omega01", "bumblebee01"}
@@ -4901,7 +4902,7 @@
 			local use = {"scrap_metal_use", "oil_use", "machinery_use", "fuel_full_use", "electronics_use"}
 
 			for i=1,13 do
-				if random(100) >= 15 then
+				if random(100) >= 20 then
 					local Chest = CreateNewObject{prototypeName = "woodChest", objName = "TehnoBox"..i}	
 					local ChestId = GetEntityByID(Chest)
 					ChestId:SetPosition(CVector(getPos("TehnoBox_"..i.."_loc")))
@@ -4922,12 +4923,10 @@
 						end
 						
 						local typeI = {energo, building, electro, flammable, tools}
-						for c = 1, random(10) do
-							if random(2) == 1 then
-								local t = typeI[random(5)] 
-								local item = GetRandomWeightedItem(t)
-								AddItemsToChestObj(ChestId, item, "Item_"..random(10000).."_TehnoBox")
-							end
+						for c = 1, random(0,8) do
+							local t = typeI[random(5)] 
+							local item = GetRandomWeightedItem(t)
+							AddItemsToChestObj(ChestId, item, "Item_"..random(10000).."_TehnoBox")
 						end
 
 						if random(2) == 1 then
@@ -4951,68 +4950,107 @@
 		
 			for i=1,30 do
 				if i == 10 then
-					local other = {"item_gunpowder", "book", "item_airfilter", "item_filter", "item_paracord", "item_vitalik", "item_zapal"}
-					local energo = {"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery"}
-					local electro = {"electronics", "machinery", "item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid"}
-					local flammable = {"firewood", "tobacco", "oil", "fuel", "item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder"}
+					if random(100) >= 10 then
+						local other = {"item_gunpowder", "book", "item_airfilter", "item_filter", "item_paracord", "item_vitalik", "item_zapal"}
+						local energo = {"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery"}
+						local electro = {"electronics", "machinery", "item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid"}
+						local flammable = {"firewood", "tobacco", "oil", "fuel", "item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder"}
 
-					local Chest = CreateNewObject{prototypeName = "woodChest", objName = "ToolBox"..i}	
-					local ChestId = GetEntityByID(Chest)
-					ChestId:SetPosition(CVector(getPos("ToolsBox_"..i.."_loc")))
-					ChestId:SetRotation(getObj("ToolsBox_"..i.."_loc"):GetRotation())
-					ChestId:SetSkin(1)
-					ChestId:SetPropertyById(7, 1.8)
+						local Chest = CreateNewObject{prototypeName = "woodChest", objName = "ToolBox"..i}	
+						local ChestId = GetEntityByID(Chest)
+						ChestId:SetPosition(CVector(getPos("ToolsBox_"..i.."_loc")))
+						ChestId:SetRotation(getObj("ToolsBox_"..i.."_loc"):GetRotation())
+						ChestId:SetSkin(1)
+						ChestId:SetPropertyById(7, 1.8)
+					
+						local ChestPos = ChestId:GetPosition()
+						ChestPos.y = ChestPos.y + 2
+						ChestId:SetPosition(ChestPos)
+
+						AddItemsToChestObj(ChestId, "item_opacity", "OpacityItem_ToolBox"..i)
 				
-					local ChestPos = ChestId:GetPosition()
-					ChestPos.y = ChestPos.y + 2
-					ChestId:SetPosition(ChestPos)
+						if random(100) > 10 then
+							if random(5) == 1 then
+								local item = GetRandomWeightedItem(other)
+								AddItemsToChestObj(ChestId, item, "OtherItem_"..random(10000).."_ToolBox")
+							end
 
-					AddItemsToChestObj(ChestId, "item_opacity", "OpacityItem_ToolBox"..i)
-			
-					if random(100) > 10 then
-						if random(5) == 1 then
-							local item = GetRandomWeightedItem(other)
-							AddItemsToChestObj(ChestId, item, "OtherItem_"..random(10000).."_ToolBox")
-						end
-
-						local typeI = {energo, building, electro, flammable, tools}
-						local typeW = {35, 70, 20, 40, 100}
-						for c = 1, random(8) do
-							local t = weighted_random(typeI, typeW)
-							local item = GetRandomWeightedItem(t)
-							AddItemsToChestObj(ChestId, item, "Item_"..random(10000).."_ToolBox")
+							local typeI = {energo, building, electro, flammable, tools}
+							local typeW = {35, 70, 20, 40, 100}
+							for c = 1, random(0,8) do
+								local t = weighted_random(typeI, typeW)
+								local item = GetRandomWeightedItem(t)
+								AddItemsToChestObj(ChestId, item, "Item_"..random(10000).."_ToolBox")
+							end
 						end
 					end
 				else
-					local other = {"item_waterfilter", "book", "item_filter", "item_paracord", "item_vitalik", "item_zapal"}
-					local energo = {"item_accum", "item_battery_aa", "item_battery_d", "item_cyclon", "item_green_battery", "item_powerbank"}
-					local electro = {"electronics", "machinery", "item_bp", "item_cable", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_hdd", "item_helix", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_wires", "item_military_plate"}
-					local flammable = {"tobacco", "oil", "fuel", "item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder"}
+					if random(2) == 1 then
+						local other = {"item_waterfilter", "book", "item_filter", "item_paracord", "item_vitalik", "item_zapal"}
+						local energo = {"item_accum", "item_battery_aa", "item_battery_d", "item_cyclon", "item_green_battery", "item_powerbank"}
+						local electro = {"electronics", "machinery", "item_bp", "item_cable", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_hdd", "item_helix", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_wires", "item_military_plate"}
+						local flammable = {"tobacco", "oil", "fuel", "item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder"}
 
-					local Chest = CreateNewObject{prototypeName = "toolChest1", objName = "ToolBox"..i}	
-					local ChestId = GetEntityByID(Chest)
-					ChestId:SetPosition(CVector(getPos("ToolsBox_"..i.."_loc")))
-					ChestId:SetRotation(getObj("ToolsBox_"..i.."_loc"):GetRotation())
-					ChestId:SetSkin(1)
+						local Chest = CreateNewObject{prototypeName = "toolChest1", objName = "ToolBox"..i}	
+						local ChestId = GetEntityByID(Chest)
+						ChestId:SetPosition(CVector(getPos("ToolsBox_"..i.."_loc")))
+						ChestId:SetRotation(getObj("ToolsBox_"..i.."_loc"):GetRotation())
+						ChestId:SetSkin(1)
+					
+						local ChestPos = ChestId:GetPosition()
+						ChestPos.y = ChestPos.y + 2
+						ChestId:SetPosition(ChestPos)
+
+						AddItemsToChestObj(ChestId, "item_opacity", "OpacityItem_ToolBox"..i)
 				
+						if random(100) > 10 then
+							if random(7) == 1 then
+								local item = GetRandomWeightedItem(other)
+								AddItemsToChestObj(ChestId, item, "OtherItem_"..random(10000).."_ToolBox")
+							end
+
+							local typeI = {energo, building, electro, flammable, tools}
+							local typeW = {20, 70, 15, 30, 150}
+							for c = 1, random(0,5) do
+								local t = weighted_random(typeI, typeW)
+								local item = GetRandomWeightedItem(t)
+								AddItemsToChestObj(ChestId, item, "Item_"..random(10000).."_ToolBox")
+							end
+						end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateFoodBox" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local other = {"potato", "tobacco", "bottle", "item_coffeecan", "item_grechka", "item_teabox", "item_water_canister"}
+			local food1 = {"item_vodka", "item_ananaga", "item_apocola", "item_beer", "item_energycan", "item_water_bottle", "item_water_metal_bottle", "item_whiskey", "item_juice_apple", "item_juice_orange", "item_kvas"}
+			local food2 = {"item_sausage", "item_sugar", "item_anechka", "item_bear_rations", "item_milkcan", "item_usec_rations", "item_cookies", "item_crackers", "item_ebelya", "item_gorbusha", "item_kirieshki", "item_marrow", "item_meat", "item_noodles", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_snickers", "item_tushonka", "item_tushonka_small"}
+			local typeI = {other, food1, food2}
+			local typeW = {75, 100, 100}
+			for i=1,9 do
+				if random(100) >= 30 then
+					local Chest = CreateNewObject{prototypeName = "woodChest", objName = "FoodBox"..i}	
+					local ChestId = GetEntityByID(Chest)
+					ChestId:SetPosition(CVector(getPos("FoodBox_"..i.."_loc")))
+					ChestId:SetRotation(getObj("FoodBox_"..i.."_loc"):GetRotation())
+					ChestId:SetPropertyById(7, 1.8)
+					
 					local ChestPos = ChestId:GetPosition()
-					ChestPos.y = ChestPos.y + 2
+					ChestPos.y = ChestPos.y + 3
 					ChestId:SetPosition(ChestPos)
 
-					AddItemsToChestObj(ChestId, "item_opacity", "OpacityItem_ToolBox"..i)
-			
+					AddItemsToChestObj(ChestId, "item_opacity", "OpacityItem_FoodBox"..i)
+				
 					if random(100) > 10 then
-						if random(7) == 1 then
-							local item = GetRandomWeightedItem(other)
-							AddItemsToChestObj(ChestId, item, "OtherItem_"..random(10000).."_ToolBox")
-						end
-
-						local typeI = {energo, building, electro, flammable, tools}
-						local typeW = {20, 70, 15, 30, 150}
-						for c = 1, random(5) do
+						for c = 1, random(0,6) do
 							local t = weighted_random(typeI, typeW)
 							local item = GetRandomWeightedItem(t)
-							AddItemsToChestObj(ChestId, item, "Item_"..random(10000).."_ToolBox")
+							AddItemsToChestObj(ChestId, item, "FoodItem_"..random(10000).."_FoodBox")
 						end
 					end
 				end

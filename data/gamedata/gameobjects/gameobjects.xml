@@ -311,8 +311,16 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 
 		<Prototype
 			Class		= "Chest"
-			Name		= "safeChest"
-			ModelFile	= "safe_box"
+			Name		= "safeChest1"
+			ModelFile	= "safe_box1"
+			Mass		= "300"
+
+			IntersectionRadius	= "1.7" />
+
+		<Prototype
+			Class		= "Chest"
+			Name		= "safeChest2"
+			ModelFile	= "safe_box2"
 			Mass		= "300"
 
 			IntersectionRadius	= "1.7" />
@@ -321,7 +329,7 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 			Class		= "Chest"
 			Name		= "sports_bagChest"
 			ModelFile	= "sports_bag"
-			Mass		= "20"
+			Mass		= "150"
 
 			IntersectionRadius	= "1.7" />
 
@@ -329,14 +337,6 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 			Class		= "Chest"
 			Name		= "toolChest1"
 			ModelFile	= "tool_box1"
-			Mass		= "200"
-
-			IntersectionRadius	= "1.7" />
-
-		<Prototype
-			Class		= "Chest"
-			Name		= "toolChest2"
-			ModelFile	= "tool_box2"
 			Mass		= "200"
 
 			IntersectionRadius	= "1.7" />
@@ -353,71 +353,15 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 			Class		= "Chest"
 			Name		= "woodenChest"
 			ModelFile	= "wooden_box"
-			Mass		= "30"
+			Mass		= "150"
 
 			IntersectionRadius	= "1.7" />
-
+			
 		<Prototype
 			Class		= "Chest"
-			Name		= "lasergunChest"
-			ModelFile	= "ammo_ballon_lasergun"
-			Mass		= "30"
-
-			IntersectionRadius	= "1.7" />
-
-		<Prototype
-			Class		= "Chest"
-			Name		= "plasmagunChest"
-			ModelFile	= "ammo_ballon_plasmagun"
-			Mass		= "30"
-
-			IntersectionRadius	= "1.7" />
-
-		<Prototype
-			Class		= "Chest"
-			Name		= "turboChest"
-			ModelFile	= "ammo_ballon_turbo"
-			Mass		= "10"
-
-			IntersectionRadius	= "1.7" />
-
-		<Prototype
-			Class		= "Chest"
-			Name		= "artillerygunChest"
-			ModelFile	= "ammo_chest_artillerygun"
-			Mass		= "40"
-
-			IntersectionRadius	= "1.7" />
-
-		<Prototype
-			Class		= "Chest"
-			Name		= "rocketgunChest"
-			ModelFile	= "ammo_chest_rocketgun"
-			Mass		= "40"
-
-			IntersectionRadius	= "1.7" />
-
-		<Prototype
-			Class		= "Chest"
-			Name		= "heavygunChest"
-			ModelFile	= "ammo_chest_heavygun"
-			Mass		= "25"
-
-			IntersectionRadius	= "1.7" />
-
-		<Prototype
-			Class		= "Chest"
-			Name		= "machinegunChest"
-			ModelFile	= "ammo_chest_machinegun"
-			Mass		= "25"
-
-			IntersectionRadius	= "1.7" />
-
-		<Prototype
-			Class		= "Chest"
-			Name		= "shotgunChest"
-			ModelFile	= "ammo_chest_shotgun"
-			Mass		= "10"
+			Name		= "ammoChest"
+			ModelFile	= "ammo_box"
+			Mass		= "200"
 
 			IntersectionRadius	= "1.7" />
 	</Folder>

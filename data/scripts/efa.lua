@@ -944,10 +944,10 @@ function CreateBarrelLootBox(name, pos, rot, model)
 	local household = {"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_tb", "item_toothpaste", "item_sugar"}		
 	local info = {"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd"}
 	local med = {"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda"}
-	local other = {"book", "item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_chizuru"}		
+	local other = {"book", "item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_chizuru", "item_poster_keqing", "item_poster_exception", "item_poster_buyanov", "item_poster_pavlik"}		
 	local tools = {"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench", "item_vitalik"}		
-	local valuables = {"shkatulka", "item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_silver_skull", "item_vaze", "item_duck"}			
-	local gun = {"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "someTurboAccelerationPusher"}				
+	local valuables = {"item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_chizuru", "item_fitanyashka", "item_emre_kara", "shkatulka", "item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_silver_skull", "item_vaze", "item_duck"}			
+	local gun = {"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "someTurboAccelerationPusher", "marsSideGun"}				
 	local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
 	local gadget2 = {"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "additional_fuel_tank2", "additional_torque2", "additional_durability2"}
 	local gadget3 = {"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
@@ -995,7 +995,6 @@ function CreateBarrelLootBox(name, pos, rot, model)
 	for l=1, count do
 		local tr = random(18)
 		local t = typeI[tr] 
-
 		if tr == 15 then
 			local item = t[random(getn(t))]
 			AddGunRandomAmmoToChestObj(ChestId, item, "BarrelGunItem_"..random(10000))
@@ -1014,7 +1013,7 @@ end
 -- Оружейный ящик (r1m1)
 function CreateGunBox(name, pos)
 	local gun1 = {"hornet01", "specter01", "pkt01", "storm01", "vector01", "vulcan01", "kpvt01", "rapier01", "bumblebee01"} 
-	local gun2 = {"pkt01", "kord01", "maxim01", "fagot01", "someTurboAccelerationPusher", "omega01", "elephant01", "flag01", "odin01", "rainmetal01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun"}
+	local gun2 = {"pkt01", "kord01", "maxim01", "fagot01", "someTurboAccelerationPusher", "omega01", "elephant01", "flag01", "odin01", "rainmetal01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun"}
 	local gun_rand = {gun1[random(getn(gun1))], gun2[exrandom(getn(gun2))]}
 
 	local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
@@ -1062,6 +1061,7 @@ end
 
 -- Возвращает подходящий ящик с патронами для оружия
 function GetAmmoBoxForGun(gun_item)
+	local ammo_item = ""
 	if gun_item == "hornet01" or gun_item == "specter01" or gun_item == "pkt01" or gun_item == "kord01" or gun_item == "vector01" or gun_item == "vulcan01" or gun_item == "kpvt01" or gun_item == "octopus01" then
 		ammo_item = "ammo_chest_machinegun"
 	elseif gun_item == "storm01" or gun_item == "flag01" then
@@ -1085,7 +1085,7 @@ end
 -- Создать малый оружейный ящик
 function CreateSmallGunBox(name, pos, rot)
 	local gun_small_box1 = {"hornet01", "specter01", "pkt01", "storm01", "vector01", "vulcan01", "kpvt01", "rapier01", "bumblebee01", "kord01", "maxim01", "fagot01", "omega01", "elephant01", "flag01", "odin01", "rainmetal01"} 
-	local use_small_box = {"scrap_metal_use", "machinery_use"}
+	local use_small_box = {"scrap_metal_use", "machinery_use", "oil_use"}
 	local other_small_box = {"item_naci", "item_rozvidka"}
 
 	local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
@@ -1151,8 +1151,8 @@ end
 
 -- Создать большой черный оружейный ящик
 function CreateBigGunBoxBlack(name, pos, rot)
-	local gun = {"hornet01", "specter01", "pkt01", "storm01", "pkt01", "kord01", "vector01", "vulcan01", "kpvt01", "rapier01", "bumblebee01", "maxim01", "fagot01", "omega01", "elephant01", "flag01", "odin01", "rainmetal01", "someTurboAccelerationPusher", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun"}
-	local use = {"scrap_metal_use", "machinery_use", "electronics_use"}
+	local gun = {"hornet01", "specter01", "pkt01", "storm01", "pkt01", "kord01", "vector01", "vulcan01", "kpvt01", "rapier01", "bumblebee01", "maxim01", "fagot01", "omega01", "elephant01", "flag01", "odin01", "rainmetal01", "someTurboAccelerationPusher", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun"}
+	local use = {"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use"}
 	local other = {"item_gunpowder", "item_green_fier"}
 
 	local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
@@ -1209,8 +1209,8 @@ end
 
 -- Создать большой зеленый оружейный ящик
 function CreateBigGunBoxGreen(name, pos, rot)
-	local gun = {"hornet01", "specter01", "pkt01", "storm01", "pkt01", "kord01", "vector01", "vulcan01", "kpvt01", "rapier01", "bumblebee01", "maxim01", "fagot01", "omega01", "elephant01", "flag01", "odin01", "rainmetal01", "someTurboAccelerationPusher", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun"}
-	local use = {"machinery_use", "electronics_use", "scrap_metal_use"}
+	local gun = {"hornet01", "specter01", "pkt01", "storm01", "pkt01", "kord01", "vector01", "vulcan01", "kpvt01", "rapier01", "bumblebee01", "maxim01", "fagot01", "omega01", "elephant01", "flag01", "odin01", "rainmetal01", "someTurboAccelerationPusher", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun"}
+	local use = {"machinery_use", "electronics_use", "scrap_metal_use", "oil_use", "fuel_full_use"}
 	local other = {"item_flashdrive", "item_iridiym", "item_controller", "item_rfid", "item_rozvidka"}
 
 	local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
@@ -1333,7 +1333,7 @@ function CreateMedWoodBox(name, pos, rot)
 	local other = {"item_morfie", "item_salewa", "item_ai2", "item_gazan", "item_grizzly", "item_carmed", "item_ifak", "item_ledx", "item_afak"}
 	local household = {"item_alkani", "item_hlor", "item_paper", "item_stakanyash", "item_salt", "item_soap", "item_tb", "item_toothpaste", "item_sugar"}
 	local med = {"item_gazan", "item_morfie", "item_salewa", "item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_vazelin", "item_zvezda"}
-	local use = {"scrap_metal_use", "machinery_use", "electronics_use"}
+	local use = {"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use"}
 
 	local Chest = CreateNewObject{prototypeName = "woodChest", objName = name}	
 	local ChestId = GetEntityByID(Chest)
@@ -1466,13 +1466,15 @@ end
 -- Добавить оружие со случайным боезапасом
 function AddGunRandomAmmoToChestObj(chest, item, name)
 	AddItemsToChestObj(chest, item, name)
-	if item ~= "hunterSideGun" and item ~= "mrakSideGun" and item ~= "hailSideGun" and item ~= "zeusSideGun" then
+	if item ~= "hunterSideGun" and item ~= "mrakSideGun" and item ~= "hailSideGun" and item ~= "zeusSideGun" and item ~= "marsSideGun" then
 		local shell = getObj(name):GetShellsInPool()
 		getObj(name):SetShellsInPool(random(0, shell))
 	end
 end
 
 function GetItemWeight(item)
+	local r = 100
+
 	if item == "potato" then r = 90 end
 	if item == "scrap_metal" then r = 60 end
 	if item == "firewood" then r = 80 end
@@ -1644,7 +1646,7 @@ function GetItemWeight(item)
 	if item == "item_aquapeps" then r = 30 end
 	if item == "item_c6h8o6" then r = 60 end
 	if item == "item_h2o2" then r = 50 end
-	if item == "item_ledx" then r = 1 end
+	if item == "item_ledx" then r = 3 end
 	if item == "item_medical_tools" then r = 70 end
 	if item == "item_naci" then r = 50 end
 	if item == "item_oftalmaskop" then r = 4 end
@@ -1689,6 +1691,10 @@ function GetItemWeight(item)
 	if item == "item_christmas_star" then r = 35 end
 	if item == "item_chizuru" then r = 30 end
 	if item == "item_water_canister" then r = 5 end
+	if item == "item_poster_keqing" then r = 25 end
+	if item == "item_poster_exception" then r = 40 end
+	if item == "item_poster_buyanov" then r = 30 end
+	if item == "item_poster_pavlik" then r = 20 end
 
 	if item == "item_awl" then r = 50 end
 	if item == "item_buldex" then r = 25 end
@@ -1724,7 +1730,40 @@ function GetItemWeight(item)
 	if item == "item_vaze" then r = 25 end
 	if item == "item_duck" then r = 60 end
 
-	if item == "item_green_fier" then r = 35 end
+	if item == "item_green_fier" then r = 20 end
+
+	if item == "someTurboAccelerationPusher" then r = 25 end
+
+	if item == "hornet01" then r = 100 end
+	if item == "american_hornet01" then r = 95 end
+	if item == "specter01" then r = 85 end
+	if item == "pkt01" then r = 70 end
+	if item == "kord01" then r = 60 end
+	if item == "maxim01" then r = 45 end
+	if item == "storm01" then r = 70 end
+	if item == "fagot01" then r = 40 end
+	if item == "rapier01" then r = 50 end
+	if item == "vector01" then r = 70 end
+	if item == "vulcan01" then r = 60 end
+	if item == "flag01" then r = 25 end
+	if item == "kpvt01" then r = 50 end
+	if item == "rainmetal01" then r = 20 end
+	if item == "elephant01" then r = 35 end
+	if item == "odin01" then r = 25 end
+	if item == "bumblebee01" then r = 65 end
+	if item == "omega01" then r = 50 end
+	if item == "cyclops01" then r = 30 end
+	if item == "octopus01" then r = 20 end
+	if item == "hammer01" then r = 10 end
+	if item == "hurricane01" then r = 35 end
+	if item == "rocketLauncher" then r = 25 end
+	if item == "big_swingfire01" then r = 30 end
+	if item == "mrakSideGun" then r = 8 end
+	if item == "hailSideGun" then r = 6 end
+	if item == "marsSideGun" then r = 10 end
+	if item == "zeusSideGun" then r = 5 end
+	if item == "hunterSideGun" then r = 30 end
+
 	return r
 end
 
@@ -1836,10 +1875,10 @@ function AllItemsForScav()
 					"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 					"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 					"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
-					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_chizuru",
+					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_chizuru", "item_poster_keqing", "item_poster_exception", "item_poster_buyanov", "item_poster_pavlik",
 					"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
 					"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_silver_skull", "item_vaze", "item_duck",
-					"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun",
+					"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun",
 					"someTurboAccelerationPusher",
 					"cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns", "cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "additional_fuel_tank2", "additional_torque2", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 
@@ -2608,20 +2647,20 @@ function RewardForDailyQuests()
 	local LifeItems = {"scrap_metal_use", "machinery_use", "electronics_use"}
 	local FuelItems = {"oil_use", "fuel_full_use"}
 	local AmmoItems = {"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo"}
-	local Guns = {"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "someTurboAccelerationPusher"}
+	local Guns = {"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "someTurboAccelerationPusher", "marsSideGun"}
 	local Gadgets = {"cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns", "cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "additional_fuel_tank2", "additional_torque2", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 	local OtherItems = {"potato", "firewood", "bottle", "tobacco", "book",
 						"doski", "details", "shkatulka",
-						"item_key_gate_thetown", "item_key_gate_vaterland",
+						"item_key_gate_thetown", "item_key_gate_vaterland", "item_key_gate_bunker014", "item_green_fier",
 						"item_bolts", "item_datchik", "item_hose", "item_insulation", "item_kek", "item_military_tube", "item_nails", "item_nuts", "item_parts", "item_pena", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_thermometer", "item_tube",
 						"item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid",
 						"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery",
 						"item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder",
-						"item_sugar", "item_sausage",
+						"item_sugar", "item_sausage", "item_anechka", "item_apocola", "item_bear_rations", "item_beer", "item_coffeecan", "item_cookies", "item_crackers", "item_ebelya", "item_energycan", "item_gorbusha", "item_grechka", "item_juice_apple", "item_juice_orange", "item_kirieshki", "item_kvas", "item_marrow", "item_meat", "item_milkcan", "item_nash_juice", "item_noodles", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_snickers", "item_teabox", "item_tushonka", "item_tushonka_small", "item_usec_rations", "item_water_bottle", "item_water_metal_bottle", "item_whiskey",
 						"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 						"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 						"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
-						"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_chizuru",
+						"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_chizuru", "item_poster_keqing", "item_poster_exception", "item_poster_buyanov", "item_poster_pavlik",
 						"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
 						"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_silver_skull", "item_vaze", "item_duck"}
 

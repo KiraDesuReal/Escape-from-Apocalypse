@@ -18033,7 +18033,7 @@
 		name="Dlg_npc_ToR1M1_Exit_1"
 		text="Выберите, куда хотите отправиться."
 		role="NPC"
-		scriptCondition="GetVar('Exit_ToR1M1').AsInt == 0 and GetVar('PassingToMap').AsInt == 1"
+		scriptCondition="GetVar('Exit_ToR1M1').AsInt == 0 and GetVar('PassingToMap').AsInt == 1 or GetVar('Exit_ToR1M1').AsInt == 2 and GetVar('PassingToMap').AsInt == 1"
 		nextReplies="Dlg_npc_ToR1M1_Exit_3 Dlg_npc_ToR1M1_Exit_4" />
 
 	<Reply

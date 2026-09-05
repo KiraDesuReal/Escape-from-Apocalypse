@@ -2095,7 +2095,7 @@
 							"item_alkani", "item_hlor", "item_paper",
 							"item_disk", "item_flashdrive", "item_manual", 
 							"item_aquapeps", "item_c6h8o6", "item_suringe", "item_afak", "item_carmed", "item_ifak", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
-							"item_vodka", "item_monolit", "item_kaktus", "item_carsen",
+							"item_vodka", "item_monolit", "item_kaktus", "item_carsen", "item_poster_exception",
 							"item_awl", "item_leatherman", "item_metalscissors", "item_nippers", "item_pliers_round", "item_screw_flat_long", "item_toolset",
 							"item_chain", "item_duck",
 							"specter01", "pkt01", "kord01", "storm01", "vector01", "vulcan01", "bumblebee01", "someTurboAccelerationPusher",
@@ -2111,10 +2111,10 @@
 							"item_sugar", "item_sausage", "item_anechka", "item_apocola", "item_bear_rations", "item_beer", "item_coffeecan", "item_energycan", "item_grechka", "item_milkcan", "item_teabox", "item_usec_rations", "item_water_bottle", "item_water_metal_bottle", "item_whiskey",
 							"item_diary", "item_diary_s", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_sas", "item_ssd",
 							"item_oftalmaskop", "item_aquapeps",
-							"item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_kubok_kikiki", "item_chizuru",
+							"item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_kubok_kikiki", "item_chizuru", "item_poster_keqing", "item_poster_exception", "item_poster_buyanov", "item_poster_pavlik",
 							"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_pipe_wrench", "item_ratchet_wrench", "item_sewing_kit", 
 							"item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_vaze",
-							"someTurboAccelerationPusher", "maxim01", "fagot01", "flag01", "rainmetal01", "elephant01", "omega01", "cyclops01", "octopus01", "hunterSideGun", "hammer01",
+							"someTurboAccelerationPusher", "maxim01", "fagot01", "flag01", "rainmetal01", "elephant01", "omega01", "cyclops01", "octopus01", "hunterSideGun", "hammer01", "marsSideGun",
 							"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo",
 							"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 				loot_count = random(3,5)
@@ -2144,10 +2144,10 @@
 							"item_sugar", "item_sausage", "item_anechka", "item_apocola", "item_bear_rations", "item_beer", "item_coffeecan", "item_energycan", "item_grechka", "item_milkcan", "item_teabox", "item_usec_rations", "item_water_bottle", "item_water_metal_bottle", "item_whiskey",
 							"item_disk_exmachina", "item_rozvidka", "item_sas", "item_ssd", "item_ananaga",
 							"item_oftalmaskop", "item_ledx",
-							"item_airfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_metallodetector", "item_kubok_kikiki", "item_chizuru",
+							"item_airfilter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_waterfilter", "item_metallodetector", "item_kubok_kikiki", "item_chizuru", "item_poster_keqing", "item_poster_exception", "item_poster_buyanov", "item_poster_pavlik",
 							"item_buldex", "item_handrill", "item_pipe_wrench", "item_ratchet_wrench", 
 							"item_cat", "item_chain_gold", "item_chiken", "item_lion", "item_rolex", "item_skullring", "item_woodclock", "item_silver_skull", "item_vaze",
-							"fagot01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "cyclops01", "octopus01", "hunterSideGun", "hammer01", "hailSideGun", "zeusSideGun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo",
+							"fagot01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "cyclops01", "octopus01", "hunterSideGun", "hammer01", "hailSideGun", "zeusSideGun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo", "marsSideGun",
 							"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 				if GetVar("ChestScavs_Search").AsInt == 5 then loot_count = random(3,6) end 
 				if GetVar("ChestScavs_Search").AsInt == 6 then loot_count = random(4,6) end 
@@ -7441,10 +7441,10 @@
 						"item_anechka", "item_apocola", "item_beer", "item_milkcan", "item_whiskey",
 						"item_rozvidka", "item_sas",
 						"item_ledx", "item_oftalmaskop",
-						"item_emre_kara", "item_airfilter", "item_ananaga", "item_fitanyashka", "item_pants40grn", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star", "item_chizuru",
+						"item_emre_kara", "item_airfilter", "item_ananaga", "item_fitanyashka", "item_pants40grn", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star", "item_chizuru", "item_poster_keqing", "item_poster_exception", "item_poster_buyanov", "item_poster_pavlik",
 						"item_buldex", "item_handrill", "item_pipe_wrench", "item_ratchet_wrench",
 						"item_bitcoin", "item_cat", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_silver_skull", "item_vaze",
-						"fagot01", "maxim01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "hammer01", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun",
+						"fagot01", "maxim01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "hammer01", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun",
 						"someTurboAccelerationPusher",
 						"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_fuel_tank2", "additional_torque2", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 

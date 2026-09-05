@@ -187,13 +187,6 @@
 		file="data\models\objects\box\tool_box\tool_box.gam" />
 
 	<model
-		id="tool_box2"
-		shadow="1"
-		shadowVolume="0"
-		windwavy="0"
-		file="data\models\objects\box\tool_box\tools_box.gam" />
-
-	<model
 		id="wood_box"
 		shadow="1"
 		shadowVolume="0"
@@ -213,6 +206,13 @@
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\objects\box\cache_box\cache_box.gam" />
+
+	<model
+		id="ammo_box"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\objects\box\ammo_box\ammo_box.gam" />
 
 	<model
 		id="generator_motor"

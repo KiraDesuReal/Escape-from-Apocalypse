@@ -68,6 +68,8 @@
 
 			SetVar("ScavExitsMsg", "0")
 
+			SetVar("PostersCreated", 0)
+
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -300,6 +302,9 @@
 			TActivate("CreateWoodenBox")
 			TActivate("CreateSportsBagBox")
 			TActivate("CreateAmmoBox")
+			TActivate("CreatePosters")
+			TActivate("CreateEnergoItems")
+			TActivate("CreateElectroItems")
 
 			if COUNT_RAIDS > 1 then TActivate("SetWeather") end
 
@@ -4759,12 +4764,12 @@
 							"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 							"item_diary", "item_diary_s", "item_disk", "item_flashdrive", "item_manual", "item_sas", "item_ssd",
 							"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_medical_tools", "item_naci", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
-							"item_filter", "item_paracord", "item_vodka", "item_waterfilter", "item_zapal", "item_carsen", "item_stakanyash", "item_ananaga", "item_poster_keqing", "item_poster_exception", "item_poster_buyanov", "item_poster_pavlik",
+							"item_filter", "item_paracord", "item_vodka", "item_waterfilter", "item_zapal", "item_carsen", "item_stakanyash", "item_ananaga", "item_poster_keqing", "item_poster_exception", "item_poster_buyanov", "item_poster_pavlik", "item_poster_biznesman", "item_poster_ural", "item_poster_belaz", "item_poster_vitalik",
 							"item_awl", "item_fullmaster", "item_leatherman", "item_metalscissors", "item_nippers", "item_pliers", "item_pliers_round", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
-							"item_chain", "item_chain_gold", "item_ex", "item_rolex", "item_teapon", "item_woodclock", "item_silver_skull", "item_duck"}
+							"item_chain", "item_chain_gold", "item_ex", "item_rolex", "item_teapon", "item_woodclock", "item_silver_skull", "item_duck", "item_nebrosart"}
 			local gun = {"hornet01", "specter01", "pkt01", "kord01", "storm01", "vector01", "vulcan01", "kpvt01", "rapier01", "omega01", "bumblebee01"}
-			local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
-			local gadget2 = {"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "additional_fuel_tank2", "additional_torque2", "additional_durability2"}
+			local gadget1 = GetItemsCategory("gadget1")
+			local gadget2 = GetItemsCategory("gadget2")
 
 			local protChest = "mainChest"
 			if EVENT == "NEW_YEAR" then 
@@ -4902,12 +4907,12 @@
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local other = {"item_waterfilter", "book", "item_airfilter", "item_filter", "item_paracord", "item_vitalik", "item_zapal"}
-			local energo = {"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery"}
-			local building = {"details", "doski", "bottle", "scrap_metal", "item_bolts", "item_datchik", "item_hose", "item_insulation", "item_kek", "item_military_tube", "item_nails", "item_nuts", "item_parts", "item_pena", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_thermometer", "item_tube"}
-			local electro = {"electronics", "machinery", "item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid"}
-			local flammable = {"firewood", "tobacco", "oil", "fuel", "item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder"}
-			local tools = {"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench"}
-			local use = {"scrap_metal_use", "oil_use", "machinery_use", "fuel_full_use", "electronics_use"}
+			local energo = GetItemsCategory("energo")
+			local building = GetItemsCategory("build")
+			local electro = GetItemsCategory("electro")
+			local flammable = GetItemsCategory("flam")
+			local tools = GetItemsCategory("tools")
+			local use = GetItemsCategory("use")
 
 			for i=1,13 do
 				if random(100) >= 20 then
@@ -4953,16 +4958,16 @@
 	<trigger Name="CreateToolsBox" active="0">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-			local building = {"details", "doski", "bottle", "scrap_metal", "item_bolts", "item_datchik", "item_hose", "item_insulation", "item_kek", "item_military_tube", "item_nails", "item_nuts", "item_parts", "item_pena", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_thermometer", "item_tube"}
-			local tools = {"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench"}
+			local building = GetItemsCategory("build")
+			local tools = GetItemsCategory("tools")
+			local energo = GetItemsCategory("energo")
+			local electro = GetItemsCategory("electro")
+			local flammable = GetItemsCategory("flam")
 		
 			for i=1,30 do
 				if i == 10 then
 					if random(100) >= 10 then
 						local other = {"item_gunpowder", "book", "item_airfilter", "item_filter", "item_paracord", "item_vitalik", "item_zapal"}
-						local energo = {"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery"}
-						local electro = {"electronics", "machinery", "item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid"}
-						local flammable = {"firewood", "tobacco", "oil", "fuel", "item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder"}
 
 						local Chest = CreateNewObject{prototypeName = "woodChest", objName = "ToolBox"..i}	
 						local ChestId = GetEntityByID(Chest)
@@ -4994,10 +4999,13 @@
 					end
 				else
 					if random(2) == 1 then
-						local other = {"item_waterfilter", "book", "item_filter", "item_paracord", "item_vitalik", "item_zapal"}
-						local energo = {"item_accum", "item_battery_aa", "item_battery_d", "item_cyclon", "item_green_battery", "item_powerbank"}
-						local electro = {"electronics", "machinery", "item_bp", "item_cable", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_hdd", "item_helix", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_wires", "item_military_plate"}
-						local flammable = {"tobacco", "oil", "fuel", "item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder"}
+						local other = {"item_waterfilter", "book", "item_filter", "item_paracord", "item_zapal"}
+						flammable = DeleteTableObj(flammable, "item_propan")
+						local e_del = {"item_car_battery", "item_tank_battery"}
+						for ed = 1, 2 do energo = DeleteTableObj(energo, e_del[ed]) end
+
+						local el_del = {"item_gpu", "item_vpx", "item_virtex", "item_rfid", "item_converter", "item_controller", "item_military_plate", "item_military_cable"}
+						for eld = 1, 8 do electro = DeleteTableObj(electro, el_del[eld]) end
 
 						local Chest = CreateNewObject{prototypeName = "toolChest1", objName = "ToolBox"..i}	
 						local ChestId = GetEntityByID(Chest)
@@ -5070,16 +5078,13 @@
 	<trigger Name="CreateSafeBox" active="0">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-			local valuable = {"item_key_gate_bunker014", "book", "shkatulka", "item_chizuru", "item_kubok_kikiki", "item_monolit", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kaktus", "item_keqing", "item_fitanyashka", "item_emre_kara", "item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_silver_skull", "item_vaze", "item_duck"}
-			local info = {"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd"}
+			local valuable = GetItemsCategory("valuables")
+			table.insert(valuable, "item_key_gate_bunker014")
+			local info = GetItemsCategory("info")
+			table.insert(info, "item_hdd")
+			table.insert(info, "item_vpx")
+			table.insert(info, "item_rfid")
 			local typeI = {valuable, info}
-
-			if EVENT == "NEW_YEAR" then 
-				local new_items = {"item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star"}
-				for i = 1, 4 do
-					table.insert(valuable, new_items[i])
-				end
-			end
 
 			local Chest = CreateNewObject{prototypeName = "safeChest1", objName = "SafeBox1"}	
 			local ChestId = GetEntityByID(Chest)
@@ -5105,13 +5110,13 @@
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local other = {"item_juice_orange", "item_juice_apple", "item_gunpowder", "item_bear_rations", "item_crackers", "item_manual", "item_tank_battery"}
-			local ammo = {"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo"}
+			local ammo = GetItemsCategory("ammo")
 			local use = {"machinery_use", "electronics_use", "scrap_metal_use", "oil_use", "fuel_full_use", "item_green_fier"}
 			local med = {"item_analgin", "item_salewa", "item_grizzly", "item_carmed", "item_zvezda", "item_vazelin", "item_morfie"}
 			local gun = {"hornet01", "specter01", "pkt01", "storm01", "pkt01", "kord01", "vector01", "vulcan01", "kpvt01", "rapier01", "bumblebee01", "maxim01", "fagot01", "omega01", "elephant01", "flag01", "odin01", "rainmetal01", "someTurboAccelerationPusher"}
-			local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
-			local gadget2 = {"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "additional_fuel_tank2", "additional_torque2", "additional_durability2"}
-			local gadget3 = {"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
+			local gadget1 = GetItemsCategory("gadget1")
+			local gadget2 = GetItemsCategory("gadget2")
+			local gadget3 = GetItemsCategory("gadget3")
 			for i=1,44 do
 				if random(100) >= 35 then
 					local Chest = CreateNewObject{prototypeName = "woodenChest", objName = "WoodenBox"..i}	
@@ -5160,28 +5165,27 @@
 	</trigger>
 
 	<trigger Name="CreateSportsBagBox" active="0">
-		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local non = {"item_bitcoin", "item_ledx", "item_ananaga"}
-			local energo = {"item_accum", "item_battery_aa", "item_battery_d", "item_cyclon", "item_green_battery", "item_powerbank"}
-			local build = {"details", "doski", "item_bolts", "item_datchik", "item_hose", "item_insulation", "item_kek", "item_military_tube", "item_nails", "item_nuts", "item_parts", "item_pena", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_thermometer", "item_tube"}
-			local electro = {"electronics", "item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid"}
-			local household = {"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste"}
-			local valuable = {"shkatulka", "item_chizuru", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_fitanyashka", "item_emre_kara", "item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_silver_skull", "item_vaze", "item_duck"}
-			local flamm = {"firewood", "oil", "fuel", "item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder"}
+			local energo = GetItemsCategory("energo")
+			local e_del = {"item_car_battery", "item_tank_battery"}
+			for ed = 1, 2 do energo = DeleteTableObj(energo, e_del[ed]) end
+
+			local build = GetItemsCategory("build")
+			local electro = GetItemsCategory("electro")
+			local household = GetItemsCategory("household")
+			local valuable = GetItemsCategory("valuables")
+			local flamm = DeleteTableObj(GetItemsCategory("flam"), "item_propan")
+
 			local med = {"item_aquapeps", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe"}
-			local other = {"book", "item_filter", "item_paracord", "item_waterfilter", "item_zapal", "item_poster_keqing", "item_poster_exception", "item_poster_buyanov", "item_poster_pavlik"}
-			local tools = {"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench"}
-			local food = {"item_sugar", "item_sausage", "item_anechka", "item_apocola", "item_bear_rations", "item_beer", "item_coffeecan", "item_cookies", "item_crackers", "item_ebelya", "item_energycan", "item_gorbusha", "item_grechka", "item_juice_apple", "item_juice_orange", "item_kirieshki", "item_kvas", "item_marrow", "item_meat", "item_milkcan", "item_noodles", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_snickers", "item_teabox", "item_tushonka", "item_tushonka_small", "item_usec_rations", "item_water_bottle", "item_water_metal_bottle", "item_whiskey"}
+			local other = {"book", "item_filter", "item_paracord", "item_waterfilter", "item_zapal", "item_poster_keqing", "item_poster_exception", "item_poster_buyanov", "item_poster_pavlik", "item_poster_biznesman", "item_poster_ural", "item_poster_belaz", "item_poster_vitalik"}
+			local tools = DeleteTableObj(GetItemsCategory("tools"), "item_vitalik")
+			
+
+			local food = GetItemsCategory("food")
 			local gun = {"hornet01", "specter01", "pkt01", "storm01", "pkt01", "kord01", "maxim01", "fagot01", "someTurboAccelerationPusher"}
 			
-			if EVENT == "NEW_YEAR" then 
-				local new_items = {"item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star"}
-				for ii = 1, 4 do
-					table.insert(valuable, new_items[ii])
-				end
-			end
-
 			for i=1,41 do
 				if random(2) == 1 then
 					local Chest = CreateNewObject{prototypeName = "sports_bagChest", objName = "SportsBagBox"..i}	
@@ -5234,7 +5238,7 @@
 	<trigger Name="CreateAmmoBox" active="0">
 		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
-			local ammo = {"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo"}
+			local ammo = GetItemsCategory("ammo")
 			for i=1,4 do
 				if random(2) == 1 then
 					local Chest = CreateNewObject{prototypeName = "ammoChest", objName = "AmmoBox"..i}	
@@ -5253,6 +5257,82 @@
 
 					AddItemsToChestObj(ChestId, "item_opacity", "OpacityItem_AmmoBox"..i)
 					AddItemsToChestObj(ChestId, GetRandomWeightedItem(ammo), "AmmoItem_"..random(10000).."_AmmoBox")
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreatePosters" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i=1,9 do
+				if random(100) >= 90 then
+					CreatePoster("Poster"..i, CVector(getPos("Poster_"..i.."_loc")), Quaternion(getObj("Poster_"..i.."_loc"):GetRotation()))
+					SetVar("PostersCreated", GetVar("PostersCreated").AsInt + 1)
+					getObj("PosterDel"):AddEvent("GE_OBJECT_DIE", "ChestPoster"..i)
+					if i == 2 then getObj("ModelPoster2"):SetPosition(CVector(5463.739, 231.460, 1795.258)) end
+					if i == 4 then getObj("ModelPoster4"):SetPosition(CVector(4106.922, 236.700, 1201.650)) end
+					if i == 8 then getObj("ModelPoster8"):SetPosition(CVector(1645.839, 257.000, 7716.840)) end
+					if i == 9 then getObj("ModelPoster9"):SetPosition(CVector(3261.747, 257.000, 7896.317)) end
+				end
+			end
+
+			if GetVar("PostersCreated").AsInt ~= 0 then
+				TActivate("PosterDel")
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="PosterDel" active="0">
+		<script>
+			local name = trigger:GetCallObjName()
+			local num = tonumber(strsub(name, 12, 13))
+			local model = getObj("ModelPoster"..num)
+			if model then model:Remove() end
+			
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			if GetVar("PostersCreated").AsInt > count then
+			return
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateEnergoItems" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local typeI = {GetItemsCategory("energo"), GetItemsCategory("build"), GetItemsCategory("flam"), GetItemsCategory("food"), GetItemsCategory("household"), GetItemsCategory("tools")}
+			local typeW = {100, 50, 30, 60, 70, 30}
+			local c = exrandom(11)
+			local r = shuffled_range_take(c, 1, 11)
+			for i=1,c do
+				CreateBoxForItem("EnergoItemBoxPlane"..i, getPos("EnergoItems_Plane_"..r[i].."_loc"), GetRandomWeightedItem(weighted_random(typeI, typeW)), 2)
+			end
+
+			if random(100) >= 70 then
+				CreateBoxForItem("EnergoItemBox1", getPos("EnergoItems_1_loc"), GetRandomWeightedItem(weighted_random(typeI, typeW)), 2)
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="CreateElectroItems" active="0">
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			for i=1,14 do
+				if i == 2 then
+					if random(2) == 1 then
+						CreateBoxForItem("ElectroItemBox"..i, getPos("ElectronicsItems_"..i.."_loc"), GetRandomWeightedItem(GetItemsCategory("electro"), "item_gpu", random(0, 30)), 1)
+					end
+				else
+					if random(100) >= 65 then
+						local rot = 1
+						if i == 10 or i == 12 then rot = 0 end
+						CreateBoxForItem("ElectroItemBox"..i, getPos("ElectronicsItems_"..i.."_loc"), GetRandomWeightedItem(GetItemsCategory("electro")), 1, rot)
+					end
 				end
 			end
 			trigger:Deactivate()

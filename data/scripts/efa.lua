@@ -934,44 +934,31 @@ function CreateBarrelLootBox(name, pos, rot, model)
 	if rot == nil then rot = Quaternion(0, 0, 0, 1) end
 
 	local use = {"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use", "fuel_nil_use", "item_key_gate_thetown", "item_key_gate_basefelix", "item_key_gate_vaterland", "item_key_gate_bunker014", "item_green_fier"}
-	local ammo = {"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo"}
-	local build = {"scrap_metal", "machinery", "doski", "details", "item_bolts", "item_datchik", "item_hose", "item_insulation", "item_kek", "item_military_tube", "item_nails", "item_nuts", "item_parts", "item_pena", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_thermometer", "item_tube", "item_paracord"}
-	local ex = {"potato", "scrap_metal", "firewood", "oil", "bottle", "fuel", "machinery", "tobacco", "book", "electronics", "doski", "details", "shkatulka"}
-	local electro = {"electronics", "item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid"}
-	local energo = {"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery"}				
-	local flam = {"firewood", "oil", "fuel", "tobacco", "item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder"}			
-	local food = {"item_vodka", "item_ananaga", "item_sugar", "item_sausage", "item_anechka", "item_apocola", "item_bear_rations", "item_beer", "item_coffeecan", "item_cookies", "item_crackers", "item_ebelya", "item_energycan", "item_gorbusha", "item_grechka", "item_juice_apple", "item_juice_orange", "item_kirieshki", "item_kvas", "item_marrow", "item_meat", "item_milkcan", "item_noodles", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_snickers", "item_teabox", "item_tushonka", "item_tushonka_small", "item_usec_rations", "item_water_bottle", "item_water_metal_bottle", "item_whiskey"}		
-	local household = {"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_tb", "item_toothpaste", "item_sugar"}		
-	local info = {"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd"}
-	local med = {"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda"}
-	local other = {"book", "item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_chizuru", "item_poster_keqing", "item_poster_exception", "item_poster_buyanov", "item_poster_pavlik"}		
-	local tools = {"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench", "item_vitalik"}		
-	local valuables = {"item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_chizuru", "item_fitanyashka", "item_emre_kara", "shkatulka", "item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_silver_skull", "item_vaze", "item_duck"}			
-	local gun = {"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "someTurboAccelerationPusher", "marsSideGun"}				
-	local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
-	local gadget2 = {"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "additional_fuel_tank2", "additional_torque2", "additional_durability2"}
-	local gadget3 = {"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
+	local ammo = GetItemsCategory("ammo")
+	local build = GetItemsCategory("build")
+	local ex = GetItemsCategory("ex")
+	local electro = GetItemsCategory("electro")
+	local energo = GetItemsCategory("energo")
+	local flam = GetItemsCategory("flam")
+	local food = GetItemsCategory("food")
+	local household = GetItemsCategory("household")	
+	local info = GetItemsCategory("info")	
+	local med = GetItemsCategory("med")
+	table.insert(med, "item_gazan")
+	local other = GetItemsCategory("other")
+	local tools = GetItemsCategory("tools")
+	local valuables = GetItemsCategory("valuables")
+	local gun = GetItemsCategory("gun")
+	table.insert(gun, "american_hornet01")
+	local gadget1 = GetItemsCategory("gadget1")
+	local gadget2 = GetItemsCategory("gadget2")
+	local gadget3 = GetItemsCategory("gadget3")
 	
 	local typeI = {use, ammo, build, ex, electro, energo, flam, food, household, info, med, other, tools, valuables, gun, gadget1, gadget2, gadget3}
 
 	local count = random(5)
-
 	local mapName = GET_GLOBAL_OBJECT( "CurrentLevel" ):GetLevelName()
-	if mapName == "r1m1" then
-		table.insert(food, "item_nash_juice")
-		table.insert(other, "item_pants40grn")
-	elseif mapName == "r5m1" then
-		table.insert(valuables, "item_woodclock")
-		table.insert(household, "item_soda")
-		count = random(7)
-	end
-
-	if EVENT == "NEW_YEAR" then 
-		local new_items = {"item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star"}
-		for i = 1, 4 do
-			table.insert(other, new_items[i])
-		end
-	end
+	if mapName == "r5m1" then count = random(7) end
 
 	if model == 1 then
 		CreateNewDummyObject("plastic_barrel", name, -1, -1, pos, Quaternion(0, 0, 0, 0), 1)
@@ -1016,9 +1003,9 @@ function CreateGunBox(name, pos)
 	local gun2 = {"pkt01", "kord01", "maxim01", "fagot01", "someTurboAccelerationPusher", "omega01", "elephant01", "flag01", "odin01", "rainmetal01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun"}
 	local gun_rand = {gun1[random(getn(gun1))], gun2[exrandom(getn(gun2))]}
 
-	local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
-	local gadget2 = {"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "additional_fuel_tank2", "additional_torque2", "additional_durability2"}
-	local gadget3 = {"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
+	local gadget1 = GetItemsCategory("gadget1")
+	local gadget2 = GetItemsCategory("gadget2")
+	local gadget3 = GetItemsCategory("gadget3")
 
 	local protChest = "mainChest"
 	if EVENT == "NEW_YEAR" then protChest = "christmasChest" end
@@ -1088,8 +1075,8 @@ function CreateSmallGunBox(name, pos, rot)
 	local use_small_box = {"scrap_metal_use", "machinery_use", "oil_use"}
 	local other_small_box = {"item_naci", "item_rozvidka"}
 
-	local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
-	local gadget2 = {"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "additional_fuel_tank2", "additional_torque2", "additional_durability2"}
+	local gadget1 = GetItemsCategory("gadget1")
+	local gadget2 = GetItemsCategory("gadget2")
 
 	local Chest = CreateNewObject{prototypeName = "gunChest3", objName = name}	
 	local ChestId = GetEntityByID(Chest)
@@ -1151,13 +1138,13 @@ end
 
 -- Создать большой черный оружейный ящик
 function CreateBigGunBoxBlack(name, pos, rot)
-	local gun = {"hornet01", "specter01", "pkt01", "storm01", "pkt01", "kord01", "vector01", "vulcan01", "kpvt01", "rapier01", "bumblebee01", "maxim01", "fagot01", "omega01", "elephant01", "flag01", "odin01", "rainmetal01", "someTurboAccelerationPusher", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun"}
+	local gun = GetItemsCategory("gun")
 	local use = {"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use"}
 	local other = {"item_gunpowder", "item_green_fier"}
 
-	local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
-	local gadget2 = {"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "additional_fuel_tank2", "additional_torque2", "additional_durability2"}
-	local gadget3 = {"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
+	local gadget1 = GetItemsCategory("gadget1")
+	local gadget2 = GetItemsCategory("gadget2")
+	local gadget3 = GetItemsCategory("gadget3")
 
 	local Chest = CreateNewObject{prototypeName = "gunChest2", objName = name}	
 	local ChestId = GetEntityByID(Chest)
@@ -1209,13 +1196,13 @@ end
 
 -- Создать большой зеленый оружейный ящик
 function CreateBigGunBoxGreen(name, pos, rot)
-	local gun = {"hornet01", "specter01", "pkt01", "storm01", "pkt01", "kord01", "vector01", "vulcan01", "kpvt01", "rapier01", "bumblebee01", "maxim01", "fagot01", "omega01", "elephant01", "flag01", "odin01", "rainmetal01", "someTurboAccelerationPusher", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun"}
+	local gun = GetItemsCategory("gun")
 	local use = {"machinery_use", "electronics_use", "scrap_metal_use", "oil_use", "fuel_full_use"}
 	local other = {"item_flashdrive", "item_iridiym", "item_controller", "item_rfid", "item_rozvidka"}
 
-	local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
-	local gadget2 = {"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "additional_fuel_tank2", "additional_torque2", "additional_durability2"}
-	local gadget3 = {"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
+	local gadget1 = GetItemsCategory("gadget1")
+	local gadget2 = GetItemsCategory("gadget2")
+	local gadget3 = GetItemsCategory("gadget3")
 
 	local Chest = CreateNewObject{prototypeName = "gunChest2", objName = name}	
 	local ChestId = GetEntityByID(Chest)
@@ -1277,9 +1264,9 @@ function CreateFlatGunBox(name, pos, rot)
 	local other = {"item_gunpowder", "item_military_plate", "item_military_cable", "item_military_tube"}
 	local med = {"item_analgin", "item_salewa", "item_grizzly", "item_carmed", "item_ifak", "item_afak", "item_zvezda", "item_vazelin", "item_morfie"}
 
-	local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
-	local gadget2 = {"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "additional_fuel_tank2", "additional_torque2", "additional_durability2"}
-	local gadget3 = {"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
+	local gadget1 = GetItemsCategory("gadget1")
+	local gadget2 = GetItemsCategory("gadget2")
+	local gadget3 = GetItemsCategory("gadget3")
 
 	local Chest = CreateNewObject{prototypeName = "gunChest1", objName = name}	
 	local ChestId = GetEntityByID(Chest)
@@ -1331,9 +1318,10 @@ end
 -- Создать ящик медобеспечения
 function CreateMedWoodBox(name, pos, rot)
 	local other = {"item_morfie", "item_salewa", "item_ai2", "item_gazan", "item_grizzly", "item_carmed", "item_ifak", "item_ledx", "item_afak"}
-	local household = {"item_alkani", "item_hlor", "item_paper", "item_stakanyash", "item_salt", "item_soap", "item_tb", "item_toothpaste", "item_sugar"}
-	local med = {"item_gazan", "item_morfie", "item_salewa", "item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_vazelin", "item_zvezda"}
-	local use = {"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use"}
+	local household = GetItemsCategory("household")
+	local med = GetItemsCategory("med")
+	table.insert(med, "item_gazan")
+	local use = DeleteTableObj(GetItemsCategory("use"), "fuel_nil_use")
 
 	local Chest = CreateNewObject{prototypeName = "woodChest", objName = name}	
 	local ChestId = GetEntityByID(Chest)
@@ -1353,10 +1341,10 @@ function CreateMedWoodBox(name, pos, rot)
 			for i = 1, random(3) do
 				local weights = {}
 				for m = 1, getn(med) do
-					if m > 3 then
-						table.insert(weights, GetItemWeight(med[m]))
-					else
+					if med[m] == "item_gazan" or med[m] == "item_salewa" or med[m] == "item_morfie" then
 						table.insert(weights, GetItemWeight(med[m]) + random(0, 5))
+					else
+						table.insert(weights, GetItemWeight(med[m]))
 					end
 				end
 				local item = weighted_random(med, weights)
@@ -1389,7 +1377,8 @@ function CreateMedBag(name, pos, rot, podkrutka)
 
 	local other = {"item_morfie", "item_salewa"}
 	local otherRand = {20, 20}
-	local med = {"item_gazan", "item_salewa", "item_morfie", "item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_vazelin", "item_zvezda"}
+	local med = GetItemsCategory("med")
+	table.insert(med, "item_gazan")
 
 	local Chest = CreateNewObject{prototypeName = "medicalbagChest", objName = name}	
 	local ChestId = GetEntityByID(Chest)
@@ -1408,10 +1397,10 @@ function CreateMedBag(name, pos, rot, podkrutka)
 			for i = 1, random(4) do
 				local weights = {}
 				for m = 1, getn(med) do
-					if m > 3 then
-						table.insert(weights, GetItemWeight(med[m]))
-					else
+					if med[m] == "item_gazan" or med[m] == "item_salewa" or med[m] == "item_morfie" then
 						table.insert(weights, GetItemWeight(med[m]) + random(0, 5))
+					else
+						table.insert(weights, GetItemWeight(med[m]))
 					end
 				end
 				local item = weighted_random(med, weights)
@@ -1429,6 +1418,25 @@ function CreateMedBag(name, pos, rot, podkrutka)
 			end
 		end
 	end
+end
+
+-- Создать mainChest и добавить в него 1 предмет
+function CreateBoxForItem(name, pos, item, skin, rot)
+	if rot == nil then rot = 1 end
+	local rotarr={Quaternion(-0.029, 0.679, -0.021, 0.734), Quaternion(0.001, 0.626, 0.002, 0.780), Quaternion(-0.001, 0.558, -0.001, 0.830), Quaternion(-0.029, -0.025, 0.005, 0.999), Quaternion(-0.001, -0.346, 0.001, 0.938), Quaternion(-0.001, -0.724, -0.000, 0.690), Quaternion(-0.025, -0.992, -0.005, 0.125), Quaternion(0.002, -0.914, -0.001, 0.405), Quaternion(-0.003, -1.000, -0.006, -0.015)}
+	local Chest = CreateNewObject{prototypeName = "mainChest", objName = name}	
+	local ChestId = GetEntityByID(Chest)
+	ChestId:SetPosition(pos)
+	if rot ~= 0 then
+		ChestId:SetRotation(rotarr[random(9)])
+	end
+	ChestId:SetSkin(skin)
+
+	local ChestPos = ChestId:GetPosition()
+	ChestPos.y = ChestPos.y + 3
+	ChestId:SetPosition(ChestPos)
+
+	AddItemsToChestObj(ChestId, item, "Item_"..random(10000).."_"..name)
 end
 
 -- Добавить предмет в ящик
@@ -1691,10 +1699,14 @@ function GetItemWeight(item)
 	if item == "item_christmas_star" then r = 35 end
 	if item == "item_chizuru" then r = 30 end
 	if item == "item_water_canister" then r = 5 end
-	if item == "item_poster_keqing" then r = 25 end
+	if item == "item_poster_keqing" then r = 20 end
 	if item == "item_poster_exception" then r = 40 end
-	if item == "item_poster_buyanov" then r = 30 end
-	if item == "item_poster_pavlik" then r = 20 end
+	if item == "item_poster_buyanov" then r = 25 end
+	if item == "item_poster_pavlik" then r = 18 end
+	if item == "item_poster_biznesman" then r = 10 end
+	if item == "item_poster_ural" then r = 30 end
+	if item == "item_poster_belaz" then r = 25 end
+	if item == "item_poster_vitalik" then r = 15 end
 
 	if item == "item_awl" then r = 50 end
 	if item == "item_buldex" then r = 25 end
@@ -1729,6 +1741,7 @@ function GetItemWeight(item)
 	if item == "item_silver_skull" then r = 50 end
 	if item == "item_vaze" then r = 25 end
 	if item == "item_duck" then r = 60 end
+	if item == "item_nebrosart" then r = 35 end
 
 	if item == "item_green_fier" then r = 20 end
 
@@ -1767,12 +1780,16 @@ function GetItemWeight(item)
 	return r
 end
 
-function GetRandomWeightedItem(item)
+function GetRandomWeightedItem(tab, item, podkrutka)
     local weights = {}
-	for i = 1, getn(item) do
-		table.insert(weights, GetItemWeight(item[i]))
+	for i = 1, getn(tab) do
+		if item == tab[i] then
+			table.insert(weights, GetItemWeight(tab[i]) + podkrutka)
+		else
+			table.insert(weights, GetItemWeight(tab[i]))
+		end
 	end
-	return weighted_random(item, weights)
+	return weighted_random(tab, weights)
 end
 
 function weighted_random(items, weights)
@@ -1817,13 +1834,15 @@ function shuffled_range_take (n, a, b)
 end
 
 -- Создать постер
-function CreatePoster(name, pos, rot)
-	local posters = {"poster_keqing", "poster_exception", "poster_buyanov", "poster_pavlik"}
-	local poster = posters[random(getn(posters))]
+function CreatePoster(name, pos, rot, y)
+	if y == nil then y = 2.25 end
+
+	local posters = {"poster_keqing", "poster_exception", "poster_buyanov", "poster_pavlik", "poster_biznesman", "poster_ural", "poster_belaz", "poster_vitalik"}
+	local poster = GetRandomWeightedItem(posters)
 
 	local model = CreateNewSgNodeObject(poster, "Model"..name, -1, -1, pos, rot)
 	local ModelPos = model:GetPosition()
-	ModelPos.y = ModelPos.y + 2.25
+	ModelPos.y = ModelPos.y + y
 	model:SetPosition(ModelPos)
 
 	local Chest = CreateNewObject{prototypeName = "opacityChest", objName = "Chest"..name}	
@@ -1849,7 +1868,7 @@ function AllItems()
 					"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 					"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 					"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
-					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_jeton_bear", "item_jeton_usec", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_knife_sectarian", "item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star", "item_water_canister", "item_chizuru", "item_poster_keqing", "item_poster_exception", "item_poster_buyanov", "item_poster_pavlik",
+					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_jeton_bear", "item_jeton_usec", "item_pants40grn", "item_paracord", "item_pavlikrpg", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_knife_sectarian", "item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star", "item_water_canister", "item_chizuru", "item_poster_keqing", "item_poster_exception", "item_poster_buyanov", "item_poster_pavlik", "item_poster_biznesman", "item_poster_ural", "item_poster_belaz", "item_poster_vitalik",
 					"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
 					"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_vitaly", "item_silver_skull", "item_vaze", "item_duck",
 					"item_quest_search_data",
@@ -1860,36 +1879,71 @@ function AllItems()
 	return Items
 end
 
-function AllItemsForScav()
-	local Items = {"potato", "scrap_metal", "firewood", "oil", "bottle", "fuel", "machinery", "tobacco", "book", "electronics",
-					"doski", "details", "shkatulka",
-					"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use", "fuel_nil_use",
-					"item_key_gate_thetown", "item_key_gate_basefelix", "item_key_gate_vaterland", "item_key_gate_bunker014",
-					"item_green_fier",
-					"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo",
-					"item_bolts", "item_datchik", "item_hose", "item_insulation", "item_kek", "item_military_tube", "item_nails", "item_nuts", "item_parts", "item_pena", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_thermometer", "item_tube",
-					"item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid",
-					"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery",
-					"item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder",
-					"item_sugar", "item_sausage", "item_anechka", "item_apocola", "item_bear_rations", "item_beer", "item_coffeecan", "item_cookies", "item_crackers", "item_ebelya", "item_energycan", "item_gorbusha", "item_grechka", "item_juice_apple", "item_juice_orange", "item_kirieshki", "item_kvas", "item_marrow", "item_meat", "item_milkcan", "item_nash_juice", "item_noodles", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_snickers", "item_teabox", "item_tushonka", "item_tushonka_small", "item_usec_rations", "item_water_bottle", "item_water_metal_bottle", "item_whiskey",
-					"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
-					"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
-					"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
-					"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_chizuru", "item_poster_keqing", "item_poster_exception", "item_poster_buyanov", "item_poster_pavlik",
-					"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
-					"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_silver_skull", "item_vaze", "item_duck",
-					"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "marsSideGun",
-					"someTurboAccelerationPusher",
-					"cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns", "cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "additional_fuel_tank2", "additional_torque2", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
-
+function GetItemsCategory(category)
+	local use = {"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use", "fuel_nil_use"}
+	local key = {"item_key_gate_thetown", "item_key_gate_basefelix", "item_key_gate_vaterland", "item_key_gate_bunker014"}
+	local spec_use = {"item_green_fier"}
+	local ammo = {"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo"}
+	local build = {"scrap_metal", "machinery", "doski", "details", "item_bolts", "item_datchik", "item_hose", "item_insulation", "item_kek", "item_military_tube", "item_nails", "item_nuts", "item_parts", "item_pena", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_thermometer", "item_tube", "item_paracord"}
+	local ex = {"potato", "scrap_metal", "firewood", "oil", "bottle", "fuel", "machinery", "tobacco", "book", "electronics", "doski", "details", "shkatulka"}
+	local electro = {"electronics", "item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid"}
+	local energo = {"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery"}				
+	local flam = {"firewood", "oil", "fuel", "tobacco", "item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder"}			
+	local food = {"item_vodka", "item_ananaga", "item_sugar", "item_sausage", "item_anechka", "item_apocola", "item_bear_rations", "item_beer", "item_coffeecan", "item_cookies", "item_crackers", "item_ebelya", "item_energycan", "item_gorbusha", "item_grechka", "item_juice_apple", "item_juice_orange", "item_kirieshki", "item_kvas", "item_marrow", "item_meat", "item_milkcan", "item_noodles", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_snickers", "item_teabox", "item_tushonka", "item_tushonka_small", "item_usec_rations", "item_water_bottle", "item_water_metal_bottle", "item_whiskey", "item_nash_juice"}		
+	local household = {"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_tb", "item_toothpaste", "item_sugar", "item_stakanyash", "item_soda"}		
+	local info = {"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd"}
+	local med = {"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda"}
+	local other = {"book", "item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_vodka", "item_pants40grn", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_chizuru", "item_poster_keqing", "item_poster_exception", "item_poster_buyanov", "item_poster_pavlik", "item_poster_biznesman", "item_poster_ural", "item_poster_belaz", "item_poster_vitalik"}		
+	local tools = {"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench", "item_vitalik"}		
+	local valuables = {"item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_chizuru", "item_fitanyashka", "item_emre_kara", "shkatulka", "item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_silver_skull", "item_vaze", "item_duck", "item_woodclock", "item_nebrosart"}			
+	local gun = {"hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "someTurboAccelerationPusher", "marsSideGun"}				
+	local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
+	local gadget2 = {"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "additional_fuel_tank2", "additional_torque2", "additional_durability2"}
+	local gadget3 = {"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
+	
 	if EVENT == "NEW_YEAR" then 
 		local new_items = {"item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star"}
 		for i = 1, 4 do
-			table.insert(Items, new_items[i])
+			table.insert(other, new_items[i])
+			table.insert(valuables, new_items[i])
 		end
 	end
 
-	return Items
+	local mapName = GET_GLOBAL_OBJECT( "CurrentLevel" ):GetLevelName()
+	if mapName == "r1m1" then
+		DeleteTableObj(valuables, "item_woodclock")
+		DeleteTableObj(household, "item_soda")
+	elseif mapName == "r5m1" then
+		DeleteTableObj(other, "item_pants40grn")
+		DeleteTableObj(food, "item_nash_juice")
+	end
+
+	if category == "all" then 
+		local all = {use, key, spec_use, ammo, build, ex, electro, energo, flam, food, household, info, med, other, tools, valuables, gun, gadget1, gadget2, gadget3}
+		return all
+	else
+		if category == "use" then category = use end
+		if category == "key" then category = key end
+		if category == "spec_use" then category = spec_use end
+		if category == "ammo" then category = ammo end
+		if category == "build" then category = build end
+		if category == "ex" then category = ex end
+		if category == "electro" then category = electro end
+		if category == "energo" then category = energo end
+		if category == "flam" then category = flam end
+		if category == "food" then category = food end
+		if category == "household" then category = household end
+		if category == "info" then category = info end
+		if category == "med" then category = med end
+		if category == "other" then category = other end
+		if category == "tools" then category = tools end
+		if category == "valuables" then category = valuables end
+		if category == "gun" then category = gun end
+		if category == "gadget1" then category = gadget1 end
+		if category == "gadget2" then category = gadget2 end
+		if category == "gadget3" then category = gadget3 end
+		return category
+	end
 end
 
 -- Рандомная конфигурация машины игрока
@@ -2240,12 +2294,16 @@ function ShelfAddItemToSlot()
 	if item == "item_christmas_ball_white" then model = "christmas_ball_white" y = -0.07 end
 	if item == "item_christmas_star" then model = "christmas_star" y = 0.14 end
 	if item == "item_duck" then model = "duck" y = -0.195 scale = 0.5 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
-	if item == "item_keqing" then model = "keqing_box" y = 0.15 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
+	if item == "item_keqing" then model = "keqing_figure" y = 0.15 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
 	if item == "item_chizuru" then model = "chizuru_box" y = 0.25 scale = 0.27 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
 	if item == "item_poster_keqing" then model = "poster_keqing" y = 0.05 z = 0.75 scale = 0.5 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
 	if item == "item_poster_exception" then model = "poster_exception" y = 0.05 z = 0.75 scale = 0.5 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
 	if item == "item_poster_buyanov" then model = "poster_buyanov" y = 0.05 z = 0.75 scale = 0.5 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
 	if item == "item_poster_pavlik" then model = "poster_pavlik" y = 0.05 z = 0.75 scale = 0.5 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
+	if item == "item_poster_biznesman" then model = "poster_biznesman" y = 0.05 z = 0.75 scale = 0.5 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
+	if item == "item_poster_ural" then model = "poster_ural" y = 0.05 z = 0.75 scale = 0.5 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
+	if item == "item_poster_belaz" then model = "poster_belaz" y = 0.05 z = 0.75 scale = 0.5 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
+	if item == "item_poster_vitalik" then model = "poster_vitalik" y = 0.05 z = 0.75 scale = 0.5 rot = Quaternion(0.0000, -0.7071, 0.0000, 0.7071) end
 
 	if slot == 1 then pos = CVector(949.643 + z, 255.650 + y, 982.831) end
 	if slot == 2 then pos = CVector(949.643 + z, 255.650 + y, 981.115) end
@@ -2596,6 +2654,15 @@ function DeleteTableInsuredItems(obj)
 	end
 end
 
+function DeleteTableObj(tab, obj)
+	for i = 1, getn(tab) do
+		if tab[i] == obj then 
+			table.remove(tab, i) 
+		end
+	end
+	return tab
+end
+
 -- Обновление ежедневных заданий
 function UpdateDailyQuests()
 	local day = strsub(os.date(), 4, 5)
@@ -2646,9 +2713,10 @@ end
 function RewardForDailyQuests()
 	local LifeItems = {"scrap_metal_use", "machinery_use", "electronics_use"}
 	local FuelItems = {"oil_use", "fuel_full_use"}
-	local AmmoItems = {"ammo_chest_artillerygun", "ammo_chest_heavygun", "ammo_chest_machinegun", "ammo_chest_rocketgun", "ammo_chest_shotgun", "ammo_ballon_lasergun", "ammo_ballon_plasmagun", "ammo_ballon_turbo"}
-	local Guns = {"hornet01", "american_hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "someTurboAccelerationPusher", "marsSideGun"}
-	local Gadgets = {"cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns", "cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "additional_fuel_tank2", "additional_torque2", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
+	local AmmoItems = GetItemsCategory("ammo")
+	local Guns = GetItemsCategory("gun")
+	table.insert(Guns, "american_hornet01")
+	local Gadgets = {GetItemsCategory("gadget1")[random(getn(GetItemsCategory("gadget1")))], GetItemsCategory("gadget2")[random(getn(GetItemsCategory("gadget2")))], GetItemsCategory("gadget3")[random(getn(GetItemsCategory("gadget3")))]}
 	local OtherItems = {"potato", "firewood", "bottle", "tobacco", "book",
 						"doski", "details", "shkatulka",
 						"item_key_gate_thetown", "item_key_gate_vaterland", "item_key_gate_bunker014", "item_green_fier",
@@ -2660,9 +2728,9 @@ function RewardForDailyQuests()
 						"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 						"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 						"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
-						"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_chizuru", "item_poster_keqing", "item_poster_exception", "item_poster_buyanov", "item_poster_pavlik",
+						"item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_pants40grn", "item_paracord", "item_vitalik", "item_vodka", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_chizuru", "item_poster_keqing", "item_poster_exception", "item_poster_buyanov", "item_poster_pavlik", "item_poster_biznesman", "item_poster_ural", "item_poster_belaz", "item_poster_vitalik",
 						"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench",
-						"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_silver_skull", "item_vaze", "item_duck"}
+						"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_silver_skull", "item_vaze", "item_duck", "item_nebrosart"}
 
 	if EVENT == "NEW_YEAR" then 
 		local new_items = {"item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star"}

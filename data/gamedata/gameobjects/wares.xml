@@ -1563,7 +1563,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "9900"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "water_metal_bottle"
 		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
@@ -2057,7 +2057,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "20110"
 		Durability	= "10"
 		PriceDispersion      = "5"
-		ModelFile	= "keqing_box"
+		ModelFile	= "keqing_figure"
 		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
@@ -2189,10 +2189,46 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class		= "Ware"
 		Name		= "item_poster_pavlik"
-		Price	= "24450"
+		Price	= "15450"
 		Durability	= "10"
 		PriceDispersion      = "5"
 		ModelFile	= "poster_pavlik"
+		ResourceType= "ITEM_SIZE_3X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_poster_biznesman"
+		Price	= "18610"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= "poster_biznesman"
+		ResourceType= "ITEM_SIZE_3X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_poster_ural"
+		Price	= "10760"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= "poster_ural"
+		ResourceType= "ITEM_SIZE_3X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_poster_belaz"
+		Price	= "12440"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= "poster_belaz"
+		ResourceType= "ITEM_SIZE_3X3" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_poster_vitalik"
+		Price	= "15655"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= "poster_vitalik"
 		ResourceType= "ITEM_SIZE_3X3" />
 
 <!-- Tools Items -->
@@ -2494,6 +2530,15 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "10"
 		PriceDispersion      = "5"
 		ModelFile	= "duck"
+		ResourceType= "ITEM_SIZE_2X2" />
+
+	<Prototype
+		Class		= "Ware"
+		Name		= "item_nebrosart"
+		Price	= "14230"
+		Durability	= "10"
+		PriceDispersion      = "5"
+		ModelFile	= "kraken"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 <!-- Quest Items -->

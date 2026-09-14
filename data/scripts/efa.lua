@@ -1070,7 +1070,9 @@ function GetAmmoBoxForGun(gun_item)
 end
 
 -- Создать малый оружейный ящик
-function CreateSmallGunBox(name, pos, rot)
+function CreateSmallGunBox(name, pos, rot, y)
+	if y == nil then y = 0 end 
+
 	local gun_small_box1 = {"hornet01", "specter01", "pkt01", "storm01", "vector01", "vulcan01", "kpvt01", "rapier01", "bumblebee01", "kord01", "maxim01", "fagot01", "omega01", "elephant01", "flag01", "odin01", "rainmetal01"} 
 	local use_small_box = {"scrap_metal_use", "machinery_use", "oil_use"}
 	local other_small_box = {"item_naci", "item_rozvidka"}
@@ -1078,15 +1080,17 @@ function CreateSmallGunBox(name, pos, rot)
 	local gadget1 = GetItemsCategory("gadget1")
 	local gadget2 = GetItemsCategory("gadget2")
 
-	local Chest = CreateNewObject{prototypeName = "gunChest3", objName = name}	
-	local ChestId = GetEntityByID(Chest)
-	ChestId:SetPosition(pos)
-	ChestId:SetRotation(rot)
-	ChestId:SetPropertyById(7, 0.6)
+	CreateNewDummyObject("gun_box3", "Model"..name, -1, -1, pos, rot, 0)
+	local model = getObj("Model"..name)
+	model:SetPropertyById(7, 0.6)
 
-	local ChestPos = ChestId:GetPosition()
-	ChestPos.y = ChestPos.y + 4
-	ChestId:SetPosition(ChestPos)
+	local ModelPos = model:GetPosition()
+	ModelPos.y = ModelPos.y + y
+	model:SetPosition(ModelPos)
+
+	local Chest = CreateNewObject{prototypeName = "opacityChest", objName = name}	
+	local ChestId = GetEntityByID(Chest)
+	ChestId:SetPosition(model:GetPosition())
 
 	AddItemsToChestObj(ChestId, "item_opacity", "OpacityItem_"..name)
 
@@ -1137,7 +1141,9 @@ function CreateSmallGunBox(name, pos, rot)
 end
 
 -- Создать большой черный оружейный ящик
-function CreateBigGunBoxBlack(name, pos, rot)
+function CreateBigGunBoxBlack(name, pos, rot, y)
+	if y == nil then y = 0 end 
+
 	local gun = GetItemsCategory("gun")
 	local use = {"scrap_metal_use", "machinery_use", "electronics_use", "oil_use", "fuel_full_use"}
 	local other = {"item_gunpowder", "item_green_fier"}
@@ -1146,15 +1152,16 @@ function CreateBigGunBoxBlack(name, pos, rot)
 	local gadget2 = GetItemsCategory("gadget2")
 	local gadget3 = GetItemsCategory("gadget3")
 
-	local Chest = CreateNewObject{prototypeName = "gunChest2", objName = name}	
-	local ChestId = GetEntityByID(Chest)
-	ChestId:SetPosition(pos)
-	ChestId:SetRotation(rot)
-	ChestId:SetSkin(1)
+	CreateNewDummyObject("gun_box2", "Model"..name, -1, -1, pos, rot, 1)
+	local model = getObj("Model"..name)
 
-	local ChestPos = ChestId:GetPosition()
-	ChestPos.y = ChestPos.y + 4
-	ChestId:SetPosition(ChestPos)
+	local ModelPos = model:GetPosition()
+	ModelPos.y = ModelPos.y + y
+	model:SetPosition(ModelPos)
+
+	local Chest = CreateNewObject{prototypeName = "opacityChest", objName = name}	
+	local ChestId = GetEntityByID(Chest)
+	ChestId:SetPosition(model:GetPosition())
 
 	AddItemsToChestObj(ChestId, "item_opacity", "OpacityItem_"..name)
 
@@ -1195,7 +1202,9 @@ function CreateBigGunBoxBlack(name, pos, rot)
 end
 
 -- Создать большой зеленый оружейный ящик
-function CreateBigGunBoxGreen(name, pos, rot)
+function CreateBigGunBoxGreen(name, pos, rot, y)
+	if y == nil then y = 0 end 
+
 	local gun = GetItemsCategory("gun")
 	local use = {"machinery_use", "electronics_use", "scrap_metal_use", "oil_use", "fuel_full_use"}
 	local other = {"item_flashdrive", "item_iridiym", "item_controller", "item_rfid", "item_rozvidka"}
@@ -1204,15 +1213,17 @@ function CreateBigGunBoxGreen(name, pos, rot)
 	local gadget2 = GetItemsCategory("gadget2")
 	local gadget3 = GetItemsCategory("gadget3")
 
-	local Chest = CreateNewObject{prototypeName = "gunChest2", objName = name}	
-	local ChestId = GetEntityByID(Chest)
-	ChestId:SetPosition(pos)
-	ChestId:SetRotation(rot)
-	ChestId:SetPropertyById(7, 1.3)
+	CreateNewDummyObject("gun_box2", "Model"..name, -1, -1, pos, rot, 0)
+	local model = getObj("Model"..name)
+	model:SetPropertyById(7, 1.3)
 
-	local ChestPos = ChestId:GetPosition()
-	ChestPos.y = ChestPos.y + 1
-	ChestId:SetPosition(ChestPos)
+	local ModelPos = model:GetPosition()
+	ModelPos.y = ModelPos.y + y
+	model:SetPosition(ModelPos)
+
+	local Chest = CreateNewObject{prototypeName = "opacityChest", objName = name}	
+	local ChestId = GetEntityByID(Chest)
+	ChestId:SetPosition(model:GetPosition())
 
 	AddItemsToChestObj(ChestId, "item_opacity", "OpacityItem_"..name)
 
@@ -1258,7 +1269,9 @@ function CreateBigGunBoxGreen(name, pos, rot)
 end
 
 -- Создать плоский оружейный ящик
-function CreateFlatGunBox(name, pos, rot)
+function CreateFlatGunBox(name, pos, rot, y)
+	if y == nil then y = 0 end 
+
 	local gun = {"hornet01", "specter01", "pkt01", "storm01", "pkt01", "kord01", "vector01", "vulcan01", "kpvt01", "rapier01", "bumblebee01", "maxim01", "fagot01", "omega01", "elephant01", "flag01", "odin01", "rainmetal01", "someTurboAccelerationPusher"}
 	local use = {"machinery_use", "electronics_use", "scrap_metal_use"}
 	local other = {"item_gunpowder", "item_military_plate", "item_military_cable", "item_military_tube"}
@@ -1268,15 +1281,16 @@ function CreateFlatGunBox(name, pos, rot)
 	local gadget2 = GetItemsCategory("gadget2")
 	local gadget3 = GetItemsCategory("gadget3")
 
-	local Chest = CreateNewObject{prototypeName = "gunChest1", objName = name}	
-	local ChestId = GetEntityByID(Chest)
-	ChestId:SetPosition(pos)
-	ChestId:SetRotation(rot)
-	ChestId:SetSkin(1)
+	CreateNewDummyObject("gun_box1", "Model"..name, -1, -1, pos, rot, 1)
+	local model = getObj("Model"..name)
 
-	local ChestPos = ChestId:GetPosition()
-	ChestPos.y = ChestPos.y + 4
-	ChestId:SetPosition(ChestPos)
+	local ModelPos = model:GetPosition()
+	ModelPos.y = ModelPos.y + y
+	model:SetPosition(ModelPos)
+
+	local Chest = CreateNewObject{prototypeName = "opacityChest", objName = name}	
+	local ChestId = GetEntityByID(Chest)
+	ChestId:SetPosition(model:GetPosition())
 
 	AddItemsToChestObj(ChestId, "item_opacity", "OpacityItem_"..name)
 
@@ -1341,7 +1355,7 @@ function CreateMedWoodBox(name, pos, rot)
 			for i = 1, random(3) do
 				local weights = {}
 				for m = 1, getn(med) do
-					if med[m] == "item_gazan" or med[m] == "item_salewa" or med[m] == "item_morfie" then
+					if med[m] == "item_gazan" or med[m] == "item_salewa" or med[m] == "item_morfie" or med[m] == "item_ledx" then
 						table.insert(weights, GetItemWeight(med[m]) + random(0, 5))
 					else
 						table.insert(weights, GetItemWeight(med[m]))
@@ -1353,7 +1367,7 @@ function CreateMedWoodBox(name, pos, rot)
 		end
 
 		if random(4) == 1 then
-			local item = GetRandomWeightedItem(other)
+			local item = GetRandomWeightedItem(other, "item_ledx", random(0, 10))
 			AddItemsToChestObj(ChestId, item, "OtherItem_"..random(10000).."_"..name)
 		end
 
@@ -1423,8 +1437,12 @@ end
 -- Создать mainChest и добавить в него 1 предмет
 function CreateBoxForItem(name, pos, item, skin, rot)
 	if rot == nil then rot = 1 end
+
+	local prot = "mainChest"
+	if EVENT == "NEW_YEAR" then prot = "christmasChest" end
+
 	local rotarr={Quaternion(-0.029, 0.679, -0.021, 0.734), Quaternion(0.001, 0.626, 0.002, 0.780), Quaternion(-0.001, 0.558, -0.001, 0.830), Quaternion(-0.029, -0.025, 0.005, 0.999), Quaternion(-0.001, -0.346, 0.001, 0.938), Quaternion(-0.001, -0.724, -0.000, 0.690), Quaternion(-0.025, -0.992, -0.005, 0.125), Quaternion(0.002, -0.914, -0.001, 0.405), Quaternion(-0.003, -1.000, -0.006, -0.015)}
-	local Chest = CreateNewObject{prototypeName = "mainChest", objName = name}	
+	local Chest = CreateNewObject{prototypeName = prot, objName = name}	
 	local ChestId = GetEntityByID(Chest)
 	ChestId:SetPosition(pos)
 	if rot ~= 0 then
@@ -1435,6 +1453,26 @@ function CreateBoxForItem(name, pos, item, skin, rot)
 	local ChestPos = ChestId:GetPosition()
 	ChestPos.y = ChestPos.y + 3
 	ChestId:SetPosition(ChestPos)
+
+	AddItemsToChestObj(ChestId, item, "Item_"..random(10000).."_"..name)
+end
+
+-- Создать ящик с моделью предмета
+function CreateItemModelBox(name, pos, rot, item, scale, y)
+	if y == nil then y = 0 end
+	--local rotarr={Quaternion(-0.029, 0.679, -0.021, 0.734), Quaternion(0.001, 0.626, 0.002, 0.780), Quaternion(-0.001, 0.558, -0.001, 0.830), Quaternion(-0.029, -0.025, 0.005, 0.999), Quaternion(-0.001, -0.346, 0.001, 0.938), Quaternion(-0.001, -0.724, -0.000, 0.690), Quaternion(-0.025, -0.992, -0.005, 0.125), Quaternion(0.002, -0.914, -0.001, 0.405), Quaternion(-0.003, -1.000, -0.006, -0.015)}
+	
+	CreateNewDummyObject(strsub(item, 6), "Model"..name, -1, -1, pos, rot, 0)
+	local model = getObj("Model"..name)
+	model:SetPropertyById(7, scale)
+
+	local ModelPos = model:GetPosition()
+	ModelPos.y = ModelPos.y + y
+	model:SetPosition(ModelPos)
+	
+	local Chest = CreateNewObject{prototypeName = "opacityChest", objName = name}	
+	local ChestId = GetEntityByID(Chest)
+	ChestId:SetPosition(model:GetPosition())
 
 	AddItemsToChestObj(ChestId, item, "Item_"..random(10000).."_"..name)
 end
@@ -1685,7 +1723,7 @@ function GetItemWeight(item)
 	if item == "item_vodka" then r = 70 end
 	if item == "item_waterfilter" then r = 25 end
 	if item == "item_zapal" then r = 70 end
-	if item == "item_monolit" then r = 40 end
+	if item == "item_monolit" then r = 30 end
 	if item == "item_kaktus" then r = 40 end
 	if item == "item_keqing" then r = 30 end
 	if item == "item_carsen" then r = 50 end
@@ -1727,10 +1765,10 @@ function GetItemWeight(item)
 	if item == "item_toolset" then r = 30 end
 	if item == "item_wrench" then r = 70 end
 
-	if item == "item_bitcoin" then r = 2 end
+	if item == "item_bitcoin" then r = 1 end
 	if item == "item_cat" then r = 20 end
-	if item == "item_chain" then r = 40 end
-	if item == "item_chain_gold" then r = 25 end
+	if item == "item_chain" then r = 50 end
+	if item == "item_chain_gold" then r = 30 end
 	if item == "item_chiken" then r = 20 end
 	if item == "item_ex" then r = 45 end
 	if item == "item_lion" then r = 5 end
@@ -1738,7 +1776,7 @@ function GetItemWeight(item)
 	if item == "item_skullring" then r = 15 end
 	if item == "item_teapon" then r = 30 end
 	if item == "item_woodclock" then r = 20 end
-	if item == "item_silver_skull" then r = 50 end
+	if item == "item_silver_skull" then r = 40 end
 	if item == "item_vaze" then r = 25 end
 	if item == "item_duck" then r = 60 end
 	if item == "item_nebrosart" then r = 35 end
@@ -1944,6 +1982,31 @@ function GetItemsCategory(category)
 		if category == "gadget3" then category = gadget3 end
 		return category
 	end
+end
+
+function GetSkinForItemBoxCategory(category)
+	local skin = 0
+	if category == "use" then skin = 5 end
+	if category == "key" then skin = 0 end
+	if category == "spec_use" then skin = 0 end
+	if category == "ammo" then skin = 3 end
+	if category == "build" then skin = 5 end
+	if category == "ex" then skin = 5 end
+	if category == "electro" then skin = 1 end
+	if category == "energo" then skin = 2 end
+	if category == "flam" then skin = 5 end
+	if category == "food" then skin = 0 end
+	if category == "household" then skin = 0 end
+	if category == "info" then skin = 7 end
+	if category == "med" then skin = 4 end
+	if category == "other" then skin = 7 end
+	if category == "tools" then skin = 6 end
+	if category == "valuables" then skin = 7 end
+	if category == "gun" then skin = 3 end
+	if category == "gadget1" then skin = 3 end
+	if category == "gadget2" then skin = 3 end
+	if category == "gadget3" then skin = 3 end
+	return skin
 end
 
 -- Рандомная конфигурация машины игрока

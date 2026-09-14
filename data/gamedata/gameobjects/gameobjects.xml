@@ -271,30 +271,6 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 
 		<Prototype
 			Class		= "Chest"
-			Name		= "gunChest1"
-			ModelFile	= "gun_box1"
-			Mass		= "400"
-
-			IntersectionRadius	= "1.7" />
-
-		<Prototype
-			Class		= "Chest"
-			Name		= "gunChest2"
-			ModelFile	= "gun_box2"
-			Mass		= "400"
-
-			IntersectionRadius	= "1.7" />
-
-		<Prototype
-			Class		= "Chest"
-			Name		= "gunChest3"
-			ModelFile	= "gun_box3"
-			Mass		= "600"
-
-			IntersectionRadius	= "1.7" />
-
-		<Prototype
-			Class		= "Chest"
 			Name		= "medicalbagChest"
 			ModelFile	= "medical_bag"
 			Mass		= "100"
@@ -303,33 +279,9 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 
 		<Prototype
 			Class		= "Chest"
-			Name		= "medicalChest"
-			ModelFile	= "medical_box"
-			Mass		= "25"
-
-			IntersectionRadius	= "1.7" />
-
-		<Prototype
-			Class		= "Chest"
 			Name		= "safeChest1"
 			ModelFile	= "safe_box1"
 			Mass		= "300"
-
-			IntersectionRadius	= "1.7" />
-
-		<Prototype
-			Class		= "Chest"
-			Name		= "safeChest2"
-			ModelFile	= "safe_box2"
-			Mass		= "300"
-
-			IntersectionRadius	= "1.7" />
-
-		<Prototype
-			Class		= "Chest"
-			Name		= "sports_bagChest"
-			ModelFile	= "sports_bag"
-			Mass		= "150"
 
 			IntersectionRadius	= "1.7" />
 
@@ -349,14 +301,6 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 
 			IntersectionRadius	= "1.7" />
 
-		<Prototype
-			Class		= "Chest"
-			Name		= "woodenChest"
-			ModelFile	= "wooden_box"
-			Mass		= "150"
-
-			IntersectionRadius	= "1.7" />
-			
 		<Prototype
 			Class		= "Chest"
 			Name		= "ammoChest"

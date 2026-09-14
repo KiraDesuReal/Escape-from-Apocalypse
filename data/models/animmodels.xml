@@ -62,6 +62,13 @@
 		file="data\models\objects\box\plastic_barrel\plastic_barrel_box.gam" />
 
 	<model
+		id="plastic_barrel_shadow"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\objects\box\plastic_barrel\plastic_barrel_box.gam" />
+
+	<model
 		id="airbox1"
 		shadow="1"
 		shadowVolume="1"
@@ -2065,49 +2072,49 @@
 <!-- food items -->
 	<model
 		id="sausage"
-		shadow="0"
+		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\food\sausage.gam" />
 
 	<model
 		id="water_bottle"
-		shadow="0"
+		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\food\water_bottle\water_bottle.gam" />
 
 	<model
 		id="beer"
-		shadow="0"
+		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\food\beer\beer.gam" />
 
 	<model
 		id="nash_juice"
-		shadow="0"
+		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\food\nash_juice\nash_juice.gam" />
 
 	<model
 		id="apocola"
-		shadow="0"
+		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\food\cans\apocola.gam" />
 
 	<model
 		id="energycan"
-		shadow="0"
+		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\food\cans\energycan.gam" />
 
 	<model
 		id="whiskey"
-		shadow="0"
+		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\food\whiskey\whiskey.gam" />
@@ -2121,80 +2128,101 @@
 
 	<model
 		id="snickers"
-		shadow="0"
+		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\food\snickers\snickers.gam" />
 
 	<model
-		id="gorbushacan"
-		shadow="0"
+		id="gorbusha"
+		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\food\cans\gorbushacan.gam" />
 
 	<model
-		id="marrowcan"
-		shadow="0"
+		id="marrow"
+		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\food\cans\marrowcan.gam" />
 
 	<model
 		id="milkcan"
-		shadow="0"
+		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\food\cans\milkcan.gam" />
 
 	<model
-		id="pashtetcan"
-		shadow="0"
+		id="pashtet"
+		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\food\cans\pashtetcan.gam" />
 
 	<model
-		id="peascan"
-		shadow="0"
+		id="peas"
+		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\food\cans\peascan.gam" />
 
 	<model
-		id="sairacan"
-		shadow="0"
+		id="saira"
+		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\food\cans\sairacan.gam" />
 
 	<model
-		id="seldcan"
-		shadow="0"
+		id="seld"
+		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\food\cans\seldcan.gam" />
 
 	<model
-		id="tushonkasmall"
-		shadow="0"
+		id="tushonka_small"
+		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\food\cans\tushonka_small_can.gam" />
 
 	<model
-		id="tushonkacan"
-		shadow="0"
+		id="tushonka"
+		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\food\cans\tushonkacan.gam" />
 
 	<model
 		id="water_metal_bottle"
-		shadow="0"
+		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\food\water_metal_bottle\water_metal_bottle.gam" />
+
+	<model
+		id="sugar"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\food\sugar\sugar.gam" />
+	
+	<model
+		id="anechka"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\food\anechka\anechka.gam" />
+
+	<model
+		id="kvas"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\food\kvas\kvas.gam" />
 
 <!-- info items -->
 	<model
@@ -2279,14 +2307,14 @@
 
 	<model
 		id="ananaga"
-		shadow="0"
+		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\other\ananaga.gam" />
 
 	<model
 		id="vodka"
-		shadow="0"
+		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\other\vodka.gam" />
@@ -19288,6 +19316,14 @@
 		file="data\models\buildings\region1\lamppost2.gam"
 		shadowVolume="1"
 		shadow="1"
+		windwavy="0"
+		trans="0" />
+
+	<model
+		id="lamppost2_no_shadow"
+		file="data\models\buildings\region1\lamppost2.gam"
+		shadowVolume="0"
+		shadow="0"
 		windwavy="0"
 		trans="0" />
 

@@ -10,7 +10,7 @@
 
 			EnableGodMode()
 
-			Fly("start_game", CINEMATIC_NO_AIM, 0, 0.5, 0, 1)
+			Fly("start_game", CINEMATIC_NO_AIM, 0, 1, 0, 1)
 			StartCinematic()
 			UpdateCinematic( 1 )
 			

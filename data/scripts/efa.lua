@@ -1460,9 +1460,8 @@ end
 -- Создать ящик с моделью предмета
 function CreateItemModelBox(name, pos, rot, item, scale, y)
 	if y == nil then y = 0 end
-	--local rotarr={Quaternion(-0.029, 0.679, -0.021, 0.734), Quaternion(0.001, 0.626, 0.002, 0.780), Quaternion(-0.001, 0.558, -0.001, 0.830), Quaternion(-0.029, -0.025, 0.005, 0.999), Quaternion(-0.001, -0.346, 0.001, 0.938), Quaternion(-0.001, -0.724, -0.000, 0.690), Quaternion(-0.025, -0.992, -0.005, 0.125), Quaternion(0.002, -0.914, -0.001, 0.405), Quaternion(-0.003, -1.000, -0.006, -0.015)}
-	
-	CreateNewDummyObject(strsub(item, 6), "Model"..name, -1, -1, pos, rot, 0)
+
+	CreateNewDummyObject("cargo", "Model"..name, -1, -1, pos, rot, 0)
 	local model = getObj("Model"..name)
 	model:SetPropertyById(7, scale)
 

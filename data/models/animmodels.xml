@@ -1937,56 +1937,56 @@
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\ammo\ammo_ballon_lasergun.gam" />
+		file="data\models\Goods\ammo\ballon\ammo_ballon_lasergun.gam" />
 	
 	<model
 		id="ammo_ballon_plasmagun"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\ammo\ammo_ballon_plasmagun.gam" />
+		file="data\models\Goods\ammo\ballon\ammo_ballon_plasmagun.gam" />
 
 	<model
 		id="ammo_ballon_turbo"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\ammo\ammo_ballon_turbo.gam" />
+		file="data\models\Goods\ammo\turbo\ammo_ballon_turbo.gam" />
 
 	<model
 		id="ammo_chest_artillerygun"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\ammo\ammo_chest_artillerygun.gam" />
+		file="data\models\Goods\ammo\wood\ammo_chest_artillerygun.gam" />
 
 	<model
 		id="ammo_chest_rocketgun"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\ammo\ammo_chest_rocketgun.gam" />
+		file="data\models\Goods\ammo\wood\ammo_chest_rocketgun.gam" />
 
 	<model
 		id="ammo_chest_heavygun"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\ammo\ammo_chest_heavygun.gam" />
+		file="data\models\Goods\ammo\box\ammo_chest_heavygun.gam" />
 
 	<model
 		id="ammo_chest_machinegun"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\ammo\ammo_chest_machinegun.gam" />
+		file="data\models\Goods\ammo\box\ammo_chest_machinegun.gam" />
 
 	<model
 		id="ammo_chest_shotgun"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\ammo\ammo_chest_shotgun.gam" />
+		file="data\models\Goods\ammo\shotgun\ammo_chest_shotgun.gam" />
 
 <!-- building items -->
 	<model
@@ -1994,21 +1994,21 @@
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\building\bolts.gam" />
+		file="data\models\Goods\building\bolts\bolts.gam" />
 
 	<model
 		id="insulation"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\building\insulation.gam" />
+		file="data\models\Goods\building\insulation\insulation.gam" />
 
 	<model
 		id="nuts"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\building\nuts.gam" />
+		file="data\models\Goods\building\nuts\nuts.gam" />
 
 <!-- electronics items -->
 	<model
@@ -2016,14 +2016,14 @@
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\electronics\phone.gam" />
+		file="data\models\Goods\electronics\phone\phone.gam" />
 
 	<model
 		id="wires"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\electronics\wires.gam" />
+		file="data\models\Goods\electronics\wires\wires.gam" />
 
 <!-- energo items -->
 	<model
@@ -2031,28 +2031,28 @@
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\energo\battery_aa.gam" />
+		file="data\models\Goods\energo\battery_aa\battery_aa.gam" />
 
 	<model
 		id="battery_d"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\energo\battery_d.gam" />
+		file="data\models\Goods\energo\battery_d\battery_d.gam" />
 
 	<model
 		id="car_battery"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\energo\car_battery.gam" />
+		file="data\models\Goods\energo\car_battery\car_battery.gam" />
 
 	<model
 		id="green_battery"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\energo\green_battery.gam" />
+		file="data\models\Goods\energo\green_battery\green_battery.gam" />
 
 <!-- household items -->
 	<model
@@ -2060,7 +2060,7 @@
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\household\salt.gam" />
+		file="data\models\Goods\household\salt\salt.gam" />
 
 	<model
 		id="tb"
@@ -2075,7 +2075,7 @@
 		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\food\sausage.gam" />
+		file="data\models\Goods\food\sausage\sausage.gam" />
 
 	<model
 		id="water_bottle"
@@ -2089,7 +2089,7 @@
 		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\food\beer\beer.gam" />
+		file="data\models\Goods\food\bottle\beer.gam" />
 
 	<model
 		id="nash_juice"
@@ -2230,14 +2230,14 @@
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\info\disk.gam" />
+		file="data\models\Goods\info\disks\disk.gam" />
 
 	<model
 		id="disk_exmachina"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\info\disk_exmachina.gam" />
+		file="data\models\Goods\info\disks\disk_exmachina.gam" />
 
 <!-- keys items -->
 	<model
@@ -2245,21 +2245,21 @@
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\keys\key_1.gam" />
+		file="data\models\Goods\keys\key_1\key_1.gam" />
 
 	<model
 		id="key_2"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\keys\key_2.gam" />
+		file="data\models\Goods\keys\key_2\key_2.gam" />
 
 	<model
 		id="key_3"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\keys\key_3.gam" />
+		file="data\models\Goods\keys\key_3\key_3.gam" />
 
 <!-- medical items -->
 	<model
@@ -2267,14 +2267,14 @@
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\medical\ai2.gam" />
+		file="data\models\Goods\medical\ai2\ai2.gam" />
 
 	<model
 		id="h2o2"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\medical\h2o2.gam" />
+		file="data\models\Goods\medical\h2o2\h2o2.gam" />
 
 <!-- other items -->
 	<model
@@ -2282,63 +2282,63 @@
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\other\fitanyashka.gam" />
-
-	<model
-		id="monolit"
-		shadow="0"
-		shadowVolume="0"
-		windwavy="0"
-		file="data\models\Goods\other\monolit.gam" />
+		file="data\models\Goods\other\fitanyashka\fitanyashka.gam" />
 
 	<model
 		id="kaktus"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\other\kaktus.gam" />
+		file="data\models\Goods\other\kaktus\kaktus.gam" />
 
 	<model
 		id="stakanyash"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\other\stakanyash.gam" />
+		file="data\models\Goods\other\stakanyash\stakanyash.gam" />
+
+	<model
+		id="monolit"
+		shadow="0"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\other\monolit\monolit.gam" />
 
 	<model
 		id="ananaga"
 		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\other\ananaga.gam" />
+		file="data\models\Goods\food\bottle\ananaga.gam" />
 
 	<model
 		id="vodka"
 		shadow="1"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\other\vodka.gam" />
+		file="data\models\Goods\food\bottle\vodka.gam" />
 
 	<model
 		id="kubok_cs_kikiki"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\other\kubok_cs.gam" />
+		file="data\models\Goods\other\kubok_cs\kubok_cs.gam" />
 
 	<model
 		id="metallodetector"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\other\metallodetector.gam" />
+		file="data\models\Goods\other\kladoiskatel\metallodetector.gam" />
 
 	<model
 		id="knife_sectarian"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\other\knife_sectarian.gam" />
+		file="data\models\Goods\other\knife_sectarian\knife_sectarian.gam" />
 
 	<model
 		id="christmas_ball_blue"
@@ -2380,7 +2380,7 @@
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\other\box_keqing.gam" />
+		file="data\models\Goods\other\box_keqing\box_keqing.gam" />
 
 	<model
 		id="keqing_figure"
@@ -2394,7 +2394,7 @@
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\other\chizuru_box.gam">
+		file="data\models\Goods\other\box_chizuru\chizuru_box.gam">
 		<action
 			name="STAND1">
 			<lp
@@ -2467,21 +2467,21 @@
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\tools\screw.gam" />
+		file="data\models\Goods\tools\screw\screw.gam" />
 
 	<model
 		id="toolset"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\tools\toolset.gam" />
+		file="data\models\Goods\tools\toolset\toolset.gam" />
 
 	<model
 		id="wrench"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\tools\wrench.gam" />
+		file="data\models\Goods\tools\wrench\wrench.gam" />
 
 <!-- valuables items -->
 	<model
@@ -2489,21 +2489,21 @@
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\valuables\bitcoin.gam" />
+		file="data\models\Goods\valuables\bitcoin\bitcoin.gam" />
 
 	<model
 		id="ex"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\valuables\ex.gam" />
+		file="data\models\Goods\valuables\ex\ex.gam" />
 
 	<model
 		id="duck"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
-		file="data\models\Goods\valuables\duck.gam" />
+		file="data\models\Goods\valuables\duck\duck.gam" />
 
 	<model
 		id="kraken"
@@ -22344,7 +22344,7 @@
 
 	<model
 		id="map_location"
-		file="data\models\questitems\map_location.gam"
+		file="data\models\questitems\map_location\map_location.gam"
 		shadow="1"
 		windwavy="0"
 		trans="0"
@@ -22360,7 +22360,7 @@
 
 	<model
 		id="1_year"
-		file="data\models\questitems\1_year.gam"
+		file="data\models\questitems\1_year\1_year.gam"
 		shadow="1"
 		windwavy="0"
 		trans="0"
@@ -22368,7 +22368,7 @@
 
 	<model
 		id="quest_board"
-		file="data\models\questitems\questboard.gam"
+		file="data\models\questitems\questboard\questboard.gam"
 		shadow="1"
 		windwavy="0"
 		trans="0"

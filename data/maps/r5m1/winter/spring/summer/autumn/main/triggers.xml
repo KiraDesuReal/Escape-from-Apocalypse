@@ -4725,15 +4725,15 @@
 
 <!-- Расстановка лута на карте -->
 	<trigger Name="CreateBarrelBox" active="0">
-		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<event timeout="2.5" eventid="GE_TIME_PERIOD" />
 		<script>
 			local barrel = {"BarrelBox_1_loc", "BarrelBox_2_loc", "BarrelBox_3_loc", "BarrelBox_5_loc", "BarrelBox_7_loc", "BarrelBox_8_loc", "BarrelBox_10_loc", "BarrelBox_14_loc", "BarrelBox_15_loc", "BarrelBox_16_loc", "BarrelBox_19_loc", "BarrelBox_21_loc", "BarrelBox_25_loc", "BarrelBox_27_loc", "BarrelBox_30_loc", "BarrelBox_32_loc", "BarrelBox_33_loc", "BarrelBox_34_loc", "BarrelBox_35_loc", "BarrelBox_36_loc", "BarrelBox_41_loc"}
 			local cache = {"BarrelBox_4_loc", "BarrelBox_6_loc", "BarrelBox_9_loc", "BarrelBox_11_loc", "BarrelBox_12_loc", "BarrelBox_13_loc", "BarrelBox_17_loc", "BarrelBox_18_loc", "BarrelBox_20_loc", "BarrelBox_22_loc", "BarrelBox_23_loc", "BarrelBox_24_loc", "BarrelBox_26_loc", "BarrelBox_28_loc", "BarrelBox_29_loc", "BarrelBox_31_loc", "BarrelBox_37_loc", "BarrelBox_38_loc", "BarrelBox_39_loc", "BarrelBox_40_loc"}
-			local c = 0 
+			local co = 0 
 			for b = 1, 21 do
 				if random(2) == 1 then
 					CreateBarrelLootBox("barrel"..b, getPos(barrel[b]))
-					c = c + 1
+					co = co + 1
 				end
 			end
 
@@ -4748,18 +4748,18 @@
 						BarrelPos.y = BarrelPos.y - 0.060
 						getObj("cache"..c):SetPosition(BarrelPos)
 					end
-					c = c + 1
+					co = co + 1
 				end
 			end
-			LOOT_COUNT = LOOT_COUNT + c
-			con("CreateBarrelBox "..c)
+			LOOT_COUNT = LOOT_COUNT + co
+			con("CreateBarrelBox "..co)
 			con(LOOT_COUNT)
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
 	<trigger Name="CreateBoxForDeadScav" active="0">
-		<event timeout="0.5" eventid="GE_TIME_PERIOD" />
+		<event timeout="2" eventid="GE_TIME_PERIOD" />
 		<script>
 			local items = {"potato", "scrap_metal", "firewood", "oil", "bottle", "fuel", "machinery", "tobacco", "book", "electronics",
 							"doski", "details", "shkatulka",
@@ -4771,7 +4771,7 @@
 							"item_cable", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_hdd", "item_helix", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tplug", "item_ultra_lump", "item_usb", "item_wires",
 							"item_accum", "item_battery_aa", "item_battery_d", "item_cyclon", "item_green_battery", "item_powerbank",
 							"item_dry", "item_hunter_spich", "item_lighter", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder",
-							"item_sugar", "item_sausage", "item_anechka", "item_apocola", "item_bear_rations", "item_beer", "item_coffeecan", "item_cookies", "item_crackers", "item_ebelya", "item_energycan", "item_gorbusha", "item_grechka", "item_juice_apple", "item_juice_orange", "item_kirieshki", "item_kvas", "item_marrow", "item_meat", "item_milkcan", "item_noodles", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_snickers", "item_teabox", "item_tushonka", "item_tushonka_small", "item_usec_rations", "item_water_bottle", "item_water_metal_bottle", "item_whiskey",
+							"item_sugar", "item_sausage", "item_anechka", "item_apocola", "item_bear_rations", "item_beer", "item_coffeecan", "item_cookies", "item_crackers", "item_ebelya", "item_energycan", "item_gorbusha", "item_grechka", "item_juice_apple", "item_juice_orange", "item_kirieshki", "item_kvas", "item_marrow", "item_meat", "item_milkcan", "item_noodles", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_snickers", "item_teabox", "item_tushonka", "item_tushonka_small", "item_usec_rations", "item_water_bottle", "item_water_metal_bottle", "item_whiskey", "item_keqpotato",
 							"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 							"item_diary", "item_diary_s", "item_disk", "item_flashdrive", "item_manual", "item_sas", "item_ssd",
 							"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_medical_tools", "item_naci", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
@@ -4834,7 +4834,7 @@
 	</trigger>
 
 	<trigger Name="CreateGunLootBox" active="0">
-		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local small_gun_box = {"GunBox_1_loc", "GunBox_3_loc", "GunBox_9_loc", "GunBox_10_loc", "GunBox_14_loc", "GunBox_17_loc", "GunBox_20_loc", "GunBox_24_loc", "GunBox_26_loc", "GunBox_27_loc", "GunBox_28_loc", "GunBox_33_loc", "GunBox_39_loc", "GunBox_40_loc"}
 			local small_gun_boxY = {0, 0, 0, 0.2, 0.25, 0.687, 0, 0.1, 0, -0.115, 0, 1.27, 0, 0}
@@ -4882,7 +4882,7 @@
 	</trigger>
 
 	<trigger Name="CreateMedicalBox" active="0">
-		<event timeout="1.5" eventid="GE_TIME_PERIOD" />
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local med_box = {"MedBox_2_loc", "MedBox_3_loc", "MedBox_6_loc", "MedBox_7_loc", "MedBox_11_loc", "MedBox_12_loc"}
 			local med_bag = {"MedBox_1_loc", "MedBox_4_loc", "MedBox_5_loc", "MedBox_8_loc", "MedBox_9_loc", "MedBox_10_loc", "MedBox_13_loc", "MedBox_14_loc"}
@@ -4909,7 +4909,7 @@
 	</trigger>
 
 	<trigger Name="CreateTehnoBox" active="0">
-		<event timeout="2" eventid="GE_TIME_PERIOD" />
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local other = {"item_waterfilter", "book", "item_airfilter", "item_filter", "item_paracord", "item_vitalik", "item_zapal"}
 			local energo = GetItemsCategory("energo")
@@ -4965,7 +4965,7 @@
 	</trigger>
 
 	<trigger Name="CreateToolsBox" active="0">
-		<event timeout="2.5" eventid="GE_TIME_PERIOD" />
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local building = GetItemsCategory("build")
 			local tools = GetItemsCategory("tools")
@@ -5055,11 +5055,11 @@
 	</trigger>
 
 	<trigger Name="CreateFoodBox" active="0">
-		<event timeout="3" eventid="GE_TIME_PERIOD" />
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local other = {"potato", "tobacco", "bottle", "item_coffeecan", "item_grechka", "item_teabox", "item_water_canister"}
 			local food1 = {"item_vodka", "item_ananaga", "item_apocola", "item_beer", "item_energycan", "item_water_bottle", "item_water_metal_bottle", "item_whiskey", "item_juice_apple", "item_juice_orange", "item_kvas"}
-			local food2 = {"item_sausage", "item_sugar", "item_anechka", "item_bear_rations", "item_milkcan", "item_usec_rations", "item_cookies", "item_crackers", "item_ebelya", "item_gorbusha", "item_kirieshki", "item_marrow", "item_meat", "item_noodles", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_snickers", "item_tushonka", "item_tushonka_small"}
+			local food2 = {"item_sausage", "item_sugar", "item_anechka", "item_bear_rations", "item_milkcan", "item_usec_rations", "item_cookies", "item_crackers", "item_ebelya", "item_gorbusha", "item_kirieshki", "item_marrow", "item_meat", "item_noodles", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_snickers", "item_tushonka", "item_tushonka_small", "item_keqpotato"}
 			local typeI = {other, food1, food2}
 			local typeW = {75, 100, 100}
 			local co = 0
@@ -5129,7 +5129,7 @@
 	</trigger>
 
 	<trigger Name="CreateWoodenBox" active="0">
-		<event timeout="3.5" eventid="GE_TIME_PERIOD" />
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local other = {"item_juice_orange", "item_juice_apple", "item_gunpowder", "item_bear_rations", "item_crackers", "item_manual", "item_tank_battery"}
 			local ammo = GetItemsCategory("ammo")
@@ -5197,7 +5197,7 @@
 	</trigger>
 
 	<trigger Name="CreateSportsBagBox" active="0">
-		<event timeout="4" eventid="GE_TIME_PERIOD" />
+		<event timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local non = {"item_bitcoin", "item_ledx", "item_ananaga"}
 			local energo = GetItemsCategory("energo")
@@ -5278,7 +5278,7 @@
 	</trigger>
 
 	<trigger Name="CreateAmmoBox" active="0">
-		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<event timeout="1.5" eventid="GE_TIME_PERIOD" />
 		<script>
 			local ammo = GetItemsCategory("ammo")
 			local co = 0
@@ -5311,7 +5311,7 @@
 	</trigger>
 
 	<trigger Name="CreatePosters" active="0">
-		<event timeout="0.25" eventid="GE_TIME_PERIOD" />
+		<event timeout="1.5" eventid="GE_TIME_PERIOD" />
 		<script>
 			for i=1,9 do
 				if random(100) >= 85 then
@@ -5352,7 +5352,7 @@
 	</trigger>
 
 	<trigger Name="CreateEnergoItems" active="0">
-		<event timeout="4.5" eventid="GE_TIME_PERIOD" />
+		<event timeout="3" eventid="GE_TIME_PERIOD" />
 		<script>
 			local typeI = {"energo", "build", "flam", "food", "household", "tools"}
 			local typeW = {100, 50, 30, 60, 70, 30}
@@ -5380,7 +5380,7 @@
 	</trigger>
 
 	<trigger Name="CreateElectroItems" active="0">
-		<event timeout="5" eventid="GE_TIME_PERIOD" />
+		<event timeout="2.25" eventid="GE_TIME_PERIOD" />
 		<script>
 			local co = 0
 			for i=1,14 do
@@ -5406,7 +5406,7 @@
 	</trigger>
 
 	<trigger Name="CreateValuableItems" active="0">
-		<event timeout="1.75" eventid="GE_TIME_PERIOD" />
+		<event timeout="1.5" eventid="GE_TIME_PERIOD" />
 		<script>
 			local c = exrandom(11)
 			local r = shuffled_range_take(c, 1, 11)
@@ -5478,7 +5478,7 @@
 	</trigger>
 
 	<trigger Name="CreateFlammableItems" active="0">
-		<event timeout="6" eventid="GE_TIME_PERIOD" />
+		<event timeout="3" eventid="GE_TIME_PERIOD" />
 		<script>
 			local co = 0 
 			for i=1,13 do
@@ -5495,7 +5495,7 @@
 	</trigger>
 
 	<trigger Name="CreateMedItems" active="0">
-		<event timeout="5.5" eventid="GE_TIME_PERIOD" />
+		<event timeout="2.75" eventid="GE_TIME_PERIOD" />
 		<script>
 			local co = 0
 			for i=1,13 do
@@ -5520,7 +5520,7 @@
 	</trigger>
 
 	<trigger Name="CreateItemsOnSectarianCircle" active="0">
-		<event timeout="7" eventid="GE_TIME_PERIOD" />
+		<event timeout="3" eventid="GE_TIME_PERIOD" />
 		<script>
 			local typeI = {"energo", "build", "electro", "valuables", "food", "key", "info"}
 			local typeW = {20, 10, 30, 130, 50, 20, 40}
@@ -5552,10 +5552,10 @@
 	</trigger>
 
 	<trigger Name="CreateAnanagaItems" active="0">
-		<event timeout="2" eventid="GE_TIME_PERIOD" />
+		<event timeout="3" eventid="GE_TIME_PERIOD" />
 		<script>
-			local items = {"item_ananaga", "item_vodka", "item_sausage", "item_water_bottle", "item_beer", "item_apocola", "item_energycan", "item_whiskey", "item_snickers", "item_gorbusha", "item_marrow", "item_milkcan", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_tushonka_small", "item_tushonka", "item_water_metal_bottle", "item_sugar", "item_anechka", "item_kvas"}
-			local scale = {0.1, 0.1, 0.4, 0.35, 0.125, 0.125, 0.1, 0.3, 0.15, 0.35, 0.35, 0.35, 0.35, 0.35, 0.35, 0.35, 0.35, 0.35, 0.2, 0.15, 0.125, 0.15}
+			local items = {"item_ananaga", "item_vodka", "item_sausage", "item_water_bottle", "item_beer", "item_apocola", "item_energycan", "item_whiskey", "item_snickers", "item_gorbusha", "item_marrow", "item_milkcan", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_tushonka_small", "item_tushonka", "item_water_metal_bottle", "item_sugar", "item_anechka", "item_kvas", "item_ebelya", "item_kirieshki", "item_keqpotato"}
+			local scale = {0.1, 0.1, 0.4, 0.35, 0.125, 0.125, 0.1, 0.3, 0.15, 0.35, 0.35, 0.35, 0.35, 0.35, 0.35, 0.35, 0.35, 0.35, 0.2, 0.15, 0.125, 0.15, 0.2, 0.22, 0.25}
 			local y = {0.298, 0.459, 0, 0, 1.786, 0.01, 2.321, 0.74, 0.959, 0.018, 1.938, 1.846, 2.075, 2.373, 1.015, 1.675, 2.012, 2.11, 2.819, 2.014, 2.425, 2.807, 2.01, 0.326, 0.91, 1.445, 1.972, 1.766, 9.645, 1.56, 0, 1.15, 0, 1.729, 1.602, 2.468, 1.99, 2.31, 0, -0.175, 1.997, 1.621, 1.405, 1.334, 2.798, 1.98, 1.980, 1.204, 1.424, 0.282, 0, 0, -0.024}
 			for i=1,53 do
 				if random(100) == 1 then
@@ -5572,7 +5572,7 @@
 								end
 							end 
 
-							CreateItemModelBox("FoodItemBox"..i, getPos("Ananaga_"..i.."_loc"), getObj("Ananaga_"..i.."_loc"):GetRotation(), item, size, y[i])
+							CreateItemModelBox("FoodItemBox"..i, getPos("Ananaga_"..i.."_loc"), getObj("Ananaga_"..i.."_loc"):GetRotation(), "item_keqpotato", 0.25, y[i])
 							SetVar("FoodItemBoxCreated", GetVar("FoodItemBoxCreated").AsInt + 1)
 							getObj("AnanagaItemModelDel"):AddEvent("GE_OBJECT_DIE", "FoodItemBox"..i)
 						end

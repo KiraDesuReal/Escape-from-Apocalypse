@@ -1461,7 +1461,7 @@ end
 function CreateItemModelBox(name, pos, rot, item, scale, y)
 	if y == nil then y = 0 end
 
-	CreateNewDummyObject("cargo", "Model"..name, -1, -1, pos, rot, 0)
+	CreateNewDummyObject(strsub(item, 6), "Model"..name, -1, -1, pos, rot, 0)
 	local model = getObj("Model"..name)
 	model:SetPropertyById(7, scale)
 
@@ -1668,6 +1668,7 @@ function GetItemWeight(item)
 	if item == "item_water_bottle" then r = 50 end
 	if item == "item_water_metal_bottle" then r = 20 end
 	if item == "item_whiskey" then r = 15 end
+	if item == "item_keqpotato" then r = 60 end
 	
 	if item == "item_alkani" then r = 100 end
 	if item == "item_hlor" then r = 100 end
@@ -1901,7 +1902,7 @@ function AllItems()
 					"item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid",
 					"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery",
 					"item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder",
-					"item_sugar", "item_sausage", "item_anechka", "item_apocola", "item_bear_rations", "item_beer", "item_coffeecan", "item_cookies", "item_crackers", "item_ebelya", "item_energycan", "item_gorbusha", "item_grechka", "item_juice_apple", "item_juice_orange", "item_kirieshki", "item_kvas", "item_marrow", "item_meat", "item_milkcan", "item_nash_juice", "item_noodles", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_snickers", "item_teabox", "item_tushonka", "item_tushonka_small", "item_usec_rations", "item_water_bottle", "item_water_metal_bottle", "item_whiskey",
+					"item_sugar", "item_sausage", "item_anechka", "item_apocola", "item_bear_rations", "item_beer", "item_coffeecan", "item_cookies", "item_crackers", "item_ebelya", "item_energycan", "item_gorbusha", "item_grechka", "item_juice_apple", "item_juice_orange", "item_kirieshki", "item_kvas", "item_marrow", "item_meat", "item_milkcan", "item_nash_juice", "item_noodles", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_snickers", "item_teabox", "item_tushonka", "item_tushonka_small", "item_usec_rations", "item_water_bottle", "item_water_metal_bottle", "item_whiskey", "item_keqpotato",
 					"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 					"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 					"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
@@ -1926,7 +1927,7 @@ function GetItemsCategory(category)
 	local electro = {"electronics", "item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid"}
 	local energo = {"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery"}				
 	local flam = {"firewood", "oil", "fuel", "tobacco", "item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder"}			
-	local food = {"item_vodka", "item_ananaga", "item_sugar", "item_sausage", "item_anechka", "item_apocola", "item_bear_rations", "item_beer", "item_coffeecan", "item_cookies", "item_crackers", "item_ebelya", "item_energycan", "item_gorbusha", "item_grechka", "item_juice_apple", "item_juice_orange", "item_kirieshki", "item_kvas", "item_marrow", "item_meat", "item_milkcan", "item_noodles", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_snickers", "item_teabox", "item_tushonka", "item_tushonka_small", "item_usec_rations", "item_water_bottle", "item_water_metal_bottle", "item_whiskey", "item_nash_juice"}		
+	local food = {"item_vodka", "item_ananaga", "item_sugar", "item_sausage", "item_anechka", "item_apocola", "item_bear_rations", "item_beer", "item_coffeecan", "item_cookies", "item_crackers", "item_ebelya", "item_energycan", "item_gorbusha", "item_grechka", "item_juice_apple", "item_juice_orange", "item_kirieshki", "item_kvas", "item_marrow", "item_meat", "item_milkcan", "item_noodles", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_snickers", "item_teabox", "item_tushonka", "item_tushonka_small", "item_usec_rations", "item_water_bottle", "item_water_metal_bottle", "item_whiskey", "item_nash_juice", "item_keqpotato"}		
 	local household = {"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_tb", "item_toothpaste", "item_sugar", "item_stakanyash", "item_soda"}		
 	local info = {"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd"}
 	local med = {"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda"}
@@ -2786,7 +2787,7 @@ function RewardForDailyQuests()
 						"item_bp", "item_cable", "item_converter", "item_cooler", "item_cpu", "item_drill", "item_dvd", "item_electronics_components", "item_energo_lump", "item_engine", "item_gazan", "item_geiger", "item_gpu", "item_hdd", "item_helix", "item_iridiym", "item_kondesators", "item_lcd", "item_lump", "item_magnet", "item_military_cable", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tetris", "item_tplug", "item_ultra_lump", "item_usb", "item_virtex", "item_vpx", "item_wires", "item_controller", "item_gyrotachometer", "item_military_plate", "item_rfid",
 						"item_accum", "item_battery_aa", "item_battery_d", "item_car_battery", "item_cyclon", "item_green_battery", "item_powerbank", "item_tank_battery",
 						"item_dry", "item_hunter_spich", "item_lighter", "item_prisadka", "item_propan", "item_spich", "item_survl", "item_termit", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo", "item_gunpowder",
-						"item_sugar", "item_sausage", "item_anechka", "item_apocola", "item_bear_rations", "item_beer", "item_coffeecan", "item_cookies", "item_crackers", "item_ebelya", "item_energycan", "item_gorbusha", "item_grechka", "item_juice_apple", "item_juice_orange", "item_kirieshki", "item_kvas", "item_marrow", "item_meat", "item_milkcan", "item_nash_juice", "item_noodles", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_snickers", "item_teabox", "item_tushonka", "item_tushonka_small", "item_usec_rations", "item_water_bottle", "item_water_metal_bottle", "item_whiskey",
+						"item_sugar", "item_sausage", "item_anechka", "item_apocola", "item_bear_rations", "item_beer", "item_coffeecan", "item_cookies", "item_crackers", "item_ebelya", "item_energycan", "item_gorbusha", "item_grechka", "item_juice_apple", "item_juice_orange", "item_kirieshki", "item_kvas", "item_marrow", "item_meat", "item_milkcan", "item_nash_juice", "item_noodles", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_snickers", "item_teabox", "item_tushonka", "item_tushonka_small", "item_usec_rations", "item_water_bottle", "item_water_metal_bottle", "item_whiskey", "item_keqpotato",
 						"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_soda", "item_tb", "item_toothpaste",
 						"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd",
 						"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda",
@@ -3286,6 +3287,26 @@ function CreateScavVehicle(name, pos, path)
 		local tr = getObj("ScavCarDist")
 		if tr and tr:IsActivated() == 0 then TActivate("ScavCarDist") end
 	end
+end
+
+-- Рандомизация объектов в таблице
+function RandomObjTable(t)
+	local keys = {}
+	for i = 1, getn(t) do 
+		table.insert(keys, i) 
+	end
+
+	for i = getn(keys), 1, -1 do
+		local j = math.random(i)
+		keys[i], keys[j] = keys[j], keys[i] 
+	end
+
+	local tab = {}
+	for i = 1, getn(keys) do
+		table.insert(tab, t[keys[i]])
+	end
+
+	return tab
 end
 
 

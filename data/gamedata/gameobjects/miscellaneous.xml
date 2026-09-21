@@ -153,6 +153,11 @@
 		ModelFile		= "ET_LS_LIGHT_LAMPPOST2"/>
 
 	<Prototype
+		Class			= "LightObj"
+		Name			= "LightProjectorSpotlight2" 
+		ModelFile		= "ET_PS_PROJECTOR_SPOTLIGHT2"/>
+
+	<Prototype
 		Class="AffixGenerator"
 		Name="affixGeneratorForEnemiesGuns">
 		<!-- all affixes from each group, except the best affixes -->

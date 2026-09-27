@@ -11212,7 +11212,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_search_data"
-		text="На счёт задания Поисковая миссия."
+		text="Насчёт задания Поисковая миссия."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_search_data') and not(IsQuestComplete('q_search_data'))"
 		nextReplies="Dlg_npc_q_search_data_3" />
@@ -11227,7 +11227,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_explore_r1m1"
-		text="На счёт задания Разведка местности."
+		text="Насчёт задания Разведка местности."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_explore_r1m1') and not(IsQuestComplete('q_explore_r1m1'))"
 		nextReplies="Dlg_npc_q_explore_r1m1_1" />
@@ -11242,7 +11242,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_kill_scavs"
-		text="На счёт задания Огонь на поражение."
+		text="Насчёт задания Огонь на поражение."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_kill_scavs') and not(IsQuestComplete('q_kill_scavs'))"
 		nextReplies="Dlg_npc_q_kill_scavs_3" />
@@ -11257,7 +11257,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_clearing_r1m1"
-		text="На счёт задания Зачистка территории."
+		text="Насчёт задания Зачистка территории."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_clearing_r1m1') and not(IsQuestComplete('q_clearing_r1m1'))"
 		nextReplies="Dlg_npc_q_clearing_r1m1_4" />
@@ -11272,7 +11272,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_fuel1"
-		text="На счёт задания Топливо - Часть 1."
+		text="Насчёт задания Топливо - Часть 1."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_fuel1') and not(IsQuestComplete('q_fuel1'))"
 		nextReplies="Dlg_npc_q_fuel1_5" />
@@ -11287,7 +11287,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_fuel2"
-		text="На счёт задания Топливо - Часть 2."
+		text="Насчёт задания Топливо - Часть 2."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_fuel2') and not(IsQuestComplete('q_fuel2'))"
 		nextReplies="Dlg_npc_q_fuel2_3" />
@@ -11302,7 +11302,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_base_scavs"
-		text="На счёт задания Это наша территория."
+		text="Насчёт задания Это наша территория."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_base_scavs') and not(IsQuestComplete('q_base_scavs'))"
 		nextReplies="Dlg_npc_q_base_scavs_3" />
@@ -11317,7 +11317,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_kill_usec"
-		text="На счёт задания Друг с запада."
+		text="Насчёт задания Друг с запада."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_kill_usec') and not(IsQuestComplete('q_kill_usec'))"
 		nextReplies="Dlg_npc_q_kill_usec_3" />
@@ -11332,7 +11332,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_kill_pmc"
-		text="На счёт задания Устранитель."
+		text="Насчёт задания Устранитель."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_kill_pmc') and not(IsQuestComplete('q_kill_pmc'))"
 		nextReplies="Dlg_npc_q_kill_pmc_3" />
@@ -11347,7 +11347,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_sectarian1"
-		text="На счёт задания Нашествие сектантов - Часть 1."
+		text="Насчёт задания Нашествие сектантов - Часть 1."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_sectarian1') and not(IsQuestComplete('q_sectarian1'))"
 		nextReplies="Dlg_npc_q_sectarian1_1" />
@@ -11362,7 +11362,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_sectarian2"
-		text="На счёт задания Нашествие сектантов - Часть 2."
+		text="Насчёт задания Нашествие сектантов - Часть 2."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_sectarian2') and not(IsQuestComplete('q_sectarian2'))"
 		nextReplies="Dlg_npc_q_sectarian2_1" />
@@ -11377,7 +11377,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_new_year_2026"
-		text="На счёт задания события Атмосфера праздника."
+		text="Насчёт задания события Атмосфера праздника."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_new_year_2026') and not(IsQuestComplete('q_new_year_2026')) and not(IsQuestFailed('q_new_year_2026')) and EVENT == 'NEW_YEAR'"
 		nextReplies="Dlg_npc_q_new_year_2026_1" />
@@ -11392,7 +11392,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_daily_kill_scav_prapor"
-		text="На счёт оперативного задания Устранить диких."
+		text="Насчёт оперативного задания Устранить диких."
 		role="PLAYER"
 		scriptCondition="GetVar('q_daily_kill_scav').AsString == 'PRAPOR' and GetVar('q_daily_kill_scav_Status').AsString == 'TAKEN' or GetVar('q_daily_kill_scav').AsString == 'PRAPOR' and GetVar('q_daily_kill_scav_Status').AsString == 'COMPLETE'"
 		nextReplies="Dlg_npc_q_daily_kill_scav_prapor_1" />
@@ -11407,7 +11407,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_daily_kill_pmc_prapor"
-		text="На счёт оперативного задания Устранить ЧВК."
+		text="Насчёт оперативного задания Устранить ЧВК."
 		role="PLAYER"
 		scriptCondition="GetVar('q_daily_kill_pmc').AsString == 'PRAPOR' and GetVar('q_daily_kill_pmc_Status').AsString == 'TAKEN' or GetVar('q_daily_kill_pmc').AsString == 'PRAPOR' and GetVar('q_daily_kill_pmc_Status').AsString == 'COMPLETE'"
 		nextReplies="Dlg_npc_q_daily_kill_pmc_prapor_1" />
@@ -11422,7 +11422,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_daily_extract_prapor"
-		text="На счёт оперативного задания Разведать локацию."
+		text="Насчёт оперативного задания Разведать локацию."
 		role="PLAYER"
 		scriptCondition="GetVar('q_daily_extract').AsString == 'PRAPOR' and GetVar('q_daily_extract_Status').AsString == 'TAKEN' or GetVar('q_daily_extract').AsString == 'PRAPOR' and GetVar('q_daily_extract_Status').AsString == 'COMPLETE'"
 		nextReplies="Dlg_npc_q_daily_extract_r1m1_prapor_1" />
@@ -13008,7 +13008,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_shortage"
-		text="На счёт задания Дефицит."
+		text="Насчёт задания Дефицит."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_shortage') and not(IsQuestComplete('q_shortage'))"
 		nextReplies="Dlg_npc_q_shortage_1" />
@@ -13023,7 +13023,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_sanitary_standards1"
-		text="На счёт задания Санэпиднадзор - Часть 1."
+		text="Насчёт задания Санэпиднадзор - Часть 1."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_sanitary_standards1') and not(IsQuestComplete('q_sanitary_standards1'))"
 		nextReplies="Dlg_npc_q_sanitary_standards1_5" />
@@ -13038,7 +13038,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_sanitary_standards2"
-		text="На счёт задания Санэпиднадзор - Часть 2."
+		text="Насчёт задания Санэпиднадзор - Часть 2."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_sanitary_standards2') and not(IsQuestComplete('q_sanitary_standards2'))"
 		nextReplies="Dlg_npc_q_sanitary_standards2_1" />
@@ -13053,7 +13053,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_painkiller"
-		text="На счёт задания Пейнкиллер."
+		text="Насчёт задания Пейнкиллер."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_painkiller') and not(IsQuestComplete('q_painkiller'))"
 		nextReplies="Dlg_npc_q_painkiller_3" />
@@ -13068,7 +13068,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_autorem"
-		text="На счёт задания Авторем."
+		text="Насчёт задания Авторем."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_autorem') and not(IsQuestComplete('q_autorem'))"
 		nextReplies="Dlg_npc_q_autorem_1" />
@@ -13083,7 +13083,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_private_clinic"
-		text="На счёт задания Частная клиника."
+		text="Насчёт задания Частная клиника."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_private_clinic') and not(IsQuestComplete('q_private_clinic'))"
 		nextReplies="Dlg_npc_q_private_clinic_1" />
@@ -13098,7 +13098,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_crisis"
-		text="На счёт задания Доктор «Айболит»."
+		text="Насчёт задания Доктор «Айболит»."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_crisis') and not(IsQuestComplete('q_crisis'))"
 		nextReplies="Dlg_npc_q_crisis_1" />
@@ -13113,7 +13113,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_daily_kill_scav_terapist"
-		text="На счёт оперативного задания Устранить диких."
+		text="Насчёт оперативного задания Устранить диких."
 		role="PLAYER"
 		scriptCondition="GetVar('q_daily_kill_scav').AsString == 'TERAPIST' and GetVar('q_daily_kill_scav_Status').AsString == 'TAKEN' or GetVar('q_daily_kill_scav').AsString == 'TERAPIST' and GetVar('q_daily_kill_scav_Status').AsString == 'COMPLETE'"
 		nextReplies="Dlg_npc_q_daily_kill_scav_terapist_1" />
@@ -13128,7 +13128,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_daily_kill_pmc_terapist"
-		text="На счёт оперативного задания Устранить ЧВК."
+		text="Насчёт оперативного задания Устранить ЧВК."
 		role="PLAYER"
 		scriptCondition="GetVar('q_daily_kill_pmc').AsString == 'TERAPIST' and GetVar('q_daily_kill_pmc_Status').AsString == 'TAKEN' or GetVar('q_daily_kill_pmc').AsString == 'TERAPIST' and GetVar('q_daily_kill_pmc_Status').AsString == 'COMPLETE'"
 		nextReplies="Dlg_npc_q_daily_kill_pmc_terapist_1" />
@@ -13143,7 +13143,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_daily_extract_terapist"
-		text="На счёт оперативного задания Разведать локацию."
+		text="Насчёт оперативного задания Разведать локацию."
 		role="PLAYER"
 		scriptCondition="GetVar('q_daily_extract').AsString == 'TERAPIST' and GetVar('q_daily_extract_Status').AsString == 'TAKEN' or GetVar('q_daily_extract').AsString == 'TERAPIST' and GetVar('q_daily_extract_Status').AsString == 'COMPLETE'"
 		nextReplies="Dlg_npc_q_daily_extract_r1m1_terapist_1" />
@@ -13748,7 +13748,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_test_drive1"
-		text="На счёт задания Тест драйв - Часть 1."
+		text="Насчёт задания Тест драйв - Часть 1."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive1') and not(IsQuestComplete('q_test_drive1'))"
 		nextReplies="Dlg_npc_q_test_drive1_5" />
@@ -13763,7 +13763,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_test_drive2"
-		text="На счёт задания Тест драйв - Часть 2."
+		text="Насчёт задания Тест драйв - Часть 2."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive2') and not(IsQuestComplete('q_test_drive2'))"
 		nextReplies="Dlg_npc_q_test_drive2_3" />
@@ -13778,7 +13778,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_test_drive3"
-		text="На счёт задания Тест драйв - Часть 3."
+		text="Насчёт задания Тест драйв - Часть 3."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive3') and not(IsQuestComplete('q_test_drive3'))"
 		nextReplies="Dlg_npc_q_test_drive3_3" />
@@ -13793,7 +13793,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_test_drive4"
-		text="На счёт задания Тест драйв - Часть 4."
+		text="Насчёт задания Тест драйв - Часть 4."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive4') and not(IsQuestComplete('q_test_drive4'))"
 		nextReplies="Dlg_npc_q_test_drive4_3" />
@@ -13808,7 +13808,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_test_drive5"
-		text="На счёт задания Тест драйв - Часть 5."
+		text="Насчёт задания Тест драйв - Часть 5."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive5') and not(IsQuestComplete('q_test_drive5'))"
 		nextReplies="Dlg_npc_q_test_drive5_1" />
@@ -13823,7 +13823,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_test_drive6"
-		text="На счёт задания Тест драйв - Часть 6."
+		text="Насчёт задания Тест драйв - Часть 6."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive6') and not(IsQuestComplete('q_test_drive6'))"
 		nextReplies="Dlg_npc_q_test_drive6_1" />
@@ -13838,7 +13838,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_test_drive7"
-		text="На счёт задания Тест драйв - Часть 7."
+		text="Насчёт задания Тест драйв - Часть 7."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive7') and not(IsQuestComplete('q_test_drive7'))"
 		nextReplies="Dlg_npc_q_test_drive7_1" />
@@ -13853,7 +13853,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_test_drive8"
-		text="На счёт задания Тест драйв - Часть 8."
+		text="Насчёт задания Тест драйв - Часть 8."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive8') and not(IsQuestComplete('q_test_drive8'))"
 		nextReplies="Dlg_npc_q_test_drive8_3" />
@@ -13869,7 +13869,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_ural_or_belaz"
-		text="На счёт задания Заманчивое предложение."
+		text="Насчёт задания Заманчивое предложение."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_ural_or_belaz') and not(IsQuestComplete('q_ural_or_belaz')) and not(IsQuestFailed('q_ural_or_belaz'))"
 		nextReplies="Dlg_pl_q_ural_or_belaz_12" />
@@ -13884,7 +13884,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_naturalist1"
-		text="На счёт задания Натуралист - Часть 1."
+		text="Насчёт задания Натуралист - Часть 1."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_naturalist1') and not(IsQuestComplete('q_naturalist1'))"
 		nextReplies="Dlg_npc_q_naturalist1_3" />
@@ -13899,7 +13899,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_naturalist2"
-		text="На счёт задания Натуралист - Часть 2."
+		text="Насчёт задания Натуралист - Часть 2."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_naturalist2') and not(IsQuestComplete('q_naturalist2'))"
 		nextReplies="Dlg_npc_q_naturalist2_1" />
@@ -13914,7 +13914,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_naturalist3"
-		text="На счёт задания Натуралист - Часть 3."
+		text="Насчёт задания Натуралист - Часть 3."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_naturalist3') and not(IsQuestComplete('q_naturalist3'))"
 		nextReplies="Dlg_npc_q_naturalist3_5" />
@@ -13929,7 +13929,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_naturalist4"
-		text="На счёт задания Натуралист - Часть 4."
+		text="Насчёт задания Натуралист - Часть 4."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_naturalist4') and not(IsQuestComplete('q_naturalist4'))"
 		nextReplies="Dlg_npc_q_naturalist4_1" />
@@ -13944,7 +13944,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_naturalist5"
-		text="На счёт задания Натуралист - Часть 5."
+		text="Насчёт задания Натуралист - Часть 5."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_naturalist5') and not(IsQuestComplete('q_naturalist5'))"
 		nextReplies="Dlg_npc_q_naturalist5_3" />
@@ -13959,7 +13959,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_belazist1"
-		text="На счёт задания Белазист - Часть 1."
+		text="Насчёт задания Белазист - Часть 1."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_belazist1') and not(IsQuestComplete('q_belazist1'))"
 		nextReplies="Dlg_npc_q_belazist1_3" />
@@ -13974,7 +13974,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_belazist2"
-		text="На счёт задания Белазист - Часть 2."
+		text="Насчёт задания Белазист - Часть 2."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_belazist2') and not(IsQuestComplete('q_belazist2'))"
 		nextReplies="Dlg_npc_q_belazist2_1" />
@@ -13989,7 +13989,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_belazist3"
-		text="На счёт задания Белазист - Часть 3."
+		text="Насчёт задания Белазист - Часть 3."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_belazist3') and not(IsQuestComplete('q_belazist3'))"
 		nextReplies="Dlg_npc_q_belazist3_1" />
@@ -14004,7 +14004,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_belazist4"
-		text="На счёт задания Белазист - Часть 4."
+		text="Насчёт задания Белазист - Часть 4."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_belazist4') and not(IsQuestComplete('q_belazist4'))"
 		nextReplies="Dlg_npc_q_belazist4_3" />
@@ -14019,7 +14019,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_belazist5"
-		text="На счёт задания Белазист - Часть 5."
+		text="Насчёт задания Белазист - Часть 5."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_belazist5') and not(IsQuestComplete('q_belazist5'))"
 		nextReplies="Dlg_npc_q_belazist5_3" />
@@ -14034,7 +14034,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_belazist6"
-		text="На счёт задания Белазист - Часть 6."
+		text="Насчёт задания Белазист - Часть 6."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_belazist6') and not(IsQuestComplete('q_belazist6'))"
 		nextReplies="Dlg_npc_q_belazist6_5" />
@@ -14049,7 +14049,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_belazist7"
-		text="На счёт задания Белазист - Часть 7."
+		text="Насчёт задания Белазист - Часть 7."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_belazist7') and not(IsQuestComplete('q_belazist7'))"
 		nextReplies="Dlg_npc_q_belazist7_3" />
@@ -14064,7 +14064,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_belazist8"
-		text="На счёт задания Белазист - Часть 8."
+		text="Насчёт задания Белазист - Часть 8."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_belazist8') and not(IsQuestComplete('q_belazist8'))"
 		nextReplies="Dlg_npc_q_belazist8_3" />
@@ -14079,7 +14079,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_test_drive9"
-		text="На счёт задания Тест драйв - Часть 9."
+		text="Насчёт задания Тест драйв - Часть 9."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive9') and not(IsQuestComplete('q_test_drive9'))"
 		nextReplies="Dlg_npc_q_test_drive9_3" />
@@ -14094,7 +14094,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_test_drive10"
-		text="На счёт задания Тест драйв - Часть 10."
+		text="Насчёт задания Тест драйв - Часть 10."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive10') and not(IsQuestComplete('q_test_drive10'))"
 		nextReplies="Dlg_npc_q_test_drive10_1" />
@@ -14109,7 +14109,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_test_drive11"
-		text="На счёт задания Тест драйв - Часть 11."
+		text="Насчёт задания Тест драйв - Часть 11."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive11') and not(IsQuestComplete('q_test_drive11'))"
 		nextReplies="Dlg_npc_q_test_drive11_3" />
@@ -14124,7 +14124,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_test_drive12"
-		text="На счёт задания Тест драйв - Часть 12."
+		text="Насчёт задания Тест драйв - Часть 12."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive12') and not(IsQuestComplete('q_test_drive12'))"
 		nextReplies="Dlg_npc_q_test_drive12_1" />
@@ -14139,7 +14139,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_test_drive13"
-		text="На счёт задания Тест драйв - Часть 13."
+		text="Насчёт задания Тест драйв - Часть 13."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive13') and not(IsQuestComplete('q_test_drive13'))"
 		nextReplies="Dlg_npc_q_test_drive13_3" />
@@ -14154,7 +14154,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_test_drive14"
-		text="На счёт задания Тест драйв - Часть 14."
+		text="Насчёт задания Тест драйв - Часть 14."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive14') and not(IsQuestComplete('q_test_drive14'))"
 		nextReplies="Dlg_npc_q_test_drive14_3" />
@@ -14169,7 +14169,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_test_drive15"
-		text="На счёт задания Тест драйв - Часть 15."
+		text="Насчёт задания Тест драйв - Часть 15."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_test_drive15') and not(IsQuestComplete('q_test_drive15'))"
 		nextReplies="Dlg_npc_q_test_drive15_3" />
@@ -14184,7 +14184,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_bitok1"
-		text="На счёт задания Биток - Часть 1."
+		text="Насчёт задания Биток - Часть 1."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_bitok1') and not(IsQuestComplete('q_bitok1'))"
 		nextReplies="Dlg_npc_q_bitok1_7" />
@@ -14199,7 +14199,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_bitok2"
-		text="На счёт задания Биток - Часть 2."
+		text="Насчёт задания Биток - Часть 2."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_bitok2') and not(IsQuestComplete('q_bitok2'))"
 		nextReplies="Dlg_npc_q_bitok2_1" />
@@ -14214,7 +14214,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_bitok3"
-		text="На счёт задания Биток - Часть 3."
+		text="Насчёт задания Биток - Часть 3."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_bitok3') and not(IsQuestComplete('q_bitok3'))"
 		nextReplies="Dlg_npc_q_bitok3_3" />
@@ -14229,7 +14229,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_turbo"
-		text="На счёт задания Жажда скорости."
+		text="Насчёт задания Жажда скорости."
 		role="PLAYER"
 		scriptCondition="IsQuestTaken('q_turbo') and not(IsQuestComplete('q_turbo'))"
 		nextReplies="Dlg_npc_q_turbo_3" />
@@ -14244,7 +14244,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_daily_kill_scav_mechanik"
-		text="На счёт оперативного задания Устранить диких."
+		text="Насчёт оперативного задания Устранить диких."
 		role="PLAYER"
 		scriptCondition="GetVar('q_daily_kill_scav').AsString == 'MECHANIK' and GetVar('q_daily_kill_scav_Status').AsString == 'TAKEN' or GetVar('q_daily_kill_scav').AsString == 'MECHANIK' and GetVar('q_daily_kill_scav_Status').AsString == 'COMPLETE'"
 		nextReplies="Dlg_npc_q_daily_kill_scav_mechanik_1" />
@@ -14259,7 +14259,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_daily_kill_pmc_mechanik"
-		text="На счёт оперативного задания Устранить ЧВК."
+		text="Насчёт оперативного задания Устранить ЧВК."
 		role="PLAYER"
 		scriptCondition="GetVar('q_daily_kill_pmc').AsString == 'MECHANIK' and GetVar('q_daily_kill_pmc_Status').AsString == 'TAKEN' or GetVar('q_daily_kill_pmc').AsString == 'MECHANIK' and GetVar('q_daily_kill_pmc_Status').AsString == 'COMPLETE'"
 		nextReplies="Dlg_npc_q_daily_kill_pmc_mechanik_1" />
@@ -14274,7 +14274,7 @@
 
 	<Reply
 		name="Dlg_pl_to_q_daily_extract_mechanik"
-		text="На счёт оперативного задания Разведать локацию."
+		text="Насчёт оперативного задания Разведать локацию."
 		role="PLAYER"
 		scriptCondition="GetVar('q_daily_extract').AsString == 'MECHANIK' and GetVar('q_daily_extract_Status').AsString == 'TAKEN' or GetVar('q_daily_extract').AsString == 'MECHANIK' and GetVar('q_daily_extract_Status').AsString == 'COMPLETE'"
 		nextReplies="Dlg_npc_q_daily_extract_r1m1_mechanik_1" />
@@ -17086,7 +17086,7 @@
 		name="Dlg_npc_Scav_give_money_6"
 		text="Да, я могу выкупить один из твоих предложенных предметов."
 		role="NPC"
-		nextReplies="Dlg_pl_Scav_give_money_6_1 Dlg_pl_Scav_give_money_6_2 Dlg_pl_Scav_give_money_6_3 Dlg_pl_Scav_give_money_6_4 Dlg_pl_Scav_give_money_6_5 Dlg_pl_Scav_give_money_6_6 Dlg_pl_Scav_give_money_6_7 Dlg_pl_Scav_give_money_6_8 Dlg_pl_Scav_give_money_6_9 Dlg_pl_Scav_give_money_6_10 Dlg_pl_Scav_give_money_6_11 Dlg_pl_Scav_give_money_6_12 Dlg_pl_Scav_give_money_6_13 Dlg_pl_Scav_give_money_6_14 Dlg_pl_Scav_give_money_6_15 Dlg_pl_Scav_give_money_6_16 Dlg_pl_Scav_give_money_6_17 Dlg_pl_Scav_give_money_6_18 Dlg_pl_Scav_give_money_6_19 Dlg_pl_Scav_give_money_6_20 Dlg_pl_Scav_give_money_6_21 Dlg_pl_Scav_give_money_6_22 Dlg_pl_Scav_give_money_6_23 Dlg_pl_Scav_give_money_6_24 Dlg_pl_Scav_give_money_6_25 Dlg_pl_Scav_give_money_6_26 Dlg_pl_Scav_give_money_6_27 Dlg_pl_Scav_give_money_6_28 Dlg_pl_Scav_give_money_6_29 Dlg_pl_Scav_give_money_6_30 Dlg_pl_Scav_give_money_6_31 Dlg_pl_Scav_give_money_6_32 Dlg_pl_Scav_give_money_6_33 Dlg_pl_Scav_give_money_6_34 Dlg_pl_Scav_give_money_6_35 Dlg_pl_Scav_give_money_6_36 Dlg_pl_Scav_give_money_6_37 Dlg_pl_Scav_give_money_6_38 Dlg_pl_Scav_give_money_6_39 Dlg_pl_Scav_give_money_6_40 Dlg_pl_Scav_give_money_6_41 Dlg_pl_Scav_give_money_6_42 Dlg_pl_Scav_give_money_6_43 Dlg_pl_Scav_give_money_6_44 Dlg_pl_Scav_give_money_6_45 Dlg_pl_Scav_give_money_6_46 Dlg_pl_Scav_give_money_6_47 Dlg_pl_Scav_give_money_6_48 Dlg_pl_Scav_give_money_6_49 Dlg_pl_Scav_give_money_6_50 Dlg_pl_Scav_give_money_6_51 Dlg_pl_Scav_give_money_6_52 Dlg_pl_Scav_give_money_6_53 Dlg_pl_Scav_give_money_6_54 Dlg_pl_Scav_give_money_6_55 Dlg_pl_Scav_give_money_6_56 Dlg_pl_Scav_give_money_6_57 Dlg_pl_Scav_give_money_6_58 Dlg_pl_Scav_give_money_6_59 Dlg_pl_Scav_give_money_6_60 Dlg_pl_Scav_give_money_6_61 Dlg_pl_Scav_give_money_5" />
+		nextReplies="Dlg_pl_Scav_give_money_6_1 Dlg_pl_Scav_give_money_6_2 Dlg_pl_Scav_give_money_6_3 Dlg_pl_Scav_give_money_6_4 Dlg_pl_Scav_give_money_6_5 Dlg_pl_Scav_give_money_6_6 Dlg_pl_Scav_give_money_6_7 Dlg_pl_Scav_give_money_6_8 Dlg_pl_Scav_give_money_6_9 Dlg_pl_Scav_give_money_6_10 Dlg_pl_Scav_give_money_6_11 Dlg_pl_Scav_give_money_6_12 Dlg_pl_Scav_give_money_6_13 Dlg_pl_Scav_give_money_6_14 Dlg_pl_Scav_give_money_6_15 Dlg_pl_Scav_give_money_6_16 Dlg_pl_Scav_give_money_6_17 Dlg_pl_Scav_give_money_6_18 Dlg_pl_Scav_give_money_6_19 Dlg_pl_Scav_give_money_6_20 Dlg_pl_Scav_give_money_6_21 Dlg_pl_Scav_give_money_6_22 Dlg_pl_Scav_give_money_6_23 Dlg_pl_Scav_give_money_6_24 Dlg_pl_Scav_give_money_6_25 Dlg_pl_Scav_give_money_6_26 Dlg_pl_Scav_give_money_6_27 Dlg_pl_Scav_give_money_6_28 Dlg_pl_Scav_give_money_6_29 Dlg_pl_Scav_give_money_6_30 Dlg_pl_Scav_give_money_6_31 Dlg_pl_Scav_give_money_6_32 Dlg_pl_Scav_give_money_6_33 Dlg_pl_Scav_give_money_6_34 Dlg_pl_Scav_give_money_6_35 Dlg_pl_Scav_give_money_6_36 Dlg_pl_Scav_give_money_6_37 Dlg_pl_Scav_give_money_6_38 Dlg_pl_Scav_give_money_6_39 Dlg_pl_Scav_give_money_6_40 Dlg_pl_Scav_give_money_6_41 Dlg_pl_Scav_give_money_6_42 Dlg_pl_Scav_give_money_6_43 Dlg_pl_Scav_give_money_6_44 Dlg_pl_Scav_give_money_6_45 Dlg_pl_Scav_give_money_6_46 Dlg_pl_Scav_give_money_6_47 Dlg_pl_Scav_give_money_6_48 Dlg_pl_Scav_give_money_6_49 Dlg_pl_Scav_give_money_6_50 Dlg_pl_Scav_give_money_6_51 Dlg_pl_Scav_give_money_6_52 Dlg_pl_Scav_give_money_6_53 Dlg_pl_Scav_give_money_6_54 Dlg_pl_Scav_give_money_6_55 Dlg_pl_Scav_give_money_6_56 Dlg_pl_Scav_give_money_6_57 Dlg_pl_Scav_give_money_6_58 Dlg_pl_Scav_give_money_6_59 Dlg_pl_Scav_give_money_6_60 Dlg_pl_Scav_give_money_6_61 Dlg_pl_Scav_give_money_6_62 Dlg_pl_Scav_give_money_6_63 Dlg_pl_Scav_give_money_6_64 Dlg_pl_Scav_give_money_6_65 Dlg_pl_Scav_give_money_6_66 Dlg_pl_Scav_give_money_6_67 Dlg_pl_Scav_give_money_6_68 Dlg_pl_Scav_give_money_6_69 Dlg_pl_Scav_give_money_6_70 Dlg_pl_Scav_give_money_6_71 Dlg_pl_Scav_give_money_6_72 Dlg_pl_Scav_give_money_6_73 Dlg_pl_Scav_give_money_6_74 Dlg_pl_Scav_give_money_6_75 Dlg_pl_Scav_give_money_6_76 Dlg_pl_Scav_give_money_6_77 Dlg_pl_Scav_give_money_6_78 Dlg_pl_Scav_give_money_6_79 Dlg_pl_Scav_give_money_6_80 Dlg_pl_Scav_give_money_6_81 Dlg_pl_Scav_give_money_6_82 Dlg_pl_Scav_give_money_6_83 Dlg_pl_Scav_give_money_6_84 Dlg_pl_Scav_give_money_6_85 Dlg_pl_Scav_give_money_6_86 Dlg_pl_Scav_give_money_6_87 Dlg_pl_Scav_give_money_6_88 Dlg_pl_Scav_give_money_6_89 Dlg_pl_Scav_give_money_5" />
 
 	<Reply
 		name="Dlg_pl_Scav_give_money_6_1"
@@ -17574,6 +17574,230 @@
 		role="PLAYER"
 		scriptCondition="HasPlayerAmountOfItems('item_chain', 1)"
 		scriptResult="RemoveItemsFromPlayerRepository('item_chain', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_chain'); AddPlayerMoney(random(6000, 6500))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_62"
+		text="Передать Банку газировки «ApoCola» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_apocola', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_apocola', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_apocola'); AddPlayerMoney(random(8000, 10888))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_63"
+		text="Передать Сухой паек - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_bear_rations', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_bear_rations', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_bear_rations'); AddPlayerMoney(random(7000, 8140))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_64"
+		text="Передать Бутылку пива «Пивко темное» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_beer', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_beer', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_beer'); AddPlayerMoney(random(12000, 15000))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_65"
+		text="Передать Печенье - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_cookies', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_cookies', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_cookies'); AddPlayerMoney(random(5000, 5368))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_66"
+		text="Передать Хлебцы армейские - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_crackers', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_crackers', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_crackers'); AddPlayerMoney(random(3000, 3225))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_67"
+		text="Передать Сухарики «Ебеля» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_ebelya', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_ebelya', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_ebelya'); AddPlayerMoney(random(6000, 6254))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_68"
+		text="Передать Банку энергетика - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_energycan', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_energycan', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_energycan'); AddPlayerMoney(random(10000, 10530))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_69"
+		text="Передать Банку горбуши - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_gorbusha', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_gorbusha', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_gorbusha'); AddPlayerMoney(random(5000, 5530))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_70"
+		text="Передать Коробку сока «Весёлый Гусь» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_juice_apple', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_juice_apple', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_juice_apple'); AddPlayerMoney(random(6500, 6760))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_71"
+		text="Передать Коробку апельсинового сока - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_juice_orange', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_juice_orange', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_juice_orange'); AddPlayerMoney(random(6000, 6250))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_72"
+		text="Передать Сухарики ржаные - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_kirieshki', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_kirieshki', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_kirieshki'); AddPlayerMoney(random(5500, 5800))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_73"
+		text="Передать Квас - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_kvas', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_kvas', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_kvas'); AddPlayerMoney(random(7000, 7300))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_74"
+		text="Передать Банку кабачковой икры - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_marrow', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_marrow', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_marrow'); AddPlayerMoney(random(7000, 7250))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_75"
+		text="Передать Упаковка сушёного мяса - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_meat', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_meat', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_meat'); AddPlayerMoney(random(6500, 6900))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_76"
+		text="Передать Банку спущённого молока - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_milkcan', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_milkcan', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_milkcan'); AddPlayerMoney(random(9500, 9720))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_77"
+		text="Передать Коробку сока «НАШ Сiк» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_nash_juice', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_nash_juice', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_nash_juice'); AddPlayerMoney(random(8000, 8550))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_78"
+		text="Передать Лапшу быстрого приготовления - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_noodles', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_noodles', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_noodles'); AddPlayerMoney(random(6000, 6450))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_79"
+		text="Передать Банку гусинного паштета - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_pashtet', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_pashtet', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_pashtet'); AddPlayerMoney(random(6500, 6750))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_80"
+		text="Передать Банку зелёного горошка - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_peas', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_peas', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_peas'); AddPlayerMoney(random(5000, 5325))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_81"
+		text="Передать Банку консервированной сайры - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_saira', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_saira', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_saira'); AddPlayerMoney(random(5100, 5640))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_82"
+		text="Передать Банку консервированной сельди - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_seld', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_seld', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_seld'); AddPlayerMoney(random(6300, 6630))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_83"
+		text="Передать Шоколадный батончик «Snickers» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_snickers', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_snickers', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_snickers'); AddPlayerMoney(random(7500, 7850))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_84"
+		text="Передать Банку тушёной говядины (Большая) - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_tushonka', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_tushonka', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_tushonka'); AddPlayerMoney(random(6000, 6360))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_85"
+		text="Передать Банку тушёной говядины (Маленькая) - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_tushonka_small', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_tushonka_small', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_tushonka_small'); AddPlayerMoney(random(4800, 5000))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_86"
+		text="Передать Бутылку воды - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_water_bottle', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_water_bottle', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_water_bottle'); AddPlayerMoney(random(8000, 9100))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_87"
+		text="Передать Металлическую бутылку воды - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_water_metal_bottle', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_water_metal_bottle', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_water_metal_bottle'); AddPlayerMoney(random(9000, 9900))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_88"
+		text="Передать Бутылку виски - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_whiskey', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_whiskey', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_whiskey'); AddPlayerMoney(random(10000, 17250))"
+		nextReplies="Dlg_npc_Scav_give_money_7" />
+
+	<Reply
+		name="Dlg_pl_Scav_give_money_6_89"
+		text="Передать Чипсы «Хрустящий картофель» - x1"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('item_keqpotato', 1)"
+		scriptResult="RemoveItemsFromPlayerRepository('item_keqpotato', 1); AddFadingMsgByStrIdFormatted('fm_item_to_npc', 'item_keqpotato'); AddPlayerMoney(random(7000, 7900))"
 		nextReplies="Dlg_npc_Scav_give_money_7" />
 
 	<Reply

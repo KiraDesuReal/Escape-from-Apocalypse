@@ -69,31 +69,31 @@
 		file="data\models\objects\box\plastic_barrel\plastic_barrel_box.gam" />
 
 	<model
-		id="airbox1"
+		id="airbox"
 		shadow="1"
 		shadowVolume="1"
 		windwavy="0"
-		file="data\models\objects\box\airbox.gam">
-		<action
-			name="STAND1">
-			<lp
-				id="LP_LIGHT1"
-				effect_id="ET_PS_AIRBOX"
-				restartOnAnimationChange="1"
-				ImmediateRemove="1" />
-		</action>
+		file="data\models\objects\box\airbox\airdrop_box.gam">
 	</model>
 
 	<model
-		id="airbox2"
+		id="airbox_parachute"
 		shadow="1"
 		shadowVolume="1"
 		windwavy="0"
-		file="data\models\objects\box\airbox2.gam">
+		file="data\models\objects\box\airbox\airdrop_box_parachute.gam">
+	</model>
+
+	<model
+		id="airbox_flaer"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\objects\box\airbox\airdrop_box.gam">
 		<action
 			name="STAND1">
 			<lp
-				id="LP_LIGHT1"
+				id="LP_FLAER01"
 				effect_id="ET_PS_AIRBOX"
 				restartOnAnimationChange="1"
 				ImmediateRemove="1" />
@@ -2244,6 +2244,20 @@
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\food\keqpotato\keqpotato.gam" />
+
+	<model
+		id="juice_orange"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\food\orange_juice\orange_juice.gam" />
+
+	<model
+		id="juice_apple"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\food\apple_juice\apple_juice.gam" />
 
 <!-- info items -->
 	<model
@@ -17002,6 +17016,46 @@
 				restartOnAnimationChange="1"
 				ImmediateRemove="0" />
 		</action>
+	</model>
+
+	<model
+		id="airplane1"
+		file="data\models\monsters\airplane\airplane1.gam"
+		shadow="0"
+		windwavy="0"
+		trans="0" >
+		<action
+			name="STAND1">
+			<lp
+				id="LP_LIGHT01"
+				effect_id="ET_PS_LENS_D1"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+	</model>
+
+	<model
+		id="airplane2"
+		file="data\models\monsters\airplane\airplane2.gam"
+		shadow="0"
+		windwavy="0"
+		trans="0" >
+		<action
+			name="STAND1">
+			<lp
+				id="LP_LIGHT01"
+				effect_id="ET_PS_LENS_D1"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+	</model>
+
+	<model
+		id="airplane_propeller"
+		file="data\models\monsters\airplane\airplane_propeller.gam"
+		shadow="0"
+		windwavy="0"
+		trans="0" >
 	</model>
 
 	<model

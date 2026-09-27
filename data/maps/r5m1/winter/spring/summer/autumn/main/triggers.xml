@@ -70,7 +70,6 @@
 
 			SetVar("PostersCreated", 0)
 			SetVar("FoodItemBoxCreated", 0)
-			LOOT_COUNT = 0
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -282,7 +281,6 @@
 
 			TActivate("GlobalVar")
 			TActivate("CreateBreakebleObj")
-			TActivate("CreateWeatherSound")
 			TActivate("CreateGateBunker014")
 
 			TActivate("PlayerCarConfiguration")
@@ -4355,7 +4353,7 @@
 				local num = paths_pos[j]
 				local model = enemylist[random(getn(enemylist))]
 
-				TeamCreate("Scav_"..j, 1082, pos[num], {model}, nil, 1)
+				TeamCreate("Scav_"..j, 1083, pos[num], {model}, nil, 1)
 
 				local sv = GetEntityByName ("Scav_"..j.."_vehicle_0")
 				local pl = GetPlayerVehicle()
@@ -4364,6 +4362,7 @@
 					if 300 > len then
 						sv:Remove()
 					else
+						sv:SetBelong(1082)
 						sv:SetRotation(rotarr[random(9)])
 						sv:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(getn(smallgunlist))])
 						if model == "Fighter2CarScav" or model == "Hunter2CarScav" then
@@ -4729,11 +4728,10 @@
 		<script>
 			local barrel = {"BarrelBox_1_loc", "BarrelBox_2_loc", "BarrelBox_3_loc", "BarrelBox_5_loc", "BarrelBox_7_loc", "BarrelBox_8_loc", "BarrelBox_10_loc", "BarrelBox_14_loc", "BarrelBox_15_loc", "BarrelBox_16_loc", "BarrelBox_19_loc", "BarrelBox_21_loc", "BarrelBox_25_loc", "BarrelBox_27_loc", "BarrelBox_30_loc", "BarrelBox_32_loc", "BarrelBox_33_loc", "BarrelBox_34_loc", "BarrelBox_35_loc", "BarrelBox_36_loc", "BarrelBox_41_loc"}
 			local cache = {"BarrelBox_4_loc", "BarrelBox_6_loc", "BarrelBox_9_loc", "BarrelBox_11_loc", "BarrelBox_12_loc", "BarrelBox_13_loc", "BarrelBox_17_loc", "BarrelBox_18_loc", "BarrelBox_20_loc", "BarrelBox_22_loc", "BarrelBox_23_loc", "BarrelBox_24_loc", "BarrelBox_26_loc", "BarrelBox_28_loc", "BarrelBox_29_loc", "BarrelBox_31_loc", "BarrelBox_37_loc", "BarrelBox_38_loc", "BarrelBox_39_loc", "BarrelBox_40_loc"}
-			local co = 0 
+			 
 			for b = 1, 21 do
 				if random(2) == 1 then
 					CreateBarrelLootBox("barrel"..b, getPos(barrel[b]))
-					co = co + 1
 				end
 			end
 
@@ -4748,12 +4746,8 @@
 						BarrelPos.y = BarrelPos.y - 0.060
 						getObj("cache"..c):SetPosition(BarrelPos)
 					end
-					co = co + 1
 				end
 			end
-			LOOT_COUNT = LOOT_COUNT + co
-			con("CreateBarrelBox "..co)
-			con(LOOT_COUNT)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4790,7 +4784,7 @@
 				end
 				protChest = "christmasChest"
 			end
-			local c = 0 
+
 			for i=1,12 do
 				local Chest = CreateNewObject{prototypeName = protChest, objName = "DeadScav"..i.."Chest"}	
 				local ChestId = GetEntityByID(Chest)
@@ -4824,11 +4818,7 @@
 				if random(2) == 1 then
 					AddItemsToChestObj(ChestId, "item_vodka", "ScavItemVodka_"..random(10000))
 				end
-				c = c + 1
 			end
-			LOOT_COUNT = LOOT_COUNT + c
-			con("CreateBoxForDeadScav "..c)
-			con(LOOT_COUNT)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4847,36 +4837,29 @@
 
 			local flat_gun_box = {"GunBox_4_loc", "GunBox_5_loc", "GunBox_6_loc", "GunBox_7_loc", "GunBox_8_loc", "GunBox_13_loc", "GunBox_15_loc", "GunBox_16_loc", "GunBox_18_loc", "GunBox_19_loc", "GunBox_21_loc", "GunBox_22_loc", "GunBox_23_loc", "GunBox_29_loc", "GunBox_31_loc", "GunBox_32_loc", "GunBox_34_loc", "GunBox_35_loc", "GunBox_37_loc"}
 			local flat_gun_boxY = {0, 0, 0.456, 0, 0, -0.02, 0.157, 2.56, 0.662, 0.05, 0.852, 0.2, 0.125, 0, 0, 0, 0, 0, 1.27}
-			local c = 0 
+
 			for s=1,14 do
 				if random(2) == 1 then
 					CreateSmallGunBox("SmallGunBox"..s, getPos(small_gun_box[s]), getObj(small_gun_box[s]):GetRotation(), small_gun_boxY[s])
 					if s == 12 then getObj("ModelSmallGunBox12"):SetPropertyById(7, 0.4) end
-					c = c + 1
 				end
 			end
 
 			for b=1,5 do
 				if random(2) == 1 then
 					CreateBigGunBoxBlack("BigGunBoxBlack"..b, getPos(big_gun_box_black[b]), getObj(big_gun_box_black[b]):GetRotation(), big_gun_box_blackY[b])
-					c = c + 1
 				end
 			end
 
 			for g=1,2 do
 				CreateBigGunBoxGreen("BigGunBoxGreen"..g, getPos(big_gun_box_green[g]), getObj(big_gun_box_green[g]):GetRotation(), big_gun_box_greenY[g])
-				c = c + 1
 			end
 
 			for f=1,19 do
 				if random(2) == 1 then
 					CreateFlatGunBox("FlatGunBox"..f, getPos(flat_gun_box[f]), getObj(flat_gun_box[f]):GetRotation(), flat_gun_boxY[f])
-					c = c + 1
 				end
 			end
-			LOOT_COUNT = LOOT_COUNT + c
-			con("CreateGunLootBox "..c)
-			con(LOOT_COUNT)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4887,23 +4870,17 @@
 			local med_box = {"MedBox_2_loc", "MedBox_3_loc", "MedBox_6_loc", "MedBox_7_loc", "MedBox_11_loc", "MedBox_12_loc"}
 			local med_bag = {"MedBox_1_loc", "MedBox_4_loc", "MedBox_5_loc", "MedBox_8_loc", "MedBox_9_loc", "MedBox_10_loc", "MedBox_13_loc", "MedBox_14_loc"}
 			local podkrutka = random(0, 5)
-			local c = 0 
 			for w = 1, 6 do
 				if random(100) >= 20 then
 					CreateMedWoodBox("MedWoodBox"..w, getPos(med_box[w]), getObj(med_box[w]):GetRotation())
-					c = c + 1
 				end
 			end
 
 			for b = 1, 8 do
 				if random(100) >= 20 then
 					CreateMedBag("MedBag"..b, getPos(med_bag[b]), getObj(med_bag[b]):GetRotation(), podkrutka)
-					c = c + 1
 				end
 			end
-			LOOT_COUNT = LOOT_COUNT + c
-			con("CreateMedicalBox "..c)
-			con(LOOT_COUNT)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4918,7 +4895,7 @@
 			local flammable = GetItemsCategory("flam")
 			local tools = GetItemsCategory("tools")
 			local use = GetItemsCategory("use")
-			local co = 0 
+			 
 			for i=1,13 do
 				if random(100) >= 20 then
 					local Chest = CreateNewObject{prototypeName = "woodChest", objName = "TehnoBox"..i}	
@@ -4954,12 +4931,8 @@
 							end
 						end
 					end
-					co = co + 1
 				end
 			end
-			LOOT_COUNT = LOOT_COUNT + co
-			con("CreateTehnoBox "..co)
-			con(LOOT_COUNT)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4972,7 +4945,7 @@
 			local energo = GetItemsCategory("energo")
 			local electro = GetItemsCategory("electro")
 			local flammable = GetItemsCategory("flam")
-			local co = 0 
+			 
 			for i=1,30 do
 				if i == 10 then
 					if random(100) >= 10 then
@@ -5005,7 +4978,6 @@
 								AddItemsToChestObj(ChestId, item, "Item_"..random(10000).."_ToolBox")
 							end
 						end
-						co = co + 1
 					end
 				else
 					if random(2) == 1 then
@@ -5043,13 +5015,9 @@
 								AddItemsToChestObj(ChestId, item, "Item_"..random(10000).."_ToolBox")
 							end
 						end
-						co = co + 1
 					end
 				end
 			end
-			LOOT_COUNT = LOOT_COUNT + co
-			con("CreateToolsBox "..co)
-			con(LOOT_COUNT)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -5062,7 +5030,7 @@
 			local food2 = {"item_sausage", "item_sugar", "item_anechka", "item_bear_rations", "item_milkcan", "item_usec_rations", "item_cookies", "item_crackers", "item_ebelya", "item_gorbusha", "item_kirieshki", "item_marrow", "item_meat", "item_noodles", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_snickers", "item_tushonka", "item_tushonka_small", "item_keqpotato"}
 			local typeI = {other, food1, food2}
 			local typeW = {75, 100, 100}
-			local co = 0
+			
 			for i=1,9 do
 				if random(100) >= 30 then
 					local Chest = CreateNewObject{prototypeName = "woodChest", objName = "FoodBox"..i}	
@@ -5084,12 +5052,8 @@
 							AddItemsToChestObj(ChestId, item, "FoodItem_"..random(10000).."_FoodBox")
 						end
 					end
-					co = co + 1
 				end
 			end
-			LOOT_COUNT = LOOT_COUNT + co
-			con("CreateFoodBox "..co)
-			con(LOOT_COUNT)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -5121,9 +5085,6 @@
 				local item = GetRandomWeightedItem(t)
 				AddItemsToChestObj(ChestId, item, "Item_"..random(10000).."_SafeBox")
 			end
-			LOOT_COUNT = LOOT_COUNT + 1
-			con("CreateSafeBox 1")
-			con(LOOT_COUNT)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -5141,7 +5102,7 @@
 			local gadget3 = GetItemsCategory("gadget3")
 
 			local y = {0, 0.4, 0, 0, 0, 0, 0.125, 0, 0, 0, 0, 0, 0, 0.12, -0.015, -0.014, 1.6, 0, 0, 0.151, 0, -0.012, 0, 0, 0, 0.792, 0, 0, 0, 0, 0, 0, 0, 0.14, 0.75, 0, -0.021, -0.035, 0, 0, 0, 0, 0, 0}
-			local co = 0
+			
 			for i=1,44 do
 				if random(100) >= 35 then
 					CreateNewDummyObject("wooden_box", "ModelWoodenBox"..i, -1, -1, getPos("WoodenBox_"..i.."_loc"), getObj("WoodenBox_"..i.."_loc"):GetRotation(), 0)
@@ -5185,13 +5146,9 @@
 							local item = GetRandomWeightedItem(t)
 							AddItemsToChestObj(ChestId, item, "Item_"..random(10000).."_WoodenBox")
 						end
-					end
-					co = co + 1
+					end	
 				end
 			end
-			LOOT_COUNT = LOOT_COUNT + co
-			con("CreateWoodenBox "..co)
-			con(LOOT_COUNT)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -5218,7 +5175,7 @@
 			local gun = {"hornet01", "specter01", "pkt01", "storm01", "pkt01", "kord01", "maxim01", "fagot01", "someTurboAccelerationPusher"}
 			
 			local y = {0, 1.917, 0, 0.385, 0, 0, 0, 0, 0, -0.046, 0.21, -0.046, 0.044, 0, 1.205, -0.055, 0.016, 0.02, 0.02, 0.02, 0, 0, -0.096, 0.01, 0.01, 0, -0.202, 0.05, 0.065, 0.206, 0.036, 0.775, 0.01, 0, 0, 0, 0.099, 2.48, 4.933, 0.01, 0.01}
-			local co = 0
+			
 			for i=1,41 do
 				if random(2) == 1 then
 					CreateNewDummyObject("sports_bag", "ModelSportsBag"..i, -1, -1, getPos("BagBox_"..i.."_loc"), getObj("BagBox_"..i.."_loc"):GetRotation(), 0)
@@ -5266,13 +5223,9 @@
 								AddItemsToChestObj(ChestId, GetRandomWeightedItem(t), "Item_"..random(10000).."_SportsBox")
 							end
 						end
-					end
-					co = co + 1
+					end		
 				end
 			end
-			LOOT_COUNT = LOOT_COUNT + co
-			con("CreateSportsBagBox "..co)
-			con(LOOT_COUNT)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -5281,7 +5234,6 @@
 		<event timeout="1.5" eventid="GE_TIME_PERIOD" />
 		<script>
 			local ammo = GetItemsCategory("ammo")
-			local co = 0
 			for i=1,4 do
 				if random(2) == 1 then
 					local Chest = CreateNewObject{prototypeName = "ammoChest", objName = "AmmoBox"..i}	
@@ -5300,12 +5252,8 @@
 
 					AddItemsToChestObj(ChestId, "item_opacity", "OpacityItem_AmmoBox"..i)
 					AddItemsToChestObj(ChestId, GetRandomWeightedItem(ammo), "AmmoItem_"..random(10000).."_AmmoBox")
-					co = co + 1
 				end
 			end
-			LOOT_COUNT = LOOT_COUNT + co
-			con("CreateAmmoBox "..co)
-			con(LOOT_COUNT)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -5327,10 +5275,7 @@
 
 			if GetVar("PostersCreated").AsInt ~= 0 then
 				TActivate("PosterDel")
-			end
-			LOOT_COUNT = LOOT_COUNT + GetVar("PostersCreated").AsInt
-			con("CreatePosters "..GetVar("PostersCreated").AsInt)
-			con(LOOT_COUNT)
+			end		
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -5358,49 +5303,38 @@
 			local typeW = {100, 50, 30, 60, 70, 30}
 			local c = exrandom(11)
 			local r = shuffled_range_take(c, 1, 11)
-			local co = 0
+			
 			for i=1,c do
 				local category = weighted_random(typeI, typeW)
 				local skin = GetSkinForItemBoxCategory(category)
-				CreateBoxForItem("EnergoItemBoxPlane"..i, getPos("EnergoItems_Plane_"..r[i].."_loc"), GetRandomWeightedItem(GetItemsCategory(category)), skin)
-				co = co + 1
+				CreateBoxForItem("EnergoItemBoxPlane"..i, getPos("EnergoItems_Plane_"..r[i].."_loc"), GetRandomWeightedItem(GetItemsCategory(category)), skin)			
 			end
 
 			if random(100) >= 70 then
 				local category = weighted_random(typeI, typeW)
 				local skin = GetSkinForItemBoxCategory(category)
-				CreateBoxForItem("EnergoItemBox1", getPos("EnergoItems_1_loc"), GetRandomWeightedItem(GetItemsCategory(category)), skin)
-				co = co + 1
+				CreateBoxForItem("EnergoItemBox1", getPos("EnergoItems_1_loc"), GetRandomWeightedItem(GetItemsCategory(category)), skin)			
 			end
-			LOOT_COUNT = LOOT_COUNT + co
-			con("CreateEnergoItems "..co)
-			con(LOOT_COUNT)
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
 	<trigger Name="CreateElectroItems" active="0">
 		<event timeout="2.25" eventid="GE_TIME_PERIOD" />
-		<script>
-			local co = 0
+		<script>		
 			for i=1,14 do
 				if i == 2 then
 					if random(2) == 1 then
-						CreateBoxForItem("ElectroItemBox"..i, getPos("ElectronicsItems_"..i.."_loc"), GetRandomWeightedItem(GetItemsCategory("electro"), "item_gpu", random(0, 30)), 1)
-						co = co + 1
+						CreateBoxForItem("ElectroItemBox"..i, getPos("ElectronicsItems_"..i.."_loc"), GetRandomWeightedItem(GetItemsCategory("electro"), "item_gpu", random(0, 30)), 1)	
 					end
 				else
 					if random(100) >= 70 then
 						local rot = 1
 						if i == 10 or i == 12 then rot = 0 end
-						CreateBoxForItem("ElectroItemBox"..i, getPos("ElectronicsItems_"..i.."_loc"), GetRandomWeightedItem(GetItemsCategory("electro")), 1, rot)
-						co = co + 1
+						CreateBoxForItem("ElectroItemBox"..i, getPos("ElectronicsItems_"..i.."_loc"), GetRandomWeightedItem(GetItemsCategory("electro")), 1, rot)						
 					end
 				end
-			end
-			LOOT_COUNT = LOOT_COUNT + co
-			con("CreateElectroItems "..co)
-			con(LOOT_COUNT)
+			end			
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -5413,7 +5347,7 @@
 			for p=1,c do
 				CreateBoxForItem("ValuableItemBoxPlane"..p, getPos("ValuableItems_Plane_"..r[p].."_loc"), GetRandomWeightedItem(GetItemsCategory("valuables")), 7)
 			end
-			local co = 0
+			
 			local typeI_T = {"flam", "food", "household", "valuables", "info"}
 			local typeW_T = {30, 70, 60, 130, 80}
 			for t=1,11 do
@@ -5421,7 +5355,6 @@
 					local category = weighted_random(typeI_T, typeW_T)
 					local skin = GetSkinForItemBoxCategory(category)
 					CreateBoxForItem("ValuableItemBoxTent"..t, getPos("ValuableItems_Tent_"..t.."_loc"), GetRandomWeightedItem(GetItemsCategory(category), "item_flashdrive", random(0, 20)), skin)
-					co = co + 1
 				end
 			end
 
@@ -5431,7 +5364,6 @@
 					local category = typeI_S[random(6)]
 					local skin = GetSkinForItemBoxCategory(category)
 					CreateBoxForItem("ValuableItemBoxSawmill"..si, getPos("ValuableItems_Sawmill_"..si.."_loc"), GetRandomWeightedItem(GetItemsCategory(category)), skin)
-					co = co + 1
 				end
 			end
 
@@ -5440,7 +5372,6 @@
 					local category = typeI_S[random(6)]
 					local skin = GetSkinForItemBoxCategory(category)
 					CreateBoxForItem("ValuableBoxSawmill"..sb, getPos("ValuableBox_Sawmill_"..sb.."_loc"), GetRandomWeightedItem(GetItemsCategory(category)), skin)
-					co = co + 1
 				end
 			end
 
@@ -5448,13 +5379,11 @@
 			for vi=1,10 do
 				if vi == 9 then
 					if random(2) == 1 then
-						CreateBoxForItem("ValuableItemBox"..vi, getPos("ValuableItems_"..vi.."_loc"), GetRandomWeightedItem(typeI_V[random(2)], "item_rozvidka", random(10, 30)), 7)
-						co = co + 1
+						CreateBoxForItem("ValuableItemBox"..vi, getPos("ValuableItems_"..vi.."_loc"), GetRandomWeightedItem(typeI_V[random(2)], "item_rozvidka", random(10, 30)), 7)					
 					end
 				else
 					if random(3) == 1 then
 						CreateBoxForItem("ValuableItemBox"..vi, getPos("ValuableItems_"..vi.."_loc"), GetRandomWeightedItem(typeI_V[random(2)]), 7)
-						co = co + 1
 					end
 				end
 			end
@@ -5467,29 +5396,20 @@
 						pos.y = pos.y + 10
 						getObj("ValuableBox"..vb):SetPosition(pos)
 					end
-					co = co + 1
 				end
 			end
-			LOOT_COUNT = LOOT_COUNT + co
-			con("CreateValuableItems "..co)
-			con(LOOT_COUNT)
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
 	<trigger Name="CreateFlammableItems" active="0">
 		<event timeout="3" eventid="GE_TIME_PERIOD" />
-		<script>
-			local co = 0 
+		<script> 
 			for i=1,13 do
 				if random(100) >= 75 then
 					CreateBoxForItem("FlammableItemBox"..i, getPos("FlammableItems_"..i.."_loc"), GetRandomWeightedItem(GetItemsCategory("flam")), 5)
-					co = co + 1
 				end
 			end
-			LOOT_COUNT = LOOT_COUNT + co
-			con("CreateFlammableItems "..co)
-			con(LOOT_COUNT)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -5497,24 +5417,17 @@
 	<trigger Name="CreateMedItems" active="0">
 		<event timeout="2.75" eventid="GE_TIME_PERIOD" />
 		<script>
-			local co = 0
 			for i=1,13 do
 				if random(100) >= 70 then
 					if i == 3 or i == 5 or i == 10 then
 						CreateBoxForItem("MedItemBox"..i, getPos("MedItems_"..i.."_loc"), GetRandomWeightedItem(GetItemsCategory("med"), "item_ledx", random(0, 20)), 4)
-						co = co + 1
 					elseif i == 8 or i == 9 or i == 13 then
-						CreateBoxForItem("MedItemBox"..i, getPos("MedItems_"..i.."_loc"), GetRandomWeightedItem(GetItemsCategory("med"), "item_ledx", random(10, 40)), 4)
-						co = co + 1
+						CreateBoxForItem("MedItemBox"..i, getPos("MedItems_"..i.."_loc"), GetRandomWeightedItem(GetItemsCategory("med"), "item_ledx", random(10, 40)), 4)		
 					else
 						CreateBoxForItem("MedItemBox"..i, getPos("MedItems_"..i.."_loc"), GetRandomWeightedItem(GetItemsCategory("med")), 4)
-						co = co + 1
 					end
 				end
 			end
-			LOOT_COUNT = LOOT_COUNT + co
-			con("CreateMedItems "..co)
-			con(LOOT_COUNT)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -5527,7 +5440,7 @@
 
 			local c = exrandom(6)
 			local r = shuffled_range_take(c, 1, 6)
-			local co = 0
+			
 			for i=1,c do
 				local category = weighted_random(typeI, typeW)
 				local skin = GetSkinForItemBoxCategory(category)
@@ -5542,11 +5455,7 @@
 				else
 					CreateBoxForItem("SectarianCircleItemBox"..i, getPos("SectarianCircle_"..r[i].."_loc"), GetRandomWeightedItem(GetItemsCategory(category)), skin)
 				end
-				co = co + 1
 			end
-			LOOT_COUNT = LOOT_COUNT + co
-			con("CreateItemsOnSectarianCircle "..co)
-			con(LOOT_COUNT)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -5554,8 +5463,8 @@
 	<trigger Name="CreateAnanagaItems" active="0">
 		<event timeout="3" eventid="GE_TIME_PERIOD" />
 		<script>
-			local items = {"item_ananaga", "item_vodka", "item_sausage", "item_water_bottle", "item_beer", "item_apocola", "item_energycan", "item_whiskey", "item_snickers", "item_gorbusha", "item_marrow", "item_milkcan", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_tushonka_small", "item_tushonka", "item_water_metal_bottle", "item_sugar", "item_anechka", "item_kvas", "item_ebelya", "item_kirieshki", "item_keqpotato"}
-			local scale = {0.1, 0.1, 0.4, 0.35, 0.125, 0.125, 0.1, 0.3, 0.15, 0.35, 0.35, 0.35, 0.35, 0.35, 0.35, 0.35, 0.35, 0.35, 0.2, 0.15, 0.125, 0.15, 0.2, 0.22, 0.25}
+			local items = {"item_ananaga", "item_vodka", "item_sausage", "item_water_bottle", "item_beer", "item_apocola", "item_energycan", "item_whiskey", "item_snickers", "item_gorbusha", "item_marrow", "item_milkcan", "item_pashtet", "item_peas", "item_saira", "item_seld", "item_tushonka_small", "item_tushonka", "item_water_metal_bottle", "item_sugar", "item_anechka", "item_kvas", "item_ebelya", "item_kirieshki", "item_keqpotato", "item_juice_orange", "item_juice_apple"}
+			local scale = {0.1, 0.1, 0.3, 0.25, 0.1, 0.125, 0.125, 0.15, 0.1, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.15, 0.125, 0.125, 0.15, 0.2, 0.22, 0.25, 0.17, 0.15}
 			local y = {0.298, 0.459, 0, 0, 1.786, 0.01, 2.321, 0.74, 0.959, 0.018, 1.938, 1.846, 2.075, 2.373, 1.015, 1.675, 2.012, 2.11, 2.819, 2.014, 2.425, 2.807, 2.01, 0.326, 0.91, 1.445, 1.972, 1.766, 9.645, 1.56, 0, 1.15, 0, 1.729, 1.602, 2.468, 1.99, 2.31, 0, -0.175, 1.997, 1.621, 1.405, 1.334, 2.798, 1.98, 1.980, 1.204, 1.424, 0.282, 0, 0, -0.024}
 			for i=1,53 do
 				if random(100) == 1 then
@@ -5572,7 +5481,7 @@
 								end
 							end 
 
-							CreateItemModelBox("FoodItemBox"..i, getPos("Ananaga_"..i.."_loc"), getObj("Ananaga_"..i.."_loc"):GetRotation(), "item_keqpotato", 0.25, y[i])
+							CreateItemModelBox("FoodItemBox"..i, getPos("Ananaga_"..i.."_loc"), getObj("Ananaga_"..i.."_loc"):GetRotation(), item, size, y[i])
 							SetVar("FoodItemBoxCreated", GetVar("FoodItemBoxCreated").AsInt + 1)
 							getObj("AnanagaItemModelDel"):AddEvent("GE_OBJECT_DIE", "FoodItemBox"..i)
 						end
@@ -5583,9 +5492,6 @@
 			if GetVar("FoodItemBoxCreated").AsInt ~= 0 then
 				TActivate("AnanagaItemModelDel")
 			end
-			LOOT_COUNT = LOOT_COUNT + GetVar("FoodItemBoxCreated").AsInt
-			con("CreateAnanagaItems "..GetVar("FoodItemBoxCreated").AsInt)
-			con(LOOT_COUNT)
 			trigger:Deactivate()
 		</script>
 	</trigger>

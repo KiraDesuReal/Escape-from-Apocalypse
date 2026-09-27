@@ -221,17 +221,9 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 
 		<Prototype
 			Class		= "Chest"
-			Name		= "airChest1"
-			ModelFile	= "airbox1"
-			Mass		= "300"
-			
-			IntersectionRadius	= "1.7" />
-
-		<Prototype
-			Class		= "Chest"
-			Name		= "airChest2"
-			ModelFile	= "airbox2"
-			Mass		= "300"
+			Name		= "airChest"
+			ModelFile	= "airbox_flaer"
+			Mass		= "500"
 			
 			IntersectionRadius	= "1.7" />
 

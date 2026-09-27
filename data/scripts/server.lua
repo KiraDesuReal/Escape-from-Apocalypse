@@ -508,54 +508,11 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 		 if vehicle then
 			vehicle:SetRandomSkin()
 		 	if IsWares==1 then
-
-				local ItemsLifeUse = {"scrap_metal_use", "machinery_use", "electronics_use", "machinery_use", "scrap_metal_use"}
+				local ItemsLifeUse = {"scrap_metal_use", "machinery_use", "electronics_use"}
 				local ItemsOilUse = {"oil_use", "fuel_nil_use", "fuel_full_use"}
-
-				local items1 = {"scrap_metal", "oil", "bottle", "fuel", "machinery", "tobacco", "book", "electronics", "doski", "details", "shkatulka",
-								"item_green_fier",
-								"item_bolts", "item_hose", "item_insulation", "item_kek", "item_nails", "item_nuts", "item_parts", "item_plex", "item_poheram", "item_scotch", "item_screws", "item_tube",
-								"item_cable", "item_cooler", "item_cpu", "item_dvd", "item_electronics_components", "item_energo_lump", "item_gazan", "item_geiger", "item_hdd", "item_helix", "item_kondesators", "item_lump", "item_magnet", "item_phone", "item_plate", "item_ram", "item_rele", "item_svech", "item_tplug", "item_ultra_lump", "item_usb", "item_wires",
-								"item_accum", "item_battery_aa", "item_battery_d", "item_powerbank",
-								"item_hunter_spich", "item_lighter", "item_spich", "item_survl", "item_trotile", "item_wd40_100", "item_wd40_400", "item_zibbo",
-								"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_tb", "item_toothpaste",
-								"item_disk", "item_flashdrive", "item_manual", 
-								"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_medical_tools", "item_naci", "item_suringe", "item_analgin", "item_med", "item_ai2", "item_vazelin", "item_carmed", "item_salewa", "item_morfie", "item_ifak", "item_zvezda", 
-								"item_vodka", "item_zapal", "item_carsen", "item_duck",
-								"item_metalscissors", "item_nippers", "item_pliers", "item_pliers_round", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_wrench"}
-				
-				local items2 = {"item_monolit", "item_leatherman", "item_toolset", "item_kaktus", "item_fullmaster", "item_awl", "item_afak", "item_military_tube", "someTurboAccelerationPusher", "ammo_ballon_turbo", "item_diary_s", "item_bp", "item_grizzly", "item_gyrotachometer", "item_lcd", "item_drill", "item_filter", "item_sewing_kit", "item_gunpowder", "item_pena", "item_green_battery", "item_diary", "item_dry", "item_sugar", "item_military_cable", "item_military_plate", "item_ex", "item_thermometer", "item_propan", "item_handrill", "item_teapon", "item_emre_kara", "item_chizuru", "item_waterfilter", "item_keqing", "item_datchik", "item_metallodetector", "item_sausage", "item_silver_skull", "item_kubok_kikiki", "item_ssd", "item_key_gate_vaterland", "item_key_gate_thetown", "item_key_gate_basefelix", "item_key_gate_bunker014", "item_disk_exmachina", "item_cyclon", "item_vaze", "item_buldex", "item_cat", "item_prisadka", "item_sas", "item_rolex", "item_chain_gold", "item_car_battery", "item_pipe_wrench", "item_engine", "item_rfid", "item_controller", "item_fitanyashka", "item_paracord", "item_chiken", "item_termit", "item_ratchet_wrench", "item_skullring", "item_oftalmaskop", "item_vitalik", "item_iridiym", "item_tetris", "item_vpx", "item_virtex", "item_airfilter", "item_ananaga", "item_lion", "item_converter", "item_rozvidka", "item_gpu", "item_bitcoin", "item_ledx", "item_tank_battery"}
-				
-				local gadget1 = {"additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns"}
-				local gadget2 = {"cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "additional_fuel_tank2", "additional_torque2", "additional_durability2"}
-				local gadget3 = {"cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
-				local gadget_rand = {gadget1[random(getn(gadget1))], gadget2[random(getn(gadget2))], gadget3[random(getn(gadget3))]}
-
-				local exlusive = {}
-				local mapName = GET_GLOBAL_OBJECT( "CurrentLevel" ):GetLevelName()
-				if mapName == "r1m1" then
-					exlusive = {"potato", "firewood", "item_pants40grn", "item_key_gate_thetown", "item_key_gate_basefelix", "item_key_gate_vaterland"}
-					local items_array1 = getn(items1)
-					for i=1,getn(exlusive) do
-						items1[items_array1 + i] = exlusive[i]
-					end
-				elseif mapName == "r5m1" then
-					exlusive = {"potato", "firewood", "item_woodclock", "item_key_gate_bunker014"}
-					local items_array1 = getn(items1)
-					for i=1,getn(exlusive) do
-						items1[items_array1 + i] = exlusive[i]
-					end
-				end
-
-				if EVENT == "NEW_YEAR" then 
-					local new_items = {"item_christmas_ball_blue", "item_christmas_ball_red", "item_christmas_ball_white", "item_christmas_star"}
-					for i = 1, 4 do
-						table.insert(items1, new_items[i])
-					end
-				end
-
-				local rand = random(1000)
-				if 5 >= rand then
+				local gadget = {GetItemsCategory("gadget1"), GetItemsCategory("gadget2"), GetItemsCategory("gadget3")}
+				local items = {"key", "build", "ex", "electro", "energo", "flam", "food", "household", "info", "med", "other", "tools", "valuables"}
+				if 5 >= random(1000) then
 					vehicle:AddItemsToRepository("item_pavlikrpg", 1)
 				else
 					if belong == 1088 then
@@ -564,28 +521,41 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 						vehicle:AddItemsToRepository("item_jeton_usec", 1)
 					end
 					
-					if belong == 1088 or belong == 1089 then
+					if belong == 1088 or belong == 1089 or belong == 1083 then
 						for life=1,random(2) do
-							vehicle:AddItemsToRepository(ItemsLifeUse[random(getn(ItemsLifeUse))], random(0,1))
+							vehicle:AddItemsToRepository(ItemsLifeUse[random(3)], random(0,1))
+						end
+						vehicle:AddItemsToRepository(ItemsOilUse[random(3)], random(0,1))
+
+						local countl = random(8)
+						if belong == 1083 then countl = random(5) end 
+						
+						for ware1=1,countl do
+							local category = GetItemsCategory(items[random(getn(items))])
+							local weights = {}
+							for i = 1, getn(category) do
+								local w = GetItemWeight(category[i])
+								if 30 >= w then w = w + random(0, 20) end
+								table.insert(weights, w)
+							end
+							vehicle:AddItemsToRepository(weighted_random(category, weights), 1)
 						end
 
-						vehicle:AddItemsToRepository(ItemsOilUse[random(getn(ItemsOilUse))], random(0,1))
-
-						for ware1=1,random(4) do
-							vehicle:AddItemsToRepository(items1[random(getn(items1))], 1)
-						end
-
-						for ware2=1,random(2) do
-							vehicle:AddItemsToRepository(items2[exrandom(getn(items2))], 1)
-						end
-
-						vehicle:AddItemsToRepository(gadget_rand[exrandom(getn(gadget_rand))], random(0,1))
+						local g = gadget[random(3)]
+						vehicle:AddItemsToRepository(g[random(getn(g))], random(0,1))
 					else
-						vehicle:AddItemsToRepository(ItemsLifeUse[exrandom(getn(ItemsLifeUse))], random(0,1))
-						vehicle:AddItemsToRepository(ItemsOilUse[exrandom(getn(ItemsOilUse))], random(0,1))
-		
-						for ware=1,random(2) do
-							vehicle:AddItemsToRepository(items1[random(getn(items1))], 1)
+						vehicle:AddItemsToRepository(GetRandomWeightedItem(ItemsLifeUse), random(0,1))
+						vehicle:AddItemsToRepository(GetRandomWeightedItem(ItemsOilUse), random(0,1))
+						for ware=1,random(0,3) do
+							local w = {10, 80, 100, 30, 20, 80, 100, 100, 5, 20, 30, 70, 30}
+							local category = weighted_random(items, w)
+							vehicle:AddItemsToRepository(GetRandomWeightedItem(GetItemsCategory(category)), 1)
+						end
+
+						if random(4) == 1 then
+							local gw = {100, 40, 20}
+							local g = weighted_random(gadget, gw)
+							vehicle:AddItemsToRepository(g[random(getn(g))], 1)
 						end
 					end
 				end

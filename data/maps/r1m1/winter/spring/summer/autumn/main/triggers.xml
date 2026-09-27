@@ -5327,9 +5327,10 @@
 			for j=1,scav_count do
 				local num = paths_pos[j]
 				local model = enemylist[random(scav)]
-				TeamCreate("Scav_"..j, 1082, pos[num], {model}, nil, 1)
+				TeamCreate("Scav_"..j, 1083, pos[num], {model}, nil, 1)
 				local sv = GetEntityByName ("Scav_"..j.."_vehicle_0")
 				if sv then
+					sv:SetBelong(1082)
 					sv:SetNewPart("CABIN_SMALL_GUN",smallgunlist[exrandom(smallgunr)])
 					if model == "Fighter2CarScav" or model == "Hunter2CarScav" then
 						sv:SetNewPart("CABIN_BIG_GUN_1",biggunlist[exrandom(biggunr)])

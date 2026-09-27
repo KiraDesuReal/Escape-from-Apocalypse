@@ -144,6 +144,7 @@ data/if/ico_hd/inventorydlg/goods/new/building/item_nuts2.dds
 !data/if/ico_hd/inventorydlg/goods/new/info/*.dds
 !data/if/ico_hd/inventorydlg/goods/new/medical/*.dds
 !options/english_localization/data/if/ico_hd/inventorydlg/goods/new/other/*.dds
+!options/english_localization/data/if/ico_hd/inventorydlg/goods/new/food/*.dds
 !data/if/ico_hd/inventorydlg/goods/new/other/*.dds
 !data/if/ico_hd/inventorydlg/goods/new/tools/*.dds
 !data/if/ico_hd/inventorydlg/goods/new/valuables/*.dds
@@ -151,10 +152,11 @@ data/if/ico_hd/inventorydlg/goods/new/building/item_nuts2.dds
 !data/if/ico_hd/inventorydlg/goods/new/quest_items/*.dds
 !data/if/ico_hd/inventorydlg/goods/new/special/*.dds
 data/if/ico_hd/inventorydlg/goods/new/special/item_ms20001.dds
-!options/english_localization/data/models/goods/info/*.dds
+!options/english_localization/data/models/goods/info/disks/*.dds
 !data/models/goods/info/*.dds
 !data/models/goods/info/*.gam
-!options/english_localization/data/models/goods/other/*.dds
+!options/english_localization/data/models/goods/other/monolit/*.dds
+!options/english_localization/data/models/goods/food/orange_juice/*.dds
 !data/models/goods/other/christmas_star/*.gam
 !data/models/goods/other/christmas_star/*.dds
 !data/models/goods/other/christmas_balls/*.gam
@@ -234,6 +236,8 @@ data/if/ico_hd/inventorydlg/goods/new/special/item_ms20001.dds
 !data/models/objects/box/ammo_box/*.gam
 !data/models/objects/box/christmas_box/*.gam
 !data/models/objects/box/christmas_box/*.dds
+!data/models/objects/box/airbox/*.gam
+!data/models/objects/box/airbox/*.dds
 !data/effects/lights/blink.psys
 !data/effects/lights/blink1.psys
 !data/models/vehicles/fighter/cab03/*.dds
@@ -809,6 +813,10 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/models/goods/food/kirieshki/*.dds
 !data/models/goods/food/keqpotato/*.gam
 !data/models/goods/food/keqpotato/*.dds
+!data/models/goods/food/orange_juice/*.gam
+!data/models/goods/food/orange_juice/*.dds
+!data/models/goods/food/apple_juice/*.gam
+!data/models/goods/food/apple_juice/*.dds
 !data/models/goods/ammo/ballon/*.gam
 !data/models/goods/ammo/ballon/*.dds
 !data/models/goods/ammo/box/*.gam
@@ -885,6 +893,8 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/models/lights/christmas_tree_light.xml
 !data/models/lights/light_lamppost.xml
 !data/models/lights/light_lamppost2.xml
+!data/models/monsters/airplane/*.dds
+!data/models/monsters/airplane/*.gam
 !data/if/ico_hd/TownDlg/bar_char_bkg.dds
 !data/if/ico_hd/SmartCursorWnd/missile_lock.dds
 !assets/*.png

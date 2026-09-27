@@ -69,6 +69,7 @@
 			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("IfRaidCountForQuest") end
 			TActivate("ShowExits_Activate")
 			TActivate("trShowExits")
+			TActivate("CreateWeatherSound")
 
 			AllowSave(false)
 

@@ -436,6 +436,14 @@
 			file="data\models\AnimModels.xml"/>
 
 		<Item 
+			id="juice_orange" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="juice_apple" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
 			id="disk" 
 			file="data\models\AnimModels.xml"/>
 
@@ -2329,11 +2337,15 @@
 			file="data\models\AnimModels.xml" />
 
 		<Item
-			id="airbox1"
+			id="airbox"
 			file="data\models\AnimModels.xml" />
 
 		<Item
-			id="airbox2"
+			id="airbox_parachute"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="airbox_flaer"
 			file="data\models\AnimModels.xml" />
 
 		<Item
@@ -2978,6 +2990,18 @@
 
 		<Item
 			id="quest_box_videocard"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="airplane1"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="airplane2"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="airplane_propeller"
 			file="data\models\AnimModels.xml" />
 	</AnimatedModelsServer>
 

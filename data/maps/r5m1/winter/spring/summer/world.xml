@@ -164354,11 +164354,6 @@
 			name="Object1"
 			class="SgPointLightSourceNode"
 			id="LS_LIGHT_CAMPFIRE" />
-
-		<Node
-			name="Object2"
-			class="SgPointLightSourceNode"
-			id="LS_LIGHT_CAMPFIRE" />
 	</Node>
 
 	<Node
@@ -164660,7 +164655,8 @@
 	<Node
 		name="Object322570040"
 		class="SgAnimatedModelNode"
-		org="7388.034 0.000 3020.922"
+		org="7388.034 -0.026 3020.922"
+		rot="0.0000 0.0000 -0.0087 1.0000"
 		orgRel="1"
 		scale="1.600 1.600 1.600"
 		id="logs_wood_2"
@@ -164669,7 +164665,8 @@
 	<Node
 		name="Object322570041"
 		class="SgAnimatedModelNode"
-		org="7387.812 0.000 3011.357"
+		org="7387.812 -0.026 3011.357"
+		rot="0.0000 0.0000 -0.0109 0.9999"
 		orgRel="1"
 		scale="1.600 1.600 1.600"
 		id="logs_wood_2"

@@ -444,6 +444,14 @@
 			file="data\models\AnimModels.xml"/>
 
 		<Item 
+			id="cookies" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="bear_rations" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
 			id="disk" 
 			file="data\models\AnimModels.xml"/>
 
@@ -2999,10 +3007,6 @@
 		<Item
 			id="airplane2"
 			file="data\models\AnimModels.xml" />
-
-		<Item
-			id="airplane_propeller"
-			file="data\models\AnimModels.xml" />
 	</AnimatedModelsServer>
 
 	<StaticModelsServer />
@@ -3046,6 +3050,11 @@
 		<Item id="S_BARDWIRE1" />
 		<Item id="S_BARDWIRE2" />
 		<Item id="S_BARDWIRE3" />
+
+		<Item id="S_AIRPLANE" />
+
+		<Item id="S_AIRDROP_PARACHUTE" />
+		<Item id="S_AIRDROP_RELEASE" />
 
 		<Item id="S_CRASH_METAL01" />
 		<Item id="S_CRASH_METAL02" />
@@ -3230,6 +3239,8 @@
 		<Item id="S_SNOW" />
 		<Item id="S_R5M1_SUMMER_1" />
 		<Item id="S_R5M1_SUMMER_2" />
+		<Item id="S_R5M1_SUMMER_3" />
+		<Item id="S_R5M1_SUMMER_4" />
 		<Item id="S_WIND_LIGHT_1" />
 		<Item id="S_WIND_LIGHT_2" />
 		<Item id="S_NIGHT_AMBIENT" />

@@ -356,6 +356,25 @@
 		file="data\sounds\other\bardwire\bardwire3.ogg"
 	 	group="SOUND2D"/>
 
+<!-- AirPlane --> 
+
+	<model
+		id="S_AIRPLANE"
+		file="data\sounds\boss\airplane_fly.wav"
+	 	group="AIRPLANE"/>
+
+<!-- AirDrop --> 
+
+	<model
+		id="S_AIRDROP_PARACHUTE"
+		file="data\sounds\other\airdrop\airdrop_parachute.wav"
+	 	group="COLOR_FIER"/>
+
+	<model
+		id="S_AIRDROP_RELEASE"
+		file="data\sounds\other\airdrop\airdrop_release.wav"
+	 	group="COLOR_FIER"/>
+
 <!-- Crash --> 
 
 	<model
@@ -1641,6 +1660,18 @@
 	<model
 		id="S_R5M1_SUMMER_2"
 		file="data\sounds\weather\r5m1_summer_2.ogg"
+		group="WEATHER"
+		/>
+
+	<model
+		id="S_R5M1_SUMMER_3"
+		file="data\sounds\weather\r5m1_summer_3.ogg"
+		group="WEATHER"
+		/>
+
+	<model
+		id="S_R5M1_SUMMER_4"
+		file="data\sounds\weather\r5m1_summer_4.ogg"
 		group="WEATHER"
 		/>
 

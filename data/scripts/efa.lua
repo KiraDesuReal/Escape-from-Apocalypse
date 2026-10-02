@@ -1434,6 +1434,76 @@ function CreateMedBag(name, pos, rot, podkrutka)
 	end
 end
 
+-- Создать ящик аирдропа
+function CreateAirDropBox(name, pos, rot, airtype)
+	local Chest = CreateNewObject{prototypeName = "airChest", objName = name}	
+	local ChestId = GetEntityByID(Chest)
+	ChestId:SetPosition(pos)
+	ChestId:SetRotation(rot)
+	ChestId:SetSkin(airtype)
+	ChestId:SetPropertyById(7, 1.5)
+
+	AddItemsToChestObj(ChestId, "item_opacity", "OpacityItem_"..name)
+
+	if airtype == 0 then
+		for i = 1, random(15, 30) do
+			local c = {"med", "use", "build", "energo", "electro", "household", "flam", "valuables", "other", "tools", "ex", "food", "ammo", "gun", "gadget"..random(3)}
+			local category_r = random(getn(c))
+			if category_r >= 14 then
+				local category = GetItemsCategory(c[category_r])
+				AddItemsToChestObj(ChestId, category[random(getn(category))], "Item_"..random(10000).."_"..name)
+			else
+				local category = GetItemsCategory(c[category_r])
+				if category_r == 2 then category = DeleteTableObj(category, "fuel_nil_use") end
+				if category_r == 9 then 
+					for ii = 1, getn(category) do
+						if strsub(category[ii], 1, 11) == "item_poster" then 
+							category = DeleteTableObj(category, category[ii])
+						end
+					end
+				end
+				AddItemsToChestObj(ChestId, GetRandomWeightedItem(category), "Item_"..random(10000).."_"..name)
+			end
+		end
+	elseif airtype == 1 then
+		for i = 1, random(10, 20) do
+			local c = {"use", "ammo", "gun", "gadget"..random(3)}
+			local category_r = random(getn(c))
+			if category_r == 3 then
+				local category = GetItemsCategory(c[category_r])
+				AddGunAfficsToChestObj(ChestId, category[random(getn(category))], "GunItem_"..random(10000).."_"..name)
+			else
+				local category = GetItemsCategory(c[category_r])
+				if category_r == 1 then category = DeleteTableObj(category, "fuel_nil_use") end
+				AddItemsToChestObj(ChestId, category[random(getn(category))], "Item_"..random(10000).."_"..name)
+			end
+		end
+	elseif airtype == 2 then
+		for i = 1, random(10, 30) do
+			local c = {"use", "med", "food"}
+			local category_r = random(getn(c))
+			local category = GetItemsCategory(c[category_r])
+			if category_r == 1 then category = DeleteTableObj(category, "fuel_nil_use") end
+			AddItemsToChestObj(ChestId, GetRandomWeightedItem(category), "Item_"..random(10000).."_"..name)
+		end
+	elseif airtype == 3 then
+		for i = 1, random(10, 30) do
+			local c = {"use", "build", "energo", "electro", "household", "flam", "valuables", "med", "other", "tools", "ex"}
+			local category_r = random(getn(c))
+			local category = GetItemsCategory(c[category_r])
+			if category_r == 1 then category = DeleteTableObj(category, "fuel_nil_use") end
+			if category_r == 9 then 
+				for ii = 1, getn(category) do
+					if strsub(category[ii], 1, 11) == "item_poster" then 
+						category = DeleteTableObj(category, category[ii])
+					end
+				end
+			end
+			AddItemsToChestObj(ChestId, GetRandomWeightedItem(category), "Item_"..random(10000).."_"..name)
+		end
+	end
+end
+
 -- Создать mainChest и добавить в него 1 предмет
 function CreateBoxForItem(name, pos, item, skin, rot)
 	if rot == nil then rot = 1 end

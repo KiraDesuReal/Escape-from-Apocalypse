@@ -82,6 +82,14 @@
 		shadowVolume="1"
 		windwavy="0"
 		file="data\models\objects\box\airbox\airdrop_box_parachute.gam">
+		<action
+			name="STAND1">
+			<lp
+				id="LP_FLAER01"
+				effect_id="ET_S_AIRDROP_PARACHUTE"
+				restartOnAnimationChange="1"
+				ImmediateRemove="1" />
+		</action>
 	</model>
 
 	<model
@@ -2258,6 +2266,20 @@
 		shadowVolume="0"
 		windwavy="0"
 		file="data\models\Goods\food\apple_juice\apple_juice.gam" />
+
+	<model
+		id="cookies"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\food\cookies\cookies.gam" />
+
+	<model
+		id="bear_rations"
+		shadow="1"
+		shadowVolume="0"
+		windwavy="0"
+		file="data\models\Goods\food\bear_ration\bear_ration.gam" />
 
 <!-- info items -->
 	<model
@@ -17020,7 +17042,7 @@
 
 	<model
 		id="airplane1"
-		file="data\models\monsters\airplane\airplane1.gam"
+		file="data\models\monsters\airplane\airplane.gam"
 		shadow="0"
 		windwavy="0"
 		trans="0" >
@@ -17029,6 +17051,30 @@
 			<lp
 				id="LP_LIGHT01"
 				effect_id="ET_PS_LENS_D1"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_LIGHT02"
+				effect_id="ET_PS_LENS_S8"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_LIGHT03"
+				effect_id="ET_PS_LENS_S11"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_SMOKE01"
+				effect_id="ET_PS_BOSS1_SMOKE"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_SMOKE02"
+				effect_id="ET_PS_BOSS1_SMOKE"
 				restartOnAnimationChange="1"
 				ImmediateRemove="0" />
 		</action>
@@ -17036,7 +17082,7 @@
 
 	<model
 		id="airplane2"
-		file="data\models\monsters\airplane\airplane2.gam"
+		file="data\models\monsters\airplane\airplane.gam"
 		shadow="0"
 		windwavy="0"
 		trans="0" >
@@ -17047,15 +17093,67 @@
 				effect_id="ET_PS_LENS_D1"
 				restartOnAnimationChange="1"
 				ImmediateRemove="0" />
-		</action>
-	</model>
 
-	<model
-		id="airplane_propeller"
-		file="data\models\monsters\airplane\airplane_propeller.gam"
-		shadow="0"
-		windwavy="0"
-		trans="0" >
+			<lp
+				id="LP_LIGHT02"
+				effect_id="ET_PS_LENS_S8"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_LIGHT03"
+				effect_id="ET_PS_LENS_S11"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_LIGHT01"
+				effect_id="ET_PS_LENS_D1"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_LIGHT02"
+				effect_id="ET_PS_LENS_S8"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_LIGHT03"
+				effect_id="ET_PS_LENS_S11"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_LIGHT01"
+				effect_id="ET_PS_LENS_D1"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_LIGHT02"
+				effect_id="ET_PS_LENS_S8"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_LIGHT03"
+				effect_id="ET_PS_LENS_S11"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_SMOKE01"
+				effect_id="ET_PS_BOSS1_SMOKE"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_SMOKE02"
+				effect_id="ET_PS_BOSS1_SMOKE"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
 	</model>
 
 	<model

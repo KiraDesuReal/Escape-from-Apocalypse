@@ -1311,7 +1311,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "8140"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "bear_rations"
 		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
@@ -1338,7 +1338,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "5368"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "cookies"
 		ResourceType= "ITEM_SIZE_3X2" />
 
 	<Prototype
@@ -1582,7 +1582,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Durability	= "100"
 		PriceDispersion      = "5"
 		ModelFile	= "keqpotato"
-		ResourceType= "ITEM_SIZE_2X2" />
+		ResourceType= "ITEM_SIZE_3X3" />
 
 <!-- Household Items -->
 

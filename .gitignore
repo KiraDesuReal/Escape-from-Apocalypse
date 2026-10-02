@@ -758,6 +758,7 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/effects/other/snow_wheather2.psys
 !data/effects/other/snow_wheather3.psys
 !data/effects/lights/lens_d8.psys
+!data/effects/lights/lens_s11.psys
 !data/fx/smoke/red_smoke.tga
 !data/fx/smoke/green_smoke.tga
 !data/fx/trail/trail11.tga
@@ -817,6 +818,8 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/models/goods/food/orange_juice/*.dds
 !data/models/goods/food/apple_juice/*.gam
 !data/models/goods/food/apple_juice/*.dds
+!data/models/goods/food/bear_ration/*.gam
+!data/models/goods/food/bear_ration/*.dds
 !data/models/goods/ammo/ballon/*.gam
 !data/models/goods/ammo/ballon/*.dds
 !data/models/goods/ammo/box/*.gam
@@ -1028,6 +1031,7 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/models/modeltextures.xml
 !data/models/lights/campfire.xml
 !data/models/lights/green_fier.xml
+!data/models/lights/red_fier.xml
 !data/models/projectors/spotlight1.xml
 !data/models/projectors/spotlight2.xml
 !data/models/lights/gen_lvl2_light.xml
@@ -1046,12 +1050,16 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/sounds/sounds.xml
 !data/sounds/weather/r5m1_summer_1.ogg
 !data/sounds/weather/r5m1_summer_2.ogg
+!data/sounds/weather/r5m1_summer_3.ogg
+!data/sounds/weather/r5m1_summer_4.ogg
 !data/sounds/weather/ambient_night.ogg
 !data/sounds/weather/wind_light1.ogg
 !data/sounds/weather/wind_light2.ogg
 !data/sounds/weather/winter_wind.wav
 !data/sounds/enveffects/sawmill.wav
 !data/sounds/other/bardwire/*.ogg
+!data/sounds/other/airdrop/*.wav
+!data/sounds/boss/airplane_fly.wav
 !data/effects/breakable/sandbag1_crash_veh.psys
 !data/effects/breakable/sandbag2_crash_veh.psys
 !data/sounds/radio/radiosounds.xml

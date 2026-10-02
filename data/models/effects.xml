@@ -263,6 +263,18 @@
 		</Node>
 	</Node>
 
+	<Node name="ET_S_AIRPLANE" class="SgNode">
+		<Node name="Object1" class="SgSoundSourceNode" id="S_AIRPLANE" looped="1" />
+	</Node>
+	
+	<Node name="ET_S_AIRDROP_PARACHUTE" class="SgNode">
+		<Node name="Object1" class="SgSoundSourceNode" id="S_AIRDROP_PARACHUTE" looped="1" />
+	</Node>
+
+	<Node name="ET_S_AIRDROP_RELEASE" class="SgNode">
+		<Node name="Object1" class="SgSoundSourceNode" id="S_AIRDROP_RELEASE" looped="0" />
+	</Node>
+
 	<Node name="ET_PS_ROCKSFAKE1" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_SPECIAL01_FIRE_MAIN_1" psNumEmitterMesh="-1" />
 	</Node>
@@ -570,6 +582,14 @@
 
 	<Node name="ET_S_R5M1_SUMMER_2" class="SgNode">
 		<Node name="noise" class="SgSoundSourceNode" id="S_R5M1_SUMMER_2" looped="1" /> 
+	</Node>
+
+	<Node name="ET_S_R5M1_SUMMER_3" class="SgNode">
+		<Node name="noise" class="SgSoundSourceNode" id="S_R5M1_SUMMER_3" looped="1" /> 
+	</Node>
+
+	<Node name="ET_S_R5M1_SUMMER_4" class="SgNode">
+		<Node name="noise" class="SgSoundSourceNode" id="S_R5M1_SUMMER_4" looped="1" /> 
 	</Node>
 
 	<Node name="ET_S_WIND_LIGHT_1" class="SgNode">
@@ -3542,7 +3562,7 @@
 	</Node>
 
 	<Node name="ET_PS_AIRBOX" class="SgNode">
-		<Node name="Object1" class="SgPointLightSourceNode" id="LS_LIGHT_RED" psNumEmitterMesh="-1" />
+		<Node name="Object1" class="SgPointLightSourceNode" id="LS_LIGHT_RED_FIER" psNumEmitterMesh="-1" />
 		<Node name="Object6" class="SgParticlesNode" id="PS_AIR_SMOKE" psNumEmitterMesh="-1" />
 		<Node name="Object2" class="SgSoundSourceNode" id="S_COLOR_FIER" looped="1" />
 	</Node>
@@ -3635,12 +3655,20 @@
 		<Node name="Sound01" class="SgSoundSourceNode" id="S_ENERGYWORKING" looped="1" />
 	</Node>
 
-        <Node name="ET_PS_LENS_S9" class="SgNode">
+    <Node name="ET_PS_LENS_S9" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_S9" psNumEmitterMesh="-1" /> 
 	</Node>
 
 	<Node name="ET_PS_LENS_S10" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_S10" psNumEmitterMesh="-1" /> 
+	</Node>
+
+	<Node name="ET_PS_LENS_S8" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_S8" psNumEmitterMesh="-1" /> 
+	</Node>
+
+	<Node name="ET_PS_LENS_S11" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_S11" psNumEmitterMesh="-1" /> 
 	</Node>
 
         <Node name="ET_PS_ORACUL_MAIN5" class="SgNode">

@@ -94,6 +94,17 @@
 		<Item id="PS_LENS_S10"			file="data\Effects\Lights\lens_s10.psys"/>
 		<Item id="PS_LENS_S11"			file="data\Effects\Lights\lens_s11.psys"/>
 
+		<Item id="PS_LENS_S1_PIRO"		file="data\Effects\Lights\lens_s1_piro.psys"/>
+		<Item id="PS_LENS_S1_KRIO"		file="data\Effects\Lights\lens_s1_krio.psys"/>
+		<Item id="PS_LENS_S1_HYDRO"		file="data\Effects\Lights\lens_s1_hydro.psys"/>
+		<Item id="PS_LENS_S1_ELECTRO"	file="data\Effects\Lights\lens_s1_electro.psys"/>
+
+<!--icons-->
+		<Item id="PS_ICON_PIRO"			file="data\Effects\icons\piro_icon_fx.psys"/>
+		<Item id="PS_ICON_KRIO"			file="data\Effects\icons\krio_icon_fx.psys"/>
+		<Item id="PS_ICON_HYDRO"		file="data\Effects\icons\hydro_icon_fx.psys"/>
+		<Item id="PS_ICON_ELECTRO"		file="data\Effects\icons\electro_icon_fx.psys"/>
+
 <!--others-->
 		<Item id="PS_BOSS1_SP"					file="data\Effects\Other\boss1_sp.psys"/>
 		<Item id="PS_BOSS1_FIRE"					file="data\Effects\Other\boss1_fire.psys"/>
@@ -148,6 +159,11 @@
 		<Item id="PS_ORACUL_MAIN7"					file="data\Effects\Other\oracul_main7.psys"/>
 		<Item id="PS_ORACUL_MAIN8"					file="data\Effects\Other\oracul_main8.psys"/>
 		<Item id="PS_ORACUL_MAIN9"					file="data\Effects\Other\oracul_main9.psys"/>
+
+		<Item id="PS_ORACUL_MAIN6_PIRO"				file="data\Effects\Other\oracul_main6_piro.psys"/>
+		<Item id="PS_ORACUL_MAIN6_KRIO"				file="data\Effects\Other\oracul_main6_krio.psys"/>
+		<Item id="PS_ORACUL_MAIN6_HYDRO"			file="data\Effects\Other\oracul_main6_hydro.psys"/>
+		<Item id="PS_ORACUL_MAIN6_ELECTRO"			file="data\Effects\Other\oracul_main6_electro.psys"/>
 
 		<Item id="PS_HOUSE_MED_FIRE_1"				file="data\Effects\Other\house_med_fire_1.psys"/>
 		<Item id="PS_HOUSE_MED_FIRE_2"				file="data\Effects\Other\house_med_fire_2.psys"/>
@@ -257,6 +273,7 @@
 
 		<Item id="PS_BARREL_FIRE_TRAIL"	 	file="data\Effects\Breakable\barrel_fire_trail.psys"/>
 
+		<Item id="PS_BARREL_KRIO_SMOKE"	 	file="data\Effects\Breakable\barrel_krio_smoke.psys"/>
 <!--splashes-->
 		<Item id="PS_BIGGRASSSPLASH_MAIN" 	file="data\Effects\splashes\big_grass_splash_main.psys"/>
 		<Item id="PS_BIGGRASSSPLASH_SMOKE" 	file="data\Effects\splashes\big_grass_splash_smoke.psys"/>

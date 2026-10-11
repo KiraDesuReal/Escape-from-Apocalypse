@@ -454,4 +454,125 @@
 			trigger:Deactivate()
 		</script>
 	</trigger>
+
+<!-- Босс Штурман - фаза 2 -->
+	<trigger Name="ShturmanBoss_Faze2_Cuts" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			SaveAllToleranceStatus(RS_NEUTRAL)
+	
+			Fly("ShturmanBoss_Faze2_cam1", CINEMATIC_NO_AIM, 0, 5, 1, 1, 0)
+			StartCinematic()
+
+			TActivate("ShturmanBoss_Faze2_FadeIn")
+			TActivate("ShturmanBoss_Faze2_End")
+			TDeactivate("TimerRaid")
+
+			local vehPlayer = GetPlayerVehicle()
+			if vehPlayer then
+				vehPlayer:SetThrottle(0)
+				vehPlayer:SetCustomLinearVelocity(0)
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ShturmanBoss_Faze2_FadeIn" active="0">
+		<event eventid="GE_CINEMATIC_ENTER_FADE_IN" ObjName="Player1" />
+		<script>
+			SetWeather(6)
+			--SetGameTime(GetVar("GameTimeHour").AsInt, 0)
+
+			local gun = {"flag01", "rainmetal01"}
+			for i = 1, GetVar("ShturmanBossEntourageCreated").AsInt do	
+				local bossEntourage = getObj("ShturmanBoss_vehicle_"..i)
+				if bossEntourage and bossEntourage:IsAlive() then
+					con("!")
+					local skin = bossEntourage:GetSkin()
+					local slotgun = bossEntourage:GetPartByName("CABIN_SMALL_GUN"):GetProperty("Prototype").AsString
+					local newgun = gun[random(2)]
+					bossEntourage:SetNewPart("CABIN", "fighterCab01")
+					--bossEntourage:SetNewPart("CABIN_SMALL_GUN", newgun)
+					bossEntourage:SetSkin(skin)
+					bossEntourage:AddModifier("hp", "+ 10000")
+					bossEntourage:setImmortalMode(1)
+					bossEntourage:GetPartByName("CABIN_SMALL_GUN"):SetPropertyById(36, 10000)
+					if random(10) == 1 then
+						bossEntourage:AddItemsToRepository(newgun, random(0,1))
+					else
+						bossEntourage:AddItemsToRepository(slotgun, random(0,1))
+					end
+					getObj("BossEnemy_HP_0"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "ShturmanBoss_vehicle_"..i)
+					SetVar("ShturmanBossEntourageAddEvent", i)
+				end
+			end
+
+			local boss = getObj("ShturmanBoss_vehicle_0")
+			if boss then
+				local skin = boss:GetSkin()
+				boss:SetNewPart("CABIN", "hunterCab02")
+				boss:AddModifier("maxhp", "= 20000")
+				boss:AddModifier("hp", "= 20000")
+				boss:SetSkin(skin)
+			end
+
+			TActivate("BossEnemy_HP_0")
+			TActivate("ShturmanBoss_Faze2_MusicFade")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ShturmanBoss_Faze2_MusicFade" active="0">
+		<event timeout="0.05" eventid="GE_TIME_PERIOD" />
+		<script>
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			if count ~= 100 then
+				local vol = tonumber(GetConfigParameter("mus_Volume"))
+				if vol-count > -1 then
+					RuleConsole("mus_Volume "..vol-count)
+				else
+					trigger:Deactivate()
+				end
+			else
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="ShturmanBoss_Faze2_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+			RestoreAllToleranceStatus()
+
+			TDeactivate("ShturmanBoss_Faze2_FadeIn")
+			TActivate("TimerRaid")
+			TActivate("ShturmanBoss_Faze2_BarrierTimer1")
+			TActivate("ShturmanBossHP0_Faze2")
+			TActivate("ShturmanBoss_Faze2_MusicOn1")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ShturmanBoss_Faze2_MusicOn1" active="0">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			TActivate("ShturmanBoss_Faze2_MusicOn")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ShturmanBoss_Faze2_MusicOn" active="0">
+		<event timeout="0.05" eventid="GE_TIME_PERIOD" />
+		<script>
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			local vol = tonumber(GetConfigParameter("mus_Volume"))
+			RuleConsole("mus_Volume "..count)
+			if count >= vol then
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
 </triggers>

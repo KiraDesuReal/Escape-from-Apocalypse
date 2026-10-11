@@ -15915,6 +15915,108 @@
 			Action="none" />
 	</Model>
 
+	<Model
+		Name="wBoss_r5m1">
+		<Unit
+			VarName="Bloom"
+			InitVal="3332996961312676900000000000000000000.000"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="BloomWidth"
+			InitVal="-2.570"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="BloomOrigTerm"
+			InitVal="1.000"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="BloomBlurTerm"
+			InitVal="0.140"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="BloomThreshold"
+			InitVal="0.750"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="BloomIntensity"
+			InitVal="0.140"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="Sepia"
+			InitVal="1.000"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="SepiaIntensity"
+			InitVal="0.170"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="SepiaColorR"
+			InitVal="0.790"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="SepiaColorG"
+			InitVal="0.320"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+
+		<Unit
+			VarName="SepiaColorB"
+			InitVal="1.000"
+			Param1="0"
+			Param2="0"
+			Param3="0"
+			Param4="0"
+			Action="none" />
+	</Model>
+
 	<Sequence
 		Name="wDay_r1m1"
 		Loop="false">
@@ -16802,6 +16904,13 @@
 		Loop="false">
 		<Unit
 			Name="wLuna_r5m1" />
+	</Sequence>
+
+	<Sequence
+		Name="wBoss_r5m1"
+		Loop="false">
+		<Unit
+			Name="wBoss_r5m1" />
 	</Sequence>
 
 </Effects>

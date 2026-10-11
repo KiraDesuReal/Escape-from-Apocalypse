@@ -375,6 +375,23 @@
 		file="data\sounds\other\airdrop\airdrop_release.wav"
 	 	group="COLOR_FIER"/>
 
+<!-- Reactions --> 
+
+	<model
+		id="S_R_WAPE"
+		file="data\sounds\other\reactions\r_wape.wav"
+	 	group="FLARE_SHOOT"/>
+
+	<model
+		id="S_R_MELT"
+		file="data\sounds\other\reactions\r_melt.wav"
+	 	group="FLARE_SHOOT"/>
+
+	<model
+		id="S_R_FREEZ"
+		file="data\sounds\other\reactions\r_freez.wav"
+	 	group="FLARE_SHOOT"/>
+
 <!-- Crash --> 
 
 	<model
@@ -1873,20 +1890,11 @@
 		group="BOSS04"
 		/>
 
-        	
-
-
-
-
-
-
-
-
-
-
-
-
-
+		<model
+			id="S_SHTURMAN_BOSS_BARRIER_HIT"
+			file="data\sounds\boss\shturman_boss_barrier_hit.wav"
+			group="BOSS04"
+		/>
 
 <!-- Environment -->
                 <model

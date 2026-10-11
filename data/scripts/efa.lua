@@ -2561,7 +2561,9 @@ function IfCanGunInSlot(gun, param)
 end
 
 -- Возвращает слот в которое установлено оружие
-function GetSlotIfCanGun(gun)
+function GetSlotIfCanGun(gun, tb)
+	if tb == nil then tb = 0 end
+	local sl = {}
 	local plf = GetPlayerVehicle()
 	local parts={"CABIN_","BASKET_","CHASSIS_"}
 	local slots={"SMALL_","BIG_","GIANT_","SIDE_","SPECIAL_"}
@@ -2575,7 +2577,13 @@ function GetSlotIfCanGun(gun)
 					local plfSlot = plf:GetPartByName(slot)
 					if plfSlot then 
 						local slotGun = plfSlot:GetProperty("Prototype").AsString 
-						if slotGun == gun then return slot end
+						if slotGun == gun then 
+							if tb == 0 then
+								return slot 
+							else
+								table.insert(sl, slot)
+							end
+						end
 					end
 				end
 				k=k+1
@@ -2586,6 +2594,8 @@ function GetSlotIfCanGun(gun)
 		j=1
 		i=i+1
 	end
+
+	if tb == 1 then return sl end
 end
 
 -- Включить/выключить спавн дефолтных машин у босса Витали
@@ -3377,6 +3387,57 @@ function RandomObjTable(t)
 	end
 
 	return tab
+end
+
+-- Возвращает параметр из конфига
+function GetConfigParameter(name)
+	local Key
+	local path = "data/config.cfg"
+	local exsits = FileExists(path)
+	if exsits then
+		local file = io.open(path, "r+")
+		for logLine in file:lines() do
+			local find = string.find(logLine, name)
+			if find then
+				local s1 = string.find(logLine, '="')
+				if s1 then
+					s1 = tostring(string.sub(logLine, s1+2))
+					local s2 = string.find(s1, '"')
+					if s2 then
+						Key = tostring(string.sub(s1, 1, s2-1))
+					end
+				end
+			end
+		end
+		file:close()
+		return Key
+	end
+end
+
+-- Возвращает суммарный урон всех установленных орудий
+function GetTotalWeaponDamage()
+	local gun = GetItemsCategory("gun")
+	local dam = 0
+	for i = 1, getn(gun) do
+		local slots = GetSlotIfCanGun(gun[i], 1)
+		if getn(slots) > 0 then
+			for s = 1, getn(slots) do
+				local pl = GetPlayerVehicle()
+				if pl then
+					if slots[s] ~= "BASKET_SIDE_GUN_0" then
+						local dm = pl:GetPartByName(slots[s]):GetPropertyById(28).AsInt
+						dam = dam + dm
+					else
+						local dm_r = pl:GetPartByName("BASKET_SIDE_GUN_R"):GetPropertyById(28).AsInt
+						local dm_l = pl:GetPartByName("BASKET_SIDE_GUN_L"):GetPropertyById(28).AsInt
+						local dm = dm_r + dm_l
+						dam = dam + dm
+					end
+				end
+			end
+		end
+	end
+	return dam
 end
 
 

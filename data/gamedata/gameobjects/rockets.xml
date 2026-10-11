@@ -129,6 +129,17 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
 
         <Prototype
                 Class                   = "BlastWave"
+                Name                    = "BlastWaveOverload"
+                Effect                  = "ET_PS_AIRWAVE2"
+                
+                Radius                  = "25.0"
+
+                WaveForceIntensity      = "5000"
+                WaveDamageIntensity     = "3000"
+        />
+
+        <Prototype
+                Class                   = "BlastWave"
                 Name                    = "smallBlastWave_mortal"
                 Effect                  = "ET_PS_AIRWAVE2"
                 
@@ -147,6 +158,17 @@ $Id: Rockets.xml,v 1.68 2005/11/28 07:43:57 anton Exp $
 
                 WaveForceIntensity      = "30.0"
                 WaveDamageIntensity     = "30.0"
+        />
+
+        <Prototype
+                Class                   = "BlastWave"
+                Name                    = "smallBlastWave_shturman_rapier"
+                Effect                  = "ET_PS_AIRWAVE2"
+                
+                Radius                  = "0.1"
+
+                WaveForceIntensity      = "0.1"
+                WaveDamageIntensity     = "0.1"
         />
 
         <Prototype

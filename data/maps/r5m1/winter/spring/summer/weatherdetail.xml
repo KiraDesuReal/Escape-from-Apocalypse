@@ -137,4 +137,27 @@
 			LightmapTexture="lightmap_sunrisetime_r5m1.dds"
 			CloudsTexture="skyblack.dds" />
 	</WeatherItem>
+
+	<WeatherItem
+		name="r5m1_boss">
+		<ColorType
+			name="sunrise"
+			LightmapTexture="lightmap_nighttime_r5m1.dds"
+			CloudsTexture="skyclear.dds" />
+
+		<ColorType
+			name="day"
+			LightmapTexture="lightmap_nighttime_r5m1.dds"
+			CloudsTexture="skyclear.dds" />
+
+		<ColorType
+			name="sunset"
+			LightmapTexture="lightmap_nighttime_r5m1.dds"
+			CloudsTexture="skyclear.dds" />
+
+		<ColorType
+			name="night"
+			LightmapTexture="lightmap_nighttime_r5m1.dds"
+			CloudsTexture="skyclear.dds" />
+	</WeatherItem>
 </Weather>

@@ -912,6 +912,16 @@
 		value="Рапира (Застрахована)" />
 
 	<Item
+		id="shturman_rapier01"
+		locForm="1"
+		value="Рапира Штурмана" />
+
+	<Item
+		id="shturman_rapier01_insured"
+		locForm="1"
+		value="Рапира Штурмана (Застрахована)" />
+
+	<Item
 		id="fagot01"
 		locForm="0"
 		value="Фагот" />
@@ -2476,6 +2486,16 @@
 		id="CarChevroleSectanian"
 		locForm="0"
 		value="Сектант" />
+
+	<Item
+		id="Hunter2CarShturman"
+		locForm="0"
+		value="Штурман" />
+
+	<Item
+		id="Fighter1CarShturmanEntourage"
+		locForm="0"
+		value="Боец" />
 
 	<Item
 		id="Bug01PMC"
@@ -4300,4 +4320,59 @@
 		id="q_daily_extract"
 		locForm="0"
 		value="Разведать локацию" />
+
+	<Item
+		id="e_piro"
+		locForm="0"
+		value="@ffd17a3bПиро" />
+
+	<Item
+		id="e_krio"
+		locForm="0"
+		value="@ff99e8faКрио" />
+
+	<Item
+		id="e_hydro"
+		locForm="0"
+		value="@ff23bae5Гидро" />
+
+	<Item
+		id="e_electro"
+		locForm="0"
+		value="@ffa664e6Электро" />
+
+	<Item
+		id="r_no_react"
+		locForm="0"
+		value="@ffffffffИммунитет" />
+
+	<Item
+		id="r_wape"
+		locForm="0"
+		value="@ff23bae5Пар" />
+
+	<Item
+		id="r_melt"
+		locForm="0"
+		value="@ff99e8faТаяние" />
+
+	<Item
+		id="r_charged"
+		locForm="0"
+		value="@ffa664e6Заряжен" />
+
+	<Item
+		id="r_overload"
+		locForm="0"
+		value="@ffd17a3bПерегрузка" />
+
+	<Item
+		id="r_superconduct"
+		locForm="0"
+		value="@ffa6e2e3Сверхпроводник" />
+
+	<Item
+		id="r_freezing"
+		locForm="0"
+		value="@ffb5d7e6Заморозка" />
 </ModelNames>

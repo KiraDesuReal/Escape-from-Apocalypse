@@ -1773,4 +1773,21 @@ $Id: BreakableObjects.xml,v 1.62 2005/11/28 07:43:57 anton Exp $
 		BreakEffect			= "ET_PS_BREAKSTOLBSTONE"
 		IntersectionRadius  = "1.0"
 		/>
+
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_Barrel_E_Overload"	
+		EffectType			= ""
+		DestroyEffectType		= ""	
+		ModelFile			= "point"
+		BrokenModel			= "point"
+		DestroyedModel		= "point"
+		Size				= ".5 1 .5"
+		CriticalHitEnergy		= "0"
+		Destroyable 			= "1"
+		Mass				= "1"
+		IntersectionRadius	= "1"
+		BlastWave			= "BlastWaveOverload"
+		BreakEffect			= "ET_PS_VEH_EXP1_MED"
+		/>
 </Prototypes>

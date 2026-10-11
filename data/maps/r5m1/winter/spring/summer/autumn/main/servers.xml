@@ -452,6 +452,14 @@
 			file="data\models\AnimModels.xml"/>
 
 		<Item 
+			id="grechka" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="teabox" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
 			id="disk" 
 			file="data\models\AnimModels.xml"/>
 
@@ -577,6 +585,10 @@
 
 		<Item 
 			id="poster_vitalik" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="emre_kara" 
 			file="data\models\AnimModels.xml"/>
 
 		<Item 
@@ -3056,6 +3068,10 @@
 		<Item id="S_AIRDROP_PARACHUTE" />
 		<Item id="S_AIRDROP_RELEASE" />
 
+		<Item id="S_R_WAPE" />
+		<Item id="S_R_MELT" />
+		<Item id="S_R_FREEZ" />
+
 		<Item id="S_CRASH_METAL01" />
 		<Item id="S_CRASH_METAL02" />
 		<Item id="S_CRASH_METAL03" />
@@ -3340,7 +3356,7 @@
 
 		<Item id="S_BOSS04_STAND1" />
 
-
+		<Item id="S_SHTURMAN_BOSS_BARRIER_HIT" />
 
 		<!-- Environment -->
 		<Item id="S_SEA" />

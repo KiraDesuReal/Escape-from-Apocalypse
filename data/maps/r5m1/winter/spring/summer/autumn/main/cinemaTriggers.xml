@@ -461,18 +461,21 @@
 		<script>
 			SaveAllToleranceStatus(RS_NEUTRAL)
 	
-			Fly("ShturmanBoss_Faze2_cam1", CINEMATIC_NO_AIM, 0, 5, 1, 1, 0)
+			local Plf = GetPlayerVehicle()
+			local PlfID = GetPlayerVehicleId()
+			local PlfCoor = Plf:GetPosition()
+			PlfCoor.y = PlfCoor.y + 200*0.74
+			PlfCoor.z = PlfCoor.z + 600*0.74
+	
+			Plf:SetCustomLinearVelocity(0)
+			Plf:SetThrottle(0)
+			
+			FlyAround(0.5, 0, 400, 6, PlfCoor, PlfID, 1, 1, nil, 0)
 			StartCinematic()
 
 			TActivate("ShturmanBoss_Faze2_FadeIn")
 			TActivate("ShturmanBoss_Faze2_End")
 			TDeactivate("TimerRaid")
-
-			local vehPlayer = GetPlayerVehicle()
-			if vehPlayer then
-				vehPlayer:SetThrottle(0)
-				vehPlayer:SetCustomLinearVelocity(0)
-			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -482,28 +485,25 @@
 		<script>
 			SetWeather(6)
 			--SetGameTime(GetVar("GameTimeHour").AsInt, 0)
-
 			local gun = {"flag01", "rainmetal01"}
 			for i = 1, GetVar("ShturmanBossEntourageCreated").AsInt do	
 				local bossEntourage = getObj("ShturmanBoss_vehicle_"..i)
 				if bossEntourage and bossEntourage:IsAlive() then
-					con("!")
 					local skin = bossEntourage:GetSkin()
 					local slotgun = bossEntourage:GetPartByName("CABIN_SMALL_GUN"):GetProperty("Prototype").AsString
 					local newgun = gun[random(2)]
 					bossEntourage:SetNewPart("CABIN", "fighterCab01")
-					--bossEntourage:SetNewPart("CABIN_SMALL_GUN", newgun)
+					bossEntourage:SetNewPart("CABIN_SMALL_GUN", newgun)
 					bossEntourage:SetSkin(skin)
 					bossEntourage:AddModifier("hp", "+ 10000")
 					bossEntourage:setImmortalMode(1)
 					bossEntourage:GetPartByName("CABIN_SMALL_GUN"):SetPropertyById(36, 10000)
+					bossEntourage:GetPartByName("CABIN_SMALL_GUN"):SetPropertyById(19, 5000)
 					if random(10) == 1 then
 						bossEntourage:AddItemsToRepository(newgun, random(0,1))
 					else
 						bossEntourage:AddItemsToRepository(slotgun, random(0,1))
 					end
-					getObj("BossEnemy_HP_0"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "ShturmanBoss_vehicle_"..i)
-					SetVar("ShturmanBossEntourageAddEvent", i)
 				end
 			end
 
@@ -511,12 +511,11 @@
 			if boss then
 				local skin = boss:GetSkin()
 				boss:SetNewPart("CABIN", "hunterCab02")
-				boss:AddModifier("maxhp", "= 20000")
-				boss:AddModifier("hp", "= 20000")
+				boss:AddModifier("maxhp", "= 25000")
+				boss:AddModifier("hp", "= 25000")
 				boss:SetSkin(skin)
 			end
 
-			TActivate("BossEnemy_HP_0")
 			TActivate("ShturmanBoss_Faze2_MusicFade")
 			trigger:Deactivate()
 		</script>
@@ -545,12 +544,16 @@
 		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
 		<script>
 			RestoreAllToleranceStatus()
+			SetCameraBehindPlayerVehicle()
 
+			TDeactivate("ShturmanBoss_Faze2_MusicFade")
 			TDeactivate("ShturmanBoss_Faze2_FadeIn")
 			TActivate("TimerRaid")
 			TActivate("ShturmanBoss_Faze2_BarrierTimer1")
 			TActivate("ShturmanBossHP0_Faze2")
 			TActivate("ShturmanBoss_Faze2_MusicOn1")
+			TActivate("ShturmanBoss_HP")
+
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -575,4 +578,87 @@
 			end
 		</script>
 	</trigger>
+
+<!-- Босс Штурман - FadeFx -->
+	<trigger Name="ShturmanBoss_DieFx_Cuts" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			SaveAllToleranceStatus(RS_NEUTRAL)
+			SetWeather(GetVar("Weather").AsInt)
+			SetGameTime(GetVar("GameTimeHour").AsInt, 0)
+			if GetVar("ShturmanBoss_Tp").AsInt == 0 then SetVar("ShturmanBoss_Tp", 2) end
+			EnableGodMode()
+			SetGameSpeed(1)
+	
+			Fly("start_game", CINEMATIC_NO_AIM, 0, 0.5, 0, 1)
+			StartCinematic()
+
+			AddCinematicMessage(77774, 0)
+	
+			TActivate("ShturmanBoss_DieFx_End")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ShturmanBoss_DieFx_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+			RestoreAllToleranceStatus()
+			DisableGodMode()
+			SetGameSpeed(1)
+
+			local vehPlayer = GetPlayerVehicle()
+			if vehPlayer then
+				vehPlayer:SetThrottle(0)
+				vehPlayer:SetCustomLinearVelocity(0)
+				if GetVar("ShturmanBoss_Tp").AsInt == 1 then
+					if SHTURMANBOSS_PLAYERPOS and SHTURMANBOSS_PLAYERROT then
+						vehPlayer:SetGamePositionOnGround(SHTURMANBOSS_PLAYERPOS)
+						vehPlayer:SetRotation(SHTURMANBOSS_PLAYERROT)
+					end
+				end
+			end
+
+			for i = 1, 4 do
+				local boss = getObj("ShturmanBoss_vehicle_"..i-1)
+				if boss and boss:IsAlive() then 
+					if GetVar("ShturmanBoss_Tp").AsInt == 1 then
+						if getn(SHTURMANBOSS_POS) > 0 and SHTURMANBOSS_POS[i] ~= "0" then
+							boss:SetGamePositionOnGround(SHTURMANBOSS_POS[i])
+						end
+						if getn(SHTURMANBOSS_ROT) > 0 and SHTURMANBOSS_ROT[i] ~= "0" then
+							boss:SetRotation(SHTURMANBOSS_ROT[i])
+						end
+					end
+					if i == 1 then
+						boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(35, 4.0)
+						boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(29, 15)
+						boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(19, 100)
+						boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(36, 34)
+						boss:AddModifier("hp", "= 0")
+						boss:setImmortalMode(0) 
+					else
+						boss:AddModifier("hp", "= 0")
+					end
+				end
+			end
+
+			SetCameraBehindPlayerVehicle()
+
+			TActivate("SpawnScavsInLocation09_EntersTimer")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SpawnScavsInLocation09_EntersTimer" active="0">
+		<event timeout="1" eventid="GE_TIME_PERIOD" />
+		<script>
+			StopPlayingCustomMusic()
+			TActivate("BossRemove")
+			TActivate("SpawnScavsInLocation09_Enters")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 </triggers>

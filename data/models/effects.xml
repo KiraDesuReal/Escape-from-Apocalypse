@@ -3042,6 +3042,34 @@
 		<Node name="Object3" class="SgSoundSourceNode" id="S_R_FREEZ" looped="0" />
 	</Node>
 
+	<Node name="ET_PS_R_SUPERCONDUCT" class="SgNode">
+		<Node name="Object0" class="SgParticlesNode" id="PS_BARREL_KRIO_SMOKE" psNumEmitterMesh="-1" />
+		<Node name="Object3" class="SgSoundSourceNode" id="S_R_SUPERCONDUCT" looped="0" />
+	</Node>
+
+	<Node name="ET_PS_FIRE_PLASMA" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_FIRE_PLASMA_FIRE" psNumEmitterMesh="-1" />
+		<Node name="Object2" class="SgParticlesNode" id="PS_FIRE_PLASMA_FIRE1" psNumEmitterMesh="-1" />
+	</Node>
+
+	<Node name="ET_PS_WATER_CANNON_TRAIL_BIG" class="SgNode">
+		<Node name="Object0" class="SgParticlesNode" id="PS_WATER_CANNON_TRAIL_BIG" psNumEmitterMesh="-1" />
+	</Node>
+
+	<Node name="ET_S_R_CHARGED" multi="true">
+		<Node name="ET_S_R_CHARGED1" class="SgNode">
+			<Node name="Object0" class="SgSoundSourceNode" id="S_R_CHARGED1" looped="0" />
+		</Node>
+
+		<Node name="ET_S_R_CHARGED2" class="SgNode">
+			<Node name="Object0" class="SgSoundSourceNode" id="S_R_CHARGED2" looped="0" />
+		</Node>
+
+		<Node name="ET_S_R_CHARGED3" class="SgNode">
+			<Node name="Object0" class="SgSoundSourceNode" id="S_R_CHARGED3" looped="0" />
+		</Node>
+	</Node>
+
 <!-- //////////////////////////////////// Оружие  Рапира //////////////////////////////////////// -->
 	<Node name="ET_PS_RAPIER01_FIRE" class="SgNode">
 		<Node name="Object2" class="SgParticlesNode" id="PS_RAPIER01_FIRE_SMOKE1" psNumEmitterMesh="-1" />
@@ -3685,6 +3713,11 @@
 		<Node name="Object4" class="SgParticlesNode" id="PS_ICON_PIRO" psNumEmitterMesh="-1" /> 
 	</Node>
 
+	<Node name="ET_PS_LENS_S1_PIRO3" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_S1_PIRO" psNumEmitterMesh="-1" /> 
+		<Node name="Object2" class="SgParticlesNode" id="PS_LENS_S1_PIRO" psNumEmitterMesh="-1" /> 
+	</Node>
+
 	<Node name="ET_PS_LENS_S1_KRIO1" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_S1_KRIO" psNumEmitterMesh="-1" /> 
 		<Node name="Object3" class="SgParticlesNode" id="PS_ICON_KRIO" psNumEmitterMesh="-1" /> 
@@ -3695,6 +3728,11 @@
 		<Node name="Object2" class="SgParticlesNode" id="PS_LENS_S1_KRIO" psNumEmitterMesh="-1" /> 
 		<Node name="Object3" class="SgParticlesNode" id="PS_LENS_S1_KRIO" psNumEmitterMesh="-1" /> 
 		<Node name="Object4" class="SgParticlesNode" id="PS_ICON_KRIO" psNumEmitterMesh="-1" /> 
+	</Node>
+
+	<Node name="ET_PS_LENS_S1_KRIO3" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_S1_KRIO" psNumEmitterMesh="-1" /> 
+		<Node name="Object3" class="SgParticlesNode" id="PS_LENS_S1_KRIO" psNumEmitterMesh="-1" /> 
 	</Node>
 
 	<Node name="ET_PS_LENS_S1_HYDRO1" class="SgNode">
@@ -3709,6 +3747,11 @@
 		<Node name="Object4" class="SgParticlesNode" id="PS_ICON_HYDRO" psNumEmitterMesh="-1" /> 
 	</Node>
 
+	<Node name="ET_PS_LENS_S1_HYDRO3" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_S1_HYDRO" psNumEmitterMesh="-1" /> 
+		<Node name="Object2" class="SgParticlesNode" id="PS_LENS_S1_HYDRO" psNumEmitterMesh="-1" /> 
+	</Node>
+
 	<Node name="ET_PS_LENS_S1_ELECTRO1" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_S1_ELECTRO" psNumEmitterMesh="-1" /> 
 		<Node name="Object3" class="SgParticlesNode" id="PS_ICON_ELECTRO" psNumEmitterMesh="-1" /> 
@@ -3719,6 +3762,11 @@
 		<Node name="Object2" class="SgParticlesNode" id="PS_LENS_S1_ELECTRO" psNumEmitterMesh="-1" /> 
 		<Node name="Object3" class="SgParticlesNode" id="PS_LENS_S1_ELECTRO" psNumEmitterMesh="-1" /> 
 		<Node name="Object4" class="SgParticlesNode" id="PS_ICON_ELECTRO" psNumEmitterMesh="-1" /> 
+	</Node>
+
+	<Node name="ET_PS_LENS_S1_ELECTRO3" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_LENS_S1_ELECTRO" psNumEmitterMesh="-1" /> 
+		<Node name="Object2" class="SgParticlesNode" id="PS_LENS_S1_ELECTRO" psNumEmitterMesh="-1" /> 
 	</Node>
 
         <Node name="ET_PS_BOSS2_MAIN" class="SgNode">
@@ -3738,9 +3786,13 @@
 		<Node name="Object1" class="SgParticlesNode" id="PS_SPARKLE_BIG_MAIN" psNumEmitterMesh="-1" /> 
 	</Node>
 
-        <Node name="ET_PS_ORACUL_MAIN3" class="SgNode">
+    <Node name="ET_PS_ORACUL_MAIN3" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_ORACUL_MAIN3" psNumEmitterMesh="-1" /> 
 		<Node name="Sound01" class="SgSoundSourceNode" id="S_ENERGYWORKING" looped="1" />
+	</Node>
+
+	<Node name="ET_PS_ORACUL_MAIN3_1" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_ORACUL_MAIN3_1" psNumEmitterMesh="-1" /> 
 	</Node>
 
     <Node name="ET_PS_LENS_S9" class="SgNode">

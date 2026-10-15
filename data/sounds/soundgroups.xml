@@ -97,6 +97,12 @@
 		/>
 
 		<group 
+			id		= "REACTIONS" 
+			volume	= "255" 
+			minDist	= "40"
+		/>
+
+		<group 
 			id		= "GUNFIRE" 
 			volume	= "160" 
 			minDist	= "30"

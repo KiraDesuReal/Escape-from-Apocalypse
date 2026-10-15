@@ -1688,7 +1688,7 @@ function GetItemWeight(item)
 	if item == "item_cyclon" then r = 20 end
 	if item == "item_green_battery" then r = 25 end
 	if item == "item_powerbank" then r = 60 end
-	if item == "item_tank_battery" then r = 3 end
+	if item == "item_tank_battery" then r = 1 end
 
 	if item == "item_dry" then r = 50 end
 	if item == "item_hunter_spich" then r = 60 end
@@ -2001,7 +2001,7 @@ function GetItemsCategory(category)
 	local household = {"item_alkani", "item_hlor", "item_paper", "item_salt", "item_soap", "item_tb", "item_toothpaste", "item_sugar", "item_stakanyash", "item_soda"}		
 	local info = {"item_diary", "item_diary_s", "item_disk", "item_disk_exmachina", "item_flashdrive", "item_manual", "item_rozvidka", "item_sas", "item_ssd"}
 	local med = {"item_aquapeps", "item_c6h8o6", "item_h2o2", "item_ledx", "item_medical_tools", "item_naci", "item_oftalmaskop", "item_suringe", "item_afak", "item_ai2", "item_analgin", "item_carmed", "item_grizzly", "item_ifak", "item_med", "item_morfie", "item_salewa", "item_vazelin", "item_zvezda"}
-	local other = {"book", "item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_vodka", "item_pants40grn", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_chizuru", "item_poster_keqing", "item_poster_exception", "item_poster_buyanov", "item_poster_pavlik", "item_poster_biznesman", "item_poster_ural", "item_poster_belaz", "item_poster_vitalik"}		
+	local other = {"item_cat", "book", "item_airfilter", "item_ananaga", "item_emre_kara", "item_filter", "item_fitanyashka", "item_paracord", "item_vitalik", "item_vodka", "item_pants40grn", "item_waterfilter", "item_zapal", "item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_chizuru", "item_poster_keqing", "item_poster_exception", "item_poster_buyanov", "item_poster_pavlik", "item_poster_biznesman", "item_poster_ural", "item_poster_belaz", "item_poster_vitalik"}		
 	local tools = {"item_awl", "item_buldex", "item_fullmaster", "item_handrill", "item_leatherman", "item_metalscissors", "item_nippers", "item_pipe_wrench", "item_pliers", "item_pliers_round", "item_ratchet_wrench", "item_roulet", "item_screw", "item_screw_flat", "item_screw_flat_long", "item_sewing_kit", "item_toolset", "item_wrench", "item_vitalik"}		
 	local valuables = {"item_monolit", "item_kaktus", "item_keqing", "item_carsen", "item_metallodetector", "item_stakanyash", "item_kubok_kikiki", "item_chizuru", "item_fitanyashka", "item_emre_kara", "shkatulka", "item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_silver_skull", "item_vaze", "item_duck", "item_woodclock", "item_nebrosart"}			
 	local gun = {"hornet01", "specter01", "pkt01", "kord01", "storm01", "fagot01", "maxim01", "vector01", "vulcan01", "kpvt01", "rapier01", "flag01", "rainmetal01", "elephant01", "odin01", "omega01", "bumblebee01", "hammer01", "hunterSideGun", "mrakSideGun", "big_swingfire01", "cyclops01", "octopus01", "hailSideGun", "hurricane01", "rocketLauncher", "zeusSideGun", "someTurboAccelerationPusher", "marsSideGun"}				

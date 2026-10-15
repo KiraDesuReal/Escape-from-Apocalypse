@@ -1347,7 +1347,7 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "3225"
 		Durability	= "100"
 		PriceDispersion      = "5"
-		ModelFile	= ""
+		ModelFile	= "crackers"
 		ResourceType= "ITEM_SIZE_2X2" />
 
 	<Prototype
@@ -2421,8 +2421,8 @@ $Id: Wares.xml,v 1.22 2005/11/28 07:43:58 anton Exp $
 		Price	= "24400"
 		Durability	= "10"
 		PriceDispersion      = "5"
-		ModelFile	= ""
-		ResourceType= "ITEM_SIZE_2X5" />
+		ModelFile	= "cat_statue"
+		ResourceType= "ITEM_SIZE_2X3" />
 
 	<Prototype
 		Class		= "Ware"

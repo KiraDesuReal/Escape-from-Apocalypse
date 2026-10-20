@@ -192,6 +192,8 @@ data/if/ico_hd/inventorydlg/goods/new/special/item_ms20001.dds
 !data/models/goods/valuables/cat_statue/*.gam
 !data/models/goods/keys/*.dds
 !data/models/goods/keys/*.gam
+!data/models/goods/keys/safecode/*.dds
+!data/models/goods/keys/safecode/*.gam
 !data/models/goods/medical/*.dds
 !data/models/goods/medical/*.gam
 !data/models/objects/box/plastic_barrel/plastic_barrel_box.gam
@@ -379,6 +381,7 @@ data/if/ico_hd/splashwnd/loading_up.dds
 !data/if/ico/talkwithnpcdlg/petrolstation03_r1m1_dlg.dds
 !data/if/ico/talkwithnpcdlg/exit_to_r1m1_dlg_1.dds
 !data/if/ico/talkwithnpcdlg/exit_to_r1m1_dlg_2.dds
+!data/if/ico/talkwithnpcdlg/shturman_box_dlg.dds
 !data/if/ico/inventorydlg/cruizer/*.dds
 !data/if/ico/globalmap/gmap_line.dds
 !data/if/ico_hd/globalmap/*.dds
@@ -1091,7 +1094,9 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/sounds/other/airdrop/*.wav
 !data/sounds/other/reactions/*.wav
 !data/sounds/boss/airplane_fly.wav
+!data/sounds/other/open_safe/*.wav
 !data/sounds/boss/shturman_boss_barrier_hit.wav
+!data/sounds/boss/shturman_boss_tp.wav
 !data/effects/breakable/sandbag1_crash_veh.psys
 !data/effects/breakable/sandbag2_crash_veh.psys
 !data/sounds/radio/radiosounds.xml

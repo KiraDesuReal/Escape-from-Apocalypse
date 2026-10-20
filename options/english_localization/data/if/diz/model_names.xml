@@ -908,6 +908,16 @@
 		value="Rapier (Insured)" />
 
 	<Item
+		id="shturman_rapier01"
+		locForm="1"
+		value="Shturman's Rapier" />
+
+	<Item
+		id="shturman_rapier01_insured"
+		locForm="1"
+		value="Shturman's Rapier (Insured)" />
+
+	<Item
 		id="fagot01"
 		locForm="0"
 		value="Fagotto" />
@@ -2464,6 +2474,16 @@
 		value="Sectarian" />
 
 	<Item
+		id="Hunter2CarShturman"
+		locForm="0"
+		value="Shturman" />
+
+	<Item
+		id="Fighter1CarShturmanEntourage"
+		locForm="0"
+		value="Fighter" />
+
+	<Item
 		id="Bug01PMC"
 		locForm="0"
 		value="Van" />
@@ -2654,6 +2674,56 @@
 		id="quest_item_key_gate_bunker014"
 		locForm="0"
 		value="Key ZB-014" />
+
+	<Item
+		id="item_safecode1"
+		locForm="0"
+		value="Note with a PIN code" />
+
+	<Item
+		id="item_safecode2"
+		locForm="0"
+		value="Note with a PIN code" />
+
+	<Item
+		id="item_safecode3"
+		locForm="0"
+		value="Note with a PIN code" />
+
+	<Item
+		id="item_safecode4"
+		locForm="0"
+		value="Note with a PIN code" />
+
+	<Item
+		id="item_safecode5"
+		locForm="0"
+		value="Note with a PIN code" />
+
+	<Item
+		id="item_safecode6"
+		locForm="0"
+		value="Note with a PIN code" />
+
+	<Item
+		id="item_safecode7"
+		locForm="0"
+		value="Note with a PIN code" />
+
+	<Item
+		id="item_safecode8"
+		locForm="0"
+		value="Note with a PIN code" />
+
+	<Item
+		id="item_safecode9"
+		locForm="0"
+		value="Note with a PIN code" />
+
+	<Item
+		id="item_safecode10"
+		locForm="0"
+		value="Note with a PIN code" />
 
 
 	<Item
@@ -4286,4 +4356,59 @@
 		id="q_daily_extract"
 		locForm="0"
 		value="Scout the location" />
+
+	<Item
+		id="e_piro"
+		locForm="0"
+		value="@ffd17a3bPiro" />
+
+	<Item
+		id="e_krio"
+		locForm="0"
+		value="@ff99e8faKrio" />
+
+	<Item
+		id="e_hydro"
+		locForm="0"
+		value="@ff23bae5Hydro" />
+
+	<Item
+		id="e_electro"
+		locForm="0"
+		value="@ffa664e6Electro" />
+
+	<Item
+		id="r_no_react"
+		locForm="0"
+		value="@ffffffffImmunity" />
+
+	<Item
+		id="r_wape"
+		locForm="0"
+		value="@ff23bae5Vaporize" />
+
+	<Item
+		id="r_melt"
+		locForm="0"
+		value="@ff99e8faMelt" />
+
+	<Item
+		id="r_charged"
+		locForm="0"
+		value="@ffa664e6Charged" />
+
+	<Item
+		id="r_overload"
+		locForm="0"
+		value="@ffd17a3bOverloaded" />
+
+	<Item
+		id="r_superconduct"
+		locForm="0"
+		value="@ffa6e2e3Superconduct" />
+
+	<Item
+		id="r_freezing"
+		locForm="0"
+		value="@ffb5d7e6Frozen" />
 </ModelNames>

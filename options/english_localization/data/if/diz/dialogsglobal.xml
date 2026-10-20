@@ -18287,4 +18287,128 @@
 		role="PLAYER"
 		scriptResult="GetPlayerVehicle():SetThrottle(0); GetPlayerVehicle():SetCustomLinearVelocity(0); EndConversation()" />
 
+	<!--—хрон Ўтурмана-->
+
+	<Reply
+		name="Dlg_npc_ShturmanBox_1"
+        text="@FF1D1D1D[Enter PIN code]|@FF0000AA|@ff23961b_@FF404040_____"
+		role="NPC"
+		scriptCondition="GetVar('SafeBox_Active').AsInt == 1 and string.len(GetVar('SafeBox_CodeImput').AsString) ~= 6"
+		nextReplies="Dlg_npc_ShturmanBox_2 Dlg_npc_ShturmanBox_3 Dlg_npc_ShturmanBox_4 Dlg_npc_ShturmanBox_5 Dlg_npc_ShturmanBox_6 Dlg_npc_ShturmanBox_7 Dlg_npc_ShturmanBox_8 Dlg_npc_ShturmanBox_9 Dlg_npc_ShturmanBox_10 Dlg_npc_ShturmanBox_11 Dlg_npc_ShturmanBox_12 Dlg_npc_ShturmanBox_13" />
+
+	<Reply
+		name="Dlg_npc_ShturmanBox_1_1"
+		text="@FF780a0a[Incorrect PIN code]|@FF0000AA|@FF780a0a"
+		role="NPC"
+		scriptCondition="GetVar('SafeBox_Active').AsInt == 1 and string.len(GetVar('SafeBox_CodeImput').AsString) == 6 and GetVar('SafeBox_CodeImput').AsString ~= GetVar('SafeBox_Code').AsString"
+		nextReplies="Dlg_npc_ShturmanBox_12 Dlg_npc_ShturmanBox_13" />
+
+	<Reply
+		name="Dlg_npc_ShturmanBox_1_2"
+		text="@ff23961b[The correct PIN has been entered, the safe can now be opened]|@FF0000AA|@ff23961b"
+		role="NPC"
+		scriptCondition="GetVar('SafeBox_Active').AsInt == 1 and string.len(GetVar('SafeBox_CodeImput').AsString) == 6 and GetVar('SafeBox_CodeImput').AsString == GetVar('SafeBox_Code').AsString"
+		nextReplies="Dlg_npc_ShturmanBox_14" />
+
+	<Reply
+		name="Dlg_npc_ShturmanBox_2"
+		text="[1]"
+		role="PLAYER"
+		scriptCondition="GetVar('SafeBox_CodeImput').AsString ~= GetVar('SafeBox_Code').AsString"
+		scriptResult="SetVar('SafeBox_CodeImput', GetVar('SafeBox_CodeImput').AsString..'1'); ImputPinCodeInDlgFile()"
+		nextReplies="Dlg_npc_ShturmanBox_1 Dlg_npc_ShturmanBox_1_1 Dlg_npc_ShturmanBox_1_2" />
+
+	<Reply
+		name="Dlg_npc_ShturmanBox_3"
+		text="[2]"
+		role="PLAYER"
+		scriptCondition="GetVar('SafeBox_CodeImput').AsString ~= GetVar('SafeBox_Code').AsString"
+		scriptResult="SetVar('SafeBox_CodeImput', GetVar('SafeBox_CodeImput').AsString..'2'); ImputPinCodeInDlgFile()"
+		nextReplies="Dlg_npc_ShturmanBox_1 Dlg_npc_ShturmanBox_1_1 Dlg_npc_ShturmanBox_1_2" />
+
+	<Reply
+		name="Dlg_npc_ShturmanBox_4"
+		text="[3]"
+		role="PLAYER"
+		scriptCondition="GetVar('SafeBox_CodeImput').AsString ~= GetVar('SafeBox_Code').AsString"
+		scriptResult="SetVar('SafeBox_CodeImput', GetVar('SafeBox_CodeImput').AsString..'3'); ImputPinCodeInDlgFile()"
+		nextReplies="Dlg_npc_ShturmanBox_1 Dlg_npc_ShturmanBox_1_1 Dlg_npc_ShturmanBox_1_2" />
+
+	<Reply
+		name="Dlg_npc_ShturmanBox_5"
+		text="[4]"
+		role="PLAYER"
+		scriptCondition="GetVar('SafeBox_CodeImput').AsString ~= GetVar('SafeBox_Code').AsString"
+		scriptResult="SetVar('SafeBox_CodeImput', GetVar('SafeBox_CodeImput').AsString..'4'); ImputPinCodeInDlgFile()"
+		nextReplies="Dlg_npc_ShturmanBox_1 Dlg_npc_ShturmanBox_1_1 Dlg_npc_ShturmanBox_1_2" />
+
+	<Reply
+		name="Dlg_npc_ShturmanBox_6"
+		text="[5]"
+		role="PLAYER"
+		scriptCondition="GetVar('SafeBox_CodeImput').AsString ~= GetVar('SafeBox_Code').AsString"
+		scriptResult="SetVar('SafeBox_CodeImput', GetVar('SafeBox_CodeImput').AsString..'5'); ImputPinCodeInDlgFile()"
+		nextReplies="Dlg_npc_ShturmanBox_1 Dlg_npc_ShturmanBox_1_1 Dlg_npc_ShturmanBox_1_2" />
+
+	<Reply
+		name="Dlg_npc_ShturmanBox_7"
+		text="[6]"
+		role="PLAYER"
+		scriptCondition="GetVar('SafeBox_CodeImput').AsString ~= GetVar('SafeBox_Code').AsString"
+		scriptResult="SetVar('SafeBox_CodeImput', GetVar('SafeBox_CodeImput').AsString..'6'); ImputPinCodeInDlgFile()"
+		nextReplies="Dlg_npc_ShturmanBox_1 Dlg_npc_ShturmanBox_1_1 Dlg_npc_ShturmanBox_1_2" />
+
+	<Reply
+		name="Dlg_npc_ShturmanBox_8"
+		text="[7]"
+		role="PLAYER"
+		scriptCondition="GetVar('SafeBox_CodeImput').AsString ~= GetVar('SafeBox_Code').AsString"
+		scriptResult="SetVar('SafeBox_CodeImput', GetVar('SafeBox_CodeImput').AsString..'7'); ImputPinCodeInDlgFile()"
+		nextReplies="Dlg_npc_ShturmanBox_1 Dlg_npc_ShturmanBox_1_1 Dlg_npc_ShturmanBox_1_2" />
+
+	<Reply
+		name="Dlg_npc_ShturmanBox_9"
+		text="[8]"
+		role="PLAYER"
+		scriptCondition="GetVar('SafeBox_CodeImput').AsString ~= GetVar('SafeBox_Code').AsString"
+		scriptResult="SetVar('SafeBox_CodeImput', GetVar('SafeBox_CodeImput').AsString..'8'); ImputPinCodeInDlgFile()"
+		nextReplies="Dlg_npc_ShturmanBox_1 Dlg_npc_ShturmanBox_1_1 Dlg_npc_ShturmanBox_1_2" />
+
+	<Reply
+		name="Dlg_npc_ShturmanBox_10"
+		text="[9]"
+		role="PLAYER"
+		scriptCondition="GetVar('SafeBox_CodeImput').AsString ~= GetVar('SafeBox_Code').AsString"
+		scriptResult="SetVar('SafeBox_CodeImput', GetVar('SafeBox_CodeImput').AsString..'9'); ImputPinCodeInDlgFile()"
+		nextReplies="Dlg_npc_ShturmanBox_1 Dlg_npc_ShturmanBox_1_1 Dlg_npc_ShturmanBox_1_2" />
+
+	<Reply
+		name="Dlg_npc_ShturmanBox_11"
+		text="[0]"
+		role="PLAYER"
+		scriptCondition="GetVar('SafeBox_CodeImput').AsString ~= GetVar('SafeBox_Code').AsString"
+		scriptResult="SetVar('SafeBox_CodeImput', GetVar('SafeBox_CodeImput').AsString..'0'); ImputPinCodeInDlgFile()"
+		nextReplies="Dlg_npc_ShturmanBox_1 Dlg_npc_ShturmanBox_1_1 Dlg_npc_ShturmanBox_1_2" />
+
+	<Reply
+		name="Dlg_npc_ShturmanBox_12"
+		text="Reset."
+		role="PLAYER"
+		scriptCondition="GetVar('SafeBox_CodeImput').AsString ~= GetVar('SafeBox_Code').AsString"
+		scriptResult="SetVar('SafeBox_CodeImput', ''); ImputPinCodeInDlgFile(0); StartConversation('ShturmanBox_NPC')"
+		nextReplies="Dlg_npc_ShturmanBox_1" />
+
+	<Reply
+		name="Dlg_npc_ShturmanBox_13"
+		text="Exit."
+		role="PLAYER"
+		scriptCondition="GetVar('SafeBox_CodeImput').AsString ~= GetVar('SafeBox_Code').AsString"
+		scriptResult="GetPlayerVehicle():SetThrottle(0); GetPlayerVehicle():SetCustomLinearVelocity(0); EndConversation()" />
+
+	<Reply
+		name="Dlg_npc_ShturmanBox_14"
+		text="Open the safe."
+		role="PLAYER"
+		scriptResult="GetPlayerVehicle():SetThrottle(0); GetPlayerVehicle():SetCustomLinearVelocity(0); TActivate('CreateShturmanSafeOpen'); EndConversation()" />
+
 </DialogsResource>

@@ -573,8 +573,9 @@ function UseAmmoItems(ammo_used)
 			local dur = big_gun:GetProperty("Durability").AsInt
 			if poolshells == 0 and currentshells == 0 and dur ~= 0 then
 				if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) or HasPlayerAmountOfItems("ammo_chest_heavygun_insured", 1) then
-					if prot == "rapier01" or prot == "rapier01_insured" or prot == "rainmetal01" or prot == "rainmetal01_insured" then
+					if prot == "rapier01" or prot == "rapier01_insured" or prot == "rainmetal01" or prot == "rainmetal01_insured" or prot == "shturman_rapier01" or prot == "shturman_rapier01_insured" then
 						if prot == "rapier01" or prot == "rapier01_insured" then big_gun:SetShellsInPool(55) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "rapier01") end
+						if prot == "shturman_rapier01" or prot == "shturman_rapier01_insured" then big_gun:SetShellsInPool(35) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "shturman_rapier01") end
 						if prot == "rainmetal01" or prot == "rainmetal01_insured" then big_gun:SetShellsInPool(320) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "rainmetal01") end
 						CreateEffectTTLed("ET_S_USE_RELOAD_HEAVYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 2500)
 						if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) then 
@@ -859,7 +860,7 @@ function AddAmmoItemsForGuns(veh, count)
 		for big=1,4 do
 			if vehicle:GetPartByName(big_slot[big]) then
 				big_gun = vehicle:GetPartByName(big_slot[big]):GetProperty("Prototype").AsString
-				if big_gun == "rapier01" or big_gun == "rapier01_insured" or big_gun == "rainmetal01" or big_gun == "rainmetal01_insured" then
+				if big_gun == "rapier01" or big_gun == "rapier01_insured" or big_gun == "rainmetal01" or big_gun == "rainmetal01_insured" or big_gun == "shturman_rapier01" or big_gun == "shturman_rapier01_insured" then
 					vehicle:AddItemsToRepository("ammo_chest_heavygun", count)
 				end
 				if big_gun == "vector01" or big_gun == "vector01_insured" or big_gun == "vulcan01" or big_gun == "vulcan01_insured" or big_gun == "kpvt01" or big_gun == "kpvt01_insured" then
@@ -1456,9 +1457,9 @@ function CreateAirDropBox(name, pos, rot, airtype)
 				local category = GetItemsCategory(c[category_r])
 				if category_r == 2 then category = DeleteTableObj(category, "fuel_nil_use") end
 				if category_r == 9 then 
-					for ii = 1, getn(category) do
-						if strsub(category[ii], 1, 11) == "item_poster" then 
-							category = DeleteTableObj(category, category[ii])
+					for ii = 1, getn(GetItemsCategory("other")) do
+						if strsub(GetItemsCategory("other")[ii], 1, 11) == "item_poster" then 
+							category = DeleteTableObj(category, GetItemsCategory("other")[ii])
 						end
 					end
 				end
@@ -1493,9 +1494,9 @@ function CreateAirDropBox(name, pos, rot, airtype)
 			local category = GetItemsCategory(c[category_r])
 			if category_r == 1 then category = DeleteTableObj(category, "fuel_nil_use") end
 			if category_r == 9 then 
-				for ii = 1, getn(category) do
-					if strsub(category[ii], 1, 11) == "item_poster" then 
-						category = DeleteTableObj(category, category[ii])
+				for ii = 1, getn(GetItemsCategory("other")) do
+					if strsub(GetItemsCategory("other")[ii], 1, 11) == "item_poster" then 
+						category = DeleteTableObj(category, GetItemsCategory("other")[ii])
 					end
 				end
 			end
@@ -1805,7 +1806,7 @@ function GetItemWeight(item)
 	if item == "item_christmas_ball_red" then r = 30 end
 	if item == "item_christmas_ball_white" then r = 60 end
 	if item == "item_christmas_star" then r = 35 end
-	if item == "item_chizuru" then r = 30 end
+	if item == "item_chizuru" then r = 25 end
 	if item == "item_water_canister" then r = 5 end
 	if item == "item_poster_keqing" then r = 20 end
 	if item == "item_poster_exception" then r = 40 end
@@ -2286,6 +2287,7 @@ function ObjUnderAttack(ObjTarget, ObjAttack, TriggerName)
 						if belongTarget == 1089 then TActivate("KillsPMC_USEC") end
 						if TriggerName then TActivate(TriggerName) end
 					end
+					AddModifierHpIfCanShturmanRapier(ObjTarget, ObjAttack)
 				else
 					if belongTarget == 1089 then TActivate("KillsPMC_USEC") end
 					if TriggerName then TActivate(TriggerName) end
@@ -2305,6 +2307,45 @@ function ObjUnderAttackDurability(ObjTarget, ObjAttack)
 				local cabDurability = cab:GetPropertyById(19).AsInt
 				if cabDurability == 0 then
 					target:AddModifier("hp", "- 100000")
+				end
+			end
+		end
+	end
+end
+
+function AddModifierHpIfCanShturmanRapier(ObjTarget, ObjAttack)
+	local target = getObj(ObjTarget)
+	local car = getObj(ObjAttack)
+	if car and target then
+		local big_slot = {"CABIN_BIG_GUN_1", "CABIN_BIG_GUN_2", "BASKET_BIG_GUN_0", "BASKET_BIG_GUN_1"}
+		for big=1,4 do
+			local big_gun = car:GetPartByName(big_slot[big])
+			if big_gun then 
+				if big_gun:GetProperty("Prototype").AsString == "shturman_rapier01" or big_gun:GetProperty("Prototype").AsString == "shturman_rapier01_insured" then
+					if big_gun:GetChargeState() == 1 and GetVar(big_slot[big].."_Reload").AsInt ~= 1 then
+						local distDam = Dist(car, target)
+						con(distDam + 100)
+						target:AddModifier("hp", "- "..distDam)
+						SetVar(big_slot[big].."_Reload", 1)
+					end
+				end
+			end
+		end
+	end
+end
+
+function ReloadSlotsForShturmanRapier()
+	local car = GetPlayerVehicle()
+	if car then
+		local big_slot = {"CABIN_BIG_GUN_1", "CABIN_BIG_GUN_2", "BASKET_BIG_GUN_0", "BASKET_BIG_GUN_1"}
+		for big=1,4 do
+			local big_gun = car:GetPartByName(big_slot[big])
+			if big_gun then 
+				if big_gun:GetProperty("Prototype").AsString == "shturman_rapier01" or big_gun:GetProperty("Prototype").AsString == "shturman_rapier01_insured" then
+					if big_gun:GetChargeState() == 0 and GetVar(big_slot[big].."_Reload").AsInt == 1 then
+						con("0")
+						SetVar(big_slot[big].."_Reload", 0)
+					end
 				end
 			end
 		end
@@ -3439,6 +3480,85 @@ function GetTotalWeaponDamage()
 	end
 	return dam
 end
+
+-- Редактирование текста в dialogsglobal.xml
+function EditDlgSafe(l, s)
+	local file = io.open("data/if/diz/dialogsglobal.xml", "r+")
+    local fileContent = {}
+	local str, len = 0, 0
+	if file then
+		for line in file:lines() do
+			str = str + 1
+			table.insert (fileContent, line)
+			local find = string.find(line, l)
+			if find then
+				local lin = tostring(string.sub(line, find))
+				if lin then
+					local find1 = string.find(line, l)
+					if find1 then len = str + 1 end
+				end
+			end
+		end
+		file:close()
+	end
+
+	local f = io.open("data/if/diz/dialogsglobal.xml", "r+")
+	if f then
+		for logLine in f:lines() do
+			local find = string.find(logLine, l)
+			if find then
+				local line = tostring(string.sub(logLine, find))
+				if line then
+					fileContent[len] = s
+					local file = io.open("data/if/diz/dialogsglobal.xml", "w")
+					if file then
+						for index, value in ipairs(fileContent) do
+							file:write(value..'\n')
+						end
+						file:close()
+					end
+				end
+			end
+		end	
+		f:close()
+	end
+end
+
+-- Подставление Var переменной в текст диалога с сейфом
+function ImputPinCodeInDlgFile(s)
+	if s == nil then s = 1 end
+	if s == 1 then
+		if string.len(GetVar('SafeBox_CodeImput').AsString) == 1 then
+			EditDlgSafe('name="Dlg_npc_ShturmanBox_1"', '        text="@FF1D1D1D['..DLG_NPC_SHTURMANBOX_1..']|@FF0000AA|@ff23961b'..GetVar('SafeBox_CodeImput').AsString..'@ff23961b_@FF404040____"')
+		elseif string.len(GetVar('SafeBox_CodeImput').AsString) == 2 then
+			EditDlgSafe('name="Dlg_npc_ShturmanBox_1"', '        text="@FF1D1D1D['..DLG_NPC_SHTURMANBOX_1..']|@FF0000AA|@ff23961b'..GetVar('SafeBox_CodeImput').AsString..'@ff23961b_@FF404040___"')
+		elseif string.len(GetVar('SafeBox_CodeImput').AsString) == 3 then
+			EditDlgSafe('name="Dlg_npc_ShturmanBox_1"', '        text="@FF1D1D1D['..DLG_NPC_SHTURMANBOX_1..']|@FF0000AA|@ff23961b'..GetVar('SafeBox_CodeImput').AsString..'@ff23961b_@FF404040__"')
+		elseif string.len(GetVar('SafeBox_CodeImput').AsString) == 4 then
+			EditDlgSafe('name="Dlg_npc_ShturmanBox_1"', '        text="@FF1D1D1D['..DLG_NPC_SHTURMANBOX_1..']|@FF0000AA|@ff23961b'..GetVar('SafeBox_CodeImput').AsString..'@ff23961b_@FF404040_"')
+		elseif string.len(GetVar('SafeBox_CodeImput').AsString) == 5 then
+			EditDlgSafe('name="Dlg_npc_ShturmanBox_1"', '        text="@FF1D1D1D['..DLG_NPC_SHTURMANBOX_1..']|@FF0000AA|@ff23961b'..GetVar('SafeBox_CodeImput').AsString..'@ff23961b_"')
+		end
+
+		if string.len(GetVar('SafeBox_CodeImput').AsString) == 6 and GetVar('SafeBox_CodeImput').AsString ~= GetVar('SafeBox_Code').AsString then
+			EditDlgSafe('name="Dlg_npc_ShturmanBox_1_1"', '		text="@FF780a0a['..DLG_NPC_SHTURMANBOX_1_1..'|@FF0000AA|@FF780a0a'..GetVar('SafeBox_CodeImput').AsString..'"')
+		end
+
+		if string.len(GetVar('SafeBox_CodeImput').AsString) == 6 and GetVar('SafeBox_CodeImput').AsString == GetVar('SafeBox_Code').AsString then
+			EditDlgSafe('name="Dlg_npc_ShturmanBox_1_2"', '		text="@ff23961b['..DLG_NPC_SHTURMANBOX_1_2..']|@FF0000AA|@ff23961b'..GetVar('SafeBox_CodeImput').AsString..'"')
+		end
+		RepliesManager:Init()
+		StartConversation("ShturmanBox_NPC")
+	else
+		EditDlgSafe('name="Dlg_npc_ShturmanBox_1"', '        text="@FF1D1D1D['..DLG_NPC_SHTURMANBOX_1..']|@FF0000AA|@ff23961b_@FF404040_____"')
+		EditDlgSafe('name="Dlg_npc_ShturmanBox_1_1"', '		text="@FF780a0a['..DLG_NPC_SHTURMANBOX_1_1..']|@FF0000AA|@FF780a0a"')
+		EditDlgSafe('name="Dlg_npc_ShturmanBox_1_2"', '		text="@ff23961b['..DLG_NPC_SHTURMANBOX_1_2..']|@FF0000AA|@ff23961b"')
+		RepliesManager:Init()
+	end
+end
+
+
+
 
 
 

@@ -616,6 +616,7 @@
 					if SHTURMANBOSS_PLAYERPOS and SHTURMANBOSS_PLAYERROT then
 						vehPlayer:SetGamePositionOnGround(SHTURMANBOSS_PLAYERPOS)
 						vehPlayer:SetRotation(SHTURMANBOSS_PLAYERROT)
+						CreateEffectInsertedInRemove("ET_S_SHTURMAN_BOSS_TP", vehPlayer:GetPosition(), Quaternion(0, 0, 0, 1), true)
 					end
 				end
 			end
@@ -645,7 +646,7 @@
 			end
 
 			SetCameraBehindPlayerVehicle()
-
+			SetVar("SafeBox_Active", 1)
 			TActivate("SpawnScavsInLocation09_EntersTimer")
 			trigger:Deactivate()
 		</script>

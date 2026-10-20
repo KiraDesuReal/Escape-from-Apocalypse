@@ -275,6 +275,10 @@
 		<Node name="Object1" class="SgSoundSourceNode" id="S_AIRDROP_RELEASE" looped="0" />
 	</Node>
 
+	<Node name="ET_S_OPEN_SAFE" class="SgNode">
+		<Node name="Object1" class="SgSoundSourceNode" id="S_OPEN_SAFE" looped="0" />
+	</Node>
+
 	<Node name="ET_PS_ROCKSFAKE1" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_SPECIAL01_FIRE_MAIN_1" psNumEmitterMesh="-1" />
 	</Node>
@@ -986,6 +990,10 @@
 
 	<Node name="ET_S_SHTURMAN_BOSS_BARRIER_HIT" class="SgNode">
 		<Node name="stand1" class="SgSoundSourceNode" id="S_SHTURMAN_BOSS_BARRIER_HIT" looped="0" /> 
+	</Node>
+
+	<Node name="ET_S_SHTURMAN_BOSS_TP" class="SgNode">
+		<Node name="stand1" class="SgSoundSourceNode" id="S_SHTURMAN_BOSS_TP" looped="0" /> 
 	</Node>
 
 <!-- //////////////////////////////////// Природа /////////////////////////////////// -->

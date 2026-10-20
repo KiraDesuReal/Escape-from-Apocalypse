@@ -411,6 +411,13 @@
 		id="S_R_CHARGED3"
 		file="data\sounds\other\reactions\r_charged3.wav"
 	 	group="REACTIONS"/>
+
+<!-- Open Safe --> 
+
+	<model
+		id="S_OPEN_SAFE"
+		file="data\sounds\other\open_safe\open_safe.wav"
+	 	group="COLOR_FIER"/>
 	
 <!-- Crash --> 
 
@@ -1913,6 +1920,12 @@
 		<model
 			id="S_SHTURMAN_BOSS_BARRIER_HIT"
 			file="data\sounds\boss\shturman_boss_barrier_hit.wav"
+			group="SOUND2D"
+		/>
+
+		<model
+			id="S_SHTURMAN_BOSS_TP"
+			file="data\sounds\boss\shturman_boss_tp.wav"
 			group="SOUND2D"
 		/>
 

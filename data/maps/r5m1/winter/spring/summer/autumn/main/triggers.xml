@@ -79,6 +79,10 @@
 			SetVar("ShtirnanBossBarrierHP_Freez", 0)
 			SetVar("ShtirnanBossBarrier_Freez", "0")
 			SetVar("ShturmanBoss_Tp", 0)
+			SetVar("SafeBox_Code", "0")
+			SetVar("SafeBox_Active", 0)
+			SetVar("SafeBox_CodeImput", "")
+			ImputPinCodeInDlgFile(0)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -4315,13 +4319,14 @@
 
 <!-- Использование предметов -->
 	<trigger Name="ItemsUse" active="0">
-		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
+		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
 		<script>
 			local pl = GetPlayerVehicle()
 			local hp = GetPlayerHealth() 
 			if pl and hp >= 1 then 
 				ItemUse() 
 				UseItemsForQuest()
+				ReloadSlotsForShturmanRapier()
 			else 
 				trigger:Deactivate() 
 			end
@@ -5918,6 +5923,7 @@
 			if 100 >= random(100) then 
 				TDeactivate("SpawnScavsInLocation09_Enters")
 				TActivate("CreateBossEntersLoc") 
+				CreateNewDummyObject("safe_box2", "shturman_safe1", -1, -1, CVector(5280.359, 231.045, 2041.466), getObj("ShturmanBox_loc"):GetRotation(), 0)
 			end
 			trigger:Deactivate()
 		</script>
@@ -5983,6 +5989,11 @@
 				boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(36, 10000)
 				boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(19, 5000)
 				boss:SetSkin(0)
+
+				local cod = {"107548", "880055", "489215", "732804", "541967", "010425", "191101", "123456", "963036", "178214"}
+				local cod_r = random(10)
+				boss:AddItemsToRepository("item_safecode"..cod_r, 1)
+				SetVar("SafeBox_Code", cod[cod_r])
 			end
 
 			for i = 1, r do	
@@ -6003,12 +6014,15 @@
 
 				getObj("BossEntourageDie"):AddEvent("GE_OBJECT_DIE", "ShturmanBoss_vehicle_"..i)
 				getObj("BossEnemy_HP_0"):AddEvent("GE_VEHICLE_WITHOUT_HEALTH", "ShturmanBoss_vehicle_"..i)
+				getObj("BossEnemy_UnderAttack"):AddEvent("GE_UNDER_ATTACK", "ShturmanBoss_vehicle_"..i)
 			end
 
 			TActivate("BossEntourageDie")
 			TActivate("ShturmanBossHP0_Faze1")
 			TActivate("BossEnemy_HP_0")
 			TActivate("OnMusicBattle_Dist")
+			TActivate("ShturmanBoss_UnderAttack")
+			TActivate("BossEnemy_UnderAttack")
 			
 			SetVar("ShturmanBossEntourageDie", 0)
 			trigger:Deactivate()
@@ -6021,6 +6035,7 @@
 			for i2 = 1, GetVar("ShturmanBossEntourageCreated").AsInt do
 				getObj("BossEntourageDie"):DelEventObj("GE_OBJECT_DIE", "ShturmanBoss_vehicle_"..i2)
 				getObj("BossEnemy_HP_0"):DelEventObj("GE_VEHICLE_WITHOUT_HEALTH", "ShturmanBoss_vehicle_"..i2)
+				getObj("BossEnemy_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "ShturmanBoss_vehicle_"..i2)
 			end
 
 			local d = {"shturman_boss_barrier", "player_element_select", "br_e_overload", "br_e_superconduct"}
@@ -6053,6 +6068,8 @@
 			TDeactivate("ShturmanBoss_DieFxActivate")
 			TDeactivate("ShturmanBoss_Faze2_SpawnElementesTutor")
 			TDeactivate("ShturmanBoss_Faze2_BarrierTutor")
+			TDeactivate("ShturmanBoss_UnderAttack")
+			TDeactivate("BossEnemy_UnderAttack")
 			
 			SetVar("ShturmanBossEntourageCreated", 0)
 			SetVar("ShturmanBossEntourageDie", 0)
@@ -6293,11 +6310,7 @@
 					ChestId:SetPosition(car:GetPosition())
 
 					for it = 1, getn(items) do
-						local Item = CreateNewObject{prototypeName = items[it], objName = "ItemsEnemyBoss_"..random(10000), belong = 1100}
-						local ItemId = GetEntityByID(Item)
-						if ChestId and ItemId then
-							ChestId:AddChild(ItemId)
-						end
+						AddItemsToChestObj(ChestId, items[it], "ItemsEnemyBoss_"..random(10000))
 					end
 					if GetVar("ShturmanBoss_Tp").AsInt ~= 0 then
 						car:TakeOffAllGuns()
@@ -6900,7 +6913,7 @@
 
 				SHTURMANBOSS_PLAYERPOS = pl:GetPosition()
 				SHTURMANBOSS_PLAYERROT = pl:GetRotation()
-			
+
 				boss:SetThrottle(0)
 				boss:SetCustomLinearVelocity(0)
 				boss:SetGamePositionOnGround(pos_boss[pos])
@@ -6916,10 +6929,14 @@
 				CreateEffectInsertedInRemove("ET_PS_DRONE", boss:GetPosition(), Quaternion(0, 0, 0, 1), true)
 				CreateEffectInsertedInRemove("ET_PS_DRONE", pl:GetPosition(), Quaternion(0, 0, 0, 1), true)
 
+				CreateEffectInsertedInRemove("ET_S_SHTURMAN_BOSS_TP", pl:GetPosition(), Quaternion(0, 0, 0, 1), true)
+
 				SetCameraBehindPlayerVehicle()
 			end
+
 			SetWeather(5)
 			SetVar("ShturmanBoss_Tp", 1)
+			TDeactivate("BossLeavesLoc")
 			TDeactivate("BossEnemy_Dist")
 			RuleConsole("g_postEffect DamageWater")
 			trigger:Deactivate() 
@@ -6945,5 +6962,65 @@
 			end
 		</script>
 	</trigger>
+
+	<trigger Name="ShturmanBoss_UnderAttack" active="0">
+		<event eventid="GE_UNDER_ATTACK" ObjName="ShturmanBoss_vehicle_0" />
+		<script>
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0), "IfPlayerKillShturmanBoss")
+		</script>
+	</trigger>
+
+	<trigger Name="BossEnemy_UnderAttack" active="0">
+		<script>
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0), "IfPlayerKillShturmanEnemyBoss")
+		</script>
+	</trigger>
+
+	<trigger Name="CreateShturmanSafeOpen" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local safe = getObj("shturman_safe1")
+			if safe then safe:Remove() end
+
+			CreateNewDummyObject("safe_box2_open", "shturman_safe2", -1, -1, CVector(5280.359, 231.045, 2041.466), getObj("ShturmanBox_loc"):GetRotation(), 0)
 	
+			CreateEffectInsertedInRemove("ET_S_OPEN_SAFE", CVector(5280.359, 231.045, 2041.466), Quaternion(0, 0, 0, 1), true)
+
+			local Chest = CreateNewObject{prototypeName = "mainChest", objName = "ShturmanBox"}	
+			local ChestId = GetEntityByID(Chest)
+			ChestId:SetPosition(CVector(5280.359, 230.800, 2041.466))
+			ChestId:SetRotation(getObj("ShturmanBox_loc"):GetRotation())
+			ChestId:SetPropertyById(7, 0.7)
+
+			local typeI = {"non", "electro", "valuables", "ammo", "food", "key", "other", "use", "gun", "gadget1", "gadget2", "gadget3"}
+			local typeR = {3, 75, 80, 70, 100, 50, 80, 100, 80, 70, 60, 50}
+
+			for i = 1, random(10,20) do
+				local t = weighted_random(typeI, typeR)
+				if t == "gun" or t == "gadget1" or t == "gadget2" or t == "gadget3" then
+					local item = GetItemsCategory(t)
+					AddItemsToChestObj(ChestId, item[random(getn(item))], "AmmunitionItem_"..random(10000).."_ShturmanBox")
+				elseif t == "non" then
+					local item = {"item_vitalik", "item_ledx"}
+					AddItemsToChestObj(ChestId, item[random(2)], "NonItem_"..random(10000).."_ShturmanBox")
+				else
+					local item = GetItemsCategory(t)
+					if t == "use" then
+						item = DeleteTableObj(GetItemsCategory("use"), "fuel_nil_use") 
+					elseif t == "other" then
+						item = GetItemsCategory("other")
+						for ii = 1, getn(GetItemsCategory("other")) do
+							if strsub(GetItemsCategory("other")[ii], 1, 11) == "item_poster" then 
+								item = DeleteTableObj(item, GetItemsCategory("other")[ii])
+							end	
+						end
+					end
+					AddItemsToChestObj(ChestId, GetRandomWeightedItem(item), "Item_"..random(10000).."_ShturmanBox")
+				end
+			end
+			SetVar("SafeBox_Active", 2)
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
 </triggers>

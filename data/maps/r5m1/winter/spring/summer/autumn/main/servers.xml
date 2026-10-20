@@ -627,6 +627,46 @@
 			id="cat_statue" 
 			file="data\models\AnimModels.xml"/>
 
+		<Item 
+			id="safecode1" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="safecode2" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="safecode3" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="safecode4" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="safecode5" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="safecode6" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="safecode7" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="safecode8" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="safecode9" 
+			file="data\models\AnimModels.xml"/>
+
+		<Item 
+			id="safecode10" 
+			file="data\models\AnimModels.xml"/>
+
 <!-- gadgets -->
 		<Item
 			id="gadget_01"
@@ -2405,6 +2445,10 @@
 			file="data\models\AnimModels.xml" />
 
 		<Item
+			id="safe_box2_open"
+			file="data\models\AnimModels.xml" />
+
+		<Item
 			id="sports_bag"
 			file="data\models\AnimModels.xml" />
 
@@ -3084,6 +3128,8 @@
 		<Item id="S_R_CHARGED2" />
 		<Item id="S_R_CHARGED3" />
 
+		<Item id="S_OPEN_SAFE" />
+
 		<Item id="S_CRASH_METAL01" />
 		<Item id="S_CRASH_METAL02" />
 		<Item id="S_CRASH_METAL03" />
@@ -3369,6 +3415,7 @@
 		<Item id="S_BOSS04_STAND1" />
 
 		<Item id="S_SHTURMAN_BOSS_BARRIER_HIT" />
+		<Item id="S_SHTURMAN_BOSS_TP" />
 
 		<!-- Environment -->
 		<Item id="S_SEA" />

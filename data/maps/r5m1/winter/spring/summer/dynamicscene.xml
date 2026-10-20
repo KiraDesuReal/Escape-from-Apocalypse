@@ -6319,11 +6319,19 @@
 
 	<Object
 		Name="ShturmanBox_loc"
-		Belong="1001"
+		Belong="1100"
 		Prototype="genericLocation"
-		Pos="5280.206 228.469 2041.430"
-		Rot="0.0000 0.5038 0.0000 0.8638"
-		Radius="10.000" />
+		Pos="5280.359 2.576 2041.466"
+		Rot="0.0000 0.4791 0.0000 0.8778"
+		Radius="10.000">
+		<Object
+			Name="ShturmanBox_NPC"
+			Belong="1100"
+			Prototype="NPC"
+			ModelName=""
+			helloReplyNames="Dlg_npc_ShturmanBox_1 Dlg_npc_ShturmanBox_1_1 Dlg_npc_ShturmanBox_1_2"
+			SpokenCount="0" />
+	</Object>
 
 	<Object
 		Name="DeadScavBox_1_loc"

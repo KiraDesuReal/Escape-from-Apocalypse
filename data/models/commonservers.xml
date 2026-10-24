@@ -105,6 +105,15 @@
 		<Item id="PS_ICON_HYDRO"		file="data\Effects\icons\hydro_icon_fx.psys"/>
 		<Item id="PS_ICON_ELECTRO"		file="data\Effects\icons\electro_icon_fx.psys"/>
 
+<!--reaction text-->
+		<Item id="PS_R_CHARGED_T"		file="data\Effects\reaction_text\r_charged_t_fx.psys"/>
+		<Item id="PS_R_FROZEN_T"		file="data\Effects\reaction_text\r_frozen_t_fx.psys"/>
+		<Item id="PS_R_MELT_T"			file="data\Effects\reaction_text\r_melt_t_fx.psys"/>
+		<Item id="PS_R_NO_REACT_T"		file="data\Effects\reaction_text\r_no_react_t_fx.psys"/>
+		<Item id="PS_R_OVERLOADED_T"	file="data\Effects\reaction_text\r_overloaded_t_fx.psys"/>
+		<Item id="PS_R_SUPERCONDUCT_T"	file="data\Effects\reaction_text\r_superconduct_t_fx.psys"/>
+		<Item id="PS_R_VAPORIZE_T"		file="data\Effects\reaction_text\r_vaporize_t_fx.psys"/>
+		
 <!--others-->
 		<Item id="PS_BOSS1_SP"					file="data\Effects\Other\boss1_sp.psys"/>
 		<Item id="PS_BOSS1_FIRE"					file="data\Effects\Other\boss1_fire.psys"/>

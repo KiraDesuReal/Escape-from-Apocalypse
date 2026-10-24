@@ -1093,55 +1093,6 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class			= "Vehicle"
-		Name			= "ShturmanEntourage"
-		ResourceType			= "VEHICLE"
-
-		DiffRatio		= "3.0"
-		MaxEngineRpm		= "7000"
-		LowGearShiftLimit	= "1000"
-		HighGearShiftLimit	= "2000"
-
-		SteeringSpeed		= "0.5"
-
-		HornSound		= "ET_S_HORN01"
-
-		DecisionMatrix		= "vehiclemain.lua"
-		DriftCoeff		= "0.5"
-		LookRadius			= "300.0"
-		IntersectionRadius	= "5.0"
-		TakingRadius		= "30.0"
-
-		MassSize		= "6 1 3"
-		MassTranslation		= "0 -2.0 -0.2" 
-		DestroyEffectPiercing	= "ET_PS_VEH_EXP1_MED"
-		DestroyEffectBlast	= "ET_PS_VEH_EXP2_MED"
-		DestroyEffectEnergy	= "ET_PS_VEH_EXP3_MED"
-		DestroyEffectWater	= "ET_PS_VEH_EXP2_MED"
-
-		Abstract 		= "true"	>
-
-		<MainPartDescription id = "CHASSIS" partResourceType = "FIGHTER_CHASSIS">
-			<PartDescription id = "CABIN" partResourceType = "FIGHTER_CABIN" lpName = "LP_CAB01" >
-				<PartDescription id="CABIN_SMALL_GUN" partResourceType = "SMALL_GUN" lpName = "LP_SML01" />
-				<PartDescription id="CABIN_BIG_GUN_1" partResourceType = "BIG_GUN" lpName = "LP_BIG01" />
-			</PartDescription>
-			<PartDescription id = "BASKET" partResourceType="FAKE_BASKET" lpName = "LP_CAB01" />
-		</MainPartDescription>
-
-		<Parts>
-			<Part id = "CHASSIS"			Prototype = "fighterShturmanEntourageChassis" />
-		</Parts>
-
-		<Wheels>
-			<Wheel Prototype = "fighterWheel01l" steering = "correct" />
-			<Wheel Prototype = "fighterWheel01r" steering = "correct" />
-			<Wheel Prototype = "fighterWheel02l" />
-			<Wheel Prototype = "fighterWheel02r" />
-		</Wheels>
-	</Prototype>
-
-	<Prototype
-		Class			= "Vehicle"
 		Name			= "HunterSectanian"
 		ResourceType			= "VEHICLE"
 
@@ -2478,12 +2429,12 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class			= "Vehicle"
-		Name			= "Fighter1CarShturmanEntourage"
-		ParentPrototype 	= "ShturmanEntourage"
+		Name			= "MolokovozCarShturmanEntourage"
+		ParentPrototype 	= "Molokovoz_PMC"
 		VisibleInEncyclopedia	= "true">
 		<Parts>
-			<Part id = "CABIN"			Prototype = "fighterCab01" />
-			<Part id = "BASKET"		Prototype = "bigfakeCargo" />
+			<Part id = "CABIN"			Prototype = "molokovozCab02" />
+			<Part id = "BASKET"		Prototype = "molokovozCargo01_PMC" />
 		</Parts>
 	</Prototype>
 

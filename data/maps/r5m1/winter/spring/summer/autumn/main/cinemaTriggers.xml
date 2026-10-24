@@ -460,6 +460,7 @@
 		<event timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 			SaveAllToleranceStatus(RS_NEUTRAL)
+			EnableGodMode()
 	
 			local Plf = GetPlayerVehicle()
 			local PlfID = GetPlayerVehicleId()
@@ -490,15 +491,17 @@
 				local bossEntourage = getObj("ShturmanBoss_vehicle_"..i)
 				if bossEntourage and bossEntourage:IsAlive() then
 					local skin = bossEntourage:GetSkin()
-					local slotgun = bossEntourage:GetPartByName("CABIN_SMALL_GUN"):GetProperty("Prototype").AsString
+					local slotgun = bossEntourage:GetPartByName("BASKET_SMALL_GUN_0"):GetProperty("Prototype").AsString
 					local newgun = gun[random(2)]
-					bossEntourage:SetNewPart("CABIN", "fighterCab01")
-					bossEntourage:SetNewPart("CABIN_SMALL_GUN", newgun)
+					bossEntourage:SetNewPart("CABIN", "molokovozCab02")
+					bossEntourage:SetNewPart("BASKET", "molokovozCargo01_PMC")
+					bossEntourage:SetNewPart("BASKET_SMALL_GUN_0", newgun)
 					bossEntourage:SetSkin(skin)
-					bossEntourage:AddModifier("hp", "+ 10000")
+					bossEntourage:AddModifier("maxhp", "= 3500")
+					bossEntourage:AddModifier("hp", "= 3500")
 					bossEntourage:setImmortalMode(1)
-					bossEntourage:GetPartByName("CABIN_SMALL_GUN"):SetPropertyById(36, 10000)
-					bossEntourage:GetPartByName("CABIN_SMALL_GUN"):SetPropertyById(19, 5000)
+					bossEntourage:GetPartByName("BASKET_SMALL_GUN_0"):SetPropertyById(36, 10000)
+					bossEntourage:GetPartByName("BASKET_SMALL_GUN_0"):SetPropertyById(19, 5000)
 					if random(10) == 1 then
 						bossEntourage:AddItemsToRepository(newgun, random(0,1))
 					else
@@ -511,8 +514,8 @@
 			if boss then
 				local skin = boss:GetSkin()
 				boss:SetNewPart("CABIN", "hunterCab02")
-				boss:AddModifier("maxhp", "= 25000")
-				boss:AddModifier("hp", "= 25000")
+				boss:AddModifier("maxhp", "= 20000")
+				boss:AddModifier("hp", "= 20000")
 				boss:SetSkin(skin)
 			end
 
@@ -553,6 +556,7 @@
 			TActivate("ShturmanBossHP0_Faze2")
 			TActivate("ShturmanBoss_Faze2_MusicOn1")
 			TActivate("ShturmanBoss_HP")
+			TActivate("ShturmanBoss_UnderAttack")
 
 			trigger:Deactivate()
 		</script>
@@ -562,6 +566,7 @@
 		<event timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
 			TActivate("ShturmanBoss_Faze2_MusicOn")
+			DisableGodMode()
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -637,6 +642,7 @@
 						boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(29, 15)
 						boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(19, 100)
 						boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(36, 34)
+						boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(28, 100)
 						boss:AddModifier("hp", "= 0")
 						boss:setImmortalMode(0) 
 					else
@@ -645,9 +651,12 @@
 				end
 			end
 
-			SetCameraBehindPlayerVehicle()
+			if GetVar("ShturmanBoss_Tp").AsInt == 1 then SetCameraBehindPlayerVehicle() end
 			SetVar("SafeBox_Active", 1)
 			TActivate("SpawnScavsInLocation09_EntersTimer")
+			
+			TDeactivate("BossEntourageDie")
+			TDeactivate("BossEnemy_UnderAttack")
 			trigger:Deactivate()
 		</script>
 	</trigger>

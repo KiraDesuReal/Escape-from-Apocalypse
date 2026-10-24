@@ -31,6 +31,8 @@
 
 			SetVar("PlayerKillScavs", 0)
 			SetVar("PlayerKillPMC", 0)
+			SetVar("PlayerKillShturmanBoss", 0)
+			SetVar("PlayerKillEnemyShturmanBoss", 0)
 
 			SetVar("SpawnSectanian", 0)
 			SetVar("CountSectanian", 0)
@@ -83,6 +85,8 @@
 			SetVar("SafeBox_Active", 0)
 			SetVar("SafeBox_CodeImput", "")
 			ImputPinCodeInDlgFile(0)
+			SetVar("BossFrendly", 0)
+			SetVar("KillEnemyShturmanBossReaction", "0")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -135,7 +139,7 @@
 				SetWeather(0) 
 			end
 
-			SetVar("ShtirnanBossBarrier_Tutorial", 0)
+			SetVar("ShturnanBossBarrier_Tutorial", 0)
 			SetVar("ShturmanBossSpawnElementes_Tutorial", 0)
 
 		    trigger:Deactivate()
@@ -295,6 +299,9 @@
 			if ITEM_KEY_GATE_THETOWN_USED then SetVar("item_key_gate_thetown_used", ITEM_KEY_GATE_THETOWN_USED) end
 			if ITEM_KEY_GATE_BUNKER014_USED then SetVar("item_key_gate_bunker014_used", ITEM_KEY_GATE_BUNKER014_USED) end
 
+			if SHTURMANBOSS_BARRIER_TUTORIAL then SetVar("ShturnanBossBarrier_Tutorial", SHTURMANBOSS_BARRIER_TUTORIAL) end
+			if SHTURMANBOSS_SPAWN_ELEMENTES_TUTORIAL then SetVar("ShturmanBossSpawnElementes_Tutorial", SHTURMANBOSS_SPAWN_ELEMENTES_TUTORIAL) end
+
 			TActivate("GlobalVar")
 			TActivate("CreateBreakebleObj")
 			TActivate("CreateGateBunker014")
@@ -346,6 +353,17 @@
 
 			SetTolerance(1100, 1085, RS_ALLY)
 			SetTolerance(1082, 1085, RS_ALLY)
+
+			if GetVar("PlayerBelong").AsString == "SCAV" then
+				if GetScavCarma() >= 6 then
+					SetTolerance(1100, 1095, RS_NEUTRAL)
+					SetTolerance(1100, 1096, RS_NEUTRAL)
+					SetVar("BossFrendly", 1)
+				end
+			else
+				SetTolerance(1100, 1082, RS_ENEMY)
+				TActivate("QuestsActivate")
+			end
 		</script>
 	</trigger>
 
@@ -2730,6 +2748,11 @@
 				TDeactivate("LeaveZoneExit")
 				PassToMap(GetVar("ToMap").AsString, "FromLocation")
 				if GetVar("PlayerBelong").AsString == "SCAV" then 
+					if GetVar("BossFrendly").AsInt == 1 then
+						if 1.5 >= GetTolerance(1100, 1095) then
+							AddScavCarma("-", "1.0")
+						end
+					end
 					if 1.5 >= GetTolerance(1100, 1082) then
 						AddScavCarma("-", "0.4")
 					end
@@ -4319,7 +4342,7 @@
 
 <!-- Использование предметов -->
 	<trigger Name="ItemsUse" active="0">
-		<event 	timeout="0.01" eventid="GE_TIME_PERIOD" />
+		<event 	timeout="0.05" eventid="GE_TIME_PERIOD" />
 		<script>
 			local pl = GetPlayerVehicle()
 			local hp = GetPlayerHealth() 
@@ -4652,7 +4675,7 @@
 			local l, c, kk = 0, 0, 0
 			local name
 
-			for k = 1, 8 do
+			for k = 1, 9 do
 				local count = GetVar("CountScav_"..k.."_loc").AsInt
 				if count > 0 then
 					for i = 1, count do
@@ -4722,7 +4745,7 @@
 		<script>
 			local l = 0
 
-			for k = 1, 8 do
+			for k = 1, 9 do
 				local count = GetVar("CountScav_"..k.."_loc").AsInt
 				if count > 0 then
 					for i = 1, count do
@@ -5959,9 +5982,9 @@
 			local r = random(2, 3)
 			SetVar("ShturmanBossEntourageCreated", r)
 			if r == 2 then
-				TeamCreate("ShturmanBoss", 1095, pos[random(3)], {"Hunter2CarShturman", "Fighter1CarShturmanEntourage", "Fighter1CarShturmanEntourage"}, nil, 0)
+				TeamCreate("ShturmanBoss", 1095, pos[random(3)], {"Hunter2CarShturman", "MolokovozCarShturmanEntourage", "MolokovozCarShturmanEntourage"}, nil, 0)
 			else
-				TeamCreate("ShturmanBoss", 1095, pos[random(3)], {"Hunter2CarShturman", "Fighter1CarShturmanEntourage", "Fighter1CarShturmanEntourage", "Fighter1CarShturmanEntourage"}, nil, 0)
+				TeamCreate("ShturmanBoss", 1095, pos[random(3)], {"Hunter2CarShturman", "MolokovozCarShturmanEntourage", "MolokovozCarShturmanEntourage", "MolokovozCarShturmanEntourage"}, nil, 0)
 			end
 
 			local te = getObj("ShturmanBoss")
@@ -5978,7 +6001,7 @@
 			if boss then
 				boss:SetRotation(rotarr[random(9)])
 				boss:setImmortalMode(1)
-				for l = 1, random(2,4) do 
+				for l = 1, random(3,5) do 
 					boss:AddItemsToRepository(LifeUse[random(3)], 1)
 				end
 				for f = 1, random(2) do 
@@ -5999,16 +6022,20 @@
 			for i = 1, r do	
 				local bossEntourage = getObj("ShturmanBoss_vehicle_"..i)
 				if bossEntourage then
-					bossEntourage:SetNewPart("CABIN_SMALL_GUN", gun[exrandom(5)])
+					bossEntourage:SetNewPart("BASKET_SMALL_GUN_0", gun[exrandom(5)])
 					bossEntourage:SetRotation(rotarr[random(9)])
-					for l = 1, random(3) do 
+					for l = 1, random(2,4) do 
 						bossEntourage:AddItemsToRepository(LifeUse[random(3)], 1)
 					end
 					bossEntourage:AddItemsToRepository(FuelUse[random(2)], random(0,1))
 					AddAmmoItemsForGuns(bossEntourage)
 					bossEntourage:SetBelong(1096)
-					bossEntourage:GetPartByName("CABIN_SMALL_GUN"):SetPropertyById(36, 10000)
-					bossEntourage:GetPartByName("CABIN_SMALL_GUN"):SetPropertyById(19, 5000)
+					bossEntourage:GetPartByName("BASKET_SMALL_GUN_0"):SetPropertyById(36, 10000)
+					bossEntourage:GetPartByName("BASKET_SMALL_GUN_0"):SetPropertyById(19, 5000)
+					bossEntourage:AddModifier("maxhp", "= 2500")
+					bossEntourage:AddModifier("hp", "= 2500")
+					bossEntourage:AddModifier("maxfuel", "= 10000")
+					bossEntourage:AddModifier("fuel", "= 10000")
 					bossEntourage:setImmortalMode(1)
 				end
 
@@ -6021,8 +6048,8 @@
 			TActivate("ShturmanBossHP0_Faze1")
 			TActivate("BossEnemy_HP_0")
 			TActivate("OnMusicBattle_Dist")
-			TActivate("ShturmanBoss_UnderAttack")
 			TActivate("BossEnemy_UnderAttack")
+			TActivate("ShturmanBossDie")
 			
 			SetVar("ShturmanBossEntourageDie", 0)
 			trigger:Deactivate()
@@ -6036,6 +6063,7 @@
 				getObj("BossEntourageDie"):DelEventObj("GE_OBJECT_DIE", "ShturmanBoss_vehicle_"..i2)
 				getObj("BossEnemy_HP_0"):DelEventObj("GE_VEHICLE_WITHOUT_HEALTH", "ShturmanBoss_vehicle_"..i2)
 				getObj("BossEnemy_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", "ShturmanBoss_vehicle_"..i2)
+				SetVar("ShturmanBoss_vehicle_"..i2.."_UnderAttack", 0)
 			end
 
 			local d = {"shturman_boss_barrier", "player_element_select", "br_e_overload", "br_e_superconduct"}
@@ -6070,6 +6098,7 @@
 			TDeactivate("ShturmanBoss_Faze2_BarrierTutor")
 			TDeactivate("ShturmanBoss_UnderAttack")
 			TDeactivate("BossEnemy_UnderAttack")
+			TDeactivate("ShturmanBossDie")
 			
 			SetVar("ShturmanBossEntourageCreated", 0)
 			SetVar("ShturmanBossEntourageDie", 0)
@@ -6080,6 +6109,8 @@
 			SetVar("ShtirnanBossBarrierHP_Freez", 0)
 			SetVar("ShtirnanBossBarrier_Freez", "0")
 			SetVar("ShturmanBoss_Tp", 0)
+			SetVar("ShturmanBoss_vehicle_0_UnderAttack", 0)
+			SetVar("KillEnemyShturmanBossReaction", "0")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -6132,7 +6163,6 @@
 
 	<trigger Name="PlayerUnderAttackBoss" active="0">
 		<script>
-			GetPlayerVehicle():AddModifier("hp", "= 9999")
 			trigger:IncCount()
 			local count = trigger:GetCount()
 			local ObjAttack = getObj(trigger:GetTriggeredObjectID(0))
@@ -6141,7 +6171,11 @@
 					local plf = GetPlayerVehicle()
 					if plf then
 						local distDam = Dist(plf, ObjAttack)
-						distDam = distDam * 2
+						if GetVar("ShtirnanBossBarrier").AsString ~= "0" then
+							distDam = distDam * 1.5
+						else
+							distDam = distDam * 2
+						end
 						plf:AddModifier("hp", "- "..distDam)
 					end
 				end
@@ -6187,6 +6221,29 @@
 		<script>
 			SetVar("ShturmanBossEntourageDie", GetVar("ShturmanBossEntourageDie").AsInt + 1)
 
+			local carName = trigger:GetCallObjName()
+			if GetVar(carName.."_UnderAttack").AsInt == 1100 then
+				SetVar("KillEnemyShturmanBossReaction", "")
+				TActivate("IfPlayerKillEnemyShturmanBoss")
+			elseif GetVar(carName.."_UnderAttack").AsInt == 1098 then
+				SetVar("KillEnemyShturmanBossReaction", "OVERLOADED")
+				TActivate("IfPlayerKillEnemyShturmanBoss")
+			elseif GetVar(carName.."_UnderAttack").AsInt == 1099 then
+				SetVar("KillEnemyShturmanBossReaction", "SUPERCONDUCT")
+				TActivate("IfPlayerKillEnemyShturmanBoss")
+			elseif GetVar("KillEnemyShturmanBossReaction").AsString == "CHARGED" then
+				SetVar("KillEnemyShturmanBossReaction", "CHARGED")
+				TActivate("IfPlayerKillEnemyShturmanBoss")
+			else
+				if DEBUG == 1 then 
+					println("ENEMY SHTURMAN BOSS KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+					LOG("ENEMY SHTURMAN BOSS KILL: "..GetVar(carName.."_UnderAttack").AsInt) 
+				end
+			end
+
+			getObj("BossEnemy_UnderAttack"):DelEventObj("GE_UNDER_ATTACK", carName)
+			SetVar(carName.."_UnderAttack", 0)
+
 			if GetVar("ShturmanBossFaze2").AsInt == 1 then
 				local boss = getObj("ShturmanBoss_vehicle_0")
 				if boss then 
@@ -6206,6 +6263,22 @@
 			if GetVar("ShturmanBossEntourageCreated").AsInt > count then
 			return
 			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ShturmanBossDie" active="0">
+		<event eventid="GE_OBJECT_DIE" ObjName="ShturmanBoss_vehicle_0" /> 
+		<script>
+			if GetVar("ShturmanBoss_vehicle_0_UnderAttack").AsInt == 1100 then
+				TActivate("IfPlayerKillShturmanBoss")
+			else
+				if DEBUG == 1 then 
+					println("SHTURMAN BOSS KILL: "..GetVar("ShturmanBoss_vehicle_0_UnderAttack").AsInt) 
+					LOG("SHTURMAN BOSS KILL: "..GetVar("ShturmanBoss_vehicle_0_UnderAttack").AsInt) 
+				end
+			end
+			SetVar("ShturmanBoss_vehicle_0_UnderAttack", 0)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -6236,7 +6309,9 @@
 					boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(35, 4.0)
 					boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(29, 15)
 					boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(19, 5000)
+					boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(28, 100)
 					CreateEffectInsertedInRemove("ET_S_SHTURMAN_BOSS_BARRIER_HIT", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+					AddImportantFadingMsgByStrIdFormatted("fm_shturman_boss_barrier_hit")
 				end
 
 				local barrier = getObj("shturman_boss_barrier")
@@ -6248,6 +6323,7 @@
 				TActivate("ShturmanBoss_Faze2_BarrierTimer2")
 				TActivate("ShturmanBoss_Faze2_RemoveElementes")
 				TActivate("ShturmanBoss_HP")
+				TActivate("ShturmanBoss_UnderAttack")
 
 				TDeactivate("ShturmanBoss_Faze2_SpawnElementes")
 				TDeactivate("ShturmanBoss_Faze2_BarrierTp")
@@ -6322,13 +6398,13 @@
 			else
 				local car = getObj(trigger:GetCallObjName())
 				if car then
-					local prot = car:GetPartByName("CABIN_SMALL_GUN"):GetProperty("Prototype").AsString
-					if prot == "vector01" then car:GetPartByName("CABIN_SMALL_GUN"):SetPropertyById(36, 270) end
-					if prot == "vulcan01" then car:GetPartByName("CABIN_SMALL_GUN"):SetPropertyById(36, 840) end
-					if prot == "flag01" then car:GetPartByName("CABIN_SMALL_GUN"):SetPropertyById(36, 35) end
-					if prot == "kpvt01" then car:GetPartByName("CABIN_SMALL_GUN"):SetPropertyById(36, 650) end
-					if prot == "rainmetal01" then car:GetPartByName("CABIN_SMALL_GUN"):SetPropertyById(36, 240) end
-					car:GetPartByName("CABIN_SMALL_GUN"):SetPropertyById(19, getObj("ShturmanBoss_vehicle_1"):GetPartByName("CABIN_SMALL_GUN"):GetPropertyById(20).AsInt)
+					local prot = car:GetPartByName("BASKET_SMALL_GUN_0"):GetProperty("Prototype").AsString
+					if prot == "vector01" then car:GetPartByName("BASKET_SMALL_GUN_0"):SetPropertyById(36, 270) end
+					if prot == "vulcan01" then car:GetPartByName("BASKET_SMALL_GUN_0"):SetPropertyById(36, 840) end
+					if prot == "flag01" then car:GetPartByName("BASKET_SMALL_GUN_0"):SetPropertyById(36, 35) end
+					if prot == "kpvt01" then car:GetPartByName("BASKET_SMALL_GUN_0"):SetPropertyById(36, 650) end
+					if prot == "rainmetal01" then car:GetPartByName("BASKET_SMALL_GUN_0"):SetPropertyById(36, 240) end
+					car:GetPartByName("BASKET_SMALL_GUN_0"):SetPropertyById(19, car:GetPartByName("BASKET_SMALL_GUN_0"):GetPropertyById(20).AsInt)
 					car:setImmortalMode(0)
 				end
 			end
@@ -6343,31 +6419,34 @@
 			trigger:Deactivate()
  		</script>
 	</trigger>
---getObj("ShturmanBoss_vehicle_0"):AddModifier("hp", "= 5") getObj("ShturmanBoss_vehicle_0"):GetHealth()
+
 	<trigger Name="ShturmanBoss_Faze2_BarrierTimer1" active="0">
 		<event 	timeout="15" eventid="GE_TIME_PERIOD" />
 		<script>
 			local barrier_type = {"PIRO", "KRIO", "HYDRO", "ELECTRO"}
 			local boss = getObj("ShturmanBoss_vehicle_0")
 			if boss then
-				local r = barrier_type[2]
+				local r = barrier_type[random(4)]
 				SetVar("ShtirnanBossBarrier", r)
 				SetVar("ShtirnanBossHP", boss:GetHealth())
 				CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6_"..r, "shturman_boss_barrier", -1, -1, boss:GetPosition(), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.190)
 				boss:AddModifier("maxhp", "= 100000")
 				boss:AddModifier("hp", "= 100000")
 				if GetVar("ShturmanBoss_Tp").AsInt == 0 then
-					boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(35, 1.0)
+					boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(35, 1.5)
 					boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(29, 100)
 					boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(19, 5000)
+					boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(28, 75)
 				end
 				AddImportantFadingMsgByStrIdFormatted("fm_shturman_boss_"..r.."_barrier")
+				SoundFadingMsg()
 			end
 			TDeactivate("ShturmanBoss_HP")
 			TActivate("ShturmanBoss_Faze2_SpawnElementes")
 			TActivate("ShturmanBoss_Faze2_BarrierTp")
+			TDeactivate("ShturmanBoss_UnderAttack")
 
-			if GetVar("ShtirnanBossBarrier_Tutorial").AsInt == 0 then
+			if GetVar("ShturnanBossBarrier_Tutorial").AsInt == 0 then
 				TActivate("ShturmanBoss_Faze2_BarrierTutor")
 			end
 			trigger:Deactivate()
@@ -6386,7 +6465,7 @@
 		<event 	timeout="1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local b = SpawnMessageBox(6)
-			if b == 1 then SetVar("ShtirnanBossBarrier_Tutorial", 1) end
+			if b == 1 then SetVar("ShturnanBossBarrier_Tutorial", 1) end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -6569,7 +6648,7 @@
 					if GetVar("ShtirnanBossBarrier").AsString == "PIRO" then
 						if GetVar("ShturmanBoss_ElementSelect").AsString == "PIRO" then
 							AddFadingMsgByStrIdFormatted("fm_shturman_boss_reactions", "e_piro", "e_piro", "r_no_react")
-							TActivate("ShturmanBoss_Faze2_SpawnElementes")
+							TActivate("ShturmanBoss_Faze2_R_No_React")
 						elseif GetVar("ShturmanBoss_ElementSelect").AsString == "KRIO" then
 							AddFadingMsgByStrIdFormatted("fm_shturman_boss_reactions", "e_krio", "e_piro", "r_melt")
 							TActivate("ShturmanBoss_Faze2_R_Melt")
@@ -6586,7 +6665,7 @@
 							TActivate("ShturmanBoss_Faze2_R_Melt")
 						elseif GetVar("ShturmanBoss_ElementSelect").AsString == "KRIO" then
 							AddFadingMsgByStrIdFormatted("fm_shturman_boss_reactions", "e_krio", "e_krio", "r_no_react")
-							TActivate("ShturmanBoss_Faze2_SpawnElementes")
+							TActivate("ShturmanBoss_Faze2_R_No_React")
 						elseif GetVar("ShturmanBoss_ElementSelect").AsString == "HYDRO" then
 							AddFadingMsgByStrIdFormatted("fm_shturman_boss_reactions", "e_hydro", "e_krio", "r_freezing")
 							TActivate("ShturmanBoss_Faze2_R_Freezing")
@@ -6603,7 +6682,7 @@
 							TActivate("ShturmanBoss_Faze2_R_Freezing")
 						elseif GetVar("ShturmanBoss_ElementSelect").AsString == "HYDRO" then
 							AddFadingMsgByStrIdFormatted("fm_shturman_boss_reactions", "e_hydro", "e_hydro", "r_no_react")
-							TActivate("ShturmanBoss_Faze2_SpawnElementes")
+							TActivate("ShturmanBoss_Faze2_R_No_React")
 						elseif GetVar("ShturmanBoss_ElementSelect").AsString == "ELECTRO" then
 							AddFadingMsgByStrIdFormatted("fm_shturman_boss_reactions", "e_electro", "e_hydro", "r_charged")
 							TActivate("ShturmanBoss_Faze2_R_Charged")
@@ -6622,7 +6701,7 @@
 							TActivate("ShturmanBoss_Faze2_R_Charged2")
 						elseif GetVar("ShturmanBoss_ElementSelect").AsString == "ELECTRO" then
 							AddFadingMsgByStrIdFormatted("fm_shturman_boss_reactions", "e_electro", "e_electro", "r_no_react")
-							TActivate("ShturmanBoss_Faze2_SpawnElementes")
+							TActivate("ShturmanBoss_Faze2_R_No_React")
 						end
 					end
 
@@ -6634,6 +6713,16 @@
 					trigger:Deactivate()
 				end
 			end
+		</script>
+	</trigger>
+
+	<trigger Name="ShturmanBoss_Faze2_R_No_React" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local boss = getObj("ShturmanBoss_vehicle_0")
+			if boss then AddReactionTextFx("ET_PS_R_NO_REACT_T", boss) end
+			TActivate("ShturmanBoss_Faze2_SpawnElementes")
+			trigger:Deactivate()
 		</script>
 	</trigger>
 
@@ -6650,6 +6739,7 @@
 					boss:AddModifier("hp", "- "..hp)
 				end
 				CreateEffectInsertedInRemove("ET_PS_R_MELT", boss:GetPosition(), Quaternion(0, 0, 0, 1), true)
+				AddReactionTextFx("ET_PS_R_MELT_T", boss)
 			end
 			TActivate("ShturmanBoss_Faze2_SpawnElementes")
 			trigger:Deactivate()
@@ -6669,6 +6759,7 @@
 					boss:AddModifier("hp", "- "..hp)
 				end
 				CreateEffectInsertedInRemove("ET_PS_R_WAPE", boss:GetPosition(), Quaternion(0, 0, 0, 1), true)
+				AddReactionTextFx("ET_PS_R_VAPORIZE_T", boss)
 			end
 			TActivate("ShturmanBoss_Faze2_SpawnElementes")
 			trigger:Deactivate()
@@ -6681,7 +6772,7 @@
 			local boss = getObj("ShturmanBoss_vehicle_0")
 			if boss then
 				boss:AddModifier("hp", "- 15000")
-				CreateNewBreakableObject("Breakable_Barrel_E_Overload", "br_e_overload", 1100, boss:GetPosition(), Quaternion(0, 0, 0, 1), 0)
+				CreateNewBreakableObject("Breakable_Barrel_E_Overload", "br_e_overload", 1098, boss:GetPosition(), Quaternion(0, 0, 0, 1), 0)
 				TActivate("ShturmanBoss_Faze2_R_Overload_Expl")
 			end
 			TActivate("ShturmanBoss_Faze2_SpawnElementes")
@@ -6699,6 +6790,7 @@
 				CreateEffectInsertedInRemove("ET_PS_AIRWAVE1", boss:GetPosition(), Quaternion(0, 0, 0, 1), true)
 				CreateEffectInsertedInRemove("ET_PS_AIRWAVE1", boss:GetPosition(), Quaternion(0, 0, 0, 1), true)
 				boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(19, 5000) 
+				AddReactionTextFx("ET_PS_R_OVERLOADED_T", boss)
 			end
 			trigger:Deactivate()
 		</script>
@@ -6725,8 +6817,11 @@
 				local barrier = getObj("shturman_boss_barrier")
 				if barrier then barrier:Remove() end
 
+				AddReactionTextFx("ET_PS_R_FROZEN_T", boss)
+
 				TDeactivate("ShturmanBoss_Faze2_BarrierTp")
 				TActivate("ShturmanBoss_Faze2_R_Freezing2")
+				TActivate("ShturmanBoss_UnderAttack")
 			end
 			trigger:Deactivate()
 		</script>
@@ -6752,6 +6847,7 @@
 
 				TActivate("ShturmanBoss_Faze2_BarrierTp")
 				TActivate("ShturmanBoss_Faze2_SpawnElementes")
+				TDeactivate("ShturmanBoss_UnderAttack")
 			end
 			trigger:Deactivate()
 		</script>
@@ -6763,13 +6859,14 @@
 			local boss = getObj("ShturmanBoss_vehicle_0")
 			if boss then
 				boss:AddModifier("hp", "- 15000")
-				CreateNewBreakableObject("Breakable_Barrel_E_Superconduct", "br_e_superconduct", 1100, boss:GetPosition(), Quaternion(0, 0, 0, 1), 0)
+				CreateNewBreakableObject("Breakable_Barrel_E_Superconduct", "br_e_superconduct", 1099, boss:GetPosition(), Quaternion(0, 0, 0, 1), 0)
 				getObj("br_e_superconduct"):SetDestroyed() 
 				boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(19, 5000)
 				TActivate("ShturmanBoss_Faze2_SpawnElementes")
 				CreateEffectInsertedInRemove("ET_PS_AIRWAVE1", boss:GetPosition(), Quaternion(0, 0, 0, 1), true)
 				CreateEffectInsertedInRemove("ET_PS_AIRWAVE1", boss:GetPosition(), Quaternion(0, 0, 0, 1), true)
 				CreateEffectTTLed("ET_PS_FIRE_PLASMA", boss:GetPosition(), Quaternion(0, 0, 0, 1), 1000)
+				AddReactionTextFx("ET_PS_R_SUPERCONDUCT_T", boss)
 			end
 			trigger:Deactivate()
 		</script>
@@ -6790,6 +6887,7 @@
 								veh:AddModifier("hp", "- 6000")
 							end
 							if veh:GetBelong() == 1096 then
+								if 0 >= veh:GetHealth() - 500 then SetVar("KillEnemyShturmanBossReaction", "CHARGED") end
 								veh:AddModifier("hp", "- 500")
 							end
 							if veh:GetBelong() == 1100 then
@@ -6802,6 +6900,7 @@
 							CreateEffectTTLed("ET_PS_ORACUL_MAIN3_1", veh:GetPosition(), Quaternion(0, 0, 0, 1), 350)
 							CreateEffectInsertedInRemove("ET_PS_WATER_CANNON_TRAIL_BIG", veh:GetPosition(), Quaternion(0, 0, 0, 1), true)
 							CreateEffectInsertedInRemove("ET_S_R_CHARGED", veh:GetPosition(), Quaternion(0, 0, 0, 1), true)
+							AddReactionTextFx("ET_PS_R_CHARGED_T", veh)
 						end
 					end
 				end
@@ -6920,6 +7019,7 @@
 				boss:SetRotation(rot_boss[pos])
 				boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(29, 5000)
 				boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(19, 5000)
+				boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(28, 100)
 				
 				pl:SetThrottle(0)
 				pl:SetCustomLinearVelocity(0)
@@ -6972,12 +7072,23 @@
 
 	<trigger Name="BossEnemy_UnderAttack" active="0">
 		<script>
-			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0), "IfPlayerKillShturmanEnemyBoss")
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0), "IfPlayerKillEnemyShturmanBoss")
+
+			local objAttack = getObj(trigger:GetTriggeredObjectID(0))	
+			local objTarget = getObj(trigger:GetCallObjName())	
+			if objAttack and objTarget then
+				local prot = objAttack:GetProperty("Prototype").AsString
+				if prot == "BlastWaveOverload" then
+					AddReactionTextFx("ET_PS_R_OVERLOADED_T", objTarget)
+				elseif prot == "BlastWaveSuperconduct" then
+					AddReactionTextFx("ET_PS_R_SUPERCONDUCT_T", objTarget)
+				end
+			end
 		</script>
 	</trigger>
 
 	<trigger Name="CreateShturmanSafeOpen" active="0">
-		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
 		<script>
 			local safe = getObj("shturman_safe1")
 			if safe then safe:Remove() end
@@ -6993,7 +7104,7 @@
 			ChestId:SetPropertyById(7, 0.7)
 
 			local typeI = {"non", "electro", "valuables", "ammo", "food", "key", "other", "use", "gun", "gadget1", "gadget2", "gadget3"}
-			local typeR = {3, 75, 80, 70, 100, 50, 80, 100, 80, 70, 60, 50}
+			local typeR = {3, 75, 85, 70, 100, 50, 90, 100, 80, 65, 50, 40}
 
 			for i = 1, random(10,20) do
 				local t = weighted_random(typeI, typeR)
@@ -7019,6 +7130,45 @@
 				end
 			end
 			SetVar("SafeBox_Active", 2)
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="IfPlayerKillShturmanBoss" active="0">
+	<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			SetVar("PlayerKillShturmanBoss", 1)
+			if DEBUG == 1 then println("PLAYER KILL SHTURMAN BOSS") LOG("PLAYER KILL SHTURMAN BOSS") end
+			if GetVar("PlayerBelong").AsString ~= "SCAV" then 
+				if GetVar("ShtirnanBossBarrier_Freez").AsString ~= "0" then
+					TActivate("KillShturmanBoss_Frozen") 
+				else
+					TActivate("KillShturmanBoss") 
+				end
+			end
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+	<trigger Name="IfPlayerKillEnemyShturmanBoss" active="0">
+	<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			SetVar("PlayerKillEnemyShturmanBoss", GetVar("PlayerKillEnemyShturmanBoss").AsInt + 1)
+			if DEBUG == 1 then println("PLAYER KILL EMENY SHTURMAN BOSS "..GetVar("KillEnemyShturmanBossReaction").AsString.." "..GetVar("PlayerKillEnemyShturmanBoss").AsInt) LOG("PLAYER KILL EMENY SHTURMAN BOSS "..GetVar("KillEnemyShturmanBossReaction").AsString.." "..GetVar("PlayerKillEnemyShturmanBoss").AsInt) end
+			if GetVar("PlayerBelong").AsString == "SCAV" and GetVar("BossFrendly").AsInt == 1 then 
+				AddScavCarma("-", "0.35")
+			else
+				if GetVar("KillEnemyShturmanBossReaction").AsString == "OVERLOADED" then
+					TActivate("KillEnemyShturmanBoss_Overloaded") 
+				elseif GetVar("KillEnemyShturmanBossReaction").AsString == "SUPERCONDUCT" then
+					TActivate("KillEnemyShturmanBoss_Superconduct") 
+				elseif GetVar("KillEnemyShturmanBossReaction").AsString == "CHARGED" then
+					TActivate("KillEnemyShturmanBoss_Charged") 
+				else
+					TActivate("KillEnemyShturmanBoss") 
+				end
+			end
+			SetVar("KillEnemyShturmanBossReaction", "0")
 			trigger:Deactivate() 
 		</script>
 	</trigger>

@@ -765,6 +765,9 @@
 			if ITEM_KEY_GATE_THETOWN_USED then ITEM_KEY_GATE_THETOWN_USED = 0 end
 			if ITEM_KEY_GATE_BUNKER014_USED then ITEM_KEY_GATE_BUNKER014_USED = 0 end
 
+			if SHTURMANBOSS_BARRIER_TUTORIAL == nil then SHTURMANBOSS_BARRIER_TUTORIAL = 0 end
+			if SHTURMANBOSS_SPAWN_ELEMENTES_TUTORIAL == nil then SHTURMANBOSS_SPAWN_ELEMENTES_TUTORIAL = 0 end
+
 			local newgame = ReadUserInfo("New")
 			if newgame then
 				local newgamenum = tonumber(ReadValueUserInfo("New"))
@@ -1140,6 +1143,10 @@
 		--переменные предметов
 			if ITEM_KEY_GATE_THETOWN_USED then SetVar("item_key_gate_thetown_used", ITEM_KEY_GATE_THETOWN_USED) end
 			if ITEM_KEY_GATE_BUNKER014_USED then SetVar("item_key_gate_bunker014_used", ITEM_KEY_GATE_BUNKER014_USED) end
+
+		--r5m1
+			if SHTURMANBOSS_BARRIER_TUTORIAL then SetVar("ShturnanBossBarrier_Tutorial", SHTURMANBOSS_BARRIER_TUTORIAL) end
+			if SHTURMANBOSS_SPAWN_ELEMENTES_TUTORIAL then SetVar("ShturmanBossSpawnElementes_Tutorial", SHTURMANBOSS_SPAWN_ELEMENTES_TUTORIAL) end
 		</script>
 	</trigger>
 
@@ -4923,8 +4930,10 @@
 			SetCameraBehindPlayerVehicle()
 
 			if GetScavCarma() >= 6 then
-				SetTolerance(1100, 1086, RS_NEUTRAL)
-				SetTolerance(1100, 1087, RS_NEUTRAL)
+				local belongs = {1086, 1087, 1095, 1096}
+				for i = 1, getn(belongs) do
+					SetTolerance(1100, belongs[i], RS_NEUTRAL)
+				end
 			end
 
 			SetTolerance(1100, 1082, RS_NEUTRAL)
@@ -4960,10 +4969,12 @@
 			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("ScavCarHeal") end
 		
 			SetCameraBehindPlayerVehicle()
-			
-			SetTolerance(1100, 1086, RS_ENEMY)
-			SetTolerance(1100, 1087, RS_ENEMY)
-			SetTolerance(1100, 1082, RS_ENEMY)
+
+			local belongs = {1086, 1087, 1095, 1096, 1082}
+			for i = 1, getn(belongs) do
+				SetTolerance(1100, belongs[i], RS_ENEMY)
+			end
+
 			SetVar("DialogSelectMap", 1)
 			trigger:Deactivate()
 		</script>
@@ -5904,6 +5915,10 @@
 			if ITEM_KEY_GATE_BUNKER014_USED and IsQuestItemPresent("quest_item_key_gate_bunker014") then 
 				ITEM_KEY_GATE_BUNKER014_USED = GetVar("item_key_gate_bunker014_used").AsInt 
 			end
+
+		--r5m1
+			if SHTURMANBOSS_BARRIER_TUTORIAL then SHTURMANBOSS_BARRIER_TUTORIAL = GetVar("ShturnanBossBarrier_Tutorial").AsInt end
+			if SHTURMANBOSS_SPAWN_ELEMENTES_TUTORIAL then SHTURMANBOSS_SPAWN_ELEMENTES_TUTORIAL = GetVar("ShturmanBossSpawnElementes_Tutorial").AsInt end
 
 			trigger:Deactivate()
 		</script>

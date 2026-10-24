@@ -3855,6 +3855,36 @@
 		<Node name="Sound01" class="SgSoundSourceNode" id="S_CAR_EXPL" looped="0" />
 	</Node>
 
+<!--reaction text-->
+
+	<Node name="ET_PS_R_CHARGED_T" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_R_CHARGED_T" psNumEmitterMesh="-1" /> 
+	</Node>
+
+	<Node name="ET_PS_R_FROZEN_T" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_R_FROZEN_T" psNumEmitterMesh="-1" /> 
+	</Node>
+
+	<Node name="ET_PS_R_MELT_T" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_R_MELT_T" psNumEmitterMesh="-1" /> 
+	</Node>
+
+	<Node name="ET_PS_R_NO_REACT_T" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_R_NO_REACT_T" psNumEmitterMesh="-1" /> 
+	</Node>
+
+	<Node name="ET_PS_R_OVERLOADED_T" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_R_OVERLOADED_T" psNumEmitterMesh="-1" /> 
+	</Node>
+
+	<Node name="ET_PS_R_SUPERCONDUCT_T" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_R_SUPERCONDUCT_T" psNumEmitterMesh="-1" /> 
+	</Node>
+
+	<Node name="ET_PS_R_VAPORIZE_T" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_R_VAPORIZE_T" psNumEmitterMesh="-1" /> 
+	</Node>
+
 <!-- Смерть человечиков-->
 	<Node name="ET_PS_MANDEATH" multi="true">
 

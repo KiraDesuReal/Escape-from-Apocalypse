@@ -166,6 +166,11 @@ if Q_DAILY_EXTRACT_TRAIDER == nil then Q_DAILY_EXTRACT_TRAIDER = "0" end
 if ITEM_KEY_GATE_THETOWN_USED == nil then ITEM_KEY_GATE_THETOWN_USED = 0 end
 if ITEM_KEY_GATE_BUNKER014_USED == nil then ITEM_KEY_GATE_BUNKER014_USED = 0 end
 
+-- r5m1
+if SHTURMANBOSS_BARRIER_TUTORIAL == nil then SHTURMANBOSS_BARRIER_TUTORIAL = 0 end
+if SHTURMANBOSS_SPAWN_ELEMENTES_TUTORIAL == nil then SHTURMANBOSS_SPAWN_ELEMENTES_TUTORIAL = 0 end
+
+
 -- Рандомизируем пушки ботам 
 function GiveGunsForVehicle(vehicle, side_random)
 	local veh=vehicle
@@ -2289,7 +2294,6 @@ function ObjUnderAttack(ObjTarget, ObjAttack, TriggerName)
 					end
 					AddModifierHpIfCanShturmanRapier(ObjTarget, ObjAttack)
 				else
-					if belongTarget == 1089 then TActivate("KillsPMC_USEC") end
 					if TriggerName then TActivate(TriggerName) end
 				end
 			end
@@ -2316,17 +2320,19 @@ end
 function AddModifierHpIfCanShturmanRapier(ObjTarget, ObjAttack)
 	local target = getObj(ObjTarget)
 	local car = getObj(ObjAttack)
-	if car and target then
-		local big_slot = {"CABIN_BIG_GUN_1", "CABIN_BIG_GUN_2", "BASKET_BIG_GUN_0", "BASKET_BIG_GUN_1"}
-		for big=1,4 do
-			local big_gun = car:GetPartByName(big_slot[big])
-			if big_gun then 
-				if big_gun:GetProperty("Prototype").AsString == "shturman_rapier01" or big_gun:GetProperty("Prototype").AsString == "shturman_rapier01_insured" then
-					if big_gun:GetChargeState() == 1 and GetVar(big_slot[big].."_Reload").AsInt ~= 1 then
-						local distDam = Dist(car, target)
-						con(distDam + 100)
-						target:AddModifier("hp", "- "..distDam)
-						SetVar(big_slot[big].."_Reload", 1)
+	if car and target and target:IsAlive() then
+		if car:GetProperty("Prototype").AsString ~= "BlastWaveOverload" and car:GetProperty("Prototype").AsString ~= "BlastWaveSuperconduct" then
+			local big_slot = {"CABIN_BIG_GUN_1", "CABIN_BIG_GUN_2", "BASKET_BIG_GUN_0", "BASKET_BIG_GUN_1"}
+			for big=1,4 do
+				local big_gun = car:GetPartByName(big_slot[big])
+				if big_gun then 
+					if big_gun:GetProperty("Prototype").AsString == "shturman_rapier01" or big_gun:GetProperty("Prototype").AsString == "shturman_rapier01_insured" then
+						if big_gun:GetChargeState() == 1 and GetVar(big_slot[big].."_Reload").AsInt ~= 1 then
+							local distDam = Dist(car, target)
+							con(distDam + 100)
+							target:AddModifier("hp", "- "..distDam)
+							SetVar(big_slot[big].."_Reload", 1)
+						end
 					end
 				end
 			end
@@ -2343,7 +2349,6 @@ function ReloadSlotsForShturmanRapier()
 			if big_gun then 
 				if big_gun:GetProperty("Prototype").AsString == "shturman_rapier01" or big_gun:GetProperty("Prototype").AsString == "shturman_rapier01_insured" then
 					if big_gun:GetChargeState() == 0 and GetVar(big_slot[big].."_Reload").AsInt == 1 then
-						con("0")
 						SetVar(big_slot[big].."_Reload", 0)
 					end
 				end
@@ -3554,6 +3559,17 @@ function ImputPinCodeInDlgFile(s)
 		EditDlgSafe('name="Dlg_npc_ShturmanBox_1_1"', '		text="@FF780a0a['..DLG_NPC_SHTURMANBOX_1_1..']|@FF0000AA|@FF780a0a"')
 		EditDlgSafe('name="Dlg_npc_ShturmanBox_1_2"', '		text="@ff23961b['..DLG_NPC_SHTURMANBOX_1_2..']|@FF0000AA|@ff23961b"')
 		RepliesManager:Init()
+	end
+end
+
+-- Добавить эффект текста для реакций к машине
+function AddReactionTextFx(fx, veh)
+	local car = getObj(veh)
+	if car then
+		local pos = car:GetPosition()
+		pos.y = pos.y + car:GetSize().y + 0.4
+		pos.z = pos.z + 1
+		CreateEffectInsertedInRemove(fx, pos, Quaternion(0, 0, 0, 1), true)
 	end
 end
 

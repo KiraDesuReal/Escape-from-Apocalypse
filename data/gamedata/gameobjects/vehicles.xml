@@ -1042,23 +1042,30 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class			= "Vehicle"
-		Name			= "Shturman"
+		Name			= "Brdm2"
 		ResourceType			= "VEHICLE"
 
 		DiffRatio		= "5.0"
-		MaxEngineRpm		= "5000"
-		LowGearShiftLimit	= "1000"
-		HighGearShiftLimit	= "2000"
+		MaxEngineRpm		= "6000"
+		LowGearShiftLimit	= "2000"
+		HighGearShiftLimit	= "3500"
 
 		SteeringSpeed		= "0.5"
 
-		HornSound		= "ET_S_HORN01"
+		CameraHeight            = "4.75"
+		CameraMaxDist		= "25"
+
+		BlastWave             = "bigBlastWave"
+
+		HornSound		= "ET_S_HORN_BRDM2"
 
 		DecisionMatrix		= "vehiclemain.lua"
 
-		LookRadius			= "350.0"
-		IntersectionRadius	= "4.5"
-		TakingRadius		= "30.0"
+		LookRadius			= "200.0"
+		IntersectionRadius	= "5.7"
+		TakingRadius		= "10.0"
+
+		DriftCoeff            = "0.01"
 
 		MassSize		= "10 1 5"
 		MassTranslation		= "0 -1.6 0"
@@ -1069,26 +1076,63 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 		Abstract 		= "true"	>
 
-		<MainPartDescription id = "CHASSIS" partResourceType = "HUNTER_CHASSIS">
-			<PartDescription id = "CABIN" partResourceType = "HUNTER_CABIN" lpName = "LP_CAB01" >
-				<PartDescription id="CABIN_SMALL_GUN" partResourceType = "SMALL_GUN" lpName = "LP_SML01" />
-				<PartDescription id="CABIN_BIG_GUN_1" partResourceType = "BIG_GUN" lpName = "LP_BIG01" />
-				<PartDescription id="CABIN_BIG_GUN_2" partResourceType = "BIG_GUN" lpName = "LP_BIG02" />
-				<PartDescription id="CABIN_GIANT_GUN" partResourceType = "GIANT_GUN" lpName = "LP_GIANT01" />
+		<MainPartDescription id = "CHASSIS" partResourceType = "BRDM2_CHASSIS">
+			<PartDescription id = "CABIN" partResourceType = "BRDM2_CABIN" lpName = "LP_CAB01" >
+				<PartDescription id="CABIN_BRDM2_GUN" partResourceType = "BRDM2_GUN" lpName = "LP_GIANT01" />
 			</PartDescription>
-			<PartDescription id = "BASKET" partResourceType="FAKE_BASKET" lpName = "LP_CAB01" />
+			<PartDescription id = "BASKET" partResourceType="FAKE_BASKET" lpName = "LP_CAB01" >
+				<PartDescription id="BASKET_SPECIAL_ITEMS" partResourceType = "SPEC_ITEM" lpName = "LP_SPEC"/>
+			</PartDescription>
 		</MainPartDescription>
 
 		<Parts>
-			<Part id = "CHASSIS"			Prototype = "hunterShturmanChassis" />
+			<Part id = "CHASSIS"			Prototype = "brdm2Chassis" />
 		</Parts>
 
 		<Wheels>
-			<Wheel Prototype = "hunterWheel01l" steering = "correct" />
-			<Wheel Prototype = "hunterWheel01r" steering = "correct" />
-			<Wheel Prototype = "hunterWheel01l" />
-			<Wheel Prototype = "hunterWheel01r" />
+			<Wheel Prototype = "brdm2Wheel" steering = "correct" />
+			<Wheel Prototype = "brdm2Wheel" steering = "correct" />
+			<Wheel Prototype = "brdm2Wheel" />
+			<Wheel Prototype = "brdm2Wheel" />
 		</Wheels>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
+		Name			= "VehPoint"
+		ResourceType			= "VEHICLE"
+
+		DiffRatio		= "3.0"
+		MaxEngineRpm		= "6000"
+		LowGearShiftLimit	= "3000"
+		HighGearShiftLimit	= "3300"
+
+		SelfBrakingCoeff	= "0.006"
+
+		SteeringSpeed		= "0.8"
+
+		PressingForce		= "2.0"
+
+		DecisionMatrix		= "vehiclemain.lua"
+
+		LookRadius			= "200.0"
+		IntersectionRadius	= "4.0"
+		TakingRadius		= "5.0"
+		MassSize		= "3 2 8"
+		MassTranslation		= "0 -0.5 0"
+
+		DriftCoeff		= "0.06"
+
+		Abstract 		= "true">
+
+		<MainPartDescription id = "CHASSIS" partResourceType = "BUG_CHASSIS">
+			<PartDescription id = "BASKET" partResourceType="BUG_BASKET" />
+		</MainPartDescription>
+
+		<Parts>
+			<Part id = "CHASSIS"	Prototype = "pointChassis" />
+		</Parts>
+
 	</Prototype>
 
 	<Prototype
@@ -2418,12 +2462,11 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class			= "Vehicle"
 		Name			= "Hunter2CarShturman"
-		ParentPrototype 	= "Shturman"
+		ParentPrototype 	= "HunterBoss"
 		VisibleInEncyclopedia	= "true">
 		<Parts>
 			<Part id = "CABIN"			Prototype = "hunterCab02" />
 			<Part id = "BASKET"		Prototype = "bigfakeCargo" />
-			<Part id = "CABIN_BIG_GUN_1"		Prototype = "shturman_rapier01" />
 		</Parts>
 	</Prototype>
 
@@ -2444,6 +2487,15 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		ParentPrototype 	= "Bug_Chassis">
 		<Parts>
 			<Part id = "CABIN"		Prototype = "fakeCab" />
+			<Part id = "BASKET"		Prototype = "fakePlayerCargo" />
+		</Parts>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
+		Name			= "VehPoint01"
+		ParentPrototype		= "VehPoint">
+		<Parts>
 			<Part id = "BASKET"		Prototype = "fakePlayerCargo" />
 		</Parts>
 	</Prototype>
@@ -5477,6 +5529,18 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 			<Part id = "CABIN_GIANT_GUN"		Prototype = "cyclops01" />
 			<Part id = "BASKET_BIG_GUN_0"		Prototype = "bumblebee01" /> 
 			<Part id = "BASKET_BIG_GUN_1"		Prototype = "bumblebee01" /> 
+		</Parts>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
+		Name			= "Brdm2_01"
+		VisibleInEncyclopedia   = "true"
+		ParentPrototype		= "Brdm2">
+		<Parts>
+			<Part id = "CABIN"			Prototype = "brdm2Cab" />
+			<Part id = "BASKET"			Prototype = "brdm2Cargo" />
+			<Part id = "CABIN_BRDM2_GUN"		Prototype = "brdm2_cannon01" /> 
 		</Parts>
 	</Prototype>
 </Prototypes>

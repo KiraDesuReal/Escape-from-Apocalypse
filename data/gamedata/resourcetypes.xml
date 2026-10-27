@@ -33,6 +33,7 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 			<Type Name="MIROTVOREC_TRAILER_CHASSIS" />
 			<Type Name="MOLOKOVOZ_TRAILER_CHASSIS" />
 			<Type Name="TANK_CHASSIS" />
+			<Type Name="BRDM2_CHASSIS" />
 		</Type>
 		
 		<Type Name="CABIN" geomsize="5 5">
@@ -56,6 +57,7 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 			<Type Name="TANK_CABIN" />
 			<Type Name="SML2_CABIN_FORMULA" />
 			<Type Name="FAKE_CABIN" />
+			<Type Name="BRDM2_CABIN" />
 		</Type>
 		
 		<Type Name="BASKET" geomsize="5 5">
@@ -81,6 +83,8 @@ $Id: ResourceTypes.xml,v 1.55 2005/11/28 07:43:56 anton Exp $
 		<Type Name="GIANT_GUN"	geomsize="3 4" />
 		<Type Name="SPECIAL_WEAPON"	geomsize="2 1" />
 		<Type Name="TANK_GUN"	geomsize="4 7" />
+
+		<Type Name="BRDM2_GUN" geomsize="0 0"/>
 
 		<Type Name="BOSS03_GUN" />
 		<Type Name="BOSS04_DRONE_GUN" />

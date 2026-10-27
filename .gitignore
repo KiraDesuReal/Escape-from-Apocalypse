@@ -304,6 +304,7 @@ data/if/ico_hd/inventorydlg/goods/new/special/item_ms20001.dds
 !data/sounds/other/chest_scavs/*.ogg
 !data/if/ico_hd/inventorydlg/weapon/a_hornet.dds
 !data/if/ico_hd/inventorydlg/weapon/a_hornet_min.dds
+!data/if/ico_hd/inventorydlg/weapon/brdm2_cannon01_min.dds
 !data/models/guns/sml_american_hornet01.dds
 !data/models/guns/sml_american_hornet01_gun.gam 
 !data/if/ico_hd/mainmenu/*.dds
@@ -536,6 +537,7 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/if/ico_hd/inventorydlg/scout/*.dds
 !data/if/ico_hd/inventorydlg/fighter/*.dds
 !data/if/ico_hd/inventorydlg/hunter/*.dds
+!data/if/ico_hd/inventorydlg/brdm2/*.dds
 !data/if/ico_hd/inventorydlg/cell_free.dds
 !data/if/ico_hd/inventorydlg/cell_busy.dds
 !data/if/ico_hd/inventorydlg/invent_cell_spec.dds
@@ -933,6 +935,8 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/models/lights/light_lamppost2.xml
 !data/models/monsters/airplane/*.dds
 !data/models/monsters/airplane/*.gam
+!data/models/vehicles/brdm-2/*.gam
+!data/models/vehicles/brdm-2/*.dds
 !data/if/ico_hd/TownDlg/bar_char_bkg.dds
 !data/if/ico_hd/SmartCursorWnd/missile_lock.dds
 !assets/*.png
@@ -1069,6 +1073,7 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/models/lights/red_fier.xml
 !data/models/projectors/spotlight1.xml
 !data/models/projectors/spotlight2.xml
+!data/models/projectors/projector_red.xml
 !data/models/lights/gen_lvl2_light.xml
 !data/music/music.xml
 !data/music/blocks/musicblocks.xml
@@ -1081,6 +1086,7 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/scripts/server.lua
 !data/textures/lights/spotlight1.dds
 !data/textures/lights/spotlight2.dds
+!data/textures/lights/projector_red.dds
 !data/sounds/soundgroups.xml
 !data/sounds/sounds.xml
 !data/sounds/weather/r5m1_summer_1.ogg
@@ -1099,8 +1105,14 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/sounds/other/open_safe/*.wav
 !data/sounds/boss/shturman_boss_barrier_hit.wav
 !data/sounds/boss/shturman_boss_tp.wav
+!data/sounds/driving/horns/brdm2_horn.wav
+!data/sounds/driving/motors/brdm2_engine.wav
+!data/sounds/driving/starting/brdm2_engine_starting.wav
+!data/sounds/shooting/brdm2/*.wav
 !data/effects/breakable/sandbag1_crash_veh.psys
 !data/effects/breakable/sandbag2_crash_veh.psys
+!data/effects/rockets/rocket_big_trail2.psys
+!data/effects/guns/laser_fire_main2.psys
 !data/sounds/radio/radiosounds.xml
 !data/weathertexs/skyblack.dds
 !options/english_localization/data/if/diz/*.xml

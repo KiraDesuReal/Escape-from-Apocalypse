@@ -38,37 +38,6 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 
 	<Prototype
 		Class			= "BulletLauncher"
-		Name			= "shturman_rapier01"
-		ModelFile		= "rapier01"
-		ResourceType	= "BIG_GUN"
-		NodeScale		= "1 1 1"
-		Mass			= "1.0"
-		
-		BulletPrototype	= "raybullet_rapier01"
-		ExplosionType	= "CANNON"
-		FiringEffect	= "none"
-		Damage		= "100"
-		FiringRate		= "14.5"
-		GroupingAngle	= "0"
-		FiringRange		= "2000"
-		RecoilForce		= "5000"
-		DamageType	= "BLAST"
-		Decal				= "DC_GUN"
-		ShellsPoolSize  = "34"
-		WithShellsPoolLimit	= "true"
-
-		ChargeSize     = "1"
-		RechargingTime = "4"
-
-		Durability		= "100"
-		
-		BlastWavePrototype      = "smallBlastWave_shturman_rapier"
-		Price			= "16200"
-		FiringType		= "Cannon"
-		/>
-
-	<Prototype
-		Class			= "BulletLauncher"
 		Name			= "rapier01_insured"
 		ModelFile		= "rapier01"
 		ResourceType	= "BIG_GUN"
@@ -97,39 +66,6 @@ $Id: BigGuns.xml,v 1.43 2005/11/28 07:43:56 anton Exp $
 		Price			= "12100"
 		FiringType		= "Cannon"
 		VisibleInEncyclopedia	= "false" />
-
-	<Prototype
-		Class			= "BulletLauncher"
-		Name			= "shturman_rapier01_insured"
-		ModelFile		= "rapier01"
-		ResourceType	= "BIG_GUN"
-		NodeScale		= "1 1 1"
-		Mass			= "1.0"
-		
-		BulletPrototype	= "raybullet_rapier01"
-		ExplosionType	= "CANNON"
-		FiringEffect	= "none"
-		Damage		= "100"
-		FiringRate		= "15"
-		GroupingAngle	= "0"
-		FiringRange		= "2000"
-		RecoilForce		= "5000"
-		DamageType	= "BLAST"
-		Decal				= "DC_GUN"
-		ShellsPoolSize  = "34"
-		WithShellsPoolLimit	= "true"
-
-		ChargeSize     = "1"
-		RechargingTime = "4"
-
-		Durability		= "100"
-		
-		BlastWavePrototype      = "smallBlastWave_shturman_rapier"
-		Price			= "16200"
-		FiringType		= "Cannon"
-
-		VisibleInEncyclopedia	= "false"
-		/>
 
 	<Prototype
 		Class			= "BulletLauncher"

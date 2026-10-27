@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<PSEditor>
+	<PS
+		Name="w_geiser_main111"
+		Class="StripAll">
+		<Emitter
+			ParticleAgeMin="0.250"
+			ParticleAgeMax="0.300"
+			MaxParticles="200"
+			EmitAtPeriod="20.000"
+			Phase="0.000"
+			EmitLength="1.000"
+			RepeatPeriod="1.000"
+			ResetTime="10000000.000"
+			LocalStop="0"
+			StopTime="0.000"
+			PhaseMax="0.000" />
+
+		<Force
+			Min="0.000 -5.000 0.000"
+			Max="0.000 -5.000 0.000"
+			Type="sphere"
+			PosMin="0.000 0.000 0.000"
+			PosMax="0.000 0.000 0.000" />
+
+		<Mesh
+			Enable="0"
+			Points="0"
+			Radius="5.000"
+			Point1="0.000 0.000 0.000"
+			Point2="0.000 0.000 0.000"
+			Forv="0"
+			Back="0" />
+
+		<Keys>
+			<Color
+				k:0="-167791612"
+				k:1="-1"
+				k:2="-1"
+				k:3="-1"
+				k:4="-923169024"
+				k:5="-1"
+				k:6="-1"
+				k:7="-1"
+				k:8="-1"
+				k:9="-1"
+				k:10="-1"
+				k:11="-1"
+				k:12="-1"
+				k:13="-1"
+				k:14="-1"
+				k:15="-1"
+				k:16="-1"
+				k:17="-1"
+				k:18="-1"
+				k:19="16752179" />
+
+			<Size
+				k:0="0.000"
+				k:1="0.347"
+				k:2="0.446"
+				k:3="0.495"
+				k:4="0.743"
+				k:5="0.743"
+				k:6="0.891"
+				k:7="1.584"
+				k:8="1.287"
+				k:9="1.287"
+				k:10="1.634"
+				k:11="1.634"
+				k:12="1.733"
+				k:13="1.980"
+				k:14="1.683"
+				k:15="2.178"
+				k:16="1.881"
+				k:17="1.980"
+				k:18="2.327"
+				k:19="2.624" />
+</Keys>
+
+		<Render
+			TrailLen="10"
+			ScaleParts="0.150"
+			BlendMode="0"
+			UpdateXForm="1"
+			SpriteAngle="0.000"
+			Orient="0"
+			Texture="data\fx\fire\fire1.tga"
+			Weather="0"
+			TexTiling="0.000" />
+
+		<Attr
+			Name="SA_1"
+			Class="Space">
+			<Emitter
+				SystemMode="cart"
+				FuncMode="rnd"
+				WorkMode="vel"
+				PeriodX="2.000"
+				PeriodY="2.000"
+				PeriodZ="2.000"
+				Phase="0.000"
+				EmitLength="1.000"
+				RepeatPeriod="1.000"
+				TimeMode="global"
+				EmitterOn="0" />
+
+			<Force
+				Min="0.300 0.300 0.300"
+				Max="-0.300 -0.300 -0.300" />
+</Attr>
+
+		<Attr
+			Name="SA_2"
+			Class="Space">
+			<Emitter
+				SystemMode="cart"
+				FuncMode="rnd"
+				WorkMode="vel"
+				PeriodX="2.000"
+				PeriodY="2.000"
+				PeriodZ="2.000"
+				Phase="0.000"
+				EmitLength="1.000"
+				RepeatPeriod="1.000"
+				TimeMode="global"
+				EmitterOn="0" />
+
+			<Force
+				Min="0.000 100.000 0.000"
+				Max="0.000 100.000 0.000" />
+</Attr>
+</PS>
+</PSEditor>

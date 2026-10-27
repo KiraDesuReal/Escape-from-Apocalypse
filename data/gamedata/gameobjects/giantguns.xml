@@ -238,5 +238,38 @@ $Id: GiantGuns.xml,v 1.28 2005/11/28 07:43:57 anton Exp $
 		Durability		= "150"/>
 -->
 
+	<Prototype
+		Class			= "PlasmaBunchLauncher"
+		Name			= "brdm2_cannon01"
+		ModelFile		= "brdm2Cannon01"
+		ResourceType	= "BRDM2_GUN"
+		NodeScale		= "1 1 1"
+		Mass			= "1.0"
+
+		BulletPrototype	= "raybullet_brdm2_cannon01"
+		ExplosionType	= "AUTOCANNON"
+		FiringEffect	= "none"
+		Damage		= "25"
+		FiringRate		= "280"
+		GroupingAngle	= "0.5"
+		FiringRange		= "2000"
+		RecoilForce		= "1000"
+		Decal				= "DC_BIG_MACHINEGUN"
+		ShellsPoolSize  = "496"
+		WithShellsPoolLimit	= "true"
+
+		ChargeSize     = "4"
+		RechargingTime = "4"
+
+		Durability		= "100"
+		
+		Price			= "1"
+		FiringType		= "MachineGun"
+
+		VisibleInEncyclopedia   = "false"
+		TurningSpeed		= "100"
+		CanBeUsedInAutogenerating  =  "0"
+		ApplyAffixes = "false" 
+		/>
 
 </Prototypes>

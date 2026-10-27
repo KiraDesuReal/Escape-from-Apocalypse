@@ -856,6 +856,12 @@
 		group="ENGINE"
 		/>
 
+		<model
+		id="S_ENGINE_BRDM2"
+		file="data\sounds\Driving\Motors\brdm2_engine.wav"
+		group="ENGINE"
+		/>
+
 <!-- Missiles --> 
 
 	<model
@@ -1192,6 +1198,12 @@
       <model
 		id="S_TANK_SHOOT"
 		file="data\sounds\Shooting\tank_shoot.wav"
+		group="GUNFIRE"
+		/>
+
+	<model
+		id="S_BRDM2_KPVT_SHOOT"
+		file="data\sounds\Shooting\brdm2\brdm2_kpvt_shoot.wav"
 		group="GUNFIRE"
 		/>
 
@@ -1675,6 +1687,12 @@
 		group="HORNS"
 		/>
 
+	<model
+		id="S_HORN_BRDM2"
+		file="data\sounds\Driving\Horns\brdm2_horn.wav"
+		group="HORNS"
+		/>
+
 <!-- Погода -->
 
 	<model
@@ -1789,6 +1807,11 @@
 	<model
 		id="S_STARTING09"
 		file="data\sounds\Driving\Starting\starting09.wav"
+		group="SOUND2D" />
+
+	<model
+		id="S_STARTING_BRDM2"
+		file="data\sounds\Driving\Starting\brdm2_engine_starting.wav"
 		group="SOUND2D" />
 
 	<model

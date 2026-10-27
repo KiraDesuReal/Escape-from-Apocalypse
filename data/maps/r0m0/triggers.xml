@@ -7789,4 +7789,24 @@
 		</script>
 	</trigger>
 
+	<trigger Name="tr" active="0">
+		<event 	timeout="0.01"		eventid="GE_TIME_PERIOD" />
+		<script>
+			CreateVehicleEx("Mirotvorec01", "car1", CVector(917.610, 255.484, 978.394), 1002)
+			TActivate("tr2")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="tr2" active="0">
+		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="test_loc" />
+		<script>
+			con(trigger:GetTriggeredObjectID(0))
+			con(getObj(trigger:GetTriggeredObjectID(0)):GetName())
+			con(getObj(trigger:GetTriggeredObjectID(0)):GetBelong())
+			con(getObj(trigger:GetTriggeredObjectID(0)):GetProperty("Prototype").AsString)
+		</script>
+	</trigger>
+
+--AddPlayerVehicle("Brdm2_01")
 </triggers>

@@ -6,6 +6,7 @@
 		<Item id="PS_PROJECTOR" file="data/models/projectors/test.xml"/>
 		<Item id="PS_PROJECTOR_SPOTLIGHT1" file="data/models/projectors/spotlight1.xml"/>
 		<Item id="PS_PROJECTOR_SPOTLIGHT2" file="data/models/projectors/spotlight2.xml"/>
+		<Item id="PS_PROJECTOR_RED" file="data/models/projectors/projector_red.xml"/>
 	</ProjectorsServer>
 
 	<LightsServer>
@@ -225,6 +226,7 @@
 		<Item id="PS_ROCKET_BIG_GLOW" 		file="data\Effects\rockets\rocket_big_glow.psys"/>
 		<Item id="PS_ROCKET_BIG_SMOKE" 		file="data\Effects\rockets\rocket_big_smoke.psys"/>
 		<Item id="PS_ROCKET_BIG_TRAIL" 		file="data\Effects\rockets\rocket_big_trail.psys"/>
+		<Item id="PS_ROCKET_BIG_TRAIL2" 		file="data\Effects\rockets\rocket_big_trail2.psys"/>
 		<Item id="PS_ROCKET_BIG_SMOKE1" 		file="data\Effects\rockets\rocket_big_smoke1.psys"/>
 		<Item id="PS_ROCKET_BIG_SMOKE2" 		file="data\Effects\rockets\rocket_big_smoke2.psys"/>
 
@@ -602,6 +604,7 @@
 		<Item id="PS_FLAG01_FIRE_SMOKE" 		file="data\Effects\guns\flag01_fire_smoke.psys"/>
 		<Item id="PS_FLAG01_FIRE_MAIN1" 		file="data\Effects\guns\flag01_fire_main1.psys"/>
 
+		<Item id="PS_LASER_FIRE_MAIN2" 		file="data\Effects\guns\laser_fire_main2.psys"/>
 		<Item id="PS_LASER_FIRE_MAIN1" 		file="data\Effects\guns\laser_fire_main1.psys"/>
 		<Item id="PS_LASER_FIRE_MAIN" 		file="data\Effects\guns\laser_fire_main.psys"/>
 

@@ -2766,6 +2766,26 @@
 			id="robot2suspension08_R" 
 			file="data\models\AnimModels.xml"/>
 
+		<Item
+			id="brdm2Chassis"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cab"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Wheel"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cannon01"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cannon01gun"
+			file="data\models\AnimModels.xml" />
+
 <!-- quest items -->
 		<Item 
 			id="artefact1" 
@@ -3014,6 +3034,8 @@
 		<Item id="S_ENGINE_HUNTER_1_HIGH" />
 		<Item id="S_ENGINE_CRUISER_1_HIGH" />
 
+		<Item id="S_ENGINE_BRDM2" />
+
 		<!-- Missiles --> 
 
 		<Item id="S_MISSILE1" />
@@ -3075,6 +3097,7 @@
 		<Item id="S_SHOOTING_SQUAL_MINE" />
 		<Item id="S_SHOOTING_TURBO" />
 		<Item id="S_TANK_SHOOT" />
+		<Item id="S_BRDM2_KPVT_SHOOT" />
 
 		<!-- Shoot hits --> 
 
@@ -3124,6 +3147,7 @@
 		<Item id="S_HORN06" />
 		<Item id="S_HORN07" />
 		<Item id="S_HORN08" />
+		<Item id="S_HORN_BRDM2" />
 
 		<!-- ���� -->
 
@@ -3143,6 +3167,7 @@
 		<Item id="S_STARTING07" />
 		<Item id="S_STARTING08" />
 		<Item id="S_STARTING09" />
+		<Item id="S_STARTING_BRDM2" />
 		<Item id="S_SOMESHOT" />
 		<Item id="S_SHELL_SMALL" />
 		<Item id="S_SHELL_MEDIUM" />

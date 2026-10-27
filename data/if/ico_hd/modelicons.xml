@@ -102,7 +102,10 @@
    <Item id="ScavfakeCargo_7"	         file="data\if\ico\InventoryDlg\Opacity1.dds" file1=""/>	
    <Item id="ScavfakeCargo_8"	         file="data\if\ico\InventoryDlg\Opacity1.dds" file1=""/>	
 
-   <Item id="fakePlayerCargo"	         file="data\if\ico\InventoryDlg\Opacity1.dds" file1=""/>	
+   <Item id="fakePlayerCargo"	         file="data\if\ico\InventoryDlg\Opacity1.dds" file1=""/>
+
+   <Item id="brdm2Cab"	         file="data\if\ico_hd\InventoryDlg\brdm2\cab.dds" file1=""/>	
+   <Item id="brdm2Cargo"	      file="data\if\ico_hd\InventoryDlg\brdm2\cargo.dds" file1=""/>	
 
 
    <Item id="potato"			      file="data\if\ico_hd\InventoryDlg\goods\potatoe.dds" 	file1="data\if\ico_hd\InventoryDlg\goods\potatoe.dds"/>
@@ -466,8 +469,6 @@
    <Item id="rainmetal01_insured"		   file="data\if\ico_hd\InventoryDlg\weapon\Rainmetal_insured.dds"	file1="data\if\ico_hd\InventoryDlg\weapon\Rainmetal_min.dds"/>
    <Item id="rapier01"			   file="data\if\ico_hd\InventoryDlg\weapon\Rapier.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\Rapier_min.dds"/>
    <Item id="rapier01_insured"	file="data\if\ico_hd\InventoryDlg\weapon\Rapier_insured.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\Rapier_min.dds"/>
-   <Item id="shturman_rapier01"  file="data\if\ico_hd\InventoryDlg\weapon\Rapier.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\Rapier_min.dds"/>
-   <Item id="shturman_rapier01_insured"  file="data\if\ico_hd\InventoryDlg\weapon\Rapier_insured.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\Rapier_min.dds"/>
    <Item id="kpvt01"			      file="data\if\ico_hd\InventoryDlg\weapon\kpvt01.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\kpvt01_min.dds"/>
    <Item id="kpvt01_insured"		file="data\if\ico_hd\InventoryDlg\weapon\kpvt01_insured.dds"		file1="data\if\ico_hd\InventoryDlg\weapon\kpvt01_min.dds"/>
    <Item id="elephant01"	      file="data\if\ico_hd\InventoryDlg\weapon\elephant01.dds"	file1="data\if\ico_hd\InventoryDlg\weapon\elephant01_min.dds"/>
@@ -523,6 +524,9 @@
 
    <!-- Tank -->
    <Item id="tank01"			      file="data\if\ico_hd\InventoryDlg\weapon\tank.dds"			file1="data\if\ico_hd\InventoryDlg\weapon\tank_min.dds"/>
+
+   <!-- Brdm2 -->
+   <Item id="brdm2_cannon01"			      file="data\if\ico_hd\InventoryDlg\weapon\brdm2_cannon01_min.dds"			file1="data\if\ico_hd\InventoryDlg\weapon\brdm2_cannon01_min.dds"/>
 
    <Item id="cooling_system_guns" 			file="data\if\ico_hd\InventoryDlg\Gadgets\gadget1_bul.dds" file1=""/>
    <Item id="cooling_system_energy" 		file="data\if\ico_hd\InventoryDlg\Gadgets\gadget1_enrg.dds" file1=""/>

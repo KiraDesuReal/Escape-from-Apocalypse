@@ -6024,7 +6024,7 @@
 				if bossEntourage then
 					bossEntourage:SetNewPart("BASKET_SMALL_GUN_0", gun[exrandom(5)])
 					bossEntourage:SetRotation(rotarr[random(9)])
-					for l = 1, random(2,4) do 
+					for l = 1, random(1,3) do 
 						bossEntourage:AddItemsToRepository(LifeUse[random(3)], 1)
 					end
 					bossEntourage:AddItemsToRepository(FuelUse[random(2)], random(0,1))
@@ -6056,6 +6056,7 @@
 		</script>
 	</trigger>
 
+<!-- Деактивация триггеров босса и восстановление переменных -->
 	<trigger Name="BossRemove" active="0">
 		<event 	timeout="0.05" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -6161,6 +6162,7 @@
 		</script>
 	</trigger>
 
+<!-- Отслеживание попаданий по игроку для увеличения урона от босса с дистанции -->
 	<trigger Name="PlayerUnderAttackBoss" active="0">
 		<script>
 			trigger:IncCount()
@@ -6293,6 +6295,7 @@
 		</script>
 	</trigger>
 
+<!-- Если HP босса 0 -->
 	<trigger Name="ShturmanBossHP0_Faze2" active="0">
 		<event eventid="GE_VEHICLE_WITHOUT_HEALTH" ObjName="ShturmanBoss_vehicle_0" /> 
 		<script>
@@ -6354,6 +6357,7 @@
 		</script>
 	</trigger>
 
+<!-- Если HP свиты 0 -->
 	<trigger Name="BossEnemy_HP_0" active="0">
 		<script>
 			if GetVar("ShturmanBossFaze2").AsInt == 1 then
@@ -6420,6 +6424,7 @@
  		</script>
 	</trigger>
 
+<!-- Спавн щита босса -->
 	<trigger Name="ShturmanBoss_Faze2_BarrierTimer1" active="0">
 		<event 	timeout="15" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -6483,6 +6488,7 @@
 		</script>
 	</trigger>
 
+<!-- Спавн частиц -->
 	<trigger Name="ShturmanBoss_Faze2_SpawnElementes" active="0">
 		<event 	timeout="5" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -6554,6 +6560,7 @@
 		</script>
 	</trigger>
 
+<!-- Частицы можно подобрать -->
 	<trigger Name="ShturmanBoss_Faze2_PlaceElements" active="0">
 		<event 	timeout="3" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -6621,6 +6628,7 @@
 		</script>
 	</trigger>
 
+<!-- Удаление частиц -->
 	<trigger Name="ShturmanBoss_Faze2_RemoveElementes" active="0">
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -6639,6 +6647,7 @@
 		</script>
 	</trigger>
 
+<!-- Отслеживание попадания по боссу для реакций -->
 	<trigger Name="ShturmanBoss_Faze2_UnderAttack" active="0">
 		<event eventid="GE_UNDER_ATTACK" ObjName="ShturmanBoss_vehicle_0" />
 		<script>
@@ -6716,6 +6725,7 @@
 		</script>
 	</trigger>
 
+<!-- Иммунитет -->
 	<trigger Name="ShturmanBoss_Faze2_R_No_React" active="0">
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -6726,6 +6736,7 @@
 		</script>
 	</trigger>
 
+<!-- Таяние -->
 	<trigger Name="ShturmanBoss_Faze2_R_Melt" active="0">
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -6746,6 +6757,7 @@
 		</script>
 	</trigger>
 
+<!-- Пар -->
 	<trigger Name="ShturmanBoss_Faze2_R_Wape" active="0">
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -6766,6 +6778,7 @@
 		</script>
 	</trigger>
 
+<!-- Перегрузка -->
 	<trigger Name="ShturmanBoss_Faze2_R_Overload" active="0">
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -6796,6 +6809,7 @@
 		</script>
 	</trigger>
 
+<!-- Заморозка -->
 	<trigger Name="ShturmanBoss_Faze2_R_Freezing" active="0">
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -6853,6 +6867,7 @@
 		</script>
 	</trigger>
 
+<!-- Сверхпроводник -->
 	<trigger Name="ShturmanBoss_Faze2_R_Superconduct" active="0">
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -6872,6 +6887,7 @@
 		</script>
 	</trigger>
 
+<!-- Заряжен -->
 	<trigger Name="ShturmanBoss_Faze2_R_Charged" active="0">
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -6924,6 +6940,7 @@
 		</script>
 	</trigger>
 
+<!-- Отслеживание текущего HP босса -->
 	<trigger Name="ShturmanBoss_HP" active="0">
 		<event 	timeout="0.5" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -6986,6 +7003,7 @@
 		</script>
 	</trigger>
 
+<!-- Фаза 3 -->
 	<trigger Name="ShturmanBoss_TpToLoc" active="0">
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -7087,53 +7105,6 @@
 		</script>
 	</trigger>
 
-	<trigger Name="CreateShturmanSafeOpen" active="0">
-		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
-		<script>
-			local safe = getObj("shturman_safe1")
-			if safe then safe:Remove() end
-
-			CreateNewDummyObject("safe_box2_open", "shturman_safe2", -1, -1, CVector(5280.359, 231.045, 2041.466), getObj("ShturmanBox_loc"):GetRotation(), 0)
-	
-			CreateEffectInsertedInRemove("ET_S_OPEN_SAFE", CVector(5280.359, 231.045, 2041.466), Quaternion(0, 0, 0, 1), true)
-
-			local Chest = CreateNewObject{prototypeName = "mainChest", objName = "ShturmanBox"}	
-			local ChestId = GetEntityByID(Chest)
-			ChestId:SetPosition(CVector(5280.359, 230.800, 2041.466))
-			ChestId:SetRotation(getObj("ShturmanBox_loc"):GetRotation())
-			ChestId:SetPropertyById(7, 0.7)
-
-			local typeI = {"non", "electro", "valuables", "ammo", "food", "key", "other", "use", "gun", "gadget1", "gadget2", "gadget3"}
-			local typeR = {3, 75, 85, 70, 100, 50, 90, 100, 80, 65, 50, 40}
-
-			for i = 1, random(10,20) do
-				local t = weighted_random(typeI, typeR)
-				if t == "gun" or t == "gadget1" or t == "gadget2" or t == "gadget3" then
-					local item = GetItemsCategory(t)
-					AddItemsToChestObj(ChestId, item[random(getn(item))], "AmmunitionItem_"..random(10000).."_ShturmanBox")
-				elseif t == "non" then
-					local item = {"item_vitalik", "item_ledx"}
-					AddItemsToChestObj(ChestId, item[random(2)], "NonItem_"..random(10000).."_ShturmanBox")
-				else
-					local item = GetItemsCategory(t)
-					if t == "use" then
-						item = DeleteTableObj(GetItemsCategory("use"), "fuel_nil_use") 
-					elseif t == "other" then
-						item = GetItemsCategory("other")
-						for ii = 1, getn(GetItemsCategory("other")) do
-							if strsub(GetItemsCategory("other")[ii], 1, 11) == "item_poster" then 
-								item = DeleteTableObj(item, GetItemsCategory("other")[ii])
-							end	
-						end
-					end
-					AddItemsToChestObj(ChestId, GetRandomWeightedItem(item), "Item_"..random(10000).."_ShturmanBox")
-				end
-			end
-			SetVar("SafeBox_Active", 2)
-			trigger:Deactivate() 
-		</script>
-	</trigger>
-
 	<trigger Name="IfPlayerKillShturmanBoss" active="0">
 	<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
@@ -7169,6 +7140,66 @@
 				end
 			end
 			SetVar("KillEnemyShturmanBossReaction", "0")
+			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+<!-- Открытие сейфа -->
+	<trigger Name="CreateShturmanSafeOpen" active="0">
+		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			local safe = getObj("shturman_safe1")
+			if safe then safe:Remove() end
+
+			CreateNewDummyObject("safe_box2_open", "shturman_safe2", -1, -1, CVector(5280.359, 231.045, 2041.466), getObj("ShturmanBox_loc"):GetRotation(), 0)
+	
+			CreateEffectInsertedInRemove("ET_S_OPEN_SAFE", CVector(5280.359, 231.045, 2041.466), Quaternion(0, 0, 0, 1), true)
+
+			local Chest = CreateNewObject{prototypeName = "mainChest", objName = "ShturmanBox"}	
+			local ChestId = GetEntityByID(Chest)
+			ChestId:SetPosition(CVector(5280.359, 230.800, 2041.466))
+			ChestId:SetRotation(getObj("ShturmanBox_loc"):GetRotation())
+			ChestId:SetPropertyById(7, 0.7)
+
+			local typeI = {"non", "electro", "valuables", "ammo", "food", "key", "other", "use"}
+			local typeR = {3, 85, 90, 60, 80, 50, 90, 100}
+
+			for gun = 1, random(0,2) do
+				local category = GetItemsCategory("gun")
+				local item = category[random(getn(category))]
+				AddGunAfficsToChestObj(ChestId, item, "GunItem_"..random(10000).."_ShturmanBox")
+				if random(2) == 1 then
+					AddItemsToChestObj(ChestId, GetAmmoBoxForGun(item), "AmmoItem_"..random(10000).."_ShturmanBox")
+				end
+			end
+
+			for gadget = 1, random(0,3) do
+				local category = {"gadget1", "gadget2", "gadget3"}
+				local items = GetItemsCategory(category[exrandom(3)])
+				AddItemsToChestObj(ChestId, items[random(getn(items))], "GadgetItem_"..random(10000).."_ShturmanBox")
+			end
+
+			for i = 1, random(8,15) do
+				local t = weighted_random(typeI, typeR)
+				if t == "non" then
+					local item = {"item_vitalik", "item_ledx"}
+					AddItemsToChestObj(ChestId, item[random(2)], "NonItem_"..random(10000).."_ShturmanBox")
+				else
+					local item = GetItemsCategory(t)
+					if t == "use" then
+						item = DeleteTableObj(GetItemsCategory("use"), "fuel_nil_use") 
+					elseif t == "other" then
+						item = GetItemsCategory("other")
+						for ii = 1, getn(GetItemsCategory("other")) do
+							if strsub(GetItemsCategory("other")[ii], 1, 11) == "item_poster" then 
+								item = DeleteTableObj(item, GetItemsCategory("other")[ii])
+							end	
+						end
+					end
+					AddItemsToChestObj(ChestId, GetRandomWeightedItem(item), "Item_"..random(10000).."_ShturmanBox")
+				end
+			end
+			SetVar("SafeBox_Active", 2)
 			trigger:Deactivate() 
 		</script>
 	</trigger>

@@ -1305,6 +1305,26 @@
 		<Item
 			id="shell_sml_pulemet01"
 			file="data\models\AnimModels.xml" />
+		
+		<Item
+			id="brdm2Chassis"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cab"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Wheel"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cannon01"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cannon01gun"
+			file="data\models\AnimModels.xml" />
 
 		<Item
 			id="quay_big_cube"
@@ -2337,6 +2357,8 @@
 		<Item id="S_ENGINE_HUNTER_1_HIGH" />
 		<Item id="S_ENGINE_CRUISER_1_HIGH" />
 
+		<Item id="S_ENGINE_BRDM2" />
+
 		<!-- Missiles --> 
 
 		<Item id="S_MISSILE1" />
@@ -2398,6 +2420,7 @@
 		<Item id="S_SHOOTING_SQUAL_MINE" />
 		<Item id="S_SHOOTING_TURBO" />
 		<Item id="S_TANK_SHOOT" />
+		<Item id="S_BRDM2_KPVT_SHOOT" />
 
 		<!-- Shoot hits --> 
 
@@ -2447,6 +2470,7 @@
 		<Item id="S_HORN06" />
 		<Item id="S_HORN07" />
 		<Item id="S_HORN08" />
+		<Item id="S_HORN_BRDM2" />
 
 		<!-- ���� -->
 
@@ -2454,16 +2478,7 @@
 		<Item id="S_RAIN" />
 
 		<!-- Starting -->
-
-		<Item id="S_STARTING01" />
-		<Item id="S_STARTING02" />
-		<Item id="S_STARTING03" />
-		<Item id="S_STARTING04" />
-		<Item id="S_STARTING05" />
-		<Item id="S_STARTING06" />
-		<Item id="S_STARTING07" />
-		<Item id="S_STARTING08" />
-		<Item id="S_STARTING09" />
+		
 		<Item id="S_SOMESHOT" />
 		<Item id="S_SHELL_SMALL" />
 		<Item id="S_SHELL_MEDIUM" />

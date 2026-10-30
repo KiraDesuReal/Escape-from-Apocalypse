@@ -946,12 +946,33 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "100000"
 			RepairCoef			= "0.15"
 			Mass		= "1.0"
-			MaxHealth	= "2250" 
+			MaxHealth	= "3500" 
 			MaxFuel	= "280"
 			BrakingSound="ET_S_BRAKE01"
 			PneumoSound	="ET_S_PNEUMO_BRAKE01"
 			GearShiftSound="ET_S_GEAR_SHIFT01"
-			LoadPoints	= "LP_CAB01" >
+			LoadPoints	= "LP_CAB01 LP_GIANT01" >
+				<GroupsHealth
+					Main   = "10000"	
+				/>
+		</Prototype>
+
+		<Prototype
+			Class		= "Chassis"
+			Name		= "brdm2Chassis2"
+			ModelFile	= "brdm2Chassis2"
+			ResourceType	= "BRDM2_CHASSIS"
+			NodeScale	= "1 1 1"
+
+			Price				= "100000"
+			RepairCoef			= "0.15"
+			Mass		= "1.0"
+			MaxHealth	= "3500"
+			MaxFuel	= "280"
+			BrakingSound="ET_S_BRAKE01"
+			PneumoSound	="ET_S_PNEUMO_BRAKE01"
+			GearShiftSound="ET_S_GEAR_SHIFT01"
+			LoadPoints	= "LP_CAB01 LP_GIANT01" >
 				<GroupsHealth
 					Main   = "10000"	
 				/>
@@ -2803,11 +2824,47 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			<GadgetDescription>
 				<Slot
 					ResourceType	= "GADGET_COMMON"
-					MaxAmount	= "3" />  
+					MaxAmount	= "2" />  
 
 				<Slot
 					ResourceType	= "GADGET_WEAPON"
-					MaxAmount	= "3" />         
+					MaxAmount	= "2" />         
+			</GadgetDescription>
+			<GroupsHealth
+				Main   = "0"	
+			/>		
+		</Prototype>
+
+		<Prototype
+			Class				= "Cabin"
+			Name				= "brdm2Cab2"
+			ModelFile			= "brdm2Cab2"
+			ResourceType			= "BRDM2_CABIN"
+			NodeScale			= "1 1 1"
+			Mass				= "150"
+			Durability			= "120"
+			DurCoeffsForDamageTypes		= "15 5 0"
+			MaxPower			= "220"
+			MaxTorque			= "200"
+
+			Price				= "50000"
+ 			RepairCoef			= "0.6"
+        	FuelConsumption                 = "0.3"
+            EngineHighSound		= "ET_S_ENGINE_BRDM2"
+			MaxSpeed			= "125.0"
+			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
+
+			VisibleInEncyclopedia   = "false"
+
+			LoadPoints			= "LP_GIANT01" >
+			<GadgetDescription>
+				<Slot
+					ResourceType	= "GADGET_COMMON"
+					MaxAmount	= "2" />  
+
+				<Slot
+					ResourceType	= "GADGET_WEAPON"
+					MaxAmount	= "2" />         
 			</GadgetDescription>
 			<GroupsHealth
 				Main   = "0"	
@@ -2839,7 +2896,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 
 		<Prototype
 			Class				= "Basket"
-			Name				= "fakeCargoForSale"
+			Name				= "fakePlayerCargo"
 			VisibleInEncyclopedia   = "false"
 			ModelFile			= "point"
 			ResourceType		= "FAKE_BASKET"
@@ -2850,12 +2907,12 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Price				= "1"
 			Mass				= "1" >
 			<RepositoryDescription
-				RepositorySize		= "0 0"/>
+				RepositorySize		= "2 2"/>
 		</Prototype>
 
 		<Prototype
 			Class				= "Basket"
-			Name				= "fakePlayerCargo"
+			Name				= "fakeVehPointCargo"
 			VisibleInEncyclopedia   = "false"
 			ModelFile			= "point"
 			ResourceType		= "FAKE_BASKET"

@@ -242,7 +242,7 @@ $Id: GiantGuns.xml,v 1.28 2005/11/28 07:43:57 anton Exp $
 		Class			= "PlasmaBunchLauncher"
 		Name			= "brdm2_cannon01"
 		ModelFile		= "brdm2Cannon01"
-		ResourceType	= "BRDM2_GUN"
+		ResourceType	= "BIG_GUN"
 		NodeScale		= "1 1 1"
 		Mass			= "1.0"
 
@@ -250,7 +250,7 @@ $Id: GiantGuns.xml,v 1.28 2005/11/28 07:43:57 anton Exp $
 		ExplosionType	= "AUTOCANNON"
 		FiringEffect	= "none"
 		Damage		= "25"
-		FiringRate		= "280"
+		FiringRate		= "160"
 		GroupingAngle	= "0.5"
 		FiringRange		= "2000"
 		RecoilForce		= "1000"
@@ -266,10 +266,207 @@ $Id: GiantGuns.xml,v 1.28 2005/11/28 07:43:57 anton Exp $
 		Price			= "1"
 		FiringType		= "MachineGun"
 
-		VisibleInEncyclopedia   = "false"
 		TurningSpeed		= "100"
-		CanBeUsedInAutogenerating  =  "0"
 		ApplyAffixes = "false" 
+		VisibleInEncyclopedia	= "false"
+		/>
+
+	<Prototype
+		Class			= "PlasmaBunchLauncher"
+		Name			= "brdm2_cannon01_2"
+		ModelFile		= "brdm2Cannon01_2"
+		ResourceType	= "BIG_GUN"
+		NodeScale		= "1 1 1"
+		Mass			= "1.0"
+
+		BulletPrototype	= "raybullet_brdm2_cannon01"
+		ExplosionType	= "AUTOCANNON"
+		FiringEffect	= "none"
+		Damage		= "25"
+		FiringRate		= "160"
+		GroupingAngle	= "0.5"
+		FiringRange		= "2000"
+		RecoilForce		= "1000"
+		Decal				= "DC_BIG_MACHINEGUN"
+		ShellsPoolSize  = "496"
+		WithShellsPoolLimit	= "true"
+
+		ChargeSize     = "4"
+		RechargingTime = "4"
+
+		Durability		= "100"
+		
+		Price			= "1"
+		FiringType		= "MachineGun"
+
+		TurningSpeed		= "100"
+		ApplyAffixes = "false"
+		VisibleInEncyclopedia	= "false" 
+		BlastWavePrototype      = "smallBlastWave_brdm2_cannon01_2"
+		/>
+
+	<Prototype
+		Class			= "PlasmaBunchLauncher"
+		Name			= "brdm2_cannon01_Shturman"
+		ModelFile		= "brdm2Cannon01_2"
+		ResourceType	= "BIG_GUN"
+		NodeScale		= "1 1 1"
+		Mass			= "1.0"
+
+		BulletPrototype	= "raybullet_brdm2_cannon01"
+		ExplosionType	= "AUTOCANNON"
+		FiringEffect	= "none"
+		Damage		= "25"
+		FiringRate		= "160"
+		GroupingAngle	= "0"
+		FiringRange		= "2000"
+		RecoilForce		= "1000"
+		Decal				= "DC_BIG_MACHINEGUN"
+
+		ChargeSize     = "4"
+		RechargingTime = "4"
+
+		Durability		= "5000"
+		
+		Price			= "1"
+		FiringType		= "MachineGun"
+
+		ApplyAffixes = "false"
+		VisibleInEncyclopedia	= "false" 
+		BlastWavePrototype      = "smallBlastWave_brdm2_cannon01_2_Shturman"
+		/>
+
+	<Prototype
+		Class			= "BulletLauncher"
+		Name			= "brdm2_cannon02"
+		ModelFile		= "brdm2Cannon02"
+		ResourceType	= "SMALL_GUN"
+		NodeScale		= "1 1 1"
+		Mass			= "1.0"
+
+		TracerEffect ="ET_PS_TRACER1"
+		TracerRange = "1" 
+
+		BulletPrototype	= "raybullet_brdm2_cannon02"
+		ExplosionType	= "MACHINEGUN"
+		FiringEffect	= "none"
+		Damage		= "8"
+		FiringRate		= "800"
+		GroupingAngle	= "0.5"
+		FiringRange		= "1500"
+		RecoilForce		= "300"
+		Decal				= "DC_SML_MACHINEGUN"
+		ShellsPoolSize  = "1750"
+		WithShellsPoolLimit	= "true"
+
+		ChargeSize     = "250"
+		RechargingTime = "4"
+
+		Durability		= "100"
+		
+		Price			= "1"
+		FiringType		= "MachineGun"
+
+		TurningSpeed		= "100"
+		ApplyAffixes = "false" 
+		VisibleInEncyclopedia	= "false"
+		/>
+
+	<Prototype
+		Class			= "BulletLauncher"
+		Name			= "brdm2_cannon02_Shturman"
+		ModelFile		= "brdm2Cannon02"
+		ResourceType	= "SMALL_GUN"
+		NodeScale		= "1 1 1"
+		Mass			= "1.0"
+
+		TracerEffect ="ET_PS_TRACER1"
+		TracerRange = "1" 
+
+		BulletPrototype	= "raybullet_brdm2_cannon02"
+		ExplosionType	= "MACHINEGUN"
+		FiringEffect	= "none"
+		Damage		= "8"
+		FiringRate		= "800"
+		GroupingAngle	= "0.1"
+		FiringRange		= "1500"
+		RecoilForce		= "300"
+		Decal				= "DC_SML_MACHINEGUN"
+
+		ChargeSize     = "250"
+		RechargingTime = "4"
+
+		Durability		= "5000"
+		
+		Price			= "1"
+		FiringType		= "MachineGun"
+
+		ApplyAffixes = "false" 
+		VisibleInEncyclopedia	= "false"
+		/>
+
+	<Prototype
+		Class			= "PlasmaBunchLauncher"
+		Name			= "brdm2_cannon01_skin1"
+		ModelFile		= "brdm2Cannon01_2_skin1"
+		ResourceType	= "BIG_GUN"
+		NodeScale		= "1 1 1"
+		Mass			= "1.0"
+
+		BulletPrototype	= "raybullet_brdm2_cannon01"
+		ExplosionType	= "AUTOCANNON"
+		FiringEffect	= "none"
+		Damage		= "25"
+		FiringRate		= "160"
+		GroupingAngle	= "0"
+		FiringRange		= "2000"
+		RecoilForce		= "1000"
+		Decal				= "DC_BIG_MACHINEGUN"
+
+		ChargeSize     = "4"
+		RechargingTime = "4"
+
+		Durability		= "0"
+		
+		Price			= "1"
+		FiringType		= "MachineGun"
+
+		TurningSpeed		= "0"
+
+		ApplyAffixes = "false"
+		VisibleInEncyclopedia	= "false" 
+		/>
+
+	<Prototype
+		Class			= "BulletLauncher"
+		Name			= "brdm2_cannon02_skin1"
+		ModelFile		= "brdm2Cannon02_skin1"
+		ResourceType	= "SMALL_GUN"
+		NodeScale		= "1 1 1"
+		Mass			= "1.0"
+
+		BulletPrototype	= "raybullet_brdm2_cannon02"
+		ExplosionType	= "MACHINEGUN"
+		FiringEffect	= "none"
+		Damage		= "8"
+		FiringRate		= "800"
+		GroupingAngle	= "0.1"
+		FiringRange		= "1500"
+		RecoilForce		= "300"
+		Decal				= "DC_SML_MACHINEGUN"
+
+		ChargeSize     = "250"
+		RechargingTime = "4"
+
+		Durability		= "0"
+		
+		Price			= "1"
+		FiringType		= "MachineGun"
+
+		TurningSpeed		= "0"
+
+		ApplyAffixes = "false" 
+		VisibleInEncyclopedia	= "false"
 		/>
 
 </Prototypes>

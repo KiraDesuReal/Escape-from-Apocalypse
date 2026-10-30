@@ -202,6 +202,7 @@
 			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("IfPlayerDieForQuest") end 
 			TDeactivate("DotShoot")
 			getObj("DotShoot"):DelEvent("GE_UNDER_ATTACK")
+			if getObj("ShturmanBoss_vehicle_0") then TActivate("BossRemove") end
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -492,17 +493,17 @@
 				local bossEntourage = getObj("ShturmanBoss_vehicle_"..i)
 				if bossEntourage and bossEntourage:IsAlive() then
 					local skin = bossEntourage:GetSkin()
-					local slotgun = bossEntourage:GetPartByName("BASKET_SMALL_GUN_0"):GetProperty("Prototype").AsString
+					local slotgun = bossEntourage:GetPartByName("BASKET_BIG_GUN_0"):GetProperty("Prototype").AsString
 					local newgun = gun[random(2)]
 					bossEntourage:SetNewPart("CABIN", "molokovozCab02")
-					bossEntourage:SetNewPart("BASKET", "molokovozCargo01_PMC")
-					bossEntourage:SetNewPart("BASKET_SMALL_GUN_0", newgun)
+					bossEntourage:SetNewPart("BASKET", "molokovozCargo03_PMC")
+					bossEntourage:SetNewPart("BASKET_BIG_GUN_0", newgun)
 					bossEntourage:SetSkin(skin)
 					bossEntourage:AddModifier("maxhp", "= 3500")
 					bossEntourage:AddModifier("hp", "= 3500")
 					bossEntourage:setImmortalMode(1)
-					bossEntourage:GetPartByName("BASKET_SMALL_GUN_0"):SetPropertyById(36, 10000)
-					bossEntourage:GetPartByName("BASKET_SMALL_GUN_0"):SetPropertyById(19, 5000)
+					bossEntourage:GetPartByName("BASKET_BIG_GUN_0"):SetPropertyById(36, 10000)
+					bossEntourage:GetPartByName("BASKET_BIG_GUN_0"):SetPropertyById(19, 5000)
 					for l = 1, random(1,3) do 
 						bossEntourage:AddItemsToRepository(LifeUse[random(2)], 1)
 					end
@@ -516,14 +517,15 @@
 
 			local boss = getObj("ShturmanBoss_vehicle_0")
 			if boss then
-				local skin = boss:GetSkin()
-				boss:SetNewPart("CABIN", "hunterCab02")
+				boss:SetNewPart("CABIN", "brdm2Cab")
 				boss:AddModifier("maxhp", "= 20000")
 				boss:AddModifier("hp", "= 20000")
-				boss:SetSkin(skin)
+				boss:SetSkin(0)
 			end
 
 			TActivate("ShturmanBoss_Faze2_MusicFade")
+			TActivate("UpdateGameTime")
+			TActivate("CreateWeatherSound")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -602,7 +604,7 @@
 			Fly("start_game", CINEMATIC_NO_AIM, 0, 0.5, 0, 1)
 			StartCinematic()
 
-			AddCinematicMessage(77774, 0)
+			AddCinematicMessage(77773, 0)
 	
 			TActivate("ShturmanBoss_DieFx_End")
 			trigger:Deactivate()
@@ -642,11 +644,10 @@
 						end
 					end
 					if i == 1 then
-						boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(35, 4.0)
-						boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(29, 15)
-						boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(19, 100)
-						boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(36, 34)
-						boss:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(28, 100)
+						if GetVar("ShturmanBoss_Tp").AsInt == 2 then
+							boss:SetNewPart("CHASSIS_BIG_GUN", "brdm2_cannon01_Shturman")
+							boss:SetNewPart("CHASSIS_SMALL_GUN", "brdm2_cannon02_Shturman")
+						end
 						boss:AddModifier("hp", "= 0")
 						boss:setImmortalMode(0) 
 					else
@@ -661,6 +662,9 @@
 			
 			TDeactivate("BossEntourageDie")
 			TDeactivate("BossEnemy_UnderAttack")
+
+			TActivate("UpdateGameTime")
+			TActivate("CreateWeatherSound")
 			trigger:Deactivate()
 		</script>
 	</trigger>

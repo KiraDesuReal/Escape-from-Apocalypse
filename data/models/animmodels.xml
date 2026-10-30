@@ -17298,11 +17298,162 @@
 	</model>
 
 	<model
+		id="brdm2Chassis2"
+		file="data\models\vehicles\brdm-2\chassis2.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="8">
+			<lp
+				id="8"
+				effect_id="ET_PS_VEH_EXP_WHEEL_MED"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="DEATH2"
+			skin="8">
+			<lp
+				id="8"
+				effect_id="ET_PS_VEH_EXP_WHEEL1_MED"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+	</model>
+
+	<model
 		id="brdm2Cab"
 		shadow="1"
 		shadowVolume="1"
 		windwavy="0"
 		file="data\models\vehicles\brdm-2\cabin.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+
+		<action
+			name="STAND1">
+			<lp
+				id="LP_EXH01"
+				effect_id="ET_PS_EXHAUST_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_EXH02"
+				effect_id="ET_PS_EXHAUST_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="MOVE1">
+			<lp
+				id="LP_EXH01"
+				effect_id="ET_PS_EXHAUST_POW_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_EXH02"
+				effect_id="ET_PS_EXHAUST_POW_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="RESERVED2">
+			<lp
+				id="LP_LIGHT01"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT02"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT03"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT04"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_PROJECTOR01"
+				effect_id="ET_PS_PROJECTOR_TANK"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_GLOW01"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_GLOW02"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_PROJECTOR02"
+				effect_id="ET_PS_PROJECTOR_RED"
+				restartOnAnimationChange="0" />
+		</action>
+
+		<action
+			name="MOVE2">
+			<lp
+				id="LP_GLOW01"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_GLOW02"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_PROJECTOR02"
+				effect_id="ET_PS_PROJECTOR_RED"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_PROJECTOR02"
+				effect_id="ET_PS_PROJECTOR_RED"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_EXH01"
+				effect_id="ET_PS_EXHAUST_POW_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_EXH02"
+				effect_id="ET_PS_EXHAUST_POW_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+	</model>
+
+	<model
+		id="brdm2Cab2"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles\brdm-2\cabin2.gam">
 		<action
 			name="DEATH1"
 			skin="8" />
@@ -17492,6 +17643,154 @@
 				restartOnAnimationChange="1"
 				ImmediateRemove="0" />
 		</action>
+	</model>
+
+	<model
+		id="brdm2Cannon01_2"
+		shadow="1"
+		windwavy="0"
+		file="data\models\vehicles\brdm-2\turret2.gam">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+	</model>
+
+	<model
+		id="brdm2Cannon01_2gun"
+		shadow="1"
+		windwavy="0"
+		file="data\models\vehicles\brdm-2\gun.gam">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+
+		<action
+			name="MOVE1">
+			<lp
+				id="LP_FIRE01"
+				effect_id="ET_PS_BRDM2_KPVT_SHOOT"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="STAND1">
+			<lp
+				id="LP_FIRE01"
+				effect_id="ET_PS_AUTOCANNON_STAND"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+	</model>
+
+	<model
+		id="brdm2Cannon02"
+		shadow="1"
+		windwavy="0"
+		file="data\models\vehicles\brdm-2\turret3.gam">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+	</model>
+
+	<model
+		id="brdm2Cannon02gun"
+		shadow="1"
+		windwavy="0"
+		file="data\models\vehicles\brdm-2\gun2.gam">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+
+		<action
+			name="MOVE1">
+			<lp
+				id="LP_FIRE01"
+				effect_id="ET_PS_PKT_FIRE"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="STAND1">
+			<lp
+				id="LP_FIRE01"
+				effect_id="ET_PS_MACHINEGUN_STAND"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+	</model>
+
+	<model
+		id="brdm2Cannon01_2_skin1"
+		shadow="1"
+		windwavy="0"
+		file="data\models\vehicles\brdm-2\turret2.gam">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+	</model>
+
+	<model
+		id="brdm2Cannon01_2_skin1gun"
+		shadow="1"
+		windwavy="0"
+		file="data\models\vehicles\brdm-2\gun_skin1.gam">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+	</model>
+
+	<model
+		id="brdm2Cannon02_skin1"
+		shadow="1"
+		windwavy="0"
+		file="data\models\vehicles\brdm-2\turret3.gam">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+	</model>
+
+	<model
+		id="brdm2Cannon02_skin1gun"
+		shadow="1"
+		windwavy="0"
+		file="data\models\vehicles\brdm-2\gun2_skin1.gam">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
 	</model>
 
 	<model

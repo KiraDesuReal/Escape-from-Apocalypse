@@ -2041,7 +2041,15 @@
 			file="data\models\AnimModels.xml" />
 
 		<Item
+			id="brdm2Chassis2"
+			file="data\models\AnimModels.xml" />
+
+		<Item
 			id="brdm2Cab"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cab2"
 			file="data\models\AnimModels.xml" />
 
 		<Item
@@ -2054,6 +2062,38 @@
 
 		<Item
 			id="brdm2Cannon01gun"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cannon01_2"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cannon01_2gun"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cannon01_2_skin1"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cannon01_2_skin1gun"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cannon02"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cannon02gun"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cannon02_skin1"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cannon02_skin1gun"
 			file="data\models\AnimModels.xml" />
 
 		<Item
@@ -3278,7 +3318,9 @@
 		<Item id="S_SHOOTING_SQUAL_MINE" />
 		<Item id="S_SHOOTING_TURBO" />
 		<Item id="S_TANK_SHOOT" />
-		<Item id="S_BRDM2_KPVT_SHOOT" />
+		<Item id="S_BRDM2_KPVT_SHOOT1_TAIL" />
+		<Item id="S_BRDM2_KPVT_SHOOT2_TAIL" />
+		<Item id="S_BRDM2_KPVT_SHOOT3_TAIL" />
 
 		<!-- Shoot hits --> 
 

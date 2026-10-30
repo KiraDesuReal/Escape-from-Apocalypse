@@ -1077,9 +1077,9 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		Abstract 		= "true"	>
 
 		<MainPartDescription id = "CHASSIS" partResourceType = "BRDM2_CHASSIS">
-			<PartDescription id = "CABIN" partResourceType = "BRDM2_CABIN" lpName = "LP_CAB01" >
-				<PartDescription id="CABIN_BRDM2_GUN" partResourceType = "BRDM2_GUN" lpName = "LP_GIANT01" />
-			</PartDescription>
+			<PartDescription id = "CABIN" partResourceType = "BRDM2_CABIN" lpName = "LP_CAB01" />
+			<PartDescription id="CHASSIS_BIG_GUN" partResourceType = "BIG_GUN" lpName = "LP_GIANT01" />
+			<PartDescription id="CHASSIS_SMALL_GUN" partResourceType = "SMALL_GUN" lpName = "LP_GIANT01" />
 			<PartDescription id = "BASKET" partResourceType="FAKE_BASKET" lpName = "LP_CAB01" >
 				<PartDescription id="BASKET_SPECIAL_ITEMS" partResourceType = "SPEC_ITEM" lpName = "LP_SPEC"/>
 			</PartDescription>
@@ -1087,6 +1087,63 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 		<Parts>
 			<Part id = "CHASSIS"			Prototype = "brdm2Chassis" />
+		</Parts>
+
+		<Wheels>
+			<Wheel Prototype = "brdm2Wheel" steering = "correct" />
+			<Wheel Prototype = "brdm2Wheel" steering = "correct" />
+			<Wheel Prototype = "brdm2Wheel" />
+			<Wheel Prototype = "brdm2Wheel" />
+		</Wheels>
+	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
+		Name			= "Brdm2_Shturman"
+		ResourceType			= "VEHICLE"
+
+		DiffRatio		= "5.0"
+		MaxEngineRpm		= "6000"
+		LowGearShiftLimit	= "2000"
+		HighGearShiftLimit	= "3500"
+
+		SteeringSpeed		= "0.5"
+
+		CameraHeight            = "4.75"
+		CameraMaxDist		= "25"
+
+		BlastWave             = "bigBlastWave"
+
+		HornSound		= "ET_S_HORN_BRDM2"
+
+		DecisionMatrix		= "vehiclemain.lua"
+
+		LookRadius			= "350.0"
+		IntersectionRadius	= "5.7"
+		TakingRadius		= "10.0"
+
+		DriftCoeff            = "0.01"
+
+		MassSize		= "10 1 5"
+		MassTranslation		= "0 -1.6 0"
+		DestroyEffectPiercing	= "ET_PS_VEH_EXP1_MED"
+		DestroyEffectBlast	= "ET_PS_VEH_EXP2_MED"
+		DestroyEffectEnergy	= "ET_PS_VEH_EXP3_MED"
+		DestroyEffectWater	= "ET_PS_VEH_EXP2_MED"
+
+		Abstract 		= "true"	>
+
+		<MainPartDescription id = "CHASSIS" partResourceType = "BRDM2_CHASSIS">
+			<PartDescription id = "CABIN" partResourceType = "BRDM2_CABIN" lpName = "LP_CAB01" />
+			<PartDescription id="CHASSIS_BIG_GUN" partResourceType = "BIG_GUN" lpName = "LP_GIANT01" />
+			<PartDescription id="CHASSIS_SMALL_GUN" partResourceType = "SMALL_GUN" lpName = "LP_GIANT01" />
+			<PartDescription id = "BASKET" partResourceType="FAKE_BASKET" lpName = "LP_CAB01" >
+				<PartDescription id="BASKET_SPECIAL_ITEMS" partResourceType = "SPEC_ITEM" lpName = "LP_SPEC"/>
+			</PartDescription>
+		</MainPartDescription>
+
+		<Parts>
+			<Part id = "CHASSIS"			Prototype = "brdm2Chassis2" />
 		</Parts>
 
 		<Wheels>
@@ -2461,12 +2518,14 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 
 	<Prototype
 		Class			= "Vehicle"
-		Name			= "Hunter2CarShturman"
-		ParentPrototype 	= "HunterBoss"
+		Name			= "Brdm2_02_Shturman"
+		ParentPrototype		= "Brdm2_Shturman"
 		VisibleInEncyclopedia	= "true">
 		<Parts>
-			<Part id = "CABIN"			Prototype = "hunterCab02" />
-			<Part id = "BASKET"		Prototype = "bigfakeCargo" />
+			<Part id = "CABIN"			Prototype = "brdm2Cab2" />
+			<Part id = "CHASSIS_BIG_GUN"		Prototype = "brdm2_cannon01_Shturman" /> 
+			<Part id = "CHASSIS_SMALL_GUN"		Prototype = "brdm2_cannon02_Shturman" /> 
+			<Part id = "BASKET"			Prototype = "bigfakeCargo" />
 		</Parts>
 	</Prototype>
 
@@ -2474,10 +2533,10 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		Class			= "Vehicle"
 		Name			= "MolokovozCarShturmanEntourage"
 		ParentPrototype 	= "Molokovoz_PMC"
-		VisibleInEncyclopedia	= "true">
+		VisibleInEncyclopedia	= "false">
 		<Parts>
 			<Part id = "CABIN"			Prototype = "molokovozCab02" />
-			<Part id = "BASKET"		Prototype = "molokovozCargo01_PMC" />
+			<Part id = "BASKET"		Prototype = "molokovozCargo03_PMC" />
 		</Parts>
 	</Prototype>
 
@@ -2496,7 +2555,7 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 		Name			= "VehPoint01"
 		ParentPrototype		= "VehPoint">
 		<Parts>
-			<Part id = "BASKET"		Prototype = "fakePlayerCargo" />
+			<Part id = "BASKET"		Prototype = "fakeVehPointCargo" />
 		</Parts>
 	</Prototype>
 
@@ -5535,12 +5594,24 @@ $Id: Vehicles.xml,v 1.123 2005/11/28 07:43:58 anton Exp $
 	<Prototype
 		Class			= "Vehicle"
 		Name			= "Brdm2_01"
-		VisibleInEncyclopedia   = "true"
 		ParentPrototype		= "Brdm2">
 		<Parts>
 			<Part id = "CABIN"			Prototype = "brdm2Cab" />
 			<Part id = "BASKET"			Prototype = "brdm2Cargo" />
-			<Part id = "CABIN_BRDM2_GUN"		Prototype = "brdm2_cannon01" /> 
+			<Part id = "CHASSIS_BIG_GUN"		Prototype = "brdm2_cannon01" /> 
 		</Parts>
 	</Prototype>
+
+	<Prototype
+		Class			= "Vehicle"
+		Name			= "Brdm2_02"
+		ParentPrototype		= "Brdm2">
+		<Parts>
+			<Part id = "CABIN"			Prototype = "brdm2Cab" />
+			<Part id = "CHASSIS_BIG_GUN"		Prototype = "brdm2_cannon01_2" /> 
+			<Part id = "CHASSIS_SMALL_GUN"		Prototype = "brdm2_cannon02" /> 
+			<Part id = "BASKET"			Prototype = "brdm2Cargo" />
+		</Parts>
+	</Prototype>
+	
 </Prototypes>

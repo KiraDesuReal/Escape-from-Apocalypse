@@ -99,16 +99,16 @@ $Id: VehiclePartTypes.xml,v 1.12 2005/11/11 08:56:45 anton Exp $
 	<VehiclePart
 		PartName	="CHASSIS_SMALL_GUN"
 		ResourceName	="SMALL_GUN"
-	/>                            
+	/>   
+
+	<VehiclePart
+		PartName	="CHASSIS_BIG_GUN"
+		ResourceName	="BIG_GUN"
+	/>                          
 
 	<VehiclePart
 		PartName	="TANK_GUN"
 		ResourceName	="TANK_GUN"
 	/> 
-
-	<VehiclePart
-		PartName	="CABIN_BRDM2_GUN"
-		ResourceName	="BRDM2_GUN"
-	/>                              
 
 </VehiclePartTypes>

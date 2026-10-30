@@ -578,9 +578,8 @@ function UseAmmoItems(ammo_used)
 			local dur = big_gun:GetProperty("Durability").AsInt
 			if poolshells == 0 and currentshells == 0 and dur ~= 0 then
 				if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) or HasPlayerAmountOfItems("ammo_chest_heavygun_insured", 1) then
-					if prot == "rapier01" or prot == "rapier01_insured" or prot == "rainmetal01" or prot == "rainmetal01_insured" or prot == "shturman_rapier01" or prot == "shturman_rapier01_insured" then
+					if prot == "rapier01" or prot == "rapier01_insured" or prot == "rainmetal01" or prot == "rainmetal01_insured" then
 						if prot == "rapier01" or prot == "rapier01_insured" then big_gun:SetShellsInPool(55) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "rapier01") end
-						if prot == "shturman_rapier01" or prot == "shturman_rapier01_insured" then big_gun:SetShellsInPool(35) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "shturman_rapier01") end
 						if prot == "rainmetal01" or prot == "rainmetal01_insured" then big_gun:SetShellsInPool(320) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "rainmetal01") end
 						CreateEffectTTLed("ET_S_USE_RELOAD_HEAVYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 2500)
 						if HasPlayerAmountOfItems("ammo_chest_heavygun", 1) then 
@@ -823,6 +822,32 @@ function UseAmmoItems(ammo_used)
 			end
 		end
 	end
+
+	local chs_slots = {"CHASSIS_SMALL_GUN", "CHASSIS_BIG_GUN"}
+	for chs = 1,2 do
+		local chs_gun = GetPlayerVehicle():GetPartByName(chs_slots[chs])
+		if chs_gun then
+			local prot = chs_gun:GetProperty("Prototype").AsString
+			local poolshells = chs_gun:GetShellsInPool()
+			local currentshells = chs_gun:GetShellsInCurrentCharge()
+			local dur = chs_gun:GetProperty("Durability").AsInt
+			if poolshells == 0 and currentshells == 0 and dur ~= 0 then
+				if prot == "brdm2_cannon01" or prot == "brdm2_cannon01_2" or prot == "brdm2_cannon02" then
+					if prot == "brdm2_cannon01" or prot == "brdm2_cannon01_2" then chs_gun:SetShellsInPool(500) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "brdm2_cannon01") end
+					if prot == "brdm2_cannon02" then chs_gun:SetShellsInPool(2000) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "brdm2_cannon02") end
+					CreateEffectTTLed("ET_S_USE_RELOAD_MACHINEGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1750)
+					if HasPlayerAmountOfItems("ammo_chest_machinegun", 1) then 
+						RemoveItemsFromPlayerRepository("ammo_chest_machinegun", 1)
+						if ammo_used == 1 then SetVar("Use_AmmoChestMachineGun", GetVar("Use_AmmoChestMachineGun").AsInt+1) end
+					elseif HasPlayerAmountOfItems("ammo_chest_machinegun_insured", 1) then
+						DeleteTableInsuredItems("ammo_chest_machinegun")
+						RemoveItemsFromPlayerRepository("ammo_chest_machinegun_insured", 1)
+						if ammo_used == 1 then SetVar("Use_AmmoChestMachineGun_Insured", GetVar("Use_AmmoChestMachineGun_Insured").AsInt+1) end
+					end
+				end
+			end
+		end
+	end
 end
 
 -- Дать патроны для конкретного оружия
@@ -865,7 +890,7 @@ function AddAmmoItemsForGuns(veh, count)
 		for big=1,4 do
 			if vehicle:GetPartByName(big_slot[big]) then
 				big_gun = vehicle:GetPartByName(big_slot[big]):GetProperty("Prototype").AsString
-				if big_gun == "rapier01" or big_gun == "rapier01_insured" or big_gun == "rainmetal01" or big_gun == "rainmetal01_insured" or big_gun == "shturman_rapier01" or big_gun == "shturman_rapier01_insured" then
+				if big_gun == "rapier01" or big_gun == "rapier01_insured" or big_gun == "rainmetal01" or big_gun == "rainmetal01_insured" then
 					vehicle:AddItemsToRepository("ammo_chest_heavygun", count)
 				end
 				if big_gun == "vector01" or big_gun == "vector01_insured" or big_gun == "vulcan01" or big_gun == "vulcan01_insured" or big_gun == "kpvt01" or big_gun == "kpvt01_insured" then
@@ -928,6 +953,20 @@ function AddAmmoItemsForGuns(veh, count)
 			special_gun = vehicle:GetPartByName("BASKET_SPECIAL_WEAPON"):GetProperty("Prototype").AsString
 			if special_gun == "someTurboAccelerationPusher" or special_gun == "someTurboAccelerationPusher_insured" then
 				vehicle:AddItemsToRepository("ammo_ballon_turbo", count)
+			end
+		end
+
+		if vehicle:GetPartByName("CHASSIS_SMALL_GUN") then
+			small_gun = vehicle:GetPartByName("CHASSIS_SMALL_GUN"):GetProperty("Prototype").AsString
+			if small_gun == "brdm2_cannon02" then
+				vehicle:AddItemsToRepository("ammo_chest_machinegun", count)
+			end
+		end
+
+		if vehicle:GetPartByName("CHASSIS_BIG_GUN") then
+			big_gun = vehicle:GetPartByName("CHASSIS_BIG_GUN"):GetProperty("Prototype").AsString
+			if big_gun == "brdm2_cannon01" or big_gun == "brdm2_cannon01_2" then
+				vehicle:AddItemsToRepository("ammo_chest_machinegun", count)
 			end
 		end
 	end
@@ -2273,7 +2312,7 @@ function RandomItem(item, procent)
 end
 
 -- Отслеживание попаданий по цели
-function ObjUnderAttack(ObjTarget, ObjAttack, TriggerName)
+function ObjUnderAttack(ObjTarget, ObjAttack, AmountEvent, TriggerName)
 	local target = getObj(ObjTarget)
 	local car = getObj(ObjAttack)
 	local belongTarget = 0
@@ -2292,7 +2331,7 @@ function ObjUnderAttack(ObjTarget, ObjAttack, TriggerName)
 						if belongTarget == 1089 then TActivate("KillsPMC_USEC") end
 						if TriggerName then TActivate(TriggerName) end
 					end
-					AddModifierHpIfCanShturmanRapier(ObjTarget, ObjAttack)
+					AddModifierHpIfPlayerVehicleBrdm2(ObjTarget, AmountEvent)
 				else
 					if TriggerName then TActivate(TriggerName) end
 				end
@@ -2317,40 +2356,23 @@ function ObjUnderAttackDurability(ObjTarget, ObjAttack)
 	end
 end
 
-function AddModifierHpIfCanShturmanRapier(ObjTarget, ObjAttack)
+function AddModifierHpIfPlayerVehicleBrdm2(ObjTarget, AmountEvent)
 	local target = getObj(ObjTarget)
-	local car = getObj(ObjAttack)
-	if car and target and target:IsAlive() then
-		if car:GetProperty("Prototype").AsString ~= "BlastWaveOverload" and car:GetProperty("Prototype").AsString ~= "BlastWaveSuperconduct" then
-			local big_slot = {"CABIN_BIG_GUN_1", "CABIN_BIG_GUN_2", "BASKET_BIG_GUN_0", "BASKET_BIG_GUN_1"}
-			for big=1,4 do
-				local big_gun = car:GetPartByName(big_slot[big])
-				if big_gun then 
-					if big_gun:GetProperty("Prototype").AsString == "shturman_rapier01" or big_gun:GetProperty("Prototype").AsString == "shturman_rapier01_insured" then
-						if big_gun:GetChargeState() == 1 and GetVar(big_slot[big].."_Reload").AsInt ~= 1 then
-							local distDam = Dist(car, target)
-							con(distDam + 100)
-							target:AddModifier("hp", "- "..distDam)
-							SetVar(big_slot[big].."_Reload", 1)
-						end
-					end
-				end
-			end
-		end
-	end
-end
-
-function ReloadSlotsForShturmanRapier()
 	local car = GetPlayerVehicle()
-	if car then
-		local big_slot = {"CABIN_BIG_GUN_1", "CABIN_BIG_GUN_2", "BASKET_BIG_GUN_0", "BASKET_BIG_GUN_1"}
-		for big=1,4 do
-			local big_gun = car:GetPartByName(big_slot[big])
-			if big_gun then 
-				if big_gun:GetProperty("Prototype").AsString == "shturman_rapier01" or big_gun:GetProperty("Prototype").AsString == "shturman_rapier01_insured" then
-					if big_gun:GetChargeState() == 0 and GetVar(big_slot[big].."_Reload").AsInt == 1 then
-						SetVar(big_slot[big].."_Reload", 0)
+	if car and target and target:IsAlive() then
+		local gun = car:GetPartByName("CHASSIS_BIG_GUN")
+		if gun then 
+			if gun:GetProperty("Prototype").AsString == "brdm2_cannon01" or gun:GetProperty("Prototype").AsString == "brdm2_cannon01_2" then
+				local distDam = Dist(car, target)
+				if distDam >= 20 and AmountEvent >= 3 then
+					if distDam >= 300 then
+						distDam = 300 * 1.25
+					else
+						distDam = distDam * 1.25
 					end
+					con("DAMAGE: "..math.floor(distDam + 0.5).." HP: "..math.floor(target:GetHealth() + 0.5))
+					con("EVENT COUNT: "..AmountEvent)
+					target:AddModifier("hp", "- "..distDam)
 				end
 			end
 		end

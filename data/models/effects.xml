@@ -2625,12 +2625,30 @@
 		<Node name="Object2" class="SgParticlesNode" id="PS_SPARKLE_BIG_MAIN1" psNumEmitterMesh="-1" />
 	</Node>
 
-	<Node name="ET_PS_BRDM2_KPVT_SHOOT" class="SgNode">
-		<Node name="Object1" class="SgParticlesNode" id="PS_RAPIER01_FIRE_MAIN" psNumEmitterMesh="-1" />
-		<Node name="Object11" class="SgParticlesNode" id="PS_RAPIER01_FIRE_MAINX" psNumEmitterMesh="-1" />
-		<Node name="Object111" class="SgParticlesNode" id="PS_RAPIER01_FIRE_MAINY" psNumEmitterMesh="-1" />
-		<Node name="Object2" class="SgParticlesNode" id="PS_OCTOPUS01_FIRE_SMOKE" psNumEmitterMesh="-1" />
-		<Node name="Sound1" class="SgSoundSourceNode" id="S_BRDM2_KPVT_SHOOT" looped="0" />
+	<Node name="ET_PS_BRDM2_KPVT_SHOOT" multi="true">
+		<Node name="ET_PS_BRDM2_KPVT_SHOOT1" class="SgNode">
+			<Node name="Object1" class="SgParticlesNode" id="PS_RAPIER01_FIRE_MAIN" psNumEmitterMesh="-1" />
+			<Node name="Object11" class="SgParticlesNode" id="PS_RAPIER01_FIRE_MAINX" psNumEmitterMesh="-1" />
+			<Node name="Object111" class="SgParticlesNode" id="PS_RAPIER01_FIRE_MAINY" psNumEmitterMesh="-1" />
+			<Node name="Object2" class="SgParticlesNode" id="PS_OCTOPUS01_FIRE_SMOKE" psNumEmitterMesh="-1" />
+			<Node name="Sound1" class="SgSoundSourceNode" id="S_BRDM2_KPVT_SHOOT1_TAIL" isLooped="0" />
+		</Node>
+
+		<Node name="ET_PS_BRDM2_KPVT_SHOOT2" class="SgNode">
+			<Node name="Object1" class="SgParticlesNode" id="PS_RAPIER01_FIRE_MAIN" psNumEmitterMesh="-1" />
+			<Node name="Object11" class="SgParticlesNode" id="PS_RAPIER01_FIRE_MAINX" psNumEmitterMesh="-1" />
+			<Node name="Object111" class="SgParticlesNode" id="PS_RAPIER01_FIRE_MAINY" psNumEmitterMesh="-1" />
+			<Node name="Object2" class="SgParticlesNode" id="PS_OCTOPUS01_FIRE_SMOKE" psNumEmitterMesh="-1" />
+			<Node name="Sound1" class="SgSoundSourceNode" id="S_BRDM2_KPVT_SHOOT2_TAIL" isLooped="0" />
+		</Node>
+
+		<Node name="ET_PS_BRDM2_KPVT_SHOOT3" class="SgNode">
+			<Node name="Object1" class="SgParticlesNode" id="PS_RAPIER01_FIRE_MAIN" psNumEmitterMesh="-1" />
+			<Node name="Object11" class="SgParticlesNode" id="PS_RAPIER01_FIRE_MAINX" psNumEmitterMesh="-1" />
+			<Node name="Object111" class="SgParticlesNode" id="PS_RAPIER01_FIRE_MAINY" psNumEmitterMesh="-1" />
+			<Node name="Object2" class="SgParticlesNode" id="PS_OCTOPUS01_FIRE_SMOKE" psNumEmitterMesh="-1" />
+			<Node name="Sound1" class="SgSoundSourceNode" id="S_BRDM2_KPVT_SHOOT3_TAIL" isLooped="0" />
+		</Node>
 	</Node>
 
 <!-- //////////////////////////////////// Оружие  Гранатомет//////////////////////////////////////// -->

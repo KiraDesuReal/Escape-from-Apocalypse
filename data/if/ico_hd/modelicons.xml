@@ -5,7 +5,6 @@
    <Item id="arcadescoutCab"	   file="data\if\ico\InventoryDlg\Opacity1.dds" file1=""/>	
    <Item id="FormulaCab01"		   file="data\if\ico\InventoryDlg\Opacity1.dds" file1=""/>	
    <Item id="fakeCargo"	         file="data\if\ico\InventoryDlg\Opacity1.dds" file1=""/>	
-   <Item id="fakeCargoForSale"	file="data\if\ico\InventoryDlg\Opacity1.dds" file1=""/>	
    <Item id="fakeCab"	         file="data\if\ico\InventoryDlg\Opacity1.dds" file1=""/>	
 
    <Item id="bugCab01"   	      file="data\if\ico_hd\InventoryDlg\bug\Bug_Cab01.dds" file1=""/>
@@ -103,6 +102,7 @@
    <Item id="ScavfakeCargo_8"	         file="data\if\ico\InventoryDlg\Opacity1.dds" file1=""/>	
 
    <Item id="fakePlayerCargo"	         file="data\if\ico\InventoryDlg\Opacity1.dds" file1=""/>
+   <Item id="fakeVehPointCargo"	      file="data\if\ico\InventoryDlg\Opacity1.dds" file1=""/>
 
    <Item id="brdm2Cab"	         file="data\if\ico_hd\InventoryDlg\brdm2\cab.dds" file1=""/>	
    <Item id="brdm2Cargo"	      file="data\if\ico_hd\InventoryDlg\brdm2\cargo.dds" file1=""/>	
@@ -527,6 +527,8 @@
 
    <!-- Brdm2 -->
    <Item id="brdm2_cannon01"			      file="data\if\ico_hd\InventoryDlg\weapon\brdm2_cannon01_min.dds"			file1="data\if\ico_hd\InventoryDlg\weapon\brdm2_cannon01_min.dds"/>
+   <Item id="brdm2_cannon01_2"			   file="data\if\ico_hd\InventoryDlg\weapon\brdm2_cannon01_min.dds"			file1="data\if\ico_hd\InventoryDlg\weapon\brdm2_cannon01_min.dds"/>
+   <Item id="brdm2_cannon02"			      file="data\if\ico_hd\InventoryDlg\weapon\brdm2_cannon02_min.dds"			file1="data\if\ico_hd\InventoryDlg\weapon\brdm2_cannon02_min.dds"/>
 
    <Item id="cooling_system_guns" 			file="data\if\ico_hd\InventoryDlg\Gadgets\gadget1_bul.dds" file1=""/>
    <Item id="cooling_system_energy" 		file="data\if\ico_hd\InventoryDlg\Gadgets\gadget1_enrg.dds" file1=""/>
@@ -774,7 +776,7 @@
    <Item id="Belong_1089"		file="data\if\ico\clans\usec03.dds" 		file1="data\if\ico_hd\clans\usec02.dds"/>
    <Item id="Belong_1094"		file="data\if\ico\clans\sectanian03.dds" 	file1="data\if\ico_hd\clans\sectanian02.dds"/>
 
-   <Item id="Belong_1095"		file="data\if\ico\clans\scavs03.dds" 		file1="data\if\ico_hd\clans\scavs02.dds"/>
-   <Item id="Belong_1096"		file="data\if\ico\clans\scavs03.dds" 		file1="data\if\ico_hd\clans\scavs02.dds"/>
+   <Item id="Belong_1095"		file="data\if\ico\clans\shturman03.dds" 		file1="data\if\ico_hd\clans\shturman02.dds"/>
+   <Item id="Belong_1096"		file="data\if\ico\clans\svetloozersky03.dds" file1="data\if\ico_hd\clans\svetloozersky02.dds"/>
 
 </icons>

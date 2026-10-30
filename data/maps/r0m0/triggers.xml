@@ -7792,21 +7792,50 @@
 	<trigger Name="tr" active="0">
 		<event 	timeout="0.01"		eventid="GE_TIME_PERIOD" />
 		<script>
-			CreateVehicleEx("Mirotvorec01", "car1", CVector(917.610, 255.484, 978.394), 1002)
+			CreateVehicleEx("Bug01", "car", CVector(1034.355, 255.486, 989.645), 1002)
+			getObj("car"):SetRotation(Quaternion(0.000, 1.000, 0.010, -0.004))
+			getObj("car"):AddModifier("maxhp", "= 100000")
+			getObj("car"):AddModifier("hp", "= 100000")
+
+			AddPlayerVehicle("Brdm2_02")
+
+			GetPlayerVehicle():SetPosition( CVector(1042.164, 255.486, 911.901))
+			GetPlayerVehicle():SetRotation(Quaternion(0.009, 0.034, 0.000, -0.999))
+
+			TDeactivate("Teleport")
+			TActivate("tr1")
 			TActivate("tr2")
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
-	<trigger Name="tr2" active="0">
-		<event eventid="GE_OBJECT_ENTERS_LOCATION" ObjName="test_loc" />
+	<trigger Name="tr0" active="0">
+		<event 	timeout="0.01"		eventid="GE_TIME_PERIOD" />
 		<script>
-			con(trigger:GetTriggeredObjectID(0))
-			con(getObj(trigger:GetTriggeredObjectID(0)):GetName())
-			con(getObj(trigger:GetTriggeredObjectID(0)):GetBelong())
-			con(getObj(trigger:GetTriggeredObjectID(0)):GetProperty("Prototype").AsString)
+			CreateVehicleEx("Bug01", "car", CVector(1034.355, 255.486, 989.645), 1002)
+			getObj("car"):SetRotation(Quaternion(0.000, 1.000, 0.010, -0.004))
+			getObj("car"):AddModifier("maxhp", "= 100000")
+			getObj("car"):AddModifier("hp", "= 100000")
+
+			TActivate("tr1")
+			TActivate("tr2")
+			trigger:Deactivate()
 		</script>
 	</trigger>
 
---AddPlayerVehicle("Brdm2_01")
+	<trigger Name="tr1" active="0">
+		<event 	eventid="GE_UNDER_ATTACK" ObjName="car"/>
+		<script>
+			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0), trigger:GetTriggeredObjectAmount(), nil)
+		</script>
+	</trigger>
+
+	<trigger Name="tr2" active="0">
+		<event 	eventid="GE_OBJECT_DIE" ObjName="car"/>
+		<script>
+			TActivate("tr0")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+	
 </triggers>

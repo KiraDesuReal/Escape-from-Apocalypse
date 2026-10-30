@@ -398,6 +398,11 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 			FlyTime		= "30.0"
 			Size			= "0.5 0.5 1"/>
 
+		<Prototype
+			Class		= "Bullet"
+            Name        = "raybullet_brdm2_cannon02"
+			Price       = "12"/>
+
 	</Folder>
 
 	<Folder Name = "Dots">

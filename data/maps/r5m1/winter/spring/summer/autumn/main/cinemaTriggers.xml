@@ -119,7 +119,15 @@
 
 			TActivate("cutTimeRaid_End")
 			TDeactivate("IfChargeCar")
+			TDeactivate("ItemsUse")
 			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("IfPlayerDieForQuest") end 
+			
+			if getObj("ShturmanBoss_vehicle_0") then 
+				TActivate("BossRemove") 
+				TActivate("RemoveElementalGun")
+				local barrier = getObj("player_brdm2_barrier")
+				if barrier then barrier:Remove() end
+			end
 	
 			trigger:Deactivate()
 		</script>
@@ -201,8 +209,14 @@
 			TDeactivate("IfChargeCar")
 			if not(GetVar("PlayerBelong").AsString == "SCAV") then TActivate("IfPlayerDieForQuest") end 
 			TDeactivate("DotShoot")
+			TDeactivate("ItemsUse")
 			getObj("DotShoot"):DelEvent("GE_UNDER_ATTACK")
-			if getObj("ShturmanBoss_vehicle_0") then TActivate("BossRemove") end
+			if getObj("ShturmanBoss_vehicle_0") then 
+				TActivate("BossRemove") 
+				TActivate("RemoveElementalGun")
+				local barrier = getObj("player_brdm2_barrier")
+				if barrier then barrier:Remove() end
+			end
 		    trigger:Deactivate()
 		</script>
 	</trigger>
@@ -250,22 +264,6 @@
 			for i=1,2 do
 				local fx = getObj("exp0"..i)
 				if fx then fx:Remove() end
-			end
-
-			if GetVar("PlayerCar").AsString == "Molokovoz" then
-				AddPlayerNewVehicle("MolokovozChassis")
-			elseif GetVar("PlayerCar").AsString == "Ural" then
-				AddPlayerNewVehicle("UralChassis")
-			elseif GetVar("PlayerCar").AsString == "Belaz" then
-				AddPlayerNewVehicle("BelazChassis")
-			elseif GetVar("PlayerCar").AsString == "Mirotvorec" then
-				AddPlayerNewVehicle("MirotvorecChassis")
-			elseif GetVar("PlayerCar").AsString == "Cruiser" then
-				AddPlayerNewVehicle("CruiserChassis")
-			else
-				if GetVar("PlayerBelong").AsString ~= "SCAV" then
-					AddPlayerNewVehicle("BugChassis")
-				end
 			end
 
 			if GetVar("PlayerBelong").AsString == "SCAV" then
@@ -475,9 +473,13 @@
 			FlyAround(0.5, 0, 400, 6, PlfCoor, PlfID, 1, 1, nil, 0)
 			StartCinematic()
 
+			SetVar("ShturmanBossFaze2", 1)
+
 			TActivate("ShturmanBoss_Faze2_FadeIn")
 			TActivate("ShturmanBoss_Faze2_End")
 			TDeactivate("TimerRaid")
+			TDeactivate("ShturmanBossHP0_Faze1")
+			TDeactivate("ShturmanBossHP0_Faze1_2")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -520,7 +522,8 @@
 				boss:SetNewPart("CABIN", "brdm2Cab")
 				boss:AddModifier("maxhp", "= 20000")
 				boss:AddModifier("hp", "= 20000")
-				boss:SetSkin(0)
+				boss:SetSkin(2)
+				SetVar("ShtirnanBossHP", boss:GetHealth())
 			end
 
 			TActivate("ShturmanBoss_Faze2_MusicFade")
@@ -553,17 +556,18 @@
 		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
 		<script>
 			RestoreAllToleranceStatus()
-			SetCameraBehindPlayerVehicle()
-
+		
 			TDeactivate("ShturmanBoss_Faze2_MusicFade")
 			TDeactivate("ShturmanBoss_Faze2_FadeIn")
+
 			TActivate("TimerRaid")
 			TActivate("ShturmanBoss_Faze2_BarrierTimer1")
 			TActivate("ShturmanBossHP0_Faze2")
 			TActivate("ShturmanBoss_Faze2_MusicOn1")
 			TActivate("ShturmanBoss_HP")
 			TActivate("ShturmanBoss_UnderAttack")
-
+			TActivate("ShturmanBoss_AddPlayerElementalGun")
+			TActivate("SetReloadForElementalGun15")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -655,6 +659,8 @@
 					end
 				end
 			end
+
+			TActivate("ShturmanBoss_PlayerBarrierRemove")
 
 			if GetVar("ShturmanBoss_Tp").AsInt == 1 then SetCameraBehindPlayerVehicle() end
 			SetVar("SafeBox_Active", 1)

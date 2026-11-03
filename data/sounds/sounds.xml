@@ -1219,6 +1219,30 @@
 		group="GUNFIRE"
 		/>
 
+	<model
+		id="S_BRDM2_ELEMENTAL_GUN_SHOOT_PIRO"
+		file="data\sounds\Shooting\brdm2\brdm2_elemental_gun_shoot_piro.wav"
+		group="ELEMENTAL_GUNFIRE"
+		/>
+
+	<model
+		id="S_BRDM2_ELEMENTAL_GUN_SHOOT_KRIO"
+		file="data\sounds\Shooting\brdm2\brdm2_elemental_gun_shoot_krio.wav"
+		group="ELEMENTAL_GUNFIRE"
+		/>
+	
+	<model
+		id="S_BRDM2_ELEMENTAL_GUN_SHOOT_HYDRO"
+		file="data\sounds\Shooting\brdm2\brdm2_elemental_gun_shoot_hydro.wav"
+		group="ELEMENTAL_GUNFIRE"
+		/>
+
+	<model
+		id="S_BRDM2_ELEMENTAL_GUN_SHOOT_ELECTRO"
+		file="data\sounds\Shooting\brdm2\brdm2_elemental_gun_shoot_electro.wav"
+		group="ELEMENTAL_GUNFIRE"
+		/>
+
 <!-- Shoot hits --> 
 
 	<model
@@ -2278,6 +2302,12 @@
             />
 
 <!-- 2d -->
+
+		<model
+        	id="S_CANNON_RELOAD2"
+        	file="data\sounds\effects\Shells\cannon_reload2.wav"
+        	group="SOUND2D"
+		/>   
 
 		<model
         	id="S_RECHARGE_WEAPON"

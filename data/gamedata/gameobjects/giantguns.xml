@@ -469,4 +469,132 @@ $Id: GiantGuns.xml,v 1.28 2005/11/28 07:43:57 anton Exp $
 		VisibleInEncyclopedia	= "false"
 		/>
 
+	<Prototype
+		Class			= "PlasmaBunchLauncher"
+		Name			= "brdm2_cannon03_Piro"
+		ModelFile		= "brdm2Cannon03_2_Piro"
+		ResourceType	= "GIANT_GUN"
+		NodeScale		= "1 1 1"
+		Mass			= "1.0"
+
+		BulletPrototype	= "raybullet_brdm2_cannon03_Piro"
+		ExplosionType	= "AUTOCANNON"
+		FiringEffect	= "none"
+		Damage		= "500"
+		FiringRate		= "160"
+		GroupingAngle	= "0"
+		FiringRange		= "2000"
+		RecoilForce		= "200"
+		Decal				= "DC_BIG_MACHINEGUN"
+
+		ChargeSize     = "1"
+		RechargingTime = "15"
+
+		Durability		= "5000"
+		
+		Price			= "1"
+		FiringType		= "MachineGun"
+
+		TurningSpeed		= "100"
+		ApplyAffixes = "false"
+		VisibleInEncyclopedia	= "false" 
+		BlastWavePrototype      = "smallBlastWave_brdm2_cannon01_2"
+		/>
+
+	<Prototype
+		Class			= "PlasmaBunchLauncher"
+		Name			= "brdm2_cannon03_Krio"
+		ModelFile		= "brdm2Cannon03_2_Krio"
+		ResourceType	= "GIANT_GUN"
+		NodeScale		= "1 1 1"
+		Mass			= "1.0"
+
+		BulletPrototype	= "raybullet_brdm2_cannon03_Krio"
+		ExplosionType	= "AUTOCANNON"
+		FiringEffect	= "none"
+		Damage		= "500"
+		FiringRate		= "160"
+		GroupingAngle	= "0"
+		FiringRange		= "2000"
+		RecoilForce		= "200"
+		Decal				= "DC_BIG_MACHINEGUN"
+
+		ChargeSize     = "1"
+		RechargingTime = "15"
+
+		Durability		= "5000"
+		
+		Price			= "1"
+		FiringType		= "MachineGun"
+
+		TurningSpeed		= "100"
+		ApplyAffixes = "false"
+		VisibleInEncyclopedia	= "false" 
+		BlastWavePrototype      = "smallBlastWave_brdm2_cannon01_2"
+		/>
+
+	<Prototype
+		Class			= "PlasmaBunchLauncher"
+		Name			= "brdm2_cannon03_Hydro"
+		ModelFile		= "brdm2Cannon03_2_Hydro"
+		ResourceType	= "GIANT_GUN"
+		NodeScale		= "1 1 1"
+		Mass			= "1.0"
+
+		BulletPrototype	= "raybullet_brdm2_cannon03_Hydro"
+		ExplosionType	= "AUTOCANNON"
+		FiringEffect	= "none"
+		Damage		= "500"
+		FiringRate		= "160"
+		GroupingAngle	= "0"
+		FiringRange		= "2000"
+		RecoilForce		= "200"
+		Decal				= "DC_BIG_MACHINEGUN"
+
+		ChargeSize     = "1"
+		RechargingTime = "15"
+
+		Durability		= "5000"
+		
+		Price			= "1"
+		FiringType		= "MachineGun"
+
+		TurningSpeed		= "100"
+		ApplyAffixes = "false"
+		VisibleInEncyclopedia	= "false" 
+		BlastWavePrototype      = "smallBlastWave_brdm2_cannon01_2"
+		/>
+
+	<Prototype
+		Class			= "PlasmaBunchLauncher"
+		Name			= "brdm2_cannon03_Electro"
+		ModelFile		= "brdm2Cannon03_2_Electro"
+		ResourceType	= "GIANT_GUN"
+		NodeScale		= "1 1 1"
+		Mass			= "1.0"
+
+		BulletPrototype	= "raybullet_brdm2_cannon03_Electro"
+		ExplosionType	= "AUTOCANNON"
+		FiringEffect	= "none"
+		Damage		= "500"
+		FiringRate		= "160"
+		GroupingAngle	= "0"
+		FiringRange		= "2000"
+		RecoilForce		= "200"
+		Decal				= "DC_BIG_MACHINEGUN"
+
+		ChargeSize     = "1"
+		RechargingTime = "15"
+
+		Durability		= "5000"
+		
+		Price			= "1"
+		FiringType		= "MachineGun"
+
+		TurningSpeed		= "100"
+		ApplyAffixes = "false"
+		VisibleInEncyclopedia	= "false" 
+		BlastWavePrototype      = "smallBlastWave_brdm2_cannon01_2"
+		/>
+
 </Prototypes>

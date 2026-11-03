@@ -17164,32 +17164,32 @@
 			<lp
 				id="LP_LIGHT01"
 				effect_id="ET_PS_LENS_D1"
-				restartOnAnimationChange="1"
-				ImmediateRemove="0" />
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
 
 			<lp
 				id="LP_LIGHT02"
 				effect_id="ET_PS_LENS_S8"
-				restartOnAnimationChange="1"
-				ImmediateRemove="0" />
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
 
 			<lp
 				id="LP_LIGHT03"
 				effect_id="ET_PS_LENS_S11"
-				restartOnAnimationChange="1"
-				ImmediateRemove="0" />
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
 
 			<lp
 				id="LP_SMOKE01"
 				effect_id="ET_PS_BOSS1_SMOKE"
-				restartOnAnimationChange="1"
-				ImmediateRemove="0" />
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
 
 			<lp
 				id="LP_SMOKE02"
 				effect_id="ET_PS_BOSS1_SMOKE"
-				restartOnAnimationChange="1"
-				ImmediateRemove="0" />
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
 		</action>
 	</model>
 
@@ -17204,76 +17204,76 @@
 			<lp
 				id="LP_LIGHT01"
 				effect_id="ET_PS_LENS_D1"
-				restartOnAnimationChange="1"
-				ImmediateRemove="0" />
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
 
 			<lp
 				id="LP_LIGHT02"
 				effect_id="ET_PS_LENS_S8"
-				restartOnAnimationChange="1"
-				ImmediateRemove="0" />
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
 
 			<lp
 				id="LP_LIGHT03"
 				effect_id="ET_PS_LENS_S11"
-				restartOnAnimationChange="1"
-				ImmediateRemove="0" />
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
 
 			<lp
 				id="LP_LIGHT01"
 				effect_id="ET_PS_LENS_D1"
-				restartOnAnimationChange="1"
-				ImmediateRemove="0" />
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
 
 			<lp
 				id="LP_LIGHT02"
 				effect_id="ET_PS_LENS_S8"
-				restartOnAnimationChange="1"
-				ImmediateRemove="0" />
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
 
 			<lp
 				id="LP_LIGHT03"
 				effect_id="ET_PS_LENS_S11"
-				restartOnAnimationChange="1"
-				ImmediateRemove="0" />
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
 
 			<lp
 				id="LP_LIGHT01"
 				effect_id="ET_PS_LENS_D1"
-				restartOnAnimationChange="1"
-				ImmediateRemove="0" />
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
 
 			<lp
 				id="LP_LIGHT02"
 				effect_id="ET_PS_LENS_S8"
-				restartOnAnimationChange="1"
-				ImmediateRemove="0" />
+				restartOnAnimationChange="0"
+				ImmediateRemove="1"  />
 
 			<lp
 				id="LP_LIGHT03"
 				effect_id="ET_PS_LENS_S11"
-				restartOnAnimationChange="1"
-				ImmediateRemove="0" />
+				restartOnAnimationChange="0"
+				ImmediateRemove="1"  />
 
 			<lp
 				id="LP_SMOKE01"
 				effect_id="ET_PS_BOSS1_SMOKE"
-				restartOnAnimationChange="1"
-				ImmediateRemove="0" />
+				restartOnAnimationChange="0"
+				ImmediateRemove="1"  />
 
 			<lp
 				id="LP_SMOKE02"
 				effect_id="ET_PS_BOSS1_SMOKE"
-				restartOnAnimationChange="1"
-				ImmediateRemove="0" />
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
 		</action>
 	</model>
 
 	<model
 		id="brdm2Chassis"
 		file="data\models\vehicles\brdm-2\chassis.gam"
-		shadow="1"
-		shadowVolume="1"
+		shadow="0"
+		shadowVolume="0"
 		windwavy="0"
 		trans="0">
 		<action
@@ -17300,8 +17300,8 @@
 	<model
 		id="brdm2Chassis2"
 		file="data\models\vehicles\brdm-2\chassis2.gam"
-		shadow="1"
-		shadowVolume="1"
+		shadow="0"
+		shadowVolume="0"
 		windwavy="0"
 		trans="0">
 		<action
@@ -17693,7 +17693,7 @@
 
 	<model
 		id="brdm2Cannon02"
-		shadow="1"
+		shadow="0"
 		windwavy="0"
 		file="data\models\vehicles\brdm-2\turret3.gam">
 		<action
@@ -17791,6 +17791,214 @@
 		<action
 			name="DEATH2"
 			skin="8"/>
+	</model>
+
+	<model
+		id="brdm2Cannon03_2_Piro"
+		shadow="0"
+		windwavy="0"
+		file="data\models\vehicles\brdm-2\turret4.gam">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+	</model>
+
+	<model
+		id="brdm2Cannon03_2_Pirogun"
+		shadow="0"
+		windwavy="0"
+		file="data\models\vehicles\brdm-2\gun3.gam">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+
+		<action
+			name="MOVE1">
+			<lp
+				id="LP_FIRE01"
+				effect_id="ET_PS_BRDM2_ELEMENTAL_GUN_SHOOT_PIRO"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="STAND1">
+			<lp
+				id="LP_FIRE01"
+				effect_id="ET_PS_AUTOCANNON_STAND"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_FIRE01"
+				effect_id="ET_PS_LENS_S1_PIRO_FIRE"
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
+		</action>
+	</model>
+
+	<model
+		id="brdm2Cannon03_2_Krio"
+		shadow="0"
+		windwavy="0"
+		file="data\models\vehicles\brdm-2\turret4.gam">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+	</model>
+
+	<model
+		id="brdm2Cannon03_2_Kriogun"
+		shadow="0"
+		windwavy="0"
+		file="data\models\vehicles\brdm-2\gun3.gam">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+
+		<action
+			name="MOVE1">
+			<lp
+				id="LP_FIRE01"
+				effect_id="ET_PS_BRDM2_ELEMENTAL_GUN_SHOOT_KRIO"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="STAND1">
+			<lp
+				id="LP_FIRE01"
+				effect_id="ET_PS_AUTOCANNON_STAND"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_FIRE01"
+				effect_id="ET_PS_LENS_S1_KRIO_FIRE"
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
+		</action>
+	</model>
+
+	<model
+		id="brdm2Cannon03_2_Hydro"
+		shadow="0"
+		windwavy="0"
+		file="data\models\vehicles\brdm-2\turret4.gam">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+	</model>
+
+	<model
+		id="brdm2Cannon03_2_Hydrogun"
+		shadow="0"
+		windwavy="0"
+		file="data\models\vehicles\brdm-2\gun3.gam">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+
+		<action
+			name="MOVE1">
+			<lp
+				id="LP_FIRE01"
+				effect_id="ET_PS_BRDM2_ELEMENTAL_GUN_SHOOT_HYDRO"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="STAND1">
+			<lp
+				id="LP_FIRE01"
+				effect_id="ET_PS_AUTOCANNON_STAND"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_FIRE01"
+				effect_id="ET_PS_LENS_S1_HYDRO_FIRE"
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
+		</action>
+	</model>
+
+	<model
+		id="brdm2Cannon03_2_Electro"
+		shadow="0"
+		windwavy="0"
+		file="data\models\vehicles\brdm-2\turret4.gam">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+	</model>
+
+	<model
+		id="brdm2Cannon03_2_Electrogun"
+		shadow="0"
+		windwavy="0"
+		file="data\models\vehicles\brdm-2\gun3.gam">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+
+		<action
+			name="MOVE1">
+			<lp
+				id="LP_FIRE01"
+				effect_id="ET_PS_BRDM2_ELEMENTAL_GUN_SHOOT_ELECTRO"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="STAND1">
+			<lp
+				id="LP_FIRE01"
+				effect_id="ET_PS_AUTOCANNON_STAND"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_FIRE01"
+				effect_id="ET_PS_LENS_S1_ELECTRO_FIRE"
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
+		</action>
 	</model>
 
 	<model
@@ -18632,6 +18840,94 @@
 			<lp
 				id="LP_EXH02"
 				effect_id="ET_PS_AMMO_FIRE"
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
+		</action>
+	</model>
+
+	<model
+		id="shell_big_gun01_Piro"
+		file="data\models\ammo\shell_big_gun01.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="STAND2">
+			<lp
+				id="LP_EXH01"
+				effect_id="ET_PS_AMMO_FIRE_PIRO"
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
+
+			<lp
+				id="LP_EXH02"
+				effect_id="ET_PS_AMMO_FIRE_PIRO"
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
+		</action>
+	</model>
+
+	<model
+		id="shell_big_gun01_Krio"
+		file="data\models\ammo\shell_big_gun01.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="STAND2">
+			<lp
+				id="LP_EXH01"
+				effect_id="ET_PS_AMMO_FIRE_KRIO"
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
+
+			<lp
+				id="LP_EXH02"
+				effect_id="ET_PS_AMMO_FIRE_KRIO"
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
+		</action>
+	</model>
+
+	<model
+		id="shell_big_gun01_Hydro"
+		file="data\models\ammo\shell_big_gun01.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="STAND2">
+			<lp
+				id="LP_EXH01"
+				effect_id="ET_PS_AMMO_FIRE_HYDRO"
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
+
+			<lp
+				id="LP_EXH02"
+				effect_id="ET_PS_AMMO_FIRE_HYDRO"
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
+		</action>
+	</model>
+
+	<model
+		id="shell_big_gun01_Electro"
+		file="data\models\ammo\shell_big_gun01.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="STAND2">
+			<lp
+				id="LP_EXH01"
+				effect_id="ET_PS_AMMO_FIRE_ELECTRO"
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
+
+			<lp
+				id="LP_EXH02"
+				effect_id="ET_PS_AMMO_FIRE_ELECTRO"
 				restartOnAnimationChange="0"
 				ImmediateRemove="1" />
 		</action>

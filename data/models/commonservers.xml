@@ -100,6 +100,11 @@
 		<Item id="PS_LENS_S1_HYDRO"		file="data\Effects\Lights\lens_s1_hydro.psys"/>
 		<Item id="PS_LENS_S1_ELECTRO"	file="data\Effects\Lights\lens_s1_electro.psys"/>
 
+		<Item id="PS_LENS_S1_PIRO2"		file="data\Effects\Lights\lens_s1_piro2.psys"/>
+		<Item id="PS_LENS_S1_KRIO2"		file="data\Effects\Lights\lens_s1_krio2.psys"/>
+		<Item id="PS_LENS_S1_HYDRO2"		file="data\Effects\Lights\lens_s1_hydro2.psys"/>
+		<Item id="PS_LENS_S1_ELECTRO2"	file="data\Effects\Lights\lens_s1_electro2.psys"/>
+
 <!--icons-->
 		<Item id="PS_ICON_PIRO"			file="data\Effects\icons\piro_icon_fx.psys"/>
 		<Item id="PS_ICON_KRIO"			file="data\Effects\icons\krio_icon_fx.psys"/>
@@ -167,6 +172,7 @@
 		<Item id="PS_ORACUL_MAIN4"					file="data\Effects\Other\oracul_main4.psys"/>
 		<Item id="PS_ORACUL_MAIN5"					file="data\Effects\Other\oracul_main5.psys"/>
 		<Item id="PS_ORACUL_MAIN6"					file="data\Effects\Other\oracul_main6.psys"/>
+		<Item id="PS_ORACUL_MAIN6_1"				file="data\Effects\Other\oracul_main6_1.psys"/>
 		<Item id="PS_ORACUL_MAIN7"					file="data\Effects\Other\oracul_main7.psys"/>
 		<Item id="PS_ORACUL_MAIN8"					file="data\Effects\Other\oracul_main8.psys"/>
 		<Item id="PS_ORACUL_MAIN9"					file="data\Effects\Other\oracul_main9.psys"/>
@@ -607,6 +613,11 @@
 		<Item id="PS_LASER_FIRE_MAIN2" 		file="data\Effects\guns\laser_fire_main2.psys"/>
 		<Item id="PS_LASER_FIRE_MAIN1" 		file="data\Effects\guns\laser_fire_main1.psys"/>
 		<Item id="PS_LASER_FIRE_MAIN" 		file="data\Effects\guns\laser_fire_main.psys"/>
+
+		<Item id="PS_LASER_FIRE_MAIN_PIRO" 	  file="data\Effects\guns\laser_fire_main_piro.psys"/>
+		<Item id="PS_LASER_FIRE_MAIN_KRIO" 	  file="data\Effects\guns\laser_fire_main_krio.psys"/>
+		<Item id="PS_LASER_FIRE_MAIN_HYDRO"   file="data\Effects\guns\laser_fire_main_hydro.psys"/>
+		<Item id="PS_LASER_FIRE_MAIN_ELECTRO" file="data\Effects\guns\laser_fire_main_electro.psys"/>
 
 		<Item id="PS_HORNET01_FIRE_MAIN" 		file="data\Effects\guns\hornet01_fire_main.psys"/>
 		<Item id="PS_HORNET01_FIRE_MAIN1" 	file="data\Effects\guns\hornet01_fire_main1.psys"/>

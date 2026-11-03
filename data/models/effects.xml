@@ -279,6 +279,10 @@
 		<Node name="Object1" class="SgSoundSourceNode" id="S_OPEN_SAFE" looped="0" />
 	</Node>
 
+	<Node name="ET_S_CANNON_RELOAD2" class="SgNode">
+		<Node name="Object1" class="SgSoundSourceNode" id="S_CANNON_RELOAD2" looped="0" />
+	</Node>
+
 	<Node name="ET_PS_ROCKSFAKE1" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_SPECIAL01_FIRE_MAIN_1" psNumEmitterMesh="-1" />
 	</Node>
@@ -487,6 +491,10 @@
 
 	<Node name="ET_PS_ORACUL_MAIN6_ELECTRO" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_ORACUL_MAIN6_ELECTRO" psNumEmitterMesh="-1" />
+	</Node>
+
+	<Node name="ET_PS_ORACUL_MAIN6_1" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_ORACUL_MAIN6_1" psNumEmitterMesh="-1" />
 	</Node>
 
 	<Node name="ET_PS_ORACUL_MAIN4" class="SgNode">
@@ -2049,6 +2057,49 @@
 		<Node name="Object1" class="SgParticlesNode" id="PS_LASER_FIRE_MAIN2" psNumEmitterMesh="-1" />
 	</Node>
 
+	<Node name="ET_PS_LENS_S1_PIRO_FIRE" class="SgNode">
+		<Node name="Object0" class="SgParticlesNode" id="PS_LENS_S1_PIRO2" psNumEmitterMesh="-1" />
+	</Node>
+
+	<Node name="ET_PS_LENS_S1_KRIO_FIRE" class="SgNode">
+		<Node name="Object0" class="SgParticlesNode" id="PS_LENS_S1_KRIO2" psNumEmitterMesh="-1" />
+	</Node>
+
+	<Node name="ET_PS_LENS_S1_HYDRO_FIRE" class="SgNode">
+		<Node name="Object0" class="SgParticlesNode" id="PS_LENS_S1_HYDRO2" psNumEmitterMesh="-1" />
+	</Node>
+
+	<Node name="ET_PS_LENS_S1_ELECTRO_FIRE" class="SgNode">
+		<Node name="Object0" class="SgParticlesNode" id="PS_LENS_S1_ELECTRO2" psNumEmitterMesh="-1" />
+	</Node>
+
+	<Node name="ET_PS_AMMO_FIRE_PIRO" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_LASER_FIRE_MAIN_PIRO" psNumEmitterMesh="-1" />
+		<Node name="Object2" class="SgParticlesNode" id="PS_LASER_FIRE_MAIN_PIRO" psNumEmitterMesh="-1" />
+		<Node name="Object3" class="SgParticlesNode" id="PS_LENS_S1_PIRO2" psNumEmitterMesh="-1" /> 
+		<Node name="Object4" class="SgParticlesNode" id="PS_LENS_S1_PIRO2" psNumEmitterMesh="-1" /> 
+	</Node>
+
+	<Node name="ET_PS_AMMO_FIRE_KRIO" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_LASER_FIRE_MAIN_KRIO" psNumEmitterMesh="-1" />
+		<Node name="Object3" class="SgParticlesNode" id="PS_LENS_S1_KRIO2" psNumEmitterMesh="-1" /> 
+		<Node name="Object4" class="SgParticlesNode" id="PS_LENS_S1_KRIO2" psNumEmitterMesh="-1" /> 
+	</Node>
+
+	<Node name="ET_PS_AMMO_FIRE_HYDRO" class="SgNode">
+		<Node name="Object0" class="SgParticlesNode" id="PS_LASER_FIRE_MAIN_HYDRO" psNumEmitterMesh="-1" />
+		<Node name="Object1" class="SgParticlesNode" id="PS_LASER_FIRE_MAIN_HYDRO" psNumEmitterMesh="-1" />
+		<Node name="Object2" class="SgParticlesNode" id="PS_LASER_FIRE_MAIN_HYDRO" psNumEmitterMesh="-1" />
+		<Node name="Object3" class="SgParticlesNode" id="PS_LENS_S1_HYDRO2" psNumEmitterMesh="-1" /> 
+		<Node name="Object4" class="SgParticlesNode" id="PS_LENS_S1_HYDRO2" psNumEmitterMesh="-1" /> 
+	</Node>
+
+	<Node name="ET_PS_AMMO_FIRE_ELECTRO" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_LASER_FIRE_MAIN_ELECTRO" psNumEmitterMesh="-1" />
+		<Node name="Object3" class="SgParticlesNode" id="PS_LENS_S1_ELECTRO2" psNumEmitterMesh="-1" /> 
+		<Node name="Object4" class="SgParticlesNode" id="PS_LENS_S1_ELECTRO2" psNumEmitterMesh="-1" /> 
+	</Node>
+
 	<Node name="ET_PS_MACHINEGUN_FIRE_SOUND" class="SgNode">
 		<Node name="Sound3" class="SgSoundSourceNode" id="S_SHOOTING_MACHINE_GUN_SINGLE" looped="0"/>
 	</Node>
@@ -2649,6 +2700,34 @@
 			<Node name="Object2" class="SgParticlesNode" id="PS_OCTOPUS01_FIRE_SMOKE" psNumEmitterMesh="-1" />
 			<Node name="Sound1" class="SgSoundSourceNode" id="S_BRDM2_KPVT_SHOOT3_TAIL" isLooped="0" />
 		</Node>
+	</Node>
+
+	<Node name="ET_PS_BRDM2_ELEMENTAL_GUN_SHOOT_PIRO" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_CYCLOPS01_FIRE_MAIN" psNumEmitterMesh="-1" />
+		<Node name="Object3" class="SgParticlesNode" id="PS_CYCLOPS01_FIRE_MAIN1" psNumEmitterMesh="-1" />
+		<Node name="Object2" class="SgParticlesNode" id="PS_OCTOPUS01_FIRE_SMOKE" psNumEmitterMesh="-1" />
+		<Node name="Sound1" class="SgSoundSourceNode" id="S_BRDM2_ELEMENTAL_GUN_SHOOT_PIRO" isLooped="0" />
+	</Node>
+
+	<Node name="ET_PS_BRDM2_ELEMENTAL_GUN_SHOOT_KRIO" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_CYCLOPS01_FIRE_MAIN" psNumEmitterMesh="-1" />
+		<Node name="Object3" class="SgParticlesNode" id="PS_CYCLOPS01_FIRE_MAIN1" psNumEmitterMesh="-1" />
+		<Node name="Object2" class="SgParticlesNode" id="PS_OCTOPUS01_FIRE_SMOKE" psNumEmitterMesh="-1" />
+		<Node name="Sound1" class="SgSoundSourceNode" id="S_BRDM2_ELEMENTAL_GUN_SHOOT_KRIO" isLooped="0" />
+	</Node>
+
+	<Node name="ET_PS_BRDM2_ELEMENTAL_GUN_SHOOT_HYDRO" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_CYCLOPS01_FIRE_MAIN" psNumEmitterMesh="-1" />
+		<Node name="Object3" class="SgParticlesNode" id="PS_CYCLOPS01_FIRE_MAIN1" psNumEmitterMesh="-1" />
+		<Node name="Object2" class="SgParticlesNode" id="PS_OCTOPUS01_FIRE_SMOKE" psNumEmitterMesh="-1" />
+		<Node name="Sound1" class="SgSoundSourceNode" id="S_BRDM2_ELEMENTAL_GUN_SHOOT_HYDRO" isLooped="0" />
+	</Node>
+
+	<Node name="ET_PS_BRDM2_ELEMENTAL_GUN_SHOOT_ELECTRO" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_CYCLOPS01_FIRE_MAIN" psNumEmitterMesh="-1" />
+		<Node name="Object3" class="SgParticlesNode" id="PS_CYCLOPS01_FIRE_MAIN1" psNumEmitterMesh="-1" />
+		<Node name="Object2" class="SgParticlesNode" id="PS_OCTOPUS01_FIRE_SMOKE" psNumEmitterMesh="-1" />
+		<Node name="Sound1" class="SgSoundSourceNode" id="S_BRDM2_ELEMENTAL_GUN_SHOOT_ELECTRO" isLooped="0" />
 	</Node>
 
 <!-- //////////////////////////////////// Оружие  Гранатомет//////////////////////////////////////// -->

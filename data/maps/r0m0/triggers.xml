@@ -767,6 +767,9 @@
 
 			if SHTURMANBOSS_BARRIER_TUTORIAL == nil then SHTURMANBOSS_BARRIER_TUTORIAL = 0 end
 			if SHTURMANBOSS_SPAWN_ELEMENTES_TUTORIAL == nil then SHTURMANBOSS_SPAWN_ELEMENTES_TUTORIAL = 0 end
+			if SHTURMANBOSS_PLAYER_BARRIER_TUTORIAL == nil then SHTURMANBOSS_PLAYER_BARRIER_TUTORIAL = 0 end
+			if SHTURMANBOSS_ELEMENTALGUN_TUTORIAL == nil then SHTURMANBOSS_ELEMENTALGUN_TUTORIAL = 0 end
+			if PLAYER_BRDM2_ELEMENT_SELECT == nil then PLAYER_BRDM2_ELEMENT_SELECT = 0 end
 
 			local newgame = ReadUserInfo("New")
 			if newgame then
@@ -990,8 +993,13 @@
 				local pl = GetPlayerVehicle()
 				if pl then
 					if not(R0M1_exit == 1) then
-						pl:SetGamePositionOnGround(CVector(893.077, 255.493, 987.899))
-						pl:SetRotation(Quaternion(-0.009, -0.005, -0.000, 1.000))
+						if pl:GetSkin() == -1 then
+							AddPlayerVehicle("VehPoint01") 
+							TActivate("VehPointPos")
+						else
+							pl:SetGamePositionOnGround(CVector(893.077, 255.493, 987.899))
+							pl:SetRotation(Quaternion(-0.009, -0.005, -0.000, 1.000))
+						end
 						R0M1_exit = 0
 						if not(GetVar("CountRaids").AsInt == 0) then TActivate("ReturnInsureItems") end
 					else
@@ -1147,6 +1155,21 @@
 		--r5m1
 			if SHTURMANBOSS_BARRIER_TUTORIAL then SetVar("ShturnanBossBarrier_Tutorial", SHTURMANBOSS_BARRIER_TUTORIAL) end
 			if SHTURMANBOSS_SPAWN_ELEMENTES_TUTORIAL then SetVar("ShturmanBossSpawnElementes_Tutorial", SHTURMANBOSS_SPAWN_ELEMENTES_TUTORIAL) end
+			if SHTURMANBOSS_PLAYER_BARRIER_TUTORIAL then SetVar("ShturmanBoss_PlayerBarrierTutorial", SHTURMANBOSS_PLAYER_BARRIER_TUTORIAL) end
+			if SHTURMANBOSS_ELEMENTALGUN_TUTORIAL then SetVar("ShturmanBoss_ElementalGunTutorial", SHTURMANBOSS_ELEMENTALGUN_TUTORIAL) end
+			if PLAYER_BRDM2_ELEMENT_SELECT then SetVar("PlayerBrdm2_ElementSelect", PLAYER_BRDM2_ELEMENT_SELECT) end
+		</script>
+	</trigger>
+
+	<trigger Name="VehPointPos" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			if pl then
+				pl:SetPosition(CVector(893.077, 255.493, 987.899))
+				pl:SetRotation(Quaternion(-0.009, -0.005, -0.000, 1.000))
+			end
+		    trigger:Deactivate()
 		</script>
 	</trigger>
 
@@ -5919,6 +5942,9 @@
 		--r5m1
 			if SHTURMANBOSS_BARRIER_TUTORIAL then SHTURMANBOSS_BARRIER_TUTORIAL = GetVar("ShturnanBossBarrier_Tutorial").AsInt end
 			if SHTURMANBOSS_SPAWN_ELEMENTES_TUTORIAL then SHTURMANBOSS_SPAWN_ELEMENTES_TUTORIAL = GetVar("ShturmanBossSpawnElementes_Tutorial").AsInt end
+			if SHTURMANBOSS_PLAYER_BARRIER_TUTORIAL then SHTURMANBOSS_PLAYER_BARRIER_TUTORIAL = GetVar("ShturmanBoss_PlayerBarrierTutorial").AsInt end
+			if SHTURMANBOSS_ELEMENTALGUN_TUTORIAL then SHTURMANBOSS_ELEMENTALGUN_TUTORIAL = GetVar("ShturmanBoss_ElementalGunTutorial").AsInt end
+			if PLAYER_BRDM2_ELEMENT_SELECT then PLAYER_BRDM2_ELEMENT_SELECT = GetVar("PlayerBrdm2_ElementSelect").AsString end
 
 			trigger:Deactivate()
 		</script>
@@ -7789,53 +7815,4 @@
 		</script>
 	</trigger>
 
-	<trigger Name="tr" active="0">
-		<event 	timeout="0.01"		eventid="GE_TIME_PERIOD" />
-		<script>
-			CreateVehicleEx("Bug01", "car", CVector(1034.355, 255.486, 989.645), 1002)
-			getObj("car"):SetRotation(Quaternion(0.000, 1.000, 0.010, -0.004))
-			getObj("car"):AddModifier("maxhp", "= 100000")
-			getObj("car"):AddModifier("hp", "= 100000")
-
-			AddPlayerVehicle("Brdm2_02")
-
-			GetPlayerVehicle():SetPosition( CVector(1042.164, 255.486, 911.901))
-			GetPlayerVehicle():SetRotation(Quaternion(0.009, 0.034, 0.000, -0.999))
-
-			TDeactivate("Teleport")
-			TActivate("tr1")
-			TActivate("tr2")
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-	<trigger Name="tr0" active="0">
-		<event 	timeout="0.01"		eventid="GE_TIME_PERIOD" />
-		<script>
-			CreateVehicleEx("Bug01", "car", CVector(1034.355, 255.486, 989.645), 1002)
-			getObj("car"):SetRotation(Quaternion(0.000, 1.000, 0.010, -0.004))
-			getObj("car"):AddModifier("maxhp", "= 100000")
-			getObj("car"):AddModifier("hp", "= 100000")
-
-			TActivate("tr1")
-			TActivate("tr2")
-			trigger:Deactivate()
-		</script>
-	</trigger>
-
-	<trigger Name="tr1" active="0">
-		<event 	eventid="GE_UNDER_ATTACK" ObjName="car"/>
-		<script>
-			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0), trigger:GetTriggeredObjectAmount(), nil)
-		</script>
-	</trigger>
-
-	<trigger Name="tr2" active="0">
-		<event 	eventid="GE_OBJECT_DIE" ObjName="car"/>
-		<script>
-			TActivate("tr0")
-			trigger:Deactivate()
-		</script>
-	</trigger>
-	
 </triggers>

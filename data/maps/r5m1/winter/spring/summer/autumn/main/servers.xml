@@ -1649,6 +1649,22 @@
 			file="data\models\AnimModels.xml" />
 
 		<Item
+			id="shell_big_gun01_Piro"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="shell_big_gun01_Krio"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="shell_big_gun01_Hydro"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="shell_big_gun01_Electro"
+			file="data\models\AnimModels.xml" />
+
+		<Item
 			id="shell_big_gun02"
 			file="data\models\AnimModels.xml" />
 
@@ -2094,6 +2110,38 @@
 
 		<Item
 			id="brdm2Cannon02_skin1gun"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cannon03_2_Piro"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cannon03_2_Pirogun"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cannon03_2_Krio"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cannon03_2_Kriogun"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cannon03_2_Hydro"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cannon03_2_Hydrogun"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cannon03_2_Electro"
+			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="brdm2Cannon03_2_Electrogun"
 			file="data\models\AnimModels.xml" />
 
 		<Item
@@ -3321,6 +3369,10 @@
 		<Item id="S_BRDM2_KPVT_SHOOT1_TAIL" />
 		<Item id="S_BRDM2_KPVT_SHOOT2_TAIL" />
 		<Item id="S_BRDM2_KPVT_SHOOT3_TAIL" />
+		<Item id="S_BRDM2_ELEMENTAL_GUN_SHOOT_PIRO" />
+		<Item id="S_BRDM2_ELEMENTAL_GUN_SHOOT_KRIO" />
+		<Item id="S_BRDM2_ELEMENTAL_GUN_SHOOT_HYDRO" />
+		<Item id="S_BRDM2_ELEMENTAL_GUN_SHOOT_ELECTRO" />
 
 		<!-- Shoot hits --> 
 
@@ -3545,6 +3597,7 @@
 		<Item id="S_RECHARGE_WEAPON"/>
 		<Item id="S_CAR_BURNING_SMALL"/>
 		<Item id="S_CAR_BURNING"/>
+		<Item id="S_CANNON_RELOAD2"/>
 
 		<Item id="S_ENGINE_TANK_HIGH"/>
 		<Item id="S_SHOOTING_ROBOTGUN_01"/>

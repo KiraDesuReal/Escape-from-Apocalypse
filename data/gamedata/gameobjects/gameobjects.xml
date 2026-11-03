@@ -393,8 +393,8 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 			ModelFile		= "shell_big_gun01"
 			ExplosionType	= "AUTOCANNON" 
 
-			Velocity		= "1500"
-			Acceleration	= "3000"
+			Velocity		= "2000"
+			Acceleration	= "3500"
 			FlyTime		= "30.0"
 			Size			= "0.5 0.5 1"/>
 
@@ -402,6 +402,54 @@ $Id: GameObjects.xml,v 1.60 2005/10/14 06:13:36 anton Exp $
 			Class		= "Bullet"
             Name        = "raybullet_brdm2_cannon02"
 			Price       = "12"/>
+
+		<Prototype
+			Class		= "PlasmaBunch"
+            Name        = "raybullet_brdm2_cannon03_Piro"
+
+			ModelFile		= "shell_big_gun01_Piro"
+			ExplosionType	= "AUTOCANNON" 
+
+			Velocity		= "500"
+			Acceleration	= "1500"
+			FlyTime		= "30.0"
+			Size			= "0.5 0.5 1"/>
+
+		<Prototype
+			Class		= "PlasmaBunch"
+            Name        = "raybullet_brdm2_cannon03_Krio"
+
+			ModelFile		= "shell_big_gun01_Krio"
+			ExplosionType	= "AUTOCANNON" 
+
+			Velocity		= "500"
+			Acceleration	= "1500"
+			FlyTime		= "30.0"
+			Size			= "0.5 0.5 1"/>
+
+		<Prototype
+			Class		= "PlasmaBunch"
+            Name        = "raybullet_brdm2_cannon03_Hydro"
+
+			ModelFile		= "shell_big_gun01_Hydro"
+			ExplosionType	= "AUTOCANNON" 
+
+			Velocity		= "500"
+			Acceleration	= "1500"
+			FlyTime		= "30.0"
+			Size			= "0.5 0.5 1"/>
+
+		<Prototype
+			Class		= "PlasmaBunch"
+            Name        = "raybullet_brdm2_cannon03_Electro"
+
+			ModelFile		= "shell_big_gun01_Electro"
+			ExplosionType	= "AUTOCANNON" 
+
+			Velocity		= "500"
+			Acceleration	= "1500"
+			FlyTime		= "30.0"
+			Size			= "0.5 0.5 1"/>
 
 	</Folder>
 

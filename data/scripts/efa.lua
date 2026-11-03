@@ -169,7 +169,9 @@ if ITEM_KEY_GATE_BUNKER014_USED == nil then ITEM_KEY_GATE_BUNKER014_USED = 0 end
 -- r5m1
 if SHTURMANBOSS_BARRIER_TUTORIAL == nil then SHTURMANBOSS_BARRIER_TUTORIAL = 0 end
 if SHTURMANBOSS_SPAWN_ELEMENTES_TUTORIAL == nil then SHTURMANBOSS_SPAWN_ELEMENTES_TUTORIAL = 0 end
-
+if SHTURMANBOSS_PLAYER_BARRIER_TUTORIAL == nil then SHTURMANBOSS_PLAYER_BARRIER_TUTORIAL = 0 end
+if SHTURMANBOSS_ELEMENTALGUN_TUTORIAL == nil then SHTURMANBOSS_ELEMENTALGUN_TUTORIAL = 0 end
+if PLAYER_BRDM2_ELEMENT_SELECT == nil then PLAYER_BRDM2_ELEMENT_SELECT = 0 end
 
 -- Рандомизируем пушки ботам 
 function GiveGunsForVehicle(vehicle, side_random)
@@ -332,7 +334,7 @@ end
 
 -- Использование предметов 
 function ItemUse(heal_used, ammo_used)
-	HealItems(heal_used)
+	if getObj("player_brdm2_barrier") == nil then HealItems(heal_used) end
 	AddKeysQuestItem()
 	UseAmmoItems(ammo_used)
 end
@@ -2365,10 +2367,12 @@ function AddModifierHpIfPlayerVehicleBrdm2(ObjTarget, AmountEvent)
 			if gun:GetProperty("Prototype").AsString == "brdm2_cannon01" or gun:GetProperty("Prototype").AsString == "brdm2_cannon01_2" then
 				local distDam = Dist(car, target)
 				if distDam >= 20 and AmountEvent >= 3 then
+					local coof = 1.25
+					if getObj("player_brdm2_barrier") then coof = 1.75 end
 					if distDam >= 300 then
-						distDam = 300 * 1.25
+						distDam = 300 * coof
 					else
-						distDam = distDam * 1.25
+						distDam = distDam * coof
 					end
 					con("DAMAGE: "..math.floor(distDam + 0.5).." HP: "..math.floor(target:GetHealth() + 0.5))
 					con("EVENT COUNT: "..AmountEvent)

@@ -87,6 +87,13 @@
 			ImputPinCodeInDlgFile(0)
 			SetVar("BossFrendly", 0)
 			SetVar("KillEnemyShturmanBossReaction", "0")
+
+			SetVar("PlayerBrdm2_MaxDurability", 0)
+			SetVar("PlayerBrdm2_Durability", 0)
+			SetVar("PlayerBrdm2_MaxHp", 0)
+			SetVar("PlayerBrdm2_Hp", 0)
+			SetVar("PlayerBrdm2_Cannon01Reload", 0)
+			SetVar("PlayerBrdm2_ShotsForBarrier", 0)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -141,6 +148,9 @@
 
 			SetVar("ShturnanBossBarrier_Tutorial", 0)
 			SetVar("ShturmanBossSpawnElementes_Tutorial", 0)
+			SetVar("ShturmanBoss_PlayerBarrierTutorial", 0)
+			SetVar("ShturmanBoss_ElementalGunTutorial", 0)
+			SetVar("PlayerBrdm2_ElementSelect", "0")
 
 		    trigger:Deactivate()
 		</script>
@@ -301,6 +311,9 @@
 
 			if SHTURMANBOSS_BARRIER_TUTORIAL then SetVar("ShturnanBossBarrier_Tutorial", SHTURMANBOSS_BARRIER_TUTORIAL) end
 			if SHTURMANBOSS_SPAWN_ELEMENTES_TUTORIAL then SetVar("ShturmanBossSpawnElementes_Tutorial", SHTURMANBOSS_SPAWN_ELEMENTES_TUTORIAL) end
+			if SHTURMANBOSS_PLAYER_BARRIER_TUTORIAL then SetVar("ShturmanBoss_PlayerBarrierTutorial", SHTURMANBOSS_PLAYER_BARRIER_TUTORIAL) end
+			if SHTURMANBOSS_ELEMENTALGUN_TUTORIAL then SetVar("ShturmanBoss_ElementalGunTutorial", SHTURMANBOSS_ELEMENTALGUN_TUTORIAL) end
+			if PLAYER_BRDM2_ELEMENT_SELECT then SetVar("PlayerBrdm2_ElementSelect", PLAYER_BRDM2_ELEMENT_SELECT) end
 
 			TActivate("GlobalVar")
 			TActivate("CreateBreakebleObj")
@@ -4353,8 +4366,7 @@
 		<event 	timeout="0.05" eventid="GE_TIME_PERIOD" />
 		<script>
 			local pl = GetPlayerVehicle()
-			local hp = GetPlayerHealth() 
-			if pl and hp >= 1 then 
+			if pl then 
 				ItemUse() 
 				UseItemsForQuest()
 			else 
@@ -6026,7 +6038,7 @@
 				boss:AddItemsToRepository("ammo_chest_machinegun", random(0,2))
 				boss:GetPartByName("CHASSIS_BIG_GUN"):SetPropertyById(19, 5000)
 				boss:GetPartByName("CHASSIS_SMALL_GUN"):SetPropertyById(19, 0)
-				boss:SetSkin(0)
+				boss:SetSkin(2)
 				boss:AddModifier("maxfuel", "= 10000")
 				boss:AddModifier("fuel", "= 10000")
 
@@ -6092,20 +6104,23 @@
 				if obj then obj:Remove() end
 			end
 
+			TActivate("RemoveElementalGun")
+			TActivate("ShturmanBoss_Faze2_RemoveElementes")
+			TActivate("BossRemove2")
+
 			TDeactivate("PlayerUnderAttackBoss")
 			getObj("PlayerUnderAttackBoss"):DelEvent("GE_UNDER_ATTACK")
 			TDeactivate("BossEnemy_Dist")
 			TDeactivate("BossLeavesLoc")
 			TDeactivate("BossEntourageDie")
 			TDeactivate("ShturmanBossHP0_Faze1")
-			getObj("ShturmanBossHP0_Faze1"):DelEvent("GE_TIME_PERIOD")
+			TDeactivate("ShturmanBossHP0_Faze1_2")
 			TDeactivate("ShturmanBoss_Faze2_R_Freezing2")
 			TDeactivate("ShturmanBoss_Faze2_BarrierTimer2")
 			TDeactivate("ShturmanBoss_Faze2_BarrierTimer1")
 			TDeactivate("ShturmanBossHP0_Faze2")
 			TDeactivate("BossEnemy_HP_0")
 			TDeactivate("ShturmanBoss_Faze2_BarrierTp")
-			TActivate("ShturmanBoss_Faze2_RemoveElementes")
 			TDeactivate("ShturmanBoss_Faze2_TpSelectElement")
 			TDeactivate("ShturmanBoss_Faze2_UnderAttack")
 			TDeactivate("ShturmanBoss_Faze2_R_Overload_Expl")
@@ -6121,6 +6136,9 @@
 			TDeactivate("ShturmanBossDie")
 			TDeactivate("ShturmanBoss_Dist")
 			TDeactivate("CreateBossEntersLoc1")
+			TDeactivate("ShturmanBoss_Faze2_R_Freezing_Timer")
+			if getObj("player_brdm2_barrier") then TActivate("ShturmanBoss_PlayerBarrierRemove") end
+			TDeactivate("ShturmanBoss_Faze2_BarrierScale")
 			
 			SetVar("ShturmanBossEntourageCreated", 0)
 			SetVar("ShturmanBossEntourageDie", 0)
@@ -6133,6 +6151,18 @@
 			SetVar("ShturmanBoss_Tp", 0)
 			SetVar("ShturmanBoss_vehicle_0_UnderAttack", 0)
 			SetVar("KillEnemyShturmanBossReaction", "0")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="BossRemove2" active="0">
+		<event 	timeout="0.1" eventid="GE_TIME_PERIOD" />
+		<script>
+			TDeactivate("ShturmanBoss_Faze2_UnderAttack")
+			for i = 0, 3 do
+				local veh = getObj("ShturmanBoss_vehicle_"..i)
+				if veh then veh:Remove() end
+			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -6158,11 +6188,6 @@
 			end
 
 			if l == count then
-				for i = 0, 3 do
-					local veh = getObj("ShturmanBoss_vehicle_"..i)
-					if veh then veh:Remove() end
-				end
-
 				if GetVar("ShturmanBossFaze2").AsInt == 1 then
 					SetWeather(GetVar("Weather").AsInt)
 					SetGameTime(GetVar("GameTimeHour").AsInt, 0)
@@ -6256,8 +6281,7 @@
 						if getObj("OnMusicBattle_Dist"):IsActivated() == 1 then
 							local m = {"r5m1_battle1_2", "r5m1_battle2_2"}
 							PlayCustomMusic(m[random(2)])
-							getObj("ShturmanBossHP0_Faze1"):AddEvent("GE_TIME_PERIOD", tostring(60))
-							TActivate("ShturmanBossHP0_Faze1")
+							if GetVar("ShturmanBossFaze2").AsInt == 0 then TActivate("ShturmanBossHP0_Faze1_2") end
 							TDeactivate("OnMusicBattle_Dist")
 						end
 					end
@@ -6280,8 +6304,7 @@
 					if 200 >= len then
 						local m = {"r5m1_battle1_2", "r5m1_battle2_2"}
 						PlayCustomMusic(m[random(2)])
-						getObj("ShturmanBossHP0_Faze1"):AddEvent("GE_TIME_PERIOD", tostring(60))
-						TActivate("ShturmanBossHP0_Faze1")
+						if GetVar("ShturmanBossFaze2").AsInt == 0 then TActivate("ShturmanBossHP0_Faze1_2") end
 						trigger:Deactivate()
 					end
 				end
@@ -6358,10 +6381,22 @@
 	<trigger Name="ShturmanBossHP0_Faze1" active="0">
 		<event eventid="GE_VEHICLE_WITHOUT_HEALTH" ObjName="ShturmanBoss_vehicle_0" /> 
 		<script>
-			SetVar("ShturmanBossFaze2", 1)
+			TDeactivate("ShturmanBossHP0_Faze1_2")
 			TActivate("ShturmanBoss_Faze2_Cuts")
-			trigger:DelEvent("GE_TIME_PERIOD")
 			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ShturmanBossHP0_Faze1_2" active="0">
+		<event eventid="GE_OBJECT_IN_LOCATION" ObjName="Timer_loc" /> 
+		<script>
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			if count == 60 then
+				TDeactivate("ShturmanBossHP0_Faze1")
+				TActivate("ShturmanBoss_Faze2_Cuts")
+				trigger:Deactivate()
+			end
 		</script>
 	</trigger>
 
@@ -6370,49 +6405,13 @@
 		<event eventid="GE_VEHICLE_WITHOUT_HEALTH" ObjName="ShturmanBoss_vehicle_0" /> 
 		<script>
 			if GetVar("ShtirnanBossBarrier").AsString ~= "0" then
-				local pl = GetPlayerVehicle()
-				local boss = getObj("ShturmanBoss_vehicle_0")
-				if boss then
-					if 5000 >= boss:GetHealth() then
-						boss:AddModifier("maxhp", "= "..GetVar("ShtirnanBossHP").AsInt)
-						boss:AddModifier("hp", "= "..GetVar("ShtirnanBossHP").AsInt / 1.1)
-					else
-						boss:AddModifier("maxhp", "= "..GetVar("ShtirnanBossHP").AsInt)
-						boss:AddModifier("hp", "= "..GetVar("ShtirnanBossHP").AsInt / 1.25)
-					end
-					boss:GetPartByName("CHASSIS_BIG_GUN"):SetPropertyById(35, 4.0)
-					boss:GetPartByName("CHASSIS_BIG_GUN"):SetPropertyById(29, 160)
-					boss:GetPartByName("CHASSIS_BIG_GUN"):SetPropertyById(28, 25)
-					boss:GetPartByName("CHASSIS_BIG_GUN"):SetPropertyById(19, 5000)
-					CreateEffectInsertedInRemove("ET_S_SHTURMAN_BOSS_BARRIER_HIT", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
-					AddImportantFadingMsgByStrIdFormatted("fm_shturman_boss_barrier_hit")
-				end
-
-				local barrier = getObj("shturman_boss_barrier")
-				if barrier then barrier:Remove() end
-
-				local el = getObj("player_element_select")
-				if el then el:Remove() end
-
-				SetVar("ShtirnanBossBarrier", "0")
-				SetVar("ShtirnanBossHP", 0)
-
-				TActivate("ShturmanBoss_Faze2_BarrierTimer2")
-				TActivate("ShturmanBoss_Faze2_RemoveElementes")
-				TActivate("ShturmanBoss_HP")
-			
-				TDeactivate("ShturmanBoss_Faze2_SpawnElementes")
-				TDeactivate("ShturmanBoss_Faze2_BarrierTp")
-				TDeactivate("ShturmanBoss_Faze2_UnderAttack")
-				TDeactivate("ShturmanBoss_Faze2_R_Charged2")
-				TDeactivate("ShturmanBoss_Faze2_R_Freezing2")
-				TDeactivate("ShturmanBoss_Faze2_TpSelectElement")
+				if getObj("ShturmanBoss_Faze2_BarrierScale"):IsActivated() == 0 then TActivate("ShturmanBoss_Faze2_BarrierScale") end
 			else
 				local barrier = getObj("shturman_boss_barrier")
 				if barrier then barrier:Remove() end
 				TDeactivate("ShturmanBoss_Faze2_BarrierTimer1")
 				TDeactivate("ShturmanBoss_Faze2_BarrierTimer2")
-				TDeactivate("ShturmanBoss_Faze2_R_Freezing2")
+				TDeactivate("ShturmanBoss_Faze2_R_Freezing_Timer")
 				TDeactivate("ShturmanBoss_HP")
 				TDeactivate("ShturmanBoss_Dist")
 				if GetVar("ShturmanBoss_Tp").AsInt == 1 then
@@ -6511,8 +6510,8 @@
 				SetVar("ShtirnanBossBarrier", r)
 				SetVar("ShtirnanBossHP", boss:GetHealth())
 				CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6_"..r, "shturman_boss_barrier", -1, -1, boss:GetPosition(), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.250)
-				boss:AddModifier("maxhp", "= 100000")
-				boss:AddModifier("hp", "= 100000")
+				boss:AddModifier("maxhp", "= "..boss:GetHealth() * 5)
+				boss:AddModifier("hp", "= "..boss:GetHealth() * 5)
 				if GetVar("ShturmanBoss_Tp").AsInt == 0 then
 					boss:GetPartByName("CHASSIS_BIG_GUN"):SetPropertyById(35, 1.5)
 					boss:GetPartByName("CHASSIS_BIG_GUN"):SetPropertyById(29, 240)
@@ -6523,8 +6522,20 @@
 				SoundFadingMsg()
 			end
 			TDeactivate("ShturmanBoss_HP")
-			TActivate("ShturmanBoss_Faze2_SpawnElementes")
 			TActivate("ShturmanBoss_Faze2_BarrierTp")
+
+			local pl = GetPlayerVehicle()
+			if pl then
+				if pl:GetProperty("Prototype").AsString == "Brdm2_01" or pl:GetProperty("Prototype").AsString == "Brdm2_02" then
+					TActivate("ShturmanBoss_AddPlayerElementalGun")
+					if pl:GetPartByName("CHASSIS_GIANT_GUN") then
+						pl:GetPartByName("CHASSIS_GIANT_GUN"):SetPropertyById(35, 5)
+					end
+					if GetVar("ShturmanBoss_ElementalGunTutorial").AsInt ~= 1 then TActivate("ShturmanBoss_ElementalGun_Tutorial") end
+				else
+					TActivate("ShturmanBoss_Faze2_SpawnElementes")
+				end
+			end
 
 			if GetVar("ShturnanBossBarrier_Tutorial").AsInt == 0 then
 				TActivate("ShturmanBoss_Faze2_BarrierTutor")
@@ -6563,29 +6574,107 @@
 		</script>
 	</trigger>
 
+	<trigger Name="ShturmanBoss_Faze2_BarrierScale" active="0">
+		<event 	timeout="0.025"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local barrier1 = getObj("shturman_boss_barrier")
+			if barrier1 then
+				barrier1:SetPropertyById(7, barrier1:GetPropertyById(7).AsFloat + 0.05)
+				if barrier1:GetPropertyById(7).AsFloat >= 0.6 then 
+					TActivate("ShturmanBoss_Faze2_BarrierRemove")
+					trigger:Deactivate()
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="ShturmanBoss_Faze2_BarrierRemove" active="0">
+		<event 	timeout="0"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			local boss = getObj("ShturmanBoss_vehicle_0")
+			if boss then
+				if 5000 >= boss:GetHealth() then
+					boss:AddModifier("maxhp", "= "..GetVar("ShtirnanBossHP").AsInt)
+					boss:AddModifier("hp", "= "..GetVar("ShtirnanBossHP").AsInt / 1.1)
+				else
+					boss:AddModifier("maxhp", "= "..GetVar("ShtirnanBossHP").AsInt)
+					boss:AddModifier("hp", "= "..GetVar("ShtirnanBossHP").AsInt / 1.25)
+				end
+				boss:GetPartByName("CHASSIS_BIG_GUN"):SetPropertyById(35, 4.0)
+				boss:GetPartByName("CHASSIS_BIG_GUN"):SetPropertyById(29, 160)
+				boss:GetPartByName("CHASSIS_BIG_GUN"):SetPropertyById(28, 25)
+				boss:GetPartByName("CHASSIS_BIG_GUN"):SetPropertyById(19, 5000)
+				CreateEffectInsertedInRemove("ET_S_SHTURMAN_BOSS_BARRIER_HIT", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+				AddImportantFadingMsgByStrIdFormatted("fm_shturman_boss_barrier_hit")
+			end
+
+			local barrier = getObj("shturman_boss_barrier")
+			if barrier then barrier:Remove() end
+
+			local el = getObj("player_element_select")
+			if el then el:Remove() end
+
+			SetVar("ShturmanBoss_ElementSelect", "0")
+			SetVar("ShtirnanBossBarrier", "0")
+			SetVar("ShtirnanBossHP", 0)
+
+			TActivate("ShturmanBoss_Faze2_BarrierTimer2")
+			TActivate("ShturmanBoss_Faze2_RemoveElementes")
+			TActivate("ShturmanBoss_HP")
+			TActivate("RemoveElementalGun")
+		
+			TDeactivate("ShturmanBoss_Faze2_SpawnElementes")
+			TDeactivate("ShturmanBoss_Faze2_BarrierTp")
+			TDeactivate("ShturmanBoss_Faze2_UnderAttack")
+			TDeactivate("ShturmanBoss_Faze2_R_Charged2")
+			TDeactivate("ShturmanBoss_Faze2_R_Freezing_Timer")
+			TDeactivate("ShturmanBoss_Faze2_TpSelectElement")
+			TDeactivate("ShturmanBoss_Faze2_BarrierScale")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
 <!-- Спавн частиц -->
 	<trigger Name="ShturmanBoss_Faze2_SpawnElementes" active="0">
-		<event 	timeout="5" eventid="GE_TIME_PERIOD" />
+		<event 	eventid="GE_OBJECT_IN_LOCATION" ObjName="Timer_loc" />
 		<script>
-			if GetVar("ShtirnanBossBarrier").AsString ~= "0" then
-				local n = 1
-				if GetVar("GameTime").AsString == "NIGHT" then n = 2 end
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			if count == 5 then
+				TActivate("ShturmanBoss_Faze2_SpawnElementes2")
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
 
-				local elements = RandomObjTable({"PIRO", "KRIO", "HYDRO", "ELECTRO"})
-				local pl = GetPlayerVehicle()
-				if pl then
-					for i = 1, 4 do
-						CreateNewSgNodeObject("ET_PS_LENS_S1_"..elements[i]..n, "shturman_boss_element"..i, -1, -1, pl:GetPosition(), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1.0)
+	<trigger Name="ShturmanBoss_Faze2_SpawnElementes2" active="0">
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			if pl then
+				if pl:GetProperty("Prototype").AsString ~= "Brdm2_01" and pl:GetProperty("Prototype").AsString ~= "Brdm2_02" then
+					if GetVar("ShtirnanBossBarrier").AsString ~= "0" then
+						local n = 1
+						if GetVar("GameTime").AsString == "NIGHT" then n = 2 end
+
+						local elements = RandomObjTable({"PIRO", "KRIO", "HYDRO", "ELECTRO"})
+						local pl = GetPlayerVehicle()
+						if pl then
+							for i = 1, 4 do
+								CreateNewSgNodeObject("ET_PS_LENS_S1_"..elements[i]..n, "shturman_boss_element"..i, -1, -1, pl:GetPosition(), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1.0)
+							end
+						end
+
+						TActivate("ShturmanBoss_Faze2_TpElementes")
+						TActivate("ShturmanBoss_Faze2_PlaceElements_Timer")
+
+						SetVar("ShturmanBoss_ElementSelect", "0")
+
+						if GetVar("ShturmanBossSpawnElementes_Tutorial").AsInt == 0 then
+							TActivate("ShturmanBoss_Faze2_SpawnElementesTutor")
+						end
 					end
-				end
-
-				TActivate("ShturmanBoss_Faze2_TpElementes")
-				TActivate("ShturmanBoss_Faze2_PlaceElements")
-
-				SetVar("ShturmanBoss_ElementSelect", "0")
-
-				if GetVar("ShturmanBossSpawnElementes_Tutorial").AsInt == 0 then
-					TActivate("ShturmanBoss_Faze2_SpawnElementesTutor")
 				end
 			end
 			trigger:Deactivate()
@@ -6636,8 +6725,20 @@
 	</trigger>
 
 <!-- Частицы можно подобрать -->
+	<trigger Name="ShturmanBoss_Faze2_PlaceElements_Timer" active="0">
+		<event 	eventid="GE_OBJECT_IN_LOCATION" ObjName="Timer_loc" />
+		<script>
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			if count == 3 then
+				TActivate("ShturmanBoss_Faze2_PlaceElements")
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
+
 	<trigger Name="ShturmanBoss_Faze2_PlaceElements" active="0">
-		<event 	timeout="3" eventid="GE_TIME_PERIOD" />
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 			for i = 1, 4 do
 				local el = getObj("shturman_boss_element"..i)
@@ -6718,6 +6819,7 @@
 			TDeactivate("ShturmanBoss_Faze2_PlaceElements")
 			TDeactivate("ShturmanBoss_Faze2_TpElementes")
 			TDeactivate("ShturmanBoss_Faze2_SpawnElementes")
+			TDeactivate("ShturmanBoss_Faze2_PlaceElements_Timer")
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -6726,9 +6828,26 @@
 	<trigger Name="ShturmanBoss_Faze2_UnderAttack" active="0">
 		<event eventid="GE_UNDER_ATTACK" ObjName="ShturmanBoss_vehicle_0" />
 		<script>
+			local shot = 0
+			local AmountEvent = trigger:GetTriggeredObjectAmount()
 			local ObjAttack = getObj(trigger:GetTriggeredObjectID(0))
-			if ObjAttack then
-				if ObjAttack:GetBelong() == 1100 then
+			local pl = GetPlayerVehicle()
+			if pl and ObjAttack then
+
+				local prot = pl:GetProperty("Prototype").AsString
+				if prot == "Brdm2_01" or prot == "Brdm2_02" then
+					local slot = pl:GetPartByName("CHASSIS_GIANT_GUN")
+					if slot and slot:GetChargeState() == 1 and AmountEvent >= 3 then
+						SetVar("ShturmanBoss_ElementSelect", GetVar("PlayerBrdm2_ElementSelect").AsString)
+						shot = 2
+					end
+				else
+					if AmountEvent >= 3 then
+						shot = 1
+					end
+				end
+
+				if ObjAttack:GetBelong() == 1100 and shot ~= 0 then
 					if GetVar("ShtirnanBossBarrier").AsString == "PIRO" then
 						if GetVar("ShturmanBoss_ElementSelect").AsString == "PIRO" then
 							AddFadingMsgByStrIdFormatted("fm_shturman_boss_reactions", "e_piro", "e_piro", "r_no_react")
@@ -6771,6 +6890,13 @@
 							AddFadingMsgByStrIdFormatted("fm_shturman_boss_reactions", "e_electro", "e_hydro", "r_charged")
 							TActivate("ShturmanBoss_Faze2_R_Charged")
 							TActivate("ShturmanBoss_Faze2_R_Charged2")
+							local boss = getObj("ShturmanBoss_vehicle_0")
+							if boss then
+								local prot = pl:GetProperty("Prototype").AsString
+								if prot == "Brdm2_01" or prot == "Brdm2_02" then
+									boss:AddModifier("hp", "- 2500")
+								end
+							end
 						end
 					elseif GetVar("ShtirnanBossBarrier").AsString == "ELECTRO" then
 						if GetVar("ShturmanBoss_ElementSelect").AsString == "PIRO" then
@@ -6783,6 +6909,13 @@
 							AddFadingMsgByStrIdFormatted("fm_shturman_boss_reactions", "e_hydro", "e_electro", "r_charged")
 							TActivate("ShturmanBoss_Faze2_R_Charged")
 							TActivate("ShturmanBoss_Faze2_R_Charged2")
+							local boss = getObj("ShturmanBoss_vehicle_0")
+							if boss then
+								local prot = pl:GetProperty("Prototype").AsString
+								if prot == "Brdm2_01" or prot == "Brdm2_02" then
+									boss:AddModifier("hp", "- 2500")
+								end
+							end
 						elseif GetVar("ShturmanBoss_ElementSelect").AsString == "ELECTRO" then
 							AddFadingMsgByStrIdFormatted("fm_shturman_boss_reactions", "e_electro", "e_electro", "r_no_react")
 							TActivate("ShturmanBoss_Faze2_R_No_React")
@@ -6816,7 +6949,8 @@
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 			local boss = getObj("ShturmanBoss_vehicle_0")
-			if boss then
+			local pl = GetPlayerVehicle()
+			if pl and boss then
 				if GetVar("ShtirnanBossBarrier").AsString == "PIRO" and GetVar("ShturmanBoss_ElementSelect").AsString == "KRIO" then
 					local hp = (10000 + GetTotalWeaponDamage()) * 1.5
 					boss:AddModifier("hp", "- "..hp)
@@ -6826,6 +6960,10 @@
 				end
 				CreateEffectInsertedInRemove("ET_PS_R_MELT", boss:GetPosition(), Quaternion(0, 0, 0, 1), true)
 				AddReactionTextFx("ET_PS_R_MELT_T", boss)
+				local prot = pl:GetProperty("Prototype").AsString
+				if prot == "Brdm2_01" or prot == "Brdm2_02" then
+					boss:AddModifier("hp", "- 2500")
+				end
 			end
 			TActivate("ShturmanBoss_Faze2_SpawnElementes")
 			trigger:Deactivate()
@@ -6837,7 +6975,8 @@
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 			local boss = getObj("ShturmanBoss_vehicle_0")
-			if boss then
+			local pl = GetPlayerVehicle()
+			if pl and boss then
 				if GetVar("ShtirnanBossBarrier").AsString == "PIRO" and GetVar("ShturmanBoss_ElementSelect").AsString == "HYDRO" then
 					local hp = (10000 + GetTotalWeaponDamage()) * 2.0
 					boss:AddModifier("hp", "- "..hp)
@@ -6847,6 +6986,10 @@
 				end
 				CreateEffectInsertedInRemove("ET_PS_R_WAPE", boss:GetPosition(), Quaternion(0, 0, 0, 1), true)
 				AddReactionTextFx("ET_PS_R_VAPORIZE_T", boss)
+				local prot = pl:GetProperty("Prototype").AsString
+				if prot == "Brdm2_01" or prot == "Brdm2_02" then
+					boss:AddModifier("hp", "- 2500")
+				end
 			end
 			TActivate("ShturmanBoss_Faze2_SpawnElementes")
 			trigger:Deactivate()
@@ -6858,10 +7001,15 @@
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 			local boss = getObj("ShturmanBoss_vehicle_0")
-			if boss then
+			local pl = GetPlayerVehicle()
+			if pl and boss then
 				boss:AddModifier("hp", "- 15000")
 				CreateNewBreakableObject("Breakable_Barrel_E_Overload", "br_e_overload", 1098, boss:GetPosition(), Quaternion(0, 0, 0, 1), 0)
 				TActivate("ShturmanBoss_Faze2_R_Overload_Expl")
+				local prot = pl:GetProperty("Prototype").AsString
+				if prot == "Brdm2_01" or prot == "Brdm2_02" then
+					boss:AddModifier("hp", "- 2500")
+				end
 			end
 			TActivate("ShturmanBoss_Faze2_SpawnElementes")
 			trigger:Deactivate()
@@ -6889,7 +7037,8 @@
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 			local boss = getObj("ShturmanBoss_vehicle_0")
-			if boss then
+			local pl = GetPlayerVehicle()
+			if pl and boss then
 				SetVar("ShtirnanBossBarrierHP_Freez", boss:GetHealth())
 				SetVar("ShtirnanBossBarrier_Freez", GetVar("ShtirnanBossBarrier").AsString)
 				SetVar("ShtirnanBossBarrier", "0")
@@ -6907,18 +7056,36 @@
 				local barrier = getObj("shturman_boss_barrier")
 				if barrier then barrier:Remove() end
 
+				local prot = pl:GetProperty("Prototype").AsString
+				if prot == "Brdm2_01" or prot == "Brdm2_02" then
+					boss:AddModifier("hp", "- 1000")
+				end
+
 				AddReactionTextFx("ET_PS_R_FROZEN_T", boss)
 
 				TDeactivate("ShturmanBoss_Faze2_BarrierTp")
-				TActivate("ShturmanBoss_Faze2_R_Freezing2")
 				TDeactivate("ShturmanBoss_Dist")
+				TActivate("RemoveElementalGun")
+				TActivate("ShturmanBoss_Faze2_R_Freezing_Timer")
 			end
 			trigger:Deactivate()
 		</script>
 	</trigger>
 
+	<trigger Name="ShturmanBoss_Faze2_R_Freezing_Timer" active="0">
+		<event 	eventid="GE_OBJECT_IN_LOCATION" ObjName="Timer_loc" />
+		<script>
+			trigger:IncCount()
+			local count = trigger:GetCount()
+			if count == 8 then
+				TActivate("ShturmanBoss_Faze2_R_Freezing2")
+				trigger:Deactivate()
+			end
+		</script>
+	</trigger>
+
 	<trigger Name="ShturmanBoss_Faze2_R_Freezing2" active="0">
-		<event 	timeout="8" eventid="GE_TIME_PERIOD" />
+		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 			local boss = getObj("ShturmanBoss_vehicle_0")
 			if boss then
@@ -6926,10 +7093,10 @@
 				SetVar("ShtirnanBossHP", boss:GetHealth())
 				boss:SetCustomControlEnabled(false)
 				boss:UnlimitMaxSpeed()
-				boss:SetSkin(0)
 				boss:AddModifier("hp", "= "..GetVar("ShtirnanBossBarrierHP_Freez").AsInt)
 				boss:SetNewPart("CHASSIS_BIG_GUN", "brdm2_cannon01_Shturman")
 				boss:SetNewPart("CHASSIS_SMALL_GUN", "brdm2_cannon02_Shturman")
+				boss:SetSkin(2)
 
 				SetVar("ShtirnanBossBarrier_Freez", "0")
 				SetVar("ShtirnanBossBarrierHP_Freez", "0")
@@ -6939,6 +7106,9 @@
 				TActivate("ShturmanBoss_Faze2_BarrierTp")
 				TActivate("ShturmanBoss_Faze2_SpawnElementes")
 				TActivate("ShturmanBoss_Dist")
+
+				TActivate("ShturmanBoss_AddPlayerElementalGun")
+				TActivate("StartReloadElemetnalGun")
 			end
 			trigger:Deactivate()
 		</script>
@@ -6949,7 +7119,8 @@
 		<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 			local boss = getObj("ShturmanBoss_vehicle_0")
-			if boss then
+			local pl = GetPlayerVehicle()
+			if pl and boss then
 				boss:AddModifier("hp", "- 15000")
 				CreateNewBreakableObject("Breakable_Barrel_E_Superconduct", "br_e_superconduct", 1099, boss:GetPosition(), Quaternion(0, 0, 0, 1), 0)
 				getObj("br_e_superconduct"):SetDestroyed() 
@@ -6959,6 +7130,10 @@
 				CreateEffectInsertedInRemove("ET_PS_AIRWAVE1", boss:GetPosition(), Quaternion(0, 0, 0, 1), true)
 				CreateEffectTTLed("ET_PS_FIRE_PLASMA", boss:GetPosition(), Quaternion(0, 0, 0, 1), 1000)
 				AddReactionTextFx("ET_PS_R_SUPERCONDUCT_T", boss)
+				local prot = pl:GetProperty("Prototype").AsString
+				if prot == "Brdm2_01" or prot == "Brdm2_02" then
+					boss:AddModifier("hp", "- 2500")
+				end
 			end
 			trigger:Deactivate()
 		</script>
@@ -6971,9 +7146,11 @@
 			local boss = getObj("ShturmanBoss_vehicle_0")
 			if boss then
 				local v = {"ShturmanBoss_vehicle_0", "ShturmanBoss_vehicle_1", "ShturmanBoss_vehicle_2", "ShturmanBoss_vehicle_3", GetPlayerVehicle()}
-				for i = 1, 5 do	
+				local count = 5
+				if getObj("player_brdm2_barrier") then count = 4 end
+				for i = 1, count do	
 					local veh = getObj(v[i])
-					if veh then
+					if veh and veh:IsAlive() then
 						local len = Dist(boss, veh)
 						if 30 >= len then
 							if veh:GetBelong() == 1095 then
@@ -7152,6 +7329,7 @@
 			TDeactivate("BossEnemy_Dist")
 			TDeactivate("ShturmanBoss_Dist")
 			RuleConsole("g_postEffect DamageWater")
+			TActivate("RemoveElementalGun")
 			trigger:Deactivate() 
 		</script>
 	</trigger>
@@ -7180,6 +7358,26 @@
 		<event eventid="GE_UNDER_ATTACK" ObjName="ShturmanBoss_vehicle_0" />
 		<script>
 			ObjUnderAttack(trigger:GetCallObjName(), trigger:GetTriggeredObjectID(0), trigger:GetTriggeredObjectAmount(), "IfPlayerKillShturmanBoss")
+
+			if GetVar("ShturmanBossFaze2").AsInt == 1 and getObj("player_brdm2_barrier") == nil then
+				local objAttack = getObj(trigger:GetTriggeredObjectID(0))	
+				local AmountEvent = trigger:GetTriggeredObjectAmount()	
+				if objAttack then
+					local prot = objAttack:GetProperty("Prototype").AsString
+					if prot == "Brdm2_01" or prot == "Brdm2_02" then
+						if objAttack:GetBelong() == 1100 then
+							if AmountEvent >= 3 then
+								SetVar("PlayerBrdm2_ShotsForBarrier", GetVar("PlayerBrdm2_ShotsForBarrier").AsInt + 10)
+							else
+								SetVar("PlayerBrdm2_ShotsForBarrier", GetVar("PlayerBrdm2_ShotsForBarrier").AsInt + 2)
+							end
+							if GetVar("PlayerBrdm2_ShotsForBarrier").AsInt >= 500 then
+								TActivate("ShturmanBoss_CreatePlayerBarrier")
+							end
+						end
+					end
+				end
+			end
 		</script>
 	</trigger>
 
@@ -7303,6 +7501,292 @@
 				end
 			end
 			trigger:Deactivate() 
+		</script>
+	</trigger>
+
+<!-- Если игрок на БРДМ-2 -->
+	<trigger Name="ShturmanBoss_AddPlayerElementalGun" active="0">
+		<event 	timeout="0"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			if pl then
+				local prot = pl:GetProperty("Prototype").AsString
+				if prot == "Brdm2_01" or prot == "Brdm2_02" then
+					local slot = pl:GetPartByName("CHASSIS_GIANT_GUN")
+					if not(slot) then
+						if GetVar("PlayerBrdm2_ElementSelect").AsString == "KRIO" then
+							pl:SetNewPart("CHASSIS_GIANT_GUN", "brdm2_cannon03_Krio")
+						elseif GetVar("PlayerBrdm2_ElementSelect").AsString == "HYDRO" then
+							pl:SetNewPart("CHASSIS_GIANT_GUN", "brdm2_cannon03_Hydro")
+						elseif GetVar("PlayerBrdm2_ElementSelect").AsString == "ELECTRO" then
+							pl:SetNewPart("CHASSIS_GIANT_GUN", "brdm2_cannon03_Electro")
+						else
+							pl:SetNewPart("CHASSIS_GIANT_GUN", "brdm2_cannon03_Piro")
+							SetVar("PlayerBrdm2_ElementSelect", "PIRO")
+							if GetVar("ShtirnanBossBarrier").AsString == "0" then
+								TActivate("StartReloadElemetnalGun")
+							end
+						end
+						TActivate("SelectElementForElementalGun")
+						TActivate("IfElementalGunReload")
+						if GetVar("ShtirnanBossBarrier").AsString ~= "0" then TActivate("SetReloadForElementalGun") end
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ShturmanBoss_ElementalGun_Tutorial" active="0">
+		<event 	timeout="1.1"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local b = SpawnMessageBox(8)
+			if b == 1 then SetVar("ShturmanBoss_ElementalGunTutorial", 1) end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="StartReloadElemetnalGun" active="0">
+		<event 	timeout="0"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			if pl then
+				local prot = pl:GetProperty("Prototype").AsString
+				if prot == "Brdm2_01" or prot == "Brdm2_02" then
+					local slot = pl:GetPartByName("CHASSIS_GIANT_GUN")
+					if slot then 
+						slot:SetShellsInCurrentCharge(0)
+						slot:SetChargeState(1)
+					end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SelectElementForElementalGun" active="0">
+		<event eventid="GE_PLAYER_VEHICLE_HORN" ObjName="Player1" />
+		<script>
+			local pl = GetPlayerVehicle()
+			if pl then
+				local prot = pl:GetProperty("Prototype").AsString
+				if prot == "Brdm2_01" or prot == "Brdm2_02" then
+					local slot = pl:GetPartByName("CHASSIS_GIANT_GUN")
+					if slot then
+						if slot:GetChargeState() == 0 and slot:GetShellsInCurrentCharge() == 1 then
+							if GetVar("PlayerBrdm2_ElementSelect").AsString == "PIRO" then
+								pl:SetNewPart("CHASSIS_GIANT_GUN", "brdm2_cannon03_Krio")
+								SetVar("PlayerBrdm2_ElementSelect", "KRIO")
+								AddFadingMsgByStrIdFormatted("fm_brdm2_element_select", "e_krio")
+							elseif GetVar("PlayerBrdm2_ElementSelect").AsString == "KRIO" then
+								pl:SetNewPart("CHASSIS_GIANT_GUN", "brdm2_cannon03_Hydro")
+								SetVar("PlayerBrdm2_ElementSelect", "HYDRO")
+								AddFadingMsgByStrIdFormatted("fm_brdm2_element_select", "e_hydro")
+							elseif GetVar("PlayerBrdm2_ElementSelect").AsString == "HYDRO" then
+								pl:SetNewPart("CHASSIS_GIANT_GUN", "brdm2_cannon03_Electro")
+								SetVar("PlayerBrdm2_ElementSelect", "ELECTRO")
+								AddFadingMsgByStrIdFormatted("fm_brdm2_element_select", "e_electro")
+							else
+								pl:SetNewPart("CHASSIS_GIANT_GUN", "brdm2_cannon03_Piro")
+								SetVar("PlayerBrdm2_ElementSelect", "PIRO")
+								AddFadingMsgByStrIdFormatted("fm_brdm2_element_select", "e_piro")
+							end
+
+							CreateEffectInsertedInRemove("ET_S_CANNON_RELOAD2", pl:GetPosition(), Quaternion(0, 0, 0, 1), true)
+							if GetVar("ShtirnanBossBarrier").AsString ~= "0" then TActivate("SetReloadForElementalGun") end
+						end
+					end
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="SetReloadForElementalGun15" active="0">
+		<event 	timeout="0.1"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			if pl then
+				local prot = pl:GetProperty("Prototype").AsString
+				if prot == "Brdm2_01" or prot == "Brdm2_02" then
+					local slot = pl:GetPartByName("CHASSIS_GIANT_GUN")
+					if slot then slot:SetPropertyById(35, 15) end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="SetReloadForElementalGun" active="0">
+		<event 	timeout="0"		eventid="GE_TIME_PERIOD" />
+		<script>
+			if getObj("player_brdm2_barrier") then
+				GetPlayerVehicle():GetPartByName("CHASSIS_GIANT_GUN"):SetPropertyById(35, 2.5)
+			else
+				GetPlayerVehicle():GetPartByName("CHASSIS_GIANT_GUN"):SetPropertyById(35, 5)
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="RemoveElementalGun" active="0">
+		<event 	timeout="0"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			if pl then
+				local prot = pl:GetProperty("Prototype").AsString
+				if prot == "Brdm2_01" or prot == "Brdm2_02" then
+					local slot = pl:GetPartByName("CHASSIS_GIANT_GUN")
+					if slot then slot:Remove() end
+				end
+			end
+			TDeactivate("SelectElementForElementalGun")
+			TDeactivate("IfElementalGunReload")
+			TDeactivate("IfElementalGunReload2")
+			TDeactivate("ShturmanBoss_Faze2_UnderAttack")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="IfElementalGunReload" active="0">
+		<event 	timeout="0.001"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			if pl then
+				local prot = pl:GetProperty("Prototype").AsString
+				if prot == "Brdm2_01" or prot == "Brdm2_02" then
+					local slot = pl:GetPartByName("CHASSIS_GIANT_GUN")
+					if slot then  
+						if slot:GetChargeState() == 0 and slot:GetShellsInCurrentCharge() == 1 then
+							if getObj("ShturmanBoss_Faze2_UnderAttack"):IsActivated() == 0 and getObj("ShturmanBoss_vehicle_0") then 
+								TActivate("ShturmanBoss_Faze2_UnderAttack") 
+							end
+						else
+							if getObj("IfElementalGunReload2"):IsActivated() == 0 then TActivate("IfElementalGunReload2") end
+						end
+					end
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="IfElementalGunReload2" active="0">
+		<event 	timeout="0.5"		eventid="GE_TIME_PERIOD" />
+		<script>
+			if getObj("ShturmanBoss_Faze2_UnderAttack"):IsActivated() == 1 then TDeactivate("ShturmanBoss_Faze2_UnderAttack") end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ShturmanBoss_CreatePlayerBarrier" active="0">
+		<event 	timeout="0"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			if pl then
+				local prot = pl:GetProperty("Prototype").AsString
+				if prot == "Brdm2_01" or prot == "Brdm2_02" then
+					SetVar("PlayerBrdm2_Hp", pl:GetHealth())
+					SetVar("PlayerBrdm2_MaxHp", pl:GetMaxHealth())
+					SetVar("PlayerBrdm2_MaxDurability", pl:GetPartByName("CABIN"):GetPropertyById(20).AsInt)
+					SetVar("PlayerBrdm2_Durability", pl:GetPartByName("CABIN"):GetPropertyById(19).AsInt)
+					pl:AddModifier("maxhp", "= 5000")
+					pl:AddModifier("hp", "= 5000")
+					pl:GetPartByName("CABIN"):SetPropertyById(20, 400)
+					pl:GetPartByName("CABIN"):SetPropertyById(19, 400)
+					pl:SetNameFromScript("PlayerCar")
+					CreateNewSgNodeObject("ET_PS_ORACUL_MAIN6_1", "player_brdm2_barrier", -1, -1, pl:GetPosition(), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 0.250)
+					TActivate("ShturmanBoss_PlayerBarrierTp")
+					TActivate("ShturmanBoss_PlayerBarrierHit")
+					TDeactivate("FakePlayerDead")
+					local slot = pl:GetPartByName("CHASSIS_BIG_GUN")
+					if slot then
+						SetVar("PlayerBrdm2_Cannon01Reload", slot:GetPropertyById(35).AsFloat)
+						slot:SetPropertyById(35, slot:GetPropertyById(35).AsFloat - 3)
+						if 0.5 > slot:GetPropertyById(35).AsFloat then slot:SetPropertyById(35, 0.5) end
+					end
+					local slot1 = pl:GetPartByName("CHASSIS_GIANT_GUN")
+					if slot1 then slot1:SetPropertyById(35, 2.5) end
+					AddImportantFadingMsgByStrIdFormatted("fm_brdm2_barrier")
+					SoundFadingMsg()
+					if GetVar("ShturmanBoss_PlayerBarrierTutorial").AsInt == 0 then TActivate("ShturmanBoss_CreatePlayerBarrier_Tutorial") end
+				end
+			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ShturmanBoss_CreatePlayerBarrier_Tutorial" active="0">
+		<event 	timeout="1"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local b = SpawnMessageBox(9)
+			if b == 1 then SetVar("ShturmanBoss_PlayerBarrierTutorial", 1) end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ShturmanBoss_PlayerBarrierTp" active="0">
+		<event 	timeout="0.01"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			local barrier = getObj("player_brdm2_barrier")
+			if pl and barrier then 
+				local pos = pl:GetPosition()
+				pos.y = pos.y - 1.5
+				barrier:SetPosition(pos)
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="ShturmanBoss_PlayerBarrierHit" active="0">
+		<event eventid="GE_VEHICLE_WITHOUT_HEALTH" ObjName="PlayerCar" /> 
+		<script>
+			TActivate("ShturmanBoss_PlayerBarrierScale")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="ShturmanBoss_PlayerBarrierScale" active="0">
+		<event 	timeout="0.025"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local barrier = getObj("player_brdm2_barrier")
+			if barrier then
+				barrier:SetPropertyById(7, barrier:GetPropertyById(7).AsFloat + 0.05)
+				if barrier:GetPropertyById(7).AsFloat >= 0.6 then 
+					TActivate("ShturmanBoss_PlayerBarrierRemove")
+					CreateEffectInsertedInRemove("ET_S_SHTURMAN_BOSS_BARRIER_HIT", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), true)
+					AddImportantFadingMsgByStrIdFormatted("fm_brdm2_barrier_hit")
+					trigger:Deactivate()
+				end
+			end
+		</script>
+	</trigger>
+
+	<trigger Name="ShturmanBoss_PlayerBarrierRemove" active="0">
+		<event 	timeout="0"		eventid="GE_TIME_PERIOD" />
+		<script>
+			local pl = GetPlayerVehicle()
+			local barrier = getObj("player_brdm2_barrier")
+			if pl and barrier then 
+				pl:AddModifier("maxhp", "= "..GetVar("PlayerBrdm2_MaxHp").AsInt)
+				pl:AddModifier("hp", "= "..GetVar("PlayerBrdm2_Hp").AsFloat)
+				pl:GetPartByName("CABIN"):SetPropertyById(20, GetVar("PlayerBrdm2_MaxDurability").AsInt)
+				pl:GetPartByName("CABIN"):SetPropertyById(19, GetVar("PlayerBrdm2_Durability").AsInt)
+				TActivate("FakePlayerDead")
+				TDeactivate("ShturmanBoss_PlayerBarrierTp")
+				TDeactivate("ShturmanBoss_PlayerBarrierHit")
+				TDeactivate("ShturmanBoss_PlayerBarrierScale")
+				local slot = pl:GetPartByName("CHASSIS_BIG_GUN")
+				if slot then slot:SetPropertyById(35, GetVar("PlayerBrdm2_Cannon01Reload").AsFloat) end
+				local slot1 = pl:GetPartByName("CHASSIS_GIANT_GUN")
+				if slot1 then slot1:SetPropertyById(35, 5) end
+				SetVar("PlayerBrdm2_MaxDurability", 0)
+				SetVar("PlayerBrdm2_Durability", 0)
+				SetVar("PlayerBrdm2_MaxHp", 0)
+				SetVar("PlayerBrdm2_Hp", 0)
+				SetVar("PlayerBrdm2_Cannon01Reload", 0)
+				SetVar("PlayerBrdm2_ShotsForBarrier", 0)
+				barrier:Remove()
+			end
+			trigger:Deactivate()
 		</script>
 	</trigger>
 

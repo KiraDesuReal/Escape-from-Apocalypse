@@ -71,6 +71,23 @@ $Id: Mortar.xml,v 1.13 2005/10/25 09:54:48 anton Exp $
 		BlastWavePrototype      = "smallBlastWave_mortal"
 
 	/>
+
+	<Prototype
+		Class			= "MortarShell"
+		Name			= "someMortarShell_ags17"			
+
+		ModelFile		= "shell01"
+		ExplosionType		= "GRENADE" 
+		Price			= "78"		
+		FlyTime			= "100"
+
+		Velocity         = "2000"
+        Acceleration     = "2000"
+
+		Size			= "0.5 0.5 1"
+
+		BlastWavePrototype      = "smallBlastWave_bumblebee"
+	/>
 	
 <!--
 	<Prototype

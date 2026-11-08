@@ -951,7 +951,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			BrakingSound="ET_S_BRAKE01"
 			PneumoSound	="ET_S_PNEUMO_BRAKE01"
 			GearShiftSound="ET_S_GEAR_SHIFT01"
-			LoadPoints	= "LP_CAB01 LP_GIANT01 LP_GIANT02" >
+			LoadPoints	= "LP_CAB01 LP_BSK01 LP_GIANT01 LP_GIANT02" >
 				<GroupsHealth
 					Main   = "10000"	
 				/>
@@ -989,6 +989,47 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Mass		= "1.0"
 			MaxHealth	= "100" 
 			MaxFuel	= "0">
+				<GroupsHealth
+					Main   = "10000"	
+				/>
+		</Prototype>
+
+		<Prototype
+			Class		= "Chassis"
+			Name		= "gaz66Chassis"
+			ModelFile	= "Gaz66Chassis"
+			ResourceType	= "GAZ66_CHASSIS"
+			NodeScale	= "1 1 1"
+
+			Price				= "10000"
+
+			RepairCoef			= "0.2"
+
+			Mass		= "60.0" 
+			MaxHealth	= "1750" 
+			MaxFuel	= "500"			
+			BrakingSound="ET_S_BRAKE01"
+			PneumoSound	="ET_S_PNEUMO_BRAKE01"
+			GearShiftSound="ET_S_GEAR_SHIFT01"
+			LoadPoints	= "LP_CAB01 LP_BSK01" >
+				<GroupsHealth
+					Main   = "10000"	
+				/>
+		</Prototype>
+
+		<Prototype
+			Class		= "Chassis"
+			Name		= "tigrChassis"
+			ModelFile	= "TigrChassis"
+			ResourceType	= "TIGR_CHASSIS"
+			NodeScale	= "1 1 1"
+			Mass		= "30.0"
+			MaxHealth	= "1250" 
+			MaxFuel	= "136" 
+			BrakingSound="ET_S_BRAKE01"
+			PneumoSound	="ET_S_PNEUMO_BRAKE01"
+			GearShiftSound="ET_S_GEAR_SHIFT01"
+			LoadPoints	= "LP_CAB01" >
 				<GroupsHealth
 					Main   = "10000"	
 				/>
@@ -2869,6 +2910,70 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			<GroupsHealth
 				Main   = "0"	
 			/>		
+		</Prototype>
+
+		<Prototype
+			Class				= "Cabin"
+			Name				= "gaz66Cab"
+			ModelFile			= "Gaz66Cab"
+			ResourceType			= "GAZ66_CABIN"
+			NodeScale			= "1 1 1"
+			Durability			= "30"
+			DurCoeffsForDamageTypes		= "2 -25 -25"
+			Mass				= "40.0"
+			MaxPower			= "120"
+			MaxTorque			= "80"
+
+			Price				= "25000"
+			RepairCoef			= "0.3"
+            FuelConsumption                 = "0.4"
+			EngineHighSound			= "ET_S_ENGINE_MOLOKO_1_HIGH"
+			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CAB"
+			MaxSpeed			= "140.0"
+			LoadPoints			= "LP_BIG01">
+			<GadgetDescription>
+				<Slot
+					ResourceType	= "GADGET_COMMON"
+					MaxAmount	= "1" />
+
+				<Slot
+					ResourceType	= "GADGET_WEAPON"
+					MaxAmount	= "1" />         
+			</GadgetDescription>
+				<GroupsHealth
+					Main   = "0"
+				/>
+		</Prototype>
+
+		<Prototype
+			Class				= "Cabin"
+			Name				= "tigrCab"
+			ModelFile			= "TigrCab"
+			ResourceType			= "TIGR_CABIN"
+			NodeScale			= "1 1 1"
+			Durability			= "60"
+			DurCoeffsForDamageTypes	= "10 0 -10"
+			VisibleInEncyclopedia = "false"
+			Mass				= "40.0"
+			MaxPower			= "140"
+			EngineHighSound		        = "ET_S_ENGINE_TIGR"
+			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
+			MaxTorque			= "100"
+			Price				= "10000"	
+			MaxSpeed			= "140.0"
+			LoadPoints			= "LP_SML01 LP_BIG01"
+			FuelConsumption     = "1" >
+			<GadgetDescription>
+				<Slot
+					ResourceType	= "GADGET_COMMON"
+					MaxAmount	= "2" />
+				<Slot
+					ResourceType	= "GADGET_WEAPON"
+					MaxAmount	= "1" /> 
+			</GadgetDescription>
+			<GroupsHealth
+				Main   = "5"	
+			/>
 		</Prototype>
 	</Folder>
 
@@ -6331,7 +6436,7 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 		<Prototype
 			Class				= "Basket"
 			Name				= "brdm2Cargo"
-			ModelFile			= "point"
+			ModelFile			= "fakeCargo"
 			CanBeUsedInAutogenerating  =  "0"
 			VisibleInEncyclopedia   = "false"
 			ResourceType		= "FAKE_BIGBASKET"
@@ -6347,7 +6452,65 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			Mass				= "1"
 			LoadPoints			= "LP_SPEC" >
 			<RepositoryDescription
-				RepositorySize		= "5 7">
+				RepositorySize		= "4 6">
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-2 0"
+				/>
+			</RepositoryDescription>
+		</Prototype>
+
+		<Prototype
+			Class				= "Basket"
+			Name				= "gaz66Cargo"
+			ModelFile			= "Gaz66Cargo"
+			ResourceType			= "GAZ66_BASKET"
+			Durability			= "15"
+			DurCoeffsForDamageTypes		= "0 -25 -25"
+			NodeScale			= "1 1 1"
+			BlowEffect	= "ET_PS_VEH_PART_BLOW_BIG_CARGO"
+			CanBeUsedInAutogenerating  =  "0"
+			Price				= "2000"
+			RepairCoef			= "0.2"
+
+			Mass				= "20.0"
+			LoadPoints			= "LP_BIG01 LP_SPEC" >
+			<RepositoryDescription
+				RepositorySize		= "6 8">
+				<Slot
+					Name		= "BASKET_BIG_GUN_0"
+					Pos		= "10 6"
+				/>
+				<Slot
+					Name		= "BASKET_SPECIAL_ITEMS"
+					Pos		= "-2 0"
+				/>
+			</RepositoryDescription>
+			<GroupsHealth
+				Main   = "0"	
+			/>			
+		</Prototype>
+
+		<Prototype
+			Class				= "Basket"
+			Name				= "tigrCargo"
+			ModelFile			= "fakeCargo"
+			CanBeUsedInAutogenerating  =  "0"
+			VisibleInEncyclopedia   = "false"
+			ResourceType		= "FAKE_BIGBASKET"
+			Durability			= "0"
+			DurCoeffsForDamageTypes		= "0 0 0"
+			NodeScale			= "1 1 1"
+			BlowEffect	= "ET_PS_VEH_PART_BLOW_SMALL_CAB"
+
+
+			Price				= "0"
+			RepairCoef			= "0"
+
+			Mass				= "1"
+			LoadPoints			= "LP_SPEC" >
+			<RepositoryDescription
+				RepositorySize		= "5 6">
 				<Slot
 					Name		= "BASKET_SPECIAL_ITEMS"
 					Pos		= "-2 0"
@@ -7351,6 +7514,32 @@ $Id: VehicleParts.xml,v 1.80 2005/11/28 07:43:57 anton Exp $
 			SuspensionERP		= "0.20"
 			SuspensionRange	= "1.0"
 			mU			= "1.0" 
+			EffectType		= "BIGWHEEL" />
+
+		<Prototype
+			Class			= "Wheel"
+			Name			= "gaz66Wheel"
+			ModelFile		= "Gaz66Wheel"
+			NodeScale		= "1 1 1"
+			Mass			= "14.0"
+			SuspensionModelFile	= "point"
+			SuspensionCFM		= "0.0025"
+			SuspensionERP		= "0.25"
+			SuspensionRange	= "1.0"
+			mU			= "1.0"
+			EffectType		= "BIGWHEEL" />
+
+		<Prototype
+			Class			= "Wheel"
+			Name			= "tigrWheel"
+			ModelFile		= "TigrWheel"
+			NodeScale		= "1 1 1"
+			Mass			= "5"
+			SuspensionModelFile	= "point"
+			SuspensionCFM	= "0.002"
+			SuspensionERP		= "0.20"
+			SuspensionRange	= "1.0"
+			mU			= "1.0"
 			EffectType		= "BIGWHEEL" />
 
 	</Folder>

@@ -257,9 +257,9 @@ data/if/ico_hd/inventorydlg/goods/new/special/item_ms20001.dds
 !data/models/vehicles/hunter/cab03/*.dds
 !data/models/vehicles/hunter/cab03/*.tga
 !data/models/vehicles/hunter/cab03/cab03.gam
-!data/models/vehicles/car_sectanian/*.gam
-!data/models/vehicles/car_sectanian/*.dds
-!data/models/vehicles/car_sectanian/*.tga
+!data/models/vehicles_efa/car_sectanian/*.gam
+!data/models/vehicles_efa/car_sectanian/*.dds
+!data/models/vehicles_efa/car_sectanian/*.tga
 !data/models/vehicles/scout/fakeCargo.gam
 !data/models/vehicles/tank/big_tank01.gam
 !data/models/vehicles/tank/shassis01.gam
@@ -301,7 +301,7 @@ data/if/ico_hd/inventorydlg/goods/new/special/item_ms20001.dds
 !data/models/objects/brodyaga.gam
 !data/models/objects/coat_player00.dds
 !data/models/objects/main_hero_1.dds
-!data/models/ammo/shell_big_gun01.gam
+!data/models/ammo/shell_big_gun01_2.gam
 !data/sounds/other/interface/fading_msg.wav
 !data/sounds/other/interface/building.wav
 !data/sounds/other/interface/christmas_building.wav
@@ -313,6 +313,9 @@ data/if/ico_hd/inventorydlg/goods/new/special/item_ms20001.dds
 !data/if/ico_hd/inventorydlg/weapon/a_hornet_min.dds
 !data/if/ico_hd/inventorydlg/weapon/brdm2_cannon01_min.dds
 !data/if/ico_hd/inventorydlg/weapon/brdm2_cannon02_min.dds
+!data/if/ico_hd/inventorydlg/weapon/ags17.dds
+!data/if/ico_hd/inventorydlg/weapon/ags17_insured.dds
+!data/if/ico_hd/inventorydlg/weapon/ags17_min.dds
 !data/models/guns/sml_american_hornet01.dds
 !data/models/guns/sml_american_hornet01_gun.gam 
 !data/if/ico_hd/mainmenu/*.dds
@@ -546,6 +549,7 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/if/ico_hd/inventorydlg/fighter/*.dds
 !data/if/ico_hd/inventorydlg/hunter/*.dds
 !data/if/ico_hd/inventorydlg/brdm2/*.dds
+!data/if/ico_hd/inventorydlg/tigr/*.dds
 !data/if/ico_hd/inventorydlg/cell_free.dds
 !data/if/ico_hd/inventorydlg/cell_busy.dds
 !data/if/ico_hd/inventorydlg/invent_cell_spec.dds
@@ -808,6 +812,7 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/fx/lens/lens_krio.tga
 !data/fx/lens/lens_hydro.tga
 !data/fx/lens/lens_electro.tga
+!data/fx/lens/lens73.tga
 !data/fx/smoke/smoke3_1.tga
 !data/fx/icons/*.tga
 !data/fx/reaction_text/*.tga
@@ -954,8 +959,10 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/models/lights/light_lamppost2.xml
 !data/models/monsters/airplane/*.dds
 !data/models/monsters/airplane/*.gam
-!data/models/vehicles/brdm-2/*.gam
-!data/models/vehicles/brdm-2/*.dds
+!data/models/vehicles_efa/brdm-2/*.gam
+!data/models/vehicles_efa/brdm-2/*.dds
+!data/models/vehicles_efa/tigr/*.gam
+!data/models/vehicles_efa/tigr/*.dds
 !data/if/ico_hd/TownDlg/bar_char_bkg.dds
 !data/if/ico_hd/SmartCursorWnd/missile_lock.dds
 !assets/*.png
@@ -1126,8 +1133,11 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/sounds/boss/shturman_boss_tp.wav
 !data/sounds/driving/horns/brdm2_horn.wav
 !data/sounds/driving/motors/brdm2_engine.wav
+!data/sounds/driving/motors/tigr_engine.wav
 !data/sounds/driving/starting/brdm2_engine_starting.wav
+!data/sounds/driving/starting/tigr_engine_starting.wav
 !data/sounds/shooting/brdm2/*.wav
+!data/sounds/shooting/smallgun/ags17/*.wav
 !data/sounds/effects/shells/cannon_reload2.wav
 !data/effects/breakable/sandbag1_crash_veh.psys
 !data/effects/breakable/sandbag2_crash_veh.psys
@@ -1137,6 +1147,7 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/effects/guns/laser_fire_main_krio.psys
 !data/effects/guns/laser_fire_main_hydro.psys
 !data/effects/guns/laser_fire_main_electro.psys
+!data/effects/vehicles/hlight_orange_main.psys
 !data/sounds/radio/radiosounds.xml
 !data/weathertexs/skyblack.dds
 !options/english_localization/data/if/diz/*.xml

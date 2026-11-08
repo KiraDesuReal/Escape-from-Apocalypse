@@ -862,6 +862,12 @@
 		group="ENGINE"
 		/>
 
+		<model
+		id="S_ENGINE_TIGR"
+		file="data\sounds\Driving\Motors\tigr_engine.wav"
+		group="ENGINE"
+		/>
+
 <!-- Missiles --> 
 
 	<model
@@ -1241,6 +1247,36 @@
 		id="S_BRDM2_ELEMENTAL_GUN_SHOOT_ELECTRO"
 		file="data\sounds\Shooting\brdm2\brdm2_elemental_gun_shoot_electro.wav"
 		group="ELEMENTAL_GUNFIRE"
+		/>
+
+	<model
+		id="S_AGS17_SHOOT1"
+		file="data\sounds\Shooting\smallgun\ags17\ags17_shoot1.wav"
+		group="GUNFIRE"
+		/>
+
+	<model
+		id="S_AGS17_SHOOT2"
+		file="data\sounds\Shooting\smallgun\ags17\ags17_shoot2.wav"
+		group="GUNFIRE"
+		/>
+
+	<model
+		id="S_AGS17_SHOOT3"
+		file="data\sounds\Shooting\smallgun\ags17\ags17_shoot3.wav"
+		group="GUNFIRE"
+		/>
+
+	<model
+		id="S_AGS17_SHOOT4"
+		file="data\sounds\Shooting\smallgun\ags17\ags17_shoot4.wav"
+		group="GUNFIRE"
+		/>
+
+	<model
+		id="S_AGS17_SHOOT5"
+		file="data\sounds\Shooting\smallgun\ags17\ags17_shoot5.wav"
+		group="GUNFIRE"
 		/>
 
 <!-- Shoot hits --> 
@@ -1848,6 +1884,11 @@
 	<model
 		id="S_STARTING_BRDM2"
 		file="data\sounds\Driving\Starting\brdm2_engine_starting.wav"
+		group="SOUND2D" />
+
+	<model
+		id="S_STARTING_TIGR"
+		file="data\sounds\Driving\Starting\tigr_engine_starting.wav"
 		group="SOUND2D" />
 
 	<model

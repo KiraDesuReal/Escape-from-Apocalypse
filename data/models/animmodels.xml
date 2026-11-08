@@ -9131,262 +9131,6 @@
 			skin="8" />
 	</model>
 
-<!-- Car Chevrole -->
-	
-	<model
-		id="ChevroleChassis"
-		file="data\models\vehicles\car_sectanian\chassis01.gam"
-		shadow="1"
-		windwavy="0">
-		<action
-			name="DEATH1"
-			skin="8">
-			<lp
-				id="w"
-				effect_id="ET_PS_VEH_EXP_SHASSIS_SMALL"
-				restartOnAnimationChange="0"
-				ImmediateRemove="0" />
-		</action>
-
-		<action
-			name="DEATH2"
-			skin="8">
-			<lp
-				id="w"
-				effect_id="ET_PS_VEH_EXP_SHASSIS1_SMALL"
-				restartOnAnimationChange="0"
-				ImmediateRemove="0" />
-		</action>
-	</model>
-
-	<model
-		id="ChevroleSusp01"
-		shadow="0"
-		windwavy="0"
-		file="data\models\ammo\plasma01.gam">
-		<action
-			name="DEATH1"
-			skin="8" />
-
-		<action
-			name="DEATH2"
-			skin="8" />
-	</model>
-
-	<model
-		id="ChevroleCab"
-		shadow="1"
-		shadowVolume="1"
-		windwavy="0"
-		file="data\models\vehicles\car_sectanian\cab.gam">
-		<action
-			name="DEATH1"
-			skin="8" />
-
-		<action
-			name="DEATH2"
-			skin="8" />
-
-		<action
-			name="STAND1">
-			<lp
-				id="LP_EXH01"
-				effect_id="ET_PS_EXHAUST_SMOKE1_SMALL"
-				restartOnAnimationChange="0"
-				ImmediateRemove="0" />
-
-			<lp
-				id="LP_EXH02"
-				effect_id="ET_PS_EXHAUST_SMOKE1_SMALL"
-				restartOnAnimationChange="0"
-				ImmediateRemove="0" />
-
-			<lp
-				id="LP_EXH03"
-				effect_id="ET_PS_EXHAUST_SMOKE1_SMALL"
-				restartOnAnimationChange="0" />
-
-			<lp
-				id="LP_EXH04"
-				effect_id="ET_PS_EXHAUST_SMOKE1_SMALL"
-				restartOnAnimationChange="0"
-				ImmediateRemove="0" />
-		</action>
-
-		<action
-			name="MOVE1">
-			<lp
-				id="LP_EXH01"
-				effect_id="ET_PS_EXHAUST_POW_SMOKE1_SMALL"
-				restartOnAnimationChange="0"
-				ImmediateRemove="0" />
-
-			<lp
-				id="LP_EXH02"
-				effect_id="ET_PS_EXHAUST_POW_SMOKE1_SMALL"
-				restartOnAnimationChange="0"
-				ImmediateRemove="0" />
-
-			<lp
-				id="LP_EXH03"
-				effect_id="ET_PS_EXHAUST_SMOKE1_SMALL"
-				restartOnAnimationChange="0" />
-
-			<lp
-				id="LP_EXH04"
-				effect_id="ET_PS_EXHAUST_SMOKE1_SMALL"
-				restartOnAnimationChange="0"
-				ImmediateRemove="0" />
-		</action>
-
-		<action
-			name="MOVE2">
-			<lp
-				id="LP_GLOW01"
-				effect_id="ET_PS_GLOW"
-				restartOnAnimationChange="0" />
-
-			<lp
-				id="LP_GLOW02"
-				effect_id="ET_PS_GLOW"
-				restartOnAnimationChange="0" />
-
-			<lp
-				id="LP_GLOW03"
-				effect_id="ET_PS_GLOW"
-				restartOnAnimationChange="0" />
-
-			<lp
-				id="LP_EXH01"
-				effect_id="ET_PS_EXHAUST_SMOKE1_SMALL"
-				restartOnAnimationChange="0" />
-
-			<lp
-				id="LP_EXH02"
-				effect_id="ET_PS_EXHAUST_SMOKE1_SMALL"
-				restartOnAnimationChange="0"
-				ImmediateRemove="0" />
-
-			<lp
-				id="LP_EXH03"
-				effect_id="ET_PS_EXHAUST_SMOKE1_SMALL"
-				restartOnAnimationChange="0" />
-
-			<lp
-				id="LP_EXH04"
-				effect_id="ET_PS_EXHAUST_SMOKE1_SMALL"
-				restartOnAnimationChange="0"
-				ImmediateRemove="0" />
-		</action>
-
-		<action
-			name="RESERVED2">
-			<lp
-				id="LP_GLOW01"
-				effect_id="ET_PS_GLOW"
-				restartOnAnimationChange="0" />
-
-			<lp
-				id="LP_GLOW02"
-				effect_id="ET_PS_GLOW"
-				restartOnAnimationChange="0" />
-
-			<lp
-				id="LP_GLOW03"
-				effect_id="ET_PS_GLOW"
-				restartOnAnimationChange="0" />
-				
-			<lp
-				id="LP_LIGHT01"
-				effect_id="ET_PS_HLIGHT"
-				restartOnAnimationChange="0" />
-
-			<lp
-				id="LP_LIGHT02"
-				effect_id="ET_PS_HLIGHT"
-				restartOnAnimationChange="0" />
-				
-			<lp
-				id="LP_LIGHT03"
-				effect_id="ET_PS_HLIGHT"
-				restartOnAnimationChange="0" />
-
-			<lp
-				id="LP_LIGHT04"
-				effect_id="ET_PS_HLIGHT"
-				restartOnAnimationChange="0" />
-				
-			<lp
-				id="LP_LIGHT05"
-				effect_id="ET_PS_HLIGHT"
-				restartOnAnimationChange="0" />
-
-			<lp
-				id="LP_LIGHT06"
-				effect_id="ET_PS_HLIGHT"
-				restartOnAnimationChange="0" />
-
-			<lp
-				id="LP_PROJECTOR"
-				effect_id="ET_PS_PROJECTOR_SCOUT_CAB03"
-				restartOnAnimationChange="0" />
-		</action>
-	</model>
-
-	<model
-		id="ChevroleCarWheel_L_01"
-		shadow="1"
-		shadowVolume="1"
-		windwavy="0"
-		file="data\models\vehicles\car_sectanian\w_l_01.gam">
-		<action
-			name="DEATH1"
-			skin="8">
-			<lp
-				id="8"
-				effect_id="ET_PS_VEH_EXP_WHEEL_SMALL"
-				restartOnAnimationChange="1"
-				ImmediateRemove="0" />
-		</action>
-
-		<action
-			name="DEATH2"
-			skin="8">
-			<lp
-				id="8"
-				effect_id="ET_PS_VEH_EXP_WHEEL1_SMALL"
-				restartOnAnimationChange="1"
-				ImmediateRemove="0" />
-		</action>
-	</model>
-
-	<model
-		id="ChevroleCarWheel_R_01"
-		shadow="1"
-		shadowVolume="1"
-		windwavy="0"
-		file="data\models\vehicles\car_sectanian\w_r_01.gam">
-		<action
-			name="DEATH1"
-			skin="8">
-			<lp
-				id="8"
-				effect_id="ET_PS_VEH_EXP_WHEEL_SMALL"
-				restartOnAnimationChange="1"
-				ImmediateRemove="0" />
-		</action>
-
-		<action
-			name="DEATH2"
-			skin="8">
-			<lp
-				id="8"
-				effect_id="ET_PS_VEH_EXP_WHEEL1_SMALL"
-				restartOnAnimationChange="1"
-				ImmediateRemove="0" />
-		</action>
-	</model>
-	
 <!-- Mirotvorec -->
 	<model
 		id="mirotvorecChassis"
@@ -17269,9 +17013,265 @@
 		</action>
 	</model>
 
+<!-- Car Chevrole -->
+	<model
+		id="ChevroleChassis"
+		file="data\models\vehicles_efa\car_sectanian\chassis01.gam"
+		shadow="1"
+		windwavy="0">
+		<action
+			name="DEATH1"
+			skin="8">
+			<lp
+				id="w"
+				effect_id="ET_PS_VEH_EXP_SHASSIS_SMALL"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="DEATH2"
+			skin="8">
+			<lp
+				id="w"
+				effect_id="ET_PS_VEH_EXP_SHASSIS1_SMALL"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+	</model>
+
+	<model
+		id="ChevroleSusp01"
+		shadow="0"
+		windwavy="0"
+		file="data\models\ammo\plasma01.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+	</model>
+
+	<model
+		id="ChevroleCab"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles_efa\car_sectanian\cab.gam">
+		<action
+			name="DEATH1"
+			skin="8" />
+
+		<action
+			name="DEATH2"
+			skin="8" />
+
+		<action
+			name="STAND1">
+			<lp
+				id="LP_EXH01"
+				effect_id="ET_PS_EXHAUST_SMOKE1_SMALL"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_EXH02"
+				effect_id="ET_PS_EXHAUST_SMOKE1_SMALL"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_EXH03"
+				effect_id="ET_PS_EXHAUST_SMOKE1_SMALL"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_EXH04"
+				effect_id="ET_PS_EXHAUST_SMOKE1_SMALL"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="MOVE1">
+			<lp
+				id="LP_EXH01"
+				effect_id="ET_PS_EXHAUST_POW_SMOKE1_SMALL"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_EXH02"
+				effect_id="ET_PS_EXHAUST_POW_SMOKE1_SMALL"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_EXH03"
+				effect_id="ET_PS_EXHAUST_SMOKE1_SMALL"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_EXH04"
+				effect_id="ET_PS_EXHAUST_SMOKE1_SMALL"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="MOVE2">
+			<lp
+				id="LP_GLOW01"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_GLOW02"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_GLOW03"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_EXH01"
+				effect_id="ET_PS_EXHAUST_SMOKE1_SMALL"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_EXH02"
+				effect_id="ET_PS_EXHAUST_SMOKE1_SMALL"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+
+			<lp
+				id="LP_EXH03"
+				effect_id="ET_PS_EXHAUST_SMOKE1_SMALL"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_EXH04"
+				effect_id="ET_PS_EXHAUST_SMOKE1_SMALL"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="RESERVED2">
+			<lp
+				id="LP_GLOW01"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_GLOW02"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_GLOW03"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+				
+			<lp
+				id="LP_LIGHT01"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT02"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+				
+			<lp
+				id="LP_LIGHT03"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT04"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+				
+			<lp
+				id="LP_LIGHT05"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT06"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_PROJECTOR"
+				effect_id="ET_PS_PROJECTOR_SCOUT_CAB03"
+				restartOnAnimationChange="0" />
+		</action>
+	</model>
+
+	<model
+		id="ChevroleCarWheel_L_01"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles_efa\car_sectanian\w_l_01.gam">
+		<action
+			name="DEATH1"
+			skin="8">
+			<lp
+				id="8"
+				effect_id="ET_PS_VEH_EXP_WHEEL_SMALL"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="DEATH2"
+			skin="8">
+			<lp
+				id="8"
+				effect_id="ET_PS_VEH_EXP_WHEEL1_SMALL"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+	</model>
+
+	<model
+		id="ChevroleCarWheel_R_01"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		file="data\models\vehicles_efa\car_sectanian\w_r_01.gam">
+		<action
+			name="DEATH1"
+			skin="8">
+			<lp
+				id="8"
+				effect_id="ET_PS_VEH_EXP_WHEEL_SMALL"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="DEATH2"
+			skin="8">
+			<lp
+				id="8"
+				effect_id="ET_PS_VEH_EXP_WHEEL1_SMALL"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+	</model>
+
+<!-- Brdm2 -->
 	<model
 		id="brdm2Chassis"
-		file="data\models\vehicles\brdm-2\chassis.gam"
+		file="data\models\vehicles_efa\brdm-2\chassis.gam"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
@@ -17299,7 +17299,7 @@
 
 	<model
 		id="brdm2Chassis2"
-		file="data\models\vehicles\brdm-2\chassis2.gam"
+		file="data\models\vehicles_efa\brdm-2\chassis2.gam"
 		shadow="0"
 		shadowVolume="0"
 		windwavy="0"
@@ -17330,7 +17330,7 @@
 		shadow="1"
 		shadowVolume="1"
 		windwavy="0"
-		file="data\models\vehicles\brdm-2\cabin.gam">
+		file="data\models\vehicles_efa\brdm-2\cabin.gam">
 		<action
 			name="DEATH1"
 			skin="8" />
@@ -17453,7 +17453,7 @@
 		shadow="1"
 		shadowVolume="1"
 		windwavy="0"
-		file="data\models\vehicles\brdm-2\cabin2.gam">
+		file="data\models\vehicles_efa\brdm-2\cabin2.gam">
 		<action
 			name="DEATH1"
 			skin="8" />
@@ -17573,7 +17573,7 @@
 
 	<model
 		id="brdm2Wheel"
-		file="data\models\vehicles\brdm-2\wheel.gam"
+		file="data\models\vehicles_efa\brdm-2\wheel.gam"
 		shadow="1"
 		shadowVolume="1"
 		windwavy="0"
@@ -17603,7 +17603,7 @@
 		id="brdm2Cannon01"
 		shadow="1"
 		windwavy="0"
-		file="data\models\vehicles\brdm-2\turret.gam">
+		file="data\models\vehicles_efa\brdm-2\turret.gam">
 		<action
 			name="DEATH1"
 			skin="8"/>
@@ -17617,7 +17617,7 @@
 		id="brdm2Cannon01gun"
 		shadow="1"
 		windwavy="0"
-		file="data\models\vehicles\brdm-2\gun.gam">
+		file="data\models\vehicles_efa\brdm-2\gun.gam">
 		<action
 			name="DEATH1"
 			skin="8"/>
@@ -17649,7 +17649,7 @@
 		id="brdm2Cannon01_2"
 		shadow="1"
 		windwavy="0"
-		file="data\models\vehicles\brdm-2\turret2.gam">
+		file="data\models\vehicles_efa\brdm-2\turret2.gam">
 		<action
 			name="DEATH1"
 			skin="8"/>
@@ -17663,7 +17663,7 @@
 		id="brdm2Cannon01_2gun"
 		shadow="1"
 		windwavy="0"
-		file="data\models\vehicles\brdm-2\gun.gam">
+		file="data\models\vehicles_efa\brdm-2\gun.gam">
 		<action
 			name="DEATH1"
 			skin="8"/>
@@ -17695,7 +17695,7 @@
 		id="brdm2Cannon02"
 		shadow="0"
 		windwavy="0"
-		file="data\models\vehicles\brdm-2\turret3.gam">
+		file="data\models\vehicles_efa\brdm-2\turret3.gam">
 		<action
 			name="DEATH1"
 			skin="8"/>
@@ -17709,7 +17709,7 @@
 		id="brdm2Cannon02gun"
 		shadow="1"
 		windwavy="0"
-		file="data\models\vehicles\brdm-2\gun2.gam">
+		file="data\models\vehicles_efa\brdm-2\gun2.gam">
 		<action
 			name="DEATH1"
 			skin="8"/>
@@ -17741,7 +17741,7 @@
 		id="brdm2Cannon01_2_skin1"
 		shadow="1"
 		windwavy="0"
-		file="data\models\vehicles\brdm-2\turret2.gam">
+		file="data\models\vehicles_efa\brdm-2\turret2.gam">
 		<action
 			name="DEATH1"
 			skin="8"/>
@@ -17755,7 +17755,7 @@
 		id="brdm2Cannon01_2_skin1gun"
 		shadow="1"
 		windwavy="0"
-		file="data\models\vehicles\brdm-2\gun_skin1.gam">
+		file="data\models\vehicles_efa\brdm-2\gun_skin1.gam">
 		<action
 			name="DEATH1"
 			skin="8"/>
@@ -17769,7 +17769,7 @@
 		id="brdm2Cannon02_skin1"
 		shadow="1"
 		windwavy="0"
-		file="data\models\vehicles\brdm-2\turret3.gam">
+		file="data\models\vehicles_efa\brdm-2\turret3.gam">
 		<action
 			name="DEATH1"
 			skin="8"/>
@@ -17783,7 +17783,7 @@
 		id="brdm2Cannon02_skin1gun"
 		shadow="1"
 		windwavy="0"
-		file="data\models\vehicles\brdm-2\gun2_skin1.gam">
+		file="data\models\vehicles_efa\brdm-2\gun2_skin1.gam">
 		<action
 			name="DEATH1"
 			skin="8"/>
@@ -17797,7 +17797,7 @@
 		id="brdm2Cannon03_2_Piro"
 		shadow="0"
 		windwavy="0"
-		file="data\models\vehicles\brdm-2\turret4.gam">
+		file="data\models\vehicles_efa\brdm-2\turret4.gam">
 		<action
 			name="DEATH1"
 			skin="8"/>
@@ -17811,7 +17811,7 @@
 		id="brdm2Cannon03_2_Pirogun"
 		shadow="0"
 		windwavy="0"
-		file="data\models\vehicles\brdm-2\gun3.gam">
+		file="data\models\vehicles_efa\brdm-2\gun3.gam">
 		<action
 			name="DEATH1"
 			skin="8"/>
@@ -17849,7 +17849,7 @@
 		id="brdm2Cannon03_2_Krio"
 		shadow="0"
 		windwavy="0"
-		file="data\models\vehicles\brdm-2\turret4.gam">
+		file="data\models\vehicles_efa\brdm-2\turret4.gam">
 		<action
 			name="DEATH1"
 			skin="8"/>
@@ -17863,7 +17863,7 @@
 		id="brdm2Cannon03_2_Kriogun"
 		shadow="0"
 		windwavy="0"
-		file="data\models\vehicles\brdm-2\gun3.gam">
+		file="data\models\vehicles_efa\brdm-2\gun3.gam">
 		<action
 			name="DEATH1"
 			skin="8"/>
@@ -17901,7 +17901,7 @@
 		id="brdm2Cannon03_2_Hydro"
 		shadow="0"
 		windwavy="0"
-		file="data\models\vehicles\brdm-2\turret4.gam">
+		file="data\models\vehicles_efa\brdm-2\turret4.gam">
 		<action
 			name="DEATH1"
 			skin="8"/>
@@ -17915,7 +17915,7 @@
 		id="brdm2Cannon03_2_Hydrogun"
 		shadow="0"
 		windwavy="0"
-		file="data\models\vehicles\brdm-2\gun3.gam">
+		file="data\models\vehicles_efa\brdm-2\gun3.gam">
 		<action
 			name="DEATH1"
 			skin="8"/>
@@ -17953,7 +17953,7 @@
 		id="brdm2Cannon03_2_Electro"
 		shadow="0"
 		windwavy="0"
-		file="data\models\vehicles\brdm-2\turret4.gam">
+		file="data\models\vehicles_efa\brdm-2\turret4.gam">
 		<action
 			name="DEATH1"
 			skin="8"/>
@@ -17967,7 +17967,7 @@
 		id="brdm2Cannon03_2_Electrogun"
 		shadow="0"
 		windwavy="0"
-		file="data\models\vehicles\brdm-2\gun3.gam">
+		file="data\models\vehicles_efa\brdm-2\gun3.gam">
 		<action
 			name="DEATH1"
 			skin="8"/>
@@ -17998,6 +17998,392 @@
 				effect_id="ET_PS_LENS_S1_ELECTRO_FIRE"
 				restartOnAnimationChange="0"
 				ImmediateRemove="1" />
+		</action>
+	</model>
+
+<!-- Gaz66 -->
+	<model
+		id="Gaz66Chassis"
+		file="data\models\vehicles_efa\gaz-66\chassis.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="8">
+			<lp
+				id="8"
+				effect_id="ET_PS_VEH_EXP_WHEEL_MED"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="DEATH2"
+			skin="8">
+			<lp
+				id="8"
+				effect_id="ET_PS_VEH_EXP_WHEEL1_MED"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+	</model>
+
+	<model
+		id="Gaz66Cab"
+		file="data\models\vehicles_efa\gaz-66\cab.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+
+		<action
+			name="RESERVED2">
+			<lp
+				id="LP_LIGHT01"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT02"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT03"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT04"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_PROJECTOR01"
+				effect_id="ET_PS_PROJECTOR_TANK"
+				restartOnAnimationChange="0" />
+		</action>
+	</model>
+
+	<model
+		id="Gaz66Cargo"
+		file="data\models\vehicles_efa\gaz-66\cargo.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+
+		<action
+			name="RESERVED2">
+			<lp
+				id="LP_GLOW01"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_GLOW02"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_PROJECTOR02"
+				effect_id="ET_PS_PROJECTOR_RED"
+				restartOnAnimationChange="0" />
+		</action>
+
+		<action
+			name="MOVE2">
+			<lp
+				id="LP_GLOW01"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_GLOW02"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_PROJECTOR02"
+				effect_id="ET_PS_PROJECTOR_RED"
+				restartOnAnimationChange="0" />
+		</action>
+	</model>
+
+	<model
+		id="Gaz66Wheel"
+		file="data\models\vehicles_efa\gaz-66\wheel.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="8">
+			<lp
+				id="8"
+				effect_id="ET_PS_VEH_EXP_WHEEL_SMALL"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="DEATH2"
+			skin="8">
+			<lp
+				id="8"
+				effect_id="ET_PS_VEH_EXP_WHEEL1_SMALL"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+	</model>
+
+<!-- Tigr -->
+	<model
+		id="TigrChassis"
+		file="data\models\vehicles_efa\tigr\chassis.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="8">
+			<lp
+				id="8"
+				effect_id="ET_PS_VEH_EXP_WHEEL_MED"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="DEATH2"
+			skin="8">
+			<lp
+				id="8"
+				effect_id="ET_PS_VEH_EXP_WHEEL1_MED"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="STAND1">
+			<lp
+				id="LP_EXH01"
+				effect_id="ET_PS_EXHAUST_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="MOVE1">
+			<lp
+				id="LP_EXH01"
+				effect_id="ET_PS_EXHAUST_POW_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="MOVE2">
+			<lp
+				id="LP_EXH01"
+				effect_id="ET_PS_EXHAUST_POW_SMOKE1"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+		</action>
+	</model>
+
+	<model
+		id="TigrCab"
+		file="data\models\vehicles_efa\tigr\cab.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+
+		<action
+			name="RESERVED2">
+			<lp
+				id="LP_LIGHT01"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT02"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT03"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT04"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT03"
+				effect_id="ET_PS_ORANGE_MAIN"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT04"
+				effect_id="ET_PS_ORANGE_MAIN"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_PROJECTOR01"
+				effect_id="ET_PS_PROJECTOR_TANK"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT05"
+				effect_id="ET_PS_HLIGHT"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_GLOW01"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_GLOW02"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_PROJECTOR02"
+				effect_id="ET_PS_PROJECTOR_RED"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT07"
+				effect_id="ET_PS_ORANGE_MAIN"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_LIGHT08"
+				effect_id="ET_PS_ORANGE_MAIN"
+				restartOnAnimationChange="0" />
+		</action>
+
+		<action
+			name="MOVE2">
+			<lp
+				id="LP_GLOW01"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_GLOW02"
+				effect_id="ET_PS_GLOW"
+				restartOnAnimationChange="0" />
+
+			<lp
+				id="LP_PROJECTOR02"
+				effect_id="ET_PS_PROJECTOR_RED"
+				restartOnAnimationChange="0" />
+		</action>
+	</model>
+
+	<model
+		id="TigrWheel"
+		file="data\models\vehicles_efa\tigr\wheel.gam"
+		shadow="1"
+		shadowVolume="1"
+		windwavy="0"
+		trans="0">
+		<action
+			name="DEATH1"
+			skin="8">
+			<lp
+				id="8"
+				effect_id="ET_PS_VEH_EXP_WHEEL_SMALL"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="DEATH2"
+			skin="8">
+			<lp
+				id="8"
+				effect_id="ET_PS_VEH_EXP_WHEEL1_SMALL"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+	</model>
+
+	<model
+		id="ags17"
+		shadow="0"
+		windwavy="0"
+		file="data\models\vehicles_efa\tigr\ags17.gam">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+	</model>
+
+	<model
+		id="ags17gun"
+		shadow="0"
+		windwavy="0"
+		file="data\models\vehicles_efa\tigr\ags17gun.gam">
+		<action
+			name="DEATH1"
+			skin="8"/>
+
+		<action
+			name="DEATH2"
+			skin="8"/>
+
+		<action
+			name="MOVE1">
+			<lp
+				id="LP_FIRE01"
+				effect_id="ET_PS_AGS17_SHOOT"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
+				
+			<lp
+				id="LP_SHELL01"
+				effect_id="ET_PS_SHELL_BIG_MORTAR_R"
+				restartOnAnimationChange="1"
+				ImmediateRemove="0" />
+		</action>
+
+		<action
+			name="STAND1">
+			<lp
+				id="LP_FIRE01"
+				effect_id="ET_PS_MACHINEGUN_STAND"
+				restartOnAnimationChange="0"
+				ImmediateRemove="0" />
 		</action>
 	</model>
 
@@ -18828,6 +19214,13 @@
 		file="data\models\ammo\shell_big_gun01.gam"
 		shadow="1"
 		windwavy="0"
+		trans="0" />
+
+	<model
+		id="shell_big_gun01_2"
+		file="data\models\ammo\shell_big_gun01_2.gam"
+		shadow="1"
+		windwavy="0"
 		trans="0">
 		<action
 			name="STAND2">
@@ -18847,7 +19240,7 @@
 
 	<model
 		id="shell_big_gun01_Piro"
-		file="data\models\ammo\shell_big_gun01.gam"
+		file="data\models\ammo\shell_big_gun01_2.gam"
 		shadow="1"
 		windwavy="0"
 		trans="0">
@@ -18869,7 +19262,7 @@
 
 	<model
 		id="shell_big_gun01_Krio"
-		file="data\models\ammo\shell_big_gun01.gam"
+		file="data\models\ammo\shell_big_gun01_2.gam"
 		shadow="1"
 		windwavy="0"
 		trans="0">
@@ -18891,7 +19284,7 @@
 
 	<model
 		id="shell_big_gun01_Hydro"
-		file="data\models\ammo\shell_big_gun01.gam"
+		file="data\models\ammo\shell_big_gun01_2.gam"
 		shadow="1"
 		windwavy="0"
 		trans="0">
@@ -18913,7 +19306,7 @@
 
 	<model
 		id="shell_big_gun01_Electro"
-		file="data\models\ammo\shell_big_gun01.gam"
+		file="data\models\ammo\shell_big_gun01_2.gam"
 		shadow="1"
 		windwavy="0"
 		trans="0">

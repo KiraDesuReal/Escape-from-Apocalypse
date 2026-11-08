@@ -1776,6 +1776,10 @@
 			id="shell_big_gun01" 
 			file="data\models\AnimModels.xml"/>
 
+		<Item
+			id="shell_big_gun01_2"
+			file="data\models\AnimModels.xml" />
+
 		<Item 
 			id="shell_big_gun02" 
 			file="data\models\AnimModels.xml"/>
@@ -2810,6 +2814,31 @@
 			id="brdm2Cannon02gun"
 			file="data\models\AnimModels.xml" />
 
+		<Item
+			id="TigrChassis"
+			file="data\models\AnimModels.xml"
+			params = "skins: 0 8;" />
+
+		<Item
+			id="TigrCab"
+			file="data\models\AnimModels.xml"
+			params = "skins: 0 8;" />
+
+		<Item
+			id="TigrWheel"
+			file="data\models\AnimModels.xml"
+			params = "skins: 0 8;" />
+
+		<Item
+			id="ags17"
+			file="data\models\AnimModels.xml"
+			params = "skins: 0 8;" />
+
+		<Item
+			id="ags17gun"
+			file="data\models\AnimModels.xml"
+			params = "skins: 0 8;" />
+
 <!-- quest items -->
 		<Item 
 			id="artefact1" 
@@ -3060,6 +3089,8 @@
 
 		<Item id="S_ENGINE_BRDM2" />
 
+		<Item id="S_ENGINE_TIGR" />
+
 		<!-- Missiles --> 
 
 		<Item id="S_MISSILE1" />
@@ -3124,6 +3155,11 @@
 		<Item id="S_BRDM2_KPVT_SHOOT1_TAIL" />
 		<Item id="S_BRDM2_KPVT_SHOOT2_TAIL" />
 		<Item id="S_BRDM2_KPVT_SHOOT3_TAIL" />
+		<Item id="S_AGS17_SHOOT1" />
+		<Item id="S_AGS17_SHOOT2" />
+		<Item id="S_AGS17_SHOOT3" />
+		<Item id="S_AGS17_SHOOT4" />
+		<Item id="S_AGS17_SHOOT5" />
 
 		<!-- Shoot hits --> 
 
@@ -3194,6 +3230,7 @@
 		<Item id="S_STARTING08" />
 		<Item id="S_STARTING09" />
 		<Item id="S_STARTING_BRDM2" />
+		<Item id="S_STARTING_TIGR" />
 		<Item id="S_SOMESHOT" />
 		<Item id="S_SHELL_SMALL" />
 		<Item id="S_SHELL_MEDIUM" />

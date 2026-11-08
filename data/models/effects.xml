@@ -1267,6 +1267,10 @@
 		<Node name="Object2" class="SgParticlesNode" id="PS_HLIGHT_VOL" psNumEmitterMesh="-1" />
 	</Node>
 
+	<Node name="ET_PS_ORANGE_MAIN" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_HLIGHT_ORANGE_MAIN" psNumEmitterMesh="-1" />
+	</Node>
+
 	<Node name="ET_PS_HLIGHT_SM" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_HLIGHT_SM_MAIN" psNumEmitterMesh="-1" />
 		<Node name="Object2" class="SgParticlesNode" id="PS_HLIGHT_SM_VOL" psNumEmitterMesh="-1" />
@@ -2879,6 +2883,43 @@
 		<Node name="Object2" class="SgParticlesNode" id="PS_SPARKLE_BIG_MAIN1" psNumEmitterMesh="-1" />
 	</Node>
 
+	<Node name="ET_PS_AGS17_SHOOT" multi="true">
+		<Node name="ET_PS_AGS17_SHOOT1" class="SgNode">
+			<Node name="Object3" class="SgParticlesNode" id="PS_FLAG01_FIRE_SMOKE" psNumEmitterMesh="-1" />
+			<Node name="Object1" class="SgParticlesNode" id="PS_FLAG01_FIRE_MAIN" psNumEmitterMesh="-1" />
+			<Node name="Object2" class="SgParticlesNode" id="PS_FLAG01_FIRE_MAIN1" psNumEmitterMesh="-1" />
+			<Node name="Sound1" class="SgSoundSourceNode" id="S_AGS17_SHOOT1" isLooped="0" />
+		</Node>
+
+		<Node name="ET_PS_AGS17_SHOOT2" class="SgNode">
+			<Node name="Object3" class="SgParticlesNode" id="PS_FLAG01_FIRE_SMOKE" psNumEmitterMesh="-1" />
+			<Node name="Object1" class="SgParticlesNode" id="PS_FLAG01_FIRE_MAIN" psNumEmitterMesh="-1" />
+			<Node name="Object2" class="SgParticlesNode" id="PS_FLAG01_FIRE_MAIN1" psNumEmitterMesh="-1" />
+			<Node name="Sound1" class="SgSoundSourceNode" id="S_AGS17_SHOOT2" isLooped="0" />
+		</Node>
+
+		<Node name="ET_PS_AGS17_SHOOT3" class="SgNode">
+			<Node name="Object3" class="SgParticlesNode" id="PS_FLAG01_FIRE_SMOKE" psNumEmitterMesh="-1" />
+			<Node name="Object1" class="SgParticlesNode" id="PS_FLAG01_FIRE_MAIN" psNumEmitterMesh="-1" />
+			<Node name="Object2" class="SgParticlesNode" id="PS_FLAG01_FIRE_MAIN1" psNumEmitterMesh="-1" />
+			<Node name="Sound1" class="SgSoundSourceNode" id="S_AGS17_SHOOT3" isLooped="0" />
+		</Node>
+
+		<Node name="ET_PS_AGS17_SHOOT4" class="SgNode">
+			<Node name="Object3" class="SgParticlesNode" id="PS_FLAG01_FIRE_SMOKE" psNumEmitterMesh="-1" />
+			<Node name="Object1" class="SgParticlesNode" id="PS_FLAG01_FIRE_MAIN" psNumEmitterMesh="-1" />
+			<Node name="Object2" class="SgParticlesNode" id="PS_FLAG01_FIRE_MAIN1" psNumEmitterMesh="-1" />
+			<Node name="Sound1" class="SgSoundSourceNode" id="S_AGS17_SHOOT4" isLooped="0" />
+		</Node>
+
+		<Node name="ET_PS_AGS17_SHOOT5" class="SgNode">
+			<Node name="Object3" class="SgParticlesNode" id="PS_FLAG01_FIRE_SMOKE" psNumEmitterMesh="-1" />
+			<Node name="Object1" class="SgParticlesNode" id="PS_FLAG01_FIRE_MAIN" psNumEmitterMesh="-1" />
+			<Node name="Object2" class="SgParticlesNode" id="PS_FLAG01_FIRE_MAIN1" psNumEmitterMesh="-1" />
+			<Node name="Sound1" class="SgSoundSourceNode" id="S_AGS17_SHOOT5" isLooped="0" />
+		</Node>
+	</Node>
+
 <!-- //////////////////////////////////// Оружие  Большая пушка //////////////////////////////////////// -->
 	<Node name="ET_PS_DRAGON01_FIRE_BACK" class="SgNode">
 		<Node name="Object2" class="SgParticlesNode" id="PS_DRAGON01_FIRE_SMOKE" psNumEmitterMesh="-1" />
@@ -3574,6 +3615,7 @@
 		<Node name="ET_S_ENGINE_CRUISER_STARTING"		class="SgSoundSourceNode" id="S_STARTING03" looped="0"/> 
 		<Node name="ET_S_ENGINE_FIGHTER_STARTING"		class="SgSoundSourceNode" id="S_STARTING09" looped="0"/> 
 		<Node name="ET_S_ENGINE_BRDM2_STARTING"			class="SgSoundSourceNode" id="S_STARTING_BRDM2" looped="0"/> 
+		<Node name="ET_S_ENGINE_TIGR_STARTING"			class="SgSoundSourceNode" id="S_STARTING_TIGR" looped="0"/> 
 		
 		<Node name="ET_S_ENGINE_BEETLE_1_LOW"		class="SgSoundSourceNode" id="S_ENGINE_BEETLE_1_LOW" /> 
 		<Node name="ET_S_ENGINE_BEETLE_1_HIGH"		class="SgSoundSourceNode" id="S_ENGINE_BEETLE_1_HIGH" /> 
@@ -3663,6 +3705,8 @@
         <Node name="ET_S_ENGINE_TANK_HIGH"		            class="SgSoundSourceNode" id="S_ENGINE_TANK_HIGH" /> 
 
 		<Node name="ET_S_ENGINE_BRDM2"		        class="SgSoundSourceNode" id="S_ENGINE_BRDM2" /> 
+
+		<Node name="ET_S_ENGINE_TIGR"		        class="SgSoundSourceNode" id="S_ENGINE_TIGR" /> 
 
 <!-- Missiles --> 
 		<Node name="ET_S_MISSILE1"		class="SgSoundSourceNode" id="S_MISSILE1" /> 

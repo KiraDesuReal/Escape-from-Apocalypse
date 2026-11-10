@@ -5962,11 +5962,17 @@
 	<trigger Name="CreateBossProbability" active="0">
 		<event timeout="2" eventid="GE_TIME_PERIOD" />
 		<script>
-			if 100 >= random(100) then 
-				TDeactivate("SpawnScavsInLocation09_Enters")
-				TActivate("CreateBossEntersLoc") 
-				CreateNewDummyObject("safe_box2", "shturman_safe1", -1, -1, CVector(5280.359, 231.045, 2041.466), getObj("ShturmanBox_loc"):GetRotation(), 0)
-			end
+			if 100 >= random(100) then TActivate("BossReadyToCreate") end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="BossReadyToCreate" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			TDeactivate("SpawnScavsInLocation09_Enters")
+			TActivate("CreateBossEntersLoc") 
+			CreateNewDummyObject("safe_box2", "shturman_safe1", -1, -1, CVector(5280.359, 231.045, 2041.466), getObj("ShturmanBox_loc"):GetRotation(), 0)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -6002,16 +6008,16 @@
 			local pos = {CVector(5146.743, 229.357, 2049.535), CVector(5221.129, 229.809, 1890.562), CVector(5415.092, 229.170, 1952.114)}
 			local rotarr = {Quaternion(-0.029, 0.679, -0.021, 0.734), Quaternion(0.001, 0.626, 0.002, 0.780), Quaternion(-0.001, 0.558, -0.001, 0.830), Quaternion(-0.029, -0.025, 0.005, 0.999), Quaternion(-0.001, -0.346, 0.001, 0.938), Quaternion(-0.001, -0.724, -0.000, 0.690), Quaternion(-0.025, -0.992, -0.005, 0.125), Quaternion(0.002, -0.914, -0.001, 0.405), Quaternion(-0.003, -1.000, -0.006, -0.015)}
 			local path = {CVector(5369.833, 230.398, 2213.703), CVector(5303.562, 228.511, 1937.814), CVector(5149.109, 228.452, 1868.325), CVector(5149.235, 229.047, 2115.392), CVector(5431.189, 229.149, 1823.928), CVector(5255.168, 227.136, 1786.086), CVector(5278.449, 228.992, 2076.572), CVector(5337.549, 229.041, 2015.935)}
-			local gun = {"vector01", "vulcan01", "kpvt01", "flag01", "rainmetal01"}
+			local gun = {"vulcan01", "kpvt01", "vector01", "flag01", "rainmetal01"}
 			local LifeUse = {"scrap_metal_use", "machinery_use", "electronics_use"}
 			local FuelUse = {"oil_use", "fuel_full_use"}
 
 			local r = random(2, 3)
 			SetVar("ShturmanBossEntourageCreated", r)
 			if r == 2 then
-				TeamCreate("ShturmanBoss", 1095, pos[random(3)], {"Brdm2_02_Shturman", "MolokovozCarShturmanEntourage", "MolokovozCarShturmanEntourage"}, nil, 0)
+				TeamCreate("ShturmanBoss", 1095, pos[random(3)], {"Brdm2_02_Shturman", "Tigr_01", "Tigr_01"}, nil, 0)
 			else
-				TeamCreate("ShturmanBoss", 1095, pos[random(3)], {"Brdm2_02_Shturman", "MolokovozCarShturmanEntourage", "MolokovozCarShturmanEntourage", "MolokovozCarShturmanEntourage"}, nil, 0)
+				TeamCreate("ShturmanBoss", 1095, pos[random(3)], {"Brdm2_02_Shturman", "Tigr_01", "Tigr_01", "Tigr_01"}, nil, 0)
 			end
 
 			local te = getObj("ShturmanBoss")
@@ -6051,7 +6057,13 @@
 			for i = 1, r do	
 				local bossEntourage = getObj("ShturmanBoss_vehicle_"..i)
 				if bossEntourage then
-					bossEntourage:SetNewPart("BASKET_BIG_GUN_0", gun[exrandom(5)])
+					bossEntourage:SetNewPart("BASKET", "bigfakeCargo")
+					bossEntourage:SetNewPart("CABIN_BIG_GUN_1", gun[exrandom(5)])
+					if random(3) == 1 then
+						bossEntourage:SetNewPart("CABIN_SMALL_GUN", "ags17_01")
+						bossEntourage:GetPartByName("CABIN_SMALL_GUN"):SetPropertyById(36, 10000)
+						bossEntourage:GetPartByName("CABIN_SMALL_GUN"):SetPropertyById(19, 5000)
+					end
 					bossEntourage:SetRotation(rotarr[random(9)])
 					for l = 1, random(2,4) do 
 						bossEntourage:AddItemsToRepository(LifeUse[random(3)], 1)
@@ -6059,8 +6071,8 @@
 					bossEntourage:AddItemsToRepository(FuelUse[random(2)], random(0,1))
 					AddAmmoItemsForGuns(bossEntourage)
 					bossEntourage:SetBelong(1096)
-					bossEntourage:GetPartByName("BASKET_BIG_GUN_0"):SetPropertyById(36, 10000)
-					bossEntourage:GetPartByName("BASKET_BIG_GUN_0"):SetPropertyById(19, 5000)
+					bossEntourage:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(36, 10000)
+					bossEntourage:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(19, 5000)
 					bossEntourage:AddModifier("maxhp", "= 2500")
 					bossEntourage:AddModifier("hp", "= 2500")
 					bossEntourage:AddModifier("maxfuel", "= 10000")
@@ -6257,20 +6269,18 @@
 								if prot == "Brdm2_01" or prot == "Brdm2_02" then
 									distDam = distDam / 2
 								else
-									distDam = distDam * 1.25
+									distDam = distDam * 1.2
 								end
-								con("DAMAGE: "..math.floor(distDam + 0.5))
-								con("EVENT: "..AmountEvent)
+								if DEBUG == 1 then con("DAMAGE TO PLAYER: "..math.floor(distDam + 0.5)) end
 							end
 						else
 							if distDam > 35 and AmountEvent >= 3 then
 								if prot == "Brdm2_01" or prot == "Brdm2_02" then
 									distDam = distDam / 1.5
 								else
-									distDam = distDam * 1.5
+									distDam = distDam * 1.35
 								end
-								con("DAMAGE: "..math.floor(distDam + 0.5))
-								con("EVENT: "..AmountEvent)
+								if DEBUG == 1 then con("DAMAGE TO PLAYER: "..math.floor(distDam + 0.5)) end
 							end
 						end
 						plf:AddModifier("hp", "- "..distDam)
@@ -6317,8 +6327,12 @@
 			SetVar("ShturmanBossEntourageDie", GetVar("ShturmanBossEntourageDie").AsInt + 1)
 
 			local carName = trigger:GetCallObjName()
+			if GetVar("KillEnemyShturmanBossReaction").AsString == "CHARGED" then SetVar(carName.."_UnderAttack", 1100) end
+
 			if GetVar(carName.."_UnderAttack").AsInt == 1100 then
-				SetVar("KillEnemyShturmanBossReaction", "")
+				if GetVar("KillEnemyShturmanBossReaction").AsString ~= "CHARGED" then
+					SetVar("KillEnemyShturmanBossReaction", "")
+				end
 				TActivate("IfPlayerKillEnemyShturmanBoss")
 			elseif GetVar(carName.."_UnderAttack").AsInt == 1098 then
 				SetVar("KillEnemyShturmanBossReaction", "OVERLOADED")
@@ -6477,13 +6491,19 @@
 			else
 				local car = getObj(trigger:GetCallObjName())
 				if car then
-					local prot = car:GetPartByName("BASKET_BIG_GUN_0"):GetProperty("Prototype").AsString
-					if prot == "vector01" then car:GetPartByName("BASKET_BIG_GUN_0"):SetPropertyById(36, 270) end
-					if prot == "vulcan01" then car:GetPartByName("BASKET_BIG_GUN_0"):SetPropertyById(36, 840) end
-					if prot == "flag01" then car:GetPartByName("BASKET_BIG_GUN_0"):SetPropertyById(36, 35) end
-					if prot == "kpvt01" then car:GetPartByName("BASKET_BIG_GUN_0"):SetPropertyById(36, 650) end
-					if prot == "rainmetal01" then car:GetPartByName("BASKET_BIG_GUN_0"):SetPropertyById(36, 240) end
-					car:GetPartByName("BASKET_BIG_GUN_0"):SetPropertyById(19, car:GetPartByName("BASKET_BIG_GUN_0"):GetPropertyById(20).AsInt)
+					local prot = car:GetPartByName("CABIN_BIG_GUN_1"):GetProperty("Prototype").AsString
+					if prot == "vector01" then car:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(36, 270) end
+					if prot == "vulcan01" then car:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(36, 840) end
+					if prot == "flag01" then car:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(36, 35) end
+					if prot == "kpvt01" then car:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(36, 650) end
+					if prot == "rainmetal01" then car:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(36, 240) end
+					car:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(19, car:GetPartByName("CABIN_BIG_GUN_1"):GetPropertyById(20).AsInt)
+					local smallslot = car:GetPartByName("CABIN_SMALL_GUN")
+					if smallslot then
+						local smallprot = smallslot:GetProperty("Prototype").AsString
+						if smallprot == "ags17_01" then smallslot:SetPropertyById(36, 116) end
+						smallslot:SetPropertyById(19, smallslot:GetPropertyById(20).AsInt)
+					end
 					car:setImmortalMode(0)
 				end
 			end
@@ -6516,7 +6536,7 @@
 					boss:GetPartByName("CHASSIS_BIG_GUN"):SetPropertyById(35, 1.5)
 					boss:GetPartByName("CHASSIS_BIG_GUN"):SetPropertyById(29, 240)
 					boss:GetPartByName("CHASSIS_BIG_GUN"):SetPropertyById(19, 5000)
-					boss:GetPartByName("CHASSIS_BIG_GUN"):SetPropertyById(28, 15)
+					boss:GetPartByName("CHASSIS_BIG_GUN"):SetPropertyById(28, 10)
 				end
 				AddImportantFadingMsgByStrIdFormatted("fm_shturman_boss_"..r.."_barrier")
 				SoundFadingMsg()
@@ -6842,9 +6862,7 @@
 						shot = 2
 					end
 				else
-					if AmountEvent >= 3 then
-						shot = 1
-					end
+					shot = 1
 				end
 
 				if ObjAttack:GetBelong() == 1100 and shot ~= 0 then
@@ -7152,7 +7170,7 @@
 					local veh = getObj(v[i])
 					if veh and veh:IsAlive() then
 						local len = Dist(boss, veh)
-						if 30 >= len then
+						if 40 >= len then
 							if veh:GetBelong() == 1095 then
 								veh:AddModifier("hp", "- 6000")
 							end
@@ -7362,10 +7380,11 @@
 			if GetVar("ShturmanBossFaze2").AsInt == 1 and getObj("player_brdm2_barrier") == nil then
 				local objAttack = getObj(trigger:GetTriggeredObjectID(0))	
 				local AmountEvent = trigger:GetTriggeredObjectAmount()	
-				if objAttack then
+				local objTarget = getObj("ShturmanBoss_vehicle_0")
+				if objAttack and objTarget then
 					local prot = objAttack:GetProperty("Prototype").AsString
 					if prot == "Brdm2_01" or prot == "Brdm2_02" then
-						if objAttack:GetBelong() == 1100 then
+						if objAttack:GetBelong() == 1100 and 1000 >= objTarget:GetHealth() then
 							if AmountEvent >= 3 then
 								SetVar("PlayerBrdm2_ShotsForBarrier", GetVar("PlayerBrdm2_ShotsForBarrier").AsInt + 10)
 							else
@@ -7402,11 +7421,12 @@
 	<event 	timeout="0" eventid="GE_TIME_PERIOD" />
 		<script>
 			SetVar("PlayerKillShturmanBoss", 1)
-			if DEBUG == 1 then println("PLAYER KILL SHTURMAN BOSS") LOG("PLAYER KILL SHTURMAN BOSS") end
 			if GetVar("PlayerBelong").AsString ~= "SCAV" then 
 				if GetVar("ShtirnanBossBarrier_Freez").AsString ~= "0" then
+					if DEBUG == 1 then println("PLAYER KILL SHTURMAN BOSS FROZEN") LOG("PLAYER KILL SHTURMAN BOSS FROZEN") end
 					TActivate("KillShturmanBoss_Frozen") 
 				else
+					if DEBUG == 1 then println("PLAYER KILL SHTURMAN BOSS") LOG("PLAYER KILL SHTURMAN BOSS") end
 					TActivate("KillShturmanBoss") 
 				end
 			end
@@ -7459,6 +7479,7 @@
 
 			for gun = 1, random(0,2) do
 				local category = GetItemsCategory("gun")
+				table.insert(category, "ags17_01")
 				local item = category[random(getn(category))]
 				AddGunAfficsToChestObj(ChestId, item, "GunItem_"..random(10000).."_ShturmanBox")
 				if random(2) == 1 then
@@ -7472,7 +7493,7 @@
 				AddItemsToChestObj(ChestId, items[random(getn(items))], "GadgetItem_"..random(10000).."_ShturmanBox")
 			end
 
-			for i = 1, random(8,15) do
+			for i = 1, random(8,20) do
 				local t = weighted_random(typeI, typeR)
 				if t == "non" then
 					local item = {"item_vitalik", "item_ledx"}

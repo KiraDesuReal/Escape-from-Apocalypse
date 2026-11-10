@@ -40,27 +40,7 @@
 			DisableGodMode()
 			StopPlayingCustomMusic()
 
-			local player_car = GetVar("PlayerCar").AsString
-
-			local vehP = GetPlayerVehicle()
-			local PlfCoor = vehP:GetPosition()
-			if vehP then 
-				if player_car == "Bug" then
-					CreateEffectTTLed("ET_S_ENGINE_BUG_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 1538)
-				elseif player_car == "Molokovoz" then
-					CreateEffectTTLed("ET_S_ENGINE_MOLOKOVOZ_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 1142)
-				elseif player_car == "Ural" then
-					CreateEffectTTLed("ET_S_ENGINE_URAL_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 1272)
-				elseif player_car == "Belaz" then
-					CreateEffectTTLed("ET_S_ENGINE_BELAZ"..random(2).."_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 3200)
-				elseif player_car == "Mirotvorec" or player_car == "hunterChassis_Scav" then
-					CreateEffectTTLed("ET_S_ENGINE_MIROTVOREC_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 923)
-				elseif player_car == "Cruiser" or player_car == "scoutChassis_Scav" then
-					CreateEffectTTLed("ET_S_ENGINE_CRUISER_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 930)
-				elseif player_car == "fighterChassis_Scav" then
-					CreateEffectTTLed("ET_S_ENGINE_FIGHTER_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 1601)
-				end
-			end
+			SoundStartingEngine()
 
 			if GetVar("SpawnPlayer").AsInt == 1 then
 				if GetVar("PlayerBelong").AsString == "SCAV" then
@@ -86,6 +66,14 @@
 
 			SetCameraBehindPlayerVehicle()
 
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="trCustomControl" active="0">
+		<event 	timeout="1"		eventid="GE_TIME_PERIOD" />
+		<script>
+			GetPlayerVehicle():SetCustomControlEnabled(false)
 			trigger:Deactivate()
 		</script>
 	</trigger>

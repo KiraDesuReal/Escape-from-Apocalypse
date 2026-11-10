@@ -566,6 +566,20 @@ function UseAmmoItems(ammo_used)
 						end
 					end
 				end
+				if HasPlayerAmountOfItems("ammo_chest_artillerygun", 1) or HasPlayerAmountOfItems("ammo_chest_artillerygun", 1) then
+					if prot == "ags17_01" or prot == "ags17_01_insured" then
+						if prot == "ags17_01" or prot == "ags17_01_insured" then small_gun:SetShellsInPool(145) AddFadingMsgByStrIdFormatted("fm_use_ammo_chest", "ags17_01") end
+						CreateEffectTTLed("ET_S_USE_RELOAD_ARTILLERYGUN", GetPlayerVehicle():GetPosition(), Quaternion(0, 0, 0, 1), 1055)
+						if HasPlayerAmountOfItems("ammo_chest_artillerygun", 1) then 
+							RemoveItemsFromPlayerRepository("ammo_chest_artillerygun", 1)
+							if ammo_used == 1 then SetVar("Use_AmmoChestArtilleryGun", GetVar("Use_AmmoChestArtilleryGun").AsInt+1) end
+						elseif HasPlayerAmountOfItems("ammo_chest_artillerygun_insured", 1) then
+							DeleteTableInsuredItems("ammo_chest_artillerygun")
+							RemoveItemsFromPlayerRepository("ammo_chest_artillerygun_insured", 1)
+							if ammo_used == 1 then SetVar("Use_AmmoChestArtilleryGun_Insured", GetVar("Use_AmmoChestArtilleryGun_Insured").AsInt+1) end
+						end
+					end
+				end
 			end
 		end
 	end
@@ -825,7 +839,7 @@ function UseAmmoItems(ammo_used)
 		end
 	end
 
-	local chs_slots = {"CHASSIS_SMALL_GUN", "CHASSIS_BIG_GUN"}
+	local chs_slots = {"CHASSIS_BIG_GUN", "CHASSIS_SMALL_GUN"}
 	for chs = 1,2 do
 		local chs_gun = GetPlayerVehicle():GetPartByName(chs_slots[chs])
 		if chs_gun then
@@ -884,6 +898,9 @@ function AddAmmoItemsForGuns(veh, count)
 					if random(2) == 1 then
 						vehicle:AddItemsToRepository("ammo_ballon_plasmagun", count)
 					end
+				end
+				if small_gun == "ags17_01" or small_gun == "ags17_01_insured" then
+					vehicle:AddItemsToRepository("ammo_chest_artillerygun", count)
 				end
 			end
 		end
@@ -2028,7 +2045,7 @@ function AllItems()
 					"item_bitcoin", "item_cat", "item_chain", "item_chain_gold", "item_chiken", "item_ex", "item_lion", "item_rolex", "item_skullring", "item_teapon", "item_woodclock", "item_vitaly", "item_silver_skull", "item_vaze", "item_duck",
 					"item_quest_search_data",
 					"item_ms2000",
-					"hornet01", "hornet01_insured", "american_hornet01", "american_hornet01_insured", "specter01", "specter01_insured", "pkt01", "pkt01_insured", "kord01", "kord01_insured", "storm01", "storm01_insured", "fagot01", "fagot01_insured", "maxim01", "maxim01_insured", "vector01", "vector01_insured", "vulcan01", "vulcan01_insured", "kpvt01", "kpvt01_insured", "rapier01", "rapier01_insured", "flag01", "flag01_insured", "rainmetal01", "rainmetal01_insured", "elephant01", "elephant01_insured", "odin01", "odin01_insured", "omega01", "omega01_insured", "bumblebee01", "bumblebee01_insured", "hammer01", "hammer01_insured", "hunterSideGun", "hunterSideGun_insured", "mrakSideGun", "mrakSideGun_insured", "big_swingfire01", "big_swingfire01_insured", "cyclops01", "cyclops01_insured", "octopus01", "octopus01_insured", "hailSideGun", "hailSideGun_insured", "hurricane01", "hurricane01_insured", "rocketLauncher", "rocketLauncher_insured", "zeusSideGun", "zeusSideGun_insured", "marsSideGun", "marsSideGun_insured",
+					"hornet01", "hornet01_insured", "american_hornet01", "american_hornet01_insured", "specter01", "specter01_insured", "pkt01", "pkt01_insured", "kord01", "kord01_insured", "storm01", "storm01_insured", "fagot01", "fagot01_insured", "maxim01", "maxim01_insured", "vector01", "vector01_insured", "vulcan01", "vulcan01_insured", "kpvt01", "kpvt01_insured", "rapier01", "rapier01_insured", "flag01", "flag01_insured", "rainmetal01", "rainmetal01_insured", "elephant01", "elephant01_insured", "odin01", "odin01_insured", "omega01", "omega01_insured", "bumblebee01", "bumblebee01_insured", "hammer01", "hammer01_insured", "hunterSideGun", "hunterSideGun_insured", "mrakSideGun", "mrakSideGun_insured", "big_swingfire01", "big_swingfire01_insured", "cyclops01", "cyclops01_insured", "octopus01", "octopus01_insured", "hailSideGun", "hailSideGun_insured", "hurricane01", "hurricane01_insured", "rocketLauncher", "rocketLauncher_insured", "zeusSideGun", "zeusSideGun_insured", "marsSideGun", "marsSideGun_insured", "ags17_01", "ags17_01_insured", 
 					"someTurboAccelerationPusher", "someTurboAccelerationPusher_insured", "engineOilPusher", "nailsPusher", "Smoke", "minePusher", "minePusher_1", "minePusher_2",
 					"cooling_system_guns", "cooling_system_energy", "cooling_system_explosion", "firing_rate_guns", "firing_rate_energy", "grouping_angle_guns", "add_damage_guns", "add_damage_energy", "add_damage_explosion", "firing_range_guns", "cooling_system_guns2", "cooling_system_energy2", "cooling_system_explosion2", "firing_rate_guns2", "firing_rate_energy2", "grouping_angle_guns2", "add_damage_guns2", "add_damage_energy2", "add_damage_explosion2", "cooling_system_guns_and_firing_rate_guns", "cooling_system_energy_and_firing_rate_energy", "cooling_system_explosion_and_firing_rate_explosion", "firing_rate_guns_and_add_damage_guns", "firing_rate_energy_and_add_damage_energy", "firing_rate_explosion_and_add_damage_explosion", "add_damage_guns_and_grouping_angle_guns", "add_damage_energy_and_firing_rate_energy", "add_damage_explosion_firing_rate_explosion", "additional_fuel_tank", "additional_torque", "additional_durability", "additional_stability", "additional_fuel_tank2", "additional_torque2", "additional_durability2", "add_speed_and_torque", "add_stability_and_speed", "add_torque_and_stability", "additional_fuel_tank2_add_damage_guns"}
 	return Items
@@ -2374,8 +2391,10 @@ function AddModifierHpIfPlayerVehicleBrdm2(ObjTarget, AmountEvent)
 					else
 						distDam = distDam * coof
 					end
-					con("DAMAGE: "..math.floor(distDam + 0.5).." HP: "..math.floor(target:GetHealth() + 0.5))
-					con("EVENT COUNT: "..AmountEvent)
+					if DEBUG == 1 then
+						con("DAMAGE: "..math.floor(distDam + 0.5).." HP: "..math.floor(target:GetHealth() + 0.5))
+						con("EVENT COUNT: "..AmountEvent)
+					end
 					target:AddModifier("hp", "- "..distDam)
 				end
 			end
@@ -2704,8 +2723,8 @@ function AddGunWithRandomAffix(GunPrototype, ObjName)
 
 	local ListOfAffixes = {}
 
-	if GunPrototype == "maxim01" or GunPrototype == "fagot01" or GunPrototype == "odin01" or GunPrototype == "elephant01" or GunPrototype == "hammer01" or GunPrototype == "bumblebee01" or GunPrototype == "omega01" or GunPrototype == "big_swingfire01" or GunPrototype == "hurricane01" or GunPrototype == "mrakSideGun" or GunPrototype == "hailSideGun" or GunPrototype == "marsSideGun" or GunPrototype == "zeusSideGun" or GunPrototype == "hunterSideGun" then
-		local damageAffixes = { "weak_gun", "deadly_gun", "destructive_gun", "slow_gun", "assault_gun", "rapid_firing_gun", "without_cooling_gun", "with_nitro_cooling_gun", "with_truncated_barrel_gun", "with_enlarged_barrel_gun", "with_long_barrel_gun"}
+	if GunPrototype == "maxim01" or GunPrototype == "fagot01" or GunPrototype == "odin01" or GunPrototype == "elephant01" or GunPrototype == "hammer01" or GunPrototype == "bumblebee01" or GunPrototype == "omega01" or GunPrototype == "big_swingfire01" or GunPrototype == "hurricane01" or GunPrototype == "mrakSideGun" or GunPrototype == "hailSideGun" or GunPrototype == "marsSideGun" or GunPrototype == "zeusSideGun" or GunPrototype == "hunterSideGun" or GunPrototype == "ags17_01" then
+		local damageAffixes = {"weak_gun", "deadly_gun", "destructive_gun", "slow_gun", "assault_gun", "rapid_firing_gun", "without_cooling_gun", "with_nitro_cooling_gun", "with_truncated_barrel_gun", "with_enlarged_barrel_gun", "with_long_barrel_gun"}
 		table.insert(ListOfAffixes, damageAffixes[random(getn(damageAffixes))])
 	else
 		ListOfAffixes = GenerateRandomAffixList(random(1,3))
@@ -2737,10 +2756,10 @@ function AddGunToSlotWithRandomAffix(Slot, GunPrototype, ObjName, CountAffix)
 
 	local ListOfAffixes = {}
 
-	if GunPrototype == "maxim01" or GunPrototype == "fagot01" or GunPrototype == "odin01" or GunPrototype == "elephant01" or GunPrototype == "hammer01" or GunPrototype == "bumblebee01" or GunPrototype == "omega01" or GunPrototype == "big_swingfire01" or GunPrototype == "hurricane01" or GunPrototype == "mrakSideGun" or GunPrototype == "hailSideGun" or GunPrototype == "marsSideGun" or GunPrototype == "zeusSideGun" or GunPrototype == "hunterSideGun" then
+	if GunPrototype == "maxim01" or GunPrototype == "fagot01" or GunPrototype == "odin01" or GunPrototype == "elephant01" or GunPrototype == "hammer01" or GunPrototype == "bumblebee01" or GunPrototype == "omega01" or GunPrototype == "big_swingfire01" or GunPrototype == "hurricane01" or GunPrototype == "mrakSideGun" or GunPrototype == "hailSideGun" or GunPrototype == "marsSideGun" or GunPrototype == "zeusSideGun" or GunPrototype == "hunterSideGun" or GunPrototype == "ags17_01" then
 		if ObjName ~= GetPlayerVehicle() then
 			if random(1,2) == 1 then
-				local damageAffixes = { "weak_gun", "deadly_gun", "destructive_gun", "slow_gun", "assault_gun", "rapid_firing_gun", "without_cooling_gun", "with_nitro_cooling_gun", "with_truncated_barrel_gun", "with_enlarged_barrel_gun", "with_long_barrel_gun"}
+				local damageAffixes = {"weak_gun", "deadly_gun", "destructive_gun", "slow_gun", "assault_gun", "rapid_firing_gun", "without_cooling_gun", "with_nitro_cooling_gun", "with_truncated_barrel_gun", "with_enlarged_barrel_gun", "with_long_barrel_gun"}
 				table.insert(ListOfAffixes, damageAffixes[random(getn(damageAffixes))])
 			end
 		end
@@ -3596,6 +3615,41 @@ function AddReactionTextFx(fx, veh)
 		pos.y = pos.y + car:GetSize().y + 0.4
 		pos.z = pos.z + 1
 		CreateEffectInsertedInRemove(fx, pos, Quaternion(0, 0, 0, 1), true)
+	end
+end
+
+-- Звук старта двигателя
+function SoundStartingEngine()
+	local pl = GetPlayerVehicle()
+	if pl then
+		local chassis = pl:GetChassis():GetProperty("Prototype").AsString
+		if chassis then
+			if strsub(chassis, 1, 3) == "bug" then
+				CreateEffectTTLed("ET_S_ENGINE_BUG_STARTING", pl:GetPosition(), Quaternion(0, 0, 0, 1), 1538)
+			elseif strsub(chassis, 1, 9) == "molokovoz" then
+				CreateEffectTTLed("ET_S_ENGINE_MOLOKOVOZ_STARTING", pl:GetPosition(), Quaternion(0, 0, 0, 1), 1142)
+			elseif strsub(chassis, 1, 4) == "ural" then
+				CreateEffectTTLed("ET_S_ENGINE_URAL_STARTING", pl:GetPosition(), Quaternion(0, 0, 0, 1), 1272)
+			elseif strsub(chassis, 1, 5) == "belaz" then
+				CreateEffectTTLed("ET_S_ENGINE_BELAZ"..random(2).."_STARTING", pl:GetPosition(), Quaternion(0, 0, 0, 1), 3200)
+			elseif strsub(chassis, 1, 10) == "mirotvorec" or strsub(chassis, 1, 6) == "hunter" then
+				CreateEffectTTLed("ET_S_ENGINE_MIROTVOREC_STARTING", pl:GetPosition(), Quaternion(0, 0, 0, 1), 923)
+			elseif strsub(chassis, 1, 7) == "cruiser" or strsub(chassis, 1, 5) == "scout" then
+				CreateEffectTTLed("ET_S_ENGINE_CRUISER_STARTING", pl:GetPosition(), Quaternion(0, 0, 0, 1), 930)
+			elseif strsub(chassis, 1, 7) == "fighter" then
+				CreateEffectTTLed("ET_S_ENGINE_FIGHTER_STARTING", pl:GetPosition(), Quaternion(0, 0, 0, 1), 1601)
+			elseif strsub(chassis, 1, 5) == "brdm2" then
+				CreateEffectTTLed("ET_S_ENGINE_BRDM2_STARTING", pl:GetPosition(), Quaternion(0, 0, 0, 1), 1088)
+			elseif strsub(chassis, 1, 4) == "tigr" then
+				CreateEffectTTLed("ET_S_ENGINE_TIGR_STARTING", pl:GetPosition(), Quaternion(0, 0, 0, 1), 1010)
+			else
+				CreateEffectTTLed("ET_S_ENGINE_URAL_STARTING", pl:GetPosition(), Quaternion(0, 0, 0, 1), 1272)
+			end
+		end
+		if getObj("trCustomControl") then
+			pl:SetCustomControlEnabled(true)
+			TActivate("trCustomControl")
+		end
 	end
 end
 

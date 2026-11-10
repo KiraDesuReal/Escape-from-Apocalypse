@@ -909,7 +909,7 @@ $Id: SmallGuns.xml,v 1.58 2005/11/28 07:43:57 anton Exp $
 		BulletPrototype		= "someMortarShell_ags17"
 		ExplosionType		= "GRENADE"
 		FiringEffect		= "none"
-		Damage			= "30"
+		Damage			= "50"
 		FiringRate			= "200"
 		GroupingAngle		= "0.5"
 		FiringRange		= "1500"
@@ -928,7 +928,8 @@ $Id: SmallGuns.xml,v 1.58 2005/11/28 07:43:57 anton Exp $
 		ActionDist		= "2000"
 		InitialVelocity = "150"
 
-		Durability			= "100" />
+		Durability			= "100"
+		VisibleInEncyclopedia	= "false" />
 
 
 </Prototypes>

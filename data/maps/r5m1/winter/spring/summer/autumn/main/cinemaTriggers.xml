@@ -40,27 +40,7 @@
 			DisableGodMode()
 			StopPlayingCustomMusic()
 
-			local player_car = GetVar("PlayerCar").AsString
-
-			local vehP = GetPlayerVehicle()
-			if vehP then 
-                local PlfCoor = vehP:GetPosition()
-				if player_car == "Bug" then
-					CreateEffectTTLed("ET_S_ENGINE_BUG_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 1538)
-				elseif player_car == "Molokovoz" then
-					CreateEffectTTLed("ET_S_ENGINE_MOLOKOVOZ_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 1142)
-				elseif player_car == "Ural" then
-					CreateEffectTTLed("ET_S_ENGINE_URAL_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 1272)
-				elseif player_car == "Belaz" then
-					CreateEffectTTLed("ET_S_ENGINE_BELAZ"..random(2).."_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 3200)
-				elseif player_car == "Mirotvorec" or player_car == "hunterChassis_Scav" then
-					CreateEffectTTLed("ET_S_ENGINE_MIROTVOREC_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 923)
-				elseif player_car == "Cruiser" or player_car == "scoutChassis_Scav" then
-					CreateEffectTTLed("ET_S_ENGINE_CRUISER_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 930)
-				elseif player_car == "fighterChassis_Scav" then
-					CreateEffectTTLed("ET_S_ENGINE_FIGHTER_STARTING", PlfCoor, Quaternion(0.0000, 0.0000, 0.0000, 0.0000), 1601)
-				end
-			end
+			SoundStartingEngine()
 
 			TActivate("MessageRaid")
 			TActivate("TimerRaidStart")
@@ -91,6 +71,14 @@
 					AddFadingMsgByStrIdFormatted("fm_player_search_exit_zone", "Exits1LocationR5M1", GetVar("PassingToMap_time_msg").AsString)
 				end
 			end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="trCustomControl" active="0">
+		<event 	timeout="1"		eventid="GE_TIME_PERIOD" />
+		<script>
+			GetPlayerVehicle():SetCustomControlEnabled(false)
 			trigger:Deactivate()
 		</script>
 	</trigger>
@@ -489,31 +477,28 @@
 		<script>
 			SetWeather(6)
 			--SetGameTime(GetVar("GameTimeHour").AsInt, 0)
-			local gun = {"flag01", "rainmetal01"}
 			local LifeUse = {"machinery_use", "electronics_use"}
 			for i = 1, GetVar("ShturmanBossEntourageCreated").AsInt do	
 				local bossEntourage = getObj("ShturmanBoss_vehicle_"..i)
 				if bossEntourage and bossEntourage:IsAlive() then
-					local skin = bossEntourage:GetSkin()
-					local slotgun = bossEntourage:GetPartByName("BASKET_BIG_GUN_0"):GetProperty("Prototype").AsString
-					local newgun = gun[random(2)]
-					bossEntourage:SetNewPart("CABIN", "molokovozCab02")
-					bossEntourage:SetNewPart("BASKET", "molokovozCargo03_PMC")
-					bossEntourage:SetNewPart("BASKET_BIG_GUN_0", newgun)
-					bossEntourage:SetSkin(skin)
+					local slotgun = bossEntourage:GetPartByName("CABIN_BIG_GUN_1"):GetProperty("Prototype").AsString
+					bossEntourage:SetNewPart("CABIN", "tigrCab")
+					bossEntourage:SetSkin(0)
 					bossEntourage:AddModifier("maxhp", "= 3500")
 					bossEntourage:AddModifier("hp", "= 3500")
 					bossEntourage:setImmortalMode(1)
-					bossEntourage:GetPartByName("BASKET_BIG_GUN_0"):SetPropertyById(36, 10000)
-					bossEntourage:GetPartByName("BASKET_BIG_GUN_0"):SetPropertyById(19, 5000)
-					for l = 1, random(1,3) do 
+					bossEntourage:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(36, 10000)
+					bossEntourage:GetPartByName("CABIN_BIG_GUN_1"):SetPropertyById(19, 5000)
+					local smallgun = bossEntourage:GetPartByName("CABIN_SMALL_GUN")
+					if smallgun == nil then bossEntourage:SetNewPart("CABIN_SMALL_GUN", "ags17_01")	end
+					bossEntourage:AddItemsToRepository("ags17_01", 1)
+					bossEntourage:AddItemsToRepository("ammo_chest_artillerygun", 1)
+					bossEntourage:GetPartByName("CABIN_SMALL_GUN"):SetPropertyById(36, 10000)
+					bossEntourage:GetPartByName("CABIN_SMALL_GUN"):SetPropertyById(19, 5000)
+					for l = 1, random(2,3) do 
 						bossEntourage:AddItemsToRepository(LifeUse[random(2)], 1)
 					end
-					if random(10) == 1 then
-						bossEntourage:AddItemsToRepository(newgun, random(0,1))
-					else
-						bossEntourage:AddItemsToRepository(slotgun, random(0,1))
-					end
+					bossEntourage:AddItemsToRepository(slotgun, 1)
 				end
 			end
 
@@ -538,10 +523,14 @@
 		<script>
 			trigger:IncCount()
 			local count = trigger:GetCount()
-			if count ~= 100 then
-				local vol = tonumber(GetConfigParameter("mus_Volume"))
-				if vol-count > -1 then
-					RuleConsole("mus_Volume "..vol-count)
+			local vol = tonumber(GetConfigParameter("mus_Volume"))
+			if vol ~= 0 then
+				if count ~= 100 then
+					if vol-count > -1 then
+						RuleConsole("mus_Volume "..vol-count)
+					else
+						trigger:Deactivate()
+					end
 				else
 					trigger:Deactivate()
 				end
@@ -587,8 +576,12 @@
 			trigger:IncCount()
 			local count = trigger:GetCount()
 			local vol = tonumber(GetConfigParameter("mus_Volume"))
-			RuleConsole("mus_Volume "..count)
-			if count >= vol then
+			if vol ~= 0 then
+				RuleConsole("mus_Volume "..count)
+				if count >= vol then
+					trigger:Deactivate()
+				end
+			else
 				trigger:Deactivate()
 			end
 		</script>

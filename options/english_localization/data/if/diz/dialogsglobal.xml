@@ -12402,7 +12402,7 @@
 		text="If you want to insure your belongings, you have come to the right place. I provide some of the best insurance services. What gear do you want to insure?|@FF0000AA|@FF1D1D1D[For insurance, put the necessary items in your truck bed]"
 		role="NPC"
 		scriptCondition="getObj('ChestReturnInsureItems') == nil"
-		nextReplies="Dlg_pl_insure_1 Dlg_pl_insure_2 Dlg_pl_insure_3 Dlg_pl_insure_4 Dlg_pl_insure_5 Dlg_pl_insure_6 Dlg_pl_insure_7 Dlg_pl_insure_8 Dlg_pl_insure_9 Dlg_pl_insure_10 Dlg_pl_insure_11 Dlg_pl_insure_12 Dlg_pl_insure_13 Dlg_pl_insure_14 Dlg_pl_insure_15 Dlg_pl_insure_16 Dlg_pl_insure_17 Dlg_pl_insure_18 Dlg_pl_insure_19 Dlg_pl_insure_20 Dlg_pl_insure_21 Dlg_pl_insure_22 Dlg_pl_insure_23 Dlg_pl_insure_23_ Dlg_pl_insure_24 Dlg_pl_insure_25 Dlg_pl_insure_26 Dlg_pl_insure_27 Dlg_pl_insure_28 Dlg_pl_insure_29 Dlg_pl_insure_30 Dlg_pl_insure_31 Dlg_pl_insure_32 Dlg_pl_insure_33 Dlg_pl_insure_34 Dlg_pl_insure_35 Dlg_pl_insure_36 Dlg_pl_insure_37 Dlg_pl_insure_38 Dlg_pl_insure_39 Dlg_pl_insure_40 Dlg_pl_insure_41 Dlg_pl_insure_42 Dlg_pl_insure_43 Dlg_pl_npc_exit" />
+		nextReplies="Dlg_pl_insure_1 Dlg_pl_insure_2 Dlg_pl_insure_3 Dlg_pl_insure_4 Dlg_pl_insure_5 Dlg_pl_insure_6 Dlg_pl_insure_7 Dlg_pl_insure_8 Dlg_pl_insure_44 Dlg_pl_insure_9 Dlg_pl_insure_10 Dlg_pl_insure_11 Dlg_pl_insure_12 Dlg_pl_insure_13 Dlg_pl_insure_14 Dlg_pl_insure_15 Dlg_pl_insure_16 Dlg_pl_insure_17 Dlg_pl_insure_18 Dlg_pl_insure_19 Dlg_pl_insure_20 Dlg_pl_insure_21 Dlg_pl_insure_22 Dlg_pl_insure_23 Dlg_pl_insure_23_ Dlg_pl_insure_24 Dlg_pl_insure_25 Dlg_pl_insure_26 Dlg_pl_insure_27 Dlg_pl_insure_28 Dlg_pl_insure_29 Dlg_pl_insure_30 Dlg_pl_insure_31 Dlg_pl_insure_32 Dlg_pl_insure_33 Dlg_pl_insure_34 Dlg_pl_insure_35 Dlg_pl_insure_36 Dlg_pl_insure_37 Dlg_pl_insure_38 Dlg_pl_insure_39 Dlg_pl_insure_40 Dlg_pl_insure_41 Dlg_pl_insure_42 Dlg_pl_insure_43 Dlg_pl_npc_exit" />
 
 	<Reply
 		name="Dlg_npc_prapor_insure_2"
@@ -12767,6 +12767,14 @@
 		role="PLAYER"
 		scriptCondition="HasPlayerAmountOfItems('fuel_nil_use', 1) and GetPlayerMoney() >= 400"
 		scriptResult="InsureItem('fuel_nil_use'); AddPlayerMoney(-400)"
+		nextReplies="Dlg_npc_prapor_insure_1" />
+
+	<Reply
+		name="Dlg_pl_insure_44"
+		text="Insure AGS-17 (Price: 4.500 coins)"
+		role="PLAYER"
+		scriptCondition="IfCanGunInSlot('ags17_01', 1) > 0 and GetPlayerMoney() >= 4500"
+		scriptResult="InsureItem('ags17_01'); AddPlayerMoney(-4500)"
 		nextReplies="Dlg_npc_prapor_insure_1" />
 
 <!--Root/r0m0/Терапевт: Первый в очереди-->
@@ -16675,7 +16683,7 @@
 		name="Dlg_npc_mechanic_guns"
 		text="With me you can improve your weapons and spare parts for your car. I am the only experienced specialist in this field, I understand both technology and guns. If you are interested, then show me what needs to be modified.|@FF0000AA|@FF1D1D1D[Place the weapons required for modification in your truck bed]"
 		role="NPC"
-		nextReplies="Dlg_pl_mod_guns_1 Dlg_pl_mod_guns_2 Dlg_pl_mod_guns_3 Dlg_pl_mod_guns_4 Dlg_pl_mod_guns_5 Dlg_pl_mod_guns_6 Dlg_pl_mod_guns_7 Dlg_pl_mod_guns_8 Dlg_pl_mod_guns_9 Dlg_pl_mod_guns_10 Dlg_pl_mod_guns_11 Dlg_pl_mod_guns_12 Dlg_pl_mod_guns_13 Dlg_pl_mod_guns_14 Dlg_pl_mod_guns_15 Dlg_pl_mod_guns_16 Dlg_pl_mod_guns_17 Dlg_pl_mod_guns_18 Dlg_pl_mod_guns_19 Dlg_pl_mod_guns_20 Dlg_pl_mod_guns_21 Dlg_pl_mod_guns_22 Dlg_pl_mod_guns_23 Dlg_pl_mod_guns_24 Dlg_pl_mod_guns_25 Dlg_pl_mod_guns_26 Dlg_pl_mod_guns_27 Dlg_pl_mod_guns_28 Dlg_pl_mod_guns_29 Dlg_pl_mod_mechanik_back" />
+		nextReplies="Dlg_pl_mod_guns_1 Dlg_pl_mod_guns_2 Dlg_pl_mod_guns_3 Dlg_pl_mod_guns_4 Dlg_pl_mod_guns_5 Dlg_pl_mod_guns_6 Dlg_pl_mod_guns_7 Dlg_pl_mod_guns_8 Dlg_pl_mod_guns_30 Dlg_pl_mod_guns_9 Dlg_pl_mod_guns_10 Dlg_pl_mod_guns_11 Dlg_pl_mod_guns_12 Dlg_pl_mod_guns_13 Dlg_pl_mod_guns_14 Dlg_pl_mod_guns_15 Dlg_pl_mod_guns_16 Dlg_pl_mod_guns_17 Dlg_pl_mod_guns_18 Dlg_pl_mod_guns_19 Dlg_pl_mod_guns_20 Dlg_pl_mod_guns_21 Dlg_pl_mod_guns_22 Dlg_pl_mod_guns_23 Dlg_pl_mod_guns_24 Dlg_pl_mod_guns_25 Dlg_pl_mod_guns_26 Dlg_pl_mod_guns_27 Dlg_pl_mod_guns_28 Dlg_pl_mod_guns_29 Dlg_pl_mod_mechanik_back" />
 
 	<Reply
 		name="Dlg_pl_mod_guns_1"
@@ -16907,6 +16915,14 @@
 		role="PLAYER"
 		scriptCondition="HasPlayerAmountOfItems('marsSideGun', 1) and GetPlayerMoney() >= 7250"
 		scriptResult="RemoveItemsFromPlayerRepository('marsSideGun', 1); AddGunWithRandomAffix('marsSideGun'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'marsSideGun'); AddPlayerMoney(-7250)"
+		nextReplies="Dlg_npc_mechanic_guns" />
+
+	<Reply
+		name="Dlg_pl_mod_guns_30"
+		text="Modify AGS-17 (Price: 2.500 coins)"
+		role="PLAYER"
+		scriptCondition="HasPlayerAmountOfItems('ags17_01', 1) and GetPlayerMoney() >= 2500"
+		scriptResult="RemoveItemsFromPlayerRepository('ags17_01', 1); AddGunWithRandomAffix('ags17_01'); AddFadingMsgByStrIdFormatted('fm_mod_gun', 'ags17_01'); AddPlayerMoney(-2500)"
 		nextReplies="Dlg_npc_mechanic_guns" />
 
 <!--Root/r0m0/Скупщик-->

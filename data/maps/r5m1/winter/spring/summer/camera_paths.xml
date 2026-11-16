@@ -4,6 +4,10 @@
 		<Point  coord="0 0 0" rotation="0 0 0 1"/>   
 	</Path>
 
+	<Path Name = "start_game1">
+		<Point  coord="1615.100 363.568 693.629" rotation="-0.149 0.574 -0.108 0.798"/> 
+	</Path>
+
 	<Path Name = "AirDropMove1">
 		<Point  coord="238.087 600 4507.604" rotation="0.0000 -0.4559 0.0000 0.8900"/>
 	</Path>
@@ -27,4 +31,10 @@
 	<Path Name = "AirDropMove6">
 		<Point  coord="6058.630 600 -62.781" rotation="0.000 0.996 0.000 0.089"/>
 	</Path>
+
+	<Path Name = "OpenTeleport_Anim">
+		<Point  coord="1054.990 130.500 803.991" rotation="0 0 0 1"/>
+		<Point  coord="1054.990 129.750 803.991" rotation="0.0000 0.1736 0.0000 0.9848"/>
+	</Path>
+
 </Paths>

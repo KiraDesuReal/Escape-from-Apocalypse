@@ -1807,4 +1807,47 @@ $Id: BreakableObjects.xml,v 1.62 2005/11/28 07:43:57 anton Exp $
 		BlastWave			= "BlastWaveSuperconduct"
 		BreakEffect			= "ET_PS_R_SUPERCONDUCT"
 		/>
+
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_Barrel_E_Stellarconduct"	
+		EffectType			= ""
+		DestroyEffectType		= ""	
+		ModelFile			= "point"
+		BrokenModel			= "point"
+		DestroyedModel		= "point"
+		Size				= ".5 1 .5"
+		CriticalHitEnergy		= "0"
+		Destroyable 			= "1"
+		Mass				= "1"
+		IntersectionRadius	= "1"
+		BlastWave			= "BlastWaveStellarconduct"
+		BreakEffect			= ""
+		/>
+
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_chainlink_fence_1"	
+		EffectType			= "BRICK"
+		DestroyEffectType	      = "CRASHMETAL"
+		ModelFile			= "chainlink_fence_1"
+		Size				= "11.46 7.41 0.26"
+		CriticalHitEnergy		= "1000"
+		Destroyable 			= "0"
+		Mass				= "200"
+		BreakEffect			= "ET_S_FENCE_METAL_CRASH"
+		/>
+
+	<Prototype
+		Class				= "BreakableObject"
+		Name				= "Breakable_chainlink_fence_1_2"	
+		EffectType			= "BRICK"
+		DestroyEffectType	      = "CRASHMETAL"
+		ModelFile			= "chainlink_fence_1_2"
+		Size				= "11.46 7.41 0.26"
+		CriticalHitEnergy		= "1000"
+		Destroyable 			= "0"
+		Mass				= "200"
+		BreakEffect			= "ET_S_FENCE_METAL_CRASH"
+		/>
 </Prototypes>

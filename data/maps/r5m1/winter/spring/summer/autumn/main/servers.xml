@@ -2730,6 +2730,10 @@
 			file="data\models\AnimModels.xml" />
 
 		<Item
+			id="chainlink_fence_1_2"
+			file="data\models\AnimModels.xml" />
+
+		<Item
 			id="church"
 			file="data\models\AnimModels.xml" />
 
@@ -3208,6 +3212,10 @@
 		<Item
 			id="airplane2"
 			file="data\models\AnimModels.xml" />
+
+		<Item
+			id="stellarconduct_star"
+			file="data\models\AnimModels.xml" />
 	</AnimatedModelsServer>
 
 	<StaticModelsServer />
@@ -3264,8 +3272,17 @@
 		<Item id="S_R_CHARGED1" />
 		<Item id="S_R_CHARGED2" />
 		<Item id="S_R_CHARGED3" />
+		<Item id="S_R_STELLARCONDUCT_INZONE" />
 
 		<Item id="S_OPEN_SAFE" />
+
+		<Item id="S_LUNOCUL_AMBIENT" />
+		<Item id="S_LUNOCUL_COLLECT" />
+
+		<Item id="S_USE_TELEPORT" />
+		<Item id="S_ACTIVE_TELEPORT" />
+
+		<Item id="M_SOMNIAS_LUNA_VOCAL" />
 
 		<Item id="S_CRASH_METAL01" />
 		<Item id="S_CRASH_METAL02" />
@@ -3590,6 +3607,7 @@
 		<Item id="S_FACTORY_WIND" />
 
 		<Item id="S_BUNKER_AMBIENT" />
+		<Item id="S_LUNA_AMBIENT" />
 
 		<Item id="S_OIL_FIELD" />
 		<Item id="S_VILLAGE01" />
@@ -3606,6 +3624,10 @@
 		<Item id="S_BRICKVEHICLEHIT01"/>
 		<Item id="S_BRICKVEHICLEHIT02"/>
 		<Item id="S_BRICKVEHICLEHIT03"/>
+
+		<Item id="S_METAL_FENCE_01"/>
+		<Item id="S_METAL_FENCE_02"/>
+		<Item id="S_METAL_FENCE_03"/>
 
 		<Item id="S_SACKVEHICLEHIT"/>
 		<Item id="S_SACKVEHICLEHIT02"/>

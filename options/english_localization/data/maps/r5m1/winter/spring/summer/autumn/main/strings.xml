@@ -46,9 +46,19 @@
 		numButtons="1" />
 
 	<string
+		id="10"
+		value="Do you wish to use this teleporter?"
+		numButtons="2" />
+
+	<string
 		id="90002"
 		value="Do you wish to open the gate?"
 		numButtons="2" />
+
+	<string
+		id="11"
+		value="When the @ff00fcffCryo@FF404040 and @ff8a27ebElectro@FF404040 elements interact, the Elemental Cannon can transform the @ffd1d6fdSuperconduct@FF404040 reaction into a @ffc5c5feStellar-Conduct@FF404040 reaction. Triggering this reaction creates an area on the field where players receive a damage bonus for subsequent @ffc5c5feStellar-Conduct@FF404040 reactions. This area lasts for 12 seconds; triggering a @ffc5c5feStellar-Conduct@FF404040 reaction resets the timer and tracks the number of times the reaction has been triggered (up to a maximum of 3). When the timer expires or the Shturman’s shield is destroyed, vehicles within the area take @ffc5c5feStellar-Conduct@FF404040 damage—the amount of damage dealt depends on how many times the @ffc5c5feStellar-Conduct@FF404040 reaction was triggered within that area."
+		numButtons="1" />
 
 	<string
 		id="77773"
@@ -56,11 +66,6 @@
 		image="data\if\ico\CinemaPanel\foreground_movie_shade_midle.dds"
 		upOverlay="data\if\ico\CinemaPanel\foreground_movie_shade_up.dds"
 		downOverlay="data\if\ico\CinemaPanel\foreground_movie_shade.dds"
-		time="0.1" />
-
-	<string
-		id="77774"
-		msgType="SCROLL"
 		time="0.1" />
 
 </resource>

@@ -662,6 +662,10 @@
 			TDeactivate("BossEntourageDie")
 			TDeactivate("BossEnemy_UnderAttack")
 
+			local obj = getObj("weather_sound1")
+			if obj then obj:Remove() end
+			TDeactivate("WeatherSoundMove1")
+
 			TActivate("UpdateGameTime")
 			TActivate("CreateWeatherSound")
 			trigger:Deactivate()
@@ -674,6 +678,117 @@
 			StopPlayingCustomMusic()
 			TActivate("BossRemove")
 			TActivate("SpawnScavsInLocation09_Enters")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+<!-- Телепорт FadeFx -->
+	<trigger Name="ToTeleport_FadeFx" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			IMPULSES = GET_GLOBAL_OBJECT "IMPULSES"
+            IMPULSES:UnbindKey1("GS_CINEMATIC", "KEY_ESCAPE", "IM_CINEMATIC_SKIP")
+			IMPULSES:UnbindKey1("GS_CINEMATIC", "KEY_SPACE", "IM_CINEMATIC_SKIP_MSG")
+
+			EnableGodMode()
+			SaveAllToleranceStatus(RS_NEUTRAL)
+
+			Fly("start_game1", CINEMATIC_NO_AIM, 0, 4, 1, 1)
+			StartCinematic()
+
+			AddCinematicMessage(77773, 0)
+
+			local Plf = GetPlayerVehicle()
+			if Plf then
+				TELEPORT_PLAYERPOS = Plf:GetPosition()
+				TELEPORT_PLAYERROT = Plf:GetRotation()
+				Plf:SetCustomLinearVelocity(0)
+				Plf:SetThrottle(0)
+			end
+			
+			TActivate("ToTeleport_FadeFx_Fade")
+			TActivate("Teleport_FadeFx_End")
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+	
+	<trigger Name="ToTeleport_FadeFx_Fade" active="0">
+		<event eventid="GE_CINEMATIC_ENTER_FADE_IN" ObjName="Player1" />
+		<script>
+			local Plf = GetPlayerVehicle()
+			if Plf then
+				Plf:SetPosition(CVector(1055.531, 131.754, 814.205))
+				Plf:SetRotation(Quaternion(0.049, -0.759, -0.050, 0.647))
+				CreateEffectInsertedInRemove("ET_S_USE_TELEPORT", Plf:GetPosition(), Quaternion(0, 0, 0, 1), true)
+				local obj = getObj("weather_sound")
+				if obj then obj:Remove() end
+				TDeactivate("WeatherSoundMove")
+				CreateNewSgNodeObject("ET_S_LUNA_AMBIENT", "weather_sound1", -1, -1, Plf:GetPosition(), Quaternion(0.0000, 0.0000, 0.0000, 1.0000), 1)
+				TActivate("WeatherSoundMove1")
+			end
+
+			if GetVar("OpenTeleport").AsInt == 1 then TActivate("MessageFromTeleport_timer") end
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="FromTeleport_FadeFx" active="0">
+		<event timeout="0" eventid="GE_TIME_PERIOD" />
+		<script>
+			IMPULSES = GET_GLOBAL_OBJECT "IMPULSES"
+            IMPULSES:UnbindKey1("GS_CINEMATIC", "KEY_ESCAPE", "IM_CINEMATIC_SKIP")
+			IMPULSES:UnbindKey1("GS_CINEMATIC", "KEY_SPACE", "IM_CINEMATIC_SKIP_MSG")
+			
+			DisableGodMode()
+			SaveAllToleranceStatus(RS_NEUTRAL)
+
+			Fly("start_game", CINEMATIC_NO_AIM, 0, 0, 1, 1)
+			StartCinematic()
+
+			AddCinematicMessage(77773, 0)
+
+			local Plf = GetPlayerVehicle()
+			if Plf then
+				Plf:SetCustomLinearVelocity(0)
+				Plf:SetThrottle(0)
+			end
+			
+			TActivate("FromTeleport_FadeFx_Fade")
+			TActivate("Teleport_FadeFx_End")
+			trigger:Deactivate()
+		</script>
+	</trigger>	
+	
+	<trigger Name="FromTeleport_FadeFx_Fade" active="0">
+		<event eventid="GE_CINEMATIC_ENTER_FADE_IN" ObjName="Player1" />
+		<script>
+			local Plf = GetPlayerVehicle()
+			if Plf then
+				if TELEPORT_PLAYERPOS and TELEPORT_PLAYERROT then
+					Plf:SetGamePositionOnGround(TELEPORT_PLAYERPOS)
+					Plf:SetRotation(Quaternion(TELEPORT_PLAYERROT))
+					CreateEffectInsertedInRemove("ET_S_USE_TELEPORT", CVector(10, 10, 10), Quaternion(0, 0, 0, 1), true)
+				end
+			end
+			TActivate("UpdateGameTime")
+			TActivate("CreateWeatherSound")
+			local obj = getObj("weather_sound1")
+			if obj then obj:Remove() end
+			TDeactivate("WeatherSoundMove1")
+			trigger:Deactivate()
+		</script>
+	</trigger>
+
+	<trigger Name="Teleport_FadeFx_End" active="0">
+		<event eventid="GE_END_CINEMATIC" ObjName="Player1" />
+		<event eventid="GE_SKIP_CINEMATIC" ObjName="Player1" />
+		<script>
+			IMPULSES = GET_GLOBAL_OBJECT "IMPULSES"
+            IMPULSES:BindKey1("GS_CINEMATIC", "KEY_SPACE", "IM_CINEMATIC_SKIP_MSG")
+			IMPULSES:BindKey1("GS_CINEMATIC", "KEY_ESCAPE", "IM_CINEMATIC_SKIP")
+			
+			RestoreAllToleranceStatus()
+			SetCameraBehindPlayerVehicle()
 			trigger:Deactivate()
 		</script>
 	</trigger>

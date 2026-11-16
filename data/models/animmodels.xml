@@ -588,6 +588,13 @@
 		trans="0" />
 
 	<model
+		id="chainlink_fence_1_2"
+		file="data\models\buildings\region5\chainlink_fence\chainlink_fence_2.gam"
+		shadow="1"
+		windwavy="0"
+		trans="0" />
+
+	<model
 		id="church"
 		file="data\models\buildings\region5\church\cerkov.gam"
 		shadow="1"
@@ -1485,7 +1492,16 @@
 		shadow="1"
 		shadowVolume="1"
 		windwavy="0"
-		file="data\models\buildings\ndkI\lunoculus\lunoculus.gam"/>
+		file="data\models\buildings\ndkI\lunoculus\lunoculus.gam">
+		<action
+			name="STAND1">
+			<lp
+				id="w"
+				effect_id="ET_S_LUNOCUL_AMBIENT"
+				restartOnAnimationChange="0"
+				ImmediateRemove="1" />
+		</action>
+	</model>
 
 	<model
 		id="moon_a"
@@ -1530,6 +1546,15 @@
 		file="data\models\buildings\ndkI\teleport\teleport_platform.gam" />
 
 	
+	<model
+		id="stellarconduct_star"
+		shadow="0"
+		shadowVolume="0"
+		windwavy="0"
+		trans="1"
+		useImpostors="1"
+		file="data\models\objects\stellarconduct_star\star.gam" />
+
 
 	<model
 		id="conteiner"

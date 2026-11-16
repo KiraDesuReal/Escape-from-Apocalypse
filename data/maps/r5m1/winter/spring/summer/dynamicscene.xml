@@ -5309,7 +5309,7 @@
 		Name="Boss_loc"
 		Belong="1100"
 		Prototype="genericLocation"
-		Pos="5258.753 228.469 2046.794"
+		Pos="5304.356 228.346 1929.958"
 		Radius="600.000" />
 
 	<Object
@@ -9719,6 +9719,27 @@
 		Prototype="genericLocation"
 		Pos="5468.127 252.399 2776.465"
 		Radius="5000.000" />
+
+	<Object
+		Name="Luna_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="799.673 99.344 1333.795"
+		Radius="1000.000" />
+
+	<Object
+		Name="OpenTeleport_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="1054.990 127.350 803.991"
+		Radius="10.000" />
+
+	<Object
+		Name="Stellarconduct_loc"
+		Belong="1100"
+		Prototype="genericLocation"
+		Pos="0 0 0"
+		Radius="50.000" />
 
 	<Object
 		Name="ScavDlg_loc"

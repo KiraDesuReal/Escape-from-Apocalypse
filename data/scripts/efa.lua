@@ -172,6 +172,8 @@ if SHTURMANBOSS_SPAWN_ELEMENTES_TUTORIAL == nil then SHTURMANBOSS_SPAWN_ELEMENTE
 if SHTURMANBOSS_PLAYER_BARRIER_TUTORIAL == nil then SHTURMANBOSS_PLAYER_BARRIER_TUTORIAL = 0 end
 if SHTURMANBOSS_ELEMENTALGUN_TUTORIAL == nil then SHTURMANBOSS_ELEMENTALGUN_TUTORIAL = 0 end
 if PLAYER_BRDM2_ELEMENT_SELECT == nil then PLAYER_BRDM2_ELEMENT_SELECT = 0 end
+if OPEN_TELEPORT_R5M1_GLOBAL == nil then OPEN_TELEPORT_R5M1_GLOBAL = 0 end
+if SHTURMANBOSS_R_STELLARCONDUCT_TUTORIAL == nil then SHTURMANBOSS_R_STELLARCONDUCT_TUTORIAL = 0 end
 
 -- Рандомизируем пушки ботам 
 function GiveGunsForVehicle(vehicle, side_random)
@@ -3649,6 +3651,24 @@ function SoundStartingEngine()
 		if getObj("trCustomControl") then
 			pl:SetCustomControlEnabled(true)
 			TActivate("trCustomControl")
+		end
+	end
+end
+
+-- Прицел для БРДМ-2 путем увеличения fov
+function Brdm2_Sight()
+	local pl = GetPlayerVehicle()
+	if pl then
+		local prot = pl:GetProperty("Prototype").AsString
+		if prot == "Brdm2_01" or prot == "Brdm2_02" then
+			if GetVar("Brdm2_Sight").AsInt == 0 then
+				RuleConsole("g_postEffect DamageWater")
+				RuleConsole("fov 30")
+				SetVar("Brdm2_Sight", 1)
+			else
+				RuleConsole("fov 90")
+				SetVar("Brdm2_Sight", 0)
+			end
 		end
 	end
 end

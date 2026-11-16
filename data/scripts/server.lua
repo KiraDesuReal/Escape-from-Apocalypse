@@ -545,15 +545,23 @@ function CreateTeam(Name, Belong, CreatePos, ListOfVehicle, WalkPos, IsWares, Ro
 						vehicle:AddItemsToRepository(g[random(getn(g))], random(0,1))
 					else
 						vehicle:AddItemsToRepository(GetRandomWeightedItem(ItemsLifeUse), random(0,1))
-						vehicle:AddItemsToRepository(GetRandomWeightedItem(ItemsOilUse), random(0,1))
+						vehicle:AddItemsToRepository(GetRandomWeightedItem(ItemsOilUse), random(0,2))
 						for ware=1,random(0,3) do
-							local w = {10, 80, 100, 30, 20, 80, 100, 100, 5, 20, 30, 70, 30}
+							local w = {10, 80, 100, 30, 20, 80, 100, 100, 5, 20, 20, 70, 30}
 							local category = weighted_random(items, w)
-							vehicle:AddItemsToRepository(GetRandomWeightedItem(GetItemsCategory(category)), 1)
+							local item = GetItemsCategory(category)
+							if category == "other" then
+								for ii = 1, getn(GetItemsCategory("other")) do
+									if strsub(GetItemsCategory("other")[ii], 1, 11) == "item_poster" then 
+										item = DeleteTableObj(item, GetItemsCategory("other")[ii])
+									end	
+								end
+							end
+							vehicle:AddItemsToRepository(GetRandomWeightedItem(item), 1)
 						end
 
 						if random(4) == 1 then
-							local gw = {100, 40, 20}
+							local gw = {100, 25, 10}
 							local g = weighted_random(gadget, gw)
 							vehicle:AddItemsToRepository(g[random(getn(g))], 1)
 						end

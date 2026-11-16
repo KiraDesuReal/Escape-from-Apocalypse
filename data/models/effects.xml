@@ -279,8 +279,28 @@
 		<Node name="Object1" class="SgSoundSourceNode" id="S_OPEN_SAFE" looped="0" />
 	</Node>
 
+	<Node name="ET_S_LUNOCUL_AMBIENT" class="SgNode">
+		<Node name="Object1" class="SgSoundSourceNode" id="S_LUNOCUL_AMBIENT" looped="1" />
+	</Node>
+
+	<Node name="ET_S_LUNOCUL_COLLECT" class="SgNode">
+		<Node name="Object1" class="SgSoundSourceNode" id="S_LUNOCUL_COLLECT" looped="0" />
+	</Node>
+
 	<Node name="ET_S_CANNON_RELOAD2" class="SgNode">
 		<Node name="Object1" class="SgSoundSourceNode" id="S_CANNON_RELOAD2" looped="0" />
+	</Node>
+
+	<Node name="ET_S_USE_TELEPORT" class="SgNode">
+		<Node name="Object1" class="SgSoundSourceNode" id="S_USE_TELEPORT" looped="0" />
+	</Node>
+
+	<Node name="ET_S_ACTIVE_TELEPORT" class="SgNode">
+		<Node name="Object1" class="SgSoundSourceNode" id="S_ACTIVE_TELEPORT" looped="0" />
+	</Node>
+
+	<Node name="ET_M_SOMNIAS_LUNA_VOCAL" class="SgNode">
+		<Node name="Object1" class="SgSoundSourceNode" id="M_SOMNIAS_LUNA_VOCAL" looped="1" />
 	</Node>
 
 	<Node name="ET_PS_ROCKSFAKE1" class="SgNode">
@@ -632,6 +652,10 @@
 		<Node name="noise" class="SgSoundSourceNode" id="S_NIGHT_AMBIENT" looped="1" /> 
 	</Node>
 
+	<Node name="ET_S_LUNA_AMBIENT" class="SgNode">
+		<Node name="noise" class="SgSoundSourceNode" id="S_LUNA_AMBIENT" looped="1" /> 
+	</Node>
+
 <!-- //////////////////////////////////// Ракеты //////////////////////////////////// -->
 	<Node name="ET_PS_ROCKET_BIG" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_ROCKET_BIG_SMOKE1" psNumEmitterMesh="-1" />
@@ -709,6 +733,20 @@
 
 	<Node name="ET_PS_BREAKSTOLBSTONE" class="SgNode">
 		<Node name="S1"	 class="SgSoundSourceNode" id="S_BRICKVEHICLEHIT01" looped="0" /> 
+	</Node>
+
+	<Node name="ET_S_FENCE_METAL_CRASH" multi="true">
+		<Node name="ET_S_FENCE_METAL_CRASH1" class="SgNode">
+			<Node name="S1"	 class="SgSoundSourceNode" id="S_METAL_FENCE_01" looped="0" /> 
+		</Node>
+
+		<Node name="ET_S_FENCE_METAL_CRASH2" class="SgNode">
+			<Node name="S1"	 class="SgSoundSourceNode" id="S_METAL_FENCE_02" looped="0" /> 
+		</Node>
+
+		<Node name="ET_S_FENCE_METAL_CRASH3" class="SgNode">
+			<Node name="S1"	 class="SgSoundSourceNode" id="S_METAL_FENCE_03" looped="0" /> 
+		</Node>
 	</Node>
 
 	<Node name="ET_PS_CRASHWOODVEHICLEHIT" class="SgNode">
@@ -3233,6 +3271,10 @@
 		</Node>
 	</Node>
 
+	<Node name="ET_S_R_STELLARCONDUCT_INZONE" class="SgNode">
+		<Node name="Object3" class="SgSoundSourceNode" id="S_R_STELLARCONDUCT_INZONE" looped="0" />
+	</Node>
+
 <!-- //////////////////////////////////// Оружие  Рапира //////////////////////////////////////// -->
 	<Node name="ET_PS_RAPIER01_FIRE" class="SgNode">
 		<Node name="Object2" class="SgParticlesNode" id="PS_RAPIER01_FIRE_SMOKE1" psNumEmitterMesh="-1" />
@@ -4036,6 +4078,10 @@
 
 	<Node name="ET_PS_R_OVERLOADED_T" class="SgNode">
 		<Node name="Object1" class="SgParticlesNode" id="PS_R_OVERLOADED_T" psNumEmitterMesh="-1" /> 
+	</Node>
+
+	<Node name="ET_PS_R_STELLARCONDUCT_T" class="SgNode">
+		<Node name="Object1" class="SgParticlesNode" id="PS_R_STELLARCONDUCT_T" psNumEmitterMesh="-1" /> 
 	</Node>
 
 	<Node name="ET_PS_R_SUPERCONDUCT_T" class="SgNode">

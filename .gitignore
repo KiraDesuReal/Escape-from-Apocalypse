@@ -202,6 +202,8 @@ data/if/ico_hd/inventorydlg/goods/new/special/item_ms20001.dds
 !data/models/goods/keys/safecode/*.gam
 !data/models/goods/medical/*.dds
 !data/models/goods/medical/*.gam
+!data/models/objects/stellarconduct_star/*.dds
+!data/models/objects/stellarconduct_star/*.gam
 !data/models/objects/box/plastic_barrel/plastic_barrel_box.gam
 !data/models/objects/box/plastic_barrel/plastic_barrel.dds
 !data/models/objects/box/boxbox.gam
@@ -771,6 +773,7 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/models/nature/region1/trees/r1_dub_kust2.gam
 !data/models/nature/region2/trees/dub_kust1_r2.gam
 !data/models/nature/region2/trees/dub_kust2_r2.gam
+!data/models/nature/region1/stones/big_crag_4.gam
 !data/effects/other/air_smoke.psys
 !data/effects/other/green_smoke.psys
 !data/effects/other/oracul_main9.psys
@@ -1124,11 +1127,14 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/sounds/weather/ambient_night.ogg
 !data/sounds/weather/wind_light1.ogg
 !data/sounds/weather/wind_light2.ogg
+!data/sounds/weather/luna_ambient.ogg
 !data/sounds/weather/winter_wind.wav
 !data/sounds/enveffects/sawmill.wav
 !data/sounds/other/bardwire/*.ogg
 !data/sounds/other/airdrop/*.wav
 !data/sounds/other/reactions/*.wav
+!data/sounds/other/lunocul/*.wav
+!data/sounds/other/teleport/*.wav
 !data/sounds/boss/airplane_fly.wav
 !data/sounds/other/open_safe/*.wav
 !data/sounds/boss/shturman_boss_barrier_hit.wav
@@ -1141,6 +1147,9 @@ data/if/ico_hd/questlog/unselect_quest.dds
 !data/sounds/shooting/brdm2/*.wav
 !data/sounds/shooting/smallgun/ags17/*.wav
 !data/sounds/effects/shells/cannon_reload2.wav
+!data/sounds/hit/fence_metal_cr_01.wav
+!data/sounds/hit/fence_metal_cr_02.wav
+!data/sounds/hit/fence_metal_cr_03.wav
 !data/effects/breakable/sandbag1_crash_veh.psys
 !data/effects/breakable/sandbag2_crash_veh.psys
 !data/effects/rockets/rocket_big_trail2.psys

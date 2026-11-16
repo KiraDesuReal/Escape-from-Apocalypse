@@ -412,12 +412,48 @@
 		file="data\sounds\other\reactions\r_charged3.wav"
 	 	group="REACTIONS"/>
 
+	<model
+		id="S_R_STELLARCONDUCT_INZONE"
+		file="data\sounds\other\reactions\r_stellarconduct_inzone.wav"
+	 	group="REACTIONS"/>
+
 <!-- Open Safe --> 
 
 	<model
 		id="S_OPEN_SAFE"
 		file="data\sounds\other\open_safe\open_safe.wav"
 	 	group="COLOR_FIER"/>
+
+<!-- Lunocul --> 
+
+	<model
+		id="S_LUNOCUL_AMBIENT"
+		file="data\sounds\other\lunocul\lunocul_ambient.wav"
+	 	group="FLARE_SHOOT"/>
+
+	<model
+		id="S_LUNOCUL_COLLECT"
+		file="data\sounds\other\lunocul\lunocul_collect.wav"
+	 	group="SOUND2D"/>
+
+<!-- Teleport --> 
+
+	<model
+		id="S_USE_TELEPORT"
+		file="data\sounds\other\teleport\use_teleport.wav"
+	 	group="SOUND2D"/>
+
+	<model
+		id="S_ACTIVE_TELEPORT"
+		file="data\sounds\other\teleport\active_teleport.wav"
+	 	group="FLARE_SHOOT"/>
+
+<!-- Somnias Luna --> 
+
+	<model
+		id="M_SOMNIAS_LUNA_VOCAL"
+		file="data\music\blocks\region5\r5m1\somnias_luna_vocal.ogg"
+	 	group="SOUND2D"/>
 	
 <!-- Crash --> 
 
@@ -1833,6 +1869,12 @@
 		group="WINTER_WIND"
 		/>
 
+	<model
+		id="S_LUNA_AMBIENT"
+		file="data\sounds\weather\luna_ambient.ogg"
+		group="WEATHER"
+		/>
+
 <!-- Starting -->
 
 
@@ -2273,6 +2315,24 @@
 		file_loop="data\sounds\Driving\Braking\drift_mid.wav"
 		file_end="data\sounds\Driving\Braking\drift_tale.wav"
 		group="BRAKE01"
+		/>
+
+		<model
+			id="S_METAL_FENCE_01"
+			file="data\sounds\hit\fence_metal_cr_01.wav"
+			group="DEATH"
+		/>
+
+		<model
+			id="S_METAL_FENCE_02"
+			file="data\sounds\hit\fence_metal_cr_02.wav"
+			group="DEATH"
+		/>
+
+		<model
+			id="S_METAL_FENCE_03"
+			file="data\sounds\hit\fence_metal_cr_03.wav"
+			group="DEATH"
 		/>
 
 <!-- попадания в машину -->
